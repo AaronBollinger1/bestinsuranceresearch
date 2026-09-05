@@ -1,0 +1,58 @@
+{
+	"name": "Life Insurance Conversation Organizer",
+	"status": "roadmap",
+	"order": 33,
+	"family": [
+		"life"
+	],
+	"lines": [
+		"term-life",
+		"permanent-life",
+		"key-person",
+		"buy-sell"
+	],
+	"summary": "Organize the obligations, time horizons, and ownership questions a life insurance conversation turns on.",
+	"spec": {
+		"user": "An individual or business owner preparing for a life insurance conversation.",
+		"inputData": [
+			"Obligation categories and time horizons as bands",
+			"Ownership and purpose as categories"
+		],
+		"authoritativeSources": [
+			"IRS published guidance on ownership and transfer-for-value concepts"
+		],
+		"privacyBoundary": "No medical information of any kind, no beneficiary names, no dates of birth, no financial account data. This tool refuses health input by design.",
+		"decisionRules": [
+			"No needs figure is calculated. The tool organizes questions.",
+			"Nothing here is tax or estate advice.",
+			"This tool never states that a risk is eligible, ineligible, standard market, non-admitted, FAIR Plan eligible, bound, or uninsurable. It shows the published pathway criteria and names who actually decides, which is the insurer."
+		],
+		"uncertainty": "Underwriting for life insurance is medical and financial, and neither is in scope for a public tool.",
+		"output": "A printable organizer of obligations, horizons, and ownership questions.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built. Never medical schema.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

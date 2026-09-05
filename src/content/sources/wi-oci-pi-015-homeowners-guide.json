@@ -1,0 +1,28 @@
+{
+	"title": "Consumer's Guide to Homeowners Insurance, PI-015 (R 07/2026)",
+	"publisher": "Wisconsin Office of the Commissioner of Insurance",
+	"url": "https://oci.wi.gov/Documents/Consumers/PI-015.pdf",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "WI",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The guide states: \"A dwelling policy provides more limited property coverage than a homeowners policy. The dwelling policy only provides property coverage (protection for individuals and families against loss of a dwelling or personal belongings). It does not provide liability coverage. The homeowners policy covers more. It offers a combination of property and liability coverage.\"",
+		"The guide states: \"Dwelling policies may be used to insure homes not qualifying for homeowners insurance. For example, they are commonly used to insure seasonal homes unoccupied for portions of the year. To qualify for dwelling insurance, a building does not have to be occupied by the owner, and it may even be under construction.\"",
+		"The guide states that some types of \"stationary mobile homes qualify, as well as homes with up to five boarders, and four-unit apartment complexes\" for dwelling insurance.",
+		"The guide states: \"Modified Coverage Form (HO-8) is designed to provide package coverage to the owner-occupants of homes that do not meet all the requirements applicable to other homeowner policies.\"",
+		"The guide states: \"If you only occasionally rent a room or your home, your current homeowners insurer might be willing to provide an endorsement to protect you. However, if you plan to frequently rent out your home or a room in your home, landlord property insurance or rental coverage for landlords might be your best option.\"",
+		"The guide states: \"A landlord insurance policy will cover your home, structures on the property, property contents you own (such as appliances and furniture), lost rental income due to building damage, legal defense costs, and liability protection.\"",
+		"The guide states: \"Once you begin earning income from renting out your home or a room in your home, you are probably considered a home-based business. If you lease out a room (home sharing) or your entire home (short-term rental) for profit, your insurance company could claim you are essentially running a hotel or bed and breakfast and deny coverage. However, if you seldom rent out your home, your insurer might provide coverage.\"",
+		"The guide advises: \"Talk to your agent about your situation to be certain of what coverage you may or may not have related to participation in this activity.\""
+	],
+	"updateCadence": "Revised periodically by the Wisconsin OCI; every page footer of this copy reads PI-015 (R 07/2026).",
+	"status": "active",
+	"notes": "Downloaded 2026-08-31 (HTTP 200, application/pdf, about 477 KB). Text extracted locally with pdftotext -layout. Title \"Consumer's Guide to Homeowners Insurance\", Wisconsin Office of the Commissioner of Insurance, 24 pages, page footers read \"PI-015 (R 07/2026)\", which supports the published date. All claims above were read verbatim. An earlier draft rendered the guide's \"might be your best option\" as \"might be the better option\"; the actual wording is restored. This is Wisconsin regulator consumer guidance. It is not a statement of California law and not a description of any specific California policy form. The guide's only vacancy discussion sits in its Wisconsin Insurance Plan section and concerns residual-market availability, so this source is not relied on for anything about vacancy clauses in policy forms. Published: 2026-07-01 Effective: 2026-07-01",
+	"officialHost": true
+}

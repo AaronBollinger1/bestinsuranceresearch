@@ -1,0 +1,235 @@
+{
+	"name": "Personal auto insurance (California)",
+	"line": "auto",
+	"family": "personal",
+	"definition": "The policy that responds when a private passenger vehicle injures someone, damages property, or is itself damaged. In California more of this line is written by statute than by the form: the minimum limits, the extension of coverage to a permitted driver, the way uninsured and underinsured motorist coverage is calculated, the three factors that must dominate the rate, and the grounds on which the policy can be cancelled are all fixed by the Insurance Code and the Vehicle Code rather than chosen by an insurer [S:ca-ins-code-11580-1] [S:ca-ins-code-11580-2] [S:ca-ins-code-1861-02] [S:ca-ins-code-661]. Reading the policy without reading those sections gives the wrong answer on the questions that matter most.",
+	"protects": [
+		"The named insured and household relatives against liability for bodily injury and property damage arising out of the use of a covered vehicle",
+		"Anyone driving the vehicle with the named insured's permission, to the same extent as the named insured, because California requires that extension rather than leaving it to the form [S:ca-ins-code-11580-1]",
+		"The insured and family members injured by a driver who carries no liability insurance, or less of it than the insured carries [S:ca-ins-code-11580-2]",
+		"The insured's own vehicle against collision and other physical damage, where those coverages are purchased",
+		"The insured's ability to register and lawfully operate a vehicle, since the policy is the ordinary way of establishing financial responsibility [S:ca-veh-code-16020]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Bodily injury and property damage liability at limits no lower than the state minimum",
+			"note": "A policy issued or delivered in California must contain coverage limits not less than those in Vehicle Code section 16056 [S:ca-ins-code-11580-1]. Those limits are $30,000 per person, $60,000 per accident and $15,000 for property damage for the period beginning January 1, 2025 [S:ca-veh-code-16056], which the Department of Motor Vehicles states in the same terms [S:ca-dmv-insurance-requirements]. They are a legal floor and not a recommendation: a single hospital stay can exhaust the per-person limit."
+		},
+		{
+			"item": "Permissive use, as a matter of law rather than of policy language",
+			"note": "The policy must afford insurance to the named insured for any owned or leased covered vehicle and, to the same extent, to any other person using it with the named insured's permission, express or implied, and within the scope of that permission [S:ca-ins-code-11580-1]. This is why lending a car ordinarily lends the insurance with it. The statute limits the extension for loading and unloading, and permits an exclusion for people in the business of selling, servicing, parking or storing automobiles [S:ca-ins-code-11580-1]."
+		},
+		{
+			"item": "Uninsured motorist coverage, unless it was waived in writing",
+			"note": "Every bodily injury liability policy on a vehicle principally used or garaged in California must contain, or add by endorsement, uninsured motorist coverage [S:ca-ins-code-11580-2]. It is not optional by default. It becomes absent only through a written agreement in the exact form the statute prescribes, and that agreement then binds every insured under the policy and carries forward through renewals, replacements and reinstatement within 30 days of a lapse [S:ca-ins-code-11580-2]."
+		},
+		{
+			"item": "Underinsured motorist coverage, as part of the same single coverage",
+			"note": "Uninsured and underinsured motorist coverage must be offered as a single coverage, with underinsured limits equal to the uninsured motorist limits in the underlying policy [S:ca-ins-code-11580-2]. It has been required in every policy providing uninsured motorist coverage issued or renewed on or after July 1, 1985 [S:ca-ins-code-11580-2]. What it pays is narrower than the name suggests, and that is set out under limits below."
+		},
+		{
+			"item": "A hit-and-run, on conditions",
+			"note": "Where the owner or operator of the uninsured vehicle is unknown, the coverage applies only if the injury arose out of physical contact of that automobile with the insured or with a vehicle the insured was occupying [S:ca-ins-code-11580-2]. The accident must also be reported within 24 hours to the city police, or in unincorporated territory to the county sheriff or the local California Highway Patrol headquarters, and a statement under oath filed with the insurer within 30 days [S:ca-ins-code-11580-2]. Both clocks run from the accident, not from the claim."
+		},
+		{
+			"item": "A loss caused by a driver whose insurer then fails",
+			"note": "An insured vehicle is treated as uninsured where its liability insurer cannot pay within its limits because of insolvency [S:ca-ins-code-11580-2]. The protection is bounded: it reaches accidents occurring during a policy period in which the insured's own coverage was in effect, and only where the at-fault driver's insurer becomes insolvent within one year of the accident [S:ca-ins-code-11580-2]."
+		},
+		{
+			"item": "Repair at a shop the claimant chooses",
+			"note": "No insurer may require that a vehicle be repaired at a specific automotive repair dealer [S:ca-ins-code-758-5]. An insurer may not even suggest one unless the claimant asked for a referral or has been told in writing of the right to choose [S:ca-ins-code-758-5]. If the claimant picks their own shop, the insurer may not limit or discount the reasonable repair cost to what its own shop would have charged [S:ca-ins-code-758-5]. The protection runs to third-party claimants as well as to insureds [S:ca-ins-code-758-5]."
+		},
+		{
+			"item": "A rate built on three specified factors, in a fixed order",
+			"note": "Rates and premiums for a policy within the scope of section 660(a) must be determined by applying the insured's driving safety record, annual miles driven and years of driving experience, in decreasing order of importance, before any other approved factor [S:ca-ins-code-1861-02]. Any criterion used without approval is unfair discrimination as a matter of statute [S:ca-ins-code-1861-02]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Property damage, under the uninsured motorist coverage",
+			"note": "The coverage does not apply, either as primary or as excess, to property damage sustained by the insured [S:ca-ins-code-11580-2]. Damage to the insured's own vehicle from an uninsured driver is a collision claim, subject to the collision deductible, or it is uncompensated. This is the single most common misreading of what uninsured motorist coverage buys."
+		},
+		{
+			"item": "Injury while occupying another vehicle the household owns",
+			"note": "Uninsured motorist coverage does not apply to bodily injury of the insured while occupying a vehicle owned by an insured, or leased to an insured under a written contract for six months or longer, unless that vehicle is itself an insured motor vehicle under the policy [S:ca-ins-code-11580-2]. A household vehicle left off the policy therefore carries no uninsured motorist protection for the people riding in it."
+		},
+		{
+			"item": "A claim settled without the insurer's written consent",
+			"note": "The coverage does not apply to bodily injury with respect to which the insured, without the insurer's written consent, settled with or prosecuted to judgment an action against a person who may be legally liable [S:ca-ins-code-11580-2]. Accepting the at-fault driver's offer before notifying your own insurer can forfeit the coverage entirely."
+		},
+		{
+			"item": "A driver excluded by name",
+			"note": "The insurer and a named insured may agree, in the policy or a separate writing, that coverage and the duty to defend do not apply while a vehicle is operated by a person designated by name, including on a claim of negligent entrustment [S:ca-ins-code-11580-1]. The agreement reaches all coverage under the policy and is sufficient to delete uninsured motorist coverage for that driver as well [S:ca-ins-code-11580-1]. A narrow duty to defend the named insured survives where the excluded person lives in the household, is jointly sued, and has their own policy that will not defend the named insured [S:ca-ins-code-11580-1]."
+		},
+		{
+			"item": "Liability assumed under a contract, and intentional acts",
+			"note": "The policy may exclude liability the insured assumed under contract and liability for bodily injury or property damage caused intentionally by or at the direction of the insured [S:ca-ins-code-11580-1]. For those exclusions the insured means only the insured against whom the particular claim is made, so one person's intentional act does not by itself defeat another insured's coverage [S:ca-ins-code-11580-1]."
+		},
+		{
+			"item": "Injury to an employee, and workers compensation obligations",
+			"note": "The policy may exclude liability imposed on or assumed by the insured under any workers compensation law, and liability for bodily injury to an employee of the insured arising out of and in the course of employment [S:ca-ins-code-11580-1]. Uninsured motorist coverage separately does not apply where it would inure to the benefit of a workers compensation carrier or self-insurer [S:ca-ins-code-11580-2]."
+		},
+		{
+			"item": "Damage to property in the insured's charge, including a borrowed car",
+			"note": "The policy may exclude liability for damage to property owned, rented to, transported by, or in the charge of an insured, and the statute states that a motor vehicle operated by an insured is to be considered property in the charge of an insured [S:ca-ins-code-11580-1]. Liability coverage is therefore not the answer for damage to a car you were driving but do not own."
+		},
+		{
+			"item": "A vehicle the policy explicitly excludes",
+			"note": "Coverage may be made inapplicable to any motor vehicle or class of motor vehicles described or designated in the policy as explicitly excluded, in whole or in part [S:ca-ins-code-11580-1]. As with commercial auto, what is covered is what the declarations say, not what the household owns."
+		}
+	],
+	"limitsAndDeductibles": [
+		"Liability is written on a split basis, as a per-person limit for bodily injury, a per-accident limit for bodily injury, and a separate property damage limit, and may not be written below $30,000, $60,000 and $15,000 for the period beginning January 1, 2025 [S:ca-veh-code-16056] [S:ca-ins-code-11580-1].",
+		"Uninsured motorist coverage must be offered with limits equal to the bodily injury liability limits of the underlying policy, but an insurer is not required to offer it above $30,000 per person and $60,000 per accident [S:ca-ins-code-11580-2]. A policy with $1,000,000 of liability coverage can therefore carry $30,000 of uninsured motorist coverage, and often does.",
+		"The statute states the required uninsured motorist limits conjunctively, as at least the subdivision (m) amounts and in no case less than the Vehicle Code section 16056 financial responsibility requirements, so the operative floor is whichever is higher on the date in question and the subdivision (m) figures act as a ceiling on the duty to offer rather than a floor on the coverage [S:ca-ins-code-11580-2].",
+		"Underinsured motorist coverage in California pays the difference and not an extra layer. A vehicle is underinsured only if it is insured for less than the injured person's own uninsured motorist limit [S:ca-ins-code-11580-2], and the insurer's maximum liability is that limit less what the liable parties paid [S:ca-ins-code-11580-2]. Read together, an at-fault driver carrying limits equal to or above the injured person's uninsured motorist limit leaves nothing for the coverage to pay [S:ca-ins-code-11580-2].",
+		"Underinsured motorist coverage does not respond at all until the liability limits of every insured vehicle that caused the injury have been exhausted by payment of judgments or settlements, with proof of payment submitted to the insurer [S:ca-ins-code-11580-2].",
+		"Limits cannot be stacked. Regardless of the number of vehicles, persons covered, claims made or premiums paid, the limits of two or more vehicles or two or more policies may not be added together or combined to determine what is available to injured persons [S:ca-ins-code-11580-2].",
+		"An uninsured motorist loss may be reduced by amounts paid and the present value of amounts payable under any workers compensation law, excluding nonoccupational disability benefits [S:ca-ins-code-11580-2], and, where the policy so provides, by amounts paid under automobile medical payment coverage [S:ca-ins-code-11580-2].",
+		"Adding a physical damage deductible of $100 or less is not treated as a cancellation of the coverage or of the policy [S:ca-ins-code-661], so a small deductible can appear at renewal without triggering cancellation protections."
+	],
+	"endorsements": [
+		{
+			"item": "Written waiver or reduction of uninsured motorist coverage",
+			"note": "The only way the coverage is absent. The statute prescribes the exact wording for deleting it completely, for deleting it as to a named driver, and for reducing it below the subdivision (m) amounts but not below the financial responsibility minimums [S:ca-ins-code-11580-2]. Executing the agreement relieves the insurer of liability under the section while it remains in effect [S:ca-ins-code-11580-2]. Because it survives renewal and replacement by the same insurer, a waiver signed years ago is probably still operating."
+		},
+		{
+			"item": "Named driver exclusion",
+			"note": "An agreement excluding a person by name, effective from the date of the agreement where made more than 60 days after inception, and conclusive evidence of its own validity once a named insured signs it [S:ca-ins-code-11580-1]. It stays in force as long as the policy does and follows continuations, renewals, replacements and reinstatement within 30 days of a lapse [S:ca-ins-code-11580-1]. It is the household exclusion people forget signing."
+		},
+		{
+			"item": "Replacement in an affiliated insurer",
+			"note": "Not an endorsement so much as a substitution. An insurer may continue coverage through an affiliated insurer and still call it a renewal, but only with the same or broader coverage and written notice at least 20 days before expiration stating that the present insurer will not renew, that replacement in an affiliate is offered, and that the insured may request the reasons in writing within one month of expiration [S:ca-ins-code-660]."
+		},
+		{
+			"item": "Volunteer social service transportation",
+			"note": "There is nothing to add here, which is the point. Since January 1, 1976 a policy may not be issued, amended or renewed containing any provision that expressly or impliedly excludes the named insured's use of an insured vehicle performing volunteer social service transportation for a nonprofit or governmental agency, and the insurer may not cancel solely for that reason [S:ca-ins-code-11580-1]. The protection lapses if the volunteer takes remuneration beyond mileage at or below the prescribed rate [S:ca-ins-code-11580-1]."
+		}
+	],
+	"relatedPolicies": [
+		"Umbrella or excess liability, which sits above the auto liability limit and is expressly outside the uninsured motorist mandate [S:ca-ins-code-11580-2]",
+		"Homeowners or renters liability, which is not converted into an automobile policy by carrying incidental auto liability [S:ca-ins-code-11580-1] and need not offer uninsured motorist coverage [S:ca-ins-code-11580-2]",
+		"Commercial auto, which is where a policy goes once it insures more than four automobiles or covers garage, sales agency, repair shop, service station or parking operations [S:ca-ins-code-660]",
+		"Workers compensation, which coordinates with uninsured motorist coverage by offset and by a bar on the coverage inuring to the compensation carrier [S:ca-ins-code-11580-2]",
+		"Automobile medical payments coverage, which the policy may use to reduce an uninsured motorist recovery [S:ca-ins-code-11580-2]"
+	],
+	"underwritingInputs": [
+		"Driving safety record, which the statute requires to be the most important rating factor [S:ca-ins-code-1861-02]",
+		"Annual miles driven, the second mandatory factor [S:ca-ins-code-1861-02]",
+		"Years of driving experience, the third mandatory factor [S:ca-ins-code-1861-02]",
+		"Whether the applicant qualifies for a Good Driver Discount policy, which requires three years licensed, no more than one violation point in three years, and no at-fault injury or fatal accident in that period [S:ca-ins-code-1861-025]",
+		"Whether any driver has a conviction listed in section 1861.025(c), which is measured over ten years rather than three [S:ca-ins-code-1861-025]",
+		"For a driver licensed outside the United States or Canada, at least the previous 18 months licensed in the United States or Canada, which creates a rebuttable presumption of qualification [S:ca-ins-code-1861-025]",
+		"Licence and registration status of the named insured and of any household resident or customary operator, since suspension or revocation is a cancellation ground [S:ca-ins-code-661]",
+		"Number of automobiles on the policy, because the personal auto protections attach only at four or fewer [S:ca-ins-code-660]",
+		"Vehicle use, since a private passenger vehicle rented to others or used as a public or livery conveyance falls outside section 660(a)(1) [S:ca-ins-code-660]",
+		"Prior claims history, which the insurer may rate on and which is a listed misrepresentation ground for cancellation [S:ca-ins-code-661]",
+		"Whether the applicant currently has insurance, which may not be used as a criterion in itself [S:ca-ins-code-1861-02]"
+	],
+	"exposures": [
+		{
+			"item": "A minimum-limits policy against a serious injury",
+			"note": "The statutory floor is $30,000 per person [S:ca-veh-code-16056], and it is the amount most commonly purchased. It is not calibrated to the cost of a serious injury, and once it is exhausted the injured person looks to their own uninsured motorist coverage, which in California pays only the difference [S:ca-ins-code-11580-2]. Both sides of that arithmetic fail at the same time."
+		},
+		{
+			"item": "Uninsured motorist limits set at the statutory minimum offer",
+			"note": "An insurer need not offer more than $30,000 and $60,000 of uninsured motorist coverage no matter how high the liability limits are [S:ca-ins-code-11580-2]. Because underinsured recovery is capped at that same limit less what was paid [S:ca-ins-code-11580-2], the household with high liability limits and minimum uninsured motorist limits is well protected against what it does to others and poorly protected against what is done to it."
+		},
+		{
+			"item": "A waiver signed once and never revisited",
+			"note": "A written deletion of uninsured motorist coverage binds every insured and carries forward through renewals, replacements by the same insurer, and reinstatement within 30 days of a lapse [S:ca-ins-code-11580-2]. Nothing requires it to be re-presented. A household can therefore be without the coverage for years on the strength of one signature."
+		},
+		{
+			"item": "A household vehicle left off the policy",
+			"note": "Uninsured motorist coverage does not apply while an insured occupies a vehicle owned by an insured, or leased for six months or more, unless that vehicle is an insured motor vehicle under the policy [S:ca-ins-code-11580-2]. The vehicle nobody bothered to add is the vehicle with no uninsured motorist protection for its occupants."
+		},
+		{
+			"item": "The 24-hour report in a hit-and-run",
+			"note": "Coverage for an unknown driver requires physical contact and a report to police within 24 hours, followed by a sworn statement to the insurer within 30 days [S:ca-ins-code-11580-2]. A driver who is shaken, treated at hospital, and reports the next afternoon has already missed the first condition."
+		},
+		{
+			"item": "Settling with the at-fault driver first",
+			"note": "Uninsured motorist coverage does not apply to an injury for which the insured, without the insurer's written consent, settled with or took judgment against a person who may be liable [S:ca-ins-code-11580-2]. A quick cheque from the other carrier can extinguish a much larger claim. The underinsured coverage separately requires exhaustion by payment with proof submitted [S:ca-ins-code-11580-2], so the sequence and the paperwork both matter."
+		},
+		{
+			"item": "A licence suspension anywhere in the household",
+			"note": "Cancellation is available where the licence or registration of the named insured, or of any other operator residing in the household or customarily operating an insured vehicle, has been suspended or revoked during the policy period or, on a renewal, during the 180 days before its effective date [S:ca-ins-code-661]. The exposure is created by a person who may not be listed on the policy at all."
+		},
+		{
+			"item": "Nonrenewal, which the cancellation grounds do not reach",
+			"note": "Section 661 restricts cancellation during a policy period to five grounds and then states plainly that it does not apply to nonrenewal [S:ca-ins-code-661]. The insurer's obligation at expiration is one of notice rather than of continuation: an offer of renewal at least 20 days out, or a notice of nonrenewal at least 30 days out [S:ca-ins-code-663]. A clean record does not guarantee a renewal offer."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Read the declarations for the uninsured motorist limit, not just the liability limit",
+			"note": "The two are frequently different, because the duty to offer stops at $30,000 and $60,000 [S:ca-ins-code-11580-2] while liability limits often run far higher. The declarations are where the answer is, and the arithmetic that follows from it is set out under limits on this page."
+		},
+		{
+			"item": "Ask whether a waiver or a named driver exclusion is on file",
+			"note": "Both are written agreements that survive renewal and replacement and reinstatement within 30 days of a lapse [S:ca-ins-code-11580-2] [S:ca-ins-code-11580-1]. Neither is required to be re-presented at renewal, so the only reliable way to know is to ask for the signed document."
+		},
+		{
+			"item": "List every vehicle and every household driver",
+			"note": "An unlisted household vehicle carries no uninsured motorist protection for its occupants [S:ca-ins-code-11580-2], and an unlisted household operator can supply a cancellation ground through a licence suspension [S:ca-ins-code-661]. Both problems are solved by disclosure rather than by argument after a loss."
+		},
+		{
+			"item": "Report a hit-and-run to police within 24 hours and to the insurer in writing within 30 days",
+			"note": "These are conditions of the coverage rather than administrative preferences: physical contact, a report within 24 hours to the correct agency, and a sworn statement filed with the insurer within 30 days [S:ca-ins-code-11580-2]."
+		},
+		{
+			"item": "Notify your own insurer in writing before accepting anything from the other side",
+			"note": "Settling with or taking judgment against a potentially liable person without the insurer's written consent removes the uninsured motorist coverage for that injury [S:ca-ins-code-11580-2]. Written consent first costs nothing and preserves the claim."
+		},
+		{
+			"item": "Correct a misstatement within 20 days of a cancellation notice",
+			"note": "Where cancellation is based on negligent misrepresentation of safety record, prior annual miles, years of experience or prior claims, the insured may avoid it by furnishing corrected information within 20 days of receiving the notice and agreeing to pay any premium difference for the period the information was undisclosed [S:ca-ins-code-661]. The window is short and it is the insured's to use."
+		},
+		{
+			"item": "Pay within the 10-day nonpayment window",
+			"note": "A cancellation for nonpayment requires at least 10 days notice with the reason stated, and is effective on the date specified only if the insured has not cured the nonpayment by the end of that period [S:ca-ins-code-662]. Curing inside the window defeats the cancellation rather than inviting a discretionary reinstatement."
+		},
+		{
+			"item": "Keep evidence of financial responsibility in the vehicle",
+			"note": "The duty in Vehicle Code section 16020 is two duties, and only one of them is buying insurance: being able to establish financial responsibility, and carrying evidence of it in the vehicle at all times [S:ca-veh-code-16020]. A covering note or binder satisfies the evidence requirement [S:ca-veh-code-16020], which matters in the days between binding and delivery of a card."
+		},
+		{
+			"item": "Choose the repair shop, and say so in writing",
+			"note": "The insurer may not require a specific shop, may not recommend one unless asked or after informing the claimant in writing of the right to choose, may not suggest a different shop once the claimant has chosen, and may not hold the reasonable cost down to what its own shop would have charged [S:ca-ins-code-758-5]. Recording the choice in writing is what makes the last of those enforceable."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "The minimum limits step up again. Vehicle Code section 16056 states the January 1, 2035 change as increments rather than as resulting figures, and applied to the amounts operative from January 1, 2025 those increments produce $50,000, $100,000 and $25,000 [S:ca-veh-code-16056]. From that date the financial responsibility floor exceeds the $30,000 and $60,000 figures in section 11580.2(m), and because section 11580.2(a)(1) requires limits at least equal to subdivision (m) and in no case less than section 16056, the higher of the two governs [S:ca-ins-code-11580-2]."
+		},
+		{
+			"state": "CA",
+			"note": "The personal auto protections have a hard boundary. The Good Driver Discount rules and the mandatory rating factors attach to a policy as described in section 660(a) [S:ca-ins-code-1861-02], and that definition reaches only a policy insuring individuals in one household, covering private passenger or station wagon type vehicles, other four-wheel vehicles with a load capacity of 1,500 pounds or less, or motorcycles [S:ca-ins-code-660]. The chapter does not apply to a policy insuring more than four automobiles, a policy issued under an assigned risk plan, or a policy covering garage, sales agency, repair shop, service station or parking operations [S:ca-ins-code-660]. A fifth vehicle moves the policy outside these protections."
+		},
+		{
+			"state": "CA",
+			"note": "A Good Driver Discount policy must be sold to anyone who qualifies, by the insurer of their choice, at a rate at least 20 percent below what they would otherwise have been charged for the same coverage [S:ca-ins-code-1861-02]. Qualification turns on three years licensed, not more than one violation point in the previous three years, and no accident in that period causing injury or death for which the applicant was principally at fault [S:ca-ins-code-1861-025]. An at-fault property-damage-only accident carries its own point for this purpose even where the Vehicle Code assigns none [S:ca-ins-code-1861-025], which is how an accident with no citation can still cost the discount."
+		}
+	],
+	"lastReviewed": "2026-09-02",
+	"effectiveDate": "2026-09-02",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ins-code-11580-1",
+		"ca-ins-code-11580-2",
+		"ca-ins-code-758-5",
+		"ca-ins-code-1861-02",
+		"ca-ins-code-1861-025",
+		"ca-ins-code-660",
+		"ca-ins-code-661",
+		"ca-ins-code-662",
+		"ca-ins-code-663",
+		"ca-veh-code-16020",
+		"ca-veh-code-16056",
+		"ca-dmv-insurance-requirements"
+	],
+	"relatedQuestions": []
+}

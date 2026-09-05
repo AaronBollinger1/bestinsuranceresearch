@@ -1,0 +1,25 @@
+{
+	"title": "Eligibility | National Flood Insurance Program",
+	"publisher": "FEMA, National Flood Insurance Program (FloodSmart)",
+	"url": "https://www.floodsmart.gov/get-insured/eligibility",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Most homeowners insurance does not cover flood damage, and it will not fulfill the mortgage or federal disaster assistance requirements for flood insurance.",
+		"You can get flood insurance from the National Flood Insurance Program if your city or town participates in the NFIP's floodplain management requirements.",
+		"You are required to have flood insurance if you own a home or business in a Special Flood Hazard Area and have a government-backed mortgage.",
+		"Some banks require flood insurance even if you do not live in a high-risk area, and the page tells readers to ask their mortgage lender about its flood insurance terms.",
+		"If a property has received federal disaster assistance before, flood insurance must be maintained to qualify for future disaster assistance, including FEMA disaster grants and Small Business Administration disaster loans."
+	],
+	"updateCadence": "FEMA updates NFIP program pages periodically",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: not stated on the page"
+}

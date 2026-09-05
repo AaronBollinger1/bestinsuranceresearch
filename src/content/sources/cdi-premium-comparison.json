@@ -1,0 +1,21 @@
+{
+	"title": "Compare Premiums - California Department of Insurance",
+	"publisher": "California Department of Insurance",
+	"url": "https://www.insurance.ca.gov/01-consumers/105-type/9-compare-prem/index.cfm",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The California Department of Insurance publishes premium comparison tools for private passenger automobile and motorcycle insurance, homeowners insurance including condominium, renters and earthquake coverage, long-term care insurance, Medicare supplement insurance, and an online rate comparison for the top 50 workers' compensation insurers.",
+		"The Department states that the results of these surveys are not premium quotes."
+	],
+	"updateCadence": "CDI refreshes each survey on its own cycle; the editions shown at review on 2026-08-31 were 2026 for auto, homeowners and Medicare supplement, and 2025 for long-term care.",
+	"status": "active",
+	"officialHost": true
+}

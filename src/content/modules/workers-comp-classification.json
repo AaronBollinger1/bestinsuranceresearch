@@ -1,0 +1,1506 @@
+{
+	"name": "Workers Compensation Classification",
+	"summary": "Works out which classification, payroll-record and subcontractor questions an employer should settle in writing before a workers compensation quote, renewal or premium audit.",
+	"family": "commercial",
+	"lines": [
+		"workers-compensation",
+		"employers-liability"
+	],
+	"order": 40,
+	"status": "live",
+	"privacyBoundary": "This module refuses to collect your business name, FEIN or state employer account number, policy number, worksite addresses, employee names, individual wage figures, or any injury or medical detail about any worker.",
+	"uncertainty": "It cannot assign a classification, tell you which classification is correct, or say what a rating system will produce; only the rating bureau whose system applies in each state and the insurer writing the policy determine classification, and a payroll auditor determines what your records support.",
+	"domain": "bestworkerscompensation.com",
+	"fields": [
+		{
+			"id": "states-of-operation",
+			"label": "In which states do you have employees performing work?",
+			"help": "Select every state where payroll is generated, not just where the business is registered.",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "california",
+					"label": "California"
+				},
+				{
+					"value": "texas",
+					"label": "Texas"
+				},
+				{
+					"value": "florida",
+					"label": "Florida"
+				},
+				{
+					"value": "new-york",
+					"label": "New York"
+				},
+				{
+					"value": "new-jersey",
+					"label": "New Jersey"
+				},
+				{
+					"value": "pennsylvania",
+					"label": "Pennsylvania"
+				},
+				{
+					"value": "michigan",
+					"label": "Michigan"
+				},
+				{
+					"value": "minnesota",
+					"label": "Minnesota"
+				},
+				{
+					"value": "north-carolina",
+					"label": "North Carolina"
+				},
+				{
+					"value": "wisconsin",
+					"label": "Wisconsin"
+				},
+				{
+					"value": "monopolistic-fund-state",
+					"label": "Ohio, North Dakota, Washington or Wyoming"
+				},
+				{
+					"value": "other-state",
+					"label": "Another state not listed"
+				}
+			],
+			"group": "Where the work happens",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "multi-state-payroll",
+			"label": "Does a single employee or crew generate payroll in more than one state?",
+			"kind": "boolean",
+			"group": "Where the work happens",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "described-activities",
+			"label": "Which of these activities do your employees actually perform?",
+			"help": "Describe what people do, not what the policy currently says.",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "clerical-office",
+					"label": "Clerical or office work"
+				},
+				{
+					"value": "outside-sales",
+					"label": "Outside sales or estimating away from the premises"
+				},
+				{
+					"value": "retail-counter",
+					"label": "Retail or counter sales"
+				},
+				{
+					"value": "warehousing",
+					"label": "Warehousing, stocking or order picking"
+				},
+				{
+					"value": "delivery-drivers",
+					"label": "Local delivery driving"
+				},
+				{
+					"value": "long-haul-trucking",
+					"label": "Long haul or interstate trucking"
+				},
+				{
+					"value": "construction-field-work",
+					"label": "Construction or installation work at customer sites"
+				},
+				{
+					"value": "work-at-height",
+					"label": "Roofing or other work at height"
+				},
+				{
+					"value": "manufacturing-fabrication",
+					"label": "Manufacturing, machining or fabrication"
+				},
+				{
+					"value": "food-service",
+					"label": "Food preparation or food service"
+				},
+				{
+					"value": "janitorial-landscaping",
+					"label": "Janitorial, grounds or landscaping"
+				},
+				{
+					"value": "in-home-or-patient-care",
+					"label": "In-home care or patient care"
+				},
+				{
+					"value": "design-or-consulting",
+					"label": "Design, engineering or consulting services"
+				},
+				{
+					"value": "security-guards",
+					"label": "Security or guard duties"
+				},
+				{
+					"value": "supplied-labor-to-others",
+					"label": "Supplying our workers to work under someone else's direction"
+				}
+			],
+			"group": "What the business does",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "distinct-activities-recorded",
+			"label": "How many distinct activities did you just record?",
+			"help": "Count the boxes you checked above.",
+			"kind": "number",
+			"unit": "count",
+			"group": "What the business does",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "operations-description",
+			"label": "In your own words, what does the business do?",
+			"kind": "text",
+			"group": "What the business does",
+			"required": false,
+			"purpose": "brief-only",
+			"privacyNote": "Describe the work only. Do not enter your business name, trade name, FEIN, license number, addresses, customer names or employee names."
+		},
+		{
+			"id": "operations-changed-since-last-renewal",
+			"label": "Have the operations changed since the last renewal or application?",
+			"help": "New services, a new trade, a new state, or work you stopped doing all count.",
+			"kind": "boolean",
+			"group": "What the business does",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "classification-code-count",
+			"label": "How many separate classifications appear on the current or most recent policy?",
+			"help": "Enter 0 if there is no policy yet or you do not know.",
+			"kind": "number",
+			"unit": "count",
+			"group": "Classifications on the policy",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "classification-source",
+			"label": "How did the classifications on the policy get there?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "carrier-assigned",
+					"label": "The insurer assigned them"
+				},
+				{
+					"value": "bureau-inspection",
+					"label": "A rating bureau inspection or test audit set them"
+				},
+				{
+					"value": "copied-from-prior-policy",
+					"label": "They were carried over from a prior policy"
+				},
+				{
+					"value": "we-selected-them",
+					"label": "We or our broker picked them from a list"
+				},
+				{
+					"value": "unknown",
+					"label": "We do not know"
+				}
+			],
+			"group": "Classifications on the policy",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "classification-change-notice-date",
+			"label": "If you received written notice of a classification or rating change, what date was on it?",
+			"help": "Leave blank if you have not received one.",
+			"kind": "date",
+			"group": "Classifications on the policy",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "review-request-action-notice-date",
+			"label": "If you asked the insurer or rating organization in writing to review how the rating system was applied to you, what date was on their written notice of the action they took on that request?",
+			"help": "Leave blank if you have not made a written request for review, or if they have not answered it in writing yet.",
+			"kind": "date",
+			"group": "Classifications on the policy",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "total-annual-payroll-band",
+			"label": "What band does your total annual payroll fall in?",
+			"kind": "band",
+			"options": [
+				{
+					"value": "under-100k",
+					"label": "Under $100,000"
+				},
+				{
+					"value": "100k-500k",
+					"label": "$100,000 to $500,000"
+				},
+				{
+					"value": "500k-2m",
+					"label": "$500,000 to $2,000,000"
+				},
+				{
+					"value": "2m-10m",
+					"label": "$2,000,000 to $10,000,000"
+				},
+				{
+					"value": "over-10m",
+					"label": "Over $10,000,000"
+				}
+			],
+			"group": "Payroll and records",
+			"required": true,
+			"purpose": "brief-only",
+			"privacyNote": "Pick a band. Do not enter exact wage figures or any individual employee's pay."
+		},
+		{
+			"id": "highest-exposure-activity-payroll-band",
+			"label": "What band does the payroll for your most physically hazardous recorded activity fall in?",
+			"help": "Your own judgement on which activity that is; this module does not rank them.",
+			"kind": "band",
+			"options": [
+				{
+					"value": "none",
+					"label": "No payroll in a physical activity"
+				},
+				{
+					"value": "under-100k",
+					"label": "Under $100,000"
+				},
+				{
+					"value": "100k-500k",
+					"label": "$100,000 to $500,000"
+				},
+				{
+					"value": "500k-2m",
+					"label": "$500,000 to $2,000,000"
+				},
+				{
+					"value": "over-2m",
+					"label": "Over $2,000,000"
+				}
+			],
+			"group": "Payroll and records",
+			"required": true,
+			"purpose": "brief-only"
+		},
+		{
+			"id": "payroll-records-separate-activities",
+			"label": "Do your payroll records show, for each employee, how much pay went to which activity?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes-verifiable-by-employee",
+					"label": "Yes, by employee, from timekeeping we could show an auditor"
+				},
+				{
+					"value": "partially",
+					"label": "Partly, for some employees or some periods"
+				},
+				{
+					"value": "no-single-figure",
+					"label": "No, payroll is one figure per employee"
+				},
+				{
+					"value": "unknown",
+					"label": "We do not know"
+				}
+			],
+			"group": "Payroll and records",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "payroll-split-by-activity-recorded",
+			"label": "Could you state today, in writing, the payroll amount for each activity you recorded?",
+			"kind": "boolean",
+			"group": "Payroll and records",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "clerical-employees-also-do-other-work",
+			"label": "Do any office or clerical employees also perform non-clerical work?",
+			"help": "Answering phones and also loading a van, driving deliveries, or working in the shop.",
+			"kind": "boolean",
+			"group": "Payroll and records",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "overtime-recorded-separately",
+			"label": "Are overtime wages recorded separately from regular wages in your records?",
+			"kind": "boolean",
+			"group": "Payroll and records",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "owner-or-officer-payroll-included",
+			"label": "How is owner, partner or executive officer pay handled in your payroll records?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "included-and-identified",
+					"label": "Included and separately identified"
+				},
+				{
+					"value": "included-not-identified",
+					"label": "Included but mixed in with employee payroll"
+				},
+				{
+					"value": "excluded",
+					"label": "Excluded from the payroll records"
+				},
+				{
+					"value": "no-owners-on-payroll",
+					"label": "No owners or officers take payroll"
+				},
+				{
+					"value": "unknown",
+					"label": "We do not know"
+				}
+			],
+			"group": "Payroll and records",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "uses-subcontractors",
+			"label": "Do you pay subcontractors or other firms to perform any part of your work?",
+			"kind": "boolean",
+			"group": "Subcontractors and labor sources",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "subcontractor-certificates-collected",
+			"label": "Do you hold current certificates of insurance showing workers compensation coverage for every subcontractor you paid?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "all-current-on-file",
+					"label": "Yes, for every subcontractor and every period they worked"
+				},
+				{
+					"value": "some-on-file",
+					"label": "For some subcontractors or some periods only"
+				},
+				{
+					"value": "none-on-file",
+					"label": "No, we do not collect them"
+				},
+				{
+					"value": "not-applicable",
+					"label": "We do not use subcontractors"
+				}
+			],
+			"group": "Subcontractors and labor sources",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "subcontractor-payments-band",
+			"label": "What band do your total annual payments to subcontractors fall in?",
+			"kind": "band",
+			"options": [
+				{
+					"value": "none",
+					"label": "None"
+				},
+				{
+					"value": "under-25k",
+					"label": "Under $25,000"
+				},
+				{
+					"value": "25k-250k",
+					"label": "$25,000 to $250,000"
+				},
+				{
+					"value": "250k-1m",
+					"label": "$250,000 to $1,000,000"
+				},
+				{
+					"value": "over-1m",
+					"label": "Over $1,000,000"
+				}
+			],
+			"group": "Subcontractors and labor sources",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "uses-1099-workers",
+			"label": "Do you pay any individual workers as independent contractors rather than as employees?",
+			"kind": "boolean",
+			"group": "Subcontractors and labor sources",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "uses-staffing-agency-or-peo",
+			"label": "Do you obtain any workers through a staffing agency, labor contractor or PEO?",
+			"kind": "boolean",
+			"group": "Subcontractors and labor sources",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "coverage-recorded",
+			"label": "Which of these do you have recorded on a policy today?",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "workers-compensation-part-one",
+					"label": "Workers compensation benefits coverage"
+				},
+				{
+					"value": "employers-liability-part-two",
+					"label": "Employers liability coverage"
+				},
+				{
+					"value": "other-states-endorsement",
+					"label": "An other states or all states endorsement"
+				},
+				{
+					"value": "none-recorded",
+					"label": "Nothing recorded yet"
+				}
+			],
+			"group": "Policy, audit and rating history",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "policy-effective-date",
+			"label": "What is the effective date of the current or upcoming policy period?",
+			"kind": "date",
+			"group": "Policy, audit and rating history",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "audit-scheduled-or-received-date",
+			"label": "If a premium audit has been scheduled or a request for records received, what is the date?",
+			"kind": "date",
+			"group": "Policy, audit and rating history",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "prior-audit-additional-premium",
+			"label": "Has any prior premium audit resulted in additional premium being billed?",
+			"kind": "boolean",
+			"group": "Policy, audit and rating history",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "prior-audit-reclassified-work",
+			"label": "Has any prior audit or inspection moved payroll from one classification to another?",
+			"kind": "boolean",
+			"group": "Policy, audit and rating history",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "experience-modification-recorded",
+			"label": "Do you hold the current experience rating worksheet for the business?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes-worksheet-held",
+					"label": "Yes, we have the worksheet itself"
+				},
+				{
+					"value": "modifier-known-no-worksheet",
+					"label": "We know the number but do not have the worksheet"
+				},
+				{
+					"value": "not-recorded",
+					"label": "No"
+				},
+				{
+					"value": "not-experience-rated",
+					"label": "We have been told the business is not experience rated"
+				},
+				{
+					"value": "unknown",
+					"label": "We do not know"
+				}
+			],
+			"group": "Policy, audit and rating history",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "loss-runs-held",
+			"label": "Do you hold loss runs covering the last five policy years?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes-five-years",
+					"label": "Yes, five years"
+				},
+				{
+					"value": "partial",
+					"label": "Some years only"
+				},
+				{
+					"value": "requested-not-received",
+					"label": "Requested but not received"
+				},
+				{
+					"value": "no",
+					"label": "No"
+				}
+			],
+			"group": "Policy, audit and rating history",
+			"required": true,
+			"purpose": "rule-input"
+		}
+	],
+	"rules": [
+		{
+			"id": "california-independent-bureau-not-ncci",
+			"kind": "question",
+			"severity": "high",
+			"title": "You recorded California payroll, so the classification wording that applies to you comes from California's own bureau-administered system and not from the NCCI manual used in most other states.",
+			"detail": "California operates a standard classification system administered by an independent rating bureau under a plan filed with the state insurance regulator, and that plan sets the classification and payroll reporting rules for California payroll [S:wcirb-standard-classification-system][S:ca-usrp-1995-2318-6][S:wcirb-about-us]. NCCI publishes the separate classification assignment rules used across the states it serves [S:ncci-basic-manual-rule-1][S:ncci-fact-sheet], and the same described work can sit under differently worded classifications in the two systems.",
+			"action": "Before you compare anything, ask your broker to state in writing which classification system applies to each state on your program, and which specific manual wording they relied on for your operations.",
+			"when": {
+				"all": [
+					{
+						"field": "states-of-operation",
+						"op": "includes",
+						"value": "california"
+					}
+				]
+			},
+			"sourceIds": [
+				"wcirb-standard-classification-system",
+				"ca-usrp-1995-2318-6",
+				"wcirb-about-us",
+				"ncci-basic-manual-rule-1",
+				"ncci-fact-sheet"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "two-classification-systems-one-program",
+			"kind": "question",
+			"severity": "high",
+			"title": "You recorded a single employee or crew generating payroll in more than one state, which means more than one set of classification and payroll rules is being applied to the same people.",
+			"detail": "California payroll is governed by the California plan filed with the state regulator [S:ca-usrp-1995-2318-6][S:wcirb-standard-classification-system], while NCCI states apply NCCI's own classification assignment rules [S:ncci-basic-manual-rule-1]. Where the same worker crosses a state line, how the payroll is allocated between systems is a rules question with a written answer, not a matter of preference.",
+			"action": "Ask your broker to show you, state by state, how payroll for cross-state workers is allocated and which manual rule they applied to make that allocation. Get it in writing before the application is submitted.",
+			"when": {
+				"all": [
+					{
+						"field": "multi-state-payroll",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "states-of-operation",
+						"op": "includes",
+						"value": "california"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-usrp-1995-2318-6",
+				"wcirb-standard-classification-system",
+				"ncci-basic-manual-rule-1"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "classification-question-for-multiple-activities",
+			"kind": "question",
+			"severity": "high",
+			"title": "You recorded more than one distinct activity, which raises a classification question this instrument will not answer for you.",
+			"detail": "Classification is assigned according to the business the employer conducts, and the applicable manual rules govern whether one classification or several apply and when a separate classification is permitted [S:ncci-basic-manual-rule-1][S:wcirb-classification-assignments][S:ca-usrp-1995-2318-6]. Nothing here assigns a code; only the bureau whose system applies and the insurer writing the policy do that.",
+			"action": "Take your activity list to your broker and ask, for each activity: which classification wording covers it, who made that determination, and under which numbered manual rule. Write down each answer next to the activity.",
+			"when": {
+				"all": [
+					{
+						"field": "distinct-activities-recorded",
+						"op": "gt",
+						"value": 1
+					}
+				]
+			},
+			"sourceIds": [
+				"ncci-basic-manual-rule-1",
+				"wcirb-classification-assignments",
+				"ca-usrp-1995-2318-6"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "fewer-classifications-than-activities",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "You recorded more distinct activities than there are classifications on the policy.",
+			"detail": "This is arithmetic on your own two entries: the count of activities you recorded exceeds the count of classifications you said appear on the policy. Whether that is correct depends on the manual rules on assignment of classifications and on when payroll may be divided [S:ncci-basic-manual-rule-1][S:ca-usrp-1995-2318-6][S:wcirb-classification-assignments], which this instrument does not apply.",
+			"action": "Send your broker both numbers and the activity list and ask them to explain, in writing, why the activities collapse into that number of classifications, citing the rule they relied on.",
+			"when": {
+				"all": [
+					{
+						"field": "classification-code-count",
+						"op": "gt",
+						"value": 0
+					},
+					{
+						"field": "classification-code-count",
+						"op": "lt",
+						"value": {
+							"field": "distinct-activities-recorded"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"ncci-basic-manual-rule-1",
+				"ca-usrp-1995-2318-6",
+				"wcirb-classification-assignments"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "subcontractor-certificates-not-collected",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "You pay subcontractors and hold no certificates of insurance for them, which is an unresolved audit exposure.",
+			"detail": "A certificate of insurance is the document ordinarily requested to evidence that another firm carried its own coverage, and public regulators describe it as the standard evidence document exchanged between hiring parties [S:mn-dli-certificates-of-insurance][S:tdi-certificates-of-insurance-faq]. Where that evidence is absent for a period, the payroll reporting and audit rules on uninsured subcontracted work are what govern the outcome [S:ca-usrp-1995-2318-6][S:cdi-wc-commercial-guide], and your records currently do not answer them.",
+			"action": "Before any audit, request a certificate from every subcontractor you paid, covering each period they worked for you, and file them by subcontractor and date. For anyone who cannot produce one, write down the dates and amounts now so you are not reconstructing it under time pressure.",
+			"when": {
+				"all": [
+					{
+						"field": "uses-subcontractors",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "subcontractor-certificates-collected",
+						"op": "eq",
+						"value": "none-on-file"
+					}
+				]
+			},
+			"sourceIds": [
+				"mn-dli-certificates-of-insurance",
+				"tdi-certificates-of-insurance-faq",
+				"ca-usrp-1995-2318-6",
+				"cdi-wc-commercial-guide"
+			],
+			"relatedQuestion": "contract-additional-insured-status",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "subcontractor-certificates-partial",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "You hold subcontractor certificates for only some subcontractors or some periods, so part of your subcontract spend is undocumented.",
+			"detail": "Certificates are period-specific evidence, and a certificate that lapsed mid-project does not document the later months [S:mn-dli-certificates-of-insurance][S:tdi-certificates-of-insurance-faq]. The gaps, not the files you already have, are what an audit of subcontracted payroll will turn on under the applicable payroll reporting rules [S:ca-usrp-1995-2318-6].",
+			"action": "Build a one-page grid of subcontractor against months worked, mark every cell you cannot evidence, and chase those certificates first.",
+			"when": {
+				"all": [
+					{
+						"field": "uses-subcontractors",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "subcontractor-certificates-collected",
+						"op": "eq",
+						"value": "some-on-file"
+					}
+				]
+			},
+			"sourceIds": [
+				"mn-dli-certificates-of-insurance",
+				"tdi-certificates-of-insurance-faq",
+				"ca-usrp-1995-2318-6"
+			],
+			"relatedQuestion": "contract-additional-insured-status",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "large-subcontract-spend-without-certificates",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "Your subcontractor payments are in the largest band you could select while your certificate file is incomplete.",
+			"detail": "The size of the undocumented spend is the size of the question an auditor will ask, and the payroll reporting rules on subcontracted work are applied to the amounts paid [S:ca-usrp-1995-2318-6][S:cdi-wc-commercial-guide]. The certificate is the ordinary evidence document [S:mn-dli-certificates-of-insurance].",
+			"action": "Treat certificate collection as a scheduled task with an owner and a date, starting with your largest subcontractors by spend, and tell your broker in writing which ones you cannot document.",
+			"when": {
+				"all": [
+					{
+						"field": "subcontractor-payments-band",
+						"op": "eq",
+						"value": "over-1m"
+					},
+					{
+						"field": "subcontractor-certificates-collected",
+						"op": "neq",
+						"value": "all-current-on-file"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-usrp-1995-2318-6",
+				"cdi-wc-commercial-guide",
+				"mn-dli-certificates-of-insurance"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "payroll-records-do-not-separate-activities",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "Your payroll records carry one figure per employee and do not show which activity the pay was earned in.",
+			"detail": "Dividing a single employee's payroll between classifications is permitted only where the employer's records meet the standard the applicable rules set for verifiable division, and the California plan and the NCCI rule both address division of payroll and the records it requires [S:ca-usrp-1995-2318-6][S:ncci-basic-manual-rule-1][S:wcirb-classification-assignments]. Records that cannot support a division cannot be repaired retroactively at audit.",
+			"action": "Change timekeeping now so each entry carries an activity tag, and ask your broker exactly what an auditor in your state accepts as verifiable division of payroll. Do not wait for the audit notice.",
+			"when": {
+				"all": [
+					{
+						"field": "payroll-records-separate-activities",
+						"op": "eq",
+						"value": "no-single-figure"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-usrp-1995-2318-6",
+				"ncci-basic-manual-rule-1",
+				"wcirb-classification-assignments"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "multiple-activities-but-no-payroll-split",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "You recorded more than one activity but said you could not state the payroll for each activity in writing today.",
+			"detail": "These two answers cannot both be comfortable: the classification rules that decide whether separate treatment applies depend on payroll figures per activity [S:ncci-basic-manual-rule-1][S:ca-usrp-1995-2318-6], and an application or audit will ask for exactly the split you just said you do not have.",
+			"action": "Produce a written payroll-by-activity figure for the last complete twelve months before you submit anything, and note which parts are estimates so nobody later treats an estimate as a record.",
+			"when": {
+				"all": [
+					{
+						"field": "distinct-activities-recorded",
+						"op": "gt",
+						"value": 1
+					},
+					{
+						"field": "payroll-split-by-activity-recorded",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"ncci-basic-manual-rule-1",
+				"ca-usrp-1995-2318-6"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "clerical-employees-also-doing-other-work",
+			"kind": "inconsistency",
+			"severity": "medium",
+			"title": "You recorded clerical or office work and also said office employees perform non-clerical duties.",
+			"detail": "Classification rules treat office and clerical work as a separately described exposure with conditions attached to it, and the rules on assignment and on division of payroll are what determine how a mixed-duty employee is handled [S:ca-usrp-1995-2318-6][S:wcirb-standard-classification-system][S:ncci-basic-manual-rule-1]. This instrument does not resolve that; it flags that the two answers you gave sit in tension.",
+			"action": "List each mixed-duty employee and what non-clerical work they do, and ask your broker in writing how the applicable rule handles them and what records you must keep.",
+			"when": {
+				"all": [
+					{
+						"field": "described-activities",
+						"op": "includes",
+						"value": "clerical-office"
+					},
+					{
+						"field": "clerical-employees-also-do-other-work",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-usrp-1995-2318-6",
+				"wcirb-standard-classification-system",
+				"ncci-basic-manual-rule-1"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "audit-date-recorded-with-unusable-records",
+			"kind": "timing",
+			"severity": "high",
+			"title": "You recorded an audit or records-request date while your payroll records still carry one figure per employee.",
+			"detail": "The date you entered is fixed and the records question is the one the audit turns on, since division of payroll depends on records that existed during the period being audited, not on figures assembled afterwards [S:ca-usrp-1995-2318-6][S:ncci-basic-manual-rule-1][S:cdi-wc-commercial-guide].",
+			"action": "Working back from the date you recorded, assemble payroll by employee by activity for the whole audit period, plus your subcontractor certificate file, and tell the auditor in advance which periods you cannot evidence.",
+			"when": {
+				"all": [
+					{
+						"field": "audit-scheduled-or-received-date",
+						"op": "isSet"
+					},
+					{
+						"field": "payroll-records-separate-activities",
+						"op": "eq",
+						"value": "no-single-figure"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-usrp-1995-2318-6",
+				"ncci-basic-manual-rule-1",
+				"cdi-wc-commercial-guide"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "classification-change-notice-review-request-step",
+			"kind": "question",
+			"severity": "high",
+			"title": "You recorded the date of a written notice of a classification or rating change, and the California route for challenging how the rating system was applied begins with a written request for review to the insurer or rating organization.",
+			"detail": "California Insurance Code section 11737 provides that every insurer or rating organization shall provide reasonable means whereby any person aggrieved by the application of its filings may be heard by the insurer or rating organization on written request to review the manner in which the rating system has been applied, that any party affected by the action of the insurer or rating organization on the request may appeal, within 30 days after written notice of the action, to the commissioner, and that if the insurer or rating organization fails to grant or reject the request within 30 days the applicant may proceed in the same manner as if the application had been rejected [S:ca-ins-code-11737]. The 30 day appeal period in that section is measured from written notice of their action on the request, not from the change notice date you entered. Related sections address the rating systems insurers file and apply [S:ca-ins-code-11734][S:ca-ins-code-11735], and the department publishes its own contact routes [S:cdi-getting-help][S:cdi-contact].",
+			"action": "Send the written request for review to the insurer or rating organization now and keep a dated copy. Do not calendar an appeal deadline from the change notice date you entered; record instead the date on their written notice of the action they take on your request, because that is the date the cited section measures the 30 days from. Ask a lawyer to confirm the deadlines that apply to you rather than computing them yourself.",
+			"when": {
+				"all": [
+					{
+						"field": "classification-change-notice-date",
+						"op": "isSet"
+					},
+					{
+						"field": "states-of-operation",
+						"op": "includes",
+						"value": "california"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-11737",
+				"ca-ins-code-11734",
+				"ca-ins-code-11735",
+				"cdi-getting-help",
+				"cdi-contact"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "review-request-action-notice-appeal-window-open",
+			"kind": "timing",
+			"severity": "high",
+			"title": "You recorded the date of written notice of the insurer's or rating organization's action on your request to review how the rating system was applied, which is the date the cited 30 day appeal period is measured from.",
+			"detail": "California Insurance Code section 11737 provides that any party affected by the action of the insurer or rating organization on the request may appeal, within 30 days after written notice of the action, to the commissioner, who after a hearing may affirm, modify, or reverse that action [S:ca-ins-code-11737]. The date you entered is that written notice date, so 30 days from it is the outer marker the section states; the department publishes its own contact routes [S:cdi-getting-help][S:cdi-contact].",
+			"action": "Take the written notice you recorded, with its date, to a lawyer this week and ask them to confirm the filing deadline and to handle the appeal if you want one. Do not let the period described in the cited section run out while you are deciding.",
+			"when": {
+				"all": [
+					{
+						"field": "review-request-action-notice-date",
+						"op": "isSet"
+					},
+					{
+						"field": "states-of-operation",
+						"op": "includes",
+						"value": "california"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-11737",
+				"cdi-getting-help",
+				"cdi-contact"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "audit-date-before-policy-effective-date",
+			"kind": "inconsistency",
+			"severity": "medium",
+			"title": "The audit or records-request date you entered falls before the policy effective date you entered.",
+			"detail": "This is pure date arithmetic on your two entries and one of them is wrong, or the audit relates to an earlier policy period than the one you recorded. Which period is being audited determines which records and which classifications are in scope [S:ca-usrp-1995-2318-6][S:cdi-wc-commercial-guide].",
+			"action": "Confirm in writing with the insurer which policy period the audit covers, then correct whichever date you mis-entered before you rely on this position anywhere.",
+			"when": {
+				"all": [
+					{
+						"field": "audit-scheduled-or-received-date",
+						"op": "isSet"
+					},
+					{
+						"field": "policy-effective-date",
+						"op": "isSet"
+					},
+					{
+						"field": "audit-scheduled-or-received-date",
+						"op": "lt",
+						"value": {
+							"field": "policy-effective-date"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-usrp-1995-2318-6",
+				"cdi-wc-commercial-guide"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "experience-rating-worksheet-before-renewal",
+			"kind": "timing",
+			"severity": "medium",
+			"title": "You recorded a policy effective date but do not hold the current experience rating worksheet.",
+			"detail": "Experience rating operates on reported payroll and losses over defined past periods and the resulting worksheet is issued and can be revised on a schedule tied to the policy anniversary [S:wcirb-experience-rating-system][S:ncci-abcs-experience-rating]. Reading it after the effective date you entered leaves no time to question the data it was built from.",
+			"action": "Request the current worksheet now, before the effective date you recorded, and check the payroll and claim figures on it against your own records. Send any disagreement in writing to your broker immediately.",
+			"when": {
+				"all": [
+					{
+						"field": "policy-effective-date",
+						"op": "isSet"
+					},
+					{
+						"field": "experience-modification-recorded",
+						"op": "eq",
+						"value": "not-recorded"
+					}
+				]
+			},
+			"sourceIds": [
+				"wcirb-experience-rating-system",
+				"ncci-abcs-experience-rating"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "modifier-known-but-worksheet-not-held",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "You know your experience modification number but do not hold the worksheet it came from.",
+			"detail": "The worksheet is the document that shows which payroll and which claims produced the number, and the rating systems describe how that data is used and revised [S:wcirb-experience-rating-system][S:ncci-abcs-experience-rating]. Without it you cannot check whether the underlying data is right.",
+			"action": "Ask your broker for the full worksheet, not the number, and reconcile the payroll and claim entries on it against your loss runs.",
+			"when": {
+				"all": [
+					{
+						"field": "experience-modification-recorded",
+						"op": "eq",
+						"value": "modifier-known-no-worksheet"
+					}
+				]
+			},
+			"sourceIds": [
+				"wcirb-experience-rating-system",
+				"ncci-abcs-experience-rating"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "loss-runs-not-held",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "You do not hold loss runs covering the last five policy years.",
+			"detail": "Loss runs are the insurer-produced record of claims and reserves, and they are the document against which the payroll and claim data on an experience rating worksheet can be checked [S:hylant-loss-runs][S:wcirb-experience-rating-system][S:cdi-wc-commercial-guide].",
+			"action": "Request five years of loss runs in writing from each insurer that wrote you, note the date you asked, and follow up if they are not produced.",
+			"when": {
+				"all": [
+					{
+						"field": "loss-runs-held",
+						"op": "eq",
+						"value": "no"
+					}
+				]
+			},
+			"sourceIds": [
+				"hylant-loss-runs",
+				"wcirb-experience-rating-system",
+				"cdi-wc-commercial-guide"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "employers-liability-not-recorded",
+			"kind": "gap",
+			"severity": "high",
+			"title": "You recorded workers compensation benefits coverage but did not record employers liability coverage.",
+			"detail": "The state insurance department's own guide to workers compensation describes the benefits coverage and the employers liability coverage as separate parts of the policy responding to different things [S:cdi-wc-commercial-guide][S:ca-cdi-commercial-insurance-guide]. Nothing here says whether any particular claim would be paid; the open item is that one of the two parts is simply not written down in your position.",
+			"action": "Ask your broker to confirm in writing which parts and which employers liability limits are on the policy, and to send you the declarations page showing them.",
+			"when": {
+				"all": [
+					{
+						"field": "coverage-recorded",
+						"op": "includes",
+						"value": "workers-compensation-part-one"
+					},
+					{
+						"field": "coverage-recorded",
+						"op": "excludes",
+						"value": "employers-liability-part-two"
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-wc-commercial-guide",
+				"ca-cdi-commercial-insurance-guide"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "multi-state-payroll-without-other-states-endorsement",
+			"kind": "gap",
+			"severity": "high",
+			"title": "You recorded payroll in more than one state but no other states or all states endorsement is recorded on the policy.",
+			"detail": "A workers compensation policy is written against named states, and the state insurance department's guide describes the policy as tied to the states scheduled on it [S:cdi-wc-commercial-guide][S:ca-cdi-commercial-insurance-guide]. The recorded gap is between the states you listed and what your position says is scheduled.",
+			"action": "Send your broker the list of states you entered and ask them to confirm in writing which states appear on the policy schedule and what covers the ones that do not.",
+			"when": {
+				"all": [
+					{
+						"field": "multi-state-payroll",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "coverage-recorded",
+						"op": "excludes",
+						"value": "other-states-endorsement"
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-wc-commercial-guide",
+				"ca-cdi-commercial-insurance-guide"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "independent-contractor-status-is-a-legal-question",
+			"kind": "question",
+			"severity": "high",
+			"title": "You pay individual workers as independent contractors, which raises a statutory employment status question this instrument will not answer.",
+			"detail": "Whether a worker is an employee for workers compensation purposes is set by statute and by the definitions the labor code applies, not by how the worker is paid or what a contract calls them [S:lab-3352][S:lab-3700][S:ca-labor-code-3700][S:dir-dwc-employer-faqs]. This is a legal determination with consequences that are not insurance consequences.",
+			"action": "Take this to an employment lawyer, with your actual working arrangements written down, before your next application or audit. Do not resolve it from a form or from what the worker prefers.",
+			"when": {
+				"all": [
+					{
+						"field": "uses-1099-workers",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"lab-3352",
+				"lab-3700",
+				"ca-labor-code-3700",
+				"dir-dwc-employer-faqs"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "staffing-or-peo-workers-without-written-allocation",
+			"kind": "gap",
+			"severity": "medium",
+			"title": "You obtain workers through a staffing agency, labor contractor or PEO and nothing in your position records who carries their coverage.",
+			"detail": "Who is the employer of a supplied worker for workers compensation purposes turns on statutory definitions and on the arrangement itself [S:lab-3352][S:dir-dwc-employer-faqs], and the evidence document ordinarily exchanged for such arrangements is a certificate of insurance [S:mn-dli-certificates-of-insurance][S:tdi-certificates-of-insurance-faq]. Neither is recorded here.",
+			"action": "Get the current certificate from every staffing supplier, and get the written agreement showing who is responsible for coverage. Have a lawyer read the responsibility clause.",
+			"when": {
+				"all": [
+					{
+						"field": "uses-staffing-agency-or-peo",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"lab-3352",
+				"dir-dwc-employer-faqs",
+				"mn-dli-certificates-of-insurance",
+				"tdi-certificates-of-insurance-faq"
+			],
+			"relatedQuestion": "contract-additional-insured-status",
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "supplied-labor-activity-recorded",
+			"kind": "question",
+			"severity": "high",
+			"title": "You recorded that you supply your own workers to work under someone else's direction, which is a described activity with its own classification and employment questions.",
+			"detail": "Supplying labor to others raises both a classification wording question under the applicable manual rules [S:ncci-basic-manual-rule-1][S:ca-usrp-1995-2318-6][S:wcirb-classification-assignments] and a statutory question about who the employer is [S:lab-3352][S:dir-dwc-employer-faqs]. Those are two different professionals' answers.",
+			"action": "Ask your broker which classification wording the applicable manual applies to labor supplied to others, and separately ask a lawyer to review your client contracts for who bears employer responsibility.",
+			"when": {
+				"all": [
+					{
+						"field": "described-activities",
+						"op": "includes",
+						"value": "supplied-labor-to-others"
+					}
+				]
+			},
+			"sourceIds": [
+				"ncci-basic-manual-rule-1",
+				"ca-usrp-1995-2318-6",
+				"wcirb-classification-assignments",
+				"lab-3352",
+				"dir-dwc-employer-faqs"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "classification-provenance-unknown",
+			"kind": "question",
+			"severity": "medium",
+			"title": "The classifications on your policy were carried over from a prior policy or you do not know where they came from.",
+			"detail": "Classification is assigned under the rules of the system that applies, and those rules describe who assigns and on what basis [S:ncci-basic-manual-rule-1][S:wcirb-classification-assignments][S:wcirb-classification-search]. A classification that was correct for an earlier version of the business is not evidence that it is correct for the current one.",
+			"action": "Ask your broker or the insurer to state who determined the current classifications, when, and on what description of your operations. Compare that description to the activities you recorded here.",
+			"when": {
+				"all": [
+					{
+						"field": "classification-source",
+						"op": "eq",
+						"value": "copied-from-prior-policy"
+					}
+				]
+			},
+			"sourceIds": [
+				"ncci-basic-manual-rule-1",
+				"wcirb-classification-assignments",
+				"wcirb-classification-search"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "operations-changed-since-last-renewal-not-reported",
+			"kind": "question",
+			"severity": "high",
+			"title": "The operations have changed since the last renewal or application, which is a change to the description the classifications were built on.",
+			"detail": "Classifications are assigned against the business the employer conducts [S:ncci-basic-manual-rule-1][S:wcirb-classification-assignments], so a change in what the business does is a change in the input, and the payroll reporting rules apply to the operations as actually conducted [S:ca-usrp-1995-2318-6].",
+			"action": "Write out what changed and when, send it to your broker in writing before renewal, and keep a copy of the dated notice you sent.",
+			"when": {
+				"all": [
+					{
+						"field": "operations-changed-since-last-renewal",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"ncci-basic-manual-rule-1",
+				"wcirb-classification-assignments",
+				"ca-usrp-1995-2318-6"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "prior-audit-reclassification-repeats",
+			"kind": "question",
+			"severity": "high",
+			"title": "A prior audit already moved payroll between classifications, and your records still do not fully separate activities by employee.",
+			"detail": "The same records question that produced the earlier reclassification is still open, and the rules on division of payroll turn on records kept during the period [S:ca-usrp-1995-2318-6][S:ncci-basic-manual-rule-1][S:cdi-wc-commercial-guide].",
+			"action": "Get the prior auditor's worksheet showing what they moved and why, and use it as the specification for the records you keep from now on.",
+			"when": {
+				"all": [
+					{
+						"field": "prior-audit-reclassified-work",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "payroll-records-separate-activities",
+						"op": "neq",
+						"value": "yes-verifiable-by-employee"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-usrp-1995-2318-6",
+				"ncci-basic-manual-rule-1",
+				"cdi-wc-commercial-guide"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "prior-audit-additional-premium-with-open-records-question",
+			"kind": "question",
+			"severity": "medium",
+			"title": "A prior audit billed additional premium and you have recorded at least one records or certificate gap that is still open.",
+			"detail": "Additional premium at audit follows from what the records and the payroll reporting rules produced for the audited period [S:ca-usrp-1995-2318-6][S:cdi-wc-commercial-guide]. The point of noting it here is that the same input is still unfixed.",
+			"action": "Ask the insurer for the prior audit worksheet, identify every line they adjusted, and fix the record-keeping behind each one before the next audit.",
+			"when": {
+				"all": [
+					{
+						"field": "prior-audit-additional-premium",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "subcontractor-certificates-collected",
+						"op": "neq",
+						"value": "all-current-on-file"
+					},
+					{
+						"field": "subcontractor-certificates-collected",
+						"op": "neq",
+						"value": "not-applicable"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-usrp-1995-2318-6",
+				"cdi-wc-commercial-guide"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "overtime-not-recorded-separately",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "Overtime wages are not recorded separately from regular wages in your records.",
+			"detail": "Payroll reporting rules address how remuneration is measured and what records the employer must be able to show, including the treatment of overtime [S:ca-usrp-1995-2318-6][S:ncci-basic-manual-rule-1]. Where the records do not separate it, the question cannot be answered from your own books.",
+			"action": "Ask your payroll provider to break out overtime as its own line going forward, and ask your broker what the applicable rule requires you to be able to show.",
+			"when": {
+				"all": [
+					{
+						"field": "overtime-recorded-separately",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-usrp-1995-2318-6",
+				"ncci-basic-manual-rule-1"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "accountant"
+		},
+		{
+			"id": "owner-payroll-not-separately-identified",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "Owner, partner or executive officer pay is mixed into employee payroll in your records.",
+			"detail": "Payroll reporting rules address how remuneration is measured and what an employer must be able to show an auditor [S:ca-usrp-1995-2318-6][S:ncci-basic-manual-rule-1]. Records that do not identify owner and officer compensation on its own line cannot support any position on how it was reported. This is a book-keeping gap; it is not a determination of how that remuneration must be treated.",
+			"action": "Have your bookkeeper separate owner and officer compensation onto its own line, for the current period and for any period still open to audit, then ask your broker in writing what the applicable state rules require you to report.",
+			"when": {
+				"all": [
+					{
+						"field": "owner-or-officer-payroll-included",
+						"op": "eq",
+						"value": "included-not-identified"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-usrp-1995-2318-6",
+				"ncci-basic-manual-rule-1"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "accountant"
+		},
+		{
+			"id": "owner-or-officer-statutory-employee-status-question",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Owner, partner or executive officer pay is mixed into employee payroll, and whether an owner or officer is a statutory employee at all is a legal question this instrument will not answer.",
+			"detail": "The California labor code section that defines who is and is not an employee for workers compensation purposes sets out exclusions that turn on statutory tests, not on how the pay is booked [S:lab-3352], and the state labor agency publishes employer guidance on those obligations [S:dir-dwc-employer-faqs]. Nothing here decides whether any owner or officer of your business falls inside or outside that definition.",
+			"action": "Write down your ownership and officer arrangements and take them to an employment lawyer, asking which owners or officers are statutory employees and what has to be reported for each. Do not settle it from a payroll form or from what the policy has said in past years.",
+			"when": {
+				"all": [
+					{
+						"field": "owner-or-officer-payroll-included",
+						"op": "eq",
+						"value": "included-not-identified"
+					},
+					{
+						"field": "states-of-operation",
+						"op": "includes",
+						"value": "california"
+					}
+				]
+			},
+			"sourceIds": [
+				"lab-3352",
+				"dir-dwc-employer-faqs"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "california-contractor-coverage-obligation-is-statutory",
+			"kind": "question",
+			"severity": "high",
+			"title": "You recorded California construction or installation work, and whether coverage is legally required of you is a statutory question rather than an insurance one.",
+			"detail": "California's labor code sets out how an employer secures the payment of compensation [S:ca-labor-code-3700][S:lab-3700], the state labor agency publishes employer guidance on those obligations [S:dir-dwc-employer-faqs], and the contractor licensing board publishes its own separate requirements for licensees [S:cslb-workers-comp-requirements].",
+			"action": "Read the state agency guidance yourself, then take any question about whether your particular arrangement satisfies the statute to a lawyer. Do not rely on a broker or on this instrument for the legal answer.",
+			"when": {
+				"all": [
+					{
+						"field": "states-of-operation",
+						"op": "includes",
+						"value": "california"
+					},
+					{
+						"field": "described-activities",
+						"op": "includes",
+						"value": "construction-field-work"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-labor-code-3700",
+				"lab-3700",
+				"dir-dwc-employer-faqs",
+				"cslb-workers-comp-requirements"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "texas-employer-obligation-differs",
+			"kind": "question",
+			"severity": "medium",
+			"title": "You recorded Texas payroll, and the Texas insurance department publishes employer obligations that differ from those of the other states you may operate in.",
+			"detail": "The Texas Department of Insurance publishes its own guidance for employers on workers compensation obligations [S:tdi-wc-employer], and other state agencies publish theirs [S:fl-dfs-wc-requirements][S:dir-dwc-employer-faqs]. Where the answers differ by state, no single national statement is reliable for your whole program.",
+			"action": "Read each state agency's employer page for every state you listed, write down what each one says about your situation, and take conflicts to a lawyer.",
+			"when": {
+				"all": [
+					{
+						"field": "states-of-operation",
+						"op": "includes",
+						"value": "texas"
+					}
+				]
+			},
+			"sourceIds": [
+				"tdi-wc-employer",
+				"fl-dfs-wc-requirements",
+				"dir-dwc-employer-faqs"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "florida-construction-employer-requirements",
+			"kind": "question",
+			"severity": "medium",
+			"title": "You recorded Florida construction work, and Florida publishes employer coverage requirements that are stated separately for construction.",
+			"detail": "The Florida Division of Workers' Compensation publishes employer coverage requirements and distinguishes industry categories in doing so [S:fl-dfs-wc-requirements]. Whether your arrangement meets them is a statutory question, not a classification question.",
+			"action": "Read the Florida division's employer requirements page for your industry category, and take any question about whether you meet them to a lawyer.",
+			"when": {
+				"all": [
+					{
+						"field": "states-of-operation",
+						"op": "includes",
+						"value": "florida"
+					},
+					{
+						"field": "described-activities",
+						"op": "includes",
+						"value": "construction-field-work"
+					}
+				]
+			},
+			"sourceIds": [
+				"fl-dfs-wc-requirements"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-coverage-recorded-at-all",
+			"kind": "gap",
+			"severity": "high",
+			"title": "You recorded employees and activities but nothing recorded on any policy.",
+			"detail": "How an employer secures the payment of compensation is set by statute in each state [S:ca-labor-code-3700][S:lab-3700], and state agencies publish employer obligations directly [S:dir-dwc-employer-faqs][S:tdi-wc-employer][S:fl-dfs-wc-requirements]. The gap here is between the payroll you recorded and the absence of anything recorded against it.",
+			"action": "Read your state agency's employer page today, then contact a licensed broker to start an application. If you are unsure whether you are already out of compliance, that question goes to a lawyer, not to a broker.",
+			"when": {
+				"all": [
+					{
+						"field": "coverage-recorded",
+						"op": "includes",
+						"value": "none-recorded"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-labor-code-3700",
+				"lab-3700",
+				"dir-dwc-employer-faqs",
+				"tdi-wc-employer",
+				"fl-dfs-wc-requirements"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "design-services-recorded-alongside-field-work",
+			"kind": "question",
+			"severity": "medium",
+			"title": "You recorded design or consulting services as well as physical work, which is two separately described exposures in one business.",
+			"detail": "The classification rules assign against the business conducted and address when more than one classification applies [S:ncci-basic-manual-rule-1][S:wcirb-classification-assignments], and design or consulting services also raise a liability question separate from employee injury. Nothing here says what any policy responds to; the open item is that you have two questions and only one of them is a workers compensation question.",
+			"action": "Ask your broker two separate questions in writing: how the design payroll is classified for workers compensation, and what responds to a claim arising from the design advice itself. Ask for the answer by form and provision, not in general terms.",
+			"when": {
+				"all": [
+					{
+						"field": "described-activities",
+						"op": "includes",
+						"value": "design-or-consulting"
+					},
+					{
+						"field": "distinct-activities-recorded",
+						"op": "gt",
+						"value": 1
+					}
+				]
+			},
+			"sourceIds": [
+				"ncci-basic-manual-rule-1",
+				"wcirb-classification-assignments"
+			],
+			"relatedQuestion": "general-liability-vs-professional-liability",
+			"routeToProfessional": "broker"
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

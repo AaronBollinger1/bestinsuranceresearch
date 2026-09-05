@@ -1,0 +1,20 @@
+{
+	"title": "California Insurance Code Section 10091 (basic property insurance definitions; FAIR Plan Association)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10091",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"California Insurance Code section 10091(a) defines 'Association,' 'industry placement facility,' or 'facility' to mean a joint reinsurance association, the California FAIR Plan Association, formed by insurers licensed to write and engaged in writing basic property insurance within the state to assist persons in securing basic property insurance and to formulate and administer a program for the equitable apportionment among insurers of basic property insurance."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"officialHost": true
+}

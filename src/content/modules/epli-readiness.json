@@ -1,0 +1,1553 @@
+{
+	"name": "Employment Practices Readiness",
+	"summary": "Works out which written policies, distribution records, training records, and complaint-handling records an employer can actually produce before an employment practices liability submission or renewal, and which gaps and timing pressures to raise with a lawyer and a broker first.",
+	"family": "commercial",
+	"lines": [
+		"employment-practices-liability",
+		"third-party-employment-practices-liability",
+		"wage-and-hour-defense"
+	],
+	"order": 50,
+	"status": "live",
+	"privacyBoundary": "This module refuses to collect the name, job title, department, contact details, or any narrative description of any employee, applicant, former employee, complainant, or accused person, and refuses to collect charge numbers, case numbers, settlement amounts, medical information, or the text of any complaint or investigation file.",
+	"uncertainty": "It cannot determine whether any employment law was broken, whether any complaint has merit, which laws apply to a given worker or worksite, or how any insurer will treat what is recorded here; employment counsel decides the legal questions and a licensed broker and the insurer decide everything about coverage.",
+	"domain": "bestepli.com",
+	"fields": [
+		{
+			"id": "total-employee-count",
+			"label": "What is the exact current headcount on payroll?",
+			"help": "A number, so the module can do arithmetic against your worksite figures.",
+			"kind": "number",
+			"unit": "count",
+			"group": "Workforce and footprint",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "employees-within-75-miles-of-largest-site",
+			"label": "How many employees work within 75 miles of your largest worksite?",
+			"help": "Federal leave law uses a 75 mile radius, so this figure is asked separately from total headcount.",
+			"kind": "number",
+			"unit": "count",
+			"group": "Workforce and footprint",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "states-of-operation",
+			"label": "In which states do your employees actually perform work?",
+			"help": "Include a state if even one employee works there, including from home.",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "al",
+					"label": "Alabama"
+				},
+				{
+					"value": "ak",
+					"label": "Alaska"
+				},
+				{
+					"value": "az",
+					"label": "Arizona"
+				},
+				{
+					"value": "ar",
+					"label": "Arkansas"
+				},
+				{
+					"value": "ca",
+					"label": "California"
+				},
+				{
+					"value": "co",
+					"label": "Colorado"
+				},
+				{
+					"value": "ct",
+					"label": "Connecticut"
+				},
+				{
+					"value": "de",
+					"label": "Delaware"
+				},
+				{
+					"value": "dc",
+					"label": "District of Columbia"
+				},
+				{
+					"value": "fl",
+					"label": "Florida"
+				},
+				{
+					"value": "ga",
+					"label": "Georgia"
+				},
+				{
+					"value": "hi",
+					"label": "Hawaii"
+				},
+				{
+					"value": "id",
+					"label": "Idaho"
+				},
+				{
+					"value": "il",
+					"label": "Illinois"
+				},
+				{
+					"value": "in",
+					"label": "Indiana"
+				},
+				{
+					"value": "ia",
+					"label": "Iowa"
+				},
+				{
+					"value": "ks",
+					"label": "Kansas"
+				},
+				{
+					"value": "ky",
+					"label": "Kentucky"
+				},
+				{
+					"value": "la",
+					"label": "Louisiana"
+				},
+				{
+					"value": "me",
+					"label": "Maine"
+				},
+				{
+					"value": "md",
+					"label": "Maryland"
+				},
+				{
+					"value": "ma",
+					"label": "Massachusetts"
+				},
+				{
+					"value": "mi",
+					"label": "Michigan"
+				},
+				{
+					"value": "mn",
+					"label": "Minnesota"
+				},
+				{
+					"value": "ms",
+					"label": "Mississippi"
+				},
+				{
+					"value": "mo",
+					"label": "Missouri"
+				},
+				{
+					"value": "mt",
+					"label": "Montana"
+				},
+				{
+					"value": "ne",
+					"label": "Nebraska"
+				},
+				{
+					"value": "nv",
+					"label": "Nevada"
+				},
+				{
+					"value": "nh",
+					"label": "New Hampshire"
+				},
+				{
+					"value": "nj",
+					"label": "New Jersey"
+				},
+				{
+					"value": "nm",
+					"label": "New Mexico"
+				},
+				{
+					"value": "ny",
+					"label": "New York"
+				},
+				{
+					"value": "nc",
+					"label": "North Carolina"
+				},
+				{
+					"value": "nd",
+					"label": "North Dakota"
+				},
+				{
+					"value": "oh",
+					"label": "Ohio"
+				},
+				{
+					"value": "ok",
+					"label": "Oklahoma"
+				},
+				{
+					"value": "or",
+					"label": "Oregon"
+				},
+				{
+					"value": "pa",
+					"label": "Pennsylvania"
+				},
+				{
+					"value": "ri",
+					"label": "Rhode Island"
+				},
+				{
+					"value": "sc",
+					"label": "South Carolina"
+				},
+				{
+					"value": "sd",
+					"label": "South Dakota"
+				},
+				{
+					"value": "tn",
+					"label": "Tennessee"
+				},
+				{
+					"value": "tx",
+					"label": "Texas"
+				},
+				{
+					"value": "ut",
+					"label": "Utah"
+				},
+				{
+					"value": "vt",
+					"label": "Vermont"
+				},
+				{
+					"value": "va",
+					"label": "Virginia"
+				},
+				{
+					"value": "wa",
+					"label": "Washington"
+				},
+				{
+					"value": "wv",
+					"label": "West Virginia"
+				},
+				{
+					"value": "wi",
+					"label": "Wisconsin"
+				},
+				{
+					"value": "wy",
+					"label": "Wyoming"
+				}
+			],
+			"group": "Workforce and footprint",
+			"required": true,
+			"purpose": "rule-input",
+			"privacyNote": "Record states only. Do not enter worksite addresses, building names, or the name or location of any individual employee."
+		},
+		{
+			"id": "remote-employees-in-other-states",
+			"label": "Do any employees work from a state where the business has no physical location?",
+			"kind": "boolean",
+			"group": "Workforce and footprint",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "workforce-composition",
+			"label": "Which kinds of workers does the business engage?",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "w2-full-time",
+					"label": "Full-time employees on payroll"
+				},
+				{
+					"value": "w2-part-time",
+					"label": "Part-time employees on payroll"
+				},
+				{
+					"value": "seasonal-temporary",
+					"label": "Seasonal or temporary employees on payroll"
+				},
+				{
+					"value": "staffing-agency-workers",
+					"label": "Workers supplied by a staffing agency"
+				},
+				{
+					"value": "independent-contractors",
+					"label": "Independent contractors paid without payroll withholding"
+				},
+				{
+					"value": "unpaid-interns",
+					"label": "Unpaid interns or trainees"
+				},
+				{
+					"value": "volunteers",
+					"label": "Volunteers"
+				}
+			],
+			"group": "Workforce and footprint",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Record categories only. Do not enter the name of any worker, contractor, agency, or intern."
+		},
+		{
+			"id": "has-supervisors",
+			"label": "Does anyone in the business supervise, direct, or discipline other workers?",
+			"kind": "boolean",
+			"group": "Workforce and footprint",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "operations-start-date",
+			"label": "On what date did the business first have anyone on payroll?",
+			"help": "Used only to compare against a claims-made retroactive date you record later.",
+			"kind": "date",
+			"group": "Workforce and footprint",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "written-policies-in-place",
+			"label": "Which of these exist in writing today?",
+			"help": "Select only those you could hand to someone this week in written form.",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "eeo-nondiscrimination",
+					"label": "Equal employment opportunity and nondiscrimination policy"
+				},
+				{
+					"value": "anti-harassment",
+					"label": "Anti-harassment policy"
+				},
+				{
+					"value": "complaint-reporting-procedure",
+					"label": "Written complaint and reporting procedure"
+				},
+				{
+					"value": "anti-retaliation",
+					"label": "Written assurance against retaliation for complaining or giving information"
+				},
+				{
+					"value": "disability-accommodation-process",
+					"label": "Disability accommodation request process"
+				},
+				{
+					"value": "religious-accommodation-process",
+					"label": "Religious accommodation request process"
+				},
+				{
+					"value": "leave-of-absence",
+					"label": "General leave of absence policy"
+				},
+				{
+					"value": "family-medical-leave",
+					"label": "Family and medical leave policy or notice"
+				},
+				{
+					"value": "discipline-and-termination",
+					"label": "Progressive discipline and termination procedure"
+				},
+				{
+					"value": "wage-hour-timekeeping",
+					"label": "Timekeeping, overtime, and meal or rest break policy"
+				},
+				{
+					"value": "social-media-and-electronic-monitoring",
+					"label": "Social media and electronic monitoring policy"
+				},
+				{
+					"value": "none-written",
+					"label": "None of these exist in writing"
+				}
+			],
+			"group": "Written policies",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "policy-review-date",
+			"label": "When were these written policies last reviewed or updated?",
+			"kind": "date",
+			"group": "Written policies",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "required-posters-displayed",
+			"label": "Are the required federal and state workplace posters currently displayed where employees can readily see them?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes-all-current",
+					"label": "Yes, and they are the current versions"
+				},
+				{
+					"value": "some",
+					"label": "Some are displayed"
+				},
+				{
+					"value": "no",
+					"label": "No"
+				},
+				{
+					"value": "unsure",
+					"label": "Unsure"
+				}
+			],
+			"group": "Written policies",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "handbook-exists",
+			"label": "Is there an employee handbook?",
+			"kind": "boolean",
+			"group": "Handbook",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "handbook-distributed",
+			"label": "Has the current handbook been given to every current employee?",
+			"kind": "boolean",
+			"group": "Handbook",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "handbook-acknowledgment-signed",
+			"label": "Do you hold a signed acknowledgment of the current handbook for each employee?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes-all",
+					"label": "Yes, for every current employee"
+				},
+				{
+					"value": "yes-some",
+					"label": "For some employees only"
+				},
+				{
+					"value": "no",
+					"label": "No"
+				},
+				{
+					"value": "unsure",
+					"label": "Unsure"
+				}
+			],
+			"group": "Handbook",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "handbook-last-updated",
+			"label": "When was the handbook last updated?",
+			"kind": "date",
+			"group": "Handbook",
+			"required": false,
+			"purpose": "brief-only"
+		},
+		{
+			"id": "training-delivered",
+			"label": "Who has received harassment and discrimination prevention training?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "none",
+					"label": "No one"
+				},
+				{
+					"value": "supervisors-only",
+					"label": "Supervisors and managers only"
+				},
+				{
+					"value": "all-employees",
+					"label": "Non-supervisory employees only"
+				},
+				{
+					"value": "all-employees-and-supervisors",
+					"label": "Both non-supervisory employees and supervisors"
+				}
+			],
+			"group": "Training",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "last-training-date",
+			"label": "On what date was the most recent training session delivered?",
+			"kind": "date",
+			"group": "Training",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "new-hire-training-window-days",
+			"label": "Within how many days of hire does a new employee receive this training?",
+			"help": "Enter the interval your own practice uses, in days.",
+			"kind": "number",
+			"unit": "count",
+			"group": "Training",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "training-attendance-records-held",
+			"label": "Do you hold a dated attendance or completion record for each person trained?",
+			"kind": "boolean",
+			"group": "Training",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "complaint-process-documented",
+			"label": "Is there a written complaint procedure that tells an employee how to report a concern and what happens next?",
+			"kind": "boolean",
+			"group": "Complaint handling",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "complaint-reporting-channels",
+			"label": "Through which routes can an employee raise a complaint today?",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "direct-supervisor",
+					"label": "Their direct supervisor"
+				},
+				{
+					"value": "hr-designee",
+					"label": "A designated HR contact"
+				},
+				{
+					"value": "alternate-manager",
+					"label": "A manager other than their own"
+				},
+				{
+					"value": "owner-or-officer",
+					"label": "An owner or officer"
+				},
+				{
+					"value": "anonymous-hotline",
+					"label": "An anonymous hotline or web form"
+				},
+				{
+					"value": "third-party-service",
+					"label": "An outside third-party reporting service"
+				},
+				{
+					"value": "none",
+					"label": "No defined route"
+				}
+			],
+			"group": "Complaint handling",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "investigation-responsibility",
+			"label": "Who is designated to investigate a complaint when one is raised?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "no-one-designated",
+					"label": "No one is designated in advance"
+				},
+				{
+					"value": "internal-hr",
+					"label": "An internal HR person"
+				},
+				{
+					"value": "owner-or-officer",
+					"label": "An owner or officer"
+				},
+				{
+					"value": "outside-hr-consultant",
+					"label": "An outside HR consultant"
+				},
+				{
+					"value": "outside-counsel",
+					"label": "Outside counsel"
+				}
+			],
+			"group": "Complaint handling",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Record the role only. Do not enter the person's name, email address, or phone number."
+		},
+		{
+			"id": "complaint-log-maintained",
+			"label": "Do you keep a written log of complaints received and how each was closed out?",
+			"kind": "boolean",
+			"group": "Complaint handling",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "most-recent-internal-complaint-date",
+			"label": "On what date was the most recent internal complaint raised, if any?",
+			"help": "The date alone. Leave blank if there has never been one.",
+			"kind": "date",
+			"group": "Complaint handling",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Enter only the date. Do not enter who complained, who was complained about, what was alleged, or how it was resolved."
+		},
+		{
+			"id": "prior-charge-history",
+			"label": "In the last five years, has any employee, former employee, or applicant filed a charge, demand, or lawsuit against the business about employment?",
+			"help": "A yes, no, or unsure answer only.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes",
+					"label": "Yes"
+				},
+				{
+					"value": "no",
+					"label": "No"
+				},
+				{
+					"value": "unsure",
+					"label": "Unsure"
+				}
+			],
+			"group": "Prior matters",
+			"required": true,
+			"purpose": "rule-input",
+			"privacyNote": "Answer with the flag only. Do not enter names, charge or case numbers, allegations, settlement amounts, or any narrative."
+		},
+		{
+			"id": "prior-charge-detail-held",
+			"label": "If yes or unsure, do you have the underlying paperwork on hand to give to a broker or insurer?",
+			"help": "For example the agency notice, the demand letter, the complaint, and any closing or settlement document.",
+			"kind": "boolean",
+			"group": "Prior matters",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Answer yes or no only. Do not paste, summarize, or transcribe any part of those documents here."
+		},
+		{
+			"id": "epli-coverage-recorded",
+			"label": "Do you currently record an employment practices liability policy or coverage part?",
+			"kind": "boolean",
+			"group": "Coverage recorded",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "epli-limit",
+			"label": "What aggregate limit is recorded on that coverage?",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Coverage recorded",
+			"required": false,
+			"purpose": "brief-only"
+		},
+		{
+			"id": "epli-retroactive-date",
+			"label": "What retroactive date is shown on that coverage, if it is written on a claims-made basis?",
+			"kind": "date",
+			"group": "Coverage recorded",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "third-party-epli-endorsement",
+			"label": "Is a third-party coverage part recorded, for claims by customers, clients, or vendors rather than employees?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes",
+					"label": "Yes"
+				},
+				{
+					"value": "no",
+					"label": "No"
+				},
+				{
+					"value": "unsure",
+					"label": "Unsure"
+				}
+			],
+			"group": "Coverage recorded",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "wage-hour-defense-recorded",
+			"label": "Is a wage and hour defense cost coverage part recorded?",
+			"kind": "boolean",
+			"group": "Coverage recorded",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "renewal-or-submission-date",
+			"label": "By what date does the submission or renewal have to be in?",
+			"kind": "date",
+			"group": "Coverage recorded",
+			"required": false,
+			"purpose": "rule-input"
+		}
+	],
+	"rules": [
+		{
+			"id": "no-written-anti-harassment-policy",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "No anti-harassment policy is recorded as existing in writing.",
+			"detail": "The EEOC's Promising Practices for Preventing Harassment page describes a harassment policy as including an easy to understand description of prohibited conduct with examples, a description of the complaint system with multiple, easily accessible reporting avenues, a statement that the employer will provide a prompt, impartial, and thorough investigation, and an assurance of immediate and proportionate corrective action, and describes effective written policies as written and communicated in a clear, easy to understand style and format [S:eeoc-promising-practices-preventing-harassment]. That page states that although these practices are not legal requirements under federal employment discrimination laws, they may enhance an employer's compliance efforts [S:eeoc-promising-practices-preventing-harassment], so what the law itself requires of you in the states you recorded is a question for employment counsel.",
+			"action": "Take the drafting of a written anti-harassment policy to employment counsel for the states you recorded, then record the date it is adopted here before you submit.",
+			"when": {
+				"all": [
+					{
+						"field": "written-policies-in-place",
+						"op": "excludes",
+						"value": "anti-harassment"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-promising-practices-preventing-harassment"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-written-eeo-nondiscrimination-policy",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "No equal employment opportunity and nondiscrimination policy is recorded as existing in writing.",
+			"detail": "The EEOC states that an employer with 15 to 19 employees is covered by the laws prohibiting discrimination on race, color, religion, sex, national origin, disability and genetic information, and that at 20 or more employees age discrimination law is added [S:eeoc-small-business-requirements]. State and local employment discrimination laws may also apply [S:eeoc-small-business-requirements].",
+			"action": "Ask employment counsel which of the federal and state nondiscrimination laws reach your recorded headcount and states, and have a written policy drafted to match, rather than adapting a template.",
+			"when": {
+				"all": [
+					{
+						"field": "written-policies-in-place",
+						"op": "excludes",
+						"value": "eeo-nondiscrimination"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-small-business-requirements"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-anti-retaliation-assurance-recorded",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "No written assurance against retaliation is recorded.",
+			"detail": "The EEOC's Promising Practices for Preventing Harassment page describes a harassment policy as including an unequivocal statement that retaliation is prohibited, and that individuals who report harassing conduct, participate in investigations, or take any other actions protected under federal employment discrimination laws will not be subjected to retaliation [S:eeoc-promising-practices-preventing-harassment]. That page describes these as promising practices rather than legal requirements under federal employment discrimination laws [S:eeoc-promising-practices-preventing-harassment].",
+			"action": "Ask employment counsel to add an express non-retaliation assurance to the policy text, and record here the date the revised text is issued.",
+			"when": {
+				"all": [
+					{
+						"field": "written-policies-in-place",
+						"op": "excludes",
+						"value": "anti-retaliation"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-promising-practices-preventing-harassment"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-documented-complaint-process",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "There is no written complaint procedure telling an employee how to report a concern and what happens next.",
+			"detail": "The EEOC's Promising Practices for Preventing Harassment page describes a harassment policy as including a description of the complaint system with multiple, easily accessible reporting avenues, and a statement that the employer will provide a prompt, impartial, and thorough investigation [S:eeoc-promising-practices-preventing-harassment]. Where a complaint later becomes a charge, the employer must preserve all records relevant to the charge until final disposition [S:eeoc-recordkeeping-requirements], which is difficult without a defined intake route.",
+			"action": "Take the design of the complaint intake and investigation procedure to employment counsel before the submission goes in, and record the date the written procedure is issued.",
+			"when": {
+				"all": [
+					{
+						"field": "complaint-process-documented",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-promising-practices-preventing-harassment",
+				"eeoc-recordkeeping-requirements"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-alternate-complaint-channel",
+			"kind": "gap",
+			"severity": "medium",
+			"title": "The direct supervisor is the only recorded reporting route, with no alternative recorded.",
+			"detail": "The EEOC's Promising Practices for Preventing Harassment page describes an effective complaint system as providing multiple avenues of complaint, if possible, including an avenue to report complaints regarding senior leaders [S:eeoc-promising-practices-preventing-harassment]. You recorded the direct supervisor as the only route, which leaves no recorded route for a complaint about that supervisor.",
+			"action": "Ask employment counsel to designate at least one reporting route that does not pass through the person being complained about, then record it here.",
+			"when": {
+				"all": [
+					{
+						"field": "complaint-reporting-channels",
+						"op": "includes",
+						"value": "direct-supervisor"
+					},
+					{
+						"field": "complaint-reporting-channels",
+						"op": "excludes",
+						"value": "hr-designee"
+					},
+					{
+						"field": "complaint-reporting-channels",
+						"op": "excludes",
+						"value": "alternate-manager"
+					},
+					{
+						"field": "complaint-reporting-channels",
+						"op": "excludes",
+						"value": "owner-or-officer"
+					},
+					{
+						"field": "complaint-reporting-channels",
+						"op": "excludes",
+						"value": "anonymous-hotline"
+					},
+					{
+						"field": "complaint-reporting-channels",
+						"op": "excludes",
+						"value": "third-party-service"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-promising-practices-preventing-harassment"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-reporting-route-recorded-at-all",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "No route at all is recorded for an employee to raise a complaint.",
+			"detail": "The EEOC's Promising Practices for Preventing Harassment page describes an effective harassment complaint system as fully resourced, enabling the organization to respond promptly, thoroughly, and effectively to complaints, and as providing multiple, easily accessible reporting avenues, including an avenue to report complaints regarding senior leaders [S:eeoc-promising-practices-preventing-harassment]. You recorded no defined route at all.",
+			"action": "Have employment counsel name the routes an employee may use, put them in writing, tell every employee what they are, and record them here.",
+			"when": {
+				"all": [
+					{
+						"field": "complaint-reporting-channels",
+						"op": "includes",
+						"value": "none"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-promising-practices-preventing-harassment"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-investigator-designated-in-advance",
+			"kind": "gap",
+			"severity": "medium",
+			"title": "No one is designated in advance to investigate a complaint.",
+			"detail": "The EEOC's Promising Practices for Preventing Harassment page describes an effective complaint system as providing prompt, thorough, and neutral investigations, and describes the personnel responsible for it as well-trained, objective, and neutral, with the authority, independence, and resources required to receive, investigate, and resolve complaints appropriately [S:eeoc-promising-practices-preventing-harassment]. Deciding who investigates before a complaint arrives is what makes those attributes checkable in advance.",
+			"action": "Ask employment counsel who should investigate, and whether any category of complaint should go straight to counsel, then record the role here.",
+			"when": {
+				"all": [
+					{
+						"field": "investigation-responsibility",
+						"op": "eq",
+						"value": "no-one-designated"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-promising-practices-preventing-harassment"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-complaint-log-maintained",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "No written log of complaints received and closed out is kept.",
+			"detail": "Under Title VII and the ADA an employer must keep all personnel or employment records for one year, and for one year from the date of an involuntary termination [S:eeoc-recordkeeping-requirements]. Once a charge is filed, all records relevant to the charge must be preserved until final disposition of the charge or any lawsuit based on it [S:eeoc-recordkeeping-requirements].",
+			"action": "Ask employment counsel what a complaint log should and should not contain before you start one, then start keeping it and record the start date here.",
+			"when": {
+				"all": [
+					{
+						"field": "complaint-log-maintained",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-recordkeeping-requirements"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "handbook-exists-but-not-distributed",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "A handbook exists but has not been given to every current employee.",
+			"detail": "The EEOC's Promising Practices for Preventing Harassment page describes effective written policies as provided to employees upon hire and during harassment trainings, and posted centrally, including in the company handbook, near employee time clocks, and in employee break rooms, and describes a harassment policy as regularly communicated to all employees [S:eeoc-promising-practices-preventing-harassment]. A policy carried only inside an undistributed handbook has not been communicated in that way.",
+			"action": "Distribute the current handbook to every employee, keep the dated distribution record, and take any question about what the handbook says to employment counsel before you distribute it.",
+			"when": {
+				"all": [
+					{
+						"field": "handbook-exists",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "handbook-distributed",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-promising-practices-preventing-harassment"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "handbook-acknowledgments-incomplete",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "A handbook exists but a signed acknowledgment is not held for every current employee.",
+			"detail": "The EEOC's Promising Practices for Preventing Harassment page describes effective written policies as provided to employees upon hire and during harassment trainings, and posted centrally [S:eeoc-promising-practices-preventing-harassment]. The acknowledgment is the record that the distribution actually happened, and it is commonly requested at submission.",
+			"action": "Collect a dated signed acknowledgment from every current employee for the current handbook version, and ask employment counsel to review the acknowledgment wording before you circulate it.",
+			"when": {
+				"all": [
+					{
+						"field": "handbook-exists",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "handbook-acknowledgment-signed",
+						"op": "neq",
+						"value": "yes-all"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-promising-practices-preventing-harassment"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-handbook-with-fifty-employees-in-radius",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "Fifty or more employees are recorded within 75 miles of the largest worksite, and there is no handbook.",
+			"detail": "The FMLA applies to private sector employers who employ 50 or more employees for at least 20 workweeks in the current or preceding calendar year, and an employee is eligible only where there are 50 or more employees within 75 miles of the worksite [S:dol-whd-fmla-faq]. A covered employer must include the FMLA general notice in employee handbooks or other written guidance concerning benefits, or, if no such materials exist, must distribute a copy of the notice to each new employee upon hiring [S:dol-whd-fmla-faq].",
+			"action": "Ask employment counsel to confirm whether the 20 workweek test is met and, if so, set up either the handbook route or the distribute-on-hire route for the general notice, and record which route you use.",
+			"when": {
+				"all": [
+					{
+						"field": "employees-within-75-miles-of-largest-site",
+						"op": "gte",
+						"value": 50
+					},
+					{
+						"field": "handbook-exists",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"dol-whd-fmla-faq"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "fmla-policy-missing-from-written-set",
+			"kind": "gap",
+			"severity": "medium",
+			"title": "Fifty or more employees are recorded within 75 miles of the largest worksite, a handbook exists, and no family and medical leave policy or notice is recorded in the written set.",
+			"detail": "A covered employer must include the FMLA general notice in employee handbooks or other written guidance to employees concerning benefits [S:dol-whd-fmla-faq], and must post and keep posted a notice explaining the FMLA's provisions in conspicuous places where employees are employed [S:dol-whd-fmla-faq].",
+			"action": "Ask employment counsel whether the FMLA reaches the business on the 50 employees and 20 workweeks test, and if so add the general notice to the handbook and record the handbook revision date here.",
+			"when": {
+				"all": [
+					{
+						"field": "employees-within-75-miles-of-largest-site",
+						"op": "gte",
+						"value": 50
+					},
+					{
+						"field": "handbook-exists",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "written-policies-in-place",
+						"op": "excludes",
+						"value": "family-medical-leave"
+					}
+				]
+			},
+			"sourceIds": [
+				"dol-whd-fmla-faq"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-training-delivered-to-anyone",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "No harassment and discrimination prevention training has been delivered to anyone.",
+			"detail": "The EEOC's Promising Practices for Preventing Harassment page describes training that is repeated and reinforced regularly and provided to employees at every level and location of the organization, and states that these practices are not legal requirements under federal employment discrimination laws [S:eeoc-promising-practices-preventing-harassment]. Some states set training as a requirement rather than a practice: section 12950.1 provides that an employer having five or more employees shall provide at least one hour of training to nonsupervisory and two hours to supervisory employees [S:ca-gov-12950-1], and New York requires every employer to provide training to each employee on an annual basis [S:nys-sexual-harassment-prevention-policy-and-training].",
+			"action": "Ask employment counsel which training mandate applies in each state you recorded, schedule the sessions, and record the delivery date and the attendance list here.",
+			"when": {
+				"all": [
+					{
+						"field": "training-delivered",
+						"op": "eq",
+						"value": "none"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-promising-practices-preventing-harassment",
+				"ca-gov-12950-1",
+				"nys-sexual-harassment-prevention-policy-and-training"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "ca-training-older-than-two-years",
+			"kind": "timing",
+			"severity": "high",
+			"title": "California is recorded as a state of operation, five or more employees are recorded, and the most recent training date is more than two years before today.",
+			"detail": "California Government Code section 12950.1 provides that an employer having five or more employees shall provide sexual harassment prevention training, and that each employer covered by the section shall provide the training to each employee in California once every two years [S:ca-gov-12950-1]. You recorded a headcount of five or more, and the training date you recorded is more than two years old.",
+			"action": "Book the next California session now and record its date, and confirm with employment counsel that the section reaches your workforce as you have counted it and that the two year clock is measured the way you are measuring it for each person.",
+			"when": {
+				"all": [
+					{
+						"field": "states-of-operation",
+						"op": "includes",
+						"value": "ca"
+					},
+					{
+						"field": "total-employee-count",
+						"op": "gte",
+						"value": 5
+					},
+					{
+						"field": "last-training-date",
+						"op": "lt",
+						"value": {
+							"monthsFromToday": -24
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-gov-12950-1"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "ny-training-older-than-one-year",
+			"kind": "timing",
+			"severity": "high",
+			"title": "New York is recorded as a state of operation and the most recent training date is more than one year before today.",
+			"detail": "New York State requires every employer to provide sexual harassment prevention training and states that each employee must receive training on an annual basis [S:nys-sexual-harassment-prevention-policy-and-training]. The date you recorded is more than one year old.",
+			"action": "Book the next New York session now and record its date, and ask employment counsel whether the state model policy or a policy meeting the published minimum standards is what you are actually using.",
+			"when": {
+				"all": [
+					{
+						"field": "states-of-operation",
+						"op": "includes",
+						"value": "ny"
+					},
+					{
+						"field": "last-training-date",
+						"op": "lt",
+						"value": {
+							"monthsFromToday": -12
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"nys-sexual-harassment-prevention-policy-and-training"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "supervisors-not-included-in-training",
+			"kind": "gap",
+			"severity": "high",
+			"title": "People supervise other workers, but the recorded training reached non-supervisory employees only.",
+			"detail": "The EEOC's Promising Practices for Preventing Harassment page states that because supervisors and managers have additional responsibilities, they may benefit from additional training, and describes supervisor training as covering how to prevent, identify, stop, report, and correct harassment, clear instructions about how to report harassment up the chain of command, and an unequivocal statement that retaliation is prohibited [S:eeoc-promising-practices-preventing-harassment]. That page states these are not legal requirements under federal employment discrimination laws [S:eeoc-promising-practices-preventing-harassment]. Section 12950.1, which applies to an employer having five or more employees, sets a longer session for supervisory employees than for everyone else [S:ca-gov-12950-1].",
+			"action": "Consider a separate supervisor session, and ask employment counsel which state training mandates reach your headcount and states and who in your structure counts as supervisory for that purpose before you decide who attends.",
+			"when": {
+				"all": [
+					{
+						"field": "has-supervisors",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "training-delivered",
+						"op": "eq",
+						"value": "all-employees"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-promising-practices-preventing-harassment",
+				"ca-gov-12950-1"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "ca-new-hire-training-window-exceeds-six-months",
+			"kind": "inconsistency",
+			"severity": "medium",
+			"title": "California is recorded as a state of operation, five or more employees are recorded, and the new hire training window you recorded is longer than six months.",
+			"detail": "California Government Code section 12950.1 provides that an employer having five or more employees shall provide the training, that new nonsupervisory employees shall be provided training within six months of hire, and that new supervisory employees shall be provided training within six months of assuming a supervisory position [S:ca-gov-12950-1]. You recorded a headcount of five or more and an interval longer than 180 days, so a California hire trained at the end of your own window would fall outside the interval the statute names.",
+			"action": "Shorten the recorded onboarding training window for California hires, and confirm with employment counsel that the section reaches your workforce as you have counted it and how the six months is counted for a mid-cycle hire.",
+			"when": {
+				"all": [
+					{
+						"field": "states-of-operation",
+						"op": "includes",
+						"value": "ca"
+					},
+					{
+						"field": "total-employee-count",
+						"op": "gte",
+						"value": 5
+					},
+					{
+						"field": "new-hire-training-window-days",
+						"op": "gt",
+						"value": 180
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-gov-12950-1"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "training-delivered-without-attendance-records",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "Training has been delivered but no dated attendance or completion record is held for each person trained.",
+			"detail": "An employer must retain employment records such as applications, personnel, payroll and benefits records as required by law [S:eeoc-small-business-requirements]. Under Title VII and the ADA personnel or employment records must be kept for one year, and once a charge is filed all relevant records must be preserved until final disposition [S:eeoc-recordkeeping-requirements].",
+			"action": "Reconstruct dated attendance records for the sessions already delivered, keep them for every future session, and record here that you hold them.",
+			"when": {
+				"all": [
+					{
+						"field": "training-delivered",
+						"op": "neq",
+						"value": "none"
+					},
+					{
+						"field": "training-attendance-records-held",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-recordkeeping-requirements",
+				"eeoc-small-business-requirements"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "training-interval-question-multistate",
+			"kind": "question",
+			"severity": "medium",
+			"title": "The most recent training date is more than two years old, and the required interval differs by state.",
+			"detail": "The EEOC's promising practices page describes training that should be repeated and reinforced regularly without naming an interval, and states that these practices are not legal requirements under federal employment discrimination laws [S:eeoc-promising-practices-preventing-harassment], while state law does name intervals: once every two years in California for an employer having five or more employees [S:ca-gov-12950-1], and annually in New York [S:nys-sexual-harassment-prevention-policy-and-training]. Which interval binds you depends on your headcount and on where your people work, which this module cannot decide.",
+			"action": "Ask employment counsel for the shortest interval that applies across every state you recorded, then set your training calendar to that interval rather than to the federal language.",
+			"when": {
+				"all": [
+					{
+						"field": "last-training-date",
+						"op": "lt",
+						"value": {
+							"monthsFromToday": -24
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-promising-practices-preventing-harassment",
+				"ca-gov-12950-1",
+				"nys-sexual-harassment-prevention-policy-and-training"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "internal-complaint-inside-eeoc-charge-window",
+			"kind": "timing",
+			"severity": "high",
+			"title": "The most recent internal complaint date falls inside the outer EEOC charge filing window measured from today.",
+			"detail": "A charge must generally be filed within 180 calendar days from the day the discrimination took place, extended to 300 calendar days where a state or local agency enforces a law prohibiting employment discrimination on the same basis [S:eeoc-time-limits-filing-charge]. The date you recorded is within the last 300 days, so the outer window has not closed. Once a charge is filed, all records relevant to it must be preserved until final disposition of the charge or any lawsuit based on it [S:eeoc-recordkeeping-requirements].",
+			"action": "Put a litigation hold on every record touching that matter now, and take the matter itself to employment counsel before you answer any prior-acts question on a submission.",
+			"when": {
+				"all": [
+					{
+						"field": "most-recent-internal-complaint-date",
+						"op": "gte",
+						"value": {
+							"daysFromToday": -300
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-time-limits-filing-charge",
+				"eeoc-recordkeeping-requirements"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "prior-charge-recorded-documents-not-held",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "Prior charge or demand history is recorded as yes, and the underlying paperwork is not on hand.",
+			"detail": "Once a charge has been filed an employer must preserve all records relevant to the charge until final disposition of the charge or any lawsuit based on the charge [S:eeoc-recordkeeping-requirements]. A submission cannot be completed accurately from memory, and an inaccurate prior-acts answer is a problem you do not want to create.",
+			"action": "Retrieve the agency notice, demand letter, complaint, and any closing document from counsel or the prior broker file, and give them to your broker directly rather than describing them from memory.",
+			"when": {
+				"all": [
+					{
+						"field": "prior-charge-history",
+						"op": "eq",
+						"value": "yes"
+					},
+					{
+						"field": "prior-charge-detail-held",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-recordkeeping-requirements"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "prior-charge-history-unsure",
+			"kind": "question",
+			"severity": "high",
+			"title": "Prior charge or demand history is recorded as unsure.",
+			"detail": "A charge may be filed up to 180 calendar days after the conduct, extended to 300 calendar days where a state or local agency enforces a parallel law [S:eeoc-time-limits-filing-charge], so a matter can be live without the business having heard about it recently. Records relevant to a filed charge must be preserved until final disposition [S:eeoc-recordkeeping-requirements].",
+			"action": "Have employment counsel check for any open agency file, tolling agreement, or demand letter in the last five years and give you a written answer, then record the flag as yes or no before you submit.",
+			"when": {
+				"all": [
+					{
+						"field": "prior-charge-history",
+						"op": "eq",
+						"value": "unsure"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-time-limits-filing-charge",
+				"eeoc-recordkeeping-requirements"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "employment-exposure-with-no-epli-recorded",
+			"kind": "gap",
+			"severity": "high",
+			"title": "People are recorded on payroll but no employment practices liability coverage is recorded.",
+			"detail": "Federal discrimination law reaches an employer at 15 to 19 employees for most protected bases and at 20 or more for age, and state and local laws may reach further [S:eeoc-small-business-requirements]. Employment claims are a different subject matter from bodily injury and property damage liability and from workers compensation, so a limit recorded on those lines is not a limit recorded against this exposure.",
+			"action": "Ask your broker in writing what an employment practices liability submission for your headcount and states would require from you, and what the coverage part does and does not respond to.",
+			"when": {
+				"all": [
+					{
+						"field": "epli-coverage-recorded",
+						"op": "eq",
+						"value": false
+					},
+					{
+						"field": "total-employee-count",
+						"op": "gte",
+						"value": 1
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-small-business-requirements"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "retroactive-date-later-than-operations-start",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "The recorded retroactive date is later than the date the business first had anyone on payroll.",
+			"detail": "You recorded a claims-made retroactive date that falls after the start of employment operations, which leaves the period between those two dates on the wrong side of the retroactive date. Federal recordkeeping rules assume conduct and records reaching back years, with payroll records kept three years under the ADEA and records preserved through final disposition once a charge is filed [S:eeoc-recordkeeping-requirements], and a charge may reach conduct up to 300 days before filing [S:eeoc-time-limits-filing-charge].",
+			"action": "Take both dates to your broker and ask what the recorded retroactive date means for acts before it, and whether prior acts coverage or a different retroactive date is available to you.",
+			"when": {
+				"all": [
+					{
+						"field": "epli-retroactive-date",
+						"op": "gt",
+						"value": {
+							"field": "operations-start-date"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-recordkeeping-requirements",
+				"eeoc-time-limits-filing-charge"
+			],
+			"relatedQuestion": "claims-made-retroactive-date",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "worksite-radius-count-exceeds-total-headcount",
+			"kind": "inconsistency",
+			"severity": "medium",
+			"title": "The employees recorded within 75 miles of the largest worksite exceed the total recorded headcount.",
+			"detail": "The radius figure is a subset of total payroll headcount, so it cannot be the larger of the two. Both figures feed the 50 employee and 75 mile test used for federal leave law coverage [S:dol-whd-fmla-faq], and an insurer will read the two numbers against each other.",
+			"action": "Recount both figures from payroll and correct whichever one is wrong before the submission goes out.",
+			"when": {
+				"all": [
+					{
+						"field": "employees-within-75-miles-of-largest-site",
+						"op": "gt",
+						"value": {
+							"field": "total-employee-count"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"dol-whd-fmla-faq"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "third-party-coverage-part-unsure",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Whether a third-party coverage part is recorded is marked unsure.",
+			"detail": "Claims brought by customers, clients, or vendors are a different category of claimant from claims brought by employees, and the module cannot tell from your entries which categories the recorded coverage addresses. Federal discrimination law is framed around the employment relationship [S:eeoc-small-business-requirements], so a third-party claimant raises a separate question about what is recorded.",
+			"action": "Ask your broker to confirm in writing whether a third-party coverage part is on the policy and what its limit and retention are, then record the answer here.",
+			"when": {
+				"all": [
+					{
+						"field": "third-party-epli-endorsement",
+						"op": "eq",
+						"value": "unsure"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-small-business-requirements"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "wage-hour-exposure-with-no-defense-part-recorded",
+			"kind": "gap",
+			"severity": "medium",
+			"title": "No timekeeping and overtime policy is recorded in writing and no wage and hour defense cost coverage part is recorded.",
+			"detail": "The FLSA requires records for each nonexempt worker including hours worked each day and total hours worked each workweek, the regular hourly pay rate, and total wages paid each pay period [S:dol-whd-fs21-flsa-recordkeeping]. Payroll records must be preserved at least three years and the records on which wage computations are based at least two [S:dol-whd-fs21-flsa-recordkeeping].",
+			"action": "Take the timekeeping and overtime practice, and the question of which records the FLSA requires you to keep and for how long, to employment counsel, and separately ask your broker in writing whether a wage and hour defense cost coverage part is recorded anywhere on your program and what a submission for one would require from you.",
+			"when": {
+				"all": [
+					{
+						"field": "written-policies-in-place",
+						"op": "excludes",
+						"value": "wage-hour-timekeeping"
+					},
+					{
+						"field": "wage-hour-defense-recorded",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"dol-whd-fs21-flsa-recordkeeping"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "required-posters-not-confirmed-current",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "The required workplace posters are not recorded as all displayed and current.",
+			"detail": "An employer must display a poster at the business that describes the federal employment discrimination laws [S:eeoc-small-business-requirements]. Department of Labor posters must be posted prominently where they can be readily seen by employees, and separate posters are identified for the FLSA, OSHA, the FMLA, the Employee Polygraph Protection Act, and USERRA, among others [S:dol-workplace-posters].",
+			"action": "Run the elaws Poster Advisor named on the Department of Labor page to work out which posters apply to you, add the state postings for every state you recorded, and record the date you complete the walk-through of each location.",
+			"when": {
+				"all": [
+					{
+						"field": "required-posters-displayed",
+						"op": "neq",
+						"value": "yes-all-current"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-small-business-requirements",
+				"dol-workplace-posters"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "contractor-or-intern-classification-question",
+			"kind": "question",
+			"severity": "high",
+			"title": "Independent contractors or unpaid interns are recorded alongside payroll employees, and who counts as an employee is unresolved.",
+			"detail": "Federal discrimination law coverage turns on employee counts, at 15 to 19 employees for most protected bases and 20 or more for age [S:eeoc-small-business-requirements], and FLSA recordkeeping duties attach to each nonexempt worker [S:dol-whd-fs21-flsa-recordkeeping]. This module does not classify workers; it records that the question is open and that both your legal duties and your recorded headcount move with the answer.",
+			"action": "Have employment counsel classify each engagement in writing, then correct the headcount you recorded here to match counsel's conclusion before you submit.",
+			"when": {
+				"all": [
+					{
+						"field": "workforce-composition",
+						"op": "includes",
+						"value": "independent-contractors"
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-small-business-requirements",
+				"dol-whd-fs21-flsa-recordkeeping"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "remote-employees-outside-physical-locations",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Employees work from states where the business has no physical location.",
+			"detail": "The EEOC states plainly that state and local employment discrimination laws may also apply to a business in addition to the federal laws it enforces [S:eeoc-small-business-requirements]. Two of the states in this module illustrate how far that goes: California sets training hours and a two year interval at five or more employees [S:ca-gov-12950-1], and New York requires a policy and annual training of every employer [S:nys-sexual-harassment-prevention-policy-and-training].",
+			"action": "Give employment counsel the list of states you recorded and ask which policy, training, notice, and posting duties each one creates for a single remote employee, then record the answers state by state.",
+			"when": {
+				"all": [
+					{
+						"field": "remote-employees-in-other-states",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-small-business-requirements",
+				"ca-gov-12950-1",
+				"nys-sexual-harassment-prevention-policy-and-training"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "policies-not-reviewed-in-two-years",
+			"kind": "question",
+			"severity": "medium",
+			"title": "The written policies have not been reviewed or updated in more than two years.",
+			"detail": "The EEOC's promising practices page describes a harassment policy as regularly communicated to all employees, and as provided to employees upon hire and during harassment trainings [S:eeoc-promising-practices-preventing-harassment], and state requirements move: New York directs an employer that does not adopt the state model policy to adopt one that meets or exceeds the published minimum standards [S:nys-sexual-harassment-prevention-policy-and-training]. The review date you recorded is more than two years old.",
+			"action": "Ask employment counsel to review the whole written set against current federal and state requirements for the states you recorded, and record the new review date here.",
+			"when": {
+				"all": [
+					{
+						"field": "policy-review-date",
+						"op": "lt",
+						"value": {
+							"monthsFromToday": -24
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"eeoc-promising-practices-preventing-harassment",
+				"nys-sexual-harassment-prevention-policy-and-training"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "submission-date-inside-sixty-days",
+			"kind": "question",
+			"severity": "low",
+			"title": "The submission or renewal date is within sixty days of today, and the documentation items above take longer than that to close.",
+			"detail": "Drafting and adopting policies, redistributing a handbook and collecting acknowledgments, and scheduling training against a state interval are sequential tasks: California, for an employer having five or more employees, measures training once every two years and gives six months for a new hire [S:ca-gov-12950-1], and New York measures it annually [S:nys-sexual-harassment-prevention-policy-and-training]. What can honestly be finished before your date, and what has to be described as in progress, is a question to settle now rather than in the final week.",
+			"action": "Tell your broker which open items will be closed by the date and which will not, and ask what the submission should say about the ones still in progress.",
+			"when": {
+				"all": [
+					{
+						"field": "renewal-or-submission-date",
+						"op": "gte",
+						"value": {
+							"daysFromToday": 0
+						}
+					},
+					{
+						"field": "renewal-or-submission-date",
+						"op": "lt",
+						"value": {
+							"daysFromToday": 60
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-gov-12950-1",
+				"nys-sexual-harassment-prevention-policy-and-training"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

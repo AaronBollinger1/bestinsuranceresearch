@@ -1,0 +1,24 @@
+{
+	"title": "Insurance requirements",
+	"publisher": "Public Health - Seattle & King County",
+	"url": "https://kingcounty.gov/en/dept/dph/about-king-county/about-public-health/working-with-public-health/contracts/insurance-requirements",
+	"sourceType": "official-documentation",
+	"jurisdiction": "WA",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"The page requires commercial general liability insurance of $1,000,000 per occurrence and $2,000,000 in the aggregate for bodily injury, personal and advertising injury and property damage, with coverage at least as broad as that afforded under ISO form number CG 00 01 current edition or its substantive equivalent.",
+		"In the event that services delivered pursuant to the contract either directly or indirectly involve or require professional services, Professional Liability, Errors, and Omissions coverage shall be provided, at $1,000,000 per claim and in the aggregate.",
+		"Each insurance policy shall be written on an occurrence basis or form, except that insurance on a claims made basis or form may be acceptable with prior County approval.",
+		"If coverage is approved and purchased on a claims made basis or form, the contractor warrants continuation of coverage, either through policy renewals or the purchase of an extended discovery period, if such extended coverage is available, for not less than three years from the date of contract termination and/or conversion from a claims made form to an occurrence coverage form."
+	],
+	"updateCadence": "Standing contract requirements page; no revision date is shown on the page.",
+	"status": "active",
+	"notes": "Fetched and read in full on 2026-08-31. Publisher caveat: this is a county contracting authority, not an insurance regulator, and these requirements apply only to its own contracts, so authorityLevel is set to secondary. Used to show that a real public contract can require both coverages and treats the occurrence versus claims made distinction as material. The page itself uses an en dash in its name; the ASCII hyphen is used here.",
+	"officialHost": true
+}

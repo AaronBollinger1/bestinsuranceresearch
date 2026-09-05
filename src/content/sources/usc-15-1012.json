@@ -1,0 +1,22 @@
+{
+	"title": "15 U.S.C. section 1012 - Regulation by State law; Federal law relating specifically to insurance; applicability of certain Federal laws after June 30, 1948",
+	"publisher": "Legal Information Institute, Cornell Law School",
+	"url": "https://www.law.cornell.edu/uscode/text/15/1012",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Subsection (a) provides that the business of insurance, and every person engaged therein, shall be subject to the laws of the several States which relate to the regulation or taxation of such business.",
+		"Subsection (b) provides that no Act of Congress shall be construed to invalidate, impair, or supersede any law enacted by any State for the purpose of regulating the business of insurance, or which imposes a fee or tax upon such business, unless such Act specifically relates to the business of insurance.",
+		"Subsection (b) further provides that after June 30, 1948, the Sherman Act, the Clayton Act, and the Federal Trade Commission Act shall be applicable to the business of insurance to the extent that such business is not regulated by State law."
+	],
+	"updateCadence": "Changes only by act of Congress.",
+	"status": "active",
+	"officialHost": false
+}

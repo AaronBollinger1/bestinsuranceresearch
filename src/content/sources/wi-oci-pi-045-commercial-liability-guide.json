@@ -1,0 +1,24 @@
+{
+	"title": "Consumer's Guide to Commercial Liability Insurance (PI-045)",
+	"publisher": "Wisconsin Office of the Commissioner of Insurance",
+	"url": "https://oci.wi.gov/Documents/Consumers/PI-045.pdf",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "WI",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Errors and Omissions coverage, also known as professional liability, is available for numerous types of professionals, and the coverage protects professional people or organizations from claims arising from failing to render professional services to their clients as expected of a person in their profession.",
+		"A policy written on an occurrence basis covers losses that arise from incidents occurring during the policy term, while a policy written on a claims-made basis covers losses that arise from incidents occurring during the policy term but only if the claim is made during the policy term.",
+		"Product coverage is to protect against losses arising out of the manufacturing, selling, handling, or distribution of a product, and completed operations coverage protects against claims arising out of services performed by a business, such as a building contractor.",
+		"The guide advises commercial buyers to know if their policy is written on an occurrence or claims-made basis."
+	],
+	"updateCadence": "Revised periodically; the edition retrieved on 2026-08-31 carries the footer PI-045 (R 08/2026).",
+	"status": "active",
+	"notes": "PDF retrieved and text extracted with pdftotext on 2026-08-31. Every page footer reads PI-045 (R 08/2026), so this is a newer edition than the R 12/2024 printing; publishedDate records the month and year the document itself prints, not a day. The guide's claims-made description is simplified and does not discuss retroactive dates, so it is not relied on for retroactive date mechanics. Published: 2026-08",
+	"officialHost": true
+}

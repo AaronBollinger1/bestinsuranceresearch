@@ -1,0 +1,23 @@
+{
+	"title": "Policies - The California FAIR Plan",
+	"publisher": "California FAIR Plan Association",
+	"url": "https://www.cfpnet.com/policies/",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The California FAIR Plan Policies page describes its Dwelling program as coverage for owner or tenant occupied dwellings with up to 4 family units and personal property for renters and condo owners.",
+		"The Policies page describes its Commercial program as business owned buildings including habitational units, retail mercantile, manufacturing risks, farms, wineries, and office buildings, and individual owned habitational buildings with 5 or more units.",
+		"The Policies page describes Earthquake coverage for individually owned residential properties and personal property of tenants and condo owners through the California Earthquake Authority.",
+		"The Policies page states, with respect to Difference in Conditions and Flood coverage, that the California FAIR Plan does not offer these coverages."
+	],
+	"updateCadence": "Programs change; re-verify at least quarterly.",
+	"status": "active",
+	"officialHost": true
+}

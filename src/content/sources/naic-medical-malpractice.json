@@ -1,0 +1,22 @@
+{
+	"title": "Insurance Topics: Medical Malpractice Insurance",
+	"publisher": "National Association of Insurance Commissioners (NAIC)",
+	"url": "https://content.naic.org/insurance-topics/medical-malpractice-insurance",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"NAIC states that many insurers write on a claims-made form basis, where a policy in effect at the time a claim is reported responds for the loss, while the policy remains in force and during any applicable extended reporting period.",
+		"NAIC states that an occurrence policy covers a loss that occurs during the policy period, regardless of when the claim was made, and even after the policy has been canceled."
+	],
+	"updateCadence": "NAIC updates its Insurance Topics pages periodically; the page fetched on 2026-08-31 displayed a last updated date of 04/01/2026.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31; both claims read verbatim and the displayed last updated date of 04/01/2026 recorded as publishedDate. The page mentions extended reporting periods only in a dependent clause and carries nothing about how a tail is purchased, how long it stays available, or what it costs, so this source is not cited for tail mechanics anywhere in this bundle. Published: 2026-04-01",
+	"officialHost": true
+}

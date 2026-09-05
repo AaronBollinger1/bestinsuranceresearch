@@ -1,0 +1,25 @@
+{
+	"title": "California Insurance Code section 2051.5 (replacement cost measure of indemnity and time to collect)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=2051.5.",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Under an open policy that requires payment of replacement cost, the measure of indemnity is the amount that it would cost the insured to repair, rebuild, or replace the thing lost or injured, without a deduction for physical depreciation, or the policy limit, whichever is less.",
+		"A time limit of less than 12 months from the date that the first payment toward the actual cash value is made shall not be placed upon an insured to collect the full replacement cost of the loss.",
+		"In the event of a loss relating to a state of emergency, as defined in Section 8558 of the Government Code, a time limit of less than 36 months from the date that the first payment toward the actual cash value is made shall not be placed upon the insured.",
+		"The section provides that on and after July 1, 2026, all policy forms issued or renewed by an insurer shall comply with this section in its entirety.",
+		"The amendment note on the page reads Amended by Stats. 2025, Ch. 542, Sec. 2. (SB 495) Effective January 1, 2026."
+	],
+	"updateCadence": "Changes only by California legislation; leginfo reflects the current operative text. Recently amended, so re-check before each publication cycle.",
+	"status": "active",
+	"notes": "Re-fetched twice on 2026-08-31 specifically to answer the checker's warning that this section was amended by SB 495 after the prior draft was written. Result: the section was amended by Stats. 2025, Ch. 542, Sec. 2 (SB 495), effective January 1, 2026, and the 12-month and 36-month floors both survive that amendment in the current text. Wording corrected from the prior draft: the statutory trigger is a loss RELATING TO a state of emergency as defined in Government Code section 8558, which is broader than the prior draft's phrase a loss occurring during a declared state of emergency. The compliance sentence at subdivision (e) is now recorded. The prior draft's publishedDate unknown and effectiveDate n/a were wrong to leave in place given the amendment and have been replaced. Effective: 2026-01-01",
+	"officialHost": true
+}

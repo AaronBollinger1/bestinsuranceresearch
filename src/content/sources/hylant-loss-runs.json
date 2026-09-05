@@ -1,0 +1,21 @@
+{
+	"title": "Coverage Insights: What Are Loss Runs?",
+	"publisher": "Hylant Group, Inc. (insurance brokerage)",
+	"url": "https://hylant.com/insights/blog/coverage-insights-what-are-loss-runs",
+	"sourceType": "secondary-analysis",
+	"jurisdiction": "US",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Hylant, an insurance brokerage, writes that underwriters will often require organizations to submit loss runs for the past three to five years."
+	],
+	"updateCadence": "Blog post; not revised on a published schedule.",
+	"status": "active",
+	"notes": "Fetched today and the three to five years sentence confirmed verbatim. This is a broker's description of common market practice, not a legal or filed requirement, and the prose says so in those words. It is one of only two sources in this bundle that speak to what underwriters commonly request, and both are secondary voices, which is why the entry's confidence is contextual rather than established. Published: 2023-07-12",
+	"officialHost": true
+}

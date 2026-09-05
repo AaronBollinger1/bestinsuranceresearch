@@ -1,0 +1,24 @@
+{
+	"title": "14VAC5-335-20 - Definitions (Rules Governing Claims-Made Liability Insurance Policies)",
+	"publisher": "Virginia Administrative Code, Virginia General Assembly Legislative Information System",
+	"url": "https://law.lis.virginia.gov/admincode/title14/agency5/chapter335/section20/",
+	"sourceType": "regulation",
+	"jurisdiction": "VA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Defines claims-made liability insurance as an insurance policy providing coverage for the insured's liability for injury, damage, or wrongful act or omission occurring prior to the termination of coverage but subsequent to any applicable retroactive date, provided the claim is first made during the policy period or any extended reporting period.",
+		"Defines a retroactive date as the date on or after which injury, damage, or wrongful act or omission may occur and be covered under a claims-made liability insurance policy.",
+		"Defines an extended reporting period as an extension of the time allowed for reporting claims, after termination of a claims-made liability policy, for injury, damage, or a wrongful act or omission that occurred prior to termination of the policy and that, except for the requirement to report claims during the policy period, was otherwise covered by the policy.",
+		"Defines a basic extended reporting period as an automatic extended reporting period provided at no additional premium charge, and a supplemental extended reporting period as an extended reporting period that is available for the insured to purchase."
+	],
+	"updateCadence": "changes when the Virginia State Corporation Commission amends 14VAC5-335",
+	"status": "active",
+	"notes": "Fetched 2026-08-31 from the official Virginia Administrative Code site; all four definitional claims read verbatim off the page. History note on the page: derived from Virginia Register Volume 20, Issue 21, effective January 1, 2005; amended by Virginia Register Volume 34, Issue 16, effective October 1, 2018. This definition of extended reporting period says nothing about the retroactive date, so it is not cited for that point anywhere in this bundle. Published: 2018-10-01 Effective: 2018-10-01",
+	"officialHost": true
+}

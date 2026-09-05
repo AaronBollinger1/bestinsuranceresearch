@@ -1,0 +1,27 @@
+{
+	"title": "Virginia Commercial Insurance Guide",
+	"publisher": "Virginia State Corporation Commission, Bureau of Insurance",
+	"url": "https://www.scc.virginia.gov/consumers/insurance/property-casualty-consumer/virginia-commercial-insurance-guide/",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "VA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Premises and Operations coverage pays bodily injury and property damage claims to members of the public as a result of an accident on your premises or arising out of your operations.",
+		"Products and Completed Operations covers liability arising from the handling, use of, existence of any condition in, or warranty of any goods or products manufactured, sold, handled, or distributed by your business after the product is given to others and is away from the business premises.",
+		"Professional Liability Insurance pays liability claims arising from wrongful acts, errors and omissions, and malpractice by physicians, attorneys, or other professionals.",
+		"Errors and omissions insurance is also available for non-professionals such as corporate directors and officers who may be held liable for losses caused by their errors or oversights.",
+		"A Commercial General Liability policy provides many liability coverages under one contract.",
+		"A policy written on an occurrence basis covers incidents that occur during the policy period, regardless of when the claim is reported to the insurance company, even if it is reported after the policy expires; a policy written on a claims-made basis covers only those claims reported during the policy period.",
+		"If a claims-made policy expires, it may be necessary to purchase tail coverage, and tail coverage covers claims resulting from incidents which occurred while a claims-made policy was in force but which are reported after the policy has expired."
+	],
+	"updateCadence": "Maintained as a standing consumer guide by the Bureau of Insurance; no revision date is shown on the page.",
+	"status": "active",
+	"notes": "Fetched and read in full on 2026-08-31. The HTML document title is Virginia SCC - Virginia Commercial Insurance Guide and the on-page heading reads Virginia Consumer's Guide for Commercial Insurance; the document title is used here. The guide does not address how policy forms or terms vary between insurers, so it is not cited for any market-uniformity point.",
+	"officialHost": true
+}

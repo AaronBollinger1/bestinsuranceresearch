@@ -1,0 +1,26 @@
+{
+	"title": "Insurance Circular Letter No. 22 (2000): Marine and Inland Marine Insurance",
+	"publisher": "New York State Department of Financial Services",
+	"url": "https://www.dfs.ny.gov/industry_guidance/circular_letters/cl2000_22",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "NY",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The circular letter is numbered 22, is dated August 11, 2000, is titled Marine and Inland Marine Insurance, and is addressed to insurers licensed to write marine insurance in New York.",
+		"It states that New York Insurance Law section 2310(b) exempts inland marine risks from the law's filing requirements if, by general custom of the business, the specific risks in question are not written according to manual rates and rating plans, unless the Superintendent directs that they be filed.",
+		"It states that rates, loss costs and forms promulgated by the principal rate organization, Insurance Services Office, for the various inland marine classes constitute the general custom of the business.",
+		"It states that the Superintendent may direct that filings be submitted for review even where the custom of the business is that no filings be made for a particular inland marine class.",
+		"It states that New York adopted the 1976 NAIC nationwide marine definition with exceptions in four areas: Builders Risk and/or Installation Risks, Domestic Bulk Liquids, Difference in Conditions, and Electronic Data Processing, and gives substantive conditions for each exception rather than simply naming the classes.",
+		"It advises insurers that are uncertain about a classification to submit the matter for departmental review rather than assume inland marine treatment."
+	],
+	"updateCadence": "Standing circular letter guidance issued in 2000. New York issues superseding circular letters as needed, so confirm current status before relying on it for any New York filing question.",
+	"status": "active",
+	"notes": "Re-fetched 2026-08-31; live official DFS page and all claims above returned. This is New York guidance and is cited in the answer only as a named-state illustration of how a filing exemption can work, never as a nationwide rule. Note the conflict with the IMUA State Digest, which lists New York under the 1953 Definition; this bundle reports both and resolves neither. Published: 2000-08-11 Effective: 2000-08-11",
+	"officialHost": true
+}

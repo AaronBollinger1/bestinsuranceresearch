@@ -1,0 +1,25 @@
+{
+	"title": "26 CFR 54.4980H-5 - Assessable payments under section 4980H(b) (affordability safe harbors)",
+	"publisher": "Cornell Legal Information Institute, reproducing the Code of Federal Regulations",
+	"url": "https://www.law.cornell.edu/cfr/text/26/54.4980H-5",
+	"sourceType": "regulation",
+	"authorityLevel": "secondary",
+	"primary": false,
+	"officialHost": false,
+	"jurisdiction": "US",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-02",
+	"lastChecked": "2026-09-02",
+	"lastCheckedBasis": "access",
+	"updateCadence": "on-amendment",
+	"status": "active",
+	"claims": [
+		"The section is headed Assessable payments under section 4980H(b).",
+		"Paragraph (e)(2) provides three affordability safe harbors: the Form W-2 safe harbor, the rate of pay safe harbor, and the federal poverty line safe harbor.",
+		"The Form W-2 safe harbor measures the employee contribution against 9.5 percent of that employee's Form W-2 wages from the employer for the calendar year.",
+		"The rate of pay safe harbor, for an hourly employee, measures the contribution against 9.5 percent of an amount equal to 130 hours multiplied by the employee's hourly rate of pay.",
+		"The federal poverty line safe harbor measures the contribution against 9.5 percent of a monthly amount determined as the federal poverty line for a single individual for the applicable calendar year, divided by 12.",
+		"All three safe harbors in this section are expressed against the same 9.5 percent threshold."
+	]
+}

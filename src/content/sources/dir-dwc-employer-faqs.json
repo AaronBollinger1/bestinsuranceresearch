@@ -1,0 +1,30 @@
+{
+	"title": "Answers to frequently asked questions about workers' compensation for employers",
+	"publisher": "California Department of Industrial Relations, Division of Workers' Compensation",
+	"url": "https://www.dir.ca.gov/dwc/faqs.html",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"DIR states that all California employers must provide workers' compensation benefits to their employees under California Labor Code Section 3700.",
+		"DIR states that Section 3700.5 of the California Labor Code makes failing to have workers' compensation coverage a misdemeanor punishable by either a fine of not less than $10,000 or imprisonment in the county jail for up to one year, or both.",
+		"DIR states that the state issues penalties of up to $100,000 against illegally uninsured employers.",
+		"DIR states that a stop order can be issued prohibiting the use of employee labor until coverage is obtained, and that violation of the stop order is itself punishable by imprisonment in the county jail for up to 60 days or a fine of up to $10,000, or both.",
+		"DIR states that additional civil penalties can reach $10,000 per employee where there is a compensable claim, or $2,000 per employee where there is no compensable claim, up to a maximum of $100,000.",
+		"DIR states that State Fund is a state-operated entity that exists in order to transact workers' compensation on a non-profit basis, competes with private workers' compensation insurance companies for business, and also operates as the insurer of last resort if private companies are not willing to offer workers' compensation insurance.",
+		"The page states that all California employers must provide workers' compensation benefits to their employees under California Labor Code Section 3700.",
+		"The page states that executive officers and directors of corporations must be included in workers' compensation coverage, unless the corporation is fully owned by the directors and officers, and that if the directors and officers fully own the corporation then they may elect to be excluded from workers' compensation benefits.",
+		"The page states that Section 3700.5 of the California Labor Code makes it a misdemeanor punishable by either a fine of not less than $10,000 or imprisonment in the county jail for up to one year, or both.",
+		"The page states that a stop order prohibits the use of employee labor until coverage is obtained, and that failure to observe it is a misdemeanor punishable by imprisonment in the county jail for up to 60 days, or by a fine of up to $10,000, or both.",
+		"The page states that penalties of up to $100,000 are issued against illegally uninsured employers, calculated as either twice the amount of unpaid premium or $1,500 per employee, whichever is greater."
+	],
+	"updateCadence": "Updated periodically by DIR; the penalty figures are statutory and can change by amendment, so re-check before each content review.",
+	"status": "active",
+	"officialHost": true
+}

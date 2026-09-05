@@ -1,0 +1,23 @@
+{
+	"title": "Contact",
+	"publisher": "National Association of Insurance Commissioners",
+	"url": "https://content.naic.org/contact",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"NAIC publishes a general inquiries telephone number of (816) 783-8500 and a general inquiries email of help@naic.org.",
+		"NAIC publishes an Executive Office at 1101 K Street, N.W., Suite 650, Washington, DC 20005, telephone (202) 471-3990.",
+		"NAIC publishes a Central Office at 1100 Walnut Street, Suite 1000, Kansas City, MO 64106-2197, telephone (816) 842-3600.",
+		"NAIC publishes a Capital Markets and Investment Analysis Office at One New York Plaza, Suite 4210, New York, NY 10004, telephone (212) 398-9000."
+	],
+	"updateCadence": "Re-verify phone numbers and addresses before republishing.",
+	"status": "active",
+	"officialHost": true
+}

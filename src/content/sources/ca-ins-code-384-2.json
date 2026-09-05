@@ -1,0 +1,23 @@
+{
+	"title": "California Insurance Code Section 384 (required statements on a certificate or verification of insurance)",
+	"publisher": "California Legislative Information, Office of Legislative Counsel",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=384.",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"California Insurance Code Section 384 requires a certificate or verification of insurance provided as evidence of insurance in lieu of an actual copy of the policy to contain a statement to the effect that it is not an insurance policy and does not amend, extend or alter the coverage afforded by the policies listed herein.",
+		"Section 384 requires the certificate to state that, notwithstanding any requirement, term, or condition of any contract or other document with respect to which the certificate may be issued or may pertain, the insurance afforded by the policies described is subject to all the terms, exclusions and conditions of the policies.",
+		"Section 384(b) states that the section does not apply to a surplus line broker certificate as defined in Insurance Code Section 48."
+	],
+	"updateCadence": "Amended by legislation; re-check leginfo before each publication cycle.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: 2001-01-01"
+}

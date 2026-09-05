@@ -1,0 +1,67 @@
+{
+	"name": "Carrier Appetite Evidence Finder",
+	"status": "specified",
+	"order": 21,
+	"family": [
+		"commercial",
+		"personal"
+	],
+	"lines": [
+		"general-liability",
+		"commercial-property",
+		"workers-compensation",
+		"commercial-auto",
+		"cyber",
+		"professional-liability"
+	],
+	"summary": "Find what carriers say about their own appetite, in their own published words, with the document and the date attached.",
+	"spec": {
+		"user": "A broker, business owner, or professional adviser trying to work out which carriers publicly say they write a class of business.",
+		"inputData": [
+			"Line",
+			"State",
+			"Class of business or NAICS category"
+		],
+		"authoritativeSources": [
+			"Carrier-published appetite guides, program pages, and producer materials, each retrieved and dated",
+			"State insurance department company profile and licensing records",
+			"NAIC Consumer Information Source",
+			"State surplus lines association published lists where applicable"
+		],
+		"privacyBoundary": "No applicant information of any kind. The tool takes a class and a state, not a risk.",
+		"decisionRules": [
+			"An appetite statement may only appear here as a quotation from, or a direct link to, the carrier's own published document, labeled carrier-authored, with a retrieval date.",
+			"This site never writes its own summary of a carrier's appetite, and never infers appetite from placement experience, market rumour, or a broker relationship.",
+			"A carrier with no published appetite document simply does not appear, and the absence is shown as an absence rather than as a negative.",
+			"Licensing status comes from the state regulator, never from the carrier.",
+			"No ranking, no scoring, no best or preferred list. Inclusion is never for sale, and order is alphabetical."
+		],
+		"uncertainty": "A published appetite guide is marketing material with a shelf life. It is not a commitment, it is frequently out of date, and an underwriter can decline a risk that sits squarely inside it.",
+		"output": "A printable list of carrier-published appetite documents matching the class and state, each with publisher, document title, retrieval date, and a direct link, plus the regulator record for licensing status.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built. Never eligible for Review, Rating, or Offer schema, because none of that content exists here.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Every listed document is re-fetched every 90 days. A document that stops resolving is marked unavailable rather than quietly dropped."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

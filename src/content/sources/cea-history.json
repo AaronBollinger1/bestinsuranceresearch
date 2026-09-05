@@ -1,0 +1,30 @@
+{
+	"title": "California Earthquake Authority's Story - Building Earthquake Resilience",
+	"publisher": "California Earthquake Authority",
+	"url": "https://www.earthquakeauthority.com/about-cea/cea-history",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"CEA describes itself on this page as a not-for-profit, publicly managed, privately funded entity.",
+		"The page states that in 1996 the California Legislature created the California Earthquake Authority.",
+		"The page describes the January 17, 1994 magnitude 6.7 Northridge earthquake as the background to CEA's creation.",
+		"CEA states: 'On January 17, 1994, a magnitude 6.7 earthquake known as the Northridge earthquake rocked California's San Fernando Valley'.",
+		"CEA states that 'the earthquake caused an estimated $20 billion in residential damages alone' and that 'only half of that was covered by insurance'.",
+		"CEA states: 'In 1996, the California Legislature went one step further and created the California Earthquake Authority (CEA)'.",
+		"CEA describes itself as 'a not-for-profit, publicly managed, privately funded entity'.",
+		"CEA states: 'Today, CEA provides two-thirds of the residential earthquake insurance policies sold in California'. The page gives no as-of date and no methodology for that figure.",
+		"The California Legislature created the California Earthquake Authority in 1996, following the January 17, 1994 magnitude 6.7 Northridge earthquake.",
+		"CEA describes itself as a not-for-profit, publicly managed, privately funded entity, and states that it sells its policies exclusively through participating insurance companies.",
+		"CEA states that today it provides two-thirds of the residential earthquake insurance policies sold in California."
+	],
+	"updateCadence": "Updated occasionally by CEA communications.",
+	"status": "active",
+	"officialHost": true
+}

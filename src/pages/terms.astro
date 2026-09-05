@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Callout from '../components/Callout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { siteConfig } from '../config/site';
+import { breadcrumbs, graph, organization, website } from '../lib/schema';
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Terms', path: '/terms' },
+];
+const jsonLd = graph(organization(), website(), breadcrumbs(trail));
+---
+
+<BaseLayout
+	title="Terms"
+	description="What using this site does and does not create, and the limits on everything published here."
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
+	<PageHeader
+		eyebrow="Terms and limitations"
+		title="Research informs a decision. It is not the decision."
+		lede="Reading this site does not create a broker relationship, does not bind coverage, and does not obligate any insurer."
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="prose-shell prose">
+			<h2>General information only</h2>
+			<p>
+				Everything published here is general educational information. It is not legal, tax, medical,
+				engineering, appraisal, lending, investment, claims, or individualized insurance advice. It
+				does not account for your circumstances, because it does not know them and does not ask.
+			</p>
+
+			<Callout tone="warn">
+				<p>
+					<strong>No coverage determination and no eligibility decision is made anywhere on this
+					site.</strong> Only an authorized insurer or its representative can decide whether a risk
+					is acceptable, what a policy covers, what it costs, and whether a specific claim is
+					payable. Nothing here substitutes for that, and nothing here should be relied on as though
+					it did.
+				</p>
+			</Callout>
+
+			<h2>No relationship is created</h2>
+			<p>
+				Using this site does not create a broker, agent, fiduciary, or advisory relationship with
+				{' '}{siteConfig.operator.legalName} dba {siteConfig.operator.dba}. A relationship begins only
+				if you separately choose to engage the brokerage through its own disclosed intake, and it is
+				governed by that engagement rather than by this site.
+			</p>
+			<p>
+				Editorial review by a licensed person means that person checked the accuracy and the limits of
+				the page. It does not mean they reviewed your situation, because they have not seen it.
+			</p>
+
+			<h2>Policy language</h2>
+			<p>
+				Statements about what a policy covers or excludes describe published forms, identified by form
+				name and edition where possible. Your own policy is controlled by the exact form,
+				endorsements, declarations, and state amendments attached to it, which may differ materially
+				from anything described here. Read your own documents and ask your insurer to confirm.
+			</p>
+
+			<h2>Sources and accuracy</h2>
+			<p>
+				Every material claim is mapped to a source, and every source shows the date it was last
+				checked. Public records, statutes, regulations, and published guidance change, sometimes
+				without notice and sometimes retroactively. A page that was accurate on its review date may
+				not be accurate today, which is why the date is shown on every page and why stale sources are
+				flagged rather than hidden.
+			</p>
+			<p>
+				If you find an error, <a href="/corrections">report it</a>. Corrections are published with the
+				prior wording intact.
+			</p>
+
+			<h2>Tools</h2>
+			<p>
+				The tools organize information you enter. They do not submit anything to any insurer, do not
+				accept documents, and do not produce a quote, a determination, or an eligibility result.
+				Everything you type stays in your own browser. Output is a working document for your own use
+				and for the conversation you choose to have next.
+			</p>
+
+			<h2>Outbound links</h2>
+			<p>
+				Source links open the publisher's own site. Those publishers are independent, their content is
+				theirs, and their terms and privacy practices govern what happens once you arrive. A link is a
+				citation, not an endorsement.
+			</p>
+
+			<h2>Intellectual property</h2>
+			<p>
+				Cited sources remain the property of their publishers and are linked rather than reproduced,
+				beyond the short quotation needed to show what a source actually says. The original analysis,
+				content model, interface, and methodology of this site belong to
+				{' '}{siteConfig.operator.legalName}. Quotation with attribution and a link to the canonical
+				URL is welcome, and is described in <a href="/llms.txt">llms.txt</a>. Republishing pages
+				wholesale under another domain is not.
+			</p>
+
+			<h2>Changes</h2>
+			<p>
+				These terms may change. Material changes will be dated. Continued use after a change means the
+				current version applies.
+			</p>
+
+			<h2>Contact</h2>
+			<p>
+				Questions about these terms: <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>.
+			</p>
+		</div>
+	</section>
+</BaseLayout>

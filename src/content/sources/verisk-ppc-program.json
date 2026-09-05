@@ -1,0 +1,26 @@
+{
+	"title": "ISO's Public Protection Classification (PPC) Program, How the Program Works",
+	"publisher": "Verisk (ISO Community Hazard Mitigation Services)",
+	"url": "https://www.isomitigation.com/ppc/program-works/",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Class 1 generally represents superior property fire protection, and Class 10 indicates that the area's fire suppression program does not meet Verisk's minimum criteria.",
+		"The classification evaluates emergency communications systems, including facilities for the public to report fires, staffing, training, certification of telecommunicators, and facilities for dispatching fire departments.",
+		"It evaluates the fire department, including equipment, staffing, training, and geographic deployment of fire companies.",
+		"It evaluates the water supply system, including the inspection and flow testing of hydrants and an evaluation of the amount of available water compared with the amount needed to suppress fires.",
+		"It evaluates community efforts to reduce the risk of fire, including fire prevention codes and enforcement, public fire safety education, and fire investigation programs.",
+		"Most U.S. insurers of home and business properties use PPC in calculating premiums, and in general the price of insurance in a community with a good PPC is lower than in a community with a poor PPC, assuming all other factors are equal."
+	],
+	"updateCadence": "Living program page; PPC grades for individual fire protection areas are re-evaluated over time.",
+	"status": "active",
+	"notes": "Fetched today and all six claims confirmed verbatim on the page, including the sub-details of the four evaluation areas. The page does not state numeric point weightings, so none are used. The page also does not connect PPC to any particular application form field, so this page never equates it with the ACORD 140 PROT CL field.",
+	"officialHost": true
+}

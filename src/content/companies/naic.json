@@ -1,0 +1,124 @@
+{
+	"legalName": "National Association of Insurance Commissioners",
+	"shortName": "NAIC",
+	"orgType": "standards-organization",
+	"summary": "The National Association of Insurance Commissioners (NAIC) describes itself as the U.S. standard-setting organization, founded in 1871 and governed by the chief insurance regulators from the 50 states, the District of Columbia, and five U.S. territories to coordinate regulation of multistate insurers [S:naic-about]. NAIC states that it provides expertise, data, and analysis for insurance commissioners to effectively regulate the industry and protect consumers, and that it also provides consumer protection and education, data collection and analysis, technology, financial assessments and reporting, and licensing and testing [S:naic-about]. On model laws, NAIC states that once its members have adopted a model law it becomes a priority of the NAIC, and that the goal is to encourage legislatures or regulatory bodies to adopt the model law, with as few changes as possible, in a majority of states within three years after its adoption by the NAIC members [S:naic-model-laws-about]. For consumers, NAIC's own consumer page carries no NAIC phone line and routes complaint filing to the insurance department of the state where you live [S:naic-consumer].",
+	"officialUrls": [
+		{
+			"label": "Our Story (NAIC self-description)",
+			"url": "https://content.naic.org/about"
+		},
+		{
+			"label": "Consumer hub",
+			"url": "https://content.naic.org/consumer.htm"
+		},
+		{
+			"label": "Model Laws - About",
+			"url": "https://content.naic.org/model-laws/about"
+		},
+		{
+			"label": "Publications catalog",
+			"url": "https://content.naic.org/publications"
+		},
+		{
+			"label": "Contact",
+			"url": "https://content.naic.org/contact"
+		}
+	],
+	"contactChannels": [
+		{
+			"label": "Consumer routing (start here)",
+			"value": "Contact the insurance department in the state where you live",
+			"note": "NAIC's consumer page publishes no consumer phone line and routes complaint filing to a state-by-state selector [S:naic-consumer]. NAIC's Consumer Insurance Search results page likewise tells you to contact the insurance department where you live if you cannot find a company [S:naic-cis]."
+		},
+		{
+			"label": "NAIC general inquiries",
+			"value": "(816) 783-8500 / help@naic.org",
+			"note": "Published on NAIC's Contact page as general inquiries. This is an organizational line, not a consumer complaint line [S:naic-contact][S:naic-consumer]."
+		},
+		{
+			"label": "Executive Office (Washington, DC)",
+			"value": "1101 K Street, N.W., Suite 650, Washington, DC 20005 / (202) 471-3990",
+			"note": "Listed on NAIC's Contact page [S:naic-contact]."
+		},
+		{
+			"label": "Central Office (Kansas City)",
+			"value": "1100 Walnut Street, Suite 1000, Kansas City, MO 64106-2197 / (816) 842-3600",
+			"note": "Listed on NAIC's Contact page [S:naic-contact]."
+		},
+		{
+			"label": "Capital Markets and Investment Analysis Office (New York)",
+			"value": "One New York Plaza, Suite 4210, New York, NY 10004 / (212) 398-9000",
+			"note": "Listed on NAIC's Contact page [S:naic-contact]."
+		}
+	],
+	"regulatorRecords": [
+		{
+			"label": "Consumer Insurance Search (CIS)",
+			"url": "https://content.naic.org/cis_consumer_information.htm",
+			"note": "A company search across state-submitted information. NAIC warns that an insurance company may have different subsidiaries with different names and tells you to check your policy for the correct name; it tells you to check your state insurance department's website to confirm the company or HMO is licensed, and to contact the insurance department where you live if you cannot find a company [S:naic-cis]. NAIC's consumer page describes CIS as a way to find information about insurance company complaints, licenses, and financial health [S:naic-consumer]."
+		},
+		{
+			"label": "Closed Confirmed Consumer Complaints by Reason (CIS)",
+			"url": "https://content.naic.org/cis_agg_reason.htm",
+			"note": "NAIC states it produces reports combining data submitted by state insurance departments, providing information about common closed complaints by reason and type of insurance and how the complaints were resolved [S:naic-cis-agg-reason]. NAIC's complaint article adds that the compiled data is closed, confirmed complaint information and is searchable by state, company, and insurance type for the past three years [S:naic-complaint-article]."
+		},
+		{
+			"label": "NAIC consumer tools hub (includes the Life Insurance Policy Locator)",
+			"url": "https://content.naic.org/consumer.htm",
+			"note": "This link reaches NAIC's consumer hub, not the locator itself. NAIC describes the Life Insurance Policy Locator on that hub as a free tool that helps beneficiaries search for unclaimed life insurance policies, alongside an Online Fraud Reporting System, the Global Receivership Information Database, a glossary, a Consumer Participation Program, and learning resources [S:naic-consumer]."
+		}
+	],
+	"publications": [
+		{
+			"label": "NAIC publications catalog (consumer guides)",
+			"url": "https://content.naic.org/publications",
+			"note": "This link reaches the catalog, not an individual guide. The catalog lists consumer titles including Consumer Guide to Title Insurance, Consumer's Guide to Annuities, Consumer's Guide to Auto Insurance, Consumer's Guide to Cancer Insurance, Consumer's Guide to Earthquake Insurance, Consumer's Guide to Homeowners Insurance, Consumer's Guide to Life Insurance, Consumer's Guide to Long-Term Care Insurance, and Consumer's Guide to Medigap [S:naic-publications]. The title insurance guide is the one catalog entry printed without an apostrophe-s, as Consumer Guide to Title Insurance; we reproduce NAIC's spelling rather than regularizing it [S:naic-publications]."
+		},
+		{
+			"label": "How to File a Complaint and Research Complaints Against Insurance Carriers",
+			"url": "https://content.naic.org/article/how-file-complaint-and-research-complaints-against-insurance-carriers",
+			"note": "NAIC's own explanation of complaint research, and the source of the complaint-index caveats reproduced below [S:naic-complaint-article]."
+		}
+	],
+	"statutoryBasis": [
+		{
+			"label": "15 U.S.C. section 1012 (McCarran-Ferguson Act)",
+			"url": "https://www.law.cornell.edu/uscode/text/15/1012",
+			"note": "The federal backdrop for state-based insurance regulation. Subsection (a) subjects the business of insurance, and every person engaged in it, to the laws of the several States relating to the regulation or taxation of that business; subsection (b) provides that no Act of Congress invalidates, impairs, or supersedes a state insurance law unless the Act specifically relates to the business of insurance [S:usc-15-1012]. We do not use this statute to describe NAIC's own legal status, which it does not address."
+		},
+		{
+			"label": "NAIC Model Laws - About (NAIC's stated adoption goal)",
+			"url": "https://content.naic.org/model-laws/about",
+			"note": "This is NAIC's own process page, not a statute. NAIC states that adoption of a model law requires at least a two-thirds majority vote of the NAIC Executive (EX) Committee/Plenary, that an adopted model becomes a priority of the NAIC, and that the goal is to encourage legislatures or regulatory bodies to adopt it, with as few changes as possible, in a majority of states within three years [S:naic-model-laws-about]. Whether a given model has been enacted in a given state, and in what amended form, has to be checked against that state's own statutes and regulations."
+		}
+	],
+	"jurisdictions": [
+		"US"
+	],
+	"whatWeDoNotClaim": [
+		"We publish no financial strength rating, ranking, or summary for any insurer, and we use no best, cheapest, or most reliable language about any company. NAIC itself advises that you should not use just one factor to decide which insurance company to use, and that you should compare the complaints, financials, and direct premiums written of several companies [S:naic-complaint-article].",
+		"We do not treat the NAIC complaint index as a quality score. NAIC states that a company's complaint index can vary not only due to fluctuations in the company's complaints or premiums but also due to fluctuations in the complaints or premiums of the U.S. market for the type of insurance being sold [S:naic-complaint-article].",
+		"We make no statement about NAIC's own legal authority, and specifically we do not say whether NAIC does or does not license, rate, approve, or regulate insurers. The NAIC pages we read do not address that, and it would be a legal question for a lawyer. We also do not claim NAIC has reviewed or endorsed this page.",
+		"We do not claim that any NAIC model law is in force in California or in any other state, and we do not state that a company found or not found in Consumer Insurance Search is licensed or unlicensed. NAIC directs you to confirm licensure with your own state insurance department [S:naic-cis]."
+	],
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"naic-about",
+		"naic-consumer",
+		"naic-contact",
+		"naic-cis",
+		"naic-cis-agg-reason",
+		"naic-complaint-article",
+		"naic-model-laws-about",
+		"naic-publications",
+		"usc-15-1012"
+	],
+	"relatedQuestions": [
+		"homeowners-earthquake-california",
+		"replacement-cost-vs-market-value"
+	]
+}

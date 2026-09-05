@@ -1,0 +1,25 @@
+{
+	"title": "California Insurance Code Section 678 (offer of renewal or notice of nonrenewal)",
+	"publisher": "California Legislative Information, Office of Legislative Counsel",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=678.",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"California Insurance Code Section 678(a) requires an insurer, at least 45 days before the policy expiration, to deliver to the named insured or mail to the named insured at the address shown in the policy either an offer of renewal of the policy contingent upon payment of premium as stated in the offer, or a notice of nonrenewal.",
+		"The renewal offer under Section 678 must state the premium and must disclose any reduction of limits or elimination of coverage.",
+		"Section 678(b) provides that if the insurer fails to give the required notice, the existing policy, with no change in its terms and conditions, remains in effect for 45 days from the date the offer to renew or the notice of nonrenewal is delivered or mailed.",
+		"For policies expiring on or after July 1, 2020, Section 678(c) requires the notice of nonrenewal to be delivered or mailed at least 75 days before the policy expiration, with a corresponding 75-day continuation of the existing policy if the notice is not timely given.",
+		"The page carries the note '(Amended by Stats. 2022, Ch. 424, Sec. 8. (SB 1242) Effective January 1, 2023.)'"
+	],
+	"updateCadence": "Amended by legislation; re-check leginfo before each publication cycle.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: 2023-01-01"
+}

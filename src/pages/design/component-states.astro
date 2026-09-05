@@ -1,0 +1,361 @@
+---
+import { ArrowRight, Search } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import DataTable from '../../components/DataTable.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import StateBlock from '../../components/StateBlock.astro';
+import StatusChip from '../../components/StatusChip.astro';
+
+/*
+ * Internal specimen gallery. noindex, excluded from the sitemap, and absent from
+ * navigation. It exists so every required state can be reviewed side by side
+ * without inventing content to trigger it: showing a "corrected" badge here is a
+ * specimen, whereas faking a correction on a real answer would be a lie.
+ */
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Design', path: '/design/component-states' },
+];
+
+const CONFIDENCE = ['established', 'contextual', 'changing', 'disputed', 'insufficient'] as const;
+const REVIEW = ['reviewed', 'under-review', 'corrected'] as const;
+const SOURCE = ['stale-source', 'source-unavailable', 'not-adopted', 'reproduction'] as const;
+---
+
+<BaseLayout
+	title="Component state gallery"
+	description="Internal specimen gallery of every required interface state."
+	noindex
+	pageType="editorial"
+>
+	<PageHeader
+		eyebrow="Internal reference, not a public page"
+		title="Component state gallery"
+		lede="Every state the brief requires, rendered as a labeled specimen. This page is noindex, is excluded from the sitemap, and is not linked from navigation."
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell">
+			<Callout tone="note">
+				<p>
+					<strong>These are specimens, not live data.</strong> A "corrected" badge here demonstrates
+					the component. It does not mean any answer was corrected. Faking a correction on a real
+					page to show off a badge would be exactly the kind of thing this site exists not to do.
+				</p>
+			</Callout>
+		</div>
+	</section>
+
+	<section class="band band-tight" aria-labelledby="status-title">
+		<div class="shell">
+			<h2 id="status-title">Status and confidence</h2>
+			<p class="lede">Icon, text, and colour together. Never colour alone.</p>
+
+			<h3 style="margin-top: var(--s-6)">Answer confidence</h3>
+			<div style="display:flex;flex-wrap:wrap;gap:var(--s-3);margin-top:var(--s-3)">
+				{CONFIDENCE.map((kind) => <StatusChip kind={kind} />)}
+			</div>
+
+			<h3 style="margin-top: var(--s-6)">Review state</h3>
+			<div style="display:flex;flex-wrap:wrap;gap:var(--s-3);margin-top:var(--s-3)">
+				{REVIEW.map((kind) => <StatusChip kind={kind} />)}
+			</div>
+
+			<h3 style="margin-top: var(--s-6)">Source state</h3>
+			<div style="display:flex;flex-wrap:wrap;gap:var(--s-3);margin-top:var(--s-3)">
+				{SOURCE.map((kind) => <StatusChip kind={kind} />)}
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight band-paper" aria-labelledby="controls-title">
+		<div class="shell">
+			<h2 id="controls-title">Controls</h2>
+			<p class="lede">
+				Segmented controls for modes, tabs for views, checkboxes for binary filters, selects for
+				finite option sets. Every control on the live site is wired up; these specimens are inert by
+				design and say so.
+			</p>
+
+			<div class="stack-loose" style="margin-top: var(--s-6)">
+				<div>
+					<h3>Buttons</h3>
+					<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center;margin-top:var(--s-3)">
+						<button class="btn btn-primary" type="button">Primary command</button>
+						<button class="btn btn-secondary" type="button">Secondary</button>
+						<button class="btn btn-quiet" type="button">Quiet</button>
+						<button class="btn btn-ink" type="button">Ink</button>
+						<button class="btn btn-secondary btn-sm" type="button">Small</button>
+						<button class="btn btn-primary" type="button" disabled>Disabled</button>
+					</div>
+				</div>
+
+				<div>
+					<h3>Icon button with tooltip</h3>
+					<div style="display:flex;gap:var(--s-3);margin-top:var(--s-3)">
+						<span class="tip">
+							<button class="icon-btn" type="button" aria-label="Search the library">
+								<Search size={18} aria-hidden="true" />
+							</button>
+							<span class="tip-text" aria-hidden="true">Search the library</span>
+						</span>
+						<p class="mono" style="max-width:52ch">
+							The accessible name comes from aria-label. The tooltip is a sighted-user convenience
+							and is hidden from assistive technology, so the name is never duplicated.
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<h3>Segmented control (modes)</h3>
+					<div class="segmented" role="group" aria-label="Specimen mode" style="margin-top:var(--s-3)">
+						<button type="button" aria-pressed="true">Selected</button>
+						<button type="button" aria-pressed="false">Default</button>
+						<button type="button" aria-pressed="false">Third</button>
+					</div>
+				</div>
+
+				<div>
+					<h3>Tabs (views)</h3>
+					<div class="tablist" role="tablist" aria-label="Specimen views" style="margin-top:var(--s-3)">
+						<button role="tab" aria-selected="true" id="spec-tab-1" aria-controls="spec-panel-1" type="button">Selected</button>
+						<button role="tab" aria-selected="false" id="spec-tab-2" aria-controls="spec-panel-2" type="button" tabindex="-1">Second</button>
+						<button role="tab" aria-selected="false" id="spec-tab-3" aria-controls="spec-panel-3" type="button" tabindex="-1">Third</button>
+					</div>
+					<div role="tabpanel" id="spec-panel-1" aria-labelledby="spec-tab-1">
+						<p class="mono">Panel content for the selected tab.</p>
+					</div>
+					<div role="tabpanel" id="spec-panel-2" aria-labelledby="spec-tab-2" hidden></div>
+					<div role="tabpanel" id="spec-panel-3" aria-labelledby="spec-tab-3" hidden></div>
+				</div>
+
+				<div>
+					<h3>Fields</h3>
+					<div class="field-row" style="margin-top:var(--s-3);max-width:720px">
+						<div class="field">
+							<label for="spec-text">Text input</label>
+							<input id="spec-text" type="text" placeholder="Placeholder" />
+							<span class="hint">Hint text sits below the control.</span>
+						</div>
+						<div class="field">
+							<label for="spec-select">Select (finite options)</label>
+							<select id="spec-select">
+								<option>First option</option>
+								<option>Second option</option>
+							</select>
+						</div>
+						<div class="field">
+							<label for="spec-date">Date</label>
+							<input id="spec-date" type="date" />
+						</div>
+					</div>
+					<fieldset class="fieldset" style="margin-top:var(--s-4)">
+						<legend>Checkboxes (binary filters)</legend>
+						<div class="check-inline">
+							<label class="check"><input type="checkbox" checked /><span>Checked</span></label>
+							<label class="check"><input type="checkbox" /><span>Unchecked</span></label>
+						</div>
+					</fieldset>
+				</div>
+
+				<div>
+					<h3>Disclosure</h3>
+					<details class="disc" style="max-width:640px;margin-top:var(--s-3)">
+						<summary>
+							Closed by default
+							<span class="disc-chevron" aria-hidden="true">
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6" /></svg>
+							</span>
+						</summary>
+						<div class="disc-body">
+							<p class="mono">Body content. Uses native details, so it works without JavaScript and prints expanded.</p>
+						</div>
+					</details>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight" aria-labelledby="states-title">
+		<div class="shell">
+			<h2 id="states-title">Result states</h2>
+			<div class="stack-loose" style="margin-top:var(--s-6)">
+				<div>
+					<h3>Loading skeleton</h3>
+					<p class="mono">Fixed row height, so replacing it with real rows shifts nothing.</p>
+					<div class="skeleton" style="margin-top:var(--s-3)">
+						{[0, 1, 2].map(() => (
+							<div class="skeleton-row">
+								<div class="skeleton-bar tall w-55"></div>
+								<div class="skeleton-bar w-85"></div>
+								<div class="skeleton-bar w-30"></div>
+							</div>
+						))}
+					</div>
+				</div>
+
+				<div>
+					<h3>No result</h3>
+					<StateBlock kind="no-result" heading="Nothing in the library matches that yet.">
+						<p>The lookup found no published record for those terms under the filters in effect.</p>
+						<div class="state-actions">
+							<button class="btn btn-secondary btn-sm" type="button">Clear the filters</button>
+							<a class="btn btn-secondary btn-sm" href="/questions">Browse every question</a>
+						</div>
+					</StateBlock>
+				</div>
+
+				<div>
+					<h3>Insufficient evidence</h3>
+					<StateBlock kind="insufficient" heading="Related material, but not enough to answer directly.">
+						<p>
+							The library holds pages that touch this topic, but none answers the question with
+							sources strong enough to publish as an answer.
+						</p>
+					</StateBlock>
+				</div>
+
+				<div>
+					<h3>Stale source</h3>
+					<StateBlock kind="stale" heading="This source is past its review window.">
+						<p>It has not been re-verified inside the review cadence. Every page citing it shows the same flag.</p>
+					</StateBlock>
+				</div>
+
+				<div>
+					<h3>Source unavailable</h3>
+					<StateBlock kind="source-unavailable" heading="The original record did not resolve at the last check.">
+						<p>The link is kept because it is the citation of record.</p>
+					</StateBlock>
+				</div>
+
+				<div>
+					<h3>Offline or fetch failure</h3>
+					<StateBlock kind="offline" heading="The lookup index did not load.">
+						<p>Local lookup is unavailable. Every answer is still reachable by browsing.</p>
+						<div class="state-actions">
+							<button class="btn btn-secondary btn-sm" type="button">Try again</button>
+						</div>
+					</StateBlock>
+				</div>
+
+				<div>
+					<h3>Empty</h3>
+					<StateBlock kind="empty" heading="Nothing here yet.">
+						<p>An empty state names the gap rather than pretending the section does not exist.</p>
+					</StateBlock>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight band-paper" aria-labelledby="blocks-title">
+		<div class="shell">
+			<h2 id="blocks-title">Content blocks</h2>
+
+			<div class="stack-loose" style="margin-top:var(--s-6)">
+				<div>
+					<h3>Direct answer</h3>
+					<div class="direct-answer">
+						<p>
+							The direct answer sits first, in display type, before any qualification. Conditions
+							follow it rather than preceding it.
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<h3>Callouts</h3>
+					<Callout tone="note"><p>A note. Context that helps but does not change the answer.</p></Callout>
+					<Callout tone="limit"><p>A limit. What this page deliberately does not do.</p></Callout>
+					<Callout tone="warn"><p>A warning. Read this before relying on the page.</p></Callout>
+					<Callout tone="privacy"><p>A privacy notice. What happens to what you type.</p></Callout>
+				</div>
+
+				<div>
+					<h3>Record rows</h3>
+					<div class="rows">
+						{[1, 2].map((n) => (
+							<a class="row" href="/questions">
+								<div>
+									<h4 class="row-title">A repeating record row, specimen {n}</h4>
+									<p>Unframed, separated by a hairline rule rather than by a card.</p>
+									<div class="row-meta">
+										<StatusChip kind="established" />
+										<span class="meta">Reviewed August 31, 2026</span>
+									</div>
+								</div>
+								<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+							</a>
+						))}
+					</div>
+				</div>
+
+				<div>
+					<h3>Cards</h3>
+					<p class="mono">
+						Used only for repeated results, source records, examples, and framed tools. Never for
+						page sections, and never nested.
+					</p>
+					<div class="card-grid" style="margin-top:var(--s-3)">
+						{[1, 2, 3].map((n) => (
+							<a class="card" href="/tools">
+								<div class="card-top"><span class="status status-plain">Specimen</span></div>
+								<h4 class="card-title">Card {n}</h4>
+								<p>Short supporting line.</p>
+								<div class="card-foot"><span class="meta">Open</span><ArrowRight size={15} aria-hidden="true" /></div>
+							</a>
+						))}
+					</div>
+				</div>
+
+				<div>
+					<h3>Table with mobile alternative</h3>
+					<p class="mono">Resize below 640px: the table hides and the stacked definition list takes over.</p>
+					<DataTable
+						caption="A specimen table. One data set, two renderings, exactly one visible."
+						columns={['Row header', 'Second column', 'Third column']}
+						rows={[
+							['First row', 'Value', 'Value'],
+							['Second row', 'Value', 'Value'],
+						]}
+					/>
+				</div>
+
+				<div>
+					<h3>Pagination</h3>
+					<nav class="pager" aria-label="Specimen pagination">
+						<span class="meta">Showing 1 to 20 of 60</span>
+						<div class="pager-pages">
+							<a href="/questions" aria-current="page">1</a>
+							<a href="/questions">2</a>
+							<a href="/questions">3</a>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight" aria-labelledby="responsive-title">
+		<div class="shell">
+			<h2 id="responsive-title">Responsive and print behaviour</h2>
+			<DataTable
+				caption="What changes at each breakpoint, and why."
+				columns={['Viewport', 'Layout', 'What changes']}
+				rows={[
+					['1440 desktop', 'Two column with a sticky rail', 'Full source ledger metadata, header search visible.'],
+					['1024 laptop', 'Two column, narrower rail', 'Rail stays sticky, table columns compress.'],
+					['768 tablet', 'Single column', 'Rail unsticks and becomes a horizontal block above the content.'],
+					['640 and below', 'Single column, stacked', 'Tables swap to definition lists, cards go full width, nav collapses to a panel.'],
+					['390 mobile', 'Single column', 'Buttons go full width inside the handoff and tool actions.'],
+					['320 narrow', 'Single column', 'Segmented controls stretch to full width, brand type steps down.'],
+					['Print', 'Single flow', 'Header, footer, and controls drop. Disclosures expand. Source URLs print after their titles.'],
+				]}
+			/>
+		</div>
+	</section>
+</BaseLayout>

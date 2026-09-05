@@ -1,0 +1,23 @@
+{
+	"title": "Acceptable Waiver Of Subrogation Endorsements (municipal sample packet reproducing CG 24 04 05 09 and WC 04 03 06)",
+	"publisher": "City of Sierra Madre, California",
+	"url": "https://www.sierramadreca.gov/media/fg4hgcis/acceptable-waiver-of-subrogation-endorsements.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "CA",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"The packet reproduces ISO form CG 24 04 05 09, 'Waiver Of Transfer Of Rights Of Recovery Against Others To Us', which adds the following to Paragraph 8, Transfer Of Rights Of Recovery Against Others To Us, of Section IV - Conditions: 'We waive any right of recovery we may have against the person or organization shown in the Schedule above because of payments we make for injury or damage arising out of your ongoing operations or \"your work\" done under a contract with that person or organization and included in the \"products-completed operations hazard\". This waiver applies only to the person or organization shown in the Schedule above.' The reproduced form carries the footer 'Insurance Services Office, Inc., 2008'.",
+		"The packet reproduces form WC 04 03 06 (Ed. 04/84), 'Waiver Of Our Right To Recover From Others Endorsement - California', which carries the same waiver sentence as WC 00 03 13 and adds: 'You must maintain payroll records accurately segregating the remuneration of your employees while engaged in the work described in the Schedule' and 'The additional premium for this endorsement shall be _____% of the California workers compensation premium otherwise due on such remuneration.' The percentage is a blank field on the form; no figure is stated.",
+		"The packet presents waiver of subrogation endorsements under their own heading, separate from additional insured endorsements, and describes CG 24 04 as providing 'a specific waiver of subrogation for the designated person or organization, barring suit by the company which assumes the insured's rights after loss payment.'"
+	],
+	"updateCadence": "The city may revise its sample packet at any time; the underlying forms are revised by their own filers.",
+	"status": "active",
+	"notes": "Downloaded 2026-08-31; converted with pdftotext -layout and read. This is a municipal sample packet, not a standards-body publication: every reproduced form is overprinted with the word SAMPLE and has 'City of Sierra Madre' inserted into the Schedule, and the overprint leaves visible artifacts in the extracted text. authorityLevel is therefore 'secondary' and primary is false. It is cited here only for the text of CG 24 04 05 09 and WC 04 03 06, for which no cleaner accessible copy was located on 2026-08-31; WC 00 03 13 is cited instead to a clean rating bureau copy. A cleaner filing-repository or regulator posting for these two forms would be a worthwhile replacement.",
+	"officialHost": true
+}

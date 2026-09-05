@@ -1,0 +1,24 @@
+{
+	"title": "What is homeowner's insurance? Why is homeowner's insurance required?",
+	"publisher": "Consumer Financial Protection Bureau",
+	"url": "https://www.consumerfinance.gov/ask-cfpb/what-is-homeowners-insurance-why-is-homeowners-insurance-required-en-162/",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Your lender wants to make sure your property is protected by insurance.",
+		"A borrower can shop separately for homeowner's insurance and choose the provider and plan that is right for them.",
+		"If a lender buys insurance on the home because the borrower did not maintain coverage, that insurance may only cover the lender, and not you, and it also may be more expensive than what you could buy on your own.",
+		"Where insurance is escrowed, the borrower makes payments to the lender and the lender holds the insurance portion of the payment in an escrow account."
+	],
+	"updateCadence": "CFPB reviews Ask CFPB entries periodically; a last reviewed date is shown on the page.",
+	"status": "active",
+	"notes": "Fetched on 2026-08-31. The page shows a last reviewed date of August 8, 2024, recorded here as effectiveDate. Effective: 2024-08-08",
+	"officialHost": true
+}

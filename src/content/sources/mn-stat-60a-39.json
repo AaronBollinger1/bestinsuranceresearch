@@ -1,0 +1,22 @@
+{
+	"title": "Minnesota Statutes Section 60A.39 (Certificates of Insurance)",
+	"publisher": "Minnesota Office of the Revisor of Statutes",
+	"url": "https://www.revisor.mn.gov/statutes/cite/60a.39",
+	"sourceType": "statute",
+	"jurisdiction": "MN",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Minnesota Statutes Section 60A.39, subdivision 1, provides that a certificate of insurance is a document that provides evidence of property or liability insurance coverage and the amount of insurance issued, and does not convey any contractual rights to the certificate holder.",
+		"Subdivision 2 bars an insurer or licensed producer from issuing a certificate of insurance or other document that affirmatively or negatively amends, extends, or alters the coverage provided by an approved policy, form, or endorsement without the written approval of the commissioner.",
+		"Subdivision 3 requires a certificate or memorandum of insurance issued to a party other than the policyholder to contain the statement that the certificate or memorandum of insurance does not affirmatively or negatively amend, extend, or alter the coverage afforded by the insurance policy."
+	],
+	"updateCadence": "Amended by legislation; re-check the revisor page before each publication cycle.",
+	"status": "active",
+	"officialHost": true
+}

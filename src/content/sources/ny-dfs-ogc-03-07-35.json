@@ -1,0 +1,23 @@
+{
+	"title": "OGC Opinion No. 03-07-35: Claims Made and Reported Policies",
+	"publisher": "New York State Department of Financial Services, Office of General Counsel (issued by the then New York State Insurance Department)",
+	"url": "https://www.dfs.ny.gov/insurance/ogco2003/rg030735.htm",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "NY",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"States that a claims-made and reported policy requires that the claim and the reporting of the claim to the insurer both take place during the same policy term.",
+		"States that authorized insurers are not permitted to write such policies chiefly because of the risk of gaps in coverage inherent in such policies.",
+		"Concludes that a claims-made and reported policy may not be issued in New York except by an unauthorized insurer through an excess line broker."
+	],
+	"updateCadence": "one-time opinion letter; the Department does not routinely revisit or annotate archived OGC opinions",
+	"status": "active",
+	"notes": "Fetched twice on 2026-08-31; opinion number, July 31, 2003 date, and the quoted language confirmed on the page. This is an informal Office of General Counsel opinion letter, not a regulation, and it is 23 years old. The page carries no currency or supersession disclaimer, which means its continued accuracy is not affirmed by the page itself. Cited in this bundle as a 2003 regulator opinion, not as a standing legal rule. Published: 2003-07-31",
+	"officialHost": true
+}

@@ -1,0 +1,25 @@
+{
+	"title": "California Insurance Code Section 1764.1 (surplus line insurance disclosure notice)",
+	"publisher": "California Legislature, California Legislative Information (leginfo)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=1764.1",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The required notice states that the insurance policy is being issued by an insurer that is not licensed by the State of California.",
+		"The required notice states that the insurer is not subject to the financial solvency regulation and enforcement that apply to California licensed insurers.",
+		"The required notice states that the insurer does not participate in any of the insurance guarantee funds created by California law, and that those funds will not pay claims or protect assets if the insurer becomes insolvent.",
+		"The disclosure must appear in boldface 16-point type on a freestanding document, and must be signed by the applicant.",
+		"The disclosure must also be included in boldface 16-point type on the front page of the policy."
+	],
+	"updateCadence": "Amended by the California Legislature from time to time; verify the current text on leginfo before relying on it.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31. The page loaded and the notice language above was read on the page verbatim. The section also contains recordkeeping and cancellation provisions and exceptions (for example for renewals and industrial insureds) that are not relied on in this entry, so they are not listed as claims.",
+	"officialHost": true
+}

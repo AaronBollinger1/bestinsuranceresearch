@@ -1,0 +1,125 @@
+{
+	"code": "FL",
+	"name": "Florida",
+	"regulator": {
+		"name": "Florida Office of Insurance Regulation",
+		"url": "https://floir.gov/",
+		"consumerPhone": "(850) 413-3140 for the Office of Insurance Regulation main office; insurance consumer assistance is (850) 413-3089 at the Department of Financial Services Division of Consumer Services"
+	},
+	"summary": "Florida's property market runs through two state-created structures on top of the private market. Statute describes Citizens Property Insurance Corporation as a government entity that is an integral part of the state, and that is not a private insurance company, covering applicants who are in good faith entitled to procure insurance through the voluntary market but are unable to do so [S:fl-stat-627-351]. The Florida Hurricane Catastrophe Fund is a tax-exempt state trust fund created by section 215.555, Florida Statutes, under the direction and control of the State Board of Administration, and participation is mandatory for all residential property insurance companies doing business in Florida [S:fhcf-about]. Insurance regulation sits with the Office of Insurance Regulation, while insurance consumer assistance runs through the Department of Financial Services Division of Consumer Services [S:fl-oir-home][S:fl-dfs-consumer-services]. On auto, Florida's no-fault requirement is still in force: personal injury protection has not been repealed. Section 627.733(1) requires every owner or registrant of a motor vehicle required to be registered and licensed in Florida, other than a motor vehicle used as a school bus or limousine, to maintain security continuously throughout the registration or licensing period, with taxicab owners governed instead by section 324.032(1) [S:fl-stat-627-733]. That security is $10,000 in personal injury protection medical and disability benefits and $5,000 in death benefits [S:fl-stat-627-736] together with $10,000 of property damage liability, or $30,000 combined [S:fl-stat-324-022], and a policy providing personal injury protection may not be delivered or issued for delivery in Florida unless it also provides property damage liability coverage as required by section 324.022 [S:fl-stat-627-7275]. The separate chapter 324 proof of financial responsibility standard is $10,000 per person and $20,000 per crash for bodily injury plus $10,000 for property damage, except that section 324.021(7)(d) sends commercial motor vehicles and nonpublic sector buses to the amounts in sections 627.7415 and 627.742 instead [S:fl-stat-324-021]. Two repeal attempts have failed: the Legislature passed SB 54 in 2021 and the Governor vetoed it, per the Senate's own bill history entry dated June 29, 2021 [S:fl-sb-54-2021-bill], and a 2025 bill that would have repealed the no-fault provisions died in the Judiciary Committee on June 16, 2025 [S:fl-hb1181-2025-bill].",
+	"keyMechanisms": [
+		{
+			"title": "Citizens is described in statute as a state entity, not a private carrier",
+			"detail": "Florida Statutes section 627.351(6) describes Citizens Property Insurance Corporation as a government entity that is an integral part of the state, and that is not a private insurance company [S:fl-stat-627-351]. Citizens coverage is for applicants who are in good faith entitled to procure insurance through the voluntary market but are unable to do so [S:fl-stat-627-351]. That framing matters because Citizens deficits are addressed through surcharges and assessments as well as premium: Citizens may levy a policyholder surcharge as a uniform percentage of the premium for the policy of up to 15 percent of such premium, and emergency assessments may be levied when surcharges are insufficient [S:fl-stat-627-351]."
+		},
+		{
+			"title": "Statutory ineligibility rules keep Citizens a residual market",
+			"detail": "Statute makes several categories of structure ineligible for Citizens coverage. A personal lines residential structure with a dwelling replacement cost of $700,000 or more is not eligible, except that in counties the office determines lack a reasonable degree of competition a personal lines residential structure with a dwelling replacement cost of less than $1 million remains eligible [S:fl-stat-627-351]. A personal lines residential structure in the wind-borne debris region with an insured value of $750,000 or more is not eligible unless the structure has opening protections [S:fl-stat-627-351]. A structure newly constructed, or rebuilt, repaired, restored, or remodeled, seaward of the coastal construction control line is not eligible [S:fl-stat-627-351]. Separately, Citizens publishes two new-business premium comparison rules, and they are worded differently from each other. For Personal Lines new business, Citizens states that the premium for coverage from an authorized insurer must be more than 20 percent greater than the premium for comparable coverage from Citizens, up from a prior 15 percent threshold, effective July 1, 2021 to comply with Senate Bill 76 (2021); Citizens also describes an alternative no-offer-of-coverage standard and states that the Property Insurance Clearinghouse determines eligibility under the rule [S:citizens-eligibility-pl-20pct]. For residential Commercial Lines new business, Citizens states that the premium for coverage from an authorized insurer must be at least 20 percent higher than the premium for comparable coverage from Citizens, replacing a prior 15 percent threshold, a change Citizens attributes to Senate Bill 2A signed December 16, 2022 [S:citizens-eligibility-20pct]. The earlier version of this page carried only the commercial rule and so said nothing about the gate most applicants face. Nothing stated here means a specific property qualifies; whether it does is Citizens' determination."
+		},
+		{
+			"title": "Flood coverage is a condition of keeping a Citizens policy",
+			"detail": "Citizens is phasing in a flood insurance requirement for Personal Lines residential policyholders whose policy includes wind coverage, with condominium unit owner policies excepted. Citizens states that existing Personal Lines residential policyholders, other than condominium unit owner policies, in designated Federal Emergency Management Agency flood hazard areas whose policy includes wind coverage were required to have flood insurance when their policies renewed on or after July 1, 2023 [S:citizens-flood-requirement]. The dwelling replacement cost thresholds then step down: $600,000 or more from January 1, 2024, $500,000 or more from January 1, 2025, $400,000 or more from January 1, 2026, and all remaining eligible Personal Lines residential policies from January 1, 2027 [S:citizens-flood-requirement]. Citizens states that the flood policy must come from the National Flood Insurance Program or a private carrier authorized to write flood insurance [S:citizens-flood-requirement]."
+		},
+		{
+			"title": "The FHCF sits behind residential insurers on hurricane losses",
+			"detail": "The Florida Hurricane Catastrophe Fund is a tax-exempt state trust fund created by section 215.555, Florida Statutes, under the direction and control of the State Board of Administration, and it provides reimbursements to residential property insurance companies for a portion of their catastrophic hurricane losses in Florida [S:fhcf-about]. Participation is mandatory for all residential property insurance companies doing business in Florida, and each company must enter into a reimbursement contract with the FHCF [S:fhcf-about]. The Fund is funded only with premium revenues paid by residential property insurance companies, investment income, and in some circumstances revenue bonds backed by emergency assessments on most types of property and casualty insurance premiums [S:fhcf-about]. The FHCF states that it does not reimburse or assist individual policyholders and does not process claims from homeowners or renters [S:fhcf-home]. Current retention levels, coverage selection percentages, and claims-paying capacity are set annually and are not stated here because those figures were not verified at review."
+		},
+		{
+			"title": "The PIP repeal never took effect: one bill was vetoed, another died",
+			"detail": "Florida's no-fault personal injury protection requirement has survived two repeal efforts, by two different routes, and neither took effect. In 2021 the Legislature passed CS/CS/SB 54, titled Motor Vehicle Insurance, whose description included repealing the provisions which comprise the Florida Motor Vehicle No-Fault Law; the Senate's bill history records that it was vetoed by the Governor, in an entry dated June 29, 2021, with the veto message received on November 12, 2021 and transmitted to the Secretary of State on March 15, 2022 [S:fl-sb-54-2021-bill]. Press accounts commonly date that veto to June 30, 2021; this page follows the legislative record. In 2025, HB 1181, also titled Motor Vehicle Insurance, would have repealed provisions relating to application of the Florida Motor Vehicle No-Fault Law and revised motor vehicle insurance coverages, with a proposed effective date of July 1, 2026 [S:fl-hb1181-2025-bill]; it was indefinitely postponed and withdrawn from consideration on May 3, 2025 and died in the Judiciary Committee on June 16, 2025 [S:fl-hb1181-2025-bill]. The consequence for a reader is the plain one: section 627.736 remains in the 2026 Florida Statutes with no repeal note and no scheduled repeal, so the $10,000 medical and disability benefit and the $5,000 death benefit are the current requirement [S:fl-stat-627-736]. Bills of this kind are filed regularly, so check the current statutes and the current session before relying on any description of Florida auto requirements, including this one."
+		}
+	],
+	"residualMarket": {
+		"name": "Citizens Property Insurance Corporation",
+		"url": "https://www.citizensfla.com/",
+		"note": "Statute describes Citizens as a government entity that is an integral part of the state, and that is not a private insurance company, covering applicants who are in good faith entitled to procure insurance through the voluntary market but are unable to do so [S:fl-stat-627-351]. Statutory ineligibility rules apply to personal lines residential structures with a dwelling replacement cost of $700,000 or more, subject to an exception for structures with replacement cost of less than $1 million in counties the office determines lack a reasonable degree of competition; to wind-borne debris region structures insured for $750,000 or more without opening protections; and to structures newly constructed or rebuilt seaward of the coastal construction control line [S:fl-stat-627-351]. Citizens states a Personal Lines new-business rule requiring that an authorized insurer's premium be more than 20 percent greater than Citizens' premium for comparable coverage, effective July 1, 2021, alongside an alternative no-offer-of-coverage standard [S:citizens-eligibility-pl-20pct], and a separately worded rule for residential Commercial Lines new business requiring that the authorized insurer's premium be at least 20 percent higher [S:citizens-eligibility-20pct]. A phased flood insurance requirement applies to Personal Lines residential policies with wind coverage, other than condominium unit owner policies, reaching all remaining eligible policies on January 1, 2027 [S:citizens-flood-requirement]. Deficits can be funded by a policyholder surcharge of up to 15 percent of premium and by emergency assessments [S:fl-stat-627-351]. Nothing stated here means any particular property is eligible; eligibility for any particular property is Citizens' determination."
+	},
+	"autoRequirements": [
+		{
+			"item": "Who must carry security, and what it must be: PIP and property damage liability",
+			"detail": "Section 627.733(1) provides that every owner or registrant of a motor vehicle required to be registered and licensed in Florida shall maintain security as required by subsection (3) in effect continuously throughout the registration or licensing period [S:fl-stat-627-733]. That duty has two branches the earlier version of this page did not carry. First, the subsection excepts a motor vehicle used as a school bus or limousine. Second, owners of taxicabs are governed by the requirements of section 324.032(1) instead [S:fl-stat-627-733]. Subsection (3) also gives more than one way to satisfy the duty: an insurance policy delivered or issued for delivery in Florida by an authorized or eligible motor vehicle liability insurer providing the benefits and exemptions in sections 627.730 through 627.7405, or any other method authorized by section 324.031(2) or (3) and approved by the Department of Highway Safety and Motor Vehicles as affording equivalent security, or self-insuring [S:fl-stat-627-733]. On top of that, a motor vehicle insurance policy providing personal injury protection as set forth in section 627.736 may not be delivered or issued for delivery in Florida unless the policy also provides coverage for property damage liability as required by section 324.022 [S:fl-stat-627-7275], and section 324.022(1) applies to every owner or operator of a motor vehicle required to be registered in Florida [S:fl-stat-324-022]. Verified against the 2026 edition of the Florida Statutes on 2026-08-31; these pages do not establish when these provisions last changed."
+		},
+		{
+			"item": "Personal injury protection: $10,000 medical and disability, $5,000 death benefits",
+			"detail": "Florida's required personal injury protection benefit is $10,000 in medical and disability benefits and $5,000 in death benefits resulting from bodily injury [S:fl-stat-627-736]. Medical benefits apply if the injured individual receives initial services and care within 14 days after the motor vehicle accident, and reimbursement is limited to $2,500 if a qualified provider determines that the injured person did not have an emergency medical condition [S:fl-stat-627-736]. Re-verified against the 2026 edition of the Florida Statutes on 2026-08-31, specifically to settle the repeal question: the section carries no repeal note, no scheduled repeal, and no future effective date, so these are the current amounts and no effective date of change is shown [S:fl-stat-627-736]."
+		},
+		{
+			"item": "Property damage liability: $10,000, or $30,000 combined",
+			"detail": "Section 324.022(1) sets the amount at $10,000 because of damage to, or destruction of, property of others in any one crash, or $30,000 for combined property damage liability and bodily injury liability for any one crash arising out of the use of the motor vehicle [S:fl-stat-324-022]. The same subsection provides that the requirement may be met by one of the methods established in section 324.031, by self-insuring as authorized by section 768.28(16), or by maintaining an insurance policy providing the specified coverage; the earlier version of this page named only the insurance policy route [S:fl-stat-324-022]. Verified against the 2026 edition of the Florida Statutes on 2026-08-31."
+		},
+		{
+			"item": "Chapter 324 proof of financial responsibility standard: $10,000 / $20,000 / $10,000",
+			"detail": "Section 324.021(7) defines proof of financial responsibility as ability to respond in damages in the amount of $10,000 because of bodily injury to, or death of, one person in any one crash; subject to that limit for one person, $20,000 because of bodily injury to, or death of, two or more persons in any one crash; and $10,000 because of injury to, or destruction of, property of others in any one crash [S:fl-stat-324-021]. Those amounts are not the whole subsection: paragraph (7)(d) provides that with respect to commercial motor vehicles and nonpublic sector buses, proof of financial responsibility is in the amounts specified in sections 627.7415 and 627.742 respectively, so a reader operating one of those vehicles is not governed by the $10,000 / $20,000 / $10,000 figures [S:fl-stat-324-021]. Chapter 324 attaches consequences to that standard in specified circumstances rather than at every registration: section 324.051 provides for suspension of licenses and registrations thirty days after receipt of notice of a crash unless the operator or owner shows compliance with the chapter's financial responsibility provisions, subject to exceptions including automobile liability insurance in effect at the time of the crash [S:fl-stat-324-051]. Verified against the 2026 edition of the Florida Statutes on 2026-08-31. Whether a particular driver must file proof, and what satisfies it in a specific case, is a determination for the state agency handling it, and a question about a specific case is a legal question for a lawyer."
+		},
+		{
+			"item": "Higher limits after a DUI conviction: $100,000 / $300,000 / $50,000 for three years",
+			"detail": "After a DUI conviction Florida requires ability to respond in damages of $100,000 because of bodily injury to, or death of, one person in any one crash; subject to that limit for one person, $300,000 because of bodily injury to, or death of, two or more persons in any one crash; and $50,000 because of property damage in any one crash [S:fl-stat-324-023]. Those higher limits must be carried for a minimum period of 3 years, with the exemption conditioned on no further DUI or felony traffic conviction for 3 years from reinstatement of driving privileges [S:fl-stat-324-023]. Verified against the 2026 edition of the Florida Statutes on 2026-08-31."
+		}
+	],
+	"wcMechanism": {
+		"detail": "Florida ties the workers' compensation coverage requirement to industry and headcount. The Division of Workers' Compensation states that an employer in the construction industry with one or more employees, including himself or herself, is required to carry coverage; that an employer in an industry other than construction with four or more employees, full-time or part-time, is required to carry coverage; and that a farmer with more than five regular employees and/or twelve or more other workers for seasonal agricultural labor lasting thirty days or more is required to carry coverage [S:fl-dfs-wc-requirements]. How a worker or a business is classified for these thresholds, and whether an exemption applies, is a question for the Division and for a lawyer, not something this page resolves."
+	},
+	"consumerTools": [
+		{
+			"label": "Florida DFS Division of Consumer Services",
+			"url": "https://www.myfloridacfo.com/division/consumers",
+			"note": "The Division states: Call (850) 413-3089 8:00 AM - 5:00 PM EST for Insurance Assistance, Available Monday through Friday [S:fl-dfs-consumer-services]."
+		},
+		{
+			"label": "OIR CHOICES rate comparison",
+			"url": "https://floir.gov/consumers/choices-rate-comparison-search",
+			"note": "CHOICES covers automobile, homeowners, Medicare Supplement, and small group health; the auto and homeowners tools use three pre-defined model risk scenarios, and OIR states that all rates in the system are for illustrative purposes only [S:fl-oir-choices]."
+		},
+		{
+			"label": "Florida Office of Insurance Regulation",
+			"url": "https://floir.gov/",
+			"note": "OIR lists its office as 200 East Gaines Street, Tallahassee, Florida 32399 and its phone number as (850) 413-3140; use the floir.gov address [S:fl-oir-home]."
+		},
+		{
+			"label": "Citizens Property Insurance Corporation",
+			"url": "https://www.citizensfla.com/",
+			"note": "Citizens' own bulletins on Personal Lines and residential Commercial Lines new-business eligibility and on the phased flood insurance requirement [S:citizens-eligibility-pl-20pct][S:citizens-eligibility-20pct][S:citizens-flood-requirement]."
+		},
+		{
+			"label": "Florida Hurricane Catastrophe Fund",
+			"url": "https://fhcf.sbafla.com/",
+			"note": "The FHCF states that it does not reimburse or assist individual policyholders and does not process claims from homeowners or renters [S:fhcf-home]."
+		},
+		{
+			"label": "Florida Division of Workers' Compensation employer coverage requirements",
+			"url": "https://www.myfloridacfo.com/division/wc/employee/employer-coverage-requirements",
+			"note": "The industry and headcount thresholds that trigger a Florida coverage requirement [S:fl-dfs-wc-requirements]."
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"effectiveDate": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"fl-oir-home",
+		"fl-oir-choices",
+		"fl-stat-627-351",
+		"fl-stat-627-733",
+		"fl-stat-627-736",
+		"fl-stat-627-7275",
+		"fl-stat-324-021",
+		"fl-stat-324-022",
+		"fl-stat-324-023",
+		"fl-stat-324-051",
+		"fhcf-about",
+		"fhcf-home",
+		"citizens-flood-requirement",
+		"citizens-eligibility-20pct",
+		"citizens-eligibility-pl-20pct",
+		"fl-hb1181-2025-bill",
+		"fl-sb-54-2021-bill",
+		"fl-dfs-consumer-services",
+		"fl-dfs-wc-requirements"
+	],
+	"relatedQuestions": [
+		"replacement-cost-vs-market-value",
+		"lender-insurance-requirement",
+		"commercial-property-underwriting-information"
+	]
+}

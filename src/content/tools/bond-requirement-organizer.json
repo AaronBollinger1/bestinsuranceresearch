@@ -1,0 +1,57 @@
+{
+	"name": "Bond Requirement Organizer",
+	"status": "roadmap",
+	"order": 37,
+	"family": [
+		"commercial"
+	],
+	"lines": [
+		"surety"
+	],
+	"summary": "Work out which bond is being asked for, who the obligee is, and why a bond is not insurance.",
+	"spec": {
+		"user": "A contractor or business asked to provide a bond.",
+		"inputData": [
+			"Bond type requested",
+			"Obligee category",
+			"Contract value band"
+		],
+		"authoritativeSources": [
+			"The Miller Act for federal construction contracts",
+			"State contractor licensing bond requirements",
+			"Treasury published list of certified companies"
+		],
+		"privacyBoundary": "No financial statements, no credit information, no personal guarantees, no addresses.",
+		"decisionRules": [
+			"The tool states on every screen that a bond is credit and not insurance, and that the principal is expected to repay the surety.",
+			"This tool never states that a risk is eligible, ineligible, standard market, non-admitted, FAIR Plan eligible, bound, or uninsurable. It shows the published pathway criteria and names who actually decides, which is the insurer."
+		],
+		"uncertainty": "Surety credit depends on financial underwriting this tool does not perform and does not ask about.",
+		"output": "A printable bond requirement summary with the obligee, the type, and the statutory basis where one exists.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

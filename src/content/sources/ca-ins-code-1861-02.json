@@ -1,0 +1,31 @@
+{
+	"title": "California Insurance Code Section 1861.02 (mandatory automobile rating factors and the Good Driver Discount policy)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=1861.02",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "1988-11-08",
+	"effectiveDate": "2016-01-01",
+	"accessedDate": "2026-09-02",
+	"lastChecked": "2026-09-02",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 1861.02(a) requires that rates and premiums for an automobile insurance policy, as described in subdivision (a) of Insurance Code section 660, be determined by application of the following factors in decreasing order of importance: the insured's driving safety record, the number of miles the insured drives annually, and the number of years of driving experience the insured has had.",
+		"Section 1861.02(a)(4) permits the commissioner to adopt by regulation other factors that have a substantial relationship to the risk of loss, and requires the regulations to set forth the respective weight to be given each factor in determining automobile rates and premiums.",
+		"Section 1861.02(a) provides that notwithstanding any other provision of law, the use of any criterion without approval shall constitute unfair discrimination.",
+		"Section 1861.02(b)(1) provides that every person who meets the criteria of section 1861.025 shall be qualified to purchase a Good Driver Discount policy from the insurer of that person's choice, and that an insurer shall not refuse to offer and sell a Good Driver Discount policy to any person who meets those standards.",
+		"Section 1861.02(b)(2) requires the rate charged for a Good Driver Discount policy to comply with subdivision (a) and to be at least 20 percent below the rate the insured would otherwise have been charged for the same coverage.",
+		"Section 1861.02(c) provides that the absence of prior automobile insurance coverage, in and of itself, shall not be a criterion for determining eligibility for a Good Driver Discount policy, or generally for automobile rates, premiums or insurability.",
+		"Section 1861.02(d) permits an insurer to refuse to sell a Good Driver Discount policy insuring a motorcycle unless all named insureds have been licensed to drive a motorcycle for the previous three years.",
+		"Section 1861.02(b)(3) preserves the ability of a reciprocal insurer organized before November 8, 1988 by a motor club, and of an insurer requiring membership in a specified voluntary nonprofit organization in existence before that date, to require that membership as a condition precedent to applying for insurance, subject to the conditions in subparagraph (C).",
+		"Section 1861.02(b)(3)(C) conditions those membership arrangements on membership being conditioned only on timely payment of dues and other bona fide criteria not based upon driving record or insurance, on dues bearing a reasonable relationship to the benefits provided and not depending on whether the member buys insurance, and on membership providing bona fide services or benefits in addition to the right to apply for insurance.",
+		"Section 1861.02(b)(3)(C)(i) provides that membership in a motor club may not be based on residence in any area within the state.",
+		"Section 1861.02(e) provides that the section became operative on November 8, 1989, and the section's own note records that it was added on November 8, 1988 by initiative Proposition 103."
+	],
+	"updateCadence": "Added by initiative (Proposition 103) and amendable only within the limits Proposition 103 sets. Last amended by Stats. 2015, Ch. 348, Sec. 14 (AB 1515), effective January 1, 2016.",
+	"status": "active",
+	"notes": "The cross-reference to section 660(a) is the load-bearing part and is usually dropped: these rules attach to a policy insuring four or fewer private-passenger-type autos, so they govern personal auto and do not reach a commercial fleet policy."
+}

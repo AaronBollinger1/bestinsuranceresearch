@@ -1,0 +1,22 @@
+{
+	"title": "11 NYCRR 73.2 - Applicability (Regulation 121, claims-made policies)",
+	"publisher": "Legal Information Institute, Cornell Law School (unofficial republication of the New York Codes, Rules and Regulations)",
+	"url": "https://www.law.cornell.edu/regulations/new-york/11-NYCRR-73.2",
+	"sourceType": "regulation",
+	"jurisdiction": "NY",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Enumerates the coverages for which claims-made policies may be written in New York, which include completed operations liability, directors and officers liability, employee benefits liability, errors and omissions liability, excess liability, fiduciary liability, pollution and environmental impairment liability, public entity liability, products liability, professional liability including medical malpractice liability, ski resort liability, employment practices liability, and risks specified in paragraph (d)(1).",
+		"Provides that claims-made coverage shall not be permitted for motor vehicle liability, or for any liability risk or coverage subject to section 3425 of the Insurance Law."
+	],
+	"updateCadence": "changes when the New York Department of Financial Services amends Regulation 121; the mirror is republished on Cornell's own schedule",
+	"status": "active",
+	"notes": "Fetched 2026-08-31. The enumerated list and the prohibition were read off the page. Unofficial Cornell LII mirror; official citation is 11 NYCRR 73.2. The section also contains premium and limit thresholds for large commercial insureds that this bundle does not rely on and therefore does not list here.",
+	"officialHost": false
+}

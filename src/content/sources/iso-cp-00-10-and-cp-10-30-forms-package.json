@@ -1,0 +1,32 @@
+{
+	"title": "Commercial property forms package containing Building And Personal Property Coverage Form CP 00 10 10 12 and Causes Of Loss - Special Form CP 10 30 09 17 (Insurance Services Office, Inc. forms)",
+	"publisher": "Conifer Insurance Company, hosting Insurance Services Office, Inc. forms",
+	"url": "https://coniferinsurance.com/wp-content/uploads/2024/07/Michigan-Hospitality-Property-Forms.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "US",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The package contains Building And Personal Property Coverage Form CP 00 10 10 12 with a 2011 Insurance Services Office copyright line, and Causes Of Loss - Special Form CP 10 30 09 17 with a 2016 Insurance Services Office copyright line.",
+		"On CP 00 10 10 12, Your Business Personal Property is covered while located in or on the building described in the Declarations, or in the open or in a vehicle within 100 feet of the building or structure or within 100 feet of the premises described in the Declarations, whichever distance is greater.",
+		"On CP 00 10 10 12, the Property Not Covered list includes personal property while airborne or waterborne.",
+		"On CP 00 10 10 12, the Property Not Covered list includes vehicles or self-propelled machines, including aircraft or watercraft, that are licensed for use on public roads or are operated principally away from the described premises. That item states four exceptions: vehicles or self-propelled machines or autos the insured manufactures, processes or warehouses; vehicles or self-propelled machines other than autos held for sale; rowboats or canoes out of water at the described premises; and trailers, but only to the extent provided for in the Coverage Extension for Non-owned Detached Trailers.",
+		"On CP 00 10 10 12, the Property Not Covered list also includes contraband or property in the course of illegal transportation or trade, and the cost to replace or restore information on valuable papers and records other than those which exist as electronic data.",
+		"On CP 00 10 10 12, the Coverage Extensions section opens by stating that except as otherwise provided the Extensions apply to property located in or on the described building or in the open or in a vehicle within 100 feet of the described premises, and that the insured may extend the insurance only if a Coinsurance percentage of 80% or more, or a Value Reporting period symbol, is shown in the Declarations.",
+		"The Property Off-Premises Coverage Extension on CP 00 10 10 12 applies to Covered Property while away from the described premises in three situations: temporarily at a location the insured does not own, lease or operate; in storage at a leased location where the lease was executed after the beginning of the current policy term; or at any fair, trade show or exhibition.",
+		"The Property Off-Premises Extension on CP 00 10 10 12 states that it does not apply to property in or on a vehicle, or to property in the care, custody or control of the insured's salespersons unless that property is in such care at a fair, trade show or exhibition.",
+		"The Property Off-Premises Extension on CP 00 10 10 12 states that the most payable for loss or damage under the Extension is 10,000 dollars.",
+		"CP 10 30 09 17 contains an Additional Coverage Extension for Property In Transit that applies to the insured's personal property, other than property in the care, custody or control of the insured's salespersons, in transit more than 100 feet from the described premises, and requires the property to be in or on a motor vehicle the insured owns, leases or operates while between points in the coverage territory.",
+		"The Property In Transit Extension on CP 10 30 09 17 responds only to a listed set of causes of loss: fire, lightning, explosion, windstorm or hail, riot or civil commotion, or vandalism; vehicle collision, upset or overturn; and theft of an entire bale, case or package by forced entry into a securely locked body or compartment of the vehicle, with visible marks of the forced entry required.",
+		"The Property In Transit Extension on CP 10 30 09 17 states that the most payable for loss or damage under the Extension is 5,000 dollars."
+	],
+	"updateCadence": "ISO revises commercial property forms periodically. This package carries the 10 12 edition of CP 00 10 and the 09 17 edition of CP 10 30. Later editions, state exceptions and endorsements can change every figure and condition described here.",
+	"status": "active",
+	"notes": "Re-fetched and re-verified 2026-08-31. The URL returns a live 1.5 MB PDF. WebFetch could not read the compressed streams, so the file was downloaded and its FlateDecode streams inflated locally, and each claim above was matched against the extracted text. Three corrections from the earlier draft: the Coverage Extensions gating condition (coinsurance of 80% or more, or a Value Reporting period symbol) was missing and has been added; the fourth exception to the vehicles item (trailers under the Non-owned Detached Trailers extension) was missing and has been added; and a thirteenth claim generalizing from these two forms to standard commercial property programs generally was removed because it was editorial synthesis, not text in the document. Scope caveat that must stay visible wherever this source is used: this is one carrier's Michigan hospitality program package. It evidences these two specific ISO form editions and nothing about any other form, edition, state exception or endorsement. Licensing caveat: this is a third-party host's copy of copyrighted ISO forms. The prose in this bundle describes the forms' terms and limits rather than reproducing their wording at length, and a licensing review is recommended before publication. Published: 2024-07-01",
+	"officialHost": true
+}

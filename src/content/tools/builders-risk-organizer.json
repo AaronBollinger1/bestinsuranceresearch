@@ -1,0 +1,58 @@
+{
+	"name": "Builders Risk and Project Organizer",
+	"status": "roadmap",
+	"order": 38,
+	"family": [
+		"commercial"
+	],
+	"lines": [
+		"builders-risk",
+		"inland-marine"
+	],
+	"summary": "Assemble project value, parties, duration, and contract requirements for a builders risk placement.",
+	"spec": {
+		"user": "An owner, general contractor, or developer preparing a builders risk placement.",
+		"inputData": [
+			"Project value band",
+			"Duration",
+			"Party roles",
+			"Contract insurance requirements"
+		],
+		"authoritativeSources": [
+			"Published builders risk form provisions cited by form and edition",
+			"California Civil Code anti-indemnity sections where relevant"
+		],
+		"privacyBoundary": "No project addresses, no party names, no contract documents.",
+		"decisionRules": [
+			"Contract wording routes to counsel.",
+			"This tool never states that a risk is eligible, ineligible, standard market, non-admitted, FAIR Plan eligible, bound, or uninsurable. It shows the published pathway criteria and names who actually decides, which is the insurer."
+		],
+		"uncertainty": "Builders risk is often written on manuscript forms, so terms vary widely.",
+		"output": "A printable project organizer with the requirements and open questions.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

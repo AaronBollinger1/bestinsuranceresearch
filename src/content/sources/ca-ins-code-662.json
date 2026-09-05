@@ -1,0 +1,26 @@
+{
+	"title": "California Insurance Code Section 662 (notice periods for cancelling an automobile policy)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=662",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "2025-01-01",
+	"accessedDate": "2026-09-02",
+	"lastChecked": "2026-09-02",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 662(a)(1) provides that a notice of cancellation of a policy is not effective unless mailed or delivered by the insurer to the named insured, lienholder or additional interest at least 20 days prior to the effective date of cancellation.",
+		"Section 662(a)(1) provides that where cancellation is for nonpayment of premium, at least 10 days notice of cancellation after nonpayment of premium due by the specified due date, accompanied by the reason for the cancellation, shall be given.",
+		"Section 662(a)(1) requires that unless the reason accompanies or is included in the notice of cancellation, the notice state or be accompanied by a statement that upon written request of the named insured, mailed or delivered to the insurer not less than 15 days prior to the effective date of cancellation, the insurer will specify the reason for the cancellation.",
+		"Section 662(a)(2) provides that a cancellation based on nonpayment of premium shall only be effective on the date specified in the notice if the insured has not cured the nonpayment of premium identified in the notice by the end of the 10-day period.",
+		"Section 662(b) provides that the section does not apply to nonrenewal.",
+		"Section 662(c) provides that notices made to lienholders pursuant to the section may be done electronically with the consent of the lienholder."
+	],
+	"updateCadence": "Amended only by legislation. Last amended by Stats. 2024, Ch. 793, Sec. 1 (SB 1295), effective January 1, 2025.",
+	"status": "active",
+	"notes": "Subdivision (a)(2) was the substance of the 2024 amendment and converts the 10-day nonpayment notice into a genuine cure period: paying within the 10 days defeats the cancellation rather than merely inviting reinstatement at the insurer's discretion."
+}

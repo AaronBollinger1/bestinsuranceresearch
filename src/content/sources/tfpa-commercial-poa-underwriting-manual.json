@@ -1,0 +1,26 @@
+{
+	"title": "Texas FAIR Plan Association Commercial Property Owners Association Program Underwriting Manual",
+	"publisher": "Texas FAIR Plan Association",
+	"url": "https://www.texasfairplan.org/wp-content/uploads/TFPA-Commercial-Property-Owners-Association-Program-Underwriting-Manual.pdf",
+	"sourceType": "official-documentation",
+	"jurisdiction": "TX",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The manual's Introduction states that the Texas FAIR Plan Association was established by Insurance Code Chapter 2211.",
+		"This manual governs the Association's Commercial Property Owners Association program, and the eligible classes it lists are Residential Condominium Associations and Homeowner Associations.",
+		"The manual's Submission Requirements for Quote list an eligible class of Commercial Property, a declination of coverage from two standard market carriers (noting that cancellation or nonrenewal by an authorized insurer may count as a declination), Covenants, Conditions and Restrictions, a Statement of Values for all buildings and structures, a replacement cost valuation for each building or structure using MSB or another acceptable valuation method or tool, and Loss Reports for the last 5 years.",
+		"The manual states that roofs must meet certain insurability standards and that risks with existing damage or deteriorated roofs may not be acceptable for coverage, and it lists common warning signs for composition shingle, wood, and flat roof surfaces.",
+		"The manual states that sprinkler systems must be maintained and working.",
+		"The manual states that an underwriting report will be requested on each application in order to determine eligibility."
+	],
+	"updateCadence": "Revised periodically; page footers throughout the verified copy read 3/10/2025.",
+	"status": "active",
+	"notes": "Fetched today. WebFetch returned PDF binary, so the text was extracted locally with pdftotext -layout and the Submission Requirements for Quote, Roofing, Underwriting Reports, and Introduction sections were read directly. Scope matters and is stated in the prose: this is a Texas-only residual market plan, and this particular manual covers a commercial residential program for condominium and homeowner associations. It is cited as one published example of a program checklist, never as evidence of general commercial property market practice. Published: 2025-03-10 Effective: 2025-03-10",
+	"officialHost": true
+}

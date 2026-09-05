@@ -1,0 +1,27 @@
+---
+import { Info, Lock, ScrollText, TriangleAlert } from '@lucide/astro';
+
+interface Props {
+	tone?: 'note' | 'limit' | 'warn' | 'privacy';
+	label?: string;
+}
+
+const { tone = 'note', label } = Astro.props;
+const icon = { size: 18, 'stroke-width': 2, 'aria-hidden': 'true' } as const;
+const defaultLabel = {
+	note: 'Note',
+	limit: 'What this does not do',
+	warn: 'Read this before you rely on it',
+	privacy: 'Privacy',
+}[tone];
+---
+
+<aside class={`callout callout-${tone}`} aria-label={label ?? defaultLabel}>
+	{tone === 'note' && <Info {...icon} />}
+	{tone === 'limit' && <ScrollText {...icon} />}
+	{tone === 'warn' && <TriangleAlert {...icon} />}
+	{tone === 'privacy' && <Lock {...icon} />}
+	<div>
+		<slot />
+	</div>
+</aside>

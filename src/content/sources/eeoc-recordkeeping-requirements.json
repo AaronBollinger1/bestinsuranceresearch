@@ -1,0 +1,24 @@
+{
+	"title": "Recordkeeping Requirements",
+	"publisher": "U.S. Equal Employment Opportunity Commission",
+	"url": "https://www.eeoc.gov/employers/recordkeeping-requirements",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Under Title VII and the ADA employers must keep all personnel or employment records for one year.",
+		"Where an employee is involuntarily terminated, the personnel records must be retained for one year from the date of termination.",
+		"Under the ADEA employers must keep all payroll records for three years.",
+		"Employee benefit plans and written seniority or merit systems must be kept for the full period the plan or system is in effect and for at least one year after termination.",
+		"Once a charge has been filed, the employer must preserve all records relevant to the charge until final disposition of the charge or any lawsuit based on the charge."
+	],
+	"updateCadence": "Reviewed at least every 180 days.",
+	"status": "active"
+}

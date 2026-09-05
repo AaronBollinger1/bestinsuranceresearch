@@ -1,0 +1,26 @@
+{
+	"title": "California Business and Professions Code section 7071.6 - Contractor's bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7071.6",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The board shall require as a condition precedent to the issuance, reinstatement, reactivation, renewal, or continued maintenance of a license, that the applicant or licensee file or have on file a contractor's bond in the sum of twenty-five thousand dollars ($25,000).",
+		"Excluding the claims brought by the beneficiaries specified in subdivision (a) of Section 7071.5, the aggregate liability of a surety on claims brought against a bond required by this section shall not exceed the sum of seven thousand five hundred dollars ($7,500).",
+		"The bond proceeds in excess of seven thousand five hundred dollars ($7,500) shall be reserved exclusively for the claims of the beneficiaries specified in subdivision (a) of Section 7071.5.",
+		"A bond shall not be required of a holder of a license that has been inactivated on the official records of the board during the period the license is inactive.",
+		"Notwithstanding any other law, as a condition precedent to licensure, the board may require an applicant to post a contractor's bond in twice the amount required pursuant to subdivision (a) until the time that the license is renewed, where the applicant has either been convicted of a violation of Section 7028 or has been cited pursuant to Section 7028.7, where any such citation has been reduced to a final order of the registrar, and where the violation or the basis for the citation constituted a substantial injury to the public.",
+		"The section carries the notation Repealed and added by Stats. 2021, Ch. 367, Sec. 17 (SB 607), effective January 1, 2022, operative January 1, 2023."
+	],
+	"updateCadence": "Amended by act of the Legislature",
+	"status": "active",
+	"notes": "Re-verified 2026-08-31 against the California Legislative Counsel's own text; subdivisions (a) through (d) and the legislative history were read verbatim, and the $25,000 figure in subdivision (a) is confirmed as the current amount. publishedDate reflects the chaptering of SB 607 (Stats. 2021, Ch. 367); effectiveDate is the January 1, 2022 effective date, with a January 1, 2023 operative date. Two omissions were repaired in this revision. The earlier fetch returned only the first sentence of subdivision (b), so the card was silent on where proceeds above the $7,500 cap go; the second sentence, reserving them exclusively for the section 7071.5(a) beneficiaries, is now carried, because the cap alone reads as though the rest of the bond is unavailable to anyone. Subdivision (d), which lets the board require a bond in twice the subdivision (a) amount on the three stated conditions, was missing entirely and has been added. An inference about the bond being imposed by statute rather than by contract remains out of the claims array. Published: 2021-10-08 Effective: 2022-01-01",
+	"officialHost": true
+}

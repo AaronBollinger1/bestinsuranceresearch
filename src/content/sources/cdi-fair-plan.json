@@ -1,0 +1,23 @@
+{
+	"title": "California FAIR Plan (consumer information page)",
+	"publisher": "California Department of Insurance",
+	"url": "https://www.insurance.ca.gov/01-consumers/200-wrr/California-FAIR-Plan.cfm",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The Department of Insurance states that the FAIR Plan is available to California residents and businesses in urban and rural areas who cannot obtain insurance through a regular insurance company.",
+		"The page refers to the FAIR Plan's current residential offering as the current limited fire policy.",
+		"The page states that policyholders who want coverage for water damage, liability, theft, additional living expenses, and other common coverages should visit the Difference in Conditions web page and contact the insurance companies listed.",
+		"The page states that the comprehensive residential policy option is currently in progress, and that when completed policyholders will be able to obtain those coverages without having to purchase a separate Difference in Conditions policy."
+	],
+	"updateCadence": "Updated by the Department as FAIR Plan products and orders change; the comprehensive policy status in particular should be re-checked.",
+	"status": "active",
+	"officialHost": true
+}

@@ -1,0 +1,23 @@
+{
+	"title": "California Insurance Code Section 1861.05 (rate standards, applications, and hearings)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=1861.05",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"California Insurance Code section 1861.05(a) provides that no rate shall be approved or remain in effect which is excessive, inadequate, unfairly discriminatory or otherwise in violation of the chapter.",
+		"Section 1861.05(b) requires every insurer that desires to change any rate to file a complete rate application with the commissioner, and places on the applicant the burden of proving that the requested rate change is justified and meets the requirements of the article.",
+		"Section 1861.05(c) requires the commissioner to notify the public of any application by an insurer for a rate change, and provides that the application is deemed approved sixty days after public notice unless a consumer requests a hearing within 45 days of public notice or the commissioner on his or her own motion determines to hold a hearing.",
+		"Section 1861.05(c) also provides that a rate application is deemed approved 180 days after the application is received, unless it has been disapproved after a hearing or extraordinary circumstances exist."
+	],
+	"updateCadence": "Amended only by legislation or voter initiative; re-check leginfo for current text.",
+	"status": "active",
+	"officialHost": true
+}

@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import DataTable from '../../components/DataTable.astro';
+import PageHeader from '../../components/PageHeader.astro';
+
+/*
+ * The two homepage directions that were NOT implemented, kept as labeled design
+ * alternatives. This page is noindex, out of the sitemap, and out of navigation,
+ * because shipping three competing homepages would be worse than shipping one.
+ */
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Design', path: '/design/homepage-concepts' },
+];
+
+const SCORES = [
+	['Immediate comprehension', '5', '3', '4', 'Can a first-time visitor tell what this is and what to do in one glance?'],
+	['Source trust in the first viewport', '4', '5', '3', 'How strongly does the first screen signal that answers carry evidence?'],
+	['Mobile usability', '5', '3', '4', 'Does the first screen stay usable at 390px without scrolling past the point?'],
+	['Return usefulness', '5', '4', '4', 'Is it fast for someone who already knows what they want?'],
+	['Organic search depth', '3', '3', '5', 'How many substantive pages get a real internal link from the homepage?'],
+	['Accessibility', '5', '4', '4', 'Heading order, focus order, and reading order without special handling.'],
+	['Performance risk', '5', '4', '4', 'Weight and layout stability of the first viewport.'],
+	['Freedom from lead-generation pressure', '5', '5', '5', 'All three refuse gating. This was never the differentiator.'],
+	['TOTAL', '37', '31', '33', 'Out of 40.'],
+];
+---
+
+<BaseLayout
+	title="Homepage concept comparison"
+	description="Internal record of the three homepage directions, how they scored, and why the implemented one won."
+	noindex
+	pageType="editorial"
+>
+	<PageHeader
+		eyebrow="Internal reference, not a public page"
+		title="Homepage concepts: the comparison and the decision"
+		lede="Three complete directions were specified against the same identity, tokens, content model, accessibility standard, and evidence rules. They differ only in information hierarchy. One shipped."
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell">
+			<Callout tone="note">
+				<p>
+					<strong>Only one homepage exists.</strong> This page is the record of the two that did not
+					ship. It is noindex, excluded from the sitemap, and unlinked from navigation. Shipping
+					three competing homepages would split the decision rather than make it.
+				</p>
+			</Callout>
+		</div>
+	</section>
+
+	<section class="band band-tight" aria-labelledby="scores-title">
+		<div class="shell">
+			<h2 id="scores-title">Scoring</h2>
+			<p class="lede">
+				A: Research Command Center. B: Evidence Ledger. C: Insurance Topic Atlas. Scored 1 to 5 on
+				each criterion.
+			</p>
+			<div style="margin-top: var(--s-5)">
+				<DataTable
+					caption="Concept scoring. A = Research Command Center, B = Evidence Ledger, C = Insurance Topic Atlas."
+					columns={['Criterion', 'A', 'B', 'C', 'What was being judged']}
+					rows={SCORES}
+				/>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight band-paper" aria-labelledby="a-title">
+		<div class="shell">
+			<span class="eyebrow">Direction A, implemented</span>
+			<h2 id="a-title">Research Command Center</h2>
+			<div class="prose">
+				<p>
+					Question first. The first viewport is a working surface: identity and a one-sentence scope
+					statement, a prominent question field with a rotating example, four context selects for
+					insurance type, line, state, and audience, a browse-by-topic fallback, and a source-quality
+					strip counted from the registry rather than asserted.
+				</p>
+				<p>
+					<strong>Why it won:</strong> it is the only direction where a first-time visitor and a
+					returning one both get what they came for in the same screen. Comprehension and mobile
+					usability are its strongest scores, and those are the two that decide whether the rest of
+					the library is ever seen.
+				</p>
+				<p>
+					<strong>Its weakness</strong> is organic search depth: a question field links to fewer
+					substantive pages than a full atlas does. That is why it does not ship pure.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight" aria-labelledby="b-title">
+		<div class="shell">
+			<span class="eyebrow">Direction B, not implemented</span>
+			<h2 id="b-title">Evidence Ledger</h2>
+			<div class="prose">
+				<p>
+					Provenance first. The first viewport leads with a direct-answer preview, the source
+					registry, review dates, and correction status: the strongest possible trust signal before
+					anything else.
+				</p>
+				<p>
+					<strong>Why it did not ship:</strong> it answers a question the visitor has not asked yet.
+					Someone arriving with an insurance problem wants the answer; the evidence is what makes
+					them believe it, not what makes them start. On mobile it is worse still, because the
+					registry consumes the entire first screen before the search field appears.
+				</p>
+				<p>
+					<strong>What was taken from it:</strong> the source-quality strip. It sits inside the first
+					viewport of the shipped homepage, counted live from the registry, so the trust signal
+					arrives without displacing the working surface.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight band-paper" aria-labelledby="c-title">
+		<div class="shell">
+			<span class="eyebrow">Direction C, not implemented</span>
+			<h2 id="c-title">Insurance Topic Atlas</h2>
+			<div class="prose">
+				<p>
+					Browse first. High-scan entry points for coverage, states, companies, questions, and tools
+					arranged around a restrained central search field.
+				</p>
+				<p>
+					<strong>Why it did not ship:</strong> an atlas is the right shape for a library that is
+					already large. With twelve questions and six coverage pages it advertises its own
+					thinness, and it makes the visitor choose a category before they have expressed a need,
+					which is the wrong order for someone who does not yet know which category their problem
+					belongs to.
+				</p>
+				<p>
+					<strong>What was taken from it:</strong> the entry-point grid, moved below the fold on the
+					shipped homepage with live counts on each tile. It gives the internal-linking depth that
+					direction A lacked, without making the first screen a menu.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-ink">
+		<div class="shell">
+			<span class="eyebrow">Decision</span>
+			<h2>A, with grafts from B and C</h2>
+			<p class="lede">
+				The shipped homepage is direction A's spine: identity, scope, question field, context
+				controls, browse fallback. Direction B's source-quality strip sits inside the first viewport.
+				Direction C's entry-point grid sits below it with live counts. Directions B and C are
+				preserved here as alternatives and are not reachable from the live site.
+			</p>
+			<p class="lede" style="margin-top: var(--s-4)">
+				Recorded in full in <code>DESIGN-REFERENCES.md</code>, which is the source of truth for this
+				decision.
+			</p>
+		</div>
+	</section>
+</BaseLayout>

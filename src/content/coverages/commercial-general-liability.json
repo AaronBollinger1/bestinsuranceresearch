@@ -1,0 +1,237 @@
+{
+	"name": "Commercial General Liability (CGL)",
+	"line": "general-liability",
+	"family": "commercial",
+	"definition": "Commercial general liability insurance pays sums a business becomes legally obligated to pay as damages for third-party bodily injury and property damage. Whether the insurer also carries a duty to defend, and whether defense costs sit inside or outside the limits, are properties of the particular form on the policy rather than of the line as such, so this page states them form by form. This page is general information about how specific published forms are written. It is not legal advice, it is not a coverage determination, and it does not decide whether any particular claim, business, contract requirement, or person is covered. Coverage questions are decided by the insurer on the policy actually issued and the facts of the claim, and disputes about them are legal questions for a lawyer. In the ISO occurrence form CG 00 01 04 13, the Coverage A insuring agreement says the insurer will pay those sums the insured becomes legally obligated to pay as damages because of bodily injury or property damage to which the insurance applies, and that the insurer has the right and duty to defend the insured against any suit seeking those damages [S:iso-cg-00-01-04-13]. In that form, Coverage A applies to bodily injury and property damage only if the injury or damage is caused by an occurrence that takes place in the coverage territory and occurs during the policy period, and occurrence is defined as an accident, including continuous or repeated exposure to substantially the same general harmful conditions [S:iso-cg-00-01-04-13]. That is the occurrence trigger: CG 00 01 04 13 keys Coverage A to when the injury or damage happened, not to when the claim was made [S:iso-cg-00-01-04-13]. The same form adds Coverage B for personal and advertising injury and Coverage C for medical payments, which are paid regardless of fault and cannot exceed the applicable limit of insurance [S:iso-cg-00-01-04-13]. The California Department of Insurance describes a CGL policy as having three primary coverage sections, premises liability, products liability and completed operations, and describes the coverage as comprehensive in nature, covering all hazards within the scope of the insuring agreement that are not otherwise excluded [S:ca-cdi-commercial-insurance-guide]. Everything below describes CG 00 01 04 13 and the named CG 20 and CG 21 endorsements as published. ISO issues the CGL coverage form in dated editions; the edition read for this page carries the header CG 00 01 04 13 and the ISO copyright date 2012 [S:iso-cg-00-01-04-13]. Read the form and endorsements actually attached to a policy, because a different edition, a state variant, or a carrier's own form can read differently.",
+	"protects": [
+		"The business and other named insureds against damages they become legally obligated to pay for bodily injury or property damage to which the insurance applies, under the Coverage A insuring agreement of CG 00 01 04 13 [S:iso-cg-00-01-04-13]",
+		"The business against the cost of defending suits, because under CG 00 01 04 13 the insurer has the right and duty to defend any suit seeking covered damages, and Supplementary Payments under that form include all expenses the insurer incurs and are stated not to reduce the limits of insurance [S:iso-cg-00-01-04-13]",
+		"The business against premises liability, products liability and completed operations claims, which CDI identifies as the three primary coverage sections that make up a CGL policy [S:ca-cdi-commercial-insurance-guide]",
+		"The business against reputational and advertising-related claims, through Coverage B Personal And Advertising Injury Liability in CG 00 01 04 13 [S:iso-cg-00-01-04-13]",
+		"People injured on the insured's premises, through Coverage C Medical Payments in CG 00 01 04 13, which are paid regardless of fault and cannot exceed the applicable limit of insurance [S:iso-cg-00-01-04-13]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Bodily injury and property damage caused by an occurrence in the coverage territory during the policy period",
+			"note": "In CG 00 01 04 13, Coverage A applies to bodily injury and property damage only if it is caused by an occurrence that takes place in the coverage territory and occurs during the policy period, subject to that form's prior-knowledge provisions [S:iso-cg-00-01-04-13]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Defense of suits seeking covered damages",
+			"note": "CG 00 01 04 13 states that the insurer has the right and duty to defend the insured against any suit seeking damages the insurance applies to, and that it has no duty to defend a suit seeking damages for bodily injury or property damage to which the insurance does not apply [S:iso-cg-00-01-04-13]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Products and completed operations claims",
+			"note": "CG 00 01 04 13 carries a separate Products-Completed Operations Aggregate Limit, described as the most the insurer will pay under Coverage A for damages because of bodily injury and property damage included in the products-completed operations hazard [S:iso-cg-00-01-04-13]. CDI lists products liability and completed operations among the three primary CGL coverage sections [S:ca-cdi-commercial-insurance-guide]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Personal and advertising injury offenses under Coverage B",
+			"note": "In CG 00 01 04 13, Coverage B Personal And Advertising Injury Liability is a separate insuring agreement with its own limit of insurance and its own set of exclusions, including a pollution exclusion [S:iso-cg-00-01-04-13]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Medical payments for people injured on the insured's premises",
+			"note": "In CG 00 01 04 13, Coverage C Medical Payments are made regardless of fault, subject to that form's reporting and examination conditions and to the Medical Expense Limit, which the form states is the most it will pay under Coverage C for all medical expenses because of bodily injury sustained by any one person [S:iso-cg-00-01-04-13]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Property damage to premises rented to the insured",
+			"note": "In CG 00 01 04 13, the Damage To Premises Rented To You Limit is described as the most the insurer will pay under Coverage A for damages because of property damage to any one premises while rented to the insured, or in the case of damage by fire, while rented to or temporarily occupied by the insured with the owner's permission [S:iso-cg-00-01-04-13]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Indemnity liability the named insured assumed in an insured contract",
+			"note": "In CG 00 01 04 13, exclusion b. Contractual Liability removes bodily injury and property damage for which the insured is obligated to pay damages by reason of the assumption of liability in a contract or agreement, and then states that the exclusion does not apply to liability the insured would have in the absence of the contract, or to liability assumed in a contract or agreement that is an insured contract as that form defines the term, provided the bodily injury or property damage occurs subsequent to the execution of the contract or agreement [S:iso-cg-00-01-04-13]. That timing proviso is part of the exception and is easy to drop. The same subparagraph deems reasonable attorneys' fees and necessary litigation expenses incurred by or for a party other than an insured to be damages, but only where liability for that party's defense was also assumed in the same insured contract and the fees are for defense against a proceeding in which damages this insurance applies to are alleged [S:iso-cg-00-01-04-13]. That exception concerns the named insured's own assumed indemnity obligation. It does not make anyone an additional insured under the policy. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Another party as an additional insured, but only where an additional insured endorsement is attached",
+			"note": "Additional insured status is added by endorsement, not by the base coverage form. CG 20 10 04 13 states that Section II Who Is An Insured is amended to include as an additional insured the person or organization shown in its Schedule, but only with respect to liability for bodily injury, property damage or personal and advertising injury caused in whole or in part by the named insured's acts or omissions, or the acts or omissions of those acting on the named insured's behalf, in the performance of the named insured's ongoing operations for that additional insured at the scheduled location [S:iso-cg-20-10-04-13]. CG 20 37 04 13 amends Who Is An Insured for liability caused in whole or in part by the named insured's work at the scheduled location and included in the products-completed operations hazard [S:iso-cg-20-37-04-13]. Both endorsements state that the insurance afforded to the additional insured applies only to the extent permitted by law, and that where a contract requires the coverage, it will not be broader than what the contract requires [S:iso-cg-20-10-04-13][S:iso-cg-20-37-04-13]. These notes describe CG 20 10 04 13 and CG 20 37 04 13 only; read the endorsements actually attached to the policy."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Expected or intended injury",
+			"note": "In CG 00 01 04 13, Coverage A exclusion a. Expected Or Intended Injury removes bodily injury or property damage expected or intended from the standpoint of the insured [S:iso-cg-00-01-04-13]. That exclusion carries a stated exception in the same paragraph: it does not apply to bodily injury resulting from the use of reasonable force to protect persons or property [S:iso-cg-00-01-04-13]. CDI also lists intentional injury among the major CGL exclusions [S:ca-cdi-commercial-insurance-guide]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Workers compensation obligations and employers liability",
+			"note": "In CG 00 01 04 13, Coverage A exclusions d. Workers' Compensation And Similar Laws and e. Employer's Liability remove those exposures, which is why a business carries a separate workers compensation and employers liability policy [S:iso-cg-00-01-04-13]. The employer's liability exclusion is not absolute in that form: exclusion e. reaches bodily injury to an employee arising out of and in the course of employment or of duties related to the conduct of the insured's business, and to that employee's spouse, child, parent, brother or sister as a consequence, and applies whether the insured may be liable as an employer or in any other capacity, but the form then states that the exclusion does not apply to liability assumed by the insured under an insured contract [S:iso-cg-00-01-04-13]. CDI also lists workers compensation and employers liability among the major CGL exclusions [S:ca-cdi-commercial-insurance-guide]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Pollution",
+			"note": "In CG 00 01 04 13, Coverage A exclusion f. Pollution removes bodily injury or property damage arising out of the actual, alleged or threatened discharge, dispersal, seepage, migration, release or escape of pollutants at or from premises the insured owns, occupies, rents or borrows, and at or from premises where the insured or its contractors are performing operations if the pollutants are brought on in connection with those operations, subject to stated subparagraph exceptions [S:iso-cg-00-01-04-13]. One stated exception is bodily injury sustained within a building and caused by smoke, fumes, vapor or soot produced by or originating from equipment used to heat, cool or dehumidify the building [S:iso-cg-00-01-04-13]. Exclusion f.(2) separately removes loss, cost or expense arising out of a request, demand, order or statutory or regulatory requirement to test for, monitor, clean up, remove, contain, treat, detoxify or neutralize pollutants, and claims or suits by or on behalf of a governmental authority for such damages [S:iso-cg-00-01-04-13]. Exclusion f.(2) carries its own stated exception, which is easy to miss: the form states that the paragraph does not apply to liability for damages because of property damage that the insured would have in the absence of such request, demand, order or statutory or regulatory requirement, or of such claim or suit by or on behalf of a governmental authority [S:iso-cg-00-01-04-13]. Coverage B in that form carries its own pollution exclusion [S:iso-cg-00-01-04-13]. CDI lists pollution among the major CGL exclusions [S:ca-cdi-commercial-insurance-guide]. This describes CG 00 01 04 13 only; a different pollution exclusion edition or a buyback endorsement changes the result, so read the form and endorsements attached to the policy."
+		},
+		{
+			"item": "Professional services, where a professional services exclusion endorsement is attached",
+			"note": "The Coverage A exclusion list in CG 00 01 04 13 runs a. through q. and does not include a professional services exclusion [S:iso-cg-00-01-04-13]. Professional exposure is instead removed by endorsement. CG 21 16 04 13 adds an exclusion to Coverage A and Coverage B stating that the insurance does not apply to bodily injury, property damage or personal and advertising injury due to the rendering of or failure to render any professional service, applies only with respect to the professional services shown in its Schedule, and states that it applies even if the claims allege negligence or other wrongdoing in the supervision, hiring, employment, training or monitoring of others [S:iso-cg-21-16-04-13]. Because the exclusion is a scheduled endorsement, whether a given policy excludes professional work depends on which endorsement is attached and how its Schedule is completed. These notes describe CG 00 01 04 13 and CG 21 16 04 13 only; other professional services exclusion endorsements with different wording exist, so read what is attached."
+		},
+		{
+			"item": "Autos, aircraft, watercraft and mobile equipment",
+			"note": "In CG 00 01 04 13, Coverage A exclusion g. Aircraft, Auto Or Watercraft removes bodily injury or property damage arising out of the ownership, maintenance, use or entrustment to others of any aircraft, auto or watercraft owned or operated by or rented or loaned to any insured, subject to stated exceptions, and exclusion h. Mobile Equipment addresses mobile equipment [S:iso-cg-00-01-04-13]. CDI lists aircraft, automobile, watercraft and mobile equipment among the major CGL exclusions [S:ca-cdi-commercial-insurance-guide]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Damage to the insured's own product, own work and impaired property",
+			"note": "In CG 00 01 04 13, Coverage A exclusion k. Damage To Your Product removes property damage to the insured's product arising out of it or any part of it, and exclusion l. Damage To Your Work removes property damage to the insured's work arising out of it or any part of it and included in the products-completed operations hazard [S:iso-cg-00-01-04-13]. Exclusion l. carries a stated exception that changes the result for most general contractors and must not be dropped: the form states that the exclusion does not apply if the damaged work, or the work out of which the damage arises, was performed on the named insured's behalf by a subcontractor [S:iso-cg-00-01-04-13]. Exclusion m. removes property damage to impaired property or to property that has not been physically injured arising out of a defect, deficiency, inadequacy or dangerous condition in the insured's product or work, or out of a delay or failure to perform a contract in accordance with its terms, and it too carries a stated exception: it does not apply to the loss of use of other property arising out of sudden and accidental physical injury to the insured's product or work after it has been put to its intended use [S:iso-cg-00-01-04-13]. CDI lists damage to your work and impaired property among the major CGL exclusions [S:ca-cdi-commercial-insurance-guide]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Damage to property in the insured's care, custody or control",
+			"note": "In CG 00 01 04 13, Coverage A exclusion j. Damage To Property removes several categories of property damage, including property the insured owns, rents or occupies and personal property in the insured's care, custody or control, subject to stated exceptions [S:iso-cg-00-01-04-13]. CDI lists care, custody and control among the major CGL exclusions [S:ca-cdi-commercial-insurance-guide]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Recall of products, work or impaired property",
+			"note": "In CG 00 01 04 13, Coverage A exclusion n. Recall Of Products, Work Or Impaired Property removes damages claimed for any loss, cost or expense incurred by the insured or others for the loss of use, withdrawal, recall, inspection, repair, replacement, adjustment, removal or disposal of the insured's product, work or impaired property [S:iso-cg-00-01-04-13]. The exclusion is conditional rather than flat, and the condition is part of it: the form applies it only if such product, work or property is withdrawn or recalled from the market or from use by any person or organization because of a known or suspected defect, deficiency, inadequacy or dangerous condition in it [S:iso-cg-00-01-04-13]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Liquor liability",
+			"note": "In CG 00 01 04 13, Coverage A exclusion c. Liquor Liability removes bodily injury or property damage for which any insured may be held liable by reason of causing or contributing to the intoxication of any person, furnishing alcoholic beverages to a person under the legal drinking age or under the influence of alcohol, or any statute, ordinance or regulation relating to the sale, gift, distribution or use of alcoholic beverages [S:iso-cg-00-01-04-13]. That exclusion has a limiting clause that must not be dropped, because without it the exclusion reads far wider than the form: CG 00 01 04 13 states that the exclusion applies only if the named insured is in the business of manufacturing, distributing, selling, serving or furnishing alcoholic beverages, and adds that permitting a person to bring alcoholic beverages on the insured's premises for consumption there, whether or not a fee is charged or a license is required, is not by itself considered the business of selling, serving or furnishing alcoholic beverages [S:iso-cg-00-01-04-13]. The exclusion also states that it applies even if the claims allege negligence or other wrongdoing in the supervision, hiring, employment, training or monitoring of others, or in providing or failing to provide transportation with respect to a person who may be under the influence of alcohol, where the occurrence involved one of the three listed grounds [S:iso-cg-00-01-04-13]. CDI lists liquor liability among the major CGL exclusions [S:ca-cdi-commercial-insurance-guide]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "Electronic data, and recording and distribution of material in violation of law",
+			"note": "In CG 00 01 04 13, Coverage A exclusion p. Electronic Data removes damages arising out of the loss of, loss of use of, damage to, corruption of, inability to access or inability to manipulate electronic data [S:iso-cg-00-01-04-13]. That exclusion carries a stated exception in the same paragraph: the form states that it does not apply to liability for damages because of bodily injury [S:iso-cg-00-01-04-13]. Exclusion q. Recording And Distribution Of Material Or Information In Violation Of Law removes bodily injury or property damage arising directly or indirectly out of any action or omission that violates or is alleged to violate the Telephone Consumer Protection Act, the CAN-SPAM Act of 2003, the Fair Credit Reporting Act including the Fair and Accurate Credit Transactions Act amendment, or any other similar statute, ordinance or regulation [S:iso-cg-00-01-04-13]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		},
+		{
+			"item": "War",
+			"note": "In CG 00 01 04 13, Coverage A exclusion i. War removes bodily injury or property damage arising directly or indirectly out of war, including undeclared or civil war, warlike action by a military force, and insurrection, rebellion, revolution, usurped power or action taken by governmental authority in hindering or defending against any of these [S:iso-cg-00-01-04-13]. CDI lists war among the major CGL exclusions [S:ca-cdi-commercial-insurance-guide]. This describes CG 00 01 04 13 only; read the form attached to the policy."
+		}
+	],
+	"limitsAndDeductibles": [
+		"Section III Limits Of Insurance of CG 00 01 04 13 sets six limits: General Aggregate, Products-Completed Operations Aggregate, Personal And Advertising Injury, Each Occurrence, Damage To Premises Rented To You, and Medical Expense [S:iso-cg-00-01-04-13].",
+		"In that form, the Each Occurrence Limit is the most the insurer will pay for the sum of damages under Coverage A and medical expenses under Coverage C because of all bodily injury and property damage arising out of any one occurrence [S:iso-cg-00-01-04-13].",
+		"In that form, the General Aggregate Limit is the most the insurer will pay for the sum of medical expenses under Coverage C, damages under Coverage A other than damages included in the products-completed operations hazard, and damages under Coverage B [S:iso-cg-00-01-04-13]. It is a single annual pot, so exhausting it exhausts the coverage it applies to for that period even where the Each Occurrence Limit has not been touched [S:iso-cg-00-01-04-13].",
+		"Products-completed operations damages run against the separate Products-Completed Operations Aggregate Limit rather than against the General Aggregate [S:iso-cg-00-01-04-13].",
+		"In CG 00 01 04 13 the Personal And Advertising Injury Limit is subject to the General Aggregate Limit, and the Damage To Premises Rented To You and Medical Expense limits are subject to the Each Occurrence Limit [S:iso-cg-00-01-04-13].",
+		"CG 00 01 04 13 states that the Limits of Insurance of the Coverage Part apply separately to each consecutive annual period and to any remaining period of less than 12 months, starting with the beginning of the policy period shown in the Declarations, so a multi-year term under that form does not stack the aggregates into one pot [S:iso-cg-00-01-04-13].",
+		"In CG 00 01 04 13, defense costs sit outside the limits: Supplementary Payments under Coverages A and B include all expenses the insurer incurs, and the form states that these payments will not reduce the limits of insurance [S:iso-cg-00-01-04-13]. That is a property of this form and edition, not of liability insurance generally; forms and endorsements exist on which defense costs erode the limit, so check the form on the policy before assuming either structure. Defense under CG 00 01 04 13 is also not unlimited: the form states that the insurer's right and duty to defend ends when it has used up the applicable limit of insurance in the payment of judgments or settlements under Coverages A or B or medical expenses under Coverage C [S:iso-cg-00-01-04-13].",
+		"Section III of CG 00 01 04 13 sets limits only and contains no liability deductible provision [S:iso-cg-00-01-04-13]. If a policy shows a liability deductible or a self-insured retention, that provision does not come from this base form; find the endorsement or carrier form that creates it and read its own wording for how it applies and whether it erodes the limit."
+	],
+	"endorsements": [
+		{
+			"item": "Additional insured - owners, lessees or contractors (CG 20 10 04 13 and CG 20 37 04 13)",
+			"note": "CG 20 10 04 13 amends Section II Who Is An Insured to include the scheduled person or organization as an additional insured for liability caused in whole or in part by the named insured's acts or omissions, or those of people acting on its behalf, in the performance of the named insured's ongoing operations for that additional insured at the scheduled location [S:iso-cg-20-10-04-13]. CG 20 37 04 13 does the same for liability caused in whole or in part by the named insured's work at the scheduled location and included in the products-completed operations hazard [S:iso-cg-20-37-04-13]. So the ongoing-operations and completed-operations grants come from different endorsements, and which one is attached decides what the additional insured has. Both state that the coverage applies only to the extent permitted by law, that it will not be broader than the contract requires where a contract requires it, and that the most the insurer will pay on behalf of the additional insured is the amount required by the contract or the amount available under the Declarations limits, whichever is less, and that the endorsement does not increase those limits [S:iso-cg-20-10-04-13][S:iso-cg-20-37-04-13]."
+		},
+		{
+			"item": "Primary And Noncontributory - Other Insurance Condition (CG 20 01 04 13)",
+			"note": "Primary and non-contributory status is a separate endorsement from the additional insured endorsement. CG 20 01 04 13 adds to the Other Insurance Condition, superseding any provision to the contrary, that this insurance is primary to and will not seek contribution from any other insurance available to an additional insured under the policy, provided that the additional insured is a Named Insured under that other insurance and the named insured has agreed in writing in a contract or agreement that this insurance would be primary and would not seek contribution [S:iso-cg-20-01-04-13]. Both of those conditions have to be met for the endorsement to operate as written. This describes CG 20 01 04 13 only; read what is attached."
+		},
+		{
+			"item": "Exclusion - Designated Professional Services (CG 21 16 04 13)",
+			"note": "Adds a professional services exclusion to Coverage A and Coverage B for the services shown in the endorsement's Schedule, and states that it applies even where the claim alleges negligence or other wrongdoing in the supervision, hiring, employment, training or monitoring of others [S:iso-cg-21-16-04-13]. Because the Schedule is completed for the individual policy, the scope of the exclusion is whatever the Schedule says. This describes CG 21 16 04 13 only; other professional services exclusion endorsements with different wording and scope exist, so check which one is attached."
+		},
+		{
+			"item": "Pollution exclusion amendments and limited pollution buybacks",
+			"note": "The pollution exclusion in CG 00 01 04 13 is broad and has only the narrow stated exceptions set out in exclusion f. of that form [S:iso-cg-00-01-04-13]. Any grant-back of pollution coverage therefore has to come from an endorsement, and what it grants depends entirely on that endorsement's own wording. No pollution buyback endorsement was reviewed for this page, so read the one attached to the policy rather than relying on any general description."
+		},
+		{
+			"item": "Endorsements that narrow coverage to designated premises, operations, or classifications",
+			"note": "The Coverage A insuring agreement in CG 00 01 04 13 is not limited by premises or by classification on its face [S:iso-cg-00-01-04-13], so any such limitation on a policy comes from an endorsement. No designated-premises or classification-limitation endorsement was reviewed for this page. If the policy carries one, its wording, not the insuring agreement, describes the narrowed scope, so read it."
+		},
+		{
+			"item": "Endorsements that change the aggregate structure",
+			"note": "In CG 00 01 04 13 the General Aggregate Limit is a single annual pot covering most Coverage A damages and all Coverage B damages [S:iso-cg-00-01-04-13], so a policy that provides a separate aggregate for each project or each location does so through an endorsement rather than through the base form. No per-project or per-location aggregate endorsement was reviewed for this page. Whether such an endorsement is available on a given policy is a carrier underwriting decision."
+		}
+	],
+	"relatedPolicies": [
+		"Business Owners Policy (BOP), which CDI describes as a combination commercial policy that covers property, general liability and business interruption [S:ca-cdi-commercial-insurance-guide]",
+		"Commercial property insurance, which under CP 00 10 10 12 insures Building, Your Business Personal Property, and Personal Property Of Others in the insured's care, custody or control, that is, first-party damage to property at the described premises rather than third-party liability [S:iso-cp-00-10-10-12]",
+		"Workers compensation and employers liability, since Coverage A of CG 00 01 04 13 excludes both workers compensation obligations and employers liability [S:iso-cg-00-01-04-13]",
+		"Commercial auto, since Coverage A of CG 00 01 04 13 excludes liability arising out of autos owned or operated by or rented or loaned to any insured, subject to stated exceptions [S:iso-cg-00-01-04-13]",
+		"Professional liability or errors and omissions, which is the separate line for professional services exposure, particularly where CG 21 16 04 13 or a similar exclusion endorsement is attached [S:iso-cg-21-16-04-13]",
+		"Liquor liability, given the Coverage A liquor exclusion in CG 00 01 04 13 [S:iso-cg-00-01-04-13]",
+		"Cyber and privacy liability, given the electronic data exclusion in CG 00 01 04 13, which by its own terms does not apply to liability for damages because of bodily injury, and the statutory-violation exclusion in that form [S:iso-cg-00-01-04-13]",
+		"Commercial umbrella or excess liability, which is a separate policy on its own form; no umbrella form was reviewed for this page, so read the umbrella's own terms and its schedule of underlying insurance",
+		"Environmental or contractors pollution liability, given the pollution exclusion in CG 00 01 04 13 [S:iso-cg-00-01-04-13]",
+		"Surplus line placements. CDI states that a surplus line company can only be accessed through a specially licensed broker, that the CDI has limited jurisdiction over the operation of surplus line insurers, and that the California Insurance Guarantee Association, which protects claims with admitted insurers, does not apply to surplus line insurers [S:ca-cdi-commercial-insurance-guide]"
+	],
+	"underwritingInputs": [
+		"A description of what the business actually does, including any design or professional work, so that operations can be classified",
+		"Annual gross sales or receipts, and payroll figures",
+		"Subcontractor cost, written subcontractor agreements, and certificates of insurance collected from subcontractors",
+		"Loss history, typically several years of currently valued loss runs",
+		"Products sold or manufactured, distribution channels, and any recall history",
+		"Premises information: locations, square footage, occupancy, tenant or owner status, and features such as pools or playgrounds",
+		"Contract requirements the business has agreed to, including additional insured status, primary and non-contributory wording, and waiver of subrogation. Additional insured status is supplied by an additional insured endorsement such as CG 20 10 04 13 or CG 20 37 04 13, and primary and non-contributory wording by CG 20 01 04 13, each with its own conditions [S:iso-cg-20-10-04-13][S:iso-cg-20-37-04-13][S:iso-cg-20-01-04-13]. No waiver of subrogation endorsement was reviewed for this page, so nothing here describes what any particular waiver endorsement says; read the one attached to the policy",
+		"Any pollution, mold, asbestos, lead, or hazardous materials exposure",
+		"Whether the business manufactures, distributes, sells, serves or furnishes alcoholic beverages",
+		"Limits and aggregate structure requested",
+		"Whether an umbrella or excess layer is being placed, and what underlying limits that umbrella form requires",
+		"This list describes information commonly requested in practice. It is common practice rather than a legal or filed requirement, and what any particular insurer asks for, and whether it offers terms at all, is a carrier underwriting decision. CDI notes that after three documented declinations from licensed commercial carriers a business can proceed to the surplus line market through a specially licensed broker, but nothing on this page determines whether a specific risk belongs in the admitted market or the surplus line market [S:ca-cdi-commercial-insurance-guide]"
+	],
+	"exposures": [
+		{
+			"item": "Bodily injury to a third party arising out of premises or operations",
+			"note": "Coverage A responds to sums the insured becomes legally obligated to pay as damages because of bodily injury or property damage, and only where the injury is caused by an occurrence in the coverage territory during the policy period [S:iso-cg-00-01-04-13]. The insuring agreement is therefore the first limit on this exposure, before any exclusion is reached."
+		},
+		{
+			"item": "Property damage to something belonging to someone else",
+			"note": "The same insuring agreement pairs property damage with bodily injury, and the form defines occurrence as an accident, including continuous or repeated exposure to substantially the same general harmful conditions [S:iso-cg-00-01-04-13]. Damage that is neither sudden nor accidental sits differently against that definition. Read the form actually issued."
+		},
+		{
+			"item": "Completed work that fails after the job is finished",
+			"note": "The form carries a separate Products-Completed Operations Aggregate Limit, which is the most the insurer will pay for damages included in the products-completed operations hazard [S:iso-cg-00-01-04-13]. A completed-operations exposure therefore has its own aggregate rather than sharing the general one."
+		},
+		{
+			"item": "Injury to the employer's own employee",
+			"note": "Coverage A exclusion e. Employer's Liability reaches bodily injury to an employee of the insured arising out of and in the course of employment [S:iso-cg-00-01-04-13]. This exposure is addressed by workers compensation and employers liability rather than by the general liability form."
+		},
+		{
+			"item": "Professional or design services performed alongside ordinary operations",
+			"note": "The base form's Coverage A exclusion list does not include a professional services exclusion [S:iso-cg-00-01-04-13], but endorsement CG 21 16 adds one for the professional services shown in its Schedule, and it applies even where the claim alleges negligence in supervision, hiring, employment, training or monitoring [S:iso-cg-21-16-04-13]. Whether such an endorsement is attached is readable on the policy."
+		},
+		{
+			"item": "Liability assumed in a written contract",
+			"note": "Exclusion b. Contractual Liability removes damages the insured is obligated to pay by assumption of liability in a contract, subject to the insured contract exception [S:iso-cg-00-01-04-13]. Nothing in that exclusion or its exception amends Who Is An Insured or confers additional insured status [S:iso-cg-00-01-04-13], so a contract promise and an endorsement are different things."
+		},
+		{
+			"item": "Pollution, including fumes from equipment used to heat a building",
+			"note": "Exclusion f. Pollution removes bodily injury or property damage arising out of the discharge, dispersal, seepage, migration, release or escape of pollutants, and carries a stated exception for bodily injury sustained within a building caused by smoke, fumes, vapor or soot produced by or originating from equipment used to heat that building [S:iso-cg-00-01-04-13]. The exception is narrow and specific."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Read the additional insured endorsement rather than the certificate",
+			"note": "The grant lives in a named endorsement with its own Schedule, period and cap: CG 20 10 amends Who Is An Insured for the party shown in its Schedule [S:iso-cg-20-10-04-13], CG 20 37 addresses completed operations [S:iso-cg-20-37-04-13], and primary and noncontributory arrives separately through CG 20 01 [S:iso-cg-20-01-04-13]. Ask for the endorsements by form number and edition date."
+		},
+		{
+			"item": "Keep certificates and written agreements from every subcontractor",
+			"note": "Subcontractor cost, written subcontractor agreements, and certificates of insurance are among the information commonly requested at underwriting on this line [S:ca-cdi-commercial-insurance-guide]. Collecting them during the period rather than reconstructing them afterwards is what makes the record usable."
+		},
+		{
+			"item": "Check whether a professional services exclusion is attached before relying on the base form",
+			"note": "The base form has no professional services exclusion in its Coverage A list [S:iso-cg-00-01-04-13], but CG 21 16 adds one limited to the services shown in its Schedule [S:iso-cg-21-16-04-13]. If any design or advisory work is performed, the Schedule is the thing to read."
+		},
+		{
+			"item": "Track the aggregate separately from the occurrence limit",
+			"note": "The form states that the General Aggregate is the most the insurer will pay for the sum of damages other than those in the products-completed operations hazard, that the Products-Completed Operations Aggregate is separate, and that the limits apply separately to each consecutive annual period [S:iso-cg-00-01-04-13]. Two open claims can exhaust an aggregate that an occurrence limit suggests is intact."
+		},
+		{
+			"item": "Establish where the risk sits in the market before renewal, not at it",
+			"note": "The Department of Insurance notes that after three documented declinations from licensed commercial carriers a business can proceed to the surplus line market through a specially licensed broker [S:ca-cdi-commercial-insurance-guide]. Documenting declinations as they happen is what makes that route available on time. Nothing here says which market any risk belongs in."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "The California Department of Insurance publishes a Commercial Insurance Guide that describes the three primary CGL coverage sections, describes the coverage as comprehensive in nature covering all hazards within the scope of the insuring agreement that are not otherwise excluded, and lists major exclusions including intentional injury, insured contracts, liquor liability, workers compensation and employers liability, pollution, aircraft, automobile, watercraft, mobile equipment, war, care custody and control, damage to your work, impaired property, sistership liability, and failure to perform [S:ca-cdi-commercial-insurance-guide]. CDI also states that a surplus line company can only be accessed through a specially licensed broker, that it has limited jurisdiction over the operation of surplus line insurers, and that the California Insurance Guarantee Association does not apply to surplus line insurers [S:ca-cdi-commercial-insurance-guide]. Nothing here determines whether a specific California risk is written by an admitted carrier, placed in the surplus line market, or accepted at all; those are carrier and broker decisions on the individual risk."
+		},
+		{
+			"state": "US",
+			"note": "The provisions described on this page are those of CG 00 01 04 13, CG 20 01 04 13, CG 20 10 04 13, CG 20 37 04 13 and CG 21 16 04 13 as published, each carrying the ISO copyright date 2012 [S:iso-cg-00-01-04-13][S:iso-cg-20-01-04-13][S:iso-cg-20-10-04-13][S:iso-cg-20-37-04-13][S:iso-cg-21-16-04-13]. They are the behavior of specific editions of specific forms, not universal policy language. Other editions, state variants, and carrier forms exist and can read differently, so read the forms on the policy."
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"effectiveDate": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"iso-cg-00-01-04-13",
+		"iso-cg-20-01-04-13",
+		"iso-cg-20-10-04-13",
+		"iso-cg-20-37-04-13",
+		"iso-cg-21-16-04-13",
+		"iso-cp-00-10-10-12",
+		"ca-cdi-commercial-insurance-guide"
+	],
+	"relatedQuestions": [
+		"general-liability-vs-professional-liability",
+		"claims-made-retroactive-date",
+		"contract-additional-insured-status",
+		"same-limit-different-protection"
+	]
+}

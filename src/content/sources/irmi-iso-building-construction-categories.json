@@ -1,0 +1,22 @@
+{
+	"title": "Building construction categories (ISO), insurance glossary definition",
+	"publisher": "International Risk Management Institute (IRMI)",
+	"url": "https://www.irmi.com/term/insurance-definitions/building-construction-categories-(iso)",
+	"sourceType": "secondary-analysis",
+	"jurisdiction": "US",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"IRMI's glossary states that these categories were established by Insurance Services Office, Inc. (ISO) in its Commercial Lines Manual for purposes of developing rates for insuring commercial property based on susceptibility to damage by fire.",
+		"IRMI lists six categories from least to most fire resistive with their construction codes: frame (1), joisted masonry (2), noncombustible (3), masonry noncombustible (4), modified fire resistive (5), and fire resistive (6)."
+	],
+	"updateCadence": "Glossary entry; updated by the publisher as terminology changes.",
+	"status": "active",
+	"notes": "Fetched today and both claims confirmed. This is a secondary glossary entry describing an ISO scheme. The ISO Commercial Lines Manual is a licensed publication and was not fetched, so the prose attributes the six categories to IRMI's description rather than stating them as read from the manual itself.",
+	"officialHost": true
+}

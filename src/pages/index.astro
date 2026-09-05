@@ -1,0 +1,443 @@
+---
+import {
+	ArrowRight,
+	Building2,
+	FileStack,
+	FlaskConical,
+	Landmark,
+	Layers,
+	MapPin,
+	Search,
+	Wrench,
+} from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StatusChip from '../components/StatusChip.astro';
+import { siteConfig } from '../config/site';
+import { stripMarkers } from '../lib/citations';
+import { isStale, loadCorpus, recentlyReviewed } from '../lib/corpus';
+import { longDate } from '../lib/cite';
+import { graph, organization, website } from '../lib/schema';
+import { TODAY } from '../lib/today';
+import { allLineHubs } from '../lib/line-hub';
+
+const corpus = await loadCorpus();
+
+/* Source-quality strip: counted from the registry, never asserted. */
+const totalSources = corpus.sources.length;
+const primarySources = corpus.sources.filter((s) => s.data.primary).length;
+const staleSources = corpus.sources.filter((s) => isStale(s.data.lastChecked, TODAY)).length;
+/* Of the source records, how many have been confirmed after the day they
+   were added. accessedDate and lastChecked were identical on 260 of 263,
+   so publishing a per-source freshness date without this ratio overstated
+   what the date establishes. */
+const rechecked = corpus.sources.filter((s) => s.data.lastCheckedBasis === 'recheck').length;
+/* The count the front door leads with, so it is computed rather than
+   written down where it would drift. */
+const indexedLines = allLineHubs(corpus).filter((h) => h.hasSubstance).length;
+const lastReview = corpus.questions
+	.map((q) => q.data.lastReviewed)
+	.concat(corpus.coverages.map((c) => c.data.lastReviewed))
+	.sort()
+	.at(-1);
+const correctedPages = corpus.questions.filter((q) => q.data.reviewState === 'corrected').length;
+
+/*
+ * Editorial selection, not a usage count. A reviewer decided these are the most
+ * useful starting points. This site does not publish invented popularity data.
+ */
+const FEATURED = [
+	'homeowners-earthquake-california',
+	'replacement-cost-vs-market-value',
+	'claims-made-retroactive-date',
+	'workers-comp-class-codes',
+	'lender-insurance-requirement',
+	'surety-bond-vs-insurance',
+];
+const featured = FEATURED.map((slug) => corpus.questionBySlug.get(slug)).filter(
+	(q): q is NonNullable<typeof q> => Boolean(q),
+);
+const featuredQuestions = featured.length >= 4 ? featured : corpus.questions.slice(0, 6);
+const examples = featuredQuestions.slice(0, 5).map((q) => q.data.question);
+
+const families = [...new Set(corpus.questions.map((q) => q.data.family))].sort();
+const lines = [...new Set(corpus.questions.flatMap((q) => q.data.lines))].sort();
+const states = [...new Set(corpus.states.map((s) => s.data.code))].sort();
+
+const recent = recentlyReviewed(corpus, 6);
+
+const atlas = [
+	{
+		href: '/insurance',
+		icon: Layers,
+		label: 'Coverage library',
+		count: corpus.coverages.length,
+		unit: 'lines',
+		blurb: 'What a line is designed to protect, what it commonly covers, and the policy-form caveats.',
+	},
+	{
+		href: '/questions',
+		icon: FileStack,
+		label: 'Question library',
+		count: corpus.questions.length,
+		unit: 'questions',
+		blurb: 'Every question with a direct answer, its assumptions, and what would change it.',
+	},
+	{
+		href: '/companies',
+		icon: Building2,
+		label: 'Companies and regulators',
+		count: corpus.companies.length,
+		unit: 'organizations',
+		blurb: 'Verified identity, regulator records, and official channels. No ratings summaries.',
+	},
+	{
+		href: '/states',
+		icon: MapPin,
+		label: 'States',
+		count: corpus.states.length,
+		unit: 'jurisdictions',
+		blurb: 'Regulator, rate mechanism, residual market, and current statutory minimums.',
+	},
+	{
+		href: '/examples',
+		icon: FlaskConical,
+		label: 'Examples',
+		count: corpus.examples.length,
+		unit: 'labeled examples',
+		blurb: 'Public records, composites, and hypotheticals, each labeled for exactly what it is.',
+	},
+	{
+		href: '/tools',
+		icon: Wrench,
+		label: 'Tools',
+		count: corpus.liveTools.length,
+		unit: 'free tools',
+		blurb: 'Organize a contract requirement, a renewal, or a policy comparison. Nothing is uploaded.',
+	},
+];
+
+const FAMILY_LABEL: Record<string, string> = {
+	personal: 'Personal lines',
+	commercial: 'Commercial lines',
+	life: 'Life',
+	health: 'Health and benefits',
+};
+
+const jsonLd = graph(organization(), website());
+---
+
+<BaseLayout
+	description="Assemble your coverage position, see the gaps and the evidence behind each one, then read the source. A public insurance advisory instrument with a visible source ledger on every page."
+	jsonLd={jsonLd}
+	pageType="home"
+>
+	<!-- First viewport: the working surface, not a marketing hero. -->
+	<section class="band band-tight band-first band-paper" aria-labelledby="home-title">
+		<div class="shell">
+			<span class="eyebrow">Free insurance research</span>
+			<h1 id="home-title" style="font-size: var(--text-3xl); max-width: 34ch">
+				Insurance answers with the evidence attached. Free to read, and nothing to fill in.
+			</h1>
+			<p class="lede" style="font-size: var(--text-base)">
+				{indexedLines} lines of insurance indexed, {corpus.coverages.length} written up in full,{' '}
+				{corpus.questions.length} questions answered, {totalSources} source records behind them.{' '}
+				Operated by {siteConfig.operator.legalName} dba {siteConfig.operator.dba}. No account, no
+				email, and no quote is required to read any of it.
+			</p>
+
+			<form
+				action="/ask"
+				method="get"
+				role="search"
+				data-question-form
+				class="stack"
+				style="max-width: 800px; margin-top: var(--s-6)"
+			>
+				<div class="field">
+					<label for="home-q">Your insurance question</label>
+					<div style="display:flex;gap:var(--s-2);align-items:flex-start;flex-wrap:wrap">
+						<input
+							id="home-q"
+							name="q"
+							type="search"
+							autocomplete="off"
+							enterkeyhint="search"
+							placeholder={examples[0] ?? 'Ask an insurance question'}
+							aria-describedby="home-q-hint"
+							style="flex:1 1 320px"
+						/>
+						<button class="btn btn-primary" type="submit">
+							<Search size={16} aria-hidden="true" /> Find the answer
+						</button>
+					</div>
+					<span class="hint" id="home-q-hint">
+						General facts only. Leave out names, addresses, policy or claim numbers, and health
+						details. The lookup runs on your device.
+					</span>
+				</div>
+
+				<div class="field-row" style="max-width: 780px">
+					<div class="field">
+						<label for="home-family">Insurance type</label>
+						<select id="home-family" name="family">
+							<option value="any">Any</option>
+							{families.map((family) => <option value={family}>{FAMILY_LABEL[family] ?? family}</option>)}
+						</select>
+					</div>
+					<div class="field">
+						<label for="home-line">Line</label>
+						<select id="home-line" name="line">
+							<option value="any">Any</option>
+							{lines.map((line) => <option value={line}>{line.replace(/-/g, ' ')}</option>)}
+						</select>
+					</div>
+					<div class="field">
+						<label for="home-state">State</label>
+						<select id="home-state" name="state">
+							<option value="any">Any</option>
+							{states.map((state) => <option value={state}>{state}</option>)}
+						</select>
+					</div>
+					<div class="field">
+						<label for="home-audience">Audience</label>
+						<select id="home-audience" name="audience">
+							<option value="any">Any</option>
+							<option value="individual">Individual or household</option>
+							<option value="business-owner">Business owner</option>
+							<option value="professional">Professional adviser</option>
+						</select>
+					</div>
+				</div>
+
+				<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center">
+					<span class="meta">Or browse</span>
+					<a class="btn btn-secondary btn-sm" href="/questions">Questions</a>
+					<a class="btn btn-secondary btn-sm" href="/insurance">Coverage</a>
+					<a class="btn btn-secondary btn-sm" href="/states">States</a>
+					<a class="btn btn-secondary btn-sm" href="/tools">Tools</a>
+					<a class="btn btn-secondary btn-sm" href="/sources">Sources</a>
+				</div>
+			</form>
+
+			<!-- Source-quality strip, still inside the first viewport. -->
+			<div class="table-scroll" style="margin-top: var(--s-6); max-width: 920px">
+				<table class="data">
+					<caption>Current state of the published corpus, counted from the source registry.</caption>
+					<thead>
+						<tr>
+							<th scope="col">Measure</th>
+							<th scope="col">Value</th>
+							<th scope="col">What it means</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">Source records</th>
+							<td class="num">{totalSources}</td>
+							<td>Each carries a publisher, dates, and the exact claims it supports.</td>
+						</tr>
+						<tr>
+							<th scope="row">Primary sources</th>
+							<td class="num">{primarySources} of {totalSources}</td>
+							<td>Statutes, regulations, regulator guidance, and official records.</td>
+						</tr>
+						<tr>
+							<th scope="row">Stale sources</th>
+							<td class="num">{staleSources}</td>
+							<td>Past the review window. Flagged on every page that cites them.</td>
+						</tr>
+						<tr>
+							<th scope="row">Independently rechecked</th>
+							<td class="num">{rechecked} of {totalSources}</td>
+							<td>
+								Confirmed again after the day it was added. The rest carry the date they were
+								read on, and say so.
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">Most recent review</th>
+							<td class="num">{lastReview ? longDate(lastReview) : 'n/a'}</td>
+							<td>A named person signed off on that page before it published.</td>
+						</tr>
+						<tr>
+							<th scope="row">Pages corrected</th>
+							<td class="num">{correctedPages}</td>
+							<td>Every material correction is logged in public.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="table-stack">
+				<p class="mono">Current state of the published corpus, counted from the source registry.</p>
+				<div class="table-stack-item">
+					<dl>
+						<dt>Sources</dt>
+						<dd>{totalSources} records, {primarySources} primary</dd>
+						<dt>Stale</dt>
+						<dd>{staleSources} past the review window</dd>
+						<dt>Reviewed</dt>
+						<dd>{lastReview ? longDate(lastReview) : 'n/a'}</dd>
+						<dt>Corrected</dt>
+						<dd>{correctedPages} pages</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Editorially selected starting points. -->
+	<section class="band band-tight" aria-labelledby="featured-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Editorial selection</span>
+					<h2 id="featured-title">Useful places to start</h2>
+					<p>
+						Chosen by a reviewer for how often the underlying confusion causes a real problem. These
+						are not usage counts.
+					</p>
+				</div>
+				<a class="btn btn-secondary btn-sm" href="/questions">
+					All {corpus.questions.length} questions <ArrowRight size={15} aria-hidden="true" />
+				</a>
+			</div>
+
+			<div class="rows">
+				{
+					featuredQuestions.map((question) => (
+						<a class="row" href={`/questions/${question.id}`}>
+							<div>
+								<h3 class="row-title">{question.data.question}</h3>
+								<p>{stripMarkers(question.data.shortAnswer).slice(0, 190)}</p>
+								<div class="row-meta">
+									<StatusChip kind={question.data.confidence} />
+									<span class="meta">{question.data.lines.join(', ')}</span>
+									{question.data.states.length > 0 && <span class="meta">{question.data.states.join(', ')}</span>}
+									<span class="meta">{question.data.sourceIds.length} sources</span>
+									<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+								</div>
+							</div>
+							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<!-- Topic atlas: high-scan entry points. -->
+	<section class="band band-paper" aria-labelledby="atlas-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Browse the library</span>
+					<h2 id="atlas-title">Organized around entities, not a blog chronology</h2>
+					<p>
+						The library is arranged by what a thing is, not when it was written. Every record links
+						to the questions that depend on it.
+					</p>
+				</div>
+			</div>
+
+			<div class="card-grid">
+				{
+					atlas.map((entry) => {
+						const Icon = entry.icon;
+						return (
+							<a class="card" href={entry.href}>
+								<div class="card-top">
+									<Icon size={20} aria-hidden="true" style="color: var(--gold-text)" />
+									<span class="status status-plain">
+										{entry.count} {entry.unit}
+									</span>
+								</div>
+								<h3 class="card-title">{entry.label}</h3>
+								<p>{entry.blurb}</p>
+								<div class="card-foot">
+									<span class="meta">Open</span>
+									<ArrowRight size={15} aria-hidden="true" />
+								</div>
+							</a>
+						);
+					})
+				}
+			</div>
+		</div>
+	</section>
+
+	<!-- Recently reviewed. -->
+	<section class="band band-tight" aria-labelledby="recent-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Review feed</span>
+					<h2 id="recent-title">Recently reviewed</h2>
+					<p>Sorted by the date a person last checked the page against its sources.</p>
+				</div>
+				<a class="btn btn-secondary btn-sm" href="/rss.xml">
+					RSS feed <ArrowRight size={15} aria-hidden="true" />
+				</a>
+			</div>
+
+			<div class="rows">
+				{
+					recent.map((item) => (
+						<a class="row" href={item.path}>
+							<div>
+								<h3 class="row-title">{item.title}</h3>
+								<p>{stripMarkers(item.summary).slice(0, 170)}</p>
+								<div class="row-meta">
+									<span class="status status-plain">{item.kind}</span>
+									<span class="meta">Reviewed {longDate(item.date)}</span>
+								</div>
+							</div>
+							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<!-- Standards. -->
+	<section class="band band-ink" aria-labelledby="standards-title">
+		<div class="shell">
+			<span class="eyebrow">Standards</span>
+			<h2 id="standards-title">What this site will and will not do</h2>
+
+			<div class="card-grid card-grid-2" style="margin-top: var(--s-6)">
+				<div style="padding: var(--s-5); border: 1px solid var(--line-ink); border-radius: var(--r-4)">
+					<h3 style="color: var(--paper)">It will</h3>
+					<ul style="margin: var(--s-3) 0 0; font-size: var(--text-sm); line-height: var(--leading-normal)">
+						<li>State the direct answer first, then the conditions.</li>
+						<li>Map every material claim to a dated source you can open.</li>
+						<li>Say when competent sources disagree, or when a rule is changing.</li>
+						<li>Show the author, the reviewer, and the review date.</li>
+						<li>Publish corrections with the prior wording intact.</li>
+						<li>Say "insufficient evidence" rather than fill a gap.</li>
+					</ul>
+				</div>
+				<div style="padding: var(--s-5); border: 1px solid var(--line-ink); border-radius: var(--r-4)">
+					<h3 style="color: var(--paper)">It will not</h3>
+					<ul style="margin: var(--s-3) 0 0; font-size: var(--text-sm); line-height: var(--leading-normal)">
+						<li>Give legal, tax, medical, lending, investment, or claims advice.</li>
+						<li>Decide whether a specific risk is eligible, bound, or uninsurable.</li>
+						<li>Rank insurers, or publish a "best" or "cheapest" claim.</li>
+						<li>Require an email, a phone number, or an account to read anything.</li>
+						<li>Collect a declarations page, a document, or your contact details.</li>
+						<li>Invent an example, a premium, a savings figure, or a claim outcome.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-6)">
+				<a class="btn btn-primary" href="/methodology">
+					<Landmark size={16} aria-hidden="true" /> Read the methodology
+				</a>
+				<a class="btn btn-secondary" href="/sources">Open the source registry</a>
+				<a class="btn btn-secondary" href="/corrections">See the correction log</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

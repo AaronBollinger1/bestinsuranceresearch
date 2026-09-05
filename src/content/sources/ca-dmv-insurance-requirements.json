@@ -1,0 +1,21 @@
+{
+	"title": "Insurance Requirements - California Department of Motor Vehicles",
+	"publisher": "California Department of Motor Vehicles",
+	"url": "https://www.dmv.ca.gov/portal/vehicle-registration/insurance-requirements/",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The California DMV lists the current minimum liability insurance amounts as $30,000 for injury or death to one person, $60,000 for injury or death to more than one person, and $15,000 for damage to property.",
+		"The California DMV states that the financial responsibility requirement may also be met by a $75,000 cash deposit with the DMV, by a DMV-issued self-insurance certificate, or by a $75,000 surety bond from a company licensed to do business in California."
+	],
+	"updateCadence": "Re-verify annually and after each legislative session.",
+	"status": "active",
+	"officialHost": true
+}

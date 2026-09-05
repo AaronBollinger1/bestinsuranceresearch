@@ -1,0 +1,24 @@
+{
+	"title": "Mandatory One Year Moratorium on Non-Renewals (consumer page)",
+	"publisher": "California Department of Insurance",
+	"url": "https://www.insurance.ca.gov/01-consumers/140-catastrophes/MandatoryOneYearMoratoriumNonRenewals.cfm",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The Department of Insurance states that the one year moratorium on insurance cancellations and non-renewals is authorized under California Insurance Code section 675.1.",
+		"The Department states that the protection from cancellation or non-renewal lasts for one year from the date of the Governor's emergency declaration.",
+		"The Department states that this one year protection applies to all residential policyholders within the affected areas who suffer less than a total loss, including those who suffer no loss.",
+		"The Department states that it coordinates with CAL FIRE and the Governor's Office of Emergency Services to identify wildfire perimeters and adjacent ZIP Codes within the mandatory moratorium areas.",
+		"The page describes residential property insurance policies and does not describe commercial policies."
+	],
+	"updateCadence": "Updated by the Department as new wildfire emergencies are declared and new moratorium bulletins are issued.",
+	"status": "active",
+	"officialHost": true
+}

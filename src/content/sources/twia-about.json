@@ -1,0 +1,23 @@
+{
+	"title": "About TWIA - Texas Windstorm Insurance Association",
+	"publisher": "Texas Windstorm Insurance Association",
+	"url": "https://www.twia.org/about/",
+	"sourceType": "official-documentation",
+	"jurisdiction": "TX",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The TWIA About page lists 1971 as the year TWIA was established.",
+		"The page states that TWIA provides a source of insurance used as a last resort for property owners that have been denied windstorm and hail property insurance coverage in the private market.",
+		"The page states that TWIA policies only provide coverage for property damage caused directly by wind and hail, and that TWIA policies do not cover damage caused by flooding and storm surge.",
+		"The page states that TWIA operates in 14 counties and reported 252,433 policies in force at review."
+	],
+	"updateCadence": "Policy counts change; re-verify before publishing any figure.",
+	"status": "active",
+	"officialHost": true
+}

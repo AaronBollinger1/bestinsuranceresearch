@@ -1,0 +1,545 @@
+---
+import { ArrowRight, Printer, RotateCcw } from '@lucide/astro';
+import { sharesLine } from '../../lib/lines';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Callout from '../../components/Callout.astro';
+import Handoff from '../../components/Handoff.astro';
+import ModuleForm from '../../components/ModuleForm.astro';
+import SourceLedger from '../../components/SourceLedger.astro';
+import StateBlock from '../../components/StateBlock.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { createCiter, escapeHtml } from '../../lib/citations';
+import { assertModulesValid, idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, graph, organization, webApplication, website } from '../../lib/schema';
+import { TODAY } from '../../lib/today';
+
+export const getStaticPaths = (async () => {
+	const corpus = await loadCorpus();
+	assertModulesValid(corpus);
+	return corpus.modules
+		.filter((m) => m.data.status === 'live')
+		.map((entry) => ({ params: { module: entry.id }, props: { entry, corpus } }));
+}) satisfies GetStaticPaths;
+
+const { entry, corpus } = Astro.props;
+const d = entry.data;
+const path = `/tools/${entry.id}`;
+
+/* Every source any rule cites becomes part of this page's ledger. */
+const ruleSourceIds = [...new Set(d.rules.flatMap((r) => idsOf(r.sourceIds)))];
+const sources = ledgerFor(ruleSourceIds, corpus.sourceById, `module "${entry.id}"`);
+const cite = createCiter(ruleSourceIds, `module "${entry.id}"`);
+
+/* Examples on the same line of business. Module lines and example lines are
+   declared in different vocabularies, so this matches on canonical ids. */
+const relatedExamples = corpus.examples.filter((e) => sharesLine(d.lines, e.data.lines));
+
+const relatedQuestions = [
+	...new Set(d.rules.map((r) => (r.relatedQuestion ? r.relatedQuestion.id : null)).filter(Boolean)),
+]
+	.map((slug) => corpus.questionBySlug.get(slug as string))
+	.filter((q): q is NonNullable<typeof q> => Boolean(q));
+
+const bySeverity = {
+	high: d.rules.filter((r) => r.severity === 'high').length,
+	medium: d.rules.filter((r) => r.severity === 'medium').length,
+	low: d.rules.filter((r) => r.severity === 'low').length,
+};
+const byKind = ['gap', 'inconsistency', 'timing', 'documentation', 'question'].map((kind) => ({
+	kind,
+	count: d.rules.filter((r) => r.kind === kind).length,
+}));
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Tools', path: '/tools' },
+	{ name: d.name, path },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	webApplication({
+		name: d.name,
+		path,
+		description: d.summary,
+		features: [
+			'Records into a shared coverage position held on your own device',
+			`${d.rules.length} deterministic checks over what you record`,
+			'Every open item links to a cited source',
+			'No account, no upload, no contact capture',
+			'Printable open-item list',
+		],
+	}),
+);
+---
+
+<BaseLayout
+	title={d.name}
+	description={d.summary}
+	jsonLd={jsonLd}
+	pageType="tool"
+	bodyClass="instrument"
+>
+	<header class="position-header">
+		<div class="shell">
+			<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+			<div class="position-top">
+				<div class="position-title">
+					<span class="eyebrow">Position module</span>
+					<h1>{d.name}</h1>
+					<p>{d.summary}</p>
+				</div>
+				<div style="display:flex;flex-wrap:wrap;gap:var(--s-2)" class="no-print">
+					<a class="btn btn-primary btn-sm" href="/position">
+						Open the full position <ArrowRight size={15} aria-hidden="true" />
+					</a>
+					<button class="btn btn-secondary btn-sm" type="button" data-module-print>
+						<Printer size={15} aria-hidden="true" /> Print open items
+					</button>
+					<button class="btn btn-secondary btn-sm" type="button" data-module-reset>
+						<RotateCcw size={15} aria-hidden="true" /> Clear this module
+					</button>
+				</div>
+			</div>
+
+			<dl class="figures">
+				<div class="figure">
+					<dt>Recorded</dt>
+					<dd><span data-fig="answered">0</span><small>/ {d.fields.length}</small></dd>
+				</div>
+				<div class="figure" data-tone="high">
+					<dt>High</dt>
+					<dd data-fig="high">0</dd>
+				</div>
+				<div class="figure" data-tone="medium">
+					<dt>Medium</dt>
+					<dd data-fig="medium">0</dd>
+				</div>
+				<div class="figure">
+					<dt>Low</dt>
+					<dd data-fig="low">0</dd>
+				</div>
+				<div class="figure">
+					<dt>Checks run</dt>
+					<dd>{d.rules.length}</dd>
+				</div>
+				<div class="figure">
+					<dt>Sources</dt>
+					<dd>{sources.length}</dd>
+				</div>
+			</dl>
+
+			<div class="meter-row" style="margin-top: var(--s-4); max-width: 460px">
+				<div class="meter-label">
+					<span>Information recorded in this module</span>
+					<b><span data-fig="percent">0</span>%</b>
+				</div>
+				<span class="meter meter-ink"><span data-meter style="width:0%"></span></span>
+			</div>
+		</div>
+	</header>
+
+	<section class="band band-tight band-first">
+		<div class="shell">
+			<Callout tone="privacy">
+				<p><strong>{d.privacyBoundary}</strong></p>
+				<p>
+					What you record here is written to a single coverage position in this browser's local
+					storage, so other modules can check against it. Nothing is uploaded, nothing is sent to
+					Bollinsure, and no insurer receives anything from this page.
+				</p>
+				<p>
+					That is a property of how this page is built, not a promise about how it is
+					operated. The questions below sit in a form with no destination and no submit
+					control, and not one field carries a name, which is the attribute a browser needs
+					before it will include a value in a request. There is no application to complete
+					here and no way to send one.
+				</p>
+			</Callout>
+
+			<Callout tone="warn">
+				<p>
+					<strong>This module reports open items, not decisions.</strong> {d.uncertainty}
+				</p>
+				<p>
+					It does not price anything, does not say whether a risk is acceptable to any insurer, and
+					does not decide whether a loss would be covered. What it does is arithmetic and comparison
+					on what you record, against sources you can open.
+				</p>
+			</Callout>
+
+			<div class="answer-dates" style="margin-top: var(--s-5)">
+				<div><dt>Last reviewed</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
+				<div><dt>Author</dt><dd>{d.author}</dd></div>
+				<div><dt>Reviewer</dt><dd>{d.reviewer}</dd></div>
+				<div><dt>Review state</dt><dd><StatusChip kind={d.reviewState} /></dd></div>
+				{d.domain && <div><dt>Also reachable at</dt><dd>{d.domain}</dd></div>}
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight band-paper" aria-labelledby="record-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Record</span>
+					<h2 id="record-title">What do you have?</h2>
+					<p>
+						Answer what you know and leave the rest. An unanswered field never raises an open item,
+						because an item you cannot act on is worse than no item.
+					</p>
+				</div>
+			</div>
+
+			<ModuleForm module={entry} cite={cite} />
+		</div>
+	</section>
+
+	<section class="band band-tight" aria-labelledby="items-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Open items</span>
+					<h2 id="items-title">What follows from that</h2>
+					<p>
+						{d.rules.length} deterministic checks: {byKind.filter((k) => k.count > 0).map((k) => `${k.count} ${k.kind}`).join(', ')}.
+						Each fires only on exact comparison or arithmetic over what you recorded.
+					</p>
+				</div>
+			</div>
+
+			<div class="items" id="module-items"></div>
+
+			<div id="module-items-empty">
+				<StateBlock kind="empty" heading="Nothing recorded yet.">
+					<p>
+						Answer a few fields above and the checks run as you go. Nothing is sent anywhere at any
+						point, and the count updates live.
+					</p>
+				</StateBlock>
+			</div>
+
+			<div id="module-items-clear" hidden>
+				<StateBlock kind="insufficient" heading="No open item fired on what you recorded.">
+					<p>
+						That means none of this module's {d.rules.length} checks matched, not that the position is
+						complete or correct. Recording more fields runs more checks. A check that never fires
+						because a field is blank is not a clean result.
+					</p>
+					<div class="state-actions">
+						<a class="btn btn-secondary btn-sm" href="/position">See the whole position</a>
+					</div>
+				</StateBlock>
+			</div>
+		</div>
+	</section>
+
+	{
+		sources.length > 0 && (
+			<section class="band band-tight band-paper">
+				<div class="shell">
+					<SourceLedger sources={sources} today={TODAY} headingId="module-source-ledger" />
+				</div>
+			</section>
+		)
+	}
+
+	{
+		relatedExamples.length > 0 && (
+			<section class="band band-tight" aria-labelledby="examples-title">
+				<div class="shell">
+					<div class="band-head">
+						<div>
+							<span class="eyebrow">Worked examples</span>
+							<h2 id="examples-title">Documents read, on this line</h2>
+							<p class="band-lede">
+								Each of these reads published documents on the line this module covers and shows
+								the reasoning, with every statement attributed. None describes a real client, and
+								none is a coverage determination.
+							</p>
+						</div>
+					</div>
+					<div class="card-grid">
+						{relatedExamples.map((example) => (
+							<a class="card" href={`/examples/${example.id}`}
+								data-event="related_example_opened"
+								data-insurance-family={example.data.family}
+								data-page-type="tool">
+								<div class="card-top">
+									<span class="status status-plain">{example.data.label.replace(/-/g, ' ')}</span>
+								</div>
+								<h3 class="card-title">{example.data.title}</h3>
+								<p>{example.data.labelNote}</p>
+								<div class="card-foot">
+									<span class="meta">Read the example</span>
+									<ArrowRight size={15} aria-hidden="true" />
+								</div>
+							</a>
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
+
+	{
+		relatedQuestions.length > 0 && (
+			<section class="band band-tight" aria-labelledby="reading-title">
+				<div class="shell">
+					<div class="band-head">
+						<div>
+							<span class="eyebrow">The research behind it</span>
+							<h2 id="reading-title">Questions this module draws on</h2>
+						</div>
+					</div>
+					<div class="rows">
+						{relatedQuestions.map((q) => (
+							<a class="row" href={`/questions/${q.id}`}
+								data-event="related_question_opened"
+								data-insurance-family={q.data.family}
+								data-page-type="tool">
+								<div>
+									<h3 class="row-title">{q.data.question}</h3>
+									<div class="row-meta">
+										<StatusChip kind={q.data.confidence} />
+										<span class="meta">{q.data.sourceIds.length} sources</span>
+									</div>
+								</div>
+								<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+							</a>
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
+
+	<section class="band band-tight no-print">
+		<div class="shell">
+			<Handoff
+				sourcePath={path}
+				family={d.family}
+				line={d.lines[0]}
+				sourceTool={entry.id}
+				pageType="tool"
+				reason={escapeHtml(
+					'A licensed broker can take these open items and tell you which ones your current policies already answer. This module can only find them.',
+				)}
+			/>
+		</div>
+	</section>
+
+	<div class="module-status no-print">
+		<p class="live-status" data-module-live role="status" aria-live="polite" style="margin:0"></p>
+		<div class="module-status-figures">
+			<span>Recorded <b data-fig="answered">0</b>/{d.fields.length}</span>
+			<span>Open items <b data-fig="total">0</b></span>
+			<span>Saved on this device only</span>
+		</div>
+	</div>
+</BaseLayout>
+
+<script>
+	import {
+		completenessFor,
+		openItemsFor,
+		type FieldValue,
+		type ModuleDef,
+	} from '../../lib/position';
+	import { formatWhen, loadPosition, readModule, writeModule } from '../../lib/position-store';
+
+	const node = document.getElementById('module-definition');
+	if (!node) throw new Error('module definition missing');
+	const def = JSON.parse(node.textContent || '{}') as ModuleDef;
+
+	const form = document.getElementById('module-form');
+	const itemsEl = document.getElementById('module-items');
+	const emptyEl = document.getElementById('module-items-empty');
+	const clearEl = document.getElementById('module-items-clear');
+	const live = document.querySelector<HTMLElement>('[data-module-live]');
+	if (!form || !itemsEl) throw new Error('module markup missing');
+
+	const KIND_LABEL: Record<string, string> = {
+		gap: 'Gap', inconsistency: 'Inconsistency', timing: 'Timing',
+		documentation: 'Documentation', question: 'Question',
+	};
+	const ROUTE_LABEL: Record<string, string> = {
+		broker: 'Ask a licensed broker', insurer: 'Ask the insurer',
+		lawyer: 'This one is for a lawyer', accountant: 'Ask your accountant',
+	};
+
+	/* ---- Read the form into a plain field record ---- */
+	function collect(): Record<string, FieldValue> {
+		const out: Record<string, FieldValue> = {};
+
+		for (const el of form!.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-field][data-kind]')) {
+			const id = el.dataset.field!;
+			const kind = el.dataset.kind!;
+			if (kind === 'boolean' || kind === 'multiselect') continue; // handled below
+			const value = (el as HTMLInputElement).value;
+			if (value === '') continue;
+			out[id] = kind === 'number' ? Number(value) : value;
+		}
+
+		for (const group of form!.querySelectorAll<HTMLElement>('[data-kind="boolean"]')) {
+			const pressed = group.querySelector<HTMLButtonElement>('[aria-pressed="true"]');
+			const v = pressed?.dataset.value ?? '';
+			if (v === 'true') out[group.dataset.field!] = true;
+			else if (v === 'false') out[group.dataset.field!] = false;
+		}
+
+		for (const group of form!.querySelectorAll<HTMLElement>('[data-kind="multiselect"]')) {
+			const checked = [...group.querySelectorAll<HTMLInputElement>('input:checked')].map((i) => i.value);
+			if (checked.length > 0) out[group.dataset.field!] = checked;
+		}
+
+		return out;
+	}
+
+	/* ---- Restore a previously recorded position ---- */
+	function restore() {
+		const fields = readModule(def.moduleId);
+		if (Object.keys(fields).length === 0) return false;
+
+		for (const el of form!.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-field][data-kind]')) {
+			const kind = el.dataset.kind!;
+			if (kind === 'boolean' || kind === 'multiselect') continue;
+			const v = fields[el.dataset.field!];
+			if (v !== undefined && v !== null) (el as HTMLInputElement).value = String(v);
+		}
+		for (const group of form!.querySelectorAll<HTMLElement>('[data-kind="boolean"]')) {
+			const v = fields[group.dataset.field!];
+			const want = v === true ? 'true' : v === false ? 'false' : '';
+			for (const b of group.querySelectorAll<HTMLButtonElement>('button')) {
+				b.setAttribute('aria-pressed', String(b.dataset.value === want));
+			}
+		}
+		for (const group of form!.querySelectorAll<HTMLElement>('[data-kind="multiselect"]')) {
+			const v = fields[group.dataset.field!];
+			if (!Array.isArray(v)) continue;
+			for (const box of group.querySelectorAll<HTMLInputElement>('input')) {
+				box.checked = v.includes(box.value);
+			}
+		}
+		return true;
+	}
+
+	function escape(value: string) {
+		const div = document.createElement('div');
+		div.textContent = value;
+		return div.innerHTML;
+	}
+
+	function render() {
+		const fields = collect();
+		const state = { fields, touchedAt: new Date().toISOString() };
+		const items = openItemsFor(def, state);
+		const completeness = completenessFor(def, state);
+
+		const set = (name: string, value: string | number) => {
+			for (const el of document.querySelectorAll<HTMLElement>(`[data-fig="${name}"]`)) {
+				el.textContent = String(value);
+			}
+		};
+		set('answered', completeness.answered);
+		set('percent', completeness.percent);
+		set('total', items.length);
+		set('high', items.filter((i) => i.severity === 'high').length);
+		set('medium', items.filter((i) => i.severity === 'medium').length);
+		set('low', items.filter((i) => i.severity === 'low').length);
+		for (const bar of document.querySelectorAll<HTMLElement>('[data-meter]')) {
+			bar.style.width = `${completeness.percent}%`;
+		}
+
+		itemsEl!.innerHTML = items
+			.map((item) => {
+				const question = item.relatedQuestion
+					? `<a href="/questions/${escape(item.relatedQuestion)}">Read the research</a>`
+					: '';
+				const route = item.routeToProfessional
+					? `<span>${escape(ROUTE_LABEL[item.routeToProfessional] || item.routeToProfessional)}</span>`
+					: '';
+				const sources = item.sourceIds
+					.map((id) => `<a href="/sources/${escape(id)}">${escape(id)}</a>`)
+					.join(' ');
+				return [
+					`<div class="item" data-severity="${escape(item.severity)}">`,
+					'<span class="item-rail" aria-hidden="true"></span>',
+					'<div>',
+					'<div class="item-head">',
+					`<h3>${escape(item.title)}</h3>`,
+					`<span class="kind kind-${escape(item.kind)}">${escape(KIND_LABEL[item.kind] || item.kind)}</span>`,
+					`<span class="status status-plain">${escape(item.severity)}</span>`,
+					'</div>',
+					`<p>${item.detail}</p>`,
+					'<div class="item-action">',
+					'<span aria-hidden="true" style="color:var(--gold-text)">&#8594;</span>',
+					`<p>${escape(item.action)}</p>`,
+					'</div>',
+					'<div class="item-meta">',
+					question, route, sources,
+					'</div>',
+					'</div>',
+					'</div>',
+				].join('');
+			})
+			.join('');
+
+		const started = completeness.answered > 0;
+		if (emptyEl) emptyEl.hidden = started;
+		if (clearEl) clearEl.hidden = !started || items.length > 0;
+
+		if (started) {
+			writeModule(def.moduleId, fields);
+			const saved = loadPosition().savedAt;
+			if (live) {
+				live.textContent =
+					`${items.length} open item${items.length === 1 ? '' : 's'} from ${completeness.answered} recorded field${completeness.answered === 1 ? '' : 's'}. Saved on this device ${formatWhen(saved)}.`;
+			}
+			window.birTrack?.('tool_started', { tool_name: def.moduleId });
+		} else if (live) {
+			live.textContent = '';
+		}
+	}
+
+	/* Boolean segmented controls behave like a radio group. */
+	form.addEventListener('click', (event) => {
+		const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-kind="boolean"] button');
+		if (!button) return;
+		const group = button.closest<HTMLElement>('[data-kind="boolean"]')!;
+		for (const b of group.querySelectorAll<HTMLButtonElement>('button')) {
+			b.setAttribute('aria-pressed', String(b === button));
+		}
+		render();
+	});
+	form.addEventListener('change', render);
+	form.addEventListener('input', render);
+
+	document.querySelector('[data-module-print]')?.addEventListener('click', () => {
+		window.birTrack?.('tool_completed', { tool_name: def.moduleId });
+		window.print();
+	});
+
+	document.querySelector('[data-module-reset]')?.addEventListener('click', () => {
+		for (const el of form!.querySelectorAll<HTMLInputElement | HTMLSelectElement>('input, select')) {
+			if (el instanceof HTMLInputElement && el.type === 'checkbox') el.checked = false;
+			else (el as HTMLInputElement).value = '';
+		}
+		for (const group of form!.querySelectorAll<HTMLElement>('[data-kind="boolean"]')) {
+			for (const b of group.querySelectorAll<HTMLButtonElement>('button')) {
+				b.setAttribute('aria-pressed', String(b.dataset.value === ''));
+			}
+		}
+		writeModule(def.moduleId, {});
+		render();
+		if (live) live.textContent = 'This module was cleared on this device.';
+	});
+
+	restore();
+	render();
+</script>

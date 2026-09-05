@@ -1,0 +1,58 @@
+{
+	"name": "Commercial COPE and Operations Workspace",
+	"status": "roadmap",
+	"order": 34,
+	"family": [
+		"commercial"
+	],
+	"lines": [
+		"commercial-property",
+		"general-liability",
+		"bop"
+	],
+	"summary": "Assemble construction, occupancy, protection, exposure, locations, revenue, payroll, and contract requirements in one place.",
+	"spec": {
+		"user": "A business owner or adviser preparing a commercial package submission.",
+		"inputData": [
+			"COPE categories per location",
+			"Revenue and payroll bands",
+			"Subcontractor and contract requirement flags"
+		],
+		"authoritativeSources": [
+			"Published COPE and protection class material",
+			"The commercial property underwriting question published in this library"
+		],
+		"privacyBoundary": "No addresses, no financial statements, no loss runs. Bands and categories only.",
+		"decisionRules": [
+			"Items are labeled as common market practice where they are not a filed requirement.",
+			"This tool never states that a risk is eligible, ineligible, standard market, non-admitted, FAIR Plan eligible, bound, or uninsurable. It shows the published pathway criteria and names who actually decides, which is the insurer."
+		],
+		"uncertainty": "What an underwriter asks for varies by carrier, class, and size.",
+		"output": "A printable submission-preparation workspace.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

@@ -1,0 +1,25 @@
+{
+	"title": "Commercial General Liability Coverage Form CG 00 01 04 13",
+	"publisher": "Insurance Services Office, Inc. (specimen published publicly by the County of Sonoma, California)",
+	"url": "https://sonomacounty.gov/Main%20County%20Site/General/Sonoma/Sample%20Dept/Sample%20Dept/Divisions%20and%20Sections/Liability/Services/Help%20Request/Subpages/Help%20Request/_Documents/SampleISO-CGL.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Coverage A obligates the insurer to pay those sums the insured becomes legally obligated to pay as damages because of bodily injury or property damage to which the insurance applies, and gives the insurer the right and duty to defend the insured against any suit seeking those damages.",
+		"The form is occurrence-triggered: the insurance applies to bodily injury and property damage only if the bodily injury or property damage occurs during the policy period.",
+		"Occurrence is defined as an accident, including continuous or repeated exposure to substantially the same general harmful conditions.",
+		"The unendorsed form contains no broad professional services exclusion. The word professional appears three times in the whole form: in the Coverage C medical expense wording about professional nursing and funeral services, in the Who Is An Insured provision about providing or failing to provide professional health care services, and in clause (3) of the insured contract definition, which excludes that part of a contract under which the insured, if an architect, engineer or surveyor, assumes liability for an injury or damage arising out of the insured's rendering or failure to render professional services, including supervisory, inspection, architectural or engineering activities.",
+		"The form contains a separate Coverage B for personal and advertising injury liability and a defined products-completed operations hazard."
+	],
+	"updateCadence": "Advisory form revised by the filing organization on multi-year cycles; the 04 13 edition is the one reviewed.",
+	"status": "active",
+	"notes": "PDF retrieved on 2026-08-31 and the full 16-page text extracted with pdftotext. Header reads COMMERCIAL GENERAL LIABILITY CG 00 01 04 13 and the footer carries the Insurance Services Office, Inc., 2012 copyright line. The form prints only the edition designation 04 13, so publishedDate and effectiveDate record the month and year of that edition rather than a day. The hosting path is a county CMS path that may break; an identical copy of the same edition was retrieved and text-compared on 2026-08-31 at https://www.argogroup.com/wp-content/uploads/2019/11/CG-00-01-04-13-Form.pdf.pdf, and the operative wording matched. Published: 2013-04 Effective: 2013-04",
+	"officialHost": true
+}

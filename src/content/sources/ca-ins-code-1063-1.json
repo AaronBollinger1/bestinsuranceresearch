@@ -1,0 +1,25 @@
+{
+	"title": "California Insurance Code Section 1063.1 (California Insurance Guarantee Association: definitions, including covered claims)",
+	"publisher": "California Legislature, California Legislative Information (leginfo)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=1063.1",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The section opens with the phrase 'As used in this article', so the definitions in it are stated for purposes of the California Insurance Guarantee Association article of the Insurance Code and not as general definitions.",
+		"Covered claims do not include that portion of a claim, other than a claim for workers' compensation benefits, that is in excess of five hundred thousand dollars ($500,000).",
+		"The section provides that a claim for damage to, or loss of, a dwelling structure under a policy of residential property insurance shall not exceed one million dollars ($1,000,000) or the amount recoverable under the policy, whichever is less.",
+		"The paragraph containing the one hundred dollar floor opens with an exception: 'Covered claims,' except in cases involving a claim for workers' compensation benefits or for unearned premiums, does not include a claim in an amount of one hundred dollars ($100) or less, or the portion of a claim that is in excess of the applicable limits provided in the insurance policy issued by the insolvent insurer. The workers' compensation and unearned premium exception governs that whole paragraph.",
+		"Covered claims do not include an obligation of the insolvent insurer arising from a policy or contract of insurance issued or renewed before the insolvent insurer's admission to transact insurance in the State of California."
+	],
+	"updateCadence": "Amended by the California Legislature from time to time; verify the current text on leginfo before relying on it.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31. All quoted exclusions and the dwelling structure sentence were read on the page. Re-fetched on 2026-08-31 for the exact text of the paragraph carrying the one hundred dollar floor, because an earlier draft quoted that exclusion without its statutory exception; the paragraph opens 'Covered claims,' except in cases involving a claim for workers' compensation benefits or for unearned premiums, and that exception governs both the $100 floor and the excess-of-policy-limits clause in the same paragraph. The 'As used in this article' scope language was confirmed on the same fetch and is recorded here so the caps are not quoted outside the article that defines them.",
+	"officialHost": true
+}

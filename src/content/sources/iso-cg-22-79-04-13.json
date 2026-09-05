@@ -1,0 +1,23 @@
+{
+	"title": "Exclusion - Contractors - Professional Liability, Form CG 22 79 04 13",
+	"publisher": "Insurance Services Office, Inc. (specimen published publicly by the New York State Office of General Services)",
+	"url": "https://ogs.ny.gov/system/files/documents/2021/09/cg-22-79-04-13.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The endorsement excludes bodily injury, property damage or personal and advertising injury arising out of the rendering of or failure to render any professional services by you or on your behalf, but only with respect to providing engineering, architectural or surveying services to others in your capacity as an engineer, architect or surveyor, and providing, or hiring independent professionals to provide, engineering, architectural or surveying services in connection with construction work you perform.",
+		"Paragraph 3 states that professional services do not include services within construction means, methods, techniques, sequences and procedures employed by you in connection with your operations in your capacity as a construction contractor.",
+		"The exclusion applies even if the claims against any insured allege negligence or other wrongdoing in the supervision, hiring, employment, training or monitoring of others by that insured, if the occurrence or offense involved the rendering of or failure to render any professional services by you or on your behalf with respect to the operations described in the endorsement."
+	],
+	"updateCadence": "Advisory endorsement revised on multi-year cycles; the 04 13 edition is the one reviewed.",
+	"status": "active",
+	"notes": "PDF retrieved on 2026-08-31 and the complete one-page endorsement extracted with pdftotext and read in full. Header reads COMMERCIAL GENERAL LIABILITY CG 22 79 04 13, footer reads CG 22 79 04 13, Insurance Services Office, Inc., 2012, Page 1 of 1. The form prints only the edition designation 04 13, so publishedDate and effectiveDate record month and year, not a day. Any comparison of this endorsement's breadth against CG 22 43 is an inference and is not text on the form, so comparative statements are attributed to the secondary commentary instead. Published: 2013-04 Effective: 2013-04",
+	"officialHost": true
+}

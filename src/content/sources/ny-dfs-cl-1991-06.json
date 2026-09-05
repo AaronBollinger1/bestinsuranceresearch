@@ -1,0 +1,22 @@
+{
+	"title": "Insurance Circular Letter No. 6 (1991): Proper Amount of Insurance Protection on Dwellings",
+	"publisher": "New York State Department of Financial Services",
+	"url": "https://www.dfs.ny.gov/industry_guidance/circular_letters/cl1991_06",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "NY",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Replacement cost represents what it would take to rebuild the building at its present location, while market value includes non-insured elements of the property, such as land and foundation.",
+		"This New York circular letter states that claims settlement, coverage and, therefore, pricing should be predicated upon the dwelling's replacement cost, not the property's market value, mortgage, land, or foundation."
+	],
+	"updateCadence": "A 1991 circular letter; superseded or supplemented only by later New York guidance. Re-check its status on the DFS site before relying on it.",
+	"status": "active",
+	"notes": "Added on 2026-08-31 to give the replacement cost versus market value distinction a second regulator source. Fetched and confirmed live on the DFS circular letter index. Jurisdiction is New York, not California, and it is cited here only for the definitional distinction. Claim 2 is recorded because it is what the letter says, but it is New York regulator direction from 1991 and is not cited in the prose as a rule applicable anywhere else. Published: 1991-03-06",
+	"officialHost": true
+}

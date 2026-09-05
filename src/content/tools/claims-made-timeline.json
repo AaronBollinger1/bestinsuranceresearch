@@ -1,0 +1,58 @@
+{
+	"name": "Claims-Made Continuity Timeline",
+	"status": "roadmap",
+	"order": 36,
+	"family": [
+		"commercial"
+	],
+	"lines": [
+		"professional-liability",
+		"directors-and-officers",
+		"epli",
+		"cyber"
+	],
+	"summary": "Lay out retroactive dates, policy periods, and reporting windows to find the gaps a claims-made programme can hide.",
+	"spec": {
+		"user": "A business or professional with a claims-made policy history to reconstruct.",
+		"inputData": [
+			"Policy periods",
+			"Retroactive dates",
+			"Any extended reporting period purchased"
+		],
+		"authoritativeSources": [
+			"The claims-made retroactive date question published in this library, and its cited sources"
+		],
+		"privacyBoundary": "No policy numbers, no carrier names required, no claim details. Dates only.",
+		"decisionRules": [
+			"Gaps are shown as periods with no reporting coverage, with the reason stated.",
+			"This tool never states that a risk is eligible, ineligible, standard market, non-admitted, FAIR Plan eligible, bound, or uninsurable. It shows the published pathway criteria and names who actually decides, which is the insurer."
+		],
+		"uncertainty": "Whether a specific claim is covered depends on the policy wording and the facts, not on a timeline.",
+		"output": "A printable continuity timeline with the gaps marked.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

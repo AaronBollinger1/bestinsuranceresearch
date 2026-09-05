@@ -1,0 +1,26 @@
+{
+	"title": "ISO form CG 20 10, edition 12 19, Additional Insured - Owners, Lessees Or Contractors - Scheduled Person Or Organization",
+	"publisher": "Insurance Services Office, Inc. (form text), posted by the New York State Office of General Services",
+	"url": "https://ogs.ny.gov/system/files/documents/2021/09/cg-20-10-12-19.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "n/a",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The form carries the designation CG 20 10 12 19, modifies insurance provided under the Commercial General Liability Coverage Part, and carries the footer 'Insurance Services Office, Inc., 2018'.",
+		"Paragraph A states that Section II - Who Is An Insured is amended to include as an additional insured the person(s) or organization(s) shown in the Schedule, but only with respect to liability for 'bodily injury', 'property damage' or 'personal and advertising injury' caused, in whole or in part, by your acts or omissions or the acts or omissions of those acting on your behalf, in the performance of your ongoing operations for the additional insured(s) at the location(s) designated above.",
+		"Paragraph A adds two provisos: the insurance afforded to such additional insured 'only applies to the extent permitted by law'; and if coverage provided to the additional insured is required by a contract or agreement, the insurance afforded 'will not be broader than that which you are required by the contract or agreement to provide for such additional insured.'",
+		"Paragraph B adds exclusions stating that this insurance does not apply to 'bodily injury' or 'property damage' occurring after (1) all work, including materials, parts or equipment furnished in connection with such work, on the project (other than service, maintenance or repairs) to be performed by or on behalf of the additional insured(s) at the location of the covered operations has been completed, or (2) that portion of 'your work' out of which the injury or damage arises has been put to its intended use by any person or organization other than another contractor or subcontractor engaged in performing operations for a principal as a part of the same project.",
+		"Paragraph C provides that where coverage to the additional insured is required by a contract or agreement, the most the insurer will pay on behalf of the additional insured is the amount of insurance required by the contract or agreement, or available under the applicable limits of insurance, whichever is less, and that the endorsement shall not increase the applicable limits of insurance.",
+		"The Schedule has two columns: 'Name Of Additional Insured Person(s) Or Organization(s)' and 'Location(s) Of Covered Operations'."
+	],
+	"updateCadence": "ISO revises commercial general liability endorsement editions periodically; a later edition may supersede the 12 19 edition.",
+	"status": "active",
+	"notes": "Downloaded 2026-08-31; the URL returns a PDF, converted with pdftotext -layout and read in full (two pages). This is a clean, unaltered reproduction of the ISO form; the posting agency is New York State OGS, not ISO. The edition designation gives month and year (12 19) but no day, so publishedDate is left unknown rather than asserting a day the form does not state. In the extracted text the form's section dash renders as an en dash; it is written here as an ASCII hyphen.",
+	"officialHost": true
+}

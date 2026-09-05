@@ -1,0 +1,305 @@
+---
+import { ArrowRight, ExternalLink, Quote } from '@lucide/astro';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Callout from '../../components/Callout.astro';
+import CorrectionControl from '../../components/CorrectionControl.astro';
+import StateBlock from '../../components/StateBlock.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { siteConfig } from '../../config/site';
+import { citingPages, isStale, loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, graph, organization, website } from '../../lib/schema';
+import { TODAY } from '../../lib/today';
+
+export const getStaticPaths = (async () => {
+	const corpus = await loadCorpus();
+	return corpus.sources.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
+}) satisfies GetStaticPaths;
+
+const { entry, corpus } = Astro.props;
+const d = entry.data;
+const path = `/sources/${entry.id}`;
+const stale = isStale(d.lastChecked, TODAY);
+
+const STATUS_LABEL: Record<string, string> = {
+	active: 'Active',
+	superseded: 'Superseded',
+	rescinded: 'Rescinded',
+	unavailable: 'Unavailable',
+	disputed: 'Disputed',
+	'not-adopted': 'Never adopted',
+};
+
+/* A superseded document can point at one that has itself since been withdrawn.
+   Resolving the chain here means the page can say so rather than implying that
+   a current version exists. */
+const replacement = d.supersededBy ? corpus.sourceById.get(d.supersededBy.id) : undefined;
+
+const machinePath = `/sources/${entry.id}.json`;
+
+/* One definition, in corpus.ts, so this can never again omit a collection. */
+const citing = citingPages(corpus, entry.id);
+
+const TYPE_LABEL: Record<string, string> = {
+	statute: 'Statute',
+	regulation: 'Regulation',
+	'legislative-record': 'Legislative record',
+	'regulator-guidance': 'Regulator guidance',
+	'regulator-record': 'Regulator record',
+	'policy-form': 'Policy form',
+	'government-data': 'Government data',
+	'official-documentation': 'Official documentation',
+	'court-decision': 'Court decision',
+	'secondary-analysis': 'Secondary analysis',
+};
+const AUTHORITY_LABEL: Record<string, string> = {
+	'primary-law': 'Primary law',
+	regulator: 'Regulator',
+	'standards-body': 'Standards body',
+	'carrier-official': 'Carrier official document',
+	secondary: 'Secondary analysis',
+};
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Sources', path: '/sources' },
+	{ name: d.title, path },
+];
+
+const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
+	'@type': 'CreativeWork',
+	'@id': `${new URL(path, 'https://bestinsuranceresearch.com').toString()}#source`,
+	name: d.title,
+	url: d.url,
+	publisher: { '@type': 'Organization', name: d.publisher },
+	...(d.publishedDate !== 'unknown' && d.publishedDate !== 'n/a' ? { datePublished: d.publishedDate } : {}),
+	spatialCoverage: d.jurisdiction,
+});
+---
+
+<BaseLayout
+	title={d.title}
+	description={`Source record: ${d.title}, published by ${d.publisher}. ${d.claims.length} claims in the library depend on it.`}
+	jsonLd={jsonLd}
+	pageType="source"
+	machinePath={machinePath}
+>
+	<article>
+		<header class="band band-first band-paper answer-head">
+			<div class="shell">
+				<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+				<div class="answer-flags">
+					{d.status === 'active' && !stale && <StatusChip kind="established" label="Active" />}
+					{stale && d.status === 'active' && <StatusChip kind="stale-source" />}
+					{d.status === 'superseded' && <StatusChip kind="changing" label="Superseded" />}
+					{d.status === 'unavailable' && <StatusChip kind="source-unavailable" />}
+					{d.status === 'disputed' && <StatusChip kind="disputed" />}
+					{d.status === 'not-adopted' && <StatusChip kind="not-adopted" />}
+					{d.status === 'rescinded' && <StatusChip kind="rescinded" />}
+					{d.officialHost === false && <StatusChip kind="reproduction" />}
+					<span class="meta">{TYPE_LABEL[d.sourceType] ?? d.sourceType}</span>
+					<span class="meta">{d.primary ? 'Primary source' : 'Secondary source'}</span>
+					<span class="meta">Source ID <code>{entry.id}</code></span>
+				</div>
+				<h1>{d.title}</h1>
+				<p class="lede">Published by {d.publisher}. Jurisdiction {d.jurisdiction}.</p>
+				<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-5)">
+					<a class="btn btn-primary" href={d.url} rel="noopener nofollow" target="_blank"
+						data-event="source_opened" data-source-type={d.sourceType}>
+						Open the original record <ExternalLink size={15} aria-hidden="true" />
+					</a>
+					{
+						d.archive && (
+							<a class="btn btn-secondary" href={d.archive.url} rel="noopener nofollow" target="_blank">
+								Archived snapshot ({longDate(d.archive.capturedDate)})
+							</a>
+						)
+					}
+				</div>
+			</div>
+		</header>
+
+		<div class="band band-tight">
+			<div class="shell answer-grid">
+				<div>
+					{
+						stale && d.status === 'active' && (
+							<StateBlock kind="stale" heading="This source is past its review window.">
+								<p>
+									It was last checked on {longDate(d.lastChecked)}, which is more than the review
+									cadence allows. The record may still be accurate, but it has not been re-verified.
+									Every page citing it shows the same flag.
+								</p>
+							</StateBlock>
+						)
+					}
+
+					{
+						d.status === 'unavailable' && (
+							<StateBlock kind="source-unavailable" heading="The original record did not resolve at the last check.">
+								<p>
+									The link above is kept because it is the citation of record. If it has moved, the
+									publisher's site search or an archive is the next place to look, and a correction
+									report is welcome.
+								</p>
+								<div class="state-actions">
+									<a class="btn btn-secondary btn-sm" href="/corrections">Report the current location</a>
+								</div>
+							</StateBlock>
+						)
+					}
+
+					{
+						d.status === 'superseded' && (
+							<Callout tone="warn">
+								<p>
+									<strong>Superseded.</strong> A newer authority now governs. This record stays
+									published because answers that relied on it were accurate at the time, and the
+									history matters. Check the pages below for the current treatment.
+								</p>
+							</Callout>
+						)
+					}
+
+					{
+						!d.primary && (
+							<Callout tone="limit">
+								<p>
+									<strong>Secondary source.</strong> It is used to explain a primary source, never to
+									override one. Any claim that needs legal force is carried by a statute, a
+									regulation, or official regulator guidance elsewhere in the ledger.
+								</p>
+							</Callout>
+						)
+					}
+
+					{
+						d.statusNote && (
+							<Callout tone={d.status === 'active' ? 'note' : 'warn'} label={`Status: ${STATUS_LABEL[d.status] ?? d.status}`}>
+								<p>{d.statusNote}</p>
+								{replacement && (
+									<p>
+										Replaced by <a href={`/sources/${replacement.id}`}>{replacement.data.title}</a>,
+										which this registry records as {STATUS_LABEL[replacement.data.status] ?? replacement.data.status}.
+									</p>
+								)}
+							</Callout>
+						)
+					}
+
+					<section class="answer-section" aria-labelledby="claims">
+						<h2 id="claims">Exactly what this source supports</h2>
+						<p class="mono" style="margin-bottom: var(--s-3)">
+							These are the only claims this record is used to carry anywhere in the library.
+						</p>
+						<ul class="fact-list">
+							{
+								d.claims.map((claim, i) => (
+									<li id={`c${i + 1}`}>
+										<Quote size={14} aria-hidden="true" />
+										<div>
+											<p>{claim}</p>
+											<a class="claim-cite mono" href={`#c${i + 1}`} data-claim-uri={`${siteConfig.origin}/sources/${entry.id}#c${i + 1}`}>
+												claim {entry.id}#c{i + 1}
+											</a>
+										</div>
+									</li>
+								))
+							}
+						</ul>
+						<p class="mono claim-note">
+							Each claim above has its own address. Link to a single claim with
+							<code>/sources/{entry.id}#c1</code>, and read the same list with its identifiers,
+							checksums and dates at <a href={`/sources/${entry.id}.json`}>{entry.id}.json</a>.
+							A checksum lets you tell whether a claim you cited still says what it said.
+						</p>
+					</section>
+
+					<section class="answer-section" aria-labelledby="citing">
+						<h2 id="citing">Pages that cite this source</h2>
+						{
+							citing.length > 0 ? (
+								<div class="rows">
+									{citing.map((item) => (
+										<a class="row" href={item.path}>
+											<div>
+												<h3 class="row-title">{item.title}</h3>
+												<div class="row-meta"><span class="status status-plain">{item.kind}</span></div>
+											</div>
+											<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+										</a>
+									))}
+								</div>
+							) : (
+								<StateBlock kind="empty" heading="No published page cites this source yet.">
+									<p>
+										It is registered and verified, but nothing in the library depends on it. That is
+										visible here on purpose: an unused source is a gap in the corpus, not a credential.
+									</p>
+								</StateBlock>
+							)
+						}
+					</section>
+
+					{d.notes && (
+						<section class="answer-section" aria-labelledby="notes">
+							<h2 id="notes">Reviewer notes</h2>
+							<p style="font-size: var(--text-md)">{d.notes}</p>
+						</section>
+					)}
+
+					<CorrectionControl path={path} title={d.title} pageType="source" />
+				</div>
+
+				<aside class="answer-rail" aria-label="Source metadata">
+					<div class="rail-block">
+						<h2>Record</h2>
+						<dl>
+							<div><dt>Source ID</dt><dd><code>{entry.id}</code></dd></div>
+							<div><dt>Publisher</dt><dd>{d.publisher}</dd></div>
+							<div><dt>Type</dt><dd>{TYPE_LABEL[d.sourceType] ?? d.sourceType}</dd></div>
+							<div><dt>Authority</dt><dd>{AUTHORITY_LABEL[d.authorityLevel] ?? d.authorityLevel}</dd></div>
+							<div><dt>Jurisdiction</dt><dd>{d.jurisdiction}</dd></div>
+							<div><dt>Designation</dt><dd>{d.primary ? 'Primary' : 'Secondary'}</dd></div>
+							<div><dt>Hosted by</dt><dd>{d.officialHost === false ? 'A third party, not the publisher' : 'The publisher'}</dd></div>
+						</dl>
+					</div>
+					<div class="rail-block">
+						<h2>Dates</h2>
+						<dl>
+							{d.publishedDate !== 'unknown' && d.publishedDate !== 'n/a' && (
+								<div><dt>Published</dt><dd>{longDate(d.publishedDate)}</dd></div>
+							)}
+							{d.effectiveDate !== 'unknown' && d.effectiveDate !== 'n/a' && (
+								<div><dt>Effective</dt><dd>{longDate(d.effectiveDate)}</dd></div>
+							)}
+							<div><dt>First accessed</dt><dd>{longDate(d.accessedDate)}</dd></div>
+							<div>
+								<dt>{d.lastCheckedBasis === 'recheck' ? 'Rechecked' : 'Last checked'}</dt>
+								<dd>
+									{longDate(d.lastChecked)}
+									{d.lastCheckedBasis === 'access' && (
+										<span class="checked-basis">
+											on access; not independently rechecked since
+										</span>
+									)}
+								</dd>
+							</div>
+							<div><dt>Update cadence</dt><dd>{d.updateCadence}</dd></div>
+						</dl>
+					</div>
+					<div class="rail-block no-print">
+						<h2>Registry</h2>
+						<ul>
+							<li><a href="/sources">All source records</a></li>
+							<li><a href="/methodology">Source hierarchy</a></li>
+							<li><a href="/corrections">Correction log</a></li>
+						</ul>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</article>
+</BaseLayout>

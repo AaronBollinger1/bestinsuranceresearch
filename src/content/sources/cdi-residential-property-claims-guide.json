@@ -1,0 +1,26 @@
+{
+	"title": "Residential Property Claims Guide (CDI Form 405)",
+	"publisher": "California Department of Insurance",
+	"url": "https://www.insurance.ca.gov/01-consumers/105-type/95-guides/03-res/res-prop-claim.cfm",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Replacement cost is the dollar amount needed to replace a damaged item with one of similar kind and quality without deducting for depreciation.",
+		"This page describes actual cash value as paying the amount needed to replace the item at the current market value, and its illustration reasons that an eight-year-old washing machine would almost certainly be worth less than its original cost according to the current market value.",
+		"The guide defines replacement cost as the dollar amount needed to replace a damaged item with one of similar kind and quality without deducting for depreciation.",
+		"The guide states that an actual cash value policy pays the amount needed to replace the item at the current market value, and illustrates the difference with an eight-year-old washing machine, for which the insurer would likely pay only a percentage of the cost of a new machine.",
+		"For trees and shrubbery the guide gives a general figure of 5 percent of the dwelling limit of liability provided as an additional amount of insurance, with a $500.00 (and in some cases $250.00) limit for loss to any one tree, shrub, or plant.",
+		"The guide instructs consumers to check the language in their individual policy for the coverage that applies."
+	],
+	"updateCadence": "Revised by CDI as consumer guidance is updated; no fixed schedule stated.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31. Page carries the stamp Form 405 Revised February 28, 2025. Correction from the prior draft: this page does NOT frame actual cash value in terms of depreciation. It frames it as the amount needed to replace the item at the current market value. The earlier claim that the page says an ACV settlement takes depreciation due to age and wear into account was a paraphrase the page does not support and has been rewritten in the page's own terms. Only the replacement cost definition is cited in prose. Published: 2025-02-28 Effective: 2025-02-28",
+	"officialHost": true
+}

@@ -1,0 +1,122 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import DataTable from '../../components/DataTable.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { stripMarkers } from '../../lib/citations';
+import { loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
+
+const corpus = await loadCorpus();
+const examples = [...corpus.examples].sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const LABEL_TEXT: Record<string, string> = {
+	'public-record': 'Public record',
+	'carrier-authored': 'Carrier authored',
+	'published-industry': 'Published industry example',
+	'anonymized-client': 'Anonymized client case',
+	composite: 'Composite educational example',
+	hypothetical: 'Hypothetical',
+};
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Examples', path: '/examples' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'Labeled examples',
+		path: '/examples',
+		description: 'Worked insurance examples, each labeled as a public record, a composite, or a hypothetical.',
+		items: examples.map((e) => ({ name: e.data.title, path: `/examples/${e.id}` })),
+	}),
+);
+
+const labelRules = [
+	['Public record', 'A regulator bulletin, enforcement action, court decision, or government report, cited directly.', 'Yes, an authority decided it', 'Direct citation to the record'],
+	['Carrier authored', 'An example an insurer published itself, presented as that insurer\'s own material.', 'Sometimes, as described by the carrier', 'Link to the carrier document'],
+	['Published industry example', 'An example from a published industry source, used with citation.', 'As stated in the source', 'Citation plus permission where required'],
+	['Anonymized client case', 'A real Bollinsure matter, anonymized, approved in writing, and documented.', 'Yes, but details are withheld', 'A written consent and approval record'],
+	['Composite educational example', 'Facts assembled from patterns, not from any one real matter.', 'No, nothing was decided', 'An explicit statement that no real matter is described'],
+	['Hypothetical', 'Invented facts used only to show how a concept works.', 'No, nothing was decided', 'An explicit statement that the facts are invented'],
+];
+---
+
+<BaseLayout
+	title="Labeled examples"
+	description="Worked insurance examples, each labeled as a public record, a carrier document, a composite, or a hypothetical. No testimonials and no invented outcomes."
+	jsonLd={jsonLd}
+	pageType="example"
+>
+	<PageHeader
+		eyebrow="Examples"
+		title="Worked examples, labeled for exactly what they are"
+		lede={`${examples.length} examples published. Each one says up front whether an authority actually decided something, or whether the facts are illustrative.`}
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell">
+			<Callout tone="warn">
+				<p>
+					<strong>This is not a testimonial wall.</strong> Nothing here invents a premium, a savings
+					figure, a placement, a close time, a claim outcome, or a policy term. No composite or
+					hypothetical is ever presented as a real client result, and no example uses information
+					from a declarations page, an intake, an email, or an agency management system.
+				</p>
+			</Callout>
+
+			<div class="rows" style="margin-top: var(--s-6)">
+				{
+					examples.map((example) => {
+						const isReal =
+							example.data.label === 'public-record' ||
+							example.data.label === 'carrier-authored' ||
+							example.data.label === 'published-industry';
+						return (
+							<a class="row" href={`/examples/${example.id}`}>
+								<div>
+									<h2 class="row-title">{example.data.title}</h2>
+									<p>{stripMarkers(example.data.whatHappened).slice(0, 210)}</p>
+									<div class="row-meta">
+										<span class={`status ${isReal ? 'status-established' : 'status-insufficient'}`}>
+											{LABEL_TEXT[example.data.label] ?? example.data.label}
+										</span>
+										<StatusChip kind={example.data.reviewState} />
+										<span class="meta">{example.data.lines.join(', ')}</span>
+										<span class="meta">{example.data.sourceIds.length} sources</span>
+										<span class="meta">Reviewed {longDate(example.data.lastReviewed)}</span>
+									</div>
+								</div>
+								<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+							</a>
+						);
+					})
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-paper" aria-labelledby="labels-title">
+		<div class="shell">
+			<span class="eyebrow">Labeling rules</span>
+			<h2 id="labels-title">What each label means</h2>
+			<p class="lede" style="margin-bottom: var(--s-5)">
+				The label is load-bearing. It tells you whether anything was actually decided and what
+				evidence sits behind the example.
+			</p>
+			<DataTable
+				caption="Example labels and what each one requires."
+				columns={['Label', 'What it is', 'Did an authority decide it?', 'What the page must carry']}
+				rows={labelRules}
+			/>
+		</div>
+	</section>
+</BaseLayout>

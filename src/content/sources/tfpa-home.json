@@ -1,0 +1,22 @@
+{
+	"title": "Texas FAIR Plan Association - official site",
+	"publisher": "Texas FAIR Plan Association",
+	"url": "https://www.texasfairplan.org/",
+	"sourceType": "official-documentation",
+	"jurisdiction": "TX",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The Texas FAIR Plan Association states that it was established by the Texas Legislature to provide essential property insurance for eligible Texas property owners when no one else will.",
+		"The Texas FAIR Plan Association states that applicants must have two declinations from other insurers in order to obtain coverage with TFPA.",
+		"The Texas FAIR Plan Association site posts sample policy forms and endorsements."
+	],
+	"updateCadence": "Re-verify eligibility rules annually and after each legislative session.",
+	"status": "active",
+	"officialHost": true
+}

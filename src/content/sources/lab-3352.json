@@ -1,0 +1,26 @@
+{
+	"title": "California Labor Code section 3352",
+	"publisher": "California Legislative Information (Legislative Counsel of California)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=3352",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The section excludes from the definition of employee an officer or member of the board of directors of a quasi-public or private corporation who owns at least 10 percent of the issued and outstanding stock, or at least 1 percent if that officer's or member's parent, grandparent, sibling, spouse, or child owns at least 10 percent, who is covered by a health insurance policy or health care service plan, and who executes a written waiver of rights under the chapter stating under penalty of perjury that the person is a qualifying officer or director.",
+		"The waiver is effective upon the date of receipt and acceptance by the corporation's insurance carrier, and the carrier may elect to backdate the acceptance of the waiver up to 15 days prior to the date of receipt.",
+		"The section provides a conclusive presumption that a person who executes a waiver under that subdivision is not covered by workers compensation benefits.",
+		"An officer or director of a private corporation who is the sole shareholder of that corporation is excluded from the definition of employee unless the officer, director, or corporation has elected to be subject to liability for workers compensation under subdivision (a) of Section 4151.",
+		"The section contains many other exclusions from the definition of employee with their own conditions, including certain persons employed by a parent, spouse, or child, certain persons employed for limited hours or limited earnings, certain volunteers, general partners and managing members, owners of professional corporations, and officers and directors of cooperative corporations.",
+		"The section as displayed carries the note: Repealed (in Sec. 3) and added by Stats. 2017, Ch. 770, Sec. 4. (SB 189) Effective January 1, 2018. Section operative July 1, 2018, by its own provisions."
+	],
+	"updateCadence": "Amended by the Legislature; check leginfo for the current text each session.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: 2018-07-01"
+}

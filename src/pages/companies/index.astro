@@ -1,0 +1,114 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { stripMarkers } from '../../lib/citations';
+import { loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
+
+const corpus = await loadCorpus();
+const companies = [...corpus.companies].sort((a, b) => a.data.legalName.localeCompare(b.data.legalName));
+
+const ORG_TYPE_LABEL: Record<string, string> = {
+	regulator: 'Insurance regulator',
+	'standards-organization': 'Standards organization',
+	'public-entity': 'Public entity',
+	insurer: 'Insurer',
+	'insurance-group': 'Insurance group',
+	'residual-market': 'Residual market mechanism',
+};
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Companies', path: '/companies' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'Companies, regulators, and public entities',
+		path: '/companies',
+		description: 'Verified identity, regulator records, and official channels for the organizations the library references.',
+		items: companies.map((c) => ({ name: c.data.legalName, path: `/companies/${c.id}` })),
+	}),
+);
+---
+
+<BaseLayout
+	title="Companies, regulators, and public entities"
+	description="Verified identity, regulator records, and official channels for the organizations the library references. No ratings summaries and no appetite claims."
+	jsonLd={jsonLd}
+	pageType="company"
+>
+	<PageHeader
+		eyebrow="Organizations"
+		title="Who a body actually is, and what you can look up about it"
+		lede={`${companies.length} organizations published. Each page carries verified identity, official channels, and the records a person can check without asking anyone's permission.`}
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell">
+			<Callout tone="limit">
+				<p>
+					<strong>These pages do not rank or rate anyone.</strong> There is no "best", no "cheapest",
+					no "most reliable", and no statement about what an insurer will write. Financial strength is
+					linked to the rating agency or regulator that published it, never summarized here. A
+					complaint count without its denominator and its date is misleading, so any complaint link
+					carries both warnings.
+				</p>
+			</Callout>
+
+			<div class="rows" style="margin-top: var(--s-6)">
+				{
+					companies.map((company) => (
+						<a class="row" href={`/companies/${company.id}`}>
+							<div>
+								<h2 class="row-title">{company.data.legalName}</h2>
+								<p>{stripMarkers(company.data.summary).slice(0, 210)}</p>
+								<div class="row-meta">
+									<StatusChip kind={company.data.reviewState} />
+									<span class="meta">{ORG_TYPE_LABEL[company.data.orgType] ?? company.data.orgType}</span>
+									<span class="meta">{company.data.jurisdictions.join(', ')}</span>
+									<span class="meta">{company.data.sourceIds.length} sources</span>
+									<span class="meta">Reviewed {longDate(company.data.lastReviewed)}</span>
+								</div>
+							</div>
+							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-paper">
+		<div class="shell">
+			<span class="eyebrow">Inclusion policy</span>
+			<h2>How an organization gets a page here</h2>
+			<div class="prose">
+				<p>
+					An organization gets a page when the library already answers questions that depend on it and
+					when its identity, official channels, and public records can be sourced and dated. That
+					means the first entries are regulators, standards bodies, and statutory public entities,
+					because those are the bodies whose records actually settle questions.
+				</p>
+				<p>
+					Insurer pages are held to the same bar. Until an insurer page can carry sourced, current
+					identity and product context plus links to the regulator records and rating agencies that
+					publish the numbers, there is no page. A directory of thin insurer pages built from scraped
+					marketing copy would add volume and subtract trust.
+				</p>
+				<p>
+					Inclusion is never for sale, and neither is position in this list. See{' '}
+					<a href="/editorial-policy">the editorial policy</a> for the full statement.
+				</p>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

@@ -1,0 +1,21 @@
+{
+	"title": "Check out the Insurance Company",
+	"publisher": "California Department of Insurance",
+	"url": "https://www.insurance.ca.gov/0150-seniors/0200beforebuy/CheckInsCo.cfm",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"CDI tells consumers to search Insurance Company Profiles to verify that an insurance company is authorized to conduct business in California, and to enter the name of the company to view the full company information."
+	],
+	"updateCadence": "CDI updates its consumer pages without a published revision schedule; no revision date was shown on the page when fetched.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31 and added in this revision so the recommendation to verify an insurer's status is attached to a source rather than asserted. The page showed no revision date. It is cited only for the existence and purpose of the Insurance Company Profiles search, not for what any lookup result would say about any particular insurer.",
+	"officialHost": true
+}

@@ -1,0 +1,417 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import Handoff from '../../components/Handoff.astro';
+import SourceLedger from '../../components/SourceLedger.astro';
+import StateBlock from '../../components/StateBlock.astro';
+import ToolFrame from '../../components/ToolFrame.astro';
+import { escapeHtml } from '../../lib/citations';
+import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
+import { breadcrumbs, graph, organization, webApplication, website } from '../../lib/schema';
+import { TODAY } from '../../lib/today';
+
+const corpus = await loadCorpus();
+const tool = corpus.tools.find((t) => t.id === 'policy-comparison');
+if (!tool) throw new Error('Tool registry entry "policy-comparison" is missing.');
+
+const sourceIds = idsOf(tool.data.sourceIds);
+const sources = ledgerFor(sourceIds, corpus.sourceById, 'tool "policy-comparison"');
+
+/*
+ * The comparison rows are the terms that actually change what a policy protects
+ * against, drawn from the published question on why identical limits can protect
+ * differently. Each row carries the question it should generate when the values
+ * differ, which is the real output of this tool.
+ */
+const ROWS = [
+	{ id: 'insurer', label: 'Insurer name', hint: 'As shown on the declarations page.', ask: 'Are both insurers admitted in my state, and does that change what happens if one becomes insolvent?' },
+	{ id: 'admitted', label: 'Admitted or surplus lines', hint: 'The declarations or the surplus lines notice will say.', ask: 'If one of these is surplus lines, is it outside the state guaranty association, and what does that mean for me?' },
+	{ id: 'form', label: 'Form name and edition date', hint: 'For example CG 00 01 04 13, or a manuscript form name.', ask: 'What actually differs between these two forms, clause by clause?' },
+	{ id: 'trigger', label: 'Trigger: occurrence or claims-made', hint: 'Claims-made policies also have a retroactive date.', ask: 'If these differ, what happens to a claim reported after the policy ends?' },
+	{ id: 'retro', label: 'Retroactive date, if claims-made', hint: 'Leave blank for occurrence policies.', ask: 'Does moving to this policy leave any prior period without coverage?' },
+	{ id: 'occurrence-limit', label: 'Per-occurrence or per-claim limit', hint: 'The most payable for one event.', ask: 'Which events would exhaust this limit?' },
+	{ id: 'aggregate', label: 'Aggregate limit', hint: 'The most payable across the whole policy period.', ask: 'Does the aggregate reinstate, and is it shared across locations or projects?' },
+	{ id: 'defense', label: 'Defense inside or outside the limit', hint: 'Whether defense costs erode what is left to pay a claim.', ask: 'If defense erodes the limit, how much protection is actually left after a defended claim?' },
+	{ id: 'sublimits', label: 'Sub-limits', hint: 'Lower caps that apply to specific perils or property.', ask: 'Which exposures are capped below the headline limit, and are those the ones I care about?' },
+	{ id: 'deductible', label: 'Deductible or retention', hint: 'Include percentage deductibles, such as wind or named storm.', ask: 'Is this a flat amount or a percentage, and a percentage of what?' },
+	{ id: 'valuation', label: 'Valuation basis', hint: 'Replacement cost, actual cash value, agreed value, or functional.', ask: 'At the values shown, what would each policy actually pay for a total loss?' },
+	{ id: 'coinsurance', label: 'Coinsurance percentage', hint: 'If shown on the declarations.', ask: 'Am I insured to value under this clause, and what is the penalty if I am not?' },
+	{ id: 'perils', label: 'Named peril or open peril', hint: 'Also called special form or all risk.', ask: 'Which perils are covered by one and not the other?' },
+	{ id: 'endorsements', label: 'Endorsements attached', hint: 'List the form numbers from the declarations.', ask: 'What does each endorsement add, restrict, or remove?' },
+	{ id: 'exclusions', label: 'Notable exclusions', hint: 'Anything the agent or the summary called out.', ask: 'Is an exclusion here bought back by an endorsement on the other policy?' },
+	{ id: 'premium', label: 'Premium', hint: 'Include fees and taxes if you know them.', ask: 'What am I actually giving up for the difference in price?' },
+];
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Tools', path: '/tools' },
+	{ name: tool.data.name, path: '/tools/policy-comparison' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	webApplication({
+		name: tool.data.name,
+		path: '/tools/policy-comparison',
+		description: tool.data.summary,
+		features: [
+			'Side-by-side comparison of up to three policies',
+			'Highlights only the rows where values actually differ',
+			'Generates specific questions for a broker or insurer',
+			'No document upload of any kind',
+			'Everything stays in the browser',
+		],
+	}),
+);
+
+const COLUMNS = ['A', 'B', 'C'];
+---
+
+<BaseLayout
+	title={tool.data.name}
+	description={tool.data.summary}
+	jsonLd={jsonLd}
+	pageType="tool"
+	bodyClass="tool-page"
+>
+	<ToolFrame tool={tool} toolId="policy-comparison" />
+
+	<section class="band band-tight">
+		<div class="shell">
+			<Callout tone="warn">
+				<p>
+					<strong>Matching labels do not mean matching coverage.</strong> Two policies can show the
+					same limit and the same deductible and still protect very differently, because the trigger,
+					the form edition, the sub-limits, whether defense erodes the limit, and the endorsements
+					attached all change what actually gets paid. That is the whole reason this tool exists, and
+					it is explained in{' '}
+					<a href="/questions/same-limit-different-protection">
+						why two policies with the same limit can protect differently
+					</a>.
+				</p>
+			</Callout>
+
+			<Callout tone="privacy">
+				<p>
+					<strong>Do not upload anything, because there is nowhere to upload it to.</strong> This
+					tool has no file input and no server. Type only what you need from your declarations page,
+					and leave out policy numbers, names, and addresses. You do not need them to compare terms.
+				</p>
+			</Callout>
+
+			<div class="no-print" style="margin: var(--s-6) 0">
+				<span class="meta" style="display:block;margin-bottom:var(--s-2)" id="columns-label">
+					How many policies?
+				</span>
+				<div class="segmented" role="group" aria-labelledby="columns-label" id="column-count">
+					<button type="button" data-columns="2" aria-pressed="true">Two</button>
+					<button type="button" data-columns="3" aria-pressed="false">Three</button>
+				</div>
+			</div>
+
+			<div class="no-print" style="margin-bottom: var(--s-5)">
+				<label class="check">
+					<input type="checkbox" id="differences-only" />
+					<span>Show only the rows where the values differ</span>
+				</label>
+				<p class="live-status" id="comparison-count" role="status" aria-live="polite"></p>
+			</div>
+
+			<script
+				type="application/json"
+				id="comparison-asks"
+				is:inline
+				set:html={JSON.stringify(Object.fromEntries(ROWS.map((r) => [r.id, r.ask])))}
+			/>
+
+			<div id="comparison">
+				<div class="table-scroll">
+					<table class="data">
+						<caption>
+							Enter what each policy's declarations page says. Rows where the values differ are
+							flagged, and each one generates a question to ask.
+						</caption>
+						<thead>
+							<tr>
+								<th scope="col" style="min-width: 230px">Term</th>
+								{
+									COLUMNS.map((column) => (
+										<th scope="col" data-column={column} style="min-width: 180px">
+											<label class="u-visually-hidden" for={`name-${column}`}>Name for policy {column}</label>
+											<input type="text" id={`name-${column}`} data-policy-name={column}
+												placeholder={`Policy ${column}`}
+												style="min-height:34px;padding:5px 8px;font-size:var(--text-sm);width:100%" />
+										</th>
+									))
+								}
+								<th scope="col" style="min-width: 90px">Differs</th>
+							</tr>
+						</thead>
+						<tbody>
+							{
+								ROWS.map((row) => (
+									<tr data-compare-row={row.id}>
+										<th scope="row">
+											{row.label}
+											<span style="display:block;margin-top:3px;font-weight:400;color:var(--muted);font-size:var(--text-xs)">
+												{row.hint}
+											</span>
+										</th>
+										{COLUMNS.map((column) => (
+											<td data-column={column}>
+												<label class="u-visually-hidden" for={`${row.id}-${column}`}>
+													{row.label} for policy {column}
+												</label>
+												<input type="text" id={`${row.id}-${column}`} data-value data-row={row.id} data-col={column}
+													style="min-height:36px;padding:6px 8px;font-size:var(--text-sm)" />
+											</td>
+										))}
+										<td data-differs={row.id}>
+											<span class="status status-plain">Not yet</span>
+										</td>
+									</tr>
+								))
+							}
+						</tbody>
+					</table>
+				</div>
+
+				<div class="table-stack">
+					{
+						ROWS.map((row) => (
+							<div class="table-stack-item" data-compare-stack={row.id}>
+								<p class="table-stack-title">{row.label}</p>
+								<p style="font-size: var(--text-xs); color: var(--muted); margin-bottom: var(--s-2)">{row.hint}</p>
+								{COLUMNS.map((column) => (
+									<div class="field" data-column={column} style="margin-bottom: var(--s-2)">
+										<label for={`s-${row.id}-${column}`}>Policy {column}</label>
+										<input type="text" id={`s-${row.id}-${column}`} data-value data-row={row.id} data-col={column} />
+									</div>
+								))}
+							</div>
+						))
+					}
+				</div>
+			</div>
+
+			<div id="comparison-empty" style="margin-top: var(--s-6)">
+				<StateBlock kind="empty" heading="Nothing to compare yet.">
+					<p>
+						Fill in at least two columns on one row. The comparison flags differences as you type,
+						and nothing you type leaves this page.
+					</p>
+				</StateBlock>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight band-paper" aria-labelledby="questions-title">
+		<div class="shell">
+			<h2 id="questions-title">Questions worth asking</h2>
+			<p class="lede">
+				Generated from the rows where your entries actually differ. These are the differences that
+				change what you are protected against, so they are the ones worth a conversation.
+			</p>
+
+			<ol class="action-list" id="generated-questions" style="margin-top: var(--s-5)"></ol>
+
+			<div id="questions-empty" style="margin-top: var(--s-4)">
+				<StateBlock kind="insufficient" heading="No differences found yet.">
+					<p>
+						Either the entries match so far, or there is not enough entered to compare. A match on
+						the declarations page is still not a match in the forms, so the form and endorsement
+						rows are the ones worth completing even when the limits look identical.
+					</p>
+				</StateBlock>
+			</div>
+		</div>
+	</section>
+
+	{
+		sources.length > 0 && (
+			<section class="band band-tight">
+				<div class="shell">
+					<SourceLedger sources={sources} today={TODAY} headingId="tool-source-ledger" />
+				</div>
+			</section>
+		)
+	}
+
+	<section class="band band-tight no-print">
+		<div class="shell">
+			<Handoff
+				sourcePath="/tools/policy-comparison"
+				family="general"
+				sourceTool="policy-comparison"
+				pageType="tool"
+				reason={escapeHtml('Reading the actual forms side by side is the only way to settle most of these questions, and that is what a licensed broker or the issuing insurer can do with the documents in front of them.')}
+			/>
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	import { completionBucket } from '../../lib/tool-storage';
+
+	const ASKS: Record<string, string> = JSON.parse(
+		document.getElementById('comparison-asks')?.textContent || '{}',
+	);
+
+	const countEl = document.getElementById('comparison-count');
+	const emptyState = document.getElementById('comparison-empty');
+	const questionsList = document.getElementById('generated-questions');
+	const questionsEmpty = document.getElementById('questions-empty');
+	const differencesOnly = document.getElementById('differences-only') as HTMLInputElement | null;
+	const columnGroup = document.getElementById('column-count');
+
+	let columns = 2;
+
+	const valueInputs = () => [...document.querySelectorAll<HTMLInputElement>('[data-value]')];
+	const activeColumns = () => ['A', 'B', 'C'].slice(0, columns);
+
+	function valuesFor(rowId: string) {
+		const out: Record<string, string> = {};
+		for (const input of valueInputs()) {
+			if (input.dataset.row !== rowId) continue;
+			const col = input.dataset.col || '';
+			if (!activeColumns().includes(col)) continue;
+			// Wide table and stacked view share a row/col pair; either may hold the value.
+			if (input.value.trim()) out[col] = input.value.trim();
+		}
+		return out;
+	}
+
+	function mirror(source: HTMLInputElement) {
+		for (const other of valueInputs()) {
+			if (other === source) continue;
+			if (other.dataset.row === source.dataset.row && other.dataset.col === source.dataset.col) {
+				other.value = source.value;
+			}
+		}
+	}
+
+	function applyColumns() {
+		for (const cell of document.querySelectorAll<HTMLElement>('[data-column]')) {
+			const col = cell.dataset.column || '';
+			cell.hidden = !activeColumns().includes(col);
+		}
+	}
+
+	function recompute() {
+		let filled = 0;
+		let differing = 0;
+		const questions: string[] = [];
+
+		for (const row of document.querySelectorAll<HTMLElement>('[data-compare-row]')) {
+			const rowId = row.dataset.compareRow || '';
+			const values = valuesFor(rowId);
+			const entries = Object.values(values);
+			const distinct = new Set(entries.map((v) => v.toLowerCase()));
+			const hasEnough = entries.length >= 2;
+			const differs = hasEnough && distinct.size > 1;
+
+			if (entries.length > 0) filled += 1;
+			if (differs) differing += 1;
+
+			const flag = document.querySelector<HTMLElement>(`[data-differs="${rowId}"]`);
+			if (flag) {
+				flag.innerHTML = differs
+					? '<span class="status status-changing">Differs</span>'
+					: hasEnough
+						? '<span class="status status-established">Same</span>'
+						: '<span class="status status-plain">Not yet</span>';
+			}
+
+			const stack = document.querySelector<HTMLElement>(`[data-compare-stack="${rowId}"]`);
+			if (differencesOnly?.checked) {
+				row.hidden = !differs;
+				if (stack) stack.hidden = !differs;
+			} else {
+				row.hidden = false;
+				if (stack) stack.hidden = false;
+			}
+
+			if (differs && ASKS[rowId]) questions.push(ASKS[rowId]);
+		}
+
+		if (countEl) {
+			countEl.textContent =
+				filled === 0
+					? ''
+					: `${filled} row${filled === 1 ? '' : 's'} entered, ${differing} showing a difference.`;
+		}
+		if (emptyState) emptyState.hidden = filled > 0;
+
+		if (questionsList) {
+			questionsList.innerHTML = questions.map((q) => `<li><p>${q}</p></li>`).join('');
+		}
+		if (questionsEmpty) questionsEmpty.hidden = questions.length > 0;
+
+		if (filled > 0) window.birTrack?.('tool_started', { tool_name: 'policy-comparison' });
+		return { filled, total: document.querySelectorAll('[data-compare-row]').length };
+	}
+
+	document.getElementById('comparison')?.addEventListener('input', (event) => {
+		const target = event.target as HTMLInputElement;
+		if (!target?.hasAttribute?.('data-value')) return;
+		mirror(target);
+		recompute();
+	});
+
+	differencesOnly?.addEventListener('change', recompute);
+
+	columnGroup?.querySelectorAll<HTMLButtonElement>('[data-columns]').forEach((button) => {
+		button.addEventListener('click', () => {
+			columns = Number(button.dataset.columns) || 2;
+			columnGroup.querySelectorAll('[data-columns]').forEach((other) => {
+				other.setAttribute('aria-pressed', String(other === button));
+			});
+			applyColumns();
+			recompute();
+		});
+	});
+
+	window.birTool = {
+		id: 'policy-comparison',
+		serialise() {
+			const state: Record<string, unknown> = { columns };
+			for (const input of valueInputs()) {
+				if (input.id.startsWith('s-')) continue;
+				state[`v:${input.dataset.row}:${input.dataset.col}`] = input.value;
+			}
+			for (const name of document.querySelectorAll<HTMLInputElement>('[data-policy-name]')) {
+				state[`n:${name.dataset.policyName}`] = name.value;
+			}
+			const { filled, total } = recompute();
+			state.completion = completionBucket(filled, total);
+			return state;
+		},
+		restore(state) {
+			if (state.columns === 3) {
+				columnGroup?.querySelector<HTMLButtonElement>('[data-columns="3"]')?.click();
+			}
+			for (const input of valueInputs()) {
+				const stored = state[`v:${input.dataset.row}:${input.dataset.col}`];
+				if (typeof stored === 'string') input.value = stored;
+			}
+			for (const name of document.querySelectorAll<HTMLInputElement>('[data-policy-name]')) {
+				const stored = state[`n:${name.dataset.policyName}`];
+				if (typeof stored === 'string') name.value = stored;
+			}
+			recompute();
+		},
+		reset() {
+			for (const input of valueInputs()) input.value = '';
+			for (const name of document.querySelectorAll<HTMLInputElement>('[data-policy-name]')) name.value = '';
+			if (differencesOnly) differencesOnly.checked = false;
+			columnGroup?.querySelector<HTMLButtonElement>('[data-columns="2"]')?.click();
+			recompute();
+		},
+	};
+
+	applyColumns();
+	recompute();
+</script>
+

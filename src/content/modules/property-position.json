@@ -1,0 +1,1657 @@
+{
+	"name": "Residential Property Position",
+	"summary": "It works out where the dwelling limit, the valuation basis, the separate catastrophe purchases, and the supporting documents on your home do not line up with each other, and turns each mismatch into a specific question for your broker or insurer.",
+	"family": "personal",
+	"lines": [
+		"homeowners",
+		"dwelling-fire",
+		"condominium-unit-owners",
+		"flood",
+		"earthquake",
+		"scheduled-personal-property"
+	],
+	"order": 10,
+	"status": "live",
+	"privacyBoundary": "This module refuses to collect your street address, city, ZIP code, parcel number, policy or claim number, insurer or agent name, mortgage or loan account number, or any description, serial number, photograph, or storage location of a valuable item.",
+	"uncertainty": "It cannot determine what your policy would pay on any loss, what any insurer would write, or what your home would cost to rebuild; the policy form, the insurer's own replacement cost estimate, and a licensed broker decide those.",
+	"domain": "bestho3.com",
+	"fields": [
+		{
+			"id": "property-state",
+			"label": "Which state is the home in?",
+			"help": "Some catastrophe perils are sold separately under state-specific programs.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "ca",
+					"label": "California"
+				},
+				{
+					"value": "fl",
+					"label": "Florida"
+				},
+				{
+					"value": "tx",
+					"label": "Texas"
+				},
+				{
+					"value": "ny",
+					"label": "New York"
+				},
+				{
+					"value": "wi",
+					"label": "Wisconsin"
+				},
+				{
+					"value": "other-us",
+					"label": "Another US state"
+				}
+			],
+			"group": "Residence and occupancy",
+			"required": true,
+			"purpose": "rule-input",
+			"privacyNote": "Record the state only. Do not enter your street address, city, ZIP code, or parcel number anywhere in this module."
+		},
+		{
+			"id": "residence-type",
+			"label": "What kind of residence is it?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "single-family-detached",
+					"label": "Detached single family house"
+				},
+				{
+					"value": "attached-townhouse",
+					"label": "Attached townhouse or rowhouse"
+				},
+				{
+					"value": "condo-unit",
+					"label": "Condominium or co-op unit inside a larger building"
+				},
+				{
+					"value": "two-to-four-unit",
+					"label": "Two to four unit building I own"
+				},
+				{
+					"value": "manufactured-or-mobile",
+					"label": "Manufactured or mobile home"
+				},
+				{
+					"value": "other",
+					"label": "Something else"
+				}
+			],
+			"group": "Residence and occupancy",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "occupancy",
+			"label": "How is the home occupied?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "owner-primary",
+					"label": "I live there as my primary residence"
+				},
+				{
+					"value": "owner-secondary",
+					"label": "I own it as a second or seasonal home I use myself"
+				},
+				{
+					"value": "tenant-occupied-rental",
+					"label": "A tenant lives there under a lease"
+				},
+				{
+					"value": "short-term-rental",
+					"label": "I rent it out for short stays"
+				},
+				{
+					"value": "vacant-or-unoccupied",
+					"label": "It is vacant or unoccupied right now"
+				}
+			],
+			"group": "Residence and occupancy",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "construction-era",
+			"label": "Which band covers the year the home was originally built?",
+			"kind": "band",
+			"options": [
+				{
+					"value": "pre-1940",
+					"label": "Before 1940"
+				},
+				{
+					"value": "1940-1959",
+					"label": "1940 to 1959"
+				},
+				{
+					"value": "1960-1977",
+					"label": "1960 to 1977"
+				},
+				{
+					"value": "1978-1994",
+					"label": "1978 to 1994"
+				},
+				{
+					"value": "1995-2009",
+					"label": "1995 to 2009"
+				},
+				{
+					"value": "2010-or-later",
+					"label": "2010 or later"
+				},
+				{
+					"value": "unknown",
+					"label": "I do not know"
+				}
+			],
+			"group": "Residence and occupancy",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "living-area-band",
+			"label": "Which band covers the finished living area?",
+			"help": "Square footage is one of the inputs a replacement value estimate has to account for.",
+			"kind": "band",
+			"options": [
+				{
+					"value": "under-1000",
+					"label": "Under 1,000 square feet"
+				},
+				{
+					"value": "1000-1499",
+					"label": "1,000 to 1,499"
+				},
+				{
+					"value": "1500-2499",
+					"label": "1,500 to 2,499"
+				},
+				{
+					"value": "2500-3999",
+					"label": "2,500 to 3,999"
+				},
+				{
+					"value": "4000-or-more",
+					"label": "4,000 or more"
+				},
+				{
+					"value": "not-recorded",
+					"label": "I have not recorded it"
+				}
+			],
+			"group": "Residence and occupancy",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "stories",
+			"label": "How many stories above grade?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "one",
+					"label": "One"
+				},
+				{
+					"value": "two",
+					"label": "Two"
+				},
+				{
+					"value": "three-or-more",
+					"label": "Three or more"
+				}
+			],
+			"group": "Residence and occupancy",
+			"required": false,
+			"purpose": "brief-only"
+		},
+		{
+			"id": "roof-age-band",
+			"label": "Which band covers the age of the current roof covering?",
+			"kind": "band",
+			"options": [
+				{
+					"value": "0-5-years",
+					"label": "0 to 5 years"
+				},
+				{
+					"value": "6-10-years",
+					"label": "6 to 10 years"
+				},
+				{
+					"value": "11-15-years",
+					"label": "11 to 15 years"
+				},
+				{
+					"value": "16-20-years",
+					"label": "16 to 20 years"
+				},
+				{
+					"value": "21-25-years",
+					"label": "21 to 25 years"
+				},
+				{
+					"value": "over-25-years",
+					"label": "More than 25 years"
+				},
+				{
+					"value": "unknown",
+					"label": "I do not know"
+				}
+			],
+			"group": "Roof, systems, and materials",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "roof-covering",
+			"label": "What is the roof covering made of?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "composition-shingle",
+					"label": "Composition or asphalt shingle"
+				},
+				{
+					"value": "wood-shake-or-shingle",
+					"label": "Wood shake or wood shingle"
+				},
+				{
+					"value": "tile-clay-or-concrete",
+					"label": "Clay or concrete tile"
+				},
+				{
+					"value": "metal",
+					"label": "Metal"
+				},
+				{
+					"value": "flat-membrane-or-built-up",
+					"label": "Flat membrane or built up"
+				},
+				{
+					"value": "unknown",
+					"label": "I do not know"
+				}
+			],
+			"group": "Roof, systems, and materials",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "roof-documentation-held",
+			"label": "Do you hold the permit, invoice, or contractor record for the most recent roof work?",
+			"kind": "boolean",
+			"group": "Roof, systems, and materials",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "electrical-years-since-update",
+			"label": "How many years since the electrical service was last updated?",
+			"help": "Enter 0 if it has been updated this year. Leave blank if you do not know.",
+			"kind": "number",
+			"unit": "years",
+			"group": "Roof, systems, and materials",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "plumbing-years-since-update",
+			"label": "How many years since the supply plumbing was last updated?",
+			"kind": "number",
+			"unit": "years",
+			"group": "Roof, systems, and materials",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "heating-cooling-years-since-update",
+			"label": "How many years since the heating or cooling system was last replaced?",
+			"kind": "number",
+			"unit": "years",
+			"group": "Roof, systems, and materials",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "wiring-types-present",
+			"label": "Which of these wiring types do you know are present anywhere in the home?",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "copper-nm-cable",
+					"label": "Modern copper cable"
+				},
+				{
+					"value": "knob-and-tube",
+					"label": "Knob and tube"
+				},
+				{
+					"value": "aluminum-branch-circuit",
+					"label": "Aluminum branch circuit wiring"
+				},
+				{
+					"value": "cloth-insulated",
+					"label": "Cloth insulated wiring"
+				},
+				{
+					"value": "unknown",
+					"label": "I do not know"
+				}
+			],
+			"group": "Roof, systems, and materials",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "dwelling-limit",
+			"label": "What dwelling limit is shown on your declarations page?",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Dwelling limit and valuation",
+			"required": true,
+			"purpose": "rule-input",
+			"privacyNote": "Enter the dollar figure only. Do not enter your policy number or the name of your insurer or agent."
+		},
+		{
+			"id": "replacement-cost-estimate-held",
+			"label": "Do you hold a written replacement cost estimate for the structure from your insurer or agent?",
+			"kind": "boolean",
+			"group": "Dwelling limit and valuation",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "replacement-cost-estimate-amount",
+			"label": "What figure does that written replacement cost estimate give?",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Dwelling limit and valuation",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "replacement-cost-estimate-date",
+			"label": "What date is on that replacement cost estimate?",
+			"kind": "date",
+			"group": "Dwelling limit and valuation",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Record the date only. Do not paste the estimate itself or anything identifying from it."
+		},
+		{
+			"id": "valuation-basis",
+			"label": "What loss settlement basis does the declarations page state for the dwelling?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "replacement-cost",
+					"label": "Replacement cost"
+				},
+				{
+					"value": "actual-cash-value",
+					"label": "Actual cash value"
+				},
+				{
+					"value": "functional-replacement-cost",
+					"label": "Functional or modified replacement cost"
+				},
+				{
+					"value": "stated-amount",
+					"label": "Stated amount"
+				},
+				{
+					"value": "not-recorded",
+					"label": "I have not recorded it"
+				}
+			],
+			"group": "Dwelling limit and valuation",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "extended-or-guaranteed-rc-endorsement",
+			"label": "Is an extended or guaranteed replacement cost endorsement in force?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "guaranteed-replacement-cost",
+					"label": "Guaranteed replacement cost"
+				},
+				{
+					"value": "extended-replacement-cost-percentage",
+					"label": "Extended replacement cost, a stated percentage above the limit"
+				},
+				{
+					"value": "none",
+					"label": "Neither is in force"
+				},
+				{
+					"value": "not-recorded",
+					"label": "I have not recorded it"
+				}
+			],
+			"group": "Dwelling limit and valuation",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "extended-rc-percentage",
+			"label": "What percentage above the dwelling limit does the extended replacement cost endorsement state?",
+			"kind": "number",
+			"unit": "percent",
+			"group": "Dwelling limit and valuation",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "building-code-upgrade-coverage",
+			"label": "Is a building code or ordinance upgrade coverage amount shown?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes",
+					"label": "Yes, an amount or percentage is shown"
+				},
+				{
+					"value": "no",
+					"label": "No, nothing is shown"
+				},
+				{
+					"value": "not-recorded",
+					"label": "I have not recorded it"
+				}
+			],
+			"group": "Dwelling limit and valuation",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "all-perils-deductible",
+			"label": "What flat deductible is shown for the dwelling?",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Deductibles",
+			"required": false,
+			"purpose": "brief-only"
+		},
+		{
+			"id": "percentage-deductible-applies",
+			"label": "Does a separate percentage deductible apply to any peril, such as wind, hurricane, or wildfire?",
+			"kind": "boolean",
+			"group": "Deductibles",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "percentage-deductible-percent",
+			"label": "What percentage does that separate deductible state?",
+			"kind": "number",
+			"unit": "percent",
+			"group": "Deductibles",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "flood-coverage-carried",
+			"label": "Is flood coverage in force on this home?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "nfip-policy",
+					"label": "Yes, a National Flood Insurance Program policy"
+				},
+				{
+					"value": "private-flood-policy",
+					"label": "Yes, a private flood policy"
+				},
+				{
+					"value": "none",
+					"label": "No flood coverage is in force"
+				},
+				{
+					"value": "not-recorded",
+					"label": "I have not recorded it"
+				}
+			],
+			"group": "Flood and earthquake",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "flood-zone-recorded",
+			"label": "What flood zone category have you been told the home sits in?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "high-risk-a-or-v",
+					"label": "A high risk zone beginning with A or V"
+				},
+				{
+					"value": "moderate-or-low-b-c-x",
+					"label": "A moderate or low risk zone such as B, C, or X"
+				},
+				{
+					"value": "unknown",
+					"label": "I do not know"
+				}
+			],
+			"group": "Flood and earthquake",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Record the zone category only. Do not enter your address, a map panel number, or a flood determination certificate number."
+		},
+		{
+			"id": "flood-coverage-needed-by-date",
+			"label": "Is there a date by which you need flood coverage to be in force?",
+			"help": "For example a loan closing date or the start of a season you are planning around.",
+			"kind": "date",
+			"group": "Flood and earthquake",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "mortgage-in-force",
+			"label": "Is there a mortgage or home equity loan on the property?",
+			"kind": "boolean",
+			"group": "Flood and earthquake",
+			"required": true,
+			"purpose": "rule-input",
+			"privacyNote": "Answer yes or no only. Do not enter the lender name, the loan number, or the balance."
+		},
+		{
+			"id": "earthquake-coverage-carried",
+			"label": "Is earthquake coverage in force on this home?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "separate-earthquake-policy",
+					"label": "Yes, a separate earthquake policy"
+				},
+				{
+					"value": "endorsement-on-homeowners",
+					"label": "Yes, an endorsement on the homeowners policy"
+				},
+				{
+					"value": "none",
+					"label": "No earthquake coverage is in force"
+				},
+				{
+					"value": "not-recorded",
+					"label": "I have not recorded it"
+				}
+			],
+			"group": "Flood and earthquake",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "earthquake-deductible-percent",
+			"label": "If earthquake coverage is in force, what percentage deductible does it state?",
+			"kind": "number",
+			"unit": "percent",
+			"group": "Flood and earthquake",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "earthquake-offer-notice-date",
+			"label": "If you received a written offer of earthquake coverage from your insurer, what date was on it?",
+			"kind": "date",
+			"group": "Flood and earthquake",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Record the date only. Do not paste the notice, the premium figure, or your policy number."
+		},
+		{
+			"id": "scheduled-valuables-exist",
+			"label": "Are any valuables scheduled, meaning listed individually with their own limits?",
+			"kind": "boolean",
+			"group": "Scheduled valuables and records",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "scheduled-valuables-categories",
+			"label": "Which categories are scheduled?",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "jewelry",
+					"label": "Jewelry"
+				},
+				{
+					"value": "watches",
+					"label": "Watches"
+				},
+				{
+					"value": "furs",
+					"label": "Furs"
+				},
+				{
+					"value": "fine-art",
+					"label": "Fine art"
+				},
+				{
+					"value": "silverware",
+					"label": "Silverware or flatware"
+				},
+				{
+					"value": "coins-stamps-collectibles",
+					"label": "Coins, stamps, or other collectibles"
+				},
+				{
+					"value": "musical-instruments",
+					"label": "Musical instruments"
+				},
+				{
+					"value": "firearms",
+					"label": "Firearms"
+				},
+				{
+					"value": "cameras",
+					"label": "Cameras and camera equipment"
+				},
+				{
+					"value": "rugs-tapestries",
+					"label": "Rugs or tapestries"
+				}
+			],
+			"group": "Scheduled valuables and records",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Record categories only. Do not enter item descriptions, serial numbers, appraiser names, values of individual pieces, or where the items are kept."
+		},
+		{
+			"id": "valuables-appraisal-age-band",
+			"label": "How old is the newest appraisal supporting those scheduled items?",
+			"kind": "band",
+			"options": [
+				{
+					"value": "under-2-years",
+					"label": "Less than 2 years old"
+				},
+				{
+					"value": "2-to-4-years",
+					"label": "2 to 4 years old"
+				},
+				{
+					"value": "5-to-7-years",
+					"label": "5 to 7 years old"
+				},
+				{
+					"value": "eight-or-more-years",
+					"label": "8 years old or older"
+				},
+				{
+					"value": "no-appraisal",
+					"label": "There is no appraisal"
+				},
+				{
+					"value": "unknown",
+					"label": "I do not know"
+				}
+			],
+			"group": "Scheduled valuables and records",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "home-inventory-held",
+			"label": "Do you hold a household inventory with photographs or receipts, kept somewhere other than the home?",
+			"kind": "boolean",
+			"group": "Scheduled valuables and records",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "association-master-policy-declarations-held",
+			"label": "Do you hold a current copy of the association master policy declarations?",
+			"kind": "boolean",
+			"group": "Association and lender documents",
+			"required": false,
+			"purpose": "rule-input"
+		}
+	],
+	"rules": [
+		{
+			"id": "dwelling-limit-without-replacement-cost-estimate",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "A dwelling limit is recorded but no written replacement cost estimate is held.",
+			"detail": "California's standards for estimates of replacement value require a licensee's estimate to account for the cost of labor, building materials and supplies, overhead and profit, demolition and debris removal, and permits and architect's plans, and to reflect the reconstruction of a single property rather than bulk or tract construction, with a copy delivered to the applicant or insured [S:ca-10-ccr-2695-183]. Without that document in hand there is nothing to compare your recorded limit against [S:cdi-residential-insurance-guide].",
+			"action": "Ask your insurer or agent in writing for a copy of the replacement cost estimate used to set the dwelling limit, including the assumptions for square footage, roofing material, stories, and interior finishes, and keep it with your renewal papers.",
+			"when": {
+				"all": [
+					{
+						"field": "dwelling-limit",
+						"op": "isSet",
+						"value": true
+					},
+					{
+						"field": "replacement-cost-estimate-held",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-10-ccr-2695-183",
+				"cdi-residential-insurance-guide"
+			],
+			"relatedQuestion": "replacement-cost-vs-market-value",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "dwelling-limit-below-recorded-replacement-cost-estimate",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "The recorded dwelling limit is lower than the replacement cost estimate you recorded.",
+			"detail": "The loss settlement condition in the standard homeowners special form is written as an arithmetic comparison between the amount of insurance on the damaged building and the full replacement cost of that building immediately before the loss, and it describes a different measure once the amount of insurance falls under 80 percent of that figure [S:iso-ho-00-03-05-11-nv-doi]. You have entered two numbers that do not match, which is a question for the person who set the limit [S:ca-10-ccr-2695-183].",
+			"action": "Put both figures in front of your broker in writing and ask which one the current declarations page relies on, and what the policy's loss settlement condition says about the gap between them.",
+			"when": {
+				"all": [
+					{
+						"field": "replacement-cost-estimate-amount",
+						"op": "isSet",
+						"value": true
+					},
+					{
+						"field": "dwelling-limit",
+						"op": "lt",
+						"value": {
+							"field": "replacement-cost-estimate-amount"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-ho-00-03-05-11-nv-doi",
+				"ca-10-ccr-2695-183"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "replacement-cost-estimate-older-than-one-year",
+			"kind": "timing",
+			"severity": "medium",
+			"title": "The replacement cost estimate you hold is dated more than a year before today.",
+			"detail": "The replacement value standards require a licensee to verify at least annually that the sources and methods behind its estimates remain current with changes in labor and material costs, and to deliver any updated estimate [S:ca-10-ccr-2695-183]. Your recorded estimate date is more than one year old.",
+			"action": "Ask your insurer or agent for a refreshed replacement cost estimate before your next renewal, and ask what changed in the underlying cost data since the version you hold.",
+			"when": {
+				"all": [
+					{
+						"field": "replacement-cost-estimate-date",
+						"op": "isSet",
+						"value": true
+					},
+					{
+						"field": "replacement-cost-estimate-date",
+						"op": "lt",
+						"value": {
+							"monthsFromToday": -12
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-10-ccr-2695-183"
+			],
+			"relatedQuestion": "replacement-cost-vs-market-value",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "valuation-basis-actual-cash-value",
+			"kind": "question",
+			"severity": "high",
+			"title": "The dwelling loss settlement basis is recorded as actual cash value rather than replacement cost.",
+			"detail": "Actual cash value and replacement cost are two different measures of indemnity, and the actual cash value measure accounts for depreciation while the replacement cost measure does not [S:ca-ins-code-2051][S:ca-ins-code-2051-5][S:naic-acv-vs-rcv]. Consumer guides also warn that neither figure is the same as the market value of the home [S:wi-oci-pi-015-homeowners-guide].",
+			"action": "Ask your broker to show you, in writing, what the two settlement bases would mean for this specific dwelling limit, and what it would take to move the dwelling to a replacement cost basis at the next renewal.",
+			"when": {
+				"all": [
+					{
+						"field": "valuation-basis",
+						"op": "eq",
+						"value": "actual-cash-value"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-2051",
+				"ca-ins-code-2051-5",
+				"naic-acv-vs-rcv",
+				"wi-oci-pi-015-homeowners-guide"
+			],
+			"relatedQuestion": "replacement-cost-vs-market-value",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "valuation-basis-not-recorded",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "The dwelling loss settlement basis has not been recorded from the declarations page.",
+			"detail": "The loss settlement basis is stated on the policy itself, and California requires a residential property insurance disclosure statement to accompany the policy so the insured can see how the structure is valued [S:ca-ins-code-10102]. Nothing else in this position can be checked against a basis you have not read [S:cdi-residential-insurance-guide].",
+			"action": "Open your declarations page and the residential property insurance disclosure that came with it, find the loss settlement wording for Coverage A, and record it here before you take anything else to a broker.",
+			"when": {
+				"all": [
+					{
+						"field": "valuation-basis",
+						"op": "eq",
+						"value": "not-recorded"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-10102",
+				"cdi-residential-insurance-guide"
+			],
+			"relatedQuestion": "replacement-cost-vs-market-value",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "no-extended-or-guaranteed-replacement-cost-endorsement",
+			"kind": "gap",
+			"severity": "high",
+			"title": "A replacement cost basis is recorded with no extended or guaranteed replacement cost endorsement above the dwelling limit.",
+			"detail": "The form's loss settlement condition states its own ceiling as the limit of liability that applies to the building, so a replacement cost basis does not by itself reach above the dwelling limit you recorded [S:iso-ho-00-03-05-11-nv-doi]. Extended and guaranteed replacement cost are described in consumer guides as separate additions that sit above the stated dwelling limit, and they are not the same thing as the replacement cost basis itself [S:wi-oci-pi-015-homeowners-guide][S:cdi-residential-insurance-guide].",
+			"action": "Ask your broker what extended or guaranteed replacement cost options exist on this form, what percentage above the limit each one states, and what conditions attach to it.",
+			"when": {
+				"all": [
+					{
+						"field": "valuation-basis",
+						"op": "eq",
+						"value": "replacement-cost"
+					},
+					{
+						"field": "extended-or-guaranteed-rc-endorsement",
+						"op": "eq",
+						"value": "none"
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-ho-00-03-05-11-nv-doi",
+				"wi-oci-pi-015-homeowners-guide",
+				"cdi-residential-insurance-guide"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "extended-replacement-cost-percentage-not-recorded",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "An extended replacement cost endorsement is recorded but its percentage is blank.",
+			"detail": "An extended replacement cost endorsement works by stating a specific percentage above the dwelling limit, so without that number the top of the recorded position cannot be worked out at all [S:wi-oci-pi-015-homeowners-guide][S:cdi-residential-insurance-guide].",
+			"action": "Find the endorsement on your policy, read the percentage it states, and record it here, then multiply it against your dwelling limit yourself so you know the figure you are actually working from.",
+			"when": {
+				"all": [
+					{
+						"field": "extended-or-guaranteed-rc-endorsement",
+						"op": "eq",
+						"value": "extended-replacement-cost-percentage"
+					},
+					{
+						"field": "extended-rc-percentage",
+						"op": "isEmpty",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"wi-oci-pi-015-homeowners-guide",
+				"cdi-residential-insurance-guide"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "building-code-upgrade-amount-not-recorded",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "No building code or ordinance upgrade amount has been recorded.",
+			"detail": "The replacement value standards treat the cost of permits and architect's plans and the cost of demolition and debris removal as components of a replacement value estimate [S:ca-10-ccr-2695-183], and code upgrade cost is commonly handled by a separate stated amount rather than by the dwelling limit itself [S:cdi-residential-insurance-guide][S:cea-homeowners-coverages-deductibles].",
+			"action": "Look on your declarations page for an ordinance or law, or building code upgrade, entry and record the amount or percentage it states; if there is none, ask your broker what the form provides and what it costs to add.",
+			"when": {
+				"all": [
+					{
+						"field": "building-code-upgrade-coverage",
+						"op": "eq",
+						"value": "not-recorded"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-10-ccr-2695-183",
+				"cdi-residential-insurance-guide",
+				"cea-homeowners-coverages-deductibles"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "living-area-not-recorded",
+			"kind": "documentation",
+			"severity": "low",
+			"title": "The finished living area has not been recorded.",
+			"detail": "Square footage is one of the structural inputs a residential replacement value estimate is required to take into account, alongside foundation type, framing, roofing material, siding, number of stories, and interior finishes [S:ca-10-ccr-2695-183].",
+			"action": "Get the finished square footage from your closing documents, an appraisal you already hold, or a measured floor plan, and record the band, so you can check it against whatever figure the insurer's estimate used.",
+			"when": {
+				"all": [
+					{
+						"field": "living-area-band",
+						"op": "eq",
+						"value": "not-recorded"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-10-ccr-2695-183"
+			],
+			"relatedQuestion": "replacement-cost-vs-market-value",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "roof-over-twenty-five-years",
+			"kind": "question",
+			"severity": "high",
+			"title": "The roof covering is recorded in the band over 25 years old.",
+			"detail": "Roofing material is one of the structural features a replacement value estimate has to account for [S:ca-10-ccr-2695-183], and roof age and covering are standard items on the residential underwriting information an insurer asks about [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners]. This module does not judge the roof; it flags that you are carrying an input the insurer will ask about and that you have not settled.",
+			"action": "Ask your broker two things in writing: what roof documentation the insurer wants for a roof in this age band, and whether the policy settles roof losses on the same basis as the rest of the dwelling.",
+			"when": {
+				"all": [
+					{
+						"field": "roof-age-band",
+						"op": "eq",
+						"value": "over-25-years"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-10-ccr-2695-183",
+				"cdi-residential-insurance-guide",
+				"naic-consumer-homeowners"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "roof-documentation-not-held",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "No permit, invoice, or contractor record is held for the most recent roof work.",
+			"detail": "Roof age and roofing material are inputs both to residential underwriting information and to a replacement value estimate [S:ca-10-ccr-2695-183][S:cdi-residential-insurance-guide]. A document you can produce on request is worth more than a remembered date, and consumer claim guidance rests on records the homeowner keeps [S:cdi-residential-property-claims-guide].",
+			"action": "Request the permit record from your local building department and the invoice from the roofing contractor, then store copies somewhere other than the house.",
+			"when": {
+				"all": [
+					{
+						"field": "roof-documentation-held",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-10-ccr-2695-183",
+				"cdi-residential-insurance-guide",
+				"cdi-residential-property-claims-guide"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "wood-shake-roof-covering-question",
+			"kind": "question",
+			"severity": "medium",
+			"title": "The roof covering is recorded as wood shake or wood shingle.",
+			"detail": "Roofing material is an explicit input to a residential replacement value estimate, so the material affects the figure your dwelling limit is supposed to reflect [S:ca-10-ccr-2695-183]. It is also a specific item on the property information insurers gather [S:cdi-residential-insurance-guide].",
+			"action": "Ask your broker whether the replacement cost estimate behind your limit assumed a wood roof or a substitute material, and what documentation the insurer wants about the roof's treatment and condition.",
+			"when": {
+				"all": [
+					{
+						"field": "roof-covering",
+						"op": "eq",
+						"value": "wood-shake-or-shingle"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-10-ccr-2695-183",
+				"cdi-residential-insurance-guide"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "knob-and-tube-wiring-question",
+			"kind": "question",
+			"severity": "high",
+			"title": "Knob and tube wiring is recorded as present in the home.",
+			"detail": "Systems information of this kind is part of the residential property information an insurer collects and part of what a replacement value estimate reflects through interior finish and system assumptions [S:cdi-residential-insurance-guide][S:ca-10-ccr-2695-183]. Recording it now means you raise it rather than have it surface later.",
+			"action": "Ask your broker what the insurer asks about legacy wiring, whether an electrician's report is wanted, and whether the replacement cost estimate assumed rewiring; take the electrical safety question itself to a licensed electrician.",
+			"when": {
+				"all": [
+					{
+						"field": "wiring-types-present",
+						"op": "includes",
+						"value": "knob-and-tube"
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-residential-insurance-guide",
+				"ca-10-ccr-2695-183"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "aluminum-branch-wiring-question",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Aluminum branch circuit wiring is recorded as present in the home.",
+			"detail": "Like other system details, this belongs on the residential property information you give an insurer, and it bears on what a replacement value estimate assumed about the interior [S:cdi-residential-insurance-guide][S:ca-10-ccr-2695-183].",
+			"action": "Ask your broker what the insurer wants documented about aluminum branch wiring and any remediation already done, and get the electrical question itself answered by a licensed electrician.",
+			"when": {
+				"all": [
+					{
+						"field": "wiring-types-present",
+						"op": "includes",
+						"value": "aluminum-branch-circuit"
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-residential-insurance-guide",
+				"ca-10-ccr-2695-183"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "electrical-update-years-exceed-construction-era",
+			"kind": "inconsistency",
+			"severity": "medium",
+			"title": "The years since the electrical update exceed the age of the home as you recorded it.",
+			"detail": "You recorded a construction era of 2010 or later, and you recorded more years since the electrical was updated than the home has existed. One of the two entries is wrong, and age of structure is a required input to a replacement value estimate [S:ca-10-ccr-2695-183].",
+			"action": "Check the build year against your closing documents or the county record and correct whichever entry is wrong before you send this position to anyone.",
+			"when": {
+				"all": [
+					{
+						"field": "construction-era",
+						"op": "eq",
+						"value": "2010-or-later"
+					},
+					{
+						"field": "electrical-years-since-update",
+						"op": "gt",
+						"value": {
+							"yearsSince": 2010
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-10-ccr-2695-183"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "hvac-update-years-exceed-construction-era",
+			"kind": "inconsistency",
+			"severity": "medium",
+			"title": "The years since the heating or cooling update exceed the age of the home as you recorded it.",
+			"detail": "You recorded a construction era of 2010 or later, and you recorded more years since the heating or cooling system was updated than the home has existed. One of the two entries is wrong, and age of structure is a required input to a replacement value estimate [S:ca-10-ccr-2695-183].",
+			"action": "Check the build year against your closing documents or the county record and correct whichever entry is wrong before you send this position to anyone.",
+			"when": {
+				"all": [
+					{
+						"field": "construction-era",
+						"op": "eq",
+						"value": "2010-or-later"
+					},
+					{
+						"field": "heating-cooling-years-since-update",
+						"op": "gt",
+						"value": {
+							"yearsSince": 2010
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-10-ccr-2695-183"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "plumbing-update-over-forty-years",
+			"kind": "question",
+			"severity": "medium",
+			"title": "More than 40 years are recorded since the supply plumbing was updated.",
+			"detail": "Systems update information is part of the residential property information insurers collect [S:cdi-residential-insurance-guide], and consumer guidance points out that most homeowners forms treat water damage differently depending on its source, which makes the plumbing question worth asking before a loss rather than after [S:wi-oci-pi-015-homeowners-guide][S:iso-ho-00-03-05-11-nv-doi].",
+			"action": "Ask your broker to walk you through the water damage wording in your specific form, and ask what plumbing update information the insurer wants recorded.",
+			"when": {
+				"all": [
+					{
+						"field": "plumbing-years-since-update",
+						"op": "gt",
+						"value": 40
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-residential-insurance-guide",
+				"wi-oci-pi-015-homeowners-guide",
+				"iso-ho-00-03-05-11-nv-doi"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "flood-coverage-not-carried",
+			"kind": "gap",
+			"severity": "high",
+			"title": "No flood coverage is recorded, and flood is bought separately from the homeowners policy.",
+			"detail": "Flood is sold as its own policy rather than as part of the homeowners policy: state consumer guidance points a homeowner who wants flood coverage to a purchase through the National Flood Insurance Program [S:wi-oci-pi-015-homeowners-guide], and the program's own eligibility page states that you can get flood insurance from the National Flood Insurance Program if your city or town participates in the NFIP's floodplain management requirements [S:fema-nfip-eligibility]. That purchase is written on a separate form, the Standard Flood Insurance Policy Dwelling Form, with its own coverages and its own limits [S:nfip-sfip-dwelling-form][S:nfip-agents-coverage]. The homeowners form is a different document, so its declarations page is not where the presence or absence of a flood policy is recorded [S:iso-ho-00-03-05-11-nv-doi]. This module does not read either form, and says nothing about how any policy would respond to a loss.",
+			"action": "Ask your broker to put the NFIP dwelling form and any private flood form in front of you so you can read the coverage and limit sections of each, and ask your insurer to identify by form number and provision name where your own homeowners form deals with water damage, so you are reading your policy rather than a summary of it.",
+			"when": {
+				"all": [
+					{
+						"field": "flood-coverage-carried",
+						"op": "eq",
+						"value": "none"
+					}
+				]
+			},
+			"sourceIds": [
+				"wi-oci-pi-015-homeowners-guide",
+				"iso-ho-00-03-05-11-nv-doi",
+				"fema-nfip-eligibility",
+				"nfip-sfip-dwelling-form",
+				"nfip-agents-coverage"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "flood-not-carried-with-mortgage-in-high-risk-zone",
+			"kind": "gap",
+			"severity": "high",
+			"title": "A mortgage and a high risk flood zone are recorded with no flood coverage in force.",
+			"detail": "The federal statute directs regulated lending institutions not to make, increase, extend, or renew any loan secured by improved real estate located in an area identified as having special flood hazards and in which flood insurance has been made available, unless the building is covered for the term of the loan by flood insurance in a stated amount [S:usc-42-4012a][S:usc-42-4012a-2], and loan program guidelines set out their own property insurance requirements for one to four unit properties [S:fnma-b7-3-02]. Whether that statute and those guidelines reach your loan, your property, and your zone determination is a reading of the statute and of your own loan documents, and this module does not make it.",
+			"action": "Take your loan documents and the flood zone determination you were given to a lawyer and ask whether the federal purchase requirement and your loan's own insurance clause apply to you, and what each one requires; ask your loan servicer in writing for the zone determination and the requirement it is relying on, and bring the lawyer's answer to your broker for the placement itself.",
+			"when": {
+				"all": [
+					{
+						"field": "flood-coverage-carried",
+						"op": "eq",
+						"value": "none"
+					},
+					{
+						"field": "mortgage-in-force",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "flood-zone-recorded",
+						"op": "eq",
+						"value": "high-risk-a-or-v"
+					}
+				]
+			},
+			"sourceIds": [
+				"usc-42-4012a",
+				"usc-42-4012a-2",
+				"fnma-b7-3-02"
+			],
+			"relatedQuestion": "lender-insurance-requirement",
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "flood-needed-inside-waiting-period",
+			"kind": "timing",
+			"severity": "high",
+			"title": "The date you need flood coverage in force falls inside the standard flood policy waiting period, and no flood policy is recorded as in force.",
+			"detail": "The effective date and time of coverage under the Standard Flood Insurance Policy is governed by a rule that imposes a waiting period before new coverage takes effect, with only limited exceptions [S:cfr-44-61-11][S:fema-nfip-eligibility]. Your recorded date is within the next 30 days, and you have not recorded a flood policy in force. If one is in force and simply not recorded here, record it; the waiting period applies to new coverage.",
+			"action": "Raise the waiting period with your broker today, not at the end of the month, and ask specifically whether any of the stated exceptions apply to your situation and what documentation each one needs.",
+			"when": {
+				"all": [
+					{
+						"field": "flood-coverage-carried",
+						"op": "neq",
+						"value": "nfip-policy"
+					},
+					{
+						"field": "flood-coverage-carried",
+						"op": "neq",
+						"value": "private-flood-policy"
+					},
+					{
+						"field": "flood-coverage-needed-by-date",
+						"op": "isSet",
+						"value": true
+					},
+					{
+						"field": "flood-coverage-needed-by-date",
+						"op": "lte",
+						"value": {
+							"daysFromToday": 30
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-44-61-11",
+				"fema-nfip-eligibility"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "earthquake-coverage-not-carried-california",
+			"kind": "gap",
+			"severity": "high",
+			"title": "No earthquake coverage is recorded on a California home, and earthquake is bought separately.",
+			"detail": "California law bars issuing or delivering, or initially renewing, a policy of residential property insurance in this state unless the named insured is offered coverage for loss or damage caused by the peril of earthquake, and the section states that the coverage may be provided in the residential property policy itself, by specific policy provision or endorsement, or in a separate policy or certificate of insurance [S:ca-ins-code-10081]. The notice language the statute prescribes directs the insured to purchase a separate earthquake insurance policy [S:ca-ins-code-10083], so earthquake sits on its own document with its own limits and its own percentage deductible: the CEA homeowners page describes dwelling, personal property, and loss of use choices with deductibles of 5%, 10%, 15%, 20%, or 25% [S:cea-homeowners-coverages-deductibles], and the department's guide describes the written offer as stating the limits and the deductible [S:cdi-earthquake-insurance-guide]. This module does not read your own form and says nothing about how any policy would respond to a loss.",
+			"action": "Ask your insurer for the current written offer of earthquake coverage and for the document that would carry it, with the dwelling limit, deductible, personal property limit, and loss of use limit it states, and ask the insurer to identify by name the provision, endorsement, or separate policy that deals with earthquake for your own home, so you read your own form rather than a summary of it.",
+			"when": {
+				"all": [
+					{
+						"field": "property-state",
+						"op": "eq",
+						"value": "ca"
+					},
+					{
+						"field": "earthquake-coverage-carried",
+						"op": "eq",
+						"value": "none"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-10081",
+				"ca-ins-code-10083",
+				"cdi-earthquake-insurance-guide",
+				"cea-homeowners-coverages-deductibles"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "earthquake-offer-notice-response-window-open",
+			"kind": "timing",
+			"severity": "high",
+			"title": "An earthquake coverage offer is dated inside the last 30 days and no earthquake coverage is recorded.",
+			"detail": "The statutory offer language states that if the offer is not accepted within 30 days of the mailing of the notice, the insurance company shall presume it was not accepted [S:ca-ins-code-10083]. Your recorded notice date is within the last 30 days, so the stated window has not closed yet. The same section requires a further offer on an every other year basis if this one is not accepted [S:ca-ins-code-10083][S:ca-ins-code-10081].",
+			"action": "Respond to that notice in writing this week even if only to ask questions, keep a dated copy of what you sent, and ask your insurer to confirm in writing what happens to the offer if the 30 days run out.",
+			"when": {
+				"all": [
+					{
+						"field": "earthquake-offer-notice-date",
+						"op": "isSet",
+						"value": true
+					},
+					{
+						"field": "earthquake-offer-notice-date",
+						"op": "gte",
+						"value": {
+							"daysFromToday": -30
+						}
+					},
+					{
+						"field": "earthquake-coverage-carried",
+						"op": "eq",
+						"value": "none"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-10083",
+				"ca-ins-code-10081"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "earthquake-percentage-deductible-not-converted",
+			"kind": "question",
+			"severity": "medium",
+			"title": "The earthquake deductible is recorded as a percentage, so the dollar retention has not been worked out.",
+			"detail": "Earthquake deductibles on residential policies are stated as a percentage rather than a flat dollar amount, and the regulation on earthquake policy coverage types and limits and the published policy form both describe the deductible in those terms [S:ccr-10-2697-6][S:cea-beq3b-homeowners-policy-form][S:cea-homeowners-coverages-deductibles]. A percentage moves with the limit it applies to, so the dollar figure changes every time the limit does [S:cdi-earthquake-guide-925].",
+			"action": "Multiply the percentage by the limit it attaches to, write the dollar figure down, and ask your insurer to confirm in writing which limit the percentage is applied against and whether separate deductibles apply to contents and to additional living expense.",
+			"when": {
+				"all": [
+					{
+						"field": "earthquake-coverage-carried",
+						"op": "neq",
+						"value": "none"
+					},
+					{
+						"field": "earthquake-deductible-percent",
+						"op": "isSet",
+						"value": true
+					},
+					{
+						"field": "earthquake-coverage-carried",
+						"op": "neq",
+						"value": "not-recorded"
+					}
+				]
+			},
+			"sourceIds": [
+				"ccr-10-2697-6",
+				"cea-beq3b-homeowners-policy-form",
+				"cea-homeowners-coverages-deductibles",
+				"cdi-earthquake-guide-925"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "percentage-deductible-dollar-amount-not-worked-out",
+			"kind": "question",
+			"severity": "medium",
+			"title": "A separate percentage deductible applies and its dollar amount has not been worked out.",
+			"detail": "A percentage deductible is not comparable to the flat deductible on the same declarations page, because the percentage is applied against a limit and the flat amount is not [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners]. Consumer guides treat the deductible as one of the terms a homeowner should read for themselves rather than assume [S:wi-oci-pi-015-homeowners-guide].",
+			"action": "Multiply the recorded percentage against your dwelling limit, compare that number against your flat deductible, and ask your insurer in writing which perils trigger the percentage version and what limit it is applied against.",
+			"when": {
+				"all": [
+					{
+						"field": "percentage-deductible-applies",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "percentage-deductible-percent",
+						"op": "isSet",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-residential-insurance-guide",
+				"naic-consumer-homeowners",
+				"wi-oci-pi-015-homeowners-guide"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "scheduled-valuables-without-appraisal",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "Valuables are scheduled but no appraisal supports them.",
+			"detail": "Homeowners forms provide only limited amounts for categories such as furs, jewelry, and silverware, which is why these items get scheduled separately [S:wi-oci-pi-015-homeowners-guide][S:cdi-residential-insurance-guide]. Consumer guidance also warns that a written list on its own may not be accepted as proof that an item existed [S:wi-oci-pi-015-homeowners-guide][S:cdi-residential-property-claims-guide].",
+			"action": "Get a dated written appraisal from a qualified appraiser for each scheduled item, give a copy to your broker, and keep your own copy somewhere other than the home.",
+			"when": {
+				"all": [
+					{
+						"field": "scheduled-valuables-exist",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "valuables-appraisal-age-band",
+						"op": "eq",
+						"value": "no-appraisal"
+					}
+				]
+			},
+			"sourceIds": [
+				"wi-oci-pi-015-homeowners-guide",
+				"cdi-residential-insurance-guide",
+				"cdi-residential-property-claims-guide"
+			],
+			"relatedQuestion": "inland-marine-uses",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "scheduled-valuables-appraisal-eight-years-or-older",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "The newest appraisal behind the scheduled valuables is recorded as 8 years old or older.",
+			"detail": "Scheduled items carry their own stated limits, and consumer guides note that values move over time and that the amounts on the schedule need periodic review rather than being set once [S:wi-oci-pi-015-homeowners-guide][S:cdi-residential-insurance-guide][S:naic-consumer-homeowners].",
+			"action": "Have the scheduled items reappraised, then ask your broker to compare each new appraised figure against the limit currently shown on the schedule and to tell you what changing the limit involves.",
+			"when": {
+				"all": [
+					{
+						"field": "scheduled-valuables-exist",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "valuables-appraisal-age-band",
+						"op": "eq",
+						"value": "eight-or-more-years"
+					}
+				]
+			},
+			"sourceIds": [
+				"wi-oci-pi-015-homeowners-guide",
+				"cdi-residential-insurance-guide",
+				"naic-consumer-homeowners"
+			],
+			"relatedQuestion": "inland-marine-uses",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "scheduled-valuables-categories-blank",
+			"kind": "inconsistency",
+			"severity": "low",
+			"title": "Scheduled valuables are recorded as existing but no categories are selected.",
+			"detail": "You answered that items are scheduled individually and then left the category list empty, so this position records a schedule with nothing on it and cannot be checked against anything [S:cdi-residential-insurance-guide].",
+			"action": "Open the schedule on your policy, tick the categories that appear on it here, and if the schedule turns out to be empty correct your earlier answer.",
+			"when": {
+				"all": [
+					{
+						"field": "scheduled-valuables-exist",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "scheduled-valuables-categories",
+						"op": "isEmpty",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-residential-insurance-guide"
+			],
+			"relatedQuestion": "inland-marine-uses",
+			"routeToProfessional": null
+		},
+		{
+			"id": "home-inventory-not-held",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "No household inventory is held outside the home.",
+			"detail": "Consumer guidance is explicit that a written list may not by itself be acceptable proof to an insurance company that an item existed, which is why photographs and receipts matter and why the record should not live in the building it documents [S:wi-oci-pi-015-homeowners-guide][S:cdi-residential-property-claims-guide].",
+			"action": "Photograph or video each room, keep receipts for anything substantial, and store the whole record somewhere other than the house, such as with a relative or in an account you can reach from anywhere.",
+			"when": {
+				"all": [
+					{
+						"field": "home-inventory-held",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"wi-oci-pi-015-homeowners-guide",
+				"cdi-residential-property-claims-guide"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "tenant-occupied-with-homeowners-form",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The home is recorded as tenant occupied while the position is being assembled around a homeowners form.",
+			"detail": "A homeowners form is written around the named insured's own residence [S:iso-ho-00-03-05-11-nv-doi][S:cdi-residential-insurance-guide], while a property rented to others is written on a different kind of form with a different structure for the building, the loss of rent, and the liability [S:statefarm-rental-dwelling][S:naic-homeowners].",
+			"action": "Tell your broker in writing that the property is tenant occupied, ask which form the policy actually is, and ask what a rental dwelling form would state differently about the building, lost rent, and liability.",
+			"when": {
+				"all": [
+					{
+						"field": "occupancy",
+						"op": "eq",
+						"value": "tenant-occupied-rental"
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-ho-00-03-05-11-nv-doi",
+				"cdi-residential-insurance-guide",
+				"statefarm-rental-dwelling",
+				"naic-homeowners"
+			],
+			"relatedQuestion": "landlord-policy-vs-homeowners",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "short-term-rental-occupancy-question",
+			"kind": "question",
+			"severity": "medium",
+			"title": "The home is recorded as rented out for short stays.",
+			"detail": "Short stay renting is a use of the residence that the policy form addresses in its own terms, and it is not the same as either owner occupancy or a conventional lease [S:iso-ho-00-03-05-11-nv-doi][S:cdi-residential-insurance-guide][S:statefarm-rental-dwelling].",
+			"action": "Tell your broker in writing how often and how the home is rented, and ask what your specific form says about that use and what a separate arrangement would involve.",
+			"when": {
+				"all": [
+					{
+						"field": "occupancy",
+						"op": "eq",
+						"value": "short-term-rental"
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-ho-00-03-05-11-nv-doi",
+				"cdi-residential-insurance-guide",
+				"statefarm-rental-dwelling"
+			],
+			"relatedQuestion": "landlord-policy-vs-homeowners",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "vacant-or-unoccupied-question",
+			"kind": "question",
+			"severity": "high",
+			"title": "The home is recorded as vacant or unoccupied.",
+			"detail": "Occupancy is a stated condition of the residential form, and change in occupancy is one of the things the form's own conditions ask the insured to address [S:iso-ho-00-03-05-11-nv-doi]. Occupancy is also standard residential property information an insurer collects [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners].",
+			"action": "Notify your insurer in writing that the home is unoccupied and how long you expect that to last, keep the dated notice, and ask what the policy conditions say about vacancy on your specific form.",
+			"when": {
+				"all": [
+					{
+						"field": "occupancy",
+						"op": "eq",
+						"value": "vacant-or-unoccupied"
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-ho-00-03-05-11-nv-doi",
+				"cdi-residential-insurance-guide",
+				"naic-consumer-homeowners"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "condo-unit-without-master-policy-declarations",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "The residence is a unit in a larger building and no current association master policy declarations are held.",
+			"detail": "A unit owners form and an association master policy divide one building between two policies, and the unit owners form is written on that assumption [S:iso-ho-00-06-05-11-me-bureau][S:cdi-residential-insurance-guide]. Until you have read the master policy declarations you cannot see which portions of the unit your own limit is meant to answer for [S:naic-consumer-homeowners].",
+			"action": "Request the current master policy declarations from the association or its manager in writing, then sit down with your broker and the two declarations pages side by side and mark which parts of the unit each one names.",
+			"when": {
+				"all": [
+					{
+						"field": "residence-type",
+						"op": "eq",
+						"value": "condo-unit"
+					},
+					{
+						"field": "association-master-policy-declarations-held",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-ho-00-06-05-11-me-bureau",
+				"cdi-residential-insurance-guide",
+				"naic-consumer-homeowners"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "mortgage-with-actual-cash-value-basis",
+			"kind": "gap",
+			"severity": "high",
+			"title": "A mortgage is in force while the dwelling settlement basis is recorded as actual cash value.",
+			"detail": "Loan program guidelines set out property insurance requirements for one to four unit properties, including how the required coverage amount is determined [S:fnma-b7-3-02], and actual cash value and replacement cost are different measures of indemnity [S:ca-ins-code-2051][S:naic-acv-vs-rcv]. You have not recorded what your own loan documents require.",
+			"action": "Find the insurance requirement clause in your loan documents, record what it states, and take both that clause and your declarations page to your broker in the same conversation.",
+			"when": {
+				"all": [
+					{
+						"field": "mortgage-in-force",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "valuation-basis",
+						"op": "eq",
+						"value": "actual-cash-value"
+					}
+				]
+			},
+			"sourceIds": [
+				"fnma-b7-3-02",
+				"ca-ins-code-2051",
+				"naic-acv-vs-rcv"
+			],
+			"relatedQuestion": "lender-insurance-requirement",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "flood-or-earthquake-status-not-recorded",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "Whether flood coverage is in force has not been recorded.",
+			"detail": "Flood is a separate purchase from the homeowners policy, on a separate form, so its presence or absence is not something the homeowners declarations page answers [S:fema-nfip-eligibility][S:nfip-sfip-dwelling-form][S:wi-oci-pi-015-homeowners-guide]. An unrecorded answer here leaves the largest single question in this module unanswered.",
+			"action": "Check your own records and your mortgage escrow statement for a separate flood policy, then record yes or no here; if you cannot tell, ask your broker to confirm in writing what is and is not in force.",
+			"when": {
+				"all": [
+					{
+						"field": "flood-coverage-carried",
+						"op": "eq",
+						"value": "not-recorded"
+					}
+				]
+			},
+			"sourceIds": [
+				"fema-nfip-eligibility",
+				"nfip-sfip-dwelling-form",
+				"wi-oci-pi-015-homeowners-guide"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

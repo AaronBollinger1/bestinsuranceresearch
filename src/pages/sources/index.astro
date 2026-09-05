@@ -1,0 +1,389 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import { siteConfig } from '../../config/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import StateBlock from '../../components/StateBlock.astro';
+import { citingPages, isStale, loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, collectionPage, dataset, graph, organization, website } from '../../lib/schema';
+import { TODAY } from '../../lib/today';
+
+const corpus = await loadCorpus();
+
+/*
+ * Reverse index: which published pages cite each source.
+ *
+ * This was built inline here and inline again on the source page, and both
+ * copies omitted modules while one also credited unbuilt tools that have no
+ * page. The visible consequence was this page publishing "registered but not
+ * yet cited: 16" when the true figure was 5, because eleven sources are cited
+ * only by module rules. One definition now, in corpus.ts.
+ */
+const citedBy = new Map(corpus.sources.map((s) => [s.id, citingPages(corpus, s.id)]));
+
+const sources = [...corpus.sources].sort((a, b) => {
+	if (a.data.primary !== b.data.primary) return a.data.primary ? -1 : 1;
+	return a.data.publisher.localeCompare(b.data.publisher) || a.data.title.localeCompare(b.data.title);
+});
+
+const types = [...new Set(sources.map((s) => s.data.sourceType))].sort();
+const jurisdictions = [...new Set(sources.map((s) => s.data.jurisdiction))].sort();
+const publishers = [...new Set(sources.map((s) => s.data.publisher))].sort();
+
+const staleCount = sources.filter((s) => isStale(s.data.lastChecked, TODAY)).length;
+const primaryCount = sources.filter((s) => s.data.primary).length;
+const claimCount = sources.reduce((n, s) => n + s.data.claims.length, 0);
+/* The corpus is exactly as fresh as its most recently checked record. */
+const newestCheck = sources.map((s) => s.data.lastChecked).sort().pop() ?? siteConfig.contentVersion;
+const publisherHosts = new Set(
+	sources.map((s) => {
+		try { return new URL(s.data.url).host; } catch { return s.data.publisher; }
+	}),
+).size;
+const orphanCount = sources.filter((s) => (citedBy.get(s.id) ?? []).length === 0).length;
+
+/** Compact, text-only status for the registry list. Icons stay on the detail page. */
+function statusLabel(d: { status: string }, stale: boolean): string {
+	if (d.status === 'superseded') return 'Superseded';
+	if (d.status === 'unavailable') return 'Unavailable';
+	if (d.status === 'disputed') return 'Disputed';
+	if (d.status === 'not-adopted') return 'Never adopted';
+	return stale ? 'Stale' : 'Active';
+}
+function statusTone(d: { status: string }, stale: boolean): string {
+	if (d.status === 'superseded' || stale) return 'changing';
+	if (d.status === 'unavailable' || d.status === 'disputed' || d.status === 'not-adopted') return 'disputed';
+	return 'established';
+}
+
+const TYPE_LABEL: Record<string, string> = {
+	statute: 'Statute',
+	regulation: 'Regulation',
+	'legislative-record': 'Legislative record',
+	'regulator-guidance': 'Regulator guidance',
+	'regulator-record': 'Regulator record',
+	'policy-form': 'Policy form',
+	'government-data': 'Government data',
+	'official-documentation': 'Official documentation',
+	'court-decision': 'Court decision',
+	'secondary-analysis': 'Secondary analysis',
+};
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Sources', path: '/sources' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'Source registry',
+		path: '/sources',
+		description: 'Every source the library cites, with its publisher, dates, status, and the exact claims it supports.',
+		items: sources.map((s) => ({ name: s.data.title, path: `/sources/${s.id}` })),
+	}),
+	dataset({
+		path: '/sources',
+		name: `${siteConfig.name} claim and source corpus`,
+		description:
+			`${claimCount} individually recorded claims across ${sources.length} source records. Each claim ` +
+			'is one sentence stating exactly what one source supports and nothing beyond it, with a stable ' +
+			'address, a checksum over its exact text, and the reverse index of every page and every module ' +
+			'check that depends on it. Contains no ratings, prices, carrier appetite claims, coverage ' +
+			'determinations, eligibility verdicts, or personal data.',
+		version: siteConfig.contentVersion,
+		dateModified: newestCheck,
+		license: 'Records may be quoted and redistributed with attribution and a link to the canonical URL.',
+		distributions: [
+			{
+				name: 'Claim index',
+				path: '/claims.json',
+				encodingFormat: 'application/json',
+				description: 'Every claim with its address, checksum, source, and dependents, plus a normalized source map.',
+			},
+			{
+				name: 'Retrieval index',
+				path: '/search-index.json',
+				encodingFormat: 'application/json',
+				description: 'The chunked corpus used by the on-page lookup, with source identifiers on every chunk.',
+			},
+			{
+				name: 'Corpus index, plain text',
+				path: '/llms-full.txt',
+				encodingFormat: 'text/plain',
+				description: 'Every canonical URL with its source identifiers, for agents that prefer text.',
+			},
+		],
+		measurements: [
+			{ name: 'claims', value: claimCount },
+			{ name: 'sourceRecords', value: sources.length },
+			{ name: 'primarySources', value: primaryCount },
+			{ name: 'publisherHosts', value: publisherHosts },
+		],
+	}),
+);
+---
+
+<BaseLayout
+	title="Source registry"
+	description="Every source the library cites, with its publisher, authority level, dates, status, and the exact claims it supports. Nothing is behind an account."
+	jsonLd={jsonLd}
+	pageType="source"
+>
+	<PageHeader
+		eyebrow="Source registry"
+		title="Every source, with what it actually supports"
+		lede={`${sources.length} records. ${primaryCount} are primary. Each one lists the exact claims it carries, the date it was last checked, and every page that cites it.`}
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell">
+			<div class="table-scroll" style="max-width: 760px; margin-bottom: var(--s-6)">
+				<table class="data">
+					<caption>Registry health at the last build.</caption>
+					<thead><tr><th scope="col">Measure</th><th scope="col">Count</th></tr></thead>
+					<tbody>
+						<tr><th scope="row">Total source records</th><td class="num">{sources.length}</td></tr>
+						<tr><th scope="row">Primary sources</th><td class="num">{primaryCount}</td></tr>
+						<tr><th scope="row">Past the review window</th><td class="num">{staleCount}</td></tr>
+						<tr><th scope="row">Registered but not yet cited</th><td class="num">{orphanCount}</td></tr>
+					</tbody>
+				</table>
+			</div>
+
+			<Callout tone="note">
+				<p>
+					<strong>Source order is a hierarchy, not a preference.</strong> Statutes, regulations, and
+					regulator guidance settle a question. Filed forms and official carrier documents describe
+					what a contract says. Secondary analysis may only explain a primary source, never override
+					it. Read <a href="/editorial-policy">the editorial policy</a> for the full ordering.
+				</p>
+			</Callout>
+
+			<div
+				style="display:grid;gap:var(--s-4);padding:var(--s-5);border:1px solid var(--line-strong);border-radius:var(--r-4);background:var(--paper);margin-top:var(--s-6)"
+			>
+				<div class="field-row">
+					<div class="field">
+						<label for="s-type">Source type</label>
+						<select id="s-type" data-filter="type">
+							<option value="any">All types</option>
+							{types.map((type) => <option value={type}>{TYPE_LABEL[type] ?? type}</option>)}
+						</select>
+					</div>
+					<div class="field">
+						<label for="s-jurisdiction">Jurisdiction</label>
+						<select id="s-jurisdiction" data-filter="jurisdiction">
+							<option value="any">All jurisdictions</option>
+							{jurisdictions.map((j) => <option value={j}>{j}</option>)}
+						</select>
+					</div>
+					<div class="field">
+						<label for="s-publisher">Publisher</label>
+						<select id="s-publisher" data-filter="publisher">
+							<option value="any">All publishers</option>
+							{publishers.map((p) => <option value={p}>{p}</option>)}
+						</select>
+					</div>
+				</div>
+				<div class="check-inline">
+					<label class="check">
+						<input type="checkbox" id="s-primary" />
+						<span>Primary sources only</span>
+					</label>
+					<label class="check">
+						<input type="checkbox" id="s-stale" />
+						<span>Past the review window only</span>
+					</label>
+				</div>
+				<div style="display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:center">
+					<button class="btn btn-secondary btn-sm" type="button" id="s-reset">Reset filters</button>
+					<p class="live-status" id="s-count" role="status" aria-live="polite"></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight">
+		<div class="shell">
+			<h2 class="u-visually-hidden">Source records</h2>
+			<ol class="ledger" id="s-rows" style="list-style:none;padding:0;margin:0">
+				{
+					sources.map((source) => {
+						const stale = isStale(source.data.lastChecked, TODAY);
+						const cites = citedBy.get(source.id) ?? [];
+						return (
+							<li
+								class="ledger-item"
+								data-row
+								data-type={source.data.sourceType}
+								data-jurisdiction={source.data.jurisdiction}
+								data-publisher={source.data.publisher}
+								data-primary={String(source.data.primary)}
+								data-stale={String(stale)}
+							>
+								<div class="ledger-line">
+									<span class="ledger-index"><code>{source.id.slice(0, 3)}</code></span>
+									<div>
+										<a class="ledger-title" href={`/sources/${source.id}`}>{source.data.title}</a>
+										<div class="ledger-facts">
+											<span><b>{source.data.publisher}</b></span>
+											<span>{TYPE_LABEL[source.data.sourceType] ?? source.data.sourceType}</span>
+											<span>{source.data.primary ? 'Primary' : 'Secondary'}</span>
+											<span>{source.data.jurisdiction}</span>
+											<span>Last checked {longDate(source.data.lastChecked)}</span>
+											<span>{source.data.claims.length} claims</span>
+											<span>{cites.length} citing page{cites.length === 1 ? '' : 's'}</span>
+										</div>
+									</div>
+									<div style="display:grid;gap:4px;justify-items:end">
+										<span class={`status status-${statusTone(source.data, stale)}`}>{statusLabel(source.data, stale)}</span>
+										{source.data.officialHost === false && <span class="meta">Reproduction</span>}
+									</div>
+								</div>
+							</li>
+						);
+					})
+				}
+			</ol>
+
+			<div id="s-none" hidden style="margin-top: var(--s-6)">
+				<StateBlock kind="no-result" heading="No source matches those filters.">
+					<p>Widen a filter, or clear them all.</p>
+					<div class="state-actions">
+						<button class="btn btn-secondary btn-sm" type="button" data-reset-proxy>Clear all filters</button>
+					</div>
+				</StateBlock>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight">
+		<div class="shell">
+			<span class="eyebrow">Citing this work</span>
+			<h2>Cite a claim, not just a page</h2>
+			<div class="prose">
+				<p>
+					A page can be rewritten around the sentence you relied on, which is why a page-level
+					citation cannot be checked later. So the citable unit here is the claim: one sentence
+					stating exactly what one source supports and nothing beyond it. Every claim in the
+					registry has its own address and its own checksum.
+				</p>
+				<p>
+					A claim address looks like <code class="mono">/sources/&lt;source-id&gt;#c3</code>, meaning
+					the third recorded claim on that record. Open any source page and each claim carries its
+					identifier next to it. The checksum is taken over the exact wording, so if we later correct
+					a claim, anyone holding the old checksum can tell that the sentence moved. That is the part
+					a URL on its own cannot express.
+				</p>
+				<p>
+					Every source record also publishes the reverse index: every page, and every module check,
+					that depends on it. If a source is amended, that list is the blast radius.
+				</p>
+			</div>
+			<div class="figures" style="margin-top:var(--s-5)">
+				<div class="figure"><b>{claimCount.toLocaleString('en-US')}</b><span>addressable claims</span></div>
+				<div class="figure"><b>{sources.length}</b><span>source records</span></div>
+				<div class="figure"><b>{primaryCount}</b><span>primary sources</span></div>
+			</div>
+			<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-5)">
+				<a class="btn btn-primary btn-sm" href="/claims.json">
+					claims.json <ArrowRight size={14} aria-hidden="true" />
+				</a>
+				<a class="btn btn-secondary btn-sm" href="/methodology">How claims are recorded</a>
+			</div>
+			<p class="mono" style="margin-top:var(--s-3);color:var(--slate);font-size:0.8125rem">
+				claims.json is one file holding every claim, its address, its checksum, its source, and what
+				relies on it. Each source also has a companion at <code>/sources/&lt;source-id&gt;.json</code>.
+			</p>
+		</div>
+	</section>
+
+	<section class="band band-paper">
+		<div class="shell">
+			<span class="eyebrow">Maintenance</span>
+			<h2>How a source leaves the registry</h2>
+			<div class="prose">
+				<p>
+					A source is re-checked on the cadence recorded on its own page. When a statute is amended,
+					a bulletin is withdrawn, or a URL stops resolving, its status changes to superseded,
+					unavailable, or disputed, and every page that cites it shows that status next to the
+					citation. A superseded source is not deleted, because the answer it supported was true when
+					it published and readers deserve to see that history.
+				</p>
+				<p>
+					When a source changes in a way that changes an answer, the answer is corrected and the
+					change is logged on <a href="/corrections">the corrections page</a> with the prior wording
+					intact.
+				</p>
+			</div>
+			<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-5)">
+				<a class="btn btn-secondary btn-sm" href="/methodology">Methodology <ArrowRight size={14} aria-hidden="true" /></a>
+				<a class="btn btn-secondary btn-sm" href="/corrections">Correction log</a>
+				<a class="btn btn-secondary btn-sm" href="/llms-full.txt">llms-full.txt</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	const container = document.getElementById('s-rows');
+	const count = document.getElementById('s-count');
+	const none = document.getElementById('s-none');
+	if (!container) throw new Error('sources: rows container missing');
+
+	const rows = [...container.querySelectorAll<HTMLElement>('[data-row]')];
+	const selects = [...document.querySelectorAll<HTMLSelectElement>('[data-filter]')];
+	const primaryOnly = document.getElementById('s-primary') as HTMLInputElement | null;
+	const staleOnly = document.getElementById('s-stale') as HTMLInputElement | null;
+
+	function value(name: string) {
+		return document.querySelector<HTMLSelectElement>(`[data-filter="${name}"]`)?.value || 'any';
+	}
+
+	function apply() {
+		const type = value('type');
+		const jurisdiction = value('jurisdiction');
+		const publisher = value('publisher');
+		let visible = 0;
+		for (const row of rows) {
+			const ok =
+				(type === 'any' || row.dataset.type === type) &&
+				(jurisdiction === 'any' || row.dataset.jurisdiction === jurisdiction) &&
+				(publisher === 'any' || row.dataset.publisher === publisher) &&
+				(!primaryOnly?.checked || row.dataset.primary === 'true') &&
+				(!staleOnly?.checked || row.dataset.stale === 'true');
+			row.hidden = !ok;
+			if (ok) visible += 1;
+		}
+		if (none) none.hidden = visible > 0;
+		if (count) {
+			count.textContent =
+				visible === rows.length
+					? `Showing all ${rows.length} source records.`
+					: `Showing ${visible} of ${rows.length} source records.`;
+		}
+	}
+
+	function reset() {
+		selects.forEach((select) => {
+			select.value = 'any';
+		});
+		if (primaryOnly) primaryOnly.checked = false;
+		if (staleOnly) staleOnly.checked = false;
+		apply();
+	}
+
+	selects.forEach((select) => select.addEventListener('change', apply));
+	primaryOnly?.addEventListener('change', apply);
+	staleOnly?.addEventListener('change', apply);
+	document.getElementById('s-reset')?.addEventListener('click', reset);
+	document.querySelectorAll<HTMLButtonElement>('[data-reset-proxy]').forEach((b) => b.addEventListener('click', reset));
+
+	apply();
+</script>

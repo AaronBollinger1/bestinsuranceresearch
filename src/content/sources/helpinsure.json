@@ -1,0 +1,20 @@
+{
+	"title": "HelpInsure.com - Texas home and auto insurance comparison",
+	"publisher": "Texas Department of Insurance and Office of Public Insurance Counsel",
+	"url": "https://www.helpinsure.com/",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "TX",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"HelpInsure.com states that it is brought to consumers by the Texas Department of Insurance and the Office of Public Insurance Counsel, and that it lets consumers find and compare home and auto insurance policies in Texas."
+	],
+	"updateCadence": "Rate data refreshed by TDI; re-verify annually.",
+	"status": "active",
+	"officialHost": true
+}

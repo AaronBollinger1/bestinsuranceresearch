@@ -1,0 +1,21 @@
+{
+	"title": "Florida Statutes Section 324.021 (2026) - Definitions; minimum insurance required",
+	"publisher": "The Florida Senate (flsenate.gov)",
+	"url": "https://www.flsenate.gov/laws/statutes/2026/324.021",
+	"sourceType": "statute",
+	"jurisdiction": "FL",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 324.021(7) defines proof of financial responsibility as ability to respond in damages in the amount of $10,000 because of bodily injury to, or death of, one person in any one crash; subject to that limit for one person, $20,000 because of bodily injury to, or death of, two or more persons in any one crash; and $10,000 because of injury to, or destruction of, property of others in any one crash.",
+		"Section 324.021(7)(d) provides that with respect to commercial motor vehicles and nonpublic sector buses, proof of financial responsibility is in the amounts specified in sections 627.7415 and 627.742 respectively."
+	],
+	"updateCadence": "Re-verify each Florida legislative session.",
+	"status": "active",
+	"officialHost": true
+}

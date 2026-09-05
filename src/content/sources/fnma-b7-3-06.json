@@ -1,0 +1,25 @@
+{
+	"title": "Selling Guide B7-3-06, Flood Insurance Requirements for All Property Types",
+	"publisher": "Fannie Mae",
+	"url": "https://selling-guide.fanniemae.com/sel/b7-3-06/flood-insurance-requirements-all-property-types",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Flood insurance coverage is required when a loan is secured by a property located in a Special Flood Hazard Area, or a Coastal Barrier Resources System or Otherwise Protected Area.",
+		"For first mortgages, the minimum amount of flood insurance required is the lesser of 100 percent of the replacement cost value of the improvements, the maximum coverage amount available from NFIP, or the unpaid principal balance of the loan or the loan amount at the time of origination.",
+		"The deductible must not exceed the maximum deductible amount currently offered by NFIP for the applicable property type.",
+		"A Policy Declaration page is acceptable evidence of flood insurance.",
+		"Acceptable policies include standard NFIP policies and private flood insurance meeting Fannie Mae's coverage and insurer rating requirements."
+	],
+	"updateCadence": "Fannie Mae updates the Selling Guide on a roughly monthly announcement cycle.",
+	"status": "active",
+	"notes": "Fetched on 2026-08-31. The page displays a February 7, 2024 effective date. Added during remediation to correct a draft statement that the Fannie Mae requirement was silent on flood. Published: 2024-02-07 Effective: 2024-02-07",
+	"officialHost": true
+}

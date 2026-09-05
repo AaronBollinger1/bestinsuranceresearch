@@ -1,0 +1,26 @@
+{
+	"title": "California Insurance Code Section 11737",
+	"publisher": "California Legislative Information (California Legislature)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=11737",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Subdivision (f): every insurer or rating organization shall provide within this state reasonable means whereby any person aggrieved by the application of its filings may be heard by the insurer or rating organization on written request to review the manner in which the rating system has been applied in connection with the insurance afforded or offered.",
+		"Subdivision (f): if the insurer or rating organization fails to grant or reject the request within 30 days, the applicant may proceed in the same manner as if the application had been rejected.",
+		"Subdivision (f): any party affected by the action of the insurer or rating organization on the request may appeal, within 30 days after written notice of the action, to the commissioner who, after a hearing held within 60 days from the date on which the party requests the appeal, or longer upon agreement of the parties and not less than 10 days' written notice to the appellant and to the insurer or rating organization, may affirm, modify, or reverse that action.",
+		"Subdivision (f), final branch: if the commissioner has information on the subject from which the appeal is taken and believes that a reasonable basis for the appeal does not exist or that the appeal is not made in good faith, the commissioner may deny the appeal without a hearing; the denial shall be in writing, set forth the basis for the denial, and be served on all parties.",
+		"Subdivision (b): the commissioner may disapprove rates if the commissioner determines that premiums charged, in the aggregate, resulting from the use of the rates or the rates as modified by any supplementary rate information, would be inadequate to cover an insurer's losses and expenses, unfairly discriminatory, or tend to create a monopoly in the market pursuant to Section 11732, 11732.5, or 11733.",
+		"Subdivision (c): the commissioner shall disapprove rates if the commissioner determines that premiums charged, in the aggregate, resulting from the use of the rates or the rates as modified by any supplementary rate information would, if continued in use, tend to impair or threaten the solvency of an insurer."
+	],
+	"updateCadence": "Statute; amended by the Legislature from time to time.",
+	"status": "active",
+	"notes": "Re-fetched and re-verified 2026-08-31 by WebFetch (HTTP 200) and independently over HTTPS (HTTP 200, 170,201 bytes); the URL resolves to the section text, not a search shell. The review-and-appeal mechanism sits at subdivision (f) in the current text, whereas the 2001 E M Machining decision quotes it as subdivision (c); the subdivision letter here is taken from the statute as fetched today and is not attributed to the older decision. The 30-day appeal clock runs from written notice of the action, which is the wording used in the prose. Standing correction from an earlier pass: the subdivision (b) and (c) claims were rewritten to the statute's own wording, because the earlier one-line paraphrase compressed (b) to 'rates that are inadequate', dropping 'inadequate to cover an insurer's losses and expenses' and the cross-references, and merged (b) and (c) into a single sentence. NEW ON THIS PASS - OMITTED STATUTORY BRANCH: the subdivision (f) appeal claim previously stopped at 'to the commissioner', which left a reader with the impression that a timely appeal produces a hearing. The statute as fetched today does not say that. The same sentence continues that the commissioner acts 'after a hearing held within 60 days from the date on which the party requests the appeal, or longer upon agreement of the parties and not less than 10 days' written notice', and the subdivision closes with a separate branch under which the commissioner MAY DENY THE APPEAL WITHOUT A HEARING where the commissioner believes no reasonable basis for the appeal exists or that it is not made in good faith, with a written denial served on all parties. Both the completed sentence and the denial branch were added as claims and both are now carried in the prose, because an appeal route stated without its denial branch overstates what the statute guarantees.",
+	"officialHost": true
+}

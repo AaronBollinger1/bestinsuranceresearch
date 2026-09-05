@@ -1,0 +1,285 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Callout from '../components/Callout.astro';
+import DataTable from '../components/DataTable.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { loadCorpus } from '../lib/corpus';
+import { breadcrumbs, graph, organization, techArticle, website } from '../lib/schema';
+import { TODAY } from '../lib/today';
+
+const corpus = await loadCorpus();
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Methodology', path: '/methodology' },
+];
+
+const hierarchy = [
+	['1. Statutes and regulations', 'The text of the law itself, plus regulator bulletins and official government guidance.', 'Settles the question', 'California Insurance Code, Title 10 CCR, a Department of Insurance bulletin'],
+	['2. Filed forms and official carrier documents', 'What a contract actually says, in the version filed or published.', 'Describes the contract', 'A published policy form with its edition date, a carrier coverage guide'],
+	['3. Competent public authorities', 'Bodies with a statutory or standard-setting role.', 'Settles or strongly informs', 'NAIC, California Department of Insurance, NCCI, WCIRB, CMS, DOL, IRS, FEMA, SBA, CFPB, SEC'],
+	['4. Official product or technical documentation', 'The publisher describing its own system or product.', 'Authoritative about itself only', 'A rating bureau manual, a program administrator page'],
+	['5. High-quality secondary analysis', 'Explanation written by someone else.', 'May explain, may never override', 'A law firm client alert, a trade publication analysis'],
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	techArticle({
+		headline: 'Methodology',
+		path: '/methodology',
+		description: 'How BestInsurance Research sources, drafts, reviews, dates, and corrects its work, and exactly where automation is and is not used.',
+		datePublished: '2026-08-31',
+		dateModified: TODAY,
+		author: 'Aaron Bollinger',
+		reviewer: 'Brian Bollinger',
+		sections: ['Source hierarchy', 'Roles', 'Update cadence', 'Corrections', 'Use of AI', 'Funding and disclosure', 'What we do not answer'],
+		citations: [],
+	}),
+);
+---
+
+<BaseLayout
+	title="Methodology"
+	description="How BestInsurance Research sources, drafts, reviews, dates, and corrects its work, and exactly where automation is and is not used."
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
+	<PageHeader
+		eyebrow="Methodology"
+		title="How this is produced, and what would have to be true for it to be wrong"
+		lede="An advisory instrument is only worth the evidence under it, and that evidence is only worth the process behind it. This page states that process plainly enough that you could audit it."
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell answer-grid">
+			<div class="prose">
+				<h2 id="hierarchy">Source hierarchy</h2>
+				<p>
+					Sources are not equal, and pretending otherwise is how insurance content goes wrong. A
+					claim is carried by the highest tier that actually supports it. A lower tier may explain a
+					higher one. It may never override it.
+				</p>
+				<DataTable
+					caption="The source hierarchy, applied to every material claim."
+					columns={['Tier', 'What it is', 'What it can do', 'Examples']}
+					rows={hierarchy}
+				/>
+				<p>
+					Every source in the registry records its tier as an authority level, whether it is primary
+					or secondary, its jurisdiction, its publication and effective dates, the date it was last
+					checked, and the exact claims it supports. That last field is the important one: a source
+					record lists what it carries, and the page shows that list under
+					<em>What this source supports</em>. If a sentence needs a claim that is not on that list,
+					the sentence is wrong or the source is wrong, and both are visible.
+				</p>
+
+				<h2 id="roles">Author and reviewer</h2>
+				<p>
+					Drafting and review are separate functions performed by different people, and both are
+					named on every page.
+				</p>
+				<ul>
+					<li>
+						<strong>The author</strong> researches the question, finds the sources, maps each material
+						claim to the source that carries it, and writes the page. The author owns the citation
+						mapping and the accuracy of the quotation.
+					</li>
+					<li>
+						<strong>The licensed reviewer</strong> checks the insurance substance: whether the
+						terminology is right, whether the limits are stated honestly, whether the confidence
+						status is justified, and whether anything on the page reads as individualized advice or
+						as a coverage determination.
+					</li>
+				</ul>
+				<Callout tone="warn">
+					<p>
+						<strong>Review is required before publication, and it is a gate, not a formality.</strong>
+						{' '}A page that has not been reviewed carries an <em>under review</em> status in public,
+						on the page itself, and in its machine-readable record. Nothing on this site claims a
+						review that has not happened.
+					</p>
+				</Callout>
+				<p>
+					Review is an editorial function. It does not create a broker relationship with any reader,
+					and it does not convert general information into advice.
+				</p>
+
+				<h2 id="cadence">Update cadence</h2>
+				<p>
+					Every source records its own update cadence, because a statute and a consumer guide age
+					very differently. A source that passes its review window is flagged as stale on every page
+					that cites it, in the source ledger, and on the source's own record. The flag is automatic
+					and it is not suppressible: a page cannot look fresh while resting on a source nobody has
+					re-checked.
+				</p>
+				<p>
+					Time-sensitive answers, which is most of them, carry both an effective date and a
+					last-reviewed date. The two are different questions: when the answer became true, and when
+					a person last confirmed it still is.
+				</p>
+
+				<h2 id="corrections">Corrections</h2>
+				<p>
+					Anyone can report an error from any page, by email, with no account and no form that
+					captures anything. A report is checked against the original record, not against the page.
+				</p>
+				<p>
+					A material correction, meaning one that changes a conclusion, is published with the date,
+					the prior wording, and the revised wording, and the page carries a <em>corrected</em>
+					status. The prior wording stays visible, because a correction that hides what was
+					previously said is a rewrite, not a correction. Typography and formatting fixes are made
+					without a log entry.
+				</p>
+				<p>
+					See <a href="/corrections">the corrections page</a> for the process and the log.
+				</p>
+
+				<h2 id="ai">Where AI is used, and where it is not</h2>
+				<p>This is stated specifically, because a vague answer here is worthless.</p>
+				<p><strong>Automation is used to:</strong></p>
+				<ul>
+					<li>search for candidate sources and retrieve their text;</li>
+					<li>extract candidate claims from a retrieved source;</li>
+					<li>draft prose against sources the author has selected;</li>
+					<li>
+						adversarially re-check a draft: refetch every cited URL, confirm the page supports the
+						listed claims, and flag uncited claims, citation overreach, universal policy-language
+						statements without a form caveat, market practice stated as a rule, and anything that
+						reads as advice or as a coverage determination;
+					</li>
+					<li>run the deterministic retrieval that powers <a href="/ask">the lookup</a>.</li>
+				</ul>
+				<p><strong>Automation is never used to:</strong></p>
+				<ul>
+					<li>publish anything without a named human author and a named licensed reviewer;</li>
+					<li>generate an answer on demand for a reader;</li>
+					<li>assert a fact that no source in the registry carries;</li>
+					<li>decide whether a claim is adequately sourced;</li>
+					<li>manufacture pages, examples, statistics, testimonials, or reviews.</li>
+				</ul>
+				<Callout tone="note">
+					<p>
+						<strong>The lookup on this site is not a chatbot.</strong> It is a deterministic lexical
+						search over published, human-reviewed pages, running entirely in your browser. It cannot
+						write an answer, because it has no model. When nothing in the library supports an answer
+						it returns <em>insufficient evidence</em> and says so, which is the whole point of
+						building it that way.
+					</p>
+				</Callout>
+				<p>
+					Structured data, retrieval, and generation are production techniques. None of them is a
+					substitute for licensed or editorial review, and no page on this site implies otherwise.
+				</p>
+
+				<h2 id="funding">Funding, sponsorship, and the Bollinsure relationship</h2>
+				<p>
+					This site is operated and funded by WJB Services, Inc. dba Bollinsure Insurance Services, a
+					California insurance brokerage. Bollinsure may be compensated by an insurer when it places
+					coverage. That is the commercial relationship, stated plainly, and it is disclosed next to
+					every licensed-help action on the site.
+				</p>
+				<ul>
+					<li>Ranking and inclusion are not for sale, and there is no ranking to sell.</li>
+					<li>
+						There is no sponsored content, no paid placement, no affiliate link, and no arrangement
+						under which anyone can buy a conclusion, a mention, or a link.
+					</li>
+					<li>
+						If that ever changes, the disclosure appears on the page carrying the relationship, not
+						only here.
+					</li>
+					<li>
+						The research journey never requires a Bollinsure handoff. The answer, its sources, and
+						its limits are complete without it, and the handoff is an optional next step offered
+						after the reader already has what they came for.
+					</li>
+					<li>
+						Bollinsure is not presented as the only source of licensed help, because it is not.
+					</li>
+				</ul>
+
+				<h2 id="examples">How examples are labeled</h2>
+				<p>
+					Every example states what it is before it states what happened: a public record, a
+					carrier-authored document, a published industry example, an anonymized and approved client
+					case, a composite, or a hypothetical. A composite or hypothetical is never presented as a
+					real outcome, and no example anywhere on this site uses information from a declarations
+					page, an intake, an email, or an agency management system. See{' '}
+					<a href="/examples">the examples index</a> for the full labeling rules.
+				</p>
+
+				<h2 id="limits">What this site deliberately does not answer</h2>
+				<ul>
+					<li>Whether a specific person, property, or business is eligible or insurable.</li>
+					<li>
+						Whether a specific risk belongs in the admitted market, the surplus lines market, a FAIR
+						Plan, or any other channel.
+					</li>
+					<li>What a specific policy covers in a specific claim.</li>
+					<li>What insurance should cost for a specific risk.</li>
+					<li>Which insurer is best, cheapest, or most reliable.</li>
+					<li>Anything requiring legal, tax, medical, lending, investment, or claims judgement.</li>
+				</ul>
+				<p>
+					These are not gaps waiting to be filled. They are decisions that belong to an insurer, a
+					lawyer, or another licensed professional, and a public page that pretends otherwise is
+					doing harm.
+				</p>
+			</div>
+
+			<aside class="answer-rail" aria-label="Page contents">
+				<nav class="rail-block" aria-labelledby="on-this-page">
+					<h2 id="on-this-page">On this page</h2>
+					<ol>
+						<li><a href="#hierarchy">Source hierarchy</a></li>
+						<li><a href="#roles">Author and reviewer</a></li>
+						<li><a href="#cadence">Update cadence</a></li>
+						<li><a href="#corrections">Corrections</a></li>
+						<li><a href="#ai">Where AI is used</a></li>
+						<li><a href="#funding">Funding and disclosure</a></li>
+						<li><a href="#examples">How examples are labeled</a></li>
+						<li><a href="#limits">What we do not answer</a></li>
+					</ol>
+				</nav>
+				<div class="rail-block">
+					<h2>Corpus</h2>
+					<dl>
+						<div><dt>Source records</dt><dd>{corpus.sources.length}</dd></div>
+						<div><dt>Primary sources</dt><dd>{corpus.sources.filter((s) => s.data.primary).length}</dd></div>
+						<div><dt>Questions</dt><dd>{corpus.questions.length}</dd></div>
+						<div><dt>Coverage pages</dt><dd>{corpus.coverages.length}</dd></div>
+					</dl>
+				</div>
+				<div class="rail-block no-print">
+					<h2>Related</h2>
+					<ul>
+						<li><a href="/editorial-policy">Editorial policy</a></li>
+						<li><a href="/sources">Source registry</a></li>
+						<li><a href="/corrections">Corrections</a></li>
+						<li><a href="/privacy">Privacy</a></li>
+						<li><a href="/about">About the operator</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+
+	<section class="band band-ink">
+		<div class="shell">
+			<span class="eyebrow">Audit it</span>
+			<h2>Every claim on this site is checkable</h2>
+			<p class="lede">
+				Open the source registry, pick any record, and see exactly which pages depend on it and
+				exactly which claims it is being asked to carry. That is the whole design.
+			</p>
+			<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-5)">
+				<a class="btn btn-primary" href="/sources">Open the source registry <ArrowRight size={16} aria-hidden="true" /></a>
+				<a class="btn btn-secondary" href="/llms-full.txt">Read the full corpus index</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

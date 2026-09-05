@@ -1,0 +1,26 @@
+{
+	"title": "California Insurance Code section 700 - Certificate of authority required to transact insurance",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=700",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"A person shall not transact any class of insurance business in this state without first being admitted for that class.",
+		"Admission is secured by procuring a certificate of authority from the Insurance Commissioner, except for the State Compensation Insurance Fund as authorized by the sections named in the statute.",
+		"The certificate shall not be granted until the applicant conforms to the requirements of the Insurance Code and of the laws of this state prerequisite to its issue.",
+		"After the certificate is issued, the holder must continue to comply with the requirements as to its business set forth in the Insurance Code and other California law.",
+		"The Commissioner must either issue or deny an application for a certificate of authority within 180 calendar days after the date of the application.",
+		"The section carries the notation Amended by Stats. 2011, Ch. 15, Sec. 205 (AB 109), effective April 4, 2011, operative October 1, 2011."
+	],
+	"updateCadence": "Amended only by act of the Legislature",
+	"status": "active",
+	"notes": "Fetched 2026-08-31 and read verbatim. Added in this revision to support the admission and certificate-of-authority point that Insurance Code section 105 does not support. Section 700 speaks to any class of insurance business generally; it is used here together with section 105, which is what places surety in a defined class. Effective: 2011-04-04",
+	"officialHost": true
+}

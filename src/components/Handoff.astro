@@ -1,0 +1,54 @@
+---
+import { ArrowUpRight, Mail, Phone } from '@lucide/astro';
+import { siteConfig } from '../config/site';
+import { handoffActions, type HandoffAttribution } from '../lib/handoff';
+
+interface Props extends HandoffAttribution {
+	/**
+	 * Why a licensed review would help here, in this page's own terms.
+	 * Pre-rendered HTML: pass it through createCiter().inline() so any citation
+	 * marker resolves and any literal text is escaped.
+	 */
+	reason?: string;
+	pageType?: string;
+}
+
+const { reason, pageType = 'editorial', ...attribution } = Astro.props;
+const actions = handoffActions(attribution);
+const family = attribution.family ?? 'general';
+
+const track = {
+	'data-event': 'bollinsure_handoff_clicked',
+	'data-insurance-family': family,
+	'data-page-type': pageType,
+};
+---
+
+<aside class="handoff no-print" aria-labelledby="handoff-title">
+	<h2 id="handoff-title">Need a licensed review?</h2>
+	{reason && <p set:html={reason} />}
+	<p>
+		You do not need this to use the research above. The answer, its sources, and its limits stay on
+		this page whether or not you take this step.
+	</p>
+
+	<div class="handoff-actions">
+		<a class="btn btn-primary" href={actions.call} {...track}>
+			<Phone size={16} aria-hidden="true" /> Call a broker on {siteConfig.contact.phoneDisplay}
+		</a>
+		<a class="btn btn-secondary" href={actions.quote} {...track}>
+			Request a quote from Bollinsure <ArrowUpRight size={16} aria-hidden="true" />
+		</a>
+		<a class="btn btn-secondary" href={actions.email} {...track}>
+			<Mail size={16} aria-hidden="true" /> Email {siteConfig.contact.email}
+		</a>
+	</div>
+
+	<p class="handoff-disclosure">
+		{siteConfig.licensedHelpDisclosure} Bollinsure is the operator of this site and may be
+		compensated by an insurer when it places coverage. It is not the only source of licensed help:
+		you can work with any licensed broker or agent, or contact an insurer directly. These links
+		carry only the page path, the insurance family, and, from a tool, the tool name and a rounded
+		completion percentage. Your question and anything you typed into a tool are never included.
+	</p>
+</aside>

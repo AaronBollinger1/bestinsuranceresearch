@@ -1,0 +1,28 @@
+{
+	"title": "Selling Guide B7-3-02, Property Insurance Requirements for One- to Four-Unit Properties",
+	"publisher": "Fannie Mae",
+	"url": "https://selling-guide.fanniemae.com/sel/b7-3-02/property-insurance-requirements-one-four-unit-properties",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Property insurance policies for one- to four-unit properties securing loans purchased by Fannie Mae should be written on a Special coverage form or equivalent. The page states this in should form, not as an absolute must.",
+		"The property insurance policy must provide coverage on a replacement cost basis, with the exception of roofs, and policies providing such terms of coverage will be deemed to provide sufficient coverage.",
+		"Roofs must be insured, but do not have to be insured on a replacement cost basis.",
+		"The maximum allowable deductible for all required property insurance perils for one- to four-unit properties is 5 percent of the property insurance coverage amount, and where a policy includes separate deductibles for different required perils, each individual deductible must not exceed 5 percent of the property insurance coverage amount.",
+		"The required perils listed are fire or lightning, explosion, windstorm including named storms, hail, smoke, aircraft, vehicles, and riot or civil commotion.",
+		"If a property insurance policy excludes or limits coverage of any of the required perils, the borrower must obtain an acceptable policy, for example a stand-alone policy, that provides adequate coverage for the limited or excluded peril.",
+		"This section does not state a coverage amount formula tied to the unpaid principal balance of the loan.",
+		"This section does not state flood insurance requirements and instead cross-references B7-3-06 for them, and it does not mention earthquake insurance."
+	],
+	"updateCadence": "Fannie Mae updates the Selling Guide on a roughly monthly announcement cycle.",
+	"status": "active",
+	"notes": "Fetched on 2026-08-31. The page displays an August 5, 2026 effective date. The coverage form sentence is written as should, not must, and is recorded that way here; a prior draft stated it as an absolute requirement. Flood insurance requirements are addressed in a different Selling Guide section, B7-3-06, which this page cross-references and which is cited separately in this bundle. Published: 2026-08-05 Effective: 2026-08-05",
+	"officialHost": true
+}

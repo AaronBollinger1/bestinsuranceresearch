@@ -1,0 +1,25 @@
+{
+	"title": "Colorado Revised Statutes section 10-4-419 - Claims-made policy forms",
+	"publisher": "FindLaw (Thomson Reuters), a commercial republication of the Colorado Revised Statutes",
+	"url": "https://codes.findlaw.com/co/title-10-insurance/co-rev-st-sect-10-4-419/",
+	"sourceType": "statute",
+	"jurisdiction": "CO",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Subsection (2)(c) conditions delivery on the policy clearly defining the events and conditions which trigger coverage and defining when and how a claim is deemed to be made.",
+		"Subsection (2)(d) conditions delivery on the policy offering, at the insured's option, the purchase of an extended reporting period of at least one year for claims not filed during the policy period, and provides that the premium may not exceed two hundred percent of the expiring policy premium unless the adjusted premium is determined by the commissioner to be inadequate based upon section 10-4-403 and upon an opinion of a qualified actuary submitted on behalf of the insurer.",
+		"Subsection (3) provides that the commissioner may prohibit the use of a claims-made liability policy if the policy does not contain one or more of the listed policy provisions, which include a provision guaranteeing the insured a sixty-day period to purchase extended reporting period coverage in the event of cancellation or nonrenewal for any reason, and a provision allowing the insured, at the insured's option, to purchase an extended reporting period of at least the length of time of exposure under the applicable statute of limitation.",
+		"Subsection (5) defines a claims-made policy as a policy of liability insurance that provides coverage for those claims that are made or reported to the insurance carrier during the term of the policy or for an extended reporting term for which coverage has been purchased.",
+		"Subsections (7) and (8) require insurers writing on a claims-made basis in Colorado to submit an annual listing of policy forms, endorsements and disclosure forms to the commissioner by July 1 of each year, and to submit any new form at least thirty-one days before using it."
+	],
+	"updateCadence": "changes when the Colorado General Assembly amends the section; FindLaw states the page is current as of January 01, 2025",
+	"status": "active",
+	"notes": "Fetched twice on 2026-08-31 and the quoted subsections read off the page, which states 'Current as of January 01, 2025'. This is a commercial mirror, not primary law, and it is recorded as secondary for that reason. Attempts to corroborate against Justia returned HTTP 403 and the Colorado legislature's Title 10 PDF could not be parsed, so the text has not been checked against the official Colorado publication and should be before any reliance. Note that the mirror shows a broken internal cross-reference inside subsection (3), which suggests renumbering artifacts. The earlier draft of this bundle treated the sixty-day purchase right and the statute-of-limitations-length option as mandates and as alternatives to the (2)(d) one-year option; both characterizations were wrong and are corrected here.",
+	"officialHost": false
+}

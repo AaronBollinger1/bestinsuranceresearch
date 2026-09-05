@@ -1,0 +1,216 @@
+{
+	"name": "Residential earthquake insurance (California)",
+	"line": "earthquake",
+	"family": "personal",
+	"definition": "Residential earthquake insurance is bought separately from the homeowners policy, because CDI states that homeowners, renters, and condominium insurance policies do not cover damage from natural disasters such as earthquakes, floods, and landslides [S:cdi-earthquake-insurance-guide][S:cdi-residential-insurance-guide]. In California, Insurance Code section 10081 provides that earthquake coverage may be provided in the residential property policy itself by specific policy provision or endorsement, or in a separate policy or certificate covering earthquake alone or in combination with other perils, and that no policy of residential property insurance may be issued or delivered or, with respect to policies in effect on the effective date of that chapter, initially renewed unless the named insured is offered earthquake coverage as provided in that chapter [S:ca-ins-code-10081]. CDI states that California Earthquake Authority coverage cannot be bought directly from CEA, that it is bought from member insurance companies, that a residential property policy must be in place to get a CEA policy, and that the CEA policy must be purchased from the same company that carries the residential policy [S:cdi-earthquake-insurance-guide]. This page describes what the cited sources say; it is not a coverage determination and does not decide whether any particular property or policy qualifies.",
+	"protects": [
+		"Owners of homes with an in-force residential property policy at a CEA member insurer, since CDI states that a residential property policy must be in place to get a CEA earthquake policy [S:cdi-earthquake-insurance-guide]",
+		"The dwelling, at a CEA Coverage A and B limit that CEA states must be the same as the residential homeowners policy's Coverage A dwelling limit [S:cea-homeowners-coverages-deductibles][S:cdi-earthquake-insurance-guide]",
+		"Personal property, at the limit selected from the published options [S:cea-homeowners-coverages-deductibles][S:cdi-earthquake-insurance-guide]",
+		"The household's temporary and extra costs to live somewhere else, through additional living expenses coverage [S:cdi-earthquake-insurance-guide][S:cea-homeowners-coverages-deductibles]",
+		"The owner facing code-required upgrades when rebuilding, through building code upgrade coverage [S:cea-homeowners-coverages-deductibles][S:ccr-10-2697-6]",
+		"Condominium unit owners facing an association assessment for covered earthquake damage, through CEA condo unit loss assessment coverage of up to $100,000 [S:cdi-earthquake-insurance-guide]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Earthquake damage to the dwelling (Coverage A and B)",
+			"note": "CDI states that the limit on the earthquake insurance is the same as the limit on the homeowners insurance dwelling coverage, and CEA states that CEA Coverage A and B must be the same as the residential homeowners policy's Coverage A dwelling limit [S:cdi-earthquake-insurance-guide][S:cea-homeowners-coverages-deductibles]. The reproduced California regulation sets the same relationship, equal to the stated Coverage A limit of the underlying residential property insurance policy [S:ccr-10-2697-6]. Form caveat: this describes the CEA insurance-policy form, which the cited CEA page identifies by name but not by policy form number or edition, and CEA states that exclusions and special limits apply and that all terms and conditions are found in that form [S:cea-homeowners-coverages-deductibles]. Read your own policy."
+		},
+		{
+			"item": "Personal property (Coverage C)",
+			"note": "CEA publishes two available limits, $5,000 or $25,000, with $500 included for damage to some breakable personal property, and CDI states the limit starts at $5,000 and can be increased to $25,000 [S:cea-homeowners-coverages-deductibles][S:cdi-earthquake-insurance-guide]. The reproduced regulation sets a floor of no less than $5,000 [S:ccr-10-2697-6]. Form caveat: this describes the CEA insurance-policy form, identified by CEA by name only with no policy form number or edition on the cited page; CEA states that exclusions and special limits apply and that all terms and conditions are found in that form [S:cea-homeowners-coverages-deductibles]. Read your own policy."
+		},
+		{
+			"item": "Loss of use / additional living expenses (Coverage D)",
+			"note": "CDI describes CEA additional living expenses as covering temporary and extra costs to live somewhere else, with limits ranging from $1,500 to $100,000 and no deductible under CEA [S:cdi-earthquake-insurance-guide]. CEA publishes the discrete options $1,500, $10,000, $15,000, $25,000, $50,000, $75,000, and $100,000, with no deductible under either the Standard Homeowners or Homeowners Choice policy [S:cea-homeowners-coverages-deductibles]. The reproduced regulation sets a floor of no less than $1,500 with no deductible [S:ccr-10-2697-6]. Form caveat: this describes the CEA insurance-policy form, with no policy form number or edition given on the cited page; the trigger and duration are set by that form. Read your own policy."
+		},
+		{
+			"item": "Building code upgrade",
+			"note": "CEA publishes building code upgrade coverage of $10,000 with purchasable options of $20,000 or $30,000, paid once the covered dwelling damage exceeds the Coverage A and B deductible, and CDI states the coverage is now available up to $30,000 [S:cea-homeowners-coverages-deductibles][S:cdi-earthquake-insurance-guide]. The reproduced regulation sets a floor of no less than $10,000, subject to the Coverage A deductible [S:ccr-10-2697-6]. Form caveat: this describes the CEA insurance-policy form, not identified by number or edition on the cited page. Whether a particular code-required upgrade falls inside the coverage is decided by the insurer under that form and the applicable local code requirement, not by this page. Read your own policy."
+		},
+		{
+			"item": "Emergency repairs",
+			"note": "CEA states there is no deductible on the first $1,500 of emergency repairs coverage and that amounts exceeding $1,500 require meeting the Coverage A and B or Coverage C deductible, and CDI states that CEA homeowners policies include the first $1,500 for emergency repairs with no deductible [S:cea-homeowners-coverages-deductibles][S:cdi-earthquake-insurance-guide]. Form caveat: this describes the CEA insurance-policy form, with no policy form number or edition on the cited page, and what qualifies as an emergency repair is set by that form. Read your own policy."
+		},
+		{
+			"item": "Loss assessment for condominium unit owners",
+			"note": "CDI states that CEA condo unit policies provide up to $100,000 for the unit owner's share of certain assessments if the association imposes an assessment for covered damage caused by an earthquake [S:cdi-earthquake-insurance-guide]. Form caveat: this describes the CEA condominium unit policy form, which the cited page does not identify by number or edition, and which assessments qualify is set by that form. Read your own policy."
+		},
+		{
+			"item": "Fire damage caused by or following an earthquake, under the residential property policy (California requirement)",
+			"note": "CDI states that California law says both homeowners and renters insurance must cover fire damage that is caused by or follows an earthquake, and separately that homeowners, renters, and condominium policies do not cover earthquake damage [S:cdi-earthquake-insurance-guide]. Those are two distinct coverage grants sitting in two different contracts. Form caveat: CDI describes a California legal requirement rather than the wording of any named form or edition, and no source in this cluster allocates a loss involving both shake damage and fire between the two contracts. That allocation is decided by the insurers under the forms actually in place and the facts of the claim. Read your own policy."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Landscaping",
+			"note": "CDI states that, as with most earthquake policies, CEA insurance does not cover landscaping, pools, fences, masonry, or separate buildings [S:cdi-earthquake-insurance-guide]. Form caveat: this describes CEA coverage as CDI summarizes it; CEA states that exclusions and special limits apply and that all terms and conditions are found in the CEA insurance-policy form, which the cited page does not identify by number or edition [S:cea-homeowners-coverages-deductibles]. No source in this cluster describes how non-CEA or stand-alone earthquake forms treat these items, so nothing is asserted about them. Read your own policy."
+		},
+		{
+			"item": "Swimming pools",
+			"note": "CDI's statement of what CEA insurance does not cover includes pools [S:cdi-earthquake-insurance-guide]. Form caveat: CEA states that exclusions and special limits apply and that all terms and conditions are found in the CEA insurance-policy form, identified by name only on the cited page [S:cea-homeowners-coverages-deductibles]. Read your own policy."
+		},
+		{
+			"item": "Fences and masonry",
+			"note": "CDI's statement of what CEA insurance does not cover includes fences and masonry [S:cdi-earthquake-insurance-guide]. Form caveat: CEA states that exclusions and special limits apply and that all terms and conditions are found in the CEA insurance-policy form, which the cited page does not identify by number or edition [S:cea-homeowners-coverages-deductibles]. How a particular chimney or veneer element is classified is decided by the insurer under that form, not by this page. Read your own policy."
+		},
+		{
+			"item": "Separate buildings",
+			"note": "CDI's statement of what CEA insurance does not cover includes separate buildings [S:cdi-earthquake-insurance-guide]. Form caveat: neither the CDI page nor the CEA page cited here describes how attached structures such as a garage are treated, so nothing is asserted on that point; CEA states that all terms and conditions are found in the CEA insurance-policy form, which is not identified by number or edition on the cited page [S:cea-homeowners-coverages-deductibles]. Read your own policy."
+		},
+		{
+			"item": "Loss that does not exceed the applicable percentage deductible",
+			"note": "The disclosure language prescribed by Insurance Code section 10083 states that the deductible represents the amount of damage the covered property must incur before earthquake insurance coverage begins [S:ca-ins-code-10083]. Form caveat: how the deductible applies depends on which CEA policy structure is in force, since CEA states that all coverages fall under one deductible on the Standard Homeowners policy while the Homeowners Choice policy provides separate deductibles for dwelling and for personal property [S:cea-homeowners-coverages-deductibles]. The CEA insurance-policy form, not identified by number or edition on the cited page, sets the mechanics. Read your own policy."
+		},
+		{
+			"item": "Flood, landslide, and other non-earthquake perils",
+			"note": "CDI states that homeowners, renters, and condominium insurance policies do not cover damage from natural disasters such as earthquakes, floods, and landslides, and that those perils need separate coverage [S:cdi-earthquake-insurance-guide][S:cdi-residential-insurance-guide]. FEMA states that most homeowners insurance does not cover flood damage and that NFIP coverage is available where the community participates in the NFIP's floodplain management requirements [S:fema-nfip-eligibility]. Form caveat: these are regulator and program descriptions rather than the wording of a named form or edition. Whether earth movement occurring around an earthquake falls inside an earthquake policy's grant is decided by the insurer under the issued form and the facts of the claim. Read your own policy."
+		}
+	],
+	"limitsAndDeductibles": [
+		"The CEA deductible is expressed as a percentage rather than a flat dollar amount. CEA publishes options of 5, 10, 15, 20, or 25 percent of the Coverage A and B limit, and CDI lists the same five percentages [S:cea-homeowners-coverages-deductibles][S:cdi-earthquake-insurance-guide].",
+		"CEA states that the 5 percent and 10 percent deductible options are not available for homes with a Coverage A dwelling limit greater than $1,000,000, or for dwellings with frame construction built before 1980 that are not on a slab foundation and do not have a verified retrofit [S:cea-homeowners-coverages-deductibles]. CDI states the same two exceptions in its own words, describing a home valued at over $1 million dollars and a home built before 1980 on a raised or other non-slab type foundation that is not verified to have been seismically retrofitted, and states that in both cases the lowest available deductible will be 15 percent [S:cdi-earthquake-insurance-guide].",
+		"CEA offers a Standard Homeowners policy under which all coverages fall under one deductible, and a Homeowners Choice policy that provides separate deductibles for dwelling and for personal property and allows the purchase of dwelling coverage only [S:cea-homeowners-coverages-deductibles]. Loss of use carries no deductible under either structure [S:cea-homeowners-coverages-deductibles].",
+		"The dwelling limit is not selected independently of the homeowners policy. CDI states that the limit on the earthquake insurance is the same as the limit on the homeowners insurance dwelling coverage, CEA states that CEA Coverage A and B must be the same as the residential homeowners policy's Coverage A dwelling limit, and the reproduced regulation sets the Coverage A limit equal to the stated Coverage A limit of the underlying residential property insurance policy [S:cdi-earthquake-insurance-guide][S:cea-homeowners-coverages-deductibles][S:ccr-10-2697-6].",
+		"Personal property is offered at two published limits, $5,000 or $25,000, with $500 included for damage to some breakable personal property; the reproduced regulation sets a floor of no less than $5,000 [S:cea-homeowners-coverages-deductibles][S:ccr-10-2697-6][S:cdi-earthquake-insurance-guide].",
+		"Loss of use is offered at the published limits $1,500, $10,000, $15,000, $25,000, $50,000, $75,000, and $100,000, with no deductible; the reproduced regulation sets a floor of no less than $1,500 with no deductible [S:cea-homeowners-coverages-deductibles][S:ccr-10-2697-6].",
+		"Emergency repairs carry no deductible on the first $1,500, and amounts exceeding $1,500 require meeting the Coverage A and B or Coverage C deductible [S:cea-homeowners-coverages-deductibles].",
+		"Building code upgrade coverage is $10,000 with purchasable options of $20,000 or $30,000, paid once the covered dwelling damage exceeds the Coverage A and B deductible; the reproduced regulation sets a floor of no less than $10,000 subject to the Coverage A deductible, and CDI states the coverage is now available up to $30,000 [S:cea-homeowners-coverages-deductibles][S:ccr-10-2697-6][S:cdi-earthquake-insurance-guide].",
+		"The written offer of earthquake coverage must state the limits, the deductible, and the premium [S:cdi-earthquake-insurance-guide], and Insurance Code section 10083 prescribes disclosure language, in at least 10-point boldface type, stating that the residential property insurance policy does not cover earthquake damage to the home or its contents and explaining the deductible [S:ca-ins-code-10083]."
+	],
+	"endorsements": [
+		{
+			"item": "Higher building code upgrade limit",
+			"note": "CEA publishes optional building code upgrade limits of $20,000 or $30,000 above the $10,000 base [S:cea-homeowners-coverages-deductibles][S:cdi-earthquake-insurance-guide]. Form caveat: these are CEA's published options as of the 2026-08-31 fetch, and CEA states that all terms and conditions are found in the CEA insurance-policy form, which the cited page does not identify by number or edition. Availability at any given renewal follows CEA's current filings. Read your own policy."
+		},
+		{
+			"item": "Higher personal property or loss of use limit",
+			"note": "CEA publishes personal property limits of $5,000 or $25,000 and loss of use limits of $1,500, $10,000, $15,000, $25,000, $50,000, $75,000, and $100,000 [S:cea-homeowners-coverages-deductibles]. Form caveat: these are limit selections rather than added coverage grants; CEA states that exclusions and special limits apply and that all terms and conditions are found in the CEA insurance-policy form, identified by name only on the cited page. Read your own policy."
+		},
+		{
+			"item": "Deductible selection",
+			"note": "CEA publishes deductible options of 5, 10, 15, 20, or 25 percent of the Coverage A and B limit, with the 5 and 10 percent options unavailable for homes with a Coverage A dwelling limit greater than $1,000,000 or for dwellings with frame construction built before 1980 that are not on a slab foundation and do not have a verified retrofit [S:cea-homeowners-coverages-deductibles]. CDI states that in both those cases the lowest available deductible will be 15 percent [S:cdi-earthquake-insurance-guide]. Form caveat: whether a specific dwelling meets those conditions is determined by the insurer and CEA, not by this page. Read your own policy."
+		},
+		{
+			"item": "Earthquake coverage written into the residential policy",
+			"note": "Insurance Code section 10081 provides that earthquake coverage may be provided in the residential property policy itself by specific policy provision or endorsement, rather than in a separate policy or certificate [S:ca-ins-code-10081]. Form caveat: the statute permits the structure; whether a given insurer offers it, and on what terms, comes from that insurer's filed forms, none of which are named or dated in this cluster. Read your own policy."
+		},
+		{
+			"item": "Stand-alone earthquake policy from a non-CEA company",
+			"note": "CDI states that a few companies offer stand-alone policies that are not CEA policies and that can be bought without buying homeowners insurance from the same company [S:cdi-earthquake-insurance-guide]. Form caveat: CDI makes no comparative statement about how those forms are structured or what they cover, and no source in this cluster describes their coverage, exclusions, or deductible mechanics, so none is asserted. Read your own policy."
+		}
+	],
+	"relatedPolicies": [
+		"The underlying residential property policy, which CDI states must be in place to obtain a CEA earthquake policy, purchased from the same company that carries the residential policy [S:cdi-earthquake-insurance-guide]",
+		"Flood insurance, since CDI treats earthquake and flood as separate perils needing separate coverage and FEMA states NFIP coverage is available where the community participates [S:cdi-earthquake-insurance-guide][S:fema-nfip-eligibility]",
+		"A California FAIR Plan Dwelling Fire Policy, which the FAIR Plan describes as a named peril policy and suggests supplementing with Difference in Conditions, Flood, or Earthquake policies [S:cfp-dwelling-policy]",
+		"Renter's insurance, which New York DFS describes in coverage parts including personal property, loss of use, personal liability, and medical payments to others, and which in California is within the earthquake chapter's definition of a policy of residential property insurance when it insures the personal contents of a residential unit located in the state [S:nydfs-renters-insurance][S:ca-ins-code-10087]",
+		"A landlord or rental dwelling policy where the residence is rented rather than owner-occupied"
+	],
+	"underwritingInputs": [
+		"Whether an in-force residential property policy exists with a CEA member insurer, which CDI states is a condition of CEA coverage, and whether the earthquake policy would be written by that same company [S:cdi-earthquake-insurance-guide]",
+		"The Coverage A dwelling limit on the underlying residential policy, since CEA states CEA Coverage A and B must be the same as that limit [S:cea-homeowners-coverages-deductibles][S:cdi-earthquake-insurance-guide]",
+		"Whether the Coverage A dwelling limit is greater than $1,000,000, which CEA states removes the 5 and 10 percent deductible options [S:cea-homeowners-coverages-deductibles]",
+		"Year built, and whether the dwelling is of frame construction built before 1980, since CEA ties the 5 and 10 percent deductible restriction to frame construction built before 1980 [S:cea-homeowners-coverages-deductibles]",
+		"Foundation type, specifically whether the dwelling is on a slab foundation, which CEA identifies as part of the same deductible restriction and which CDI describes as a raised or other non-slab type foundation [S:cea-homeowners-coverages-deductibles][S:cdi-earthquake-insurance-guide]",
+		"Whether a verified seismic retrofit exists, which CEA and CDI both identify as part of that deductible test [S:cea-homeowners-coverages-deductibles][S:cdi-earthquake-insurance-guide]",
+		"Whether the risk is a house or a condominium unit, since CDI describes a separate CEA condo unit policy with loss assessment coverage [S:cdi-earthquake-insurance-guide]",
+		"The selected deductible percentage, personal property limit, loss of use limit, and building code upgrade limit from CEA's published options [S:cea-homeowners-coverages-deductibles]"
+	],
+	"exposures": [
+		{
+			"item": "Shake damage to the dwelling",
+			"note": "The regulator's earthquake guide describes what earthquake policies address and what they do not [S:cdi-earthquake-insurance-guide]. Shake damage is the core grant; the exclusions around it are where the reading matters."
+		},
+		{
+			"item": "A percentage deductible whose dollar value is set by another policy's limit",
+			"note": "The program's published deductible options are expressed as percentages of the Coverage A and B limit, and that limit must match the residential policy's dwelling limit [S:cea-homeowners-coverages-deductibles]. The retention therefore moves when the homeowners limit moves."
+		},
+		{
+			"item": "Land, which the policy does not cover",
+			"note": "The regulator's guide states that earthquake policies do not cover damage to the land itself [S:cdi-earthquake-insurance-guide]. Stabilisation of the ground under a structure is a different problem from the structure."
+		},
+		{
+			"item": "Water entering from outside, including tsunami",
+			"note": "The guide describes earthquake policies as excluding water damage from outside the home such as flood or tsunami [S:cdi-earthquake-insurance-guide], and flood is written under the separate federal program [S:fema-nfip-eligibility]."
+		},
+		{
+			"item": "Fire following the earthquake, which the residential policy addresses",
+			"note": "The guide states that California law requires homeowners and renters insurance to cover fire damage caused by or following an earthquake, whether or not separate earthquake coverage is held [S:cdi-earthquake-insurance-guide]. That places two perils on two policies."
+		},
+		{
+			"item": "An offer that lapses unanswered",
+			"note": "The statutory offer provides that if it is not accepted within the stated period the insurer may presume it was not accepted, and requires a further offer on a stated cycle [S:ca-ins-code-10083][S:ca-ins-code-10081]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Convert the percentage deductible into a dollar figure and write it down",
+			"note": "The deductible options are percentages of the Coverage A and B limit, which must equal the residential policy's dwelling limit [S:cea-homeowners-coverages-deductibles]. The arithmetic is the reader's to do from their own two declarations pages, and it changes whenever the homeowners limit does."
+		},
+		{
+			"item": "Record the date of any earthquake offer notice",
+			"note": "The offer carries a stated response window and a presumption if it passes unanswered [S:ca-ins-code-10083]. The date on the notice is the only thing that makes the window measurable."
+		},
+		{
+			"item": "Read which product is in force, because the number of deductibles differs",
+			"note": "The program publishes a policy under which all coverages fall under one deductible and another providing separate deductibles [S:cea-homeowners-coverages-deductibles]. A worst-case figure depends on which one is held."
+		},
+		{
+			"item": "Establish separately whether flood applies",
+			"note": "Water entering from outside is described by the guide as outside these policies [S:cdi-earthquake-insurance-guide], and flood is written under the federal program with its own eligibility and waiting period [S:fema-nfip-eligibility]."
+		},
+		{
+			"item": "Read the regulation on coverage types and limits rather than a summary",
+			"note": "The regulation addresses earthquake policy coverage types and limits [S:ccr-10-2697-6], and it is the published text behind the product descriptions."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "California requires an offer, not a purchase. Section 10081 provides that no policy of residential property insurance may be issued or delivered or, with respect to policies in effect on the effective date of that chapter, initially renewed unless the named insured is offered earthquake coverage as provided in that chapter [S:ca-ins-code-10081]. Section 10083 provides that the offer may be made prior to, concurrent with, or within 60 days following issuance or renewal, and that a declined offer must be repeated on an every other year basis in connection with any continuation, renewal, reinstatement, or replacing policy [S:ca-ins-code-10083]. CDI states the every-other-year requirement in consumer terms [S:cdi-earthquake-insurance-guide]."
+		},
+		{
+			"state": "CA",
+			"note": "Section 10083 prescribes 10-point boldface disclosure language stating that if the insured does not accept the offer within 30 days of the mailing of the notice, the company will presume the offer was not accepted [S:ca-ins-code-10083]. CDI states that the insured has 30 days to accept, that the period starts the date the company mails the offer, and that not replying means rejecting the offer [S:cdi-earthquake-insurance-guide]."
+		},
+		{
+			"state": "CA",
+			"note": "As used in the earthquake chapter, a policy of residential property insurance means a policy insuring individually owned residential structures of not more than four dwelling units, individually owned condominium units, or individually owned mobilehomes, and their contents, located in the state and used exclusively for residential purposes, or a tenant's policy insuring personal contents of a residential unit located in the state [S:ca-ins-code-10087]. That definition also carries carve-outs, including for property used for commercial, industrial, or business purposes other than a structure of not more than four dwelling units rented for individual residential purposes, and for policies that do not provide the perils of a standard fire policy [S:ca-ins-code-10087]. The definition is scoped to that chapter and is not used on this site as a general residential-versus-commercial dividing line; whether a particular policy falls inside it is a legal question for a lawyer."
+		},
+		{
+			"state": "CA",
+			"note": "CDI states that earthquake insurance cannot be bought directly from CEA, that it is bought from insurance companies that are members of CEA, that a residential property insurance policy must be in place to get a CEA earthquake policy, and that the CEA policy must be purchased from the same company that carries the residential policy [S:cdi-earthquake-insurance-guide]. Minimum coverage types and limits for the basic residential earthquake policy are set by California regulation; the text relied on here is Cornell LII's unofficial reproduction of 10 CCR section 2697.6 and should be confirmed against the official California Code of Regulations [S:ccr-10-2697-6]."
+		},
+		{
+			"state": "CA",
+			"note": "CDI states that California law says both homeowners and renters insurance must cover fire damage that is caused by or follows an earthquake, while homeowners, renters, and condominium policies do not cover earthquake damage itself [S:cdi-earthquake-insurance-guide]."
+		},
+		{
+			"state": "US",
+			"note": "This page describes the California framework only. No source in this cluster describes earthquake coverage rules, forms, or deductible structures in any other state, so none are described here. The rules of the state where the property is located govern."
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"effectiveDate": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"cdi-earthquake-insurance-guide",
+		"cdi-residential-insurance-guide",
+		"ca-ins-code-10081",
+		"ca-ins-code-10083",
+		"ca-ins-code-10087",
+		"cea-homeowners-coverages-deductibles",
+		"ccr-10-2697-6",
+		"cfp-dwelling-policy",
+		"nydfs-renters-insurance",
+		"fema-nfip-eligibility"
+	],
+	"relatedQuestions": [
+		"homeowners-earthquake-california",
+		"replacement-cost-vs-market-value",
+		"same-limit-different-protection"
+	]
+}

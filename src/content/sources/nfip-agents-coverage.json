@@ -1,0 +1,24 @@
+{
+	"title": "Types of Flood Insurance Coverage",
+	"publisher": "FEMA, National Flood Insurance Program (agents.floodsmart.gov)",
+	"url": "https://agents.floodsmart.gov/topics/selling-flood-insurance/coverage",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"A residential building can be insured for up to 250,000 dollars.",
+		"A non-residential building can be insured for up to 500,000 dollars.",
+		"Belongings can be insured up to 100,000 dollars under a residential policy and up to 500,000 dollars under a non-residential policy.",
+		"Belongings are covered for their value at the time of the damage, which the page calls Actual Cost Value, not their original cost, and there is no option for full replacement value."
+	],
+	"updateCadence": "FEMA updates NFIP coverage limits only when Congress raises them; verify limits before quoting.",
+	"status": "active",
+	"notes": "Fetched on 2026-08-31 and confirmed the four caps and the contents valuation language. The page uses the phrase Actual Cost Value. Any use of the phrase actual cash value is an editorial paraphrase and must not be presented as page language. This page does not address lender requirements.",
+	"officialHost": true
+}

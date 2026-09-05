@@ -1,0 +1,22 @@
+{
+	"title": "Employer coverage requirements - Florida Division of Workers' Compensation",
+	"publisher": "Florida Department of Financial Services, Division of Workers' Compensation",
+	"url": "https://www.myfloridacfo.com/division/wc/employee/employer-coverage-requirements",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "FL",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The Division states that an employer in the construction industry with one or more employees, including himself or herself, is required to carry workers' compensation coverage.",
+		"The Division states that an employer in an industry other than construction with four or more employees, full-time or part-time, is required to carry workers' compensation coverage.",
+		"The Division states that an employer who is a farmer with more than five regular employees and/or twelve or more other workers for seasonal agricultural labor lasting thirty days or more is required to carry workers' compensation coverage."
+	],
+	"updateCadence": "Re-verify after each Florida legislative session.",
+	"status": "active",
+	"officialHost": true
+}

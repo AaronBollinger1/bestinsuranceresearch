@@ -1,0 +1,24 @@
+{
+	"title": "44 CFR Part 61, Appendix A(3) - Standard Flood Insurance Policy Residential Condominium Building Association Policy (Article VII, Coinsurance)",
+	"publisher": "Federal Emergency Management Agency / National Flood Insurance Program (text reproduced by Cornell Legal Information Institute)",
+	"url": "https://www.law.cornell.edu/cfr/text/44/appendix-A(3)_to_part_61",
+	"sourceType": "policy-form",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Article VII of this form is titled Coinsurance and applies unless the amount of insurance applicable to the damaged building is at least 80 percent of its replacement cost, or the maximum amount of insurance available for that building under the NFIP, whichever is less.",
+		"Where the coinsurance article applies, payment is computed by dividing the actual amount of insurance carried on the building by the required amount of insurance, multiplying the amount of loss before application of the deductible by that figure, and subtracting the deductible, with payment equal to that result or the amount of insurance carried, whichever is less.",
+		"The form defines actual cash value as the cost to replace an insured item of property at the time of loss, less the value of its physical depreciation.",
+		"This appendix is the Standard Flood Insurance Policy Residential Condominium Building Association Policy, so its coinsurance article is one published federal form's condition and not a general property insurance rule."
+	],
+	"updateCadence": "Changes only through FEMA rulemaking published in the Federal Register and codified in 44 CFR.",
+	"status": "active",
+	"notes": "Re-fetched 2026-08-31. Misquote corrected from the prior draft: the alternative prong reads the maximum amount of insurance available FOR THAT BUILDING UNDER THE NFIP. The prior draft rendered it as available or permitted under the Act, which is not the form's language, in a passage that recited form wording. Title corrected: the published appendix heading carries no colon between Policy and Residential, so the punctuated variant is no longer presented as the exact title. Authority caveat: Cornell LII is a reproduction. eCFR was attempted on 2026-08-31 and returned a redirect to an unblock page rather than the text, and a govinfo XML path returned a not-found page, so the official publication could not be fetched today. This form is a flood policy for condominium associations; it is included only as a verified published example of a percentage condition, not as a statement about homeowners forms.",
+	"officialHost": false
+}

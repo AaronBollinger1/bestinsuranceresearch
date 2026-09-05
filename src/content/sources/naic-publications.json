@@ -1,0 +1,23 @@
+{
+	"title": "Publications",
+	"publisher": "National Association of Insurance Commissioners",
+	"url": "https://content.naic.org/publications",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The NAIC publications catalog lists consumer titles including Consumer Guide to Title Insurance (TTL-CG), Consumer's Guide to Annuities (ANB-LP, ANB-LE, ANB-LS), Consumer's Guide to Auto Insurance (AUT-PP), Consumer's Guide to Cancer Insurance (CAX-PP), Consumer's Guide to Earthquake Insurance (EQU-PP), Consumer's Guide to Homeowners Insurance (HOI-PP), Consumer's Guide to Life Insurance (LIG-LP), Consumer's Guide to Long-Term Care Insurance (LTC-LP), and Consumer's Guide to Medigap (MED-LP).",
+		"The catalog title for the title insurance guide is Consumer Guide to Title Insurance, without an apostrophe-s, unlike the other consumer guide titles in the catalog.",
+		"The catalog contains a consumer guide to earthquake insurance.",
+		"The catalog page also points readers to an NAIC Library for archived publications."
+	],
+	"updateCadence": "Guides are reissued in new editions periodically.",
+	"status": "active",
+	"officialHost": true
+}

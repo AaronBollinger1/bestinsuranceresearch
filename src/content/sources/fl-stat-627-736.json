@@ -1,0 +1,22 @@
+{
+	"title": "Florida Statutes Section 627.736 (2026) - Required personal injury protection benefits",
+	"publisher": "The Florida Senate (flsenate.gov)",
+	"url": "https://www.flsenate.gov/laws/statutes/2026/627.736",
+	"sourceType": "statute",
+	"jurisdiction": "FL",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Florida's required personal injury protection benefit is $10,000 in medical and disability benefits and $5,000 in death benefits resulting from bodily injury.",
+		"Florida PIP medical benefits apply if the injured individual receives initial services and care within 14 days after the motor vehicle accident.",
+		"Florida PIP medical reimbursement is limited to $2,500 if a qualified provider determines that the injured person did not have an emergency medical condition."
+	],
+	"updateCadence": "Re-verify each Florida legislative session; PIP repeal bills are filed regularly.",
+	"status": "active",
+	"officialHost": true
+}

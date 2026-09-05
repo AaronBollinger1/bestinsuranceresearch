@@ -1,0 +1,25 @@
+{
+	"title": "Surety bonds - Funding Programs",
+	"publisher": "U.S. Small Business Administration",
+	"url": "https://www.sba.gov/funding-programs/surety-bonds",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"SBA guarantees surety bonds issued by certain surety companies for qualified small businesses.",
+		"The bond types SBA guarantees include bid bonds, payment bonds, performance bonds, and ancillary bonds.",
+		"All performance and payment bond guarantees require small businesses to pay SBA a fee of 0.6 percent of the contract price.",
+		"SBA does not charge a fee for bid bond guarantees.",
+		"SBA-guaranteed bonds cover contracts up to $9 million for non-federal contracts and up to $14 million for federal contracts."
+	],
+	"updateCadence": "Updated by SBA as program parameters change; contract limits are periodically adjusted",
+	"status": "active",
+	"notes": "Re-fetched 2026-08-31; the four bond categories, the 0.6 percent fee, the no-fee treatment of bid bond guarantees, and the $9 million and $14 million contract limits all appear on the page. A marketing line about bonds helping small businesses win contracts was dropped from this card because it was not re-verified. This is a program landing page and is not used for the three-party structure or the reimbursement duty.",
+	"officialHost": true
+}

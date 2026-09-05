@@ -1,0 +1,48 @@
+---
+import { Flag } from '@lucide/astro';
+import { siteConfig } from '../config/site';
+
+interface Props {
+	/** Canonical path of the page being corrected. */
+	path: string;
+	title: string;
+	pageType?: string;
+}
+
+const { path, title, pageType = 'editorial' } = Astro.props;
+
+/*
+ * The correction path is a plain mailto with a prefilled structure. It cannot
+ * capture anything on our side, so a reader can report an error without giving
+ * this site any personal data at all.
+ */
+const subject = `Correction: ${title}`;
+const body = [
+	`Page: ${new URL(path, siteConfig.origin).toString()}`,
+	'',
+	'Exact statement that is wrong:',
+	'',
+	'A more current or more authoritative source (link):',
+	'',
+	'Does this change the conclusion, or only the wording?',
+	'',
+	'Please do not include personal, policy, claim, or health information in this message.',
+].join('\n');
+
+const href = `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+---
+
+<div class="no-print" style="margin-top: var(--s-6); display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3)">
+	<a
+		class="btn btn-secondary btn-sm"
+		href={href}
+		data-event="correction_started"
+		data-page-type={pageType}
+	>
+		<Flag size={14} aria-hidden="true" /> Report an error on this page
+	</a>
+	<span class="mono">
+		Corrections are checked against the original record. Material changes are logged on{' '}
+		<a href="/corrections">the corrections page</a>.
+	</span>
+</div>

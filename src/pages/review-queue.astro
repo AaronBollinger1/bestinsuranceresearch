@@ -1,0 +1,312 @@
+---
+/**
+ * The review queue.
+ *
+ * Published rather than kept internal, and that is deliberate. Every page here
+ * already shows its own review state in a badge, so the status is public one
+ * page at a time; a reader who wants the whole picture has to visit 45 pages to
+ * assemble it. Publishing the aggregate tells them nothing new about any single
+ * page and quite a lot about how the property is run.
+ *
+ * It is also the page that makes signing off cheap, which is the point. The
+ * bottleneck on review was never willingness; it was that a reviewer had no
+ * ordered list of what needed attention and why.
+ *
+ * Rendered as an ordered list of cards rather than a table. The ordinal carries
+ * real information here — it is the recommended working order — and the rich
+ * cells (a status chip, a link, a stack of triggers) would make a seven-column
+ * table unusable on a narrow viewport.
+ */
+import { CircleAlert, ClipboardCheck, TriangleAlert } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Callout from '../components/Callout.astro';
+import DataTable from '../components/DataTable.astro';
+import StatusChip from '../components/StatusChip.astro';
+import { siteConfig } from '../config/site';
+import { isStale, loadCorpus } from '../lib/corpus';
+import { reviewQueue, reviewSummary } from '../lib/review';
+import { breadcrumbs, graph, organization, website } from '../lib/schema';
+
+const corpus = await loadCorpus();
+const TODAY = import.meta.env.PUBLIC_BUILD_DATE || new Date().toISOString().slice(0, 10);
+
+const items = reviewQueue(corpus, (lastChecked) => isStale(lastChecked, TODAY));
+const summary = reviewSummary(items);
+
+/* A reviewer works by record type: reading eight coverage pages in a row is
+   faster than moving between a coverage page, a module and a state page. */
+const kinds = [...new Set(items.map((i) => i.kind))];
+const batchRows = kinds.map((kind) => {
+	const rows = items.filter((i) => i.kind === kind);
+	return [
+		kind,
+		String(rows.length),
+		String(rows.reduce((n, i) => n + i.statements, 0)),
+		String(rows.filter((i) => i.triggers.some((t) => t.severity === 'high')).length),
+	];
+});
+
+const outstanding = summary.total - summary.reviewed;
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Review queue', path: '/review-queue' },
+];
+
+const description = `What on this site has not been signed off by a licensed reviewer, and in what order it should be. ${outstanding} of ${summary.total} records are outstanding, carrying ${summary.statements.toLocaleString('en-US')} cited statements between them.`;
+
+const jsonLd = graph(organization(), website(), breadcrumbs(trail));
+---
+
+<BaseLayout title="Review queue" description={description} jsonLd={jsonLd} pageType="editorial">
+	<article>
+		<section class="band band-tight">
+			<div class="shell">
+				<Breadcrumbs trail={trail} />
+				<span class="eyebrow">Standards</span>
+				<h1>Review queue</h1>
+				<p class="page-lede">{description}</p>
+
+				<div class="figures" style="margin-top:var(--s-5)">
+					<div class="figure"><b>{outstanding}</b><span>awaiting sign-off</span></div>
+					<div class="figure"><b>{summary.statements.toLocaleString('en-US')}</b><span>cited statements</span></div>
+					<div class="figure"><b>{summary.escalated}</b><span>escalated beyond review</span></div>
+					<div class="figure"><b>{summary.withdrawnSources}</b><span>on a withdrawn source</span></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-tight">
+			<div class="shell">
+				<Callout tone="note" label="Why this page is public">
+					<p>
+						Every page here already shows its own review state in a badge, so the status is public
+						one page at a time. Assembling the whole picture means visiting {summary.total} pages.
+						Publishing the aggregate tells a reader nothing new about any single page, and quite a
+						lot about how this property is run.
+					</p>
+					<p>
+						An under-review page is not a page believed to be wrong. It is a page whose insurance
+						substance has not yet been checked by a named licensed reviewer, and which says so
+						where a reader will see it.
+					</p>
+				</Callout>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="order">
+			<div class="shell">
+				<span class="eyebrow">How this is ordered</span>
+				<h2 id="order">Severity first, then how much is riding on it</h2>
+				<div class="prose">
+					<p>
+						Nothing here is signed off yet, so "not reviewed" is true of every record and cannot
+						put one ahead of another. The order is driven instead by the reasons beyond that: a
+						source withdrawn from under the page, a source past its review window, a rule that
+						compares against today's date. Records with one of those come first.
+					</p>
+					<p>
+						Within them, the order is the number of cited statements the record publishes, because
+						that is the honest measure of what a sign-off commits to. Every citation is one
+						assertion a licensed reviewer puts their name behind, so a page carrying 106 of them is
+						a larger commitment than one carrying nine, whatever either page is about.
+					</p>
+					<p>
+						<strong>This page does not show a diff.</strong> There is no revision history to compare
+						against, so presenting a change feed would be dishonest. What it shows instead are the
+						triggers that are genuinely computable from the corpus, and a source withdrawn from
+						under a published page matters more than an edit to its prose in any case.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="queue">
+			<div class="shell">
+				<span class="eyebrow">The queue</span>
+				<h2 id="queue">{items.length} records, in recommended order</h2>
+				<ol class="queue">
+					{
+						items.map((item) => (
+							<li class={item.escalations.some((t) => t.severity === 'high') ? 'q-high' : ''}>
+								<div class="q-head">
+									<h3><a href={item.path}>{item.title}</a></h3>
+									<StatusChip kind={item.reviewState} />
+								</div>
+								<dl class="q-facts">
+									<div><dt>Type</dt><dd>{item.kind}</dd></div>
+									<div><dt>Cited statements</dt><dd class="num">{item.statements}</dd></div>
+									<div><dt>Source records</dt><dd class="num">{item.sourceCount}</dd></div>
+									<div><dt>Reviewer</dt><dd>{item.reviewer}</dd></div>
+								</dl>
+								<ul class="triggers">
+									{
+										item.triggers.map((t) => (
+											<li class={`trigger trigger-${t.severity}`}>
+												{t.severity === 'high' ? (
+													<TriangleAlert size={14} aria-hidden="true" />
+												) : (
+													<CircleAlert size={14} aria-hidden="true" />
+												)}
+												<span><b>{t.label}.</b> {t.detail}</span>
+											</li>
+										))
+									}
+								</ul>
+							</li>
+						))
+					}
+				</ol>
+			</div>
+		</section>
+
+		<section class="band band-paper" aria-labelledby="batches">
+			<div class="shell">
+				<span class="eyebrow">Working order</span>
+				<h2 id="batches">Or take it a record type at a time</h2>
+				<div class="prose">
+					<p>
+						Reading eight coverage pages in a row is faster than moving between a coverage page, a
+						module and a state page, because the questions a reviewer asks are the same within a
+						record type and different across types.
+					</p>
+				</div>
+				<DataTable
+					caption="Outstanding review, grouped by record type"
+					columns={['Record type', 'Records', 'Cited statements', 'Escalated']}
+					rows={batchRows}
+				/>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="standard">
+			<div class="shell">
+				<span class="eyebrow">The standard</span>
+				<h2 id="standard">What a sign-off asserts, and what it does not</h2>
+				<div class="prose">
+					<p>
+						Review means a named licensed reviewer has checked that the insurance substance of the
+						page is accurate, that its limits are stated honestly, and that nothing on it reads as
+						individualized advice or as a coverage determination. It is recorded on the record
+						itself, with the reviewer named and the date shown on the page.
+					</p>
+					<p>
+						It does not assert that the page is complete, that a cited source is still current
+						today, or that the answer applies to any particular policy. Those are separate claims,
+						and this site makes them separately or not at all.
+					</p>
+					<p>
+						<a href="/editorial-policy">The editorial policy</a> states the standard in full, and{' '}
+						<a href="/corrections">the corrections log</a> records every material change made after
+						publication.
+					</p>
+				</div>
+				<Callout tone="note" label="Who signs off">
+					<p>
+						<ClipboardCheck size={15} aria-hidden="true" /> Sign-off for this property is{' '}
+						{siteConfig.operator.licenseAuthority} licensed. Reviewer records, including the licence
+						each person holds, are published for
+						{siteConfig.operator.peopleSlugs.map((slug, i) => (
+							<>
+								{i > 0 && <span aria-hidden="true"> and </span>}
+								<a href={`/authors/${slug}`}>{corpus.people.find((p) => p.id === slug)?.data.name ?? slug}</a>
+							</>
+						))}.
+					</p>
+				</Callout>
+			</div>
+		</section>
+	</article>
+</BaseLayout>
+
+<style>
+	/* The ordinal is the recommended working order, so it is shown rather than
+	   suppressed, and it is the list's own counter rather than hand-written. */
+	.queue {
+		list-style: none;
+		margin: var(--s-4) 0 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-3);
+		counter-reset: q;
+	}
+	.queue > li {
+		counter-increment: q;
+		position: relative;
+		border: 1px solid var(--line);
+		border-left: 3px solid var(--line-strong);
+		background: var(--paper);
+		padding: var(--s-4) var(--s-4) var(--s-4) var(--s-5);
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-3);
+	}
+	.queue > li::before {
+		content: counter(q);
+		position: absolute;
+		top: var(--s-4);
+		left: 0;
+		width: var(--s-5);
+		text-align: center;
+		font-family: var(--font-mono);
+		font-variant-numeric: tabular-nums;
+		font-size: var(--text-2xs);
+		color: var(--faint);
+	}
+	.queue > li.q-high { border-left-color: var(--gold-edge); }
+
+	.q-head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: var(--s-2) var(--s-3);
+	}
+	.q-head h3 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-weight: 400;
+		line-height: 1.25;
+	}
+
+	.q-facts {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2) var(--s-5);
+		margin: 0;
+	}
+	.q-facts dt {
+		font-family: var(--font-mono);
+		font-size: 0.5625rem;
+		letter-spacing: 0.09em;
+		text-transform: uppercase;
+		color: var(--faint);
+	}
+	.q-facts dd { margin: 0; font-size: var(--text-sm); color: var(--ink-2); }
+
+	.triggers {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-2);
+		border-top: 1px solid var(--line);
+		padding-top: var(--s-3);
+	}
+	.trigger {
+		display: flex;
+		align-items: flex-start;
+		gap: 7px;
+		font-size: var(--text-sm);
+		line-height: 1.5;
+		color: var(--ink-2);
+		max-width: 76ch;
+	}
+	.trigger svg { flex: none; margin-top: 3px; }
+	.trigger-high svg { color: var(--gold-edge); }
+	.trigger-medium svg { color: var(--faint); }
+	.trigger b { color: var(--ink); font-weight: 600; }
+</style>

@@ -1,0 +1,219 @@
+---
+import { ArrowRight, Printer } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import DataTable from '../../components/DataTable.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { idsOf, loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
+
+const corpus = await loadCorpus();
+const modules = corpus.liveModules;
+const worksheets = corpus.liveTools;
+const specified = corpus.tools.filter((t) => t.data.status === 'specified').sort((a, b) => a.data.order - b.data.order);
+const roadmap = corpus.tools.filter((t) => t.data.status === 'roadmap').sort((a, b) => a.data.order - b.data.order);
+
+const totalRules = modules.reduce((n, m) => n + m.data.rules.length, 0);
+const totalFields = modules.reduce((n, m) => n + m.data.fields.length, 0);
+const moduleSources = new Set(modules.flatMap((m) => m.data.rules.flatMap((r) => idsOf(r.sourceIds)))).size;
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Tools', path: '/tools' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'Insurance advisory modules and worksheets',
+		path: '/tools',
+		description:
+			'Line-specific assessment modules that assemble into one coverage position, plus standalone worksheets. Everything stays on your own device.',
+		items: [
+			{ name: 'Coverage position', path: '/position' },
+			...modules.map((m) => ({ name: m.data.name, path: `/tools/${m.id}` })),
+			...worksheets.map((t) => ({ name: t.data.name, path: t.data.route || `/tools/${t.id}` })),
+		],
+	}),
+);
+
+const specRows = [...specified, ...roadmap].map((tool) => [
+	tool.data.name,
+	tool.data.status === 'specified' ? 'Specified, not built' : 'On the roadmap',
+	tool.data.family.join(', '),
+	tool.data.spec.reviewOwner,
+]);
+---
+
+<BaseLayout
+	title="Advisory modules and worksheets"
+	description="Line-specific assessment modules that assemble into one coverage position, plus standalone worksheets. Everything you enter stays on your own device: no account, no upload, no contact capture."
+	jsonLd={jsonLd}
+	pageType="tool"
+>
+	<PageHeader
+		eyebrow="The instrument"
+		title="Modules assemble into one position. Worksheets do one job."
+		lede={`${modules.length} modules run ${totalRules} deterministic checks over ${totalFields} fields, against ${moduleSources} cited sources. Each module is useful alone and gets more useful once another has recorded something, because the checks run across the whole position.`}
+		trail={trail}
+	>
+		<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-5)">
+			<a class="btn btn-primary" href="/position">
+				Open your coverage position <ArrowRight size={16} aria-hidden="true" />
+			</a>
+			<a class="btn btn-secondary" href="/methodology">How the checks work</a>
+		</div>
+	</PageHeader>
+
+	<section class="band band-tight">
+		<div class="shell">
+			<Callout tone="privacy">
+				<p>
+					<strong>Nothing you type here leaves your browser.</strong> There is no account, no file
+					upload anywhere on this site, and no server copy of your position. Saving writes to your
+					own browser's local storage; printing uses your own printer or PDF writer.
+				</p>
+			</Callout>
+
+			<Callout tone="warn">
+				<p>
+					<strong>These report open items, not decisions.</strong> No module prices anything, says
+					whether a risk is acceptable to any insurer, decides whether a loss would be covered, or
+					assigns a classification. What they do is arithmetic and exact comparison on what you
+					record, against sources you can open. Who decides is named on every item.
+				</p>
+			</Callout>
+		</div>
+	</section>
+
+	<section class="band band-tight band-paper instrument" aria-labelledby="modules-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Modules</span>
+					<h2 id="modules-title">Position modules</h2>
+					<p>
+						Each writes into one shared coverage position. Several are also the destination for a
+						dedicated domain, so they work as a front door on their own.
+					</p>
+				</div>
+			</div>
+
+			<div class="module-grid">
+				{
+					modules.map((m) => (
+						<a class="module-card" href={`/tools/${m.id}`}
+							data-event="tool_started" data-tool-name={m.id} data-page-type="tool">
+							<div class="module-card-head">
+								<h3>{m.data.name}</h3>
+								<span class="status status-plain">{m.data.rules.length} checks</span>
+							</div>
+							<p>{m.data.summary}</p>
+							<div class="module-card-foot">
+								<span>{m.data.fields.length} fields</span>
+								<span>{m.data.lines.slice(0, 2).join(', ')}</span>
+								{m.data.domain && <span>{m.data.domain}</span>}
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight instrument" aria-labelledby="worksheets-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Worksheets</span>
+					<h2 id="worksheets-title">Standalone utilities</h2>
+					<p>
+						A worksheet does one job for one document in front of you now. It does not write into
+						the position, because a specific contract or a specific pair of quotes is not a
+						standing fact about your coverage.
+					</p>
+				</div>
+			</div>
+
+			<div class="module-grid">
+				{
+					worksheets.map((t) => (
+						<a class="module-card" href={t.data.route || `/tools/${t.id}`}
+							data-event="tool_started" data-tool-name={t.id} data-page-type="tool">
+							<div class="module-card-head">
+								<h3>{t.data.name}</h3>
+								<span class="status status-plain">Worksheet</span>
+							</div>
+							<p>{t.data.summary}</p>
+							<div class="module-card-foot">
+								<span>{t.data.items.length} rows</span>
+								<span>
+									<Printer size={11} aria-hidden="true" style="display:inline-block;vertical-align:-1px" />{' '}
+									{t.data.spec.exportFormat.join(', ')}
+								</span>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight band-paper">
+		<div class="shell">
+			<span class="eyebrow">Boundaries</span>
+			<h2>What no tool here will ever do</h2>
+			<ul class="fact-list" style="max-width: 84ch">
+				{
+					[
+						'Publish a verdict that a property or risk is standard market, non-admitted, FAIR Plan eligible, bound, insurable, or uninsurable. Underwriting is decided by an insurer, on facts a website does not have.',
+						'Claim that anything was submitted to, received by, or reviewed by an insurer.',
+						'Accept a policy document, a declarations page, or any file upload. No file input exists anywhere on this site.',
+						'Require an email address, a phone number, or an account to produce a result.',
+						'Produce a premium, a quote, or a replacement-cost figure. A calculator publishes only when its methodology and its data are both defensible and disclosed, and none currently is.',
+						'Give you a risk score. A single number summarising someone’s insurance risk would be the most valuable-looking and least defensible thing on this site.',
+					].map((item) => (
+						<li>
+							<span aria-hidden="true" style="color: var(--rust)">&#8212;</span>
+							<p>{item}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="band" aria-labelledby="registry-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Tool registry</span>
+					<h2 id="registry-title">Specified but not built</h2>
+					<p>
+						{specified.length + roadmap.length} tools are fully specified. None has a route, a sitemap
+						entry, or a navigation link, because an empty tool page is worse than no tool page. Each
+						specification names its user, inputs, sources, privacy boundary, decision rules,
+						uncertainty, output, export format, accessibility states, schema eligibility, review
+						owner, and update cadence.
+					</p>
+				</div>
+			</div>
+
+			<DataTable
+				caption="Specified tools awaiting build. Full specifications are in TOOL-REGISTRY-AND-ROADMAP.md."
+				columns={['Tool', 'Status', 'Family', 'Review owner']}
+				rows={specRows}
+			/>
+
+			<p class="mono" style="margin-top: var(--s-4)">
+				Every published module carries <StatusChip kind="under-review" /> until a named licensed
+				reviewer signs off. Last registry review:{' '}
+				{longDate([...modules].sort((a, b) => (a.data.lastReviewed < b.data.lastReviewed ? 1 : -1))[0]?.data.lastReviewed ?? '2026-08-31')}.
+			</p>
+		</div>
+	</section>
+</BaseLayout>

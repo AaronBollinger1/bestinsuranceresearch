@@ -1,0 +1,54 @@
+{
+	"name": "Equipment and Property in Transit Schedule",
+	"status": "roadmap",
+	"order": 39,
+	"family": [
+		"commercial"
+	],
+	"lines": [
+		"inland-marine"
+	],
+	"summary": "Schedule equipment and property that moves, which is exactly what a commercial property form is not built for.",
+	"spec": {
+		"user": "A business with tools, equipment, or property that travels.",
+		"inputData": [
+			"Item categories and value bands",
+			"Where property is kept and how it moves"
+		],
+		"authoritativeSources": [
+			"The inland marine question published in this library, and its cited sources"
+		],
+		"privacyBoundary": "No serial numbers, no addresses, no schedules of identified property.",
+		"decisionRules": [
+			"Distinguish scheduled from blanket treatment, and say that terms vary because inland marine is often non-standard.",
+			"This tool never states that a risk is eligible, ineligible, standard market, non-admitted, FAIR Plan eligible, bound, or uninsurable. It shows the published pathway criteria and names who actually decides, which is the insurer."
+		],
+		"uncertainty": "Inland marine forms are frequently manuscript, so no general statement about terms holds.",
+		"output": "A printable equipment and transit schedule worksheet.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

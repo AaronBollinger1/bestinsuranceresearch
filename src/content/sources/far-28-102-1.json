@@ -1,0 +1,25 @@
+{
+	"title": "FAR 28.102-1 - Performance and payment bonds and alternative payment protections for construction contracts, General",
+	"publisher": "U.S. General Services Administration (Acquisition.gov, Federal Acquisition Regulation)",
+	"url": "https://www.acquisition.gov/far/28.102-1",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"FAR 28.102-1(a) states that 40 U.S.C. chapter 31, subchapter III, Bonds, formerly known as the Miller Act, requires performance and payment bonds for any construction contract exceeding $150,000, except that this requirement may be waived, first by the contracting officer for work performed in a foreign country upon a finding that it is impracticable for the contractor to furnish the bonds, and second as otherwise authorized by the Bonds statute or by other law.",
+		"Pursuant to 40 U.S.C. 3132, for construction contracts greater than $35,000 but not greater than $150,000, the contracting officer shall select two or more of the listed payment protections, giving particular consideration to inclusion of an irrevocable letter of credit as one of the selected alternatives.",
+		"The payment protections the contracting officer selects from are a payment bond, an irrevocable letter of credit, a tripartite escrow agreement, certificates of deposit, and a deposit of the types of security listed in FAR 28.204-1 and 28.204-2.",
+		"The contractor shall submit to the Government one of the payment protections selected by the contracting officer.",
+		"The contractor shall furnish all bonds or alternative payment protection, including any necessary reinsurance agreements, before receiving a notice to proceed with the work or being allowed to start work."
+	],
+	"updateCadence": "Updated by Federal Acquisition Circulars",
+	"status": "active",
+	"notes": "Re-fetched 2026-08-31 from acquisition.gov, the publisher's own site, and the paragraph (a) and (b)(1) text was read against the part 28 page as well. Three corrections were made in this revision. The waiver clause in paragraph (a), previously dropped for lack of quotable detail, is now carried with both of its branches, because stating the $150,000 requirement without it overstates the rule. The list of payment protections previously stopped at four and omitted the fifth, a deposit of the types of security listed in 28.204-1 and 28.204-2. The bracket wording now follows the FAR, which reads not greater than $150,000. The separate card entry about the 40 U.S.C. 3132 citation was folded into the paragraph (b)(1) entry, where that citation actually appears. The FAR text contains no inflation-adjustment language, so this source is not used for any assertion about thresholds moving.",
+	"officialHost": true
+}

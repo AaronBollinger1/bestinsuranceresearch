@@ -1,0 +1,1584 @@
+{
+	"name": "Contract Insurance Requirements",
+	"summary": "Compares the insurance limits, endorsements, evidence and deadlines a contract asks of you against what you have recorded that you actually carry and have confirmed, and returns the gaps to raise before you sign or start work.",
+	"family": "commercial",
+	"lines": [
+		"commercial-general-liability",
+		"commercial-auto",
+		"workers-compensation",
+		"professional-liability",
+		"umbrella-excess",
+		"surety"
+	],
+	"order": 30,
+	"status": "live",
+	"privacyBoundary": "This module refuses to collect the name of the other party, the project or premises address, policy or certificate numbers, the exact contract sum, or the contract text itself; every answer is a category, a limit amount, a yes or no, or a date.",
+	"uncertainty": "It cannot determine whether your actual policy wording satisfies the contract, whether a requested endorsement is available on your policy, or whether an indemnity clause is enforceable; the insurer confirms endorsements in writing, a broker confirms limits and forms, and a lawyer reads the indemnity and defense wording.",
+	"domain": null,
+	"fields": [
+		{
+			"id": "agreement-type",
+			"label": "What kind of agreement handed you these insurance requirements?",
+			"help": "Pick the closest description of the document, not of your business.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "construction-subcontract",
+					"label": "Construction subcontract (you are the sub)"
+				},
+				{
+					"value": "construction-prime",
+					"label": "Construction prime contract (you contract with the owner)"
+				},
+				{
+					"value": "commercial-lease",
+					"label": "Commercial lease or tenancy agreement"
+				},
+				{
+					"value": "services-or-consulting",
+					"label": "Services, consulting or design agreement"
+				},
+				{
+					"value": "vendor-supply",
+					"label": "Vendor, supply or distribution agreement"
+				},
+				{
+					"value": "event-or-facility-use",
+					"label": "Event, venue or facility use agreement"
+				},
+				{
+					"value": "government-or-public-entity",
+					"label": "Government or public entity contract"
+				},
+				{
+					"value": "other",
+					"label": "Something else"
+				}
+			],
+			"group": "The agreement",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "governing-law-state",
+			"label": "Which state does the contract say its law governs?",
+			"help": "Usually in a clause titled governing law or choice of law.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "ca",
+					"label": "California"
+				},
+				{
+					"value": "tx",
+					"label": "Texas"
+				},
+				{
+					"value": "ny",
+					"label": "New York"
+				},
+				{
+					"value": "fl",
+					"label": "Florida"
+				},
+				{
+					"value": "other-us",
+					"label": "Another US state"
+				},
+				{
+					"value": "not-stated",
+					"label": "The contract does not say"
+				}
+			],
+			"group": "The agreement",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "contract-value-band",
+			"label": "Roughly what band is the total contract value in?",
+			"kind": "band",
+			"options": [
+				{
+					"value": "under-25k",
+					"label": "Under 25,000 USD"
+				},
+				{
+					"value": "25k-250k",
+					"label": "25,000 to 250,000 USD"
+				},
+				{
+					"value": "250k-1m",
+					"label": "250,000 to 1,000,000 USD"
+				},
+				{
+					"value": "over-1m",
+					"label": "Over 1,000,000 USD"
+				},
+				{
+					"value": "not-stated",
+					"label": "Not stated or open ended"
+				}
+			],
+			"group": "The agreement",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Choose a band only. Do not type the exact contract sum, the project address, or the other party's name anywhere in this module."
+		},
+		{
+			"id": "work-involves-construction",
+			"label": "Does the work include construction, alteration, repair or maintenance of real property?",
+			"kind": "boolean",
+			"group": "The agreement",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "work-includes-design-or-consulting",
+			"label": "Does the work include design, engineering, drawings, specifications, advice or other professional services?",
+			"help": "Answer yes even if the design work is a small part of a mostly physical scope.",
+			"kind": "boolean",
+			"group": "The agreement",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "contract-signed",
+			"label": "Have you already signed the agreement?",
+			"kind": "boolean",
+			"group": "The agreement",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "work-start-date",
+			"label": "What date does your work under this agreement start?",
+			"kind": "date",
+			"group": "The agreement",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "evidence-due-date",
+			"label": "By what date does the agreement require you to deliver evidence of insurance?",
+			"help": "Often expressed as before commencement of work or within a number of days of signing.",
+			"kind": "date",
+			"group": "The agreement",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "certificate-provided-date",
+			"label": "On what date did you actually deliver the certificate and endorsements?",
+			"help": "Leave empty if nothing has been delivered yet.",
+			"kind": "date",
+			"group": "The agreement",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "required-gl-occurrence",
+			"label": "General liability per occurrence limit the contract requires",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Limits the contract asks for",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "required-gl-aggregate",
+			"label": "General liability general aggregate limit the contract requires",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Limits the contract asks for",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "required-auto-csl",
+			"label": "Automobile liability combined single limit the contract requires",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Limits the contract asks for",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "required-umbrella-limit",
+			"label": "Umbrella or excess liability limit the contract requires",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Limits the contract asks for",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "required-professional-limit",
+			"label": "Professional liability or errors and omissions limit the contract requires",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Limits the contract asks for",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "required-wc-employers-liability",
+			"label": "Employers liability limit the contract requires alongside workers compensation",
+			"help": "This is the employers liability figure, not the statutory workers compensation benefit.",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Limits the contract asks for",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "carried-gl-occurrence",
+			"label": "General liability per occurrence limit shown on your own policy",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Limits you currently carry",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "carried-gl-aggregate",
+			"label": "General liability general aggregate limit shown on your own policy",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Limits you currently carry",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "carried-auto-csl",
+			"label": "Automobile liability combined single limit shown on your own policy",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Limits you currently carry",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "carried-umbrella-limit",
+			"label": "Umbrella or excess liability limit shown on your own policy",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Limits you currently carry",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "carried-professional-limit",
+			"label": "Professional liability or errors and omissions limit shown on your own policy",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Limits you currently carry",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "carried-wc-employers-liability",
+			"label": "Employers liability limit shown on your own workers compensation policy",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Limits you currently carry",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "wc-policy-in-force",
+			"label": "Do you have a workers compensation policy in force today?",
+			"kind": "boolean",
+			"group": "Limits you currently carry",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "professional-liability-in-force",
+			"label": "Do you have a professional liability or errors and omissions policy in force today?",
+			"kind": "boolean",
+			"group": "Limits you currently carry",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "professional-liability-form",
+			"label": "Is that professional liability policy written on an occurrence or a claims-made form?",
+			"help": "The declarations page names the form. Choose unsure if it does not say plainly.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "occurrence",
+					"label": "Occurrence"
+				},
+				{
+					"value": "claims-made",
+					"label": "Claims-made"
+				},
+				{
+					"value": "unsure",
+					"label": "Unsure"
+				},
+				{
+					"value": "not-applicable",
+					"label": "I do not carry this coverage"
+				}
+			],
+			"group": "Limits you currently carry",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "professional-retro-date",
+			"label": "What retroactive date is shown on that claims-made professional liability policy?",
+			"kind": "date",
+			"group": "Limits you currently carry",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "requires-additional-insured",
+			"label": "Does the contract require the other party to be named as an additional insured on your liability policy?",
+			"kind": "boolean",
+			"group": "Endorsements the contract asks for",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "requires-additional-insured-completed-ops",
+			"label": "Does the contract require additional insured status to continue for completed operations, after the work is finished?",
+			"help": "Look for the words completed operations, products-completed operations, or ongoing and completed operations.",
+			"kind": "boolean",
+			"group": "Endorsements the contract asks for",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "requires-waiver-of-subrogation",
+			"label": "Does the contract require a waiver of subrogation in favour of the other party?",
+			"kind": "boolean",
+			"group": "Endorsements the contract asks for",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "requires-primary-non-contributory",
+			"label": "Does the contract require your coverage to be primary and non-contributory?",
+			"kind": "boolean",
+			"group": "Endorsements the contract asks for",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "requires-notice-of-cancellation",
+			"label": "Does the contract require advance written notice to the other party if your policy is cancelled?",
+			"kind": "boolean",
+			"group": "Endorsements the contract asks for",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "evidence-provided",
+			"label": "What evidence of insurance has actually been delivered to the other party so far?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "nothing-sent",
+					"label": "Nothing has been sent"
+				},
+				{
+					"value": "certificate-sent",
+					"label": "A certificate of insurance only"
+				},
+				{
+					"value": "certificate-and-endorsements-sent",
+					"label": "A certificate plus copies of the endorsement forms"
+				},
+				{
+					"value": "unsure",
+					"label": "Unsure what was sent"
+				}
+			],
+			"group": "Evidence and confirmation",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "endorsements-confirmed",
+			"label": "Which of these has your insurer or broker confirmed is actually attached to your policy?",
+			"help": "Confirmed means you have seen the endorsement form or written confirmation, not just a tick on a certificate.",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "additional-insured",
+					"label": "Additional insured for ongoing operations"
+				},
+				{
+					"value": "additional-insured-completed-ops",
+					"label": "Additional insured for completed operations"
+				},
+				{
+					"value": "waiver-of-subrogation",
+					"label": "Waiver of subrogation"
+				},
+				{
+					"value": "primary-non-contributory",
+					"label": "Primary and non-contributory"
+				},
+				{
+					"value": "notice-of-cancellation",
+					"label": "Notice of cancellation to the other party"
+				},
+				{
+					"value": "none-confirmed",
+					"label": "None of these has been confirmed"
+				}
+			],
+			"group": "Evidence and confirmation",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "carrier-confirmed-in-writing",
+			"label": "Do you hold something in writing from the insurer or broker confirming these endorsements are on the policy?",
+			"kind": "boolean",
+			"group": "Evidence and confirmation",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "certificate-names-exact-entity",
+			"label": "Does the evidence name the other party exactly as the contract names them, including any parents, affiliates or agencies the contract lists?",
+			"kind": "boolean",
+			"group": "Evidence and confirmation",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Answer yes or no only. Do not type the other party's name, entity number or address."
+		},
+		{
+			"id": "documents-held",
+			"label": "Which of these documents do you have your own copy of?",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "signed-contract-copy",
+					"label": "The fully signed agreement"
+				},
+				{
+					"value": "insurance-requirements-exhibit",
+					"label": "The insurance requirements exhibit or schedule"
+				},
+				{
+					"value": "certificate-of-insurance-copy",
+					"label": "The certificate of insurance that was issued"
+				},
+				{
+					"value": "endorsement-forms-copy",
+					"label": "The actual endorsement forms with their form numbers and editions"
+				},
+				{
+					"value": "loss-runs",
+					"label": "Current loss runs from your insurer"
+				},
+				{
+					"value": "bond-copy",
+					"label": "The executed bond, if one is required"
+				},
+				{
+					"value": "none",
+					"label": "None of these"
+				}
+			],
+			"group": "Evidence and confirmation",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "requires-indemnity-defense",
+			"label": "Does the contract contain an indemnity, hold harmless or duty to defend obligation running from you to the other party?",
+			"kind": "boolean",
+			"group": "Indemnity and bonds",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "indemnity-wording-type",
+			"label": "Which best describes how far that indemnity reaches?",
+			"help": "Read the clause once and pick the closest option. Choose unsure if the wording is dense.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "comparative-fault-only",
+					"label": "Only to the extent of my own fault"
+				},
+				{
+					"value": "all-claims-regardless-of-fault",
+					"label": "All claims arising from the work regardless of who was at fault"
+				},
+				{
+					"value": "includes-other-party-active-negligence",
+					"label": "Expressly includes the other party's own active negligence or wilful misconduct"
+				},
+				{
+					"value": "unsure",
+					"label": "Unsure what the wording reaches"
+				},
+				{
+					"value": "no-indemnity-clause",
+					"label": "There is no indemnity clause"
+				}
+			],
+			"group": "Indemnity and bonds",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "requires-bond",
+			"label": "Which bonds does the contract require?",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "performance",
+					"label": "Performance bond"
+				},
+				{
+					"value": "payment",
+					"label": "Payment bond"
+				},
+				{
+					"value": "bid",
+					"label": "Bid bond"
+				},
+				{
+					"value": "license",
+					"label": "Contractor license bond"
+				},
+				{
+					"value": "none",
+					"label": "No bond is required"
+				}
+			],
+			"group": "Indemnity and bonds",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "bond-in-place",
+			"label": "Has a surety already executed the bond the contract requires?",
+			"kind": "boolean",
+			"group": "Indemnity and bonds",
+			"required": false,
+			"purpose": "rule-input"
+		}
+	],
+	"rules": [
+		{
+			"id": "gl-aggregate-below-requirement",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "The general aggregate limit you recorded is lower than the general aggregate the contract requires.",
+			"detail": "This is a straight arithmetic comparison of the two numbers you entered. The general aggregate is the most the policy pays in the policy period across all occurrences, and it is a separate figure from the per occurrence limit [S:iso-cg-00-01-04-13] [S:ca-cdi-commercial-insurance-guide].",
+			"action": "Send your broker the contract's insurance exhibit and the aggregate figure it demands, and ask in writing what it would take to record an aggregate at or above that number before the work starts.",
+			"when": {
+				"all": [
+					{
+						"field": "required-gl-aggregate",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "carried-gl-aggregate",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "carried-gl-aggregate",
+						"op": "lt",
+						"value": {
+							"field": "required-gl-aggregate"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-cg-00-01-04-13",
+				"ca-cdi-commercial-insurance-guide"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "gl-occurrence-below-requirement",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "The per occurrence limit you recorded is lower than the per occurrence limit the contract requires.",
+			"detail": "This is a straight arithmetic comparison of the two numbers you entered. The ISO commercial general liability form states the each occurrence limit as the most it will pay for any one occurrence, and states the general aggregate as a separate figure [S:iso-cg-00-01-04-13] [S:ca-cdi-commercial-insurance-guide]. Nothing here says what this contract's wording accepts.",
+			"action": "Ask your broker in writing what your options are for the per occurrence limit, ask the insurer to point you to the limits of insurance section of your own policy so you can read the figure off the form, and ask the other party whether they will accept the limit you carry before you sign anything further.",
+			"when": {
+				"all": [
+					{
+						"field": "required-gl-occurrence",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "carried-gl-occurrence",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "carried-gl-occurrence",
+						"op": "lt",
+						"value": {
+							"field": "required-gl-occurrence"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-cg-00-01-04-13",
+				"ca-cdi-commercial-insurance-guide"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "contract-aggregate-below-contract-occurrence",
+			"kind": "inconsistency",
+			"severity": "medium",
+			"title": "The contract asks for a general aggregate that is lower than the per occurrence limit it asks for in the same clause.",
+			"detail": "An aggregate below the per occurrence figure is internally inconsistent, because the aggregate caps the total that the per occurrence limit can ever draw on [S:iso-cg-00-01-04-13] [S:tdi-cgl-guide]. This is usually a drafting slip in the exhibit rather than a real requirement.",
+			"action": "Write to the other party's contract administrator, repeat both figures back to them, and ask which one controls before you have a certificate issued.",
+			"when": {
+				"all": [
+					{
+						"field": "required-gl-occurrence",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "required-gl-aggregate",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "required-gl-aggregate",
+						"op": "lt",
+						"value": {
+							"field": "required-gl-occurrence"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-cg-00-01-04-13",
+				"tdi-cgl-guide"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "auto-limit-below-requirement",
+			"kind": "inconsistency",
+			"severity": "medium",
+			"title": "The automobile liability limit you recorded is lower than the automobile limit the contract requires.",
+			"detail": "Contract automobile requirements are commonly written as a combined single limit and are a separate figure from the state minimum financial responsibility amount [S:ca-dmv-insurance-requirements] [S:tdi-auto-guide]. The two numbers you entered do not match.",
+			"action": "Ask your broker in writing about the automobile limit the contract names, and confirm which vehicles and which hired or non-owned use the contract expects to be covered.",
+			"when": {
+				"all": [
+					{
+						"field": "required-auto-csl",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "carried-auto-csl",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "carried-auto-csl",
+						"op": "lt",
+						"value": {
+							"field": "required-auto-csl"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-dmv-insurance-requirements",
+				"tdi-auto-guide"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "umbrella-limit-below-requirement",
+			"kind": "inconsistency",
+			"severity": "medium",
+			"title": "The umbrella or excess limit you recorded is lower than the umbrella limit the contract requires.",
+			"detail": "The comparison is arithmetic on the two figures you entered. An umbrella sits above named underlying policies, so both the amount and the list of underlying policies it sits over are part of what the clause is asking for [S:ca-cdi-commercial-insurance-guide] [S:wi-oci-pi-045-commercial-liability-guide].",
+			"action": "Ask your broker in writing which of your policies the umbrella currently sits over, and whether the contract's required schedule of underlying coverages matches that list.",
+			"when": {
+				"all": [
+					{
+						"field": "required-umbrella-limit",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "carried-umbrella-limit",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "carried-umbrella-limit",
+						"op": "lt",
+						"value": {
+							"field": "required-umbrella-limit"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-cdi-commercial-insurance-guide",
+				"wi-oci-pi-045-commercial-liability-guide"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "professional-limit-below-requirement",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "The professional liability limit you recorded is lower than the professional liability limit the contract requires.",
+			"detail": "Public and institutional contracts frequently set the professional liability figure separately from general liability, and the two limits respond to different allegations [S:or-das-professional-liability-clauses] [S:irmi-cgl-professional-liability-exclusion]. The numbers you entered do not match.",
+			"action": "Ask your broker in writing about the professional liability limit the contract names, and ask the other party whether the requirement applies to your whole firm or only to this engagement.",
+			"when": {
+				"all": [
+					{
+						"field": "required-professional-limit",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "carried-professional-limit",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "carried-professional-limit",
+						"op": "lt",
+						"value": {
+							"field": "required-professional-limit"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"or-das-professional-liability-clauses",
+				"irmi-cgl-professional-liability-exclusion"
+			],
+			"relatedQuestion": "general-liability-vs-professional-liability",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "employers-liability-below-requirement",
+			"kind": "inconsistency",
+			"severity": "medium",
+			"title": "The employers liability limit you recorded is lower than the employers liability limit the contract requires.",
+			"detail": "Employers liability is a limit on the workers compensation policy and is distinct from the statutory benefits the policy pays [S:lab-3700] [S:dir-dwc-employer-faqs]. The two figures you entered do not match.",
+			"action": "Ask your broker in writing what the employers liability limit on your current workers compensation policy is and what the contract's figure would require.",
+			"when": {
+				"all": [
+					{
+						"field": "required-wc-employers-liability",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "carried-wc-employers-liability",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "carried-wc-employers-liability",
+						"op": "lt",
+						"value": {
+							"field": "required-wc-employers-liability"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"lab-3700",
+				"dir-dwc-employer-faqs"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "additional-insured-requested-not-confirmed",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The contract requires additional insured status but you have not recorded that any additional insured endorsement is confirmed on your policy.",
+			"detail": "Additional insured status is created by an endorsement attached to the policy, such as the scheduled owners, lessees or contractors forms, and the scope differs between form numbers and editions [S:iso-cg-20-10-04-13] [S:iso-cg-20-10-12-19]. A tick on a certificate does not itself add anyone to a policy [S:tdi-certificates-of-insurance-faq].",
+			"action": "Ask your insurer or broker to send you the actual endorsement, with its form number and edition date, and compare that wording against the clause in the contract.",
+			"when": {
+				"all": [
+					{
+						"field": "requires-additional-insured",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "endorsements-confirmed",
+						"op": "excludes",
+						"value": "additional-insured"
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-cg-20-10-04-13",
+				"iso-cg-20-10-12-19",
+				"tdi-certificates-of-insurance-faq"
+			],
+			"relatedQuestion": "contract-additional-insured-status",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "completed-operations-additional-insured-not-confirmed",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The contract requires additional insured status for completed operations but you have not recorded that a completed operations additional insured endorsement is confirmed.",
+			"detail": "Ongoing operations and completed operations additional insured wordings are different endorsements, and a form that covers only ongoing operations stops responding once the work is finished [S:iso-cg-20-10-04-13] [S:iso-cg-20-37-04-13] [S:iso-cg-20-37-12-19].",
+			"action": "Ask your insurer in writing whether a completed operations additional insured endorsement is attached, name the form number they give you, and put that answer alongside the contract clause.",
+			"when": {
+				"all": [
+					{
+						"field": "requires-additional-insured-completed-ops",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "endorsements-confirmed",
+						"op": "excludes",
+						"value": "additional-insured-completed-ops"
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-cg-20-37-04-13",
+				"iso-cg-20-37-12-19",
+				"iso-cg-20-10-04-13"
+			],
+			"relatedQuestion": "contract-additional-insured-status",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "waiver-of-subrogation-requested-not-confirmed",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The contract requires a waiver of subrogation but you have not recorded that a waiver endorsement is confirmed on your policy.",
+			"detail": "A waiver of subrogation is a specific endorsement giving up the insurer's right to recover from the other party, and public entities that require it commonly publish the endorsement forms they will accept [S:sierra-madre-waiver-of-subrogation-sample-packet] [S:kingcounty-insurance-requirements]. Naming it in a contract does not put it on a policy.",
+			"action": "Ask your insurer or broker for the waiver of subrogation endorsement itself, and ask whether it is needed on the liability policy, the workers compensation policy, or both under this contract.",
+			"when": {
+				"all": [
+					{
+						"field": "requires-waiver-of-subrogation",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "endorsements-confirmed",
+						"op": "excludes",
+						"value": "waiver-of-subrogation"
+					}
+				]
+			},
+			"sourceIds": [
+				"sierra-madre-waiver-of-subrogation-sample-packet",
+				"kingcounty-insurance-requirements"
+			],
+			"relatedQuestion": "contract-additional-insured-status",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "primary-non-contributory-requested-not-confirmed",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The contract requires your coverage to be primary and non-contributory but you have not recorded that a primary and non-contributory endorsement is confirmed.",
+			"detail": "How a policy shares with other insurance is set by its other insurance condition, and changing that order takes an endorsement written for the purpose [S:iso-cg-00-01-04-13] [S:iso-cg-20-01-04-13]. Some additional insured forms carry the wording and some do not.",
+			"action": "Ask your insurer to confirm in writing which endorsement makes your policy primary and non-contributory for this contract, and to send you that form.",
+			"when": {
+				"all": [
+					{
+						"field": "requires-primary-non-contributory",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "endorsements-confirmed",
+						"op": "excludes",
+						"value": "primary-non-contributory"
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-cg-20-01-04-13",
+				"iso-cg-00-01-04-13"
+			],
+			"relatedQuestion": "contract-additional-insured-status",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "notice-of-cancellation-requested-not-confirmed",
+			"kind": "gap",
+			"severity": "medium",
+			"title": "The contract requires advance notice of cancellation to the other party but you have not recorded that any notice endorsement is confirmed.",
+			"detail": "Regulators have addressed what a certificate may and may not say about cancellation notice, and a certificate cannot create a notice obligation that the policy does not contain [S:nydfs-approved-certificates] [S:mn-stat-60a-39].",
+			"action": "Ask your insurer whether a notice of cancellation endorsement naming this party can be attached, and tell the other party in writing what the answer was rather than letting the certificate imply it.",
+			"when": {
+				"all": [
+					{
+						"field": "requires-notice-of-cancellation",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "endorsements-confirmed",
+						"op": "excludes",
+						"value": "notice-of-cancellation"
+					}
+				]
+			},
+			"sourceIds": [
+				"nydfs-approved-certificates",
+				"mn-stat-60a-39"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "certificate-sent-without-endorsement-forms",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "A certificate has been delivered for a contract that requires endorsements, but no endorsement forms went with it.",
+			"detail": "A certificate of insurance is a summary that does not amend, extend or alter the policy, and regulators are explicit that it confers no rights by itself [S:tdi-certificates-of-insurance-faq] [S:mn-stat-60a-39] [S:mn-dli-certificates-of-insurance].",
+			"action": "Ask your broker to send the endorsement forms with their form numbers and edition dates, forward those to the other party alongside the certificate, and keep a copy of what you sent.",
+			"when": {
+				"all": [
+					{
+						"field": "requires-additional-insured",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "evidence-provided",
+						"op": "eq",
+						"value": "certificate-sent"
+					}
+				]
+			},
+			"sourceIds": [
+				"tdi-certificates-of-insurance-faq",
+				"mn-stat-60a-39",
+				"mn-dli-certificates-of-insurance"
+			],
+			"relatedQuestion": "contract-additional-insured-status",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "endorsement-forms-not-held",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "The contract requires endorsements but you do not hold your own copy of the endorsement forms.",
+			"detail": "The endorsement form and its edition date are what a later dispute will turn on, and different editions of the same form number read differently [S:iso-cg-20-10-04-13] [S:iso-cg-20-10-12-19]. Without the form you cannot check the wording against the clause.",
+			"action": "Request the full policy with all endorsements from your insurer, save the file, and note the form numbers and editions next to the contract's requirements.",
+			"when": {
+				"all": [
+					{
+						"field": "requires-additional-insured",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "documents-held",
+						"op": "excludes",
+						"value": "endorsement-forms-copy"
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-cg-20-10-04-13",
+				"iso-cg-20-10-12-19"
+			],
+			"relatedQuestion": "contract-additional-insured-status",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "no-written-confirmation-from-carrier",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "You have marked that you hold nothing in writing from the insurer confirming the endorsements this contract requires.",
+			"detail": "Certificate guidance from state regulators treats the certificate as informational only, so written confirmation from the insurer is the record that the endorsements exist [S:tdi-certificates-of-insurance-faq] [S:nydfs-approved-certificates].",
+			"action": "Ask your broker for a written confirmation from the insurer listing each endorsement by form number and edition, and store it with the signed contract.",
+			"when": {
+				"all": [
+					{
+						"field": "carrier-confirmed-in-writing",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"tdi-certificates-of-insurance-faq",
+				"nydfs-approved-certificates"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "signed-contract-copy-not-held",
+			"kind": "documentation",
+			"severity": "low",
+			"title": "You have signed the agreement but do not hold your own copy of the fully signed document.",
+			"detail": "Every insurance requirement in this module is read off the contract, and underwriting and claims files routinely ask for the contract and its insurance exhibit [S:ca-cdi-commercial-insurance-guide] [S:hylant-loss-runs].",
+			"action": "Ask the other party for a countersigned copy of the agreement including the insurance exhibit, and keep it with your policy documents.",
+			"when": {
+				"all": [
+					{
+						"field": "contract-signed",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "documents-held",
+						"op": "excludes",
+						"value": "signed-contract-copy"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-cdi-commercial-insurance-guide",
+				"hylant-loss-runs"
+			],
+			"relatedQuestion": "commercial-property-underwriting-information",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "evidence-delivered-after-contract-deadline",
+			"kind": "timing",
+			"severity": "high",
+			"title": "The date you delivered evidence of insurance is later than the date the contract set for delivering it.",
+			"detail": "This is date arithmetic on the two dates you entered. Contracts and public entity requirements commonly condition the right to begin work, or to be paid, on evidence arriving by the stated date [S:kingcounty-insurance-requirements] [S:mn-dli-certificates-of-insurance].",
+			"action": "Tell the other party in writing that the evidence arrived after the stated date and ask them to confirm in writing that it is accepted, then ask a lawyer whether the late delivery affects any payment or default provision.",
+			"when": {
+				"all": [
+					{
+						"field": "evidence-due-date",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "certificate-provided-date",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "certificate-provided-date",
+						"op": "gt",
+						"value": {
+							"field": "evidence-due-date"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"kingcounty-insurance-requirements",
+				"mn-dli-certificates-of-insurance"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "work-starts-before-evidence-deadline",
+			"kind": "timing",
+			"severity": "medium",
+			"title": "Your work start date falls before the date the contract sets for delivering evidence of insurance.",
+			"detail": "The dates you entered put boots on the ground before the evidence is due, which leaves the period between the two with nothing on file with the other party [S:kingcounty-insurance-requirements] [S:tdi-certificates-of-insurance-faq].",
+			"action": "Get the certificate and endorsements issued before the start date rather than by the contract deadline, and ask the other party to confirm receipt in writing before anyone starts work.",
+			"when": {
+				"all": [
+					{
+						"field": "work-start-date",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "evidence-due-date",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "work-start-date",
+						"op": "lt",
+						"value": {
+							"field": "evidence-due-date"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"kingcounty-insurance-requirements",
+				"tdi-certificates-of-insurance-faq"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "signed-with-nothing-delivered",
+			"kind": "timing",
+			"severity": "high",
+			"title": "The agreement is signed and no evidence of insurance has been delivered yet.",
+			"detail": "You have recorded the agreement as signed and no evidence of insurance delivered. The endorsements this module asks about are changes only the insurer can make, so they have to be requested and confirmed before a certificate can honestly describe them, and a certificate is informational and does not itself amend or extend the policy [S:tdi-certificates-of-insurance-faq] [S:mn-stat-60a-39]. This rule says nothing about what your signature has already obliged you to do or from when.",
+			"action": "Send your broker the insurance exhibit today, ask for a dated timeline for issuing the certificate and endorsements, and diarise the contract's delivery date.",
+			"when": {
+				"all": [
+					{
+						"field": "contract-signed",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "evidence-provided",
+						"op": "eq",
+						"value": "nothing-sent"
+					}
+				]
+			},
+			"sourceIds": [
+				"tdi-certificates-of-insurance-faq",
+				"mn-stat-60a-39"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "claims-made-retro-date-after-work-start",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "The retroactive date on your claims-made professional liability policy is later than the date your work under this contract starts.",
+			"detail": "A claims-made policy responds by reference to its retroactive date, so work performed before that date sits outside the period the policy describes [S:ny-dfs-ogc-03-07-35] [S:irmi-prior-acts-coverage]. The two dates you entered are in the wrong order.",
+			"action": "Ask your broker in writing what the retroactive date on the policy is and what prior acts wording, if any, applies, and take the answer to the other party before you certify compliance with the professional liability clause.",
+			"when": {
+				"all": [
+					{
+						"field": "professional-liability-form",
+						"op": "eq",
+						"value": "claims-made"
+					},
+					{
+						"field": "professional-retro-date",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "work-start-date",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "professional-retro-date",
+						"op": "gt",
+						"value": {
+							"field": "work-start-date"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"ny-dfs-ogc-03-07-35",
+				"irmi-prior-acts-coverage"
+			],
+			"relatedQuestion": "claims-made-retroactive-date",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "design-work-no-professional-liability",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The work includes design or consulting services and you have recorded no professional liability policy in force.",
+			"detail": "General liability forms carry exclusions aimed at professional services, including designated professional services and contractors professional liability wordings, so the two coverages respond to different allegations [S:iso-cg-21-16-04-13] [S:iso-cg-22-79-04-13] [S:irmi-cgl-professional-liability-exclusion].",
+			"action": "Ask your broker to walk through which of the professional services exclusions appear on your general liability policy, and to explain what a separate professional liability policy would be responding to.",
+			"when": {
+				"all": [
+					{
+						"field": "work-includes-design-or-consulting",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "professional-liability-in-force",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"iso-cg-21-16-04-13",
+				"iso-cg-22-79-04-13",
+				"irmi-cgl-professional-liability-exclusion"
+			],
+			"relatedQuestion": "general-liability-vs-professional-liability",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "professional-required-none-in-force",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The contract names a professional liability limit and you have recorded no professional liability policy in force.",
+			"detail": "The clause asks for a coverage you have not recorded, and public bodies publish their professional liability clauses as separate requirements precisely because general liability does not answer them [S:or-das-professional-liability-clauses] [S:irmi-cgl-professional-liability-exclusion].",
+			"action": "Take the contract's professional liability clause to your broker and ask what the requirement is asking for in form terms, then tell the other party in writing what you can and cannot evidence.",
+			"when": {
+				"all": [
+					{
+						"field": "required-professional-limit",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "professional-liability-in-force",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"or-das-professional-liability-clauses",
+				"irmi-cgl-professional-liability-exclusion"
+			],
+			"relatedQuestion": "general-liability-vs-professional-liability",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "workers-comp-required-none-in-force",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The contract names an employers liability limit and you have recorded no workers compensation policy in force.",
+			"detail": "California requires employers to secure the payment of compensation by one of the specified methods, and licensing bodies check the certificate as a condition of doing the work [S:lab-3700] [S:cslb-workers-comp-requirements] [S:dir-dwc-employer-faqs]. Whether the people doing this work are employees for the purposes of that duty turns on the Labor Code definitions, and section 3352 sets out who is excluded from the statutory definition of employee [S:lab-3352]. That is a legal reading of statute, not something this module can settle.",
+			"action": "Take the employee question to a lawyer first: describe who does this work and how they are engaged, and ask whether they are employees for the purposes of the statute. Then take the answer to your broker for the coverage side, and tell the other party in writing only what you can evidence.",
+			"when": {
+				"all": [
+					{
+						"field": "required-wc-employers-liability",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "wc-policy-in-force",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"lab-3700",
+				"cslb-workers-comp-requirements",
+				"dir-dwc-employer-faqs",
+				"lab-3352"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "workers-comp-classification-question",
+			"kind": "question",
+			"severity": "low",
+			"title": "The contract requires workers compensation evidence, which raises a question about how the work under it is classified on your policy.",
+			"detail": "Classification and payroll assignment are decided under a published classification system administered by the rating organisation and the insurer, not by the contract [S:wcirb-standard-classification-system] [S:wcirb-classification-assignments].",
+			"action": "Describe the actual scope of this contract to your broker and ask which classifications the insurer expects the payroll for it to be reported under, and get the answer in writing.",
+			"when": {
+				"all": [
+					{
+						"field": "required-wc-employers-liability",
+						"op": "isSet",
+						"value": null
+					},
+					{
+						"field": "wc-policy-in-force",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"wcirb-standard-classification-system",
+				"wcirb-classification-assignments"
+			],
+			"relatedQuestion": "workers-comp-class-codes",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "indemnity-clause-goes-to-a-lawyer",
+			"kind": "question",
+			"severity": "high",
+			"title": "The contract contains an indemnity, hold harmless or duty to defend obligation, and how far it reaches is a legal question.",
+			"detail": "Statute limits certain indemnity provisions in construction contracts, and the effect of particular wording is a matter of law rather than of what any policy says [S:ca-civ-2782] [S:ca-civ-code-2782]. An insurance policy and a contractual indemnity are separate promises.",
+			"action": "Take the indemnity and defense clauses to a lawyer before signing, and separately ask your broker how, if at all, your policy responds to a contractual assumption of liability.",
+			"when": {
+				"all": [
+					{
+						"field": "requires-indemnity-defense",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-civ-2782",
+				"ca-civ-code-2782"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "ca-construction-indemnity-statutory-limits",
+			"kind": "question",
+			"severity": "high",
+			"title": "This is California-governed construction work with an indemnity obligation, which is the situation the indemnity statutes address directly.",
+			"detail": "Civil Code section 2782 addresses indemnity provisions in construction contracts and section 2782.05 addresses provisions purporting to make a subcontractor insure or indemnify another party for that party's own conduct [S:ca-civ-2782] [S:ca-civ-2782-05] [S:ca-civ-code-2782-05]. Whether this specific wording falls inside those sections is a legal reading, not a rules question.",
+			"action": "Give a lawyer the indemnity clause, the insurance exhibit, and the additional insured requirement together, and ask specifically how sections 2782 and 2782.05 apply to the wording in front of you.",
+			"when": {
+				"all": [
+					{
+						"field": "governing-law-state",
+						"op": "eq",
+						"value": "ca"
+					},
+					{
+						"field": "work-involves-construction",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "requires-indemnity-defense",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-civ-2782",
+				"ca-civ-2782-05",
+				"ca-civ-code-2782-05"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "indemnity-reaches-other-party-negligence",
+			"kind": "question",
+			"severity": "high",
+			"title": "You have recorded that the indemnity expressly reaches the other party's own active negligence or wilful misconduct.",
+			"detail": "That is the category of provision the California indemnity statutes speak to, including provisions that attempt to reach an indemnitee's own conduct [S:ca-civ-code-2782] [S:ca-civ-2782-05]. Nothing in an insurance module can tell you whether such a clause holds.",
+			"action": "Do not sign until a lawyer has read that clause and told you in writing what it does, and ask them what alternative wording they would propose to the other party.",
+			"when": {
+				"all": [
+					{
+						"field": "indemnity-wording-type",
+						"op": "eq",
+						"value": "includes-other-party-active-negligence"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-civ-code-2782",
+				"ca-civ-2782-05"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "indemnity-wording-not-understood",
+			"kind": "question",
+			"severity": "medium",
+			"title": "You marked the reach of the indemnity clause as unclear, which means the obligation you would be taking on is unknown to you.",
+			"detail": "The reach of an indemnity is what determines what you have promised beyond your policy, and statute constrains some of these provisions in construction contracts [S:ca-civ-2782] [S:ca-civ-code-2782-05].",
+			"action": "Send the indemnity clause to a lawyer and ask them to state in one sentence what you would be agreeing to pay for, then decide.",
+			"when": {
+				"all": [
+					{
+						"field": "requires-indemnity-defense",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "indemnity-wording-type",
+						"op": "eq",
+						"value": "unsure"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-civ-2782",
+				"ca-civ-code-2782-05"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "bond-required-not-executed",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The contract requires a performance bond and you have recorded that no surety has executed one.",
+			"detail": "A bond is a three party undertaking involving a surety, and it is a different instrument from an insurance policy, with its own application and underwriting process [S:nasbp-32-questions-contract-bonding] [S:far-28-102-1] [S:usc-40-3131-miller-act].",
+			"action": "Start a bond application with a surety agent now rather than assuming your insurance broker covers it, and ask what financial statements the surety will want.",
+			"when": {
+				"all": [
+					{
+						"field": "requires-bond",
+						"op": "includes",
+						"value": "performance"
+					},
+					{
+						"field": "bond-in-place",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"nasbp-32-questions-contract-bonding",
+				"far-28-102-1",
+				"usc-40-3131-miller-act"
+			],
+			"relatedQuestion": "surety-bond-vs-insurance",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "public-contract-no-bond-recorded",
+			"kind": "question",
+			"severity": "medium",
+			"title": "This is a government or public entity contract of substantial value and you have recorded that no bond is required.",
+			"detail": "Federal construction contracting has statutory bond requirements above published dollar thresholds, and state and local bodies set their own [S:usc-40-3131-miller-act] [S:far-28-102-1] [S:usc-41-1908-acquisition-thresholds]. Worth checking that the solicitation documents match what you were handed.",
+			"action": "Ask the contracting officer or contract administrator in writing whether performance and payment bonds are required for this award, and get the answer before you price the work. Whether a bond is legally required on this award is a question for a lawyer or the contracting authority, not for your broker.",
+			"when": {
+				"all": [
+					{
+						"field": "agreement-type",
+						"op": "eq",
+						"value": "government-or-public-entity"
+					},
+					{
+						"field": "work-involves-construction",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "contract-value-band",
+						"op": "neq",
+						"value": "under-25k"
+					},
+					{
+						"field": "requires-bond",
+						"op": "includes",
+						"value": "none"
+					}
+				]
+			},
+			"sourceIds": [
+				"usc-40-3131-miller-act",
+				"far-28-102-1",
+				"usc-41-1908-acquisition-thresholds"
+			],
+			"relatedQuestion": "surety-bond-vs-insurance",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "license-bond-required-not-executed",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "The contract requires a contractor license bond and you have recorded that none has been executed.",
+			"detail": "A contractor license bond is a licensing instrument filed with the licensing board and is separate from any contract specific performance or payment bond [S:cslb-license-bonds-fast-facts] [S:ca-bpc-7071-6-contractor-bond].",
+			"action": "Check your licence record for the bond currently on file, and ask a surety agent what the licensing board requires versus what this contract is asking for.",
+			"when": {
+				"all": [
+					{
+						"field": "requires-bond",
+						"op": "includes",
+						"value": "license"
+					},
+					{
+						"field": "bond-in-place",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cslb-license-bonds-fast-facts",
+				"ca-bpc-7071-6-contractor-bond"
+			],
+			"relatedQuestion": "surety-bond-vs-insurance",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "certificate-does-not-name-exact-entity",
+			"kind": "question",
+			"severity": "medium",
+			"title": "You have recorded that the evidence does not name the other party exactly as the contract names them.",
+			"detail": "Certificate guidance from state regulators treats the named holder and named insureds as matters of what the policy and endorsements actually say, and a mismatch between the contract's named parties and the evidence is a question to resolve before it becomes a dispute [S:nydfs-approved-certificates] [S:tdi-certificates-of-insurance-faq].",
+			"action": "Send your broker the exact list of entities the contract names, ask the insurer which of them the endorsement wording reaches, and have the evidence reissued if it does not match.",
+			"when": {
+				"all": [
+					{
+						"field": "certificate-names-exact-entity",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"nydfs-approved-certificates",
+				"tdi-certificates-of-insurance-faq"
+			],
+			"relatedQuestion": "contract-additional-insured-status",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "endorsements-required-none-confirmed-at-all",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The contract asks for endorsements and you have marked that none of them has been confirmed.",
+			"detail": "Every endorsement this section asks about is a change to the policy that only the insurer can make, and none of them exist because a contract or a certificate says so [S:tdi-certificates-of-insurance-faq] [S:mn-stat-60a-39] [S:iso-cg-20-01-04-13].",
+			"action": "Send your broker one message listing each endorsement the contract names and ask for the corresponding form or a plain statement that it is not attached, then take that reply back to the other party.",
+			"when": {
+				"all": [
+					{
+						"field": "endorsements-confirmed",
+						"op": "includes",
+						"value": "none-confirmed"
+					},
+					{
+						"field": "requires-primary-non-contributory",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"tdi-certificates-of-insurance-faq",
+				"mn-stat-60a-39",
+				"iso-cg-20-01-04-13"
+			],
+			"relatedQuestion": "contract-additional-insured-status",
+			"routeToProfessional": "insurer"
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

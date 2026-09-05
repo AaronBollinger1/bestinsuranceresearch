@@ -1,0 +1,55 @@
+{
+	"name": "Umbrella and Excess Underlying Check",
+	"status": "roadmap",
+	"order": 32,
+	"family": [
+		"personal",
+		"commercial"
+	],
+	"lines": [
+		"umbrella"
+	],
+	"summary": "Check the underlying policies and asset context an umbrella placement depends on.",
+	"spec": {
+		"user": "A household or business considering umbrella or excess coverage.",
+		"inputData": [
+			"Underlying policies in force and their limits",
+			"Asset context as bands"
+		],
+		"authoritativeSources": [
+			"Published umbrella form underlying-limit requirements, cited by form and edition"
+		],
+		"privacyBoundary": "No net worth figure, no account information, no addresses. Bands only.",
+		"decisionRules": [
+			"Underlying limit requirements come from a cited form, never from a rule of thumb.",
+			"This tool never states that a risk is eligible, ineligible, standard market, non-admitted, FAIR Plan eligible, bound, or uninsurable. It shows the published pathway criteria and names who actually decides, which is the insurer."
+		],
+		"uncertainty": "Underlying requirements vary by insurer and by form, and a gap in an underlying limit can leave the insured personally exposed.",
+		"output": "A printable underlying-limit worksheet with the gaps identified.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

@@ -1,0 +1,20 @@
+{
+	"title": "Florida Statutes Section 627.7275 (2026) - Motor vehicle liability",
+	"publisher": "The Florida Senate (flsenate.gov)",
+	"url": "https://www.flsenate.gov/laws/statutes/2026/627.7275",
+	"sourceType": "statute",
+	"jurisdiction": "FL",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 627.7275 provides that a motor vehicle insurance policy providing personal injury protection as set forth in section 627.736 may not be delivered or issued for delivery in Florida unless the policy also provides coverage for property damage liability as required by section 324.022."
+	],
+	"updateCadence": "Re-verify each Florida legislative session.",
+	"status": "active",
+	"officialHost": true
+}

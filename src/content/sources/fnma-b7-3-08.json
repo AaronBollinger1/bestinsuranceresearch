@@ -1,0 +1,25 @@
+{
+	"title": "Selling Guide B7-3-08, Mortgagee Clause, Named Insured, and Notice of Cancellation Requirements",
+	"publisher": "Fannie Mae",
+	"url": "https://selling-guide.fanniemae.com/sel/b7-3-08/mortgagee-clause-named-insured-and-notice-cancellation-requirements",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The applicable insurance policy must include or have attached a standard or union mortgagee clause without contribution.",
+		"When Fannie Mae is named, the mortgagee clause must read Fannie Mae, in care of the servicer's name and address.",
+		"The individual property or flood insurance policy must name all persons holding title to the subject property as named insured.",
+		"The property insurance policy must provide for written notice to the named insured and mortgagee or mortgagees before the insurer can cancel the policy.",
+		"This section addresses naming and notice and does not state the amount of coverage required."
+	],
+	"updateCadence": "Fannie Mae updates the Selling Guide on a roughly monthly announcement cycle.",
+	"status": "active",
+	"notes": "Fetched on 2026-08-31. The page displays a December 14, 2022 effective date. Published: 2022-12-14 Effective: 2022-12-14",
+	"officialHost": true
+}

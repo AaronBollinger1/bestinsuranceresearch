@@ -1,0 +1,23 @@
+{
+	"title": "Homeowners 6 - Unit-Owners Form (HO 00 06 05 11)",
+	"publisher": "Insurance Services Office, Inc. (page footers read \"Insurance Services Office, Inc., 2010\"); copy hosted by the Maine Bureau of Insurance",
+	"url": "https://www.maine.gov/pfr/insurance/sites/maine.gov.pfr.insurance/files/inline-files/ho00-06-05-11-homeowners6-unit-owners-form.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The HO 00 06 05 11 form defines \"residence premises\" as \"the unit where you reside shown as the 'residence premises' in the Declarations.\"",
+		"Coverage D.2 Fair Rental Value of the HO 00 06 05 11 form reads: \"If a loss covered under Section I makes that part of the 'residence premises' rented to others or held for rental by you not fit to live in, we cover the fair rental value of such premises less any expenses that do not continue while it is not fit to live in.\" Payment is for the shortest time required to repair or replace such premises.",
+		"Coverage A of the HO 00 06 05 11 form is headed \"Coverage A - Dwelling\" and covers: the alterations, appliances, fixtures and improvements which are part of the building contained within the \"residence premises\"; items of real property which pertain exclusively to the \"residence premises\"; property which is your insurance responsibility under a corporation or association of property owners agreement; and structures owned solely by you, other than the \"residence premises\", at the location of the \"residence premises\"."
+	],
+	"updateCadence": "ISO revises its homeowners program periodically and newer editions exist, so check the form number and edition date printed on your own declarations page and forms list.",
+	"status": "active",
+	"notes": "Downloaded 2026-08-31 (HTTP 200, application/pdf, about 153 KB). Text extracted locally with pdftotext -layout and read directly. Page 1 header reads \"HOMEOWNERS / HO 00 06 05 11 / HOMEOWNERS 6 - UNIT-OWNERS FORM\"; 21 pages; page footers read \"Insurance Services Office, Inc., 2010\". Definition 11, Coverage A.1 and Coverage D.2 were read verbatim. An earlier draft described this as a \"homeowners-family form for condominium and similar unit owners\" with \"a Coverage A for the unit\"; that phrasing appears nowhere in the document and has been replaced with the form's own Coverage A wording. Published: 2011-05-01 Effective: 2011-05-01",
+	"officialHost": false
+}

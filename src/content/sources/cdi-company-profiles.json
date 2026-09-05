@@ -1,0 +1,22 @@
+{
+	"title": "Insurance Company Profiles",
+	"publisher": "California Department of Insurance",
+	"url": "https://www.insurance.ca.gov/01-consumers/120-company/01-coprof/",
+	"sourceType": "government-data",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"A person can search by partial or full company name to retrieve an insurance company profile, and can alternatively search for company profiles by what kind of insurance the company is able to sell in California.",
+		"A CDI company profile includes location, former names of the company, agent for service of process, reference information (license status, company type, state of domicile), lines of insurance the company is authorized to transact, and complaint history.",
+		"CDI points users to the National Association of Insurance Commissioners' Global Receivership Information Database for receivership information from U.S. jurisdictions, and to California's Conservation and Liquidation Office for additional California information."
+	],
+	"updateCadence": "Underlying company data is maintained continuously by CDI.",
+	"status": "active",
+	"officialHost": true
+}

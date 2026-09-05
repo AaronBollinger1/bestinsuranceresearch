@@ -1,0 +1,29 @@
+{
+	"title": "California Civil Code Section 2782 (indemnity provisions in construction contracts)",
+	"publisher": "California Legislative Information, Office of Legislative Counsel",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2782.",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 2782(a) provides that, except as provided in Sections 2782.1, 2782.2, 2782.5, and 2782.6, provisions, clauses, covenants, or agreements contained in, collateral to, or affecting any construction contract that purport to indemnify the promisee against liability for damages for death or bodily injury to persons, injury to property, or any other loss, damage or expense arising from the sole negligence or willful misconduct of the promisee or the promisee's agents, servants, or independent contractors who are directly responsible to the promisee, or for defects in design furnished by those persons, are against public policy and are void and unenforceable.",
+		"Subdivision (a) closes with a proviso that the section shall not affect the validity of any insurance contract, workers' compensation, or agreement issued by an admitted insurer as defined by the Insurance Code.",
+		"Section 2782(b)(1) provides that, except as provided in Sections 2782.1, 2782.2, and 2782.5, provisions, clauses, covenants, or agreements contained in, collateral to, or affecting any construction contract with a public agency entered into before January 1, 2013, that purport to impose on the contractor, or relieve the public agency from, liability for the active negligence of the public agency are void and unenforceable.",
+		"Section 2782(b)(2) states the same rule for any construction contract with a public agency entered into on or after January 1, 2013, and reaches provisions that purport to impose that liability on any contractor, subcontractor, or supplier of goods or services, or to relieve the public agency from it.",
+		"Section 2782(c)(1) provides that, except as provided in subdivision (d) and Sections 2782.1, 2782.2, and 2782.5, provisions, clauses, covenants, or agreements contained in, collateral to, or affecting any construction contract entered into on or after January 1, 2013, with the owner of privately owned real property to be improved and as to which the owner is not acting as a contractor or supplier of materials or equipment to the work, that purport to impose on any contractor, subcontractor, or supplier of goods or services, or relieve the owner from, liability are unenforceable to the extent of the active negligence of the owner, including that of its employees.",
+		"Section 2782(c)(2) provides that for purposes of that subdivision an owner of privately owned real property to be improved includes the owner of any interest therein, other than a mortgage or other interest that is held solely as security for performance of an obligation.",
+		"Section 2782(c)(3) provides that the subdivision shall not apply to a homeowner performing a home improvement project on his or her own single family dwelling.",
+		"The section continues through subdivisions (d) to (i), which address indemnity for residential construction defect claims subject to Title 7, the defense and reimbursement procedure between subcontractors and builders or general contractors, remedies for nonperformance, preservation of equitable indemnity rights, claims against material suppliers and design professionals, and the definition of construction defect. Nothing in this cluster is drawn from those subdivisions.",
+		"The page carries the note 'Amended by Stats. 2011, Ch. 707, Sec. 2. (SB 474) Effective January 1, 2012.'"
+	],
+	"updateCadence": "Amended by legislation; re-check leginfo for the current version before each publication cycle.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: 2012-01-01"
+}

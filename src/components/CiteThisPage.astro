@@ -1,0 +1,52 @@
+---
+import { Copy, Quote } from '@lucide/astro';
+import { bibtexCitation, cslCitation, plainCitation, type CitablePage } from '../lib/cite';
+
+interface Props {
+	page: CitablePage;
+	machinePath?: string;
+}
+
+const { page, machinePath } = Astro.props;
+const formats = [
+	{ key: 'plain', label: 'Plain text', body: plainCitation(page) },
+	{ key: 'bibtex', label: 'BibTeX', body: bibtexCitation(page) },
+	{ key: 'csl', label: 'CSL JSON', body: cslCitation(page) },
+];
+---
+
+<details class="disc cite-box" style="margin-top: var(--s-8)">
+	<summary>
+		<Quote size={15} aria-hidden="true" /> Cite this page
+		<span class="disc-chevron" aria-hidden="true">
+			<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6" /></svg>
+		</span>
+	</summary>
+	<div class="disc-body stack">
+		<p class="mono">
+			These records contain public page facts only: title, operator, dates, canonical URL, and
+			content version. They never include a question, an input, or an identifier.
+		</p>
+		{
+			formats.map((format) => (
+				<div>
+					<h3 style="font-size: var(--text-sm)">{format.label}</h3>
+					<pre id={`cite-${format.key}`}>{format.body}</pre>
+					<div class="cite-copy-row">
+						<button class="btn btn-secondary btn-sm" type="button" data-copy-target={`cite-${format.key}`}>
+							<Copy size={14} aria-hidden="true" />
+							<span data-copy-label>Copy {format.label}</span>
+						</button>
+					</div>
+				</div>
+			))
+		}
+		{
+			machinePath && (
+				<p class="mono">
+					Machine-readable record for this page: <a href={machinePath}>{machinePath}</a>
+				</p>
+			)
+		}
+	</div>
+</details>

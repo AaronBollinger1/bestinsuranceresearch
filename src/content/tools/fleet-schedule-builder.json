@@ -1,0 +1,55 @@
+{
+	"name": "Commercial Auto Fleet Schedule Builder",
+	"status": "roadmap",
+	"order": 35,
+	"family": [
+		"commercial"
+	],
+	"lines": [
+		"commercial-auto"
+	],
+	"summary": "Build the vehicle, driver, radius, and use schedule a commercial auto submission needs.",
+	"spec": {
+		"user": "A business with vehicles preparing a commercial auto submission or renewal.",
+		"inputData": [
+			"Vehicle categories, weight classes, and counts",
+			"Radius of operation bands",
+			"Driver count bands and MVR review practice"
+		],
+		"authoritativeSources": [
+			"FMCSA published filing requirements where applicable"
+		],
+		"privacyBoundary": "No VINs, no driver names, no license numbers, no addresses.",
+		"decisionRules": [
+			"Filing requirements are cited to the federal or state source.",
+			"This tool never states that a risk is eligible, ineligible, standard market, non-admitted, FAIR Plan eligible, bound, or uninsurable. It shows the published pathway criteria and names who actually decides, which is the insurer."
+		],
+		"uncertainty": "Filing obligations depend on operation type and jurisdiction.",
+		"output": "A printable fleet schedule worksheet.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

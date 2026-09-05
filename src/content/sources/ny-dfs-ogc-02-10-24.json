@@ -1,0 +1,23 @@
+{
+	"title": "OGC Opinion No. 02-10-24: Tail Coverage for Medical Malpractice Insurance",
+	"publisher": "New York State Department of Financial Services, Office of General Counsel (issued by the then New York State Insurance Department)",
+	"url": "https://www.dfs.ny.gov/insurance/ogco2002/rg021024.htm",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "NY",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"States that section 73.3(c)(1) of Regulation 121 requires that the extended reporting period coverage required by that Part be made available upon termination of claims-made coverage.",
+		"States that N.Y. Insurance Law section 3436(b)(1) provides tail coverage at no charge only where the insured retires permanently and totally from the practice of medicine and meets specified age and duration requirements.",
+		"Concludes that a physician who retired from private practice but continued in full-time hospital practice had not retired permanently and totally from the practice of medicine and was therefore required to pay for tail coverage."
+	],
+	"updateCadence": "one-time opinion letter; the Department does not routinely revisit or annotate archived OGC opinions",
+	"status": "active",
+	"notes": "Fetched 2026-08-31; opinion number, October 23, 2002 date, question, conclusion, and the Regulation 121 and Insurance Law section 3436(b)(1) references confirmed on the page. Informal OGC opinion letter, not a regulation, and 24 years old with no currency disclaimer on the page. Its scope is medical malpractice coverage under Insurance Law section 3436; it says nothing about tail pricing in other lines and is not cited here for anything broader. Published: 2002-10-23",
+	"officialHost": true
+}

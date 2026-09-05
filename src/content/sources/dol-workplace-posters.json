@@ -1,0 +1,23 @@
+{
+	"title": "Workplace Posters",
+	"publisher": "U.S. Department of Labor",
+	"url": "https://www.dol.gov/general/topics/posters",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Employers are required to display certain posters in the workplace where employees can readily observe them.",
+		"A required poster must be posted prominently where it can be readily seen by employees.",
+		"Posters are identified for the Fair Labor Standards Act, the Occupational Safety and Health Act, the Family and Medical Leave Act, the Employee Polygraph Protection Act, and USERRA, among other laws.",
+		"The elaws Poster Advisor helps an employer determine which posters apply to its business."
+	],
+	"updateCadence": "Reviewed at least every 180 days.",
+	"status": "active"
+}

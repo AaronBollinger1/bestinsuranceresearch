@@ -1,0 +1,681 @@
+{
+	"name": "Group Benefits Renewal Readiness",
+	"summary": "Record what an employer already knows about its own workforce counts, its contribution basis, and its notice dates, and see which published federal obligations attach to those facts and which documents a renewal will ask for. It produces no premium, no plan recommendation, and no determination about any individual.",
+	"family": "health",
+	"lines": [
+		"group-health",
+		"employee-benefits"
+	],
+	"order": 70,
+	"status": "live",
+	"privacyBoundary": "This module refuses to collect any member health information of any kind. It asks for no diagnosis, condition, medication, pregnancy, disability, claim, or treatment. It asks for no individual census row: no member name, date of birth, dependent, salary, or enrolment status. It asks only for counts, bands, a contribution basis, and dates that the employer holds about itself. That boundary is structural rather than advisory, because there is no field on this page capable of carrying a member-level fact, no file input anywhere on this site, and nothing you enter leaves your own browser.",
+	"uncertainty": "It cannot tell you what any plan costs, what any carrier will offer, which plan to choose, whether any employee or dependent is eligible for anything, or whether your plan satisfies any legal requirement. Eligibility, affordability determinations, and plan compliance are decided under the statute and regulations by the employer with its own advisors, and the sections read here are read as published rather than applied. Anything turning on what the law requires of you is a question for an employee benefits lawyer.",
+	"domain": "bestgroupmedical.com",
+	"fields": [
+		{
+			"id": "total-employee-count",
+			"label": "How many people does the business employ in total right now?",
+			"help": "A headcount, not a list. Do not enter names.",
+			"kind": "number",
+			"group": "Workforce counts",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "full-time-equivalent-count",
+			"label": "How many of those average at least 30 hours of service per week?",
+			"help": "The federal definition uses 30 hours per week, or 130 hours in a calendar month as the monthly equivalent. A count only.",
+			"kind": "number",
+			"group": "Workforce counts",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "variable-hour-employees",
+			"label": "Do any employees work hours that vary enough that you are unsure which side of 30 hours they fall on?",
+			"kind": "boolean",
+			"group": "Workforce counts",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "hours-tracking-method",
+			"label": "How are hours of service actually recorded?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "timekeeping-system",
+					"label": "A timekeeping system that records hours for every employee"
+				},
+				{
+					"value": "payroll-only",
+					"label": "Payroll records only"
+				},
+				{
+					"value": "manager-estimate",
+					"label": "A manager estimate or schedule rather than recorded hours"
+				},
+				{
+					"value": "not-tracked",
+					"label": "Hours are not tracked for some employees"
+				}
+			],
+			"group": "Workforce counts",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "prior-year-average-fte",
+			"label": "In the preceding calendar year, what was the average number of full-time employees including full-time equivalents?",
+			"help": "The applicable-large-employer test looks at the preceding calendar year, not at today.",
+			"kind": "number",
+			"group": "Workforce counts",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "coverage-offered",
+			"label": "Is a group health plan currently offered?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes-all-full-time",
+					"label": "Yes, offered to everyone averaging 30 or more hours"
+				},
+				{
+					"value": "yes-some",
+					"label": "Yes, but not to everyone averaging 30 or more hours"
+				},
+				{
+					"value": "no",
+					"label": "No plan is offered"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure"
+				}
+			],
+			"group": "What is offered",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "affordability-basis",
+			"label": "Which affordability safe harbour is the employee contribution set against?",
+			"help": "The regulation names three. Recording which one you use is the point; this module does not test whether you meet it.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "w2",
+					"label": "Form W-2 wages"
+				},
+				{
+					"value": "rate-of-pay",
+					"label": "Rate of pay"
+				},
+				{
+					"value": "federal-poverty-line",
+					"label": "Federal poverty line"
+				},
+				{
+					"value": "none-chosen",
+					"label": "No safe harbour has been chosen"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure which is used"
+				}
+			],
+			"group": "What is offered",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "tipped-or-variable-wages",
+			"label": "Do a meaningful number of employees receive tips or variable wages?",
+			"help": "Variable pay makes a wage-based safe harbour harder to apply than a fixed one.",
+			"kind": "boolean",
+			"group": "What is offered",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "renewal-date",
+			"label": "What is the plan renewal or anniversary date?",
+			"kind": "date",
+			"group": "Dates and notices",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "is-own-plan-administrator",
+			"label": "Is the employer also the plan administrator for continuation-coverage notices?",
+			"help": "The notice period the regulation states differs depending on the answer.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes",
+					"label": "Yes, the employer is the plan administrator"
+				},
+				{
+					"value": "no",
+					"label": "No, a third party administers the plan"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure"
+				}
+			],
+			"group": "Dates and notices",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "qualifying-event-date",
+			"label": "If a continuation-coverage qualifying event has occurred, on what date did it occur?",
+			"help": "A date only. Do not record who it relates to or why.",
+			"kind": "date",
+			"group": "Dates and notices",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "continuation-notice-sent",
+			"label": "Has the continuation-coverage election notice been sent for that event?",
+			"kind": "boolean",
+			"group": "Dates and notices",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "notice-procedures-written",
+			"label": "Are the plan's notice procedures written down?",
+			"help": "The regulation defers to the plan document in several places, so what the document says is operative.",
+			"kind": "boolean",
+			"group": "Dates and notices",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "multiemployer-plan",
+			"label": "Is this a multiemployer plan?",
+			"kind": "boolean",
+			"group": "Dates and notices",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "states-of-operation",
+			"label": "In which states do employees perform work?",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "california",
+					"label": "California"
+				},
+				{
+					"value": "new-york",
+					"label": "New York"
+				},
+				{
+					"value": "texas",
+					"label": "Texas"
+				},
+				{
+					"value": "other-state",
+					"label": "One or more other states"
+				}
+			],
+			"group": "Workforce counts",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "questions-for-broker",
+			"label": "Anything you want to raise at renewal",
+			"help": "Free text. Do not enter any employee name, any health information, or any other personal detail. This stays in your browser and is printed on your brief.",
+			"kind": "text",
+			"group": "Dates and notices",
+			"required": false,
+			"purpose": "brief-only",
+			"privacyNote": "Free text. Do not enter any name, health information, or member detail. Nothing here leaves your browser."
+		}
+	],
+	"rules": [
+		{
+			"id": "full-time-count-exceeds-total",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "More employees are recorded as full-time than are recorded in total.",
+			"detail": "This is arithmetic on your own two entries: the count averaging at least 30 hours of service per week exceeds the total headcount. The federal definition counts an employee as full-time at an average of at least 30 hours of service per week, with 130 hours in a calendar month treated as the monthly equivalent [S:cfr-26-54-4980h-1-lii], so the full-time count is a subset of the whole and cannot be larger than it.",
+			"action": "Correct whichever figure is wrong before you send this to anyone. If the total was entered excluding a group, such as owners or seasonal staff, decide deliberately which population each figure describes and record it the same way both times.",
+			"when": {
+				"all": [
+					{
+						"field": "full-time-equivalent-count",
+						"op": "gt",
+						"value": {
+							"field": "total-employee-count"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-26-54-4980h-1-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "large-employer-threshold-crossed-question",
+			"kind": "question",
+			"severity": "high",
+			"title": "The preceding-year average you recorded reaches the threshold the applicable large employer definition uses.",
+			"detail": "The regulation defines an applicable large employer as one that employed an average of at least 50 full-time employees, including full-time equivalent employees, on business days during the preceding calendar year [S:cfr-26-54-4980h-1-lii]. The figure you recorded for the preceding year is at or above that number. Whether the definition is met for your business is a determination under the statute and its regulations, and it turns on a calculation this module does not perform.",
+			"action": "Take your preceding-year hours data to an employee benefits lawyer or your accountant and ask them to run the applicable large employer calculation properly. Do not conclude from this item that the definition is or is not met.",
+			"when": {
+				"all": [
+					{
+						"field": "prior-year-average-fte",
+						"op": "gte",
+						"value": 50
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-26-54-4980h-1-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "hours-not-tracked-for-full-time-test",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "The full-time test is measured in hours of service, and hours are not being recorded for everyone.",
+			"detail": "The definition is expressed in hours: an average of at least 30 hours of service per week, or 130 hours in a calendar month as the monthly equivalent [S:cfr-26-54-4980h-1-lii]. A manager estimate or an untracked population cannot be measured against an hours threshold after the fact, and the preceding-calendar-year test the applicable large employer definition uses looks backwards [S:cfr-26-54-4980h-1-lii].",
+			"action": "Put hours recording in place for every employee whose hours are currently estimated or untracked, and keep it for the full year. Ask your payroll provider what it already captures before buying anything new.",
+			"when": {
+				"all": [
+					{
+						"field": "hours-tracking-method",
+						"op": "neq",
+						"value": "timekeeping-system"
+					},
+					{
+						"field": "hours-tracking-method",
+						"op": "isSet"
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-26-54-4980h-1-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "accountant"
+		},
+		{
+			"id": "variable-hour-employees-no-tracking",
+			"kind": "gap",
+			"severity": "high",
+			"title": "Employees whose hours vary around the threshold are recorded, and hours are not being tracked by system.",
+			"detail": "You recorded employees whose hours vary enough that their side of the threshold is unclear, and a tracking method other than a timekeeping system. The threshold itself is an average of at least 30 hours of service per week, with 130 hours in a calendar month as the monthly equivalent [S:cfr-26-54-4980h-1-lii]. An average cannot be computed from an estimate, so the population most likely to matter is the one least likely to be measurable.",
+			"action": "Identify that group by role rather than by name, and start recording their hours now. Ask an employee benefits lawyer how the measurement rules apply to them before the next plan year is set.",
+			"when": {
+				"all": [
+					{
+						"field": "variable-hour-employees",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "hours-tracking-method",
+						"op": "neq",
+						"value": "timekeeping-system"
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-26-54-4980h-1-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-affordability-safe-harbour-chosen",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "A plan is offered and no affordability safe harbour is recorded as the basis for the employee contribution.",
+			"detail": "The regulation provides three safe harbors and expresses all of them against the same 9.5 percent threshold: the Form W-2 safe harbor, measured against 9.5 percent of the employee's Form W-2 wages from the employer for the calendar year; the rate of pay safe harbor, measured for an hourly employee against 9.5 percent of 130 hours multiplied by the hourly rate of pay; and the federal poverty line safe harbor, measured against 9.5 percent of a monthly amount determined as the federal poverty line for a single individual for the applicable year, divided by 12 [S:cfr-26-54-4980h-5-lii]. Which one the contribution is set against is a decision, and it is the kind of decision that should exist on paper before a renewal rather than after.",
+			"action": "Ask whoever sets the contribution which of the three the figure was built from, and write the answer down with the plan year it applies to. Nothing here says whether any contribution is affordable; that determination is made under the regulation with your own advisors.",
+			"when": {
+				"all": [
+					{
+						"field": "coverage-offered",
+						"op": "neq",
+						"value": "no"
+					},
+					{
+						"field": "affordability-basis",
+						"op": "eq",
+						"value": "none-chosen"
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-26-54-4980h-5-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "wage-based-safe-harbour-with-variable-pay",
+			"kind": "question",
+			"severity": "medium",
+			"title": "A wage-based affordability safe harbour is recorded alongside tipped or variable wages.",
+			"detail": "You recorded that the contribution is set against Form W-2 wages or against rate of pay, and that a meaningful number of employees receive tips or variable wages. The Form W-2 safe harbor is measured against 9.5 percent of that employee's Form W-2 wages for the calendar year, and the rate of pay safe harbor against 9.5 percent of 130 hours multiplied by the hourly rate of pay [S:cfr-26-54-4980h-5-lii]. Both are wage figures, so both move when pay varies. The federal poverty line safe harbor in the same paragraph is not a wage figure [S:cfr-26-54-4980h-5-lii].",
+			"action": "Ask your benefits advisor and an employee benefits lawyer to confirm which safe harbour the workforce actually supports, and to say so in writing for the plan year. This item raises the question; it does not answer it and it does not test any figure.",
+			"when": {
+				"all": [
+					{
+						"field": "tipped-or-variable-wages",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "affordability-basis",
+						"op": "neq",
+						"value": "federal-poverty-line"
+					},
+					{
+						"field": "affordability-basis",
+						"op": "neq",
+						"value": "none-chosen"
+					},
+					{
+						"field": "affordability-basis",
+						"op": "neq",
+						"value": "not-sure"
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-26-54-4980h-5-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "coverage-not-offered-to-all-full-time",
+			"kind": "question",
+			"severity": "high",
+			"title": "A plan is offered, but not to everyone recorded as averaging 30 or more hours.",
+			"detail": "You recorded that the plan is not offered to everyone averaging at least 30 hours of service per week. That threshold is the one the definition uses, expressed as an average of at least 30 hours per week or 130 hours in a calendar month [S:cfr-26-54-4980h-1-lii]. Whether an offer is required, to whom, and what follows if it is not made are determinations under section 4980H and its regulations, none of which is made here.",
+			"action": "Put the population you are not offering to, described by role rather than by name, in front of an employee benefits lawyer before the plan year is set.",
+			"when": {
+				"all": [
+					{
+						"field": "coverage-offered",
+						"op": "eq",
+						"value": "yes-some"
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-26-54-4980h-1-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "employer-is-administrator-44-day-period",
+			"kind": "timing",
+			"severity": "high",
+			"title": "The employer is also the plan administrator, so the continuation-coverage notice period the regulation states is the 44-day one.",
+			"detail": "Where the employer is also the plan administrator, the regulation provides that the administrator shall furnish to each qualified beneficiary a notice not later than 44 days after either the date coverage is lost or the date the qualifying event occurred, depending on the plan provisions [S:cfr-29-2590-606-4-lii]. That is a single stated period rather than the employer's 30 days to notify the administrator [S:cfr-29-2590-606-2-lii] followed by a fresh 14 days [S:cfr-29-2590-606-4-lii]. Which of the two start dates applies is answered by the plan document, not by the regulation.",
+			"action": "Read your plan document to establish which start date applies, then calendar the 44 days from that date for this event. Record the date you sent the notice.",
+			"when": {
+				"all": [
+					{
+						"field": "is-own-plan-administrator",
+						"op": "eq",
+						"value": "yes"
+					},
+					{
+						"field": "qualifying-event-date",
+						"op": "isSet"
+					},
+					{
+						"field": "continuation-notice-sent",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-29-2590-606-4-lii",
+				"cfr-29-2590-606-2-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "third-party-administrator-thirty-day-handoff",
+			"kind": "timing",
+			"severity": "high",
+			"title": "A third party administers the plan, so the employer's own notice runs to the administrator rather than to the beneficiary.",
+			"detail": "For most plans the employer must furnish the notice to the plan administrator not later than 30 days after the date on which the qualifying event occurred, and for plans under which continuation coverage commences on the date of loss of coverage, not later than 30 days after the date a qualified beneficiary loses coverage due to the qualifying event [S:cfr-29-2590-606-2-lii]. The administrator's own period then runs separately, not later than 14 days after receipt of the notice of qualifying event [S:cfr-29-2590-606-4-lii].",
+			"action": "Send the notice to the administrator now if it has not gone, and record the date you sent it. Ask the administrator to confirm receipt in writing, because their 14 days runs from receipt rather than from the event.",
+			"when": {
+				"all": [
+					{
+						"field": "is-own-plan-administrator",
+						"op": "eq",
+						"value": "no"
+					},
+					{
+						"field": "qualifying-event-date",
+						"op": "isSet"
+					},
+					{
+						"field": "continuation-notice-sent",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-29-2590-606-2-lii",
+				"cfr-29-2590-606-4-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "administrator-role-unknown-with-open-event",
+			"kind": "gap",
+			"severity": "high",
+			"title": "A qualifying event date is recorded and it is not known who the plan administrator is.",
+			"detail": "The period that applies depends on the answer. Where the employer is also the plan administrator the regulation states a 44-day period [S:cfr-29-2590-606-4-lii]; where it is not, the employer owes a notice to the administrator within 30 days [S:cfr-29-2590-606-2-lii] and the administrator owes one to each qualified beneficiary within 14 days of receipt [S:cfr-29-2590-606-4-lii]. Until the role is established, none of the three periods can be calendared.",
+			"action": "Read the plan document to establish who the named plan administrator is. It is usually stated on the first pages, and it is a document you are entitled to have.",
+			"when": {
+				"all": [
+					{
+						"field": "is-own-plan-administrator",
+						"op": "eq",
+						"value": "not-sure"
+					},
+					{
+						"field": "qualifying-event-date",
+						"op": "isSet"
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-29-2590-606-4-lii",
+				"cfr-29-2590-606-2-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "notice-procedures-not-written",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "The plan's notice procedures are not written down, and the regulation defers to the plan document in several places.",
+			"detail": "The 44-day period for an employer that is also the plan administrator runs from either the date coverage is lost or the date the qualifying event occurred, depending on the plan provisions [S:cfr-29-2590-606-4-lii]. A multiemployer plan may provide for a longer notice period than otherwise required, as specified in the plan documents [S:cfr-29-2590-606-2-lii]. Where the regulation defers to the document, the document is the operative text, and an unwritten procedure cannot be the document.",
+			"action": "Write the notice procedures into the plan document, including which start date applies and who sends what to whom. Have an employee benefits lawyer review the wording before it is adopted.",
+			"when": {
+				"all": [
+					{
+						"field": "notice-procedures-written",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-29-2590-606-4-lii",
+				"cfr-29-2590-606-2-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "multiemployer-plan-period-may-differ",
+			"kind": "question",
+			"severity": "medium",
+			"title": "This is recorded as a multiemployer plan, and the regulation allows a longer notice period for that plan type.",
+			"detail": "Multiemployer plans may provide for a longer notice period than the periods otherwise required, as specified in the plan documents [S:cfr-29-2590-606-2-lii]. So the 30-day figure is a floor for this plan type rather than the answer, and the document governs.",
+			"action": "Read the plan document to establish the period it actually specifies, and calendar from that rather than from the regulation's default.",
+			"when": {
+				"all": [
+					{
+						"field": "multiemployer-plan",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-29-2590-606-2-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-renewal-date-recorded",
+			"kind": "documentation",
+			"severity": "low",
+			"title": "No plan renewal or anniversary date is recorded.",
+			"detail": "Several of the decisions this module records are made once per plan year: which affordability safe harbour the contribution is set against, expressed in the regulation against a 9.5 percent threshold for the applicable calendar year [S:cfr-26-54-4980h-5-lii], and the preceding-calendar-year measurement the applicable large employer definition uses [S:cfr-26-54-4980h-1-lii]. Without the date, none of them has a deadline attached.",
+			"action": "Record the renewal or anniversary date from your current plan documents, then work backwards from it for the decisions that have to be made before the plan year is set.",
+			"when": {
+				"all": [
+					{
+						"field": "renewal-date",
+						"op": "isEmpty"
+					},
+					{
+						"field": "coverage-offered",
+						"op": "neq",
+						"value": "no"
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-26-54-4980h-5-lii",
+				"cfr-26-54-4980h-1-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "renewal-inside-sixty-days",
+			"kind": "timing",
+			"severity": "medium",
+			"title": "The recorded renewal date falls within the next sixty days.",
+			"detail": "The affordability safe harbour basis is expressed for the applicable calendar year [S:cfr-26-54-4980h-5-lii], and the full-time measurement the definitions section describes is an average over time rather than a snapshot [S:cfr-26-54-4980h-1-lii]. Both are easier to settle before a plan year is set than after it has started.",
+			"action": "Put the contribution basis, the population being offered coverage, and any open notice obligations on one page now, ahead of the renewal conversation.",
+			"when": {
+				"all": [
+					{
+						"field": "renewal-date",
+						"op": "gte",
+						"value": {
+							"daysFromToday": 0
+						}
+					},
+					{
+						"field": "renewal-date",
+						"op": "lt",
+						"value": {
+							"daysFromToday": 60
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-26-54-4980h-5-lii",
+				"cfr-26-54-4980h-1-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "no-plan-offered-with-fifty-plus-prior-year",
+			"kind": "question",
+			"severity": "high",
+			"title": "No plan is offered, and the preceding-year average recorded reaches the applicable large employer threshold.",
+			"detail": "The definition describes an applicable large employer as one that employed an average of at least 50 full-time employees, including full-time equivalent employees, on business days during the preceding calendar year [S:cfr-26-54-4980h-1-lii]. You recorded a figure at or above 50 for the preceding year and no plan offered. Whether section 4980H imposes anything on your business, and what, is a determination under the statute and regulations that is not made here.",
+			"action": "This is the first question to put to an employee benefits lawyer, with your preceding-year hours data, before anything else on this list.",
+			"when": {
+				"all": [
+					{
+						"field": "coverage-offered",
+						"op": "eq",
+						"value": "no"
+					},
+					{
+						"field": "prior-year-average-fte",
+						"op": "gte",
+						"value": 50
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-26-54-4980h-1-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "multistate-workforce-question",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Employees perform work in more than one state.",
+			"detail": "The sections read for this module are federal ones: the definitions of full-time employee and applicable large employer [S:cfr-26-54-4980h-1-lii], the affordability safe harbors [S:cfr-26-54-4980h-5-lii], and the continuation-coverage notice periods [S:cfr-29-2590-606-2-lii]. States impose their own continuation and insurance requirements on top of the federal ones, and none of those was read here.",
+			"action": "Ask your benefits advisor which state requirements attach in each state where employees work, and get the answer per state rather than in general.",
+			"when": {
+				"all": [
+					{
+						"field": "states-of-operation",
+						"op": "includes",
+						"value": "other-state"
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-26-54-4980h-1-lii",
+				"cfr-26-54-4980h-5-lii",
+				"cfr-29-2590-606-2-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

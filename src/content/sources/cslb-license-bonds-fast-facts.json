@@ -1,0 +1,31 @@
+{
+	"title": "Fast Facts: A Guide to Contractor License Bonds (Rev. 12/22)",
+	"publisher": "California Contractors State License Board (CSLB), Department of Consumer Affairs",
+	"url": "https://cslb.ca.gov/Resources/GuidesAndPublications/ContractorsLicenseBondsGuide.pdf",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"To get a California contractor license, contractors must post a surety bond or cashier's check with CSLB.",
+		"The bond or cashier's check is filed for the benefit of consumers who may be damaged because of defective construction or other violations of contractors' state license law, and for employees who have not been paid wages they are owed.",
+		"Contractors commonly use a surety bond, referred to as a contractor license bond, where a surety company promises the State of California that it will pay damages if the contractor violates contractors' state license law.",
+		"The current amount of the contractor license bond is $25,000; the bond amount is not per job, it is the amount available for all the jobs a contractor takes on during the life of the bond.",
+		"Once the bond has been depleted, a contractor must purchase a new one for the license to remain in effect.",
+		"Those who can make a claim against a contractor bond include any homeowner who contracts for home improvements or for construction of a single-family dwelling damaged because of a violation of contractors' state license law by the licensee; someone damaged as a result of a willful and deliberate violation of that law or by fraud committed by a licensee in the execution or performance of a construction contract; any employee of the licensee damaged by failure to pay wages; and any person or entity damaged as a result of the licensee's failure to pay fringe benefits for eligible employees.",
+		"To file a claim against a bond, a consumer should contact the contractor's surety company and include a detailed written description of the problem, a copy of the contract, and all other pertinent documents and information.",
+		"The guide states that a consumer who is not satisfied with the response of the surety company may take the contractor to small claims court for amounts up to $10,000, and that claims above $10,000 must be filed in a superior court.",
+		"CSLB may require a separate bond, referred to as a disciplinary bond, for contractors who have been disciplined, and some license qualifiers, including responsible managing employees, are required to have a $25,000 bond on file with CSLB.",
+		"The surety company will investigate any claim filed against the bond and CSLB will investigate any complaint filed against the license, and CSLB and the surety company will independently resolve the issues under their respective jurisdictions.",
+		"The document carries the footer Rev. 12/22."
+	],
+	"updateCadence": "Revised periodically by CSLB; the fetched edition is marked Rev. 12/22",
+	"status": "active",
+	"notes": "Downloaded 2026-08-31 and extracted with pdftotext, then read in full. publishedDate is month-only because the document states only Rev. 12/22; the earlier 2022-12-01 value invented a day. The guide's $10,000 small claims figure is quoted here as the guide's own wording and is flagged in the entry as superseded by Code of Civil Procedure section 116.221. The guide does not say the bond is insurance for the contractor, does not describe any reimbursement duty, and does not say CSLB declines to adjudicate bond claims. Published: 2022-12",
+	"officialHost": true
+}

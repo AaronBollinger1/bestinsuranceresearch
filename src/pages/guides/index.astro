@@ -1,0 +1,150 @@
+---
+/**
+ * The guide index.
+ *
+ * One card per line, each carrying the line's own mark so the set is scannable
+ * by glyph before it is read. Grouped by family, because a reader arrives
+ * knowing whether they are asking about a business or a household long before
+ * they know which line answers it.
+ */
+import {
+	Activity,
+	ArrowRight,
+	Building2,
+	Car,
+	FileSignature,
+	Flame,
+	Gavel,
+	Gem,
+	HardHat,
+	HeartPulse,
+	House,
+	KeyRound,
+	Landmark,
+	Lock,
+	Package,
+	ShieldCheck,
+	Truck,
+	Umbrella,
+	Users,
+	Waves,
+} from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { loadCorpus } from '../../lib/corpus';
+import { iconFor } from '../../lib/guide-icons';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
+
+const corpus = await loadCorpus();
+
+const ICONS = {
+	Activity, Building2, Car, FileSignature, Flame, Gavel, Gem, HardHat, HeartPulse,
+	House, KeyRound, Landmark, Lock, Package, ShieldCheck, Truck, Umbrella, Users, Waves,
+} as const;
+
+const guides = corpus.coverages
+	.map((entry) => ({
+		id: entry.id,
+		name: entry.data.name,
+		line: entry.data.line,
+		family: entry.data.family,
+		definition: entry.data.definition.replace(/\[S:[a-z0-9-]+\]/g, '').trim(),
+		sections:
+			7 + (entry.data.stateVariations.length > 0 ? 1 : 0),
+		sources: entry.data.sourceIds.length,
+		Mark: ICONS[iconFor(entry.data.line, entry.data.family)] ?? ShieldCheck,
+	}))
+	.sort((a, b) => a.name.localeCompare(b.name));
+
+const FAMILY_LABEL: Record<string, string> = {
+	commercial: 'For a business',
+	personal: 'For a household',
+	health: 'Benefits and health',
+	life: 'Life',
+};
+const families = [...new Set(guides.map((g) => g.family))];
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Guides', path: '/guides' },
+];
+
+const description = `Plain guides to ${guides.length} lines of insurance. Each one reads the published forms and law: what it covers, what it excludes, what actually goes wrong, what reduces it, and what an underwriter asks. Every statement cites a source you can open.`;
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'Insurance guides',
+		path: '/guides',
+		description,
+		items: guides.map((g) => ({ name: g.name, path: `/guides/${g.id}` })),
+	}),
+);
+---
+
+<BaseLayout title="Insurance guides" description={description} jsonLd={jsonLd} pageType="editorial">
+	<article>
+		<section class="band band-tight">
+			<div class="shell">
+				<Breadcrumbs trail={trail} />
+				<span class="eyebrow">Guides</span>
+				<h1>Insurance guides</h1>
+				<p class="page-lede">{description}</p>
+				<div class="figures" style="margin-top:var(--s-5)">
+					<div class="figure"><b>{guides.length}</b><span>lines covered</span></div>
+					<div class="figure"><b>{corpus.sources.length}</b><span>source records</span></div>
+					<div class="figure"><b>{corpus.liveModules.length}</b><span>tools</span></div>
+				</div>
+			</div>
+		</section>
+
+		{
+			families.map((family) => (
+				<section class="band band-tight" aria-labelledby={`family-${family}`}>
+					<div class="shell">
+						<span class="eyebrow">{FAMILY_LABEL[family] ?? family}</span>
+						<h2 id={`family-${family}`}>{FAMILY_LABEL[family] ?? family}</h2>
+						<div class="card-grid">
+							{guides
+								.filter((g) => g.family === family)
+								.map((g) => (
+									<a class="card guide-card" href={`/guides/${g.id}`}>
+										<span class="guide-mark" aria-hidden="true">
+											<g.Mark size={22} stroke-width={1.6} />
+										</span>
+										<h3 class="card-title">{g.name}</h3>
+										<p>{g.definition.slice(0, 190)}{g.definition.length > 190 ? '…' : ''}</p>
+										<div class="card-foot">
+											<span class="meta">{g.sections} sections &middot; {g.sources} sources</span>
+											<ArrowRight size={15} aria-hidden="true" />
+										</div>
+									</a>
+								))}
+						</div>
+					</div>
+				</section>
+			))
+		}
+
+		<section class="band band-paper">
+			<div class="shell">
+				<span class="eyebrow">How to read these</span>
+				<h2>A guide is a reading, not a summary</h2>
+				<div class="prose">
+					<p>
+						Each guide is the same evidence as its reference page, arranged for someone meeting the
+						line for the first time. Every section is deep-linkable, so a colleague or an answer
+						engine can point at the exact part that matters rather than at the page.
+					</p>
+					<p>
+						None of them prices anything, decides eligibility, or states what your own policy covers.
+						Where a statement depends on the form, the note says so, because that is where the answer
+						actually lives.
+					</p>
+				</div>
+			</div>
+		</section>
+	</article>
+</BaseLayout>

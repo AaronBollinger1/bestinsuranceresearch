@@ -1,0 +1,24 @@
+{
+	"title": "Next Steps After Acceptance: Retrofit Program Guide",
+	"publisher": "California Residential Mitigation Program (CRMP)",
+	"url": "https://www.crmp.org/our-seismic-retrofit-programs/accepted-whats-next",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "secondary",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The page states that the homeowner or contractor must get the building permit after the program acceptance date.",
+		"The page lists, among the documents to be provided, an image of the signed building permit after the retrofit is complete and signed off.",
+		"The page states that the Dashboard is where the homeowner uploads pre-retrofit and post-retrofit documents and photos for review, approval, and payment.",
+		"The page states that the homeowner has six months from the day CRMP approval was received to schedule and complete the EBB or ESS retrofit.",
+		"The page treats a completed residential seismic retrofit as an event evidenced by permit and photographic documentation rather than by the homeowner's recollection."
+	],
+	"updateCadence": "as-revised-by-program",
+	"status": "active"
+}

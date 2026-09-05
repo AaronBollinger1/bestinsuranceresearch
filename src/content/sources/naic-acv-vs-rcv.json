@@ -1,0 +1,23 @@
+{
+	"title": "What's the Difference Between Actual Cash Value Coverage and Replacement Cost Coverage?",
+	"publisher": "National Association of Insurance Commissioners (NAIC)",
+	"url": "https://content.naic.org/article/whats-difference-between-actual-cash-value-coverage-and-replacement-cost-coverage",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Under replacement cost value coverage, the policy will pay the cost to repair or replace damaged property using materials of a like kind and quality.",
+		"Under actual cash value coverage, the policy will pay the cost to repair or replace the home or personal property based on its value, considering its age and wear and tear (depreciation).",
+		"Replacement cost value is different from a home's market value, which includes the price of land and depends on the real estate market."
+	],
+	"updateCadence": "NAIC consumer articles are updated periodically; no cadence is stated on the page.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31. Page shows a publication date of Jan. 2, 2025, so publishedDate is no longer recorded as unknown. The page does not discuss extended or guaranteed replacement cost, inflation protection, or coinsurance, and is not cited for any of those. Published: 2025-01-02",
+	"officialHost": true
+}

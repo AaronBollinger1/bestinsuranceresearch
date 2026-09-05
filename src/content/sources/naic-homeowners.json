@@ -1,0 +1,28 @@
+{
+	"title": "Insurance Topics: Homeowners Insurance",
+	"publisher": "National Association of Insurance Commissioners (NAIC)",
+	"url": "https://content.naic.org/insurance-topics/homeowners-insurance",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"NAIC states that coverage can be for all perils, except those explicitly excluded, or for just those perils specifically named in the policy.",
+		"NAIC states that the limits of coverage for the other coverages are typically calculated as percentages of the dwelling limit.",
+		"NAIC's page states that all homeowners insurance policies cover the structure of the home, including attached structures, fixtures and built-in appliances, and that most policies also cover home contents and personal liability for covered accidents. This is NAIC's general description of the market, not a reading of any particular filed form.",
+		"NAIC states that a home can be insured based on replacement cost, meaning the cost to rebuild, or on actual cash value.",
+		"NAIC states that separate policies for flood or earthquake coverage also may be purchased by those in areas prone to these perils.",
+		"NAIC lists optional add-ons including coverage for unattached structures, personal property, medical payments, additional living expenses, sewer backup, and umbrella liability.",
+		"NAIC states that the lower the deductible amount, the higher the policy premium.",
+		"NAIC publishes A Consumer's Guide to Home Insurance and a home inventory app."
+	],
+	"updateCadence": "NAIC updates its Insurance Topics pages periodically; the page fetched on 2026-08-31 displayed a last updated date of 10/25/2025.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31; both claims read verbatim and the displayed last updated date of 10/25/2025 recorded as publishedDate, correcting an earlier draft that recorded this as unknown. The page does not name HO-3 or any other specific form and does not discuss endorsements, so it is not cited for form-specific behavior. Published: 2025-10-25",
+	"officialHost": true
+}

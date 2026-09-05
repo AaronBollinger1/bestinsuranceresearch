@@ -1,0 +1,30 @@
+{
+	"title": "Homeowners Insurance (consumer information)",
+	"publisher": "National Association of Insurance Commissioners",
+	"url": "https://content.naic.org/consumer/homeowners-insurance.htm",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Dwelling coverage covers damage to the house, and the face amount of the policy is the most the insured will receive if the house is totally destroyed.",
+		"Other structures coverage covers damage to other structures or buildings, such as a detached garage, work shed, or fencing.",
+		"Personal property coverage covers damage to or loss of personal property, which includes household contents and other personal belongings used, owned or worn by the insured and the insured's family.",
+		"Loss of use covers the necessary living expenses, up to the stated limit, incurred by the insured to continue as nearly as possible the normal standard of living when the house cannot be occupied due to a covered loss.",
+		"Personal liability protects the insured against claims arising from accidents to others on property the insured owns or rents.",
+		"Medical payments coverage is limited to an amount per person and per accident for injuries occurring on the insured's premises to persons other than an insured, or elsewhere if caused by the insured, a member of the insured's family, or the insured's pets.",
+		"The page lists as not covered by standard policies: flood, earthquakes, mold, infestations, home office, certain pets, jewelry and art and heirlooms, and detached buildings or pools.",
+		"The deductible is the amount the insured has to pay out of pocket on each claim and applies only to coverage on the house and personal property, and the insured's choice of a higher deductible will reduce the price for homeowners insurance.",
+		"Replacement cost is the amount it would take to replace or rebuild the home or repair damages with materials of similar kind and quality, without deducting for depreciation, while actual cash value is the amount it would take to repair or replace damage after depreciation.",
+		"Older homes may not qualify for preferred programs, and insurers may require older homes to have updated heating, plumbing, wiring and roofing."
+	],
+	"updateCadence": "NAIC revises consumer pages periodically",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: not stated on the page"
+}

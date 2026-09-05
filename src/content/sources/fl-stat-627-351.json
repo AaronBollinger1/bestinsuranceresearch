@@ -1,0 +1,25 @@
+{
+	"title": "Florida Statutes Section 627.351 (2026) - Insurance risk apportionment plans, including Citizens Property Insurance Corporation",
+	"publisher": "The Florida Senate (flsenate.gov)",
+	"url": "https://www.flsenate.gov/laws/statutes/2026/627.351",
+	"sourceType": "statute",
+	"jurisdiction": "FL",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 627.351(6) describes Citizens Property Insurance Corporation as a government entity that is an integral part of the state, and that is not a private insurance company.",
+		"Citizens coverage is for applicants who are in good faith entitled to procure insurance through the voluntary market but are unable to do so.",
+		"A personal lines residential structure with a dwelling replacement cost of $700,000 or more is not eligible for Citizens coverage, except that in counties the office determines lack a reasonable degree of competition a personal lines residential structure with a dwelling replacement cost of less than $1 million remains eligible.",
+		"A personal lines residential structure in the wind-borne debris region with an insured value of $750,000 or more is not eligible for Citizens coverage unless the structure has opening protections.",
+		"A structure newly constructed, or rebuilt, repaired, restored, or remodeled, seaward of the coastal construction control line is not eligible for Citizens coverage.",
+		"Citizens may levy a policyholder surcharge as a uniform percentage of the premium for the policy of up to 15 percent of such premium, and emergency assessments may be levied when surcharges are insufficient."
+	],
+	"updateCadence": "Amended frequently by the Florida Legislature; re-verify against the newest statutes edition each session.",
+	"status": "active",
+	"officialHost": true
+}

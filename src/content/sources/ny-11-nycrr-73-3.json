@@ -1,0 +1,28 @@
+{
+	"title": "11 NYCRR 73.3 - Terms and conditions of claims-made policies",
+	"publisher": "Legal Information Institute, Cornell Law School (unofficial republication of the New York Codes, Rules and Regulations)",
+	"url": "https://www.law.cornell.edu/regulations/new-york/11-NYCRR-73.3",
+	"sourceType": "regulation",
+	"jurisdiction": "NY",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Provides in subdivision (b) that a retroactive date may not be changed during the term of the claims-made relationship and any extended reporting period.",
+		"Requires in subdivision (d) that upon termination of coverage a 60-day automatic extended reporting period, or 90 days in the case of public entity liability insurance policies, must be provided by the insurer.",
+		"Provides in subdivision (f) that, except as provided in subdivision (g) of the section and sections 73.4 and 73.5 of the Part, upon termination of coverage an insurer must offer the insured a three-year extended reporting period.",
+		"Lists in subdivision (g) eight coverages for which the offer is a one-year extended reporting period rather than three years: (1) directors and officers liability, except not-for-profit organizations; (2) employee benefits liability; (3) fiduciary liability; (4) public entity liability; (5) pollution and environmental impairment liability; (6) ski resort liability subject to section 73.2(f); (7) employment practices liability; and (8) policies issued or renewed pursuant to section 73.2(d).",
+		"Requires in subdivision (e)(1) that within 30 days after termination of coverage the insurer advise the insured in writing of the automatic extended reporting period coverage and of the availability of, the premium for, and the importance of purchasing additional extended reporting period coverage.",
+		"Provides in subdivision (e)(2) that upon cancellation due to nonpayment of premium or fraud on the part of the insured, an insurer shall not be required to provide a premium quotation for extended reporting period coverage unless requested by the insured.",
+		"Provides in subdivision (e)(3) that the insured shall have the greater of 60 days from the effective date of termination of coverage or 30 days from the date of mailing or delivery of the advice required by paragraph (1) in which to submit written acceptance of extended reporting period coverage.",
+		"Provides in subdivision (k) that where a claims-made relationship has continued for less than one year, subdivisions (e) through (h) and (j) of the section shall not apply upon termination of coverage for nonpayment of premium or fraud."
+	],
+	"updateCadence": "changes when the New York Department of Financial Services amends Regulation 121; the mirror is republished on Cornell's own schedule",
+	"status": "active",
+	"notes": "Fetched twice on 2026-08-31, the second time to read subdivisions (e), (g) and (k) in full. The earlier draft of this bundle omitted the 'except not-for-profit organizations' carve-out in (g)(1), omitted item (8) of the (g) list, and stated the three-year offer without the (f) opening qualifier; all three are corrected here. Unofficial Cornell LII mirror; official citation is 11 NYCRR 73.3.",
+	"officialHost": false
+}

@@ -1,0 +1,30 @@
+{
+	"title": "Earthquake Insurance (consumer information guide, Form 925, October 2024)",
+	"publisher": "California Department of Insurance",
+	"url": "https://www.insurance.ca.gov/01-consumers/105-type/95-guides/03-res/upload/Earthquake-Insurance-Updated-102924.pdf",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The guide states: 'Generally, homeowners, renters and condominium insurance policies do not cover damage from natural disasters such as earthquakes, floods, and landslides.'",
+		"The guide states: 'Your homeowner's insurance does not cover earthquake damage.'",
+		"The guide states: 'California law says that both homeowners and renter's insurance must cover fire damage that is caused by or follows an earthquake. This means that fire damage is covered, whether or not you have earthquake insurance.'",
+		"The guide states that if you have homeowner's insurance in California your company must offer to sell you earthquake insurance every other year, that 'The offer must be in writing. It must tell you the amounts it covers (the limits), the deductible, and the premium.', and that 'You have 30 days to accept the offer. The 30-day period starts the date the company mails the offer to you. If you do not reply, you are rejecting the offer.'",
+		"The guide states: 'The California Earthquake Authority (CEA) provides most earthquake insurance in California.', 'You cannot purchase earthquake insurance directly from CEA. It is sold by insurance companies that are members of CEA (also known as Participating Insurers).', and 'You must purchase a CEA policy from the same insurance company that you have your residential policy with.'",
+		"The guide describes three main parts of the basic CEA earthquake coverage: Dwelling (Coverage A), Personal Property (Coverage C), and Additional Living Expenses (Coverage D).",
+		"Under the heading 'What Earthquake Insurance Does Not Cover' the guide states 'All insurance policies have exclusions.' and lists as 'Some common earthquake insurance exclusions': Fire, Land, Vehicles, Flood. The list is presented by CDI as examples, not as a complete list.",
+		"The guide states that with CEA insurance older homes may qualify for a discount of up to 20 percent if they have been properly retrofitted, and directs consumers to 'Use the Premium Calculator at www.earthquakeauthority.com to estimate your premium.'",
+		"The guide gives the CDI Consumer Assistance Hotline as 1-800-927-4357 and states that consumers may file a Request for Assistance against the insurer or the agent/broker by mail or online.",
+		"The footer reads 'Form 925 - October 2024'. The guide contains no statement about earthquake deductibles being a percentage of any limit, and no statement about tsunami or about obtaining flood coverage."
+	],
+	"updateCadence": "Reissued periodically by CDI; this edition is marked Form 925 - October 2024.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31; WebFetch could not parse the PDF inline, so the saved file was extracted with pdftotext and read in full. publishedDate is recorded as 2024-10 rather than a specific day, because the only dating on the document itself is the 'October 2024' footer. Published: 2024-10",
+	"officialHost": true
+}

@@ -1,0 +1,26 @@
+{
+	"title": "California Civil Code Section 2782 - void indemnity provisions in construction contracts",
+	"publisher": "California Legislative Information (California Legislature)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2782",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 2782(a) makes void and unenforceable construction contract provisions that purport to indemnify the promisee against liability for damages for death or bodily injury to persons, injury to property, or any other loss, damage or expense arising from the sole negligence or willful misconduct of the promisee or the promisee's agents, servants, or independent contractors who are directly responsible to the promisee, or for defects in design furnished by those persons.",
+		"Section 2782(a) further provides that the section shall not affect the validity of any insurance contract, workers' compensation, or agreement issued by an admitted insurer as defined by the Insurance Code.",
+		"Section 2782(b)(1) voids provisions in construction contracts with a public agency entered into before January 1, 2013 that purport to impose on the contractor, or relieve the public agency from, liability for the active negligence of the public agency.",
+		"Section 2782(b)(2) voids provisions in construction contracts with a public agency entered into on or after January 1, 2013 that purport to impose on any contractor, subcontractor, or supplier of goods or services, or relieve the public agency from, liability for the active negligence of the public agency.",
+		"Section 2782(c)(1) makes provisions in construction contracts entered into on or after January 1, 2013 with the owner of privately owned real property to be improved, and as to which the owner is not acting as a contractor or supplier of materials or equipment to the work, unenforceable to the extent of the active negligence of the owner, including that of its employees.",
+		"The section page shows the history line: Amended by Stats. 2011, Ch. 707, Sec. 2. (SB 474) Effective January 1, 2012."
+	],
+	"updateCadence": "Amended only by the California Legislature; recheck leginfo for current text.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31 from the official leginfo section page; subdivisions (a), (b)(1), (b)(2) and (c)(1) read verbatim, including the admitted-insurer savings clause and the (c)(1) carve-out for an owner not acting as a contractor or supplier of materials or equipment. effectiveDate is the effective date of the last amendment shown on the page (January 1, 2012); January 1, 2013 is a contract-date dividing line inside subdivisions (b) and (c), not the effective date of the section. No subdivision of section 2782 uses the term 'additional insured'. Effective: 2012-01-01",
+	"officialHost": true
+}

@@ -1,0 +1,27 @@
+{
+	"title": "ISO form CG 20 10, edition 04 13, Additional Insured - Owners, Lessees Or Contractors - Scheduled Person Or Organization",
+	"publisher": "Insurance Services Office, Inc. (form text), posted by the Independent Insurance Agents of Texas",
+	"url": "https://www.iiat.org/uploads/files/general/InfoCentral/Commercial-GL/cg2010.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "n/a",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The form carries the designation CG 20 10 04 13 and the footer 'Insurance Services Office, Inc., 2012'.",
+		"The 04 13 edition already contains both Paragraph A provisos found in the 12 19 edition: that the insurance afforded to such additional insured 'only applies to the extent permitted by law', and that where coverage is required by a contract or agreement the insurance 'will not be broader than that which you are required by the contract or agreement to provide for such additional insured.'",
+		"The 04 13 edition contains the same two Paragraph B post-completion exclusions and the same Paragraph C lesser-of cap structure as the 12 19 edition, with a different limits reference: 04 13 reads 'Available under the applicable Limits of Insurance shown in the Declarations' and 'This endorsement shall not increase the applicable Limits of Insurance shown in the Declarations.'",
+		"CG 20 10 04 13 states that Section II Who Is An Insured is amended to include as an additional insured the person or organization shown in its Schedule, but only with respect to liability for bodily injury, property damage or personal and advertising injury caused, in whole or in part, by the named insured's acts or omissions or the acts or omissions of those acting on the named insured's behalf, in the performance of the named insured's ongoing operations for the additional insured at the location designated in the Schedule.",
+		"The endorsement states that the insurance afforded to such additional insured only applies to the extent permitted by law, and that if coverage provided to the additional insured is required by a contract or agreement, the insurance afforded will not be broader than that which the named insured is required by the contract or agreement to provide.",
+		"The endorsement adds exclusions applicable to the additional insured for bodily injury or property damage occurring after all work on the project at the location of the covered operations has been completed, or after that portion of the named insured's work out of which the injury or damage arises has been put to its intended use by any person or organization other than another contractor or subcontractor engaged in performing operations for a principal as a part of the same project.",
+		"The endorsement adds to Section III Limits Of Insurance that where coverage provided to the additional insured is required by a contract or agreement, the most the insurer will pay on behalf of the additional insured is the amount of insurance required by the contract or agreement, or the amount available under the applicable Limits of Insurance shown in the Declarations, whichever is less, and that the endorsement shall not increase the applicable Limits of Insurance shown in the Declarations."
+	],
+	"updateCadence": "ISO revises commercial general liability endorsement editions periodically; the 12 19 edition is later than this one.",
+	"status": "active",
+	"notes": "Downloaded 2026-08-31; the URL returns a PDF, converted with pdftotext -layout and read in full (two pages). Clean, unaltered reproduction. The posting organization is a state agents trade association, not ISO. Cited only to support the edition-to-edition comparison in the variability section; the edition designation gives month and year only, so publishedDate is left unknown. Published: 2013-04",
+	"officialHost": true
+}

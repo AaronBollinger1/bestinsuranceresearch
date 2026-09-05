@@ -1,0 +1,23 @@
+{
+	"title": "Fact Sheet #21: Recordkeeping Requirements under the Fair Labor Standards Act",
+	"publisher": "U.S. Department of Labor, Wage and Hour Division",
+	"url": "https://www.dol.gov/agencies/whd/fact-sheets/21-flsa-recordkeeping",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"An employer must keep specified records for each nonexempt worker, including hours worked each day and total hours worked each workweek.",
+		"Required records include the regular hourly pay rate, the basis on which wages are paid, and total wages paid each pay period.",
+		"Each employer shall preserve for at least three years payroll records, collective bargaining agreements, and sales and purchase records.",
+		"Records on which wage computations are based, such as time cards, piece work tickets, and wage rate tables, should be retained for two years."
+	],
+	"updateCadence": "Reviewed at least every 180 days.",
+	"status": "active"
+}

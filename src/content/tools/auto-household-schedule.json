@@ -1,0 +1,55 @@
+{
+	"name": "Personal Auto Household Schedule Builder",
+	"status": "roadmap",
+	"order": 31,
+	"family": [
+		"personal"
+	],
+	"lines": [
+		"auto"
+	],
+	"summary": "Assemble the driver, vehicle, use, limit, and deductible schedule for a household auto review.",
+	"spec": {
+		"user": "A household preparing for an auto insurance review or shopping exercise.",
+		"inputData": [
+			"Vehicle categories and use",
+			"Driver count and category",
+			"Limit and deductible selections"
+		],
+		"authoritativeSources": [
+			"State financial responsibility statutes for the states of garaging"
+		],
+		"privacyBoundary": "No names, no license numbers, no VINs, no addresses. Local storage only.",
+		"decisionRules": [
+			"State minimums are shown with their statute and effective date.",
+			"This tool never states that a risk is eligible, ineligible, standard market, non-admitted, FAIR Plan eligible, bound, or uninsurable. It shows the published pathway criteria and names who actually decides, which is the insurer."
+		],
+		"uncertainty": "A state minimum is a legal floor, not a recommendation.",
+		"output": "A printable household schedule and limit worksheet.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

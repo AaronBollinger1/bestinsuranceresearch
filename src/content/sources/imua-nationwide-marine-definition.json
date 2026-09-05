@@ -1,0 +1,28 @@
+{
+	"title": "Nationwide Marine Definition",
+	"publisher": "Inland Marine Underwriters Association (IMUA)",
+	"url": "https://www.imua.org/nationwide-marine-definition",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The page states that the first attempt to set forth a Countrywide Marine Definition was made in 1933, when the then National Convention of Insurance Commissioners adopted a resolution.",
+		"The page states that since that time the Definition has been revised on two different occasions, the first revision coming in December 1953 and the most recent revision being made in December 1976.",
+		"The page states that the majority of states have adopted the 1976 Nationwide Marine Definition, although there are some states wherein the 1953 Definition remains applicable and a few which have not adopted either version.",
+		"The page states that the Definition's purpose is to categorize Marine or Inland Marine insurance and does not in any way purport to conclude what classifications are recognized as filed classifications.",
+		"The page states that the Inland Marine Underwriters Association established a standing committee within the Association whose function and responsibility is to monitor, on an industry wide basis, all matters that affect or are otherwise related to the Definition.",
+		"The page carries a State Digest of Applicable Nationwide Marine Definition listing each jurisdiction, the applicable Definition year, and a statutory citation. The California entry reads California, 1953, Ins. Code section 103. The New York entry reads New York, 1953, Ins. Law section 46 (20).",
+		"The State Digest shows that adoptions carry state-specific modifications, with entries and notes covering jurisdictions including Florida, Mississippi, Missouri, Pennsylvania and Puerto Rico.",
+		"The page shows no publication date and no last-updated date."
+	],
+	"updateCadence": "Maintained by IMUA's standing committee on the Definition. No publication or revision date is shown on the page, so the State Digest may lag a state's current law.",
+	"status": "active",
+	"notes": "Re-fetched twice on 2026-08-31, once for the narrative sentences and once specifically for the State Digest entries. All claims above came back in the page text. Important limitation carried into the prose: the State Digest lists New York under the 1953 Definition, while the New York Department of Financial Services circular letter in this bundle describes New York as having adopted the 1976 NAIC definition with exceptions. This bundle does not resolve that conflict and does not use the State Digest as the last word on any state's current law.",
+	"officialHost": true
+}

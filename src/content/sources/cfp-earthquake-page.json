@@ -1,0 +1,21 @@
+{
+	"title": "Earthquake (California FAIR Plan policies page)",
+	"publisher": "California FAIR Plan Association",
+	"url": "https://www.cfpnet.com/policies/earthquake/",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The page states: 'The California FAIR Plan offers earthquake coverage through the California Earthquake Authority (CEA) as a separate policy for customers with a California FAIR Plan Dwelling Fire policy.'",
+		"The page states: 'A stand-alone earthquake policy written by the California FAIR Plan is not available. You must have an in-force California FAIR Plan policy to qualify for CEA coverage through the California FAIR Plan.'"
+	],
+	"updateCadence": "Updated by the FAIR Plan as its product offerings change.",
+	"status": "active",
+	"officialHost": true
+}

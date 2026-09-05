@@ -1,0 +1,388 @@
+---
+import { ArrowRight, Check, CircleCheck, CirclePlus, CircleDot, MapPin, Minus, TriangleAlert, BookOpen } from '@lucide/astro';
+import { sharesLine } from '../../lib/lines';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Callout from '../../components/Callout.astro';
+import CiteThisPage from '../../components/CiteThisPage.astro';
+import CorrectionControl from '../../components/CorrectionControl.astro';
+import Handoff from '../../components/Handoff.astro';
+import SourceLedger from '../../components/SourceLedger.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { createCiter, escapeHtml, stripMarkers } from '../../lib/citations';
+import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, definedTerm, graph, organization, techArticle, website } from '../../lib/schema';
+import { TODAY } from '../../lib/today';
+
+export const getStaticPaths = (async () => {
+	const corpus = await loadCorpus();
+	return corpus.coverages.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
+}) satisfies GetStaticPaths;
+
+const { entry, corpus } = Astro.props;
+const d = entry.data;
+const path = `/insurance/${entry.id}`;
+const machinePath = `${path}.json`;
+
+const sourceIds = idsOf(d.sourceIds);
+const sources = ledgerFor(sourceIds, corpus.sourceById, `coverage "${entry.id}"`);
+const cite = createCiter(sourceIds, `coverage "${entry.id}"`);
+
+const relatedQuestions = d.relatedQuestions
+	.map((ref) => corpus.questionBySlug.get(ref.id))
+	.filter((q): q is NonNullable<typeof q> => Boolean(q));
+const alsoAsked = corpus.questions.filter(
+	(q) => sharesLine([d.line], q.data.lines) && !relatedQuestions.some((r) => r.id === q.id),
+);
+const relatedExamples = corpus.examples.filter((e) => sharesLine([d.line], e.data.lines));
+const relatedStates = corpus.states.filter((s) => d.stateVariations.some((v) => v.state === s.data.code));
+
+const description = stripMarkers(d.definition).slice(0, 300);
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Coverage', path: '/insurance' },
+	{ name: d.name, path },
+];
+
+const sections = [
+	{ id: 'definition', label: 'Definition' },
+	{ id: 'protects', label: 'What it protects' },
+	{ id: 'covers', label: 'What it commonly covers' },
+	{ id: 'excludes', label: 'What it commonly excludes' },
+	{ id: 'limits', label: 'Limits, deductibles, conditions' },
+	{ id: 'endorsements', label: 'Endorsements and connected policies' },
+	{ id: 'underwriting', label: 'Information underwriters request' },
+	...(d.stateVariations.length ? [{ id: 'states', label: 'State variations' }] : []),
+	{ id: 'source-ledger', label: 'Source ledger' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	definedTerm({
+		name: d.name,
+		path,
+		description,
+		setName: 'BestInsurance Research coverage library',
+		setPath: '/insurance',
+	}),
+	techArticle({
+		headline: d.name,
+		path,
+		description,
+		datePublished: d.effectiveDate,
+		dateModified: d.lastReviewed,
+		author: d.author,
+		reviewer: d.reviewer,
+		sections: sections.map((s) => s.label),
+		about: [d.line, d.family],
+		citations: sources.map((s) => ({ name: s.data.title, url: s.data.url, publisher: s.data.publisher })),
+	}),
+);
+---
+
+<BaseLayout title={d.name} description={description} jsonLd={jsonLd} pageType="coverage" machinePath={machinePath}>
+	<article>
+		<header class="band band-first band-paper answer-head">
+			<div class="shell">
+				<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+				<div class="answer-flags">
+					<StatusChip kind={d.reviewState} />
+					<span class="meta">{d.family} lines</span>
+					<span class="meta">Line: {d.line.replace(/-/g, ' ')}</span>
+				</div>
+				<h1>{d.name}</h1>
+				<dl class="answer-dates">
+					<div><dt>Effective</dt><dd><time datetime={d.effectiveDate}>{longDate(d.effectiveDate)}</time></dd></div>
+					<div><dt>Last reviewed</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
+					<div><dt>Author</dt><dd>{d.author}</dd></div>
+					<div><dt>Reviewer</dt><dd>{d.reviewer}</dd></div>
+					<div><dt>Sources</dt><dd><a href="#source-ledger">{sources.length} records</a></dd></div>
+				</dl>
+				<p class="guide-crosslink">
+					<BookOpen size={15} aria-hidden="true" />
+					<span>
+						Meeting this line for the first time? The same evidence, arranged for a first
+						reading: <a href={`/guides/${entry.id}`}>the {d.name} guide</a>.
+					</span>
+				</p>
+			</div>
+		</header>
+
+		<div class="band band-tight">
+			<div class="shell answer-grid">
+				<div>
+					<section aria-labelledby="definition">
+						<h2 id="definition" class="u-visually-hidden">Definition</h2>
+						<div class="direct-answer">
+							<p set:html={cite.inline(d.definition)} />
+						</div>
+					</section>
+
+					<Callout tone="warn">
+						<p>
+							<strong>No policy on this page is your policy.</strong> Coverage is decided by the exact
+							form, endorsements, declarations, and state amendments attached to a specific contract.
+							Every "commonly covers" and "commonly excludes" entry below carries a form caveat for
+							that reason. Read your own declarations and forms, and ask the insurer to confirm.
+						</p>
+					</Callout>
+
+					<section class="answer-section" aria-labelledby="protects">
+						<h2 id="protects">Who or what it is designed to protect</h2>
+						<ul class="fact-list">
+							{d.protects.map((item) => <li><CircleDot size={14} aria-hidden="true" /><p set:html={cite.inline(item)} /></li>)}
+						</ul>
+					</section>
+
+					<section class="answer-section" aria-labelledby="covers">
+						<h2 id="covers">What it commonly covers</h2>
+						<ul class="fact-list">
+							{
+								d.commonlyCovers.map((item) => (
+									<li>
+										<Check size={14} aria-hidden="true" style="color: var(--green-text)" />
+										<p><strong>{item.item}.</strong> <span set:html={cite.inline(item.note)} /></p>
+									</li>
+								))
+							}
+						</ul>
+					</section>
+
+					<section class="answer-section" aria-labelledby="excludes">
+						<h2 id="excludes">What it commonly excludes or limits</h2>
+						<ul class="fact-list">
+							{
+								d.commonlyExcludes.map((item) => (
+									<li>
+										<Minus size={14} aria-hidden="true" style="color: var(--rust)" />
+										<p><strong>{item.item}.</strong> <span set:html={cite.inline(item.note)} /></p>
+									</li>
+								))
+							}
+						</ul>
+					</section>
+
+					<section class="answer-section" aria-labelledby="limits">
+						<h2 id="limits">Limits, deductibles, and conditions</h2>
+						<ul class="fact-list">
+							{d.limitsAndDeductibles.map((item) => <li><CircleDot size={14} aria-hidden="true" /><p set:html={cite.inline(item)} /></li>)}
+						</ul>
+					</section>
+
+					<section class="answer-section" aria-labelledby="endorsements">
+						<h2 id="endorsements">Endorsements and connected policies</h2>
+						{
+							d.endorsements.length > 0 ? (
+								<ul class="fact-list">
+									{d.endorsements.map((item) => (
+										<li>
+											<CirclePlus size={14} aria-hidden="true" style="color: var(--blue-text)" />
+											<p><strong>{item.item}.</strong> <span set:html={cite.inline(item.note)} /></p>
+										</li>
+									))}
+								</ul>
+							) : (
+								<p class="mono">No endorsement is documented for this line yet.</p>
+							)
+						}
+						{
+							d.relatedPolicies.length > 0 && (
+								<p style="margin-top: var(--s-4); font-size: var(--text-sm)">
+									<strong>Commonly written alongside:</strong>{' '}
+									<span set:html={d.relatedPolicies.map((p) => cite.inline(p)).join(', ')} />.
+								</p>
+							)
+						}
+					</section>
+
+					<section class="answer-section" aria-labelledby="exposures">
+						<h2 id="exposures">What actually goes wrong on this line</h2>
+						<p class="mono" style="margin-bottom: var(--s-3)">
+							Exposures, as distinct from what the policy protects. This is the question an
+							underwriter is asking, and the one to answer before judging a limit.
+						</p>
+						<ul class="fact-list">
+							{
+								d.exposures.map((item) => (
+									<li>
+										<TriangleAlert size={14} aria-hidden="true" />
+										<div>
+											<p><strong set:html={cite.inline(item.item)} /></p>
+											<p class="note" set:html={cite.inline(item.note)} />
+										</div>
+									</li>
+								))
+							}
+						</ul>
+					</section>
+
+					<section class="answer-section" aria-labelledby="mitigation">
+						<h2 id="mitigation">What reduces the frequency or the severity</h2>
+						<p class="mono" style="margin-bottom: var(--s-3)">
+							Things a reader can do, each tied to a published source. None of these is a promise
+							about price: whether an insurer credits any of them is an underwriting decision and
+							is not stated here.
+						</p>
+						<ul class="fact-list">
+							{
+								d.claimMitigation.map((item) => (
+									<li>
+										<CircleCheck size={14} aria-hidden="true" />
+										<div>
+											<p><strong set:html={cite.inline(item.item)} /></p>
+											<p class="note" set:html={cite.inline(item.note)} />
+										</div>
+									</li>
+								))
+							}
+						</ul>
+					</section>
+
+					<section class="answer-section" aria-labelledby="underwriting">
+						<h2 id="underwriting">Information an underwriter commonly requests</h2>
+						<p class="mono" style="margin-bottom: var(--s-3)">
+							This is what is usually asked, not a legal requirement and not a promise that supplying
+							it produces an offer.
+						</p>
+						<ul style="columns: 2; column-gap: var(--s-8); font-size: var(--text-sm)">
+							{d.underwritingInputs.map((item) => <li style="margin-bottom: var(--s-2)" set:html={cite.inline(item)} />)}
+						</ul>
+					</section>
+
+					{
+						d.stateVariations.length > 0 && (
+							<section class="answer-section" aria-labelledby="states">
+								<h2 id="states">State variations</h2>
+								<ul class="fact-list">
+									{d.stateVariations.map((variation) => (
+										<li>
+											<MapPin size={14} aria-hidden="true" />
+											<p><strong>{variation.state}.</strong> <span set:html={cite.inline(variation.note)} /></p>
+										</li>
+									))}
+								</ul>
+							</section>
+						)
+					}
+
+					<SourceLedger sources={sources} today={TODAY} />
+
+					<CorrectionControl path={path} title={d.name} pageType="coverage" />
+
+					<CiteThisPage
+						machinePath={machinePath}
+						page={{
+							title: d.name,
+							path,
+							published: d.effectiveDate,
+							reviewed: d.lastReviewed,
+							author: d.author,
+							id: entry.id,
+							pageType: 'coverage',
+						}}
+					/>
+
+					{
+						(relatedQuestions.length > 0 || alsoAsked.length > 0) && (
+							<section class="answer-section" aria-labelledby="related">
+								<h2 id="related">Questions that depend on this line</h2>
+								<div class="rows">
+									{[...relatedQuestions, ...alsoAsked].map((question) => (
+										<a class="row" href={`/questions/${question.id}`}
+											data-event="related_question_opened"
+											data-insurance-family={question.data.family}
+											data-page-type="coverage">
+											<div>
+												<h3 class="row-title">{question.data.question}</h3>
+												<p>{stripMarkers(question.data.shortAnswer).slice(0, 170)}</p>
+												<div class="row-meta">
+													<StatusChip kind={question.data.confidence} />
+													<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+												</div>
+											</div>
+											<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+										</a>
+									))}
+								</div>
+							</section>
+						)
+					}
+
+					{
+						relatedExamples.length > 0 && (
+							<section class="answer-section" aria-labelledby="examples">
+								<h2 id="examples">Worked examples on this line</h2>
+								<div class="card-grid">
+									{relatedExamples.map((example) => (
+										<a class="card" href={`/examples/${example.id}`}>
+											<div class="card-top">
+												<span class="status status-plain">{example.data.label.replace(/-/g, ' ')}</span>
+											</div>
+											<h3 class="card-title">{example.data.title}</h3>
+											<p>{example.data.labelNote}</p>
+											<div class="card-foot">
+												<span class="meta">Read the example</span>
+												<ArrowRight size={15} aria-hidden="true" />
+											</div>
+										</a>
+									))}
+								</div>
+							</section>
+						)
+					}
+
+					<div style="margin-top: var(--s-12)">
+						<Handoff
+							sourcePath={path}
+							family={d.family}
+							line={d.line}
+							pageType="coverage"
+							reason={escapeHtml(
+								'A licensed review can compare this line against the exact form, endorsements, and declarations on a specific policy. Nothing on this page can do that.',
+							)}
+						/>
+					</div>
+				</div>
+
+				<aside class="answer-rail" aria-label="Page contents and related records">
+					<nav class="rail-block" aria-labelledby="on-this-page">
+						<h2 id="on-this-page">On this page</h2>
+						<ol>{sections.map((section) => <li><a href={`#${section.id}`}>{section.label}</a></li>)}</ol>
+					</nav>
+
+					<div class="rail-block">
+						<h2>Evidence</h2>
+						<dl>
+							<div><dt>Primary sources</dt><dd>{sources.filter((s) => s.data.primary).length} of {sources.length}</dd></div>
+							<div><dt>Family</dt><dd>{d.family}</dd></div>
+							<div><dt>Line key</dt><dd><code>{d.line}</code></dd></div>
+						</dl>
+					</div>
+
+					{
+						relatedStates.length > 0 && (
+							<nav class="rail-block" aria-labelledby="rail-states">
+								<h2 id="rail-states">Jurisdictions</h2>
+								<ul>{relatedStates.map((s) => <li><a href={`/states/${s.id}`}>{s.data.name}</a></li>)}</ul>
+							</nav>
+						)
+					}
+
+					<div class="rail-block no-print">
+						<h2>Machine readable</h2>
+						<ul>
+							<li><a href={machinePath}>Page record (JSON)</a></li>
+							<li><a href="/insurance">All coverage lines</a></li>
+							<li><a href="/methodology">How this was produced</a></li>
+						</ul>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</article>
+</BaseLayout>

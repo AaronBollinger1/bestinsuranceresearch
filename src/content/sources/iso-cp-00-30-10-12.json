@@ -1,0 +1,33 @@
+{
+	"title": "Business Income (And Extra Expense) Coverage Form CP 00 30 10 12 (ISO)",
+	"publisher": "Insurance Services Office, Inc. (form text); posted in the Property Insurance Coverage Law Blog forms library (Merlin Law Group)",
+	"url": "https://www.propertyinsurancecoveragelaw.com/wp-content/uploads/2019/05/CP-00-30-10-12-1-1.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"CP 00 30 10 12 is the Business Income (And Extra Expense) Coverage Form, a separate commercial property coverage form from the Building And Personal Property Coverage Form.",
+		"The form defines Business Income as the Net Income, meaning net profit or loss before income taxes, that would have been earned or incurred, plus continuing normal operating expenses incurred, including payroll, and states that for manufacturing risks Net Income includes the net sales value of production.",
+		"The form states that the insurer will pay for the actual loss of Business Income the insured sustains due to the necessary suspension of its operations during the period of restoration, and that the suspension must be caused by direct physical loss of or damage to property at premises described in the Declarations for which a Business Income Limit Of Insurance is shown, with the loss or damage caused by or resulting from a Covered Cause of Loss.",
+		"Extra Expense means necessary expenses the insured incurs during the period of restoration that it would not have incurred if there had been no direct physical loss or damage to property caused by or resulting from a Covered Cause of Loss.",
+		"Period of restoration begins 72 hours after the time of direct physical loss or damage for Business Income Coverage and immediately after the time of direct physical loss or damage for Extra Expense Coverage.",
+		"Period of restoration ends on the earlier of the date when the property at the described premises should be repaired, rebuilt or replaced with reasonable speed and similar quality, or the date when business is resumed at a new permanent location.",
+		"Period of restoration does not include any increased period required due to the enforcement of or compliance with any ordinance or law that regulates the construction, use or repair, or requires the tearing down, of any property.",
+		"Suspension means the slowdown or cessation of the insured's business activities, or that a part or all of the described premises is rendered untenantable, where Rental Value coverage applies.",
+		"The form contains its own Coinsurance Additional Condition, which applies if a coinsurance percentage is shown in the Declarations and measures adequacy against the coinsurance percentage times the sum of Net Income and operating expenses including payroll that would have been earned or incurred for the 12 months following the inception or last previous anniversary date of the policy, whichever is later.",
+		"The Business Income coinsurance calculation multiplies that 12-month net income and operating expense figure by the coinsurance percentage, divides the Limit of Insurance by that figure, and multiplies the total amount of loss by the resulting figure, paying the lesser of that result or the limit of insurance.",
+		"The form's Optional Coverages are Maximum Period Of Indemnity, Monthly Limit Of Indemnity, Business Income Agreed Value, and Extended Period Of Indemnity.",
+		"The Maximum Period Of Indemnity and Monthly Limit Of Indemnity Optional Coverages each state that the Additional Condition, Coinsurance, does not apply.",
+		"Business Income coverage may be written as Business Income Including Rental Value, or as Rental Value only, depending on which option is selected in the Declarations."
+	],
+	"updateCadence": "ISO revises the commercial property program periodically; later editions exist and the waiting period and optional coverage structure can differ by edition, state variant, or carrier form.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Published: 2012-10"
+}

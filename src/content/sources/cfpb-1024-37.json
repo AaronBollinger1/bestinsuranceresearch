@@ -1,0 +1,32 @@
+{
+	"title": "Regulation X, 12 CFR 1024.37 - Force-placed insurance",
+	"publisher": "Consumer Financial Protection Bureau",
+	"url": "https://www.consumerfinance.gov/rules-policy/regulations/1024/37/",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Force-placed insurance means hazard insurance obtained by a servicer on behalf of the owner or assignee of a mortgage loan that insures the property securing such loan.",
+		"The definition excludes hazard insurance required by the Flood Disaster Protection Act of 1973, hazard insurance obtained by a borrower but renewed by the servicer as described in 12 CFR 1024.17(k)(1), (2), or (5), and hazard insurance obtained by a borrower but renewed by the servicer at its discretion if the borrower agrees.",
+		"A servicer may not assess a premium charge or fee related to force-placed insurance unless it has a reasonable basis to believe that the borrower has failed to comply with the mortgage loan contract's requirement to maintain hazard insurance.",
+		"A servicer must deliver or place in the mail a written notice at least 45 days before assessing a force-placed insurance charge.",
+		"The reminder notice must be delivered or mailed at least 30 days after the initial written notice and at least 15 days before the force-placed insurance charge is assessed.",
+		"Except for charges subject to State regulation as the business of insurance and charges authorized by the Flood Disaster Protection Act of 1973, all charges related to force-placed insurance assessed to a borrower by or through the servicer must be bona fide and reasonable.",
+		"Before assessing a charge or fee for renewing or replacing existing force-placed insurance, a servicer must deliver or mail a written notice at least 45 days before assessing that charge or fee.",
+		"Regulation X defines force-placed insurance as hazard insurance obtained by a servicer on behalf of the owner or assignee of a mortgage loan that insures the property securing the loan.",
+		"A servicer may not assess a force-placed insurance premium charge or fee on a borrower unless it has a reasonable basis to believe the borrower has failed to comply with the mortgage loan contract's requirement to maintain hazard insurance.",
+		"A servicer must deliver to the borrower or place in the mail a written notice at least 45 days before assessing a force-placed insurance charge or fee.",
+		"A servicer must deliver a reminder notice at least 15 days before assessing the charge or fee, and may not deliver it until at least 30 days after delivering or mailing the first written notice.",
+		"Within 15 days of receiving evidence that the borrower has had in place the required hazard insurance coverage, the servicer must cancel the force-placed insurance it purchased and refund all force-placed insurance premium charges and related fees paid by the borrower for any period of overlapping coverage."
+	],
+	"updateCadence": "Amended by CFPB rulemaking; check the CFPB regulations page and official interpretations.",
+	"status": "active",
+	"notes": "Fetched on 2026-08-31 and confirmed the definition and its three exclusions, the reasonable-basis condition, the 45-day initial notice, both legs of the reminder-notice timing, the 45-day renewal or replacement notice, and the limitation on charges. The definitional exclusion is phrased on the page as hazard insurance required by the Flood Disaster Protection Act of 1973. The limitation on charges carries its own two carve-outs, for charges subject to State regulation as the business of insurance and for charges authorized by the Flood Disaster Protection Act of 1973; a prior draft stated the bona fide and reasonable rule without them.",
+	"officialHost": true
+}

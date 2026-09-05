@@ -1,0 +1,31 @@
+{
+	"title": "13 CFR 115.10 - Definitions (SBA Surety Bond Guarantee Program)",
+	"publisher": "Cornell Legal Information Institute (reproducing the Code of Federal Regulations)",
+	"url": "https://www.law.cornell.edu/cfr/text/13/115.10",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"These are definitions in 13 CFR part 115, the SBA Surety Bond Guarantee Program; they define the terms for that program.",
+		"Principal means, in the case of a Bid Bond, the Person bidding for the award of a Contract, and in the case of a Final Bond or an Ancillary Bond, the Person primarily liable to complete the Contract or to make Contract-related payments.",
+		"Obligee means, in the case of a Bid Bond, the Person requesting bids for the performance of a Contract, and in the case of a Final Bond, the Person who has contracted with a Principal for the completion of the Contract and to whom the primary obligation of the Surety runs in the event of a breach by the Principal.",
+		"Surety means a company which, under the terms of a Bid Bond, agrees to pay a sum of money to the Obligee if the Principal breaches the conditions of the bond; under the terms of a Performance Bond, agrees to pay a sum of money or to incur the cost of fulfilling the terms of a Contract; and under the terms of a Payment or an Ancillary Bond, agrees to make payment to all who have a right of action against such bond.",
+		"The term Surety includes an agent, independent agent, underwriter, or any other company or individual empowered to act on behalf of the Surety.",
+		"A Bid Bond is a bond conditioned upon the bidder on a Contract entering into the Contract and furnishing the required Payment and Performance Bonds.",
+		"A Performance Bond is a bond conditioned upon the completion by the Principal of a Contract in accordance with its terms.",
+		"A Payment Bond is a bond conditioned upon the payment by the Principal of money to persons who have a right of action against such bond, and a Payment Bond cannot require the Surety to pay an amount which exceeds the claimant's actual loss or damage.",
+		"A Final Bond means a Performance Bond and/or a Payment Bond.",
+		"An Ancillary Bond is a bond incidental and essential to the performance of a Contract for which there is a guaranteed Final Bond.",
+		"No Person other than a Federal department or agency may be named co-Obligee or Obligee on a bond or a rider unless bound by the Contract to the same extent as the original Obligee, and adding co-Obligees may not increase the aggregate liability of the Surety under the bond."
+	],
+	"updateCadence": "Amended through the Federal Register as SBA revises part 115",
+	"status": "active",
+	"notes": "Re-fetched 2026-08-31 and read the definitions directly. The earlier draft flattened the bond-type branches in the Principal, Obligee, and Surety definitions and attributed a general-liability, property, and workers compensation allocation to this section; the section says nothing about those lines of insurance, and that attribution has been removed. The definitions are scoped to SBA part 115 and are used here only as a clear statement of the three roles and of what each bond type is conditioned on. The official eCFR copy at ecfr.gov redirects to unblock.federalregister.gov and could not be fetched, so the Cornell LII reproduction is used.",
+	"officialHost": false
+}

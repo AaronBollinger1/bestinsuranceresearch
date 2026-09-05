@@ -1,0 +1,21 @@
+{
+	"title": "Types of Insurance",
+	"publisher": "California Department of Insurance",
+	"url": "https://www.insurance.ca.gov/01-consumers/105-type/",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"CDI publishes consumer information organized by line of insurance, including Automobile, Health, Homeowner/Residential, Home Protection Contracts, Life & Annuity, Long-Term Care, Medicare Supplement, Pet, TNC Ride-hailing, and Workers' Compensation.",
+		"The page also carries an Information Guides entry alongside the line categories."
+	],
+	"updateCadence": "Guides are revised periodically by CDI.",
+	"status": "active",
+	"officialHost": true
+}

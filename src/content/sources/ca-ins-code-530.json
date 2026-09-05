@@ -1,0 +1,21 @@
+{
+	"title": "California Insurance Code Section 530",
+	"publisher": "California Legislative Information (California Legislature)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=530.&lawCode=INS",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Insurance Code section 530 states that an insurer is liable for a loss of which a peril insured against was the proximate cause, although a peril not contemplated by the contract may have been a remote cause of the loss, but is not liable for a loss of which the peril insured against was only a remote cause."
+	],
+	"updateCadence": "Enacted by Stats. 1935, Ch. 145; verify current text at leginfo.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Published: 1935-01-01"
+}

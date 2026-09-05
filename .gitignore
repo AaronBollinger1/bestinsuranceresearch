@@ -1,0 +1,35 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+/* The repo this deploys from is public, and the standing rule is that keys
+# The repo this deploys from is public and keys live in .env.local, a name this
+# file did not cover, so the first one created would have been committed.
+#   anyone created one it would have been committed to a public repository. */
+.env.local
+.env*.local
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+
+# Excluded from the first push because a local deny rule prevents reading it,
+# and this repo is public. Nothing unread gets published. Re-add deliberately
+# once its contents are confirmed to be placeholders.
+.env.example

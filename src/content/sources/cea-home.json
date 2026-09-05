@@ -1,0 +1,22 @@
+{
+	"title": "California Earthquake Authority home page",
+	"publisher": "California Earthquake Authority",
+	"url": "https://www.earthquakeauthority.com/",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"CEA presents earthquake insurance in four residential categories: homeowners, condo unit owners, mobilehome and manufactured homeowners, and renters.",
+		"The page states: Since 1996, CEA has been encouraging California homeowners, mobilehome owners, condo-unit owners and renters to reduce their risk of earthquake damage and loss through education, mitigation and insurance.",
+		"The home page displays no telephone number and displays the 400 Capitol Mall, Suite 1200, Sacramento, CA 95814 address in its footer."
+	],
+	"updateCadence": "Continuously maintained CEA home page.",
+	"status": "active",
+	"officialHost": true
+}

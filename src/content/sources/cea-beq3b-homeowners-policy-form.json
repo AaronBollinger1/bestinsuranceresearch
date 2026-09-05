@@ -1,0 +1,31 @@
+{
+	"title": "Basic Earthquake Policy - Homeowners, Form BEQ-3B (01-2026 edition), sample policy",
+	"publisher": "California Earthquake Authority",
+	"url": "https://www.earthquakeauthority.com/sites/default/files/documents/2025/basic-earthquake-policy-homeowners-beq3b-01-2026.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "CA",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Every page carries the form line 'BEQ-3B (01-2026 edition)'; the sample runs 26 pages. A notice page states 'THE LANGUAGE OF THIS POLICY HAS BEEN APPROVED BY THE CALIFORNIA INSURANCE COMMISSIONER'.",
+		"The AGREEMENT states: 'This policy is issued by the California Earthquake Authority (CEA), a public instrumentality of the State of California established and authorized by law to transact insurance in California as necessary to sell policies of basic residential earthquake insurance.'",
+		"Definition 12 defines 'Earthquake' as 'a vibration-generating rupture event caused by displacement within the earth's crust through release of strain associated with tectonic processes and includes effects such as ground shaking, liquefaction, and damaging amplification of ground motion', and ends 'Earthquake does not mean or include tsunami or volcanic eruption.'",
+		"Definition 11 states: 'Dwelling does not include land, whether or not beneath the residential structure or mobile home, even if required for support.'",
+		"LOSSES EXCLUDED Item 1 excludes 'Fire or explosion.'",
+		"LOSSES EXCLUDED Item 2 excludes water damage including 'Flood, precipitation (including but not limited to rain, snow, hail, or sleet), or surface water; waves, tsunami, or tidal water; rupture of a dam, levee, berm, or sea wall; overflow of a natural or man-made body of water; or spray from any of these' and water below the surface of the ground, subject to write-backs for earthquake-caused release of water from water heaters, refrigerators, or water supply pipes within the dwelling; displacement of water from an aquarium, drinking water container or dispenser, swimming pool, decorative pool, spa, or hot tub; release of water from municipal or other water supply lines or of water or sewage from sewers or drains; and precipitation entering a building through an opening in a roof or wall that is the direct result of earthquake damage.",
+		"LOSSES EXCLUDED Item 5 excludes 'Earth movement, settling of land, land sliding, subsidence, mudflows, or earth sinking, rising or shifting' unless it 'is induced by, and would not have occurred in the absence of, an earthquake that commences during the policy period as part of a seismic event that commences during the policy period' and 'causes loss that manifests within one year after the earthquake that caused the loss.'",
+		"Property Not Covered under Coverage A and Coverage B, Items 1 and 2, excludes 'Land, including land underlying the dwelling' and the cost of land stabilization, stabilization structures, and associated engineering, in each case except as provided under OTHER COVERAGES Item 3, 'Land'. OTHER COVERAGES Item 3 pays up to $10,000, as a sublimit of the combined single limit for Coverage A and Coverage B, to restore or stabilize land necessary to support the dwelling where stabilization is necessary for habitability.",
+		"IMPORTANT NOTICES Item 2, Companion Policy Requirement, states that during the entire policy period the insured must keep in force a companion policy providing fire insurance for the same property, issued by the same participating insurer, and that 'if no companion policy is in effect at the time of loss, this CEA policy is void and no payment will be made under this CEA policy.' The AGREEMENT Item 5 states the same requirement.",
+		"The DEDUCTIBLE CLAUSE states: 'The deductible amount is a percentage of the combined single limit of insurance for COVERAGE A: DWELLING and COVERAGE B: EXTENSIONS TO DWELLING.' Coverage D Loss of Use is not subject to a deductible, nor is the first $1,500 of coverage under OTHER COVERAGES Item 1, Emergency Repairs, and the deductible amount does not reduce any limit of insurance stated on the declarations.",
+		"IMPORTANT NOTICES Item 3 states that the policy does not have a 'guaranteed replacement cost' or 'extended replacement cost' feature and that the combined single limit for Coverage A and Coverage B is not modified by any such feature in the homeowners or other companion policy."
+	],
+	"updateCadence": "CEA refiles its policy forms periodically; this edition is designated 01-2026 and supersedes the 01-2019 sample previously published.",
+	"status": "active",
+	"notes": "Replaces the 01-2019 sample cited in the draft, which is a superseded edition. Fetched 2026-08-31; WebFetch could not parse the PDF inline, so the saved file was extracted with pdftotext and the DEFINITIONS, DEDUCTIBLE CLAUSE, IMPORTANT NOTICES, COVERAGES, OTHER COVERAGES, and LOSSES EXCLUDED sections were read directly. effectiveDate is 'unknown' because the sample states an edition designation but no filing effective date. Published: 2026-01",
+	"officialHost": true
+}

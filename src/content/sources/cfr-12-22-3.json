@@ -1,0 +1,24 @@
+{
+	"title": "12 CFR 22.3 - Requirement to purchase flood insurance where available",
+	"publisher": "Legal Information Institute, Cornell Law School (republishing the Code of Federal Regulations)",
+	"url": "https://www.law.cornell.edu/cfr/text/12/22.3",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"A national bank or Federal savings association shall not make, increase, extend, or renew any designated loan unless the building or mobile home and any personal property securing the loan is covered by flood insurance for the term of the loan.",
+		"The amount of insurance must be at least equal to the lesser of the outstanding principal balance of the designated loan or the maximum limit of coverage available for the particular type of property under the Act.",
+		"A national bank or Federal savings association that acquires a loan from a mortgage broker or other entity through table funding shall be considered to be making a loan for purposes of this part.",
+		"By its own terms this part binds national banks and Federal savings associations."
+	],
+	"updateCadence": "Amended by the federal banking agencies through joint rulemaking.",
+	"status": "active",
+	"notes": "Fetched Cornell LII's text on 2026-08-31 and read paragraphs (a) and (b). ecfr.gov returned a redirect that could not be read, so LII is used as the text source. The content is primary law; the publisher is a law-school republisher of the official text, not the issuing agency. This is the OCC rule. Other federal banking agencies maintain their own parallel rules, which were not fetched and are not described here.",
+	"officialHost": false
+}

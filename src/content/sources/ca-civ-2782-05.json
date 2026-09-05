@@ -1,0 +1,28 @@
+{
+	"title": "California Civil Code Section 2782.05 - limits on subcontractor insure-or-indemnify clauses, with an additional insurance endorsement exception",
+	"publisher": "California Legislative Information (California Legislature)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2782.05",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 2782.05(a) applies, except as provided in subdivision (b), to construction contracts and amendments entered into on or after January 1, 2013.",
+		"Section 2782.05(a) makes provisions that purport to insure or indemnify, including the cost to defend, a general contractor, construction manager, or other subcontractor, by a subcontractor, against liability for claims of death or bodily injury to persons, injury to property, or any other loss, damage, or expense void and unenforceable to the extent the claims arise out of, pertain to, or relate to the active negligence or willful misconduct of that general contractor, construction manager, or other subcontractor, or their other agents, other servants, or other independent contractors who are responsible to them, or for defects in design furnished by those persons, or to the extent the claims do not arise out of the scope of work of the subcontractor pursuant to the construction contract. The voiding operates to the extent stated, not as an automatic voiding of the entire clause.",
+		"Section 2782.05(b)(1) excepts contracts for residential construction subject to any part of Title 7 (commencing with Section 895) of Part 2 of Division 2.",
+		"Section 2782.05(b)(2) excepts direct contracts with a public agency governed by subdivision (b) of Section 2782, and (b)(3) excepts direct contracts with the owner of privately owned real property to be improved that are governed by subdivision (c) of Section 2782.",
+		"Section 2782.05(b)(4) excepts any wrap-up insurance policy or program, and (b)(5) excepts a cause of action for breach of contract or warranty that exists independently of an indemnity obligation.",
+		"Section 2782.05(b)(6) excepts a provision in a construction contract that requires the promisor to purchase or maintain insurance covering the acts or omissions of the promisor, including additional insurance endorsements covering the acts or omissions of the promisor during ongoing and completed operations.",
+		"Section 2782.05(c) provides that, notwithstanding any choice-of-law rules that would apply the laws of another jurisdiction, the law of California shall apply to every contract to which the section applies.",
+		"The section page shows the history line: Added by Stats. 2011, Ch. 707, Sec. 3. (SB 474) Effective January 1, 2012."
+	],
+	"updateCadence": "Amended only by the California Legislature; recheck leginfo for current text.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31 from the official leginfo section page in two passes: the opening and the closing of subdivision (a) were read verbatim, including the 'to the extent' limiter and the scope-of-work prong, and the full (b)(1) through (b)(6) list and subdivision (c) were read verbatim. effectiveDate is the effective date shown on the page for the section as added; January 1, 2013 is the contract-date trigger inside subdivision (a). Effective: 2012-01-01",
+	"officialHost": true
+}

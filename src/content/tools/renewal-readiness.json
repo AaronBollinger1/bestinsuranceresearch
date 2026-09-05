@@ -1,0 +1,389 @@
+{
+	"name": "Renewal Readiness Checklist",
+	"status": "live",
+	"order": 2,
+	"family": [
+		"personal",
+		"commercial"
+	],
+	"lines": [
+		"homeowners",
+		"landlord",
+		"auto",
+		"general-liability",
+		"commercial-property",
+		"workers-compensation"
+	],
+	"route": "/tools/renewal-readiness",
+	"summary": "Work out which documents, schedules, and changes matter before a renewal, and how far ahead each one needs attention.",
+	"spec": {
+		"user": "A household or business owner approaching a renewal who wants the conversation to be about decisions rather than about missing paperwork.",
+		"inputData": [
+			"Personal or commercial context",
+			"Which lines are in force",
+			"Which items are already gathered",
+			"Free-text notes, stored locally only"
+		],
+		"authoritativeSources": [
+			"California Department of Insurance consumer guides on renewal and valuation",
+			"NAIC consumer material",
+			"WCIRB and NCCI published material on payroll and classification for the workers compensation items"
+		],
+		"privacyBoundary": "Everything entered stays in the browser via local storage. No upload, no server call, no account, no contact capture, and no document ingestion.",
+		"decisionRules": [
+			"Items are filtered by the lines the user says are in force, so the list stays short enough to actually finish.",
+			"Each item states how far ahead of the renewal date it usually needs attention.",
+			"Change triggers are separated from routine documents, because a change is what actually moves a renewal.",
+			"The tool never states that anything has been submitted to or reviewed by an insurer."
+		],
+		"uncertainty": "Timing is common practice, not a rule. An insurer or a state may impose different notice periods, and the policy itself controls.",
+		"output": "A printable readiness checklist with what is gathered, what is outstanding, and what needs attention first.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [
+		{
+			"group": "Timing",
+			"label": "Put the California residential notice dates on the calendar first",
+			"detail": "For a California residential property policy, Insurance Code Section 678(a) requires the insurer, at least 45 days before the policy expiration, to deliver or mail either an offer of renewal contingent upon payment of the premium stated in the offer, or a notice of nonrenewal, and Section 678(b) keeps the existing policy in effect with no change in its terms and conditions for 45 days from the date that notice is delivered or mailed if the insurer misses the deadline [S:ca-ins-code-678]. Scope: Section 678 sits in the article whose applicability is set by Insurance Code Section 675, which does not reach automobile insurance or workers' compensation insurance and does not reach policies primarily insuring commercial or industrial enterprise risks [S:ca-ins-code-675]. Confirm the article applies to the policy at hand.",
+			"kind": "schedule",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners",
+				"renters"
+			]
+		},
+		{
+			"group": "Timing",
+			"label": "Set your own renewal calendar for commercial lines",
+			"detail": "Commercial lines are not covered by the California residential notice article [S:ca-ins-code-675], so do not assume a statutory countdown. Ask each incumbent carrier in writing what notice it is required to give under the law of the state where the policy is issued and what its own filed policy conditions say, write the answer down with the date you got it, and set your submission deadlines from that.",
+			"kind": "schedule",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"commercial-property",
+				"general-liability",
+				"commercial-auto",
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Timing",
+			"label": "Residential nonrenewal carries a longer notice period",
+			"detail": "For policies expiring on or after July 1, 2020, Section 678(c) requires the notice of nonrenewal to be delivered or mailed at least 75 days before the policy expiration, with a corresponding 75-day continuation if the notice is not timely given [S:ca-ins-code-678]. Treat the 75-day mark as the point at which alternatives should already be in motion, not the point at which you start looking.",
+			"kind": "trigger",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners",
+				"renters"
+			]
+		},
+		{
+			"group": "Timing",
+			"label": "Read the renewal offer for reductions, not only the premium",
+			"detail": "A California residential renewal offer under Section 678 must state the premium and must disclose any reduction of limits or elimination of coverage [S:ca-ins-code-678], within the scope set by Section 675 [S:ca-ins-code-675]. Set the renewal declarations beside the expiring declarations and compare limits, sublimits, deductibles, and the endorsement schedule line by line, because a flat premium can still come with a narrower form.",
+			"kind": "document",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners",
+				"renters"
+			]
+		},
+		{
+			"group": "Timing",
+			"label": "Check whether a post-disaster moratorium applies",
+			"detail": "California Insurance Code Section 675.1 provides that an insurer shall not cancel or refuse to renew a policy of residential property insurance for a property located in any ZIP Code within or adjacent to the fire perimeter, for one year after the declaration of a state of emergency, based solely on the fact that the insured structure is located in an area in which a wildfire has occurred [S:ca-ins-code-675-1]. Record the emergency declaration date and the property ZIP Code in the file. Those protections do not apply where the named insured commits willful or grossly negligent acts or omissions materially increasing the risks insured against, where unrelated losses render the risk ineligible, or where physical or risk changes make the property uninsurable [S:ca-ins-code-675-1]. Whether a specific property falls inside a moratorium is determined by the insurer and the regulator, not by this checklist.",
+			"kind": "trigger",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners"
+			]
+		},
+		{
+			"group": "Timing",
+			"label": "A prior total loss can change renewal rights",
+			"detail": "Where a total loss to the primary insured residence results from a disaster as defined in subdivision (b) of Civil Code Section 1689.14 and was not caused by the policyholder's negligence, Section 675.1 requires the insurer to offer renewal for at least the next two annual renewal periods, but no less than 24 months of coverage from the date of the loss [S:ca-ins-code-675-1]. If a rebuild is in progress, note also that the statute requires insurers to adjust coverage limits, issue additional policies, or attach endorsements reflecting changes in exposure [S:ca-ins-code-675-1].",
+			"kind": "trigger",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners"
+			]
+		},
+		{
+			"group": "Documents to pull",
+			"label": "Declarations pages plus the full endorsement schedule",
+			"detail": "Pull the declarations for every policy renewing in the window, and with each one the endorsement schedule showing form numbers and edition dates. Coverage is determined by the policy and its endorsements, not by a summary or a certificate: under California Insurance Code Section 384 a certificate used in lieu of an actual copy of the policy must state that it does not amend, extend or alter the coverage afforded and that the insurance is subject to all the terms, exclusions and conditions of the policies [S:ca-ins-code-384-2].",
+			"kind": "document",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"commercial-property",
+				"general-liability",
+				"commercial-auto",
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Documents to pull",
+			"label": "Currently valued loss runs",
+			"detail": "Ask each incumbent carrier for currently valued loss runs on each line, dated within the last month or two, showing open reserves, and ask for a no-loss letter where a line has no claims. Loss runs, currency windows and no-loss letters are common market practice rather than a legal or filed requirement, and no source in this cluster supports any of them. Ask the markets you are approaching how many years they want and whether they need them signed, and write down who told you and when, because the requirement is set by each market rather than by a rule you can look up.",
+			"kind": "document",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"commercial-auto",
+				"workers-compensation",
+				"commercial-property"
+			]
+		},
+		{
+			"group": "Documents to pull",
+			"label": "Ask for the replacement cost estimate in writing",
+			"detail": "In California, a licensee who communicates an estimate of replacement cost to an applicant or insured in connection with an application for or renewal of a homeowners policy that provides coverage on a replacement cost basis must provide a copy of the estimate to the applicant or insured at the time the estimate is communicated [S:ca-10-ccr-2695-183]. Request it, date it, and keep it with the renewal file rather than relying on a verbal figure.",
+			"kind": "document",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners"
+			]
+		},
+		{
+			"group": "Documents to pull",
+			"label": "Check what the replacement cost estimate has to contain",
+			"detail": "Under 10 CCR 2695.183 the estimate must include the expenses that would reasonably be incurred to rebuild the insured structure in its entirety, including at least labor, building materials and supplies, overhead and profit, demolition and debris removal, permits and architect's plans, and consideration of the components and features of the structure; it may not be based on the resale value of the land or on the amount or outstanding balance of any loan, and it may not include a deduction for physical depreciation [S:ca-10-ccr-2695-183]. Use that as the checklist when you read the estimate. The text cited here is a reproduction of the regulation rather than the official California Code of Regulations host, so confirm the current official text before relying on it.",
+			"kind": "document",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners"
+			]
+		},
+		{
+			"group": "Documents to pull",
+			"label": "Verify the dwelling limit against an independent figure",
+			"detail": "CDI advises reviewing the dwelling limit initially and upon renewal, discussing any modifications to the home in writing with the agent, broker, or insurer, and contacting local general contractors to ask the current price per square foot for a home similar to your own [S:cdi-residential-insurance-guide]. Record the source and the date of whatever figure you use, since construction costs move and a figure without a date cannot be checked later.",
+			"kind": "question",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners"
+			]
+		},
+		{
+			"group": "Documents to pull",
+			"label": "Refresh the home inventory before renewal, not after a loss",
+			"detail": "CDI advises keeping an inventory of personal property listing all items owned, the dates purchased, and the price, and offers a free Home Inventory Guide [S:cdi-residential-insurance-guide]. NAIC publishes a home inventory app [S:naic-homeowners]. Use the refreshed inventory to test whether the Coverage C limit and any scheduled items are still sized correctly, since CDI states that certain categories such as jewelry and firearms are subject to special limits that cap the amount paid [S:cdi-residential-insurance-guide].",
+			"kind": "document",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners",
+				"renters"
+			]
+		},
+		{
+			"group": "Documents to pull",
+			"label": "Payroll by class code, ready before the workers compensation renewal",
+			"detail": "Bring payroll broken out by classification and by employee. NCCI Basic Manual Rule 1 states that, subject to certain exceptions, it is the business of the employer within a state that is classified, not the separate employments, occupations, or operations within the business, and that the governing classification at a specific location or job is the basic classification other than a standard exception classification, determined under the Governing Classification Determination Table, with the basic classification producing the greatest amount of payroll governing [S:ncci-basic-manual-rule-1]. The text cited here is the North Carolina Rate Bureau's reproduction of the NCCI manual, and independent-bureau states publish their own rules, so confirm which manual and which state exceptions apply.",
+			"kind": "document",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Documents to pull",
+			"label": "Payroll records that actually support splitting classes",
+			"detail": "NCCI Basic Manual Rule 1 states that each type of construction, erection, or oil and gas field operation is assigned to the classification describing that operation only if separate payroll records are maintained for each operation [S:ncci-basic-manual-rule-1]. Gather those records before the renewal application goes out rather than at audit time. The text cited here is the North Carolina Rate Bureau's reproduction of the NCCI manual, and independent-bureau states publish their own rules, so confirm the rule for the state at issue.",
+			"kind": "document",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Documents to pull",
+			"label": "Confirm standard exceptions and general exclusions are applied correctly",
+			"detail": "NCCI Basic Manual Rule 1 lists five standard exception classifications: Code 8810 Clerical Office Employees NOC, Code 8871 Clerical Office Telecommuter Employees, Code 8742 Salespersons or Collectors - Outside, Code 7380 Drivers, Chauffeurs, Messengers, and Their Helpers NOC - Commercial, and Code 8748 Automobile Salespersons; Code 8810 treatment requires the clerical work area to be physically separated from the operating hazards by floors, walls, partitions, counters, or other physical barriers [S:ncci-basic-manual-rule-1]. The rule treats general inclusions such as an employee cafeteria or equipment repair as part of the basic classification, and treats general exclusions, specifically aviation, new construction or alterations, stevedoring, and sawmill operations, as separately classified unless included in the basic classification wording [S:ncci-basic-manual-rule-1]. Check the renewal exposure schedule against this list before you sign it, and confirm the state's own rules, since the text cited here is a rating bureau reproduction and independent-bureau states publish their own.",
+			"kind": "question",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Documents to pull",
+			"label": "The other exposure bases the renewal will ask for",
+			"detail": "Assemble gross sales or receipts, square footage and payroll by location, the vehicle schedule with VINs, radius of operation, the driver list with MVR consent, subcontractor cost with their certificates and endorsements, property values and construction details by location, and headcount by state. This list is common market practice rather than a legal or filed requirement, and no source in this cluster supports it; which exposure bases a given carrier asks for is set by that carrier's own filed rating plan. Write the rating basis next to each figure, and ask the carrier which of them will be audited, since that varies by line and by carrier.",
+			"kind": "document",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"commercial-auto",
+				"commercial-property",
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Change triggers to disclose",
+			"label": "Property and operations changes since the last renewal",
+			"detail": "Log renovations, a roof replacement, added square footage, new detached structures, a pool or trampoline, solar, an accessory dwelling unit, a change to short-term rental or home business use, a new location, a new vehicle, a new state of operation, a new product, or a materially larger contract. CDI advises discussing any modifications to the home in writing with the agent, broker, or insurer [S:cdi-residential-insurance-guide]. Put each change in writing to the carrier and keep the reply.",
+			"kind": "trigger",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"commercial-property",
+				"general-liability",
+				"commercial-auto"
+			]
+		},
+		{
+			"group": "Change triggers to disclose",
+			"label": "Send proof of renewal to the mortgage servicer and keep the confirmation",
+			"detail": "A new loan, a servicing transfer, an escrow change, or a short gap can put a lender-placed policy in motion. Under Regulation X a servicer must have a reasonable basis to believe the borrower failed to maintain required hazard insurance, must deliver a written notice at least 45 days before assessing a force-placed charge, must deliver a reminder notice at least 15 days before the charge and not until at least 30 days after the first notice, and must cancel the force-placed policy and refund premium and related fees for any period of overlapping coverage within 15 days of receiving evidence of the borrower's coverage [S:cfpb-1024-37]. Treat any such notice as a dated deadline, not as junk mail.",
+			"kind": "trigger",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners",
+				"flood"
+			]
+		},
+		{
+			"group": "Change triggers to disclose",
+			"label": "A flood map change or a new loan can create a flood requirement",
+			"detail": "For a building in a special flood hazard area securing a loan from a regulated lending institution, federal law requires flood coverage for the term of the loan in an amount at least equal to the outstanding principal balance of the loan or the maximum limit of coverage made available under the Act for that type of property, whichever is less, and requires the lender to accept private flood insurance meeting the statutory standards; premiums must generally be escrowed for residential improved real estate, subject to statutory exceptions that include certain smaller lending institutions, junior liens, condominium and cooperative units under a master policy, business-purpose loans, home equity lines of credit, nonperforming loans, and loans with a term not exceeding 12 months [S:usc-42-4012a-2]. During the 13-month period beginning on the effective date of a revised Flood Hazard Boundary Map or Flood Insurance Rate Map, initial coverage can be effective the first calendar day after the application date and the presentment of payment of premium instead of the 30th [S:cfr-44-61-11].",
+			"kind": "trigger",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"flood"
+			]
+		},
+		{
+			"group": "Change triggers to disclose",
+			"label": "Confirm the flood renewal on its own calendar",
+			"detail": "NAIC states that separate policies for flood or earthquake coverage also may be purchased by those in areas prone to these perils [S:naic-homeowners], so flood normally carries its own expiration date and must be tracked separately from the homeowners renewal. If it lapses, a new NFIP policy is generally effective 12:01 a.m. local time on the 30th calendar day after the application date and the presentment of payment of premium, unless an exception applies, including the loan-closing exception, the 13-month window after a revised flood map, and a post-wildfire exception for flooding on Federal land where coverage is purchased not later than 60 calendar days after the fire containment date [S:cfr-44-61-11].",
+			"kind": "schedule",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"flood"
+			]
+		},
+		{
+			"group": "Change triggers to disclose",
+			"label": "Read the periodic California disclosures instead of filing them",
+			"detail": "CDI notes that SB 1855 (2004) requires insurers to disclose, in the California Residential Property Insurance Disclosure and on the declarations page, that the cost to rebuild your home may be different from your homeowners policy limits, and that insurers must distribute the California Residential Property Insurance Bill of Rights every other year [S:cdi-residential-insurance-guide]. When one arrives with a renewal, compare what it describes against what the declarations actually show and note any gap as a question for the broker.",
+			"kind": "document",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners"
+			]
+		},
+		{
+			"group": "Before you sign the renewal",
+			"label": "Decide what to shop and what to leave alone, and write down why",
+			"detail": "Record the reason in one line per policy, because it is the record you will want next year: a rate change, a limit that no longer matches an independent rebuild figure, a form or endorsement change you spotted in the comparison, a new exposure, or a service problem. CDI warns that if you shop by comparing prices only and not by comparing coverage, you are doing yourself a disservice [S:cdi-residential-insurance-guide].",
+			"kind": "question",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"commercial-property",
+				"general-liability"
+			]
+		},
+		{
+			"group": "Before you sign the renewal",
+			"label": "What this checklist does not do",
+			"detail": "This checklist organizes documents, dates and questions. It is not a coverage determination, an eligibility verdict, or legal, tax or claims advice, and it cannot tell you whether any specific property or risk is placeable, admitted, non-admitted, or eligible for any residual market program. Coverage is determined by the policy and its endorsements [S:ca-ins-code-384-2], and renewal terms are a carrier underwriting decision.",
+			"kind": "question",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"commercial-property",
+				"general-liability",
+				"workers-compensation",
+				"flood"
+			]
+		}
+	],
+	"sourceIds": [
+		"ca-ins-code-675",
+		"ca-ins-code-678",
+		"ca-ins-code-675-1",
+		"ca-10-ccr-2695-183",
+		"cdi-residential-insurance-guide",
+		"naic-homeowners",
+		"ncci-basic-manual-rule-1",
+		"cfpb-1024-37",
+		"cfr-44-61-11",
+		"usc-42-4012a-2",
+		"ca-ins-code-384-2"
+	],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

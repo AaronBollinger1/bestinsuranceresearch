@@ -1,0 +1,23 @@
+{
+	"title": "TWIA Overview - Texas Windstorm Insurance Association",
+	"publisher": "Texas Windstorm Insurance Association",
+	"url": "https://www.twia.org/about-us/overview/",
+	"sourceType": "official-documentation",
+	"jurisdiction": "TX",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"TWIA states that it was established in 1971 by the Texas Legislature to provide wind and hail coverage to applicants unable to obtain insurance in the private market.",
+		"TWIA states that its policies provide coverage for wind and hail losses only, and that no other perils are covered by TWIA policies.",
+		"TWIA states that it serves all 14 first tier coastal counties and parts of Harris County east of Highway 146, and lists the first tier counties as Aransas, Brazoria, Calhoun, Cameron, Chambers, Galveston, Jefferson, Kenedy, Kleberg, Matagorda, Nueces, Refugio, San Patricio, and Willacy.",
+		"TWIA states that the eligible portion of Harris County is within the city limits of La Porte, Morgan's Point, Pasadena, Seabrook, and Shore Acres, east of Highway 146."
+	],
+	"updateCadence": "Territory is set by statute and TDI designation; re-verify after each legislative session.",
+	"status": "active",
+	"officialHost": true
+}

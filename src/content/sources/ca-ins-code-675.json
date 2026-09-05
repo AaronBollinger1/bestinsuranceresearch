@@ -1,0 +1,22 @@
+{
+	"title": "California Insurance Code Section 675 (application of the article on cancellation and nonrenewal)",
+	"publisher": "California Legislative Information, Office of Legislative Counsel",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=675.",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"California Insurance Code Section 675(a) applies the article to policies of insurance, other than automobile insurance and workers' compensation insurance, on risks located or resident in this state, covering damage to residential property of not more than four dwelling units, personal property within such residences, and personal liability.",
+		"Section 675 excludes automobile insurance and workers' compensation insurance from the article's scope.",
+		"Section 675(a)(3) does not reach policies primarily insuring risks arising from the conduct of a commercial or industrial enterprise."
+	],
+	"updateCadence": "Amended by legislation; re-check leginfo before each publication cycle.",
+	"status": "active",
+	"officialHost": true
+}

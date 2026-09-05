@@ -1,0 +1,25 @@
+{
+	"title": "NCCI Basic Manual Rule 1 - Assignment of Classifications",
+	"publisher": "North Carolina Rate Bureau digital library, reproducing the NCCI Basic Manual for Workers Compensation and Employers Liability Insurance",
+	"url": "https://www.ncrb.org/digitallibrary/basicmanual/Rule_1_-_Assignment_of_Classifications.htm",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Rule 1 states that, subject to certain exceptions, it is the business of the employer within a state that is classified, not the separate employments, occupations, or operations within the business.",
+		"Rule 1 states that the governing classification at a specific location or job is the basic classification, other than a standard exception classification, and is determined in accordance with the Governing Classification Determination Table, under which the basic classification producing the greatest amount of payroll governs.",
+		"Rule 1 lists five standard exception classifications: Code 8810 Clerical Office Employees NOC, Code 8871 Clerical Office Telecommuter Employees, Code 8742 Salespersons or Collectors - Outside, Code 7380 Drivers, Chauffeurs, Messengers, and Their Helpers NOC - Commercial, and Code 8748 Automobile Salespersons.",
+		"Rule 1 conditions Code 8810 treatment on the clerical work area being physically separated from the operating hazards by at least one of floors, walls, partitions, counters, or other physical barriers.",
+		"Rule 1 treats certain general inclusions, such as a restaurant or cafeteria operated for employees and equipment repair, as part of the basic classification rather than separately classified, and treats general exclusions, specifically aviation (all operations), new construction or alterations, stevedoring, and sawmill operations, as separately classified unless included in the basic classification wording.",
+		"Rule 1 states that each type of construction, erection, or oil and gas field operation is assigned to the classification describing that operation only if separate payroll records are maintained for each operation."
+	],
+	"updateCadence": "NCCI amends the Basic Manual by filing; confirm the current rule text and state exceptions for the applicable jurisdiction before publication.",
+	"status": "active",
+	"officialHost": false
+}

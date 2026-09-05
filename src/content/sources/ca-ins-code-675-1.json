@@ -1,0 +1,25 @@
+{
+	"title": "California Insurance Code Section 675.1 (post-disaster cancellation and nonrenewal limits for residential property insurance)",
+	"publisher": "California Legislative Information, Office of Legislative Counsel",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=675.1.",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"California Insurance Code Section 675.1 provides that an insurer shall not cancel or refuse to renew a policy of residential property insurance for a property located in any ZIP Code within or adjacent to the fire perimeter, for one year after the declaration of a state of emergency, based solely on the fact that the insured structure is located in an area in which a wildfire has occurred.",
+		"Where a total loss to the primary insured residence results from a disaster as defined in subdivision (b) of Civil Code Section 1689.14 and was not caused by the policyholder's negligence, Section 675.1 requires the insurer to offer renewal for at least the next two annual renewal periods, but no less than 24 months of coverage from the date of the loss.",
+		"Section 675.1 requires insurers, following a total loss to the primary insured residence, to adjust coverage limits, issue additional policies, or attach endorsements reflecting changes in exposure, and bars cancellation during rebuilding except for specified statutory reasons or based solely on the damaged condition of the property.",
+		"The Section 675.1 protections do not apply where the named insured commits willful or grossly negligent acts or omissions materially increasing any of the risks insured against, where unrelated losses render the risk ineligible, or where physical or risk changes make the property uninsurable.",
+		"The page carries the note 'Amended by Stats. 2018, Ch. 618, Sec. 1.5. (SB 894) Effective January 1, 2019.'"
+	],
+	"updateCadence": "Amended by legislation, and the operative facts change with each emergency proclamation; re-check leginfo and the current CDI moratorium ZIP code lists before each publication cycle.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: 2019-01-01"
+}

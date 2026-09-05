@@ -1,0 +1,69 @@
+---
+import { CircleCheck, CircleHelp, Clock, Copy, FileX, Info, PencilLine, ShieldCheck, TriangleAlert } from '@lucide/astro';
+
+/**
+ * Status is always icon plus text plus color. Never colour alone, so the meaning
+ * survives greyscale printing, low vision, and colour-blind viewing.
+ */
+
+type Kind =
+	| 'established'
+	| 'contextual'
+	| 'disputed'
+	| 'changing'
+	| 'insufficient'
+	| 'reviewed'
+	| 'under-review'
+	| 'corrected'
+	| 'stale-source'
+	| 'source-unavailable'
+	| 'not-adopted'
+	| 'rescinded'
+	| 'reproduction';
+
+interface Props {
+	kind: Kind;
+	/** Overrides the default label text. */
+	label?: string;
+	title?: string;
+}
+
+const { kind, label, title } = Astro.props;
+
+const MAP: Record<Kind, { text: string; tone: string; explain: string }> = {
+	established: { text: 'Established', tone: 'established', explain: 'Supported by primary sources that are not in dispute.' },
+	contextual: { text: 'Contextual', tone: 'contextual', explain: 'True in the described context; the answer moves with the facts.' },
+	disputed: { text: 'Disputed', tone: 'disputed', explain: 'Competent sources disagree, or the point is being litigated.' },
+	changing: { text: 'Changing', tone: 'changing', explain: 'A statute, rule, or filing in this area is actively changing.' },
+	insufficient: { text: 'Insufficient evidence', tone: 'insufficient', explain: 'Not enough sourced material to publish a direct answer.' },
+	reviewed: { text: 'Reviewed', tone: 'established', explain: 'A named person reviewed this before publication.' },
+	'under-review': { text: 'Under review', tone: 'changing', explain: 'An editorial review is open on this page.' },
+	corrected: { text: 'Corrected', tone: 'contextual', explain: 'This page was corrected after publication. The change is logged below.' },
+	'stale-source': { text: 'Stale source', tone: 'changing', explain: 'This source has not been re-checked inside the review window.' },
+	'source-unavailable': { text: 'Source unavailable', tone: 'disputed', explain: 'The original record did not resolve at the last check.' },
+	'not-adopted': { text: 'Never adopted', tone: 'disputed', explain: 'A bill or proposal that did not become law. It is cited for context only and is not in force.' },
+	rescinded: { text: 'Rescinded', tone: 'disputed', explain: 'The issuer withdrew this document and did not replace it. Do not assume a current version exists.' },
+	reproduction: { text: 'Reproduction', tone: 'changing', explain: 'Hosted by a third party rather than the publisher. The wording may be identical, but the guarantee is not.' },
+};
+
+const config = MAP[kind];
+const text = label ?? config.text;
+const iconProps = { size: 12, 'stroke-width': 2.2, 'aria-hidden': 'true' } as const;
+---
+
+<span class={`status status-${config.tone}`} title={title ?? config.explain}>
+	{kind === 'established' && <CircleCheck {...iconProps} />}
+	{kind === 'reviewed' && <ShieldCheck {...iconProps} />}
+	{kind === 'contextual' && <Info {...iconProps} />}
+	{kind === 'disputed' && <TriangleAlert {...iconProps} />}
+	{kind === 'changing' && <Clock {...iconProps} />}
+	{kind === 'under-review' && <Clock {...iconProps} />}
+	{kind === 'insufficient' && <CircleHelp {...iconProps} />}
+	{kind === 'corrected' && <PencilLine {...iconProps} />}
+	{kind === 'stale-source' && <Clock {...iconProps} />}
+	{kind === 'source-unavailable' && <FileX {...iconProps} />}
+	{kind === 'not-adopted' && <TriangleAlert {...iconProps} />}
+	{kind === 'rescinded' && <TriangleAlert {...iconProps} />}
+	{kind === 'reproduction' && <Copy {...iconProps} />}
+	{text}
+</span>

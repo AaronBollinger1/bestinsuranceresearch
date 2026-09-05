@@ -1,0 +1,25 @@
+{
+	"title": "About NCCI (NCCI Fact Sheet)",
+	"publisher": "National Council on Compensation Insurance (NCCI)",
+	"url": "https://www.ncci.com/Articles/Pages/AU_NCCIFactSheet.pdf",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"NCCI's mission is to foster a healthy workers compensation system through its role as a licensed rating, advisory, and statistical organization.",
+		"NCCI maintains the workers compensation infrastructure of classifications, rules, plans, and forms.",
+		"NCCI recommends objective and actuarially appropriate rates or loss costs that are filed with NCCI states for approval.",
+		"The document's state map carries the caption: this map is a reference of states plus the District of Columbia where NCCI is a licensed rating, advisory and statistical organization and acts as the Residual Market Plan Administrator.",
+		"NCCI administers the Plan in 23 states and the Pool in 27 states for the residual market."
+	],
+	"updateCadence": "Refreshed periodically; the version fetched carries a document footer reading Updated 6/9/26 and premium data reported in 2025.",
+	"status": "active",
+	"notes": "Re-fetched and re-verified 2026-08-31 over HTTPS (HTTP 200, 978,609 bytes); text extracted with pdftotext -layout (5,177 characters) and read in full. All five claims were matched in the extracted text. Standing corrections: an earlier draft appended a gloss to the map-caption claim reading 'meaning NCCI's role is confined to the states whose insurance departments have designated it'; that language is nowhere on the page and stays deleted, leaving only the caption. publishedDate is 2026-06-09, matching the document footer 'Updated 6/9/26'. LIMITATION: the state list is rendered only as a map image, so pdftotext recovers no state abbreviations. This source is therefore never used to assert which states NCCI serves, any count of NCCI or independent-bureau states, or California's status; California's status is carried only by ncci-abcs-experience-rating, which names it in text. URL RE-CHECKED 2026-08-31: HTTP 200, no redirect, 978,609 bytes; the extracted text is 5,177 characters and was re-read in full today. The footer again reads Updated 6/9/26 and the premium figure is again marked (reported in 2025). The mission sentence on the page abbreviates workers compensation to WC, which the claim expands using the page's own defined abbreviation. The LIMITATION below still holds: the state list is a map image and pdftotext recovers no state abbreviations from it. Published: 2026-06-09",
+	"officialHost": true
+}

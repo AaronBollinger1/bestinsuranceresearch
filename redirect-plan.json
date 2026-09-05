@@ -1,0 +1,563 @@
+{
+	"generatedAt": "2026-09-02",
+	"destination": "bestinsuranceresearch.com",
+	"destinationServesSite": false,
+	"networkAvailable": true,
+	"destinationChecks": [
+		{
+			"url": "https://bestinsuranceresearch.com/position",
+			"expected": "Coverage position",
+			"status": 0,
+			"finalUrl": "https://bestinsuranceresearch.com/position",
+			"served": false,
+			"error": "fetch failed"
+		},
+		{
+			"url": "https://bestinsuranceresearch.com/",
+			"expected": "BestInsurance Research",
+			"status": 0,
+			"finalUrl": "https://bestinsuranceresearch.com/",
+			"served": false,
+			"error": "fetch failed"
+		}
+	],
+	"executable": false,
+	"blockers": [
+		"bestinsuranceresearch.com is not serving the research site yet. https://bestinsuranceresearch.com/position -> no response; https://bestinsuranceresearch.com/ -> no response. The domain is registered, but until it serves the built site a 301 from a live property points visitors and crawlers at whatever is there instead."
+	],
+	"counts": {
+		"domainsInMap": 58,
+		"redirects": 35,
+		"parked": 23,
+		"redirectsOverLiveSites": 8,
+		"outOfScope": 4
+	},
+	"prerequisites": [
+		"Export the indexed URL list for each live site from Search Console. A single apex forward discards deep pages; those need per-URL mapping.",
+		"Decide what replaces each application funnel. The research property publishes no price and takes no application, so the conversion path ends at the switch.",
+		"Opt each domain into Porkbun API access if tooling will create the forward, or create it in the Porkbun UI.",
+		"Add www as a second forward per domain, or handle apex-to-www at the host."
+	],
+	"operations": [
+		{
+			"op": "create_url_forward",
+			"domain": "bestho3.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/property-position",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": true,
+			"note": "71 pages, ACORD 80 application. Module records 36 fields and runs 34 checks."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestdwellingfire.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/insurance/landlord-rental-dwelling",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": true,
+			"note": "11 pages, thinnest of the eight. Coverage page is published and reviewed; intent is definitional."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestearthquakeinsurance.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/earthquake-pathways",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": true,
+			"note": "87 pages including 28 county pages. Export those URLs before switching."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestepli.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/epli-readiness",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": true,
+			"note": "76 pages, two carrier applications, e-signature. The only domain with Porkbun API access already on."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestcyberliability.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/cyber-control-readiness",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": true,
+			"note": "109 pages. Module keys to a dated framework edition."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestworkerscompensation.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/workers-comp-classification",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": true,
+			"note": "96 pages including 50 class-code pages. Highest equity loss of the eight on a single-hop redirect."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestgroupmedical.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/group-benefits-renewal",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": true,
+			"note": "127 pages, the largest property in the estate. Destination built in this pass."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestartinsurance.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/valuables-schedule",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": true,
+			"note": "31 pages, Markel application. Destination built in this pass."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestgeneralliability.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/insurance/commercial-general-liability",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Exact line match to a published, reviewed coverage page."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestliability.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/insurance/commercial-general-liability",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Generic liability intent resolves to the CGL page."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestcommercialpropertyinsurance.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/insurance/commercial-property",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Exact line match to a published, reviewed coverage page for this line."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestpropinsurance.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/insurance/commercial-property",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Abbreviated form of the same line."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "besthomeownerscoverage.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/insurance/homeowners",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Exact line match to a published, reviewed coverage page for this line."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "besthighvaluehomeinsurance.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/insurance/homeowners",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "High-value is a segment of the same line; no separate page exists."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestreplacementcost.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/questions/replacement-cost-vs-market-value",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "The domain names the exact question the page answers."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestinlandmarine.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/questions/inland-marine-uses",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "The domain names the exact question this published page answers."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestjewelryinsurance.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/valuables-schedule",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Jewellery is scheduled on the same basis the module records."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestjewleryinsurance.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/valuables-schedule",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Misspelling held defensively. Same destination as the correct spelling."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestcontractorbonds.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/questions/surety-bond-vs-insurance",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "The published question distinguishes a bond from insurance, which is the intent."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestprofessionalliability.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/questions/general-liability-vs-professional-liability",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "The domain names the exact question this published page answers."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "besterrorsandomissions.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/questions/general-liability-vs-professional-liability",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "E&O is the same line under another name."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestgrouphealthinsurance.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/group-benefits-renewal",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Same line as bestgroupmedical."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestemployerbenefits.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/group-benefits-renewal",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Employer-side benefits intent resolves to the renewal module."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestdic.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/examples/fair-plan-named-peril-gaps",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Difference in conditions is only meaningful next to a FAIR Plan policy, which is what the example reads."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestcoveragereview.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/position",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Reviewing your own coverage is what the instrument does."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestpolicyreview.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/position",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Same intent as bestcoveragereview."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestcommerciallines.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/insurance",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Family-level intent resolves to the coverage index."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestpersonallines.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/insurance",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Family-level intent resolves to the coverage index."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestindependentinsurance.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/about",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Independence is a claim about the operator, and /about is where the operator and its licence are disclosed."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestinsurancepartner.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Generic. Homepage is the honest destination."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestgeneralcontractorinsurance.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/contract-requirements",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "A general contractor arrives with an insurance requirement clause, which is what the module maps."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestcontractorcoverage.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/contract-requirements",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Same contractual-requirement intent as the other contractor domains."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestqualitycontractors.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/contract-requirements",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Same contractual-requirement intent as the other contractor domains."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestservicecontractors.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/contract-requirements",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Same contractual-requirement intent as the other contractor domains."
+		},
+		{
+			"op": "create_url_forward",
+			"domain": "bestlocalgeneralcontractors.com",
+			"subdomain": "",
+			"location": "https://bestinsuranceresearch.com/tools/contract-requirements",
+			"type": "permanent",
+			"includePath": "no",
+			"wildcard": "yes",
+			"status": "hold",
+			"servesLiveSiteToday": false,
+			"note": "Same contractual-requirement intent as the other contractor domains."
+		}
+	],
+	"parked": [
+		{
+			"domain": "bestdando.com",
+			"needs": "Needs a directors and officers coverage page. None exists."
+		},
+		{
+			"domain": "bestdirectorsandofficers.com",
+			"needs": "Same line as bestdando. Park both until one page exists, then point both at it."
+		},
+		{
+			"domain": "bestcommercialauto.com",
+			"needs": "Needs a commercial auto coverage page. The contract-requirements module records auto limits but does not explain the line."
+		},
+		{
+			"domain": "bestpersonalauto.com",
+			"needs": "Needs a personal auto page. State auto minimums are covered on the state pages but there is no line page."
+		},
+		{
+			"domain": "bestproductliability.com",
+			"needs": "Needs a products-completed operations page. The CGL page names the aggregate but does not cover the line."
+		},
+		{
+			"domain": "bestexcess.com",
+			"needs": "Needs an umbrella and excess page. Referenced by the contract module, not explained anywhere."
+		},
+		{
+			"domain": "bestsurpluslines.com",
+			"needs": "Needs a surplus lines page covering the diligent-search requirement. This is a placement-pathways topic and is on the roadmap."
+		},
+		{
+			"domain": "bestbuildersrisk.com",
+			"needs": "Needs a builders risk page. Named in the inland marine question but not covered."
+		},
+		{
+			"domain": "bestemployerpayroll.com",
+			"needs": "Payroll is not an insurance line. Either retire or point at the workers compensation module once a payroll-records page exists."
+		},
+		{
+			"domain": "bestcarwashinsurance.com",
+			"needs": "Industry page, not a line. No industry pages are published."
+		},
+		{
+			"domain": "bestconcreteinsurance.com",
+			"needs": "Wants an industry page rather than a line page, and no industry pages are published. Park until one exists."
+		},
+		{
+			"domain": "bestcountryclubinsurance.com",
+			"needs": "Wants an industry page rather than a line page, and no industry pages are published. Park until one exists."
+		},
+		{
+			"domain": "bestfranchiseinsurance.com",
+			"needs": "Wants an industry page rather than a line page, and no industry pages are published. Park until one exists."
+		},
+		{
+			"domain": "besthoainsurance.com",
+			"needs": "Needs an HOA page. The earthquake module records master-policy status but no HOA line page exists."
+		},
+		{
+			"domain": "besthvacinsurance.com",
+			"needs": "Wants an industry page rather than a line page, and no industry pages are published. Park until one exists."
+		},
+		{
+			"domain": "bestmanufacturinginsurance.com",
+			"needs": "Wants an industry page rather than a line page, and no industry pages are published. Park until one exists."
+		},
+		{
+			"domain": "bestphysicianinsurance.com",
+			"needs": "Needs an industry page, and medical professional liability carries its own review burden. None published."
+		},
+		{
+			"domain": "bestplumberinsurance.com",
+			"needs": "Wants an industry page rather than a line page, and no industry pages are published. Park until one exists."
+		},
+		{
+			"domain": "bestplumbersinsurance.com",
+			"needs": "Plural variant of bestplumberinsurance. Park both, and point both at one page if an industry page is ever built."
+		},
+		{
+			"domain": "bestremodelinsurance.com",
+			"needs": "Wants an industry page rather than a line page, and no industry pages are published. Park until one exists."
+		},
+		{
+			"domain": "beststaffinginsurance.com",
+			"needs": "Needs an industry page. Staffing carries a workers compensation classification angle the module touches but does not explain, and none exists."
+		},
+		{
+			"domain": "besttechinsurance.com",
+			"needs": "Needs an industry page. The cyber module covers technology E&O as a line, but no industry page exists."
+		},
+		{
+			"domain": "besttruckerinsurance.com",
+			"needs": "Needs an industry page. Motor truck cargo is named in the inland marine question but no page covers it."
+		}
+	],
+	"outOfScope": [
+		"bestams.com",
+		"bollinsure.com",
+		"bollinsure.net",
+		"covwell.com"
+	]
+}

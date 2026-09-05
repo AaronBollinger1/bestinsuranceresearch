@@ -1,0 +1,28 @@
+{
+	"title": "Cal. Code Regs. tit. 10, section 2322 - Prohibited Coverage (Marine Insurance article)",
+	"publisher": "Cornell Legal Information Institute, reproducing the California Code of Regulations",
+	"url": "https://www.law.cornell.edu/regulations/california/10-CCR-2322",
+	"sourceType": "regulation",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The section is headed Prohibited Coverage and has six lettered items, (a) through (f).",
+		"Item (a) is storage of the assured's merchandise, except as hereinbefore provided.",
+		"Item (b) is merchandise in course of manufacture, the property of and on the premises of the manufacturer.",
+		"Item (c) is furniture and fixtures and improvements and betterments to buildings.",
+		"Item (d) concerns merchandise in permanent location sold under partial payment, contract of sale, or installment sales contract, and purchaser protection after the seller's interest ends.",
+		"Item (e) is moneys and/or securities in safes, vaults, safety deposit vaults, banks or the assured's premises, except while in course of transportation.",
+		"Item (f) concerns risks of fire, windstorm, sprinkler leakage, earthquake, hail, explosion, riot and/or civil commotion on buildings, structures, wharves and fixed real property.",
+		"Two of these six items, (d) and (f), have no counterpart in the four exceptions listed in Section 3 of NAIC Model MO-701."
+	],
+	"updateCadence": "Part of the 1954 Marine Insurance article. Check the official California Code of Regulations for later amendment.",
+	"status": "active",
+	"notes": "New source entry added 2026-08-31. Fetched and the heading Prohibited Coverage and all six lettered items returned. This content was previously and incorrectly folded into the section 2321 source. Same reproduction caveat as the other Cornell LII entries: this is not the official California publisher and shows no amendment history. The final claim is a comparison between two documents both fetched for this bundle, not a statement made by either one. Effective: 1954-01-01",
+	"officialHost": false
+}

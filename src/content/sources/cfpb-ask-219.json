@@ -1,0 +1,24 @@
+{
+	"title": "What can I do if my mortgage lender or servicer is charging me for force-placed homeowner's insurance?",
+	"publisher": "Consumer Financial Protection Bureau",
+	"url": "https://www.consumerfinance.gov/ask-cfpb/what-can-i-do-if-my-mortgage-lender-servicer-is-charging-me-for-force-placed-homeowners-insurance-en-219/",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"In many instances, this insurance protects only the lender, not you.",
+		"Force-placed insurance is usually more expensive than finding an insurance policy yourself.",
+		"A servicer may require force-placed coverage when the borrower does not have their own insurance policy or when the borrower's own policy does not meet the requirements of the mortgage contract.",
+		"A borrower should send proof of their own policy and any other information the servicer requested to the servicer and request that the servicer cancel the force-placed policy as soon as possible."
+	],
+	"updateCadence": "CFPB reviews Ask CFPB entries periodically.",
+	"status": "active",
+	"notes": "Fetched on 2026-08-31. This page does not restate the Regulation X notice timing or the refund duty, so those points are cited to the regulation instead.",
+	"officialHost": true
+}

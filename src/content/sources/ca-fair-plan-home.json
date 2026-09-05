@@ -1,0 +1,22 @@
+{
+	"title": "The California FAIR Plan - official site",
+	"publisher": "California FAIR Plan Association",
+	"url": "https://www.cfpnet.com/",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The California FAIR Plan describes itself as an insurer of last resort, established by statute to provide basic property insurance to Californians statewide when no other option is reasonably available.",
+		"The California FAIR Plan states that it was established so that all California property owners have access to basic fire insurance when access to coverage in the traditional market is not available through no fault of the property owner.",
+		"The California FAIR Plan home page states that a broker can help the applicant find a Difference in Conditions policy which offers additional coverages, and invites the reader to ask a broker about Flood and Earthquake insurance."
+	],
+	"updateCadence": "Site content changes as FAIR Plan programs and limits change; re-verify at least quarterly.",
+	"status": "active",
+	"officialHost": true
+}

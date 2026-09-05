@@ -1,0 +1,41 @@
+---
+import { CircleHelp, CloudOff, FileX, Inbox, SearchX, TriangleAlert } from '@lucide/astro';
+
+/**
+ * The named states the brief requires, in one component so they look and behave
+ * the same everywhere: no result, insufficient evidence, source unavailable,
+ * stale source, offline, and empty.
+ */
+type Kind = 'no-result' | 'insufficient' | 'source-unavailable' | 'stale' | 'offline' | 'empty';
+
+interface Props {
+	kind: Kind;
+	heading: string;
+	id?: string;
+}
+
+const { kind, heading, id } = Astro.props;
+const icon = { size: 18, 'stroke-width': 2, 'aria-hidden': 'true' } as const;
+
+const TONE: Record<Kind, string> = {
+	'no-result': 'neutral',
+	insufficient: 'info',
+	'source-unavailable': 'error',
+	stale: 'warn',
+	offline: 'error',
+	empty: 'neutral',
+};
+---
+
+<div class="state-block" data-tone={TONE[kind]} data-state={kind} id={id}>
+	<span class="state-icon">
+		{kind === 'no-result' && <SearchX {...icon} />}
+		{kind === 'insufficient' && <CircleHelp {...icon} />}
+		{kind === 'source-unavailable' && <FileX {...icon} />}
+		{kind === 'stale' && <TriangleAlert {...icon} />}
+		{kind === 'offline' && <CloudOff {...icon} />}
+		{kind === 'empty' && <Inbox {...icon} />}
+	</span>
+	<h2 class="state-heading">{heading}</h2>
+	<slot />
+</div>

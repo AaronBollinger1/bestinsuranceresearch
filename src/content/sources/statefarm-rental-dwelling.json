@@ -1,0 +1,27 @@
+{
+	"title": "Rental dwelling insurance",
+	"publisher": "State Farm",
+	"url": "https://www.statefarm.com/insurance/rental-properties/rental-homes",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Dwelling coverage is described as helping pay for covered repairs or reconstruction of the dwelling and other structures on the same property.",
+		"Personal property coverage is described as helping pay for covered losses to specific property located at the rental dwelling, including furniture and other personal property rented with or used to maintain the property.",
+		"Loss of rents coverage is described as helping reimburse the owner for loss of fair rental value if the rental dwelling is damaged by an insured loss that causes the property to be uninhabitable.",
+		"Liability coverage is described as helping protect the owner financially against costly covered liability lawsuits.",
+		"The page states that tenant-owned personal property is not covered by this policy.",
+		"The exclusions the page lists include damage from continuous or repeated seepage or leakage of water or steam; flood or underground water damage; earth movement including earthquake and landslide; settling, deterioration, contamination or nuclear hazard; and damage from birds, rodents, insects or domestic animals.",
+		"The page states that details of coverage or limits vary in some states and that it is only a general description of coverage and not a statement of contract."
+	],
+	"updateCadence": "carrier marketing pages change without notice; re-verify each review",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: not stated on the page"
+}

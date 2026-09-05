@@ -1,0 +1,25 @@
+{
+	"title": "Contact Us",
+	"publisher": "California Department of Insurance",
+	"url": "https://www.insurance.ca.gov/0500-about-us/05-contact/",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The California Department of Insurance publishes a Consumer Hotline number of 800-927-4357 (HELP).",
+		"The California Department of Insurance publishes a TTY number of 800-482-4833.",
+		"The California Department of Insurance publishes 800-967-9331 under the label Licensing hotline, separately from the Consumer Hotline.",
+		"The California Department of Insurance publishes a Fraud Division main line of 916-854-5760 and a Fraud Division email of fraud@insurance.ca.gov.",
+		"The California Department of Insurance lists headquarters offices at 300 South Spring Street, 14th Floor, Los Angeles, CA 90013 (213-346-6464); 300 Capitol Mall, 17th Floor, Sacramento, CA 95814 (916-492-3500); and 1901 Harrison Street, 6th Floor, Oakland, CA 94612 (415-538-4500).",
+		"The Contact Us page does not state hours of operation for the Consumer Hotline or for any office."
+	],
+	"updateCadence": "Updated as CDI office and phone details change; re-verify phone numbers before republishing.",
+	"status": "active",
+	"officialHost": true
+}

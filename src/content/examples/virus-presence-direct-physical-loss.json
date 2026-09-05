@@ -1,0 +1,41 @@
+{
+	"title": "A live entertainment company sought commercial property coverage for pandemic losses, and the case turned on the meaning of direct physical loss or damage",
+	"label": "public-record",
+	"labelNote": "This is a summary of a published California Supreme Court opinion that anyone can read; it is not a Bollinsure client matter, not a claim we handled, and not a prediction about how any other claim will be decided. The opinion text was read on a commercial third-party host because the official hosts did not load on the review date, which is recorded in the source entry.",
+	"family": "commercial",
+	"lines": [
+		"commercial property",
+		"business income and extra expense"
+	],
+	"whatHappened": "Another Planet Entertainment operated venues for live entertainment, including concerts, festivals, and events, at locations in California and Nevada, and its insurer was Vigilant Insurance Company [S:another-planet-2024]. The case reached the Supreme Court of California as a certified question, which asked whether the actual or potential presence of the COVID-19 virus on an insured's premises can constitute direct physical loss or damage to property for purposes of coverage under a commercial property insurance policy [S:another-planet-2024]. The court answered that question in an opinion filed May 23, 2024 in case No. S277893 [S:another-planet-2024]. The opinion identifies the underlying federal appellate proceeding by the reporter citation Another Planet Entertainment, LLC v. Vigilant Insurance Co. (2022) 56 F.4th 730 [S:another-planet-2024].",
+	"informationThatMattered": [
+		"The certified question was framed around a commercial property insurance policy's requirement of direct physical loss or damage to property, so the outcome depended on that phrase [S:another-planet-2024].",
+		"The theory put to the court rested on the actual or potential presence of the virus on the insured's premises [S:another-planet-2024].",
+		"The case reached the state high court as a certified question, so the court was answering a question of California law [S:another-planet-2024].",
+		"The court stated that direct physical loss or damage to property requires a distinct, demonstrable, physical alteration to property [S:another-planet-2024].",
+		"The court stated that the alteration need not be visible to the naked eye and need not be structural, but it must result in some injury to or impairment of the property as property [S:another-planet-2024].",
+		"The insured operated venues for live entertainment at locations in California and Nevada [S:another-planet-2024]."
+	],
+	"insuranceQuestion": "Does the actual or potential presence of a virus on insured premises satisfy a commercial property policy's requirement of direct physical loss or damage to property under California law?",
+	"reasoningPath": "The analysis starts with policy language, not with the pandemic. The certified question asked whether virus presence can constitute direct physical loss or damage to property for purposes of coverage under a commercial property insurance policy [S:another-planet-2024]. Whether any other policy uses that same trigger, and how its business income coverage is keyed to it, is a question about the form actually issued and has to be read in that form.\n\nThe procedural route shapes what the opinion settles. A federal appellate court put a question of California law to the California Supreme Court, and the California Supreme Court's task was to answer that question [S:another-planet-2024]. How the answer applies to any particular claim is a separate step taken by whoever is deciding that claim.\n\nThe court's test has two halves that are easy to misquote in isolation. It requires a distinct, demonstrable, physical alteration to property [S:another-planet-2024]. It then states that the alteration need not be visible to the naked eye and need not be structural, but that it must result in some injury to or impairment of the property as property [S:another-planet-2024]. So a change too small to see is not automatically disqualifying, and a loss of usefulness to people is not automatically qualifying.\n\nApplied to the presence of the virus, the court answered that the actual or potential presence of COVID-19 on an insured's premises generally does not constitute direct physical loss or damage to property [S:another-planet-2024]. The word generally is in the holding and should be carried with it.\n\nWhat this does not settle matters as much as what it does. It answers one question about one phrase under California law [S:another-planet-2024]. Forms that use different wording, forms that add virus or communicable disease coverage, and wordings that do not require damage at the insured premises are separate questions that have to be read in the forms themselves. Any actual claim is still decided by the insurer under the policy that was issued, and by a court if it is contested.",
+	"decidedBy": "The Supreme Court of California answered the certified question, stating that the actual or potential presence of COVID-19 on an insured's premises generally does not constitute direct physical loss or damage to property, and stating that direct physical loss or damage to property requires a distinct, demonstrable, physical alteration that need not be visible to the naked eye and need not be structural but must result in some injury to or impairment of the property as property. Another Planet Entertainment, LLC v. Vigilant Insurance Company, No. S277893 (Cal., opinion filed May 23, 2024) [S:another-planet-2024].",
+	"cannotGeneralize": [
+		"This opinion answers a question of California law. A policy governed by another state's law may be analyzed differently, and nothing here reports how any other state has read similar wording.",
+		"The certified question was limited to the phrase direct physical loss or damage to property in a commercial property insurance policy [S:another-planet-2024]. Forms with different wording, including forms that add virus or communicable disease coverage, raise separate questions that have to be read in the form itself.",
+		"The holding carries the qualifier generally [S:another-planet-2024]. Restating it as a flat rule changes what the court said.",
+		"Nothing here is a coverage determination. Whether a particular policy responds to a particular loss is decided by the insurer under that policy, and by a court if it is contested.",
+		"Lines other than commercial property are outside this entirely. Event cancellation, liability, and workers compensation questions from the same period are governed by their own forms and their own law."
+	],
+	"provenance": "Published opinion of the Supreme Court of California, case No. S277893, filed May 23, 2024, answering a certified question; the opinion identifies the underlying federal appellate proceeding by the reporter citation 56 F.4th 730 [S:another-planet-2024]. No Bollinsure client, application, policy, premium, quote, claim outcome, or placement outcome is described. The opinion text relied on here was read on a Thomson Reuters commercial host because three official host URLs were re-tested on 2026-08-31 and all failed; the failures are recorded in the source entry. No Ninth Circuit docket number is stated, because the page read does not contain one.",
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"another-planet-2024"
+	],
+	"relatedQuestions": [
+		"commercial-property-underwriting-information",
+		"same-limit-different-protection"
+	]
+}

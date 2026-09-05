@@ -1,0 +1,22 @@
+{
+	"title": "CHOICES Rate Comparison Search - Florida Office of Insurance Regulation",
+	"publisher": "Florida Office of Insurance Regulation",
+	"url": "https://floir.gov/consumers/choices-rate-comparison-search",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "FL",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Florida's CHOICES rate comparison tools cover automobile, homeowners, Medicare Supplement, and small group health insurance.",
+		"OIR states that the CHOICES tools for auto and homeowners insurance are based on three pre-defined model risk scenarios to provide the consumer with sample average rates in any Florida county.",
+		"OIR states that all rates provided in the CHOICES system are for illustrative purposes only and that consumers are encouraged to contact either an insurance agent or the insurance company for a premium quote based on their individual circumstances."
+	],
+	"updateCadence": "Rate data refreshed as filings are approved; re-verify annually.",
+	"status": "active",
+	"officialHost": true
+}

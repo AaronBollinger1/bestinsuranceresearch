@@ -1,0 +1,26 @@
+{
+	"title": "ISO form CG 20 01, edition 04 13, Primary And Noncontributory - Other Insurance Condition",
+	"publisher": "Insurance Services Office, Inc. (form text), posted by the Independent Insurance Agents of Texas",
+	"url": "https://www.iiat.org/uploads/files/general/InfoCentral/Commercial-GL/cg2001.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "n/a",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The form carries the designation CG 20 01 04 13, is titled 'Primary And Noncontributory - Other Insurance Condition', modifies insurance provided under the Commercial General Liability Coverage Part and the Products/Completed Operations Liability Coverage Part, and carries the footer 'Insurance Services Office, Inc., 2012'.",
+		"The form states that the following is added to the Other Insurance Condition 'and supersedes any provision to the contrary'.",
+		"The added language reads: 'This insurance is primary to and will not seek contribution from any other insurance available to an additional insured under your policy provided that: (1) The additional insured is a Named Insured under such other insurance; and (2) You have agreed in writing in a contract or agreement that this insurance would be primary and would not seek contribution from any other insurance available to the additional insured.'",
+		"CG 20 01 04 13 is a separate endorsement from the additional insured endorsements CG 20 10 and CG 20 37.",
+		"CG 20 01 04 13 is titled Primary And Noncontributory - Other Insurance Condition and modifies the Commercial General Liability Coverage Part and the Products/Completed Operations Liability Coverage Part.",
+		"The endorsement adds to the Other Insurance Condition, and supersedes any provision to the contrary, that this insurance is primary to and will not seek contribution from any other insurance available to an additional insured under the policy, provided that the additional insured is a Named Insured under such other insurance and the named insured has agreed in writing in a contract or agreement that this insurance would be primary and would not seek contribution from any other insurance available to the additional insured."
+	],
+	"updateCadence": "ISO revises commercial general liability endorsement editions periodically; a later edition may supersede the 04 13 edition.",
+	"status": "active",
+	"notes": "Downloaded 2026-08-31; the URL returns a one-page PDF, converted with pdftotext -layout and read in full. Clean, unaltered reproduction of the ISO form; the posting organization is a state agents trade association, not ISO. This replaces an earlier draft citation to a City of Hayward sample copy of the same form, which was a municipal sample rather than a clean form reproduction and which had been used to support a generalization about California public agencies that a single city sample cannot carry. Published: 2013-04",
+	"officialHost": true
+}

@@ -1,0 +1,20 @@
+{
+	"title": "California Insurance Code section 12921",
+	"publisher": "California Legislative Information (California Legislature)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=12921",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 12921(a) provides that the commissioner shall perform all duties imposed upon the commissioner by the provisions of this code and other laws regulating the business of insurance in this state, and shall enforce the execution of those provisions and laws."
+	],
+	"updateCadence": "Changes only by legislative amendment.",
+	"status": "active",
+	"officialHost": true
+}

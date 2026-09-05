@@ -1,0 +1,531 @@
+---
+import { ArrowRight, Printer, RotateCcw, Save } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Callout from '../components/Callout.astro';
+import Handoff from '../components/Handoff.astro';
+import StateBlock from '../components/StateBlock.astro';
+import StatusChip from '../components/StatusChip.astro';
+import { siteConfig } from '../config/site';
+import { createCiter } from '../lib/citations';
+import { assertModulesValid, idsOf, loadCorpus } from '../lib/corpus';
+import { breadcrumbs, graph, organization, webApplication, website } from '../lib/schema';
+
+const corpus = await loadCorpus();
+assertModulesValid(corpus);
+const modules = corpus.liveModules;
+
+/*
+ * Every module's rules travel to the client together. The engine that evaluates
+ * them here is the same one that validated them at build time, so the position
+ * cannot behave differently from the test suite.
+ */
+const payload = modules.map((m) => {
+	const ruleSourceIds = [...new Set(m.data.rules.flatMap((r) => idsOf(r.sourceIds)))];
+	// The position lists open items without rendering a ledger, so a marker links
+	// to the source's own record page rather than to an anchor that is not here.
+	const cite = createCiter(ruleSourceIds, `module "${m.id}"`, { link: 'absolute' });
+	return {
+		moduleId: m.id,
+		name: m.data.name,
+		summary: m.data.summary,
+		family: m.data.family,
+		lines: m.data.lines,
+		route: `/tools/${m.id}`,
+		fields: m.data.fields,
+		rules: m.data.rules.map((r) => ({
+			id: r.id,
+			kind: r.kind,
+			severity: r.severity,
+			title: r.title,
+			detail: cite.inline(r.detail),
+			action: r.action,
+			when: r.when,
+			sourceIds: idsOf(r.sourceIds),
+			relatedQuestion: r.relatedQuestion ? (r.relatedQuestion as { id: string }).id : null,
+			routeToProfessional: r.routeToProfessional,
+		})),
+	};
+});
+
+const totalFields = modules.reduce((n, m) => n + m.data.fields.length, 0);
+const totalRules = modules.reduce((n, m) => n + m.data.rules.length, 0);
+const totalSources = new Set(modules.flatMap((m) => m.data.rules.flatMap((r) => idsOf(r.sourceIds)))).size;
+
+/* The worksheets are standalone utilities rather than position modules. */
+const worksheets = corpus.liveTools;
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Coverage position', path: '/position' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	webApplication({
+		name: 'Coverage Position',
+		path: '/position',
+		description:
+			'Assemble your insurance position from modular line-specific assessments and see the gaps, inconsistencies, deadlines, and questions that follow, each linked to a cited source.',
+		features: [
+			`${modules.length} line-specific modules writing into one position`,
+			`${totalRules} deterministic checks across ${totalSources} cited sources`,
+			'Cross-module checks: a fact recorded in one module raises items in another',
+			'Held entirely on your own device. No account, no upload, no contact capture.',
+			'Printable open-item brief',
+		],
+	}),
+);
+---
+
+<BaseLayout
+	title="Coverage position"
+	description="Assemble your insurance position from modular assessments and see the gaps, inconsistencies, deadlines, and questions that follow, each traceable to a cited source. Held entirely on your own device."
+	jsonLd={jsonLd}
+	pageType="tool"
+	bodyClass="instrument"
+>
+	<header class="position-header">
+		<div class="shell">
+			<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+			<div class="position-top">
+				<div class="position-title">
+					<span class="eyebrow">The instrument</span>
+					<h1>Your coverage position</h1>
+					<p>
+						{modules.length} modules, {totalRules} deterministic checks, {totalSources} cited sources.
+						Everything you record stays on this device. Nothing here prices anything or decides
+						whether a risk is acceptable to an insurer.
+					</p>
+				</div>
+				<div style="display:flex;flex-wrap:wrap;gap:var(--s-2)" class="no-print">
+					<button class="btn btn-primary btn-sm" type="button" data-position-print>
+						<Printer size={15} aria-hidden="true" /> Print the brief
+					</button>
+					<button class="btn btn-secondary btn-sm" type="button" data-position-save>
+						<Save size={15} aria-hidden="true" /> Save now
+					</button>
+					<button class="btn btn-secondary btn-sm" type="button" data-position-reset>
+						<RotateCcw size={15} aria-hidden="true" /> Clear everything
+					</button>
+				</div>
+			</div>
+
+			<dl class="figures">
+				<div class="figure">
+					<dt>Modules started</dt>
+					<dd><span data-fig="started">0</span><small>/ {modules.length}</small></dd>
+				</div>
+				<div class="figure">
+					<dt>Recorded</dt>
+					<dd><span data-fig="answered">0</span><small>/ {totalFields}</small></dd>
+				</div>
+				<div class="figure" data-tone="high">
+					<dt>High</dt>
+					<dd data-fig="high">0</dd>
+				</div>
+				<div class="figure" data-tone="medium">
+					<dt>Medium</dt>
+					<dd data-fig="medium">0</dd>
+				</div>
+				<div class="figure">
+					<dt>Low</dt>
+					<dd data-fig="low">0</dd>
+				</div>
+				<div class="figure">
+					<dt>Checks run</dt>
+					<dd>{totalRules}</dd>
+				</div>
+			</dl>
+
+			<div class="meter-row" style="margin-top: var(--s-4); max-width: 520px">
+				<div class="meter-label">
+					<span>Information recorded across the position</span>
+					<b><span data-fig="percent">0</span>%</b>
+				</div>
+				<span class="meter meter-ink"><span data-meter style="width:0%"></span></span>
+			</div>
+			<p class="meta" style="margin-top: var(--s-2)">
+				This measures what you have recorded, not your risk. There is no risk score here.
+			</p>
+		</div>
+	</header>
+
+	<section class="band band-tight band-first">
+		<div class="shell">
+			<div id="position-empty">
+				<StateBlock kind="empty" heading="Nothing recorded yet.">
+					<p>
+						Start with whichever module matches the decision in front of you. Each one is useful on
+						its own, and each one writes into this position, so the next module you complete can
+						check against what the first one recorded.
+					</p>
+					<div class="state-actions">
+						{modules.slice(0, 3).map((m) => (
+							<a class="btn btn-secondary btn-sm" href={`/tools/${m.id}`}>{m.data.name}</a>
+						))}
+					</div>
+				</StateBlock>
+			</div>
+
+			<div id="position-live" hidden>
+				<Callout tone="privacy">
+					<p>
+						<strong>This position is held in this browser and nowhere else.</strong> There is no
+						account, no upload, and no server copy. Printing uses your own printer or PDF writer. If
+						you clear site data it is gone, because it was never anywhere else.
+					</p>
+				</Callout>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight band-paper" aria-labelledby="modules-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Modules</span>
+					<h2 id="modules-title">Each one stands alone and feeds the whole</h2>
+					<p>
+						A module is useful on its own. It becomes more useful once another module has recorded
+						something, because checks run across the position rather than inside one form.
+					</p>
+				</div>
+			</div>
+
+			<div class="module-grid" id="module-grid">
+				{
+					modules.map((m) => (
+						<a class="module-card" href={`/tools/${m.id}`} data-module-card={m.id} data-state="unstarted">
+							<div class="module-card-head">
+								<h3>{m.data.name}</h3>
+								<span class="status status-plain" data-card-items={m.id}>0 items</span>
+							</div>
+							<p>{m.data.summary}</p>
+							<div class="meter-row">
+								<div class="meter-label">
+									<span>Recorded</span>
+									<b><span data-card-answered={m.id}>0</span>/{m.data.fields.length}</b>
+								</div>
+								<span class="meter"><span data-card-meter={m.id} style="width:0%"></span></span>
+							</div>
+							<div class="module-card-foot">
+								<span>{m.data.rules.length} checks</span>
+								<span>{m.data.lines.slice(0, 2).join(', ')}</span>
+								{m.data.domain && <span>{m.data.domain}</span>}
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight" aria-labelledby="items-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Open items</span>
+					<h2 id="items-title">What follows from what you recorded</h2>
+					<p>
+						Ordered by severity. Every item is arithmetic or exact comparison on your own entries,
+						and every one links to the source behind it.
+					</p>
+				</div>
+				<div class="no-print" style="display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center">
+					<span class="meta" id="kind-filter-label">Show</span>
+					<div class="segmented segmented-wrap" role="group" aria-labelledby="kind-filter-label" id="kind-filter">
+						<button type="button" data-kind-filter="all" aria-pressed="true">All</button>
+						<button type="button" data-kind-filter="gap" aria-pressed="false">Gaps</button>
+						<button type="button" data-kind-filter="inconsistency" aria-pressed="false">Inconsistencies</button>
+						<button type="button" data-kind-filter="timing" aria-pressed="false">Timing</button>
+						<button type="button" data-kind-filter="documentation" aria-pressed="false">Documentation</button>
+						<button type="button" data-kind-filter="question" aria-pressed="false">Questions</button>
+					</div>
+				</div>
+			</div>
+
+			<p class="live-status" data-position-live role="status" aria-live="polite"></p>
+
+			<div class="items" id="position-items"></div>
+
+			<div id="position-items-none" hidden style="margin-top: var(--s-5)">
+				<StateBlock kind="insufficient" heading="No open item fired on what you recorded.">
+					<p>
+						That means none of the {totalRules} checks matched what is currently recorded. It does not
+						mean the position is complete or correct: a check that never runs because a field is
+						blank is not a clean result. The completeness figure above tells you how much is actually
+						recorded.
+					</p>
+				</StateBlock>
+			</div>
+		</div>
+	</section>
+
+	{
+		worksheets.length > 0 && (
+			<section class="band band-tight band-paper" aria-labelledby="worksheets-title">
+				<div class="shell">
+					<div class="band-head">
+						<div>
+							<span class="eyebrow">Worksheets</span>
+							<h2 id="worksheets-title">Standalone utilities</h2>
+							<p>
+								These do one job for one document and do not write into the position. A worksheet is
+								for a specific contract or a specific pair of quotes in front of you right now.
+							</p>
+						</div>
+					</div>
+					<div class="module-grid">
+						{worksheets.map((t) => (
+							<a class="module-card" href={t.data.route || `/tools/${t.id}`}>
+								<div class="module-card-head">
+									<h3>{t.data.name}</h3>
+									<span class="status status-plain">Worksheet</span>
+								</div>
+								<p>{t.data.summary}</p>
+								<div class="module-card-foot">
+									<span>{t.data.items.length} rows</span>
+									<span>Print and PDF</span>
+								</div>
+							</a>
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
+
+	<section class="band band-tight" aria-labelledby="boundary-title">
+		<div class="shell">
+			<span class="eyebrow">The boundary</span>
+			<h2 id="boundary-title">What this instrument will and will not tell you</h2>
+
+			<div class="card-grid card-grid-2" style="margin-top: var(--s-5)">
+				<div class="card">
+					<h3 class="card-title">It will</h3>
+					<ul style="margin: var(--s-2) 0 0; font-size: var(--text-sm); line-height: var(--leading-normal)">
+						<li>Notice a described activity with no matching coverage recorded.</li>
+						<li>Compare two figures you entered and flag the mismatch.</li>
+						<li>Do arithmetic on your dates against a cited deadline.</li>
+						<li>Flag documentation a cited source says is commonly requested.</li>
+						<li>Generate the question worth asking, and name who to ask.</li>
+						<li>Show the source behind every one of those.</li>
+					</ul>
+				</div>
+				<div class="card">
+					<h3 class="card-title">It will not</h3>
+					<ul style="margin: var(--s-2) 0 0; font-size: var(--text-sm); line-height: var(--leading-normal)">
+						<li>Say whether a risk is eligible, insurable, or acceptable to anyone.</li>
+						<li>Produce a premium, a price, or a rate estimate.</li>
+						<li>Say what any carrier will or will not write.</li>
+						<li>Say whether a loss is covered.</li>
+						<li>Assign a class code or any rating-bureau classification.</li>
+						<li>Give you a risk score. There is no version of that we can source.</li>
+					</ul>
+				</div>
+			</div>
+
+			<p class="mono" style="margin-top: var(--s-5)">
+				Enforced in code and in tests, not only in policy: every rule is validated at build time
+				against this boundary. See <a href="/methodology">the methodology</a>.
+			</p>
+		</div>
+	</section>
+
+	<section class="band band-tight no-print">
+		<div class="shell">
+			<Handoff
+				sourcePath="/position"
+				family="general"
+				sourceTool="coverage-position"
+				pageType="tool"
+				reason="A licensed broker can take this open-item list and tell you which items your current policies already answer, which need a change, and which were never a problem. Finding them is what this instrument does; resolving them is not."
+			/>
+		</div>
+	</section>
+
+	<div class="module-status no-print">
+		<div class="module-status-figures">
+			<span>Modules <b data-fig="started">0</b>/{modules.length}</span>
+			<span>Recorded <b data-fig="answered">0</b>/{totalFields}</span>
+			<span>Open items <b data-fig="total">0</b></span>
+			<span data-saved-at>Not saved yet</span>
+		</div>
+		<a class="btn btn-quiet btn-sm" href={`mailto:${siteConfig.contact.email}?subject=${encodeURIComponent('Coverage position question')}`}>
+			Ask about an item
+		</a>
+	</div>
+
+	<script
+		type="application/json"
+		id="position-modules"
+		is:inline
+		set:html={JSON.stringify(payload)}
+	/>
+</BaseLayout>
+
+<script>
+	import {
+		completenessFor,
+		evaluatePosition,
+		positionCompleteness,
+		startedModules,
+		type ModuleDef,
+		type OpenItem,
+	} from '../lib/position';
+	import { clearPosition, formatWhen, loadPosition, savePosition } from '../lib/position-store';
+
+	const node = document.getElementById('position-modules');
+	const modules = JSON.parse(node?.textContent || '[]') as Array<ModuleDef & { route: string }>;
+
+	const itemsEl = document.getElementById('position-items');
+	const noneEl = document.getElementById('position-items-none');
+	const emptyEl = document.getElementById('position-empty');
+	const liveWrap = document.getElementById('position-live');
+	const live = document.querySelector<HTMLElement>('[data-position-live]');
+	if (!itemsEl) throw new Error('position markup missing');
+
+	let kindFilter = 'all';
+
+	const KIND_LABEL: Record<string, string> = {
+		gap: 'Gap', inconsistency: 'Inconsistency', timing: 'Timing',
+		documentation: 'Documentation', question: 'Question',
+	};
+	const ROUTE_LABEL: Record<string, string> = {
+		broker: 'Ask a licensed broker', insurer: 'Ask the insurer',
+		lawyer: 'This one is for a lawyer', accountant: 'Ask your accountant',
+	};
+
+	function escape(value: string) {
+		const div = document.createElement('div');
+		div.textContent = value;
+		return div.innerHTML;
+	}
+
+	function renderItems(items: OpenItem[]) {
+		const shown = kindFilter === 'all' ? items : items.filter((i) => i.kind === kindFilter);
+		itemsEl!.innerHTML = shown
+			.map((item) => {
+				const question = item.relatedQuestion
+					? `<a href="/questions/${escape(item.relatedQuestion)}">Read the research</a>`
+					: '';
+				const route = item.routeToProfessional
+					? `<span>${escape(ROUTE_LABEL[item.routeToProfessional] || item.routeToProfessional)}</span>`
+					: '';
+				const sources = item.sourceIds
+					.map((id) => `<a href="/sources/${escape(id)}">${escape(id)}</a>`)
+					.join(' ');
+				return [
+					`<div class="item" data-severity="${escape(item.severity)}" data-kind="${escape(item.kind)}">`,
+					'<span class="item-rail" aria-hidden="true"></span>',
+					'<div>',
+					'<div class="item-head">',
+					`<h3>${escape(item.title)}</h3>`,
+					`<span class="kind kind-${escape(item.kind)}">${escape(KIND_LABEL[item.kind] || item.kind)}</span>`,
+					`<a class="status status-plain" href="${escape(`/tools/${item.moduleId}`)}">${escape(item.moduleName)}</a>`,
+					'</div>',
+					`<p>${item.detail}</p>`,
+					'<div class="item-action">',
+					'<span aria-hidden="true" style="color:var(--gold-text)">&#8594;</span>',
+					`<p>${escape(item.action)}</p>`,
+					'</div>',
+					'<div class="item-meta">',
+					question, route, sources,
+					'</div>',
+					'</div>',
+					'</div>',
+				].join('');
+			})
+			.join('');
+		return shown.length;
+	}
+
+	function render() {
+		const position = loadPosition();
+		const items = evaluatePosition(modules, position);
+		const overall = positionCompleteness(modules, position);
+		const started = startedModules(modules, position);
+
+		const set = (name: string, value: string | number) => {
+			for (const el of document.querySelectorAll<HTMLElement>(`[data-fig="${name}"]`)) {
+				el.textContent = String(value);
+			}
+		};
+		set('started', started.length);
+		set('answered', overall.answered);
+		set('percent', overall.percent);
+		set('total', items.length);
+		set('high', items.filter((i) => i.severity === 'high').length);
+		set('medium', items.filter((i) => i.severity === 'medium').length);
+		set('low', items.filter((i) => i.severity === 'low').length);
+		for (const bar of document.querySelectorAll<HTMLElement>('[data-meter]')) {
+			bar.style.width = `${overall.percent}%`;
+		}
+
+		// Per-module card state
+		for (const m of modules) {
+			const c = completenessFor(m, position.modules[m.moduleId]);
+			const mine = items.filter((i) => i.moduleId === m.moduleId).length;
+			const card = document.querySelector<HTMLElement>(`[data-module-card="${m.moduleId}"]`);
+			if (card) card.dataset.state = c.answered > 0 ? 'started' : 'unstarted';
+			const answered = document.querySelector<HTMLElement>(`[data-card-answered="${m.moduleId}"]`);
+			if (answered) answered.textContent = String(c.answered);
+			const meter = document.querySelector<HTMLElement>(`[data-card-meter="${m.moduleId}"]`);
+			if (meter) meter.style.width = `${c.percent}%`;
+			const badge = document.querySelector<HTMLElement>(`[data-card-items="${m.moduleId}"]`);
+			if (badge) badge.textContent = `${mine} item${mine === 1 ? '' : 's'}`;
+		}
+
+		const shown = renderItems(items);
+		const hasAny = overall.answered > 0;
+		if (emptyEl) emptyEl.hidden = hasAny;
+		if (liveWrap) liveWrap.hidden = !hasAny;
+		if (noneEl) noneEl.hidden = !hasAny || items.length > 0;
+
+		const savedEl = document.querySelector<HTMLElement>('[data-saved-at]');
+		if (savedEl) savedEl.textContent = position.savedAt ? `Saved ${formatWhen(position.savedAt)}` : 'Not saved yet';
+
+		if (live) {
+			live.textContent = hasAny
+				? `${items.length} open item${items.length === 1 ? '' : 's'} across ${started.length} module${started.length === 1 ? '' : 's'}${kindFilter === 'all' ? '' : `, ${shown} shown`}.`
+				: '';
+		}
+	}
+
+	document.getElementById('kind-filter')?.querySelectorAll<HTMLButtonElement>('[data-kind-filter]').forEach((button) => {
+		button.addEventListener('click', () => {
+			kindFilter = button.dataset.kindFilter || 'all';
+			document.querySelectorAll<HTMLButtonElement>('[data-kind-filter]').forEach((other) => {
+				other.setAttribute('aria-pressed', String(other === button));
+			});
+			render();
+		});
+	});
+
+	document.querySelector('[data-position-print]')?.addEventListener('click', () => {
+		window.birTrack?.('tool_completed', { tool_name: 'coverage-position' });
+		window.print();
+	});
+
+	document.querySelector('[data-position-save]')?.addEventListener('click', () => {
+		const outcome = savePosition(loadPosition());
+		if (live) {
+			live.textContent =
+				outcome === 'saved'
+					? 'Saved in this browser. It is not sent anywhere and no one else can see it.'
+					: 'This browser is blocking local storage, so saving is unavailable. You can still print.';
+		}
+		render();
+	});
+
+	document.querySelector('[data-position-reset]')?.addEventListener('click', () => {
+		clearPosition();
+		render();
+		if (live) live.textContent = 'The whole position was cleared from this device.';
+	});
+
+	render();
+</script>

@@ -1,0 +1,21 @@
+{
+	"title": "Property and Casualty Rate Reviews - Texas Department of Insurance",
+	"publisher": "Texas Department of Insurance",
+	"url": "https://www.tdi.texas.gov/reports/pc/property-casualty-rate-review-report.html",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "TX",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"TDI states that like most other states, Texas is a file-and-use state, which means that once an insurer files its rates, it can use them on their effective date.",
+		"TDI states that if the commissioner disapproves a rate filing, the insurer can request a hearing, and that the request must be made in writing within 30 days of the effective date in the disapproval order."
+	],
+	"updateCadence": "TDI updates this page periodically.",
+	"status": "active",
+	"officialHost": true
+}

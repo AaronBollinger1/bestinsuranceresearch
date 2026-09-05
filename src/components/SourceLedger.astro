@@ -1,0 +1,100 @@
+---
+import { ExternalLink } from '@lucide/astro';
+import type { CollectionEntry } from 'astro:content';
+import StatusChip from './StatusChip.astro';
+import { longDate } from '../lib/cite';
+import { isStale } from '../lib/corpus';
+
+interface Props {
+	sources: CollectionEntry<'sources'>[];
+	today: string;
+	/** Heading level so the ledger nests correctly under any page. */
+	headingId?: string;
+}
+
+const { sources, today, headingId = 'source-ledger' } = Astro.props;
+
+const AUTHORITY_LABEL: Record<string, string> = {
+	'primary-law': 'Primary law',
+	regulator: 'Regulator',
+	'standards-body': 'Standards body',
+	'carrier-official': 'Carrier official',
+	secondary: 'Secondary',
+};
+---
+
+<section class="answer-section" aria-labelledby={headingId}>
+	<h2 id={headingId}>Source ledger</h2>
+	<p class="mono" style="margin-bottom: var(--s-4)">
+		{sources.length} source{sources.length === 1 ? '' : 's'}. Every citation number above resolves to a
+		record below. Nothing here sits behind an account.
+	</p>
+
+	<ol class="ledger" style="list-style: none; padding: 0; margin: 0">
+		{
+			sources.map((source, i) => {
+				const n = i + 1;
+				const stale = isStale(source.data.lastChecked, today);
+				return (
+					<li class="ledger-item cite-target" id={`source-${n}`}>
+						<div class="ledger-line">
+							<span class="ledger-index">[{n}]</span>
+							<div>
+								<a class="ledger-title" href={source.data.url} rel="noopener nofollow" target="_blank"
+									data-event="source_opened" data-source-type={source.data.sourceType}>
+									{source.data.title}
+									<ExternalLink size={13} aria-hidden="true" style="display:inline-block;vertical-align:-2px;margin-left:4px" />
+									<span class="u-visually-hidden">(opens the original record on {source.data.publisher})</span>
+								</a>
+								<div class="ledger-facts">
+									<span><b>{source.data.publisher}</b></span>
+									<span>{AUTHORITY_LABEL[source.data.authorityLevel] ?? source.data.authorityLevel}</span>
+									<span>{source.data.primary ? 'Primary' : 'Secondary'}</span>
+									<span>Jurisdiction {source.data.jurisdiction}</span>
+									{source.data.officialHost === false && <span>Third-party reproduction</span>}
+									{source.data.publishedDate !== 'unknown' && source.data.publishedDate !== 'n/a' && (
+										<span>Published {longDate(source.data.publishedDate)}</span>
+									)}
+									{source.data.effectiveDate !== 'unknown' && source.data.effectiveDate !== 'n/a' && (
+										<span>Effective {longDate(source.data.effectiveDate)}</span>
+									)}
+									<span>Last checked {longDate(source.data.lastChecked)}</span>
+									<span>Updates: {source.data.updateCadence}</span>
+									<span>ID <code>{source.id}</code></span>
+								</div>
+								<details class="disc disc-plain" style="margin-top: var(--s-2)">
+									<summary>
+										What this source supports ({source.data.claims.length})
+									</summary>
+									<div class="disc-body">
+										<ul class="ledger-claims">
+											{source.data.claims.map((claim) => <li>{claim}</li>)}
+										</ul>
+										{source.data.archive && (
+											<p class="mono" style="margin-top: var(--s-3)">
+												Archived snapshot captured {longDate(source.data.archive.capturedDate)}:{' '}
+												<a href={source.data.archive.url} rel="noopener nofollow" target="_blank">
+													view snapshot
+												</a>
+											</p>
+										)}
+										{source.data.notes && <p class="mono" style="margin-top: var(--s-3)">{source.data.notes}</p>}
+									</div>
+								</details>
+							</div>
+							<div style="display:grid;gap:6px;justify-items:end">
+								{source.data.status === 'active' && !stale && <StatusChip kind="established" label="Active" />}
+								{source.data.status === 'disputed' && <StatusChip kind="disputed" />}
+								{source.data.status === 'superseded' && <StatusChip kind="changing" label="Superseded" />}
+								{source.data.status === 'unavailable' && <StatusChip kind="source-unavailable" />}
+								{source.data.status === 'not-adopted' && <StatusChip kind="not-adopted" />}
+								{source.data.officialHost === false && <StatusChip kind="reproduction" />}
+								{stale && source.data.status === 'active' && <StatusChip kind="stale-source" />}
+							</div>
+						</div>
+					</li>
+				);
+			})
+		}
+	</ol>
+</section>

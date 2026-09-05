@@ -1,0 +1,22 @@
+---
+import Breadcrumbs, { type Crumb } from './Breadcrumbs.astro';
+
+interface Props {
+	eyebrow: string;
+	title: string;
+	lede?: string;
+	trail?: Crumb[];
+}
+
+const { eyebrow, title, lede, trail } = Astro.props;
+---
+
+<section class="band band-tight band-first band-paper">
+	<div class="shell">
+		{trail && <div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>}
+		<span class="eyebrow">{eyebrow}</span>
+		<h1>{title}</h1>
+		{lede && <p class="lede">{lede}</p>}
+		<slot />
+	</div>
+</section>

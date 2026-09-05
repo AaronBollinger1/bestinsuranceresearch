@@ -1,0 +1,203 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Callout from '../components/Callout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { siteConfig } from '../config/site';
+import { loadCorpus } from '../lib/corpus';
+import { breadcrumbs, graph, organization, website } from '../lib/schema';
+
+const corpus = await loadCorpus();
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'About', path: '/about' },
+];
+
+const jsonLd = graph(organization(), website(), breadcrumbs(trail));
+---
+
+<BaseLayout
+	title="About"
+	description="Who operates BestInsurance Research, how it is funded, what it is for, and the boundary between it, Bollinsure, CovWell, and BestAMS."
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
+	<PageHeader
+		eyebrow="About"
+		title="Who runs this, and why that matters to you"
+		lede="An insurance brokerage operates a public advisory instrument and research library. That is a real commercial relationship, and the only honest way to handle it is to state it on every page and design the site so it cannot quietly become a lead funnel."
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell answer-grid">
+			<div class="prose">
+				<h2 id="operator">The operator</h2>
+				<p>
+					BestInsurance Research is operated by <strong>{siteConfig.operator.legalName}</strong>,
+					doing business as <strong>{siteConfig.operator.dba}</strong>, a California insurance
+					brokerage. Its {siteConfig.operator.licenseAuthority} agency licence number is{' '}
+					<span class="num">{siteConfig.operator.agencyLicense}</span>.
+				</p>
+				<p>Licensed producers:</p>
+				<ul>
+					{
+						siteConfig.operator.producers.map((producer) => (
+							<li>
+								{producer.name}, California licence <span class="num">{producer.license}</span>
+							</li>
+						))
+					}
+				</ul>
+				<p>
+					This site is not a regulator, a rating agency, an insurer, or an independent consumer
+					organization, and it does not present itself as any of those. It is a public advisory
+					instrument and research library published by a brokerage.
+				</p>
+
+				<h2 id="why">Why it exists</h2>
+				<p>
+					Most insurance information online is written to capture a lead. The tell is structural: the
+					answer is thin, the sources are absent or decorative, and the real payload is a form. That
+					pattern trains people to distrust the whole category, including the parts that would
+					actually help them.
+				</p>
+				<p>
+					The alternative is a library that answers the question completely, shows its evidence,
+					states its uncertainty, and lets you leave. If that is genuinely useful, some readers will
+					later choose to work with a broker, and some of those will choose this one. That is a
+					slower and more defensible way to earn the work than gating an answer behind an email
+					field.
+				</p>
+
+				<h2 id="promise">The promise</h2>
+				<blockquote style="border-left: 3px solid var(--gold); padding-left: var(--s-4); margin: var(--s-5) 0; font-family: var(--font-display); font-size: var(--text-xl); color: var(--ink); line-height: var(--leading-snug)">
+					Ask an insurance question. See the answer, the evidence, the uncertainty, and the next
+					responsible step.
+				</blockquote>
+				<p>
+					All four parts matter. An answer without evidence is an opinion. Evidence without a stated
+					uncertainty is overconfidence. And a next step that is always "contact us" is a funnel
+					wearing a library's clothes.
+				</p>
+
+				<h2 id="boundary">Where this sits</h2>
+				<p>Four things exist, and keeping them distinct is deliberate.</p>
+				<ul>
+					<li>
+						<strong>BestInsurance Research</strong>, this site, attracts, explains, cites, and
+						organizes public information. It collects nothing.
+					</li>
+					<li>
+						<strong>Bollinsure</strong> handles identified client intake, licensed advice, quoting,
+						uploads, appointments, email, and calls. Everything personal happens there, under its own
+						disclosed terms.
+					</li>
+					<li>
+						<strong>CovWell</strong> is the insured-facing self-guided coverage and service product.
+						It is not a second research library or advisory instrument, and it is outside this site.
+					</li>
+					<li>
+						<strong>BestAMS</strong> is Bollinsure's private system of record. Nothing on this site
+						reads from it, writes to it, or is trained on it.
+					</li>
+				</ul>
+				<Callout tone="note">
+					<p>
+						<strong>{siteConfig.licensedHelpDisclosure}</strong> Bollinsure may be compensated by an
+						insurer when it places coverage. It is not the only source of licensed help: you can
+						work with any licensed broker or agent, or contact an insurer directly.
+					</p>
+				</Callout>
+				<p>
+					The research journey never requires a handoff. Every answer, its full source ledger, and
+					its stated limits are complete whether or not you ever click a Bollinsure link.
+				</p>
+
+				<h2 id="corpus">What is published so far</h2>
+				<p>
+					The library is deliberately small and deep rather than large and thin. There are{' '}
+					{corpus.questions.length} canonical questions, {corpus.coverages.length} coverage pages,{' '}
+					{corpus.companies.length} organization records, {corpus.states.length} state pages,{' '}
+					{corpus.examples.length} labeled examples, {corpus.liveTools.length} tools, and{' '}
+					{corpus.sources.length} source records behind them.
+				</p>
+				<p>
+					Lines and jurisdictions that are not published yet are named as gaps on{' '}
+					<a href="/insurance">the coverage index</a> and <a href="/states">the states index</a>,
+					with no route and no sitemap entry, rather than published as empty pages. Tools that are
+					specified but not built stay in <a href="/tools">the registry</a> for the same reason.
+				</p>
+
+				<h2 id="podcast">Speaking of Insurance</h2>
+				<p>
+					Bollinsure publishes a podcast, <em>{siteConfig.podcast.name}</em>. Its canonical feed is
+					hosted on Transistor and its canonical episode archive lives on Bollinsure. This site does
+					not mirror the feed, does not compete with that archive, and does not import transcripts as
+					research pages.
+				</p>
+				<p>
+					An episode may be cited here when it materially supports an answer, with a direct link to
+					the canonical Bollinsure episode page and a clear source label. A transcript enters the
+					corpus only after factual review, source mapping, and segmentation into claims, exactly
+					like any other source.
+				</p>
+
+				<h2 id="contact">Contact</h2>
+				<ul>
+					<li>
+						Corrections and source reports:{' '}
+						<a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>
+					</li>
+					<li>
+						Licensed help, offered separately and optionally:{' '}
+						<a href={siteConfig.bollinsureOrigin} rel="noopener">
+							{siteConfig.operator.dba} <ArrowUpRight size={13} aria-hidden="true" style="display:inline-block;vertical-align:-2px" />
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<aside class="answer-rail" aria-label="Page contents">
+				<nav class="rail-block" aria-labelledby="on-this-page">
+					<h2 id="on-this-page">On this page</h2>
+					<ol>
+						<li><a href="#operator">The operator</a></li>
+						<li><a href="#why">Why it exists</a></li>
+						<li><a href="#promise">The promise</a></li>
+						<li><a href="#boundary">Where this sits</a></li>
+						<li><a href="#corpus">What is published</a></li>
+						<li><a href="#podcast">Speaking of Insurance</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ol>
+				</nav>
+				<div class="rail-block">
+					<h2>Operator</h2>
+					<dl>
+						<div><dt>Legal name</dt><dd>{siteConfig.operator.legalName}</dd></div>
+						<div><dt>Doing business as</dt><dd>{siteConfig.operator.dba}</dd></div>
+						<div><dt>Agency licence</dt><dd class="num">{siteConfig.operator.agencyLicense}</dd></div>
+						<div><dt>Regulator</dt><dd>{siteConfig.operator.licenseAuthority}</dd></div>
+					</dl>
+				</div>
+				<div class="rail-block no-print">
+					<h2>People</h2>
+					<ul>
+						{corpus.people.map((person) => <li><a href={`/authors/${person.id}`}>{person.data.name}</a></li>)}
+					</ul>
+				</div>
+				<div class="rail-block no-print">
+					<h2>Standards</h2>
+					<ul>
+						<li><a href="/methodology">Methodology</a></li>
+						<li><a href="/editorial-policy">Editorial policy</a></li>
+						<li><a href="/corrections">Corrections</a></li>
+						<li><a href="/privacy">Privacy</a></li>
+						<li><a href="/terms">Terms</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

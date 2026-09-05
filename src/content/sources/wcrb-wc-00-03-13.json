@@ -1,0 +1,24 @@
+{
+	"title": "Form WC 00 03 13 (Ed. 4-84), Waiver Of Our Right To Recover From Others Endorsement",
+	"publisher": "National Council on Compensation Insurance (form text), posted by the Wisconsin Compensation Rating Bureau",
+	"url": "https://www.wcrb.org/forms/Endorsements/WC000313%20Waivers%20of%20Our%20Rights%20to%20Recover%20From%20Others%20Endorsement.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "n/a",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The form is designated WC 00 03 13 (Ed. 4-84), attaches to a Workers Compensation and Employers Liability Insurance Policy, and carries the footer '1983 National Council on Compensation Insurance.'",
+		"The form reads: 'We have the right to recover our payments from anyone liable for an injury covered by this policy. We will not enforce our right against the person or organization named in the Schedule. (This agreement applies only to the extent that you perform work under a written contract that requires you to obtain this agreement from us.)'",
+		"The form also states: 'This agreement shall not operate directly or indirectly to benefit anyone not named in the Schedule.'",
+		"The form contains a Schedule in which the person or organization is named."
+	],
+	"updateCadence": "The underlying form is maintained by its filer; rating bureau postings change as filings change.",
+	"status": "active",
+	"notes": "Downloaded 2026-08-31; the URL returns a one-page PDF, converted with pdftotext -layout and read in full. This is a clean, unaltered copy of the national workers compensation waiver endorsement, used in place of a municipal sample packet copy for better provenance on this form's text. The Wisconsin Compensation Rating Bureau is the posting organization, not the form's filer.",
+	"officialHost": true
+}

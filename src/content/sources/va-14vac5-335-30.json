@@ -1,0 +1,24 @@
+{
+	"title": "14VAC5-335-30 - Requirement to offer supplemental extended reporting period",
+	"publisher": "Virginia Administrative Code, Virginia General Assembly Legislative Information System",
+	"url": "https://law.lis.virginia.gov/admincode/title14/agency5/chapter335/section30/",
+	"sourceType": "regulation",
+	"jurisdiction": "VA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Requires every claims-made liability insurance policy to include a provision that the named insured may purchase a supplemental extended reporting period upon policy termination, where termination includes cancellation or nonrenewal, advancement of any applicable retroactive date, and renewal on other than a claims-made basis.",
+		"Provides that no offer of a supplemental extended reporting period is required if the cancellation or nonrenewal is due to nonpayment of premium, failure to comply with terms or conditions of the policy, or fraud.",
+		"Requires each claims-made liability insurance policy to contain provisions that clearly state when the supplemental extended reporting period will and will not be offered.",
+		"Requires the offer to be made in writing no earlier than the date of notification of termination of the policy and not later than 15 days after the termination, and requires that the insured have a minimum of 30 days from policy termination to purchase the supplemental extended reporting period."
+	],
+	"updateCadence": "changes when the Virginia State Corporation Commission amends 14VAC5-335",
+	"status": "active",
+	"notes": "Fetched 2026-08-31 from the official Virginia Administrative Code site; subsections A through D read off the page. The earlier draft of this bundle carried the subsection B exceptions in the source record but never surfaced them in the prose; they now appear in the answer itself. Published: 2018-10-01 Effective: 2018-10-01",
+	"officialHost": true
+}

@@ -1,0 +1,31 @@
+{
+	"title": "California Insurance Code Section 758.5 (choice of automotive repair dealer)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=758.5",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "2010-01-01",
+	"accessedDate": "2026-09-02",
+	"lastChecked": "2026-09-02",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 758.5(a) provides that no insurer shall require that an automobile be repaired at a specific automotive repair dealer, as that term is defined in Business and Professions Code section 9880.1.",
+		"Section 758.5(b)(1) provides that no insurer shall suggest or recommend that an automobile be repaired at a specific automotive repair dealer unless a referral is expressly requested by the claimant, or the claimant has been informed in writing of the right to select the automotive repair dealer.",
+		"Section 758.5(b)(2) permits an insurer to provide the claimant with specific truthful and nondeceptive information regarding the services and benefits available during the claims process, which may include information about repair warranties offered, the type of replacement parts to be used, the anticipated time to repair the vehicle, and the quality of workmanship available.",
+		"Section 758.5(b)(3) provides that if an insurer's recommendation of an automotive repair dealer is accepted by the claimant, the insurer shall cause the damaged vehicle to be restored to its condition prior to the loss at no additional cost to the claimant other than as stated in the policy or as otherwise allowed by law.",
+		"Section 758.5(b)(3) requires that where the recommendation is made orally and accepted, the insurer mail or provide a written notice within five calendar days of the acceptance, in a separate and freestanding document, in no less than 10-point type, containing the statement the subdivision prescribes.",
+		"Section 758.5(b)(3) prescribes the text of that notice, which states that the insurer is prohibited by law from requiring that repairs be done at a specific automotive repair dealer and that the claimant is entitled to select the auto body repair shop to repair damage covered by the insurer.",
+		"Section 758.5(c) provides that, except for a referral the claimant expressly requested or information of the kind authorized by subdivision (b)(2), after the claimant has chosen an automotive repair dealer the insurer shall not suggest or recommend that the claimant select a different automotive repair dealer.",
+		"Section 758.5(d)(1) requires an insurer that by the insurance contract suggests or recommends repair at a particular automotive repair dealer to prominently disclose that contractual provision in writing to the insured both at the time the insurance is applied for and at the time the claim is acknowledged.",
+		"Section 758.5(d)(2) provides that if the claimant elects to have the vehicle repaired at the shop of the claimant's choice, the insurer shall not limit or discount the reasonable repair costs based on charges that would have been incurred had the vehicle been repaired by the insurer's chosen shop.",
+		"Section 758.5(e) defines claimant, for purposes of the section, as a first-party claimant or insured, or a third-party claimant who asserts a right of recovery for automotive repairs under an insurance policy.",
+		"Section 758.5(f) provides that the commissioner's powers to enforce the section include those granted in the unfair practices article commencing at Insurance Code section 790."
+	],
+	"updateCadence": "Amended only by legislation. Last amended by Stats. 2009, Ch. 387, Sec. 1 (AB 1200), effective January 1, 2010.",
+	"status": "active",
+	"notes": "Subdivision (d)(2) is the operative protection and the part most often left out of a summary: choosing your own shop does not license the insurer to pay only what its own network shop would have charged. The section reaches third-party claimants as well as insureds, by force of subdivision (e)."
+}

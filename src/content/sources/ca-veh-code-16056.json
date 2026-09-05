@@ -1,0 +1,24 @@
+{
+	"title": "California Vehicle Code Section 16056 (policy limits that satisfy financial responsibility)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=16056",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-02",
+	"lastChecked": "2026-09-02",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Vehicle Code section 16056 states the liability limits a policy must carry to satisfy California's financial responsibility requirement as $15,000 for bodily injury to or death of one person, $30,000 for bodily injury to or death of all persons in one accident, and $5,000 for property damage for the period through December 31, 2024.",
+		"Vehicle Code section 16056 states the limits applicable on and after January 1, 2025 as $30,000 for bodily injury to or death of one person, $60,000 for bodily injury to or death of all persons in one accident, and $15,000 for property damage.",
+		"Vehicle Code section 16056 provides for a further step-up effective January 1, 2035, expressed as an increase BY $20,000 for bodily injury to or death of one person, BY $40,000 for bodily injury to or death of all persons in one accident, and BY $10,000 for property damage. Applied to the amounts operative from January 1, 2025, that produces limits of $50,000, $100,000 and $25,000 from January 1, 2035. The statute states the increments rather than the resulting figures, so the increments must not be read as the 2035 limits.",
+		"The section's amendment note reads that it was amended, as added by Stats. 2022, Ch. 717, Sec. 3, by Stats. 2023, Ch. 204, Sec. 19 (AB 1140), effective January 1, 2024, operative January 1, 2025 by its own provisions."
+	],
+	"updateCadence": "Amended only by legislation; the January 1, 2035 step-up is already written into the section.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: 2025-01-01"
+}

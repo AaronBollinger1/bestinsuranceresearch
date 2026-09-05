@@ -1,0 +1,23 @@
+{
+	"title": "California Insurance Code section 105 - Surety insurance",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=105",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Surety insurance includes the guaranteeing of behavior of persons and the guaranteeing of performance of contracts, including executing or guaranteeing bonds and undertakings required or permitted in all actions or proceedings or by law allowed, other than insurance policies and other than for payments secured by a mortgage, deed of trust, or other instrument constituting a lien or charge on real estate.",
+		"Surety insurance also includes insurance against loss resulting from the forgery or alteration of any instrument or of any signature on it.",
+		"No insurance may be written as surety insurance if it falls within the definition of financial guaranty insurance as set forth in Section 12100."
+	],
+	"updateCadence": "Amended only by act of the Legislature",
+	"status": "active",
+	"notes": "Re-fetched 2026-08-31; subdivisions (a) through (d) read verbatim. This is a definitional and classification provision. It does not license or regulate anyone, so it is not used to support any licensing statement, and an inference about surety being a regulated class was removed from the claims array. It says nothing about bail bonds.",
+	"officialHost": true
+}

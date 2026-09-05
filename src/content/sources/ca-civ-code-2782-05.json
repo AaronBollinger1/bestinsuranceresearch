@@ -1,0 +1,28 @@
+{
+	"title": "California Civil Code Section 2782.05 (subcontractor indemnity and defense of a general contractor)",
+	"publisher": "California Legislative Information, Office of Legislative Counsel",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2782.05.",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 2782.05(a) reaches provisions, clauses, covenants, and agreements contained in, collateral to, or affecting any construction contract and amendments thereto entered into on or after January 1, 2013. By its own words the section does not reach a construction contract entered into before that date, and it does not reach contracts that are not construction contracts.",
+		"Within that scope, and except as provided in subdivision (b), Section 2782.05(a) makes void and unenforceable provisions that purport to insure or indemnify, including the cost to defend, a general contractor, construction manager, or other subcontractor, by a subcontractor, against liability for claims of death or bodily injury to persons, injury to property, or any other loss, damage, or expense, to the extent the claims arise out of, pertain to, or relate to the active negligence or willful misconduct of that general contractor, construction manager, or other subcontractor.",
+		"Subdivision (b) contains thirteen numbered paragraphs listing categories the section does not affect. The ones verified word for word on the page and relied on in this cluster are (b)(1) contracts for residential construction subject to any part of Title 7, (b)(2) direct contracts with a public agency governed by Section 2782(b), (b)(3) direct contracts with the owner of privately owned real property governed by Section 2782(c), (b)(4) any wrap-up insurance policy or program, (b)(5) a cause of action for breach of contract or warranty that exists independently of an indemnity obligation, (b)(7) indemnity provisions contained in loan and financing documents, (b)(8) general agreements of indemnity required by sureties as a condition of execution of bonds, (b)(9) the benefits and protections provided by the workers' compensation laws, (b)(10) the benefits or protections provided by the governmental immunity laws, and (b)(12) contracts with design professionals.",
+		"Subdivision (b) also contains (b)(11), which opens 'Provisions that require the purchase of any of the following:' and then lists specified insurance beginning with owners and contractors protective coverage, and (b)(13), which opens 'Any agreement between a promisor and an admitted surety insurer regarding the promisor's obligations'. Neither was captured in full on the fetched page, so neither is recited in this cluster and the list above should be read as partial.",
+		"Subdivision (b)(6) preserves a provision in such a construction contract that requires the promisor to purchase or maintain insurance covering the acts or omissions of the promisor, including additional insured endorsements covering the acts or omissions of the promisor during ongoing and completed operations.",
+		"Subdivision (c) opens 'Notwithstanding any choice-of-law rules that would apply the laws of another jurisdiction, the law of' and applies California law to a contract within the section's scope.",
+		"Subdivision (d) provides that any waiver of the provisions of the section is contrary to public policy and is void and unenforceable.",
+		"The page carries the note 'Added by Stats. 2011, Ch. 707, Sec. 3. (SB 474) Effective January 1, 2012.'"
+	],
+	"updateCadence": "Amended by legislation; re-check leginfo before each publication cycle.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: 2012-01-01"
+}

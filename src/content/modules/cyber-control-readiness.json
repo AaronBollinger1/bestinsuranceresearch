@@ -1,0 +1,1841 @@
+{
+	"name": "Cyber Control Readiness",
+	"summary": "Works out which of the security controls a cyber application will ask about you actually have, which ones you have but cannot yet evidence in writing, and which dated records are already stale.",
+	"family": "commercial",
+	"lines": [
+		"cyber-liability",
+		"privacy-and-network-security",
+		"technology-errors-and-omissions",
+		"crime-and-social-engineering"
+	],
+	"order": 60,
+	"status": "live",
+	"privacyBoundary": "This module refuses to collect vendor or product names, domain names, IP addresses, hostnames, account names, employee or patient or customer names, exported log or scan output, and any description of a live unremediated vulnerability; controls are recorded only as in-place, partial, absent, or unknown plus a separate documented yes or no.",
+	"uncertainty": "It cannot determine whether any insurer will accept the risk, what any coverage would cost, or whether a control as you run it meets a particular carrier's stated minimum; the underwriter reviewing your signed application decides that, and your broker decides what to present.",
+	"domain": "bestcyberliability.com",
+	"fields": [
+		{
+			"id": "control-baseline-used",
+			"label": "Which published control baseline, if any, do you already map your security controls to?",
+			"help": "The two cited in this module are NIST Cybersecurity Framework (CSF) 2.0, published 2024-02-26, and CISA Cross-Sector Cybersecurity Performance Goals Version 2.0, published December 2025.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "nist-csf-2-0",
+					"label": "NIST Cybersecurity Framework (CSF) 2.0, published 2024-02-26"
+				},
+				{
+					"value": "cisa-cpg-2-0",
+					"label": "CISA Cross-Sector Cybersecurity Performance Goals Version 2.0, December 2025"
+				},
+				{
+					"value": "both",
+					"label": "Both NIST CSF 2.0 and CISA CPG 2.0"
+				},
+				{
+					"value": "other-internal",
+					"label": "An internal or third-party baseline that is not one of these"
+				},
+				{
+					"value": "none",
+					"label": "None, we have not mapped to a published baseline"
+				}
+			],
+			"group": "Baseline and profile",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "sector",
+			"label": "Which sector best describes what the business actually does day to day?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "professional-services",
+					"label": "Professional or consulting services"
+				},
+				{
+					"value": "healthcare-provider",
+					"label": "Healthcare provider or healthcare services"
+				},
+				{
+					"value": "financial-services",
+					"label": "Financial services, lending, or insurance services"
+				},
+				{
+					"value": "retail-ecommerce",
+					"label": "Retail or e-commerce"
+				},
+				{
+					"value": "manufacturing",
+					"label": "Manufacturing or industrial"
+				},
+				{
+					"value": "construction",
+					"label": "Construction or contracting"
+				},
+				{
+					"value": "education",
+					"label": "Education"
+				},
+				{
+					"value": "nonprofit",
+					"label": "Nonprofit or association"
+				},
+				{
+					"value": "government-contractor",
+					"label": "Government contractor"
+				},
+				{
+					"value": "technology-saas",
+					"label": "Technology, software, or hosted services"
+				},
+				{
+					"value": "hospitality",
+					"label": "Hospitality or food service"
+				},
+				{
+					"value": "transportation-logistics",
+					"label": "Transportation or logistics"
+				},
+				{
+					"value": "other",
+					"label": "Something else"
+				}
+			],
+			"group": "Baseline and profile",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "revenue-band",
+			"label": "Which band covers annual revenue for the most recent complete year?",
+			"kind": "band",
+			"options": [
+				{
+					"value": "under-1m",
+					"label": "Under 1,000,000 USD"
+				},
+				{
+					"value": "1m-5m",
+					"label": "1,000,000 to 5,000,000 USD"
+				},
+				{
+					"value": "5m-25m",
+					"label": "5,000,000 to 25,000,000 USD"
+				},
+				{
+					"value": "25m-100m",
+					"label": "25,000,000 to 100,000,000 USD"
+				},
+				{
+					"value": "100m-500m",
+					"label": "100,000,000 to 500,000,000 USD"
+				},
+				{
+					"value": "over-500m",
+					"label": "Over 500,000,000 USD"
+				}
+			],
+			"group": "Baseline and profile",
+			"required": true,
+			"purpose": "brief-only",
+			"privacyNote": "Pick the band only. Do not type an exact revenue figure anywhere in this module."
+		},
+		{
+			"id": "employee-band",
+			"label": "How many people have accounts on your systems, counting staff and contractors?",
+			"kind": "band",
+			"options": [
+				{
+					"value": "1-10",
+					"label": "1 to 10"
+				},
+				{
+					"value": "11-50",
+					"label": "11 to 50"
+				},
+				{
+					"value": "51-250",
+					"label": "51 to 250"
+				},
+				{
+					"value": "251-1000",
+					"label": "251 to 1,000"
+				},
+				{
+					"value": "over-1000",
+					"label": "Over 1,000"
+				}
+			],
+			"group": "Baseline and profile",
+			"required": true,
+			"purpose": "brief-only"
+		},
+		{
+			"id": "records-band",
+			"label": "Which band covers the number of individuals whose personal information you hold?",
+			"help": "Count individuals, not files. If you genuinely do not know, choose unknown rather than guessing a precise number.",
+			"kind": "band",
+			"options": [
+				{
+					"value": "none",
+					"label": "None that we are aware of"
+				},
+				{
+					"value": "under-1k",
+					"label": "Fewer than 1,000"
+				},
+				{
+					"value": "1k-10k",
+					"label": "1,000 to 10,000"
+				},
+				{
+					"value": "10k-100k",
+					"label": "10,000 to 100,000"
+				},
+				{
+					"value": "100k-1m",
+					"label": "100,000 to 1,000,000"
+				},
+				{
+					"value": "over-1m",
+					"label": "Over 1,000,000"
+				},
+				{
+					"value": "unknown",
+					"label": "Unknown"
+				}
+			],
+			"group": "Baseline and profile",
+			"required": true,
+			"purpose": "rule-input",
+			"privacyNote": "Pick a band. Do not enter any individual's name, account identifier, card number, medical detail, or any other personal information about anyone."
+		},
+		{
+			"id": "handles-phi",
+			"label": "Do you create, receive, maintain, or transmit protected health information as a HIPAA covered entity or business associate?",
+			"kind": "boolean",
+			"group": "Baseline and profile",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "handles-card-payments",
+			"label": "Do you accept payment card transactions in any channel?",
+			"kind": "boolean",
+			"group": "Baseline and profile",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "it-management-model",
+			"label": "Who runs your IT and security day to day?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "in-house",
+					"label": "In-house staff only"
+				},
+				{
+					"value": "outsourced-msp",
+					"label": "An outside managed service provider"
+				},
+				{
+					"value": "hybrid",
+					"label": "In-house staff plus an outside provider"
+				},
+				{
+					"value": "none",
+					"label": "Nobody has this as a defined responsibility"
+				}
+			],
+			"group": "Baseline and profile",
+			"required": true,
+			"purpose": "rule-input",
+			"privacyNote": "Do not enter the provider's company name, contact name, or contract number."
+		},
+		{
+			"id": "cloud-dependency",
+			"label": "Which of these does the business depend on to keep operating?",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "email-saas",
+					"label": "Hosted email"
+				},
+				{
+					"value": "file-storage-saas",
+					"label": "Hosted file storage or document collaboration"
+				},
+				{
+					"value": "erp-accounting-saas",
+					"label": "Hosted accounting, ERP, or payroll"
+				},
+				{
+					"value": "customer-data-saas",
+					"label": "A hosted system holding customer or client records"
+				},
+				{
+					"value": "self-hosted-on-prem",
+					"label": "Servers we run ourselves on our own premises"
+				},
+				{
+					"value": "industrial-control",
+					"label": "Industrial control or operational technology"
+				},
+				{
+					"value": "none",
+					"label": "None of these"
+				}
+			],
+			"group": "Baseline and profile",
+			"required": true,
+			"purpose": "rule-input",
+			"privacyNote": "Choose categories only. Do not name products, vendors, domains, hostnames, or IP addresses."
+		},
+		{
+			"id": "mfa-status",
+			"label": "Multi-factor authentication: what is its state across accounts today?",
+			"help": "In-place means every account uses it. Partial means some accounts do and some do not.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "in-place",
+					"label": "In place across all accounts"
+				},
+				{
+					"value": "partial",
+					"label": "In place for some accounts only"
+				},
+				{
+					"value": "absent",
+					"label": "Not in place"
+				},
+				{
+					"value": "unknown",
+					"label": "Unknown"
+				}
+			],
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "mfa-documented",
+			"label": "Multi-factor authentication: do you hold a dated written record you could hand to someone as evidence?",
+			"help": "A written policy, an enforcement setting export, or an enrollment coverage report with a date on it.",
+			"kind": "boolean",
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "offline-backup-status",
+			"label": "Offline or immutable backups: what is their state today?",
+			"help": "Offline or immutable means a copy an attacker with your administrator credentials could not delete or encrypt.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "in-place",
+					"label": "In place for all systems needed to operate"
+				},
+				{
+					"value": "partial",
+					"label": "In place for some systems only"
+				},
+				{
+					"value": "absent",
+					"label": "Not in place"
+				},
+				{
+					"value": "unknown",
+					"label": "Unknown"
+				}
+			],
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "offline-backup-documented",
+			"label": "Offline or immutable backups: do you hold a written backup inventory and retention schedule?",
+			"kind": "boolean",
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "restore-test-status",
+			"label": "Tested restore: have you actually restored from backup and confirmed the restored data worked?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "in-place",
+					"label": "Yes, as a scheduled recurring test"
+				},
+				{
+					"value": "partial",
+					"label": "Once or occasionally, not on a schedule"
+				},
+				{
+					"value": "absent",
+					"label": "Never"
+				},
+				{
+					"value": "unknown",
+					"label": "Unknown"
+				}
+			],
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "restore-test-documented",
+			"label": "Tested restore: do you hold a dated written result for the most recent test?",
+			"kind": "boolean",
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "last-restore-test-date",
+			"label": "On what date did you last complete a restore test?",
+			"kind": "date",
+			"group": "Controls: state and evidence",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "endpoint-detection-status",
+			"label": "Endpoint detection: what is its state across laptops, desktops, and servers?",
+			"help": "Something on the device that both matches known malicious code and flags unusual behaviour, and that someone actually watches.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "in-place",
+					"label": "In place on all endpoints and servers"
+				},
+				{
+					"value": "partial",
+					"label": "In place on some endpoints only"
+				},
+				{
+					"value": "absent",
+					"label": "Not in place"
+				},
+				{
+					"value": "unknown",
+					"label": "Unknown"
+				}
+			],
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "endpoint-detection-documented",
+			"label": "Endpoint detection: do you hold a dated coverage report showing which devices are protected?",
+			"kind": "boolean",
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "patch-cadence-status",
+			"label": "Patch cadence: is there a defined schedule for applying security updates?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "in-place",
+					"label": "A defined schedule exists and is followed for all assets"
+				},
+				{
+					"value": "partial",
+					"label": "A schedule exists for some assets, or it slips regularly"
+				},
+				{
+					"value": "absent",
+					"label": "No defined schedule"
+				},
+				{
+					"value": "unknown",
+					"label": "Unknown"
+				}
+			],
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "patch-cadence-documented",
+			"label": "Patch cadence: do you hold a written patching standard and a record of what was patched when?",
+			"kind": "boolean",
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "email-filtering-status",
+			"label": "Email filtering and authentication: what is the state of inbound filtering plus SPF, DKIM, and DMARC?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "in-place",
+					"label": "Filtering plus SPF, DKIM, and DMARC all configured"
+				},
+				{
+					"value": "partial",
+					"label": "Some of these configured, not all"
+				},
+				{
+					"value": "absent",
+					"label": "None of these configured"
+				},
+				{
+					"value": "unknown",
+					"label": "Unknown"
+				}
+			],
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "email-filtering-documented",
+			"label": "Email filtering and authentication: do you hold a dated export of your published records and the DMARC policy value?",
+			"kind": "boolean",
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input",
+			"privacyNote": "Answer yes or no. Do not paste the records themselves or your domain name into this module."
+		},
+		{
+			"id": "privileged-access-review-status",
+			"label": "Privileged access review: does someone periodically re-check who holds administrator rights and remove those who no longer need them?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "in-place",
+					"label": "Reviewed on a recurring schedule"
+				},
+				{
+					"value": "partial",
+					"label": "Reviewed only when someone notices or on staff departure"
+				},
+				{
+					"value": "absent",
+					"label": "Never reviewed"
+				},
+				{
+					"value": "unknown",
+					"label": "Unknown"
+				}
+			],
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "privileged-access-review-documented",
+			"label": "Privileged access review: do you hold a dated review record and a written offboarding checklist?",
+			"kind": "boolean",
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "incident-response-plan-status",
+			"label": "Incident response plan: is there a plan for what happens in the first hours of a cyber incident?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "in-place",
+					"label": "A plan exists and named people know their roles"
+				},
+				{
+					"value": "partial",
+					"label": "Some steps are agreed but there is no complete plan"
+				},
+				{
+					"value": "absent",
+					"label": "No plan"
+				},
+				{
+					"value": "unknown",
+					"label": "Unknown"
+				}
+			],
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "incident-response-plan-documented",
+			"label": "Incident response plan: is it written down where someone could find it during an outage?",
+			"kind": "boolean",
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "last-ir-exercise-date",
+			"label": "On what date did you last walk through or drill the incident response plan?",
+			"kind": "date",
+			"group": "Controls: state and evidence",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "awareness-training-status",
+			"label": "Security awareness training: what is the state of training for everyone with an account?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "in-place",
+					"label": "All users trained on a recurring schedule, and new joiners before access"
+				},
+				{
+					"value": "partial",
+					"label": "Some users trained, or trained once with no schedule"
+				},
+				{
+					"value": "absent",
+					"label": "No training"
+				},
+				{
+					"value": "unknown",
+					"label": "Unknown"
+				}
+			],
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "awareness-training-documented",
+			"label": "Security awareness training: do you hold a dated completion record showing who finished it?",
+			"kind": "boolean",
+			"group": "Controls: state and evidence",
+			"required": true,
+			"purpose": "rule-input",
+			"privacyNote": "Answer yes or no. Do not enter the names of the people who completed or missed training."
+		},
+		{
+			"id": "last-training-date",
+			"label": "On what date did the most recent round of training close?",
+			"kind": "date",
+			"group": "Controls: state and evidence",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "evidence-package-held",
+			"label": "Have you assembled the written evidence for these controls into one place you could send on request?",
+			"kind": "boolean",
+			"group": "Application readiness",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "control-attestation-signer",
+			"label": "Who inside the business can truthfully confirm, in writing, the control answers above?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "owner-officer",
+					"label": "An owner or officer"
+				},
+				{
+					"value": "it-lead",
+					"label": "An internal IT or security lead"
+				},
+				{
+					"value": "msp",
+					"label": "Only the outside provider could confirm them"
+				},
+				{
+					"value": "none-identified",
+					"label": "Nobody has been identified"
+				}
+			],
+			"group": "Application readiness",
+			"required": true,
+			"purpose": "rule-input",
+			"privacyNote": "Choose the role. Do not enter the person's name, title, email address, or phone number."
+		},
+		{
+			"id": "application-due-date",
+			"label": "By what date do you need the application or renewal information submitted?",
+			"kind": "date",
+			"group": "Application readiness",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "existing-cyber-policy",
+			"label": "What cyber coverage, if any, is currently recorded on your programme?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "none",
+					"label": "None recorded"
+				},
+				{
+					"value": "standalone-cyber",
+					"label": "A standalone cyber policy"
+				},
+				{
+					"value": "endorsement-on-package",
+					"label": "An endorsement on a package or business owners policy"
+				},
+				{
+					"value": "unknown",
+					"label": "Unknown"
+				}
+			],
+			"group": "Application readiness",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "contractual-cyber-requirement",
+			"label": "Does any customer, landlord, lender, or vendor contract require you to carry cyber or privacy liability coverage?",
+			"kind": "boolean",
+			"group": "Contract and third parties",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "contract-required-cyber-limit",
+			"label": "What cyber limit does the strictest of those contracts require?",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Contract and third parties",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Enter the number only. Do not paste contract text, the counterparty's name, or a contract reference."
+		},
+		{
+			"id": "recorded-cyber-limit",
+			"label": "What cyber limit is recorded on your current coverage?",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Contract and third parties",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "vendor-security-terms-reviewed",
+			"label": "Have you read the security and incident-notification terms in the agreements with whoever holds your data or runs your systems?",
+			"kind": "boolean",
+			"group": "Contract and third parties",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "prior-cyber-incident",
+			"label": "In the last five years, has the business had a cyber incident, ransomware event, funds-transfer fraud, or suspected unauthorised access to data?",
+			"kind": "boolean",
+			"group": "Prior events",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "incident-discovery-date",
+			"label": "On what date did you discover the most recent such incident?",
+			"help": "Discovery date, not the date it started.",
+			"kind": "date",
+			"group": "Prior events",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Enter the date only. Do not describe what happened, who was affected, what data was involved, or how the attacker got in."
+		},
+		{
+			"id": "incident-notification-sent",
+			"label": "For that incident, have all notifications you believe are required already been sent?",
+			"kind": "boolean",
+			"group": "Prior events",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "questions-for-broker",
+			"label": "Anything you already want to ask a broker or insurer about?",
+			"kind": "text",
+			"group": "Prior events",
+			"required": false,
+			"purpose": "brief-only",
+			"privacyNote": "Keep this to the question you want asked. Do not enter names of people, companies, products, domains, hostnames, IP addresses, account identifiers, or any detail of a weakness that is not yet fixed."
+		}
+	],
+	"rules": [
+		{
+			"id": "control-baseline-not-selected",
+			"kind": "question",
+			"severity": "low",
+			"title": "No published control baseline is recorded, so there is nothing to map your answers onto.",
+			"detail": "Two current public baselines cover everything this module asks about: NIST Cybersecurity Framework (CSF) 2.0, published 2024-02-26, which organizes outcomes under GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, and RECOVER [S:nist-csf-2-0], and CISA Cross-Sector Cybersecurity Performance Goals Version 2.0, dated December 2025, which is aligned to those same CSF 2.0 functions [S:cisa-cpg-2-0] and which the CISA program page describes as voluntary goals that strive to help small- and medium-sized organizations kickstart their cybersecurity efforts by prioritizing investment in a limited number of essential actions [S:cisa-cpg-program-page]. Mapping to a named, dated edition means an answer you give today can be checked against a fixed public text later.",
+			"action": "Pick one of the two editions above, write the edition name and its publication date at the top of your control notes, and record which named goal or subcategory each of your answers relates to.",
+			"when": {
+				"all": [
+					{
+						"field": "control-baseline-used",
+						"op": "eq",
+						"value": "none"
+					}
+				]
+			},
+			"sourceIds": [
+				"nist-csf-2-0",
+				"cisa-cpg-2-0",
+				"cisa-cpg-program-page"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "mfa-absent",
+			"kind": "gap",
+			"severity": "high",
+			"title": "Multi-factor authentication is recorded as not in place on any account.",
+			"detail": "CISA CPG 3.F states that organizations require MFA to access assets using the strongest available method, and that all IT accounts leverage MFA with priority given to privileged administrative accounts [S:cisa-cpg-2-0]. NIST CSF 2.0 carries the same outcome as PR.AA-03, users, services, and hardware are authenticated [S:nist-csf-2-0].",
+			"action": "Before you submit anything, list every place a person can sign in from outside your office, starting with hosted email and remote access, and turn MFA on there first; CPG 3.F ranks phishing-resistant methods highest, app-based tokens second, and SMS or voice only where nothing else is possible.",
+			"when": {
+				"all": [
+					{
+						"field": "mfa-status",
+						"op": "eq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "mfa-partial-scope-undefined",
+			"kind": "question",
+			"severity": "high",
+			"title": "Multi-factor authentication is recorded as partial, and no answer here says which accounts are outside it.",
+			"detail": "A partial answer will be read differently by every reader unless the uncovered set is named. CPG 3.F asks that all IT accounts use MFA and that privileged administrative accounts for key systems be prioritized [S:cisa-cpg-2-0], so the question that matters is whether the uncovered accounts are administrative or remotely reachable, not how many there are.",
+			"action": "Write a short list, by role rather than by person, of the account types with no MFA, and mark each one as privileged, remotely reachable, or neither; take that list to your broker so the application answer matches it.",
+			"when": {
+				"all": [
+					{
+						"field": "mfa-status",
+						"op": "eq",
+						"value": "partial"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "mfa-in-place-undocumented",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "Multi-factor authentication is in place but no dated written evidence of it is held.",
+			"detail": "This is a different open item from not having the control. Cyber underwriting has moved toward asking for control evidence rather than accepting a yes on its own [S:chubb-cyber-cope-whitepaper], and CSF 2.0 GV.PO-01 treats policy as something established, communicated, and enforced, which implies it exists in writing [S:nist-csf-2-0]. An enforced control with no artifact is hard to confirm and hard to re-confirm at the next renewal.",
+			"action": "Produce three dated artifacts and keep them together: the written rule that MFA is required, an export of the enforcement setting that makes it required, and a coverage report showing the share of accounts enrolled.",
+			"when": {
+				"all": [
+					{
+						"field": "mfa-status",
+						"op": "eq",
+						"value": "in-place"
+					},
+					{
+						"field": "mfa-documented",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"chubb-cyber-cope-whitepaper",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "offline-backup-absent",
+			"kind": "gap",
+			"severity": "high",
+			"title": "No offline or immutable backup copy is recorded.",
+			"detail": "CISA CPG 3.O directs organizations to securely store backups offsite and offline, and notes that adversaries delete data and disable recovery services to prevent system recovery [S:cisa-cpg-2-0]. CSF 2.0 PR.DS-11 states that backups of data are created, protected, maintained, and tested [S:nist-csf-2-0]. A backup that your own administrator credentials can reach is reachable by anyone who takes those credentials.",
+			"action": "Identify the systems you could not operate without, and arrange at least one copy of each that cannot be deleted or overwritten using your normal administrator credentials.",
+			"when": {
+				"all": [
+					{
+						"field": "offline-backup-status",
+						"op": "eq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "offline-backup-undocumented",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "Offline or immutable backups are in place but no written backup inventory and retention schedule is held.",
+			"detail": "CPG 3.O asks organizations to develop a list of all maintained backups, including installation media, license keys, configuration information, and the retention period for the information [S:cisa-cpg-2-0]. Without that list, nobody can say during an incident what exists, how far back it goes, or what is needed to stand a system up again.",
+			"action": "Write a one-page backup inventory naming each protected system by function, the retention period, where the offline copy sits, and where the installation media and license keys are kept; date it and review it when anything changes.",
+			"when": {
+				"all": [
+					{
+						"field": "offline-backup-status",
+						"op": "eq",
+						"value": "in-place"
+					},
+					{
+						"field": "offline-backup-documented",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "restore-test-absent",
+			"kind": "gap",
+			"severity": "high",
+			"title": "No restore has ever been tested.",
+			"detail": "CPG 3.O directs that backups and recovery be tested on a recurring basis, no less than once per year, and that the integrity of backups be validated before restoration is started [S:cisa-cpg-2-0]. CSF 2.0 adds RC.RP-03, the integrity of backups and other restoration assets is verified before using them for restoration [S:nist-csf-2-0].",
+			"action": "Schedule and run one real restore of one system you depend on, time how long it takes end to end, and write down the date, what was restored, and whether the restored data was usable.",
+			"when": {
+				"all": [
+					{
+						"field": "restore-test-status",
+						"op": "eq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "backup-held-restore-never-tested",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "Backups are recorded as in place while the restore test is recorded as never performed.",
+			"detail": "These two answers describe two different things, and taken together they say the recovery path is unproven. CSF 2.0 PR.DS-11 makes testing part of the outcome itself, backups of data are created, protected, maintained, and tested [S:nist-csf-2-0], and CPG 3.O pairs storing backups offline with testing backups and recovery at least annually [S:cisa-cpg-2-0].",
+			"action": "Treat the backup answer as unconfirmed until you have restored from it once; run that restore before you sign an application that asks whether backups are tested.",
+			"when": {
+				"all": [
+					{
+						"field": "offline-backup-status",
+						"op": "eq",
+						"value": "in-place"
+					},
+					{
+						"field": "restore-test-status",
+						"op": "eq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"nist-csf-2-0",
+				"cisa-cpg-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "restore-test-undocumented",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "Restores are tested but no dated written result for the most recent test is held.",
+			"detail": "CPG 3.O expects testing on a recurring basis with integrity validated before restoration [S:cisa-cpg-2-0], and CSF 2.0 ID.IM-02 treats improvements identified from tests and exercises as an outcome in its own right [S:nist-csf-2-0]. A test that produced no record cannot show a date, a scope, or what was fixed afterwards.",
+			"action": "For the next test, record the date, the system restored, the elapsed time, whether the restored data validated, and any follow-up action; keep that one page with your control evidence.",
+			"when": {
+				"all": [
+					{
+						"field": "restore-test-status",
+						"op": "eq",
+						"value": "in-place"
+					},
+					{
+						"field": "restore-test-documented",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "restore-test-stale-twelve-months",
+			"kind": "timing",
+			"severity": "high",
+			"title": "The last recorded restore test is more than twelve months old.",
+			"detail": "CPG 3.O sets the cadence explicitly: test backups and recovery on a recurring basis, no less than once per year [S:cisa-cpg-2-0]. The date you entered is more than twelve months old, so the stated annual cadence has lapsed.",
+			"action": "Book the next restore test now rather than at renewal, and put a recurring twelve-month reminder against the date you complete it.",
+			"when": {
+				"all": [
+					{
+						"field": "last-restore-test-date",
+						"op": "lt",
+						"value": {
+							"monthsFromToday": -12
+						}
+					},
+					{
+						"field": "restore-test-status",
+						"op": "neq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "endpoint-detection-absent",
+			"kind": "gap",
+			"severity": "high",
+			"title": "No endpoint detection is recorded on laptops, desktops, or servers.",
+			"detail": "CPG 4.A directs organizations to implement both signature-based mechanisms and non-signature-based mechanisms focused on behavior, heuristics, or anomalies to detect and eradicate malicious code at system endpoints, organization-wide [S:cisa-cpg-2-0]. CSF 2.0 DE.CM-01 covers the monitoring side, networks and network services are monitored to find potentially adverse events [S:nist-csf-2-0].",
+			"action": "Establish detection on every endpoint and server, confirm it is active and updating rather than merely installed, and decide who reads the alerts and when.",
+			"when": {
+				"all": [
+					{
+						"field": "endpoint-detection-status",
+						"op": "eq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "endpoint-detection-undocumented",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "Endpoint detection is in place but no dated coverage report is held.",
+			"detail": "Coverage is the part of this control that drifts, because new devices arrive and old ones leave. CPG 4.A scopes malicious code detection organization-wide and asks that the software be updated, active, and configured to scan automatically [S:cisa-cpg-2-0], which is a claim about every device rather than about the tool. A dated coverage report is the artifact that supports the claim [S:chubb-cyber-cope-whitepaper].",
+			"action": "Export a dated report listing device count, devices reporting in, and devices unprotected, and repeat it on the same cadence as your asset review.",
+			"when": {
+				"all": [
+					{
+						"field": "endpoint-detection-status",
+						"op": "eq",
+						"value": "in-place"
+					},
+					{
+						"field": "endpoint-detection-documented",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"chubb-cyber-cope-whitepaper"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "patch-cadence-absent",
+			"kind": "gap",
+			"severity": "high",
+			"title": "No defined patch cadence is recorded.",
+			"detail": "CPG 2.B directs organizations to implement a vulnerability management program to patch and mitigate misconfigured software in a timely manner across all organizational assets, including those that face the internet, and notes that adversaries frequently target unpatched and misconfigured systems [S:cisa-cpg-2-0]. CSF 2.0 PR.PS-02 states that software is maintained, replaced, and removed commensurate with risk [S:nist-csf-2-0].",
+			"action": "Write down a cadence for internet-facing systems and a separate one for internal systems, name who applies the updates, and record where compensating controls are used because something cannot be patched.",
+			"when": {
+				"all": [
+					{
+						"field": "patch-cadence-status",
+						"op": "eq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "patch-cadence-partial-question",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Patch cadence is recorded as partial, which leaves open which assets are outside the schedule and why.",
+			"detail": "CPG 2.B scopes patching to all organizational assets, to include those that face the internet, and in its operational technology note asks that where patching is not possible compensating controls such as segmentation or monitoring be applied and recorded [S:cisa-cpg-2-0]. A partial answer becomes answerable once the exceptions are named and the reason for each is written down.",
+			"action": "List the asset categories outside your patch schedule, mark for each whether it is internet-facing, and record the compensating control you rely on instead; bring that list to the broker rather than leaving the application answer as partly.",
+			"when": {
+				"all": [
+					{
+						"field": "patch-cadence-status",
+						"op": "eq",
+						"value": "partial"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "patch-cadence-undocumented",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "A patch cadence is followed but there is no written patching standard and no record of what was patched when.",
+			"detail": "CPG 2.B asks for a vulnerability management program and for progress to be monitored through artifacts such as a plan of action and milestones, a risk register, or risk detail reports, with responsibilities assigned and procedures followed [S:cisa-cpg-2-0]. Those are all written things, so a cadence that leaves no record cannot demonstrate timeliness after the fact. CSF 2.0 PR.PS-02 is the underlying outcome [S:nist-csf-2-0].",
+			"action": "Write down the target window for internet-facing systems and for internal systems, and keep a simple dated log of update rounds applied, exceptions granted, and the compensating control used for each exception.",
+			"when": {
+				"all": [
+					{
+						"field": "patch-cadence-status",
+						"op": "eq",
+						"value": "in-place"
+					},
+					{
+						"field": "patch-cadence-documented",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "records-held-count-unknown",
+			"kind": "question",
+			"severity": "medium",
+			"title": "The number of individuals whose personal information you hold is recorded as unknown.",
+			"detail": "CPG 2.A asks organizations to maintain a regularly updated inventory of all organizational assets, expressly including data [S:cisa-cpg-2-0], and CPG 3.K asks you to identify critical electronic file types and data to protect while in transit and at rest, which may include personally identifiable information [S:cisa-cpg-2-0]. CSF 2.0 places asset management in the IDENTIFY function [S:nist-csf-2-0]. An unknown here also means notification exposure cannot be scoped later, since deadlines run from discovery rather than from when you finish counting [S:cfr-45-164-404-lii].",
+			"action": "Before you fill in an application, work out which systems hold personal information and get to a band you can defend; record the systems by function only, never the records themselves.",
+			"when": {
+				"all": [
+					{
+						"field": "records-band",
+						"op": "eq",
+						"value": "unknown"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0",
+				"cfr-45-164-404-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "card-payments-finance-role-training",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Payment card transactions are accepted and awareness training is not recorded as in place for all users.",
+			"detail": "CPG 3.J names the specialized roles that warrant additional, role-based cybersecurity training, and finance personnel, senior leadership, and anyone with access to business-critical data are on that list alongside system administrators [S:cisa-cpg-2-0]. Where money moves, the roles that move it are the ones the training is aimed at, and CPG 3.K asks separately that critical electronic file types and data be identified and protected while in transit and at rest [S:cisa-cpg-2-0].",
+			"action": "Decide who in finance can authorise a payment or a change of bank details, put role-based training and a call-back verification step in front of exactly those people, and write both down.",
+			"when": {
+				"all": [
+					{
+						"field": "handles-card-payments",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "awareness-training-status",
+						"op": "neq",
+						"value": "in-place"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "email-authentication-absent",
+			"kind": "gap",
+			"severity": "medium",
+			"title": "Neither email filtering nor sender authentication is recorded as configured.",
+			"detail": "CPG 3.L states that on all corporate email infrastructure STARTTLS is enabled, SPF and DKIM are enabled, and DMARC is enabled and set to reject, in order to reduce risk from spoofing, phishing, and interception [S:cisa-cpg-2-0]. CSF 2.0 PR.DS-01 and PR.DS-02 cover protecting data at rest and in transit [S:nist-csf-2-0].",
+			"action": "Have whoever runs your mail check the four items in CPG 3.L one at a time, and note the current DMARC policy value, because none, quarantine, and reject are three different answers.",
+			"when": {
+				"all": [
+					{
+						"field": "email-filtering-status",
+						"op": "eq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "email-authentication-undocumented",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "Email filtering and sender authentication are in place but no dated record of the published configuration is held.",
+			"detail": "CPG 3.L is unusual among these controls because it is externally checkable, and it names a specific end state including DMARC set to reject [S:cisa-cpg-2-0]. Recording what is published, and on what date, keeps a later answer honest if someone changes the policy value in the meantime.",
+			"action": "Save a dated record of your current SPF, DKIM, and DMARC configuration and the exact DMARC policy value, and re-check it whenever you change mail providers.",
+			"when": {
+				"all": [
+					{
+						"field": "email-filtering-status",
+						"op": "eq",
+						"value": "in-place"
+					},
+					{
+						"field": "email-filtering-documented",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "privileged-access-review-absent",
+			"kind": "gap",
+			"severity": "high",
+			"title": "Administrator rights are never re-reviewed.",
+			"detail": "CPG 3.G states that user accounts do not have administrator privileges, that administrators maintain separate user accounts for activities unrelated to their admin role such as business email and web browsing, and that privileges are re-evaluated on a recurring basis to validate continued need for a given set of permissions [S:cisa-cpg-2-0]. CPG 3.H, a separate goal, asks that all user accounts, system roles, and processes operate with the minimum privileges necessary and that quarterly reviews of access permissions and role assignments be performed [S:cisa-cpg-2-0]. CPG 3.D adds that user access should be reviewed and accounts disabled when inactive for a specified period, for example thirty days [S:cisa-cpg-2-0]. CSF 2.0 PR.AA-05 requires access permissions to be defined in policy, managed, enforced, and reviewed with least privilege in mind [S:nist-csf-2-0].",
+			"action": "Set a recurring date to list every account holding administrator rights, confirm each one still needs them, and disable accounts that have been inactive past your chosen threshold.",
+			"when": {
+				"all": [
+					{
+						"field": "privileged-access-review-status",
+						"op": "eq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "privileged-access-review-undocumented",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "Privileged access is reviewed but no dated review record or written offboarding checklist is held.",
+			"detail": "CPG 3.D asks for a defined and enforced administrative process to offboard staff, contractors, and vendors, including return of tokens or badges and revocation of all access [S:cisa-cpg-2-0]. A review that leaves no record cannot show when it last happened or what changed, which is exactly what a later reviewer asks [S:chubb-cyber-cope-whitepaper].",
+			"action": "Write the offboarding steps as a checklist, and after each privileged access review save a dated note of accounts reviewed, rights removed, and accounts disabled, described by role rather than by name.",
+			"when": {
+				"all": [
+					{
+						"field": "privileged-access-review-status",
+						"op": "eq",
+						"value": "in-place"
+					},
+					{
+						"field": "privileged-access-review-documented",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"chubb-cyber-cope-whitepaper"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "incident-response-plan-absent",
+			"kind": "gap",
+			"severity": "high",
+			"title": "No incident response plan is recorded.",
+			"detail": "CPG 1.C directs organizations to develop, maintain, update, and regularly exercise incident response plans for common and organization-specific threat scenarios [S:cisa-cpg-2-0]. CPG 4.B assumes the plan already exists, because it says that if an adverse event is suspected you follow the protocol outlined in the incident response plan to escalate [S:cisa-cpg-2-0]. CSF 2.0 RS.MA-01 states that the incident response plan is executed in coordination with relevant third parties once an incident is declared [S:nist-csf-2-0].",
+			"action": "Write the first version short: who is called first, who can authorise taking systems offline, how you communicate if email is down, and which outside parties are contacted; expand it later.",
+			"when": {
+				"all": [
+					{
+						"field": "incident-response-plan-status",
+						"op": "eq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "incident-response-plan-unwritten",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "An incident response plan exists in practice but is not written down.",
+			"detail": "This is the sharpest case of the difference between having a control and being able to evidence it. CPG 1.C asks that IR plans be developed, maintained, updated, and drilled, which are all acts performed on a document [S:cisa-cpg-2-0], and CSF 2.0 RS.MA-01 speaks of the plan being executed in coordination with third parties, which assumes third parties can be handed something [S:nist-csf-2-0]. An unwritten plan also cannot be found during the outage that triggers it.",
+			"action": "Write the plan down this week and store a copy somewhere reachable without your own network and without your own email, such as printed and held offsite.",
+			"when": {
+				"all": [
+					{
+						"field": "incident-response-plan-status",
+						"op": "eq",
+						"value": "in-place"
+					},
+					{
+						"field": "incident-response-plan-documented",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "ir-exercise-stale-twelve-months",
+			"kind": "timing",
+			"severity": "medium",
+			"title": "The incident response plan was last exercised more than twelve months ago.",
+			"detail": "CPG 1.C sets the cadence explicitly: IR plans should be reviewed and drilled, at a minimum, on an annual basis, and asks that drills be realistic and include all relevant stakeholders [S:cisa-cpg-2-0]. The date you entered is more than twelve months old, so that stated cadence has lapsed. CSF 2.0 ID.IM-02 is the outcome the drill is for, improvements identified from security tests and exercises [S:nist-csf-2-0].",
+			"action": "Run a short tabletop walkthrough of one scenario within the next month, note what the plan got wrong, update the plan, and record both dates.",
+			"when": {
+				"all": [
+					{
+						"field": "last-ir-exercise-date",
+						"op": "lt",
+						"value": {
+							"monthsFromToday": -12
+						}
+					},
+					{
+						"field": "incident-response-plan-status",
+						"op": "neq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "awareness-training-absent",
+			"kind": "gap",
+			"severity": "medium",
+			"title": "No security awareness training is recorded for people with accounts.",
+			"detail": "CPG 3.J directs that new employees receive initial cybersecurity training prior to accessing computer systems and that at least annual training be provided for all organizational users, covering recognizing social engineering attempts, reporting suspicious activity, and basic cyber hygiene [S:cisa-cpg-2-0]. Its scope reaches employees, contractors, partners, suppliers, and other users of non-public resources. CSF 2.0 PR.AT-01 is the matching outcome [S:nist-csf-2-0].",
+			"action": "Put training in front of new joiners before their account is enabled, schedule an annual round for everyone else, and identify the roles CPG 3.J flags for extra role-based training, including finance staff, system administrators, and senior leadership.",
+			"when": {
+				"all": [
+					{
+						"field": "awareness-training-status",
+						"op": "eq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "awareness-training-undocumented",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "Security awareness training happens but no dated completion record is held.",
+			"detail": "CPG 3.J is a coverage claim about all organizational users, not about whether a course exists [S:cisa-cpg-2-0], so the only thing that supports it is a record of who completed it and when. Underwriting review of cyber controls has moved toward asking for that kind of artifact rather than a yes [S:chubb-cyber-cope-whitepaper].",
+			"action": "Keep a dated completion record for each round showing the number of users assigned and the number completed; report it by count and role, not by naming individuals.",
+			"when": {
+				"all": [
+					{
+						"field": "awareness-training-status",
+						"op": "eq",
+						"value": "in-place"
+					},
+					{
+						"field": "awareness-training-documented",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"chubb-cyber-cope-whitepaper"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "awareness-training-stale-twelve-months",
+			"kind": "timing",
+			"severity": "medium",
+			"title": "The most recent training round closed more than twelve months ago.",
+			"detail": "CPG 3.J sets at least annual cybersecurity training for all organizational users [S:cisa-cpg-2-0]. The date you entered is more than twelve months old, so the annual cadence has lapsed even though a programme exists.",
+			"action": "Open the next round now and set the following one twelve months from its close date, so the cadence stops depending on someone remembering.",
+			"when": {
+				"all": [
+					{
+						"field": "last-training-date",
+						"op": "lt",
+						"value": {
+							"monthsFromToday": -12
+						}
+					},
+					{
+						"field": "awareness-training-status",
+						"op": "neq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "evidence-package-not-assembled",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "The written evidence for these controls has not been assembled in one place.",
+			"detail": "Every control in this module resolves to an artifact somebody can read: a policy, a configuration export, a coverage report, a dated test result, a completion record, a backup inventory [S:cisa-cpg-2-0]. Cyber underwriting increasingly turns on that evidence rather than on the answer alone [S:chubb-cyber-cope-whitepaper], and assembling it once means the same pack serves renewal, a contract request, and an internal review.",
+			"action": "Make one folder with a dated index listing each control, the artifact that supports it, and the date of that artifact; mark the ones you cannot yet supply rather than leaving them blank.",
+			"when": {
+				"all": [
+					{
+						"field": "evidence-package-held",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"chubb-cyber-cope-whitepaper"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "application-due-without-evidence",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "A submission date is recorded while the control evidence is recorded as not assembled.",
+			"detail": "You have set yourself a date and have not yet gathered the artifacts the control answers rest on. The artifacts CPG 2.0 implies for these goals, including the backup inventory under 3.O, the drilled IR plan under 1.C, and the training records under 3.J, all take days to produce rather than minutes [S:cisa-cpg-2-0].",
+			"action": "Work backwards from your submission date, decide which controls you can evidence in time, and tell your broker plainly which answers are supported by an artifact and which are currently a statement of belief.",
+			"when": {
+				"all": [
+					{
+						"field": "application-due-date",
+						"op": "isSet",
+						"value": true
+					},
+					{
+						"field": "evidence-package-held",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "attestation-signer-unidentified",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Nobody has been identified who can confirm the control answers in writing.",
+			"detail": "Applications are signed, and the control answers above are the part someone will be held to. CPG 1.A places cybersecurity roles, responsibilities, and authorities in writing as a governance outcome, asking that all roles and responsibilities involving cybersecurity be documented in an organization's cybersecurity policy [S:cisa-cpg-2-0], and CSF 2.0 GV.PO-01 treats policy as established, communicated, and enforced rather than assumed [S:nist-csf-2-0].",
+			"action": "Name the role that owns each control answer before anything is signed, and ask your broker what the signer is being asked to attest to and over what period.",
+			"when": {
+				"all": [
+					{
+						"field": "control-attestation-signer",
+						"op": "eq",
+						"value": "none-identified"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "msp-security-terms-unreviewed",
+			"kind": "question",
+			"severity": "medium",
+			"title": "An outside provider runs IT and the security and notification terms of that agreement have not been read.",
+			"detail": "CPG 2.0 added net-new goals addressing managed service providers, least privilege, and incident communication procedures [S:cisa-cpg-program-page], and CPG 1.D covers notifying a customer of security incidents and vulnerabilities within a risk-informed time frame [S:cisa-cpg-2-0]. Several answers above describe work the provider performs, so the agreement decides who must tell you, how fast, and what evidence you can obtain.",
+			"action": "Ask the provider in writing which of the controls above they operate, what they will notify you about and within what period, and what dated evidence they will supply on request; a lawyer should read the liability and indemnity wording.",
+			"when": {
+				"all": [
+					{
+						"field": "it-management-model",
+						"op": "eq",
+						"value": "outsourced-msp"
+					},
+					{
+						"field": "vendor-security-terms-reviewed",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-program-page",
+				"cisa-cpg-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "hosted-customer-data-terms-unreviewed",
+			"kind": "question",
+			"severity": "medium",
+			"title": "A hosted system holds customer or client records and its security and notification terms have not been read.",
+			"detail": "CPG 1.D concerns notifying a customer of security incidents and vulnerabilities within a risk-informed time frame, which is the same obligation running toward you from whoever holds your data [S:cisa-cpg-2-0]. If a notification clock starts on discovery, the practical question is when the holder of the data tells you, because that is when your own clock can start [S:cfr-45-164-404-lii].",
+			"action": "Pull the agreement for the system holding customer records and write down two things: the notification window it promises you, and whether it commits to supplying forensic or log information; take the liability wording to a lawyer.",
+			"when": {
+				"all": [
+					{
+						"field": "cloud-dependency",
+						"op": "includes",
+						"value": "customer-data-saas"
+					},
+					{
+						"field": "vendor-security-terms-reviewed",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"cfr-45-164-404-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "contract-requires-cyber-none-recorded",
+			"kind": "gap",
+			"severity": "high",
+			"title": "A contract requires cyber or privacy liability coverage and no cyber coverage is recorded.",
+			"detail": "You have recorded a contractual requirement to carry this coverage and recorded none in force, which is a mismatch between an obligation you have accepted and what your programme shows. CSF 2.0 places supply chain and third-party commitments inside the GOVERN function as category GV.SC, Cybersecurity Supply Chain Risk Management [S:nist-csf-2-0], so this belongs with your governance records rather than being treated as a purchasing detail; the controls recorded above are a separate matter from the coverage question and neither substitutes for the other.",
+			"action": "Take the exact insurance clause and the control answers above to your broker together, and ask what the clause requires by name and by limit before the next milestone under that contract. Your broker can map the clause onto available coverage; if what the clause obligates you to do is itself unclear, that reading is a lawyer's.",
+			"when": {
+				"all": [
+					{
+						"field": "contractual-cyber-requirement",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "existing-cyber-policy",
+						"op": "eq",
+						"value": "none"
+					}
+				]
+			},
+			"sourceIds": [
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": "contract-additional-insured-status",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "contract-cyber-limit-shortfall",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "The recorded cyber limit is lower than the limit the strictest contract requires.",
+			"detail": "This is arithmetic on the two numbers you entered: the limit recorded on your coverage is less than the limit the contract demands. A shortfall against a contractual figure is a contract compliance question first, and it sits inside the same third-party governance work that CSF 2.0 collects under GV.SC, Cybersecurity Supply Chain Risk Management [S:nist-csf-2-0]; matching numbers still does not mean two policies respond to the same thing.",
+			"action": "Show your broker both figures and the clause they come from, and ask specifically what wording the contract requires as well as what limit, because the same number can sit over very different coverage. If the question becomes whether you are currently in breach of the clause, that is a lawyer's question rather than a broker's.",
+			"when": {
+				"all": [
+					{
+						"field": "contractual-cyber-requirement",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "recorded-cyber-limit",
+						"op": "lt",
+						"value": {
+							"field": "contract-required-cyber-limit"
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "contract-cyber-limit-not-recorded",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "A contract requires cyber coverage and the limit it demands is not recorded.",
+			"detail": "You recorded a contractual requirement to carry this coverage without recording the limit the clause names. Until that figure is written down there is nothing to compare a policy against, so the requirement cannot be checked at all. CSF 2.0 places third-party commitments inside the GOVERN function as category GV.SC, Cybersecurity Supply Chain Risk Management, which is where an obligation of this kind belongs on the record [S:nist-csf-2-0].",
+			"action": "Read the limit off the insurance clause itself and record it here, together with which contract it comes from. If more than one contract applies, record the strictest. If what the clause obligates you to carry is unclear on its face, that reading is a lawyer's.",
+			"when": {
+				"all": [
+					{
+						"field": "contractual-cyber-requirement",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "contract-required-cyber-limit",
+						"op": "isEmpty"
+					}
+				]
+			},
+			"sourceIds": [
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "carried-cyber-limit-not-recorded-against-requirement",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "The limit a contract requires is recorded, and the limit actually carried is not.",
+			"detail": "You recorded what the clause demands but not what your own coverage carries, so the comparison this module would otherwise run cannot be run. The figure is on your declarations page rather than a matter of recollection. CSF 2.0 collects third-party commitments under GV.SC, Cybersecurity Supply Chain Risk Management [S:nist-csf-2-0].",
+			"action": "Read the each-claim and aggregate limits off your current declarations page and record them here. A matching number still does not mean the two documents describe the same coverage, so keep the clause alongside it.",
+			"when": {
+				"all": [
+					{
+						"field": "contractual-cyber-requirement",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "contract-required-cyber-limit",
+						"op": "isSet"
+					},
+					{
+						"field": "recorded-cyber-limit",
+						"op": "isEmpty"
+					}
+				]
+			},
+			"sourceIds": [
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "phi-notification-outer-limit-passed",
+			"kind": "timing",
+			"severity": "high",
+			"title": "Protected health information is handled, an incident is recorded as discovered more than sixty calendar days ago, and notification is recorded as not sent.",
+			"detail": "45 CFR 164.404(b) provides that a covered entity shall provide the required notification without unreasonable delay and in no case later than sixty calendar days after discovery of a breach [S:cfr-45-164-404-lii]. The discovery date you entered is more than sixty calendar days ago, so on the dates recorded that outer limit has already passed. Whether the event is a breach requiring notification at all is a legal determination, not something this module can decide.",
+			"action": "Take the discovery date and the facts to a lawyer today, before you complete any application question about prior incidents, because the answer to that question and the notification analysis are connected.",
+			"when": {
+				"all": [
+					{
+						"field": "handles-phi",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "prior-cyber-incident",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "incident-notification-sent",
+						"op": "eq",
+						"value": false
+					},
+					{
+						"field": "incident-discovery-date",
+						"op": "lt",
+						"value": {
+							"daysFromToday": -60
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-45-164-404-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "phi-notification-clock-running",
+			"kind": "timing",
+			"severity": "high",
+			"title": "Protected health information is handled, an incident was discovered within the last sixty calendar days, and notification is recorded as not sent.",
+			"detail": "45 CFR 164.404(b) requires notification without unreasonable delay and in no case later than sixty calendar days after discovery [S:cfr-45-164-404-lii]. The discovery date you entered is within the last sixty calendar days, so the outer limit has not yet passed; note that the without unreasonable delay wording means the sixty days is a ceiling and not a permitted waiting period.",
+			"action": "Count sixty calendar days forward from your discovery date, put that date in front of you, and get a lawyer to make the notification determination well inside it.",
+			"when": {
+				"all": [
+					{
+						"field": "handles-phi",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "prior-cyber-incident",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "incident-notification-sent",
+						"op": "eq",
+						"value": false
+					},
+					{
+						"field": "incident-discovery-date",
+						"op": "gte",
+						"value": {
+							"daysFromToday": -60
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"cfr-45-164-404-lii"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "healthcare-sector-specific-goals-available",
+			"kind": "question",
+			"severity": "low",
+			"title": "The sector recorded is healthcare, and CISA publishes Healthcare Sector-Specific Goals beyond the cross-sector set.",
+			"detail": "CISA lists Sector-Specific Goals as available now for the Healthcare sector, described as voluntary practices that go beyond the Cross-Sector CPGs [S:cisa-cpg-program-page]. Those goals are a published text you can map to by name, in the same way as the cross-sector goals in CPG 2.0, Version 2.0, December 2025 [S:cisa-cpg-2-0].",
+			"action": "Read the Healthcare Sector-Specific Goals alongside the cross-sector set and note which additional goals you already meet, so a later question about sector practice has a written answer.",
+			"when": {
+				"all": [
+					{
+						"field": "sector",
+						"op": "eq",
+						"value": "healthcare-provider"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-program-page",
+				"cisa-cpg-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "prior-incident-no-written-plan",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "A prior cyber incident is recorded while no written incident response plan is recorded.",
+			"detail": "The business has already been through the event the plan exists for, and the plan is still recorded as absent. CPG 1.C treats plan development, maintenance, and drilling as the mechanism for identifying improvements [S:cisa-cpg-2-0], and CSF 2.0 ID.IM-02 makes improvements identified from tests and exercises an explicit outcome [S:nist-csf-2-0].",
+			"action": "Write the plan using what actually happened last time as the first scenario: what you did not know, who you could not reach, and what took longest to restore.",
+			"when": {
+				"all": [
+					{
+						"field": "prior-cyber-incident",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "incident-response-plan-status",
+						"op": "eq",
+						"value": "absent"
+					}
+				]
+			},
+			"sourceIds": [
+				"cisa-cpg-2-0",
+				"nist-csf-2-0"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

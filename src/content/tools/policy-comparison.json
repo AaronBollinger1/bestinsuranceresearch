@@ -1,0 +1,424 @@
+{
+	"name": "Policy Comparison Workspace",
+	"status": "live",
+	"order": 3,
+	"family": [
+		"personal",
+		"commercial"
+	],
+	"lines": [
+		"homeowners",
+		"auto",
+		"general-liability",
+		"commercial-property",
+		"professional-liability"
+	],
+	"route": "/tools/policy-comparison",
+	"summary": "Put two or three policies side by side on the terms that actually change what you are protected against, and leave with the questions worth asking.",
+	"spec": {
+		"user": "Anyone holding more than one quote or policy who has noticed that matching limits do not seem to mean matching coverage.",
+		"inputData": [
+			"Limits, deductibles, form names, edition dates, and endorsements the user types in",
+			"Free-text notes, stored locally only"
+		],
+		"authoritativeSources": [
+			"The published questions and coverage pages in this library on limits, triggers, valuation, and admitted versus surplus lines"
+		],
+		"privacyBoundary": "No document upload of any kind. Nothing is parsed, stored on a server, or transmitted. Values the user types stay in local storage.",
+		"decisionRules": [
+			"Rows where the entered values differ are surfaced first, because a difference is the only thing worth a conversation.",
+			"A matching label is explicitly flagged as not proving matching coverage.",
+			"Each differing row generates a specific question to take to a broker or insurer.",
+			"The tool never scores, ranks, or recommends a policy."
+		],
+		"uncertainty": "A comparison of what someone typed is only as good as what they typed, and two policies with identical declarations can still differ in the forms and endorsements attached.",
+		"output": "A printable side-by-side comparison plus a generated list of questions.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [
+		{
+			"group": "Set up the comparison",
+			"label": "Fill in coverage for every option before you look at premium",
+			"detail": "CDI warns that if you shop by comparing prices only and not by comparing coverage, you are doing yourself a disservice [S:cdi-residential-insurance-guide]. Enter the same fields for every option first, then reveal the premiums, so the cheapest column does not anchor how you read the rest.",
+			"kind": "question",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"renters",
+				"commercial-property",
+				"general-liability"
+			]
+		},
+		{
+			"group": "Set up the comparison",
+			"label": "Record the base form and every endorsement by number and edition date",
+			"detail": "Enter each form number with its edition date, copied from the declarations and the endorsement schedule, for every option. Do not enter a certificate or a marketing summary as the form: under California Insurance Code Section 384 a certificate used in lieu of an actual copy of the policy must state that it is not an insurance policy and does not amend, extend or alter the coverage afforded by the policies listed [S:ca-ins-code-384-2]. Two options can carry identical limits on very different forms.",
+			"kind": "document",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"commercial-property",
+				"general-liability",
+				"commercial-auto"
+			]
+		},
+		{
+			"group": "Homeowners coverage parts",
+			"label": "Coverage A, dwelling",
+			"detail": "CDI describes Coverage A as major property coverage protecting the house and attached structures if damaged by a covered peril [S:cdi-residential-insurance-guide]. Enter the limit for each option, and next to it the rebuild figure you are testing it against and where that figure came from. In California, a replacement cost estimate communicated in connection with an application for or renewal of a homeowners policy written on a replacement cost basis must be given to the applicant or insured at the time it is communicated [S:ca-10-ccr-2695-183].",
+			"kind": "limit",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners"
+			]
+		},
+		{
+			"group": "Homeowners coverage parts",
+			"label": "Coverage B, other structures",
+			"detail": "CDI states that Coverage B is normally limited to 10 percent of the Coverage A limit [S:cdi-residential-insurance-guide]. Enter the actual percentage or dollar figure shown on each declarations page rather than the typical figure, and note whether a specific detached structure needs a limit of its own.",
+			"kind": "limit",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners"
+			]
+		},
+		{
+			"group": "Homeowners coverage parts",
+			"label": "Coverage C, personal property, plus every special limit",
+			"detail": "CDI states that certain personal property categories such as jewelry and firearms are subject to special limits that cap the amount paid [S:cdi-residential-insurance-guide]. Enter the Coverage C limit, then each special limit category with its dollar cap as printed on that option's form, then any scheduled items with their own limits and deductibles, as separate rows per option.",
+			"kind": "limit",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners",
+				"renters"
+			]
+		},
+		{
+			"group": "Homeowners coverage parts",
+			"label": "Coverage D, loss of use and additional living expense",
+			"detail": "CDI states that Coverage D is normally limited to 20 percent of Coverage A, that it reimburses housing, meals and warehouse storage when a covered loss makes the home uninhabitable, and that you should keep receipts for all additional living expenses and submit them to the company for reimbursement consideration [S:cdi-residential-insurance-guide]. Enter both the amount and any time limit for each option, since a percentage and a month cap answer different questions.",
+			"kind": "limit",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners",
+				"renters"
+			]
+		},
+		{
+			"group": "Homeowners coverage parts",
+			"label": "Coverage E personal liability and Coverage F medical payments",
+			"detail": "CDI describes the liability section of a homeowners policy as Coverage E personal liability and Coverage F medical payments to others [S:cdi-residential-insurance-guide], and NAIC lists umbrella liability among optional add-ons [S:naic-homeowners]. Enter Coverage E and Coverage F for each option. An umbrella stating the underlying limits it requires is common market practice rather than a legal or filed requirement, and no source in this cluster supports it, so if an umbrella is quoted, read those required underlying limits off the umbrella quote itself and enter them too.",
+			"kind": "limit",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners",
+				"renters",
+				"umbrella"
+			]
+		},
+		{
+			"group": "Valuation and deductibles, the fields that change the answer most",
+			"label": "Replacement cost versus actual cash value",
+			"detail": "NAIC frames the choice as insuring based on replacement cost, meaning the cost to rebuild, or on actual cash value [S:naic-homeowners]. CDI is blunter: an actual cash value policy will not fully replace a destroyed home, because it subtracts depreciation and pays either the repair cost less wear and tear or the policy limit, whichever is less [S:cdi-residential-insurance-guide]. Enter the valuation basis separately for the dwelling and for contents, reading each off the declarations, since they can differ within one policy.",
+			"kind": "question",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"renters",
+				"commercial-property"
+			]
+		},
+		{
+			"group": "Valuation and deductibles, the fields that change the answer most",
+			"label": "Guaranteed versus limited or extended replacement cost, with the exact cushion",
+			"detail": "CDI states that a policy cannot be sold as a guaranteed replacement cost policy unless it will pay to completely rebuild the home regardless of the coverage limit, and that other replacement cost variants pay the policy limits plus a certain percentage above those limits [S:cdi-residential-insurance-guide]. Enter the exact percentage or dollar cushion each option carries, taken from that option's form, since the size of the cushion above the limit is the whole difference between these products and quotes can look alike at very different cushions.",
+			"kind": "question",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners"
+			]
+		},
+		{
+			"group": "Valuation and deductibles, the fields that change the answer most",
+			"label": "Building code or ordinance and law upgrade coverage",
+			"detail": "CDI warns that unless the policy has this coverage, the insurance company may not pay for changes needed to bring the structure of the home up to current building codes [S:cdi-residential-insurance-guide]. Enter, per option, whether it is included, added by endorsement, or absent, and what the sublimit is, noting whether the sublimit is a percentage or a flat dollar amount.",
+			"kind": "endorsement",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"commercial-property"
+			]
+		},
+		{
+			"group": "Valuation and deductibles, the fields that change the answer most",
+			"label": "How the loss settlement clause treats the roof and specific systems",
+			"detail": "This depends on the policy form and its endorsements, so read the loss settlement provision on each option and enter what it says rather than what the quote summary says. Note separately that under California rules a replacement cost estimate may not include a deduction for physical depreciation [S:ca-10-ccr-2695-183]; how an estimate is prepared and how a loss is settled are two different questions, and neither this tool nor the estimate decides what a carrier will pay.",
+			"kind": "question",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"homeowners"
+			]
+		},
+		{
+			"group": "Valuation and deductibles, the fields that change the answer most",
+			"label": "All other perils deductible",
+			"detail": "Enter the flat dollar deductible for each option. NAIC states that the lower the deductible amount, the higher the policy premium [S:naic-homeowners]. Put the annual premium difference next to the deductible difference so the trade is visible in one row.",
+			"kind": "limit",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"renters",
+				"commercial-property"
+			]
+		},
+		{
+			"group": "Valuation and deductibles, the fields that change the answer most",
+			"label": "Percentage and peril-specific deductibles, converted to dollars",
+			"detail": "Enter any separate deductible the declarations show for a named peril such as wind and hail, wildfire, hurricane, named storm, earthquake or water. Whether a deductible is a flat dollar amount or a percentage, and what the percentage is applied to, depends on the policy form and its endorsements, so read the declarations and enter what they say. Where it is a percentage, compute and enter the dollar figure too, so the out-of-pocket is comparable across options.",
+			"kind": "limit",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"commercial-property",
+				"earthquake"
+			]
+		},
+		{
+			"group": "Exclusions and separate policies",
+			"label": "Flood belongs in its own row, not in a footnote",
+			"detail": "NAIC states that separate policies for flood or earthquake coverage also may be purchased by those in areas prone to these perils [S:naic-homeowners]. Enter flood as its own comparison row per option: zone, building limit, contents limit, deductibles, and effective date. A new NFIP policy is generally effective 12:01 a.m. local time on the 30th calendar day after the application date and the presentment of payment of premium, unless an exception applies, including the loan-closing exception, the 13-month window after a revised flood map, and a post-wildfire exception for flooding on Federal land [S:cfr-44-61-11].",
+			"kind": "question",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"flood"
+			]
+		},
+		{
+			"group": "Exclusions and separate policies",
+			"label": "Earthquake as a separate comparison",
+			"detail": "NAIC states that separate policies for earthquake coverage also may be purchased by those in areas prone to that peril [S:naic-homeowners]. Enter the deductible and its basis, and whether contents and loss of use are included and at what limits. How the deductible is calculated depends on the policy or program form and its endorsements, so read the declarations and enter what they say. Whether any particular property qualifies for any particular program is a carrier or program decision, not something this tool can answer.",
+			"kind": "question",
+			"appliesTo": [
+				"personal"
+			],
+			"lines": [
+				"earthquake"
+			]
+		},
+		{
+			"group": "Exclusions and separate policies",
+			"label": "Test each option against what the lender requires",
+			"detail": "If a loan is involved, enter the mortgagee and loss payee wording and the lender's stated minimums per option. Under Regulation X a gap can lead to force-placed hazard insurance, which requires a written notice at least 45 days before the charge, a reminder at least 15 days before the charge and not until at least 30 days after the first notice, and cancellation with refund of overlapping premium within 15 days of proof of coverage [S:cfpb-1024-37]. For a building in a special flood hazard area securing a loan from a regulated lending institution, federal law requires flood coverage for the term of the loan in an amount at least equal to the outstanding principal balance of the loan or the maximum limit of coverage made available under the Act for that type of property, whichever is less [S:usc-42-4012a-2].",
+			"kind": "evidence",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"flood",
+				"commercial-property"
+			]
+		},
+		{
+			"group": "Commercial comparison fields",
+			"label": "General liability aggregate structure, not just the occurrence limit",
+			"detail": "Enter, per option, the per-occurrence limit, the general aggregate, whether the aggregate applies per project or per location, the products-completed operations aggregate, the personal and advertising injury limit, damage to premises rented, and any deductible or self-insured retention. That set of fields reflects common market practice rather than a legal or filed requirement, and no source in this cluster supports it; what any particular policy carries is set by its own form. The occurrence limit alone does not tell you how much the policy can pay across a year, so fill in every one of those fields before comparing.",
+			"kind": "limit",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability"
+			]
+		},
+		{
+			"group": "Commercial comparison fields",
+			"label": "Claims-made mechanics, retroactive date, and extended reporting period",
+			"detail": "For professional liability, cyber, EPLI, some pollution and some management liability quotes, enter per option whether the trigger is claims-made or occurrence, the retroactive date shown on the declarations, the reporting requirement, and the extended reporting period terms and cost. Writing these lines on a claims-made basis with a retroactive date is common market practice rather than a legal or filed requirement, and no source in this cluster supports it. The retroactive date on a new quote is not always the same as the one on the expiring policy, so copy both and put the question to the broker or insurer in writing if they differ.",
+			"kind": "question",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"professional-liability",
+				"cyber",
+				"epli",
+				"pollution"
+			]
+		},
+		{
+			"group": "Commercial comparison fields",
+			"label": "Which additional insured and waiver endorsements each option actually carries",
+			"detail": "Enter the additional insured form numbers and edition dates per option, whether completed operations is included as well as ongoing operations, whether primary and non-contributory is added by endorsement, and whether waiver of subrogation appears and on which lines. For a California construction contract entered into on or after January 1, 2013, which is the only kind Civil Code Section 2782.05 reaches, subdivision (b)(6) provides that the section does not affect a provision requiring the promisor to purchase or maintain insurance covering the promisor's acts or omissions, including additional insured endorsements covering ongoing and completed operations [S:ca-civ-code-2782-05]. Availability on any particular policy is a carrier underwriting decision.",
+			"kind": "endorsement",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"commercial-auto",
+				"umbrella"
+			]
+		},
+		{
+			"group": "Commercial comparison fields",
+			"label": "Workers compensation options are only comparable if the class codes match",
+			"detail": "Enter class codes and payroll by code for each option, plus the experience modification and any scheduled credits or debits. NCCI Basic Manual Rule 1 states that, subject to certain exceptions, it is the business of the employer within a state that is classified, not the separate employments, occupations, or operations, and that the governing classification at a location or job is the basic classification other than a standard exception classification, determined under the Governing Classification Determination Table [S:ncci-basic-manual-rule-1]. The text cited here is the North Carolina Rate Bureau's reproduction of the NCCI manual, and independent-bureau states publish their own rules. If two quotes use different codes or different payroll, the premium difference is not a coverage comparison.",
+			"kind": "question",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Commercial comparison fields",
+			"label": "Property valuation, coinsurance, and time element",
+			"detail": "Enter per option the valuation basis for buildings, business personal property and stock, any coinsurance percentage or agreed value, blanket versus scheduled limits, and the business income basis with its period of restoration and any waiting period. Coinsurance, agreed value, blanket limits and a period of restoration are common market practice rather than a legal or filed requirement, and no source in this cluster supports them; each is defined by the individual policy form. Coinsurance and agreed value are different provisions and they interact with reported values differently, so copy the exact clause from each option's form and take the difference to the broker or insurer as a written question.",
+			"kind": "limit",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"commercial-property"
+			]
+		},
+		{
+			"group": "Reading the result honestly",
+			"label": "Note which differences are coverage and which are only price",
+			"detail": "Mark each row where the options genuinely differ in what the forms say, then separately mark rows where they differ only in premium or billing. Enter payment plan, audit basis, minimum earned premium, and cancellation terms as their own rows, since those change cost without changing what the form says.",
+			"kind": "question",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"commercial-property",
+				"general-liability",
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Reading the result honestly",
+			"label": "Turn every unresolved row into a written question for your broker or insurer",
+			"detail": "Where two options differ and you cannot tell from the forms why, write the question out with the form number, edition date and page, and send it to the broker or insurer rather than resolving it here. Coverage is determined by the policy and its endorsements, and in California a certificate or summary must state that it does not amend, extend or alter what the policies afford [S:ca-ins-code-384-2].",
+			"kind": "question",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"commercial-property",
+				"general-liability",
+				"flood",
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Reading the result honestly",
+			"label": "Nothing here is verified against a policy",
+			"detail": "This workspace compares only what you type into it. It does not read a policy, retrieve a filing, confirm a form is available, confirm anything is in force, or price anything, and a mistyped limit will compare exactly as typed. Confirm every entry against the actual declarations and endorsements before relying on the comparison.",
+			"kind": "question",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"commercial-property",
+				"general-liability",
+				"flood",
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Reading the result honestly",
+			"label": "What this comparison is not",
+			"detail": "This is general information, not legal, tax or claims advice, not a coverage determination, and not an eligibility verdict. It cannot tell you whether a loss would be covered, or whether a specific property or risk is standard market, non-admitted, eligible for any residual market program, bound, or uninsurable. Those are carrier, program and regulator determinations.",
+			"kind": "question",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"homeowners",
+				"commercial-property",
+				"general-liability",
+				"flood",
+				"earthquake"
+			]
+		}
+	],
+	"sourceIds": [
+		"cdi-residential-insurance-guide",
+		"naic-homeowners",
+		"ca-10-ccr-2695-183",
+		"ca-ins-code-384-2",
+		"cfr-44-61-11",
+		"cfpb-1024-37",
+		"usc-42-4012a-2",
+		"ncci-basic-manual-rule-1",
+		"ca-civ-code-2782-05"
+	],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

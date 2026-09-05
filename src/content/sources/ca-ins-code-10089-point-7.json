@@ -1,0 +1,23 @@
+{
+	"title": "California Insurance Code section 10089.7",
+	"publisher": "California Legislative Information (California Legislature)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10089.7",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 10089.7(a) provides that the authority shall be governed by a three-member governing board consisting of the Governor, the Treasurer, and the Insurance Commissioner, each of whom may name designees to serve as board members in their place.",
+		"Section 10089.7(a) provides that the Speaker of the Assembly and the Chairperson of the Senate Committee on Rules shall serve as nonvoting, ex officio members of the board and may name designees to serve in their place.",
+		"Section 10089.7(b) provides for an advisory panel that includes four members who represent insurance companies licensed to transact fire insurance in the state (two appointed by the commissioner), two licensed insurance agents (one appointed by the commissioner), and three members of the public not connected with the insurance industry, at least one of whom shall be a consumer representative, and further provides that the Speaker of the Assembly and the Chairperson of the Senate Committee on Rules may each appoint one member of the public.",
+		"Section 10089.7(c)(6) provides that the board may contract with participating insurers to service the policies of basic residential earthquake insurance issued by the authority."
+	],
+	"updateCadence": "Changes only by legislative amendment.",
+	"status": "active",
+	"officialHost": true
+}

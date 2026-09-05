@@ -1,0 +1,31 @@
+{
+	"title": "Homeowners Coverages and Deductibles (CEA homeowners policy)",
+	"publisher": "California Earthquake Authority",
+	"url": "https://www.earthquakeauthority.com/california-earthquake-insurance-policies/homeowners/coverages-and-deductibles",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"CEA offers a Standard Homeowners policy under which all coverages fall under one deductible, and a Homeowners Choice policy that provides separate deductibles for dwelling and for personal property and allows the purchase of dwelling coverage only.",
+		"The deductible options are 5, 10, 15, 20, or 25 percent of the Coverage A and B limit.",
+		"The 5 percent and 10 percent deductible options are not available for homes with a Coverage A dwelling limit greater than $1,000,000, or for dwellings with frame construction built before 1980 that are not on a slab foundation and do not have a verified retrofit.",
+		"CEA Coverage A and B must be the same as the residential homeowners policy's Coverage A dwelling limit.",
+		"Coverage C personal property available limits are $5,000 or $25,000, with $500 included for damage to some breakable personal property.",
+		"Coverage D loss of use available limits are $1,500, $10,000, $15,000, $25,000, $50,000, $75,000, and $100,000, and loss of use carries no deductible under either policy type.",
+		"Building code upgrade coverage is $10,000 with purchasable options of $20,000 or $30,000, and is paid once the covered dwelling damage exceeds the Coverage A and B deductible.",
+		"There is no deductible on the first $1,500 of emergency repairs coverage, and amounts exceeding $1,500 require meeting the Coverage A and B or Coverage C deductible.",
+		"CEA states that exclusions and special limits apply and that all terms and conditions of CEA insurance coverage are found in the CEA insurance-policy form.",
+		"CEA lists the deductible choices for its homeowners policy as 5, 10, 15, 20, or 25 percent, expressed as a percentage of the Coverage A and B limit.",
+		"The page states: 'The 5% and 10% deductible options are not available for homes with Coverage A dwelling limit greater than $1,000,000, or dwellings with frame construction built before 1980 that are not on a slab foundation and do not have a verified retrofit.'"
+	],
+	"updateCadence": "changes with CEA rate and form filings; verify limit and deductible options each review cycle",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: not stated on the page"
+}

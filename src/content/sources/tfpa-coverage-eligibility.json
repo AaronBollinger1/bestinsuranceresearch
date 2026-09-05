@@ -1,0 +1,25 @@
+{
+	"title": "Coverage and Eligibility - Texas FAIR Plan Association",
+	"publisher": "Texas FAIR Plan Association",
+	"url": "https://www.texasfairplan.org/about-us/coverage-eligibility/",
+	"sourceType": "official-documentation",
+	"jurisdiction": "TX",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"TFPA states that applicants must have been denied coverage by at least two insurance companies licensed to write and actually writing property insurance in Texas.",
+		"TFPA states that policyholders must reapply for coverage in the voluntary market every two years.",
+		"TFPA lists ineligible property types including a mobile home unless the wheels are removed and the mobile home is tied down, a farm or ranch used for business, and any residential dwelling occupied for business use.",
+		"TFPA states that it offers policies with limited coverage and, as such, does not cover the following perils that other insurers may provide: falling trees or limbs and falling objects; collapse of a building or part of a building; breakage of glass; damage from the weight of ice, snow or sleet; freezing of plumbing, heating, air conditioning or automatic fire protective sprinkler systems or household appliances; mold, fungi or other microbe remediation; back up of sewer or drains; items that may be scheduled, such as expensive jewelry; and sudden and accidental discharge of water or steam.",
+		"TFPA states that for an additional premium charge a limited coverage endorsement may be added to the Homeowners Policy, Tenant Policy, and Condominium Policy forms.",
+		"TFPA lists reasons an applicant may be ineligible as property condemned due to the condition of the property, property in disrepair or with existing damage, vacant property, property with excessive or unusual liability exposure, an applicant who has a conviction for arson, fraud, or other insurance related offenses, and an applicant with more than eight paid claims excluding glass claims within the past three years."
+	],
+	"updateCadence": "Re-verify eligibility rules annually and after each legislative session.",
+	"status": "active",
+	"officialHost": true
+}

@@ -1,0 +1,234 @@
+---
+import { ArrowRight, Ban, CircleDot, Gavel, ShieldQuestion } from '@lucide/astro';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Callout from '../../components/Callout.astro';
+import CiteThisPage from '../../components/CiteThisPage.astro';
+import CorrectionControl from '../../components/CorrectionControl.astro';
+import SourceLedger from '../../components/SourceLedger.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { createCiter, stripMarkers } from '../../lib/citations';
+import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, graph, organization, techArticle, website } from '../../lib/schema';
+import { TODAY } from '../../lib/today';
+
+export const getStaticPaths = (async () => {
+	const corpus = await loadCorpus();
+	return corpus.examples.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
+}) satisfies GetStaticPaths;
+
+const { entry, corpus } = Astro.props;
+const d = entry.data;
+const path = `/examples/${entry.id}`;
+const machinePath = `${path}.json`;
+
+const sourceIds = idsOf(d.sourceIds);
+const sources = ledgerFor(sourceIds, corpus.sourceById, `example "${entry.id}"`);
+const cite = createCiter(sourceIds, `example "${entry.id}"`);
+
+const relatedQuestions = d.relatedQuestions
+	.map((ref) => corpus.questionBySlug.get(ref.id))
+	.filter((q): q is NonNullable<typeof q> => Boolean(q));
+
+const description = stripMarkers(d.whatHappened).slice(0, 300);
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Examples', path: '/examples' },
+	{ name: d.title, path },
+];
+
+const LABEL_TEXT: Record<string, string> = {
+	'public-record': 'Public record',
+	'carrier-authored': 'Carrier authored',
+	'published-industry': 'Published industry example',
+	'anonymized-client': 'Anonymized client case',
+	composite: 'Composite educational example',
+	hypothetical: 'Hypothetical',
+};
+
+const isReal = d.label === 'public-record' || d.label === 'carrier-authored' || d.label === 'published-industry';
+
+const sections = [
+	{ id: 'label', label: 'What this example is' },
+	{ id: 'happened', label: 'What happened' },
+	{ id: 'mattered', label: 'What information mattered' },
+	{ id: 'question', label: 'The insurance question' },
+	{ id: 'reasoning', label: 'The reasoning path' },
+	{ id: 'decided', label: 'What was decided' },
+	{ id: 'limits', label: 'What cannot be generalized' },
+	{ id: 'source-ledger', label: 'Source ledger' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	techArticle({
+		headline: d.title,
+		path,
+		description,
+		datePublished: d.lastReviewed,
+		dateModified: d.lastReviewed,
+		author: d.author,
+		reviewer: d.reviewer,
+		sections: sections.map((s) => s.label),
+		about: d.lines,
+		citations: sources.map((s) => ({ name: s.data.title, url: s.data.url, publisher: s.data.publisher })),
+	}),
+);
+---
+
+<BaseLayout title={d.title} description={description} jsonLd={jsonLd} pageType="example" machinePath={machinePath}>
+	<article>
+		<header class="band band-first band-paper answer-head">
+			<div class="shell">
+				<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+				<div class="answer-flags">
+					<span class={`status ${isReal ? 'status-established' : 'status-insufficient'}`}>
+						{LABEL_TEXT[d.label] ?? d.label}
+					</span>
+					<StatusChip kind={d.reviewState} />
+					<span class="meta">{d.family} lines</span>
+					<span class="meta">{d.lines.join(', ')}</span>
+				</div>
+				<h1>{d.title}</h1>
+				<dl class="answer-dates">
+					<div><dt>Last reviewed</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
+					<div><dt>Author</dt><dd>{d.author}</dd></div>
+					<div><dt>Reviewer</dt><dd>{d.reviewer}</dd></div>
+					<div><dt>Sources</dt><dd><a href="#source-ledger">{sources.length} records</a></dd></div>
+				</dl>
+			</div>
+		</header>
+
+		<div class="band band-tight">
+			<div class="shell answer-grid">
+				<div>
+					<section aria-labelledby="label">
+						<h2 id="label" class="u-visually-hidden">What this example is</h2>
+						<Callout tone={isReal ? 'note' : 'warn'} label="Example label">
+							<p><strong>{LABEL_TEXT[d.label] ?? d.label}.</strong> {d.labelNote}</p>
+							<p set:html={cite.inline(d.provenance)} />
+							{d.consentRecord && <p><strong>Consent record:</strong> {d.consentRecord}</p>}
+						</Callout>
+					</section>
+
+					<section class="answer-section" aria-labelledby="happened">
+						<h2 id="happened">What happened</h2>
+						<div class="prose" set:html={cite.paragraphs(d.whatHappened)} />
+					</section>
+
+					<section class="answer-section" aria-labelledby="mattered">
+						<h2 id="mattered">What information mattered</h2>
+						<ul class="fact-list">
+							{d.informationThatMattered.map((item) => <li><CircleDot size={14} aria-hidden="true" /><p set:html={cite.inline(item)} /></li>)}
+						</ul>
+					</section>
+
+					<section class="answer-section" aria-labelledby="question">
+						<h2 id="question">The insurance question</h2>
+						<div class="direct-answer"><p><ShieldQuestion size={18} aria-hidden="true" style="display:inline-block;vertical-align:-3px;margin-right:6px" />{d.insuranceQuestion}</p></div>
+					</section>
+
+					<section class="answer-section prose" aria-labelledby="reasoning">
+						<h2 id="reasoning">The reasoning path</h2>
+						<div set:html={cite.paragraphs(d.reasoningPath)} />
+					</section>
+
+					<section class="answer-section" aria-labelledby="decided">
+						<h2 id="decided">What was decided, and by whom</h2>
+						<ul class="fact-list">
+							<li>
+								<Gavel size={14} aria-hidden="true" />
+								<p set:html={cite.inline(d.decidedBy)} />
+							</li>
+						</ul>
+					</section>
+
+					<section class="answer-section" aria-labelledby="limits">
+						<h2 id="limits">What cannot be generalized from this</h2>
+						<ul class="fact-list">
+							{
+								d.cannotGeneralize.map((item) => (
+									<li>
+										<Ban size={14} aria-hidden="true" style="color: var(--rust)" />
+										<p set:html={cite.inline(item)} />
+									</li>
+								))
+							}
+						</ul>
+					</section>
+
+					<SourceLedger sources={sources} today={TODAY} />
+
+					<CorrectionControl path={path} title={d.title} pageType="example" />
+
+					<CiteThisPage
+						machinePath={machinePath}
+						page={{
+							title: d.title,
+							path,
+							published: d.lastReviewed,
+							reviewed: d.lastReviewed,
+							author: d.author,
+							id: entry.id,
+							pageType: 'example',
+						}}
+					/>
+
+					{
+						relatedQuestions.length > 0 && (
+							<section class="answer-section" aria-labelledby="related">
+								<h2 id="related">Questions this example illustrates</h2>
+								<div class="rows">
+									{relatedQuestions.map((question) => (
+										<a class="row" href={`/questions/${question.id}`}
+											data-event="related_question_opened"
+											data-insurance-family={question.data.family}
+											data-page-type="example">
+											<div>
+												<h3 class="row-title">{question.data.question}</h3>
+												<p>{stripMarkers(question.data.shortAnswer).slice(0, 170)}</p>
+												<div class="row-meta">
+													<StatusChip kind={question.data.confidence} />
+													<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+												</div>
+											</div>
+											<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+										</a>
+									))}
+								</div>
+							</section>
+						)
+					}
+				</div>
+
+				<aside class="answer-rail" aria-label="Page contents">
+					<nav class="rail-block" aria-labelledby="on-this-page">
+						<h2 id="on-this-page">On this page</h2>
+						<ol>{sections.map((section) => <li><a href={`#${section.id}`}>{section.label}</a></li>)}</ol>
+					</nav>
+					<div class="rail-block">
+						<h2>Provenance</h2>
+						<dl>
+							<div><dt>Label</dt><dd>{LABEL_TEXT[d.label] ?? d.label}</dd></div>
+							<div><dt>Real outcome?</dt><dd>{isReal ? 'Yes, from a public record' : 'No, illustrative only'}</dd></div>
+							<div><dt>Primary sources</dt><dd>{sources.filter((s) => s.data.primary).length} of {sources.length}</dd></div>
+						</dl>
+					</div>
+					<div class="rail-block no-print">
+						<h2>Machine readable</h2>
+						<ul>
+							<li><a href={machinePath}>Page record (JSON)</a></li>
+							<li><a href="/examples">All examples</a></li>
+							<li><a href="/editorial-policy">How examples are labeled</a></li>
+						</ul>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</article>
+</BaseLayout>

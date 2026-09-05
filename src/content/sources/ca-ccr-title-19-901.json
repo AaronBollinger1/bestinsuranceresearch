@@ -1,0 +1,25 @@
+{
+	"title": "Cal. Code Regs. tit. 19, section 901, Scope (automatic fire extinguishing systems; NFPA 25 incorporation and amendments)",
+	"publisher": "Cornell Legal Information Institute (reproduction of the California Code of Regulations, Title 19, Office of the State Fire Marshal)",
+	"url": "https://www.law.cornell.edu/regulations/california/19-CCR-901",
+	"sourceType": "regulation",
+	"jurisdiction": "CA",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Section 901 is titled Scope and states that these regulations apply to all automatic fire extinguishing systems identified in Health and Safety Code Section 13195.",
+		"Section 901 incorporates NFPA 25, Inspection, Testing, and Maintenance of Water-Based Fire Protection Systems (2011 edition), including Annexes A, B, C, D, F and G, as amended by the Office of the State Fire Marshal.",
+		"Within section 901, NFPA 25 section 4.3.1 is amended to read that records shall be made for all inspections, tests, and maintenance of the system and its components and shall be maintained by the property owner or designated representative at a site or location agreed upon by the AHJ.",
+		"Within section 901, NFPA 25 section 4.3.5 is amended to read that subsequent records shall be retained for a period of 5 years after the next inspection, test, or maintenance of that type required by the standard.",
+		"Section 901 identifies who may perform inspection, testing, and maintenance, including a California Contractors State License Board licensed Fire Protection Contractor (C-16), a California State Fire Marshal licensed Type 1 concern, and a California State Fire Marshal licensed Type L concern, and it allows certain inspections by an employee designated by the building owner or occupant who has developed competence through training and experience."
+	],
+	"updateCadence": "Regulation; the incorporated NFPA 25 edition changes only when California adopts a newer edition, so confirm the currently adopted edition before relying on it.",
+	"status": "active",
+	"notes": "Fetched today and each claim confirmed on the page, including that the recordkeeping and five-year retention language appears as an Office of the State Fire Marshal amendment to NFPA 25 sections 4.3.1 and 4.3.5 set out within section 901, not as freestanding text of section 901. authorityLevel is secondary and primary is false because what was fetched is a reproduction rather than a page served by the California Office of Administrative Law or the Office of the State Fire Marshal. The adopted NFPA 25 edition is the single most fragile fact here. NFPA's own pages could not be fetched (nfpa.org served only JavaScript-rendered titles), so no NFPA-published statistic is cited anywhere in this entry.",
+	"officialHost": false
+}

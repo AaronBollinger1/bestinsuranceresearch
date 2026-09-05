@@ -1,0 +1,23 @@
+{
+	"title": "Consumer Insurance Search Results - CIS",
+	"publisher": "National Association of Insurance Commissioners",
+	"url": "https://content.naic.org/cis_consumer_information.htm",
+	"sourceType": "government-data",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The page returns company search results and states: Your search matched the companies displayed below.",
+		"The page states that an insurance company may have different subsidiaries with different names, and tells the reader to check their policy for the correct name.",
+		"The page tells the reader to check their state's insurance department website to confirm the Company or HMO is licensed, as well as to obtain information on other Companies or HMOs licensed in their state.",
+		"The page states that if the reader was unable to find a company using the CIS Company Search, they should contact the insurance department where they live."
+	],
+	"updateCadence": "Underlying data is refreshed from state insurance department submissions.",
+	"status": "active",
+	"officialHost": true
+}

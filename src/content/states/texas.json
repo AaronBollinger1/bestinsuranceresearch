@@ -1,0 +1,102 @@
+{
+	"code": "TX",
+	"name": "Texas",
+	"regulator": {
+		"name": "Texas Department of Insurance",
+		"url": "https://www.tdi.texas.gov/",
+		"consumerPhone": "800-252-3439"
+	},
+	"summary": "Texas is a file-and-use rate state: TDI states that like most other states, Texas is a file-and-use state, meaning that once an insurer files its rates it can use them on their effective date [S:tdi-rate-review]. Texas splits its residual property market by peril. TWIA states that it was established in 1971 by the Texas Legislature to provide wind and hail coverage to applicants unable to obtain insurance in the private market, and that it serves all 14 first tier coastal counties and parts of Harris County east of Highway 146 [S:twia-overview]. TWIA's published eligibility adds conditions that its overview does not: a denial by at least one authorized insurer actively writing or renewing windstorm and hail coverage in the designated area, a windstorm certificate of compliance with limited exceptions, an insurable structure condition, and, for certain V zone properties that can obtain flood insurance through the National Flood Insurance Program, proof of flood insurance [S:twia-coverage-eligibility]. The separate Texas FAIR Plan Association states that it was established by the Texas Legislature to provide essential property insurance for eligible Texas property owners when no one else will, and that applicants must have two declinations from other insurers [S:tfpa-home], with policyholders required to reapply for coverage in the voluntary market every two years [S:tfpa-coverage-eligibility]. TDI states that Texas law requires at least $30,000 of coverage for injuries per person, up to a total of $60,000 per accident, and $25,000 of coverage for property damage [S:tdi-auto-guide], amounts that the enrolled text of S.B. 502 (80th Legislature, 2007) makes effective January 1, 2011 [S:tx-sb-502-2007]. TDI also states that in Texas private employers can choose to carry workers' compensation insurance coverage, but it is not required in most cases [S:tdi-wc-employer].",
+	"keyMechanisms": [
+		{
+			"title": "File-and-use rate regulation",
+			"detail": "Texas does not require approval before an insurer uses a new property and casualty rate. TDI states that like most other states, Texas is a file-and-use state, which means that once an insurer files its rates, it can use them on their effective date [S:tdi-rate-review]. TDI also states that if the commissioner disapproves a rate filing, the insurer can request a hearing, in writing, within 30 days of the effective date in the disapproval order [S:tdi-rate-review]. That is a different posture from California, where section 1861.01(c) provides that rates subject to that chapter must be approved by the commissioner prior to their use [S:ca-ins-code-1861-01]. The label file-and-use is not defined identically everywhere, so read each state's own description rather than carrying one state's meaning into another."
+		},
+		{
+			"title": "Two residual property mechanisms, split by peril",
+			"detail": "Coastal wind and hail risk and other property risk run through two different entities. TWIA states that it was established in 1971 by the Texas Legislature to provide wind and hail coverage to applicants unable to obtain insurance in the private market, that its policies provide coverage for wind and hail losses only and no other perils are covered, and that it serves all 14 first tier coastal counties plus the parts of Harris County east of Highway 146 within the city limits of La Porte, Morgan's Point, Pasadena, Seabrook, and Shore Acres [S:twia-overview]. TWIA's About page separately states that TWIA policies do not cover damage caused by flooding and storm surge [S:twia-about]. Being unable to buy wind coverage privately is not by itself the test. TWIA's Coverage and Eligibility page states that the property must be located in the area designated by the Commissioner of Insurance; that the applicant must have been denied coverage by at least one authorized insurer actively writing or renewing windstorm and hail coverage in the designated area; that the property must be certified by TDI (WPI-8 or WPI-8-E) or by TWIA (WPI-8-C) as having been built to applicable building codes, with limited exceptions; that the structure must be in an insurable condition, in good repair, with no unrepaired damage or hazardous conditions; and that properties in flood zones V, VE, or V1-30 constructed, altered, remodeled, or enlarged on or after September 1, 2009 and able to obtain flood insurance through the National Flood Insurance Program must provide proof of flood insurance [S:twia-coverage-eligibility]. That last requirement carries both conditions, the construction date and the availability of NFIP flood insurance; an earlier version of this page stated it without the availability clause, which turned a conditional requirement into an unconditional one. Those are the program's own statements about its policies rather than the text of a filed form; the perils and exclusions that apply to a particular policy are the ones in that policy's form and endorsements. The Texas FAIR Plan Association states that it was established by the Texas Legislature to provide essential property insurance for eligible Texas property owners when no one else will, and that applicants must have two declinations from other insurers [S:tfpa-home]. Its own Coverage and Eligibility page adds that the declinations must come from insurance companies licensed to write and actually writing property insurance in Texas, that policyholders must reapply for coverage in the voluntary market every two years, that certain property types are ineligible including a mobile home unless the wheels are removed and it is tied down, a farm or ranch used for business, and any residential dwelling occupied for business use, and that an applicant may be ineligible because the property was condemned due to its condition, because the property is in disrepair or has existing damage, because the property is vacant, because the property has excessive or unusual liability exposure, because the applicant has a conviction for arson, fraud, or other insurance related offenses, or because the applicant has more than eight paid claims excluding glass claims within the past three years [S:tfpa-coverage-eligibility]. An earlier version of this page listed only the last three of those and so understated how the plan screens applicants. TFPA also states that it offers policies with limited coverage and, as such, does not cover perils that other insurers may provide, listing falling trees or limbs and falling objects, collapse of a building or part of a building, breakage of glass, damage from the weight of ice, snow or sleet, freezing of plumbing, heating, air conditioning or automatic fire protective sprinkler systems or household appliances, mold, fungi or other microbe remediation, back up of sewer or drains, items that may be scheduled such as expensive jewelry, and sudden and accidental discharge of water or steam; for an additional premium charge a limited coverage endorsement may be added to the Homeowners, Tenant, and Condominium policy forms [S:tfpa-coverage-eligibility]. Because the two programs are organized around different perils, a coastal property owner's wind, flood, and other property coverage may sit in different places. Nothing stated here means any particular property meets either program's conditions; eligibility in either program is that program's own underwriting decision."
+		},
+		{
+			"title": "PIP is opt-out, and UM/UIM must be offered",
+			"detail": "TDI states that all auto policies in Texas include personal injury protection coverage, and that a policyholder who does not want it must tell the company in writing [S:tdi-auto-guide]. TDI also states that insurance companies must offer uninsured/underinsured motorist coverage, and that a rejection must likewise be in writing [S:tdi-auto-guide]. TDI's phrase all auto policies is a regulator's summary of the standard Texas personal auto program rather than a statement about every form filed in Texas, so read your own policy and its endorsements to see what it contains. The mechanics are opt-out rather than opt-in: the coverage is present or offered unless the policyholder declines it in writing [S:tdi-auto-guide]."
+		},
+		{
+			"title": "Workers' compensation is elective for most private employers",
+			"detail": "TDI states that in Texas, private employers can choose to carry workers' compensation insurance coverage, but it is not required in most cases [S:tdi-wc-employer]. TDI states that an employer without coverage must report to the state that it does not have coverage, and must also report to the Division of Workers' Compensation any work-related injuries resulting in more than one day of lost time, as well as all work-related illnesses and deaths [S:tdi-wc-employer]. Whether a particular employer must carry coverage anyway, for example under a contract or because of what it does, is a legal question for a lawyer, and so is the liability exposure that follows from going without coverage."
+		}
+	],
+	"residualMarket": {
+		"name": "Texas Windstorm Insurance Association (coastal wind and hail) and Texas FAIR Plan Association (other property)",
+		"url": "https://www.twia.org/",
+		"note": "TWIA states that it was established in 1971 by the Texas Legislature to provide wind and hail coverage to applicants unable to obtain insurance in the private market, that its policies cover wind and hail losses only, and that it serves all 14 first tier coastal counties and parts of Harris County east of Highway 146 within the city limits of La Porte, Morgan's Point, Pasadena, Seabrook, and Shore Acres [S:twia-overview]. TWIA's About page states that TWIA policies do not cover damage caused by flooding and storm surge [S:twia-about]. TWIA's published eligibility conditions are location in the area designated by the Commissioner of Insurance, denial by at least one authorized insurer actively writing or renewing windstorm and hail coverage in that area, a windstorm certificate of compliance issued by TDI (WPI-8 or WPI-8-E) or by TWIA (WPI-8-C) with limited exceptions, an insurable structure condition, and proof of flood insurance for properties in flood zones V, VE, or V1-30 that were constructed, altered, remodeled, or enlarged on or after September 1, 2009 and that can obtain flood insurance through the National Flood Insurance Program [S:twia-coverage-eligibility]. The separate Texas FAIR Plan Association, at https://www.texasfairplan.org/, states that it was established by the Texas Legislature to provide essential property insurance for eligible Texas property owners when no one else will, and that applicants must have two declinations from other insurers [S:tfpa-home]; its own eligibility page adds that the declinations must come from insurers licensed to write and actually writing property insurance in Texas, that policyholders must reapply in the voluntary market every two years, that certain property types are ineligible, and that an applicant may be ineligible because of a condemned, damaged, in-disrepair or vacant property, excessive or unusual liability exposure, a conviction for arson, fraud, or other insurance related offenses, or more than eight paid claims excluding glass claims in the past three years [S:tfpa-coverage-eligibility]. This page states no TWIA maximum liability limits, and the TWIA eligibility page states none either; check TWIA for current figures. Nothing stated here means any particular property is eligible; eligibility in either program is that program's own underwriting decision."
+	},
+	"autoRequirements": [
+		{
+			"item": "Minimum liability limits: $30,000 / $60,000 / $25,000, effective January 1, 2011",
+			"detail": "TDI states that Texas law requires at least $30,000 of coverage for injuries per person, up to a total of $60,000 per accident, and $25,000 of coverage for property damage, and calls this 30/60/25 coverage [S:tdi-auto-guide]. TDI's guide carries a last updated date of December 11, 2025, so that is a regulator statement of the amounts as of that date, and TDI's page states no effective date for them [S:tdi-auto-guide]. The effective date comes from the enacting bill on the Legislature's own host: the enrolled text of S.B. 502 (80th Legislature, 2007) amends Transportation Code section 601.072 and provides that effective January 1, 2011 the minimum amounts required to establish financial responsibility are $30,000 for bodily injury to or death of one person in one accident, $60,000 for bodily injury to or death of two or more persons in one accident, and $25,000 for damage to or destruction of property of others in one accident [S:tx-sb-502-2007]. The act's own effective date was September 1, 2007, and it set an interim tier of $25,000 / $50,000 / $25,000 effective April 1, 2008 before the January 1, 2011 amounts took over [S:tx-sb-502-2007]. The section is titled Minimum Coverage Amounts; Exclusions, and the second half of that title matters: a third party reproduction of the codified section states in subsection (b) that the coverage may exclude the first $250 of liability for bodily injury to or death of one person, the first $500 of liability for bodily injury to or death of two or more persons, and the first $250 of liability for property damage [S:tx-transp-601-072]. That exclusions branch, the expired subsection (a), and the 2023 amendment history still rest on that reproduction rather than on the publisher's own site, because statutes.capitol.texas.gov returned only navigation content on repeated fetches on 2026-08-31; verify them against the official site before relying on them. Effective date of the current limits: January 1, 2011."
+		},
+		{
+			"item": "Personal injury protection is included unless rejected in writing",
+			"detail": "TDI states that all auto policies in Texas include personal injury protection coverage, and that a policyholder who does not want it must tell the company in writing [S:tdi-auto-guide]. That is TDI's description of the standard Texas personal auto program, verified on the TDI guide at review on 2026-08-31, and not a statement about every form filed in Texas; read your own policy. TDI's page states no effective date for this rule."
+		},
+		{
+			"item": "Uninsured/underinsured motorist coverage must be offered",
+			"detail": "TDI states that insurance companies must offer uninsured/underinsured motorist coverage, and that a policyholder who does not want it must tell the company in writing [S:tdi-auto-guide]. Verified on the TDI guide at review on 2026-08-31; TDI's page states no effective date for this rule."
+		}
+	],
+	"wcMechanism": {
+		"detail": "TDI states that in Texas, private employers can choose to carry workers' compensation insurance coverage, but it is not required in most cases [S:tdi-wc-employer]. TDI states that an employer without coverage must report to the state that it does not have coverage, and must also report to the Division of Workers' Compensation any work-related injuries resulting in more than one day of lost time, as well as all work-related illnesses and deaths [S:tdi-wc-employer]. What coverage a specific employer should carry, and what liability follows from not carrying it, is a legal question for a lawyer."
+	},
+	"consumerTools": [
+		{
+			"label": "TDI Help Line and complaints",
+			"url": "https://www.tdi.texas.gov/consumer/get-help-with-an-insurance-complaint.html",
+			"note": "TDI states that its Help Line is 800-252-3439, answered 8 a.m. to 5 p.m. Central time, Monday through Friday [S:tdi-help-line]."
+		},
+		{
+			"label": "HelpInsure.com rate comparison",
+			"url": "https://www.helpinsure.com/",
+			"note": "HelpInsure.com states that it is brought to consumers by the Texas Department of Insurance and the Office of Public Insurance Counsel and lets consumers find and compare home and auto insurance policies in Texas [S:helpinsure]."
+		},
+		{
+			"label": "Texas Windstorm Insurance Association",
+			"url": "https://www.twia.org/",
+			"note": "TWIA's own description of its coverage and its 14 first tier coastal counties plus part of Harris County territory [S:twia-overview], and its published eligibility conditions including the windstorm certificate of compliance and the V zone flood insurance requirement [S:twia-coverage-eligibility]."
+		},
+		{
+			"label": "Texas FAIR Plan Association",
+			"url": "https://www.texasfairplan.org/",
+			"note": "TFPA states the two-declination requirement, and the site posts sample policy forms and endorsements [S:tfpa-home]; its Coverage and Eligibility page states the two-year voluntary market reapplication requirement and the ineligible property types [S:tfpa-coverage-eligibility]."
+		},
+		{
+			"label": "TDI auto insurance guide (CB020)",
+			"url": "https://www.tdi.texas.gov/pubs/consumer/cb020.html",
+			"note": "TDI's plain-language explanation of the required limits, personal injury protection, and uninsured/underinsured motorist coverage [S:tdi-auto-guide]."
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"effectiveDate": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"tdi-auto-guide",
+		"tdi-help-line",
+		"tdi-rate-review",
+		"tdi-wc-employer",
+		"twia-about",
+		"twia-overview",
+		"twia-coverage-eligibility",
+		"tfpa-home",
+		"tfpa-coverage-eligibility",
+		"helpinsure",
+		"tx-transp-601-072",
+		"tx-sb-502-2007",
+		"ca-ins-code-1861-01"
+	],
+	"relatedQuestions": [
+		"workers-comp-class-codes",
+		"commercial-property-underwriting-information",
+		"replacement-cost-vs-market-value"
+	]
+}

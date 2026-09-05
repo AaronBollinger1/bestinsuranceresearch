@@ -1,0 +1,27 @@
+{
+	"title": "California Mobilehome and Manufactured Home Earthquake Insurance Policies",
+	"publisher": "California Earthquake Authority",
+	"url": "https://www.earthquakeauthority.com/california-earthquake-insurance-policies/mobilehome",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "secondary",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The page states that CEA works with residential insurance companies and that a CEA earthquake policy is available to Californians whose home is insured by one of those participating companies, which is the companion residential policy condition.",
+		"The page describes a separate CEA mobilehome and manufactured home earthquake policy distinct from the homeowners policy.",
+		"The page lists mobilehome (dwelling), personal property, and loss of use as coverages under the mobilehome policy.",
+		"The page states that Building Code Upgrade coverage of $10,000 is included automatically.",
+		"The page states that the first $1,500 of Emergency Repairs carries no deductible.",
+		"The page lists deductible choices of 5, 10, 15, 20 and 25 percent.",
+		"The page states that Loss of Use carries no deductible.",
+		"Under a Building Code Upgrade heading, the page states that a $10,000 building code upgrade coverage is included with every CEA homeowner policy; the page does not state that this coverage is part of the mobilehome and manufactured home policy."
+	],
+	"updateCadence": "as-revised-by-program",
+	"status": "active"
+}

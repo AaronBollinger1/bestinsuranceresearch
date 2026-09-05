@@ -1,0 +1,22 @@
+{
+	"title": "California Insurance Code section 359 (representation false in a material point)",
+	"publisher": "California Legislative Information (Legislative Counsel of California)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=359",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"California Insurance Code section 359 reads in full: \"If a representation is false in a material point, whether affirmative or promissory, the injured party is entitled to rescind the contract from the time the representation becomes false.\"",
+		"The leginfo page for section 359 displays the note \"(Enacted by Stats. 1935, Ch. 145.)\"."
+	],
+	"updateCadence": "Amended only by the Legislature; check leginfo for the current text before relying on it.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31. Operative text read verbatim. Correcting an earlier draft note: the page does display an enactment note, \"(Enacted by Stats. 1935, Ch. 145.)\". publishedDate is left as \"unknown\" for the same reason as section 331. How section 359 applies to any particular policy or claim is a legal question.",
+	"officialHost": true
+}

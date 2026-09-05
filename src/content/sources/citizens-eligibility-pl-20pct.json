@@ -1,0 +1,25 @@
+{
+	"title": "Rule for New-Business Eligibility Increases to 20% (Personal Lines) - Citizens Property Insurance Corporation",
+	"publisher": "Citizens Property Insurance Corporation",
+	"url": "https://www.citizensfla.com/-/20210614-rule-for-new-business-eligibility-increases-to-20-",
+	"sourceType": "official-documentation",
+	"jurisdiction": "FL",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Citizens states that for any Personal Lines new-business risk to be eligible for Citizens coverage, the premium for coverage from an authorized insurer must be more than 20 percent greater than the premium for comparable coverage from Citizens.",
+		"Citizens states that the prior threshold for this Personal Lines rule was 15 percent.",
+		"Citizens describes an alternative no-offer-of-coverage standard for Personal Lines new business.",
+		"Citizens states that the change took effect July 1, 2021 and was made to comply with Senate Bill 76 (2021).",
+		"Citizens states that the Property Insurance Clearinghouse determines eligibility under the rule and that agents must upload documentation verifying that an authorized insurer's premium exceeds Citizens' comparable premium by more than 20 percent."
+	],
+	"updateCadence": "Citizens eligibility rules change with legislation; re-verify against Citizens' current underwriting manuals.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Published: 2021-06-14 Effective: 2021-07-01"
+}

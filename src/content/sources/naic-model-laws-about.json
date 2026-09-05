@@ -1,0 +1,22 @@
+{
+	"title": "Model Laws - About",
+	"publisher": "National Association of Insurance Commissioners",
+	"url": "https://content.naic.org/model-laws/about",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The page states that once the NAIC members have adopted a model law, it becomes a priority of the NAIC.",
+		"The page states that the goal is to encourage legislatures or regulatory bodies to adopt the model law, with as few changes as possible, in a majority of states within three years after its adoption by the NAIC members.",
+		"The page states that the final hurdle in NAIC's own adoption process is a minimum two-thirds majority vote of the NAIC Executive (EX) Committee/Plenary in favor of adoption of the model law."
+	],
+	"updateCadence": "Maintained by NAIC; model law adoption charts update as states act.",
+	"status": "active",
+	"officialHost": true
+}

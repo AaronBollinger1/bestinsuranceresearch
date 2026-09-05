@@ -1,0 +1,25 @@
+{
+	"title": "California Labor Code section 3700",
+	"publisher": "California Legislative Information (Legislative Counsel of California)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=3700",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The section opens: Every employer except the state shall secure the payment of compensation in one or more of the following ways.",
+		"One listed method is being insured against liability to pay compensation by one or more insurers duly authorized to write compensation insurance in California.",
+		"Another listed method is securing from the Director of Industrial Relations a certificate of consent to self-insure, either as an individual employer or as one employer in a group of employers.",
+		"A further listed method applies to political subdivisions and public entities, which may secure a certificate of consent to self-insure against workers compensation claims.",
+		"The section as displayed carries the amendment note: Amended by Stats. 2002, Ch. 905, Sec. 10. Effective January 1, 2003."
+	],
+	"updateCadence": "Amended by the Legislature; check leginfo for the current text each session.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: 2003-01-01"
+}

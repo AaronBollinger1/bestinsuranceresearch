@@ -1,0 +1,24 @@
+{
+	"title": "California Insurance Code section 2051 (measure of indemnity; actual cash value)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=2051.",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Under an open policy, the measure of indemnity in fire insurance is the expense to the insured of replacing the thing lost or injured in its condition at the time of the injury, computed as of the time of the commencement of the fire.",
+		"Under an open policy requiring payment of actual cash value, the measure of actual cash value recovery for either a total or partial loss to the structure or its contents is the amount it would cost the insured to repair, rebuild, or replace the thing lost or injured less a fair and reasonable deduction for physical depreciation based upon its condition at the time of the injury, or the policy limit, whichever is less.",
+		"A deduction for physical depreciation shall apply only to components of a structure that are normally subject to repair and replacement during the useful life of that structure.",
+		"The amendment note on the page reads Amended by Stats. 2019, Ch. 59, Sec. 1. (AB 188) Effective January 1, 2020, and the current text does not use the phrase fair market value."
+	],
+	"updateCadence": "Changes only by California legislation; last amended by Stats. 2019, Ch. 59 (AB 188).",
+	"status": "active",
+	"notes": "Fetched 2026-08-31. Metadata corrected from the prior draft: the publishedDate 2019-07-12 appeared nowhere on the page and has been removed rather than left as an unsourced date. effectiveDate is taken from the amendment note on the page. Effective: 2020-01-01",
+	"officialHost": true
+}

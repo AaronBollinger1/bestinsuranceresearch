@@ -1,0 +1,29 @@
+{
+	"title": "California Insurance Code section 10081 (mandatory offer of earthquake coverage)",
+	"publisher": "California Legislative Information (official)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10081",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"No policy of residential property insurance may be issued or delivered or, with respect to policies in effect on the effective date of this chapter, initially renewed in this state by any insurer unless the named insured is offered coverage for loss or damage caused by the peril of earthquake as provided in this chapter.",
+		"The earthquake coverage may be provided in the residential property policy itself by specific policy provision or endorsement, or in a separate policy or certificate of insurance covering earthquake alone or in combination with other perils.",
+		"The section was added by Stats. 1984, Ch. 916, Sec. 1.",
+		"Section 10081 reads: 'No policy of residential property insurance may be issued or delivered or, with respect to policies in effect on the effective date of this chapter, initially renewed in this state by any insurer unless the named insured is offered coverage for loss or damage caused by the peril of earthquake as provided in this chapter.'",
+		"Section 10081 continues: 'That coverage may be provided in the policy of residential property insurance itself, either by specific policy provision or endorsement, or in a separate policy or certificate of insurance which specifically provides coverage for loss or damage caused by the peril of earthquake alone or in combination with other perils.'",
+		"The section sits in CHAPTER 8.5. Earthquake Insurance [10081 - 10089.4], added by Stats. 1984, Ch. 916, Sec. 1.",
+		"The 'initially renewed' clause in Section 10081 is qualified by the phrase 'with respect to policies in effect on the effective date of this chapter'; Section 10081 does not by its own terms impose an offer duty at every renewal.",
+		"California Insurance Code section 10081 provides that no policy of residential property insurance may be issued or delivered or, with respect to policies in effect on the effective date of the chapter, initially renewed in the state by any insurer unless the named insured is offered coverage for loss or damage caused by the peril of earthquake as provided in the chapter.",
+		"Section 10081 allows the earthquake offer to be satisfied by a provision or endorsement within the residential property insurance policy, or by a separate policy or certificate covering the peril of earthquake alone or together with other perils."
+	],
+	"updateCadence": "amended only by legislation; re-check leginfo annually",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Published: 1984 (added by Stats. 1984, Ch. 916, Sec. 1) Effective: not separately stated on the page beyond the 1984 enactment note"
+}

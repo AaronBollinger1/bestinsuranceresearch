@@ -1,0 +1,21 @@
+{
+	"title": "45 CFR 164.404 - Notification to individuals (HIPAA Breach Notification Rule)",
+	"publisher": "Cornell Legal Information Institute, reproducing the Code of Federal Regulations",
+	"url": "https://www.law.cornell.edu/cfr/text/45/164.404",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "secondary",
+	"officialHost": false,
+	"publishedDate": "2013-01-25",
+	"effectiveDate": "2013-03-26",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Paragraph (b), Implementation specification: Timeliness of notification, provides that a covered entity shall provide the notification required by paragraph (a) without unreasonable delay and in no case later than 60 calendar days after discovery of a breach.",
+		"The 60 calendar day period runs from discovery of the breach, and is an outer limit rather than a safe harbor, because notification must also be without unreasonable delay."
+	],
+	"updateCadence": "on-amendment",
+	"status": "active"
+}

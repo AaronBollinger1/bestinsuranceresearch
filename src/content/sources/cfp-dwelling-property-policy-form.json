@@ -1,0 +1,25 @@
+{
+	"title": "Sample Dwelling Property Policy, Form CFP 00 01 (05/2026)",
+	"publisher": "California FAIR Plan Association",
+	"url": "https://www.cfpnet.com/wp-content/uploads/2026/01/Dwelling-Fire-Policy_effective-3-17-26.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "CA",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The document is headed 'SAMPLE DWELLING PROPERTY POLICY' under the California FAIR Plan Association masthead, runs 17 pages, and every page footer reads 'CFP 00 01 (05/2026) Includes copyrighted material of Insurance Services Office, Inc., with its permission.'",
+		"General Exclusion 2 reads: 'Earth Movement, meaning earthquake, including land shock waves or tremors before, during or after a volcanic eruption; landslide; mine subsidence; mudflow; earth sinking, rising or shifting; unless direct loss by: a. fire; or b. explosion; ensues and then we will pay only for the ensuing loss.'",
+		"General Exclusion 3 reads: 'Water Damage, meaning: a. flood, surface water, waves, tidal water, overflow of a body of water, or spray from any of these, whether or not driven by wind; b. water which backs up through sewers or drains or which overflows from a sump; or c. water below the surface of the ground, including water which exerts pressure on or seeps or leaks through a building, sidewalk, driveway, foundation, swimming pool or other structure.' It then states: 'Direct loss by fire or explosion resulting from water damage is covered.'",
+		"Peril Insured Against 9 reads: 'Volcanic Eruption other than loss caused by earthquake, land shock waves or tremors.'",
+		"This is a dwelling fire form published by the California FAIR Plan Association, not a homeowners form and not a private carrier's filed homeowners form."
+	],
+	"updateCadence": "The FAIR Plan revises and refiles its forms periodically; this edition is designated 05/2026 and is published on the FAIR Plan site as the dwelling fire policy effective 3-17-26.",
+	"status": "active",
+	"notes": "Replaces the CFP 00 01 (07/2017) document cited in the draft, which is a superseded edition. Fetched 2026-08-31; WebFetch could not parse the PDF inline, so the saved file was extracted with pdftotext and the GENERAL EXCLUSIONS and PERILS INSURED AGAINST sections were read directly. Cited as one published California residential property form, not as universal wording. effectiveDate 2026-03-17 comes from the file name the FAIR Plan uses for this document on its own dwelling policies page. Effective: 2026-03-17",
+	"officialHost": true
+}

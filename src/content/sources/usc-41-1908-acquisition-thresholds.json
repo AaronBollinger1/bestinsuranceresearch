@@ -1,0 +1,25 @@
+{
+	"title": "41 U.S.C. 1908 - Inflation adjustment of acquisition-related dollar thresholds",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title41-section1908&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"On October 1 of each year evenly divisible by 5, the Federal Acquisition Regulatory Council shall adjust each acquisition-related dollar threshold provided by law, as described in the section.",
+		"The adjustment requirement applies to a dollar threshold specified in law as a factor in defining the scope of the applicability of a policy, procedure, requirement, or restriction provided in that law to the procurement of property or services by an executive agency, as the Council determines, except as provided in the exceptions paragraph.",
+		"The adjustment does not apply to dollar thresholds in sections 3131 through 3134 of title 40, except that any modification of any such dollar threshold made by regulation and in effect on the date of the enactment of that subparagraph shall remain in effect.",
+		"The adjustment also does not apply to dollar thresholds in chapters 67 and 83 of title 41, in sections 3141 to 3144, 3146, and 3147 of title 40, or to thresholds the United States Trade Representative establishes under title III of the Trade Agreements Act of 1979.",
+		"Adjustments are calculated on the basis of changes in the Consumer Price Index for all-urban consumers published monthly by the Secretary of Labor."
+	],
+	"updateCadence": "Amended by act of Congress",
+	"status": "active",
+	"notes": "Re-verified 2026-08-31 on uscode.house.gov, the official publisher of the United States Code; the source URL was moved there from the Cornell LII reproduction in this revision. Subsections (a), (b) including the exceptions paragraph, and (c) were read there, and the Consumer Price Index basis appears in the section's adjustment provision. Used to explain the relationship between the Miller Act's $100,000 and the FAR's $150,000 instead of presenting them as an unexplained conflict. The card deliberately does not state the enactment date of the title 40 exception because the statutory text refers to it only as the date of the enactment of that subparagraph.",
+	"officialHost": true
+}

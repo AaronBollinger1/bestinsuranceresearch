@@ -1,0 +1,21 @@
+{
+	"title": "Rate Enforcement Bureau - California Department of Insurance",
+	"publisher": "California Department of Insurance",
+	"url": "https://www.insurance.ca.gov/0500-about-us/02-department/050-lgc/RateEnf.cfm",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The California Department of Insurance Rate Enforcement Bureau enforces the provisions of Proposition 103 and other laws pertaining to the availability and affordability of insurance and the rating and underwriting practices of property and casualty insurers.",
+		"The Rate Enforcement Bureau represents the Department's position in prior approval rate hearings before a Department of Insurance administrative law judge."
+	],
+	"updateCadence": "Updated by CDI as its organization changes.",
+	"status": "active",
+	"officialHost": true
+}

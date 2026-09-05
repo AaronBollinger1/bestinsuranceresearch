@@ -1,0 +1,24 @@
+{
+	"title": "Regulation X, 12 CFR 1024.17(k)(5) - Timely payment of hazard insurance premium charges and prohibition of force placement",
+	"publisher": "Consumer Financial Protection Bureau",
+	"url": "https://www.consumerfinance.gov/rules-policy/regulations/1024/17/",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Where a borrower's hazard insurance premium charges are paid from an escrow account, a servicer may not purchase force-placed insurance unless the servicer is unable to disburse funds from that escrow account to ensure that the borrower's hazard insurance premium charges are paid in a timely manner.",
+		"A servicer shall not be considered unable to disburse funds from the borrower's escrow account because the escrow account contains insufficient funds for paying hazard insurance premium charges.",
+		"A servicer is unable to disburse funds only where it has a reasonable basis to believe that the borrower's hazard insurance has been canceled or was not renewed for reasons other than nonpayment of premium charges, or where the borrower's property is vacant.",
+		"A small servicer as defined in 12 CFR 1026.41(e)(4) may purchase force-placed insurance where the cost to the borrower of that insurance is less than the amount the small servicer would need to disburse from the escrow account to ensure that the borrower's hazard insurance premium charges were paid in a timely manner, subject to the requirements of 12 CFR 1024.37."
+	],
+	"updateCadence": "Amended by CFPB rulemaking; check the CFPB regulations page and official interpretations.",
+	"status": "active",
+	"notes": "Fetched on 2026-08-31 and read paragraph (k)(5). Added during this pass because the entry described the force-placed notice sequence without the escrow branch that limits force placement in the first place. This paragraph sits in 12 CFR 1024.17, not 1024.37, and 1024.37(a) cross-references it.",
+	"officialHost": true
+}

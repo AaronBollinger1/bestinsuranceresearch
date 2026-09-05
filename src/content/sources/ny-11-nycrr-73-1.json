@@ -1,0 +1,25 @@
+{
+	"title": "11 NYCRR 73.1 - Definitions (Regulation 121, claims-made policies)",
+	"publisher": "Legal Information Institute, Cornell Law School (unofficial republication of the New York Codes, Rules and Regulations)",
+	"url": "https://www.law.cornell.edu/regulations/new-york/11-NYCRR-73.1",
+	"sourceType": "regulation",
+	"jurisdiction": "NY",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Defines a claims-made policy as an insurance policy that covers liability for injury or damage the insured is legally obligated to pay, including injury or damage occurring prior to the effective date of the policy but subsequent to the retroactive date, if any, arising out of incidents, acts or omissions, as long as the claim is first made during the policy period or any extended reporting period.",
+		"Defines an occurrence policy as one that covers liability for injury or damage arising out of incidents, acts or omissions that occurred during the policy period, and where a claim may be made during or subsequent to the policy period.",
+		"Defines a retroactive date as a date concurrent with the effective date of the policy, or a particular date prior to the effective date of the policy, upon which the insurer and insured agree in the policy that policy coverage will be applicable.",
+		"Defines extended reporting period coverage (tail coverage) as coverage for that period of time specified in the policy wherein claims first made after termination of coverage under the policy, for injury or damage that occurs during the policy term or that occurs on or after the retroactive date, if any, will be considered made during the policy term.",
+		"Defines the claims-made relationship as the period between the effective date of the first claims-made policy between the insurer and the insured and the cancellation or nonrenewal of the last consecutive claims-made policy between such parties, where there has been no gap in coverage, and states that it does not include any period covered by extended reporting period coverage."
+	],
+	"updateCadence": "changes when the New York Department of Financial Services amends Regulation 121; the mirror is republished on Cornell's own schedule",
+	"status": "active",
+	"notes": "Fetched 2026-08-31 and all five definitions read verbatim off the page. This is Cornell LII's unofficial republication, not the state's own publication, so it is recorded as a secondary mirror of primary law; the official citation is 11 NYCRR 73.1. The page does not state an adoption or amendment date, so publishedDate and effectiveDate are left unknown rather than guessed.",
+	"officialHost": false
+}

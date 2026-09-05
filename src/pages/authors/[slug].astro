@@ -1,0 +1,148 @@
+---
+import { ArrowRight, BadgeCheck } from '@lucide/astro';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { stripMarkers } from '../../lib/citations';
+import { loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, graph, organization, organizationId, website } from '../../lib/schema';
+
+export const getStaticPaths = (async () => {
+	const corpus = await loadCorpus();
+	return corpus.people.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
+}) satisfies GetStaticPaths;
+
+const { entry, corpus } = Astro.props;
+const d = entry.data;
+const path = `/authors/${entry.id}`;
+
+const authored = [
+	...corpus.questions.filter((q) => q.data.author === d.name).map((q) => ({ title: q.data.question, path: `/questions/${q.id}`, kind: 'Question', date: q.data.lastReviewed, summary: q.data.shortAnswer })),
+	...corpus.coverages.filter((c) => c.data.author === d.name).map((c) => ({ title: c.data.name, path: `/insurance/${c.id}`, kind: 'Coverage', date: c.data.lastReviewed, summary: c.data.definition })),
+	...corpus.companies.filter((c) => c.data.author === d.name).map((c) => ({ title: c.data.legalName, path: `/companies/${c.id}`, kind: 'Organization', date: c.data.lastReviewed, summary: c.data.summary })),
+	...corpus.states.filter((s) => s.data.author === d.name).map((s) => ({ title: s.data.name, path: `/states/${s.id}`, kind: 'State', date: s.data.lastReviewed, summary: s.data.summary })),
+	...corpus.examples.filter((e) => e.data.author === d.name).map((e) => ({ title: e.data.title, path: `/examples/${e.id}`, kind: 'Example', date: e.data.lastReviewed, summary: e.data.whatHappened })),
+].sort((a, b) => (a.date < b.date ? 1 : -1));
+
+const reviewedCount =
+	corpus.questions.filter((q) => q.data.reviewer === d.name).length +
+	corpus.coverages.filter((c) => c.data.reviewer === d.name).length +
+	corpus.companies.filter((c) => c.data.reviewer === d.name).length +
+	corpus.states.filter((s) => s.data.reviewer === d.name).length +
+	corpus.examples.filter((e) => e.data.reviewer === d.name).length;
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'About', path: '/about' },
+	{ name: d.name, path },
+];
+
+const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
+	'@type': 'Person',
+	'@id': `${new URL(path, 'https://bestinsuranceresearch.com').toString()}#person`,
+	name: d.name,
+	jobTitle: d.role,
+	description: d.bio,
+	/* By @id. The bare Organization here minted a second, nameless copy of
+	   the publisher on every author page instead of pointing at the one the
+	   graph already declares. */
+	worksFor: { "@id": organizationId },
+	...(d.license
+		? {
+				hasCredential: {
+					'@type': 'EducationalOccupationalCredential',
+					credentialCategory: 'Insurance producer license',
+					recognizedBy: { '@type': 'GovernmentOrganization', name: d.license.authority },
+					identifier: d.license.number,
+				},
+			}
+		: {}),
+});
+---
+
+<BaseLayout
+	title={d.name}
+	description={`${d.name}, ${d.role} at BestInsurance Research. ${d.bio.slice(0, 160)}`}
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
+	<PageHeader eyebrow={d.role} title={d.name} lede={d.bio} trail={trail} />
+
+	<section class="band band-tight">
+		<div class="shell answer-grid">
+			<div>
+				<section class="answer-section" aria-labelledby="scope">
+					<h2 id="scope">What this role covers, and what it does not</h2>
+					<ul class="fact-list">
+						{d.scope.map((item) => <li><BadgeCheck size={14} aria-hidden="true" /><p>{item}</p></li>)}
+					</ul>
+				</section>
+
+				{
+					authored.length > 0 && (
+						<section class="answer-section" aria-labelledby="authored">
+							<h2 id="authored">Pages authored</h2>
+							<div class="rows">
+								{authored.map((item) => (
+									<a class="row" href={item.path}>
+										<div>
+											<h3 class="row-title">{item.title}</h3>
+											<p>{stripMarkers(item.summary).slice(0, 170)}</p>
+											<div class="row-meta">
+												<span class="status status-plain">{item.kind}</span>
+												<span class="meta">Reviewed {longDate(item.date)}</span>
+											</div>
+										</div>
+										<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+									</a>
+								))}
+							</div>
+						</section>
+					)
+				}
+
+				{
+					reviewedCount > 0 && (
+						<section class="answer-section" aria-labelledby="reviewed">
+							<h2 id="reviewed">Review assignments</h2>
+							<p style="font-size: var(--text-md)">
+								{d.name} is the assigned licensed reviewer for {reviewedCount} published{' '}
+								{reviewedCount === 1 ? 'page' : 'pages'}. Pages carrying{' '}
+								<StatusChip kind="under-review" /> are awaiting that sign-off and say so in public
+								and in their machine-readable record.
+							</p>
+						</section>
+					)
+				}
+			</div>
+
+			<aside class="answer-rail" aria-label="Credentials">
+				<div class="rail-block">
+					<h2>Credentials</h2>
+					<dl>
+						<div><dt>Role</dt><dd>{d.role}</dd></div>
+						<div><dt>Licensed</dt><dd>{d.licensed ? 'Yes' : 'No'}</dd></div>
+						{d.license && (
+							<>
+								<div><dt>Authority</dt><dd>{d.license.authority}</dd></div>
+								<div><dt>Licence number</dt><dd class="num">{d.license.number}</dd></div>
+							</>
+						)}
+						<div><dt>Pages authored</dt><dd>{authored.length}</dd></div>
+						<div><dt>Review assignments</dt><dd>{reviewedCount}</dd></div>
+					</dl>
+				</div>
+				<div class="rail-block no-print">
+					<h2>Standards</h2>
+					<ul>
+						<li><a href="/methodology">Methodology</a></li>
+						<li><a href="/editorial-policy">Editorial policy</a></li>
+						<li><a href="/about">About the operator</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

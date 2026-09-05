@@ -1,0 +1,243 @@
+---
+/**
+ * The reusable guide surface.
+ *
+ * One component, driven entirely by data, so a guide exists for every line
+ * without a page being written for any of them. It renders a tabbed reading of
+ * whatever sections it is handed and a side rail carrying the line's own mark.
+ *
+ * DESIGN REFERENCES, from the pass recorded in DESIGN-REFERENCES.md:
+ *  - Mintlify docs: a persistent left rail that tells you where you are in a
+ *    body of material, and section tabs that do not move when you switch.
+ *  - Stripe payment detail: a record shows its own freshness without being
+ *    asked. Hence the reviewed-date and source count in the rail rather than
+ *    buried at the bottom.
+ *  - Twenty: dense tabular reading with one accent colour doing all the work.
+ *
+ * THREE THINGS THIS DOES THAT A TAB COMPONENT USUALLY DOES NOT:
+ *
+ *  1. Every panel is in the HTML, always. Tabs hide with `hidden`, so the page
+ *     is complete for a crawler, for an answer engine, for print, and for a
+ *     reader with JavaScript off. On a site whose whole proposition is that a
+ *     claim can be checked, hiding two thirds of the evidence behind a click
+ *     that a machine will not perform would be self-defeating.
+ *  2. Each tab is deep-linkable. `#covers` opens that panel on load, and
+ *     selecting a tab replaces the hash without adding history entries, so the
+ *     back button still leaves the page rather than walking the tabs.
+ *  3. Citations inside panels are pre-resolved by the caller, so a numbered
+ *     marker in a hidden panel still points at the ledger entry on the same
+ *     page.
+ */
+import {
+	Activity,
+	Building2,
+	Car,
+	FileSignature,
+	Flame,
+	Gavel,
+	Gem,
+	HardHat,
+	HeartPulse,
+	House,
+	KeyRound,
+	Landmark,
+	Lock,
+	Package,
+	ShieldCheck,
+	Truck,
+	Umbrella,
+	Users,
+	Waves,
+} from '@lucide/astro';
+import type { IconName } from '../lib/guide-icons';
+
+export interface GuideSection {
+	/** URL fragment and tab id. Stable: it is a deep link. */
+	id: string;
+	label: string;
+	/** Short line under the heading. Optional. */
+	lede?: string;
+	/** Pre-rendered HTML, citations already resolved by the caller. */
+	html: string;
+	/** Shown on the tab as a count, where a count means something. */
+	count?: number;
+}
+
+interface Props {
+	title: string;
+	kicker: string;
+	icon: IconName;
+	sections: GuideSection[];
+	/** Rail facts. Each is a label and a value. */
+	facts?: Array<{ label: string; value: string }>;
+	/** Rail links, for example to the module or the machine record. */
+	links?: Array<{ label: string; href: string }>;
+}
+
+const { title, kicker, icon, sections, facts = [], links = [] } = Astro.props;
+
+const ICONS = {
+	Activity,
+	Building2,
+	Car,
+	FileSignature,
+	Flame,
+	Gavel,
+	Gem,
+	HardHat,
+	HeartPulse,
+	House,
+	KeyRound,
+	Landmark,
+	Lock,
+	Package,
+	ShieldCheck,
+	Truck,
+	Umbrella,
+	Users,
+	Waves,
+} as const;
+const Mark = ICONS[icon] ?? ShieldCheck;
+---
+
+<div class="guide" data-guide>
+	<aside class="guide-rail" aria-label="Guide summary">
+		<span class="guide-mark" aria-hidden="true"><Mark size={26} stroke-width={1.6} /></span>
+		<span class="guide-kicker">{kicker}</span>
+		{
+			facts.length > 0 && (
+				<dl class="guide-facts">
+					{facts.map((f) => (
+						<div>
+							<dt>{f.label}</dt>
+							<dd>{f.value}</dd>
+						</div>
+					))}
+				</dl>
+			)
+		}
+		{
+			links.length > 0 && (
+				<ul class="guide-links no-print">
+					{links.map((l) => (
+						<li><a href={l.href}>{l.label}</a></li>
+					))}
+				</ul>
+			)
+		}
+	</aside>
+
+	<div class="guide-body">
+		<div class="tablist no-print" role="tablist" aria-label={`${title} sections`} data-guide-tablist>
+			{
+				sections.map((s, i) => (
+					<button
+						type="button"
+						role="tab"
+						id={`tab-${s.id}`}
+						aria-controls={`panel-${s.id}`}
+						aria-selected={i === 0 ? 'true' : 'false'}
+						tabindex={i === 0 ? 0 : -1}
+						data-tab={s.id}
+					>
+						{s.label}
+						{typeof s.count === 'number' && <span class="tab-count">{s.count}</span>}
+					</button>
+				))
+			}
+		</div>
+
+		{
+			sections.map((s, i) => (
+				<section
+					role="tabpanel"
+					id={`panel-${s.id}`}
+					aria-labelledby={`tab-${s.id}`}
+					data-panel={s.id}
+					hidden={i !== 0}
+				>
+					<h2 class="guide-panel-title">{s.label}</h2>
+					{s.lede && <p class="guide-panel-lede">{s.lede}</p>}
+					<div class="prose" set:html={s.html} />
+					<p class="guide-anchor no-print">
+						<a href={`#${s.id}`}>Link to this section</a>
+					</p>
+				</section>
+			))
+		}
+	</div>
+</div>
+
+<script>
+	/*
+	 * Progressive enhancement only. With this script absent every panel is
+	 * visible, which is the correct fallback for a document whose value is that
+	 * all of it can be read.
+	 */
+	type Tab = HTMLButtonElement;
+	type Panel = HTMLElement;
+
+	for (const guide of document.querySelectorAll<HTMLElement>('[data-guide]')) {
+		const tablist = guide.querySelector<HTMLElement>('[data-guide-tablist]');
+		if (!tablist) continue;
+		const tabs = [...tablist.querySelectorAll<Tab>('[role="tab"]')];
+		const panels = [...guide.querySelectorAll<Panel>('[data-panel]')];
+		if (tabs.length === 0) continue;
+
+		const select = (
+			id: string | undefined,
+			{ focus = false, pushHash = true }: { focus?: boolean; pushHash?: boolean } = {},
+		): boolean => {
+			if (!id) return false;
+			const found = tabs.find((t) => t.dataset.tab === id);
+			if (!found) return false;
+			for (const t of tabs) {
+				const on = t === found;
+				t.setAttribute('aria-selected', on ? 'true' : 'false');
+				t.tabIndex = on ? 0 : -1;
+			}
+			for (const p of panels) p.hidden = p.dataset.panel !== id;
+			if (focus) found.focus();
+			if (pushHash) {
+				// replaceState, not pushState: the back button should leave the page
+				// rather than walk backwards through tabs the reader clicked.
+				history.replaceState(null, '', '#' + id);
+			}
+			return true;
+		};
+
+		for (const tab of tabs) {
+			tab.addEventListener('click', () => select(tab.dataset.tab));
+		}
+
+		tablist.addEventListener('keydown', (event: KeyboardEvent) => {
+			const current = tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true');
+			let next = -1;
+			if (event.key === 'ArrowRight') next = (current + 1) % tabs.length;
+			else if (event.key === 'ArrowLeft') next = (current - 1 + tabs.length) % tabs.length;
+			else if (event.key === 'Home') next = 0;
+			else if (event.key === 'End') next = tabs.length - 1;
+			if (next < 0) return;
+			event.preventDefault();
+			select(tabs[next].dataset.tab, { focus: true });
+		});
+
+		/* Deep link on arrival, and when the hash changes under us. */
+		const fromHash = () => {
+			const id = decodeURIComponent(location.hash.replace(/^#/, ''));
+			if (id) select(id, { pushHash: false });
+		};
+		fromHash();
+		window.addEventListener('hashchange', fromHash);
+
+		/* Printing shows everything, then the selection is restored. */
+		let printed: string | null = null;
+		window.addEventListener('beforeprint', () => {
+			printed = tabs.find((t) => t.getAttribute('aria-selected') === 'true')?.dataset.tab ?? null;
+			for (const p of panels) p.hidden = false;
+		});
+		window.addEventListener('afterprint', () => {
+			if (printed) select(printed, { pushHash: false });
+		});
+	}
+</script>

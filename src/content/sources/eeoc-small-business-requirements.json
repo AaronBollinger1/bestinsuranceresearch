@@ -1,0 +1,24 @@
+{
+	"title": "Small Business Requirements",
+	"publisher": "U.S. Equal Employment Opportunity Commission",
+	"url": "https://www.eeoc.gov/employers/small-business/small-business-requirements",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"An employer with 15 to 19 employees is covered by the laws that prohibit discrimination based on race, color, religion, sex (including pregnancy, sexual orientation, or transgender status), national origin, disability and genetic information.",
+		"An employer with 20 or more employees is additionally covered by the law that prohibits discrimination based on age (40 or older).",
+		"An employer must display a poster at the business that describes the federal employment discrimination laws.",
+		"An employer must retain employment records, such as applications, personnel, payroll and benefits records, as required by law.",
+		"State and/or local employment discrimination laws may also apply to a business."
+	],
+	"updateCadence": "Reviewed at least every 180 days.",
+	"status": "active"
+}

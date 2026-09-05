@@ -1,0 +1,655 @@
+---
+import { ArrowRight, Filter, Pencil, Search, ShieldCheck } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Callout from '../components/Callout.astro';
+import StateBlock from '../components/StateBlock.astro';
+import StatusChip from '../components/StatusChip.astro';
+import { siteConfig } from '../config/site';
+import { stripMarkers } from '../lib/citations';
+import { loadCorpus } from '../lib/corpus';
+import { longDate } from '../lib/cite';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../lib/schema';
+
+const corpus = await loadCorpus();
+
+const lines = [...new Set(corpus.questions.flatMap((q) => q.data.lines))].sort();
+const states = [...new Set(corpus.questions.flatMap((q) => q.data.states))].sort();
+const families = [...new Set(corpus.questions.map((q) => q.data.family))].sort();
+
+const byFamily = families.map((family) => ({
+	family,
+	questions: corpus.questions
+		.filter((q) => q.data.family === family)
+		.sort((a, b) => a.data.question.localeCompare(b.data.question)),
+}));
+
+const examples = corpus.questions.slice(0, 6).map((q) => q.data.question);
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Ask', path: '/ask' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'Ask an insurance question',
+		path: '/ask',
+		description:
+			'Look up a canonical, sourced answer in the BestInsurance Research library. The lookup runs locally in your browser.',
+		items: corpus.questions.map((q) => ({ name: q.data.question, path: `/questions/${q.id}` })),
+	}),
+);
+
+const FAMILY_LABEL: Record<string, string> = {
+	personal: 'Personal lines',
+	commercial: 'Commercial lines',
+	life: 'Life',
+	health: 'Health and benefits',
+};
+---
+
+<BaseLayout
+	title="Ask an insurance question"
+	description="Look up a canonical, sourced answer in the BestInsurance Research library. The lookup runs entirely in your browser, so your question is never sent anywhere."
+	jsonLd={jsonLd}
+	pageType="ask"
+>
+	<section class="band band-tight band-first band-paper">
+		<div class="shell">
+			<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+			<span class="eyebrow">Ask</span>
+			<h1>Ask an insurance question.</h1>
+			<p class="lede">
+				This is a library lookup, not a chatbot. It matches your wording against published,
+				human-reviewed answers and returns the ones the evidence actually supports. When nothing in
+				the library supports an answer, it says so instead of guessing.
+			</p>
+		</div>
+	</section>
+
+	<section class="band band-tight" aria-labelledby="composer-title">
+		<div class="shell">
+			<h2 id="composer-title" class="u-visually-hidden">Question composer</h2>
+
+			<Callout tone="privacy">
+				<p>
+					<strong>Do not type private facts here.</strong> Leave out names, addresses, policy or claim
+					numbers, dates of birth, health details, and anything from a declarations page. You do not
+					need them to get an answer, and this site is not the place to send them.
+				</p>
+				<p>
+					Your question stays on your device. The lookup runs in your browser against a static index,
+					so nothing you type is sent to a server, written to a URL, or included in analytics.
+				</p>
+			</Callout>
+
+			<form id="ask-form" action="/ask" method="get" class="stack" style="max-width: 860px">
+				<div class="field">
+					<label for="ask-q">Your question, in plain language</label>
+					<textarea
+						id="ask-q"
+						name="q"
+						rows="3"
+						autocomplete="off"
+						spellcheck="true"
+						placeholder="Does homeowners insurance cover earthquake damage in California?"
+						aria-describedby="ask-q-hint"></textarea>
+					<span class="hint" id="ask-q-hint">
+						Ask it the way you would ask a person. General facts only.
+					</span>
+				</div>
+
+				<div>
+					<span class="meta" style="display:block;margin-bottom:var(--s-2)">Try one of these</span>
+					<div style="display:flex;flex-wrap:wrap;gap:var(--s-2)">
+						{
+							examples.map((example) => (
+								<button class="btn btn-secondary btn-sm btn-wrap" type="button" data-example={example}>
+									{example}
+								</button>
+							))
+						}
+					</div>
+				</div>
+
+				<details class="disc" id="ask-filters">
+					<summary>
+						<Filter size={15} aria-hidden="true" /> Narrow the search
+						<span class="disc-chevron" aria-hidden="true">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6" /></svg>
+						</span>
+					</summary>
+					<div class="disc-body">
+						<div class="field-row">
+							<div class="field">
+								<label for="f-family">Insurance type</label>
+								<select id="f-family" name="family">
+									<option value="any">Any</option>
+									{families.map((family) => <option value={family}>{FAMILY_LABEL[family] ?? family}</option>)}
+								</select>
+							</div>
+							<div class="field">
+								<label for="f-line">Line</label>
+								<select id="f-line" name="line">
+									<option value="any">Any</option>
+									{lines.map((line) => <option value={line}>{line.replace(/-/g, ' ')}</option>)}
+								</select>
+							</div>
+							<div class="field">
+								<label for="f-state">State</label>
+								<select id="f-state" name="state">
+									<option value="any">Any</option>
+									{states.map((state) => <option value={state}>{state}</option>)}
+								</select>
+							</div>
+							<div class="field">
+								<label for="f-audience">Audience</label>
+								<select id="f-audience" name="audience">
+									<option value="any">Any</option>
+									<option value="individual">Individual or household</option>
+									<option value="business-owner">Business owner</option>
+									<option value="professional">Professional adviser</option>
+								</select>
+							</div>
+						</div>
+						<div class="field" style="margin-top: var(--s-4); max-width: 260px">
+							<label for="f-asof">Effective on or before</label>
+							<input id="f-asof" name="asof" type="date" />
+							<span class="hint">Excludes answers that take effect after this date.</span>
+						</div>
+					</div>
+				</details>
+
+				<div>
+					<span class="meta" style="display:block;margin-bottom:var(--s-2)" id="rank-label">Ranking</span>
+					<div class="segmented" role="group" aria-labelledby="rank-label" id="ask-rank">
+						<button type="button" data-rank="match" aria-pressed="true">Best match</button>
+						<button type="button" data-rank="reviewed">Recently reviewed</button>
+						<button type="button" data-rank="primary">Most primary sources</button>
+					</div>
+				</div>
+
+				<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center">
+					<button class="btn btn-primary" type="submit">
+						<Search size={16} aria-hidden="true" /> Find the answer
+					</button>
+					<button class="btn btn-secondary" type="button" id="ask-edit" hidden>
+						<Pencil size={16} aria-hidden="true" /> Edit question
+					</button>
+					<button class="btn btn-quiet" type="reset" id="ask-reset">Clear</button>
+				</div>
+			</form>
+
+			<p class="live-status" id="ask-status" role="status" aria-live="polite"></p>
+
+			<noscript>
+				<div style="margin-top: var(--s-5)">
+					<Callout tone="note">
+						<p>
+							Interactive lookup needs JavaScript. Every answer is still available below and on{' '}
+							<a href="/questions">the question library</a>, and each one is a complete
+							server-rendered page with its full source ledger.
+						</p>
+					</Callout>
+				</div>
+			</noscript>
+		</div>
+	</section>
+
+	<section class="band band-tight" id="ask-results-band" hidden aria-labelledby="ask-results-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Lookup result</span>
+					<h2 id="ask-results-title">Matches in the library</h2>
+					<p id="ask-interpreted" class="mono"></p>
+				</div>
+			</div>
+
+			<div id="ask-loading" class="skeleton" hidden aria-hidden="true">
+				{
+					[0, 1, 2].map(() => (
+						<div class="skeleton-row">
+							<div class="skeleton-bar tall w-55"></div>
+							<div class="skeleton-bar w-85"></div>
+							<div class="skeleton-bar w-30"></div>
+						</div>
+					))
+				}
+			</div>
+
+			<div id="ask-hits" class="rows"></div>
+
+			<div id="ask-empty" hidden>
+				<StateBlock kind="no-result" heading="Nothing in the library matches that yet.">
+					<p>
+						The lookup found no published question, coverage page, or entity record for those terms
+						under the filters in effect. That means the library has a gap, not that the answer is
+						unknowable.
+					</p>
+					<div class="state-actions">
+						<button class="btn btn-secondary btn-sm" type="button" data-clear-filters>Clear the filters and try again</button>
+						<a class="btn btn-secondary btn-sm" href="/questions">Browse every question</a>
+						<a class="btn btn-secondary btn-sm" href={`mailto:${siteConfig.contact.email}?subject=${encodeURIComponent('Question the library does not answer')}`}>
+							Suggest this question
+						</a>
+					</div>
+				</StateBlock>
+			</div>
+
+			<div id="ask-insufficient" hidden>
+				<StateBlock kind="insufficient" heading="Related material, but not enough to answer this directly.">
+					<p>
+						The library holds pages that touch this topic, but none of them answers this question
+						with sources strong enough to publish as an answer. The closest records are listed
+						below. Read them as background, not as an answer.
+					</p>
+				</StateBlock>
+			</div>
+
+			<div id="ask-offline" hidden>
+				<StateBlock kind="offline" heading="The lookup index did not load.">
+					<p>
+						The static index could not be fetched, so local lookup is unavailable right now. Every
+						answer is still reachable by browsing.
+					</p>
+					<div class="state-actions">
+						<button class="btn btn-secondary btn-sm" type="button" data-retry-index>Try loading the index again</button>
+						<a class="btn btn-secondary btn-sm" href="/questions">Browse every question</a>
+					</div>
+				</StateBlock>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-paper" aria-labelledby="browse-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Browse by topic</span>
+					<h2 id="browse-title">Every published question</h2>
+					<p>
+						This list is the deterministic fallback. It is server-rendered, needs no JavaScript, and
+						is complete: {corpus.questions.length} canonical questions.
+					</p>
+				</div>
+				<a class="btn btn-secondary btn-sm" href="/questions">Open the question library <ArrowRight size={15} aria-hidden="true" /></a>
+			</div>
+
+			{
+				byFamily.map((group) => (
+					<div style="margin-bottom: var(--s-8)">
+						<h3 style="margin-bottom: var(--s-3)">{FAMILY_LABEL[group.family] ?? group.family}</h3>
+						<div class="rows">
+							{group.questions.map((question) => (
+								<a class="row" href={`/questions/${question.id}`}>
+									<div>
+										<h4 class="row-title">{question.data.question}</h4>
+										<p>{stripMarkers(question.data.shortAnswer).slice(0, 170)}</p>
+										<div class="row-meta">
+											<StatusChip kind={question.data.confidence} />
+											<span class="meta">{question.data.lines.join(', ')}</span>
+											<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+											<span class="meta">{question.data.sourceIds.length} sources</span>
+										</div>
+									</div>
+									<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+								</a>
+							))}
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="band band-tight">
+		<div class="shell" style="display:flex;flex-wrap:wrap;gap:var(--s-4);align-items:center">
+			<ShieldCheck size={20} aria-hidden="true" style="color: var(--green-text)" />
+			<p style="margin:0;max-width:76ch;font-size:var(--text-sm);color:var(--muted)">
+				No model wrote any of these answers on demand. Each one was drafted against primary sources,
+				mapped claim by claim, and reviewed by a named person before publication. Read{' '}
+				<a href="/methodology">the methodology</a> for exactly where automation is and is not used.
+			</p>
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	import { search, type SearchIndex, type SearchOutcome } from '../lib/retrieval';
+
+	const form = document.getElementById('ask-form') as HTMLFormElement | null;
+	const field = document.getElementById('ask-q') as HTMLTextAreaElement | null;
+	const status = document.getElementById('ask-status');
+	const band = document.getElementById('ask-results-band');
+	const loading = document.getElementById('ask-loading');
+	const hits = document.getElementById('ask-hits');
+	const emptyState = document.getElementById('ask-empty');
+	const insufficientState = document.getElementById('ask-insufficient');
+	const offlineState = document.getElementById('ask-offline');
+	const interpreted = document.getElementById('ask-interpreted');
+	const editButton = document.getElementById('ask-edit');
+	const rankGroup = document.getElementById('ask-rank');
+	const filters = document.getElementById('ask-filters') as HTMLDetailsElement | null;
+
+	if (!form || !field || !band || !hits) throw new Error('ask: composer markup missing');
+
+	let index: SearchIndex | null = null;
+	let indexPromise: Promise<SearchIndex> | null = null;
+	let rank: 'match' | 'reviewed' | 'primary' = 'match';
+
+	const KIND_LABEL: Record<string, string> = {
+		answer: 'Direct answer',
+		assumption: 'Assumption',
+		reasoning: 'Reasoning',
+		change: 'What changes it',
+		variability: 'Variability',
+		action: 'Next action',
+		definition: 'Definition',
+		'coverage-detail': 'Coverage detail',
+		entity: 'Organization record',
+		jurisdiction: 'Jurisdiction context',
+		example: 'Example',
+		tool: 'Tool',
+	};
+
+	const TYPE_LABEL: Record<string, string> = {
+		question: 'Question',
+		coverage: 'Coverage',
+		company: 'Organization',
+		state: 'State',
+		example: 'Example',
+		tool: 'Tool',
+	};
+
+	function say(message: string) {
+		if (status) status.textContent = message;
+	}
+
+	function show(el: HTMLElement | null, visible: boolean) {
+		if (el) el.hidden = !visible;
+	}
+
+	async function getIndex(): Promise<SearchIndex> {
+		if (index) return index;
+		if (!indexPromise) {
+			indexPromise = fetch('/search-index.json', { headers: { accept: 'application/json' } })
+				.then((response) => {
+					if (!response.ok) throw new Error(`index ${response.status}`);
+					return response.json();
+				})
+				.then((data: SearchIndex) => {
+					index = data;
+					return data;
+				})
+				.catch((error) => {
+					indexPromise = null;
+					throw error;
+				});
+		}
+		return indexPromise;
+	}
+
+	function currentFilters() {
+		const data = new FormData(form!);
+		const asOf = String(data.get('asof') || '');
+		return {
+			family: String(data.get('family') || 'any'),
+			line: String(data.get('line') || 'any'),
+			state: String(data.get('state') || 'any'),
+			audience: String(data.get('audience') || 'any'),
+			asOf: /^\d{4}-\d{2}-\d{2}$/.test(asOf) ? asOf : undefined,
+		};
+	}
+
+	function escape(value: string) {
+		const div = document.createElement('div');
+		div.textContent = value;
+		return div.innerHTML;
+	}
+
+	function sortHits(outcome: Extract<SearchOutcome, { hits: unknown }>) {
+		const list = [...outcome.hits];
+		if (rank === 'reviewed') list.sort((a, b) => (a.lastReviewed < b.lastReviewed ? 1 : -1));
+		if (rank === 'primary') list.sort((a, b) => b.bestChunk.sourceIds.length - a.bestChunk.sourceIds.length);
+		return list;
+	}
+
+	function renderHits(outcome: Extract<SearchOutcome, { hits: unknown }>) {
+		hits!.innerHTML = sortHits(outcome)
+			.map((hit) => {
+				const excerpt = hit.bestChunk.text.replace(/\[S:[a-z0-9-]+\]/g, '').slice(0, 230);
+				return [
+					`<a class="row" href="${escape(hit.path)}" data-event="research_answer_viewed" data-answer-status="${escape(hit.confidence)}" data-page-type="ask">`,
+					'<div>',
+					`<h3 class="row-title">${escape(hit.title)}</h3>`,
+					`<p>${escape(excerpt)}${hit.bestChunk.text.length > 230 ? '...' : ''}</p>`,
+					'<div class="row-meta">',
+					`<span class="status status-plain">${escape(TYPE_LABEL[hit.entryType] || hit.entryType)}</span>`,
+					`<span class="meta">Matched in: ${escape(KIND_LABEL[hit.bestChunk.kind] || hit.bestChunk.kind)}</span>`,
+					`<span class="meta">${hit.bestChunk.sourceIds.length} supporting source${hit.bestChunk.sourceIds.length === 1 ? '' : 's'}</span>`,
+					`<span class="meta">Reviewed ${escape(hit.lastReviewed)}</span>`,
+					'</div>',
+					'</div>',
+					'<div class="row-tail"><span class="meta">Open</span></div>',
+					'</a>',
+				].join('');
+			})
+			.join('');
+	}
+
+	async function run(query: string) {
+		show(band, true);
+		show(emptyState, false);
+		show(insufficientState, false);
+		show(offlineState, false);
+		hits!.innerHTML = '';
+		show(loading, true);
+		say('Searching the published library.');
+
+		let loaded: SearchIndex;
+		try {
+			loaded = await getIndex();
+		} catch {
+			show(loading, false);
+			show(offlineState, true);
+			say('The lookup index did not load. Browsing still works.');
+			return;
+		}
+
+		const outcome = search(loaded, query, currentFilters(), 10);
+		show(loading, false);
+		show(editButton, true);
+
+		if (interpreted) {
+			interpreted.textContent =
+				outcome.status === 'empty'
+					? ''
+					: `Interpreted as: ${outcome.interpretedAs.join(', ')} - index version ${loaded.version}`;
+		}
+
+		if (outcome.status === 'empty') {
+			show(band, false);
+			say('Enter a question first.');
+			return;
+		}
+		if (outcome.status === 'no-result') {
+			show(emptyState, true);
+			say('No match in the library.');
+			return;
+		}
+		if (outcome.status === 'insufficient') {
+			show(insufficientState, true);
+			renderHits(outcome);
+			say('Related material only. Not enough evidence for a direct answer.');
+			return;
+		}
+		renderHits(outcome);
+		say(`${outcome.hits.length} match${outcome.hits.length === 1 ? '' : 'es'} in the library.`);
+	}
+
+	form.addEventListener('submit', (event) => {
+		event.preventDefault();
+		const query = field!.value.trim();
+		if (!query) {
+			say('Enter a question first.');
+			field!.focus();
+			return;
+		}
+		void run(query);
+	});
+
+	form.addEventListener('reset', () => {
+		window.setTimeout(() => {
+			show(band, false);
+			show(editButton, false);
+			say('Cleared.');
+		}, 0);
+	});
+
+	editButton?.addEventListener('click', () => {
+		field!.focus();
+		field!.setSelectionRange(field!.value.length, field!.value.length);
+		say('Editing your question.');
+	});
+
+	document.querySelectorAll<HTMLButtonElement>('[data-example]').forEach((button) => {
+		button.addEventListener('click', () => {
+			field!.value = button.dataset.example || '';
+			void run(field!.value);
+		});
+	});
+
+	rankGroup?.querySelectorAll<HTMLButtonElement>('[data-rank]').forEach((button) => {
+		button.addEventListener('click', () => {
+			rank = (button.dataset.rank as typeof rank) || 'match';
+			rankGroup.querySelectorAll('[data-rank]').forEach((other) => {
+				other.setAttribute('aria-pressed', String(other === button));
+			});
+			if (field!.value.trim()) void run(field!.value.trim());
+		});
+	});
+
+	document.querySelectorAll<HTMLButtonElement>('[data-clear-filters]').forEach((button) => {
+		button.addEventListener('click', () => {
+			form!.querySelectorAll<HTMLSelectElement>('select').forEach((select) => {
+				select.value = 'any';
+			});
+			const asOf = document.getElementById('f-asof') as HTMLInputElement | null;
+			if (asOf) asOf.value = '';
+			if (filters) filters.open = false;
+			if (field!.value.trim()) void run(field!.value.trim());
+		});
+	});
+
+	document.querySelectorAll<HTMLButtonElement>('[data-retry-index]').forEach((button) => {
+		button.addEventListener('click', () => {
+			if (field!.value.trim()) void run(field!.value.trim());
+		});
+	});
+
+	/*
+	 * Context selections are a controlled vocabulary, so keeping them locally is
+	 * safe. The question itself is never persisted beyond the hop from another page.
+	 */
+	const CONTEXT_KEY = 'bir_context';
+	const PENDING_KEY = 'bir_pending_question';
+	const CONTEXT_FIELDS = ['family', 'line', 'state', 'audience'] as const;
+
+	function restoreContext(raw: string | null) {
+		if (!raw) return;
+		let parsed: Record<string, string>;
+		try {
+			parsed = JSON.parse(raw);
+		} catch {
+			return;
+		}
+		for (const key of CONTEXT_FIELDS) {
+			const select = form!.elements.namedItem(key) as HTMLSelectElement | null;
+			const value = parsed[key];
+			if (!select || !value) continue;
+			if ([...select.options].some((option) => option.value === value)) select.value = value;
+		}
+	}
+
+	function persistContext() {
+		const data = new FormData(form!);
+		const context: Record<string, string> = {};
+		for (const key of CONTEXT_FIELDS) {
+			const value = String(data.get(key) || 'any');
+			if (value !== 'any') context[key] = value;
+		}
+		try {
+			localStorage.setItem(CONTEXT_KEY, JSON.stringify(context));
+		} catch {
+			/* Storage unavailable: filters simply do not persist. */
+		}
+	}
+
+	try {
+		restoreContext(localStorage.getItem(CONTEXT_KEY));
+	} catch {
+		/* ignore */
+	}
+	CONTEXT_FIELDS.forEach((key) => {
+		const select = form!.elements.namedItem(key) as HTMLSelectElement | null;
+		select?.addEventListener('change', persistContext);
+	});
+
+	/*
+	 * A question reaches this page one of three ways: handed over in sessionStorage
+	 * by another page's form (the private path), typed here, or present in the
+	 * query string after a no-JavaScript submit or an inbound search link. In the
+	 * last case we honour it once and then strip it from the address bar, so it does
+	 * not sit in history, in a bookmark, or in a Referer header on the next click.
+	 */
+	let handed: string | null = null;
+	try {
+		handed = sessionStorage.getItem(PENDING_KEY);
+		if (handed) {
+			sessionStorage.removeItem(PENDING_KEY);
+			restoreContext(sessionStorage.getItem(CONTEXT_KEY));
+			sessionStorage.removeItem(CONTEXT_KEY);
+		}
+	} catch {
+		/* ignore */
+	}
+
+	const incoming = new URL(window.location.href);
+	const fromUrl = incoming.searchParams.get('q');
+
+	if (handed && handed.trim()) {
+		field.value = handed.trim();
+		void run(field.value);
+	} else if (fromUrl && fromUrl.trim()) {
+		field.value = fromUrl.trim();
+		CONTEXT_FIELDS.forEach((key) => {
+			const value = incoming.searchParams.get(key);
+			const select = form!.elements.namedItem(key) as HTMLSelectElement | null;
+			if (select && value && [...select.options].some((option) => option.value === value)) {
+				select.value = value;
+			}
+		});
+		window.history.replaceState({}, '', incoming.pathname + incoming.hash);
+		say('Your question was removed from the address bar. The lookup runs on this device only.');
+		void run(field.value);
+	}
+
+	/* Rotating example, only when the visitor has not asked for reduced motion. */
+	const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+	const rotation = [...document.querySelectorAll<HTMLButtonElement>('[data-example]')].map(
+		(button) => button.dataset.example || '',
+	);
+	if (!reduce.matches && rotation.length > 1) {
+		let i = 0;
+		window.setInterval(() => {
+			if (document.activeElement === field || field.value) return;
+			i = (i + 1) % rotation.length;
+			field.placeholder = rotation[i];
+		}, 6000);
+	}
+</script>

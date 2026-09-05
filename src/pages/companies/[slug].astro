@@ -1,0 +1,300 @@
+---
+import { ArrowRight, ExternalLink, Ban, FileText, Landmark, Phone, Scale } from '@lucide/astro';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Callout from '../../components/Callout.astro';
+import CiteThisPage from '../../components/CiteThisPage.astro';
+import CorrectionControl from '../../components/CorrectionControl.astro';
+import SourceLedger from '../../components/SourceLedger.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { createCiter, stripMarkers } from '../../lib/citations';
+import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, describedOrganization, graph, organization, techArticle, website } from '../../lib/schema';
+import { TODAY } from '../../lib/today';
+
+export const getStaticPaths = (async () => {
+	const corpus = await loadCorpus();
+	return corpus.companies.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
+}) satisfies GetStaticPaths;
+
+const { entry, corpus } = Astro.props;
+const d = entry.data;
+const path = `/companies/${entry.id}`;
+const machinePath = `${path}.json`;
+
+const sourceIds = idsOf(d.sourceIds);
+const sources = ledgerFor(sourceIds, corpus.sourceById, `organization "${entry.id}"`);
+const cite = createCiter(sourceIds, `organization "${entry.id}"`);
+
+const relatedQuestions = d.relatedQuestions
+	.map((ref) => corpus.questionBySlug.get(ref.id))
+	.filter((q): q is NonNullable<typeof q> => Boolean(q));
+const mentioning = corpus.questions.filter(
+	(q) => q.data.companies.some((c) => c.id === entry.id) && !relatedQuestions.some((r) => r.id === q.id),
+);
+const allRelated = [...relatedQuestions, ...mentioning];
+
+const description = stripMarkers(d.summary).slice(0, 300);
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Companies', path: '/companies' },
+	{ name: d.shortName, path },
+];
+
+const ORG_TYPE_LABEL: Record<string, string> = {
+	regulator: 'Insurance regulator',
+	'standards-organization': 'Standards organization',
+	'public-entity': 'Public entity',
+	insurer: 'Insurer',
+	'insurance-group': 'Insurance group',
+	'residual-market': 'Residual market mechanism',
+};
+
+const sections = [
+	{ id: 'identity', label: 'Verified identity' },
+	{ id: 'official', label: 'Official channels' },
+	...(d.regulatorRecords.length ? [{ id: 'records', label: 'Records you can look up' }] : []),
+	...(d.statutoryBasis.length ? [{ id: 'statute', label: 'Statutory basis' }] : []),
+	...(d.publications.length ? [{ id: 'publications', label: 'Publications' }] : []),
+	{ id: 'notclaimed', label: 'What this page does not claim' },
+	{ id: 'source-ledger', label: 'Source ledger' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	describedOrganization({
+		legalName: d.legalName,
+		path,
+		description,
+		url: d.officialUrls[0]?.url ?? '',
+		orgType: d.orgType,
+		sameAs: d.officialUrls.map((u) => u.url),
+	}),
+	techArticle({
+		headline: d.legalName,
+		path,
+		description,
+		datePublished: d.lastReviewed,
+		dateModified: d.lastReviewed,
+		author: d.author,
+		reviewer: d.reviewer,
+		sections: sections.map((s) => s.label),
+		about: [d.orgType, ...d.jurisdictions],
+		citations: sources.map((s) => ({ name: s.data.title, url: s.data.url, publisher: s.data.publisher })),
+	}),
+);
+---
+
+<BaseLayout title={d.legalName} description={description} jsonLd={jsonLd} pageType="company" machinePath={machinePath}>
+	<article>
+		<header class="band band-first band-paper answer-head">
+			<div class="shell">
+				<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+				<div class="answer-flags">
+					<StatusChip kind={d.reviewState} />
+					<span class="meta">{ORG_TYPE_LABEL[d.orgType] ?? d.orgType}</span>
+					<span class="meta">{d.jurisdictions.join(', ')}</span>
+				</div>
+				<h1>{d.legalName}</h1>
+				<dl class="answer-dates">
+					<div><dt>Last reviewed</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
+					<div><dt>Author</dt><dd>{d.author}</dd></div>
+					<div><dt>Reviewer</dt><dd>{d.reviewer}</dd></div>
+					{d.naic?.companyCode && <div><dt>NAIC company code</dt><dd class="num">{d.naic.companyCode}</dd></div>}
+					{d.naic?.groupCode && <div><dt>NAIC group code</dt><dd class="num">{d.naic.groupCode}</dd></div>}
+					<div><dt>Sources</dt><dd><a href="#source-ledger">{sources.length} records</a></dd></div>
+				</dl>
+			</div>
+		</header>
+
+		<div class="band band-tight">
+			<div class="shell answer-grid">
+				<div>
+					<section aria-labelledby="identity">
+						<h2 id="identity" class="u-visually-hidden">Verified identity</h2>
+						<div class="direct-answer"><p set:html={cite.inline(d.summary)} /></div>
+					</section>
+
+					<section class="answer-section" aria-labelledby="official">
+						<h2 id="official">Official channels</h2>
+						<ul class="fact-list">
+							{
+								d.officialUrls.map((link) => (
+									<li>
+										<ExternalLink size={14} aria-hidden="true" />
+										<p>
+											<a href={link.url} rel="noopener nofollow" target="_blank">{link.label}</a>
+											{link.note && <> - <span set:html={cite.inline(link.note)} /></>}
+										</p>
+									</li>
+								))
+							}
+							{
+								d.contactChannels.map((channel) => (
+									<li>
+										<Phone size={14} aria-hidden="true" />
+										<p>
+											<strong>{channel.label}:</strong> <span class="num">{channel.value}</span>
+											{channel.note && <> - <span set:html={cite.inline(channel.note)} /></>}
+										</p>
+									</li>
+								))
+							}
+						</ul>
+						<p class="mono" style="margin-top: var(--s-3)">
+							Contact details are copied from the organization's own published pages and re-checked on
+							the dates in the source ledger. Confirm before you rely on one.
+						</p>
+					</section>
+
+					{
+						d.regulatorRecords.length > 0 && (
+							<section class="answer-section" aria-labelledby="records">
+								<h2 id="records">Records you can look up yourself</h2>
+								<ul class="fact-list">
+									{d.regulatorRecords.map((link) => (
+										<li>
+											<Landmark size={14} aria-hidden="true" />
+											<p>
+												<a href={link.url} rel="noopener nofollow" target="_blank">{link.label}</a>
+												{link.note && <> - <span set:html={cite.inline(link.note)} /></>}
+											</p>
+										</li>
+									))}
+								</ul>
+							</section>
+						)
+					}
+
+					{
+						d.statutoryBasis.length > 0 && (
+							<section class="answer-section" aria-labelledby="statute">
+								<h2 id="statute">Statutory basis</h2>
+								<ul class="fact-list">
+									{d.statutoryBasis.map((link) => (
+										<li>
+											<Scale size={14} aria-hidden="true" />
+											<p>
+												<a href={link.url} rel="noopener nofollow" target="_blank">{link.label}</a>
+												{link.note && <> - <span set:html={cite.inline(link.note)} /></>}
+											</p>
+										</li>
+									))}
+								</ul>
+							</section>
+						)
+					}
+
+					{
+						d.publications.length > 0 && (
+							<section class="answer-section" aria-labelledby="publications">
+								<h2 id="publications">Publications and guides</h2>
+								<ul class="fact-list">
+									{d.publications.map((link) => (
+										<li>
+											<FileText size={14} aria-hidden="true" />
+											<p>
+												<a href={link.url} rel="noopener nofollow" target="_blank">{link.label}</a>
+												{link.note && <> - <span set:html={cite.inline(link.note)} /></>}
+											</p>
+										</li>
+									))}
+								</ul>
+							</section>
+						)
+					}
+
+					<section class="answer-section" aria-labelledby="notclaimed">
+						<h2 id="notclaimed">What this page does not claim</h2>
+						<Callout tone="limit">
+							<p>
+								This is an identity and records page. It is not a rating, a recommendation, a
+								comparison, or a statement about what this organization will do in a specific matter.
+							</p>
+						</Callout>
+						<ul class="fact-list">
+							{
+								d.whatWeDoNotClaim.map((item) => (
+									<li>
+										<Ban size={14} aria-hidden="true" style="color: var(--rust)" />
+										<p set:html={cite.inline(item)} />
+									</li>
+								))
+							}
+						</ul>
+					</section>
+
+					<SourceLedger sources={sources} today={TODAY} />
+
+					<CorrectionControl path={path} title={d.legalName} pageType="company" />
+
+					<CiteThisPage
+						machinePath={machinePath}
+						page={{
+							title: d.legalName,
+							path,
+							published: d.lastReviewed,
+							reviewed: d.lastReviewed,
+							author: d.author,
+							id: entry.id,
+							pageType: 'organization',
+						}}
+					/>
+
+					{
+						allRelated.length > 0 && (
+							<section class="answer-section" aria-labelledby="related">
+								<h2 id="related">Questions that reference this organization</h2>
+								<div class="rows">
+									{allRelated.map((question) => (
+										<a class="row" href={`/questions/${question.id}`}
+											data-event="related_question_opened"
+											data-insurance-family={question.data.family}
+											data-page-type="company">
+											<div>
+												<h3 class="row-title">{question.data.question}</h3>
+												<p>{stripMarkers(question.data.shortAnswer).slice(0, 170)}</p>
+												<div class="row-meta">
+													<StatusChip kind={question.data.confidence} />
+													<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+												</div>
+											</div>
+											<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+										</a>
+									))}
+								</div>
+							</section>
+						)
+					}
+				</div>
+
+				<aside class="answer-rail" aria-label="Page contents">
+					<nav class="rail-block" aria-labelledby="on-this-page">
+						<h2 id="on-this-page">On this page</h2>
+						<ol>{sections.map((section) => <li><a href={`#${section.id}`}>{section.label}</a></li>)}</ol>
+					</nav>
+					<div class="rail-block">
+						<h2>Record</h2>
+						<dl>
+							<div><dt>Type</dt><dd>{ORG_TYPE_LABEL[d.orgType] ?? d.orgType}</dd></div>
+							<div><dt>Jurisdictions</dt><dd>{d.jurisdictions.join(', ')}</dd></div>
+							<div><dt>Primary sources</dt><dd>{sources.filter((s) => s.data.primary).length} of {sources.length}</dd></div>
+						</dl>
+					</div>
+					<div class="rail-block no-print">
+						<h2>Machine readable</h2>
+						<ul>
+							<li><a href={machinePath}>Page record (JSON)</a></li>
+							<li><a href="/companies">All organizations</a></li>
+						</ul>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</article>
+</BaseLayout>

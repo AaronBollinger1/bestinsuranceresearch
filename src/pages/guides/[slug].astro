@@ -1,0 +1,250 @@
+---
+/**
+ * A guide per line of business, generated from the coverage record.
+ *
+ * There is no per-line page to write: the coverage collection already carries
+ * every dimension a guide needs, so adding a line adds a guide. That is the
+ * point of the route existing at all rather than the coverage page simply being
+ * longer.
+ *
+ * The coverage page and the guide are the same evidence in two readings. The
+ * coverage page is the reference document: everything on one scroll, which is
+ * what a reader who knows the line wants and what a crawler should see. The
+ * guide is the way in for someone who does not know the line yet, and it is
+ * deep-linkable per section so an answer engine or a colleague can point at
+ * exactly the part that matters. Both cite the same ledger, and neither
+ * paraphrases the other.
+ */
+import type { GetStaticPaths } from 'astro';
+import { ArrowRight } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import GuideTabs from '../../components/GuideTabs.astro';
+import type { GuideSection } from '../../components/GuideTabs.astro';
+import SourceLedger from '../../components/SourceLedger.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { createCiter, escapeHtml } from '../../lib/citations';
+import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
+import { iconFor } from '../../lib/guide-icons';
+import { sharesLine } from '../../lib/lines';
+import { longDate } from '../../lib/cite';
+import { TODAY } from '../../lib/today';
+import { breadcrumbs, graph, organization, techArticle, website } from '../../lib/schema';
+
+export const getStaticPaths = (async () => {
+	const corpus = await loadCorpus();
+	return corpus.coverages.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
+}) satisfies GetStaticPaths;
+
+const { entry, corpus } = Astro.props;
+const d = entry.data;
+const path = `/guides/${entry.id}`;
+
+const sourceIds = idsOf(d.sourceIds);
+const sources = ledgerFor(sourceIds, corpus.sourceById, `guide "${entry.id}"`);
+const cite = createCiter(sourceIds, `guide "${entry.id}"`);
+
+/* Small helpers so each panel is built the same way and nothing is hand-rolled. */
+const noteList = (items: Array<{ item: string; note: string }>) =>
+	`<ul class="fact-list">${items
+		.map(
+			(x) =>
+				`<li><div><p><strong>${cite.inline(x.item)}</strong></p><p class="note">${cite.inline(x.note)}</p></div></li>`,
+		)
+		.join('')}</ul>`;
+
+const plainList = (items: string[]) =>
+	`<ul class="fact-list">${items.map((x) => `<li><div><p>${cite.inline(x)}</p></div></li>`).join('')}</ul>`;
+
+const sections: GuideSection[] = [
+	{
+		id: 'overview',
+		label: 'Overview',
+		lede: 'What this line is, and who or what it is designed to protect.',
+		html: `<p>${cite.inline(d.definition)}</p>${plainList(d.protects)}`,
+	},
+	{
+		id: 'covers',
+		label: 'What it covers',
+		count: d.commonlyCovers.length,
+		lede: 'Each note carries a policy-form caveat, because what a form covers is read in that form.',
+		html: noteList(d.commonlyCovers),
+	},
+	{
+		id: 'excludes',
+		label: 'What it excludes',
+		count: d.commonlyExcludes.length,
+		lede: 'Exclusions and limitations as the published forms state them.',
+		html: noteList(d.commonlyExcludes),
+	},
+	{
+		id: 'exposures',
+		label: 'What goes wrong',
+		count: d.exposures.length,
+		lede: 'The loss drivers, as distinct from what the policy protects. This is the question an underwriter is asking.',
+		html: noteList(d.exposures),
+	},
+	{
+		id: 'mitigation',
+		label: 'What reduces it',
+		count: d.claimMitigation.length,
+		lede: 'Things you can do, each tied to a source. None of these is a promise about price; whether an insurer credits any of them is an underwriting decision.',
+		html: noteList(d.claimMitigation),
+	},
+	{
+		id: 'underwriting',
+		label: 'Underwriting',
+		count: d.underwritingInputs.length,
+		lede: 'Information commonly requested. Common practice rather than a filed requirement.',
+		html: plainList(d.underwritingInputs),
+	},
+	{
+		id: 'limits',
+		label: 'Limits and endorsements',
+		lede: 'How the limit is structured, and the endorsements that change it.',
+		html: `${plainList(d.limitsAndDeductibles)}${d.endorsements.length > 0 ? noteList(d.endorsements) : ''}`,
+	},
+];
+
+if (d.stateVariations.length > 0) {
+	sections.push({
+		id: 'states',
+		label: 'By state',
+		count: d.stateVariations.length,
+		lede: 'Where a state changes the answer. Only the states read for this page appear.',
+		html: `<ul class="fact-list">${d.stateVariations
+			.map((v) => `<li><div><p><strong>${escapeHtml(v.state)}</strong></p><p class="note">${cite.inline(v.note)}</p></div></li>`)
+			.join('')}</ul>`,
+	});
+}
+
+/* Where else this line is covered on the site. */
+const relatedModules = corpus.liveModules.filter((m) => sharesLine([d.line], m.data.lines));
+const relatedExamples = corpus.examples.filter((e) => sharesLine([d.line], e.data.lines));
+const relatedQuestions = corpus.questions.filter((q) => sharesLine([d.line], q.data.lines));
+
+const facts = [
+	{ label: 'Sources', value: String(sources.length) },
+	{ label: 'Last reviewed', value: longDate(d.lastReviewed) },
+	{ label: 'Family', value: d.family },
+];
+
+const links = [
+	{ label: 'Full reference page', href: `/insurance/${entry.id}` },
+	...relatedModules.map((m) => ({ label: `${m.data.name} tool`, href: `/tools/${m.id}` })),
+	{ label: 'Machine record', href: `/insurance/${entry.id}.json` },
+];
+
+const description = `A guide to ${d.name.toLowerCase()}: what it covers, what it excludes, what actually goes wrong, what reduces it, and what an underwriter asks. Every statement cites a published source.`;
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Guides', path: '/guides' },
+	{ name: d.name, path },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	techArticle({
+		headline: `${d.name}: a guide`,
+		path,
+		description,
+		datePublished: d.effectiveDate,
+		dateModified: d.lastReviewed,
+		author: d.author,
+		reviewer: d.reviewer,
+		sections: sections.map((x) => x.label),
+		citations: sources.map((x) => ({
+			name: x.data.title,
+			url: x.data.url,
+			publisher: x.data.publisher,
+		})),
+		about: [d.name, d.line.replace(/-/g, ' ')],
+	}),
+);
+---
+
+<BaseLayout
+	title={`${d.name}: a guide`}
+	description={description}
+	jsonLd={jsonLd}
+	pageType="coverage"
+	machinePath={`/insurance/${entry.id}.json`}
+>
+	<article>
+		<section class="band band-tight">
+			<div class="shell">
+				<Breadcrumbs trail={trail} />
+				<span class="eyebrow">Guide</span>
+				<h1>{d.name}</h1>
+				<p class="page-lede">{description}</p>
+				<div class="answer-dates">
+					<StatusChip kind={d.reviewState === 'reviewed' ? 'reviewed' : 'under-review'} />
+					<span class="meta">Reviewed {longDate(d.lastReviewed)}</span>
+					<span class="meta">{sources.length} sources</span>
+					<span class="meta">Reviewer: {d.reviewer}</span>
+				</div>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="shell">
+				<GuideTabs
+					title={d.name}
+					kicker={d.line.replace(/-/g, ' ')}
+					icon={iconFor(d.line, d.family)}
+					sections={sections}
+					facts={facts}
+					links={links}
+				/>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="ledger-title">
+			<div class="shell">
+				<span class="eyebrow">Evidence</span>
+				<h2 id="ledger-title">Source ledger</h2>
+				<p class="band-lede">
+					Every numbered marker in this guide resolves to a record below. Each record lists the exact
+					claims it supports, and each claim has its own address.
+				</p>
+				<SourceLedger sources={sources} today={TODAY} />
+			</div>
+		</section>
+
+		{
+			(relatedQuestions.length > 0 || relatedExamples.length > 0) && (
+				<section class="band band-tight no-print" aria-labelledby="more-title">
+					<div class="shell">
+						<span class="eyebrow">Go deeper</span>
+						<h2 id="more-title">Questions and worked examples on this line</h2>
+						<div class="rows">
+							{relatedQuestions.map((q) => (
+								<a class="row" href={`/questions/${q.id}`}>
+									<div>
+										<h3 class="row-title">{q.data.question}</h3>
+										<div class="row-meta"><span class="meta">Question</span></div>
+									</div>
+									<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+								</a>
+							))}
+							{relatedExamples.map((e) => (
+								<a class="row" href={`/examples/${e.id}`}>
+									<div>
+										<h3 class="row-title">{e.data.title}</h3>
+										<div class="row-meta">
+											<span class="status status-plain">{e.data.label.replace(/-/g, ' ')}</span>
+										</div>
+									</div>
+									<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+								</a>
+							))}
+						</div>
+					</div>
+				</section>
+			)
+		}
+	</article>
+</BaseLayout>

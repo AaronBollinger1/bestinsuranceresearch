@@ -1,0 +1,28 @@
+{
+	"title": "40 U.S.C. 3131 - Bonds of contractors of public buildings or works (Miller Act)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title40-section3131&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"In this subchapter, the term contractor means a person awarded a contract described in subsection (b).",
+		"Before any contract of more than $100,000 is awarded for the construction, alteration, or repair of any public building or public work of the Federal Government, a person must furnish to the Government a performance bond and a payment bond, which become binding when the contract is awarded.",
+		"The performance bond must be with a surety satisfactory to the officer awarding the contract, and in an amount the officer considers adequate, for the protection of the Government.",
+		"The payment bond must be with a surety satisfactory to the officer for the protection of all persons supplying labor and material in carrying out the work provided for in the contract.",
+		"The amount of the payment bond shall equal the total amount payable by the terms of the contract unless the officer awarding the contract determines, in a writing supported by specific findings, that a payment bond in that amount is impractical, in which case the contracting officer shall set the amount; the amount of the payment bond shall not be less than the amount of the performance bond.",
+		"Every performance bond required under this section specifically shall provide coverage for taxes the Government imposes which are collected, deducted, or withheld from wages the contractor pays in carrying out the contract.",
+		"A contracting officer may waive the requirement of a performance bond and payment bond for work under a contract that is to be performed in a foreign country if the officer finds that it is impracticable for the contractor to furnish the bonds.",
+		"This section does not limit the authority of a contracting officer to require a performance bond or other security in addition to those, or in cases other than the cases, specified in subsection (b)."
+	],
+	"updateCadence": "Amended by act of Congress; codified in title 40 chapter 31 subchapter III",
+	"status": "active",
+	"notes": "Re-verified 2026-08-31 on the Office of the Law Revision Counsel site, the official publisher of the United States Code; the $100,000 figure in subsection (b) is confirmed as the current statutory threshold. The source URL was moved from the Cornell LII reproduction to uscode.house.gov in this revision. Two statutory branches that the earlier draft omitted are now on the card: subsection (d), the foreign-country waiver, and subsection (e), which preserves the contracting officer's authority to require bonds or other security beyond and outside subsection (b). An earlier version of this card also misquoted the payment bond rule as a written determination that a lesser amount is adequate; the statute says the awarding officer must determine, in a writing supported by specific findings, that a payment bond in the total-contract-price amount is impractical.",
+	"officialHost": true
+}

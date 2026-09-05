@@ -1,0 +1,26 @@
+{
+	"title": "N.J.A.C. 11:13-7.3, Defense costs within policy limits",
+	"publisher": "New Jersey Administrative Code, text hosted by Cornell Legal Information Institute",
+	"url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-13-7-3",
+	"sourceType": "regulation",
+	"jurisdiction": "NJ",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The rule provides that no commercial insurance policy shall be issued or renewed on a form required to be filed pursuant to N.J.S.A. 17:29AA-1 et seq. which contains a provision that includes defense costs within policy limits, except as provided in that section.",
+		"The rule provides that no defense costs shall be charged against any deductible amount.",
+		"The rule provides that lawyers and medical malpractice professional liability insurance policies may contain a provision that includes defense costs within policy limits provided the policy conforms to the standards set forth in the subsections it names.",
+		"Within the subsection that governs lawyers and medical malpractice professional liability policy forms including defense costs within policy limits, the rule provides that the policy form shall provide a minimum limit of liability of $1,000,000.",
+		"Within that same lawyers and medical malpractice subsection, the rule provides that defense costs shall not reduce the portion of the limit of liability that remains available to pay claims until defense costs have been incurred in an amount that equals or exceeds 50 percent of the policy limit of liability. This provision is not stated for commercial policies generally.",
+		"In a separate subsection that opens 'Notwithstanding that they do not conform with (c) above' and reaches medical malpractice professional liability policy forms only, the rule conditions the offering of such forms on the insurer securing a certification on a policyholder notice signed by the applicant confirming that a policy providing defense costs outside the limit of liability was offered to the applicant and the applicant declined such coverage. This certification requirement is not stated for lawyers professional liability policies or for commercial policies generally."
+	],
+	"updateCadence": "New Jersey amends its Administrative Code by rulemaking; confirm the current text against the State of New Jersey's official publication of the Administrative Code before relying on it.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31 and all six claims read on the page. Re-fetched on 2026-08-31 specifically to confirm the subsection structure, because an earlier draft stated the 50 percent threshold and the signed certification as general features of the rule. They are not. Subsection (a) carries the general prohibition and the no-defense-costs-against-a-deductible provision; (b) permits defense within limits for lawyers and medical malpractice policies; (c) sets the standards for those forms, including the $1,000,000 minimum limit and the 50 percent threshold; and (d), which opens 'Notwithstanding that they do not conform with (c) above', reaches medical malpractice forms only and carries the signed certification requirement. authorityLevel is recorded as 'secondary' rather than 'primary-law' because this is a hosted copy of New Jersey primary law; the State of New Jersey's own publication of N.J.A.C. 11:13-7.3 was not fetched for this bundle, and officialHost is recorded as false for that reason. This rule is New Jersey law and does not govern California-issued policies; it is cited here because its text describes the defense-within-limits mechanism, and the prose says so inline.",
+	"officialHost": false
+}

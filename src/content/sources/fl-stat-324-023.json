@@ -1,0 +1,21 @@
+{
+	"title": "Florida Statutes Section 324.023 (2026) - Financial responsibility for bodily injury or death after a DUI conviction",
+	"publisher": "The Florida Senate (flsenate.gov)",
+	"url": "https://www.flsenate.gov/laws/statutes/2026/324.023",
+	"sourceType": "statute",
+	"jurisdiction": "FL",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"After a DUI conviction Florida requires ability to respond in damages of $100,000 because of bodily injury to, or death of, one person in any one crash; subject to that limit for one person, $300,000 because of bodily injury to, or death of, two or more persons in any one crash; and $50,000 because of property damage in any one crash.",
+		"The higher post-DUI limits must be carried for a minimum period of 3 years, with the exemption conditioned on no further DUI or felony traffic conviction for 3 years from reinstatement of driving privileges."
+	],
+	"updateCadence": "Re-verify each Florida legislative session.",
+	"status": "active",
+	"officialHost": true
+}

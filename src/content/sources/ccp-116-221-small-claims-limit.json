@@ -1,0 +1,22 @@
+{
+	"title": "California Code of Civil Procedure section 116.221 - Small claims jurisdiction, natural persons",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=116.221",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"In addition to the jurisdiction conferred by Section 116.220, the small claims court has jurisdiction in an action brought by a natural person if the amount of the demand does not exceed twelve thousand five hundred dollars ($12,500), except as otherwise prohibited by subdivision (c) of Section 116.220 or subdivision (a) of Section 116.231.",
+		"The section carries the notation Amended by Stats. 2023, Ch. 861, Sec. 6 (SB 71), effective January 1, 2024."
+	],
+	"updateCadence": "Amended by act of the Legislature; the limit has been raised by statute in the past",
+	"status": "active",
+	"notes": "Fetched 2026-08-31 and read verbatim. Added in this revision so the stale $10,000 figure in the CSLB Rev. 12/22 guide is not repeated as current California procedure. The section speaks to actions brought by a natural person; it does not set the limit for other claimants. Published: 2023-10-11 Effective: 2024-01-01",
+	"officialHost": true
+}

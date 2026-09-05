@@ -1,0 +1,25 @@
+{
+	"title": "California Government Code section 12950.1 - sexual harassment prevention training",
+	"publisher": "California Legislative Information (California Legislative Counsel)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=12950.1",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"An employer having five or more employees shall provide sexual harassment prevention training.",
+		"Supervisory employees must receive at least two hours of classroom or other effective interactive training.",
+		"Nonsupervisory employees must receive at least one hour of classroom or other effective interactive training.",
+		"Each employer covered by the section shall provide the training to each employee in California once every two years.",
+		"New nonsupervisory employees shall be provided training within six months of hire.",
+		"New supervisory employees shall be provided training within six months of the assumption of a supervisory position."
+	],
+	"updateCadence": "Reviewed at least every 180 days.",
+	"status": "active"
+}

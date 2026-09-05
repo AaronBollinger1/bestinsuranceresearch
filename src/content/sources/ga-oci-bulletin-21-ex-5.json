@@ -1,0 +1,25 @@
+{
+	"title": "Bulletin 21-EX-5: Certificates of Insurance",
+	"publisher": "Georgia Office of Commissioner of Insurance and Safety Fire",
+	"url": "https://oci.georgia.gov/document/bulletin/bulletin-21-ex-5-certificates-insurance/download",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "GA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The bulletin states that a certificate is not an insurance policy and cannot be used to alter or expand coverage.",
+		"The bulletin states that certificates must be issued on ACORD or ISO forms or on other forms approved explicitly by the Commissioner of Insurance, that certificate forms cannot be altered, and that they must contain this disclaimer language: 'This certificate of insurance is issued as a matter of information only and confers no rights upon the certificate holder. This certificate does not amend, extend or alter the coverage, terms exclusions and conditions afforded by the policies referenced herein.'",
+		"The bulletin states that it is a violation of the law to provide a certificate on an unapproved or altered form or to include information on a certificate that purports to alter or expand coverage, that it is also a violation of the law to request such a certificate, and that fines can be up to $5,000 for each violation of the law.",
+		"The bulletin quotes the statutory definition of a certificate of insurance at OCGA section 33-24-19.1(a)(1) as any document or instrument, no matter how titled or described, prepared or issued by an insurer or insurance producer as evidence of property or casualty insurance coverage, excluding a policy of insurance or insurance binder and any insurance information card or identification card issued in conjunction with a motor vehicle insurance policy.",
+		"The bulletin states that the law governing certificates and relevant regulations applies to all certificate holders, to those who request certificates be issued, and to policyholders, insurers, insurance producers, and certificate forms issued as evidence of coverage on property, operations, or risks located in Georgia, regardless of where those parties are located."
+	],
+	"updateCadence": "Superseded only if the Commissioner issues a replacement bulletin.",
+	"status": "active",
+	"notes": "Downloaded 2026-08-31; the URL returns a PDF, which was converted with pdftotext -layout and read in full. The bulletin is dated MARCH 11, 2021, is addressed to all Georgia insurers, agents, policyholders and certificate of insurance holders, and is from John F. King, Insurance and Safety Fire Commissioner. All quoted language above was read verbatim from the extracted text. Published: 2021-03-11 Effective: 2021-03-11",
+	"officialHost": true
+}

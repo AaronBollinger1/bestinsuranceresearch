@@ -1,0 +1,22 @@
+{
+	"title": "California Insurance Code Section 11770 (State Compensation Insurance Fund)",
+	"publisher": "California Legislative Information (California Legislature)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=11770.&lawCode=INS",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Insurance Code section 11770(a) provides that the State Compensation Insurance Fund is continued in existence, to be administered by its board of directors, for the purpose of transacting workers compensation insurance.",
+		"The stated statutory purposes also include insurance against the expense of defending any suit for serious and willful misconduct against an employer or the employer's agent, and insurance to employees and other persons of the compensation fixed by the workers compensation laws for employees and their dependents."
+	],
+	"updateCadence": "Amended by the Legislature; verify current text at leginfo.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Published: 2012-06-27 Effective: 2012-06-27"
+}

@@ -1,0 +1,24 @@
+{
+	"title": "Certificates of Insurance Frequently Asked Questions",
+	"publisher": "Texas Department of Insurance",
+	"url": "https://www.tdi.texas.gov/certificates/faq.html",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "TX",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"TDI answers 'No' to whether a certificate holder can be named as an additional insured on the certificate absent a policy endorsement naming it, adding that the certificate can state that the policy contains a Blanket Additional Insured endorsement.",
+		"TDI states that you should check the 'Additional Insured' box if the policy includes an endorsement that names the certificate holder as an additional insured.",
+		"TDI states that a certificate holder may not use the 'Certificate Holder' box to imply or confer any new or additional rights beyond what the policy or any executed endorsement of insurance provides.",
+		"TDI states that certificates cannot say anything on them that is not the same as what is stated in the insurance policy."
+	],
+	"updateCadence": "Revised by TDI as the agency updates its guidance; the page displays its own last-updated date.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31. The page displays 'Last updated: 10/31/2022', which is recorded as publishedDate. The four claims correspond to numbered FAQ items 1, 15, 19 and 26. The page does not describe how any particular blanket additional insured form operates or to whom it extends status. Published: 2022-10-31",
+	"officialHost": true
+}

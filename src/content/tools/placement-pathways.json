@@ -1,0 +1,66 @@
+{
+	"name": "Placement Pathway Explorer",
+	"status": "specified",
+	"order": 20,
+	"family": [
+		"personal",
+		"commercial"
+	],
+	"lines": [
+		"homeowners",
+		"earthquake",
+		"flood",
+		"commercial-property",
+		"general-liability"
+	],
+	"summary": "Show the market channels a risk of a given description can route through, the published entry criteria for each, and who decides.",
+	"spec": {
+		"user": "Anyone who has been told a risk is hard to place and wants to understand what the actual routes are before the next conversation.",
+		"inputData": [
+			"Line and state",
+			"Risk characteristics as published-criteria categories only",
+			"Whether a declination has already been received, as a count band"
+		],
+		"authoritativeSources": [
+			"State surplus lines statutes, including the diligent search requirement where one exists",
+			"Residual market plan published eligibility, for example the California FAIR Plan, TWIA, and Citizens",
+			"State fund enabling statutes where a state fund exists",
+			"State insurance department published consumer guidance on hard-to-place risks"
+		],
+		"privacyBoundary": "No address, no loss history detail, no carrier names entered by the user, no policy numbers. Risk characteristics are categories drawn from published criteria.",
+		"decisionRules": [
+			"Enumerate only pathways that exist in published law or a published program. Each carries its citation and its effective date.",
+			"For each pathway, state the published entry criteria verbatim or closely paraphrased with a citation, the documentation the program itself says it requires, and the body that decides.",
+			"Where a statute conditions one pathway on another, such as a diligent search before surplus lines, show that ordering explicitly.",
+			"This tool never states that a risk is eligible, ineligible, standard market, non-admitted, FAIR Plan eligible, bound, or uninsurable. It shows the published pathway criteria and names who actually decides, which is the insurer.",
+			"The output is a map of routes, never a routing decision. It never says a risk belongs in, or is excluded from, any channel."
+		],
+		"uncertainty": "Program eligibility is determined by the program, and admitted-market appetite is determined by each insurer. Both change without notice, and neither is knowable from a public page.",
+		"output": "A printable pathway map: each route, its cited criteria and effective date, the documentation the program asks for, the deciding body, and the questions to take to a broker.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed every 90 days. Residual market eligibility changes often enough that a stale page is a harmful page."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

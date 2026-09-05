@@ -1,0 +1,31 @@
+{
+	"title": "California Insurance Code Section 660 (definitions governing cancellation and nonrenewal of an automobile policy)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=660",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "2017-01-01",
+	"accessedDate": "2026-09-02",
+	"lastChecked": "2026-09-02",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 660(a) defines policy, for the purposes of the chapter on cancellation or failure to renew, as an automobile liability, automobile physical damage or automobile collision policy, or any combination of them, delivered or issued for delivery in California, insuring a single individual or individuals residing in the same household as named insured, and covering only the vehicle types the subdivision lists.",
+		"Section 660(a)(1) includes a motor vehicle of the private passenger or station wagon type that is not used as a public or livery conveyance for passengers and is not rented to others; section 660(a)(2) includes any other four-wheel motor vehicle with a load capacity of 1,500 pounds or less; and section 660(a)(3) includes a motorcycle.",
+		"Section 660(a)(2) provides that the chapter does not apply to any policy issued under an automobile assigned risk plan, any policy insuring more than four automobiles, or any policy covering garage, automobile sales agency, repair shop, service station or public parking place operation hazards.",
+		"Section 660(b) provides that automobile liability coverage includes only coverage of bodily injury and property damage liability, medical payments, and uninsured motorists coverage.",
+		"Section 660(c) provides that automobile physical damage coverage includes all coverage of loss or damage to an insured automobile except loss or damage resulting from collision or upset, and section 660(d) provides that automobile collision coverage includes all coverage of loss or damage resulting from collision or upset.",
+		"Section 660(e) defines renewal as continuing coverage with either the issuing insurer or an affiliated insurer as defined in section 1215, and requires that where coverage is continued with an affiliated insurer it be the same or broader coverage and that the insured be notified in writing at least 20 days before expiration of the current policy period.",
+		"Section 660(e) requires that the notice of replacement in an affiliated insurer state that the insurer has determined it will not offer renewal with the present insurer, that it is offering replacement in an affiliated insurer, and that the insured may obtain the reasons for the change in insurers by requesting them in writing not later than one month following expiration of the policy period.",
+		"Section 660(e) provides that any policy with a policy period or term of six months or less, whether or not made continuous for successive terms upon payment of additional premiums, shall for the purposes of the chapter be considered as if written for a term of six months.",
+		"Section 660(e) provides that any policy written for a term longer than one year, or any policy with no fixed expiration date, shall for the purposes of the chapter be considered as if written for successive policy periods or terms of one year.",
+		"Section 660(f) defines nonpayment of premium as failure of the named insured to discharge when due any obligation in connection with the payment of premiums on a policy, or any installment of that premium, whether payable directly to the insurer or its agent or indirectly under any premium finance plan or extension of credit.",
+		"Section 660(g) defines cancellation as termination of coverage by an insurer, other than termination at the request of the insured, during a policy period; section 660(h) defines nonrenewal as a notice by the insurer that it is unwilling to renew a policy; and section 660(i) defines expiration as termination of coverage by reason of the policy having reached the end of its term or the end of the period for which a premium has been paid."
+	],
+	"updateCadence": "Amended only by legislation. Last amended by Stats. 2016, Ch. 304, Sec. 1 (AB 2884), effective January 1, 2017.",
+	"status": "active",
+	"notes": "This is the scope section for two separate bodies of protection: the cancellation and nonrenewal rules in sections 661 to 669.5, and, by cross-reference, the mandatory rating factors and Good Driver Discount rules in section 1861.02. The four-automobile ceiling and the private-passenger vehicle types are therefore the boundary between personal auto and commercial auto in California law, not merely a labelling convention."
+}

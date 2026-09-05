@@ -1,0 +1,145 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Citer } from '../lib/citations';
+
+interface Props {
+	module: CollectionEntry<'modules'>;
+	cite: Citer;
+}
+
+const { module, cite } = Astro.props;
+const d = module.data;
+
+/* Fields render in their authored group order. */
+const groups: Array<{ name: string; fields: typeof d.fields }> = [];
+for (const field of d.fields) {
+	const existing = groups.find((g) => g.name === field.group);
+	if (existing) existing.fields.push(field);
+	else groups.push({ name: field.group, fields: [field] });
+}
+
+const wide = (kind: string) => kind === 'multiselect' || kind === 'text';
+---
+
+<form id="module-form" data-module={module.id} novalidate>
+	{
+		groups.map((group, gi) => (
+			<fieldset class="field-group fieldset">
+				<legend class="u-visually-hidden">{group.name}</legend>
+				<h3 id={`group-${gi}`}>{group.name}</h3>
+				<div class="field-grid">
+					{
+						group.fields.map((field) => {
+							const id = `f-${field.id}`;
+							const describedBy = [
+								field.help ? `${id}-help` : null,
+								field.privacyNote ? `${id}-privacy` : null,
+							].filter(Boolean).join(' ') || undefined;
+
+							return (
+								<div class={`field${wide(field.kind) ? ' wide' : ''}`}>
+									{field.kind === 'boolean' ? (
+										<>
+											<span class="field-legend" id={`${id}-label`} style="color: var(--ink); font-size: var(--text-sm); font-weight: 600">
+												{field.label}
+											</span>
+											<div class="segmented" role="group" aria-labelledby={`${id}-label`} data-field={field.id} data-kind="boolean">
+												<button type="button" data-value="true" aria-pressed="false">Yes</button>
+												<button type="button" data-value="false" aria-pressed="false">No</button>
+												<button type="button" data-value="" aria-pressed="true">Not recorded</button>
+											</div>
+										</>
+									) : field.kind === 'multiselect' ? (
+										<>
+											<span class="field-legend" id={`${id}-label`} style="color: var(--ink); font-size: var(--text-sm); font-weight: 600">
+												{field.label}
+											</span>
+											<div class="check-inline" role="group" aria-labelledby={`${id}-label`} data-field={field.id} data-kind="multiselect">
+												{(field.options ?? []).map((option) => (
+													<label class="check">
+														<input type="checkbox" value={option.value} data-multi={field.id} />
+														<span>{option.label}</span>
+													</label>
+												))}
+											</div>
+										</>
+									) : field.kind === 'select' || field.kind === 'band' ? (
+										<>
+											<label for={id}>{field.label}</label>
+											<select id={id} data-field={field.id} data-kind="select" aria-describedby={describedBy}>
+												<option value="">Not recorded</option>
+												{(field.options ?? []).map((option) => (
+													<option value={option.value}>{option.label}</option>
+												))}
+											</select>
+										</>
+									) : field.kind === 'number' ? (
+										<>
+											<label for={id}>
+												{field.label}
+												{field.unit && <span class="meta"> ({field.unit})</span>}
+											</label>
+											<input
+												type="number"
+												id={id}
+												data-field={field.id}
+												data-kind="number"
+												inputmode="numeric"
+												min="0"
+												step="any"
+												aria-describedby={describedBy}
+											/>
+										</>
+									) : field.kind === 'date' ? (
+										<>
+											<label for={id}>{field.label}</label>
+											<input type="date" id={id} data-field={field.id} data-kind="date" aria-describedby={describedBy} />
+										</>
+									) : (
+										<>
+											<label for={id}>{field.label}</label>
+											<input type="text" id={id} data-field={field.id} data-kind="text" autocomplete="off" aria-describedby={describedBy} />
+										</>
+									)}
+
+									{field.help && <span class="hint" id={`${id}-help`}>{field.help}</span>}
+									{field.privacyNote && (
+										<span class="privacy-note" id={`${id}-privacy`}>{field.privacyNote}</span>
+									)}
+								</div>
+							);
+						})
+					}
+				</div>
+			</fieldset>
+		))
+	}
+</form>
+
+<!--
+  The rule set travels to the client as data. The evaluator is the same module
+  that validated it at build time, so a rule cannot behave differently in the
+  browser than it did in the test suite.
+-->
+<script
+	type="application/json"
+	id="module-definition"
+	is:inline
+	set:html={JSON.stringify({
+		moduleId: module.id,
+		name: d.name,
+		fields: d.fields,
+		rules: d.rules.map((r) => ({
+			id: r.id,
+			kind: r.kind,
+			severity: r.severity,
+			title: r.title,
+			detail: cite.inline(r.detail),
+			action: r.action,
+			when: r.when,
+			sourceIds: (r.sourceIds as Array<{ id: string }>).map((s) => s.id),
+			relatedQuestion: r.relatedQuestion ? (r.relatedQuestion as { id: string }).id : null,
+			routeToProfessional: r.routeToProfessional,
+		})),
+	})}
+/>

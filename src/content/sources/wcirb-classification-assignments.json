@@ -1,0 +1,24 @@
+{
+	"title": "Classification Assignments - Online Guide to Workers' Compensation",
+	"publisher": "Workers' Compensation Insurance Rating Bureau of California (WCIRB)",
+	"url": "https://www.wcirb.com/research-and-education/online-guide-workers%E2%80%99-compensation/standard-classification-system/classification-assignments",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The general rules and basic procedures for classifying a business are contained in Part 3 of the California Workers' Compensation Uniform Statistical Reporting Plan-1995, which is part of the California Code of Regulations and is approved by the Insurance Commissioner.",
+		"Any business specifically described by a classification must be assigned to that classification; any business not specifically described by a classification must be assigned to the most analogous (most similar) classification.",
+		"Classifications assigned to a business are used by its insurer to submit payroll and loss data to the WCIRB, and the WCIRB in turn uses this data by classification for experience rating purposes and the development of pure premium rates.",
+		"The page lists seven general procedures used in assigning classifications: Assignment by Analogy, Standard Exceptions, Single Enterprise, Multiple Enterprises, Miscellaneous Employees, General Inclusions and General Exclusions, and Special Industries."
+	],
+	"updateCadence": "Maintained alongside annual amendments to the Uniform Statistical Reporting Plan.",
+	"status": "active",
+	"notes": "Re-fetched and re-verified 2026-08-31 over HTTPS with a browser user agent (WebFetch gets 403), HTTP 200, 87,174 bytes. All four claims matched as literal strings, including the seven-item procedure list rendered as 'Assignment by AnalogyStandard ExceptionsSingle EnterpriseMultiple EnterprisesMiscellaneous EmployeesGeneral Inclusions and General ExclusionsSpecial Industries'. The Part 3 / California Code of Regulations claim was added on this pass because it is on the page and the prose relies on it. A byte-level grep of the fetched page returns ZERO occurrences of 'NCCI' or 'National Council'. URL RE-CHECKED 2026-08-31: HTTP 200, no redirect, 87,290 bytes. All four claims re-matched today, including the full seven-item procedure list. A fresh grep for NCCI or National Council again returns ZERO hits.",
+	"officialHost": true
+}

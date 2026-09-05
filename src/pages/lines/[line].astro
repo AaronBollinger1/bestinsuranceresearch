@@ -1,0 +1,310 @@
+---
+/**
+ * One line, and everything this library holds on it.
+ *
+ * This is an index, not a reading. It asserts nothing of its own: every check,
+ * question and example on it was already published elsewhere on the site with
+ * its citation attached, and the page says so at the top so no reader mistakes
+ * it for a written coverage page.
+ *
+ * Only lines that clear the substance threshold get a page. The nine lines the
+ * corpus holds nothing on are listed as gaps on /lines instead, because a hub
+ * with nothing behind it is a stub dressed as coverage.
+ */
+import { ArrowRight, CircleAlert, FileText, TriangleAlert } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Callout from '../../components/Callout.astro';
+import Handoff from '../../components/Handoff.astro';
+import SourceLedger from '../../components/SourceLedger.astro';
+import { stripMarkers } from '../../lib/citations';
+import { ledgerFor, loadCorpus } from '../../lib/corpus';
+import { allLineHubs } from '../../lib/line-hub';
+import { iconFor } from '../../lib/guide-icons';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
+
+export async function getStaticPaths() {
+	const corpus = await loadCorpus();
+	return allLineHubs(corpus)
+		.filter((hub) => hub.hasSubstance)
+		.map((hub) => ({ params: { line: hub.line }, props: { hub, corpus } }));
+}
+
+const { hub, corpus } = Astro.props;
+const TODAY = import.meta.env.PUBLIC_BUILD_DATE || new Date().toISOString().slice(0, 10);
+
+const sources = ledgerFor(hub.sourceIds, corpus.sourceById, `line hub "${hub.line}"`);
+const path = `/lines/${hub.line}`;
+
+/* Checks grouped by the module that publishes them, because a reader who wants
+   to act on one needs to know which worksheet to open. */
+const byModule = hub.moduleIds.map((m) => ({
+	...m,
+	checks: hub.checks.filter((c) => c.moduleId === m.id),
+}));
+
+const FAMILY_LABEL: Record<string, string> = {
+	commercial: 'Commercial lines',
+	personal: 'Personal lines',
+	health: 'Benefits and health',
+	life: 'Life',
+};
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'All lines', path: '/lines' },
+	{ name: hub.label, path },
+];
+
+const description = `Everything BestInsurance Research holds on ${hub.label.toLowerCase()}: ${hub.checks.length} cited checks, ${hub.questionIds.length} answered questions, ${hub.exampleIds.length} worked examples and ${hub.sourceIds.length} source records carrying ${hub.claimCount.toLocaleString('en-US')} recorded claims. Free to read, no account, nothing to fill in.`;
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: `${hub.label}: what this library holds`,
+		path,
+		description,
+		items: [
+			...(hub.coverageId ? [{ name: `${hub.label} coverage page`, path: `/insurance/${hub.coverageId}` }] : []),
+			...hub.moduleIds.map((m) => ({ name: m.name, path: `/tools/${m.id}` })),
+			...hub.questionIds.map((q) => ({ name: q.question, path: `/questions/${q.id}` })),
+		],
+	}),
+);
+---
+
+<BaseLayout title={`${hub.label}: the evidence`} description={description} jsonLd={jsonLd} pageType="editorial">
+	<article>
+		<header class="band band-tight">
+			<div class="shell">
+				<Breadcrumbs trail={trail} />
+				<span class="eyebrow">{FAMILY_LABEL[hub.family] ?? hub.family} &middot; line index</span>
+				<h1>{hub.label}</h1>
+				<p class="page-lede">{description}</p>
+
+				<div class="figures" style="margin-top:var(--s-5)">
+					<div class="figure"><b>{hub.checks.length}</b><span>cited checks</span></div>
+					<div class="figure"><b>{hub.sourceIds.length}</b><span>source records</span></div>
+					<div class="figure"><b>{hub.claimCount.toLocaleString('en-US')}</b><span>recorded claims</span></div>
+					<div class="figure"><b>{hub.questionIds.length}</b><span>answered questions</span></div>
+				</div>
+			</div>
+		</header>
+
+		<section class="band band-tight band-first">
+			<div class="shell">
+				<Callout tone="limit" label="What this page is">
+					<p>
+						An index of what this library holds on {hub.label.toLowerCase()}, not a written reading
+						of the line. Nothing here is asserted by this page: every check, question and example
+						below was published elsewhere on this site with its citation attached, and this page
+						only gathers them.
+					</p>
+					{
+						hub.coverageId ? (
+							<p>
+								A written coverage page for this line does exist:{' '}
+								<a href={`/insurance/${hub.coverageId}`}>{hub.coverageName}</a>. Start there if you
+								want the line explained rather than indexed.
+							</p>
+						) : (
+							<p>
+								<strong>No written coverage page for this line yet.</strong> That is a real gap and
+								it is stated rather than hidden. The material below is nonetheless cited and
+								reviewed to the same standard as the rest of the site.
+							</p>
+						)
+					}
+				</Callout>
+			</div>
+		</section>
+
+		{
+			hub.coverageId && (
+				<section class="band band-tight" aria-labelledby="written">
+					<div class="shell">
+						<span class="eyebrow">Written for this line</span>
+						<h2 id="written">Read the line, not just the index</h2>
+						<div class="card-grid">
+							<a class="card" href={`/insurance/${hub.coverageId}`}>
+								<h3 class="card-title">{hub.coverageName}</h3>
+								<p>The reference page: what it covers, what it excludes, what goes wrong, and what an underwriter asks. Every statement cited.</p>
+								<div class="card-foot"><span class="meta">Coverage page</span><ArrowRight size={15} aria-hidden="true" /></div>
+							</a>
+							<a class="card" href={`/guides/${hub.guideId}`}>
+								<h3 class="card-title">{hub.coverageName} guide</h3>
+								<p>The same evidence arranged for a first encounter with the line, in eight deep-linkable sections.</p>
+								<div class="card-foot"><span class="meta">Guide</span><ArrowRight size={15} aria-hidden="true" /></div>
+							</a>
+						</div>
+					</div>
+				</section>
+			)
+		}
+
+		{
+			byModule.length > 0 && (
+				<section class="band band-tight" aria-labelledby="checks">
+					<div class="shell">
+						<span class="eyebrow">Published checks</span>
+						<h2 id="checks">{hub.checks.length} checks that bear on this line</h2>
+						<div class="prose">
+							<p>
+								These are the deterministic checks the worksheets run. Each one cites the source it
+								rests on, so a check is readable as a published rule whether or not you ever open
+								the worksheet. Nothing is submitted and no field you type leaves your browser.
+							</p>
+						</div>
+						{byModule.map((m) => (
+							<div class="module-block">
+								<h3>
+									<a href={`/tools/${m.id}`}>{m.name}</a>{' '}
+									<span class="meta">{m.checks.length} of {m.ruleCount} checks apply here</span>
+								</h3>
+								<ul class="check-list">
+									{m.checks.map((c) => (
+										<li class={`check check-${c.severity}`}>
+											{c.severity === 'high' ? (
+												<TriangleAlert size={14} aria-hidden="true" />
+											) : (
+												<CircleAlert size={14} aria-hidden="true" />
+											)}
+											<div>
+												<p class="check-title">{stripMarkers(c.title)}</p>
+												<p class="check-detail">{stripMarkers(c.detail)}</p>
+												<p class="check-meta">
+													<span class="mono">{c.kind}</span>
+													{c.sourceIds.map((sid) => (
+														<>
+															{' '}
+															<a class="mono" href={`/sources/${sid}`}>{sid}</a>
+														</>
+													))}
+													{c.relatedQuestion && (
+														<>
+															{' '}
+															<a href={`/questions/${c.relatedQuestion}`}>Related question</a>
+														</>
+													)}
+												</p>
+											</div>
+										</li>
+									))}
+								</ul>
+							</div>
+						))}
+					</div>
+				</section>
+			)
+		}
+
+		{
+			hub.questionIds.length > 0 && (
+				<section class="band band-paper" aria-labelledby="questions">
+					<div class="shell">
+						<span class="eyebrow">Answered</span>
+						<h2 id="questions">Questions this library answers on {hub.label.toLowerCase()}</h2>
+						<ul class="link-list">
+							{hub.questionIds.map((q) => (
+								<li><FileText size={14} aria-hidden="true" /> <a href={`/questions/${q.id}`}>{q.question}</a></li>
+							))}
+						</ul>
+					</div>
+				</section>
+			)
+		}
+
+		{
+			hub.exampleIds.length > 0 && (
+				<section class="band band-tight" aria-labelledby="examples">
+					<div class="shell">
+						<span class="eyebrow">Worked readings</span>
+						<h2 id="examples">Examples touching this line</h2>
+						<ul class="link-list">
+							{hub.exampleIds.map((e) => (
+								<li><FileText size={14} aria-hidden="true" /> <a href={`/examples/${e.id}`}>{e.title}</a></li>
+							))}
+						</ul>
+					</div>
+				</section>
+			)
+		}
+
+		{
+			hub.adjacent.length > 0 && (
+				<section class="band band-tight" aria-labelledby="adjacent">
+					<div class="shell">
+						<span class="eyebrow">Read together</span>
+						<h2 id="adjacent">Lines that share a worksheet with this one</h2>
+						<div class="prose">
+							<p>
+								A worksheet that covers this line also covers these, which usually means the same
+								decision touches all of them.
+							</p>
+						</div>
+						<ul class="chip-list">
+							{hub.adjacent.map((l) => (
+								<li><a class="chip-link" href={`/lines/${l}`}>{l.replace(/-/g, ' ')}</a></li>
+							))}
+						</ul>
+					</div>
+				</section>
+			)
+		}
+
+		<section class="band band-tight">
+			<div class="shell">
+				<SourceLedger sources={sources} today={TODAY} />
+			</div>
+		</section>
+
+		<section class="band band-tight">
+			<div class="shell">
+				<Handoff
+					sourcePath={path}
+					family={hub.family as 'commercial' | 'personal' | 'life' | 'health' | 'general'}
+					line={hub.line}
+					reason={`Everything above is free to read and nothing on this page collects anything. If you want someone licensed to look at your own ${hub.label.toLowerCase()} position, that is a separate step and it is optional.`}
+				/>
+			</div>
+		</section>
+	</article>
+</BaseLayout>
+
+<style>
+	.module-block { margin-top: var(--s-5); }
+	.module-block h3 {
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-weight: 400;
+		margin-bottom: var(--s-3);
+	}
+	.module-block h3 .meta { font-size: var(--text-2xs); }
+
+	.check-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+	.check { display: flex; gap: 8px; align-items: flex-start; background: var(--paper); padding: var(--s-3) var(--s-4); }
+	.check svg { flex: none; margin-top: 3px; }
+	.check-high svg { color: var(--gold-edge); }
+	.check-medium svg, .check-low svg { color: var(--faint); }
+	.check-title { margin: 0; font-size: var(--text-sm); font-weight: 600; line-height: 1.45; }
+	.check-detail { margin: 3px 0 0; font-size: var(--text-sm); color: var(--ink-2); line-height: 1.5; max-width: 78ch; }
+	.check-meta { margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: var(--text-2xs); }
+	.check-meta .mono { font-family: var(--font-mono); }
+
+	.link-list { list-style: none; margin: var(--s-3) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--s-2); }
+	.link-list li { display: flex; align-items: flex-start; gap: 7px; font-size: var(--text-base); }
+	.link-list svg { flex: none; margin-top: 4px; color: var(--gold-text); }
+
+	.chip-list { list-style: none; margin: var(--s-3) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+	.chip-link {
+		display: inline-block;
+		padding: 4px 9px;
+		border: 1px solid var(--line-strong);
+		font-size: var(--text-xs);
+		text-decoration: none;
+		color: var(--ink-2);
+	}
+	.chip-link:hover { border-color: var(--gold-edge); color: var(--ink); }
+</style>

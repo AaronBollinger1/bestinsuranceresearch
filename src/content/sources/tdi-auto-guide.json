@@ -1,0 +1,25 @@
+{
+	"title": "Auto insurance guide (CB020) - Texas Department of Insurance",
+	"publisher": "Texas Department of Insurance",
+	"url": "https://www.tdi.texas.gov/pubs/consumer/cb020.html",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "TX",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"TDI states that Texas law requires at least $30,000 of coverage for injuries per person, up to a total of $60,000 per accident, and $25,000 of coverage for property damage.",
+		"TDI states that all auto policies in Texas include personal injury protection coverage, and that a policyholder who does not want it must tell the company in writing.",
+		"TDI states that insurance companies must offer uninsured/underinsured motorist coverage, and that a policyholder who does not want it must tell the company in writing.",
+		"The guide carries a last updated date of December 11, 2025.",
+		"The guide states no effective date for the minimum amounts."
+	],
+	"updateCadence": "TDI revises its consumer guides periodically; re-verify annually and after each legislative session.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Published: 2025-12-11"
+}

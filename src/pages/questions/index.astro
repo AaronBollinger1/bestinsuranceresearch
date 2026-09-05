@@ -1,0 +1,245 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import StateBlock from '../../components/StateBlock.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { stripMarkers } from '../../lib/citations';
+import { loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
+
+const corpus = await loadCorpus();
+
+const questions = [...corpus.questions].sort((a, b) => a.data.question.localeCompare(b.data.question));
+const families = [...new Set(questions.map((q) => q.data.family))].sort();
+const lines = [...new Set(questions.flatMap((q) => q.data.lines))].sort();
+const states = [...new Set(questions.flatMap((q) => q.data.states))].sort();
+const confidences = [...new Set(questions.map((q) => q.data.confidence))];
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Questions', path: '/questions' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'Question library',
+		path: '/questions',
+		description: 'Every canonical question in the BestInsurance Research library, with its confidence status and review date.',
+		items: questions.map((q) => ({ name: q.data.question, path: `/questions/${q.id}` })),
+	}),
+);
+
+const FAMILY_LABEL: Record<string, string> = {
+	personal: 'Personal',
+	commercial: 'Commercial',
+	life: 'Life',
+	health: 'Health and benefits',
+};
+---
+
+<BaseLayout
+	title="Question library"
+	description="Every canonical question in the library, with its confidence status, source count, and review date."
+	jsonLd={jsonLd}
+	pageType="question"
+>
+	<PageHeader
+		eyebrow="Question library"
+		title="Every canonical question"
+		lede={`${questions.length} questions. One canonical URL each, no near-duplicates, and a visible source ledger on every one.`}
+		trail={trail}
+	/>
+
+	<section class="band band-tight" aria-labelledby="filters-title">
+		<div class="shell">
+			<h2 id="filters-title" class="u-visually-hidden">Filter the library</h2>
+
+			<div
+				id="q-filters"
+				style="display:grid;gap:var(--s-5);padding:var(--s-5);border:1px solid var(--line-strong);border-radius:var(--r-4);background:var(--paper)"
+			>
+				<div class="field-row">
+					<div class="field">
+						<label for="filter-line">Line</label>
+						<select id="filter-line" data-filter="line">
+							<option value="any">All lines</option>
+							{lines.map((line) => <option value={line}>{line.replace(/-/g, ' ')}</option>)}
+						</select>
+					</div>
+					<div class="field">
+						<label for="filter-state">State</label>
+						<select id="filter-state" data-filter="state">
+							<option value="any">All states</option>
+							{states.map((state) => <option value={state}>{state}</option>)}
+						</select>
+					</div>
+					<div class="field">
+						<label for="filter-confidence">Confidence</label>
+						<select id="filter-confidence" data-filter="confidence">
+							<option value="any">Any confidence</option>
+							{confidences.map((c) => <option value={c}>{c}</option>)}
+						</select>
+					</div>
+					<div class="field">
+						<label for="filter-sort">Order</label>
+						<select id="filter-sort" data-sort>
+							<option value="alpha">Alphabetical</option>
+							<option value="reviewed">Most recently reviewed</option>
+							<option value="sources">Most sources</option>
+						</select>
+					</div>
+				</div>
+
+				<fieldset class="fieldset">
+					<legend>Insurance type</legend>
+					<div class="check-inline">
+						{
+							families.map((family) => (
+								<label class="check">
+									<input type="checkbox" data-filter-family={family} checked />
+									<span>{FAMILY_LABEL[family] ?? family}</span>
+								</label>
+							))
+						}
+					</div>
+				</fieldset>
+
+				<div style="display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:center">
+					<button class="btn btn-secondary btn-sm" type="button" id="q-reset">Reset filters</button>
+					<p class="live-status" id="q-count" role="status" aria-live="polite"></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight" aria-labelledby="results-title">
+		<div class="shell">
+			<h2 id="results-title" class="u-visually-hidden">Results</h2>
+			<div class="rows" id="q-rows">
+				{
+					questions.map((question) => (
+						<a
+							class="row"
+							href={`/questions/${question.id}`}
+							data-row
+							data-family={question.data.family}
+							data-lines={question.data.lines.join(' ')}
+							data-states={question.data.states.join(' ')}
+							data-confidence={question.data.confidence}
+							data-reviewed={question.data.lastReviewed}
+							data-sources={question.data.sourceIds.length}
+							data-title={question.data.question}
+						>
+							<div>
+								<h3 class="row-title">{question.data.question}</h3>
+								<p>{stripMarkers(question.data.shortAnswer).slice(0, 200)}</p>
+								<div class="row-meta">
+									<StatusChip kind={question.data.confidence} />
+									{question.data.reviewState !== 'reviewed' && <StatusChip kind={question.data.reviewState} />}
+									<span class="meta">{FAMILY_LABEL[question.data.family] ?? question.data.family}</span>
+									<span class="meta">{question.data.lines.join(', ')}</span>
+									{question.data.states.length > 0 && <span class="meta">{question.data.states.join(', ')}</span>}
+									<span class="meta">{question.data.sourceIds.length} sources</span>
+									<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+								</div>
+							</div>
+							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+						</a>
+					))
+				}
+			</div>
+
+			<div id="q-none" hidden style="margin-top: var(--s-6)">
+				<StateBlock kind="no-result" heading="No question matches those filters.">
+					<p>Widen a filter, or clear them all and start again.</p>
+					<div class="state-actions">
+						<button class="btn btn-secondary btn-sm" type="button" data-reset-proxy>Clear all filters</button>
+						<a class="btn btn-secondary btn-sm" href="/ask">Ask in your own words</a>
+					</div>
+				</StateBlock>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	const container = document.getElementById('q-rows');
+	const count = document.getElementById('q-count');
+	const none = document.getElementById('q-none');
+	const resetButton = document.getElementById('q-reset');
+	if (!container) throw new Error('questions: rows container missing');
+
+	const rows = [...container.querySelectorAll<HTMLElement>('[data-row]')];
+	const selects = [...document.querySelectorAll<HTMLSelectElement>('[data-filter]')];
+	const familyBoxes = [...document.querySelectorAll<HTMLInputElement>('[data-filter-family]')];
+	const sortSelect = document.querySelector<HTMLSelectElement>('[data-sort]');
+
+	function apply() {
+		const line = document.querySelector<HTMLSelectElement>('[data-filter="line"]')?.value || 'any';
+		const state = document.querySelector<HTMLSelectElement>('[data-filter="state"]')?.value || 'any';
+		const confidence = document.querySelector<HTMLSelectElement>('[data-filter="confidence"]')?.value || 'any';
+		const allowedFamilies = familyBoxes.filter((box) => box.checked).map((box) => box.dataset.filterFamily);
+
+		let visible = 0;
+		for (const row of rows) {
+			const lines = (row.dataset.lines || '').split(' ');
+			const states = (row.dataset.states || '').split(' ').filter(Boolean);
+			const ok =
+				allowedFamilies.includes(row.dataset.family || '') &&
+				(line === 'any' || lines.includes(line)) &&
+				(state === 'any' || states.includes(state)) &&
+				(confidence === 'any' || row.dataset.confidence === confidence);
+			row.hidden = !ok;
+			if (ok) visible += 1;
+		}
+
+		if (none) none.hidden = visible > 0;
+		if (count) {
+			count.textContent =
+				visible === rows.length
+					? `Showing all ${rows.length} questions.`
+					: `Showing ${visible} of ${rows.length} questions.`;
+		}
+	}
+
+	function sort() {
+		const mode = sortSelect?.value || 'alpha';
+		const sorted = [...rows].sort((a, b) => {
+			if (mode === 'reviewed') return (b.dataset.reviewed || '').localeCompare(a.dataset.reviewed || '');
+			if (mode === 'sources') return Number(b.dataset.sources || 0) - Number(a.dataset.sources || 0);
+			return (a.dataset.title || '').localeCompare(b.dataset.title || '');
+		});
+		sorted.forEach((row) => container!.append(row));
+	}
+
+	selects.forEach((select) => select.addEventListener('change', apply));
+	familyBoxes.forEach((box) => box.addEventListener('change', apply));
+	sortSelect?.addEventListener('change', () => {
+		sort();
+		apply();
+	});
+
+	function reset() {
+		selects.forEach((select) => {
+			select.value = 'any';
+		});
+		familyBoxes.forEach((box) => {
+			box.checked = true;
+		});
+		if (sortSelect) sortSelect.value = 'alpha';
+		sort();
+		apply();
+	}
+
+	resetButton?.addEventListener('click', reset);
+	document.querySelectorAll<HTMLButtonElement>('[data-reset-proxy]').forEach((button) => {
+		button.addEventListener('click', reset);
+	});
+
+	apply();
+</script>

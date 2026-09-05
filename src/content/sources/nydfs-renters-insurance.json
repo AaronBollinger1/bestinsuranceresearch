@@ -1,0 +1,25 @@
+{
+	"title": "Renter's Insurance (consumer guidance)",
+	"publisher": "New York State Department of Financial Services",
+	"url": "https://www.dfs.ny.gov/consumers/help_for_homeowners/renters_tenants/renters_insurance",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "NY",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"A landlord does not provide insurance for a tenant's personal property.",
+		"An exception to this can occur if the landlord was aware of a prior hazardous condition, failed to correct it in a reasonable time frame, and as a result the tenant's property was damaged.",
+		"Renter's insurance is described in coverage parts including personal property, loss of use, personal liability, and medical payments to others.",
+		"The covered causes of loss the page lists include fire, smoke, theft, vandalism, windstorm, hail, lightning, explosion, falling objects, weight of snow, ice and sleet, and water damage from plumbing or appliance failure.",
+		"Liability protection is described as covering injuries that others sustain while at the tenant's home, including medical expenses and any resulting lawsuits, and damage to other people's property."
+	],
+	"updateCadence": "NY DFS revises consumer pages periodically",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: not stated on the page"
+}

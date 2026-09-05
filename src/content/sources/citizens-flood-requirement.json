@@ -1,0 +1,23 @@
+{
+	"title": "New Flood Requirements Begin January 1 - Citizens Property Insurance Corporation",
+	"publisher": "Citizens Property Insurance Corporation",
+	"url": "https://www.citizensfla.com/-/new-flood-requirements-begin-january-1",
+	"sourceType": "official-documentation",
+	"jurisdiction": "FL",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Citizens states that existing Personal Lines residential policyholders, except for condominium unit owner policies, in designated Federal Emergency Management Agency flood hazard areas whose policy includes wind coverage were required to have flood insurance when their policies renewed on or after July 1, 2023.",
+		"Citizens states that the flood insurance requirement then phases in by dwelling replacement cost: $600,000 or more from January 1, 2024; $500,000 or more from January 1, 2025; $400,000 or more from January 1, 2026; and all remaining eligible Personal Lines residential policies from January 1, 2027.",
+		"Citizens states that the required flood policy must come from the National Flood Insurance Program or a private carrier authorized to write flood insurance."
+	],
+	"updateCadence": "Re-verify each January as the next phase takes effect and after each legislative session.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Published: 2023-12-04 Effective: 2024-01-01"
+}

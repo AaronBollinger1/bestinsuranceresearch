@@ -1,0 +1,24 @@
+{
+	"title": "42 U.S.C. 4012a - Flood insurance purchase and compliance requirements and escrow accounts",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title42-section4012a&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"42 U.S.C. 4012a(b)(1)(A) bars a regulated lending institution from making, increasing, extending, or renewing a loan secured by improved real estate or a mobile home located in a special flood hazard area in which flood insurance has been made available, unless the building or mobile home and any personal property securing the loan is covered for the term of the loan by flood insurance in an amount at least equal to the outstanding principal balance of the loan or the maximum limit of coverage made available under the Act with respect to the particular type of property, whichever is less.",
+		"42 U.S.C. 4012a(b)(1)(B) requires such institutions to accept private flood insurance as satisfaction of the flood insurance coverage requirement if the coverage it provides meets the requirements for coverage under subparagraph (A).",
+		"42 U.S.C. 4012a(a) conditions federal financial assistance for acquisition or construction purposes in a special flood hazard area on flood insurance in an amount at least equal to the development or project cost, less estimated land cost, or to the maximum limit of coverage made available with respect to the particular type of property, whichever is less, and states that coverage continues during the life of the property regardless of transfer of ownership.",
+		"42 U.S.C. 4012a(d) requires flood insurance premiums and fees for residential improved real estate or a mobile home to be paid to the regulated lending institution or servicer and deposited in an escrow account on behalf of the borrower, subject to exceptions in subsection (d) that include a lending institution with total assets of less than $1,000,000,000 that was not required to escrow taxes and insurance before July 6, 2012, a loan junior or subordinate to a senior lien on which flood insurance is being maintained, a condominium or cooperative unit covered by a master flood policy paid through common expenses, a loan for a business purpose, a home equity line of credit, a nonperforming loan, and a loan with a term not exceeding 12 months.",
+		"Under 42 U.S.C. 4012a(e), if the borrower fails to purchase required flood insurance within 45 days after notification, the lender or servicer shall purchase the insurance on behalf of the borrower and may charge the borrower for the cost."
+	],
+	"updateCadence": "Amended by Congress; re-check the prelim edition on uscode.house.gov before each publication cycle.",
+	"status": "active",
+	"officialHost": true
+}

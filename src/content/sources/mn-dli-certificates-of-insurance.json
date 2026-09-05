@@ -1,0 +1,22 @@
+{
+	"title": "Certificates of insurance (contractor licensing guidance)",
+	"publisher": "Minnesota Department of Labor and Industry",
+	"url": "https://www.dli.mn.gov/business/get-licenses-and-permits/certificates-insurance",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "MN",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The Minnesota Department of Labor and Industry states that the ACORD 25 certificate of liability insurance form, or a similar form filed with the Minnesota Department of Commerce, can be used to provide evidence of general liability insurance coverage.",
+		"The department states that the form can also be used to report workers' compensation insurance coverage.",
+		"The department requires a certificate to be submitted with an application form, a renewal form, or when updating general liability insurance coverage."
+	],
+	"updateCadence": "Agency web page; re-check annually.",
+	"status": "active",
+	"officialHost": true
+}

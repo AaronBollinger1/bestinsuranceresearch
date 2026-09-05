@@ -1,0 +1,25 @@
+{
+	"title": "Commercial Insurance Submission Checklist",
+	"publisher": "Hedge Specialty (Taven Insurance Services LLC dba Hedge Specialty), a wholesale insurance brokerage",
+	"url": "https://www.hedgespecialty.com/commercial-insurance-submission-checklist",
+	"sourceType": "secondary-analysis",
+	"jurisdiction": "US",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"The page describes Hedge Specialty as a wholesale insurance brokerage helping licensed retail professionals prepare and place difficult commercial risks.",
+		"Its checklist tells the preparer to complete the primary commercial application and the line-specific sections accepted by the intended market.",
+		"Its checklist tells the preparer to provide currently valued loss runs for the relevant entities, lines, and policy periods when available.",
+		"Under line-specific supporting records, it lists for Property: statement of values, construction and system updates, protection details, business income support, and useful current photos.",
+		"The page states of itself: Preparation is not release authority. This is a preparation checklist, not a universal market requirement."
+	],
+	"updateCadence": "Marketing and education page on the firm's own site; no published revision schedule.",
+	"status": "active",
+	"notes": "Fetched today and the quoted checklist lines confirmed on the page. The page carries a date of 2026-08-25, recorded here as publishedDate although the page does not label it as first publication rather than last update. This is a wholesale broker's preparation checklist, which is exactly the kind of document that describes common market practice, and the page itself disclaims being a universal market requirement. That self-limit is quoted in the claims above and is carried into the prose, so this source is never used to state a rule about what any carrier must be given. It does not state how many years of loss runs a submission should carry; that number comes only from hylant-loss-runs. Published: 2026-08-25",
+	"officialHost": true
+}

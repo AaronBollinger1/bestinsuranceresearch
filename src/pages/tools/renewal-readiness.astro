@@ -1,0 +1,363 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import Handoff from '../../components/Handoff.astro';
+import SourceLedger from '../../components/SourceLedger.astro';
+import StateBlock from '../../components/StateBlock.astro';
+import ToolFrame from '../../components/ToolFrame.astro';
+import { createCiter, escapeHtml } from '../../lib/citations';
+import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
+import { breadcrumbs, graph, organization, webApplication, website } from '../../lib/schema';
+import { TODAY } from '../../lib/today';
+
+const corpus = await loadCorpus();
+const tool = corpus.tools.find((t) => t.id === 'renewal-readiness');
+if (!tool) throw new Error('Tool registry entry "renewal-readiness" is missing.');
+
+const sourceIds = idsOf(tool.data.sourceIds);
+const sources = ledgerFor(sourceIds, corpus.sourceById, 'tool "renewal-readiness"');
+const cite = createCiter(sourceIds, 'tool "renewal-readiness"');
+
+const items = tool.data.items;
+const lines = [...new Set(items.flatMap((i) => i.lines))].sort();
+const groups: Array<{ name: string; items: typeof items }> = [];
+for (const item of items) {
+	const existing = groups.find((g) => g.name === item.group);
+	if (existing) existing.items.push(item);
+	else groups.push({ name: item.group, items: [item] });
+}
+
+const KIND_LABEL: Record<string, string> = {
+	document: 'Document',
+	schedule: 'Schedule',
+	limit: 'Limit',
+	endorsement: 'Endorsement',
+	evidence: 'Evidence',
+	question: 'Question',
+	trigger: 'Change trigger',
+};
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Tools', path: '/tools' },
+	{ name: tool.data.name, path: '/tools/renewal-readiness' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	webApplication({
+		name: tool.data.name,
+		path: '/tools/renewal-readiness',
+		description: tool.data.summary,
+		features: [
+			'Filters the checklist to the lines actually in force',
+			'Separates routine documents from change triggers',
+			'Saves locally in the browser',
+			'Printable readiness checklist',
+			'No contact capture and no document upload',
+		],
+	}),
+);
+---
+
+<BaseLayout
+	title={tool.data.name}
+	description={tool.data.summary}
+	jsonLd={jsonLd}
+	pageType="tool"
+	bodyClass="tool-page"
+>
+	<ToolFrame tool={tool} toolId="renewal-readiness" />
+
+	<section class="band band-tight">
+		<div class="shell">
+			<div class="no-print" style="display:grid;gap:var(--s-5);padding:var(--s-5);border:1px solid var(--line-strong);border-radius:var(--r-4);background:var(--paper)">
+				<div>
+					<span class="meta" style="display:block;margin-bottom:var(--s-2)" id="context-label">Context</span>
+					<div class="segmented" role="group" aria-labelledby="context-label" id="context-mode">
+						<button type="button" data-context="personal" aria-pressed="true">Personal</button>
+						<button type="button" data-context="commercial" aria-pressed="false">Commercial</button>
+					</div>
+				</div>
+
+				<fieldset class="fieldset">
+					<legend>Which lines are in force?</legend>
+					<span class="hint" style="display:block;margin-bottom:var(--s-2)">
+						Untick everything you do not carry. A shorter list is one you might actually finish.
+					</span>
+					<div class="check-inline" id="line-filters">
+						{
+							lines.map((line) => (
+								<label class="check">
+									<input type="checkbox" data-line={line} checked />
+									<span>{line.replace(/-/g, ' ')}</span>
+								</label>
+							))
+						}
+					</div>
+				</fieldset>
+
+				<div class="field" style="max-width: 260px">
+					<label for="renewal-date">Renewal date</label>
+					<input type="date" id="renewal-date" />
+					<span class="hint">Used only to work out how far off each item is. It stays on this device.</span>
+				</div>
+
+				<p class="live-status" id="readiness-count" role="status" aria-live="polite"></p>
+			</div>
+
+			<p class="print-only" style="font-size: 10pt">
+				<strong>Renewal date:</strong> <span data-print-date>not specified</span> &nbsp;
+				<strong>Context:</strong> <span data-print-context>personal</span>
+			</p>
+
+			<Callout tone="warn">
+				<p>
+					<strong>Nothing here has been submitted to an insurer.</strong> This is a preparation
+					checklist for your own use. Ticking every box does not mean a renewal has been marketed,
+					received, reviewed, or accepted, and it does not oblige any insurer to offer terms.
+				</p>
+				<p>
+					Timing guidance below is common market practice, not a rule. Your policy, your insurer, and
+					your state may all impose different notice periods, and the policy controls.
+				</p>
+			</Callout>
+
+			{
+				groups.length === 0 ? (
+					<div style="margin-top: var(--s-6)">
+						<StateBlock kind="empty" heading="This tool has no reviewed rows yet.">
+							<p>
+								The interface works, but its checklist content has not passed review, so nothing is
+								shown rather than showing something unsourced.
+							</p>
+						</StateBlock>
+					</div>
+				) : (
+					<div id="readiness" style="margin-top: var(--s-6)">
+						{groups.map((group, groupIndex) => (
+							<section class="answer-section" data-group aria-labelledby={`rgroup-${groupIndex}`}>
+								<h2 id={`rgroup-${groupIndex}`}>{group.name}</h2>
+								<ul class="fact-list">
+									{group.items.map((item, itemIndex) => {
+										const key = `g${groupIndex}i${itemIndex}`;
+										return (
+											<li
+												data-item
+												data-applies={item.appliesTo.join(' ')}
+												data-lines={item.lines.join(' ')}
+												style="grid-template-columns: 24px minmax(0, 1fr)"
+											>
+												<label class="check" style="grid-template-columns: 18px; padding: 0; min-height: 0; margin-top: 3px">
+													<input type="checkbox" data-field="done" data-key={key} />
+													<span class="u-visually-hidden">Gathered: {item.label}</span>
+												</label>
+												<div>
+													<p style="margin: 0">
+														<strong>{item.label}</strong>{' '}
+														<span class="status status-plain">{KIND_LABEL[item.kind] ?? item.kind}</span>
+													</p>
+													<p style="margin: var(--s-1) 0 0; color: var(--muted); font-size: var(--text-sm)"
+														set:html={cite.inline(item.detail)} />
+													<div class="field no-print" style="margin-top: var(--s-2); max-width: 420px">
+														<label class="u-visually-hidden" for={`rnote-${key}`}>Note about {item.label}</label>
+														<input type="text" id={`rnote-${key}`} data-field="note" data-key={key}
+															placeholder="Local note" style="min-height:36px;padding:6px 8px;font-size:var(--text-sm)" />
+													</div>
+													<p class="print-only" style="font-size: 9pt; margin-top: 4pt">
+														Note: <span data-print-note={key}></span>
+													</p>
+												</div>
+											</li>
+										);
+									})}
+								</ul>
+							</section>
+						))}
+					</div>
+				)
+			}
+
+			<div id="readiness-none" hidden style="margin-top: var(--s-6)">
+				<StateBlock kind="no-result" heading="No item matches the lines you selected.">
+					<p>Tick at least one line, or switch context between personal and commercial.</p>
+					<div class="state-actions">
+						<button class="btn btn-secondary btn-sm" type="button" id="readiness-reset-filters">
+							Select every line again
+						</button>
+					</div>
+				</StateBlock>
+			</div>
+		</div>
+	</section>
+
+	{
+		sources.length > 0 && (
+			<section class="band band-tight band-paper">
+				<div class="shell">
+					<SourceLedger sources={sources} today={TODAY} headingId="tool-source-ledger" />
+				</div>
+			</section>
+		)
+	}
+
+	<section class="band band-tight no-print">
+		<div class="shell">
+			<Handoff
+				sourcePath="/tools/renewal-readiness"
+				family="general"
+				sourceTool="renewal-readiness"
+				pageType="tool"
+				reason={escapeHtml('A licensed broker can take a prepared file and actually market it. Preparation is the part you can do without anyone, and it is the part that most often decides how a renewal goes.')}
+			/>
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	import { completionBucket } from '../../lib/tool-storage';
+
+	const root = document.getElementById('readiness');
+	const countEl = document.getElementById('readiness-count');
+	const noneState = document.getElementById('readiness-none');
+	const modeGroup = document.getElementById('context-mode');
+	const lineBoxes = [...document.querySelectorAll<HTMLInputElement>('[data-line]')];
+	const dateInput = document.getElementById('renewal-date') as HTMLInputElement | null;
+	const printDate = document.querySelector<HTMLElement>('[data-print-date]');
+	const printContext = document.querySelector<HTMLElement>('[data-print-context]');
+
+	let context: 'personal' | 'commercial' = 'personal';
+
+	const items = () => [...document.querySelectorAll<HTMLElement>('[data-item]')];
+	const fields = () => [...document.querySelectorAll<HTMLInputElement>('[data-field][data-key]')];
+
+	function apply() {
+		const active = lineBoxes.filter((b) => b.checked).map((b) => b.dataset.line);
+		let visible = 0;
+		let done = 0;
+
+		for (const item of items()) {
+			const applies = (item.dataset.applies || '').split(' ');
+			const itemLines = (item.dataset.lines || '').split(' ').filter(Boolean);
+			const lineOk = itemLines.length === 0 || itemLines.some((l) => active.includes(l));
+			const ok = applies.includes(context) && lineOk;
+			item.hidden = !ok;
+			if (!ok) continue;
+			visible += 1;
+			const box = item.querySelector<HTMLInputElement>('[data-field="done"]');
+			if (box?.checked) done += 1;
+		}
+
+		// Hide a group whose every row is filtered out, so the print output has no empty headings.
+		for (const group of document.querySelectorAll<HTMLElement>('[data-group]')) {
+			const anyVisible = [...group.querySelectorAll<HTMLElement>('[data-item]')].some((i) => !i.hidden);
+			group.hidden = !anyVisible;
+		}
+
+		if (noneState) noneState.hidden = visible > 0;
+		if (countEl) {
+			countEl.textContent =
+				visible === 0
+					? 'No item matches the lines selected.'
+					: `${done} of ${visible} items gathered for ${context} lines.`;
+		}
+		if (done > 0) window.birTrack?.('tool_started', { tool_name: 'renewal-readiness' });
+		return { done, visible };
+	}
+
+	modeGroup?.querySelectorAll<HTMLButtonElement>('[data-context]').forEach((button) => {
+		button.addEventListener('click', () => {
+			context = (button.dataset.context as typeof context) || 'personal';
+			modeGroup.querySelectorAll('[data-context]').forEach((other) => {
+				other.setAttribute('aria-pressed', String(other === button));
+			});
+			if (printContext) printContext.textContent = context;
+			apply();
+		});
+	});
+
+	lineBoxes.forEach((box) => box.addEventListener('change', apply));
+	root?.addEventListener('change', apply);
+	root?.addEventListener('input', (event) => {
+		const target = event.target as HTMLInputElement;
+		if (target?.dataset.field !== 'note') return;
+		const mirror = document.querySelector<HTMLElement>(`[data-print-note="${target.dataset.key}"]`);
+		if (mirror) mirror.textContent = target.value;
+	});
+
+	dateInput?.addEventListener('change', () => {
+		if (printDate) printDate.textContent = dateInput.value || 'not specified';
+	});
+
+	document.getElementById('readiness-reset-filters')?.addEventListener('click', () => {
+		lineBoxes.forEach((box) => {
+			box.checked = true;
+		});
+		apply();
+	});
+
+	window.birTool = {
+		id: 'renewal-readiness',
+		serialise() {
+			const state: Record<string, unknown> = {
+				context,
+				renewalDate: dateInput?.value || '',
+				lines: lineBoxes.filter((b) => b.checked).map((b) => b.dataset.line),
+			};
+			for (const field of fields()) {
+				state[`${field.dataset.field}:${field.dataset.key}`] =
+					field.type === 'checkbox' ? field.checked : field.value;
+			}
+			const { done, visible } = apply();
+			state.completion = completionBucket(done, visible);
+			return state;
+		},
+		restore(state) {
+			if (state.context === 'commercial' || state.context === 'personal') {
+				const button = modeGroup?.querySelector<HTMLButtonElement>(`[data-context="${state.context}"]`);
+				button?.click();
+			}
+			if (dateInput && typeof state.renewalDate === 'string') {
+				dateInput.value = state.renewalDate;
+				dateInput.dispatchEvent(new Event('change'));
+			}
+			if (Array.isArray(state.lines)) {
+				lineBoxes.forEach((box) => {
+					box.checked = (state.lines as string[]).includes(box.dataset.line || '');
+				});
+			}
+			for (const field of fields()) {
+				const stored = state[`${field.dataset.field}:${field.dataset.key}`];
+				if (stored === undefined) continue;
+				if (field.type === 'checkbox') field.checked = Boolean(stored);
+				else {
+					field.value = String(stored);
+					field.dispatchEvent(new Event('input', { bubbles: true }));
+				}
+			}
+			apply();
+		},
+		reset() {
+			for (const field of fields()) {
+				if (field.type === 'checkbox') field.checked = false;
+				else {
+					field.value = '';
+					field.dispatchEvent(new Event('input', { bubbles: true }));
+				}
+			}
+			lineBoxes.forEach((box) => {
+				box.checked = true;
+			});
+			if (dateInput) {
+				dateInput.value = '';
+				dateInput.dispatchEvent(new Event('change'));
+			}
+			modeGroup?.querySelector<HTMLButtonElement>('[data-context="personal"]')?.click();
+			apply();
+		},
+	};
+
+	apply();
+</script>

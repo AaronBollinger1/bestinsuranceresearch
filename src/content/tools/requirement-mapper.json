@@ -1,0 +1,448 @@
+{
+	"name": "Insurance Requirement Mapper",
+	"status": "live",
+	"order": 1,
+	"family": [
+		"commercial",
+		"personal"
+	],
+	"lines": [
+		"general-liability",
+		"commercial-property",
+		"commercial-auto",
+		"workers-compensation",
+		"umbrella",
+		"professional-liability"
+	],
+	"route": "/tools/requirement-mapper",
+	"summary": "Turn an agreement's insurance clause into an organized list of the policies, limits, endorsements, and evidence it asks for, and keep what was requested strictly separate from what anyone has actually confirmed.",
+	"spec": {
+		"user": "Anyone handed a contract, lease, or purchase order with an insurance requirements section who needs to work out what is actually being asked for before talking to a broker.",
+		"inputData": [
+			"Agreement or transaction type",
+			"Which requirements the agreement actually contains",
+			"Whether each requirement has been confirmed by an insurer or broker",
+			"Free-text notes, stored locally only"
+		],
+		"authoritativeSources": [
+			"California Civil Code sections 2782 and 2782.05 on construction anti-indemnity limits",
+			"State statutes on certificates of insurance and unlawful alteration",
+			"ACORD published descriptions of its certificate forms"
+		],
+		"privacyBoundary": "Everything entered stays in the browser via local storage. No upload, no server call, no account, no contact capture, and no document ingestion.",
+		"decisionRules": [
+			"Every row carries two independent states: requested by the agreement, and confirmed by an insurer or broker. They are never merged.",
+			"A row that is requested but not confirmed is surfaced as an open question, not as a gap or a failure.",
+			"A certificate of insurance is treated as evidence that a policy existed on a date, never as proof of coverage terms.",
+			"Any indemnity or additional insured wording is routed to a lawyer, because contract interpretation is a legal question."
+		],
+		"uncertainty": "A requirement list is not a coverage confirmation. Only the insurer that issued a policy can say what it covers, and only a lawyer can say what a contract clause means.",
+		"output": "A printable, non-binding checklist separating requested terms, confirmed terms, and open questions.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication. Real interactive tool with a stable canonical URL.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [
+		{
+			"group": "Read the contract first",
+			"label": "Log the indemnity clause separately from the insurance schedule",
+			"detail": "These are two different obligations. Copy the indemnity or hold-harmless wording in verbatim rather than summarizing it, and record the insurance schedule as its own set of rows. Splitting them this way is common market practice rather than a legal or filed requirement, and no source in this cluster imposes it. This tool records the clause; whether a given clause is enforceable is a legal question for a lawyer.",
+			"kind": "question",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"umbrella",
+				"commercial-auto",
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Read the contract first",
+			"label": "Record the contract date, the project type, and the owner type",
+			"detail": "California's construction anti-indemnity statutes turn on these three facts, and they reach only construction contracts. Except as provided in Sections 2782.1, 2782.2, 2782.5 and 2782.6, Civil Code Section 2782(a) voids provisions contained in, collateral to, or affecting any construction contract that purport to indemnify the promisee against liability for damages arising from the sole negligence or willful misconduct of the promisee or of the promisee's agents, servants, or independent contractors who are directly responsible to the promisee, or for defects in design furnished by those persons; subdivision (a) also provides that the section does not affect the validity of any insurance contract, workers' compensation, or agreement issued by an admitted insurer as defined by the Insurance Code [S:ca-civ-code-2782]. Subdivision (b) then splits by contract date for public agency contracts: (b)(1) covers those entered into before January 1, 2013 and reaches provisions imposing the public agency's active negligence on the contractor, while (b)(2) covers those entered into on or after that date and reaches any contractor, subcontractor, or supplier of goods or services. Subdivision (c) covers private owner contracts entered into on or after January 1, 2013 [S:ca-civ-code-2782]. Record the contract date, whether the counterparty is a public agency or a private owner, and whether the agreement is a construction contract at all.",
+			"kind": "question",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"umbrella"
+			]
+		},
+		{
+			"group": "Read the contract first",
+			"label": "Note the carve-outs that come with the private-owner rule",
+			"detail": "Except as provided in subdivision (d) and Sections 2782.1, 2782.2 and 2782.5, and for construction contracts entered into on or after January 1, 2013 with the owner of privately owned real property to be improved, and as to which the owner is not acting as a contractor or supplier of materials or equipment to the work, Section 2782(c)(1) makes provisions unenforceable to the extent of the active negligence of the owner, including that of its employees [S:ca-civ-code-2782]. Two qualifiers travel with that rule. Section 2782(c)(2) counts as a covered owner the holder of any interest in the property other than a mortgage or other interest held solely as security for performance of an obligation, and Section 2782(c)(3) provides that the subdivision does not apply to a homeowner performing a home improvement project on his or her own single family dwelling [S:ca-civ-code-2782]. Record which of those descriptions fits your counterparty and send the clause to counsel.",
+			"kind": "question",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability"
+			]
+		},
+		{
+			"group": "Read the contract first",
+			"label": "Flag a subcontractor duty to defend the general contractor",
+			"detail": "Check the contract date before anything else, because Section 2782.05 reaches only a construction contract, and amendments to it, entered into on or after January 1, 2013 [S:ca-civ-code-2782-05]. Within that scope, and except as provided in subdivision (b), California Civil Code Section 2782.05(a) makes void and unenforceable provisions that purport to insure or indemnify, including the cost to defend, a general contractor, construction manager, or other subcontractor, by a subcontractor, to the extent the claims arise out of, pertain to, or relate to the active negligence or willful misconduct of that general contractor, construction manager, or other subcontractor [S:ca-civ-code-2782-05]. For a contract signed before January 1, 2013, this section is not the rule that governs. Record the clause and the date and route both to counsel rather than pricing around them.",
+			"kind": "question",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability"
+			]
+		},
+		{
+			"group": "Read the contract first",
+			"label": "Note which statutory bucket the contract falls into",
+			"detail": "This bucket question only arises for a construction contract entered into on or after January 1, 2013, which is all Section 2782.05 reaches [S:ca-civ-code-2782-05]. For such a contract, subdivision (b) carries thirteen numbered categories the section does not affect. Ten of them read: contracts for residential construction subject to any part of Title 7, direct contracts with a public agency governed by Section 2782(b), direct contracts with the owner of privately owned real property governed by Section 2782(c), any wrap-up insurance policy or program, a cause of action for breach of contract or warranty that exists independently of an indemnity obligation, indemnity provisions in loan and financing documents, general agreements of indemnity required by sureties as a condition of execution of bonds, the benefits and protections provided by the workers' compensation laws, the benefits or protections provided by the governmental immunity laws, and contracts with design professionals [S:ca-civ-code-2782-05]. That is ten of thirteen; paragraphs (b)(11), on provisions requiring the purchase of specified insurance, and (b)(13), on agreements between a promisor and an admitted surety insurer, are not recited here, so read the full subdivision rather than treating this list as closed [S:ca-civ-code-2782-05]. Note the word direct in the public agency and private owner items, and capture the project type, the owner type, and the contract date.",
+			"kind": "question",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"professional-liability"
+			]
+		},
+		{
+			"group": "Read the contract first",
+			"label": "Separate the insurance-purchase obligation from the indemnity obligation",
+			"detail": "For a construction contract entered into on or after January 1, 2013, which is the only kind Section 2782.05 reaches, subdivision (b)(6) preserves a provision that requires the promisor to purchase or maintain insurance covering the acts or omissions of the promisor, including additional insured endorsements covering the acts or omissions of the promisor during ongoing and completed operations [S:ca-civ-code-2782-05]. Map the insurance requirement and the indemnity requirement as separate rows so neither one hides inside the other.",
+			"kind": "endorsement",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability"
+			]
+		},
+		{
+			"group": "Read the contract first",
+			"label": "Ask whether a wrap-up, OCIP or CCIP program applies",
+			"detail": "Any wrap-up insurance policy or program is one of the categories Section 2782.05 does not affect, within that section's own scope of construction contracts entered into on or after January 1, 2013 [S:ca-civ-code-2782-05]. Record whether the project has an owner-controlled or contractor-controlled program, what the program documents say it covers, what the enrollment deductible or assessment is, and what the program documents say each trade must still carry on its own. Read those answers off the program manual and the enrollment forms rather than assuming them.",
+			"kind": "question",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"umbrella"
+			]
+		},
+		{
+			"group": "Policies requested",
+			"label": "Commercial general liability, with the aggregate structure written down",
+			"detail": "Record the per-occurrence limit, general aggregate, products-completed operations aggregate, personal and advertising injury limit, and whether the contract asks for the aggregate to apply per project or per location. Recording the aggregate structure this way is common market practice rather than a legal or filed requirement. What counts as acceptable evidence varies by state and by certificate holder: as one example, the Minnesota Department of Labor and Industry states that the ACORD 25 certificate of liability insurance form, or a similar form filed with the Minnesota Department of Commerce, can be used to provide evidence of general liability insurance coverage [S:mn-dli-certificates-of-insurance]. Ask your own certificate holder what it will accept.",
+			"kind": "limit",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability"
+			]
+		},
+		{
+			"group": "Policies requested",
+			"label": "Workers compensation and employers liability, as two separate entries",
+			"detail": "Record the statutory workers compensation part and the employers liability limits separately, because contracts often specify an employers liability figure. For a California licensed contractor, CSLB requires a valid Certificate of Workers' Compensation Insurance or a valid Certification of Self-Insurance from the Department of Industrial Relations, or a signed exemption certifying no employees, and states that all active C-8, C-20, C-22, C-39 and C-61/D-49 licensees must carry coverage or hold a valid Certification of Self-Insurance whether or not they have employees [S:cslb-workers-comp-requirements].",
+			"kind": "limit",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Policies requested",
+			"label": "Automobile liability, including the auto symbols requested",
+			"detail": "Record the combined single limit, whether the contract asks for any auto or for owned, hired and non-owned separately, and whether it asks for the certificate holder to be added as an additional insured on the auto policy. Enter the symbols exactly as the declarations show them. Describing auto coverage by numbered symbols is common market practice rather than a legal or filed requirement, no source in this cluster supports it, and what any given symbol means is set by the policy form in front of you, so read it off that form.",
+			"kind": "limit",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"commercial-auto"
+			]
+		},
+		{
+			"group": "Policies requested",
+			"label": "Umbrella or excess liability, and whether it must follow form",
+			"detail": "Record whether the contract lets the requested total be met by a primary policy plus an umbrella, which underlying policies the umbrella must sit over, and whether the contract requires the umbrella to be follow-form and to pick up the same additional insureds. Meeting a requested total with a primary policy plus an umbrella is common market practice rather than a legal or filed requirement, and no source in this cluster supports it. Whether an umbrella follows form depends on the umbrella policy and its schedule of underlying insurance, so record the request here and read the answer off the umbrella policy separately.",
+			"kind": "limit",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"umbrella"
+			]
+		},
+		{
+			"group": "Policies requested",
+			"label": "Professional liability, pollution, cyber, crime and EPLI as their own rows",
+			"detail": "For each of these, record whether the form is written on a claims-made or occurrence basis, the retroactive date, the reporting requirement, any extended reporting period, and whether a tail is required for a stated number of years after project completion. Writing these lines on a claims-made basis, and requiring a tail after project completion, is common market practice rather than a legal or filed requirement, and no source in this cluster supports it; read each answer off the quote and the policy form. Enter each as its own row, because a single certificate line does not tell you any of those five things.",
+			"kind": "limit",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"professional-liability",
+				"cyber",
+				"crime",
+				"epli",
+				"pollution"
+			]
+		},
+		{
+			"group": "Policies requested",
+			"label": "Property, builders risk, or installation floater",
+			"detail": "Record who is obligated to place it, the insurable value basis, the deductible, and the named insureds, mortgagees and loss payees the contract requires. Where a mortgaged building is involved, note that Regulation X bars a servicer from assessing a force-placed insurance charge without a reasonable basis to believe the borrower failed to maintain required hazard insurance, and requires a written notice at least 45 days before the charge plus a reminder notice at least 15 days before the charge that may not be sent until at least 30 days after the first notice [S:cfpb-1024-37].",
+			"kind": "limit",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"commercial-property",
+				"builders-risk",
+				"inland-marine",
+				"homeowners"
+			]
+		},
+		{
+			"group": "Policies requested",
+			"label": "Flood, when the contract or a lender requires it",
+			"detail": "For a building in a special flood hazard area securing a loan from a regulated lending institution, federal law requires flood insurance for the term of the loan in an amount at least equal to the outstanding principal balance of the loan or the maximum limit of coverage made available under the Act for that type of property, whichever is less, and requires the lender to accept private flood insurance that meets the statutory standards [S:usc-42-4012a-2]. Record the flood zone, the required amount with the cap applied, the loss payee, and whether premiums must be escrowed, noting that the escrow duty carries statutory exceptions [S:usc-42-4012a-2].",
+			"kind": "limit",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"flood"
+			]
+		},
+		{
+			"group": "Endorsements requested",
+			"label": "Additional insured, ongoing and completed operations, by form number and edition date",
+			"detail": "Record the exact endorsement form numbers and edition dates the contract names, and whether it asks for both ongoing and completed operations. For a California construction contract entered into on or after January 1, 2013, Civil Code Section 2782.05(b)(6) describes exactly that pairing, preserving a requirement that the promisor purchase or maintain insurance covering the promisor's acts or omissions, including additional insured endorsements covering ongoing and completed operations [S:ca-civ-code-2782-05]; the section reaches no earlier contract and no contract that is not a construction contract. Whether a specific form is available on a specific policy is a carrier underwriting decision, and a certificate cannot create it.",
+			"kind": "endorsement",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"commercial-auto",
+				"umbrella"
+			]
+		},
+		{
+			"group": "Endorsements requested",
+			"label": "Primary and non-contributory status",
+			"detail": "Record whether the contract asks for primary and non-contributory coverage, and whether it asks for that to be evidenced by endorsement or only by wording on the certificate. Only the policy and its endorsements can create that status. In California, Insurance Code Section 384 requires a certificate used in lieu of an actual copy of the policy to say it is not an insurance policy and does not amend, extend or alter the coverage afforded by the policies listed [S:ca-ins-code-384-2]. In Minnesota, Section 60A.39 bars an insurer or licensed producer from issuing a certificate that affirmatively or negatively amends, extends, or alters approved coverage without the commissioner's written approval [S:mn-stat-60a-39]. Requirements differ by state, so check the rule in the state at issue.",
+			"kind": "endorsement",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"umbrella"
+			]
+		},
+		{
+			"group": "Endorsements requested",
+			"label": "Waiver of subrogation, by line",
+			"detail": "Record which lines the contract asks the waiver on, and record it separately for each, since general liability, automobile, workers compensation and property are handled under their own coverage parts. Adding a workers compensation waiver by a separate endorsement, at a charge the carrier sets, is common market practice rather than a legal or filed requirement, and no source in this cluster supports it; the rule differs by state and by rating bureau. Record the request here and read the answer off the issued endorsement.",
+			"kind": "endorsement",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"workers-compensation",
+				"commercial-property"
+			]
+		},
+		{
+			"group": "Endorsements requested",
+			"label": "Notice of cancellation to the certificate holder",
+			"detail": "If the contract asks for advance written notice of cancellation to the certificate holder, record the number of days it asks for and who it names. Any such obligation runs from the policy and any notice endorsement, not from the certificate. In Minnesota, a certificate may not be issued in a way that amends, extends or alters approved coverage without the commissioner's written approval [S:mn-stat-60a-39], and in California the certificate must state that it does not amend, extend or alter the coverage afforded [S:ca-ins-code-384-2]. Record the request, then record separately what the policy actually provides.",
+			"kind": "endorsement",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"commercial-auto",
+				"umbrella",
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Evidence requested",
+			"label": "Certificate of insurance, with its limits copied onto the face of the map",
+			"detail": "Copy the limits from the certificate into the map, and mark them as evidence rather than as coverage. Under Minnesota law a certificate of insurance is a document that provides evidence of property or liability insurance coverage and the amount of insurance issued, and does not convey any contractual rights to the certificate holder [S:mn-stat-60a-39]. Under California law a certificate used in lieu of an actual copy of the policy must state that it is not an insurance policy, that it does not amend, extend or alter the coverage afforded, and that the insurance is subject to all the terms, exclusions and conditions of the policies [S:ca-ins-code-384-2]. Requirements differ by state, so check the rule in the state at issue.",
+			"kind": "evidence",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"commercial-auto",
+				"workers-compensation",
+				"commercial-property"
+			]
+		},
+		{
+			"group": "Evidence requested",
+			"label": "Do not request edited certificate wording as a substitute for coverage",
+			"detail": "If the contract wants terms the policy does not contain, the fix is an endorsement, not certificate language. Minnesota prohibits an insurer or licensed producer from issuing a certificate of insurance or other document that either affirmatively or negatively amends, extends, or alters the coverage provided by an approved policy, form, or endorsement without the written approval of the commissioner, and requires the certificate to carry a statement to that effect [S:mn-stat-60a-39]. Requirements differ by state, so check the rule in the state at issue.",
+			"kind": "evidence",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"commercial-auto",
+				"umbrella"
+			]
+		},
+		{
+			"group": "Evidence requested",
+			"label": "Copies of the actual endorsements and the declarations page",
+			"detail": "Ask for the additional insured, primary and non-contributory, and waiver of subrogation endorsements as issued, each with form number and edition date, plus the declarations page showing limits and named insureds. In the two states reviewed for this cluster, California and Minnesota, asking for the endorsements themselves is common market practice rather than a legal or filed requirement; no statute or filing found for either state obliges a counterparty to hand them over, so confirm the rule in the state at issue. It is also the only way to move a row from requested to documented, because in California the certificate itself must state that the insurance is subject to all the terms, exclusions and conditions of the policies [S:ca-ins-code-384-2].",
+			"kind": "document",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"commercial-auto",
+				"umbrella",
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Evidence requested",
+			"label": "Workers compensation certificate fields a California public body will check",
+			"detail": "CSLB requires the certificate to list CSLB as the certificate holder, the contractor's business name and license or application fee number, the policy number, the policy effective and expiration dates, and the signature of an authorized representative [S:cslb-workers-comp-requirements]. Use that list as a field-by-field checklist when you receive a certificate, and ask each other certificate holder in writing what it requires, since requirements differ by state and by holder.",
+			"kind": "evidence",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Evidence requested",
+			"label": "Watch the 90-day window when a California contractor hires a first employee",
+			"detail": "CSLB states that when an exempt licensee hires an employee, proof of workers compensation coverage must be received at CSLB headquarters within 90 days of the hire, and that failure to do so results in license suspension [S:cslb-workers-comp-requirements]. If your counterparty tells you it just hired staff, put that 90-day date on the map as a dated open item.",
+			"kind": "trigger",
+			"appliesTo": [
+				"commercial"
+			],
+			"lines": [
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Evidence requested",
+			"label": "Named insured must match the contracting legal entity",
+			"detail": "Compare the legal entity name signing the contract to the named insured on the declarations, including DBAs, joint ventures, single-purpose entities and affiliated LLCs, and record any mismatch as an open item. In California a certificate does not amend, extend or alter the coverage afforded by the policies listed [S:ca-ins-code-384-2], and in Minnesota it conveys no contractual rights to the certificate holder [S:mn-stat-60a-39]. Adding an entity is done on the policy, not on the certificate.",
+			"kind": "evidence",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"commercial-property",
+				"workers-compensation"
+			]
+		},
+		{
+			"group": "Evidence requested",
+			"label": "Date the flood evidence to the closing, not to the signing",
+			"detail": "A new NFIP policy is generally effective 12:01 a.m. local time on the 30th calendar day after the application date and the presentment of payment of premium, but where the initial purchase is in connection with the making, increasing, extension, or renewal of a loan, coverage is effective at the time of loan closing if the written request is received by the NFIP and the policy is applied for and the premium presented at or prior to closing [S:cfr-44-61-11]. Record the closing date so the evidence carries the right effective date.",
+			"kind": "evidence",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"flood"
+			]
+		},
+		{
+			"group": "Separating requested from verified",
+			"label": "Keep requested terms and documented terms in two columns",
+			"detail": "For every row, hold what the contract asks for apart from what a policy document actually shows, with the document name and date next to each documented entry. Under Minnesota law a certificate provides evidence of coverage and the amount issued and conveys no contractual rights to the certificate holder [S:mn-stat-60a-39], and under California law it does not amend, extend or alter what the policies afford [S:ca-ins-code-384-2]. A requested row is not a documented row until a policy document supports it.",
+			"kind": "question",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"commercial-auto",
+				"umbrella",
+				"workers-compensation",
+				"commercial-property",
+				"flood"
+			]
+		},
+		{
+			"group": "Separating requested from verified",
+			"label": "What this tool does not do",
+			"detail": "This mapper organizes what a contract or transaction requests and what documents you have collected. It does not read a policy, confirm that any coverage is in force, confirm that a requirement is met, verify a filing, decide whether a loss would be covered, or tell you whether a risk is placeable, admitted, non-admitted, or eligible for any residual market program. It is not legal advice; whether a contract clause is enforceable is a legal question for a lawyer. Coverage is determined by the policy and its endorsements, and availability of any specific form or limit is a carrier underwriting decision.",
+			"kind": "question",
+			"appliesTo": [
+				"personal",
+				"commercial"
+			],
+			"lines": [
+				"general-liability",
+				"workers-compensation",
+				"flood"
+			]
+		}
+	],
+	"sourceIds": [
+		"ca-civ-code-2782",
+		"ca-civ-code-2782-05",
+		"ca-ins-code-384-2",
+		"mn-stat-60a-39",
+		"mn-dli-certificates-of-insurance",
+		"cslb-workers-comp-requirements",
+		"cfpb-1024-37",
+		"usc-42-4012a-2",
+		"cfr-44-61-11"
+	],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

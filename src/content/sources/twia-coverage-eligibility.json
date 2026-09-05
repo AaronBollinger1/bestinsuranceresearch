@@ -1,0 +1,26 @@
+{
+	"title": "Coverage and Eligibility - Texas Windstorm Insurance Association",
+	"publisher": "Texas Windstorm Insurance Association",
+	"url": "https://www.twia.org/coverage-eligibility/",
+	"sourceType": "official-documentation",
+	"jurisdiction": "TX",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"TWIA states that properties must be located in the area designated by the Commissioner of Insurance, which currently includes all 14 first tier coastal counties and parts of Harris County east of Highway 146.",
+		"TWIA states that applicants must have been denied coverage by at least one authorized insurer actively writing or renewing windstorm and hail coverage in the designated area.",
+		"TWIA states that properties must be certified by the Texas Department of Insurance (WPI-8 or WPI-8-E) or by the Texas Windstorm Insurance Association (WPI-8-C) as having been built to applicable building codes, with limited exceptions.",
+		"TWIA states that properties must meet all other Association underwriting requirements, including maintaining the structure in an insurable condition, in good repair, with no unrepaired damage or hazardous conditions.",
+		"TWIA states that properties located in flood zones V, VE, or V1-30 that were constructed, altered, remodeled, or enlarged on or after September 1, 2009 and that can obtain flood insurance through the National Flood Insurance Program must provide proof of flood insurance coverage.",
+		"TWIA lists residential coverage for dwellings, personal property and manufactured homes, and commercial coverage for commercial buildings, business personal property, townhouses and condominiums.",
+		"This page states no maximum liability limits."
+	],
+	"updateCadence": "Eligibility conditions change with statute and TDI action; re-verify after each legislative session.",
+	"status": "active",
+	"officialHost": true
+}

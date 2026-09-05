@@ -1,0 +1,21 @@
+{
+	"title": "Workers' compensation for employers - Texas Department of Insurance",
+	"publisher": "Texas Department of Insurance, Division of Workers' Compensation",
+	"url": "https://www.tdi.texas.gov/wc/employer/index.html",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "TX",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"TDI states that in Texas, private employers can choose to carry workers' compensation insurance coverage, but it is not required in most cases.",
+		"TDI states that an employer without coverage must report to the state that it does not have coverage, and must also report to the Division of Workers' Compensation any work-related injuries resulting in more than one day of lost time, as well as all work-related illnesses and deaths."
+	],
+	"updateCadence": "Re-verify after each Texas legislative session.",
+	"status": "active",
+	"officialHost": true
+}

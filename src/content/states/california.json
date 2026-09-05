@@ -1,0 +1,112 @@
+{
+	"code": "CA",
+	"name": "California",
+	"regulator": {
+		"name": "California Department of Insurance",
+		"url": "https://www.insurance.ca.gov/",
+		"consumerPhone": "1-800-927-4357"
+	},
+	"summary": "California requires prior approval of insurance rates: commencing November 8, 1989, insurance rates subject to the Proposition 103 chapter must be approved by the commissioner prior to their use [S:ca-ins-code-1861-01]. An insurer that wants to change a rate files a complete rate application and bears the burden of proving the change is justified, and no rate may be approved or remain in effect that is excessive, inadequate, unfairly discriminatory or otherwise in violation of the chapter [S:ca-ins-code-1861-05]. Three mechanisms sit alongside the ordinary admitted market: the California FAIR Plan Association, defined in statute as a joint reinsurance association formed by insurers licensed to write and engaged in writing basic property insurance in the state [S:ca-ins-code-10091]; the California Earthquake Authority, created by the Legislature in 1996, which sells its policies exclusively through participating insurance companies [S:cea-history]; and the California Insurance Guarantee Association, which says it is there for liability, auto and workers' compensation claims after an insurance company is placed in liquidation [S:ciga-home]. California's minimum auto liability limits became $30,000 / $60,000 / $15,000 on January 1, 2025 and are scheduled to rise again on January 1, 2035; Vehicle Code section 16056 states those amounts as the limits applicable on and after January 1, 2025 [S:ca-veh-code-16056][S:ca-sb-1107]. On December 13, 2024 the Department announced it had finalized a wildfire catastrophe modeling regulation permitting forward-looking models in ratemaking [S:cdi-cat-model-2024].",
+	"keyMechanisms": [
+		{
+			"title": "Prior approval of rates under Proposition 103",
+			"detail": "A California insurer must have a rate approved before it uses it. Insurance Code section 1861.01(c) provides that commencing November 8, 1989, insurance rates subject to that chapter must be approved by the commissioner prior to their use [S:ca-ins-code-1861-01]. Section 1861.05 supplies the machinery: every insurer that desires to change a rate files a complete rate application, the applicant bears the burden of proving the requested change is justified, and no rate may be approved or remain in effect that is excessive, inadequate, unfairly discriminatory or otherwise in violation of the chapter [S:ca-ins-code-1861-05]. The commissioner must notify the public of an application, and the application is deemed approved sixty days after public notice unless a consumer requests a hearing within 45 days or the commissioner determines on his or her own motion to hold one; an application is also deemed approved 180 days after it is received unless it has been disapproved after a hearing or extraordinary circumstances exist [S:ca-ins-code-1861-05]. The Department's Rate Enforcement Bureau enforces Proposition 103 and represents the Department's position in prior approval rate hearings before a Department administrative law judge [S:cdi-rate-enforcement-bureau]."
+		},
+		{
+			"title": "Wildfire catastrophe modeling and the writing requirement",
+			"detail": "California now allows forward-looking wildfire catastrophe models in ratemaking, and it separately states a writing obligation for homeowners insurers. The Department states that Commissioner Lara announced on December 13, 2024 that he had finalized a wildfire catastrophe modeling regulation permitting the use of forward-looking catastrophe models in ratemaking [S:cdi-cat-model-2024]. The Department states that all homeowners insurance companies must increase the writing of comprehensive policies in wildfire distressed areas equivalent to no less than 85 percent of their statewide market share [S:cdi-cat-model-2024]. The Department describes a separate net cost of reinsurance in ratemaking regulation, announced in its December 30, 2024 release, as the final major element of the reform package, and uses the phrase Sustainable Insurance Strategy for the overall effort [S:cdi-cat-model-2024]. What any individual applicant is offered still depends on that insurer's own filed program and its underwriting decisions."
+		},
+		{
+			"title": "Earthquake coverage must be offered, and is usually bought separately",
+			"detail": "Earthquake is not part of a California residential property policy by default. Insurance Code section 10081 provides that no policy of residential property insurance may be issued or delivered, or, with respect to policies in effect on the effective date of that chapter, initially renewed in the state, unless the named insured is offered coverage for loss or damage caused by the peril of earthquake as provided in the chapter [S:ca-ins-code-10081]. The statute allows the offer to be satisfied by a provision or endorsement within the residential property policy, or by a separate policy or certificate covering earthquake alone or together with other perils [S:ca-ins-code-10081]. The California Earthquake Authority, created by the Legislature in 1996 after the January 17, 1994 magnitude 6.7 Northridge earthquake, describes itself as a not-for-profit, publicly managed, privately funded entity and states that it sells its policies exclusively through participating insurance companies [S:cea-history]. CEA states that it provides two-thirds of the residential earthquake insurance policies sold in California [S:cea-history]; that is CEA's own figure and it changes over time."
+		},
+		{
+			"title": "The FAIR Plan writes basic property insurance, not a homeowners policy",
+			"detail": "The California FAIR Plan describes itself as an insurer of last resort, established by statute to provide basic property insurance to Californians statewide when no other option is reasonably available, and says it was established so that all California property owners have access to basic fire insurance when access to coverage in the traditional market is not available through no fault of the property owner [S:ca-fair-plan-home]. Statute defines the association as a joint reinsurance association, the California FAIR Plan Association, formed by insurers licensed to write and engaged in writing basic property insurance within the state, to assist persons in securing basic property insurance and to administer an equitable apportionment program among insurers [S:ca-ins-code-10091]. The Plan's Dwelling page lists covered perils including Fire and Lightning, Internal Explosion, and Smoke, states that optional coverages are available at an additional cost such as coverage for vandalism and malicious mischief, and does not list liability, theft, or water damage among covered perils [S:cfp-dwelling-policy]. Those are the program descriptions on the Plan's website, not the text of a filed policy form; what is covered on any particular policy is what that policy's own form, endorsements, and declarations say, so read your own form. The Plan advises buyers to consider Difference in Conditions, Flood, or Earthquake policies to supplement a FAIR Plan policy [S:cfp-dwelling-policy], but it does not sell the first two itself: its Policies page states that the California FAIR Plan does not offer Difference in Conditions or Flood coverage [S:ca-fair-plan-policies], and its home page says only that a broker can help the applicant find a Difference in Conditions policy which offers additional coverages [S:ca-fair-plan-home]. On getting in, the Plan states that a broker performs a diligent search for comprehensive coverage in the traditional insurance market, and that if coverage is not available with another company the broker can help determine whether the California FAIR Plan is available as a temporary solution [S:ca-fair-plan-how-to-apply]. The Plan states the other half of that test too, and it cuts the other way: if coverage is available in the traditional marketplace, the Plan says the California FAIR Plan is not right for the applicant [S:ca-fair-plan-how-to-apply]. Nothing on this page means any particular property is eligible; that is the Plan's own underwriting decision."
+		},
+		{
+			"title": "Insolvency backstop through CIGA",
+			"detail": "CIGA states that it is there for liability, auto and workers' compensation claims after an insurance company is placed in liquidation, and that it has helped consumers navigate insolvency since 1969 [S:ciga-home]. On its claims page CIGA states that all other claims, including automobile and personal injury claims, are paid at full value up to $500,000 or the policy limit, whichever is less, and that Loss of Use / Additional Living Expense (Coverage D) is paid at actual cash value up to $500,000 or the policy limits, whichever is less [S:ciga-claims]. CIGA describes the California Life and Health Insurance Guarantee Association as its sister organization and as California's guaranty fund for life and health insurance and annuities [S:ciga-home]. CIGA also notes that because it must first obtain the claim files from the liquidator of the insolvent insurer, some delays may occur [S:ciga-home]. How a specific claim is treated is CIGA's determination on that claim."
+		}
+	],
+	"residualMarket": {
+		"name": "California FAIR Plan Association",
+		"url": "https://www.cfpnet.com/",
+		"note": "Statute defines the California FAIR Plan Association as a joint reinsurance association formed by insurers licensed to write and engaged in writing basic property insurance within the state [S:ca-ins-code-10091]. The Plan describes itself as an insurer of last resort, established by statute to provide basic property insurance to Californians statewide when no other option is reasonably available, and says it was established so that all California property owners have access to basic fire insurance when access to coverage in the traditional market is not available through no fault of the property owner [S:ca-fair-plan-home]. Its Policies page lists dwelling coverage for owner or tenant occupied dwellings with up to 4 family units and personal property for renters and condo owners, commercial coverage for business owned buildings and for individual owned habitational buildings with 5 or more units, and earthquake coverage through the California Earthquake Authority, and states that the California FAIR Plan does not offer Difference in Conditions or Flood coverage [S:ca-fair-plan-policies]. The Dwelling page lists covered perils including Fire and Lightning, Internal Explosion, and Smoke, with optional coverages available at additional cost such as vandalism and malicious mischief [S:cfp-dwelling-policy]; those are website program descriptions, not a filed form, so read the actual policy form. The published route in is a broker-performed diligent search of the traditional insurance market, after which the broker can help determine whether the Plan is available as a temporary solution; the same page states that if coverage is available in the traditional marketplace, the Plan is not right for the applicant [S:ca-fair-plan-how-to-apply]. Nothing stated here means any particular property is eligible; eligibility is decided by the Plan's own underwriting."
+	},
+	"autoRequirements": [
+		{
+			"item": "Minimum liability limits: $30,000 / $60,000 / $15,000, effective January 1, 2025",
+			"detail": "Yes, SB 1107 raised the limits, and the increase is already in force. Vehicle Code section 16056 states the limits applicable on and after January 1, 2025 as $30,000 for bodily injury to or death of one person, $60,000 for bodily injury to or death of all persons in one accident, and $15,000 for property damage, replacing the $15,000 / $30,000 / $5,000 limits that the same section states for the period through December 31, 2024 [S:ca-veh-code-16056]. Those amounts were set by SB 1107 (2022), chaptered as Chapter 717, Statutes of 2022, which amended Vehicle Code sections 16056, 16430, 16435, 16451 and 16500 and added Insurance Code section 12960 [S:ca-sb-1107]. One attribution point is worth stating precisely rather than rounding off: the section's own amendment note reads that it was amended, as added by Stats. 2022, Ch. 717, Sec. 3, by Stats. 2023, Ch. 204, Sec. 19 (AB 1140), effective January 1, 2024, operative January 1, 2025 by its own provisions, so SB 1107 set the amounts but a later bill amended the section before those amounts became operative [S:ca-veh-code-16056]. The California DMV listed the same $30,000 / $60,000 / $15,000 amounts as current at review on 2026-08-31, citing Insurance Code section 11580.1b, and stated no effective date of its own [S:ca-dmv-insurance-requirements]. Effective date of the current limits: January 1, 2025. Verified on 2026-08-31 against the codified section on the Legislative Counsel's own site, the enacting bill, and the DMV page."
+		},
+		{
+			"item": "Scheduled increase to $50,000 / $100,000 / $25,000, effective January 1, 2035",
+			"detail": "Effective January 1, 2035 the same statute increases the minimums by $20,000 per person, $40,000 per accident, and $10,000 for property damage, producing limits of $50,000, $100,000, and $25,000 [S:ca-sb-1107][S:ca-veh-code-16056]. That step-up is already written into the section; it is not the requirement for a policy written today."
+		},
+		{
+			"item": "A liability policy is not the only route: $75,000 cash deposit, $75,000 surety bond, or a DMV self-insurance certificate",
+			"detail": "SB 1107 set the cash deposit alternative for proof of financial responsibility at $75,000 effective January 1, 2025, and that figure increases by $50,000 effective January 1, 2035 [S:ca-sb-1107]. The cash deposit is not the only alternative to a liability policy, and the earlier version of this page named only the deposit: the DMV also lists a DMV-issued self-insurance certificate and a $75,000 surety bond from a company licensed to do business in California [S:ca-dmv-insurance-requirements]. Which of these a particular person can actually use is the DMV's determination on that application."
+		}
+	],
+	"wcMechanism": {
+		"detail": "California workers compensation pure premium rates are advisory rather than mandated. The Insurance Commissioner adopted an average advisory pure premium rate of $1.65 per $100 of payroll effective September 1, 2026, a 6.6 percent increase from the 2025 approved rate [S:cdi-release-024-2026]. The Department states that the adopted rate is advisory, meaning insurance companies are not bound by it and are free to set their own rates, so what an employer actually pays depends on the insurer's own filed rates and its underwriting [S:cdi-release-024-2026]. The Department also publishes an online rate comparison for the top 50 workers' compensation insurers [S:cdi-premium-comparison]."
+	},
+	"consumerTools": [
+		{
+			"label": "CDI consumer hotline and complaint help",
+			"url": "https://www.insurance.ca.gov/01-consumers/101-help/index.cfm",
+			"note": "The Department lists its consumer hotline as 1-800-927-4357 [S:cdi-getting-help]."
+		},
+		{
+			"label": "CDI premium comparison tools",
+			"url": "https://www.insurance.ca.gov/01-consumers/105-type/9-compare-prem/index.cfm",
+			"note": "Comparison tools for private passenger automobile and motorcycle, homeowners including condominium, renters and earthquake, long-term care, Medicare supplement, and an online rate comparison for the top 50 workers' compensation insurers; the Department states that the results of these surveys are not premium quotes [S:cdi-premium-comparison]."
+		},
+		{
+			"label": "California FAIR Plan",
+			"url": "https://www.cfpnet.com/",
+			"note": "Official site of the association. Its Policies page describes the dwelling, commercial, and earthquake programs and states that the FAIR Plan does not offer Difference in Conditions or Flood coverage [S:ca-fair-plan-policies]; its How to Apply page describes the broker-performed diligent search [S:ca-fair-plan-how-to-apply]."
+		},
+		{
+			"label": "California Earthquake Authority",
+			"url": "https://www.earthquakeauthority.com/",
+			"note": "CEA states that it sells its policies exclusively through participating insurance companies [S:cea-history]."
+		},
+		{
+			"label": "California Insurance Guarantee Association",
+			"url": "https://www.ciga.org/",
+			"note": "CIGA states that it is there for liability, auto and workers' compensation claims after an insurance company is placed in liquidation [S:ciga-home]."
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"effectiveDate": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ins-code-1861-01",
+		"ca-ins-code-1861-05",
+		"cdi-rate-enforcement-bureau",
+		"ca-sb-1107",
+		"ca-veh-code-16056",
+		"ca-dmv-insurance-requirements",
+		"ca-fair-plan-home",
+		"ca-fair-plan-policies",
+		"ca-fair-plan-how-to-apply",
+		"cfp-dwelling-policy",
+		"ca-ins-code-10091",
+		"ca-ins-code-10081",
+		"cea-history",
+		"ciga-home",
+		"ciga-claims",
+		"cdi-release-024-2026",
+		"cdi-cat-model-2024",
+		"cdi-getting-help",
+		"cdi-premium-comparison"
+	],
+	"relatedQuestions": [
+		"homeowners-earthquake-california",
+		"replacement-cost-vs-market-value",
+		"workers-comp-class-codes"
+	]
+}

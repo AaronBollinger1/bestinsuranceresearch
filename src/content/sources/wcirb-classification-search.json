@@ -1,0 +1,22 @@
+{
+	"title": "Classification Search - WCIRB California",
+	"publisher": "Workers' Compensation Insurance Rating Bureau of California (WCIRB)",
+	"url": "https://www.wcirb.com/products-and-services/classification-search",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Classification Search helps users locate classifications based on keywords that are part of, or commonly associated with, classification phraseologies.",
+		"The page directs users to the Insurance Commissioner's rules regarding the Standard Classification System in Part 3, Standard Classification System, of the California Workers' Compensation Uniform Statistical Reporting Plan-1995."
+	],
+	"updateCadence": "Updated as classifications change.",
+	"status": "active",
+	"notes": "Re-fetched and re-verified 2026-08-31 over HTTPS with a browser user agent (WebFetch gets 403), HTTP 200, 137,808 bytes. Both claims matched as literal strings. Cited only as a lookup pointer in nextActions, never for a substantive rule, and never for the classification that fits any particular business. URL RE-CHECKED 2026-08-31: HTTP 200, no redirect, 137,808 bytes. Both claims re-matched today, including the pointer to Part 3, Standard Classification System, of the Uniform Statistical Reporting Plan.",
+	"officialHost": true
+}

@@ -1,0 +1,206 @@
+---
+import { Flag } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Callout from '../components/Callout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import StateBlock from '../components/StateBlock.astro';
+import StatusChip from '../components/StatusChip.astro';
+import { siteConfig } from '../config/site';
+import { loadCorpus } from '../lib/corpus';
+import { longDate } from '../lib/cite';
+import { breadcrumbs, graph, organization, website } from '../lib/schema';
+
+const corpus = await loadCorpus();
+
+const corrected = corpus.questions
+	.filter((q) => q.data.reviewState === 'corrected' && q.data.correction)
+	.sort((a, b) => (a.data.correction!.date < b.data.correction!.date ? 1 : -1));
+
+const underReview = corpus.questions.filter((q) => q.data.reviewState === 'under-review').length
+	+ corpus.coverages.filter((c) => c.data.reviewState === 'under-review').length
+	+ corpus.companies.filter((c) => c.data.reviewState === 'under-review').length
+	+ corpus.states.filter((s) => s.data.reviewState === 'under-review').length
+	+ corpus.examples.filter((e) => e.data.reviewState === 'under-review').length;
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Corrections', path: '/corrections' },
+];
+
+const subject = encodeURIComponent('Correction report');
+const body = encodeURIComponent(
+	[
+		'Page URL:',
+		'',
+		'Exact statement that is wrong:',
+		'',
+		'A more current or more authoritative source (link):',
+		'',
+		'Does this change the conclusion, or only the wording?',
+		'',
+		'Please do not include personal, policy, claim, or health information in this message.',
+	].join('\n'),
+);
+
+const jsonLd = graph(organization(), website(), breadcrumbs(trail));
+---
+
+<BaseLayout
+	title="Corrections"
+	description="How to report an error, how reports are handled, and the public log of every material correction with its prior wording intact."
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
+	<PageHeader
+		eyebrow="Corrections"
+		title="A correction belongs next to the claim it corrects"
+		lede="Report an error from any page. Reports are checked against the original record, not against the page, and material corrections are published with the prior wording intact."
+		trail={trail}
+	>
+		<div style="margin-top: var(--s-5)">
+			<a class="btn btn-primary" href={`mailto:${siteConfig.contact.email}?subject=${subject}&body=${body}`}
+				data-event="correction_started" data-page-type="editorial">
+				<Flag size={16} aria-hidden="true" /> Report an error
+			</a>
+		</div>
+	</PageHeader>
+
+	<section class="band band-tight">
+		<div class="shell answer-grid">
+			<div class="prose">
+				<h2 id="report">What to include</h2>
+				<p>
+					The more precisely you point at the problem, the faster it gets fixed. A report that names
+					the exact sentence and links a better source can usually be resolved the same day.
+				</p>
+				<ul>
+					<li><strong>The page URL and the exact statement</strong> you believe is wrong.</li>
+					<li>
+						<strong>A more current or more authoritative source</strong>, with a link, and a note on
+						how it differs.
+					</li>
+					<li>
+						<strong>Whether it changes the conclusion</strong> or only the wording. Both are worth
+						reporting; they are handled differently.
+					</li>
+				</ul>
+
+				<Callout tone="privacy">
+					<p>
+						<strong>Please do not send personal information.</strong> A correction report needs a
+						URL, a sentence, and a source. It does not need your policy number, your address, your
+						claim details, or anything about your health. The report path is a plain email, so
+						nothing is captured on our side at all: there is no form, no tracking, and no account.
+					</p>
+				</Callout>
+
+				<h2 id="process">How a report is handled</h2>
+				<ol>
+					<li>
+						The report is checked against the original source record, not against what the page
+						says. If the source has changed, the source record is updated first.
+					</li>
+					<li>
+						If the claim was never supported, the sentence is removed or rewritten down to what the
+						source actually carries.
+					</li>
+					<li>
+						If the underlying authority changed, the source is marked superseded, the new authority
+						is added, and every page citing it is re-checked.
+					</li>
+					<li>
+						The licensed reviewer confirms the corrected text before it publishes, exactly as with
+						any other change.
+					</li>
+					<li>
+						A material correction is logged below with its date, the prior wording, and the revised
+						wording, and the page carries a <StatusChip kind="corrected" /> status.
+					</li>
+				</ol>
+				<p>
+					Typography, formatting, and broken-link fixes are made without a log entry. A change that
+					alters what a reader would do is always logged.
+				</p>
+
+				<h2 id="log">Correction log</h2>
+				{
+					corrected.length > 0 ? (
+						<div class="rows" style="margin-top: var(--s-4)">
+							{corrected.map((q) => (
+								<div class="row" style="grid-template-columns: minmax(0, 1fr)">
+									<div>
+										<h3 class="row-title">
+											<a href={`/questions/${q.id}`} style="text-decoration: none">{q.data.question}</a>
+										</h3>
+										<div class="row-meta">
+											<StatusChip kind="corrected" />
+											<span class="meta">Corrected {longDate(q.data.correction!.date)}</span>
+										</div>
+										<dl style="margin-top: var(--s-3); display: grid; gap: var(--s-2)">
+											<dt class="meta">Previously said</dt>
+											<dd style="margin: 0; font-size: var(--text-sm); color: var(--muted)">
+												{q.data.correction!.was}
+											</dd>
+											<dt class="meta">Now says</dt>
+											<dd style="margin: 0; font-size: var(--text-sm); color: var(--ink)">
+												{q.data.correction!.now}
+											</dd>
+										</dl>
+									</div>
+								</div>
+							))}
+						</div>
+					) : (
+						<div style="margin-top: var(--s-4)">
+							<StateBlock kind="empty" heading="No material correction has been published yet.">
+								<p>
+									This log is empty because the library is new, not because nothing will ever need
+									correcting. When the first material correction publishes it will appear here with
+									its date, its prior wording, and its revised wording, and it will stay here
+									permanently.
+								</p>
+							</StateBlock>
+						</div>
+					)
+				}
+
+				<h2 id="review">Pages currently under review</h2>
+				<p>
+					{underReview} published {underReview === 1 ? 'page carries' : 'pages carry'} an{' '}
+					<StatusChip kind="under-review" /> status. That status means a named licensed reviewer has
+					not yet signed off on the insurance substance of the page. It is shown on the page itself
+					and in the page's machine-readable record, so nothing on this site can claim a review that
+					has not happened.
+				</p>
+			</div>
+
+			<aside class="answer-rail" aria-label="Page contents">
+				<nav class="rail-block" aria-labelledby="on-this-page">
+					<h2 id="on-this-page">On this page</h2>
+					<ol>
+						<li><a href="#report">What to include</a></li>
+						<li><a href="#process">How a report is handled</a></li>
+						<li><a href="#log">Correction log</a></li>
+						<li><a href="#review">Pages under review</a></li>
+					</ol>
+				</nav>
+				<div class="rail-block">
+					<h2>Log</h2>
+					<dl>
+						<div><dt>Material corrections</dt><dd>{corrected.length}</dd></div>
+						<div><dt>Pages under review</dt><dd>{underReview}</dd></div>
+						<div><dt>Report path</dt><dd>Email, no form, no capture</dd></div>
+					</dl>
+				</div>
+				<div class="rail-block no-print">
+					<h2>Related</h2>
+					<ul>
+						<li><a href="/methodology">Methodology</a></li>
+						<li><a href="/editorial-policy">Editorial policy</a></li>
+						<li><a href="/sources">Source registry</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

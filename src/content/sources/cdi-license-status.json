@@ -1,0 +1,23 @@
+{
+	"title": "License Status Inquiry",
+	"publisher": "California Department of Insurance",
+	"url": "https://cdicloud.insurance.ca.gov/cal",
+	"sourceType": "government-data",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The page heading is License Status Inquiry.",
+		"The tool describes retrieving license details, including enforcement actions, for an insurance agent, broker, adjuster, bail agent, and agency or organization.",
+		"The tool offers License Number search, Individual Name Search, Business Name Search, and Enforcement Actions lookup.",
+		"The current public address of this CDI service is https://cdicloud.insurance.ca.gov/cal."
+	],
+	"updateCadence": "Live database; results reflect CDI records as of the moment of the query.",
+	"status": "active",
+	"officialHost": true
+}

@@ -1,0 +1,32 @@
+{
+  "name": "bestinsurance-research",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "check": "astro check",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "verify": "node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs",
+    "validate": "npm run check && npm run build && npm run verify"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/newsreader": "^5.3.0",
+    "@fontsource/schibsted-grotesk": "^5.3.0",
+    "@lucide/astro": "^1.37.0",
+    "astro": "^7.2.9"
+  },
+  "allowScripts": {
+    "esbuild": true
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3"
+  }
+}

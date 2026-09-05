@@ -1,0 +1,23 @@
+{
+	"title": "Family and Medical Leave Act - Frequently Asked Questions",
+	"publisher": "U.S. Department of Labor, Wage and Hour Division",
+	"url": "https://www.dol.gov/agencies/whd/fmla/faq",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The FMLA applies to private sector employers who employ 50 or more employees for at least 20 workweeks in the current or preceding calendar year.",
+		"An employee is eligible only if the employer has 50 or more employees within 75 miles of the worksite where the employee is located.",
+		"Every employer covered by the FMLA is required to post and keep posted on its premises, in conspicuous places where employees are employed, a notice explaining the FMLA's provisions.",
+		"Covered employers must include the FMLA general notice in employee handbooks or other written guidance to employees concerning benefits, or, if no such materials exist, must distribute a copy of the notice to each new employee upon hiring."
+	],
+	"updateCadence": "Reviewed at least every 180 days.",
+	"status": "active"
+}

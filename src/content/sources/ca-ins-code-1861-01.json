@@ -1,0 +1,20 @@
+{
+	"title": "California Insurance Code Section 1861.01 (Proposition 103 rate rollback and prior approval)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=1861.01",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"California Insurance Code section 1861.01(c) provides that commencing November 8, 1989, insurance rates subject to that chapter must be approved by the commissioner prior to their use."
+	],
+	"updateCadence": "Amended only by legislation or voter initiative; re-check leginfo for current text.",
+	"status": "active",
+	"officialHost": true
+}

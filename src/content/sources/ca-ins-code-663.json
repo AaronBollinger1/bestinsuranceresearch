@@ -1,0 +1,28 @@
+{
+	"title": "California Insurance Code Section 663 (offer of renewal or notice of nonrenewal of an automobile policy)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=663",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "2019-01-01",
+	"accessedDate": "2026-09-02",
+	"lastChecked": "2026-09-02",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 663(a) requires an insurer, before policy expiration, to deliver or mail to the named insured at the address shown on the policy either a written or verbal offer of renewal at least 20 days before expiration, contingent upon payment of premium as stated in the offer, or a written notice of nonrenewal at least 30 days before expiration including the statement required by section 666.",
+		"Section 663(b)(1) requires an insurer that delivers a verbal offer to renew which the insured declines to deliver or mail to the named insured, at least 20 days before expiration, a written confirmation of the offer and the rejection.",
+		"Section 663(b)(2) requires an insurer that attempts to satisfy subdivision (a) with a verbal offer to renew but is unable to contact the named insured directly at least 20 days before expiration to deliver or mail a written offer to renew, contingent upon payment of premium as stated in the offer, at least 20 days before expiration.",
+		"Section 663(c) provides that where an insurer fails to give the named insured either an offer of renewal or a notice of nonrenewal as the section requires, the existing policy, with no change in its terms and conditions, shall remain in effect for 30 days from the date that either the offer to renew or the notice of nonrenewal is delivered or mailed to the named insured.",
+		"Section 663(c) requires the insurer to provide the insured with a notice to that effect together with the policy or the notice of renewal or nonrenewal.",
+		"Section 663(c) provides that notwithstanding the insurer's failure to comply with the section, the policy shall terminate on the effective date of any other replacement or succeeding automobile insurance policy procured by the insured or the insured's agent or broker with respect to any automobile designated in both policies.",
+		"Section 663(d) provides that the insurer is not required to notify the named insured or any other insured of nonrenewal of the policy if the insurer has mailed or delivered a notice of expiration or cancellation on or prior to the 30th day preceding expiration of the policy period.",
+		"Section 663(e) provides that the section became operative on January 1, 2019."
+	],
+	"updateCadence": "Amended only by legislation. Repealed and added by Stats. 2013, Ch. 369, Sec. 7 (SB 251), effective January 1, 2014, and operative January 1, 2019 by its own provisions.",
+	"status": "active",
+	"notes": "Subdivision (c) is the remedy, and it is a 30-day extension of the existing policy rather than a bar on nonrenewal: a missed notice buys time, not continued coverage. Subdivision (c) also cuts that extension short the moment replacement coverage attaches to the same vehicle."
+}

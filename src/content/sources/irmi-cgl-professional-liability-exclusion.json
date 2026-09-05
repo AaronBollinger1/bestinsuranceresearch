@@ -1,0 +1,23 @@
+{
+	"title": "The CGL and the Professional Liability Exclusion",
+	"publisher": "International Risk Management Institute (IRMI), expert commentary by Craig Stanovich",
+	"url": "https://www.irmi.com/articles/expert-commentary/the-cgl-and-the-professional-liability-exclusion",
+	"sourceType": "secondary-analysis",
+	"jurisdiction": "US",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"The article states that each of the endorsements CG 22 43, CG 22 79 and CG 22 80 is materially different in the scope of the coverage eliminated, and that these endorsements are generally intended to remove coverage from the contractor's CGL policy for engineering, architectural, or surveying services.",
+		"The article states that the endorsement CG 22 43 is no longer intended by ISO to be used with contractors engaged in construction operations.",
+		"The article states that CG 22 80 is aimed at design-build contractors."
+	],
+	"updateCadence": "Expert commentary article dated April 1, 2014; no stated update cadence and no visible revision since.",
+	"status": "active",
+	"notes": "Fetched and read on 2026-08-31; the full article is publicly readable. Author Craig Stanovich, dated April 1, 2014. Used only to describe differences among the filed exclusion endorsements; the operative wording of CG 22 43 04 13 and CG 22 79 04 13 was independently verified by extracting and reading those forms. The article does not state an underwriting, pricing, or coverage-intent rationale for why the professional services exclusion exists, so no such rationale is attributed to it. CG 22 80 itself was not retrieved, so every CG 22 80 statement in this entry rests on this single 2014 secondary source and is labeled as such in the prose. Published: 2014-04-01",
+	"officialHost": true
+}

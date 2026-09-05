@@ -1,0 +1,30 @@
+{
+	"title": "Homeowners 3 - Special Form (HO 00 03 05 11)",
+	"publisher": "American Family / Homesite filed copy of the ISO Homeowners 3 - Special Form, hosted by the Nevada Division of Insurance; page footers read \"Insurance Services Office, Inc., 2010\"",
+	"url": "https://doi.nv.gov/uploadedFiles/doinvgov/_public-documents/Consumers/Home/American_Family/Homesite_HO_00_03_05_11.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The HO 00 03 05 11 form defines \"residence premises\" as: a. the one-family dwelling where you reside; b. the two-, three- or four-family dwelling where you reside in at least one of the family units; or c. that part of any other building where you reside, and which is shown as the \"residence premises\" in the Declarations. It adds that \"residence premises\" also includes other structures and grounds at that location.",
+		"Coverage D.2 Fair Rental Value of the HO 00 03 05 11 form reads: \"If a loss covered under Section I makes that part of the 'residence premises' rented to others or held for rental by you not fit to live in, we cover the fair rental value of such premises less any expenses that do not continue while it is not fit to live in.\" Payment is for the shortest time required to repair or replace such premises.",
+		"Additional Coverage E.10 Landlord's Furnishings of the HO 00 03 05 11 form reads: \"We will pay up to $2,500 for your appliances, carpeting and other household furnishings, in each apartment on the 'residence premises' regularly rented or held for rental to others by an 'insured', for loss caused by a Peril Insured Against in Coverage C, other than Theft.\"",
+		"Coverage B of the HO 00 03 05 11 form does not cover \"other structures rented or held for rental to any person not a tenant of the dwelling, unless used solely as a private garage.\"",
+		"Coverage C of the HO 00 03 05 11 form does not cover \"property in an apartment regularly rented or held for rental to others by an 'insured', except as provided in E.10. Landlord's Furnishings\", and does not cover \"property rented or held for rental to others off the 'residence premises'.\"",
+		"The HO 00 03 05 11 form defines \"business\" to include \"a trade, profession or occupation engaged in on a full-time, part-time or occasional basis\" and \"any other activity engaged in for money or other compensation,\" excepting one or more activities for which no insured receives more than $2,000 in total compensation for the 12 months before the beginning of the policy period.",
+		"Section II Exclusion E.2. of the HO 00 03 05 11 form states that the exclusion does not apply to the rental or holding for rental of an \"insured location\" (a) on an occasional basis if used only as a residence; (b) in part for use only as a residence, unless a single-family unit is intended for use by the occupying family to lodge more than two roomers or boarders; or (c) in part, as an office, school, studio or private garage.",
+		"The HO 00 03 05 11 form excludes vandalism and malicious mischief, and any ensuing loss caused by any intentional and wrongful act committed in the course of the vandalism or malicious mischief, \"if the dwelling has been vacant for more than 60 consecutive days immediately before the loss. A dwelling being constructed is not considered vacant.\"",
+		"The glass or safety glazing material Additional Coverage of the HO 00 03 05 11 form does not include loss on the \"residence premises\" if the dwelling has been vacant for more than 60 consecutive days immediately before the loss, except where the breakage results directly from earth movement.",
+		"Section I Condition R. Concealment Or Fraud of the HO 00 03 05 11 form states: \"We provide coverage to no 'insureds' under this policy if, whether before or after a loss, an 'insured' has: 1. Intentionally concealed or misrepresented any material fact or circumstance; 2. Engaged in fraudulent conduct; or 3. Made false statements; relating to this insurance.\""
+	],
+	"updateCadence": "ISO revises its homeowners program periodically and a newer edition (HO 00 03 03 22) exists, so check the form number and edition date printed on your own declarations page and forms list.",
+	"status": "active",
+	"notes": "Downloaded 2026-08-31 (HTTP 200, application/pdf, about 122 KB). The fetch tool could not parse the compressed PDF streams, so the text was extracted locally with pdftotext -layout and read directly. Page 1 header reads \"HOMEOWNERS / HO 00 03 05 11 / HOMEOWNERS 3 - SPECIAL FORM\"; 24 pages; every page footer reads \"Insurance Services Office, Inc., 2010\". Every claim above was read verbatim in the extracted text. This is a carrier-filed copy hosted by a state regulator, not an ISO-published document, and a carrier's own filed edition can differ from the ISO edition. Published: 2011-05-01 Effective: 2011-05-01",
+	"officialHost": false
+}

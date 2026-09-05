@@ -1,0 +1,23 @@
+{
+	"title": "29 CFR 2590.606-2 - Notice requirement for employers (COBRA continuation coverage)",
+	"publisher": "Cornell Legal Information Institute, reproducing the Code of Federal Regulations",
+	"url": "https://www.law.cornell.edu/cfr/text/29/2590.606-2",
+	"sourceType": "regulation",
+	"authorityLevel": "secondary",
+	"primary": false,
+	"officialHost": false,
+	"jurisdiction": "US",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-01",
+	"lastChecked": "2026-09-01",
+	"lastCheckedBasis": "access",
+	"updateCadence": "on-amendment",
+	"status": "active",
+	"claims": [
+		"The section is titled Notice requirement for employers.",
+		"For most plans the employer must furnish the notice to the plan administrator not later than 30 days after the date on which the qualifying event occurred.",
+		"For plans under which continuation coverage commences on the date of loss of coverage, the notice must be provided not later than 30 days after the date on which a qualified beneficiary loses coverage under the plan due to the qualifying event.",
+		"Multiemployer plans may provide for a longer notice period than the periods otherwise required, as specified in the plan documents."
+	]
+}

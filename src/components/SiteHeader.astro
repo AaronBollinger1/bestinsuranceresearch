@@ -1,0 +1,97 @@
+---
+import { Menu, Search, X } from '@lucide/astro';
+import { primaryNav, siteConfig } from '../config/site';
+
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+---
+
+<header class="site-header">
+	<div class="shell header-bar">
+		<a class="brand" href="/">
+			<img src="/icon-master-black-transparent.png" width="26" height="26" alt="" />
+			<span class="brand-name">
+				<strong>BestInsurance <em>Research</em></strong>
+				<span>Operated by Bollinsure</span>
+			</span>
+			<span class="u-visually-hidden">{siteConfig.name} home</span>
+		</a>
+
+		<nav class="header-nav" aria-label="Primary">
+			{
+				primaryNav.map((item) => (
+					<a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+						{item.label}
+					</a>
+				))
+			}
+		</nav>
+
+		<div class="header-tail">
+			<form class="header-search" role="search" action="/ask" method="get">
+				<Search class="search-glyph" size={15} stroke-width={2} aria-hidden="true" />
+				<label class="u-visually-hidden" for="header-q">Search the research corpus</label>
+				<input
+					id="header-q"
+					name="q"
+					type="search"
+					placeholder="Search questions and coverage"
+					autocomplete="off"
+					enterkeyhint="search"
+				/>
+			</form>
+			<button class="icon-btn nav-toggle" type="button" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
+				<span data-icon="open"><Menu size={20} aria-hidden="true" /></span>
+				<span data-icon="close" hidden><X size={20} aria-hidden="true" /></span>
+				<span class="u-visually-hidden">Menu</span>
+			</button>
+		</div>
+	</div>
+</header>
+
+<div class="nav-panel" id="nav-panel" hidden>
+	<div class="shell nav-panel-inner">
+		<form role="search" action="/ask" method="get" class="field">
+			<label class="u-visually-hidden" for="panel-q">Search the research corpus</label>
+			<input id="panel-q" name="q" type="search" placeholder="Search questions and coverage" autocomplete="off" />
+		</form>
+		<nav aria-label="Site sections">
+			{
+				primaryNav.map((item) => (
+					<a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+						{item.label}
+					</a>
+				))
+			}
+			<a href="/examples">Examples</a>
+			<a href="/methodology">Methodology</a>
+			<a href="/about">About</a>
+		</nav>
+	</div>
+</div>
+
+<script>
+	const toggle = document.getElementById('nav-toggle');
+	const panel = document.getElementById('nav-panel');
+	const openIcon = toggle?.querySelector<HTMLElement>('[data-icon="open"]');
+	const closeIcon = toggle?.querySelector<HTMLElement>('[data-icon="close"]');
+
+	function setOpen(open: boolean) {
+		if (!toggle || !panel) return;
+		toggle.setAttribute('aria-expanded', String(open));
+		panel.hidden = !open;
+		openIcon?.toggleAttribute('hidden', open);
+		closeIcon?.toggleAttribute('hidden', !open);
+	}
+
+	toggle?.addEventListener('click', () => {
+		setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+			setOpen(false);
+			toggle.focus();
+		}
+	});
+</script>

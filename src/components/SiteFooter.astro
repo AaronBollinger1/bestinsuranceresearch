@@ -1,0 +1,108 @@
+---
+import { ArrowUpRight, Mail, Phone, MapPin } from '@lucide/astro';
+import { footerNav, siteConfig, isPreview } from '../config/site';
+import { bollinsureUrl } from '../lib/handoff';
+
+const path = Astro.url.pathname;
+const bollinsureHref = bollinsureUrl('/', { sourcePath: path, family: 'general' });
+const producers = siteConfig.operator.producers.map((p) => `${p.name} (${p.license})`).join(', ');
+---
+
+<footer class="site-footer">
+	<div class="shell">
+		<div class="footer-grid">
+			<div class="footer-about">
+				<a class="brand on-ink" href="/">
+					<img src="/icon-master-white-transparent.png" width="26" height="26" alt="" />
+					<span class="brand-name">
+						<strong>BestInsurance <em>Research</em></strong>
+						<span>Operated by Bollinsure</span>
+					</span>
+				</a>
+				<p>
+					A public insurance advisory instrument, built on a research library. Every answer and every
+					open item shows its sources, its assumptions, what would change it, and when a person last
+					reviewed it.
+				</p>
+			</div>
+
+			<div>
+				<h2>Research</h2>
+				<div class="footer-links">
+					{footerNav.research.map((item) => <a href={item.href}>{item.label}</a>)}
+				</div>
+			</div>
+
+			<div>
+				<h2>Standards</h2>
+				<div class="footer-links">
+					{footerNav.standards.map((item) => <a href={item.href}>{item.label}</a>)}
+				</div>
+			</div>
+
+			<div>
+				<h2>Machine readable</h2>
+				<div class="footer-links">
+					{footerNav.machine.map((item) => <a href={item.href}>{item.label}</a>)}
+				</div>
+			</div>
+
+			<div>
+				<h2>Licensed help</h2>
+				<div class="footer-links">
+					<a
+						href={bollinsureHref}
+						data-event="bollinsure_handoff_clicked"
+						data-insurance-family="general"
+						data-page-type="editorial"
+					>
+						Bollinsure Insurance Services <ArrowUpRight size={14} aria-hidden="true" />
+					</a>
+					<a href={`mailto:${siteConfig.contact.email}`}>
+						<Mail size={14} aria-hidden="true" /> {siteConfig.contact.email}
+					</a>
+					<a href={siteConfig.contact.phoneHref}>
+						<Phone size={14} aria-hidden="true" /> {siteConfig.contact.phoneDisplay}
+					</a>
+					<address class="footer-address">
+						<MapPin size={14} aria-hidden="true" />
+						<span>
+							{siteConfig.contact.address.street}<br />
+							{siteConfig.contact.address.locality}, {siteConfig.contact.address.region}{' '}
+							{siteConfig.contact.address.postalCode}
+						</span>
+					</address>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-legal">
+			<p>
+				{siteConfig.licensedHelpDisclosure} Operated by {siteConfig.operator.legalName} dba{' '}
+				{siteConfig.operator.dba}. {siteConfig.operator.licenseAuthority} agency license{' '}
+				{siteConfig.operator.agencyLicense}. Licensed producers: {producers}.
+			</p>
+			<p>
+				This site publishes general information. It is not legal, tax, claims, or individualized
+				insurance advice, it does not bind coverage, and it does not decide eligibility. Only an
+				authorized insurer or its representative can do that.
+			</p>
+			{
+				isPreview && (
+					<p>
+						<strong>Preview build.</strong> This environment emits <code>noindex, nofollow</code>, blocks
+						crawling in <code>robots.txt</code>, and loads no analytics or marketing script.
+					</p>
+				)
+			}
+			<nav aria-label="Legal">
+				<a href="/privacy">Privacy</a>
+				<a href="/terms">Terms</a>
+				<a href="/corrections">Corrections</a>
+				<a href="/editorial-policy">Editorial policy</a>
+				<a href="/review-queue">Review queue</a>
+				<a href="/about">About</a>
+			</nav>
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,218 @@
+{
+	"name": "Landlord / rental dwelling insurance",
+	"line": "dwelling-fire",
+	"family": "personal",
+	"definition": "A landlord or rental dwelling policy insures a residence the owner rents to others rather than occupies. One national carrier's rental dwelling program is described as providing dwelling coverage for covered repairs or reconstruction of the dwelling and other structures on the same property, personal property coverage for specific property located at the rental dwelling, loss of rents coverage for loss of fair rental value if an insured loss makes the property uninhabitable, and liability coverage against covered liability lawsuits [S:statefarm-rental-dwelling]. It does not insure the tenant's belongings: that carrier states plainly that tenant-owned personal property is not covered by this policy, and CDI and New York DFS both state that a landlord does not provide insurance for a tenant's personal property [S:statefarm-rental-dwelling][S:cdi-residential-insurance-guide][S:nydfs-renters-insurance]. How much a given policy covers depends on the form: the California FAIR Plan Dwelling Fire Policy is described by the plan as a named peril policy providing coverage only for damage caused by the specific causes of loss listed in the policy, with vandalism and malicious mischief available as an optional coverage at additional cost [S:cfp-dwelling-policy]. This page is general information, not a coverage determination and not an eligibility verdict.",
+	"protects": [
+		"The owner of a dwelling rented to others, for covered repairs or reconstruction of the dwelling and other structures on the same property [S:statefarm-rental-dwelling]",
+		"Specific property located at the rental dwelling, including furniture and other personal property rented with or used to maintain the property [S:statefarm-rental-dwelling]",
+		"The owner's fair rental value when an insured loss causes the property to be uninhabitable [S:statefarm-rental-dwelling]",
+		"The owner against covered liability lawsuits, where the program includes liability coverage [S:statefarm-rental-dwelling]",
+		"It does not protect the tenant: tenant-owned personal property is not covered by that carrier's rental dwelling policy, and CDI and New York DFS both state that a landlord does not provide insurance for a tenant's personal property [S:statefarm-rental-dwelling][S:cdi-residential-insurance-guide][S:nydfs-renters-insurance]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "The rental dwelling and other structures",
+			"note": "One carrier's rental dwelling program describes dwelling coverage as helping pay for covered repairs or reconstruction of the dwelling and other structures on the same property [S:statefarm-rental-dwelling]. Form caveat: that page is a carrier program description that names no policy form number or edition and states it is only a general description of coverage and not a statement of contract, with details of coverage or limits varying in some states [S:statefarm-rental-dwelling]. On a different form the answer can be much narrower: the California FAIR Plan describes its Dwelling Fire Policy as a named peril policy providing coverage only for damage caused by the specific causes of loss listed in the policy, showing fire and lightning, internal explosion, and smoke [S:cfp-dwelling-policy]. Read your own policy."
+		},
+		{
+			"item": "Owner-owned personal property at the location",
+			"note": "That carrier describes personal property coverage as helping pay for covered losses to specific property located at the rental dwelling, including furniture and other personal property rented with or used to maintain the property [S:statefarm-rental-dwelling]. Form caveat: this is a carrier program description with no policy form number or edition and an express statement that details of coverage or limits vary in some states [S:statefarm-rental-dwelling]. No source in this cluster states how this limit compares with a homeowners contents limit, so no comparison is made. The covered property and the limit come from the issued form and declarations. Read your own policy."
+		},
+		{
+			"item": "Loss of rents / fair rental value",
+			"note": "That carrier describes loss of rents as helping reimburse the owner for loss of fair rental value if the rental dwelling is damaged by an insured loss that causes the property to be uninhabitable [S:statefarm-rental-dwelling]. Form caveat: the uninhabitability trigger is that carrier's wording on a page that names no policy form number or edition and states that details of coverage or limits vary in some states and that it is only a general description of coverage and not a statement of contract [S:statefarm-rental-dwelling]. The limit, how it is expressed, and the period it runs come from the issued form and declarations. Read your own policy."
+		},
+		{
+			"item": "Premises liability, where the program includes it",
+			"note": "That carrier describes liability coverage as helping protect the owner financially against costly covered liability lawsuits [S:statefarm-rental-dwelling]. Form caveat: liability is not universal on dwelling forms. The California FAIR Plan's Dwelling Fire Policy page describes causes of loss and optional coverages and does not mention liability coverage at all [S:cfp-dwelling-policy]. Neither page names a policy form number or edition. Whether liability is included, optional, or written separately is answered by the issued form and declarations. Read your own policy."
+		},
+		{
+			"item": "Optional perils added at additional cost on a named peril form",
+			"note": "The California FAIR Plan states that optional coverages are available at an additional cost, such as coverage for vandalism and malicious mischief [S:cfp-dwelling-policy]. Form caveat: this describes the California FAIR Plan Dwelling Fire Policy, which the plan's page does not identify by policy form number or edition; no source in this cluster describes vacancy conditions or time limits on such an endorsement, so none is asserted. Which options exist, and on what conditions, come from the insurer's filed forms. Read your own policy."
+		},
+		{
+			"item": "Fire damage caused by or following an earthquake, under a California residential policy (California requirement)",
+			"note": "CDI states that California law says both homeowners and renters insurance must cover fire damage that is caused by or follows an earthquake [S:cdi-earthquake-insurance-guide]. Form caveat: CDI states that requirement for homeowners and renters insurance and says nothing about landlord or rental dwelling forms, and no source in this cluster extends it to them. Whether it reaches a particular rental dwelling contract is a legal question for a lawyer. Read your own policy."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "The tenant's personal property",
+			"note": "That carrier states that tenant-owned personal property is not covered by this policy and that tenants should explore getting their own insurance [S:statefarm-rental-dwelling]. CDI states that the landlord does not provide insurance for the tenant's personal property [S:cdi-residential-insurance-guide], and New York DFS states the same and adds that an exception can occur if the landlord was aware of a prior hazardous condition, failed to correct it in a reasonable time frame, and as a result the tenant's property was damaged [S:nydfs-renters-insurance]. Form caveat: the carrier statement describes one program whose page names no policy form number or edition and states that details of coverage or limits vary in some states; the New York exception is New York regulator guidance. Read your own policy."
+		},
+		{
+			"item": "Flood and underground water",
+			"note": "That carrier lists flood or underground water damage among the exclusions on its rental dwelling program [S:statefarm-rental-dwelling], and FEMA states that most homeowners insurance does not cover flood damage and will not fulfill mortgage or federal disaster assistance requirements for flood insurance, with NFIP coverage available where the community participates in the NFIP's floodplain management requirements [S:fema-nfip-eligibility]. Form caveat: the carrier page names no policy form number or edition and states that details of coverage or limits vary in some states [S:statefarm-rental-dwelling]. The operative water exclusion wording comes from the issued form. Read your own policy."
+		},
+		{
+			"item": "Earth movement including earthquake and landslide",
+			"note": "That carrier lists earth movement including earthquake and landslide among the exclusions on its rental dwelling program [S:statefarm-rental-dwelling], and CDI states that homeowners, renters, and condominium policies do not cover damage from natural disasters such as earthquakes, floods, and landslides [S:cdi-earthquake-insurance-guide]. California Insurance Code section 10081 provides that earthquake coverage may be provided by specific policy provision or endorsement in a residential property policy, or in a separate policy or certificate [S:ca-ins-code-10081]. Form caveat: the carrier page names no policy form number or edition and states that details of coverage or limits vary in some states. Read your own policy."
+		},
+		{
+			"item": "Continuous or repeated seepage or leakage of water or steam",
+			"note": "That carrier lists damage from continuous or repeated seepage or leakage of water or steam among the exclusions on its rental dwelling program [S:statefarm-rental-dwelling]. Form caveat: this is one carrier's program description, with no policy form number or edition and an express statement that details of coverage or limits vary in some states [S:statefarm-rental-dwelling]. Read your own policy."
+		},
+		{
+			"item": "Settling, deterioration, contamination, and nuclear hazard",
+			"note": "That carrier lists settling, deterioration, contamination and nuclear hazard among the exclusions on its rental dwelling program [S:statefarm-rental-dwelling]. Form caveat: this is one carrier's program description with no policy form number or edition, and it states that details of coverage or limits vary in some states [S:statefarm-rental-dwelling]. No source in this cluster establishes that other dwelling forms follow the same pattern, so no such claim is made. Read your own policy."
+		},
+		{
+			"item": "Damage from birds, rodents, insects or domestic animals",
+			"note": "That carrier lists damage from birds, rodents, insects or domestic animals among the exclusions on its rental dwelling program [S:statefarm-rental-dwelling]. Form caveat: this is one carrier's program description with no policy form number or edition, and it states that details of coverage or limits vary in some states [S:statefarm-rental-dwelling]. Read your own policy."
+		},
+		{
+			"item": "Anything not listed, on a named peril form",
+			"note": "The California FAIR Plan states that its Dwelling Fire Policy is a named peril policy which provides coverage only for damage caused by the specific causes of loss listed in the policy, and shows fire and lightning, internal explosion, and smoke as causes of loss [S:cfp-dwelling-policy]. Form caveat: that page describes the California FAIR Plan Dwelling Fire Policy and identifies no policy form number or edition, and the peril list in the policy actually issued is what governs. Read your own policy."
+		},
+		{
+			"item": "Vacancy and rent loss not tied to physical damage",
+			"note": "Loss of rents on that carrier's program is tied to loss of fair rental value where the rental dwelling is damaged by an insured loss that causes the property to be uninhabitable [S:statefarm-rental-dwelling]. Form caveat: the trigger is that carrier's wording on a page with no policy form number or edition that states details of coverage or limits vary in some states [S:statefarm-rental-dwelling]. Whether an interruption meets the trigger is decided by the insurer under the issued form and the facts of the claim. Read your own policy."
+		}
+	],
+	"limitsAndDeductibles": [
+		"Limits are set per coverage part on a rental dwelling program: dwelling and other structures, owner-owned personal property at the location, loss of rents, and liability, with that carrier stating that details of coverage or limits vary in some states and that its page is only a general description of coverage and not a statement of contract [S:statefarm-rental-dwelling].",
+		"Loss of rents is described as reimbursing loss of fair rental value where an insured loss causes the property to be uninhabitable [S:statefarm-rental-dwelling]. No source in this cluster states a universal limit basis or time period for loss of rents, so none is stated here; the declarations carry the amount and any time cap.",
+		"Valuation follows the form. NAIC describes replacement cost as the amount it would take to replace or rebuild or repair with materials of similar kind and quality without deducting for depreciation, and actual cash value as that amount after depreciation [S:naic-consumer-homeowners]. CDI states that a policy cannot be sold as a guaranteed replacement cost policy unless it will pay to completely rebuild the home regardless of the coverage limit, and that other types of replacement cost policies pay the policy limits plus a certain percentage above those limits [S:cdi-residential-insurance-guide]. Both pages describe residential policies generally, not rental dwelling forms specifically.",
+		"In California, Insurance Code section 2051.5 provides that under an open policy requiring payment of replacement cost, the measure of indemnity is what it would cost the insured to repair, rebuild, or replace the thing lost or injured, without a deduction for physical depreciation, or the policy limit, whichever is less, and the section as displayed requires all policy forms issued or renewed on and after July 1, 2026 to comply with it in its entirety [S:ca-ins-code-2051-5]. Whether the section reaches a particular rental dwelling contract is a legal question for a lawyer.",
+		"CDI defines the deductible as the amount of loss the policyholder is responsible to pay up-front before covered benefits are payable, and states that a larger deductible may significantly reduce the premium; NAIC states that choosing a higher deductible will reduce the price [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners]. Both statements are made about residential policies generally. No source in this cluster describes separate wind, hail, or wildfire deductibles, so none is described here.",
+		"The same dollar limit buys different protection on different forms. The California FAIR Plan states that its Dwelling Fire Policy provides coverage only for damage caused by the specific causes of loss listed in the policy, and suggests considering Difference in Conditions, Flood, or Earthquake policies to supplement it by covering additional perils [S:cfp-dwelling-policy]."
+	],
+	"endorsements": [
+		{
+			"item": "Vandalism and malicious mischief on a named peril dwelling policy",
+			"note": "The California FAIR Plan states that optional coverages are available at an additional cost, such as coverage for vandalism and malicious mischief [S:cfp-dwelling-policy]. Form caveat: this describes the California FAIR Plan Dwelling Fire Policy, which the plan's page does not identify by policy form number or edition. No source in this cluster describes vacancy conditions or time limits attaching to such an endorsement, so none is asserted. Read your own policy."
+		},
+		{
+			"item": "Loss of rents limit",
+			"note": "Loss of rents on one carrier's rental dwelling program is described as reimbursing loss of fair rental value where an insured loss causes the property to be uninhabitable [S:statefarm-rental-dwelling]. Form caveat: that page names no policy form number or edition, states that details of coverage or limits vary in some states, and does not describe options to increase the limit or extend the period, so no such options are asserted here. Read your own policy."
+		},
+		{
+			"item": "Liability coverage where a form does not include it",
+			"note": "One carrier's rental dwelling program describes liability coverage as protection against covered liability lawsuits [S:statefarm-rental-dwelling], while the California FAIR Plan's Dwelling Fire Policy page does not mention liability coverage at all [S:cfp-dwelling-policy]. Form caveat: neither page names a policy form number or edition, and neither describes how liability would be added to a property-only form. Whether liability is included, added, or written separately is answered by the issued form and declarations. Read your own policy."
+		},
+		{
+			"item": "Earthquake coverage by provision, endorsement, or separate policy",
+			"note": "California Insurance Code section 10081 provides that earthquake coverage may be provided in a residential property policy by specific policy provision or endorsement, or in a separate policy or certificate covering earthquake alone or in combination with other perils [S:ca-ins-code-10081]. Form caveat: the statute permits the structure; it does not describe any particular form, and no source in this cluster names a rental dwelling earthquake form or edition. Whether a specific rental dwelling policy falls within the earthquake chapter is a legal question for a lawyer. Read your own policy."
+		},
+		{
+			"item": "Ordinance or law / building code upgrade",
+			"note": "Rebuilding to current code can cost more than restoring what was there. The only code upgrade figures verified in this cluster come from the earthquake market, where CEA publishes coverage of $10,000 with purchasable options of $20,000 or $30,000, paid once covered dwelling damage exceeds the Coverage A and B deductible [S:cea-homeowners-coverages-deductibles]. Form caveat: those figures describe CEA earthquake coverage, not a rental dwelling form. No source in this cluster describes code upgrade limits or wording on rental dwelling forms, so none is asserted. Read your own policy."
+		},
+		{
+			"item": "Short-term or vacation rental use",
+			"note": "One carrier's rental dwelling program page is an express general description that states details of coverage or limits vary in some states [S:statefarm-rental-dwelling]. Form caveat: no source in this cluster describes how short-term rental activity is treated on rental dwelling forms, or what endorsements exist for it, so nothing is asserted on that point. How a policy responds to an occupancy the insurer was not told about is a legal and contractual question, not one this page decides. Read your own policy."
+		}
+	],
+	"relatedPolicies": [
+		"Renter's insurance carried by the tenant, since CDI and New York DFS both state that a landlord does not provide insurance for a tenant's personal property and one carrier states plainly that tenant-owned personal property is not covered by its rental dwelling policy [S:cdi-residential-insurance-guide][S:nydfs-renters-insurance][S:statefarm-rental-dwelling]",
+		"Flood insurance through the NFIP where the community participates, since flood or underground water damage is excluded on that carrier's rental dwelling program and FEMA states most homeowners insurance does not cover flood damage [S:statefarm-rental-dwelling][S:fema-nfip-eligibility]",
+		"Earthquake coverage by policy provision, endorsement, or separate policy or certificate, as permitted for residential property policies by Insurance Code section 10081 [S:ca-ins-code-10081][S:cdi-earthquake-insurance-guide]",
+		"Difference in Conditions coverage alongside a named peril dwelling policy, which the California FAIR Plan itself suggests considering along with Flood or Earthquake policies [S:cfp-dwelling-policy]",
+		"Personal umbrella or excess liability written above the rental dwelling liability limit",
+		"Homeowners insurance on the owner's own residence, which CDI and NAIC describe as a different set of coverage parts for an occupied home [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners]",
+		"Commercial property or package coverage for buildings outside the scope of personal-lines residential programs; no source in this cluster sets the dividing line, and where a given building belongs is decided by the insurer's underwriting rules and filed forms"
+	],
+	"underwritingInputs": [
+		"Full address of the rental property",
+		"Number of dwelling units in the structure and whether the whole structure is rented",
+		"Year built, construction type, square footage, and number of stories",
+		"Roof material and roof age, and the condition of heating, plumbing, and wiring, which NAIC identifies as systems insurers may require to be updated on older homes [S:naic-consumer-homeowners]",
+		"Occupancy and tenancy arrangement, including lease type, seasonal use, any short-term rental activity, and any vacancy",
+		"Whether the owner or a property manager operates the property",
+		"The loss of rents amount requested, supported by the actual or market rent, since loss of rents responds to loss of fair rental value where an insured loss makes the property uninhabitable [S:statefarm-rental-dwelling]",
+		"The requested dwelling limit and the basis for it",
+		"Liability exposures at the premises, and whether the program being quoted includes liability at all, since one carrier's rental dwelling program describes liability coverage while the California FAIR Plan Dwelling Fire Policy page does not mention it [S:statefarm-rental-dwelling][S:cfp-dwelling-policy]",
+		"Prior loss history at the property and for the owner, and prior insurance history",
+		"Whether flood and earthquake will be arranged separately, given that one carrier's rental dwelling program excludes flood or underground water and earth movement including earthquake and landslide [S:statefarm-rental-dwelling][S:fema-nfip-eligibility]",
+		"Note on scope: this cluster verified no source describing insurer catastrophe, wildfire, or crime scoring, or lease requirements for tenant renters insurance, so those are not listed here as underwriting inputs even though a producer may be asked about them."
+	],
+	"exposures": [
+		{
+			"item": "Physical damage to the rented dwelling",
+			"note": "A rental dwelling policy is written on the dwelling rather than on an owner-occupied home, and what it covers is set by the form issued [S:statefarm-rental-dwelling]. The regulator's residential guide addresses the difference in the residential market [S:cdi-residential-insurance-guide]."
+		},
+		{
+			"item": "Loss of rental income while the dwelling is untenantable",
+			"note": "Rental income is a time-element exposure distinct from the physical damage, and whether it is covered, and for how long, is read on the form actually issued [S:statefarm-rental-dwelling]."
+		},
+		{
+			"item": "The tenant's own belongings, which the owner's policy does not cover",
+			"note": "A tenant's contents are addressed by renters insurance rather than by the owner's dwelling policy [S:nydfs-renters-insurance]. This is the exposure most often assumed to sit on the wrong policy."
+		},
+		{
+			"item": "Flood and earthquake, each written separately",
+			"note": "Flood is written under the federal program with its own eligibility and forms [S:fema-nfip-eligibility], and earthquake is addressed separately with a statutory offer duty attaching to residential property [S:ca-ins-code-10081]."
+		},
+		{
+			"item": "A limit that has not moved with rebuilding cost",
+			"note": "California law addresses the valuation basis for a residential structure [S:ca-ins-code-2051-5], and consumer guidance treats replacement cost as the figure to revisit [S:naic-consumer-homeowners]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Require renters insurance in the lease, and collect evidence of it",
+			"note": "A tenant's belongings are addressed by renters insurance rather than the owner's policy [S:nydfs-renters-insurance]. The lease is where that requirement is created; the certificate is what shows it was met."
+		},
+		{
+			"item": "Read whether loss of rents is on the form, and for what period",
+			"note": "Rental income is a separate grant from physical damage and its terms are on the form issued [S:statefarm-rental-dwelling]. The period matters more than the limit in a long rebuild."
+		},
+		{
+			"item": "Keep a dated basis for the dwelling limit",
+			"note": "The statutory valuation basis for a residential structure is the reference point [S:ca-ins-code-2051-5], and a dated estimate is what shows the limit was set deliberately rather than inherited."
+		},
+		{
+			"item": "Establish the flood and earthquake position separately, in advance",
+			"note": "Flood eligibility sits with the federal program [S:fema-nfip-eligibility] and the earthquake offer duty carries its own timing [S:ca-ins-code-10083]. Both have lead times that a renewal date does not."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "California's earthquake offer requirement runs to a policy of residential property insurance as that term is defined for the earthquake chapter, which reaches individually owned residential structures of not more than four dwelling units, individually owned condominium units, or individually owned mobilehomes and their contents used exclusively for residential purposes, or a tenant's contents policy, and which expressly does not reach property used for commercial, industrial, or business purposes except a structure of not more than four dwelling units rented for individual residential purposes [S:ca-ins-code-10087][S:ca-ins-code-10081]. That definition is scoped to the earthquake chapter. Whether a particular rental dwelling policy falls inside it is a legal question for a lawyer, and this page does not answer it or assign the answer to anyone."
+		},
+		{
+			"state": "CA",
+			"note": "The California FAIR Plan writes a Dwelling Fire Policy that it describes as a named peril policy providing coverage only for damage caused by the specific causes of loss listed in the policy, showing fire and lightning, internal explosion, and smoke, with optional coverages such as vandalism and malicious mischief available at additional cost, and it suggests considering Difference in Conditions, Flood, or Earthquake policies to supplement the policy by covering additional perils [S:cfp-dwelling-policy]. Eligibility for the plan and placement of any risk are decided by the plan and by insurers, never by this page."
+		},
+		{
+			"state": "CA",
+			"note": "Insurance Code section 2051.5 sets a statutory replacement cost measure without a deduction for physical depreciation, capped at the policy limit, together with the 12-month, 36-month, six-month extension, and 100-day proof-of-loss provisions, and requires all policy forms issued or renewed on and after July 1, 2026 to comply with the section in its entirety [S:ca-ins-code-2051-5]. Whether the section reaches a rental dwelling form is a legal question for a lawyer."
+		},
+		{
+			"state": "NY",
+			"note": "New York's Department of Financial Services states that a landlord does not provide insurance for a tenant's personal property, and that an exception can occur if the landlord was aware of a prior hazardous condition, failed to correct it in a reasonable time frame, and as a result the tenant's property was damaged [S:nydfs-renters-insurance]. That is New York regulator guidance and is not represented here as the law of any other state."
+		},
+		{
+			"state": "US",
+			"note": "Rental dwelling programs differ by insurer and by state. One national carrier's rental dwelling page states that details of coverage or limits vary in some states and that the page is only a general description of coverage and not a statement of contract [S:statefarm-rental-dwelling]. FEMA states that most homeowners insurance does not cover flood damage and that it will not fulfill mortgage or federal disaster assistance requirements for flood insurance [S:fema-nfip-eligibility]."
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"effectiveDate": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"statefarm-rental-dwelling",
+		"cfp-dwelling-policy",
+		"cdi-residential-insurance-guide",
+		"nydfs-renters-insurance",
+		"fema-nfip-eligibility",
+		"ca-ins-code-10087",
+		"ca-ins-code-10081",
+		"ca-ins-code-10083",
+		"ca-ins-code-2051-5",
+		"cdi-earthquake-insurance-guide",
+		"naic-consumer-homeowners",
+		"cea-homeowners-coverages-deductibles"
+	],
+	"relatedQuestions": [
+		"landlord-policy-vs-homeowners",
+		"homeowners-earthquake-california",
+		"replacement-cost-vs-market-value",
+		"lender-insurance-requirement",
+		"same-limit-different-protection"
+	]
+}

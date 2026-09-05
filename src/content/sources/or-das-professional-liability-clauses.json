@@ -1,0 +1,26 @@
+{
+	"title": "Insurance Clauses - Professional Liability/Errors and Omissions",
+	"publisher": "Oregon Department of Administrative Services, Risk Management",
+	"url": "https://www.oregon.gov/das/risk/pages/insclausesproferroromis.aspx",
+	"sourceType": "official-documentation",
+	"jurisdiction": "OR",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"The page describes professional liability and errors and omissions coverage as covering liability resulting from errors and omissions or mistakes made in performance of professional services or judgment.",
+		"Most policies cover economic losses, failure to perform, error or omission of product or service, and contract disputes.",
+		"Professional Liability and Errors and Omissions insurance policies are generally issued on a claims made basis, and the page directs staff to require tail coverage for all claims made coverage.",
+		"The model contract clause requires either an extended reporting period of not less than 24 months, or that the contractor maintain tail coverage or continuous claims made liability coverage for a stated minimum period after the contract work is completed or terminated.",
+		"Many times, it is appropriate to require both Professional Liability and Commercial General Liability Coverage, and when a professional liability insurer denies the claim the state may be able to recover the loss under the commercial general liability coverage.",
+		"Coverage is specific to the nature of the profession; for attorneys, the Oregon State Bar Professional Liability Fund provides $300,000 aggregate limits of coverage, and participation in this program is mandatory for all attorneys engaged in private practice whose principal office is in Oregon."
+	],
+	"updateCadence": "Maintained as standing contracting guidance by the state risk management office; no revision date is shown on the page.",
+	"status": "active",
+	"notes": "Fetched and read in full on 2026-08-31. Publisher caveat: DAS Risk Management is a state risk-management and contracting office, not an insurance regulator, so this page states government purchasing practice and general descriptions rather than insurance law. authorityLevel is set to secondary for that reason. The Oregon State Bar Professional Liability Fund statement is specific to Oregon attorneys in private practice and says nothing about other professions or other states. Re-verified on 2026-08-31: the page does carry the sentences 'A Professional Liability policy only covers the acts of the insured (professional). This type of policy will never name another person or entity as additional insured.' That absolute was previously repeated in this entry as a rule about the professional liability line. It has been removed from the prose and from this claims array, because a state purchasing office asserting a blanket never is not evidence of what every professional liability form does, no policy form in this entry addresses additional insured status on a professional liability policy, and none was located that would support the general statement. Additional insured treatment on either line is therefore left to the endorsements actually attached to the policy in hand.",
+	"officialHost": true
+}

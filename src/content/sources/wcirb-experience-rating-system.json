@@ -1,0 +1,28 @@
+{
+	"title": "California's Experience Rating System - Online Guide to Workers' Compensation",
+	"publisher": "Workers' Compensation Insurance Rating Bureau of California (WCIRB)",
+	"url": "https://www.wcirb.com/research-and-education/online-guide-workers%E2%80%99-compensation/californias-experience-rating-system",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The regulations governing California's experience rating system are contained in the California Workers' Compensation Experience Rating Plan-1995, which is part of the California Code of Regulations (Title 10; Chapter 5, Section 2353.1) and is approved by the Insurance Commissioner.",
+		"An experience modification, which is expressed as a percentage, compares the loss or claims history of one company to all other companies in the same industry that are similar in size.",
+		"Generally, an experience modification of less than 100 percent reflects better-than-average experience, while an experience modification of more than 100 percent reflects worse-than-average experience.",
+		"An experience modification that is greater than 100 percent usually increases the cost of an employer's workers' compensation insurance premiums, while an experience modification that is less than 100 percent usually decreases the cost of an employer's workers' compensation insurance premiums.",
+		"Not all employers are eligible for experience rating; for those businesses that qualify, experience rating is mandatory.",
+		"More than 130,000 California businesses are experience rated, representing approximately 80 percent of all California workers' compensation insurance premiums paid.",
+		"Using information submitted by insurers, the WCIRB calculates and publishes experience modifications for each qualified business, and regardless of which insurer provides the workers' compensation insurance policy, if an employer is experience rated their experience modification must be applied to their policy.",
+		"The experience rating system is a merit rating system intended to provide employers a direct financial incentive to reduce work-related accidents."
+	],
+	"updateCadence": "Maintained alongside annual amendments to the Experience Rating Plan.",
+	"status": "active",
+	"notes": "Re-fetched and re-verified 2026-08-31 over HTTPS with a browser user agent (WebFetch gets 403), HTTP 200, 104,063 bytes. All claims matched as literal strings. ATTRIBUTION CORRECTION on this pass: an earlier draft deleted the premium-direction claim and recorded in these notes that the page 'does not contain that language'. That note was wrong. The sentence 'Accordingly, an experience modification that is greater than 100 percent usually increases the cost of an employer's workers' compensation insurance premiums, while an experience modification that is less than 100 percent usually decreases the cost of an employer's workers' compensation insurance premiums' is on the page and was matched twice in the fetched bytes (once in the schema.org description, once in the rendered body). The claim has been restored and the prose now cites this source for the premium-direction point alongside the NCCI credit/debit/unity factor language. URL RE-CHECKED 2026-08-31: HTTP 200, no redirect, 104,135 bytes. The premium-direction sentence, the 130,000 businesses figure, the 80 percent figure, the Title 10 Chapter 5 Section 2353.1 citation and the merit rating system sentence were all re-matched on the page today, so the restored claim stands. A fresh grep for NCCI or National Council returns ZERO hits.",
+	"officialHost": true
+}

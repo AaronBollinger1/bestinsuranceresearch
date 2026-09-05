@@ -1,0 +1,23 @@
+{
+	"title": "Florida Statutes Section 627.733 (2026) - Required security",
+	"publisher": "The Florida Senate (flsenate.gov)",
+	"url": "https://www.flsenate.gov/laws/statutes/2026/627.733",
+	"sourceType": "statute",
+	"jurisdiction": "FL",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 627.733(1) provides that every owner or registrant of a motor vehicle, other than a motor vehicle used as a school bus or limousine, required to be registered and licensed in Florida shall maintain security as required by subsection (3) in effect continuously throughout the registration or licensing period.",
+		"Section 627.733(1) provides that owners of taxicabs are governed by the requirements of section 324.032(1) instead.",
+		"Section 627.733(3) provides that the required security may be provided by an insurance policy delivered or issued for delivery in Florida by an authorized or eligible motor vehicle liability insurer which provides the benefits and exemptions contained in sections 627.730 through 627.7405.",
+		"Section 627.733(3) also provides that the security may be provided by any other method authorized by section 324.031(2) or (3) and approved by the Department of Highway Safety and Motor Vehicles as affording security equivalent to that afforded by a policy of insurance, or by self-insuring."
+	],
+	"updateCadence": "Re-verify each Florida legislative session.",
+	"status": "active",
+	"officialHost": true
+}

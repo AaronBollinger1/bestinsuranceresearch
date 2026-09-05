@@ -1,0 +1,25 @@
+{
+	"title": "Commercial general liability insurance (consumer publication)",
+	"publisher": "Texas Department of Insurance",
+	"url": "https://www.tdi.texas.gov/pubs/pc/pcgenliab.html",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "TX",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"TDI states that occurrence policies cover claims arising from injury or damage occurring while the policy is in force, regardless of when the claim is first made.",
+		"TDI states that claims-made policies cover claims that arise from injury or damage occurring during the policy period and reported to the insurer during the policy period.",
+		"TDI lists common commercial general liability exclusions including damage to your work, damage to your product, contractual liability, recall of products, work, or impaired property, and workers' compensation and employer's liability, and also discusses pollution exclusions.",
+		"Writing about surplus lines insurance, TDI states that defense costs could be included within the limit of liability, and that prior acts or run-off coverage may not be available.",
+		"TDI advises policyholders to carefully review their policy and any endorsements to know exactly what the policy does and does not cover."
+	],
+	"updateCadence": "TDI updates its consumer publications periodically; the page fetched on 2026-08-31 showed 'Last updated 1/20/2021'.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31; last-updated date of 1/20/2021 confirmed on the page. This is Texas regulator guidance and is cited in this bundle for how the mechanisms work, not as California law. Note that TDI's claims-made description (injury during the policy period and reported during the policy period) is narrower than the NAIC description, so the two are cited separately rather than stacked on one sentence. The page does not discuss per-occurrence versus aggregate limits or sub-limits, and is not cited for those. Published: 2021-01-20 Effective: 2021-01-20",
+	"officialHost": true
+}

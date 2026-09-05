@@ -1,0 +1,27 @@
+{
+	"title": "California Insurance Code section 10102 (residential property insurance disclosure statement)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10102.",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The statutory disclosure defines ACTUAL CASH VALUE COVERAGE, for either a total or partial loss to the structure or its contents, as paying the amount it would cost to repair, rebuild, or replace the thing lost or injured, less a fair and reasonable deduction for physical depreciation based upon its condition at the time of the injury, or the policy limit, whichever is less.",
+		"The statutory disclosure defines REPLACEMENT COST COVERAGE as intended to provide for the cost to repair or replace the damaged or destroyed dwelling, without a deduction for physical depreciation, and states that many policies pay only the dwelling's actual cash value until the insured has actually begun or completed repairs or reconstruction on the dwelling.",
+		"The statutory disclosure defines EXTENDED REPLACEMENT COST COVERAGE as intended to provide for the cost to repair or replace the damaged or destroyed dwelling without a deduction for physical depreciation, and states that Extended Replacement Cost provides additional coverage above the dwelling limits up to a stated percentage or specific dollar amount.",
+		"The statutory disclosure defines GUARANTEED REPLACEMENT COST COVERAGE as covering the full cost to repair or replace the damaged or destroyed dwelling for a covered peril regardless of the dwelling limits shown on the policy declarations page.",
+		"Subdivision (e) provides that a policy of residential property insurance shall not be initially issued as guaranteed replacement cost coverage if it contains any maximum limitation of coverage based on any set dollar limits, percentage amounts, construction cost limits, indexing, or any other preset maximum limitation.",
+		"Subdivision (d) provides that following issuance of the policy the insurer shall provide the disclosure statement to the insured on an every-other-year basis at the time of renewal.",
+		"The amendment note on the page reads Amended by Stats. 2020, Ch. 263, Sec. 2. (AB 2756) Effective January 1, 2021."
+	],
+	"updateCadence": "Changes only by California legislation; leginfo reflects the current operative text.",
+	"status": "active",
+	"notes": "Fetched twice on 2026-08-31, the second time to confirm the Extended Replacement Cost paragraph in full rather than in truncated form. Metadata corrected from the prior draft: effectiveDate is now recorded from the amendment note. Note that the current text of this STATUTE uses the words EXTENDED REPLACEMENT COST COVERAGE and does not use the words Limited Replacement Cost Coverage. The Limited Replacement Cost wording appears only in the CDI consumer guide's summary of Senate Bill 1855 (2004), and this bundle attributes each to its own source and does not claim the coverage has been generally renamed. Effective: 2021-01-01",
+	"officialHost": true
+}

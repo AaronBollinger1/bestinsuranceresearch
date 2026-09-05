@@ -1,0 +1,21 @@
+{
+	"title": "Closed Confirmed Consumer Complaints by Reason - CIS",
+	"publisher": "National Association of Insurance Commissioners",
+	"url": "https://content.naic.org/cis_agg_reason.htm",
+	"sourceType": "government-data",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The page states that the NAIC produces reports combining data submitted by state insurance departments.",
+		"The page states that these reports provide information about common closed complaints by reason and type of insurance, as well as how the complaints were resolved."
+	],
+	"updateCadence": "Aggregated periodically from state insurance department submissions.",
+	"status": "active",
+	"officialHost": true
+}

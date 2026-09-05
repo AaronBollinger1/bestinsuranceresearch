@@ -1,0 +1,200 @@
+{
+	"name": "Workers Compensation Insurance (California)",
+	"line": "workers-compensation",
+	"family": "commercial",
+	"definition": "California employers are required by statute to secure the payment of workers compensation. Labor Code section 3700 provides that every employer except the state shall secure the payment of compensation in one or more of the ways the section lists: being insured against liability to pay compensation by one or more insurers duly authorized to write compensation insurance in California; securing from the Director of Industrial Relations a certificate of consent to self-insure, either as an individual employer or as one employer in a group, upon proof satisfactory to the Director of ability to self-insure and to pay any compensation that may become due; or, for counties, cities, municipal corporations, public districts, public agencies and other political subdivisions, securing a certificate of consent to self-insure against workers compensation claims [S:ca-labor-code-3700]. The Division of Workers' Compensation states that all California employers must provide workers compensation benefits to their employees under California Labor Code section 3700 [S:dir-dwc-employer-faqs]. The benefits themselves are set by statute rather than negotiated in the policy. CDI identifies five basic types of workers compensation benefits: medical care, temporary disability benefits, permanent disability benefits, supplemental job displacement benefits, and death benefits [S:cdi-wc-commercial-guide]. CDI describes employers liability insurance as offered under Part Two of a workers compensation and employers liability insurance policy, and states that Part Two protects the employer against instances in which an employee's injury or disease is not subject to the workers compensation laws [S:cdi-wc-commercial-guide]. This page is general information about how the California system is structured, drawn from the statutes and regulator publications cited. It is not legal advice, it is not a coverage determination, and it does not decide whether any particular worker, owner, officer, contractor or business is covered, exempt, or in compliance. No workers compensation policy form is cited on this page, so nothing here describes what a specific carrier's form says; read the policy and endorsements actually issued, and take compliance and eligibility questions to DIR, to the carrier, and where they are legal questions, to a lawyer.",
+	"protects": [
+		"Employees, through the five basic types of benefits CDI identifies in the California system: medical care, temporary disability, permanent disability, supplemental job displacement benefits, and death benefits [S:cdi-wc-commercial-guide]",
+		"The employer, by satisfying the Labor Code section 3700 obligation to secure the payment of compensation, which is what avoids the uninsured-employer exposure DIR describes [S:ca-labor-code-3700][S:dir-dwc-employer-faqs]",
+		"The employer against employee injury or disease claims that are not subject to the workers compensation laws, through Part Two employers liability coverage as CDI describes it [S:cdi-wc-commercial-guide]",
+		"Dependents of a deceased worker, through death benefits [S:cdi-wc-commercial-guide]",
+		"The employer against a gap the general liability policy leaves, since Coverage A of CG 00 01 04 13 excludes both obligations under workers compensation and similar laws and employers liability [S:iso-cg-00-01-04-13]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Medical care for work-related injury and illness",
+			"note": "One of the five basic benefit types CDI identifies in the California system [S:cdi-wc-commercial-guide]. Benefit delivery is administered under the Labor Code and DIR regulations rather than set by the insurance policy. No workers compensation policy form was reviewed for this page, so read the form and endorsements the carrier issued."
+		},
+		{
+			"item": "Temporary disability benefits",
+			"note": "One of the five basic benefit types CDI identifies [S:cdi-wc-commercial-guide]. Amounts and duration come from the Labor Code, not from the policy. No workers compensation policy form was reviewed for this page, so read the form and endorsements the carrier issued."
+		},
+		{
+			"item": "Permanent disability benefits",
+			"note": "One of the five basic benefit types CDI identifies [S:cdi-wc-commercial-guide]. Amounts come from the Labor Code, not from the policy. No workers compensation policy form was reviewed for this page, so read the form and endorsements the carrier issued."
+		},
+		{
+			"item": "Supplemental job displacement benefits",
+			"note": "One of the five basic benefit types CDI identifies [S:cdi-wc-commercial-guide]. Eligibility and amount come from the Labor Code, not from the policy. No workers compensation policy form was reviewed for this page, so read the form and endorsements the carrier issued."
+		},
+		{
+			"item": "Death benefits",
+			"note": "One of the five basic benefit types CDI identifies [S:cdi-wc-commercial-guide]. Who qualifies as a dependent and what is payable come from the Labor Code, not from the policy. No workers compensation policy form was reviewed for this page, so read the form and endorsements the carrier issued."
+		},
+		{
+			"item": "Employers liability, under Part Two",
+			"note": "CDI states that employers liability insurance is offered under Part Two of a workers compensation and employers liability insurance policy, and that Part Two protects the employer against instances in which an employee's injury or disease is not subject to the workers compensation laws [S:cdi-wc-commercial-guide]. Part Two is not a substitute for general liability, because Coverage A of CG 00 01 04 13 excludes employers liability at exclusion e. and workers compensation obligations at exclusion d., so the two lines are written not to overlap [S:iso-cg-00-01-04-13]. No Part Two policy form was reviewed for this page, so whatever limits, conditions and exclusions Part Two carries are those of the form the carrier issued; read it."
+		},
+		{
+			"item": "Administration of the coverage obligation, whether insured or self-insured",
+			"note": "Labor Code section 3700 lets the obligation be met either by insuring with an authorized insurer or by holding a certificate of consent to self-insure from the Director of Industrial Relations [S:ca-labor-code-3700]. Who administers claims follows from which route the employer is on. No policy form or self-insurance program document was reviewed for this page."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Third-party bodily injury and property damage",
+			"note": "Workers compensation and employers liability address injury to the employer's own workers. Injuries to customers, visitors and other third parties are a general liability exposure, and the two lines are written not to overlap: Coverage A of CG 00 01 04 13 excludes obligations under workers compensation and similar laws at exclusion d. and employers liability at exclusion e. [S:iso-cg-00-01-04-13]. That statement describes CG 00 01 04 13; no workers compensation policy form was reviewed for this page."
+		},
+		{
+			"item": "Employment practices claims",
+			"note": "Discrimination, harassment and wrongful termination claims are the subject of a separate line, employment practices liability insurance. That reflects common practice rather than a legal or filed requirement. Whether any particular claim falls under a workers compensation and employers liability policy or an employment practices policy depends on the forms involved and is a claim determination the insurer makes, not something this page decides. No workers compensation, employers liability or employment practices form was reviewed for this page."
+		},
+		{
+			"item": "Injuries to people who are not covered employees",
+			"note": "Whether a particular sole proprietor, partner, corporate officer, director, family member or independent contractor is a covered employee, and whether any election to include or exclude has been properly made, turns on the Labor Code definitions and on the endorsements attached to the policy. That is a compliance and legal question, not something a reference page can settle. Confirm the specific person's status with DIR and with the carrier before relying on any assumption. No source cited on this page addresses who counts as a covered employee, and no workers compensation policy form or inclusion or exclusion endorsement was reviewed for this page."
+		},
+		{
+			"item": "Benefit amounts set by the policy",
+			"note": "The five basic benefit types and their statutory basis come from the California system, not from a negotiated policy term [S:cdi-wc-commercial-guide][S:ca-labor-code-3700]. What the insurance arrangement changes is who pays and how premium is calculated. No workers compensation policy form was reviewed for this page."
+		},
+		{
+			"item": "Work outside California",
+			"note": "This page describes the California system only. CDI's description of classification, rating and experience modification is a description of the California mechanism [S:cdi-wc-commercial-guide]. Whether a policy addresses employees who work in or travel to other states depends on the endorsements attached to it, and each other state sets its own requirements. Confirm with the carrier and with that state's regulator rather than assuming. No workers compensation policy form or other-states endorsement was reviewed for this page."
+		}
+	],
+	"limitsAndDeductibles": [
+		"California workers compensation benefits are statutory rather than a negotiated policy limit; CDI identifies the five basic benefit types and the Labor Code supplies the amounts [S:cdi-wc-commercial-guide].",
+		"Employers liability under Part Two carries stated limits, and those are a policy term rather than a statutory benefit [S:cdi-wc-commercial-guide]. No Part Two form was reviewed for this page, so the actual limits and their conditions are whatever the issued policy says.",
+		"Premium starts from classification and payroll. CDI states that classifications grouping distinct and identifiable occupations, industries or businesses are developed and assigned codes by the Workers' Compensation Insurance Rating Bureau of California and are approved by the Insurance Commissioner, and describes the base calculation as estimating the payroll for each classification and multiplying it, per each $100 of payroll, by the applicable rate [S:cdi-wc-commercial-guide].",
+		"Experience modification adjusts that base premium. CDI describes the modification as comparing an employer's loss history against similar-sized employers in the same industry classification, and states that a modification of less than 100 percent reflects better than average experience while more than 100 percent reflects worse than average experience [S:cdi-wc-commercial-guide]. The statutory hook is Insurance Code section 11734(a), which provides that every workers compensation insurer shall adhere to a uniform experience rating plan filed with the commissioner by a rating organization designated by the commissioner and subject to the commissioner's disapproval [S:ca-ins-code-11734].",
+		"Advisory pure premium rates are a benchmark rather than a price. For the rate effective September 1, 2026, the Insurance Commissioner adopted an average advisory pure premium rate of $1.65 per $100 of payroll, a 6.6 percent increase from the 2025 approved rate and below the 10.4 percent increase the Workers' Compensation Insurance Rating Bureau had requested [S:cdi-release-024-2026]. CDI states that the adopted rate is advisory, meaning that insurance companies are not bound by it and are free to set their own rates [S:cdi-release-024-2026].",
+		"California uses open rating. CDI states that individual companies set rates based on their ability to adequately cover losses and expenses in each industry classification, that insurers assign a specific rate to each industry classification code, and that these rates must be filed with the CDI [S:cdi-wc-commercial-guide]. Insurance Code section 11735 requires every insurer to file with the commissioner all rates and supplementary rate information that are to be used in this state, not later than 30 days prior to the effective date, and provides that filings are open to public inspection as soon as filed [S:ca-ins-code-11735]. Two insurers can quote different premiums on the same classification and payroll and both be operating within that system.",
+		"Premium is estimated at inception and trued up afterward. CDI states that the final premium of a workers compensation policy cannot be calculated until the policy term is over and the employer's payroll records have been audited [S:cdi-wc-commercial-guide].",
+		"A dividend plan is a type of rating plan that allows an employer to share in the profits of its workers compensation insurer in the form of a dividend [S:cdi-wc-commercial-guide]. It is a share of profit rather than a guaranteed rate reduction.",
+		"Deductible programs are handled inside the rate filing system. Insurance Code section 11735 addresses deductible offerings as part of what an insurer files, and provides that a filing of supplementary rate information for a deductible is complete only if it contains stated items, including a copy of the deductible endorsement that is to be attached to the policy [S:ca-ins-code-11735]. Whether a particular program structure falls inside that provision, and what it requires in a given case, is a legal and compliance question rather than something this page decides.",
+		"Self-insurance replaces premium with a retained obligation. Labor Code section 3700 requires an employer that self-insures to secure from the Director of Industrial Relations a certificate of consent to self-insure, upon proof satisfactory to the Director of ability to self-insure and to pay any compensation that may become due [S:ca-labor-code-3700], and CDI states that to become self-insured a business must obtain a certificate from the DIR Office of Self-Insurance Plans [S:cdi-wc-commercial-guide]."
+	],
+	"endorsements": [
+		{
+			"item": "Officer, partner, and owner inclusion or exclusion endorsements",
+			"note": "Used to record elections about whether specified owners or officers are covered. Whether a given person may be included or excluded, and what documentation that takes, turns on the Labor Code and on the carrier's filed endorsements. That is a compliance question; confirm the specific person's status with DIR and the carrier rather than assuming. No source cited on this page addresses officer or owner inclusion and exclusion elections, and no such endorsement was reviewed for this page."
+		},
+		{
+			"item": "Waiver of subrogation endorsement",
+			"note": "Construction and service contracts sometimes require this endorsement. That is common practice rather than a legal or filed requirement. It is an endorsement to the policy, so it operates only where it has actually been issued and only as to the parties it describes. No waiver of subrogation endorsement was reviewed for this page; read the one attached to the policy."
+		},
+		{
+			"item": "Alternate employer and other-states endorsements",
+			"note": "Used where employees are loaned to another employer or work outside California. What each covers depends entirely on the endorsement wording and on the states named in it. No such endorsement was reviewed for this page; read the one attached to the policy."
+		},
+		{
+			"item": "Deductible programs and retrospective rating plans",
+			"note": "These change how the employer pays rather than what the injured worker receives, because benefits are statutory [S:cdi-wc-commercial-guide]. Insurance Code section 11735 treats a deductible offering as part of what an insurer files with the commissioner and states that the supplementary rate information filing for a deductible is complete only if it includes stated items, including a copy of the deductible endorsement to be attached to the policy [S:ca-ins-code-11735]. Availability on a given account is a carrier underwriting decision."
+		},
+		{
+			"item": "Dividend plans",
+			"note": "CDI describes a dividend plan as a type of rating plan that allows an employer to share in the profits of its workers compensation insurer in the form of a dividend [S:cdi-wc-commercial-guide]. No dividend plan document was reviewed for this page; the plan the carrier files and issues controls."
+		}
+	],
+	"relatedPolicies": [
+		"Employers liability, which CDI describes as offered under Part Two of a workers compensation and employers liability insurance policy [S:cdi-wc-commercial-guide]",
+		"Commercial general liability, which under CG 00 01 04 13 excludes workers compensation obligations and employers liability and therefore is written not to overlap [S:iso-cg-00-01-04-13]",
+		"Employment practices liability insurance, for discrimination, harassment and wrongful termination exposures",
+		"Commercial auto, for employees driving on business",
+		"Self-insurance under a certificate of consent to self-insure from the Director of Industrial Relations [S:ca-labor-code-3700], which CDI describes as obtained from the DIR Office of Self-Insurance Plans [S:cdi-wc-commercial-guide]",
+		"State Compensation Insurance Fund. Insurance Code section 11770(a) provides that the State Compensation Insurance Fund is continued in existence, to be administered by its board of directors, for the purpose of transacting workers compensation insurance, insurance against the expense of defending a suit for serious and willful misconduct against an employer or the employer's agent, and insurance to employees and other persons of the compensation fixed by the workers compensation laws [S:ca-ins-code-11770]. DIR states that State Fund is a state-operated entity that exists in order to transact workers compensation on a non-profit basis, competes with private workers compensation insurance companies for business, and also operates as the insurer of last resort if private companies are not willing to offer workers compensation insurance [S:dir-dwc-employer-faqs], and CDI describes it in the same terms [S:cdi-wc-commercial-guide]. State Fund's own fact sheet says it was established in 1914 by the state legislature and describes itself as completely self-supporting and as maintaining an open door policy; the further statement that it is the only workers compensation provider with a commitment to providing coverage to all California businesses is State Fund's own characterization of itself, not a verified fact [S:statefund-fact-sheet]"
+	],
+	"underwritingInputs": [
+		"A detailed description of operations, so that classification codes can be assigned. CDI states that classifications grouping distinct and identifiable occupations, industries or businesses are developed and assigned codes by the WCIRB and are approved by the Insurance Commissioner [S:cdi-wc-commercial-guide]",
+		"Payroll by classification, since CDI describes the base premium calculation as estimating the payroll for each classification and multiplying it, per each $100 of payroll, by the applicable rate [S:cdi-wc-commercial-guide]",
+		"The current experience modification and the loss and payroll data behind it. CDI describes a modification of less than 100 percent as reflecting better than average experience and more than 100 percent as worse than average [S:cdi-wc-commercial-guide]",
+		"Loss history, typically several years of currently valued loss runs, including open claim reserves",
+		"Employee count, job duties, use of heavy equipment, height exposure, and driving exposure",
+		"The states where employees work or travel, since this page and the classification and rating mechanics it describes are California only [S:cdi-wc-commercial-guide]",
+		"Owner, officer, partner and family member information, and any inclusion or exclusion elections that have been made. Confirm any specific person's status with DIR and the carrier rather than assuming; no source cited on this page addresses those elections",
+		"Use of subcontractors and labor contractors, and whether certificates of insurance are collected from them",
+		"Payroll records adequate to support an audit, since CDI states that final premium cannot be calculated until the policy term is over and the employer's payroll records have been audited [S:cdi-wc-commercial-guide]",
+		"Safety, injury and illness prevention, and return to work programs, and any prior stop order. DIR states that a stop order can be issued prohibiting the use of employee labor until coverage is obtained [S:dir-dwc-employer-faqs]",
+		"Whether the employer is seeking guaranteed cost, a deductible program, or self-insurance. CDI states that to become self-insured a business must obtain a certificate from the DIR Office of Self-Insurance Plans [S:cdi-wc-commercial-guide]",
+		"Whether coverage is being sought from a private insurer or from State Compensation Insurance Fund, which DIR describes as competing with private insurers and also operating as the insurer of last resort if private companies are not willing to offer workers compensation insurance [S:dir-dwc-employer-faqs]",
+		"This list describes information commonly requested in practice. It is common practice rather than a legal or filed requirement, and whether any specific employer is accepted, and at what price, is a carrier underwriting decision"
+	],
+	"exposures": [
+		{
+			"item": "Injury to an employee in the course of employment",
+			"note": "California law requires employers to secure the payment of compensation [S:ca-labor-code-3700], so this exposure is addressed by statute rather than by election."
+		},
+		{
+			"item": "Misclassification of payroll between operations",
+			"note": "Classification and rating are governed by the rating system the Insurance Code establishes and the bureau administers [S:ca-ins-code-11734][S:ca-ins-code-11735]. A classification is assigned under published rules rather than chosen."
+		},
+		{
+			"item": "An experience modification driven by open claim reserves",
+			"note": "The regulator's commercial guide describes how experience rating works in the California system [S:cdi-wc-commercial-guide]. Reserves on open claims are part of what the calculation reads."
+		},
+		{
+			"item": "Employers liability, which the general liability policy excludes",
+			"note": "The general liability form excludes bodily injury to an employee of the insured arising out of and in the course of employment [S:iso-cg-00-01-04-13], so this exposure has to sit on the workers compensation and employers liability policy."
+		},
+		{
+			"item": "A dispute about whether someone is an employee at all",
+			"note": "The Division of Workers Compensation publishes employer guidance on the obligations that attach [S:dir-dwc-employer-faqs]. Employment status is a statutory question, and it is the threshold one."
+		},
+		{
+			"item": "Being unable to obtain voluntary market coverage",
+			"note": "The Insurance Code addresses the state fund's role in the market [S:ca-ins-code-11770], and the fund publishes its own description of that role [S:statefund-fact-sheet]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Keep payroll records that separate activities by employee",
+			"note": "Division of payroll between classifications is conditioned on records maintained during the period, under the published rating rules [S:ca-ins-code-11734][S:ca-ins-code-11735]. The entitlement depends on a bookkeeping fact that either existed at the time or did not."
+		},
+		{
+			"item": "Pull and read the unit statistical report rather than waiting for the renewal",
+			"note": "Experience rating reads reported data, and the regulator's guide explains how the mechanism works [S:cdi-wc-commercial-guide]. Reading the report is how an error becomes visible while it can still be raised."
+		},
+		{
+			"item": "Offer documented modified duty where the treating physician allows it",
+			"note": "The Division of Workers Compensation publishes employer guidance covering return-to-work obligations and processes [S:dir-dwc-employer-faqs]. Whether an offer is appropriate in a given case is a medical and legal question, not one this page answers."
+		},
+		{
+			"item": "Confirm coverage is actually secured, by the method the statute allows",
+			"note": "The requirement to secure the payment of compensation is statutory [S:ca-labor-code-3700], and the state fund publishes its own role in that market [S:statefund-fact-sheet]. Being uninsured is the exposure with the fewest defences."
+		},
+		{
+			"item": "Establish employment status before an injury forces the question",
+			"note": "Employer obligations and the questions that attach are published by the Division [S:dir-dwc-employer-faqs]. Where status is genuinely unclear, that is a question for an employment lawyer rather than a classification decision."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "Statutory basis: Labor Code section 3700 requires every employer except the state to secure the payment of compensation by insuring with one or more insurers duly authorized to write compensation insurance in California, by securing a certificate of consent to self-insure from the Director of Industrial Relations individually or as one employer in a group, or, for counties, cities, municipal corporations, public districts, public agencies and other political subdivisions, by securing a public-entity certificate of consent to self-insure [S:ca-labor-code-3700]. Enforcement: DIR states that Labor Code section 3700.5 makes failing to have coverage a misdemeanor punishable by either a fine of not less than $10,000 or imprisonment in the county jail for up to one year, or both; that the state issues penalties of up to $100,000 against illegally uninsured employers; that a stop order can be issued prohibiting the use of employee labor until coverage is obtained, with violation of the stop order itself punishable by up to 60 days in county jail or a fine of up to $10,000, or both; and that additional civil penalties can reach $10,000 per employee where there is a compensable claim or $2,000 per employee where there is not, up to a maximum of $100,000 [S:dir-dwc-employer-faqs]. Rating: CDI states that WCIRB classifications are approved by the Insurance Commissioner and describes the per-$100-of-payroll base premium calculation and the experience modification [S:cdi-wc-commercial-guide], and Insurance Code section 11734(a) requires every workers compensation insurer to adhere to a uniform experience rating plan filed with the commissioner by a rating organization designated by the commissioner and subject to the commissioner's disapproval [S:ca-ins-code-11734]. Regulator role: for the rate effective September 1, 2026 the Commissioner adopted an average advisory pure premium rate of $1.65 per $100 of payroll, a 6.6 percent increase from the 2025 approved rate and below the WCIRB's requested 10.4 percent increase, and CDI states that the adopted rate is advisory and that insurance companies are not bound by it and are free to set their own rates [S:cdi-release-024-2026]; insurers must file all rates and supplementary rate information with the commissioner not later than 30 days prior to the effective date, and those filings are open to public inspection as soon as filed [S:ca-ins-code-11735]. State Fund: Insurance Code section 11770(a) continues the State Compensation Insurance Fund in existence, administered by its board of directors, for the purpose of transacting workers compensation insurance and the related statutory coverages [S:ca-ins-code-11770], and DIR and CDI both describe it as competing with private insurers and operating as the insurer of last resort if private companies are not willing to offer coverage [S:dir-dwc-employer-faqs][S:cdi-wc-commercial-guide]. Nothing in this section determines whether a specific employer is in compliance, is exempt, or will be accepted by any insurer."
+		},
+		{
+			"state": "US",
+			"note": "This page describes the California system only. Other states set their own statutory benefits, their own coverage requirements and exemptions, their own rating or advisory organizations, and their own residual market arrangements, and no source cited here speaks to any state other than California. Do not carry California rules, classification codes, or the uniform experience rating plan described in Insurance Code section 11734 into another state [S:ca-ins-code-11734]. A multi-state employer should confirm requirements state by state with each state's own regulator."
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"effectiveDate": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-labor-code-3700",
+		"ca-ins-code-11734",
+		"ca-ins-code-11735",
+		"ca-ins-code-11770",
+		"cdi-wc-commercial-guide",
+		"cdi-release-024-2026",
+		"dir-dwc-employer-faqs",
+		"statefund-fact-sheet",
+		"iso-cg-00-01-04-13"
+	],
+	"relatedQuestions": [
+		"workers-comp-class-codes",
+		"contract-additional-insured-status"
+	]
+}

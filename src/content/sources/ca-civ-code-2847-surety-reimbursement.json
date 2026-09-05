@@ -1,0 +1,23 @@
+{
+	"title": "California Civil Code section 2847 - Reimbursement of surety by principal",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2847",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"If a surety satisfies the principal obligation, or any part thereof, whether with or without legal proceedings, the principal is bound to reimburse what the surety has disbursed, including necessary costs and expenses.",
+		"The surety has no claim for reimbursement against other persons, though they may have been benefited by its act, except as prescribed by the next section.",
+		"The section carries the notation Enacted 1872."
+	],
+	"updateCadence": "Enacted 1872; amended only by act of the Legislature",
+	"status": "active",
+	"notes": "Re-fetched 2026-08-31; the full text is short and was read verbatim. An inference about the reimbursement duty being statutory rather than merely contractual was removed from the claims array. The right is conditioned on the surety having satisfied the principal obligation and is expressly subject to the next section (Civil Code 2848). Published: 1872",
+	"officialHost": true
+}

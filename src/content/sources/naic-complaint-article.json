@@ -1,0 +1,24 @@
+{
+	"title": "How to File a Complaint and Research Complaints Against Insurance Carriers",
+	"publisher": "National Association of Insurance Commissioners",
+	"url": "https://content.naic.org/article/how-file-complaint-and-research-complaints-against-insurance-carriers",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The article states that the NAIC compiles closed, confirmed complaint information about insurance carriers from state insurance departments.",
+		"The article states that you can look up information by state, company, and insurance type for the past three years.",
+		"The article states that you should not use just one factor to decide which insurance company to use.",
+		"The article states that you should compare the complaints, financials, and direct premiums written of several companies.",
+		"The article states that a company's complaint index can vary not only due to fluctuations in the company's complaints or premiums but also due to fluctuations in the complaints or premiums of the U.S. market for the type of insurance being sold by the companies."
+	],
+	"updateCadence": "Consumer article maintained by NAIC; underlying complaint data covers a rolling three-year window.",
+	"status": "active",
+	"officialHost": true
+}

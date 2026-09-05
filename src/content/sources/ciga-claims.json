@@ -1,0 +1,21 @@
+{
+	"title": "Liability, Auto, and Property Claims - CIGA",
+	"publisher": "California Insurance Guarantee Association",
+	"url": "https://www.ciga.org/how-we-work/liability-auto-property-claims",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"CIGA states that all other claims, including automobile and personal injury claims, are paid at full value up to $500,000 or the policy limit, whichever is less.",
+		"CIGA states that Loss of Use / Additional Living Expense (Coverage D) is paid at actual cash value up to $500,000 or the policy limits, whichever is less."
+	],
+	"updateCadence": "Re-verify if the statutory cap is amended.",
+	"status": "active",
+	"officialHost": true
+}

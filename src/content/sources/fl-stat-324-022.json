@@ -1,0 +1,22 @@
+{
+	"title": "Florida Statutes Section 324.022 (2026) - Financial responsibility for property damage",
+	"publisher": "The Florida Senate (flsenate.gov)",
+	"url": "https://www.flsenate.gov/laws/statutes/2026/324.022",
+	"sourceType": "statute",
+	"jurisdiction": "FL",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 324.022(1) applies to every owner or operator of a motor vehicle required to be registered in Florida.",
+		"Section 324.022(1) sets the amount at $10,000 because of damage to, or destruction of, property of others in any one crash, or $30,000 for combined property damage liability and bodily injury liability for any one crash arising out of the use of the motor vehicle.",
+		"Section 324.022(1) provides that the requirement may be met by one of the methods established in section 324.031, by self-insuring as authorized by section 768.28(16), or by maintaining an insurance policy providing the specified coverage."
+	],
+	"updateCadence": "Re-verify each Florida legislative session.",
+	"status": "active",
+	"officialHost": true
+}

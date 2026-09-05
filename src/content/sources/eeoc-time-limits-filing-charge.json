@@ -1,0 +1,23 @@
+{
+	"title": "Time Limits For Filing A Charge",
+	"publisher": "U.S. Equal Employment Opportunity Commission",
+	"url": "https://www.eeoc.gov/time-limits-filing-charge",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"In general a charge must be filed within 180 calendar days from the day the discrimination took place.",
+		"The 180 calendar day filing deadline is extended to 300 calendar days if a state or local agency enforces a law that prohibits employment discrimination on the same basis.",
+		"For age discrimination the extension to 300 days applies only where a state law prohibits age discrimination in employment and a state agency enforces it.",
+		"Holidays and weekends are included in the calculation, and a deadline falling on a weekend or holiday moves to the next business day."
+	],
+	"updateCadence": "Reviewed at least every 180 days.",
+	"status": "active"
+}

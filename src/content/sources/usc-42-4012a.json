@@ -1,0 +1,26 @@
+{
+	"title": "42 U.S.C. 4012a - Flood insurance purchase and compliance requirements and escrow accounts",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+	"url": "https://uscode.house.gov/view.xhtml?req=%28title%3A42+section%3A4012a+edition%3Aprelim%29",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"A regulated lending institution may not make, increase, extend, or renew any loan secured by improved real estate or a mobile home located or to be located in an area identified by the FEMA Administrator as having special flood hazards unless the building or mobile home is covered by flood insurance for the term of the loan.",
+		"The required flood insurance amount is at least equal to the outstanding principal balance of the loan or the maximum limit of coverage made available under the Act for the particular type of property, whichever is less.",
+		"Regulated lending institutions must accept private flood insurance as satisfaction of the flood insurance coverage requirement if it meets the standards the statute specifies for breadth of coverage, cancellation notice, and claims procedures.",
+		"If a borrower fails to obtain required flood coverage after 45 days written notice, the lender or servicer for the loan shall purchase the insurance on the borrower's behalf and may charge the borrower the cost.",
+		"Within 30 days of receiving confirmation of the borrower's own flood coverage, the lender or servicer must terminate the insurance it purchased and refund premiums and fees paid for any period of overlapping coverage.",
+		"Premiums and fees for flood insurance on residential improved real estate must generally be paid to the regulated lending institution or servicer with the same frequency as loan payments and deposited in an escrow account on behalf of the borrower, subject to exceptions including institutions with total assets under 1,000,000,000 dollars that were not already required to escrow as of July 6, 2012, junior or subordinate liens, condominium or cooperative units covered by a group flood policy, business-purpose collateral, home equity lines of credit, nonperforming loans, and loans with terms of 12 months or less."
+	],
+	"updateCadence": "Changes only by act of Congress; check for amendments at each NFIP reauthorization.",
+	"status": "active",
+	"notes": "Fetched the prelim edition on uscode.house.gov on 2026-08-31 and read subsections (b), (d), and (e). Confirmed the lesser-of amount test, the private flood acceptance mandate, the 45-day notice, the duty of the lender or servicer to purchase, the 30-day termination and refund, and the escrow requirement with its exceptions.",
+	"officialHost": true
+}

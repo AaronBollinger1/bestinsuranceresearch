@@ -1,0 +1,23 @@
+{
+	"title": "California Insurance Code Section 11734",
+	"publisher": "California Legislative Information (California Legislature)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=11734.&lawCode=INS",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Insurance Code section 11734(a) provides that every workers compensation insurer shall adhere to a uniform experience rating plan filed with the commissioner by a rating organization designated by the commissioner and subject to the commissioner's disapproval.",
+		"Subdivision (b) provides for the commissioner to designate a rating organization to gather statistical information and develop a classification system, permits an insurer to use its own classification system if it is filed with the commissioner 30 days prior to use and the commissioner approves it, and requires insurers to report experience to the designated rating organization under the uniform statistical reporting plan.",
+		"Subdivision (c) provides that the designated rating organization shall develop and file manual rules, subject to the approval of the commissioner, reasonably related to the recording and reporting of data pursuant to the uniform statistical plan, uniform experience rating plan, and any classification systems in effect."
+	],
+	"updateCadence": "Amended by the Legislature; verify current text at leginfo.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Published: 2003-01-01 Effective: 2003-01-01"
+}

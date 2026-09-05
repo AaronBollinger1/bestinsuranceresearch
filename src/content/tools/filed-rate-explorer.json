@@ -1,0 +1,65 @@
+{
+	"name": "Filed Rate and Public Pricing Explorer",
+	"status": "specified",
+	"order": 22,
+	"family": [
+		"personal",
+		"commercial"
+	],
+	"lines": [
+		"workers-compensation",
+		"homeowners",
+		"auto",
+		"flood"
+	],
+	"summary": "Show what public authorities actually publish about price for a line and state, with the methodology and, just as important, everything the published figure leaves out.",
+	"spec": {
+		"user": "Anyone who wants a defensible sense of what drives price in a line, rather than a number a website made up.",
+		"inputData": [
+			"Line",
+			"State",
+			"For workers compensation, the classification being asked about"
+		],
+		"authoritativeSources": [
+			"WCIRB California advisory pure premium rates as filed with and acted on by the Insurance Commissioner",
+			"NCCI loss cost filings in NCCI states, where published",
+			"State insurance department premium comparison tools and published rate filing databases, including SERFF where the state publishes it",
+			"FEMA published NFIP rating methodology"
+		],
+		"privacyBoundary": "No applicant information, no address, no loss history. The tool takes a line, a state, and a class, and returns published data about that combination.",
+		"decisionRules": [
+			"Only figures a public authority has actually published may appear. Every figure carries its publisher, its filing or publication date, its effective date, and a direct link.",
+			"Every figure is shown alongside an explicit list of what it does not include: experience modification, schedule rating and carrier deviation, expense and profit loading, minimum premiums, assessments and surcharges, and any policy-specific credit or debit.",
+			"An advisory pure premium rate is labeled as a loss cost, not a price, everywhere it appears.",
+			"The tool never multiplies published components together to produce an implied premium, because that would manufacture a quote out of components that were never intended to be combined that way.",
+			"Where a state publishes nothing usable for a line, the tool says so plainly and shows nothing rather than substituting an estimate."
+		],
+		"uncertainty": "A filed rate is an input to pricing, not a price. Actual premium depends on insurer-specific factors this tool does not have and cannot know, and only an insurer can quote.",
+		"output": "A printable evidence sheet: each published figure with its full provenance, the stated methodology, the explicit exclusions, and the questions that determine where inside the range a given risk falls.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built. Dataset schema only if a published dataset with a clear license is actually mirrored, which is not currently planned. Never Offer or Price schema.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Re-checked on every relevant rate filing action and at least every 90 days. A stale rate is worse than no rate, so a figure past its window is hidden, not merely flagged."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

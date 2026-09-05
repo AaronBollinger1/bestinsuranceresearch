@@ -1,0 +1,27 @@
+{
+	"title": "California Insurance Code Section 10089 (minimum coverages in the mandatory earthquake offer)",
+	"publisher": "California Legislative Information (Legislative Counsel of California)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10089",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 10089(a)(1) requires the offer to include dwelling coverage 'not including outbuildings, appurtenant structures, swimming pools, masonry fences and walls not necessary for the structural integrity of the dwelling, walkways and patios not necessary for regular ingress or egress from the dwelling, awnings or other patio coverings, decorative or artistic features including plaster if other covering would be more cost-effective, landscaping, or masonry chimneys, provided that the policy covers replacement of a damaged masonry chimney with a nonmasonry, earthquake resistant chimney.'",
+		"Section 10089(a)(2) requires 'contents coverage either in an amount not less than 10 percent of the amount of the covered dwelling loss, or in an amount not less than five thousand dollars ($5,000)', and provides that the insurer elects which of the two contents coverages it will use at the time it files its rate application, after which the elected option must be offered to every policyholder who receives an offer under the chapter.",
+		"Section 10089(a)(3) requires 'additional living expenses of an amount no less than one thousand five hundred dollars ($1,500) to cover expenses while the residential dwelling remains uninhabitable due to physical loss or damage from the peril of earthquake.'",
+		"Section 10089(b), a separate subdivision from the (a) minimums, reads: 'Coverages provided in paragraphs (1) and (2) of subdivision (a) shall not contain a deductible of more than 15 percent of coverage provided for the dwelling.'",
+		"Section 10089(c) permits the commissioner to approve rate applications allowing an insurer to offer coverage other than the coverage specified in the section, provided at least one coverage offered meets the section's criteria.",
+		"Section 10089(d) permits the minimum additional living expenses coverage to be waived by the applicant or policyholder for a residential dwelling that is not owner occupied, if the insurer gives notice that the coverage is offered but may be waived and the waiver is in writing.",
+		"The section carries the note 'Amended by Stats. 1995, Ch. 939, Sec. 4. Effective January 1, 1996.'"
+	],
+	"updateCadence": "Amended only by act of the California Legislature.",
+	"status": "active",
+	"notes": "URL normalized to drop the trailing period after the section number. Full text of subdivisions (a) through (d) pulled and read on 2026-08-31. Effective: 1996-01-01",
+	"officialHost": true
+}

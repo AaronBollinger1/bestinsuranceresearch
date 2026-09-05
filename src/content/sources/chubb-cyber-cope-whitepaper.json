@@ -1,0 +1,24 @@
+{
+	"title": "Cyber COPE (R) Transforming Cyber Underwriting (by Patrick Thielen)",
+	"publisher": "Chubb",
+	"url": "https://www.chubb.com/content/dam/chubb-sites/chubb-com/us-en/global/transforming-cyber-underwriting/pdf/Cyber_COPE-Transforming_Cyber_Underwriting_2021-12.07_14-01-1210.pdf",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"The paper defines COPE as Construction, Occupancy, Protection, and Exposures, and calls it a straightforward and effective method of examining diverse measurements to help underwriters make better decisions about property risk.",
+		"The paper refers to COPE as a time-tested property underwriting model.",
+		"The paper opens with four sample questions it says insurance companies ask so they can properly and thoroughly underwrite risks presented for coverage: how tall is your office building, how close is the nearest fire hydrant, does the building have an alarm system, and are you in a flood zone.",
+		"The paper states that in the 1700s the risk of fire made it difficult for many commercial property owners to secure the insurance coverage they needed, and that over time the industry adopted the COPE concept."
+	],
+	"updateCadence": "Standalone whitepaper; no published revision schedule.",
+	"status": "active",
+	"notes": "Fetched today. WebFetch returned PDF binary, so the text was extracted locally with pdftotext -layout and read directly. The title page reads Cyber COPE (registered mark) Transforming Cyber Underwriting, with no colon, and credits Patrick Thielen; the registered-trademark symbol is transliterated as (R) here to keep the record ASCII. No publication date appears in the extracted text, so publishedDate is left unknown. This is a cyber underwriting paper that describes the property COPE model it is adapting; it is cited only for its description of COPE, not as a commercial property underwriting guide. It says nothing about whether carriers must use COPE or about how application forms were designed.",
+	"officialHost": true
+}

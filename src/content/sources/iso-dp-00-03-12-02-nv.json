@@ -1,0 +1,29 @@
+{
+	"title": "Dwelling Property 3 - Special Form, Section I (DP 00 03 12 02)",
+	"publisher": "CSAA / AAA carrier filing incorporating copyrighted Insurance Services Office material by permission; copy hosted by the Nevada Division of Insurance document library",
+	"url": "https://docs.nv.gov/doi/documents/home_policies/CSAAForms/AAA_DP_00_03_12_02.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "US",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"This DP 00 03 12 02 document defines \"Described Location\" as \"the one to four family dwelling including structures attached to it, separate structures, and grounds, shown in the Declarations used principally for dwelling purposes.\" The definition contains no requirement that the named insured reside at the location.",
+		"The property coverages in this DP 00 03 12 02 document are Coverage A Dwelling, Coverage B Other Structures, Coverage C Personal Property and Coverage D Fair Rental Value.",
+		"Coverage D.1 of this DP 00 03 12 02 document reads: \"If a loss to property described in Coverage A, B or C by a Peril Insured Against under this policy makes that part of the 'Described Location' rented to others or held for rental by you unfit for its normal use, we cover the fair rental value of that part of the 'Described Location' rented to others or held for rental by you less any expenses that do not continue while that part of the 'Described Location' rented or held for rental is not fit to live in.\" Payment is for the shortest time required to repair or replace that part.",
+		"Coverage D.2 of this DP 00 03 12 02 document states that if a civil authority prohibits you from use of the \"Described Location\" as a result of direct damage to a neighboring location by a Peril Insured Against in the policy, \"we cover the Fair Rental Value loss for no more than two weeks.\"",
+		"Coverage D.4 of this DP 00 03 12 02 document states: \"We do not cover loss or expense due to cancellation of a lease or agreement.\"",
+		"Coverage B of this DP 00 03 12 02 document excludes other structures rented or held for rental to any person not a tenant of the dwelling, unless used solely as a private garage.",
+		"This DP 00 03 12 02 document is headed \"SECTION I\" and contains only property coverages, perils insured against, exclusions and Section I conditions. A case-insensitive search of the full 13-page extracted text for \"Section II\", \"personal liability\", \"medical payments\", \"Coverage L\", \"Coverage M\" and \"bodily injury\" returns no coverage provisions. This is a statement about what is inside this one document; it is not evidence about what other forms a carrier may attach to the same policy.",
+		"This DP 00 03 12 02 document excludes vandalism and malicious mischief, theft or attempted theft, and any ensuing loss caused by any intentional and wrongful act committed in the course of them, \"if the dwelling has been vacant for more than 60 consecutive days immediately before the loss. A dwelling being constructed is not considered vacant.\"",
+		"This DP 00 03 12 02 document contains a Condition C. Concealment Or Fraud withdrawing coverage where a person insured has intentionally concealed or misrepresented a material fact, engaged in fraudulent conduct, or made false statements relating to the insurance."
+	],
+	"updateCadence": "Dwelling program forms are revised periodically and newer editions exist. Many carriers use proprietary landlord and rental dwelling forms that are not this form at all.",
+	"status": "active",
+	"notes": "Downloaded 2026-08-31 (HTTP 200, application/pdf, about 58 KB). Text extracted locally with pdftotext -layout and read directly. Page 1 header reads \"DWELLING / DP 00 03 12 02 / SECTION I / DWELLING PROPERTY 3 - SPECIAL FORM\"; 13 pages. Every page footer reads \"Includes copyrighted material of Insurance Services Office, With Its Permission Copyright, Insurance Services Offices, Inc., 2002\", so this is a carrier filing that incorporates ISO material, not an ISO-published edition. The publisher field was corrected accordingly. Published: 2002-12-01 Effective: 2002-12-01",
+	"officialHost": false
+}

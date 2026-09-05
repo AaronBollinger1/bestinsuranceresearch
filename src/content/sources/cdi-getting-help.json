@@ -1,0 +1,24 @@
+{
+	"title": "Get Help - California Department of Insurance consumer assistance",
+	"publisher": "California Department of Insurance",
+	"url": "https://www.insurance.ca.gov/01-consumers/101-help/index.cfm",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The California Department of Insurance publishes 1-800-927-4357 on this page for insurance information and questions, corroborating the Consumer Hotline number on a second official CDI page.",
+		"The California Department of Insurance offers electronic complaint forms and also printable complaint forms.",
+		"The page states that CDI recommends using the electronic complaint forms and that use of non-electronic complaint forms may delay the process.",
+		"The page provides a Spanish-language help link (Como obtener ayuda).",
+		"The California Department of Insurance lists its consumer hotline as 1-800-927-4357."
+	],
+	"updateCadence": "Maintained on an ongoing basis by CDI consumer services.",
+	"status": "active",
+	"officialHost": true
+}

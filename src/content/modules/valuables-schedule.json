@@ -1,0 +1,646 @@
+{
+	"name": "Valuables and Collections Schedule",
+	"summary": "Record what you own that sits outside an ordinary contents limit, what documentation exists for each category, and where the items actually are, then see which published classification rules and documentation questions attach. It produces no valuation, no premium, and no statement about what any policy covers.",
+	"family": "personal",
+	"lines": [
+		"scheduled-personal-property",
+		"inland-marine",
+		"homeowners"
+	],
+	"order": 80,
+	"status": "live",
+	"privacyBoundary": "This module refuses to collect your name, your address, your policy number, your insurer's name, or a description of any individual item. It asks which categories you hold, how many items, whether documentation exists, and where items are kept in general terms. It does not ask what anything is worth. Nothing you enter leaves your own browser, there is no account, and there is no file input anywhere on this site, so no appraisal or photograph can be uploaded here even by accident.",
+	"uncertainty": "It cannot value anything, tell you what any item should be insured for, say whether a homeowners policy or a separate floater is the right home for a category, or state what any form covers. Which classification an insurer may write a risk under is governed by the marine insurance article and the insurer's own filed forms and licence; what a specific form covers is in that form. Anything turning on what a policy means is a question for the insurer, and anything turning on value is a question for a qualified appraiser.",
+	"domain": "bestartinsurance.com",
+	"fields": [
+		{
+			"id": "categories-held",
+			"label": "Which of these do you own?",
+			"help": "Categories only. Do not describe individual items.",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "fine-art",
+					"label": "Fine art: pictures, statuary, bronzes, antiques"
+				},
+				{
+					"value": "rare-books",
+					"label": "Rare manuscripts or books"
+				},
+				{
+					"value": "jewelry",
+					"label": "Jewellery"
+				},
+				{
+					"value": "coins-stamps",
+					"label": "Coins or stamps"
+				},
+				{
+					"value": "wine",
+					"label": "Wine"
+				},
+				{
+					"value": "musical-instruments",
+					"label": "Musical instruments"
+				},
+				{
+					"value": "other-collectibles",
+					"label": "Other collectibles"
+				}
+			],
+			"group": "What you hold",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "item-count-band",
+			"label": "Roughly how many items in total?",
+			"kind": "band",
+			"options": [
+				{
+					"value": "1-5",
+					"label": "1 to 5"
+				},
+				{
+					"value": "6-25",
+					"label": "6 to 25"
+				},
+				{
+					"value": "26-100",
+					"label": "26 to 100"
+				},
+				{
+					"value": "over-100",
+					"label": "More than 100"
+				}
+			],
+			"group": "What you hold",
+			"required": false,
+			"purpose": "brief-only"
+		},
+		{
+			"id": "how-insured-now",
+			"label": "How are these insured at the moment?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "homeowners-contents-only",
+					"label": "Under the contents limit of a homeowners or renters policy"
+				},
+				{
+					"value": "scheduled-on-homeowners",
+					"label": "Scheduled by endorsement on the homeowners policy"
+				},
+				{
+					"value": "separate-floater",
+					"label": "On a separate floater or personal articles policy"
+				},
+				{
+					"value": "not-insured",
+					"label": "Not specifically insured"
+				},
+				{
+					"value": "not-recorded",
+					"label": "Not recorded"
+				}
+			],
+			"group": "What you hold",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "appraisal-held",
+			"label": "Do you hold a written appraisal for the items that matter most?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "all-appraised",
+					"label": "Yes, for all of them"
+				},
+				{
+					"value": "some-appraised",
+					"label": "For some of them"
+				},
+				{
+					"value": "none",
+					"label": "No written appraisal"
+				}
+			],
+			"group": "Documentation",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "appraisal-date",
+			"label": "What is the date of the most recent appraisal?",
+			"kind": "date",
+			"group": "Documentation",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "purchase-records-held",
+			"label": "Do you hold purchase receipts or provenance records?",
+			"kind": "boolean",
+			"group": "Documentation",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "photographs-held",
+			"label": "Do you hold photographs of the items?",
+			"help": "Keep them somewhere other than the building the items are in. Do not upload anything here; this module has no file input.",
+			"kind": "boolean",
+			"group": "Documentation",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "inventory-held",
+			"label": "Is there a written inventory listing the items?",
+			"kind": "boolean",
+			"group": "Documentation",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "kept-in-safe-or-vault",
+			"label": "Are any items kept in a safe, a vault, or a safety deposit box?",
+			"kind": "boolean",
+			"group": "Where they are",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "items-travel",
+			"label": "Do any items travel, or move between locations?",
+			"help": "Transit is the thread that runs through the marine insurance article, so whether items move matters to how they may be written.",
+			"kind": "boolean",
+			"group": "Where they are",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "items-on-loan-or-exhibition",
+			"label": "Are any items on loan, on exhibition, or with a restorer or dealer?",
+			"kind": "boolean",
+			"group": "Where they are",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "second-location",
+			"label": "Are items kept at more than one address?",
+			"kind": "boolean",
+			"group": "Where they are",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "recent-acquisition",
+			"label": "Have you acquired anything in the last 90 days that is not yet on a schedule?",
+			"kind": "boolean",
+			"group": "Documentation",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "notes-for-broker",
+			"label": "Anything you want to raise",
+			"help": "Free text. Do not enter your address, an item description, or a value. This stays in your browser and is printed on your brief.",
+			"kind": "text",
+			"group": "Where they are",
+			"required": false,
+			"purpose": "brief-only",
+			"privacyNote": "Free text. Do not enter an address, an item description, or a value. Nothing here leaves your browser."
+		}
+	],
+	"rules": [
+		{
+			"id": "fine-art-held-contents-only",
+			"kind": "gap",
+			"severity": "high",
+			"title": "Fine art or rare books are held and the only cover recorded is an ordinary contents limit.",
+			"detail": "The California marine insurance article enumerates the floater types that marine and transportation policies may cover, and Fine Arts Floaters appear as an enumerated item at subdivision (e)(2)(A) [S:ca-ccr-tit-10-2321]. The fine arts item itself describes objects of art such as pictures, statuary, bronzes and antiques, and rare manuscripts and books [S:ca-ccr-tit-10-2321]. A recognised floater form exists for this category, and you have recorded that you are not using one.",
+			"action": "Ask your broker to price both routes side by side: scheduling on the homeowners policy, and a separate floater. Ask specifically what each form says about valuation at a loss, because that is where the two differ most.",
+			"when": {
+				"all": [
+					{
+						"field": "categories-held",
+						"op": "includes",
+						"value": "fine-art"
+					},
+					{
+						"field": "how-insured-now",
+						"op": "eq",
+						"value": "homeowners-contents-only"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2321"
+			],
+			"relatedQuestion": "inland-marine-uses",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "coins-stamps-held-contents-only",
+			"kind": "gap",
+			"severity": "high",
+			"title": "Coins or stamps are held and the only cover recorded is an ordinary contents limit.",
+			"detail": "Stamp and Coin Floaters are enumerated alongside Fine Arts Floaters at subdivision (e)(2)(A) of the marine insurance article [S:ca-ccr-tit-10-2321], so this category has its own recognised floater form. The same article separately lists Prohibited Coverage in six lettered items, one of which reaches moneys and securities in safes, vaults, safety deposit vaults, banks or the premises, except while in course of transportation [S:ca-ccr-tit-10-2322], which is a reminder that the boundaries here are set by classification rather than by preference.",
+			"action": "Ask your broker what form is available for coins and stamps specifically, and how it treats items held in a safe or a deposit box as against items in transit.",
+			"when": {
+				"all": [
+					{
+						"field": "categories-held",
+						"op": "includes",
+						"value": "coins-stamps"
+					},
+					{
+						"field": "how-insured-now",
+						"op": "eq",
+						"value": "homeowners-contents-only"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2321",
+				"ca-ccr-tit-10-2322"
+			],
+			"relatedQuestion": "inland-marine-uses",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "nothing-insured-with-categories-held",
+			"kind": "gap",
+			"severity": "high",
+			"title": "Categories are recorded as held and nothing is recorded as specifically insured.",
+			"detail": "The marine insurance article enumerates floater types that may be written for these categories, including Fine Arts Floaters and Stamp and Coin Floaters [S:ca-ccr-tit-10-2321], and the nationwide definition states its purpose as describing the kinds of risks and coverages which may be classified as marine, inland marine or transportation insurance [S:naic-model-701-nationwide-inland-marine-definition]. That a form exists is not a statement that you need one, and nothing here says what any policy of yours covers.",
+			"action": "Start with your own homeowners or renters declarations page and read what its contents limit and any special limits actually say for these categories, then take that page to your broker.",
+			"when": {
+				"all": [
+					{
+						"field": "how-insured-now",
+						"op": "eq",
+						"value": "not-insured"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2321",
+				"naic-model-701-nationwide-inland-marine-definition"
+			],
+			"relatedQuestion": "inland-marine-uses",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "no-appraisal-held",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "No written appraisal is held.",
+			"detail": "The classification texts read for this module describe what may be written and what is prohibited; neither sets a value for anything [S:ca-ccr-tit-10-2321][S:naic-model-701-nationwide-inland-marine-definition]. Value is established by documentation outside the policy, and an appraisal is the document a schedule is normally built from.",
+			"action": "Get a written appraisal from a qualified appraiser for the items that matter most, and keep a copy somewhere other than the building the items are in. Nothing here values anything, and this module cannot.",
+			"when": {
+				"all": [
+					{
+						"field": "appraisal-held",
+						"op": "eq",
+						"value": "none"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2321",
+				"naic-model-701-nationwide-inland-marine-definition"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "appraisal-older-than-three-years",
+			"kind": "timing",
+			"severity": "medium",
+			"title": "The most recent appraisal is more than three years old.",
+			"detail": "The marine insurance article enumerates the categories that may be written under a floater, including objects of art and rare manuscripts and books [S:ca-ccr-tit-10-2321], and says nothing about value or about how often it should be revisited, because value is not what the article governs. A schedule built on an old appraisal is a schedule built on an old figure.",
+			"action": "Ask a qualified appraiser whether the categories you hold have moved enough to warrant a fresh appraisal, and record the date of whatever you get.",
+			"when": {
+				"all": [
+					{
+						"field": "appraisal-date",
+						"op": "lt",
+						"value": {
+							"monthsFromToday": -36
+						}
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2321"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "scheduled-without-appraisal",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "Items are recorded as scheduled and no written appraisal is held for any of them.",
+			"detail": "A schedule states a figure per item. The classification texts read here do not set that figure [S:ca-ccr-tit-10-2321], so it came from somewhere else, and you have recorded that it did not come from a written appraisal. That is worth resolving before a loss rather than after, because the document that establishes value is the one that is missing.",
+			"action": "Ask your broker or insurer what documentation the scheduled figures were accepted on, and what the form requires at the time of a claim. Then close whatever gap that answer reveals.",
+			"when": {
+				"all": [
+					{
+						"field": "appraisal-held",
+						"op": "eq",
+						"value": "none"
+					},
+					{
+						"field": "how-insured-now",
+						"op": "neq",
+						"value": "homeowners-contents-only"
+					},
+					{
+						"field": "how-insured-now",
+						"op": "neq",
+						"value": "not-insured"
+					},
+					{
+						"field": "how-insured-now",
+						"op": "neq",
+						"value": "not-recorded"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2321"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "no-inventory-with-many-items",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "More than twenty-five items are recorded and there is no written inventory.",
+			"detail": "The article enumerates categories rather than items [S:ca-ccr-tit-10-2321], so the list of what you actually hold is yours to keep. With a collection of this size, the inventory is the document that makes any later conversation possible, whether with a broker, an appraiser, or an adjuster.",
+			"action": "Build a written inventory: category, count, and where each group is kept. Keep it somewhere other than the building the items are in.",
+			"when": {
+				"all": [
+					{
+						"field": "inventory-held",
+						"op": "eq",
+						"value": false
+					},
+					{
+						"field": "item-count-band",
+						"op": "neq",
+						"value": "1-5"
+					},
+					{
+						"field": "item-count-band",
+						"op": "neq",
+						"value": "6-25"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2321"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "no-photographs-held",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "No photographs of the items are recorded as held.",
+			"detail": "Photographs are not addressed by the classification texts read for this module [S:naic-model-701-nationwide-inland-marine-definition], which govern what may be written rather than what a claimant should hold. They are recorded here because they are the cheapest documentation to create and the hardest to recreate after a loss.",
+			"action": "Photograph the items, including any maker's marks, signatures or hallmarks, and store the photographs away from the building the items are in.",
+			"when": {
+				"all": [
+					{
+						"field": "photographs-held",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"naic-model-701-nationwide-inland-marine-definition"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "items-travel-transit-question",
+			"kind": "question",
+			"severity": "high",
+			"title": "Items move between locations, and transit is the thread the marine insurance article turns on.",
+			"detail": "The article is placed under Marine Insurance at title 10, chapter 5, subchapter 3, article 5 [S:ca-ccr-tit-10-2320], and its Prohibited Coverage section carries an exception in exactly this shape: moneys and securities in safes, vaults, safety deposit vaults, banks or the premises are prohibited, except while in course of transportation [S:ca-ccr-tit-10-2322]. Whether a particular form follows items while they move is a question about that form.",
+			"action": "Ask your insurer in writing whether the form covers items while in transit, in whose custody, and by what method of carriage. Do not assume transit is included because the classification is a marine one.",
+			"when": {
+				"all": [
+					{
+						"field": "items-travel",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2320",
+				"ca-ccr-tit-10-2322"
+			],
+			"relatedQuestion": "inland-marine-uses",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "on-loan-or-with-restorer-question",
+			"kind": "question",
+			"severity": "high",
+			"title": "Items are on loan, on exhibition, or with a restorer or dealer.",
+			"detail": "The marine insurance article addresses property in the custody of others as its own matter: the bailee item names bailee examples including bleacheries, throwsters, fumigatories, dyers, cleaners, laundries and similar bailees, and needleworkers [S:ca-ccr-tit-10-2321]. Property in someone else's hands is treated separately from property at home, and who insures it while it is there is a question with a written answer.",
+			"action": "Ask the borrower, gallery, or restorer for evidence of their own cover in writing, and ask your insurer whether your form responds while items are in another party's custody. Get both answers before the item leaves.",
+			"when": {
+				"all": [
+					{
+						"field": "items-on-loan-or-exhibition",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2321"
+			],
+			"relatedQuestion": "inland-marine-uses",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "recent-acquisition-not-scheduled",
+			"kind": "timing",
+			"severity": "high",
+			"title": "Something acquired in the last ninety days is not yet on a schedule.",
+			"detail": "A schedule covers what is on it. The classification texts read here enumerate what may be written [S:ca-ccr-tit-10-2321] and say nothing about how long an insurer allows for a newly acquired item to be added, because that is a term of the form rather than of the article.",
+			"action": "Ask your insurer today what the form says about newly acquired property: whether there is an automatic period, how long it runs, what limit applies during it, and what you must do to make cover permanent. Then do that thing.",
+			"when": {
+				"all": [
+					{
+						"field": "recent-acquisition",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2321"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "safe-or-vault-storage-question",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Items are kept in a safe, a vault, or a safety deposit box.",
+			"detail": "The Prohibited Coverage section of the article reaches moneys and securities in safes, vaults, safety deposit vaults, banks or the premises, except while in course of transportation [S:ca-ccr-tit-10-2322]. That item is about money and securities rather than about jewellery or coins, but it shows that where a thing is kept can change how it may be written, so the storage question is worth asking rather than assuming.",
+			"action": "Tell your broker exactly where items are kept and ask whether the form prices or conditions cover on that basis, and whether a vault or safe requirement appears anywhere in it.",
+			"when": {
+				"all": [
+					{
+						"field": "kept-in-safe-or-vault",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2322"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "second-location-question",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Items are kept at more than one address.",
+			"detail": "The article is organised around where property is and whether it is moving, sitting under Marine Insurance at title 10, chapter 5, subchapter 3, article 5 [S:ca-ccr-tit-10-2320]. A form written for one location and a form written to follow property are different things, and which one you hold is readable on your own declarations page.",
+			"action": "Ask your broker whether the cover is written per location or follows the property, and confirm every address is either listed or covered by the wording.",
+			"when": {
+				"all": [
+					{
+						"field": "second-location",
+						"op": "eq",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2320"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "purchase-records-not-held",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "No purchase receipts or provenance records are recorded as held.",
+			"detail": "Provenance is not what the classification texts govern [S:naic-model-701-nationwide-inland-marine-definition]; they describe the kinds of risks that may be classified as marine, inland marine or transportation insurance. Purchase and provenance records are recorded here because for the categories the article enumerates, including objects of art and rare manuscripts and books [S:ca-ccr-tit-10-2321], they are what establishes that a thing is what it is said to be.",
+			"action": "Collect what receipts, bills of sale, certificates and provenance documents exist, and store copies away from the items. Where nothing exists, say so to your appraiser rather than leaving the gap unstated.",
+			"when": {
+				"all": [
+					{
+						"field": "purchase-records-held",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"naic-model-701-nationwide-inland-marine-definition",
+				"ca-ccr-tit-10-2321"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": null
+		},
+		{
+			"id": "how-insured-not-recorded",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "How these items are insured is not recorded.",
+			"detail": "Every other question on this page depends on the answer. The article enumerates several distinct floater types that may be written for these categories [S:ca-ccr-tit-10-2321], and which one applies to you, if any, is stated on your own declarations page rather than inferable from anything here.",
+			"action": "Read your homeowners or renters declarations page and any personal articles or floater declarations you hold, and record which of them these items actually sit on.",
+			"when": {
+				"all": [
+					{
+						"field": "how-insured-now",
+						"op": "eq",
+						"value": "not-recorded"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2321"
+			],
+			"relatedQuestion": "inland-marine-uses",
+			"routeToProfessional": null
+		},
+		{
+			"id": "jewelry-partially-appraised",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "Jewellery is held and only some items are appraised.",
+			"detail": "Jewellery sits inside the floater group the article enumerates at subdivision (e)(2) [S:ca-ccr-tit-10-2321]. A partial appraisal means part of the collection has a documented figure behind it and part does not, and the part that does not is the part that will be argued about.",
+			"action": "List which pieces are appraised and which are not, then decide deliberately which of the remainder are worth appraising. Ask your broker what the form requires for an unappraised item.",
+			"when": {
+				"all": [
+					{
+						"field": "categories-held",
+						"op": "includes",
+						"value": "jewelry"
+					},
+					{
+						"field": "appraisal-held",
+						"op": "eq",
+						"value": "some-appraised"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ccr-tit-10-2321"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "wine-held-classification-question",
+			"kind": "question",
+			"severity": "low",
+			"title": "Wine is recorded as held.",
+			"detail": "The nationwide definition states that it describes the kinds of risks and coverages which may be classified as marine, inland marine or transportation insurance, and that it shall not be construed to mean those risks are solely marine, inland marine or transportation insurance in all instances [S:naic-model-701-nationwide-inland-marine-definition]. Wine is not one of the items the California article names explicitly among the floater types [S:ca-ccr-tit-10-2321], so where it is written is a question rather than a given.",
+			"action": "Ask your broker which form a wine collection is written on, and what it says about temperature, mechanical breakdown of storage, and breakage, none of which is addressed by the classification texts.",
+			"when": {
+				"all": [
+					{
+						"field": "categories-held",
+						"op": "includes",
+						"value": "wine"
+					}
+				]
+			},
+			"sourceIds": [
+				"naic-model-701-nationwide-inland-marine-definition",
+				"ca-ccr-tit-10-2321"
+			],
+			"relatedQuestion": "inland-marine-uses",
+			"routeToProfessional": "broker"
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

@@ -1,0 +1,30 @@
+---
+import { ChevronRight } from '@lucide/astro';
+
+export interface Crumb {
+	name: string;
+	path: string;
+}
+
+interface Props {
+	trail: Crumb[];
+}
+
+const { trail } = Astro.props;
+const last = trail.length - 1;
+---
+
+<nav class="crumbs" aria-label="Breadcrumb">
+	{
+		trail.map((crumb, i) => (
+			<>
+				{i > 0 && <ChevronRight size={12} aria-hidden="true" />}
+				{i === last ? (
+					<span aria-current="page">{crumb.name}</span>
+				) : (
+					<a href={crumb.path}>{crumb.name}</a>
+				)}
+			</>
+		))
+	}
+</nav>

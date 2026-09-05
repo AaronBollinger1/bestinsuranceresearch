@@ -1,0 +1,22 @@
+{
+	"title": "Our Story",
+	"publisher": "National Association of Insurance Commissioners",
+	"url": "https://content.naic.org/about",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The page states: Founded in 1871, the U.S. standard-setting organization is governed by the chief insurance regulators from the 50 states, the District of Columbia, and five U.S. territories to coordinate regulation of multistate insurers.",
+		"The page states that the National Association of Insurance Commissioners provides expertise, data, and analysis for insurance commissioners to effectively regulate the industry and protect consumers.",
+		"The page states that NAIC also provides consumer protection and education, data collection and analysis, technology, financial assessments and reporting, and licensing and testing."
+	],
+	"updateCadence": "Maintained by NAIC; self-description changes infrequently.",
+	"status": "active",
+	"officialHost": true
+}

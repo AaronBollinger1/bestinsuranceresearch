@@ -1,0 +1,58 @@
+---
+/**
+ * One data set, two renderings: a real table with a row header for wide
+ * viewports, and a definition-list stack below 640px. Both are in the DOM, and
+ * exactly one is visible, so a screen reader never meets a duplicate and a
+ * narrow viewport never gets a horizontally scrolling wall.
+ */
+interface Props {
+	caption: string;
+	/** First column is the row header. */
+	columns: string[];
+	rows: string[][];
+	id?: string;
+}
+
+const { caption, columns, rows, id } = Astro.props;
+---
+
+<div id={id}>
+	<div class="table-scroll">
+		<table class="data">
+			<caption>{caption}</caption>
+			<thead>
+				<tr>{columns.map((column) => <th scope="col">{column}</th>)}</tr>
+			</thead>
+			<tbody>
+				{
+					rows.map((row) => (
+						<tr>
+							{row.map((cell, i) =>
+								i === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>,
+							)}
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+
+	<div class="table-stack">
+		<p class="mono" style="margin-bottom: var(--s-2)">{caption}</p>
+		{
+			rows.map((row) => (
+				<div class="table-stack-item">
+					<p class="table-stack-title">{row[0]}</p>
+					<dl>
+						{row.slice(1).map((cell, i) => (
+							<>
+								<dt>{columns[i + 1]}</dt>
+								<dd>{cell}</dd>
+							</>
+						))}
+					</dl>
+				</div>
+			))
+		}
+	</div>
+</div>

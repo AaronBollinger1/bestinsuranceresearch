@@ -1,0 +1,43 @@
+{
+	"title": "Reading the California FAIR Plan's own dwelling policy page to see which perils it lists and what it tells applicants to buy separately",
+	"label": "carrier-authored",
+	"labelNote": "This walkthrough is built only on the California FAIR Plan's own published Dwelling policy page and on the California Department of Insurance consumer page about the FAIR Plan, both read on 2026-08-31; the homeowner is a stand-in used to organize those published documents, and no real applicant, policy, premium, or claim is described.",
+	"family": "personal",
+	"lines": [
+		"dwelling fire",
+		"homeowners",
+		"difference in conditions"
+	],
+	"whatHappened": "Assume as the premise of this walkthrough that a homeowner has not found coverage in the standard market and is reading about the California FAIR Plan; nothing here decides whether any property qualifies for anything. As published and read on 2026-08-31, the FAIR Plan's Dwelling policy page states that the Dwelling Fire Policy is a named peril policy providing coverage only for damage caused by the specific causes of loss listed in the policy, and it shows Fire and Lightning, Internal Explosion, and Smoke as the perils, with optional coverages such as vandalism and malicious mischief available at additional cost [S:cfp-dwelling-policy]. The same page advises considering Difference in Conditions, Flood, or Earthquake policies to supplement a California FAIR Plan policy by covering additional perils [S:cfp-dwelling-policy]. The California Department of Insurance page, read the same day, states that the FAIR Plan is available to California residents and businesses in urban and rural areas who cannot obtain insurance through a regular insurance company, and directs policyholders who want water damage, liability, theft, additional living expenses, and other common coverages to the Difference in Conditions web page and the insurers listed there [S:cdi-fair-plan].",
+	"informationThatMattered": [
+		"The FAIR Plan describes its Dwelling Fire Policy as a named peril policy that covers only the causes of loss listed in the policy, so the peril list is the whole grant [S:cfp-dwelling-policy].",
+		"The perils shown on that page as of 2026-08-31 are Fire and Lightning, Internal Explosion, and Smoke, and vandalism and malicious mischief is described as optional at additional cost [S:cfp-dwelling-policy].",
+		"The FAIR Plan's own page tells applicants to consider Difference in Conditions, Flood, or Earthquake policies to supplement the FAIR Plan policy [S:cfp-dwelling-policy].",
+		"The Department of Insurance names water damage, liability, theft, additional living expenses, and other common coverages as what a separate Difference in Conditions policy is for [S:cdi-fair-plan].",
+		"The Department of Insurance describes the FAIR Plan as available to residents and businesses who cannot obtain insurance through a regular insurance company, which is why the practical comparison is usually a FAIR Plan policy plus a companion policy [S:cdi-fair-plan].",
+		"The Department of Insurance page states that a comprehensive residential policy option is currently in progress, so the published product set is not fixed [S:cdi-fair-plan]."
+	],
+	"insuranceQuestion": "If the property side of a household's coverage comes from a FAIR Plan dwelling policy, what do the FAIR Plan and the Department of Insurance say has to be bought separately?",
+	"reasoningPath": "Start with the form type, because the FAIR Plan's own page makes it decisive. The Dwelling Fire Policy is described as a named peril policy that provides coverage only for damage caused by the specific causes of loss listed in the policy [S:cfp-dwelling-policy]. On that page, as read on 2026-08-31, the perils shown are Fire and Lightning, Internal Explosion, and Smoke, with vandalism and malicious mischief offered as an optional coverage at additional cost [S:cfp-dwelling-policy].\n\nBecause the peril list is short, what sits outside it follows from the list rather than from any comparison to another product. Both publishers say in their own words what to do about that. The FAIR Plan advises considering Difference in Conditions, Flood, or Earthquake policies to supplement the FAIR Plan policy [S:cfp-dwelling-policy], and the Department of Insurance directs policyholders who want water damage, liability, theft, additional living expenses, and other common coverages to a separate Difference in Conditions policy [S:cdi-fair-plan]. Neither source read here describes the contents of any homeowners form, and no homeowners form is read here, so nothing in this walkthrough states what a homeowners policy contains.\n\nThe practical consequence is that this is two policies rather than one. Neither source read here describes the terms of any particular Difference in Conditions form. What a specific DIC policy covers, at what limits, with what deductible, and how it lines up with a FAIR Plan policy can only be read in the two forms actually issued.\n\nThe published product set is also moving. The Department of Insurance page states that the comprehensive residential policy option is currently in progress and that, when completed, policyholders will be able to obtain those coverages without a separate Difference in Conditions policy [S:cdi-fair-plan]. That page displays no last-updated date, and the newest date appearing anywhere on it is from November 2023, so the statement is a snapshot of what the page said on 2026-08-31 and not a report of current product availability.\n\nEligibility is not something a comparison decides. The Department of Insurance describes the FAIR Plan as available to those who cannot obtain insurance through a regular insurance company [S:cdi-fair-plan]. Whether a particular property qualifies, and on what terms, is decided by the FAIR Plan under its own rules, not by an article.",
+	"decidedBy": "No authority decided this. It is illustrative only. The coverage descriptions come from the California FAIR Plan's own published Dwelling policy page and from the California Department of Insurance consumer page as read on 2026-08-31; nothing here reflects a decision about any specific property, applicant, or claim.",
+	"cannotGeneralize": [
+		"The FAIR Plan's covered perils, optional coverages, and available limits are set by its own published documents and can change. Verify the current FAIR Plan policy documents before relying on any peril list, including the one recorded here as of 2026-08-31.",
+		"Neither source read here describes any particular Difference in Conditions form. What a specific DIC policy covers, and how it coordinates with a FAIR Plan policy, has to be read in that form.",
+		"This does not say whether any specific property is eligible for the FAIR Plan, or that the FAIR Plan is or is not the right answer for anyone. Eligibility and terms are decided by the FAIR Plan.",
+		"It does not address FAIR Plan commercial policies, which are described separately by the FAIR Plan and were not read for this walkthrough.",
+		"It is not a coverage determination. Whether a particular loss is covered under either policy is decided by the insurer under the policy that was actually issued."
+	],
+	"provenance": "Built from two published documents: the California FAIR Plan Association's own Dwelling policy page and the California Department of Insurance consumer page on the California FAIR Plan, both fetched and read on 2026-08-31. No real client, application, policy, premium, quote, claim outcome, or placement outcome is described, and no carrier appetite is asserted. The homeowner in the scenario is a stand-in used to organize the published information.",
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"cfp-dwelling-policy",
+		"cdi-fair-plan"
+	],
+	"relatedQuestions": [
+		"homeowners-earthquake-california",
+		"same-limit-different-protection"
+	]
+}

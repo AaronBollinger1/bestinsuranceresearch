@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Callout from '../components/Callout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { breadcrumbs, graph, organization, techArticle, website } from '../lib/schema';
+import { TODAY } from '../lib/today';
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Editorial policy', path: '/editorial-policy' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	techArticle({
+		headline: 'Editorial policy',
+		path: '/editorial-policy',
+		description: 'Sourcing, authorship, review, labeling, disclosure, and automation standards for BestInsurance Research.',
+		datePublished: '2026-08-31',
+		dateModified: TODAY,
+		author: 'Aaron Bollinger',
+		reviewer: 'Brian Bollinger',
+		sections: ['Scope', 'Sourcing', 'Language', 'Entities', 'Examples', 'Disclosure', 'Automation', 'Enforcement'],
+		citations: [],
+	}),
+);
+---
+
+<BaseLayout
+	title="Editorial policy"
+	description="Sourcing, authorship, review, labeling, disclosure, and automation standards for BestInsurance Research, stated as rules rather than aspirations."
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
+	<PageHeader
+		eyebrow="Editorial policy"
+		title="The rules, stated as rules"
+		lede="These apply to every question, coverage page, entity record, state page, example, source record, and tool on this site."
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell answer-grid">
+			<div class="prose">
+				<h2 id="scope">Scope and standing</h2>
+				<p>
+					This policy binds the site. Where it conflicts with a commercial preference, the policy
+					wins. Where it conflicts with what would rank better, the policy wins. A rule that only
+					applies when convenient is not a rule, and a reader has no way to tell the difference
+					except by watching what we refuse to publish.
+				</p>
+
+				<h2 id="sourcing">Sourcing</h2>
+				<ul>
+					<li>Every material factual claim maps to a source in the registry.</li>
+					<li>
+						Sources are ranked by the hierarchy in <a href="/methodology">the methodology</a>. A
+						secondary source may explain a primary one and may never override it.
+					</li>
+					<li>
+						A source record lists the exact claims it supports. A claim not on that list may not be
+						attributed to that source, and the list is published on the page.
+					</li>
+					<li>
+						A citation is made after reading the source. Citing a search result, a snippet, or
+						another article's description of a source is not permitted.
+					</li>
+					<li>
+						Every source records its publication, effective, access, and last-checked dates, its
+						jurisdiction, and its update cadence. A source past its window is flagged stale in
+						public.
+					</li>
+					<li>
+						A source that stops resolving is marked unavailable and kept, because the citation of
+						record matters and quietly deleting it hides that a page's footing changed.
+					</li>
+				</ul>
+
+				<h2 id="language">Language</h2>
+				<ul>
+					<li>
+						The direct answer comes first, then the conditions. Burying the answer under
+						qualifications is a failure, not caution.
+					</li>
+					<li>
+						Hedges such as <em>often</em>, <em>may</em>, <em>commonly</em>, and
+						<em>depends on the policy form</em> are used where they are the truth, and are not used
+						as filler. A hedge is a finding, and it carries the same evidentiary burden as an
+						assertion.
+					</li>
+					<li>
+						Any statement about what a policy says names the form and its edition, or says "many
+						forms" and tells the reader their own form controls. No universal policy language.
+					</li>
+					<li>
+						Anything that is common market practice rather than a legal or filed requirement says so
+						in those words.
+					</li>
+					<li>
+						Uncertainty is stated as a confidence status on the page: established, contextual,
+						disputed, changing, or insufficient. Where competent sources disagree, that is disclosed
+						rather than resolved by preference.
+					</li>
+				</ul>
+
+				<Callout tone="warn">
+					<p>
+						<strong>Prohibited absolutely.</strong> No page may give legal, tax, medical, lending,
+						investment, or claims advice; state that a specific loss is or is not covered; state
+						that a specific risk is eligible, ineligible, standard market, non-admitted, FAIR Plan
+						eligible, bound, or uninsurable; or present any of the above as a conclusion the reader
+						can act on without an insurer or a licensed professional.
+					</p>
+				</Callout>
+
+				<h2 id="entities">Companies and organizations</h2>
+				<ul>
+					<li>No <em>best</em>, <em>cheapest</em>, <em>top</em>, or <em>most reliable</em> claim.</li>
+					<li>
+						No rating or financial-strength summary written by us. We link to the rating agency or
+						the regulator that published it, and let it speak for itself.
+					</li>
+					<li>
+						No appetite claim of ours. An appetite statement may appear only as a quotation from or
+						a link to the carrier's own published document, labeled carrier-authored and dated.
+					</li>
+					<li>
+						No complaint statistic without its denominator and its date, because a raw complaint
+						count is misleading by construction.
+					</li>
+					<li>
+						Product and state availability appear only when sourced and current, and carry the date
+						they were confirmed.
+					</li>
+					<li>
+						Inclusion in any list, and position within it, is never for sale and is never influenced
+						by a commercial relationship.
+					</li>
+				</ul>
+
+				<h2 id="examples">Examples and case studies</h2>
+				<ul>
+					<li>
+						Every example is labeled before it is read: public record, carrier authored, published
+						industry, anonymized client, composite, or hypothetical.
+					</li>
+					<li>
+						A composite or hypothetical is never presented as a real outcome, and never attributed
+						to a client.
+					</li>
+					<li>
+						An anonymized client case requires written approval and a documented consent record,
+						which is named on the page. Without both, it does not publish.
+					</li>
+					<li>
+						No example may use information from a declarations page, an intake, an email, or an
+						agency management system.
+					</li>
+					<li>
+						Never invent a premium, a savings figure, a claim outcome, a placement, a close time, or
+						a policy term. Not as illustration, not as a range, not as an example.
+					</li>
+					<li>No testimonials, no reviews, no star ratings, no client logos.</li>
+				</ul>
+
+				<h2 id="disclosure">Disclosure</h2>
+				<ul>
+					<li>
+						The operator is named on every page, with its legal name, its trade name, and its agency
+						licence number.
+					</li>
+					<li>
+						The Bollinsure relationship is disclosed next to every licensed-help action, including
+						that Bollinsure may be compensated by an insurer when it places coverage, and that it is
+						not the only source of licensed help.
+					</li>
+					<li>
+						There is no sponsored content, paid placement, or affiliate arrangement. If that
+						changes, the disclosure appears on the page carrying the relationship.
+					</li>
+					<li>
+						No page requires an email address, a phone number, or an account to be read in full.
+					</li>
+				</ul>
+
+				<h2 id="automation">Automation</h2>
+				<p>
+					<a href="/methodology">The methodology</a> states exactly where automation is and is not
+					used. Two rules govern it here:
+				</p>
+				<ul>
+					<li>
+						A named human author and a named licensed reviewer are responsible for every published
+						page. Automation never publishes.
+					</li>
+					<li>
+						No page may imply that structured data, retrieval, or generation substitutes for
+						licensed or editorial review.
+					</li>
+				</ul>
+
+				<h2 id="enforcement">How this is enforced</h2>
+				<p>
+					Some of this is enforced by build-time checks rather than by good intentions. A citation
+					marker that does not resolve to a declared source fails the build. A source id that is not
+					in the registry fails the build. An entry missing an author, a reviewer, or a review date
+					fails schema validation and does not publish. A page cannot enter the sitemap without a
+					canonical URL, and a tool cannot appear in navigation without a published route.
+				</p>
+				<p>
+					The parts that cannot be automated, the judgement about whether a source really supports a
+					sentence, are what the reviewer is for, and why the reviewer is named.
+				</p>
+			</div>
+
+			<aside class="answer-rail" aria-label="Page contents">
+				<nav class="rail-block" aria-labelledby="on-this-page">
+					<h2 id="on-this-page">On this page</h2>
+					<ol>
+						<li><a href="#scope">Scope and standing</a></li>
+						<li><a href="#sourcing">Sourcing</a></li>
+						<li><a href="#language">Language</a></li>
+						<li><a href="#entities">Companies</a></li>
+						<li><a href="#examples">Examples</a></li>
+						<li><a href="#disclosure">Disclosure</a></li>
+						<li><a href="#automation">Automation</a></li>
+						<li><a href="#enforcement">Enforcement</a></li>
+					</ol>
+				</nav>
+				<div class="rail-block no-print">
+					<h2>Related</h2>
+					<ul>
+						<li><a href="/methodology">Methodology</a></li>
+						<li><a href="/corrections">Corrections</a></li>
+						<li><a href="/sources">Source registry</a></li>
+						<li><a href="/privacy">Privacy</a></li>
+						<li><a href="/terms">Terms</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

@@ -1,0 +1,132 @@
+{
+	"legalName": "California Department of Insurance",
+	"shortName": "CDI",
+	"orgType": "regulator",
+	"summary": "The California Department of Insurance (CDI) is California's state insurance regulator: the Insurance Code directs its commissioner to perform all duties imposed by the code and other laws regulating the business of insurance in this state, and to enforce the execution of those provisions and laws [S:ca-ins-code-12921]. The commissioner is elected by the people in the same time, place, and manner as the Governor, not to exceed two four-year terms, and legislative confirmation is required to fill a mid-term vacancy [S:ca-ins-code-12900]. The public-facing side of that work includes a license lookup covering agents, brokers, adjusters, bail agents, and agencies or organizations [S:cdi-license-status], searchable insurance company profiles [S:cdi-company-profiles], a Virtual Viewing Room of rate filings and examination reports [S:cdi-vvr], and a consumer hotline plus electronic complaint intake [S:cdi-contact][S:cdi-getting-help]. Federal law provides that the business of insurance, and every person engaged in it, shall be subject to the laws of the several States which relate to the regulation or taxation of that business [S:usc-15-1012].",
+	"officialUrls": [
+		{
+			"label": "Main site",
+			"url": "https://www.insurance.ca.gov/"
+		},
+		{
+			"label": "Contact Us",
+			"url": "https://www.insurance.ca.gov/0500-about-us/05-contact/",
+			"note": "Source of the phone numbers and office addresses below [S:cdi-contact]."
+		},
+		{
+			"label": "Getting Help (consumer help and complaint forms)",
+			"url": "https://www.insurance.ca.gov/01-consumers/101-help/index.cfm"
+		},
+		{
+			"label": "Types of Insurance",
+			"url": "https://www.insurance.ca.gov/01-consumers/105-type/"
+		}
+	],
+	"contactChannels": [
+		{
+			"label": "Consumer Hotline",
+			"value": "800-927-4357",
+			"note": "Published by CDI as 800-927-4357 (HELP) on its Contact Us page [S:cdi-contact] and as 1-800-927-4357 for insurance information and questions on its Getting Help page [S:cdi-getting-help]. CDI's Contact Us page states no hours of operation, so we publish none [S:cdi-contact]."
+		},
+		{
+			"label": "TTY",
+			"value": "800-482-4833",
+			"note": "Listed on CDI's Contact Us page as 800-482-4833 (TTY) [S:cdi-contact]."
+		},
+		{
+			"label": "Licensing hotline",
+			"value": "800-967-9331",
+			"note": "This is the label CDI's Contact Us page uses. It is a separate line from the Consumer Hotline and is for licensing services rather than consumer complaints [S:cdi-contact]."
+		},
+		{
+			"label": "Fraud Division",
+			"value": "916-854-5760 / fraud@insurance.ca.gov",
+			"note": "Fraud Division main line and email as published on Contact Us [S:cdi-contact]."
+		},
+		{
+			"label": "Sacramento office",
+			"value": "300 Capitol Mall, 17th Floor, Sacramento, CA 95814 / 916-492-3500",
+			"note": "One of the headquarters offices listed on Contact Us [S:cdi-contact]."
+		},
+		{
+			"label": "Los Angeles office",
+			"value": "300 South Spring Street, 14th Floor, Los Angeles, CA 90013 / 213-346-6464",
+			"note": "Listed on CDI's Contact Us page [S:cdi-contact]."
+		},
+		{
+			"label": "Oakland office",
+			"value": "1901 Harrison Street, 6th Floor, Oakland, CA 94612 / 415-538-4500",
+			"note": "Listed on CDI's Contact Us page [S:cdi-contact]."
+		}
+	],
+	"regulatorRecords": [
+		{
+			"label": "License Status Inquiry",
+			"url": "https://cdicloud.insurance.ca.gov/cal",
+			"note": "CDI's tool for retrieving license details, including enforcement actions, for an insurance agent, broker, adjuster, bail agent, and agency or organization, by license number, individual name, or business name [S:cdi-license-status]. Treat any result as accurate only as of the moment you run it."
+		},
+		{
+			"label": "Insurance Company Profiles",
+			"url": "https://www.insurance.ca.gov/01-consumers/120-company/01-coprof/",
+			"note": "Search by partial or full company name, or by what kind of insurance a company is able to sell in California. A profile includes location, former names, agent for service of process, license status, company type, state of domicile, lines the company is authorized to transact, and complaint history [S:cdi-company-profiles]."
+		},
+		{
+			"label": "Virtual Viewing Room",
+			"url": "https://www.insurance.ca.gov/01-consumers/135-viewing-room/",
+			"note": "CDI states this room allows you to see insurance company rate filings, examination reports, and related information, grouped into categories including enforcement actions, health insurance rates, financial filing requirements, market conduct examination reports, property and casualty insurance rates, and prior approval rate hearing case files [S:cdi-vvr]."
+		}
+	],
+	"publications": [
+		{
+			"label": "Types of Insurance (CDI consumer information by line)",
+			"url": "https://www.insurance.ca.gov/01-consumers/105-type/",
+			"note": "CDI organizes consumer information by line, including Automobile, Health, Homeowner/Residential, Home Protection Contracts, Life & Annuity, Long-Term Care, Medicare Supplement, Pet, TNC Ride-hailing, and Workers' Compensation, alongside an Information Guides entry [S:cdi-types]."
+		}
+	],
+	"statutoryBasis": [
+		{
+			"label": "California Insurance Code section 12900 (elected Insurance Commissioner)",
+			"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=12900",
+			"note": "Subdivision (a) provides that the commissioner shall be elected by the people in the same time, place, and manner as the Governor, not to exceed two four-year terms. Subdivision (b) requires legislative confirmation for a mid-term vacancy, in the manner and procedure required by Section 5 of Article V of the California Constitution [S:ca-ins-code-12900]."
+		},
+		{
+			"label": "California Insurance Code section 12921 (duties and enforcement)",
+			"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=12921",
+			"note": "Subdivision (a) provides that the commissioner shall perform all duties imposed upon the commissioner by the provisions of this code and other laws regulating the business of insurance in this state, and shall enforce the execution of those provisions and laws [S:ca-ins-code-12921]."
+		},
+		{
+			"label": "15 U.S.C. section 1012 (McCarran-Ferguson Act)",
+			"url": "https://www.law.cornell.edu/uscode/text/15/1012",
+			"note": "Subsection (a) subjects the business of insurance, and every person engaged in it, to the laws of the several States relating to the regulation or taxation of that business. Subsection (b) provides that no Act of Congress invalidates, impairs, or supersedes a state insurance law unless the Act specifically relates to the business of insurance, with a proviso applying the Sherman, Clayton, and Federal Trade Commission Acts to insurance after June 30, 1948 to the extent the business is not regulated by State law [S:usc-15-1012]. How this statute applies to any particular dispute is a legal question for a lawyer."
+		}
+	],
+	"jurisdictions": [
+		"CA"
+	],
+	"whatWeDoNotClaim": [
+		"We publish no financial strength rating, ranking, or summary for any insurer, and we use no best, cheapest, or most reliable language about any company. For financial strength go to the rating agencies directly, or to CDI's own company profiles and examination records [S:cdi-company-profiles][S:cdi-vvr].",
+		"We do not state that any specific company, agent, broker, or adjuster is currently licensed, unlicensed, or in good standing. CDI's License Status Inquiry is the record, and only as of the moment you run it [S:cdi-license-status].",
+		"We make no coverage determination and no eligibility verdict, and we do not say whether any risk is admitted market, non-admitted, or FAIR Plan eligible. We also do not state who decides such a question or how it would be resolved; that is a legal question for a lawyer.",
+		"We do not claim CDI has reviewed, approved, or endorsed this page or anything else published by BestInsurance Research or WJB Services, Inc. dba Bollinsure Insurance Services, and nothing here is legal advice."
+	],
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"cdi-contact",
+		"cdi-getting-help",
+		"cdi-license-status",
+		"cdi-company-profiles",
+		"cdi-vvr",
+		"cdi-types",
+		"ca-ins-code-12900",
+		"ca-ins-code-12921",
+		"usc-15-1012"
+	],
+	"relatedQuestions": [
+		"homeowners-earthquake-california",
+		"workers-comp-class-codes",
+		"replacement-cost-vs-market-value"
+	]
+}

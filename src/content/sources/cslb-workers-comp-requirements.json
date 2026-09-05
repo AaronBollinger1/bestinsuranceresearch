@@ -1,0 +1,24 @@
+{
+	"title": "Workers' Compensation Requirements",
+	"publisher": "California Contractors State License Board",
+	"url": "https://www.cslb.ca.gov/contractors/maintain_license/workers_compensation.aspx",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"CSLB requires licensees with an active license, licensees reactivating an inactive license, and applicants for an active contractor license to provide a valid Certificate of Workers' Compensation Insurance or a valid Certification of Self-Insurance from the Department of Industrial Relations, or to file a signed exemption certifying they have no employees.",
+		"CSLB states that all active C-8 Concrete, C-20 Warm-Air Heating, Ventilating and Air-Conditioning, C-22 Asbestos Abatement, C-39 Roofing, and C-61/D-49 Tree Service contractors are required to carry workers compensation insurance or hold a valid Certification of Self-Insurance whether or not they have employees.",
+		"CSLB requires the workers compensation certificate to list CSLB as the certificate holder, the contractor's business name and license or application fee number, the policy number, the policy effective and expiration dates, and the signature of an authorized representative.",
+		"CSLB states an exemption cannot be filed by a licensee who employs anyone subject to California workers compensation law, who has a Responsible Managing Employee, or who holds one of the classifications requiring mandatory coverage.",
+		"CSLB states that when an exempt licensee hires an employee, proof of workers compensation coverage must be received at CSLB headquarters within 90 days of the hire, and that failure to do so results in license suspension."
+	],
+	"updateCadence": "Agency web page; re-check at least annually and around CSLB rule changes.",
+	"status": "active",
+	"officialHost": true
+}

@@ -1,0 +1,210 @@
+---
+/**
+ * Every line of insurance the vocabulary knows, and honestly what this library
+ * holds on each.
+ *
+ * The point of this page is the second half of that sentence. It would be
+ * trivial to list 46 lines and imply coverage of all of them; instead each row
+ * states how much cited material sits behind it, and the lines with nothing are
+ * listed as gaps at the bottom under their own heading. A reader — or an answer
+ * engine — can tell in one pass which lines this site can actually be relied on
+ * for.
+ */
+import {
+	Activity, ArrowRight, Building2, Car, FileSignature, Flame, Gavel, Gem, HardHat, HeartPulse,
+	House, KeyRound, Landmark, Lock, Package, ShieldCheck, Truck, Umbrella, Users, Waves,
+} from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Callout from '../../components/Callout.astro';
+import { loadCorpus } from '../../lib/corpus';
+import { allLineHubs } from '../../lib/line-hub';
+import { iconFor } from '../../lib/guide-icons';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
+
+const corpus = await loadCorpus();
+const hubs = allLineHubs(corpus);
+const covered = hubs.filter((h) => h.hasSubstance);
+const gaps = hubs.filter((h) => !h.hasSubstance);
+
+const FAMILY_LABEL: Record<string, string> = {
+	commercial: 'For a business',
+	personal: 'For a household',
+	health: 'Benefits and health',
+	life: 'Life',
+};
+const families = [...new Set(covered.map((h) => h.family))];
+
+const totals = {
+	checks: covered.reduce((n, h) => n + h.checks.length, 0),
+	claims: covered.reduce((n, h) => n + h.claimCount, 0),
+	written: covered.filter((h) => h.coverageId).length,
+};
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'All lines', path: '/lines' },
+];
+
+const description = `Every line of insurance this library indexes, and exactly how much cited material sits behind each one. ${covered.length} lines have evidence you can read today; ${gaps.length} are listed as gaps because they have none. Free, no account, nothing to fill in.`;
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'Every line of insurance',
+		path: '/lines',
+		description,
+		items: covered.map((h) => ({ name: h.label, path: `/lines/${h.line}` })),
+	}),
+);
+
+/* An explicit map rather than a namespace lookup: Astro needs a real component
+   reference, and a dynamic index loses the type. Same pattern as the guide index. */
+const ICONS = {
+	Activity, Building2, Car, FileSignature, Flame, Gavel, Gem, HardHat, HeartPulse,
+	House, KeyRound, Landmark, Lock, Package, ShieldCheck, Truck, Umbrella, Users, Waves,
+} as const;
+---
+
+<BaseLayout title="Every line of insurance" description={description} jsonLd={jsonLd} pageType="editorial">
+	<article>
+		<section class="band band-tight">
+			<div class="shell">
+				<Breadcrumbs trail={trail} />
+				<span class="eyebrow">Lines</span>
+				<h1>Every line of insurance, and what we can actually show you</h1>
+				<p class="page-lede">{description}</p>
+
+				<div class="figures" style="margin-top:var(--s-5)">
+					<div class="figure"><b>{covered.length}</b><span>lines with evidence</span></div>
+					<div class="figure"><b>{totals.written}</b><span>with a written page</span></div>
+					<div class="figure"><b>{totals.checks.toLocaleString('en-US')}</b><span>cited checks</span></div>
+					<div class="figure"><b>{gaps.length}</b><span>declared gaps</span></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-tight band-first">
+			<div class="shell">
+				<Callout tone="note" label="How to read this list">
+					<p>
+						A line with a <strong>written page</strong> has been read and explained: what it covers,
+						what it excludes, what goes wrong. A line with only an <strong>index</strong> has cited
+						material behind it — published checks, answered questions, source records — but nobody
+						has written the line up yet, and the index says so.
+					</p>
+					<p>
+						Listing a line we hold nothing on would be the easiest way to look comprehensive and
+						the fastest way to stop being worth citing. Those lines are at the bottom of this page
+						under their own heading.
+					</p>
+				</Callout>
+			</div>
+		</section>
+
+		{
+			families.map((family) => (
+				<section class="band band-tight" aria-labelledby={`fam-${family}`}>
+					<div class="shell">
+						<span class="eyebrow">{FAMILY_LABEL[family] ?? family}</span>
+						<h2 id={`fam-${family}`}>{FAMILY_LABEL[family] ?? family}</h2>
+						<div class="line-grid">
+							{covered
+								.filter((h) => h.family === family)
+								.map((h) => {
+									const Mark = ICONS[iconFor(h.line, h.family)] ?? ShieldCheck;
+									return (
+										<a class="line-card" href={`/lines/${h.line}`}>
+											<span class="line-mark" aria-hidden="true"><Mark size={20} stroke-width={1.6} /></span>
+											<span class="line-body">
+												<span class="line-name">{h.label}</span>
+												<span class="line-stats">
+													<b class="num">{h.sourceIds.length}</b> sources
+													<span aria-hidden="true"> &middot; </span>
+													<b class="num">{h.claimCount.toLocaleString('en-US')}</b> claims
+													{h.checks.length > 0 && (
+														<>
+															<span aria-hidden="true"> &middot; </span>
+															<b class="num">{h.checks.length}</b> checks
+														</>
+													)}
+												</span>
+												<span class={`line-state ${h.coverageId ? 'is-written' : 'is-index'}`}>
+													{h.coverageId ? 'Written page' : 'Index only'}
+												</span>
+											</span>
+											<ArrowRight size={15} aria-hidden="true" />
+										</a>
+									);
+								})}
+						</div>
+					</div>
+				</section>
+			))
+		}
+
+		<section class="band band-paper" aria-labelledby="gaps">
+			<div class="shell">
+				<span class="eyebrow">Declared gaps</span>
+				<h2 id="gaps">{gaps.length} lines this library holds nothing on</h2>
+				<div class="prose">
+					<p>
+						These are named in the vocabulary because other pages refer to them, but no source
+						record, no check and no answered question sits behind any of them. There is no page for
+						them and there should not be one until there is something cited to put on it.
+					</p>
+				</div>
+				<ul class="chip-list">
+					{gaps.map((h) => <li><span class="chip-flat">{h.label}</span></li>)}
+				</ul>
+			</div>
+		</section>
+	</article>
+</BaseLayout>
+
+<style>
+	.line-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+		gap: 1px;
+		background: var(--line);
+		border: 1px solid var(--line);
+		margin-top: var(--s-4);
+	}
+	.line-card {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--s-3);
+		background: var(--paper);
+		padding: var(--s-4);
+		text-decoration: none;
+		color: var(--ink);
+	}
+	.line-card:hover { background: var(--gold-wash); }
+	.line-card > svg:last-child { flex: none; margin-top: 3px; color: var(--faint); }
+	.line-mark { flex: none; color: var(--gold-text); margin-top: 1px; }
+	.line-body { display: flex; flex-direction: column; gap: 3px; flex: 1 1 auto; min-width: 0; }
+	.line-name { font-family: var(--font-display); font-size: var(--text-md); line-height: 1.3; }
+	.line-stats { font-size: var(--text-2xs); color: var(--muted); font-variant-numeric: tabular-nums; }
+	.line-stats b { font-family: var(--font-mono); font-weight: 500; color: var(--ink-2); }
+	.line-state {
+		font-family: var(--font-mono);
+		font-size: 0.5625rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		margin-top: 2px;
+	}
+	.line-state.is-written { color: var(--gold-text); }
+	.line-state.is-index { color: var(--faint); }
+
+	.chip-list { list-style: none; margin: var(--s-3) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+	.chip-flat {
+		display: inline-block;
+		padding: 4px 9px;
+		border: 1px dashed var(--line-strong);
+		font-size: var(--text-xs);
+		color: var(--muted);
+	}
+</style>

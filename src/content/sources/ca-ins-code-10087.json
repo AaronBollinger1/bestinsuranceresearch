@@ -1,0 +1,26 @@
+{
+	"title": "California Insurance Code section 10087 (chapter definition of a policy of residential property insurance)",
+	"publisher": "California Legislative Information (official)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10087",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The definition in this section is scoped to the earthquake insurance chapter in which it sits and does not purport to define residential property insurance for any other purpose.",
+		"Within that chapter, a policy of residential property insurance means a policy insuring individually owned residential structures of not more than four dwelling units, individually owned condominium units, or individually owned mobilehomes, and their contents, located in this state and used exclusively for residential purposes, or a tenant's policy insuring personal contents of a residential unit located in this state.",
+		"The definition does not include insurance for real property or its contents used for any commercial, industrial, or business purpose, except a structure of not more than four dwelling units rented for individual residential purposes.",
+		"The definition does not include policies that do not provide the perils of a standard fire policy.",
+		"The definition excludes policies issued on or after January 1, 2022 providing coverage for fines, penalties, restitution, or losses arising from recovery residences or substance abuse treatment facilities, subject to a carve-out for certain not-for-profit resident-managed recovery residences.",
+		"Proof of first-class mailing creates a conclusive presumption of delivery, as does a signed receipt for hand delivery."
+	],
+	"updateCadence": "amended only by legislation; re-check leginfo annually",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: not stated on the page as a single date; subdivision addressing recovery residences applies to policies issued on or after January 1, 2022"
+}

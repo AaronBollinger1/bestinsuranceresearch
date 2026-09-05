@@ -1,0 +1,26 @@
+{
+	"title": "Cross-Sector Cybersecurity Performance Goals (program page)",
+	"publisher": "Cybersecurity and Infrastructure Security Agency, U.S. Department of Homeland Security",
+	"url": "https://www.cisa.gov/cross-sector-cybersecurity-performance-goals",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "secondary",
+	"officialHost": true,
+	"publishedDate": "2025-12-01",
+	"effectiveDate": "2025-12-01",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"CISA's Cross-Sector Cybersecurity Performance Goals 2.0 are a subset of cybersecurity practices aimed at meaningfully reducing risks to critical infrastructure operations and the American people.",
+		"Cross-Sector CPGs 2.0 have been updated to align to the NIST Cybersecurity Framework (CSF) 2.0 functions and build upon the foundation established in version 1.0.1, with the addition of the GOVERN function.",
+		"Net-new goals address managed service providers (MSPs), the principle of least privileges, and incident communication procedures.",
+		"The CPGs are intended as a baseline set of practices broadly applicable across critical infrastructure and a benchmark for operators to measure and improve.",
+		"Sector-Specific Goals are available now for the Chemical, Energy (Distribution and Distributed Energy Resources), Healthcare, and Information Technology sectors, with Financial Services SSGs listed as coming.",
+		"A new CSET assessment module for CPG 2.0 and an updated CPG 2.0 Checklist are noted as becoming available in Q1 2026.",
+		"These voluntary Cross-Sector CPGs strive to help small- and medium-sized organizations kickstart their cybersecurity efforts by prioritizing investment in a limited number of essential actions with high-impact security outcomes."
+	],
+	"updateCadence": "as-needed",
+	"status": "active"
+}

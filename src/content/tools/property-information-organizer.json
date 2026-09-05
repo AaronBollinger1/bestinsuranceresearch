@@ -1,0 +1,61 @@
+{
+	"name": "Property Information Organizer",
+	"status": "roadmap",
+	"order": 30,
+	"family": [
+		"personal"
+	],
+	"lines": [
+		"homeowners",
+		"condo",
+		"landlord",
+		"flood",
+		"earthquake",
+		"wildfire"
+	],
+	"summary": "Organize the property characteristics an underwriter asks about, alongside the public hazard sources a person can check themselves.",
+	"spec": {
+		"user": "A homeowner or prospective buyer assembling property facts before a property insurance conversation.",
+		"inputData": [
+			"Construction, roof, systems, and update years as categories",
+			"Protection class and distance factors as categories"
+		],
+		"authoritativeSources": [
+			"FEMA National Flood Hazard Layer",
+			"USGS earthquake hazard services",
+			"State fire hazard severity zone maps"
+		],
+		"privacyBoundary": "No address entered or stored. Hazard sources are linked for the user to check themselves.",
+		"decisionRules": [
+			"Public hazard layers are shown as informational references, never as a determination.",
+			"This tool never states that a risk is eligible, ineligible, standard market, non-admitted, FAIR Plan eligible, bound, or uninsurable. It shows the published pathway criteria and names who actually decides, which is the insurer."
+		],
+		"uncertainty": "A public hazard layer is not an underwriting rule and not a flood determination.",
+		"output": "A printable property information sheet with the facts organized and the public sources linked.",
+		"exportFormat": [
+			"Print",
+			"PDF via the browser print dialog"
+		],
+		"accessibilityStates": [
+			"default",
+			"hover",
+			"keyboard focus",
+			"active",
+			"selected",
+			"disabled",
+			"loading skeleton",
+			"empty",
+			"no result",
+			"insufficient evidence",
+			"error",
+			"print"
+		],
+		"schemaEligibility": "WebApplication once built.",
+		"reviewOwner": "Brian Bollinger (licensed reviewer)",
+		"updateCadence": "Reviewed at least every 180 days, and immediately when a cited source changes."
+	},
+	"items": [],
+	"sourceIds": [],
+	"relatedQuestions": [],
+	"lastReviewed": "2026-08-31"
+}

@@ -1,0 +1,25 @@
+{
+	"title": "California Insurance Code Section 384 - statements required on a certificate of insurance",
+	"publisher": "California Legislative Information (California Legislature)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=384",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 384(a) applies to a certificate of insurance or verification of insurance provided as evidence of insurance in lieu of an actual copy of the insurance policy.",
+		"Section 384(a) requires that such a certificate contain the following statements, or words to the effect of, that it is not an insurance policy and does not amend, extend or alter the coverage afforded by the policies listed herein. The statute requires statements to the effect of that language; it does not mandate one exact sentence.",
+		"Section 384(a) also requires wording to the effect that, notwithstanding any requirement, term, or condition of any contract or other document with respect to which the certificate or verification may be issued or may pertain, the insurance afforded by the policies described is subject to all the terms, exclusions and conditions of the policies.",
+		"Section 384(b) states that the section is not applicable to a surplus line broker certificate as defined in Section 48.",
+		"The section page shows the history line: Amended by Stats. 2000, Ch. 135, Sec. 107. Effective January 1, 2001."
+	],
+	"updateCadence": "Amended only by the California Legislature; recheck leginfo for current text.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31 from the official leginfo section page and read in full. Confirmed on the page that the statute uses the phrase 'or words to the effect of' and that it applies to a certificate provided 'in lieu of an actual copy of the insurance policy.' Correcting an earlier note: the section page does carry a history line, '(Amended by Stats. 2000, Ch. 135, Sec. 107. Effective January 1, 2001.)', so effectiveDate is set to 2001-01-01, the effective date of the last amendment shown. publishedDate remains unknown because the page gives a statutes chapter year but no publication date, matching how the other leginfo records in this file are handled. Effective: 2001-01-01",
+	"officialHost": true
+}

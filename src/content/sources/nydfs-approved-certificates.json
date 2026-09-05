@@ -1,0 +1,26 @@
+{
+	"title": "Approved Certificates of Insurance",
+	"publisher": "New York State Department of Financial Services",
+	"url": "https://www.dfs.ny.gov/apps_and_licensing/insurance_companies/certificates_approved",
+	"sourceType": "regulator-record",
+	"jurisdiction": "NY",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The form titled Certificate of Liability Insurance is ACORD 25.",
+		"The form titled Certificate of Property Insurance is ACORD 24.",
+		"The form titled Evidence of Property Insurance is ACORD 27.",
+		"The form titled Evidence of Commercial Property Insurance is ACORD 28.",
+		"The form titled Evidence of Flood Insurance is ACORD 29.",
+		"Each of these forms appears on the New York Department of Financial Services list of approved certificates of insurance, with multiple approved editions listed for several of them."
+	],
+	"updateCadence": "DFS adds form editions as ACORD publishes them and DFS approves them.",
+	"status": "active",
+	"notes": "Fetched on 2026-08-31 and confirmed the form numbers and titles against the page's table. The page notes that ACORD certificate content is copyrighted, so no form wording is reproduced. This page establishes form numbers and titles and the fact of New York approval; it does not state what any lender requires.",
+	"officialHost": true
+}

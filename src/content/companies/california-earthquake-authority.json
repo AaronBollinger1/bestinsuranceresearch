@@ -1,0 +1,116 @@
+{
+	"legalName": "California Earthquake Authority",
+	"shortName": "CEA",
+	"orgType": "public-entity",
+	"summary": "The California Earthquake Authority (CEA) is a California public entity created by statute: Insurance Code section 10089.6(a)(1) provides that there is hereby created the California Earthquake Authority, which shall be administered and governed by the governing board described in Section 10089.7 under the authority of the commissioner, and the same subdivision authorizes it to transact insurance in this state as necessary to sell policies of basic residential earthquake insurance and provides that it shall have no authority to transact any other type of insurance business [S:ca-ins-code-10089-point-6]. CEA describes itself as a not-for-profit, publicly managed, privately funded entity created by the California Legislature in 1996, against the background of the 1994 Northridge earthquake [S:cea-history]. Its coverage is residential: CEA presents homeowners, condo unit owners, mobilehome and manufactured homeowners, and renters [S:cea-home]. CEA states that it offers earthquake insurance policies exclusively through the residential insurance companies it lists [S:cea-participating-insurers], and section 10089.7(c)(6) provides that the board may contract with participating insurers to service the policies of basic residential earthquake insurance issued by the authority [S:ca-ins-code-10089-point-7].",
+	"officialUrls": [
+		{
+			"label": "Main site",
+			"url": "https://www.earthquakeauthority.com/"
+		},
+		{
+			"label": "CEA history and self-description",
+			"url": "https://www.earthquakeauthority.com/about-cea/cea-history"
+		},
+		{
+			"label": "Participating residential insurers list",
+			"url": "https://www.earthquakeauthority.com/california-earthquake-insurance-policies/participating-residential-insurers-earthquake",
+			"note": "CEA's own list of the residential insurance companies through which it offers policies [S:cea-participating-insurers]. Note that the page's own HTML title uses best and top-rated wording written by CEA. That framing is CEA's, not ours; BestInsurance Research ranks no carrier."
+		},
+		{
+			"label": "Contact CEA",
+			"url": "https://www.earthquakeauthority.com/contact"
+		}
+	],
+	"contactChannels": [
+		{
+			"label": "Start here for policy, billing, or purchase questions",
+			"value": "Your own home insurance company or agent",
+			"note": "CEA's contact page states that if you have a question about your CEA insurance policy, need billing or payment help, or are interested in purchasing a policy, the fastest way to get support is to contact your insurance company or agent [S:cea-contact]. That fits CEA's own statement that it offers policies exclusively through the residential insurance companies it lists [S:cea-participating-insurers]."
+		},
+		{
+			"label": "CEA Information Desk",
+			"value": "(888) 423-2322",
+			"note": "General information line published on CEA's contact page [S:cea-contact]."
+		},
+		{
+			"label": "CEA human resources or a specific employee",
+			"value": "(877) 797-4300 or (916) 325-3800",
+			"note": "Published on CEA's contact page for reaching CEA human resources or a specific employee [S:cea-contact]."
+		},
+		{
+			"label": "CEA Brace + Bolt program",
+			"value": "(877) 232-4300",
+			"note": "Dedicated line for the CEA Brace + Bolt program [S:cea-contact]."
+		},
+		{
+			"label": "Mailing address",
+			"value": "400 Capitol Mall, Suite 1200, Sacramento, CA 95814",
+			"note": "Address published on CEA's contact page, with hours of 8:00 a.m. to 5:00 p.m., Monday through Friday [S:cea-contact]. The same address appears in the CEA home page footer [S:cea-home]. Third-party directory listings show a different street address; we use CEA's own page."
+		}
+	],
+	"regulatorRecords": [
+		{
+			"label": "Verify the participating insurer's agent or agency (CDI License Status Inquiry)",
+			"url": "https://cdicloud.insurance.ca.gov/cal",
+			"note": "CEA states that it offers earthquake insurance policies exclusively through the residential insurance companies it lists [S:cea-participating-insurers], and CDI's License Status Inquiry retrieves license details, including enforcement actions, for an insurance agent, broker, adjuster, bail agent, and agency or organization [S:cdi-license-status]. So if a participating insurer's agent or agency is the one presenting a CEA policy to you, that producer's or agency's license record is available from CDI. Treat any result as accurate only as of the moment you run it."
+		},
+		{
+			"label": "Look up the participating insurer's California company profile (CDI)",
+			"url": "https://www.insurance.ca.gov/01-consumers/120-company/01-coprof/",
+			"note": "A CDI company profile includes license status, company type, state of domicile, the lines of insurance the company is authorized to transact, and complaint history [S:cdi-company-profiles]."
+		}
+	],
+	"publications": [
+		{
+			"label": "CEA participating residential insurers list",
+			"url": "https://www.earthquakeauthority.com/california-earthquake-insurance-policies/participating-residential-insurers-earthquake",
+			"note": "CEA's current list. We link rather than reprint it, because the list changes and because naming carriers here would read as an endorsement we are not making. CEA's page states no total, and counts taken from it have not been reproducible across fetches, so we publish no number [S:cea-participating-insurers]."
+		},
+		{
+			"label": "NAIC publications catalog (contains a Consumer's Guide to Earthquake Insurance)",
+			"url": "https://content.naic.org/publications",
+			"note": "This link reaches NAIC's catalog, not the guide itself. The catalog lists a Consumer's Guide to Earthquake Insurance, useful as regulator-side background alongside CEA's own materials [S:naic-publications]."
+		}
+	],
+	"statutoryBasis": [
+		{
+			"label": "California Insurance Code section 10089.6 (creation of the Authority)",
+			"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10089.6",
+			"note": "Subdivision (a)(1) creates the California Earthquake Authority, to be administered and governed by the governing board described in Section 10089.7 under the authority of the commissioner, authorizes it to transact insurance in this state as necessary to sell policies of basic residential earthquake insurance, and provides that it shall have no authority to transact any other type of insurance business. Subdivision (b)(2) provides that the rights, obligations, and duties owed by the authority to its insureds, beneficiaries of insureds, and applicants for insurance are the same as those owed by insurers under common law, regulations, and statutes [S:ca-ins-code-10089-point-6]."
+		},
+		{
+			"label": "California Insurance Code section 10089.7 (governing board, advisory panel, servicing contracts)",
+			"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10089.7",
+			"note": "Subdivision (a) provides for a three-member governing board consisting of the Governor, the Treasurer, and the Insurance Commissioner, each of whom may name designees to serve in their place, with the Speaker of the Assembly and the Chairperson of the Senate Committee on Rules serving as nonvoting, ex officio members who may also name designees. Subdivision (b) provides for an advisory panel including four members representing insurance companies licensed to transact fire insurance in the state (two appointed by the commissioner), two licensed insurance agents (one appointed by the commissioner), and three members of the public not connected with the insurance industry, at least one a consumer representative, and provides that the Speaker and the Senate Rules Chairperson may each appoint one additional member of the public. This panel description is written as an 'includes' list, not a complete roster. Subdivision (c)(6) provides that the board may contract with participating insurers to service the policies of basic residential earthquake insurance issued by the authority; the word in the statute is 'may', not a direction to contract [S:ca-ins-code-10089-point-7]."
+		}
+	],
+	"jurisdictions": [
+		"CA"
+	],
+	"whatWeDoNotClaim": [
+		"We do not say that any specific property, structure, mobilehome, unit, or applicant is eligible for a CEA policy, or is or is not covered. Eligibility and coverage are decided by the participating insurance company and CEA under their own rules, and the policy actually issued to you controls.",
+		"We publish no financial strength summary, claim-paying capacity figure, or rating for CEA or for any participating insurer, and we use no best, cheapest, or most reliable language about any company. The CEA participating-insurers page carries superlative wording in its own title; that is CEA's wording, not ours [S:cea-participating-insurers].",
+		"We quote no CEA premiums, deductibles, coverage limits, or retrofit discounts on this page, and we do not describe how any of them are set. We did not verify CEA's ratemaking process against a source.",
+		"We do not reprint or endorse the participating insurer list, we publish no count of participating insurers, and we make no statement about any carrier's current appetite for earthquake or residential business [S:cea-participating-insurers]. We are not CEA and do not act for CEA, and nothing here is a coverage determination, a claim decision, or legal or tax advice."
+	],
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ins-code-10089-point-6",
+		"ca-ins-code-10089-point-7",
+		"cea-history",
+		"cea-home",
+		"cea-participating-insurers",
+		"cea-contact",
+		"cdi-license-status",
+		"cdi-company-profiles",
+		"naic-publications"
+	],
+	"relatedQuestions": [
+		"homeowners-earthquake-california",
+		"replacement-cost-vs-market-value"
+	]
+}

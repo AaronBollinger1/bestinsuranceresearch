@@ -1,0 +1,57 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StateBlock from '../components/StateBlock.astro';
+import { siteConfig } from '../config/site';
+import { loadCorpus } from '../lib/corpus';
+
+const corpus = await loadCorpus();
+const suggestions = corpus.questions.slice(0, 5);
+---
+
+<BaseLayout title="Page not found" description="That page does not exist here." noindex pageType="editorial">
+	<section class="band band-first band-tight">
+		<div class="shell">
+			<h1 class="u-visually-hidden">Page not found</h1>
+			<StateBlock kind="no-result" heading="That page is not here.">
+				<p>
+					It may have been retired, or the address may be wrong. Nothing on this site is deleted to
+					hide it: a retired page gets a permanent redirect to whatever replaced it, so a genuine
+					404 usually means the URL was never real.
+				</p>
+				<div class="state-actions">
+					<a class="btn btn-primary" href="/ask">Ask a question <ArrowRight size={16} aria-hidden="true" /></a>
+					<a class="btn btn-secondary" href="/questions">Browse every question</a>
+					<a class="btn btn-secondary" href="/">Back to the start</a>
+				</div>
+			</StateBlock>
+
+			<div style="margin-top: var(--s-10)">
+				<h2>Places people usually want</h2>
+				<div class="rows">
+					{
+						suggestions.map((question) => (
+							<a class="row" href={`/questions/${question.id}`}>
+								<div>
+									<h3 class="row-title">{question.data.question}</h3>
+									<div class="row-meta">
+										<span class="meta">{question.data.lines.join(', ')}</span>
+										<span class="meta">{question.data.sourceIds.length} sources</span>
+									</div>
+								</div>
+								<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+							</a>
+						))
+					}
+				</div>
+			</div>
+
+			<p class="mono" style="margin-top: var(--s-8)">
+				If you followed a link from somewhere else and landed here, that is worth knowing:{' '}
+				<a href={`mailto:${siteConfig.contact.email}?subject=${encodeURIComponent('Broken link')}`}>
+					tell us where it came from
+				</a>.
+			</p>
+		</div>
+	</section>
+</BaseLayout>

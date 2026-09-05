@@ -1,0 +1,23 @@
+{
+	"title": "Exclusion - Designated Professional Services, endorsement CG 21 16 04 13 (ISO)",
+	"publisher": "Insurance Services Office, Inc. (form text); posted by the Independent Insurance Agents of Texas InfoCentral",
+	"url": "https://www.iiat.org/uploads/files/general/InfoCentral/Commercial-GL/cg2116.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Endorsement CG 21 16 04 13 adds an exclusion to Coverage A and Coverage B of the Commercial General Liability Coverage Part stating that the insurance does not apply to bodily injury, property damage, or personal and advertising injury due to the rendering of or failure to render any professional service.",
+		"The exclusion applies only with respect to the professional services shown in the endorsement's Schedule, which is completed for the individual policy.",
+		"The endorsement states that the exclusion applies even if the claims against any insured allege negligence or other wrongdoing in the supervision, hiring, employment, training or monitoring of others by that insured, if the occurrence or offense which caused the bodily injury or property damage, or the offense which caused the personal and advertising injury, involved the rendering of or failure to render any professional service."
+	],
+	"updateCadence": "ISO revises endorsements periodically; other professional services exclusion endorsements with different scope also exist.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Published: 2013-04"
+}

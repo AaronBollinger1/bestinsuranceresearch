@@ -1,0 +1,26 @@
+{
+	"title": "Cal. Code Regs. tit. 10, section 2321 - Marine and/or Transportation Policies May Cover Under the Following Conditions",
+	"publisher": "Cornell Legal Information Institute, reproducing the California Code of Regulations",
+	"url": "https://www.law.cornell.edu/regulations/california/10-CCR-2321",
+	"sourceType": "regulation",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The section has five top-level subdivisions and no subdivision (f): (a) Imports, (b) Exports, (c) Domestic Shipments, (d) Bridges, tunnels and other instrumentalities of transportation and communication, and (e) Personal Property Floater Risks.",
+		"The commercial floater type items sit inside subdivision (e)(2) rather than in a separate commercial group. Fine Arts Floaters and Stamp and Coin Floaters appear at (e)(2)(A), Installation risks at (e)(2)(L), Mobile Articles, Machinery and Equipment Floaters at (e)(2)(M), property in transit to or from and in the custody of bailees at (e)(2)(N), and Accounts Receivable Policies and Valuable Papers and Records Policies at (e)(2)(R).",
+		"The installation risk item provides that coverage terminates when the interest of the insured seller or installer ceases, or in no case later than when the property has been accepted as satisfactory, whichever first occurs.",
+		"The Mobile Articles, Machinery and Equipment Floaters item excludes motor vehicles designed for highway use.",
+		"The bailee item names bailee examples including bleacheries, throwsters, fumigatories, dyers, cleaners, laundries and similar bailees, and needleworkers.",
+		"The fine arts item describes objects of art such as pictures, statuary, bronzes and antiques, and rare manuscripts and books."
+	],
+	"updateCadence": "Part of the 1954 Marine Insurance article. Check the official California Code of Regulations for later amendment.",
+	"status": "active",
+	"notes": "Re-fetched 2026-08-31 with a prompt asking specifically for the top-level subdivision letters. The page returned five top-level subdivisions, (a) through (e), with no (f), and confirmed that the installation risk, mobile articles, bailee, fine arts and accounts receivable items all sit under (e)(2). An earlier draft of this bundle claimed six top-level categories ending in commercial property floater risks; that claim was wrong and has been corrected. A second earlier claim, describing the prohibited coverage list, was removed from this source because that list is in section 2322, which now has its own source entry. Effective: 1954-01-01",
+	"officialHost": false
+}

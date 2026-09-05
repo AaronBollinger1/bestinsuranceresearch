@@ -1,0 +1,21 @@
+{
+	"title": "Virtual Viewing Room",
+	"publisher": "California Department of Insurance",
+	"url": "https://www.insurance.ca.gov/01-consumers/135-viewing-room/",
+	"sourceType": "government-data",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The CDI Virtual Viewing Room allows you to see insurance company rate filings, examination reports, and related information.",
+		"The Virtual Viewing Room page groups documents including enforcement actions, health insurance rates, financial filing requirements, market conduct examination reports, property and casualty insurance rates, and prior approval rate hearing case files."
+	],
+	"updateCadence": "Filings and reports are added on an ongoing basis.",
+	"status": "active",
+	"officialHost": true
+}

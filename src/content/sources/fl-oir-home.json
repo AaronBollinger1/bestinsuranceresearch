@@ -1,0 +1,21 @@
+{
+	"title": "Florida Office of Insurance Regulation - official site",
+	"publisher": "Florida Office of Insurance Regulation",
+	"url": "https://floir.gov/",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "FL",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The Florida Office of Insurance Regulation lists its office as 200 East Gaines Street, Tallahassee, Florida 32399, and its phone number as (850) 413-3140.",
+		"The Office of Insurance Regulation site is served at floir.gov."
+	],
+	"updateCadence": "Contact details change; re-verify annually.",
+	"status": "active",
+	"officialHost": true
+}

@@ -1,0 +1,25 @@
+{
+	"title": "Contact CEA",
+	"publisher": "California Earthquake Authority",
+	"url": "https://www.earthquakeauthority.com/contact",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"CEA publishes an Information Desk number of (888) 423-2322.",
+		"CEA publishes (877) 797-4300 and (916) 325-3800 for reaching CEA human resources or a specific employee.",
+		"CEA publishes (877) 232-4300 for the CEA Brace + Bolt program.",
+		"CEA publishes a mailing address of 400 Capitol Mall, Suite 1200, Sacramento, CA 95814, with hours of 8:00 a.m. to 5:00 p.m., Monday through Friday.",
+		"The page states: If you have a question about your CEA insurance policy, need billing or payment help, or are interested in purchasing a policy, the fastest way to get support is to contact your insurance company or agent.",
+		"The page publishes no email address."
+	],
+	"updateCadence": "Re-verify phone numbers and address before republishing.",
+	"status": "active",
+	"officialHost": true
+}

@@ -1,0 +1,26 @@
+{
+	"title": "Texas Insurance Code Section 1811.051 - Altering, Amending, or Extending the Terms of an Insurance Policy; Contractual Rights of Certificate Holder",
+	"publisher": "Public.Law (unofficial reproduction of the Texas Insurance Code)",
+	"url": "https://texas.public.law/statutes/tex._ins._code_section_1811.051",
+	"sourceType": "statute",
+	"jurisdiction": "TX",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 1811.051(a) provides that a property or casualty insurer or agent may not issue a certificate of insurance or any other type of document purporting to be a certificate of insurance if the certificate or document alters, amends, or extends the coverage or terms and conditions provided by the insurance policy referenced on the certificate or document.",
+		"Section 1811.051(b) provides that a certificate of insurance or any other type of document may not convey a contractual right to a certificate holder.",
+		"The section is titled 'Altering, Amending, or Extending the Terms of an Insurance Policy; Contractual Rights of Certificate Holder.'",
+		"The page carries the history note: Added by Acts 2011, 82nd Leg., R.S., Ch. 1212 (S.B. 425), Sec. 1, eff. September 1, 2011.",
+		"A property or casualty insurer or agent may not issue a certificate of insurance or any other type of document purporting to be a certificate of insurance if the certificate or document alters, amends, or extends the coverage or terms and conditions provided by the insurance policy referenced on the certificate or document.",
+		"A certificate of insurance or any other type of document may not convey a contractual right to a certificate holder."
+	],
+	"updateCadence": "Amended only by the Texas Legislature; recheck against statutes.capitol.texas.gov when that site returns statutory text.",
+	"status": "active",
+	"notes": "Unofficial host. Public.Law is an independent private publisher, not the Texas Legislature; the official citation is Tex. Ins. Code Sec. 1811.051. Fetched 2026-08-31 and read subsections (a) and (b) verbatim along with the history note. The official page at https://statutes.capitol.texas.gov/Docs/IN/htm/IN.1811.htm was retested on 2026-08-31 and returned only site navigation rather than statutory text, which is why this reproduction is cited. primary is set to false because this is a secondary reproduction of primary law. Published: 2011-09-01 Effective: 2011-09-01",
+	"officialHost": false
+}

@@ -1,0 +1,28 @@
+{
+	"title": "Standard Classification System - Online Guide to Workers' Compensation",
+	"publisher": "Workers' Compensation Insurance Rating Bureau of California (WCIRB)",
+	"url": "https://www.wcirb.com/research-and-education/online-guide-workers%E2%80%99-compensation/standard-classification-system",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"For insurer data reporting purposes, California businesses are classified using the Standard Classification System found in Part 3 of the California Workers' Compensation Uniform Statistical Reporting Plan-1995.",
+		"The Uniform Statistical Reporting Plan is part of the California Code of Regulations and is approved by the Insurance Commissioner.",
+		"The Standard Classification System contains approximately 700 industry classifications and describes groups of employers whose businesses are relatively similar.",
+		"An insurer may deviate from the Standard Classification System for underwriting purposes; however, for data reporting purposes, all insurers must use the standard classification system found in the Uniform Statistical Reporting Plan.",
+		"An advisory pure premium rate, expressed as a rate per $100 in payroll, is calculated by the WCIRB for each classification.",
+		"For most industries, classifications are assigned by analyzing an employer's overall California operations and identifying one classification that describes the business as a whole.",
+		"Most employers are assigned to only one classification.",
+		"Some industries have their own special classification procedures."
+	],
+	"updateCadence": "Page carries schema.org datePublished 2012-12-10 and dateModified 2026-06-03; advisory pure premium rates are amended at least annually.",
+	"status": "active",
+	"notes": "Re-fetched and re-verified 2026-08-31. WebFetch is blocked by the site WAF (HTTP 403); fetched over HTTPS with a standard browser user agent, HTTP 200, 114,801 bytes, and read the rendered body text. Every claim above was matched as a literal string in the fetched page. An earlier draft carried a ninth claim asserting that California uses its own system 'rather than NCCI's classification manual'; a byte-level grep of the fetched page returns ZERO occurrences of 'NCCI' or 'National Council', so that claim stays deleted and this source is not cited for any NCCI proposition. The page's example rate table is labeled September 1, 2024, so no specific dollar rate is cited from it. publishedDate is the schema.org datePublished, not dateModified. URL RE-CHECKED 2026-08-31: HTTP 200, no redirect, 114,913 bytes; schema.org datePublished 2012-12-10 and dateModified 2026-06-03 both re-read on the page today. A fresh case-insensitive grep for NCCI or National Council again returns ZERO hits. Published: 2012-12-10",
+	"officialHost": true
+}

@@ -1,0 +1,25 @@
+{
+	"title": "California Insurance Code section 675.1",
+	"publisher": "California Legislative Information (Legislative Counsel of California)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=675.1",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Subdivision (b)(1) provides that an insurer shall not cancel or refuse to renew a policy of residential property insurance for a property located in any ZIP Code within or adjacent to the fire perimeter, for one year after the declaration of a state of emergency, based solely on the fact that the insured structure is located in an area in which a wildfire has occurred.",
+		"Subdivision (b)(2) provides that the fire perimeter is determined by the Department of Forestry and Fire Protection in consultation with the Office of Emergency Services, that the department provides the commissioner with perimeter data, and that the commissioner then issues a bulletin to inform insurers which ZIP Codes are subject to the subdivision.",
+		"Subdivision (d) provides that for purposes of the section, policy of residential property insurance has the meaning described in subdivision (a) of Section 10087.",
+		"Subdivision (a) addresses obligations following a total loss to a primary insured residential structure, including adjusting limits and coverages at renewal, adjusting premium to reflect coverage changes, restrictions on cancellation during rebuilding, and an offer of renewal for a stated period where the loss resulted from a disaster.",
+		"The section as displayed carries the amendment note: Amended by Stats. 2018, Ch. 618, Sec. 1.5. (SB 894) Effective January 1, 2019."
+	],
+	"updateCadence": "Amended by the Legislature; check leginfo for the current text each session.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Effective: 2019-01-01"
+}

@@ -1,0 +1,25 @@
+{
+	"title": "11 NYCRR 73.7 - Disclosure and notice requirements",
+	"publisher": "Legal Information Institute, Cornell Law School (unofficial republication of the New York Codes, Rules and Regulations)",
+	"url": "https://www.law.cornell.edu/regulations/new-york/11-NYCRR-73.7",
+	"sourceType": "regulation",
+	"jurisdiction": "NY",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Requires disclosure that the policy is, or identification of those portions of the policy that are, written on a claims-made basis.",
+		"Requires disclosure that the policy provides no coverage for claims arising out of incidents, occurrences or alleged wrongful acts which took place prior to the retroactive date stated in the policy.",
+		"Requires disclosure of the length of any automatic or additional extended reporting period coverage and, unless that coverage is for an unlimited time period, a statement advising the insured specifically of potential coverage gaps that may arise upon expiration of the extended reporting period coverage.",
+		"Requires the declarations page, or an addendum to it, to state the premium that will be charged for each extended reporting period coverage option if the policy is terminated on the next anniversary date.",
+		"Requires these disclosures to appear in the policy application and the declaration page, or addenda to them, and to be conspicuously displayed."
+	],
+	"updateCadence": "changes when the New York Department of Financial Services amends Regulation 121; the mirror is republished on Cornell's own schedule",
+	"status": "active",
+	"notes": "Fetched 2026-08-31 and the quoted disclosure language read off the page. This section imposes disclosure duties on insurers writing in New York. It is not itself a coverage grant or an exclusion, and it is cited in this bundle only for what insurers must tell the insured. Unofficial Cornell LII mirror; official citation is 11 NYCRR 73.7.",
+	"officialHost": false
+}

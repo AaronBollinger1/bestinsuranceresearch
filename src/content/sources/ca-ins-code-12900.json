@@ -1,0 +1,21 @@
+{
+	"title": "California Insurance Code section 12900",
+	"publisher": "California Legislative Information (California Legislature)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=12900",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 12900(a) provides that the commissioner shall be elected by the people in the same time, place, and manner as the Governor not to exceed two four-year terms.",
+		"Section 12900(b) provides that should a vacancy occur during the term of office, legislative confirmation shall be required for the position of commissioner in the same manner and procedure as that required by Section 5 of Article V of the California Constitution."
+	],
+	"updateCadence": "Changes only by legislative amendment.",
+	"status": "active",
+	"officialHost": true
+}

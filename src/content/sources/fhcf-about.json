@@ -1,0 +1,23 @@
+{
+	"title": "About the FHCF - Florida Hurricane Catastrophe Fund",
+	"publisher": "State Board of Administration of Florida, Florida Hurricane Catastrophe Fund",
+	"url": "https://fhcf.sbafla.com/about-the-fhcf/",
+	"sourceType": "government-data",
+	"jurisdiction": "FL",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The Florida Hurricane Catastrophe Fund is a tax-exempt state trust fund created by section 215.555, Florida Statutes, under the direction and control of the State Board of Administration.",
+		"The FHCF provides reimbursements to residential property insurance companies for a portion of their catastrophic hurricane losses in Florida.",
+		"Participation in the FHCF is mandatory for all residential property insurance companies doing business in Florida, and each company is required to enter into a reimbursement contract with the FHCF.",
+		"The FHCF is funded only with premium revenues paid by residential property insurance companies, investment income, and in some circumstances revenue bonds backed by emergency assessments on most types of property and casualty insurance premiums."
+	],
+	"updateCadence": "Retention, coverage options, and claims-paying capacity are set annually; re-verify before publishing any figure.",
+	"status": "active",
+	"officialHost": true
+}

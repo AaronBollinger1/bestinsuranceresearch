@@ -1,0 +1,139 @@
+---
+import { Printer, RotateCcw, Save } from '@lucide/astro';
+import type { CollectionEntry } from 'astro:content';
+import Breadcrumbs from './Breadcrumbs.astro';
+import Callout from './Callout.astro';
+
+interface Props {
+	tool: CollectionEntry<'tools'>;
+	/** Which tool actions to render. Every rendered control is wired up. */
+	toolId: string;
+}
+
+const { tool, toolId } = Astro.props;
+const d = tool.data;
+const path = d.route || `/tools/${tool.id}`;
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Tools', path: '/tools' },
+	{ name: d.name, path },
+];
+---
+
+<header class="band band-first band-paper band-tight">
+	<div class="shell">
+		<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+		<span class="eyebrow">Free tool</span>
+		<h1>{d.name}</h1>
+		<p class="lede">{d.summary}</p>
+
+		<div class="no-print" style="display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-5)">
+			<button class="btn btn-primary" type="button" data-tool-save>
+				<Save size={16} aria-hidden="true" /> Save on this device
+			</button>
+			<button class="btn btn-secondary" type="button" data-tool-print
+				data-event="tool_completed" data-tool-name={toolId}>
+				<Printer size={16} aria-hidden="true" /> Print or save as PDF
+			</button>
+			<button class="btn btn-secondary" type="button" data-tool-reset>
+				<RotateCcw size={16} aria-hidden="true" /> Start over
+			</button>
+		</div>
+		<p class="live-status no-print" data-tool-status role="status" aria-live="polite" style="margin-top:var(--s-3)"></p>
+
+		<div class="no-print" style="margin-top: var(--s-4)">
+			<Callout tone="privacy">
+				<p>
+					<strong>Everything you type stays in this browser.</strong> {d.spec.privacyBoundary} Saving
+					writes to your own browser's local storage. Printing uses your own printer or PDF writer.
+					Nothing is uploaded, nothing is sent to Bollinsure, and no insurer receives anything from
+					this page.
+				</p>
+			</Callout>
+		</div>
+
+		<div class="no-print" style="margin-top: var(--s-3)">
+			<Callout tone="warn">
+				<p>
+					<strong>This is not a submission and not a decision.</strong> {d.spec.uncertainty}
+				</p>
+			</Callout>
+		</div>
+
+		<div class="print-only" style="margin-top: 8pt; border-top: 1px solid #999; padding-top: 8pt">
+			<p style="font-size: 9pt; margin: 0">
+				Produced with the {d.name} on BestInsurance Research. Non-binding working notes only. Nothing
+				here was submitted to, received by, or reviewed by an insurance company, and nothing here is a
+				quote, a coverage determination, or an eligibility decision.
+			</p>
+		</div>
+	</div>
+</header>
+
+<slot />
+
+<script>
+	import { clearState, formatSavedAt, loadState, saveState } from '../lib/tool-storage';
+
+	/*
+	 * Shared behaviour for the Save, Print, and Start over controls. Each tool page
+	 * registers its own serialise and restore functions on window.birTool, so this
+	 * frame stays generic and no tool can read another tool's state.
+	 */
+	type ToolHooks = {
+		id: string;
+		serialise: () => Record<string, unknown>;
+		restore: (state: Record<string, unknown>) => void;
+		reset: () => void;
+	};
+
+	declare global {
+		interface Window {
+			birTool?: ToolHooks;
+			birTrack?: (event: string, params?: Record<string, string>) => void;
+		}
+	}
+
+	const status = document.querySelector<HTMLElement>('[data-tool-status]');
+	function say(message: string) {
+		if (status) status.textContent = message;
+	}
+
+	function hooks(): ToolHooks | null {
+		return window.birTool ?? null;
+	}
+
+	document.querySelector<HTMLButtonElement>('[data-tool-save]')?.addEventListener('click', () => {
+		const tool = hooks();
+		if (!tool) return;
+		const outcome = saveState(tool.id, tool.serialise());
+		say(
+			outcome === 'saved'
+				? 'Saved in this browser. It is not sent anywhere and no one else can see it.'
+				: 'This browser is blocking local storage, so saving is unavailable. You can still print.',
+		);
+	});
+
+	document.querySelector<HTMLButtonElement>('[data-tool-print]')?.addEventListener('click', () => {
+		say('Opening the print dialog. Use "Save as PDF" for a file you can attach to an email yourself.');
+		window.print();
+	});
+
+	document.querySelector<HTMLButtonElement>('[data-tool-reset]')?.addEventListener('click', () => {
+		const tool = hooks();
+		if (!tool) return;
+		clearState(tool.id);
+		tool.reset();
+		say('Cleared. The saved copy in this browser was deleted too.');
+	});
+
+	window.addEventListener('DOMContentLoaded', () => {
+		const tool = hooks();
+		if (!tool) return;
+		const saved = loadState(tool.id);
+		if (!saved) return;
+		tool.restore(saved.state);
+		say(`Restored the copy you saved in this browser on ${formatSavedAt(saved.savedAt)}.`);
+	});
+</script>

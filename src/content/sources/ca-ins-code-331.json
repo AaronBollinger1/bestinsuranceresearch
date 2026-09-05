@@ -1,0 +1,22 @@
+{
+	"title": "California Insurance Code section 331 (concealment)",
+	"publisher": "California Legislative Information (Legislative Counsel of California)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=331",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"California Insurance Code section 331 reads in full: \"Concealment, whether intentional or unintentional, entitles the injured party to rescind insurance.\"",
+		"The leginfo page for section 331 displays the note \"(Enacted by Stats. 1935, Ch. 145.)\"."
+	],
+	"updateCadence": "Amended only by the Legislature; check leginfo for the current text before relying on it.",
+	"status": "active",
+	"notes": "Fetched 2026-08-31. Operative text read verbatim. Correcting an earlier draft note: the page does display an enactment note, \"(Enacted by Stats. 1935, Ch. 145.)\". Because that is a session-law citation rather than a calendar date, publishedDate is left as \"unknown\" and the enactment note is recorded as a claim instead. Section 331 sits within the Insurance Code's concealment and representation provisions; how it applies to any particular policy or claim is a legal question.",
+	"officialHost": true
+}

@@ -1,0 +1,23 @@
+{
+	"title": "Consumer",
+	"publisher": "National Association of Insurance Commissioners",
+	"url": "https://content.naic.org/consumer.htm",
+	"sourceType": "official-documentation",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The page describes Consumer Insurance Search as a way to find information about insurance company complaints, licenses, and financial health.",
+		"The page describes the Life Insurance Policy Locator as a free tool that helps beneficiaries search for unclaimed life insurance policies.",
+		"The page also lists a Glossary of Insurance Terms, How to File a Complaint, a Consumer Participation Program, Learning Resources, an Online Fraud Reporting System, and the Global Receivership Information Database.",
+		"The page publishes no NAIC telephone number and routes consumers who want to file a complaint to their own state insurance department through a state selector."
+	],
+	"updateCadence": "Maintained by NAIC consumer outreach.",
+	"status": "active",
+	"officialHost": true
+}

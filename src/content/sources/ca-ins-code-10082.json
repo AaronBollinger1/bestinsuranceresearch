@@ -1,0 +1,24 @@
+{
+	"title": "California Insurance Code Section 10082 (content of the earthquake offer; underwriting standards)",
+	"publisher": "California Legislative Information (Legislative Counsel of California)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10082",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 10082(a) reads: 'The offer required by Section 10081 shall include coverage against risk of loss or damage from the peril of earthquake, in accordance with the minimum coverages required by subdivisions (a) and (b) of Section 10089.'",
+		"Section 10082(b) reads: 'The earthquake coverage shall be in accordance with the insurer's rules and rating plan, provided, however, that nothing contained in this chapter shall require an insurer to issue a policy of residential property insurance except in accordance with the insurer's usual underwriting standards. However, those standards shall not permit an insurer to provide a policy of residential property insurance unless the offer of coverage required by this chapter is made.'",
+		"The section carries the note 'Amended by Stats. 1996, Ch. 124, Sec. 77. Effective January 1, 1997.'",
+		"Section 10082 contains no offer-timing language; the 60-day window is in Section 10083(a)."
+	],
+	"updateCadence": "Amended only by act of the California Legislature.",
+	"status": "active",
+	"notes": "URL normalized to drop the trailing period after the section number that appeared in the draft; the normalized URL resolves and was read on 2026-08-31.",
+	"officialHost": true
+}

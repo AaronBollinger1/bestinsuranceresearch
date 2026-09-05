@@ -1,0 +1,23 @@
+{
+	"title": "California Insurance Code Section 11735",
+	"publisher": "California Legislative Information (California Legislature)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=11735.&lawCode=INS",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Insurance Code section 11735(a) provides that every insurer shall file with the commissioner all rates and supplementary rate information that are to be used in this state, and requires the filing to be made not later than 30 days prior to the effective date.",
+		"Filings of rates, supplementary rate information and supporting information are open to public inspection at any reasonable time as soon as filed.",
+		"Subdivision (e) addresses deductible offerings and provides that a filing of supplementary rate information for a deductible is deemed complete only if it contains stated items, including a copy of the deductible endorsement that is to be attached to the policy and endorsement language addressing the injured worker's entitlement to benefits regardless of the deductible."
+	],
+	"updateCadence": "Amended by the Legislature; verify current text at leginfo.",
+	"status": "active",
+	"officialHost": true,
+	"notes": "Published: 2003-01-01 Effective: 2003-01-01"
+}

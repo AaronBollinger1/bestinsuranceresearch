@@ -1,0 +1,31 @@
+{
+	"title": "Enforcement Guidance: Vicarious Liability for Unlawful Harassment by Supervisors",
+	"publisher": "U.S. Equal Employment Opportunity Commission",
+	"url": "https://www.eeoc.gov/policy/docs/harassment.html",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "1999-06-18",
+	"effectiveDate": "1999-06-18",
+	"accessedDate": "2026-09-01",
+	"lastChecked": "2026-09-01",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"An anti-harassment policy and complaint procedure should contain, at a minimum, a clear explanation of prohibited conduct.",
+		"The policy should contain assurance that employees who make complaints of harassment or provide information related to such complaints will be protected against retaliation.",
+		"The policy should contain a clearly described complaint process that provides accessible avenues of complaint.",
+		"The policy should contain assurance that the employer will protect the confidentiality of harassment complaints to the extent possible.",
+		"The policy should provide a complaint process that provides a prompt, thorough, and impartial investigation.",
+		"The policy should contain assurance that the employer will take immediate and appropriate corrective action when it determines that harassment has occurred.",
+		"An employer should provide every employee with a copy of the policy and complaint procedure, and redistribute it periodically.",
+		"Other means of dissemination include posting the policy in central locations and incorporating it into employee handbooks.",
+		"If feasible, the employer should provide training to all employees to ensure they understand their rights and responsibilities.",
+		"Supervisors should receive periodic training covering prohibited conduct, the seriousness of the policy, supervisor responsibilities on learning of harassment, and the prohibition on retaliation."
+	],
+	"updateCadence": "Reviewed at least every 180 days.",
+	"status": "superseded",
+	"supersededBy": "eeoc-enforcement-guidance-harassment-workplace-2024",
+	"statusNote": "The page carries the notice: \"This document was superseded on April 29, 2024 by the new Enforcement Guidance on Harassment in the Workplace.\" That replacement was itself partially vacated nationwide on May 15, 2025 and then rescinded by Commission vote on January 22, 2026, so following the chain does not reach a current EEOC enforcement guidance on workplace harassment. Recorded as active until 2026-09-01, which was wrong: the supersession notice had been on the publisher page since April 2024."
+}

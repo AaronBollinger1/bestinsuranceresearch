@@ -1,0 +1,21 @@
+{
+	"title": "Florida Hurricane Catastrophe Fund - home page",
+	"publisher": "State Board of Administration of Florida, Florida Hurricane Catastrophe Fund",
+	"url": "https://fhcf.sbafla.com/",
+	"sourceType": "government-data",
+	"jurisdiction": "FL",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The FHCF states that it does not reimburse or assist individual policyholders.",
+		"The FHCF states that it does not process claims from homeowners or renters."
+	],
+	"updateCadence": "Re-verify annually.",
+	"status": "active",
+	"officialHost": true
+}

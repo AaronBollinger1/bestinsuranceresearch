@@ -1,0 +1,1305 @@
+{
+	"name": "California Earthquake Coverage",
+	"summary": "It works out which earthquake coverage decisions are still open for your California residence, whether the offer your insurer owes you has actually reached you, and which parts of a shaking loss sit outside an earthquake policy entirely.",
+	"family": "personal",
+	"lines": [
+		"residential-earthquake",
+		"homeowners",
+		"condominium-unit-owners",
+		"renters",
+		"mobilehome",
+		"residential-flood"
+	],
+	"order": 20,
+	"status": "live",
+	"privacyBoundary": "This module refuses to collect your name, your property address or parcel number, your policy or claim number, your insurer's or lender's name, your loan number, or any income or household detail; every answer is a category, a band, a limit amount, a yes or no, or a date.",
+	"uncertainty": "It cannot tell you whether to buy earthquake coverage, what any coverage would cost, what any insurer or program will write for your particular residence, or how any policy would respond to an actual loss; a broker confirms forms and limits in writing, the insurer confirms the offer and the policy terms, a licensed engineer answers questions about your structure and soil, and a lawyer reads your loan documents or CC and Rs.",
+	"domain": "bestearthquakeinsurance.com",
+	"fields": [
+		{
+			"id": "located-in-california",
+			"label": "Is the residence you are asking about located in California?",
+			"help": "The offer duties and the program conditions this module works from are California ones.",
+			"kind": "boolean",
+			"group": "The residence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "residence-type",
+			"label": "What kind of residence is it?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "single-family-detached",
+					"label": "Detached single-family house"
+				},
+				{
+					"value": "condo-or-townhome-unit",
+					"label": "Condominium or townhome unit in a common interest development"
+				},
+				{
+					"value": "mobilehome-manufactured",
+					"label": "Mobilehome or manufactured home"
+				},
+				{
+					"value": "rented-unit",
+					"label": "A unit or house I rent from someone else"
+				},
+				{
+					"value": "small-multi-unit-owned",
+					"label": "A building I own with two to four dwelling units"
+				}
+			],
+			"group": "The residence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "occupancy-role",
+			"label": "What is your role at the property?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "owner-occupant",
+					"label": "I own it and I live in it"
+				},
+				{
+					"value": "owner-landlord",
+					"label": "I own it and someone else lives in it"
+				},
+				{
+					"value": "tenant",
+					"label": "I rent it and live in it"
+				}
+			],
+			"group": "The residence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "construction-era",
+			"label": "Roughly when was the structure built?",
+			"help": "A band is enough. Choose not sure rather than guessing.",
+			"kind": "band",
+			"options": [
+				{
+					"value": "before-1980",
+					"label": "Before 1980"
+				},
+				{
+					"value": "1980-1999",
+					"label": "1980 to 1999"
+				},
+				{
+					"value": "2000-or-later",
+					"label": "2000 or later"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure"
+				}
+			],
+			"group": "The residence",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "foundation-type",
+			"label": "What does the structure sit on?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "slab-on-grade",
+					"label": "Concrete slab on grade"
+				},
+				{
+					"value": "raised-perimeter-crawlspace",
+					"label": "Raised perimeter foundation with a crawlspace or cripple wall"
+				},
+				{
+					"value": "hillside-post-or-pier",
+					"label": "Hillside posts, piers or a stepped foundation"
+				},
+				{
+					"value": "mobilehome-piers-or-jacks",
+					"label": "Mobilehome piers, jacks or an earthquake-resistant bracing system"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure"
+				}
+			],
+			"group": "The residence",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "companion-policy-in-force",
+			"label": "Is a residential property policy on this residence in force right now?",
+			"help": "This means the ordinary homeowners, condo, renters, mobilehome or dwelling policy, not earthquake coverage.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes-with-participating-insurer",
+					"label": "Yes, and I have confirmed the insurer is a CEA participating insurer"
+				},
+				{
+					"value": "yes-insurer-participation-unknown",
+					"label": "Yes, but I do not know whether the insurer participates in CEA"
+				},
+				{
+					"value": "yes-fair-plan-or-other",
+					"label": "Yes, through the California FAIR Plan or another arrangement"
+				},
+				{
+					"value": "no-none",
+					"label": "No residential property policy is in force"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure"
+				}
+			],
+			"group": "The companion residential policy",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "companion-policy-type",
+			"label": "Which form is that residential policy written on, as best you can tell from the declarations page?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "homeowners-ho3",
+					"label": "Homeowners, owner-occupied"
+				},
+				{
+					"value": "condo-unit-owners-ho6",
+					"label": "Condominium unit owners"
+				},
+				{
+					"value": "renters-ho4",
+					"label": "Renters or tenants contents"
+				},
+				{
+					"value": "mobilehome-policy",
+					"label": "Mobilehome or manufactured home"
+				},
+				{
+					"value": "dwelling-fire-or-landlord",
+					"label": "Dwelling fire or landlord rental dwelling"
+				},
+				{
+					"value": "none",
+					"label": "None in force"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure"
+				}
+			],
+			"group": "The companion residential policy",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "residential-policy-last-renewal-date",
+			"label": "What is the most recent issuance or renewal date on that residential policy?",
+			"help": "Take it from the declarations page rather than memory.",
+			"kind": "date",
+			"group": "The companion residential policy",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Enter the date only. Do not enter the policy number, the insurer's name or the premium."
+		},
+		{
+			"id": "eq-coverage-status",
+			"label": "What earthquake coverage on this residence is in force right now?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "none",
+					"label": "None"
+				},
+				{
+					"value": "cea-policy-in-force",
+					"label": "A California Earthquake Authority policy"
+				},
+				{
+					"value": "non-cea-standalone-in-force",
+					"label": "A separate earthquake policy that is not a CEA policy"
+				},
+				{
+					"value": "endorsement-on-residential-policy",
+					"label": "An earthquake endorsement added to my residential policy"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure"
+				}
+			],
+			"group": "Earthquake coverage now in force",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "coverage-a-limit",
+			"label": "What is the Coverage A dwelling limit shown on the earthquake declarations page?",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Earthquake coverage now in force",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Enter the limit figure only. Do not enter the policy number, the insurer's name, or your address."
+		},
+		{
+			"id": "coverage-b-limit",
+			"label": "What is the Coverage B extensions to dwelling limit shown on the same declarations page?",
+			"help": "This is the separate limit for things attached to or serving the dwelling, listed apart from Coverage A.",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Earthquake coverage now in force",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "eq-deductible-percent",
+			"label": "What deductible percentage is shown on the earthquake declarations page?",
+			"kind": "number",
+			"unit": "percent",
+			"group": "Earthquake coverage now in force",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "deductible-basis-as-understood",
+			"label": "When you picture that percentage being applied, what do you believe it is a percentage of?",
+			"help": "Answer with what you currently believe, not what you think is correct. The point of the question is to catch a mismatch.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "percent-of-coverage-a-only",
+					"label": "A percentage of the Coverage A dwelling limit only"
+				},
+				{
+					"value": "percent-of-coverage-a-and-b-combined",
+					"label": "A percentage of the Coverage A and Coverage B limits combined"
+				},
+				{
+					"value": "percent-of-the-loss",
+					"label": "A percentage of the amount of the loss"
+				},
+				{
+					"value": "flat-dollar-amount",
+					"label": "A flat dollar amount, not a percentage"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure"
+				}
+			],
+			"group": "Earthquake coverage now in force",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "mandatory-offer-letter-received",
+			"label": "Have you received a written offer of earthquake coverage from the insurer of your residential policy?",
+			"help": "It arrives as a notice with prescribed wording, usually with the renewal paperwork.",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes",
+					"label": "Yes"
+				},
+				{
+					"value": "no",
+					"label": "No"
+				},
+				{
+					"value": "do-not-recall",
+					"label": "I do not recall"
+				}
+			],
+			"group": "The offer your insurer owes you",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "mandatory-offer-letter-date",
+			"label": "What date was on that offer notice?",
+			"kind": "date",
+			"group": "The offer your insurer owes you",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "offer-response-sent",
+			"label": "What did you send back?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "accepted-in-writing",
+					"label": "I accepted in writing"
+				},
+				{
+					"value": "declined-in-writing",
+					"label": "I declined in writing"
+				},
+				{
+					"value": "no-response-sent",
+					"label": "I did not send anything back"
+				},
+				{
+					"value": "not-applicable",
+					"label": "Not applicable, I never received an offer"
+				}
+			],
+			"group": "The offer your insurer owes you",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "years-since-last-earthquake-offer",
+			"label": "How many years has it been since the most recent written earthquake offer you can account for?",
+			"help": "Enter a whole number of years. If you have never received one, enter the number of years you have held the residential policy.",
+			"kind": "number",
+			"unit": "years",
+			"group": "The offer your insurer owes you",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "retrofit-status",
+			"label": "What seismic retrofit work do you know has been done to this structure?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "none-known",
+					"label": "None that I know of"
+				},
+				{
+					"value": "bolted-to-foundation",
+					"label": "The frame has been bolted to the foundation"
+				},
+				{
+					"value": "cripple-wall-braced-and-bolted",
+					"label": "The cripple walls have been braced and the frame bolted"
+				},
+				{
+					"value": "engineered-hillside-retrofit",
+					"label": "An engineered hillside or soft-story retrofit"
+				},
+				{
+					"value": "mobilehome-bracing-system",
+					"label": "An earthquake-resistant bracing system under a mobilehome"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure"
+				}
+			],
+			"group": "Retrofit and documentation",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "retrofit-documentation-held",
+			"label": "Which of these do you actually hold a copy of for that work?",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "signed-off-building-permit",
+					"label": "A building permit signed off after final inspection"
+				},
+				{
+					"value": "contractor-scope-and-invoice",
+					"label": "The contractor's written scope and invoice"
+				},
+				{
+					"value": "engineer-letter-or-plan-set",
+					"label": "An engineer's letter or a stamped plan set"
+				},
+				{
+					"value": "before-after-photos",
+					"label": "Photographs from before and after the work"
+				},
+				{
+					"value": "none-of-these",
+					"label": "None of these"
+				}
+			],
+			"group": "Retrofit and documentation",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "perils-expected-covered",
+			"label": "When you think about earthquake coverage, which of these do you picture it paying for?",
+			"help": "Answer honestly about your expectation. Mismatches here are the most useful thing this module finds.",
+			"kind": "multiselect",
+			"options": [
+				{
+					"value": "shake-damage-to-structure",
+					"label": "Shaking damage to the structure itself"
+				},
+				{
+					"value": "fire-following-earthquake",
+					"label": "Fire that starts because of the earthquake"
+				},
+				{
+					"value": "tsunami-or-flood-inundation",
+					"label": "Water coming into the home from outside, including tsunami or flood"
+				},
+				{
+					"value": "landslide-or-land-movement",
+					"label": "Damage to the land itself, landslide, or a slope giving way"
+				},
+				{
+					"value": "contents-personal-property",
+					"label": "My belongings inside"
+				},
+				{
+					"value": "loss-of-use-living-expense",
+					"label": "The cost of living somewhere else while repairs happen"
+				},
+				{
+					"value": "hoa-loss-assessment",
+					"label": "An assessment the HOA charges me after damage to the shared building"
+				}
+			],
+			"group": "What you expect it to respond to",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "flood-policy-in-force",
+			"label": "Is a separate flood policy in force on this residence?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes-nfip",
+					"label": "Yes, through the National Flood Insurance Program"
+				},
+				{
+					"value": "yes-private",
+					"label": "Yes, through a private flood policy"
+				},
+				{
+					"value": "no",
+					"label": "No"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure"
+				}
+			],
+			"group": "What you expect it to respond to",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "hoa-master-policy-eq-status",
+			"label": "Does the association's master policy include earthquake coverage on the shared building?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "master-includes-earthquake",
+					"label": "Yes, and I have seen it on the master declarations"
+				},
+				{
+					"value": "master-excludes-earthquake",
+					"label": "No, earthquake is not on the master policy"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure"
+				},
+				{
+					"value": "not-applicable",
+					"label": "Not applicable, there is no association"
+				}
+			],
+			"group": "Association and lender",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "loss-assessment-coverage-recorded",
+			"label": "Does any policy of your own record a limit for loss assessments charged by the association?",
+			"kind": "boolean",
+			"group": "Association and lender",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "lender-requires-earthquake",
+			"label": "Has a lender or servicer told you in writing that earthquake coverage is required on this property?",
+			"kind": "select",
+			"options": [
+				{
+					"value": "yes-required-in-writing",
+					"label": "Yes, in writing"
+				},
+				{
+					"value": "yes-told-verbally",
+					"label": "I was told so, but not in writing"
+				},
+				{
+					"value": "no",
+					"label": "No"
+				},
+				{
+					"value": "not-sure",
+					"label": "Not sure"
+				},
+				{
+					"value": "no-mortgage",
+					"label": "There is no mortgage on the property"
+				}
+			],
+			"group": "Association and lender",
+			"required": false,
+			"purpose": "rule-input",
+			"privacyNote": "Answer yes or no only. Do not enter the lender's name, your loan number or your loan balance."
+		}
+	],
+	"rules": [
+		{
+			"id": "cea-recorded-without-companion-policy",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "You recorded a CEA earthquake policy in force and no residential property policy in force, and the CEA program condition is that the earthquake policy sits alongside a residential policy from a participating insurer.",
+			"detail": "CEA publishes the condition that its earthquake policy is written for Californians whose home is insured by one of the residential insurance companies participating in CEA, on both the homeowners and the mobilehome pages [S:cea-participating-insurers][S:cea-mobilehome-policy][S:cea-home]. The California Earthquake Authority was created by statute as a program operating through participating insurers rather than as a direct-writing insurer [S:ca-ins-code-10089-point-6]. The two answers you recorded cannot both be current, so one of them is out of date or is describing something other than what you think.",
+			"action": "Pull both declarations pages and read the top of each. Then ask your broker, in writing, to confirm which residential policy your earthquake coverage is attached to and whether both are currently in force.",
+			"when": {
+				"all": [
+					{
+						"field": "eq-coverage-status",
+						"op": "eq",
+						"value": "cea-policy-in-force"
+					},
+					{
+						"field": "companion-policy-in-force",
+						"op": "eq",
+						"value": "no-none"
+					}
+				]
+			},
+			"sourceIds": [
+				"cea-participating-insurers",
+				"cea-mobilehome-policy",
+				"cea-home",
+				"ca-ins-code-10089-point-6"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "companion-insurer-participation-unconfirmed",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "You recorded a CEA earthquake policy alongside a residential policy whose CEA participation you have not confirmed, so the link between the two policies is undocumented in your own file.",
+			"detail": "The CEA program condition ties its earthquake policy to a residential policy written by a participating insurer [S:cea-participating-insurers][S:cea-mobilehome-policy]. CEA publishes the list of participating companies, and the state insurance regulator publishes company profile information you can check independently [S:cdi-company-profiles][S:cdi-check-insurance-company]. Which company is on your residential declarations page is a fact you can verify today rather than assume.",
+			"action": "Read the insurer name off your residential declarations page, check it against the published participating insurer list, and keep a dated note of what you found with your policy documents.",
+			"when": {
+				"all": [
+					{
+						"field": "eq-coverage-status",
+						"op": "eq",
+						"value": "cea-policy-in-force"
+					},
+					{
+						"field": "companion-policy-in-force",
+						"op": "eq",
+						"value": "yes-insurer-participation-unknown"
+					}
+				]
+			},
+			"sourceIds": [
+				"cea-participating-insurers",
+				"cea-mobilehome-policy",
+				"cdi-company-profiles",
+				"cdi-check-insurance-company"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "biennial-reoffer-overdue",
+			"kind": "timing",
+			"severity": "high",
+			"title": "You recorded more than two years since the most recent written earthquake offer you can account for, and the statute sets the re-offer duty on an every other year basis.",
+			"detail": "California Insurance Code section 10081 requires an insurer that writes residential property insurance in the state to offer earthquake coverage to the insured [S:ca-ins-code-10081], and section 10083 sets the timing, including that the offer be provided on an every other year basis where a previous offer was not accepted [S:ca-ins-code-10083]. The state insurance regulator's consumer guide states the same duty in plain terms [S:cdi-earthquake-insurance-guide][S:cdi-earthquake-guide-925]. Your entry places the last accounted-for offer outside that cycle, which is either a record-keeping gap on your side or a missed notice.",
+			"action": "Write to your insurer and ask it to send you the current earthquake offer notice and to state the date of the last one it says it sent you. Keep the reply.",
+			"when": {
+				"all": [
+					{
+						"field": "located-in-california",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "companion-policy-in-force",
+						"op": "neq",
+						"value": "no-none"
+					},
+					{
+						"field": "years-since-last-earthquake-offer",
+						"op": "gt",
+						"value": 2
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-10081",
+				"ca-ins-code-10083",
+				"cdi-earthquake-insurance-guide",
+				"cdi-earthquake-guide-925"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "no-offer-notice-on-record",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "You hold a residential property policy and recorded that no written earthquake offer has reached you, so the notice the statute describes is not in your file.",
+			"detail": "Section 10081 places the offer duty on the insurer writing residential property insurance in California [S:ca-ins-code-10081], section 10082 governs what the offer must contain [S:ca-ins-code-10082], and section 10083 provides that the offer may be made prior to, concurrent with, or within 60 days following the issuance or renewal of the residential policy [S:ca-ins-code-10083]. Section 10087 defines the residential property policies the chapter reaches, including policies on individually owned structures of not more than four dwelling units, individually owned condominium units, individually owned mobilehomes, and tenant contents policies [S:ca-ins-code-10087].",
+			"action": "Ask your insurer in writing for a copy of the earthquake offer notice it says it issued and the date it was mailed. File the reply with your declarations page.",
+			"when": {
+				"all": [
+					{
+						"field": "located-in-california",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "companion-policy-in-force",
+						"op": "neq",
+						"value": "no-none"
+					},
+					{
+						"field": "mandatory-offer-letter-received",
+						"op": "eq",
+						"value": "no"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-10081",
+				"ca-ins-code-10082",
+				"ca-ins-code-10083",
+				"ca-ins-code-10087"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "offer-received-no-response-sent",
+			"kind": "timing",
+			"severity": "high",
+			"title": "You recorded receiving a written earthquake offer and sending nothing back, and the notice itself sets a 30 day window after which silence is treated as non-acceptance.",
+			"detail": "Section 10083 prescribes notice language stating that if the offer of earthquake insurance is not accepted within 30 days of the mailing of the notice, the insurance company shall presume it was not accepted [S:ca-ins-code-10083]. The regulator's guide describes the same 30 day presumption [S:cdi-earthquake-insurance-guide]. Doing nothing is therefore a decision that has already been recorded against you, not a decision still pending.",
+			"action": "If you want the coverage, contact your insurer now, ask for a current offer in writing, and respond in writing rather than by phone. Keep a copy of what you send and the date you sent it.",
+			"when": {
+				"all": [
+					{
+						"field": "mandatory-offer-letter-received",
+						"op": "eq",
+						"value": "yes"
+					},
+					{
+						"field": "offer-response-sent",
+						"op": "eq",
+						"value": "no-response-sent"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-10083",
+				"cdi-earthquake-insurance-guide"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "offer-received-no-date-recorded",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "You recorded receiving a written earthquake offer but no date for it, and both statutory clocks in this area run off dates.",
+			"detail": "Section 10083 ties the offer to a 60 day window around issuance or renewal, sets the 30 day non-acceptance presumption from the mailing of the notice, and sets the re-offer duty on an every other year basis [S:ca-ins-code-10083]. Without the notice date you cannot tell which of those three clocks you are inside.",
+			"action": "Find the notice and record its date, or ask your insurer for the mailing date in writing. Do the same for the issuance or renewal date on the residential policy.",
+			"when": {
+				"all": [
+					{
+						"field": "mandatory-offer-letter-received",
+						"op": "eq",
+						"value": "yes"
+					},
+					{
+						"field": "mandatory-offer-letter-date",
+						"op": "isEmpty",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-10083"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "renewal-date-not-recorded",
+			"kind": "documentation",
+			"severity": "low",
+			"title": "You hold a residential property policy but have not recorded its issuance or renewal date, which is the date the offer window is measured from.",
+			"detail": "Section 10083 provides that the offer required by section 10081 may be made prior to, concurrent with, or within 60 days following the issuance or renewal of a residential property insurance policy [S:ca-ins-code-10083][S:ca-ins-code-10081]. The window is defined by that date, so without it you cannot tell whether an offer is late or simply not yet due.",
+			"action": "Take the issuance or renewal date off your declarations page and record it, then set your own reminder to look for the earthquake offer notice around each renewal.",
+			"when": {
+				"all": [
+					{
+						"field": "companion-policy-in-force",
+						"op": "neq",
+						"value": "no-none"
+					},
+					{
+						"field": "residential-policy-last-renewal-date",
+						"op": "isEmpty",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-10083",
+				"ca-ins-code-10081"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "deductible-basis-recorded-as-coverage-a-only",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "You recorded a CEA policy and recorded your understanding that the deductible percentage applies to the Coverage A dwelling limit alone, while the policy form applies it to the Coverage A and Coverage B limits combined.",
+			"detail": "The CEA basic earthquake policy for homeowners provides that no payment is made for property loss until loss to property covered under Coverage A Dwelling or Coverage B Extensions to Dwelling exceeds the deductible shown on the declarations, and the published coverage page states the percentage options apply to the combined Coverage A and B limit [S:cea-beq3b-homeowners-policy-form][S:cea-homeowners-coverages-deductibles]. A combined base produces a larger retained dollar amount than a Coverage A only base at the same percentage, so the figure you have in mind is smaller than the figure the form produces.",
+			"action": "Add the Coverage A and Coverage B limits from your declarations page together, multiply by your deductible percentage, and take that dollar figure to your broker to confirm it matches the form. Compare it against what you could actually pay out of pocket.",
+			"when": {
+				"all": [
+					{
+						"field": "eq-coverage-status",
+						"op": "eq",
+						"value": "cea-policy-in-force"
+					},
+					{
+						"field": "deductible-basis-as-understood",
+						"op": "eq",
+						"value": "percent-of-coverage-a-only"
+					}
+				]
+			},
+			"sourceIds": [
+				"cea-beq3b-homeowners-policy-form",
+				"cea-homeowners-coverages-deductibles"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "deductible-basis-recorded-as-percent-of-loss",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "You recorded a CEA policy and your understanding that the deductible percentage is taken against the amount of the loss, while the CEA homeowners form measures it against the limits of insurance shown on the declarations.",
+			"detail": "The CEA homeowners form measures the deductible against the amount shown on the declarations, which is set as a percentage of the Coverage A and Coverage B combined limit of insurance rather than as a share of whatever the loss turns out to be [S:cea-beq3b-homeowners-policy-form][S:cea-homeowners-coverages-deductibles]. On that basis the retained amount does not shrink when the loss is small, which is the opposite of what a percentage of loss would do. If your CEA policy is the mobilehome and manufactured home policy, that is a separate policy from the homeowners one and its own declarations page and form are what state its deductible basis [S:cea-mobilehome-policy].",
+			"action": "Work out the dollar deductible from your own declarations page limits, write it down, and ask your broker to identify the deductible provision in your own form and confirm the arithmetic against it before you rely on any smaller figure.",
+			"when": {
+				"all": [
+					{
+						"field": "eq-coverage-status",
+						"op": "eq",
+						"value": "cea-policy-in-force"
+					},
+					{
+						"field": "deductible-basis-as-understood",
+						"op": "eq",
+						"value": "percent-of-the-loss"
+					}
+				]
+			},
+			"sourceIds": [
+				"cea-beq3b-homeowners-policy-form",
+				"cea-homeowners-coverages-deductibles",
+				"cea-mobilehome-policy"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "coverage-b-limit-missing-for-deductible-arithmetic",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "You recorded a CEA policy and a deductible percentage but not the Coverage B limit, which is one of the two limits the CEA homeowners form applies the percentage to.",
+			"detail": "CEA's published coverage page and the CEA homeowners form both apply the deductible percentage to the Coverage A and Coverage B limits combined, and the form conditions payment on loss under Coverage A or Coverage B exceeding that amount [S:cea-homeowners-coverages-deductibles][S:cea-beq3b-homeowners-policy-form]. With only one of the two limits recorded, that combined figure cannot be worked out from what you have entered. If your CEA policy is the mobilehome and manufactured home policy, that is a separate policy with its own declarations page and its own stated deductible choices [S:cea-mobilehome-policy].",
+			"action": "Read the Coverage B extensions to dwelling limit off your declarations page and record it, then redo the deductible arithmetic with both limits. If your declarations page shows no Coverage B limit, ask your broker to identify which limits on your own form the percentage is applied to.",
+			"when": {
+				"all": [
+					{
+						"field": "eq-coverage-status",
+						"op": "eq",
+						"value": "cea-policy-in-force"
+					},
+					{
+						"field": "eq-deductible-percent",
+						"op": "isSet",
+						"value": true
+					},
+					{
+						"field": "coverage-b-limit",
+						"op": "isEmpty",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"cea-homeowners-coverages-deductibles",
+				"cea-beq3b-homeowners-policy-form",
+				"cea-mobilehome-policy"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "coverage-a-limit-not-recorded",
+			"kind": "documentation",
+			"severity": "low",
+			"title": "You recorded earthquake coverage in force without recording the Coverage A dwelling limit, which is the figure the whole structure of the policy is built on.",
+			"detail": "The Coverage A limit sets the base of the deductible calculation and is the reference point for the extensions to dwelling limit [S:cea-homeowners-coverages-deductibles][S:cea-beq3b-homeowners-policy-form]. California regulation sets standards for how a replacement value estimate supporting a dwelling limit is prepared, which is a separate question from what the market value of the home is [S:ca-10-ccr-2695-183][S:cdi-residential-insurance-guide].",
+			"action": "Record the Coverage A limit from your declarations page, then ask your broker how that figure was arrived at and when it was last reviewed.",
+			"when": {
+				"all": [
+					{
+						"field": "eq-coverage-status",
+						"op": "eq",
+						"value": "cea-policy-in-force"
+					},
+					{
+						"field": "coverage-a-limit",
+						"op": "isEmpty",
+						"value": true
+					}
+				]
+			},
+			"sourceIds": [
+				"cea-homeowners-coverages-deductibles",
+				"cea-beq3b-homeowners-policy-form",
+				"ca-10-ccr-2695-183",
+				"cdi-residential-insurance-guide"
+			],
+			"relatedQuestion": "replacement-cost-vs-market-value",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "water-from-outside-expected-no-flood-policy",
+			"kind": "gap",
+			"severity": "high",
+			"title": "You recorded that you picture earthquake coverage paying for water coming into the home from outside, including tsunami, and recorded no flood policy in force.",
+			"detail": "The state insurance regulator's earthquake guide describes earthquake policies as excluding water damage from outside the home, such as sewer or drain back-up, flood, or tsunami [S:cdi-earthquake-insurance-guide][S:cdi-earthquake-guide-925]. Flood is written under a separate program with its own eligibility, forms and coverage types [S:fema-nfip-eligibility][S:nfip-agents-coverage][S:nfip-sfip-dwelling-form]. The expectation you recorded and the coverage you recorded are therefore about two different products, and you have recorded only one of them.",
+			"action": "Ask your broker to explain what your earthquake form says about water entering from outside, and to put a separate flood policy option in front of you in writing so you can read the two side by side. Ask specifically about any waiting period before a new flood policy takes effect.",
+			"when": {
+				"all": [
+					{
+						"field": "perils-expected-covered",
+						"op": "includes",
+						"value": "tsunami-or-flood-inundation"
+					},
+					{
+						"field": "flood-policy-in-force",
+						"op": "eq",
+						"value": "no"
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-earthquake-insurance-guide",
+				"cdi-earthquake-guide-925",
+				"fema-nfip-eligibility",
+				"nfip-agents-coverage",
+				"nfip-sfip-dwelling-form"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "land-damage-expected",
+			"kind": "gap",
+			"severity": "medium",
+			"title": "You recorded that you picture earthquake coverage paying for damage to the land itself or for a slope giving way, and the published guidance describes land as sitting outside these policies.",
+			"detail": "The regulator's earthquake guide states that earthquake policies do not cover damage to your land, such as sinkholes from erosion or other hidden openings under the land [S:cdi-earthquake-insurance-guide][S:cdi-earthquake-guide-925]. The CEA homeowners form is written around Coverage A dwelling and Coverage B extensions to dwelling rather than around the ground they stand on [S:cea-beq3b-homeowners-policy-form]. Nothing you have recorded addresses the land, so the expectation is currently unmatched.",
+			"action": "Ask your broker to point to the exact wording in your own form that deals with land, in writing. If the slope or soil under the structure is the real concern, take that question to a licensed geotechnical or structural engineer, who is the person who can answer it.",
+			"when": {
+				"all": [
+					{
+						"field": "perils-expected-covered",
+						"op": "includes",
+						"value": "landslide-or-land-movement"
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-earthquake-insurance-guide",
+				"cdi-earthquake-guide-925",
+				"cea-beq3b-homeowners-policy-form"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "fire-following-earthquake-separation",
+			"kind": "question",
+			"severity": "medium",
+			"title": "You recorded that you picture earthquake coverage paying for fire that starts because of the earthquake, and the published guidance describes that as a duty of the residential policy rather than of the earthquake policy.",
+			"detail": "The regulator's earthquake guide states that California law requires both homeowners and renters insurance to cover fire damage that is caused by or follows an earthquake, whether or not separate earthquake coverage is held [S:cdi-earthquake-insurance-guide][S:cdi-earthquake-guide-925]. On the arrangement the guide describes, shake damage and fire following the shake are addressed by two different policies, and the standard homeowners forms treat the two perils in separate provisions [S:iso-ho-00-03-05-11-nv-doi][S:cdi-residential-insurance-guide]. Which of your policies carries which duty is a question with a written answer.",
+			"action": "Ask your insurer in writing to identify the provision in your own residential policy form that addresses fire following an earthquake, and to confirm which limit it is subject to. Do not rely on a general statement about what the law requires.",
+			"when": {
+				"all": [
+					{
+						"field": "perils-expected-covered",
+						"op": "includes",
+						"value": "fire-following-earthquake"
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-earthquake-insurance-guide",
+				"cdi-earthquake-guide-925",
+				"iso-ho-00-03-05-11-nv-doi",
+				"cdi-residential-insurance-guide"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "condo-assessment-expected-none-recorded",
+			"kind": "gap",
+			"severity": "medium",
+			"title": "You recorded a condominium or townhome unit and that you picture an association assessment being paid, but recorded no loss assessment limit of your own.",
+			"detail": "The regulator's earthquake guide describes condominium owners as able to buy coverage for their belongings and loss of use plus assessment protection, described in the guide up to a stated maximum [S:cdi-earthquake-insurance-guide][S:cdi-earthquake-guide-925]. The unit owners form and the association's governing documents allocate damage between the unit and the shared building, and an assessment is what reaches you when the shared side is short [S:iso-ho-00-06-05-11-me-bureau]. You have recorded the exposure and no corresponding limit.",
+			"action": "Get the association's master policy declarations and the insurance and damage sections of the CC and Rs, then ask your broker what loss assessment limit is available on your own unit policy and how it interacts with an earthquake assessment.",
+			"when": {
+				"all": [
+					{
+						"field": "residence-type",
+						"op": "eq",
+						"value": "condo-or-townhome-unit"
+					},
+					{
+						"field": "perils-expected-covered",
+						"op": "includes",
+						"value": "hoa-loss-assessment"
+					},
+					{
+						"field": "loss-assessment-coverage-recorded",
+						"op": "eq",
+						"value": false
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-earthquake-insurance-guide",
+				"cdi-earthquake-guide-925",
+				"iso-ho-00-06-05-11-me-bureau"
+			],
+			"relatedQuestion": "same-limit-different-protection",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "master-policy-earthquake-status-unknown",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "You recorded a unit in a common interest development and that you do not know whether the association's master policy includes earthquake coverage on the shared building.",
+			"detail": "Whether the shared structure carries earthquake coverage determines what an assessment after a shaking event would be for, and it is a document you are entitled to look at rather than a matter of opinion [S:cdi-earthquake-insurance-guide][S:cdi-residential-insurance-guide]. The unit owners form is written to sit against whatever the association carries, so the two have to be read together [S:iso-ho-00-06-05-11-me-bureau].",
+			"action": "Request the current master policy declarations page from the association or its manager in writing, and record whether earthquake appears on it and at what deductible. Take the CC and Rs to a lawyer if the allocation of repair responsibility is unclear.",
+			"when": {
+				"all": [
+					{
+						"field": "residence-type",
+						"op": "eq",
+						"value": "condo-or-townhome-unit"
+					},
+					{
+						"field": "hoa-master-policy-eq-status",
+						"op": "eq",
+						"value": "not-sure"
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-earthquake-insurance-guide",
+				"cdi-residential-insurance-guide",
+				"iso-ho-00-06-05-11-me-bureau"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "tenant-no-earthquake-coverage-recorded",
+			"kind": "gap",
+			"severity": "medium",
+			"title": "You recorded that you rent your home and that no earthquake coverage of your own is in force, while the statute treats a tenant contents policy as a residential property policy that the offer duty reaches.",
+			"detail": "Section 10087 includes a tenant's policy insuring the personal contents of a residential unit within the residential property policies this chapter reaches, so the offer duty in section 10081 is not limited to owners [S:ca-ins-code-10087][S:ca-ins-code-10081]. The regulator's guide describes renters earthquake coverage as addressing damage to belongings and the cost of living somewhere else while the rented home is repaired [S:cdi-earthquake-insurance-guide][S:cdi-residential-insurance-guide]. Your belongings and your displacement costs are recorded here with nothing of your own set against them.",
+			"action": "Ask your own insurer for the written earthquake offer on your renters policy, and ask your broker what a contents and loss of use earthquake limit would look like. Do not assume the building owner's policy addresses your belongings; ask what their policy is for.",
+			"when": {
+				"all": [
+					{
+						"field": "occupancy-role",
+						"op": "eq",
+						"value": "tenant"
+					},
+					{
+						"field": "eq-coverage-status",
+						"op": "eq",
+						"value": "none"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-10087",
+				"ca-ins-code-10081",
+				"cdi-earthquake-insurance-guide",
+				"cdi-residential-insurance-guide"
+			],
+			"relatedQuestion": "landlord-policy-vs-homeowners",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "landlord-role-with-owner-occupied-form",
+			"kind": "question",
+			"severity": "high",
+			"title": "You recorded that someone else lives in the property and that the residential policy is written on an owner-occupied homeowners form.",
+			"detail": "The owner-occupied homeowners form and the landlord or dwelling form are built around different occupancy facts, and the regulator's residential guide sets them out as different products [S:cdi-residential-insurance-guide][S:iso-ho-00-03-05-11-nv-doi]. Because the earthquake coverage is written against the residential policy, an occupancy mismatch on the residential side is a question that reaches the earthquake side too [S:cea-participating-insurers]. What was disclosed about occupancy is a matter of record with your insurer, not a matter of interpretation.",
+			"action": "Tell your insurer in writing what the current occupancy actually is and ask it to confirm which form the policy should be on. Ask your broker to confirm in writing how the earthquake coverage follows that change.",
+			"when": {
+				"all": [
+					{
+						"field": "occupancy-role",
+						"op": "eq",
+						"value": "owner-landlord"
+					},
+					{
+						"field": "companion-policy-type",
+						"op": "eq",
+						"value": "homeowners-ho3"
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-residential-insurance-guide",
+				"iso-ho-00-03-05-11-nv-doi",
+				"cea-participating-insurers"
+			],
+			"relatedQuestion": "landlord-policy-vs-homeowners",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "retrofit-claimed-without-documentation",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "You recorded that retrofit work has been done and that you hold none of the documents that evidence it.",
+			"detail": "The state retrofit program treats a completed retrofit as something evidenced by paper, requiring a building permit dated after program acceptance and an image of the signed building permit after the retrofit is complete and signed off, uploaded with post-retrofit photographs for review and approval [S:crmp-retrofit-next-steps]. CEA's published deductible page refers to a verified retrofit as a distinct condition from work having been done [S:cea-homeowners-coverages-deductibles]. Work you cannot evidence is, on paper, work that has not been recorded.",
+			"action": "Ask your local building department for a copy of the permit history and the signed-off final inspection for the address, and ask the contractor for the written scope and invoice. Keep them with your policy documents and give copies to your broker.",
+			"when": {
+				"all": [
+					{
+						"field": "retrofit-status",
+						"op": "neq",
+						"value": "none-known"
+					},
+					{
+						"field": "retrofit-status",
+						"op": "neq",
+						"value": "not-sure"
+					},
+					{
+						"field": "retrofit-documentation-held",
+						"op": "includes",
+						"value": "none-of-these"
+					}
+				]
+			},
+			"sourceIds": [
+				"crmp-retrofit-next-steps",
+				"cea-homeowners-coverages-deductibles"
+			],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "pre-1980-raised-foundation-retrofit-question",
+			"kind": "question",
+			"severity": "medium",
+			"title": "You recorded a pre-1980 construction era and a raised foundation with a crawlspace or cripple wall, and the published deductible page names construction era, foundation type and whether a retrofit is verified as conditions it applies.",
+			"detail": "CEA's published coverage and deductible page ties the deductible percentages it shows to the size of the Coverage A limit, to frame construction built before 1980 that is not on a slab foundation, and to whether there is a verified retrofit [S:cea-homeowners-coverages-deductibles]. A state program exists for this specific retrofit type and defines what documentation evidences it [S:crmp-retrofit-next-steps]. Which of those published conditions your own structure falls under is a determination for the program and the insurer, made from your declarations and your documents, not from these answers.",
+			"action": "Ask your broker to confirm from your own declarations page which deductible options are shown for the details you have recorded, and what specific documentation would count as a verified retrofit. Ask a licensed contractor or engineer what a cripple wall retrofit on your structure would involve before you assume the answer.",
+			"when": {
+				"all": [
+					{
+						"field": "construction-era",
+						"op": "eq",
+						"value": "before-1980"
+					},
+					{
+						"field": "foundation-type",
+						"op": "eq",
+						"value": "raised-perimeter-crawlspace"
+					}
+				]
+			},
+			"sourceIds": [
+				"cea-homeowners-coverages-deductibles",
+				"crmp-retrofit-next-steps"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "mobilehome-separate-policy-question",
+			"kind": "question",
+			"severity": "medium",
+			"title": "You recorded a mobilehome or manufactured home, which the statute and the program both treat as its own category rather than as a variation of a house.",
+			"detail": "Section 10087 lists individually owned mobilehomes separately within the residential property policies the offer duty reaches [S:ca-ins-code-10087][S:ca-ins-code-10081]. CEA publishes a separate mobilehome and manufactured home earthquake policy, distinct from the homeowners policy, and lists mobilehome, personal property and loss of use as its coverages, with no deductible for the first $1,500 of emergency repairs [S:cea-mobilehome-policy]. The bracing or support system under the home is a described feature of this category rather than an afterthought.",
+			"action": "Ask your broker to show you the mobilehome earthquake form rather than the homeowners one, and to state in writing how the support or bracing system under the home is treated. Ask what documentation of that system you should be keeping.",
+			"when": {
+				"all": [
+					{
+						"field": "residence-type",
+						"op": "eq",
+						"value": "mobilehome-manufactured"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-10087",
+				"ca-ins-code-10081",
+				"cea-mobilehome-policy"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "lender-requirement-in-writing-no-coverage-recorded",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "You recorded a written lender or servicer requirement for earthquake coverage and no earthquake coverage in force.",
+			"detail": "A servicer's written insurance requirement and its force-placed process are governed by federal servicing rules and by your own loan documents, and force-placed coverage is charged to the borrower rather than chosen by them [S:cfpb-1024-37][S:cfpb-1024-17-k5]. The two things you have recorded cannot both stand: either the requirement has been satisfied by something you have not recorded here, or it is open.",
+			"action": "Ask the servicer in writing to state the exact coverage and limit it requires and the provision of the loan documents it relies on. If you dispute that the loan documents impose it, take those documents to a lawyer; that is a legal reading, not an insurance one.",
+			"when": {
+				"all": [
+					{
+						"field": "lender-requires-earthquake",
+						"op": "eq",
+						"value": "yes-required-in-writing"
+					},
+					{
+						"field": "eq-coverage-status",
+						"op": "eq",
+						"value": "none"
+					}
+				]
+			},
+			"sourceIds": [
+				"cfpb-1024-37",
+				"cfpb-1024-17-k5"
+			],
+			"relatedQuestion": "lender-insurance-requirement",
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "lender-requirement-only-verbal",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "You recorded being told a lender requires earthquake coverage but not having it in writing.",
+			"detail": "What a servicer requires, and what it may charge you for if you do not carry it, is governed by written rules and written loan documents rather than by a phone call [S:cfpb-1024-37][S:cfpb-1024-17-k5]. Until the requirement is in writing you cannot compare it against what any policy would actually provide.",
+			"action": "Ask the servicer for the requirement in writing, including the coverage type, the limit and the deadline. Keep the reply and give a copy to your broker before you buy anything.",
+			"when": {
+				"all": [
+					{
+						"field": "lender-requires-earthquake",
+						"op": "eq",
+						"value": "yes-told-verbally"
+					}
+				]
+			},
+			"sourceIds": [
+				"cfpb-1024-37",
+				"cfpb-1024-17-k5"
+			],
+			"relatedQuestion": "lender-insurance-requirement",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "no-coverage-and-no-offer-recollection",
+			"kind": "question",
+			"severity": "medium",
+			"title": "You recorded no earthquake coverage in force and that you do not recall ever receiving the written offer, so the decision has been made by default rather than on the record.",
+			"detail": "Section 10081 places the offer duty on the insurer and section 10083 provides that silence for 30 days after the mailing of the notice is presumed to be non-acceptance [S:ca-ins-code-10081][S:ca-ins-code-10083]. Section 10089 sets minimum terms for the coverage that must be offered, including a deductible of not more than 15 percent of the dwelling coverage, contents of not less than $5,000, and loss of use of not less than $1,500 [S:ca-ins-code-10089]. Knowing those minimums is what lets you tell an offer from a brochure.",
+			"action": "Ask your insurer in writing for the current earthquake offer and read it against the statutory minimums before you respond. Whatever you decide, respond in writing and keep the copy.",
+			"when": {
+				"all": [
+					{
+						"field": "located-in-california",
+						"op": "eq",
+						"value": true
+					},
+					{
+						"field": "eq-coverage-status",
+						"op": "eq",
+						"value": "none"
+					},
+					{
+						"field": "mandatory-offer-letter-received",
+						"op": "eq",
+						"value": "do-not-recall"
+					}
+				]
+			},
+			"sourceIds": [
+				"ca-ins-code-10081",
+				"ca-ins-code-10083",
+				"ca-ins-code-10089"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "coverage-status-not-sure",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "You recorded that you are not sure whether earthquake coverage is in force, which is a fact your own declarations page settles.",
+			"detail": "Earthquake coverage in California can appear as a separate policy or as an endorsement to the residential policy, and the two look different on paper [S:cdi-earthquake-insurance-guide][S:cdi-residential-insurance-guide]. Where the coverage is a CEA policy it is a separate policy with its own declarations page sitting alongside the residential one [S:cea-participating-insurers][S:cea-beq3b-homeowners-policy-form].",
+			"action": "Request the current declarations pages for every policy on the property from your broker or insurer, and look for an earthquake deductible percentage and Coverage A and B limits. Come back and record what you find before you act on anything else here.",
+			"when": {
+				"all": [
+					{
+						"field": "eq-coverage-status",
+						"op": "eq",
+						"value": "not-sure"
+					}
+				]
+			},
+			"sourceIds": [
+				"cdi-earthquake-insurance-guide",
+				"cdi-residential-insurance-guide",
+				"cea-participating-insurers",
+				"cea-beq3b-homeowners-policy-form"
+			],
+			"relatedQuestion": "homeowners-earthquake-california",
+			"routeToProfessional": "broker"
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

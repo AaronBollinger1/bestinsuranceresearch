@@ -1,0 +1,425 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import Handoff from '../../components/Handoff.astro';
+import SourceLedger from '../../components/SourceLedger.astro';
+import StateBlock from '../../components/StateBlock.astro';
+import ToolFrame from '../../components/ToolFrame.astro';
+import { createCiter, escapeHtml } from '../../lib/citations';
+import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
+import { breadcrumbs, graph, organization, webApplication, website } from '../../lib/schema';
+import { TODAY } from '../../lib/today';
+
+const corpus = await loadCorpus();
+const tool = corpus.tools.find((t) => t.id === 'requirement-mapper');
+if (!tool) throw new Error('Tool registry entry "requirement-mapper" is missing.');
+
+const sourceIds = idsOf(tool.data.sourceIds);
+const sources = ledgerFor(sourceIds, corpus.sourceById, 'tool "requirement-mapper"');
+const cite = createCiter(sourceIds, 'tool "requirement-mapper"');
+
+/* Rows come from the reviewed registry entry, grouped in their authored order. */
+const groups: Array<{ name: string; items: typeof tool.data.items }> = [];
+for (const item of tool.data.items) {
+	const existing = groups.find((g) => g.name === item.group);
+	if (existing) existing.items.push(item);
+	else groups.push({ name: item.group, items: [item] });
+}
+
+const AGREEMENT_TYPES = [
+	{ value: 'construction-subcontract', label: 'Construction subcontract' },
+	{ value: 'commercial-lease', label: 'Commercial lease' },
+	{ value: 'vendor-services', label: 'Vendor or services agreement' },
+	{ value: 'professional-services', label: 'Professional services agreement' },
+	{ value: 'loan-financing', label: 'Loan or financing agreement' },
+	{ value: 'venue-event', label: 'Venue, permit, or event agreement' },
+	{ value: 'other', label: 'Something else' },
+];
+
+const KIND_LABEL: Record<string, string> = {
+	document: 'Document',
+	schedule: 'Schedule',
+	limit: 'Limit',
+	endorsement: 'Endorsement',
+	evidence: 'Evidence',
+	question: 'Question',
+	trigger: 'Trigger',
+};
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Tools', path: '/tools' },
+	{ name: tool.data.name, path: '/tools/requirement-mapper' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	webApplication({
+		name: tool.data.name,
+		path: '/tools/requirement-mapper',
+		description: tool.data.summary,
+		features: [
+			'Separates requested terms from confirmed terms',
+			'Tracks open questions per requirement',
+			'Local notes, stored only in the browser',
+			'Printable non-binding checklist',
+			'No contact capture and no document upload',
+		],
+	}),
+);
+---
+
+<BaseLayout
+	title={tool.data.name}
+	description={tool.data.summary}
+	jsonLd={jsonLd}
+	pageType="tool"
+	bodyClass="tool-page"
+>
+	<ToolFrame tool={tool} toolId="requirement-mapper" />
+
+	<section class="band band-tight">
+		<div class="shell">
+			<div class="field no-print" style="max-width: 420px; margin-bottom: var(--s-6)">
+				<label for="agreement-type">What kind of agreement is this?</label>
+				<select id="agreement-type">
+					<option value="">Choose one</option>
+					{AGREEMENT_TYPES.map((type) => <option value={type.value}>{type.label}</option>)}
+				</select>
+				<span class="hint">
+					This only labels your printed checklist. Every requirement below stays available whatever
+					you pick, because agreements do not respect categories.
+				</span>
+			</div>
+
+			<p class="print-only" style="font-size: 10pt">
+				<strong>Agreement type:</strong> <span data-print-agreement>not specified</span>
+			</p>
+
+			<Callout tone="warn">
+				<p>
+					<strong>Requested is not confirmed, and a certificate is not coverage.</strong> Each row
+					below has two separate boxes on purpose. <em>Requested</em> means the agreement asks for
+					it. <em>Confirmed</em> means a named insurer or broker told you it is actually in place.
+					Only the second one means anything, and a certificate of insurance is evidence that a
+					policy existed on a date, not proof of what it covers.
+				</p>
+				<p>
+					Indemnity and additional insured wording is a legal question. This tool flags it for a
+					lawyer and does not interpret it.
+				</p>
+			</Callout>
+
+			{
+				groups.length === 0 ? (
+					<div style="margin-top: var(--s-6)">
+						<StateBlock kind="empty" heading="This tool has no reviewed rows yet.">
+							<p>
+								The interface is built and working, but its checklist content has not passed review,
+								so nothing is shown rather than showing something unsourced.
+							</p>
+						</StateBlock>
+					</div>
+				) : (
+					<div id="mapper" style="margin-top: var(--s-6)">
+						{groups.map((group, groupIndex) => (
+							<section class="answer-section" aria-labelledby={`group-${groupIndex}`}>
+								<h2 id={`group-${groupIndex}`}>{group.name}</h2>
+								<div class="table-scroll">
+									<table class="data">
+										<caption>{group.name}. Tick what the agreement asks for, then what someone has actually confirmed.</caption>
+										<thead>
+											<tr>
+												<th scope="col" style="min-width: 260px">Requirement</th>
+												<th scope="col">Type</th>
+												<th scope="col">Requested</th>
+												<th scope="col">Confirmed</th>
+												<th scope="col">Open question</th>
+												<th scope="col" style="min-width: 200px">Your note</th>
+											</tr>
+										</thead>
+										<tbody>
+											{group.items.map((item, itemIndex) => {
+												const key = `g${groupIndex}i${itemIndex}`;
+												return (
+													<tr data-row={key}>
+														<th scope="row">
+															{item.label}
+															<span style="display:block;margin-top:4px;font-weight:400;color:var(--muted);font-size:var(--text-xs)"
+																set:html={cite.inline(item.detail)} />
+														</th>
+														<td><span class="status status-plain">{KIND_LABEL[item.kind] ?? item.kind}</span></td>
+														<td>
+															<label class="check">
+																<input type="checkbox" data-field="requested" data-key={key} />
+																<span class="u-visually-hidden">Requested by the agreement: {item.label}</span>
+															</label>
+														</td>
+														<td>
+															<label class="check">
+																<input type="checkbox" data-field="confirmed" data-key={key} />
+																<span class="u-visually-hidden">Confirmed by an insurer or broker: {item.label}</span>
+															</label>
+														</td>
+														<td>
+															<label class="check">
+																<input type="checkbox" data-field="open" data-key={key} />
+																<span class="u-visually-hidden">Open question: {item.label}</span>
+															</label>
+														</td>
+														<td>
+															<label class="u-visually-hidden" for={`note-${key}`}>Your note about {item.label}</label>
+															<input type="text" id={`note-${key}`} data-field="note" data-key={key}
+																placeholder="Local note" style="min-height:36px;padding:6px 8px;font-size:var(--text-sm)" />
+														</td>
+													</tr>
+												);
+											})}
+										</tbody>
+									</table>
+								</div>
+
+								<div class="table-stack">
+									{group.items.map((item, itemIndex) => {
+										const key = `s-g${groupIndex}i${itemIndex}`;
+										return (
+											<div class="table-stack-item" data-row={key}>
+												<p class="table-stack-title">{item.label}</p>
+												<p style="font-size: var(--text-sm); color: var(--muted); margin-bottom: var(--s-2)"
+													set:html={cite.inline(item.detail)} />
+												<label class="check">
+													<input type="checkbox" data-field="requested" data-key={key} />
+													<span>Requested by the agreement</span>
+												</label>
+												<label class="check">
+													<input type="checkbox" data-field="confirmed" data-key={key} />
+													<span>Confirmed by an insurer or broker</span>
+												</label>
+												<label class="check">
+													<input type="checkbox" data-field="open" data-key={key} />
+													<span>Open question</span>
+												</label>
+												<div class="field" style="margin-top: var(--s-2)">
+													<label for={`note-${key}`}>Your note</label>
+													<input type="text" id={`note-${key}`} data-field="note" data-key={key} placeholder="Local note" />
+												</div>
+											</div>
+										);
+									})}
+								</div>
+							</section>
+						))}
+					</div>
+				)
+			}
+		</div>
+	</section>
+
+	<section class="band band-tight band-paper" aria-labelledby="summary-title">
+		<div class="shell">
+			<h2 id="summary-title">Where this stands</h2>
+			<div class="table-scroll" style="max-width: 720px">
+				<table class="data">
+					<caption>Counted from what you ticked above. Nothing here has been sent anywhere.</caption>
+					<thead><tr><th scope="col">Measure</th><th scope="col">Count</th><th scope="col">What it means</th></tr></thead>
+					<tbody>
+						<tr>
+							<th scope="row">Requested by the agreement</th>
+							<td class="num" data-count="requested">0</td>
+							<td>Terms the document asks for.</td>
+						</tr>
+						<tr>
+							<th scope="row">Confirmed in place</th>
+							<td class="num" data-count="confirmed">0</td>
+							<td>Someone with authority told you it is actually in force.</td>
+						</tr>
+						<tr>
+							<th scope="row">Requested but not confirmed</th>
+							<td class="num" data-count="gap">0</td>
+							<td>The list to work through. Not a failure, just the remaining work.</td>
+						</tr>
+						<tr>
+							<th scope="row">Open questions</th>
+							<td class="num" data-count="open">0</td>
+							<td>Things to ask a broker, an insurer, or in some cases a lawyer.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div id="mapper-empty" style="margin-top: var(--s-6)">
+				<StateBlock kind="empty" heading="Nothing ticked yet.">
+					<p>
+						Work through the agreement clause by clause and tick what it actually asks for. The
+						summary fills in as you go, and nothing is sent anywhere at any point.
+					</p>
+				</StateBlock>
+			</div>
+
+			<div id="mapper-legal" hidden style="margin-top: var(--s-6)">
+				<StateBlock kind="insufficient" heading="Some of what you ticked is a legal question, not an insurance one.">
+					<p>
+						Indemnity wording, additional insured scope, and who bears which risk under a contract
+						are interpreted by lawyers and courts, not by insurers and not by this tool. Take those
+						rows to counsel before you sign.
+					</p>
+				</StateBlock>
+			</div>
+		</div>
+	</section>
+
+	{
+		sources.length > 0 && (
+			<section class="band band-tight">
+				<div class="shell">
+					<SourceLedger sources={sources} today={TODAY} headingId="tool-source-ledger" />
+				</div>
+			</section>
+		)
+	}
+
+	<section class="band band-tight no-print">
+		<div class="shell">
+			<Handoff
+				sourcePath="/tools/requirement-mapper"
+				family="commercial"
+				sourceTool="requirement-mapper"
+				pageType="tool"
+				reason={escapeHtml('A licensed broker can tell you which of these requirements your current policies actually satisfy, and what it would take to satisfy the rest. This tool can only organize the question.')}
+			/>
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	import { completionBucket } from '../../lib/tool-storage';
+
+	const root = document.getElementById('mapper');
+	const emptyState = document.getElementById('mapper-empty');
+	const legalState = document.getElementById('mapper-legal');
+	const agreement = document.getElementById('agreement-type') as HTMLSelectElement | null;
+	const printAgreement = document.querySelector<HTMLElement>('[data-print-agreement]');
+
+	/*
+	 * The wide table and the narrow stacked view are two renderings of the same rows,
+	 * and exactly one is visible at a time. Keys are prefixed so a change in one view
+	 * mirrors into the other, which keeps the printed output correct at any width.
+	 */
+	const inputs = () => [...document.querySelectorAll<HTMLInputElement>('[data-field][data-key]')];
+	const baseKey = (key: string) => key.replace(/^s-/, '');
+
+	function mirror(source: HTMLInputElement) {
+		const key = baseKey(source.dataset.key || '');
+		const field = source.dataset.field;
+		for (const other of inputs()) {
+			if (other === source) continue;
+			if (baseKey(other.dataset.key || '') !== key || other.dataset.field !== field) continue;
+			if (other.type === 'checkbox') other.checked = source.checked;
+			else other.value = source.value;
+		}
+	}
+
+	function recount() {
+		const seen = new Map<string, { requested: boolean; confirmed: boolean; open: boolean }>();
+		for (const input of inputs()) {
+			if (input.type !== 'checkbox') continue;
+			const key = baseKey(input.dataset.key || '');
+			const row = seen.get(key) ?? { requested: false, confirmed: false, open: false };
+			const field = input.dataset.field as 'requested' | 'confirmed' | 'open';
+			if (input.checked) row[field] = true;
+			seen.set(key, row);
+		}
+
+		let requested = 0;
+		let confirmed = 0;
+		let open = 0;
+		let gap = 0;
+		for (const row of seen.values()) {
+			if (row.requested) requested += 1;
+			if (row.confirmed) confirmed += 1;
+			if (row.open) open += 1;
+			if (row.requested && !row.confirmed) gap += 1;
+		}
+
+		const set = (name: string, value: number) => {
+			const cell = document.querySelector<HTMLElement>(`[data-count="${name}"]`);
+			if (cell) cell.textContent = String(value);
+		};
+		set('requested', requested);
+		set('confirmed', confirmed);
+		set('open', open);
+		set('gap', gap);
+
+		const touched = requested + confirmed + open;
+		if (emptyState) emptyState.hidden = touched > 0;
+		if (legalState) legalState.hidden = open === 0;
+
+		if (touched > 0 && requested > 0) {
+			window.birTrack?.('tool_started', { tool_name: 'requirement-mapper' });
+		}
+		return { touched, total: seen.size || 1 };
+	}
+
+	root?.addEventListener('change', (event) => {
+		const target = event.target as HTMLInputElement;
+		if (!target?.dataset.field) return;
+		mirror(target);
+		recount();
+	});
+	root?.addEventListener('input', (event) => {
+		const target = event.target as HTMLInputElement;
+		if (target?.dataset.field !== 'note') return;
+		mirror(target);
+	});
+
+	agreement?.addEventListener('change', () => {
+		if (printAgreement) {
+			printAgreement.textContent =
+				agreement.options[agreement.selectedIndex]?.text || 'not specified';
+		}
+	});
+
+	window.birTool = {
+		id: 'requirement-mapper',
+		serialise() {
+			const state: Record<string, unknown> = { agreement: agreement?.value || '' };
+			for (const input of inputs()) {
+				const key = baseKey(input.dataset.key || '');
+				if (key.startsWith('s-')) continue;
+				state[`${input.dataset.field}:${key}`] = input.type === 'checkbox' ? input.checked : input.value;
+			}
+			const { touched, total } = recount();
+			state.completion = completionBucket(touched, total);
+			return state;
+		},
+		restore(state) {
+			if (agreement && typeof state.agreement === 'string') {
+				agreement.value = state.agreement;
+				agreement.dispatchEvent(new Event('change'));
+			}
+			for (const input of inputs()) {
+				const key = baseKey(input.dataset.key || '');
+				const stored = state[`${input.dataset.field}:${key}`];
+				if (stored === undefined) continue;
+				if (input.type === 'checkbox') input.checked = Boolean(stored);
+				else input.value = String(stored);
+			}
+			recount();
+		},
+		reset() {
+			for (const input of inputs()) {
+				if (input.type === 'checkbox') input.checked = false;
+				else input.value = '';
+			}
+			if (agreement) {
+				agreement.value = '';
+				agreement.dispatchEvent(new Event('change'));
+			}
+			recount();
+		},
+	};
+
+	recount();
+</script>

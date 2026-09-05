@@ -1,0 +1,26 @@
+{
+	"title": "12 CFR 1024.37 - Force-placed insurance (full regulatory text)",
+	"publisher": "Legal Information Institute, Cornell Law School (republishing the Code of Federal Regulations)",
+	"url": "https://www.law.cornell.edu/cfr/text/12/1024.37",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Within 15 days of receiving evidence that a borrower has hazard insurance coverage that complies with the loan contract's requirements, a servicer must cancel the force-placed insurance it purchased.",
+		"The servicer must refund to the borrower all force-placed insurance premium charges and related fees paid for any period of overlapping insurance coverage.",
+		"The servicer must also remove from the borrower's account all force-placed insurance charges and related fees for any period of overlapping coverage.",
+		"A bona fide and reasonable charge is a charge for a service actually performed that bears a reasonable relationship to the servicer's cost of providing the service and is not otherwise prohibited by applicable law.",
+		"The bona fide and reasonable requirement does not reach charges subject to State regulation as the business of insurance or charges authorized by the Flood Disaster Protection Act of 1973.",
+		"The section's definition of force-placed insurance excludes hazard insurance required by the Flood Disaster Protection Act of 1973, servicer renewal of borrower-obtained hazard insurance as described in 12 CFR 1024.17(k)(1), (2), or (5), and servicer renewal of borrower-obtained hazard insurance at the servicer's discretion if the borrower agrees."
+	],
+	"updateCadence": "Tracks CFPB amendments to Regulation X.",
+	"status": "active",
+	"notes": "Fetched on 2026-08-31 to confirm the 15-day cancellation, the refund and account-removal duty, and the bona fide and reasonable definition with its two carve-outs, which the CFPB rendering did not surface as cleanly. The content is primary law; the publisher is a law-school republisher of the official text, not the issuing agency.",
+	"officialHost": false
+}

@@ -1,0 +1,29 @@
+{
+	"title": "California Insurance Code Section 661 (the only grounds on which an automobile policy may be cancelled)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=661",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "2013-01-01",
+	"accessedDate": "2026-09-02",
+	"lastChecked": "2026-09-02",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 661(a) provides that a notice of cancellation of a policy shall be effective only if it is based on one or more of the five reasons the subdivision lists.",
+		"Section 661(a)(1) lists nonpayment of premium as a ground for cancellation.",
+		"Section 661(a)(2) lists as a ground that the driver's license or motor vehicle registration of the named insured, or of any other operator who either resides in the same household or customarily operates an automobile insured under the policy, has been under suspension or revocation during the policy period or, if the policy is a renewal, during its policy period or the 180 days immediately preceding its effective date.",
+		"Section 661(a)(3) lists as a ground the discovery of fraud by the named insured in pursuing a claim under the policy, provided the insurer does not rescind the policy.",
+		"Section 661(a)(4) lists as a ground the discovery of material misrepresentation of the named insured's or a customarily-operating household resident's safety record, annual miles driven in prior years, number of years of driving experience, record of prior automobile insurance claims, or any other factor found by the commissioner to have a substantial relationship to the risk of loss.",
+		"Section 661(a)(4) provides that an insured who negligently misrepresents information of that kind may avoid cancellation by furnishing corrected information to the insurer within 20 days after receiving notice of cancellation and agreeing to pay any difference in premium for the policy period in which the information remained undisclosed.",
+		"Section 661(a)(5) lists as a ground a substantial increase in the hazard insured against.",
+		"Section 661(b) provides that modification of automobile physical damage coverage by the inclusion of a deductible not exceeding one hundred dollars shall not be deemed a cancellation of the coverage or of the policy.",
+		"Section 661(c) provides that the section does not apply to nonrenewal."
+	],
+	"updateCadence": "Amended only by legislation. Last amended by Stats. 2012, Ch. 786, Sec. 5 (AB 2303), effective January 1, 2013.",
+	"status": "active",
+	"notes": "Subdivision (c) is the limit of the protection and the part that most often surprises a policyholder: the five grounds constrain cancellation during a policy period, and say nothing about an insurer declining to renew at the end of one. Nonrenewal is governed by section 663 instead. The list also reaches only policies within the scope of section 660."
+}

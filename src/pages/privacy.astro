@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Callout from '../components/Callout.astro';
+import DataTable from '../components/DataTable.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { isPreview, siteConfig } from '../config/site';
+import { ANALYTICS_EVENTS } from '../lib/analytics';
+import { breadcrumbs, graph, organization, website } from '../lib/schema';
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Privacy', path: '/privacy' },
+];
+
+const storageRows = [
+	[
+		'Your question on the Ask page',
+		'Never leaves your device',
+		'Held in memory while you are on the page. Handed between pages in sessionStorage and deleted on arrival.',
+		'Closing the tab',
+	],
+	[
+		'Your filter selections',
+		'localStorage on your device',
+		'Only fixed values such as "commercial" or "CA". Never free text.',
+		'Clearing site data',
+	],
+	[
+		'Tool entries',
+		'localStorage on your device',
+		'Whatever you typed into a tool, saved only when you press Save on this device.',
+		'Pressing Start over, or clearing site data',
+	],
+	[
+		'Search index',
+		'Downloaded to your device',
+		'A static file of published page text. Downloading it tells us nothing about what you then search for.',
+		'Normal browser cache rules',
+	],
+];
+
+const jsonLd = graph(organization(), website(), breadcrumbs(trail));
+---
+
+<BaseLayout
+	title="Privacy"
+	description="What this site does and does not collect, where your question actually goes, and why the lookup runs on your device."
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
+	<PageHeader
+		eyebrow="Privacy"
+		title="Your question never leaves your device"
+		lede="This page describes what the site actually does, not what a policy template says it might do. Where the two would differ, the behaviour is changed rather than the wording."
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell answer-grid">
+			<div class="prose">
+				<h2 id="short">The short version</h2>
+				<ul>
+					<li>No account, email address, or phone number is required to read anything here.</li>
+					<li>
+						Your question is never sent to a server. The lookup runs in your browser against a static
+						index file.
+					</li>
+					<li>Your question is never written into a URL by this site, and is stripped if it arrives in one.</li>
+					<li>Nothing you type into a tool is uploaded. No file upload exists anywhere on the site.</li>
+					<li>No analytics event ever contains free text.</li>
+					<li>No session replay, anywhere, ever.</li>
+				</ul>
+
+				<h2 id="questions">Why the lookup runs on your device</h2>
+				<p>
+					An insurance question can be unavoidably personal. Someone asking about a claim denial, a
+					health plan, or a dispute with a landlord is telling you something about their life. The
+					safest way to handle that is to never receive it.
+				</p>
+				<p>
+					So the search index is a static file. Your browser downloads it once and runs every lookup
+					locally. We can see that the index file was requested, the same as any image or stylesheet.
+					We cannot see what you searched for, because it never travels.
+				</p>
+
+				<Callout tone="privacy">
+					<p>
+						<strong>If a question does arrive in the address bar</strong>, from a bookmark, a
+						no-JavaScript form submit, or a link from elsewhere, the Ask page runs it once, then
+						immediately removes it from the URL and tells you it has done so. That stops it sitting
+						in your history, in a shared link, or in the referrer header of your next outbound click.
+					</p>
+				</Callout>
+
+				<p>
+					We also ask you not to type private facts in the first place, on the field itself. You do
+					not need a policy number or an address to get a useful answer here, and the site is not
+					built to receive them.
+				</p>
+
+				<h2 id="storage">What is stored, and where</h2>
+				<DataTable
+					caption="Everything this site stores. All of it is on your own device."
+					columns={['What', 'Where it lives', 'What it contains', 'How it goes away']}
+					rows={storageRows}
+				/>
+				<p>
+					There is no server-side store of anything a visitor types. There is no database of
+					questions, no log of searches, and no profile of any kind.
+				</p>
+
+				<h2 id="analytics">Analytics</h2>
+				{
+					isPreview ? (
+						<Callout tone="note">
+							<p>
+								<strong>This is a preview build, and analytics are off entirely.</strong> No
+								third-party marketing or measurement script loads on any page in this environment,
+								and the site emits <code>noindex, nofollow</code> with a blocking{' '}
+								<code>robots.txt</code>.
+							</p>
+						</Callout>
+					) : (
+						<p>Aggregate analytics are enabled on this deployment under the constraints below.</p>
+					)
+				}
+				<p>
+					When analytics are enabled in production, they are constrained in code rather than by
+					policy. Every event is filtered against a published contract before it can be sent: an
+					event name that is not on the list is dropped, a parameter that is not on the list is
+					dropped, and a parameter value that is not in that parameter's fixed vocabulary is dropped.
+					A free-text value cannot pass that filter, because there is no vocabulary that accepts one.
+				</p>
+				<p>The complete set of events that can ever be sent:</p>
+				<ul>{ANALYTICS_EVENTS.map((event) => <li><code>{event}</code></li>)}</ul>
+				<p>
+					Allowed parameters are limited to fixed vocabularies: insurance family, line, state, source
+					type, page type, tool name, answer status, and a completion percentage rounded to the
+					nearest ten. The full specification is in <code>ANALYTICS-EVENT-SPEC.md</code> in the
+					repository, and the same contract is embedded in every page so the filter and the
+					documentation cannot drift apart.
+				</p>
+				<p>
+					Never sent, under any configuration: your question, anything you typed into a tool, a name,
+					an email address, a phone number, an address, a policy or claim number, or the contents of
+					any document.
+				</p>
+
+				<h2 id="handoff">If you choose to contact Bollinsure</h2>
+				<p>
+					The licensed-help links are optional and appear only after content you came for. Following
+					one passes a small, fixed set of values so the destination knows where you came from:
+				</p>
+				<ul>
+					<li>the page path you came from;</li>
+					<li>the insurance family and line, as fixed values;</li>
+					<li>the tool name, if you came from a tool;</li>
+					<li>a completion percentage rounded to the nearest ten, if you came from a tool.</li>
+				</ul>
+				<p>
+					Your question and anything you typed into a tool are never included. Personal information
+					is collected only if you choose to provide it in Bollinsure's own disclosed intake, which
+					is a separate site with its own privacy terms.
+				</p>
+
+				<h2 id="third-parties">Third parties</h2>
+				<ul>
+					<li>Fonts are served from this site, not from a font CDN, so no third party sees your visit.</li>
+					<li>There is no advertising, no ad pixel, and no retargeting tag.</li>
+					<li>There is no chat widget, no heatmap, and no session replay.</li>
+					<li>
+						Links to sources open the publisher's own site. What they do is governed by their
+						policies, and they are marked as external.
+					</li>
+				</ul>
+
+				<h2 id="security">Security posture</h2>
+				<ul>
+					<li>The site is statically rendered. There is no application server to breach and no user database to leak.</li>
+					<li>No API secret exists in browser code, because the site makes no authenticated call.</li>
+					<li>Preview and production are separate environments with separate configuration.</li>
+					<li>
+						Response headers set <code>X-Content-Type-Options</code>, <code>X-Frame-Options</code>,
+						a referrer policy, and a permissions policy that denies camera, microphone, and
+						geolocation.
+					</li>
+				</ul>
+
+				<h2 id="contact">Questions about this page</h2>
+				<p>
+					Email <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>. If you
+					find a difference between what this page says and what the site does, that is a bug worth
+					reporting, and it will be fixed in the behaviour first.
+				</p>
+			</div>
+
+			<aside class="answer-rail" aria-label="Page contents">
+				<nav class="rail-block" aria-labelledby="on-this-page">
+					<h2 id="on-this-page">On this page</h2>
+					<ol>
+						<li><a href="#short">The short version</a></li>
+						<li><a href="#questions">Why lookup is local</a></li>
+						<li><a href="#storage">What is stored</a></li>
+						<li><a href="#analytics">Analytics</a></li>
+						<li><a href="#handoff">The Bollinsure handoff</a></li>
+						<li><a href="#third-parties">Third parties</a></li>
+						<li><a href="#security">Security posture</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ol>
+				</nav>
+				<div class="rail-block">
+					<h2>At a glance</h2>
+					<dl>
+						<div><dt>Account required</dt><dd>No</dd></div>
+						<div><dt>Question sent to a server</dt><dd>No</dd></div>
+						<div><dt>File upload</dt><dd>None exists</dd></div>
+						<div><dt>Session replay</dt><dd>No</dd></div>
+						<div><dt>Analytics in preview</dt><dd>{isPreview ? 'Disabled' : 'Enabled'}</dd></div>
+					</dl>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

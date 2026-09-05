@@ -1,0 +1,30 @@
+{
+	"title": "ACORD 140 (2007/09) Property Section",
+	"publisher": "ACORD (standard form; third-party copy hosted by Provider Risk)",
+	"url": "https://www.providerrisk.com/Acord140.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-09-01",
+	"lastCheckedBasis": "recheck",
+	"primary": true,
+	"claims": [
+		"The footer of this form reads ACORD 140 (2007/09), ATTACH TO ACORD 125, and carries a 1985-2007 ACORD Corporation copyright line.",
+		"Per building, the form collects CONSTRUCTION TYPE, number of open sides on the structure, PROT CL, number of stories, number of basements, year built, and total area.",
+		"The form has a BUILDING IMPROVEMENTS block asking for WIRING YR, ROOFING YR, PLUMBING YR, HEATING YR, and OTHER YR, plus BLDG CODE GRADE, TAX CODE, ROOF TYPE, and OTHER OCCUPANCIES fields.",
+		"The form collects DISTANCE TO HYDRANT and FIRE STAT with FT and MI subheads, FIRE DISTRICT/CODE NUMBER, PREMISES FIRE PROTECTION (Sprinklers, Standpipes, CO2/Chemical Systems), % SPRNK, FIRE ALARM MANUFACTURER with CENTRAL STATION and LOCAL GONG options, and BURGLAR ALARM TYPE with CERTIFICATE #, EXPIRATION DATE, CENTRAL STATION, EXTENT, GRADE, and number of guards or watchmen.",
+		"The form collects RIGHT, LEFT, FRONT, and REAR EXPOSURE & DISTANCE, and has a WIND CLASS field with SEMI-RESISTIVE and RESISTIVE options.",
+		"The form directs that business income and extra expense information attaches on ACORD 810 and value reporting information attaches on ACORD 811.",
+		"The form's general fraud warning paragraph reads: ANY PERSON WHO KNOWINGLY AND WITH INTENT TO DEFRAUD ANY INSURANCE COMPANY OR ANOTHER PERSON FILES AN APPLICATION FOR INSURANCE OR STATEMENT OF CLAIM CONTAINING ANY MATERIALLY FALSE INFORMATION, OR CONCEALS FOR THE PURPOSE OF MISLEADING INFORMATION CONCERNING ANY FACT MATERIAL THERETO, COMMITS A FRAUDULENT INSURANCE ACT, WHICH IS A CRIME AND SUBJECTS THE PERSON TO CRIMINAL AND [NY: SUBSTANTIAL] CIVIL PENALTIES.",
+		"That same paragraph is followed by the parenthetical: Not applicable in CO, FL, HI, MA, NE, OH, OK, OR or VT; in DC, LA, ME, TN, VA and WA, insurance benefits may also be denied.",
+		"The form carries separate substitute fraud-warning paragraphs for Florida and for Massachusetts, Nebraska, Oregon, and Vermont."
+	],
+	"updateCadence": "annually",
+	"status": "superseded",
+	"notes": "Fetched today. WebFetch returned PDF binary, so the text was extracted locally with pdftotext -layout and the field labels and fraud-warning paragraphs were read verbatim. Two limits recorded honestly: this is a third-party mirror of a copyrighted ACORD standard form rather than a file served by ACORD, because ACORD distributes forms to licensed users; and 2007/09 is a superseded edition, so every statement drawn from it is edition-specific and is labeled as such in the prose. The form does not say what classification system fills the PROT CL field.",
+	"officialHost": false,
+	"statusNote": "The copy verified is edition 2007/09, which is not ACORD current edition. ACORD revises its standard forms periodically and does not publish editions openly, so the current edition cannot be linked here. Every claim on this record describes the printed content of the 2007/09 edition and is read off the form itself, so it remains accurate about that edition. Do not treat it as a description of the form a carrier uses today."
+}

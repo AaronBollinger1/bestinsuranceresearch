@@ -1,0 +1,21 @@
+{
+	"title": "Prior acts coverage (glossary of insurance and risk management terms)",
+	"publisher": "International Risk Management Institute, Inc. (IRMI)",
+	"url": "https://www.irmi.com/term/insurance-definitions/prior-acts-coverage",
+	"sourceType": "secondary-analysis",
+	"jurisdiction": "US",
+	"authorityLevel": "secondary",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"Defines prior acts coverage as a feature of claims-made policies that have either no retroactive date or a retroactive date earlier than the inception date of the policy."
+	],
+	"updateCadence": "glossary entries are revised by the publisher without a fixed schedule",
+	"status": "active",
+	"notes": "Fetched 2026-08-31; the definition was read off the page. IRMI is a commercial insurance reference publisher, not a regulator, so this is cited only to attribute an industry term of art and never for a legal requirement or a coverage outcome. The page shows no publication or revision date.",
+	"officialHost": true
+}

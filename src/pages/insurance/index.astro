@@ -1,0 +1,147 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { stripMarkers } from '../../lib/citations';
+import { loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
+
+const corpus = await loadCorpus();
+const coverages = [...corpus.coverages].sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+const families = [...new Set(coverages.map((c) => c.data.family))].sort();
+const FAMILY_LABEL: Record<string, string> = {
+	personal: 'Personal lines',
+	commercial: 'Commercial lines',
+	life: 'Life',
+	health: 'Health and benefits',
+};
+
+/*
+ * The published taxonomy and the roadmap are separate on purpose. A family with
+ * no substantive page is named here as a gap, not published as an empty route,
+ * and it stays out of the sitemap and out of navigation until it has content.
+ */
+const ROADMAP: Array<{ family: string; lines: string[] }> = [
+	{
+		family: 'Personal lines',
+		lines: ['Renters', 'Condominium unit owners', 'Personal auto', 'Personal umbrella', 'Scheduled valuables', 'Flood', 'High-net-worth programs'],
+	},
+	{
+		family: 'Commercial lines',
+		lines: ['Business owners package', 'Commercial auto', 'Commercial umbrella and excess', 'Cyber', 'Employment practices liability', 'Professional liability', 'Directors and officers', 'Crime', 'Inland marine', 'Builders risk', 'Surety bonds', 'Equipment'],
+	},
+	{ family: 'Life', lines: ['Term life', 'Permanent life', 'Key person', 'Buy-sell funding'] },
+	{ family: 'Health and benefits', lines: ['Group health concepts', 'Employee benefits', 'COBRA', 'Public program explanations'] },
+];
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Coverage', path: '/insurance' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'Coverage library',
+		path: '/insurance',
+		description: 'Insurance lines explained with policy-form caveats, underwriting inputs, and state variations.',
+		items: coverages.map((c) => ({ name: c.data.name, path: `/insurance/${c.id}` })),
+	}),
+	{
+		'@type': 'DefinedTermSet',
+		'@id': `${new URL('/insurance', Astro.site ?? 'https://bestinsuranceresearch.com').toString()}#termset`,
+		name: 'BestInsurance Research coverage library',
+		hasDefinedTerm: coverages.map((c) => ({
+			'@type': 'DefinedTerm',
+			name: c.data.name,
+			url: new URL(`/insurance/${c.id}`, Astro.site ?? 'https://bestinsuranceresearch.com').toString(),
+		})),
+	},
+);
+---
+
+<BaseLayout
+	title="Coverage library"
+	description="Insurance lines explained with policy-form caveats, the information underwriters request, and state variations. Every page carries a source ledger."
+	jsonLd={jsonLd}
+	pageType="coverage"
+>
+	<PageHeader
+		eyebrow="Coverage library"
+		title="Insurance lines, with the caveats attached"
+		lede={`${coverages.length} lines published. Each page states what the line is designed to protect, what it commonly covers and excludes, and the exact reason those statements are not a coverage determination.`}
+		trail={trail}
+	/>
+
+	{
+		families.map((family) => {
+			const group = coverages.filter((c) => c.data.family === family);
+			return (
+				<section class="band band-tight" aria-labelledby={`family-${family}`}>
+					<div class="shell">
+						<div class="band-head">
+							<div>
+								<span class="eyebrow">{FAMILY_LABEL[family] ?? family}</span>
+								<h2 id={`family-${family}`}>
+									{group.length} published {group.length === 1 ? 'line' : 'lines'}
+								</h2>
+							</div>
+						</div>
+						<div class="rows">
+							{group.map((coverage) => (
+								<a class="row" href={`/insurance/${coverage.id}`}>
+									<div>
+										<h3 class="row-title">{coverage.data.name}</h3>
+										<p>{stripMarkers(coverage.data.definition).slice(0, 210)}</p>
+										<div class="row-meta">
+											<StatusChip kind={coverage.data.reviewState} />
+											<span class="meta">{coverage.data.sourceIds.length} sources</span>
+											<span class="meta">
+												{coverage.data.stateVariations.length} state variation
+												{coverage.data.stateVariations.length === 1 ? '' : 's'}
+											</span>
+											<span class="meta">Reviewed {longDate(coverage.data.lastReviewed)}</span>
+										</div>
+									</div>
+									<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+								</a>
+							))}
+						</div>
+					</div>
+				</section>
+			);
+		})
+	}
+
+	<section class="band band-paper" aria-labelledby="roadmap-title">
+		<div class="shell">
+			<span class="eyebrow">Not yet published</span>
+			<h2 id="roadmap-title">The rest of the taxonomy, named rather than faked</h2>
+			<Callout tone="limit">
+				<p>
+					These lines are planned. They have no route, no sitemap entry, and no navigation link until
+					a reviewed page exists, because an empty taxonomy page helps nobody and misrepresents the
+					depth of the library.
+				</p>
+			</Callout>
+			<div class="card-grid" style="margin-top: var(--s-5)">
+				{
+					ROADMAP.map((group) => (
+						<div class="card">
+							<h3 class="card-title">{group.family}</h3>
+							<ul style="margin: var(--s-2) 0 0; font-size: var(--text-sm); color: var(--muted)">
+								{group.lines.map((line) => <li>{line}</li>)}
+							</ul>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</BaseLayout>

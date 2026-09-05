@@ -1,0 +1,100 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { stripMarkers } from '../../lib/citations';
+import { loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
+
+const corpus = await loadCorpus();
+const states = [...corpus.states].sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'States', path: '/states' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'State insurance context',
+		path: '/states',
+		description: 'Regulator, rate mechanism, residual market, and statutory minimums for each published jurisdiction.',
+		items: states.map((s) => ({ name: s.data.name, path: `/states/${s.id}` })),
+	}),
+);
+---
+
+<BaseLayout
+	title="State insurance context"
+	description="Regulator, rate mechanism, residual market, and current statutory minimums for each published jurisdiction."
+	jsonLd={jsonLd}
+	pageType="state"
+>
+	<PageHeader
+		eyebrow="Jurisdictions"
+		title="Insurance is regulated state by state"
+		lede={`${states.length} jurisdictions published. Each page names the regulator, how rates are approved, whether a residual market exists, and the statutory minimums that were current at the last review.`}
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell">
+			<Callout tone="limit">
+				<p>
+					<strong>These are not doorway pages.</strong> A state gets a page only when the library can
+					source its regulator, its rate mechanism, its residual market, and its current statutory
+					minimums, and only when published questions actually turn on that jurisdiction. There is no
+					plan to generate one page per state, or one page per city, to chase search volume.
+				</p>
+			</Callout>
+
+			<div class="rows" style="margin-top: var(--s-6)">
+				{
+					states.map((state) => (
+						<a class="row" href={`/states/${state.id}`}>
+							<div>
+								<h2 class="row-title">{state.data.name}</h2>
+								<p>{stripMarkers(state.data.summary).slice(0, 220)}</p>
+								<div class="row-meta">
+									<StatusChip kind={state.data.reviewState} />
+									<span class="meta">{state.data.regulator.name}</span>
+									{state.data.residualMarket && <span class="meta">Residual market: {state.data.residualMarket.name}</span>}
+									<span class="meta">{state.data.sourceIds.length} sources</span>
+									<span class="meta">Reviewed {longDate(state.data.lastReviewed)}</span>
+								</div>
+							</div>
+							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-paper">
+		<div class="shell">
+			<span class="eyebrow">Coverage plan</span>
+			<h2>Which jurisdictions come next, and why</h2>
+			<div class="prose">
+				<p>
+					California is first because the operator is a California brokerage and because California
+					has statutory machinery, a rate-approval regime, a residual market, and an earthquake
+					authority that together explain most of what confuses people about property insurance
+					there. Texas and Florida follow because their catastrophe exposure produced their own
+					distinctive statutory mechanisms, which makes them genuinely different rather than
+					differently worded.
+				</p>
+				<p>
+					A jurisdiction is added when a published question needs it, not to complete a map. Any
+					state page that cannot carry current, dated, sourced statutory minimums does not publish.
+				</p>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

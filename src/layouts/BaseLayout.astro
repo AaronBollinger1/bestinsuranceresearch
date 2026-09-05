@@ -1,0 +1,210 @@
+---
+import '@fontsource/newsreader/400.css';
+import '@fontsource/newsreader/400-italic.css';
+import '@fontsource/newsreader/500.css';
+import '@fontsource/schibsted-grotesk/400.css';
+import '@fontsource/schibsted-grotesk/500.css';
+import '@fontsource/schibsted-grotesk/600.css';
+import '@fontsource/schibsted-grotesk/700.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { siteConfig, isPreview } from '../config/site';
+import { analyticsContract } from '../lib/analytics';
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	/** Route-level override. Preview is always noindex regardless. */
+	noindex?: boolean;
+	jsonLd?: Record<string, unknown>;
+	/** Controlled vocabulary value from ANALYTICS_PARAMETERS.page_type. */
+	pageType?: string;
+	/** Machine-readable JSON companion for this page, if it has one. */
+	machinePath?: string;
+	bodyClass?: string;
+}
+
+const {
+	title,
+	description = siteConfig.description,
+	image = '/og.jpg',
+	noindex = false,
+	jsonLd,
+	pageType = 'editorial',
+	machinePath,
+	bodyClass,
+} = Astro.props;
+
+const blockIndexing = isPreview || noindex;
+const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '');
+const canonical = new URL(canonicalPath, siteConfig.origin).toString();
+const fullTitle = title ? `${title} | ${siteConfig.name}` : `${siteConfig.name} | Insurance answers with the evidence attached`;
+const ogImage = new URL(image, siteConfig.origin).toString();
+const analyticsEnabled = siteConfig.analytics.enabled;
+const gtmId = siteConfig.analytics.gtmId;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{fullTitle}</title>
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#ffffff" />
+		{blockIndexing && <meta name="robots" content="noindex, nofollow" />}
+		{!blockIndexing && <meta name="robots" content="index, follow, max-image-preview:large" />}
+		<link rel="canonical" href={canonical} />
+		<link rel="icon" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
+		<link rel="icon" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="alternate" type="application/rss+xml" title={`${siteConfig.name} - newly reviewed research`} href="/rss.xml" />
+		{machinePath && <link rel="alternate" type="application/json" title="Machine-readable page record" href={machinePath} />}
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={siteConfig.name} />
+		<meta property="og:title" content={title || siteConfig.name} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:alt" content={`${siteConfig.name}`} />
+		<meta property="og:locale" content="en_US" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title || siteConfig.name} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="author" content={`${siteConfig.operator.legalName} dba ${siteConfig.operator.dba}`} />
+		{jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+		{
+			analyticsEnabled && (
+				<script is:inline define:vars={{ gtmId }}>
+					window.dataLayer = window.dataLayer || [];
+					window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+					var s = document.createElement('script');
+					s.async = true;
+					s.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
+					document.head.appendChild(s);
+				</script>
+			)
+		}
+	</head>
+	<body class={bodyClass} data-page-type={pageType} data-site-env={siteConfig.environment}>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<SiteHeader />
+		<main id="main">
+			<slot />
+		</main>
+		<SiteFooter />
+
+		<script type="application/json" id="bir-analytics-contract" is:inline set:html={JSON.stringify(analyticsContract)} />
+
+		<script>
+			/*
+			 * Privacy-enforcing analytics shim.
+			 *
+			 * Nothing is transmitted unless a production deployment supplies a
+			 * container id. Even then, a payload can only contain events and
+			 * parameter values from the published contract, so a question, an
+			 * address, or a tool-entered fact cannot leave this page by accident.
+			 */
+			type Contract = {
+				events: string[];
+				parameters: Record<string, string[]>;
+				forbidden: string[];
+			};
+
+			const node = document.getElementById('bir-analytics-contract');
+			const contract: Contract | null = node ? JSON.parse(node.textContent || 'null') : null;
+			const enabled = document.body.dataset.siteEnv === 'production' && Array.isArray((window as any).dataLayer);
+
+			function track(event: string, params: Record<string, string> = {}) {
+				if (!contract || !contract.events.includes(event)) return;
+				const payload: Record<string, string> = { event };
+				for (const [key, value] of Object.entries(params)) {
+					if (contract.forbidden.includes(key)) continue;
+					const vocabulary = contract.parameters[key];
+					if (!vocabulary || !vocabulary.includes(value)) continue;
+					payload[key] = value;
+				}
+				if (!enabled) return;
+				(window as any).dataLayer.push(payload);
+			}
+
+			(window as any).birTrack = track;
+
+			document.addEventListener('click', (event) => {
+				const target = (event.target as HTMLElement | null)?.closest<HTMLElement>('[data-event]');
+				if (!target) return;
+				const params: Record<string, string> = {};
+				for (const [key, value] of Object.entries(target.dataset)) {
+					if (key === 'event' || !value) continue;
+					params[key.replace(/[A-Z]/g, (c) => `_${c.toLowerCase()}`)] = value;
+				}
+				track(target.dataset.event as string, params);
+			});
+		</script>
+
+		<script>
+			/*
+			 * Question forms outside /ask (the header and the homepage) hand the question
+			 * to /ask through sessionStorage instead of the query string, so a typed
+			 * question never lands in browser history, a bookmark, a shared link, or a
+			 * Referer header. Without JavaScript the same form degrades to a plain GET,
+			 * which still works; /ask then strips the parameter on arrival.
+			 */
+			const PENDING_KEY = 'bir_pending_question';
+			const CONTEXT_KEY = 'bir_context';
+
+			document.querySelectorAll<HTMLFormElement>('form[data-question-form]').forEach((form) => {
+				form.addEventListener('submit', (event) => {
+					const data = new FormData(form);
+					const question = String(data.get('q') || '').trim();
+					if (!question) return;
+					event.preventDefault();
+					const context: Record<string, string> = {};
+					for (const key of ['family', 'line', 'state', 'audience']) {
+						const value = String(data.get(key) || 'any');
+						if (value && value !== 'any') context[key] = value;
+					}
+					try {
+						sessionStorage.setItem(PENDING_KEY, question);
+						sessionStorage.setItem(CONTEXT_KEY, JSON.stringify(context));
+					} catch {
+						/* Private mode or blocked storage: fall through to the plain GET. */
+						form.submit();
+						return;
+					}
+					window.location.assign('/ask');
+				});
+			});
+		</script>
+
+		<script>
+			/*
+			 * Copy-to-clipboard for the "Cite this page" control. The text is already
+			 * visible on the page, so the button is a convenience, never the only path.
+			 */
+			document.querySelectorAll<HTMLButtonElement>('[data-copy-target]').forEach((button) => {
+				button.addEventListener('click', async () => {
+					const source = document.getElementById(button.dataset.copyTarget || '');
+					if (!source || !navigator.clipboard) return;
+					const label = button.querySelector('[data-copy-label]');
+					const original = label?.textContent || 'Copy';
+					try {
+						await navigator.clipboard.writeText(source.textContent || '');
+						if (label) label.textContent = 'Copied';
+					} catch {
+						if (label) label.textContent = 'Select the text above';
+					}
+					window.setTimeout(() => {
+						if (label) label.textContent = original;
+					}, 2200);
+				});
+			});
+		</script>
+	</body>
+</html>

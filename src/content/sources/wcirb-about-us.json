@@ -1,0 +1,23 @@
+{
+	"title": "About Us - WCIRB California",
+	"publisher": "Workers' Compensation Insurance Rating Bureau of California (WCIRB)",
+	"url": "https://www.wcirb.com/about-us",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"The WCIRB was organized in 1915 as a California unincorporated, private, nonprofit association, operates under the authority of the California Insurance Code, is licensed by the State of California, and is the Insurance Commissioner's designated statistical agent.",
+		"The WCIRB is comprised of all companies licensed to transact workers' compensation insurance in California, and it is led by a Governing Committee comprised of seven private insurers elected by the membership, the State Compensation Insurance Fund and four public members appointed by the Insurance Commissioner.",
+		"The WCIRB describes its work as providing accurate advisory pure premium rates, experience modifications and standard classification assignments."
+	],
+	"updateCadence": "Static organizational page.",
+	"status": "active",
+	"notes": "Re-fetched and re-verified 2026-08-31 over HTTPS with a browser user agent (WebFetch gets 403), HTTP 200, 95,111 bytes. All three claims matched as literal strings. The Governing Committee claim was widened on this pass from 'includes four public members' to the page's full composition sentence, because the narrower version left out the elected private insurers and the State Compensation Insurance Fund. URL RE-CHECKED 2026-08-31: HTTP 200, no redirect, 95,223 bytes. All three claims re-matched today, including the full Governing Committee composition (seven private insurers, the State Compensation Insurance Fund, four public members).",
+	"officialHost": true
+}

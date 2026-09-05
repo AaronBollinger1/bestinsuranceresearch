@@ -1,0 +1,24 @@
+{
+	"title": "Exclusion - Engineers, Architects Or Surveyors Professional Liability, Form CG 22 43 04 13",
+	"publisher": "Insurance Services Office, Inc. (specimen published publicly by the Independent Insurance Agents of Texas)",
+	"url": "https://www.iiat.org/uploads/files/general/InfoCentral/Commercial-GL/cg2243.pdf",
+	"sourceType": "policy-form",
+	"jurisdiction": "US",
+	"authorityLevel": "standards-body",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The endorsement states that it modifies insurance provided under the Commercial General Liability Coverage Part and adds an exclusion to Paragraph 2. Exclusions of both Coverage A and Coverage B.",
+		"The added exclusion states that the insurance does not apply to bodily injury, property damage or personal and advertising injury arising out of the rendering of or failure to render any professional services by you or any engineer, architect or surveyor who is either employed by you or performing work on your behalf in such capacity.",
+		"The endorsement states that professional services include the preparing, approving, or failing to prepare or approve, maps, shop drawings, opinions, reports, surveys, field orders, change orders or drawings and specifications, and supervisory, inspection, architectural or engineering activities.",
+		"The exclusion applies even if the claims against any insured allege negligence or other wrongdoing in the supervision, hiring, employment, training or monitoring of others by that insured, if the occurrence or offense involved the rendering of or failure to render any professional services by you or any engineer, architect or surveyor who is either employed by you or performing work on your behalf in such capacity."
+	],
+	"updateCadence": "Advisory endorsement revised on multi-year cycles; the 04 13 edition is the one reviewed.",
+	"status": "active",
+	"notes": "PDF retrieved on 2026-08-31 and the complete one-page endorsement extracted with pdftotext and read in full. Header reads COMMERCIAL GENERAL LIABILITY CG 22 43 04 13, footer reads CG 22 43 04 13, Insurance Services Office, Inc., 2012, Page 1 of 1. The form prints only the edition designation 04 13, so publishedDate and effectiveDate record month and year, not a day. The scope of the exclusion is limited to the named insured and to engineers, architects or surveyors employed by or working on behalf of the named insured in that capacity; it is not a general exclusion of everyone working on the insured's behalf. Published: 2013-04 Effective: 2013-04",
+	"officialHost": true
+}

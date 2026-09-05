@@ -1,0 +1,233 @@
+{
+	"name": "Homeowners insurance",
+	"line": "homeowners",
+	"family": "personal",
+	"definition": "Homeowners insurance is a package policy on a residence that combines property coverage on the dwelling, other structures, and personal property with loss of use, personal liability, and medical payments to others [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners]. Under its heading for perils generally covered and not covered by a homeowners policy, the California Department of Insurance lists fourteen causes of loss typically covered by a homeowners policy if damage is caused by them, including fire or lightning, windstorm or hail, explosion, smoke, theft, and vandalism and malicious mischief, lists typical exclusions separately, and instructs readers to read the exclusions in the insurance contract [S:cdi-residential-insurance-guide]. CDI does not use the term named peril and does not characterize homeowners policies as covering only the causes of loss listed, and no source in this cluster states whether a particular homeowners form is written on a named-peril or an open-peril basis, so nothing is asserted here on that point. Both CDI and NAIC list flood and earthquake among what standard policies do not cover, and FEMA states that most homeowners insurance does not cover flood damage [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners][S:fema-nfip-eligibility]. Neither CDI nor NAIC identifies a policy form number or edition, and what any specific home actually has depends on the form and endorsements the insurer issued, so the declarations page and the form control; this page is general information, not a coverage determination.",
+	"protects": [
+		"The owner-occupant of a residence, for damage to the structure and for liability claims [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners]",
+		"The house itself, with the face amount of the policy described by NAIC as the most the insured will receive if the house is totally destroyed [S:naic-consumer-homeowners]",
+		"Structures not attached to the house, such as a detached garage, work shed, or fencing [S:naic-consumer-homeowners]",
+		"Household contents and other personal belongings used, owned or worn by the insured and the insured's family [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners]",
+		"The household's normal standard of living, as nearly as possible, while the house cannot be occupied due to a covered loss [S:naic-consumer-homeowners]",
+		"The insured against claims arising from accidents to others on property the insured owns or rents [S:naic-consumer-homeowners]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Dwelling (Coverage A)",
+			"note": "CDI describes Coverage A Dwelling as one of the coverage parts of a homeowners policy, and NAIC describes dwelling coverage as covering damage to the house, with the face amount of the policy the most the insured will receive if the house is totally destroyed [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners]. Form caveat: both pages describe homeowners policies generally and neither identifies a policy form number or edition, so this is a description of many forms rather than of any one filed form. Which causes of loss apply, and how a loss is valued, are set by the form and endorsements actually issued. Read your own policy."
+		},
+		{
+			"item": "Other structures (Coverage B)",
+			"note": "NAIC describes other structures coverage as covering damage to structures or buildings not attached to the house, such as a detached garage, work shed, or fencing, and CDI states that Coverage B is normally limited to 10 percent of the Coverage A limit [S:naic-consumer-homeowners][S:cdi-residential-insurance-guide]. NAIC separately lists detached buildings or pools among items not covered by standard policies, so the two pages are not uniform on this point [S:naic-consumer-homeowners]. Form caveat: neither page names a policy form or edition, and the actual limit and any percentage relationship are whatever the issued form and declarations state. Read your own policy."
+		},
+		{
+			"item": "Personal property (Coverage C)",
+			"note": "CDI describes Coverage C as protecting the contents of the home and other personal belongings owned by the insured and other family members who live with the insured, states that the contents limit is generally around 50 percent of the dwelling amount and that this is a guideline only, and notes that additional amounts of insurance may be purchased [S:cdi-residential-insurance-guide]. NAIC describes the same coverage as reaching household contents and other personal belongings used, owned or worn by the insured and family [S:naic-consumer-homeowners]. Form caveat: these are general descriptions with no policy form number or edition identified; the covered property, the limit, and the special limits come from the issued form and declarations. Read your own policy."
+		},
+		{
+			"item": "Loss of use (Coverage D)",
+			"note": "NAIC describes loss of use as covering the necessary living expenses, up to the stated limit, incurred to continue as nearly as possible the normal standard of living when the house cannot be occupied due to a covered loss, and CDI states that Coverage D is normally limited to 20 percent of Coverage A [S:naic-consumer-homeowners][S:cdi-residential-insurance-guide]. Form caveat: neither page names a policy form or edition, and the limit, the time period, and what counts as an additional expense are set by the issued form. Read your own policy."
+		},
+		{
+			"item": "Personal liability (Coverage E)",
+			"note": "NAIC describes personal liability as protecting the insured against claims arising from accidents to others on property the insured owns or rents, and CDI lists Coverage E Personal Liability as a coverage part of the homeowners policy [S:naic-consumer-homeowners][S:cdi-residential-insurance-guide]. Form caveat: these are general descriptions with no policy form number or edition identified. Which activities and which claimants fall inside the insuring agreement, and which exclusions apply, are set by the issued form. Read your own policy."
+		},
+		{
+			"item": "Medical payments to others (Coverage F)",
+			"note": "NAIC describes medical payments coverage as limited to an amount per person and per accident for injuries occurring on the insured's premises to persons other than an insured, or elsewhere if caused by the insured, a member of the insured's family, or the insured's pets, and CDI lists Coverage F Medical Payments to Others as a coverage part [S:naic-consumer-homeowners][S:cdi-residential-insurance-guide]. Form caveat: neither page names a policy form or edition, and the per-person and per-accident amounts and the conditions of payment come from the issued form and declarations. Read your own policy."
+		},
+		{
+			"item": "Fire damage caused by or following an earthquake (California requirement)",
+			"note": "CDI states that California law says both homeowners and renters insurance must cover fire damage that is caused by or follows an earthquake [S:cdi-earthquake-insurance-guide]. CDI separately states that homeowners, renters, and condominium policies do not cover damage from earthquakes [S:cdi-earthquake-insurance-guide], so shake damage and fire following are handled under different coverage grants. Form caveat: this is a California requirement described by the state regulator, not a description of any one filed form or edition, and how a loss involving both shake damage and fire is adjusted is decided by the insurer under the forms actually in place and the facts of the claim, not by this page. Read your own policy."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Flood",
+			"note": "CDI lists flood among typical homeowners exclusions and NAIC lists flood among items not covered by standard policies [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners]. FEMA states that most homeowners insurance does not cover flood damage and that it will not fulfill the mortgage or federal disaster assistance requirements for flood insurance, and that NFIP flood insurance is available where the city or town participates in the NFIP's floodplain management requirements [S:fema-nfip-eligibility]. Form caveat: CDI and NAIC describe homeowners policies generally with no policy form number or edition identified, and the operative wording of any water or flood exclusion is whatever the issued form says. Read your own policy."
+		},
+		{
+			"item": "Earthquake and earth movement",
+			"note": "CDI's list of typical homeowners exclusions includes both earthquake and earth movement, NAIC lists earthquakes among items not covered by standard policies, and CDI's earthquake guide states that homeowners, renters, and condominium insurance policies do not cover damage from natural disasters such as earthquakes, floods, and landslides [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners][S:cdi-earthquake-insurance-guide]. California law allows earthquake coverage to be provided in the residential property policy by specific policy provision or endorsement, or in a separate policy or certificate [S:ca-ins-code-10081]. Form caveat: these are general regulator descriptions with no policy form number or edition identified, and whether a particular loss falls inside an earth movement exclusion is decided by the insurer under the wording of the issued form and the facts of the claim. Read your own policy."
+		},
+		{
+			"item": "Wear and tear or maintenance, neglect, and deterioration",
+			"note": "CDI lists wear and tear or maintenance, and neglect, among typical homeowners exclusions [S:cdi-residential-insurance-guide]. Form caveat: CDI describes homeowners policies generally and names no policy form number or edition, and the operative wording, including any treatment of damage that results from a maintenance failure, comes from the issued form. Read your own policy."
+		},
+		{
+			"item": "Mold, and water damage caused by seepage or leaks",
+			"note": "CDI lists mold and water damage caused by seepage or leaks among typical homeowners exclusions, and NAIC lists mold among items not covered by standard policies [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners]. Form caveat: neither page names a policy form or edition, and neither page describes mold remediation endorsements, so nothing is asserted here about what endorsements insurers file. The operative wording and any sublimit come from the issued form. Read your own policy."
+		},
+		{
+			"item": "Termites, insects, rats or mice",
+			"note": "CDI lists termites and insects, rats or mice among typical homeowners exclusions, and NAIC lists infestations among items not covered by standard policies [S:cdi-residential-insurance-guide][S:naic-consumer-homeowners]. Form caveat: both pages describe homeowners policies generally with no policy form number or edition identified, and how the issued form treats damage that follows an infestation is set by that form. Read your own policy."
+		},
+		{
+			"item": "War, insurrection, and nuclear hazard",
+			"note": "CDI lists war, insurrection, and nuclear hazard among typical homeowners exclusions [S:cdi-residential-insurance-guide]. Form caveat: this is CDI's general description of typical homeowners exclusions, not a survey of filed forms, and no source in this cluster speaks to how common these exclusions are across filed forms. The operative wording is whatever the issued form says. Read your own policy."
+		},
+		{
+			"item": "Home office and business exposures",
+			"note": "NAIC lists home office among items not covered by standard policies [S:naic-consumer-homeowners]. Form caveat: NAIC describes homeowners policies generally and names no policy form number or edition, and whether a particular activity is treated as a business is determined by the definitions in the issued form. Read your own policy."
+		},
+		{
+			"item": "Losses to a house vacant for 60 days or more",
+			"note": "CDI lists losses to a house vacant for 60 days or more among typical homeowners exclusions [S:cdi-residential-insurance-guide]. Form caveat: CDI's list is a general description of typical exclusions with no policy form number or edition identified; the vacancy period and its consequences in any particular contract are set by the issued form. Read your own policy."
+		},
+		{
+			"item": "Tidal wave",
+			"note": "CDI lists tidal wave among typical homeowners exclusions [S:cdi-residential-insurance-guide]. Form caveat: this is CDI's general list rather than the wording of a named form or edition. Read your own policy."
+		}
+	],
+	"limitsAndDeductibles": [
+		"Limits are set by coverage part. CDI states that Coverage B other structures is normally limited to 10 percent of the Coverage A limit, that the contents limit is generally around 50 percent of the dwelling amount and that this is a guideline only, and that Coverage D loss of use is normally limited to 20 percent of Coverage A [S:cdi-residential-insurance-guide]. The issued declarations control.",
+		"NAIC describes the face amount of the policy as the most the insured will receive if the house is totally destroyed [S:naic-consumer-homeowners].",
+		"CDI defines the deductible as the amount of loss the policyholder is responsible to pay up-front before covered benefits from the insurance company are payable, and states that a larger deductible may significantly reduce the premium [S:cdi-residential-insurance-guide]. NAIC states that the deductible is the amount the insured pays out of pocket on each claim, that it applies only to coverage on the house and personal property, and that choosing a higher deductible will reduce the price for homeowners insurance [S:naic-consumer-homeowners]. Neither source describes separate wind, hail, hurricane, or wildfire deductibles, so nothing is asserted here about those.",
+		"Valuation is either actual cash value or replacement cost. NAIC describes replacement cost as the amount it would take to replace or rebuild the home or repair damages with materials of similar kind and quality without deducting for depreciation, and actual cash value as that amount after depreciation [S:naic-consumer-homeowners]. CDI states that a policy cannot be sold as a guaranteed replacement cost policy unless it will pay to completely rebuild the home regardless of the coverage limit, and that other types of replacement cost policies will pay the policy limits plus a certain percentage above those limits [S:cdi-residential-insurance-guide].",
+		"In California, Insurance Code section 2051.5 provides that under an open policy requiring payment of replacement cost, the measure of indemnity is what it would cost the insured to repair, rebuild, or replace the thing lost or injured, without a deduction for physical depreciation, or the policy limit, whichever is less [S:ca-ins-code-2051-5].",
+		"Section 2051.5 also provides that a time limit of less than 12 months from the date of the first actual cash value payment may not be placed on an insured to collect the full replacement cost, that the floor is 36 months for a loss relating to a state of emergency, that an insurer must provide one or more additional six-month extensions for good cause where delays are beyond the insured's control, and that for a state-of-emergency loss an insurer may not require proof of loss less than 100 days after the loss [S:ca-ins-code-2051-5]. The statute as displayed provides that on and after July 1, 2026, all policy forms issued or renewed by an insurer must comply with the section in its entirety [S:ca-ins-code-2051-5]. Whether and how the section applies to a particular contract is a legal question for a lawyer.",
+		"Special limits are not additional limits. CDI states that the limited coverage amounts for specific types of personal property, including jewelry, antiques, furs, collectibles, fine arts, firearms, silverware, and money, are not separate limits in addition to the contents limit; they are included in the overall contents limit and represent the maximum paid out for that type of property, and that additional amounts of insurance may be purchased [S:cdi-residential-insurance-guide]. NAIC lists jewelry, art, and heirlooms among items not covered by standard policies [S:naic-consumer-homeowners].",
+		"Liability and medical payments are written as stated dollar limits, with NAIC describing medical payments as limited to an amount per person and per accident [S:naic-consumer-homeowners]. For renters policies specifically, CDI states that Coverage E Personal Liability is generally subject to a minimum of $100,000 and Coverage F Medical Payments to Others is generally subject to a minimum of $1,000 [S:cdi-residential-insurance-guide]; those figures are stated for renters policies and are not represented here as homeowners minimums."
+	],
+	"endorsements": [
+		{
+			"item": "Additional amounts of insurance on property subject to special limits",
+			"note": "CDI states that coverage is limited on certain types of property especially susceptible to loss, that those limited amounts are included in the overall contents limit rather than added to it, and that additional amounts of insurance may be purchased [S:cdi-residential-insurance-guide]. Form caveat: CDI names no policy form or edition, and the mechanism, any appraisal requirement, and the deductible treatment are set by the insurer's filed forms. Read your own policy."
+		},
+		{
+			"item": "Earthquake coverage by policy provision, endorsement, or separate policy",
+			"note": "California Insurance Code section 10081 provides that earthquake coverage may be provided in the residential property policy itself by specific policy provision or endorsement, or in a separate policy or certificate of insurance covering earthquake alone or in combination with other perils [S:ca-ins-code-10081]. CDI states that CEA earthquake insurance cannot be bought directly from CEA, that it is bought from insurance companies that are members of CEA, that a residential property insurance policy must be in place to get a CEA earthquake policy, and that the CEA policy must be purchased from the same company that carries the residential policy [S:cdi-earthquake-insurance-guide]. No source in this cluster states CEA's share of the California residential earthquake market, so none is asserted. Form caveat: which structure a given insurer offers, and its terms, come from that insurer's filed forms; for CEA coverage, CEA states that all terms and conditions are found in the CEA insurance-policy form, which the cited page does not identify by number or edition [S:cea-homeowners-coverages-deductibles]. Read your own policy."
+		},
+		{
+			"item": "Replacement cost valuation options",
+			"note": "CDI states that a policy cannot be sold as a guaranteed replacement cost policy unless it will pay to completely rebuild the home regardless of the coverage limit, and that other types of replacement cost policies will pay the policy limits plus a certain percentage above those limits [S:cdi-residential-insurance-guide]. Form caveat: CDI names no policy form or edition, and which variant a home has, and any percentage, come from the insurer's filed form and the declarations. Read your own policy."
+		},
+		{
+			"item": "Building code or ordinance and law upgrade",
+			"note": "Rebuilding to current code can cost more than restoring what existed. The only code-upgrade figures verified in this cluster are from the earthquake market: CEA publishes building code upgrade coverage of $10,000 with purchasable options of $20,000 or $30,000, paid once covered dwelling damage exceeds the Coverage A and B deductible [S:cea-homeowners-coverages-deductibles]. Form caveat: those figures describe CEA earthquake coverage, not homeowners coverage. No source in this cluster describes code upgrade limits or wording on homeowners forms, so none is asserted; whether a homeowners policy carries such coverage, and on what terms, comes from the issued form. Read your own policy."
+		},
+		{
+			"item": "Coverage addressing water damage from seepage or leaks",
+			"note": "CDI lists water damage caused by seepage or leaks among typical homeowners exclusions [S:cdi-residential-insurance-guide]. Form caveat: no source in this cluster describes endorsements that add back sewer or drain backup coverage or their sublimits, so nothing is asserted about what insurers file on this point. Whether any such coverage is available is answered by the insurer's filed forms. Read your own policy."
+		},
+		{
+			"item": "Home office or business exposure",
+			"note": "NAIC lists home office among items not covered by standard policies [S:naic-consumer-homeowners]. Form caveat: NAIC names no policy form or edition and does not describe endorsements for home-based activity, so nothing is asserted here about what insurers file. Whether an activity is treated as a business is determined by the definitions in the issued form. Read your own policy."
+		}
+	],
+	"relatedPolicies": [
+		"Flood insurance through the NFIP where the community participates in the NFIP's floodplain management requirements, since most homeowners insurance does not cover flood damage [S:fema-nfip-eligibility]",
+		"Residential earthquake coverage, which in California must be offered to the named insured under the earthquake chapter and may take the form of a policy provision, an endorsement, or a separate policy or certificate [S:ca-ins-code-10081]",
+		"Personal umbrella or excess liability written above the homeowners liability limit",
+		"Renters insurance carried by a tenant, since CDI and New York DFS both state that a landlord does not provide insurance for a tenant's personal property [S:cdi-residential-insurance-guide][S:nydfs-renters-insurance]",
+		"Condominium unit owners insurance, where the unit rather than the whole structure is insured",
+		"A landlord or rental dwelling policy if the home stops being owner-occupied",
+		"A California FAIR Plan Dwelling Fire Policy, which the FAIR Plan describes as a named peril policy covering only the specific causes of loss listed in it and suggests supplementing with Difference in Conditions, Flood, or Earthquake policies [S:cfp-dwelling-policy]"
+	],
+	"underwritingInputs": [
+		"Full address of the residence",
+		"Year built, square footage, number of stories, and construction type",
+		"Roof material and roof age, and documentation of any roof replacement, since NAIC states that older homes may not qualify for preferred programs and that insurers may require older homes to have updated heating, plumbing, wiring and roofing [S:naic-consumer-homeowners]",
+		"Age and condition of heating, plumbing, and wiring, which NAIC identifies as systems insurers may require to be updated on older homes [S:naic-consumer-homeowners]",
+		"An amount of dwelling coverage to request, since NAIC describes the face amount of the policy as the most the insured will receive if the house is totally destroyed [S:naic-consumer-homeowners]",
+		"Occupancy: owner-occupied primary residence, secondary or seasonal use, or rented, and whether any short-term rental occurs",
+		"Prior loss history at the applicant and property level, and prior insurance history",
+		"Requested deductible and valuation option, and any property the applicant wants insured above the special limits CDI describes [S:cdi-residential-insurance-guide]",
+		"Liability exposures at the residence, including any pets, given that NAIC lists certain pets among items not covered by standard policies [S:naic-consumer-homeowners]",
+		"Note on scope: this cluster verified no source describing insurer catastrophe or wildfire scoring, hydrant distance, or public protection classification, so those are not listed here as underwriting inputs even though a producer may be asked for them."
+	],
+	"exposures": [
+		{
+			"item": "Fire, including fire following an earthquake",
+			"note": "The state regulator's guide states that California law requires homeowners and renters insurance to cover fire damage caused by or following an earthquake, whether or not separate earthquake coverage is held [S:cdi-earthquake-insurance-guide]. Which policy carries which duty is a question with a written answer in the forms actually held."
+		},
+		{
+			"item": "Shake damage from an earthquake, which the residential policy does not cover",
+			"note": "Earthquake shake damage is addressed by a separate policy or endorsement, and the insurer has a statutory duty to offer earthquake coverage [S:ca-ins-code-10081][S:ca-ins-code-10083]. The offer and the acceptance are both events with dates."
+		},
+		{
+			"item": "Flood, which is written under a separate federal program",
+			"note": "Flood is written under the National Flood Insurance Program with its own eligibility, forms and coverage types [S:fema-nfip-eligibility]. A homeowners limit does not reach it."
+		},
+		{
+			"item": "A dwelling limit that no longer reflects the cost to rebuild",
+			"note": "California law addresses replacement cost and the basis on which a residential structure is valued [S:ca-ins-code-2051-5], and consumer guidance describes replacement cost as the central figure on a homeowners policy [S:naic-consumer-homeowners]."
+		},
+		{
+			"item": "Nonrenewal or a reduced market after a wildfire event",
+			"note": "The regulator's residential guide addresses the residential market and the routes available when standard-market coverage is not offered [S:cdi-residential-insurance-guide], and the FAIR Plan publishes what its own dwelling policy covers [S:cfp-dwelling-policy]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Hold a written, dated replacement cost estimate",
+			"note": "Replacement cost is the figure the policy is built around, and California law addresses how a residential structure is valued [S:ca-ins-code-2051-5]. An estimate with a date on it is what lets you tell whether the limit has fallen behind."
+		},
+		{
+			"item": "Record the earthquake offer and what you did with it",
+			"note": "The statutory offer carries a stated response period, and if it is not accepted within that period the insurer may presume it was not accepted [S:ca-ins-code-10083]. Keeping the notice and the date is what makes the position checkable."
+		},
+		{
+			"item": "Keep a home inventory somewhere other than the home",
+			"note": "Consumer guidance describes an inventory as the record a contents claim is settled from [S:naic-consumer-homeowners]. Its value depends entirely on surviving the loss, so where it is stored is part of the mitigation."
+		},
+		{
+			"item": "Read what a FAIR Plan policy would and would not include before you need one",
+			"note": "The FAIR Plan describes its dwelling policy as a named peril policy covering only the listed causes of loss, and advises considering Difference in Conditions, flood or earthquake policies to supplement it [S:cfp-dwelling-policy]. Understanding that structure in advance is cheaper than discovering it during a placement."
+		},
+		{
+			"item": "Establish whether flood applies to the property, separately",
+			"note": "Flood eligibility and coverage are set by the federal program rather than by the homeowners policy [S:fema-nfip-eligibility], and a waiting period ordinarily applies to new coverage. That makes it a decision with a lead time."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "California Insurance Code section 10081 provides that no policy of residential property insurance may be issued or delivered or, with respect to policies in effect on the effective date of that chapter, initially renewed in the state by any insurer unless the named insured is offered coverage for loss or damage caused by the peril of earthquake as provided in that chapter [S:ca-ins-code-10081]. Section 10083 provides that the offer may be made prior to, concurrent with, or within 60 days following issuance or renewal, and that if the offer is not accepted the insurer must offer earthquake coverage on an every other year basis in connection with any continuation, renewal, reinstatement, or replacing policy [S:ca-ins-code-10083]. CDI states the same every-other-year requirement in consumer terms [S:cdi-earthquake-insurance-guide]."
+		},
+		{
+			"state": "CA",
+			"note": "Section 10083 prescribes offer and disclosure language that must be set in at least 10-point boldface type, including the statement that the residential property insurance policy does not cover earthquake damage to the home or its contents, the statement that the deductible represents the amount of damage the covered property must incur before earthquake coverage begins, and the statement that if the insured does not accept the offer within 30 days of the mailing of the notice the company will presume the offer was not accepted [S:ca-ins-code-10083]. CDI states the same 30-day window and adds that the period starts the date the company mails the offer [S:cdi-earthquake-insurance-guide]."
+		},
+		{
+			"state": "CA",
+			"note": "CDI states that California law says both homeowners and renters insurance must cover fire damage that is caused by or follows an earthquake, while homeowners, renters, and condominium policies do not cover damage from earthquakes themselves [S:cdi-earthquake-insurance-guide]."
+		},
+		{
+			"state": "CA",
+			"note": "Insurance Code section 2051.5 sets a statutory replacement cost measure without a deduction for physical depreciation, capped at the policy limit, and sets the 12-month, 36-month, six-month extension, and 100-day proof-of-loss provisions described above [S:ca-ins-code-2051-5]. The section as displayed provides that on and after July 1, 2026, all policy forms issued or renewed by an insurer must comply with it in its entirety [S:ca-ins-code-2051-5]. Whether the section reaches a particular contract is a legal question for a lawyer."
+		},
+		{
+			"state": "CA",
+			"note": "The California FAIR Plan writes a Dwelling Fire Policy that it describes as a named peril policy providing coverage only for damage caused by the specific causes of loss listed in the policy, with fire and lightning, internal explosion, and smoke shown as causes of loss and optional coverages such as vandalism and malicious mischief available at additional cost; the FAIR Plan suggests considering Difference in Conditions, Flood, or Earthquake policies to supplement it [S:cfp-dwelling-policy]. Eligibility for the FAIR Plan and placement of any risk are decided by the plan and by insurers, not by this page."
+		},
+		{
+			"state": "US",
+			"note": "NAIC's national consumer page describes the same coverage parts and lists flood, earthquakes, mold, infestations, home office, certain pets, jewelry and art and heirlooms, and detached buildings or pools among what standard policies do not cover [S:naic-consumer-homeowners]. Forms, mandatory offers, and deductible rules are set state by state, and the rules of the state where the home is located govern."
+		}
+	],
+	"lastReviewed": "2026-08-31",
+	"effectiveDate": "2026-08-31",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"cdi-residential-insurance-guide",
+		"cdi-earthquake-insurance-guide",
+		"naic-consumer-homeowners",
+		"fema-nfip-eligibility",
+		"ca-ins-code-10081",
+		"ca-ins-code-10083",
+		"ca-ins-code-2051-5",
+		"cea-homeowners-coverages-deductibles",
+		"cfp-dwelling-policy",
+		"nydfs-renters-insurance"
+	],
+	"relatedQuestions": [
+		"homeowners-earthquake-california",
+		"replacement-cost-vs-market-value",
+		"landlord-policy-vs-homeowners",
+		"lender-insurance-requirement",
+		"same-limit-different-protection"
+	]
+}

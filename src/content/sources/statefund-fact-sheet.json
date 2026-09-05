@@ -1,0 +1,22 @@
+{
+	"title": "State Fund Facts",
+	"publisher": "State Compensation Insurance Fund",
+	"url": "https://www.statefundca.com/about/fact-sheet/",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"State Compensation Insurance Fund states on its own fact sheet that it was established in 1914 by the state legislature.",
+		"State Fund describes itself as completely self-supporting and as maintaining an open door policy so that all employers have a strong and stable option for their workers compensation needs.",
+		"State Fund describes itself as the only workers' compensation provider with a commitment to providing workers' compensation insurance to all California businesses, from the smallest start-up to the largest operations. This is the carrier's own characterization of itself, not an independently verified fact."
+	],
+	"updateCadence": "Carrier-maintained page; content changes without notice.",
+	"status": "active",
+	"officialHost": true
+}

@@ -1,0 +1,23 @@
+{
+	"title": "California Insurance Guarantee Association - official site",
+	"publisher": "California Insurance Guarantee Association",
+	"url": "https://www.ciga.org/",
+	"sourceType": "official-documentation",
+	"jurisdiction": "CA",
+	"authorityLevel": "carrier-official",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"CIGA states that it is there for liability, auto and workers' compensation claims after an insurance company is placed in liquidation.",
+		"CIGA states that since 1969 it has helped consumers navigate insolvency.",
+		"CIGA describes the California Life and Health Insurance Guarantee Association as its sister organization and as California's guaranty fund for life and health insurance and annuities.",
+		"CIGA states that because it must first obtain the claim files from the liquidator of the insolvent insurer, some delays may occur."
+	],
+	"updateCadence": "Site updated as insolvencies are added.",
+	"status": "active",
+	"officialHost": true
+}

@@ -1,0 +1,23 @@
+{
+	"title": "Cal. Code Regs. tit. 10, section 2320.1 - Purpose (Marine Insurance article)",
+	"publisher": "Cornell Legal Information Institute, reproducing the California Code of Regulations",
+	"url": "https://www.law.cornell.edu/regulations/california/10-CCR-2320.1",
+	"sourceType": "regulation",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-08-31",
+	"lastChecked": "2026-08-31",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The section is headed Purpose and states that the article is adopted and promulgated by the Insurance Commissioner as a necessary means for the guidance of insurers and all others concerned in observing the provisions of law relating to insuring powers of admitted marine insurers, the California Standard Form Fire Insurance policy, rates and rating and other organizations, and taxation of insurers.",
+		"The section states that the article exists to assist in determining whether certain business should be reported on insurers' annual statements as ocean marine insurance or otherwise.",
+		"The section states that the article exists for the assistance and guidance of all persons concerned in all other cases where it is necessary to distinguish between marine and other classes of insurance and between inland marine risks and other risks."
+	],
+	"updateCadence": "Part of the 1954 Marine Insurance article. Check the official California Code of Regulations for later amendment.",
+	"status": "active",
+	"notes": "Re-fetched 2026-08-31 and the full purpose text returned as one continuous sentence covering all three claims above. Note the URL uses a period, 10-CCR-2320.1; the hyphenated form returns a directory listing. A fourth claim in an earlier draft, that the regulatory purpose is therefore classification and not a definition of what a policy covers, was removed from this source's claims list because it is this library's characterization rather than text on the page; the point is now made in prose without attributing it to the section.",
+	"officialHost": false
+}
