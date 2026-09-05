@@ -600,24 +600,24 @@ test('the sitemap excludes design pages, JSON companions, and 404', () => {
 /* ------------------------------------------------------------------ */
 
 /*
- * Licence attribution, ported from the estate's own social-proof guard and
- * asserted against the built output rather than against config.
+ * Licence attribution, asserted against the built output rather than config.
  *
- * The eight specialty sites already run these from `npm test`. This property did
- * not, and it shipped the error the guard exists to catch, in both directions at
- * once: the agency licence was set to 6013787, which is Brian Bollinger's
- * producer licence, and Brian's author record was credited with 0D94699, which is
- * the entity licence held by WJB Services, Inc. dba Bollinsure Insurance
- * Services. Because that config feeds the footer, the JSON-LD, llms.txt and every
- * machine record, the inversion reached all 318 pages.
+ * Authoritative split, confirmed against bollinsure.com production and by the
+ * owner on 2026-09-05:
  *
- * Confirmed 2026-09-02 three ways: the eight live specialty sites pair 0D94699
- * with the entity name and never publish 6013787; the estate guard hardcodes the
- * same split; and Bollinsure's own about and FAQ pages state that 0D94699 belongs
- * to WJB Services, Inc. and that Brian Bollinger holds 6013787.
+ *   6013787  WJB Services, Inc. dba Bollinsure Insurance Services  (entity)
+ *   0D94699  Brian John Bollinger                                  (producer)
+ *   4345268  Aaron Glen Bollinger                                  (producer)
+ *
+ * This guard previously encoded the opposite split. It was written from the
+ * eight specialty sites, which pair 0D94699 with the entity name and are
+ * themselves wrong, so the guard asserted the inversion instead of catching
+ * it — the worst possible failure for a check whose entire job is this. A
+ * guard is only as good as the fact it encodes, and a plausible secondary
+ * source is not a substitute for the primary one.
  */
-const AGENCY_LICENCE = '0D94699';
-const PRODUCER_LICENCES = { 6013787: 'Brian Bollinger', 4345268: 'Aaron Bollinger' };
+const AGENCY_LICENCE = '6013787';
+const PRODUCER_LICENCES = { '0D94699': 'Brian Bollinger', 4345268: 'Aaron Bollinger' };
 
 test('the published agency licence is the entity licence', () => {
 	// llms.txt is the AI-facing statement of who operates this, so it is the one

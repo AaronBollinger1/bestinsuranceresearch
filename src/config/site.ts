@@ -57,18 +57,21 @@ export const siteConfig = {
 		legalName: 'WJB Services, Inc.',
 		dba: 'Bollinsure Insurance Services',
 		/*
-		 * 0D94699 is the ENTITY licence held by WJB Services, Inc. dba Bollinsure
-		 * Insurance Services. 6013787 is Brian Bollinger's own producer licence.
-		 * These were inverted here and the inversion reached all 318 pages: the
-		 * footer, the JSON-LD, llms.txt and every machine record presented a
-		 * producer's number as the agency's, and credited the agency's number to a
-		 * named individual. Both directions of that error are what the estate's
-		 * own social-proof guard was written to catch, and its comment is right
-		 * that it is the one class of error a regulator cares about, not just a
-		 * crawler. Confirmed 2026-09-02 against the eight live specialty sites and
-		 * against Bollinsure's own published about and FAQ pages.
+		 * 6013787 is the ENTITY licence held by WJB Services, Inc. dba Bollinsure
+		 * Insurance Services. 0D94699 is Brian John Bollinger's own producer
+		 * licence, and 4345268 is Aaron Glen Bollinger's.
+		 *
+		 * These were published the other way round here between 2026-09-02 and
+		 * 2026-09-05, on an inference drawn from the specialty sites instead of
+		 * from the brokerage's own pages. The inference was wrong and it reached
+		 * 383 pages: the footer, the JSON-LD, llms.txt and every machine record.
+		 * Confirmed against bollinsure.com production and by the owner directly.
+		 *
+		 * Worth knowing when reading the eight specialty sites: they pair 0D94699
+		 * with the entity name, so they carry the same inversion and are not a
+		 * source of truth for this. Bollinsure production is.
 		 */
-		agencyLicense: '0D94699',
+		agencyLicense: '6013787',
 		licenseAuthority: 'California Department of Insurance',
 		state: 'California',
 		/* Slugs only. Names, roles and licences live in the people collection
@@ -95,7 +98,7 @@ export const siteConfig = {
 			'https://www.bestartinsurance.com/',
 		],
 		producers: [
-			{ name: 'Brian Bollinger', license: '6013787' },
+			{ name: 'Brian Bollinger', license: '0D94699' },
 			{ name: 'Aaron Bollinger', license: '4345268' },
 		],
 	},
