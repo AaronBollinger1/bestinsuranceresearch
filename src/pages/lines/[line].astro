@@ -20,6 +20,7 @@ import SourceLedger from '../../components/SourceLedger.astro';
 import { stripMarkers } from '../../lib/citations';
 import { ledgerFor, loadCorpus } from '../../lib/corpus';
 import { allLineHubs } from '../../lib/line-hub';
+import { shareImageForLine } from '../../lib/share-image';
 import { iconFor } from '../../lib/guide-icons';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
 
@@ -75,7 +76,13 @@ const jsonLd = graph(
 );
 ---
 
-<BaseLayout title={`${hub.label}: the evidence`} description={description} jsonLd={jsonLd} pageType="editorial">
+<BaseLayout
+	title={`${hub.label}: the evidence`}
+	description={description}
+	image={shareImageForLine(hub.line, hub.family)}
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
 	<article>
 		<header class="band band-tight">
 			<div class="shell">

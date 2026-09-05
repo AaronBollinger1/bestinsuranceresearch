@@ -12,6 +12,7 @@ import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { createCiter, escapeHtml, stripMarkers } from '../../lib/citations';
 import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
+import { shareImageForFamily } from '../../lib/share-image';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, definedTerm, graph, organization, techArticle, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
@@ -85,7 +86,7 @@ const jsonLd = graph(
 );
 ---
 
-<BaseLayout title={d.name} description={description} jsonLd={jsonLd} pageType="coverage" machinePath={machinePath}>
+<BaseLayout title={d.name} description={description} image={shareImageForFamily(d.family)} jsonLd={jsonLd} pageType="coverage" machinePath={machinePath}>
 	<article>
 		<header class="band band-first band-paper answer-head">
 			<div class="shell">

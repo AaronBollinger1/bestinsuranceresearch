@@ -25,6 +25,7 @@ import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { createCiter, escapeHtml } from '../../lib/citations';
 import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
+import { shareImageForFamily } from '../../lib/share-image';
 import { iconFor } from '../../lib/guide-icons';
 import { sharesLine } from '../../lib/lines';
 import { longDate } from '../../lib/cite';
@@ -168,7 +169,7 @@ const jsonLd = graph(
 
 <BaseLayout
 	title={`${d.name}: a guide`}
-	description={description}
+	description={description} image={shareImageForFamily(entry.data.family)}
 	jsonLd={jsonLd}
 	pageType="coverage"
 	machinePath={`/insurance/${entry.id}.json`}
