@@ -19,52 +19,208 @@
 			"kind": "multiselect",
 			"options": [
 				{
-					"value": "california",
+					"value": "al",
+					"label": "Alabama"
+				},
+				{
+					"value": "ak",
+					"label": "Alaska"
+				},
+				{
+					"value": "az",
+					"label": "Arizona"
+				},
+				{
+					"value": "ar",
+					"label": "Arkansas"
+				},
+				{
+					"value": "ca",
 					"label": "California"
 				},
 				{
-					"value": "texas",
-					"label": "Texas"
+					"value": "co",
+					"label": "Colorado"
 				},
 				{
-					"value": "florida",
+					"value": "ct",
+					"label": "Connecticut"
+				},
+				{
+					"value": "de",
+					"label": "Delaware"
+				},
+				{
+					"value": "dc",
+					"label": "District of Columbia"
+				},
+				{
+					"value": "fl",
 					"label": "Florida"
 				},
 				{
-					"value": "new-york",
-					"label": "New York"
+					"value": "ga",
+					"label": "Georgia"
 				},
 				{
-					"value": "new-jersey",
-					"label": "New Jersey"
+					"value": "hi",
+					"label": "Hawaii"
 				},
 				{
-					"value": "pennsylvania",
-					"label": "Pennsylvania"
+					"value": "id",
+					"label": "Idaho"
 				},
 				{
-					"value": "michigan",
+					"value": "il",
+					"label": "Illinois"
+				},
+				{
+					"value": "in",
+					"label": "Indiana"
+				},
+				{
+					"value": "ia",
+					"label": "Iowa"
+				},
+				{
+					"value": "ks",
+					"label": "Kansas"
+				},
+				{
+					"value": "ky",
+					"label": "Kentucky"
+				},
+				{
+					"value": "la",
+					"label": "Louisiana"
+				},
+				{
+					"value": "me",
+					"label": "Maine"
+				},
+				{
+					"value": "md",
+					"label": "Maryland"
+				},
+				{
+					"value": "ma",
+					"label": "Massachusetts"
+				},
+				{
+					"value": "mi",
 					"label": "Michigan"
 				},
 				{
-					"value": "minnesota",
+					"value": "mn",
 					"label": "Minnesota"
 				},
 				{
-					"value": "north-carolina",
+					"value": "ms",
+					"label": "Mississippi"
+				},
+				{
+					"value": "mo",
+					"label": "Missouri"
+				},
+				{
+					"value": "mt",
+					"label": "Montana"
+				},
+				{
+					"value": "ne",
+					"label": "Nebraska"
+				},
+				{
+					"value": "nv",
+					"label": "Nevada"
+				},
+				{
+					"value": "nh",
+					"label": "New Hampshire"
+				},
+				{
+					"value": "nj",
+					"label": "New Jersey"
+				},
+				{
+					"value": "nm",
+					"label": "New Mexico"
+				},
+				{
+					"value": "ny",
+					"label": "New York"
+				},
+				{
+					"value": "nc",
 					"label": "North Carolina"
 				},
 				{
-					"value": "wisconsin",
+					"value": "nd",
+					"label": "North Dakota"
+				},
+				{
+					"value": "oh",
+					"label": "Ohio"
+				},
+				{
+					"value": "ok",
+					"label": "Oklahoma"
+				},
+				{
+					"value": "or",
+					"label": "Oregon"
+				},
+				{
+					"value": "pa",
+					"label": "Pennsylvania"
+				},
+				{
+					"value": "ri",
+					"label": "Rhode Island"
+				},
+				{
+					"value": "sc",
+					"label": "South Carolina"
+				},
+				{
+					"value": "sd",
+					"label": "South Dakota"
+				},
+				{
+					"value": "tn",
+					"label": "Tennessee"
+				},
+				{
+					"value": "tx",
+					"label": "Texas"
+				},
+				{
+					"value": "ut",
+					"label": "Utah"
+				},
+				{
+					"value": "vt",
+					"label": "Vermont"
+				},
+				{
+					"value": "va",
+					"label": "Virginia"
+				},
+				{
+					"value": "wa",
+					"label": "Washington"
+				},
+				{
+					"value": "wv",
+					"label": "West Virginia"
+				},
+				{
+					"value": "wi",
 					"label": "Wisconsin"
 				},
 				{
-					"value": "monopolistic-fund-state",
-					"label": "Ohio, North Dakota, Washington or Wyoming"
-				},
-				{
-					"value": "other-state",
-					"label": "Another state not listed"
+					"value": "wy",
+					"label": "Wyoming"
 				}
 			],
 			"group": "Where the work happens",
@@ -587,7 +743,7 @@
 					{
 						"field": "states-of-operation",
 						"op": "includes",
-						"value": "california"
+						"value": "ca"
 					}
 				]
 			},
@@ -618,7 +774,7 @@
 					{
 						"field": "states-of-operation",
 						"op": "includes",
-						"value": "california"
+						"value": "ca"
 					}
 				]
 			},
@@ -898,7 +1054,7 @@
 					{
 						"field": "states-of-operation",
 						"op": "includes",
-						"value": "california"
+						"value": "ca"
 					}
 				]
 			},
@@ -928,7 +1084,7 @@
 					{
 						"field": "states-of-operation",
 						"op": "includes",
-						"value": "california"
+						"value": "ca"
 					}
 				]
 			},
@@ -1352,7 +1508,7 @@
 					{
 						"field": "states-of-operation",
 						"op": "includes",
-						"value": "california"
+						"value": "ca"
 					}
 				]
 			},
@@ -1375,7 +1531,7 @@
 					{
 						"field": "states-of-operation",
 						"op": "includes",
-						"value": "california"
+						"value": "ca"
 					},
 					{
 						"field": "described-activities",
@@ -1405,7 +1561,7 @@
 					{
 						"field": "states-of-operation",
 						"op": "includes",
-						"value": "texas"
+						"value": "tx"
 					}
 				]
 			},
@@ -1429,7 +1585,7 @@
 					{
 						"field": "states-of-operation",
 						"op": "includes",
-						"value": "florida"
+						"value": "fl"
 					},
 					{
 						"field": "described-activities",

@@ -1755,3 +1755,88 @@ test('a line index is only built where there is evidence, and says which it is',
 		);
 	}
 });
+
+test('a field id means the same thing in every module that defines it', () => {
+	/*
+	 * Six field ids are defined in more than one module. Three of them used to
+	 * disagree: construction-era was banded 4 ways in one module and 7 in
+	 * another, residence-type conflated condominium and townhouse in one and
+	 * separated them in the other, and states-of-operation used two-letter
+	 * codes in one module and full slugs in two others.
+	 *
+	 * All three are rule-input, so a reader answered the same question twice
+	 * with different answer choices, and any cross-module rule reading them
+	 * would have compared values that could never match. That is why this is
+	 * the gate on cross-module rules rather than a tidiness check.
+	 */
+	const byId = new Map();
+	for (const module of modules) {
+		for (const field of module.data.fields ?? []) {
+			const defs = byId.get(field.id) ?? [];
+			defs.push({ module: module.id, kind: field.kind, options: field.options ?? null });
+			byId.set(field.id, defs);
+		}
+	}
+
+	const disagreements = [];
+	for (const [id, defs] of byId) {
+		if (defs.length < 2) continue;
+
+		const kinds = new Set(defs.map((d) => d.kind));
+		if (kinds.size > 1) {
+			disagreements.push(
+				`${id} is ${defs.map((d) => `${d.kind} in ${d.module}`).join(' but ')}`,
+			);
+			continue;
+		}
+
+		// Same answer choices, in the same order, with the same labels.
+		const shapes = new Set(defs.map((d) => JSON.stringify(d.options)));
+		if (shapes.size > 1) {
+			const counts = defs.map((d) => `${d.module} offers ${d.options ? d.options.length : 0}`);
+			disagreements.push(`${id} offers different options: ${counts.join(', ')}`);
+		}
+	}
+
+	assert.deepEqual(
+		disagreements, [],
+		`field ids that mean different things in different modules:\n  ${disagreements.join('\n  ')}`,
+	);
+});
+
+test('every rule compares a field against a value that field can hold', () => {
+	/*
+	 * Reconciling the vocabularies rewrote comparands across four modules. A
+	 * rule left pointing at a retired option would never fire again and nothing
+	 * else would notice — it is not a crash, it is a check that silently stops
+	 * checking. This is the assertion that would have caught that.
+	 */
+	const offenders = [];
+	for (const module of modules) {
+		const options = new Map();
+		for (const field of module.data.fields ?? []) {
+			if (Array.isArray(field.options)) {
+				options.set(field.id, new Set(field.options.map((o) => o.value)));
+			}
+		}
+
+		const walk = (node) => {
+			if (!node || typeof node !== 'object') return;
+			if (Array.isArray(node)) return node.forEach(walk);
+			const allowed = options.get(node.field);
+			const v = node.value;
+			if (allowed && typeof v === 'string' && ['eq', 'neq', 'includes', 'excludes'].includes(node.op)) {
+				if (!allowed.has(v)) {
+					offenders.push(`${module.id}: a rule compares ${node.field} against "${v}", which is not one of its options`);
+				}
+			}
+			for (const k of Object.keys(node)) walk(node[k]);
+		};
+		for (const rule of module.data.rules ?? []) walk(rule.when);
+	}
+
+	assert.deepEqual(
+		[...new Set(offenders)], [],
+		`rules comparing against values their field cannot hold:\n  ${[...new Set(offenders)].join('\n  ')}`,
+	);
+});

@@ -35,20 +35,28 @@
 					"label": "Detached single-family house"
 				},
 				{
-					"value": "condo-or-townhome-unit",
-					"label": "Condominium or townhome unit in a common interest development"
+					"value": "attached-townhouse",
+					"label": "Attached townhouse"
 				},
 				{
-					"value": "mobilehome-manufactured",
-					"label": "Mobilehome or manufactured home"
+					"value": "condo-unit",
+					"label": "Condominium unit"
+				},
+				{
+					"value": "two-to-four-unit",
+					"label": "Two to four unit building I own"
+				},
+				{
+					"value": "manufactured-or-mobile",
+					"label": "Manufactured or mobile home"
 				},
 				{
 					"value": "rented-unit",
-					"label": "A unit or house I rent from someone else"
+					"label": "A unit I rent"
 				},
 				{
-					"value": "small-multi-unit-owned",
-					"label": "A building I own with two to four dwelling units"
+					"value": "other",
+					"label": "Something else"
 				}
 			],
 			"group": "The residence",
@@ -84,19 +92,31 @@
 			"kind": "band",
 			"options": [
 				{
-					"value": "before-1980",
-					"label": "Before 1980"
+					"value": "pre-1940",
+					"label": "Before 1940"
 				},
 				{
-					"value": "1980-1999",
-					"label": "1980 to 1999"
+					"value": "1940-1959",
+					"label": "1940 to 1959"
 				},
 				{
-					"value": "2000-or-later",
-					"label": "2000 or later"
+					"value": "1960-1979",
+					"label": "1960 to 1979"
 				},
 				{
-					"value": "not-sure",
+					"value": "1980-1994",
+					"label": "1980 to 1994"
+				},
+				{
+					"value": "1995-2009",
+					"label": "1995 to 2009"
+				},
+				{
+					"value": "2010-or-later",
+					"label": "2010 or later"
+				},
+				{
+					"value": "unknown",
 					"label": "Not sure"
 				}
 			],
@@ -992,7 +1012,7 @@
 					{
 						"field": "residence-type",
 						"op": "eq",
-						"value": "condo-or-townhome-unit"
+						"value": "condo-unit"
 					},
 					{
 						"field": "perils-expected-covered",
@@ -1026,7 +1046,7 @@
 					{
 						"field": "residence-type",
 						"op": "eq",
-						"value": "condo-or-townhome-unit"
+						"value": "condo-unit"
 					},
 					{
 						"field": "hoa-master-policy-eq-status",
@@ -1146,8 +1166,23 @@
 				"all": [
 					{
 						"field": "construction-era",
-						"op": "eq",
-						"value": "before-1980"
+						"op": "neq",
+						"value": "1980-1994"
+					},
+					{
+						"field": "construction-era",
+						"op": "neq",
+						"value": "1995-2009"
+					},
+					{
+						"field": "construction-era",
+						"op": "neq",
+						"value": "2010-or-later"
+					},
+					{
+						"field": "construction-era",
+						"op": "neq",
+						"value": "unknown"
 					},
 					{
 						"field": "foundation-type",
@@ -1175,7 +1210,7 @@
 					{
 						"field": "residence-type",
 						"op": "eq",
-						"value": "mobilehome-manufactured"
+						"value": "manufactured-or-mobile"
 					}
 				]
 			},

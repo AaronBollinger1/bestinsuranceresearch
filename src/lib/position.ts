@@ -95,7 +95,9 @@ export type Operator =
 	| 'eq' | 'neq'
 	| 'gt' | 'gte' | 'lt' | 'lte'
 	| 'includes' | 'excludes'
-	| 'isSet' | 'isEmpty';
+	| 'isSet' | 'isEmpty'
+	/* How many options a multiselect holds. The only way to say "more than one". */
+	| 'countGte';
 
 /**
  * A comparison value.
@@ -305,6 +307,9 @@ export function evaluateCondition(
 		case 'excludes':
 			if (Array.isArray(actual)) return !actual.includes(String(expected));
 			return typeof actual === 'string' && typeof expected === 'string' && !actual.includes(expected);
+		case 'countGte':
+			// Only meaningful for a multiselect. A single answer counts as one.
+			return (Array.isArray(actual) ? actual.length : 1) >= Number(expected);
 		case 'gt':
 		case 'gte':
 		case 'lt':

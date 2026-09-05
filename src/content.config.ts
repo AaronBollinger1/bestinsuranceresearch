@@ -406,7 +406,7 @@ const people = defineCollection({
    ------------------------------------------------------------------ */
 const FIELD_KINDS = ['select', 'multiselect', 'boolean', 'number', 'date', 'text', 'band'] as const;
 const RULE_KINDS = ['gap', 'inconsistency', 'timing', 'documentation', 'question'] as const;
-const OPERATORS = ['eq', 'neq', 'gt', 'gte', 'lt', 'lte', 'includes', 'excludes', 'isSet', 'isEmpty'] as const;
+const OPERATORS = ['eq', 'neq', 'gt', 'gte', 'lt', 'lte', 'includes', 'excludes', 'isSet', 'isEmpty', 'countGte'] as const;
 
 // A date comparand must say whether it rolls with the reader's clock or is
 // anchored to a calendar date, because those are different claims and only one

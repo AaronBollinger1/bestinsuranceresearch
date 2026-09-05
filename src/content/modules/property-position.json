@@ -59,15 +59,15 @@
 			"options": [
 				{
 					"value": "single-family-detached",
-					"label": "Detached single family house"
+					"label": "Detached single-family house"
 				},
 				{
 					"value": "attached-townhouse",
-					"label": "Attached townhouse or rowhouse"
+					"label": "Attached townhouse"
 				},
 				{
 					"value": "condo-unit",
-					"label": "Condominium or co-op unit inside a larger building"
+					"label": "Condominium unit"
 				},
 				{
 					"value": "two-to-four-unit",
@@ -76,6 +76,10 @@
 				{
 					"value": "manufactured-or-mobile",
 					"label": "Manufactured or mobile home"
+				},
+				{
+					"value": "rented-unit",
+					"label": "A unit I rent"
 				},
 				{
 					"value": "other",
@@ -130,12 +134,12 @@
 					"label": "1940 to 1959"
 				},
 				{
-					"value": "1960-1977",
-					"label": "1960 to 1977"
+					"value": "1960-1979",
+					"label": "1960 to 1979"
 				},
 				{
-					"value": "1978-1994",
-					"label": "1978 to 1994"
+					"value": "1980-1994",
+					"label": "1980 to 1994"
 				},
 				{
 					"value": "1995-2009",
@@ -147,7 +151,7 @@
 				},
 				{
 					"value": "unknown",
-					"label": "I do not know"
+					"label": "Not sure"
 				}
 			],
 			"group": "Residence and occupancy",

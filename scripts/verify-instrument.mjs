@@ -197,6 +197,17 @@ function satisfyingState(rule, fieldDefs) {
 			if (required.some((v) => forbidden.has(v))) return null; // genuinely contradictory
 			if (literals.some((c) => c.op === 'isEmpty')) continue;
 			const value = required.length > 0 ? required : ['__probe__'];
+			// countGte asks for a number of selections rather than a particular one,
+			// so pad with distinct filler until the array is long enough. Without
+			// this a rule using it looks unreachable when it is merely unsatisfied.
+			const minCount = literals
+				.filter((c) => c.op === 'countGte')
+				.reduce((n, c) => Math.max(n, Number(c.value) || 0), 0);
+			while (value.length < minCount) {
+				const filler = `__probe_${value.length}__`;
+				if (forbidden.has(filler)) return null;
+				value.push(filler);
+			}
 			if (value.some((v) => forbidden.has(v))) return null;
 			state[fieldId] = value;
 			continue;
