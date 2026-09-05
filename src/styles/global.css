@@ -174,8 +174,34 @@ code { overflow-wrap: anywhere; }
 	background: var(--gold); color: var(--ink); border-color: var(--gold-edge);
 	box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 1px 0 var(--gold-edge);
 }
-.btn-primary:hover { background: #cda93f; }
-.btn-primary:active { transform: translateY(1px); box-shadow: inset 0 1px 3px rgba(124,100,29,.32); }
+/* Bollinsure action language, taken verbatim from the .nav-btn in the top right
+   of bollinsure.com/about so the two properties press identically. The riser is
+   3px and the press travels 2px, which is what makes it read as an object. */
+.btn-primary {
+	border: 1px solid var(--ink);
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, .52),
+		inset 0 -1px 0 rgba(124, 100, 29, .28),
+		0 3px 0 var(--gold-edge),
+		0 5px 12px rgba(23, 33, 46, .15);
+	transition:
+		transform .12s cubic-bezier(.22, .61, .36, 1),
+		box-shadow .12s cubic-bezier(.22, .61, .36, 1),
+		background .12s cubic-bezier(.22, .61, .36, 1);
+}
+.btn-primary:hover { background: #c9a338; }
+.btn-primary:active {
+	transform: translateY(2px);
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, .35),
+		0 0 0 var(--gold-edge),
+		0 4px 10px rgba(168, 135, 31, .26);
+}
+/* A pressable control that cannot move is worse than one that never moved. */
+@media (prefers-reduced-motion: reduce) {
+	.btn-primary { transition: background .12s cubic-bezier(.22, .61, .36, 1); }
+	.btn-primary:active { transform: none; }
+}
 .btn-secondary { background: var(--paper); color: var(--ink); border-color: var(--line-strong); }
 .btn-secondary:hover { border-color: var(--gold-edge); background: var(--gold-wash); }
 .btn-quiet { background: transparent; color: var(--gold-text); border-color: transparent; padding-inline: var(--s-2); }
