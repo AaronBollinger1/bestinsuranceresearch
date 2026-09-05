@@ -25,7 +25,13 @@
  *    touch it.
  */
 
-export type RedirectAction = 'redirect' | 'park';
+/**
+ * `retain` is a third state and not a variant of the other two. A parked
+ * domain has nowhere good to go; a retained one has somewhere good to go and
+ * deliberately does not go there, because it is a property in its own right.
+ * Its `target` is the hub page it should link to, not one it redirects to.
+ */
+export type RedirectAction = 'redirect' | 'park' | 'retain';
 
 export interface DomainRoute {
 	domain: string;
@@ -54,15 +60,24 @@ export interface DomainRoute {
  *    publishes no price and takes no application. Whatever they currently
  *    convert stops converting at the moment of the switch.
  */
+/*
+ * These eight keep their own authority, by decision on 2026-09-05. They are
+ * not redirected and not parked: each is a live property with its own
+ * content and its own rankings, and a 301 would spend a known asset to feed
+ * an unproven one. The relationship to the hub is cross-linking, so `target`
+ * here names the page each site should link to rather than one it redirects
+ * to. Reversing this later is cheap; reversing a 301 after the equity has
+ * moved is not, which is the asymmetry that decides it.
+ */
 export const LIVE_SITE_DOMAINS: DomainRoute[] = [
-	{ domain: 'bestho3.com', action: 'redirect', target: '/tools/property-position', liveSite: true, note: '71 pages, ACORD 80 application. Module records 36 fields and runs 34 checks.' },
-	{ domain: 'bestdwellingfire.com', action: 'redirect', target: '/insurance/landlord-rental-dwelling', liveSite: true, note: '11 pages, thinnest of the eight. Coverage page is published and reviewed; intent is definitional.' },
-	{ domain: 'bestearthquakeinsurance.com', action: 'redirect', target: '/tools/earthquake-pathways', liveSite: true, note: '87 pages including 28 county pages. Export those URLs before switching.' },
-	{ domain: 'bestepli.com', action: 'redirect', target: '/tools/epli-readiness', liveSite: true, note: '76 pages, two carrier applications, e-signature. The only domain with Porkbun API access already on.' },
-	{ domain: 'bestcyberliability.com', action: 'redirect', target: '/tools/cyber-control-readiness', liveSite: true, note: '109 pages. Module keys to a dated framework edition.' },
-	{ domain: 'bestworkerscompensation.com', action: 'redirect', target: '/tools/workers-comp-classification', liveSite: true, note: '96 pages including 50 class-code pages. Highest equity loss of the eight on a single-hop redirect.' },
-	{ domain: 'bestgroupmedical.com', action: 'redirect', target: '/tools/group-benefits-renewal', liveSite: true, note: '127 pages, the largest property in the estate. Destination built in this pass.' },
-	{ domain: 'bestartinsurance.com', action: 'redirect', target: '/tools/valuables-schedule', liveSite: true, note: '31 pages, Markel application. Destination built in this pass.' },
+	{ domain: 'bestho3.com', action: 'retain', target: '/tools/property-position', liveSite: true, note: '71 pages, ACORD 80 application. Module records 36 fields and runs 34 checks.' },
+	{ domain: 'bestdwellingfire.com', action: 'retain', target: '/insurance/landlord-rental-dwelling', liveSite: true, note: '11 pages, thinnest of the eight. Coverage page is published and reviewed; intent is definitional.' },
+	{ domain: 'bestearthquakeinsurance.com', action: 'retain', target: '/tools/earthquake-pathways', liveSite: true, note: '87 pages including 28 county pages. Export those URLs before switching.' },
+	{ domain: 'bestepli.com', action: 'retain', target: '/tools/epli-readiness', liveSite: true, note: '76 pages, two carrier applications, e-signature. The only domain with Porkbun API access already on.' },
+	{ domain: 'bestcyberliability.com', action: 'retain', target: '/tools/cyber-control-readiness', liveSite: true, note: '109 pages. Module keys to a dated framework edition.' },
+	{ domain: 'bestworkerscompensation.com', action: 'retain', target: '/tools/workers-comp-classification', liveSite: true, note: '96 pages including 50 class-code pages. Highest equity loss of the eight on a single-hop redirect.' },
+	{ domain: 'bestgroupmedical.com', action: 'retain', target: '/tools/group-benefits-renewal', liveSite: true, note: '127 pages, the largest property in the estate. Destination built in this pass.' },
+	{ domain: 'bestartinsurance.com', action: 'retain', target: '/tools/valuables-schedule', liveSite: true, note: '31 pages, Markel application. Destination built in this pass.' },
 ];
 
 /** Domains with no site of their own and a genuine match in the corpus. */
