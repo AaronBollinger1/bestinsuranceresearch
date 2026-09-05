@@ -136,6 +136,7 @@ export const footerNav = {
 		{ label: 'States', href: '/states' },
 		{ label: 'Examples', href: '/examples' },
 		{ label: 'Modules and worksheets', href: '/tools' },
+		{ label: 'The Best network', href: '/network' },
 	],
 	standards: [
 		{ label: 'Methodology', href: '/methodology' },

@@ -1,0 +1,208 @@
+---
+/**
+ * The Best network.
+ *
+ * Eight specialty properties keep their own brands and their own authority.
+ * That decision only works if the relationship between them is stated
+ * somewhere: eight sites sharing a phone number and an operator, with nothing
+ * declaring the connection, read to a person as unrelated and to an answer
+ * engine as eight weak entities instead of one estate.
+ *
+ * This page is the half of that link this property controls. It points out to
+ * each site, says what each one is for, and names the page here that covers the
+ * same ground. The reciprocal half — a link home from each specialty site — has
+ * to be added in those repositories.
+ *
+ * It is deliberately not a directory of everything owned. Domains that redirect
+ * here are not listed, because a domain that points at this site is not a
+ * separate property and listing it would inflate the estate.
+ */
+import { ArrowUpRight, ArrowRight } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Callout from '../components/Callout.astro';
+import { siteConfig } from '../config/site';
+import { LIVE_SITE_DOMAINS } from '../config/domain-redirects';
+import { loadCorpus } from '../lib/corpus';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../lib/schema';
+
+const corpus = await loadCorpus();
+
+/* Only the properties that are actually live and retained. A redirecting
+   domain is not a property and must not be counted as one. */
+const properties = LIVE_SITE_DOMAINS.filter((d) => d.action === 'retain').map((d) => {
+	const target = d.target ?? '/';
+	const moduleId = target.startsWith('/tools/') ? target.slice('/tools/'.length) : null;
+	const module = moduleId ? corpus.liveModules.find((m) => m.id === moduleId) : null;
+	const coverageId = target.startsWith('/insurance/') ? target.slice('/insurance/'.length) : null;
+	const coverage = coverageId ? corpus.coverages.find((c) => c.id === coverageId) : null;
+	return {
+		domain: d.domain,
+		href: `https://www.${d.domain}/`,
+		target,
+		targetName: module?.data.name ?? coverage?.data.name ?? 'Related research',
+		checks: module ? (module.data.rules ?? []).length : null,
+		sources: module
+			? new Set(
+					(module.data.rules ?? []).flatMap((r: { sourceIds?: Array<string | { id: string }> }) =>
+						(r.sourceIds ?? []).map((x) => (typeof x === 'string' ? x : x.id)),
+					),
+				).size
+			: (coverage?.data.sourceIds.length ?? null),
+		note: d.note,
+	};
+});
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'The network', path: '/network' },
+];
+
+const description = `${properties.length} specialty insurance properties operated by ${siteConfig.operator.dba}, each with its own brand and its own research. This page names them, says what each covers, and links the research here that goes with it.`;
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'The Best network',
+		path: '/network',
+		description,
+		items: properties.map((p) => ({ name: p.domain, path: p.target })),
+	}),
+);
+---
+
+<BaseLayout title="The Best network" description={description} jsonLd={jsonLd} pageType="editorial">
+	<article>
+		<section class="band band-tight">
+			<div class="shell">
+				<Breadcrumbs trail={trail} />
+				<span class="eyebrow">One operator, {properties.length} properties</span>
+				<h1>The Best network</h1>
+				<p class="page-lede">{description}</p>
+			</div>
+		</section>
+
+		<section class="band band-tight band-first">
+			<div class="shell">
+				<Callout tone="note" label="Why these are separate sites and not redirects">
+					<p>
+						Each of these was built for one line and has its own readers, its own pages and its own
+						standing. Folding them into this site would move that standing here and destroy it at
+						the same time, and unlike almost every other decision in this estate, a permanent
+						redirect is not reversible once the old pages are gone.
+					</p>
+					<p>
+						So they stay. What connects them is this page and the research below it, not a 301.
+						All of them are operated by {siteConfig.operator.legalName} dba {siteConfig.operator.dba},
+						{' '}{siteConfig.operator.licenseAuthority} agency licence{' '}
+						{siteConfig.operator.agencyLicense}, and every one of them is free to read.
+					</p>
+				</Callout>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="properties">
+			<div class="shell">
+				<span class="eyebrow">The properties</span>
+				<h2 id="properties">Each site, and the research here that goes with it</h2>
+				<ul class="net-list">
+					{
+						properties.map((p) => (
+							<li class="net-item">
+								<div class="net-head">
+									<a class="net-domain" href={p.href} rel="noopener">
+										{p.domain} <ArrowUpRight size={14} aria-hidden="true" />
+									</a>
+									{p.checks !== null && (
+										<span class="meta num">{p.checks} cited checks &middot; {p.sources} sources</span>
+									)}
+								</div>
+								<p class="net-note">{p.note}</p>
+								<a class="net-target" href={p.target}>
+									{p.targetName} <ArrowRight size={14} aria-hidden="true" />
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+
+		<section class="band band-paper" aria-labelledby="how">
+			<div class="shell">
+				<span class="eyebrow">How to read the relationship</span>
+				<h2 id="how">What is shared, and what is not</h2>
+				<div class="prose">
+					<p>
+						<strong>Shared:</strong> the operator, the licence, the editorial standard, and the
+						source records. A statute cited on one of these sites is the same record, with the same
+						claims and the same checksum, as the one cited here.
+					</p>
+					<p>
+						<strong>Not shared:</strong> the reading. Each property writes its own line in its own
+						words for its own audience. Two sites can describe the same form and emphasise
+						different parts of it, and neither is wrong.
+					</p>
+					<p>
+						None of these sites sells anything or decides anything. Licensed help is a separate,
+						optional step, and it is the same step from any of them:{' '}
+						<a href={siteConfig.contact.phoneHref}>{siteConfig.contact.phoneDisplay}</a>.
+					</p>
+				</div>
+			</div>
+		</section>
+	</article>
+</BaseLayout>
+
+<style>
+	.net-list {
+		list-style: none;
+		margin: var(--s-4) 0 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1px;
+		background: var(--line);
+		border: 1px solid var(--line);
+	}
+	.net-item {
+		background: var(--paper);
+		padding: var(--s-4);
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-2);
+	}
+	.net-head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: var(--s-2) var(--s-4);
+	}
+	.net-domain {
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		text-decoration: none;
+		color: var(--ink);
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+	}
+	.net-domain:hover { color: var(--gold-text); text-decoration: underline; }
+	.net-note {
+		margin: 0;
+		font-size: var(--text-sm);
+		color: var(--ink-2);
+		line-height: 1.55;
+		max-width: 78ch;
+	}
+	.net-target {
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+		width: fit-content;
+		font-size: var(--text-sm);
+		color: var(--gold-text);
+	}
+</style>
