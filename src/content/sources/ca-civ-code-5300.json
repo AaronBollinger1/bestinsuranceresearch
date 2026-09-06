@@ -1,0 +1,26 @@
+{
+	"title": "California Civil Code Section 5300(b)(9) (the insurance summary in the annual budget report, and its required disclaimer)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=5300",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-05",
+	"lastChecked": "2026-09-05",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 5300(b)(9) requires the annual budget report to include a summary of the association's property, general liability, earthquake, flood, and fidelity insurance policies.",
+		"Section 5300(b)(9) requires that, for each policy, the summary include the name of the insurer, the type of insurance, the policy limit, and the amount of the deductible, if any.",
+		"Section 5300(b)(9) requires the summary to be accompanied by a statement, in at least 10-point boldface type, that the summary provides only certain information as required by Section 5300 of the Civil Code and should not be considered a substitute for the complete policy terms and conditions contained in the actual policies of insurance.",
+		"The required statement tells members that any association member may, upon request and provision of reasonable notice, review the association's insurance policies and, upon request and payment of reasonable duplication charges, obtain copies of those policies.",
+		"The required statement tells members that although the association maintains the policies of insurance specified in the summary, the association's policies of insurance may not cover the member's property, including personal property or real property improvements to or around the dwelling, or personal injuries or other losses that occur within or around the dwelling.",
+		"The required statement tells members that even if a loss is covered, the member may nevertheless be responsible for paying all or a portion of any deductible that applies, and that association members should consult with their individual insurance broker or agent for appropriate additional coverage."
+	],
+	"updateCadence": "Amended only by legislation; verify the current text on leginfo before relying on it.",
+	"status": "active",
+	"notes": "The disclaimer is the most useful paragraph in the Davis-Stirling Act for an individual owner, and it is written by the Legislature rather than by an insurer or a broker. It says in the statute's own words that the association's policies may not reach the owner's improvements, personal property, or injuries at the dwelling, and that a covered loss can still leave the owner paying a deductible. Recorded here in the statute's terms; the amount of any particular association's deductible and who bears it under its governing documents are separate questions this record does not answer."
+}

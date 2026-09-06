@@ -1,0 +1,26 @@
+{
+	"title": "California Civil Code Section 5551 (inspection of exterior elevated elements: balconies, decks, stairways and walkways)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=5551",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-05",
+	"lastChecked": "2026-09-05",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 5551(a)(2) defines exterior elevated elements as the load-bearing components together with their associated waterproofing system.",
+		"Section 5551(a)(3) defines load-bearing components as those components that extend beyond the exterior walls of the building to deliver structural loads to the building from decks, balconies, stairways, walkways, and their railings, that have a walking surface elevated more than six feet above ground level, that are designed for human occupancy or use, and that are supported in whole or in substantial part by wood or wood-based products.",
+		"Section 5551(b)(1) requires the inspection to be performed by a licensed structural engineer or architect and to be carried out at least once every nine years.",
+		"Section 5551(i) required the first inspection to be completed by January 1, 2025.",
+		"Section 5551(k) requires that, for a building for which a certificate of occupancy was issued after the section's operative provisions applied, the inspection occur no later than six years following the issuance of that certificate of occupancy.",
+		"Section 5551(g)(1) provides that where the inspector advises that an exterior elevated element poses an immediate threat to the safety of the occupants, the inspector shall provide a copy of the report to the association immediately and to the local code enforcement agency within 15 days, and the association shall take preventive measures immediately, including preventing occupant access to the exterior elevated element until repairs have been inspected and approved."
+	],
+	"updateCadence": "Amended only by legislation; verify the current text and the current deadline provisions on leginfo before relying on them.",
+	"status": "active",
+	"notes": "Recorded because it is now an underwriting input rather than only a compliance obligation. The definition is narrower than balcony: the walking surface must be more than six feet above ground level and the element must be supported in whole or substantial part by wood or wood-based products, so a concrete podium deck is outside it. The dates in subdivisions (i) and (k) are the ones most likely to move by amendment, and the effective date of the current text was not established at the time this record was written, which is why lastCheckedBasis is access rather than recheck."
+}

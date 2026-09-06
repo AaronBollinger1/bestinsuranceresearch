@@ -1,0 +1,25 @@
+{
+	"title": "California Civil Code Section 5805 (member liability protection, conditioned on the association's general liability limits)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=5805",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "2014-01-01",
+	"accessedDate": "2026-09-05",
+	"lastChecked": "2026-09-05",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 5805(a) states the Legislature's intent to provide civil liability protection to owners of separate interests in common interest developments that have commonly owned tenancy-in-common property, provided the association maintains specified insurance coverage for tort causes of action.",
+		"Section 5805(b) provides that a tort cause of action against an owner of a separate interest, brought solely by virtue of that owner's tenancy-in-common interest in the common area, shall be brought against the association and not against the individual owners, if both of the requirements in the subdivision are met.",
+		"Section 5805(b)(1) requires that the association maintained and had in effect one or more policies of general liability insurance covering the cause of action.",
+		"Section 5805(b)(2)(A) sets the required coverage at at least two million dollars ($2,000,000) where the common interest development consists of 100 or fewer separate interests.",
+		"Section 5805(b)(2)(B) sets the required coverage at at least three million dollars ($3,000,000) where the common interest development consists of more than 100 separate interests."
+	],
+	"updateCadence": "Amended only by legislation. Added by Stats. 2012, Ch. 180, Sec. 2 (AB 805), effective January 1, 2013, operative January 1, 2014 by Sec. 3 of Ch. 180.",
+	"status": "active",
+	"notes": "The thresholds here are higher than the ones in section 5800 and they protect a different group. Section 5800 caps a volunteer director's personal exposure at the limits carried; section 5805 redirects a tort claim away from the individual owners entirely, and only where the association carries at least the amounts stated. Both are conditioned on insurance the association may or may not actually have, which is why the annual disclosure under section 5300 and the lapse notice under section 5810 matter to an owner rather than only to the board."
+}

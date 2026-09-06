@@ -1,0 +1,24 @@
+{
+	"title": "California Civil Code Section 4775 (who repairs, replaces and maintains what in a common interest development)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=4775",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "2025-01-01",
+	"accessedDate": "2026-09-05",
+	"lastChecked": "2026-09-05",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 4775(a)(1) provides that except as provided in paragraph (4), unless otherwise provided in the declaration of a common interest development, the association is responsible for repairing, replacing, and maintaining the common area.",
+		"Section 4775(a)(3) provides that unless otherwise provided in the declaration of a common interest development, the owner of each separate interest is responsible for repairing, replacing, and maintaining that separate interest.",
+		"Section 4775(a)(4) provides that unless otherwise provided in the declaration of a common interest development, the owner of each separate interest is responsible for maintaining the exclusive use common area appurtenant to that separate interest and the association is responsible for repairing and replacing the exclusive use common area.",
+		"Section 4775(a)(1), (a)(3) and (a)(4) each open with the qualifier that they apply unless otherwise provided in the declaration, so the statutory allocation is a default that a particular development's declaration may displace."
+	],
+	"updateCadence": "Amended only by legislation. Last amended by Stats. 2024, Ch. 288, Sec. 1 (SB 900), effective January 1, 2025.",
+	"status": "active",
+	"notes": "This section is not an insurance provision and is the reason the insurance questions are hard. It splits maintaining from repairing and replacing on exclusive use common area: the owner maintains, the association repairs and replaces. Every clause is subject to the declaration, so a reading of the statute alone cannot tell any particular owner what they are responsible for. The record is here because the association's policy and the owner's policy are written against this split, and a gap between them usually traces to it."
+}

@@ -1,0 +1,29 @@
+{
+	"title": "California Civil Code Section 5800 (volunteer director and officer liability, conditioned on the association's insurance)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=5800",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "2018-01-01",
+	"accessedDate": "2026-09-05",
+	"lastChecked": "2026-09-05",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 5800(a) provides that a volunteer officer or director described in subdivision (e) of an association that manages a residential or mixed use common interest development shall not be personally liable in excess of the coverage of insurance specified in paragraph (4) to any person who suffers injury, including but not limited to bodily injury, emotional distress, wrongful death, or property damage or loss, as a result of the tortious act or omission of that volunteer officer or director, if all of the criteria in the subdivision are met.",
+		"Section 5800(a)(1) through (a)(3) require that the act or omission was performed within the scope of the officer's or director's association duties, was performed in good faith, and was not willful, wanton, or grossly negligent.",
+		"Section 5800(a)(4) requires that the association maintained and had in effect, both at the time the act or omission occurred and at the time a claim is made, one or more policies of insurance including coverage for general liability of the association and coverage for individual liability of officers and directors of the association for negligent acts or omissions in that capacity.",
+		"Section 5800(a)(4)(A) and (a)(4)(B) set the minimum amounts for both types of coverage at at least five hundred thousand dollars ($500,000) where the common interest development consists of 100 or fewer separate interests, and at least one million dollars ($1,000,000) where it consists of more than 100 separate interests.",
+		"Section 5800(b) provides that the payment of actual expenses incurred by a director or officer in the execution of the duties of that position does not affect that person's status as a volunteer within the meaning of the section.",
+		"Section 5800(c) provides that an officer or director who at the time of the act or omission was a declarant, or who received direct or indirect compensation as an employee from the declarant or from a financial institution that purchased a separate interest at a judicial or nonjudicial foreclosure, is not a volunteer for purposes of the section.",
+		"Section 5800(d) provides that nothing in the section shall be construed to limit the liability of the association for its own negligent act or omission or for any negligent act or omission of an officer or director of the association.",
+		"Section 5800(e) limits the section to a volunteer officer or director who is a tenant of a residential separate interest in the common interest development, or is an owner of no more than two separate interests whose ownership in the development consists exclusively of residential separate interests.",
+		"Section 5800(f)(1) provides that the scope of association duties for purposes of subdivision (a)(1) includes, but is not limited to, the decision whether to conduct an investigation of the common interest development for latent deficiencies prior to the expiration of the applicable statute of limitations, and the decision whether to commence a civil action against the builder for defects in design or construction."
+	],
+	"updateCadence": "Amended only by legislation. Last amended by Stats. 2017, Ch. 278, Sec. 2 (AB 1412), effective January 1, 2018.",
+	"status": "active",
+	"notes": "The protection is a cap rather than an immunity, and the cap is the amount of insurance carried. An association that lets the directors and officers coverage lapse does not expose the association alone; it removes the ceiling on its volunteers' personal exposure. Note also that the section protects a narrow class: subdivision (e) excludes a director who owns three or more separate interests, and subdivision (c) excludes a declarant."
+}

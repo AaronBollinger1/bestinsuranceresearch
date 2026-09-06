@@ -1,0 +1,25 @@
+{
+	"title": "California Civil Code Section 5806 (required crime, employee dishonesty or fidelity bond coverage)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=5806",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "2022-01-01",
+	"accessedDate": "2026-09-05",
+	"lastChecked": "2026-09-05",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 5806 requires that, unless the governing documents require greater coverage amounts, the association shall maintain crime insurance, employee dishonesty coverage, fidelity bond coverage, or their equivalent, for its directors, officers, and employees.",
+		"Section 5806 sets the required amount at an amount that is equal to or more than the combined amount of the reserves of the association and total assessments for three months.",
+		"Section 5806 requires that the coverage maintained by the association also include protection in an equal amount against computer fraud and funds transfer fraud.",
+		"Section 5806 provides that if the association uses a managing agent or management company, the association's crime insurance, employee dishonesty coverage, fidelity bond coverage, or their equivalent, shall additionally include coverage for, or otherwise be endorsed to provide coverage for, dishonest acts by that person or entity and its employees.",
+		"Section 5806 provides that self-insurance does not meet the requirements of the section."
+	],
+	"updateCadence": "Amended only by legislation. Last amended by Stats. 2021, Ch. 270, Sec. 3 (AB 1101), effective January 1, 2022.",
+	"status": "active",
+	"notes": "This is the one insurance requirement in the Davis-Stirling Act stated as a duty on the association rather than as a condition of somebody's liability protection. Three features are routinely missed: the amount floats with reserves and assessments rather than being a fixed figure, so it has to be revisited as reserves grow; computer fraud and funds transfer fraud must be covered in an equal amount, which a plain fidelity bond may not do; and the managing agent must be brought inside the coverage, which is where the loss most often originates."
+}

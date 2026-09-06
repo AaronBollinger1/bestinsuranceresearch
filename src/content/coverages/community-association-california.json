@@ -1,0 +1,172 @@
+{
+	"name": "Community association insurance (California)",
+	"line": "community-association",
+	"family": "commercial",
+	"definition": "The insurance program a California homeowners association buys for itself: property on the common area, general liability, crime and fidelity, and directors and officers cover for the volunteers who run it. Two of those are not simply prudent purchases. The Davis-Stirling Act makes crime or fidelity coverage a duty on the association [S:ca-civ-code-5806], and it conditions the liability protection of both the directors [S:ca-civ-code-5800] and the individual owners [S:ca-civ-code-5805] on the association actually carrying stated minimum limits.",
+	"protects": [
+		"The association as an entity, against tort claims arising from the common area it is responsible for repairing, replacing and maintaining [S:ca-civ-code-4775]",
+		"The volunteer directors and officers personally, whose exposure is capped at the amount of insurance carried rather than eliminated [S:ca-civ-code-5800]",
+		"The individual owners, whose tenancy-in-common share of the common area would otherwise expose them to tort claims directly [S:ca-civ-code-5805]",
+		"The association's reserves and assessment funds against theft by its own directors, officers, employees, and its managing agent [S:ca-civ-code-5806]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "General liability for the common area",
+			"note": "The association is responsible for repairing, replacing and maintaining the common area unless the declaration says otherwise [S:ca-civ-code-4775], and section 5805 assumes one or more general liability policies covering tort causes of action arising from it [S:ca-civ-code-5805]."
+		},
+		{
+			"item": "Individual liability of directors and officers",
+			"note": "Section 5800(a)(4) requires the association to carry, alongside general liability, coverage for individual liability of officers and directors for negligent acts or omissions in that capacity, in force both when the act occurred and when the claim is made [S:ca-civ-code-5800]."
+		},
+		{
+			"item": "Crime, employee dishonesty or fidelity bond, including the managing agent",
+			"note": "Required of the association, and where a managing agent or management company is used the coverage must extend to or be endorsed for dishonest acts by that person or entity and its employees [S:ca-civ-code-5806]."
+		},
+		{
+			"item": "Computer fraud and funds transfer fraud",
+			"note": "Not an optional extension here. Section 5806 requires protection against computer fraud and funds transfer fraud in an amount equal to the required crime or fidelity amount [S:ca-civ-code-5806]."
+		},
+		{
+			"item": "Property on the common area",
+			"note": "Assumed rather than mandated by the Act, but section 5300(b)(9) requires the annual budget report to summarise the association's property, general liability, earthquake, flood and fidelity policies, which is the list the statute expects to exist [S:ca-civ-code-5300]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "The owner's own separate interest",
+			"note": "The owner of each separate interest is responsible for repairing, replacing and maintaining it unless the declaration provides otherwise [S:ca-civ-code-4775], and the statutory disclosure warns members that the association's policies may not cover their property or improvements [S:ca-civ-code-5300]."
+		},
+		{
+			"item": "The owner's personal property and interior improvements",
+			"note": "The required 10-point boldface statement tells members in the Legislature's own words that the association's policies may not cover personal property or real property improvements to or around the dwelling [S:ca-civ-code-5300]."
+		},
+		{
+			"item": "Injuries and losses occurring within or around a dwelling",
+			"note": "The same required statement extends the warning to personal injuries or other losses that occur within or around the member's dwelling [S:ca-civ-code-5300]."
+		},
+		{
+			"item": "The deductible, which does not disappear because a loss is covered",
+			"note": "The statutory disclosure states that even if a loss is covered the member may nevertheless be responsible for paying all or a portion of any deductible that applies [S:ca-civ-code-5300]."
+		},
+		{
+			"item": "Personal liability of a director who is not a volunteer within the section",
+			"note": "A declarant, a person compensated by the declarant, and an owner of three or more separate interests fall outside section 5800, so the statutory cap does not apply to them at all [S:ca-civ-code-5800]."
+		},
+		{
+			"item": "Self-insurance in place of the required crime or fidelity cover",
+			"note": "Section 5806 states expressly that self-insurance does not meet the requirements of the section, so a funded reserve set aside for the purpose does not discharge the duty [S:ca-civ-code-5806]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"Two different statutory thresholds apply to two different protections, and meeting one does not satisfy the other.",
+		"For the volunteer director and officer cap, both general liability and individual director and officer coverage must be at least $500,000 where the development has 100 or fewer separate interests, and at least $1,000,000 where it has more than 100 [S:ca-civ-code-5800].",
+		"For the protection that routes owner tort claims to the association instead of to individual owners, general liability must be at least $2,000,000 where the development has 100 or fewer separate interests, and at least $3,000,000 where it has more than 100 [S:ca-civ-code-5805].",
+		"The higher pair governs in practice: an association carrying $1,000,000 satisfies section 5800 for a development of more than 100 units but leaves its owners outside section 5805, which requires $3,000,000 for that same development [S:ca-civ-code-5800][S:ca-civ-code-5805].",
+		"The crime, employee dishonesty or fidelity amount is not a fixed figure. It must equal or exceed the combined amount of the association's reserves and three months of total assessments, so it moves as reserves are funded [S:ca-civ-code-5806].",
+		"Governing documents may require greater amounts than section 5806 does, and where they do, the governing documents control [S:ca-civ-code-5806].",
+		"Section 5800's protection is a ceiling rather than an immunity: a volunteer director is not personally liable in excess of the coverage carried, so the limit purchased is the limit of the personal protection [S:ca-civ-code-5800].",
+		"Deductibles must be disclosed for each policy in the annual budget report, along with the insurer, the type of insurance and the policy limit [S:ca-civ-code-5300]."
+	],
+	"endorsements": [
+		{
+			"item": "Managing agent extension to the crime or fidelity coverage",
+			"note": "Section 5806 permits this to be met either by coverage that already includes the managing agent or by endorsement, but it must be one or the other where a management company is used [S:ca-civ-code-5806]."
+		},
+		{
+			"item": "Computer fraud and funds transfer fraud in an equal amount",
+			"note": "Often sold as an add-on to a crime form, and required by statute at the same amount as the underlying crime or fidelity cover [S:ca-civ-code-5806]."
+		},
+		{
+			"item": "Earthquake and flood, where carried",
+			"note": "Neither is mandated by the Act, but both are named in the annual budget report summary, so a decision not to carry them is itself disclosed to members [S:ca-civ-code-5300]."
+		}
+	],
+	"relatedPolicies": [
+		"Condominium unit owners insurance, which is where the owner's separate interest, improvements and personal property are meant to sit",
+		"Commercial property and commercial general liability, which are the underlying forms the association's programme is usually built from",
+		"Workers compensation, where the association directly employs anyone rather than contracting through a management company"
+	],
+	"underwritingInputs": [
+		"The number of separate interests, because it selects which statutory limit threshold applies under both section 5800 and section 5805 [S:ca-civ-code-5800][S:ca-civ-code-5805]",
+		"The declaration itself, because every allocation in section 4775 applies only unless otherwise provided in it [S:ca-civ-code-4775]",
+		"The current reserve balance and three months of total assessments, which together set the required crime or fidelity amount [S:ca-civ-code-5806]",
+		"Whether a managing agent or management company is used, and whether it is inside the crime coverage [S:ca-civ-code-5806]",
+		"Whether the development has exterior elevated elements as defined, meaning wood-supported balconies, decks, stairways or walkways with a walking surface more than six feet above ground level [S:ca-civ-code-5551]",
+		"The date and findings of the most recent nine-year inspection of those elements [S:ca-civ-code-5551]",
+		"Whether any policy described in a prior annual budget report has lapsed, been cancelled, or changed significantly [S:ca-civ-code-5810]",
+		"Whether directors include a declarant or an owner of three or more separate interests, who fall outside the section 5800 class [S:ca-civ-code-5800]"
+	],
+	"exposures": [
+		{
+			"item": "A gap at the boundary between the association and the owner",
+			"note": "Section 4775 splits maintaining from repairing and replacing on exclusive use common area: the owner maintains it, the association repairs and replaces it [S:ca-civ-code-4775]. A loss that turns on which of those a task was can fall between two policies written against different readings of the same declaration."
+		},
+		{
+			"item": "Theft from reserves by an insider or the managing agent",
+			"note": "The association holds reserves and assessments, and the people with access are its own officers, employees and management company. Section 5806 addresses this directly by requiring crime or fidelity coverage extending to the managing agent and its employees, and by refusing self-insurance as a substitute [S:ca-civ-code-5806]."
+		},
+		{
+			"item": "Funds moved electronically rather than taken in cash",
+			"note": "A traditional fidelity bond answers employee dishonesty and may not answer a fraudulent transfer instruction. Section 5806 requires computer fraud and funds transfer fraud protection in an equal amount, which is a recognition that the modern loss does not look like the old one [S:ca-civ-code-5806]."
+		},
+		{
+			"item": "Structural failure of a balcony, deck, stairway or walkway",
+			"note": "Section 5551 exists because these elements fail. It reaches load-bearing components with a walking surface more than six feet above ground level that are supported in whole or substantial part by wood or wood-based products, together with their waterproofing system [S:ca-civ-code-5551]."
+		},
+		{
+			"item": "A construction defect decision made by volunteers",
+			"note": "Section 5800(f)(1) puts two specific decisions inside the scope of association duties: whether to investigate for latent deficiencies before the statute of limitations expires, and whether to sue the builder [S:ca-civ-code-5800]. Both are decisions a volunteer board can get wrong, and both are now expressly within the protected scope."
+		},
+		{
+			"item": "Coverage that quietly stops meeting the statutory threshold",
+			"note": "Because the protections in sections 5800 and 5805 are conditioned on limits actually in force, a renewal placed at lower limits removes protection from directors and owners without any claim having occurred. Section 5810 treats a reduction in limits or an increase in deductible as a significant change requiring notice to members [S:ca-civ-code-5810][S:ca-civ-code-5800][S:ca-civ-code-5805]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Read the annual budget report summary against the two statutory thresholds",
+			"note": "The summary must state the insurer, type, policy limit and deductible for each policy [S:ca-civ-code-5300], which is enough to check the limit against the $500,000 or $1,000,000 in section 5800 and the $2,000,000 or $3,000,000 in section 5805 [S:ca-civ-code-5800][S:ca-civ-code-5805]."
+		},
+		{
+			"item": "Recompute the required crime or fidelity amount when reserves change",
+			"note": "The required amount is the combined reserves plus three months of total assessments [S:ca-civ-code-5806], so a figure that was compliant when the policy was placed can fall below the requirement as reserves are funded, without anything about the policy changing."
+		},
+		{
+			"item": "Confirm the managing agent is named or endorsed onto the crime coverage",
+			"note": "Where a managing agent or management company is used, section 5806 requires the coverage to include or be endorsed for dishonest acts by that entity and its employees, which is a specific document to ask for rather than an assumption to make [S:ca-civ-code-5806]."
+		},
+		{
+			"item": "Complete and keep the nine-year exterior elevated element inspection",
+			"note": "The inspection must be performed by a licensed structural engineer or architect at least once every nine years [S:ca-civ-code-5551], and where an element poses an immediate threat the association must act at once, including preventing occupant access until repairs are inspected and approved [S:ca-civ-code-5551]."
+		},
+		{
+			"item": "Read the declaration before assuming the statutory allocation applies",
+			"note": "Every allocation in section 4775 is expressed as a default that applies unless otherwise provided in the declaration [S:ca-civ-code-4775], so the boundary between the association's policy and an owner's policy is set by that document rather than by the Code."
+		},
+		{
+			"item": "Treat a lapse or reduction notice as the trigger it is",
+			"note": "Section 5810 requires individual notice when a disclosed policy lapses or is cancelled and not immediately replaced, and also when there is a significant change such as a reduction in limits or an increase in the deductible [S:ca-civ-code-5810]. Either notice may mean the statutory protections are no longer met."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "This page is California law throughout. The Davis-Stirling Common Interest Development Act governs, and the specific figures, the nine-year inspection cycle and the required disclosure text are Californian rather than general to community associations [S:ca-civ-code-5800][S:ca-civ-code-5551]."
+		}
+	],
+	"lastReviewed": "2026-09-05",
+	"effectiveDate": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-civ-code-4775",
+		"ca-civ-code-5300",
+		"ca-civ-code-5551",
+		"ca-civ-code-5800",
+		"ca-civ-code-5805",
+		"ca-civ-code-5806",
+		"ca-civ-code-5810"
+	],
+	"relatedQuestions": []
+}

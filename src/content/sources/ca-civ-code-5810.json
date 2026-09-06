@@ -1,0 +1,23 @@
+{
+	"title": "California Civil Code Section 5810 (notice to members when a disclosed policy lapses or changes)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=5810",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "2014-01-01",
+	"accessedDate": "2026-09-05",
+	"lastChecked": "2026-09-05",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 5810 requires the association, as soon as reasonably practicable, to provide individual notice pursuant to Section 4040 to all members if any of the policies described in the annual budget report pursuant to Section 5300 have lapsed, been canceled, and are not immediately renewed, restored, or replaced.",
+		"Section 5810 requires that same individual notice if there is a significant change as to any of those policies, such as a reduction in coverage or limits or an increase in the deductible.",
+		"Section 5810 requires that, if the association receives any notice of nonrenewal of a policy described in the annual budget report pursuant to Section 5300, the association shall immediately notify its members if replacement coverage will not be in effect by the date the existing coverage will lapse."
+	],
+	"updateCadence": "Amended only by legislation. Added by Stats. 2012, Ch. 180, Sec. 2 (AB 805), effective January 1, 2013, operative January 1, 2014 by Sec. 3 of Ch. 180.",
+	"status": "active",
+	"notes": "The trigger is not limited to cancellation. A reduction in limits or an increase in the deductible is a significant change and carries the same notice duty, which is the part most likely to go unreported in a hard market where a renewal is placed at lower limits rather than declined outright. The duty attaches only to policies described in the annual budget report, so what section 5300 discloses determines what section 5810 covers."
+}

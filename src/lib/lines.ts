@@ -41,6 +41,15 @@ export const CANONICAL_LINES = [
 	'homeowners',
 	'dwelling-fire',
 	'condominium-unit-owners',
+	/*
+	 * The association's own programme, not the unit owner's policy. Kept distinct
+	 * from `condominium-unit-owners` because the two sit on opposite sides of one
+	 * boundary: what the association insures follows what it is responsible for
+	 * repairing, replacing and maintaining, and the owner's policy is written
+	 * against the remainder. Collapsing them would hide exactly the gap that
+	 * causes the disputes.
+	 */
+	'community-association',
 	'renters',
 	'mobilehome',
 	'residential-earthquake',
@@ -106,6 +115,17 @@ const ALIASES: Record<string, CanonicalLine> = {
 	'personal-auto': 'auto',
 	'private-passenger-auto': 'auto',
 	condo: 'condominium-unit-owners',
+	/*
+	 * Readers and answer engines ask about this line by the body that buys it or
+	 * by the document it produces, almost never by the phrase we file it under.
+	 * `hoa` deliberately resolves here rather than to `homeowners`: an HOA policy
+	 * is the association's, and sending that query to the homeowners line would
+	 * answer a different question convincingly.
+	 */
+	hoa: 'community-association',
+	'homeowners-association': 'community-association',
+	'common-interest-development': 'community-association',
+	'master-policy': 'community-association',
 	/* Scheduling valuables is the scheduled personal property line. */
 	valuables: 'scheduled-personal-property',
 	'business-income-and-extra-expense': 'business-income',
