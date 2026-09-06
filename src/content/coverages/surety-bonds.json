@@ -1,0 +1,183 @@
+{
+	"name": "Surety bonds",
+	"line": "surety",
+	"family": "commercial",
+	"definition": "A promise to be liable for the debt, default or failure of another. A surety bond is a three-party contract in which the surety guarantees the performance of the principal to a third party, the obligee [S:nasbp-32-questions-contract-bonding]. California regulates it as insurance, defining surety insurance to include guaranteeing the performance of contracts and executing bonds and undertakings required by law [S:ca-ins-code-105-surety-insurance], but it does not behave like insurance: the surety does not expect to bear the loss, and the principal signs an indemnity agreement obliging it to pay the surety back [S:nasbp-32-questions-contract-bonding].",
+	"protects": [
+		"The obligee, meaning the party to whom the bond is given, which in construction is the project owner or the prime contractor [S:nasbp-32-questions-contract-bonding]",
+		"On a federal public works contract, persons supplying labor and material, through a payment bond furnished for their protection [S:usc-40-3131-miller-act]",
+		"In California, a narrow statutory list of people damaged by a licensed contractor, chiefly homeowners and unpaid employees [S:ca-bpc-7071-5-bond-beneficiaries]",
+		"Not the principal. The surety expects to be indemnified and reimbursed by the principal for any payment it makes [S:nasbp-32-questions-contract-bonding]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Performance of a bonded contract",
+			"note": "Before a federal contract of more than $100,000 for construction, alteration or repair of a public building or public work is awarded, a performance bond must be furnished with a surety satisfactory to the awarding officer, in an amount the officer considers adequate [S:usc-40-3131-miller-act]."
+		},
+		{
+			"item": "Payment of those who supplied labor and material",
+			"note": "A payment bond must be furnished for the protection of all persons supplying labor and material in carrying out the work, and its amount equals the total amount payable under the contract unless the awarding officer determines otherwise in writing supported by specific findings [S:usc-40-3131-miller-act]."
+		},
+		{
+			"item": "A licensed contractor's compliance with California licence law",
+			"note": "The Contractors State License Board requires a contractor's bond of twenty-five thousand dollars as a condition of issuance, reinstatement, reactivation, renewal or continued maintenance of a licence [S:ca-bpc-7071-6-contractor-bond]."
+		},
+		{
+			"item": "Unpaid wages and fringe benefits of a contractor's employees",
+			"note": "The California bond runs to an employee damaged by the licensee's failure to pay wages, and to a person or entity damaged by failure to pay fringe benefits for employees [S:ca-bpc-7071-5-bond-beneficiaries]."
+		},
+		{
+			"item": "The bid, the warranty period, and the stages between",
+			"note": "The main types of contract surety bond are bid bonds, performance bonds, payment bonds, and warranty or maintenance bonds [S:nasbp-32-questions-contract-bonding]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "The principal's own losses",
+			"note": "A fundamental concept of suretyship is that the surety will not sustain a loss. It expects reimbursement from the principal and indemnitors under the indemnity agreement, so a bond is not protection for the party that buys it [S:nasbp-32-questions-contract-bonding]."
+		},
+		{
+			"item": "Ordinary defective work, as far as the general public is concerned",
+			"note": "The California contractor's bond reaches a person other than a homeowner or employee only on a willful and deliberate violation of the chapter, or on fraud by the licensee in the execution or performance of a construction contract [S:ca-bpc-7071-5-bond-beneficiaries]."
+		},
+		{
+			"item": "An owner building a single-family dwelling intended for sale",
+			"note": "That owner recovers under subdivision (b) only if the dwelling is not intended for sale or offered for sale at the time the damages were incurred [S:ca-bpc-7071-5-bond-beneficiaries]."
+		},
+		{
+			"item": "Most of the $25,000 for anyone who is not a homeowner",
+			"note": "Excluding claims by the subdivision (a) beneficiaries, the aggregate liability of the surety on claims against the bond shall not exceed seven thousand five hundred dollars, and the proceeds above that figure are reserved exclusively for those beneficiaries [S:ca-bpc-7071-6-contractor-bond]."
+		},
+		{
+			"item": "Anything once the bond is exhausted",
+			"note": "The bond amount is not per job. It is the amount available for all the jobs a contractor takes on during the life of the bond, and once depleted the contractor must buy a new one for the licence to remain in effect [S:cslb-license-bonds-fast-facts]."
+		},
+		{
+			"item": "A claim brought too late, or noticed too late",
+			"note": "A Miller Act action must be brought no later than one year after the day the claimant last performed labor or supplied material, and a claimant one tier below the prime must additionally give written notice within 90 days of that same date [S:usc-40-3133-miller-act-claims]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no deductible in the insurance sense. The principal's exposure is the whole of it, through the general agreement of indemnity [S:nasbp-32-questions-contract-bonding].",
+		"The California contractor's bond is twenty-five thousand dollars [S:ca-bpc-7071-6-contractor-bond], but that figure is misleading read alone: claims other than those of the subdivision (a) beneficiaries are capped in aggregate at seven thousand five hundred dollars [S:ca-bpc-7071-6-contractor-bond].",
+		"The bond is an aggregate across all jobs during its life rather than a limit per project [S:cslb-license-bonds-fast-facts].",
+		"CSLB may require an applicant to post a bond in twice the amount where the applicant has been convicted of a violation of section 7028 or cited under section 7028.7 reduced to a final order, and the violation constituted a substantial injury to the public [S:ca-bpc-7071-6-contractor-bond].",
+		"A federal performance bond is in an amount the awarding officer considers adequate for the protection of the Government, rather than a fixed statutory figure [S:usc-40-3131-miller-act].",
+		"A federal payment bond equals the total amount payable by the terms of the contract, unless the awarding officer determines otherwise in a writing supported by specific findings [S:usc-40-3131-miller-act].",
+		"Under a bid bond the surety's liability is generally limited to the penal sum of the bond, typically in the range of 5 to 20 percent of the contract bid price [S:nasbp-32-questions-contract-bonding].",
+		"Bonds are non-cancelable and must be paid for when executed [S:nasbp-32-questions-contract-bonding].",
+		"For federal construction contracts greater than $35,000 but not greater than $150,000, the contracting officer selects two or more alternative payment protections rather than requiring a payment bond, from a payment bond, an irrevocable letter of credit, a tripartite escrow agreement, certificates of deposit, and a deposit of specified assets [S:far-28-102-1]."
+	],
+	"endorsements": [
+		{
+			"item": "The general agreement of indemnity",
+			"note": "Not an endorsement but the document that governs the relationship. It obliges the contractor and other indemnitors to repay the surety for any loss or expense from having issued bonds, is required before any bond is issued, and applies to all bonds issued for that principal [S:nasbp-32-questions-contract-bonding]."
+		},
+		{
+			"item": "Personal and spousal indemnity",
+			"note": "A surety almost always requires the principal, the individuals who own or control the company, their spouses, and often affiliated companies to sign that agreement [S:nasbp-32-questions-contract-bonding]."
+		},
+		{
+			"item": "A disciplinary bond",
+			"note": "CSLB may require a separate bond from contractors who have been disciplined, and some licence qualifiers including responsible managing employees must have their own twenty-five thousand dollar bond on file [S:cslb-license-bonds-fast-facts]."
+		},
+		{
+			"item": "SBA guarantee support",
+			"note": "A federal programme guarantees bonds for contractors that a surety would not otherwise support, with its own definitions of the terms it uses [S:cfr-13-115-10-sba-definitions][S:sba-surety-bond-guarantee-program]."
+		}
+	],
+	"relatedPolicies": [
+		"Commercial general liability, which is two-party insurance and answers a different question entirely",
+		"Workers compensation, which a bonded contractor will normally also carry",
+		"Contractual risk transfer arrangements, where indemnity and additional insured status sit alongside bonding on the same project"
+	],
+	"underwritingInputs": [
+		"Financial capacity, net worth, cash flow and assets, because obtaining a bond resembles obtaining bank credit more than buying insurance [S:nasbp-32-questions-contract-bonding]",
+		"Work in progress and work history, including expertise and experience [S:nasbp-32-questions-contract-bonding]",
+		"The banking relationship and the character of the contractor [S:nasbp-32-questions-contract-bonding]",
+		"The nature of the project to be bonded [S:nasbp-32-questions-contract-bonding]",
+		"Whether the individuals who own or control the company, and their spouses, will sign the indemnity agreement [S:nasbp-32-questions-contract-bonding]",
+		"Whether the contract is federal and exceeds the Miller Act threshold [S:usc-40-3131-miller-act]",
+		"Whether the licensee has a disciplinary history that triggers a doubled bond [S:ca-bpc-7071-6-contractor-bond]",
+		"Whether the licence is active, since no bond is required while it is inactive on the board's official records [S:ca-bpc-7071-6-contractor-bond]"
+	],
+	"exposures": [
+		{
+			"item": "Buying a bond and believing you are insured",
+			"note": "The surety does not assume the primary obligation and is only secondarily liable if the principal defaults [S:nasbp-32-questions-contract-bonding]. Every dollar the surety pays out is a dollar it expects back from the contractor under the indemnity agreement, so a bond transfers no risk from the principal at all."
+		},
+		{
+			"item": "Signing an indemnity agreement that reaches the household",
+			"note": "The agreement is typically signed by the owners, their spouses and affiliated companies [S:nasbp-32-questions-contract-bonding], so a loss on one bonded job can follow personal assets. It is executed before any bond is issued and covers every bond thereafter."
+		},
+		{
+			"item": "A depleted licence bond and a licence that stops working",
+			"note": "The California bond is an aggregate across all jobs, and once depleted a new one must be purchased for the licence to remain in effect [S:cslb-license-bonds-fast-facts]. Earlier claimants can therefore leave both later claimants and the contractor's own licence with nothing behind them."
+		},
+		{
+			"item": "Missing the 90 day Miller Act notice",
+			"note": "A supplier with a contract with a subcontractor but none with the prime may bring an action on the payment bond only on giving written notice to the contractor within 90 days of its own last labor or material [S:usc-40-3133-miller-act-claims]. The clock runs from the claimant's own work, not from the day payment was refused."
+		},
+		{
+			"item": "Signing away bond rights at the start of a job",
+			"note": "A waiver of the right to bring a civil action on a Miller Act payment bond is void unless in writing, signed by the person whose right is waived, and executed after that person has furnished labor or material [S:usc-40-3133-miller-act-claims]. A waiver buried in a subcontract at award is void, which cuts both ways depending on who is relying on it."
+		},
+		{
+			"item": "Assuming the contractor's bond answers a commercial dispute",
+			"note": "The statutory beneficiaries are homeowners, single-family dwelling owners not building for sale, employees owed wages or fringe benefits, and persons damaged by willful and deliberate violation or fraud [S:ca-bpc-7071-5-bond-beneficiaries]. A commercial customer is not on that list."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Diary the two Miller Act dates from your own last day on site",
+			"note": "Both the 90 day notice and the one year limitation run from the day the claimant last performed labor or supplied material [S:usc-40-3133-miller-act-claims], so the date to record is your own, fixed at the time, rather than the date an invoice went unpaid."
+		},
+		{
+			"item": "Serve notice by a method that produces third-party proof of delivery",
+			"note": "The statute requires written, third-party verification of delivery to the contractor at a place it maintains an office or conducts business or at its residence, or service in the manner a United States marshal may serve summons [S:usc-40-3133-miller-act-claims]."
+		},
+		{
+			"item": "Read the indemnity agreement before the first bond, not the first loss",
+			"note": "It is required before any bond is issued and applies to every bond thereafter for that principal [S:nasbp-32-questions-contract-bonding], so its terms are settled at the outset of the relationship and govern everything that follows."
+		},
+		{
+			"item": "Check whether the licence bond has already been drawn on",
+			"note": "Because the amount is an aggregate over the life of the bond rather than per job [S:cslb-license-bonds-fast-facts], what remains behind a licence today is a different question from what the statutory figure says."
+		},
+		{
+			"item": "Bring documents when making a claim on a licence bond",
+			"note": "The published guidance asks a claimant to contact the surety with a detailed written description of the problem, a copy of the contract, and all other pertinent documents and information [S:cslb-license-bonds-fast-facts]."
+		},
+		{
+			"item": "Treat the board complaint and the bond claim as separate tracks",
+			"note": "The surety investigates the claim against the bond and the board investigates the complaint against the licence, and the two resolve the issues independently under their respective jurisdictions [S:cslb-license-bonds-fast-facts]."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "The twenty-five thousand dollar contractor's bond, the seven thousand five hundred dollar aggregate cap for non-homeowner claims, and the beneficiary list are California licence law and do not describe bonding requirements elsewhere [S:ca-bpc-7071-6-contractor-bond][S:ca-bpc-7071-5-bond-beneficiaries]."
+		}
+	],
+	"lastReviewed": "2026-09-06",
+	"effectiveDate": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"nasbp-32-questions-contract-bonding",
+		"ca-ins-code-105-surety-insurance",
+		"ca-bpc-7071-6-contractor-bond",
+		"ca-bpc-7071-5-bond-beneficiaries",
+		"cslb-license-bonds-fast-facts",
+		"usc-40-3131-miller-act",
+		"usc-40-3133-miller-act-claims",
+		"far-28-102-1",
+		"ca-civ-code-2847-surety-reimbursement",
+		"cfr-13-115-10-sba-definitions",
+		"sba-surety-bond-guarantee-program"
+	],
+	"relatedQuestions": [
+		"surety-bond-vs-insurance"
+	]
+}

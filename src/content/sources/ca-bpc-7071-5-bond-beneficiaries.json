@@ -1,0 +1,25 @@
+{
+	"title": "California Business and Professions Code section 7071.5 - who the contractor's bond is for the benefit of",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7071.5",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 7071.5(a) provides that the contractor's bond is for the benefit of a homeowner contracting for home improvement upon the homeowner's personal family residence damaged as a result of a violation of the chapter by the licensee.",
+		"Section 7071.5(b) provides that the bond is for the benefit of a property owner contracting for the construction of a single-family dwelling who is damaged as a result of a violation of the chapter by the licensee, and provides that the property owner shall only recover under that subdivision if the single-family dwelling is not intended for sale or offered for sale at the time the damages were incurred.",
+		"Section 7071.5(c) provides that the bond is for the benefit of a person damaged as a result of a willful and deliberate violation of the chapter by the licensee, or by the fraud of the licensee in the execution or performance of a construction contract.",
+		"Section 7071.5(d) provides that the bond is for the benefit of an employee of the licensee damaged by the licensee's failure to pay wages.",
+		"Section 7071.5(e) provides that the bond is for the benefit of a person or entity, including a laborer described in subdivision (b) of Section 8024 of the Civil Code, to which a portion of the compensation of an employee of a licensee is paid by agreement with that employee or the collective bargaining agent of that employee, damaged as the result of the licensee's failure to pay fringe benefits for its employees."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Read this alongside section 7071.6, which sets the bond amount and reserves the proceeds above seven thousand five hundred dollars exclusively for the subdivision (a) beneficiaries. The list is narrower than the phrase contractor's bond suggests: subdivision (c) reaches a general member of the public only on a willful and deliberate violation or on fraud, not on ordinary defective work, and subdivision (b) excludes an owner building a single-family dwelling that was intended for or offered for sale when the damage was incurred. A commercial customer of a licensed contractor is not on the list at all."
+}
