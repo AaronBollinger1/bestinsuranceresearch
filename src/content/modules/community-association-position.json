@@ -1,0 +1,503 @@
+{
+	"name": "Community Association Statutory Position",
+	"summary": "Record what a California common interest development carries and what it is, then see which Davis-Stirling requirements are met and which are not. Two of the checks here are arithmetic the statute performs on figures the association already has, and one of them is the reason a board can be compliant and its owners still unprotected.",
+	"family": "commercial",
+	"lines": [
+		"community-association",
+		"condominium-unit-owners",
+		"directors-and-officers"
+	],
+	"order": 90,
+	"status": "live",
+	"privacyBoundary": "This module refuses to collect the name of the association, its address, its insurer, any policy number, the name of any director or manager, or the identity of any member. It asks for counts and dollar amounts already published to members in the annual budget report, and for whether certain documents exist. Nothing entered leaves your own browser, there is no account, and there is no file input anywhere on this site, so no policy or declaration can be uploaded here even by accident.",
+	"uncertainty": "It cannot tell you what any policy covers, whether a particular claim would be paid, or what your association should buy. Every allocation in Civil Code section 4775 applies only unless the declaration provides otherwise, so this module cannot tell any particular association who is responsible for what; only the declaration can. Whether the statutory liability protections actually applied to a given claim is a legal question, and what a form covers is a question for the insurer.",
+	"domain": null,
+	"fields": [
+		{
+			"id": "separate-interest-count",
+			"label": "How many separate interests does the development contain?",
+			"help": "The count, not an estimate of residents. Both statutory thresholds turn on whether this is more than 100.",
+			"kind": "number",
+			"unit": "separate interests",
+			"group": "The development",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "declaration-maintenance-reviewed",
+			"label": "Has the declaration been read to establish who maintains, repairs and replaces what?",
+			"kind": "select",
+			"options": [
+				{ "value": "reviewed-and-recorded", "label": "Yes, and the allocation is written down" },
+				{ "value": "not-reviewed", "label": "No, we assume the statutory default" },
+				{ "value": "unsure", "label": "Not sure" }
+			],
+			"group": "The development",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "general-liability-limit",
+			"label": "What is the association's general liability limit?",
+			"help": "The per-occurrence limit shown in the annual budget report insurance summary.",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Liability limits in force",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "directors-officers-limit",
+			"label": "What limit is carried for individual liability of directors and officers?",
+			"help": "The cover for negligent acts or omissions in that capacity, not the association's own general liability.",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Liability limits in force",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "board-includes-non-volunteer",
+			"label": "Does the board include any of these?",
+			"help": "Each of these sits outside the class the volunteer protection covers.",
+			"kind": "multiselect",
+			"options": [
+				{ "value": "declarant", "label": "A declarant" },
+				{ "value": "compensated-by-declarant", "label": "Someone compensated as an employee by the declarant" },
+				{ "value": "owner-of-three-or-more", "label": "An owner of three or more separate interests" },
+				{ "value": "none-of-these", "label": "None of these" }
+			],
+			"group": "Liability limits in force",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "crime-coverage-amount",
+			"label": "What amount of crime, employee dishonesty or fidelity bond coverage is carried?",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Crime and fidelity",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "reserves-plus-quarterly-assessments",
+			"label": "What are the association's reserves plus three months of total assessments?",
+			"help": "Add the two together. This sum is the figure the statute sets the required coverage against.",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Crime and fidelity",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "computer-and-funds-transfer-amount",
+			"label": "What amount is carried against computer fraud and funds transfer fraud?",
+			"help": "Enter 0 if the crime form carries no such cover.",
+			"kind": "number",
+			"unit": "USD",
+			"group": "Crime and fidelity",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "crime-cover-is-self-insurance",
+			"label": "Is that requirement met by self-insurance or a designated reserve rather than by a policy or bond?",
+			"kind": "boolean",
+			"group": "Crime and fidelity",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "managing-agent-arrangement",
+			"label": "How is the association managed?",
+			"kind": "select",
+			"options": [
+				{ "value": "management-company", "label": "A management company" },
+				{ "value": "individual-agent", "label": "An individual managing agent" },
+				{ "value": "self-managed", "label": "Self-managed by the board" }
+			],
+			"group": "Crime and fidelity",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "managing-agent-inside-crime-cover",
+			"label": "Is the managing agent named in, or endorsed onto, the crime coverage?",
+			"kind": "select",
+			"options": [
+				{ "value": "named-or-endorsed", "label": "Yes, named or endorsed" },
+				{ "value": "not-included", "label": "No" },
+				{ "value": "unsure", "label": "Not sure" }
+			],
+			"group": "Crime and fidelity",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "has-exterior-elevated-elements",
+			"label": "Does the development have wood-supported balconies, decks, stairways or walkways more than six feet above ground level?",
+			"kind": "select",
+			"options": [
+				{ "value": "yes-wood-supported", "label": "Yes" },
+				{ "value": "no", "label": "No, or they are not wood-supported" },
+				{ "value": "unsure", "label": "Not sure" }
+			],
+			"group": "Exterior elevated elements",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "last-eee-inspection-date",
+			"label": "When was the most recent inspection of those elements completed?",
+			"help": "Leave blank if no inspection has been completed.",
+			"kind": "date",
+			"group": "Exterior elevated elements",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "eee-immediate-threat",
+			"label": "Did the inspector report any element posing an immediate threat to occupant safety?",
+			"kind": "select",
+			"options": [
+				{ "value": "found-access-restricted", "label": "Yes, and occupant access has been prevented" },
+				{ "value": "found-access-not-restricted", "label": "Yes, and access has not been prevented" },
+				{ "value": "none-found", "label": "No" },
+				{ "value": "not-inspected", "label": "No inspection has been done" }
+			],
+			"group": "Exterior elevated elements",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "budget-report-insurance-summary",
+			"label": "Does the annual budget report carry an insurance summary with insurer, type, limit and deductible for each policy?",
+			"kind": "select",
+			"options": [
+				{ "value": "complete-four-details", "label": "Yes, all four for every policy" },
+				{ "value": "present-incomplete", "label": "A summary is included but not all four" },
+				{ "value": "absent", "label": "No summary is included" },
+				{ "value": "unsure", "label": "Not sure" }
+			],
+			"group": "Disclosure and notice",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "policy-change-since-last-report",
+			"label": "Has any policy described in the last annual budget report changed since it was sent?",
+			"kind": "select",
+			"options": [
+				{ "value": "lapse-or-cancellation", "label": "One lapsed or was cancelled" },
+				{ "value": "limit-reduced-or-deductible-raised", "label": "Limits were reduced or a deductible was raised" },
+				{ "value": "no-change", "label": "No change" },
+				{ "value": "unsure", "label": "Not sure" }
+			],
+			"group": "Disclosure and notice",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "members-notified-of-change",
+			"label": "Were members given individual notice of that change?",
+			"kind": "select",
+			"options": [
+				{ "value": "notified", "label": "Yes" },
+				{ "value": "not-notified", "label": "No" },
+				{ "value": "not-applicable", "label": "No change has occurred" }
+			],
+			"group": "Disclosure and notice",
+			"required": false,
+			"purpose": "rule-input"
+		}
+	],
+	"rules": [
+		{
+			"id": "gl-below-5805-over-100",
+			"kind": "gap",
+			"severity": "high",
+			"title": "General liability is below the amount that routes owner tort claims away from individual owners.",
+			"detail": "Section 5805(b)(2)(B) requires at least three million dollars ($3,000,000) of general liability coverage where the development consists of more than 100 separate interests, and only where that is carried is a tort cause of action brought solely by virtue of an owner's tenancy-in-common interest in the common area brought against the association rather than against the individual owners [S:ca-civ-code-5805]. This is the check most often passed by mistake: an association carrying one million dollars satisfies the general liability leg of the volunteer director protection in section 5800 and is still short of section 5805 by two million [S:ca-civ-code-5800][S:ca-civ-code-5805].",
+			"action": "Ask your broker what it costs to carry three million dollars of general liability, and ask specifically whether the structure quoted satisfies section 5805 rather than only section 5800.",
+			"when": {
+				"all": [
+					{ "field": "separate-interest-count", "op": "gt", "value": 100 },
+					{ "field": "general-liability-limit", "op": "lt", "value": 3000000 }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5805", "ca-civ-code-5800"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "gl-below-5805-100-or-fewer",
+			"kind": "gap",
+			"severity": "high",
+			"title": "General liability is below the amount section 5805 requires for a development of this size.",
+			"detail": "Section 5805(b)(2)(A) requires at least two million dollars ($2,000,000) of general liability coverage where the development consists of 100 or fewer separate interests [S:ca-civ-code-5805]. Below that figure the redirection of owner tort claims to the association does not apply, and an owner can be sued directly by virtue of their tenancy-in-common interest in the common area [S:ca-civ-code-5805].",
+			"action": "Ask your broker to quote two million dollars of general liability and to confirm in writing that the policy covers tort causes of action arising from the common area.",
+			"when": {
+				"all": [
+					{ "field": "separate-interest-count", "op": "lte", "value": 100 },
+					{ "field": "general-liability-limit", "op": "lt", "value": 2000000 }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5805"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "do-below-5800-over-100",
+			"kind": "gap",
+			"severity": "high",
+			"title": "Directors and officers cover is below the amount that caps a volunteer's personal liability.",
+			"detail": "Section 5800(a)(4)(B) requires at least one million dollars ($1,000,000) of both general liability and individual director and officer coverage where the development consists of more than 100 separate interests [S:ca-civ-code-5800]. The protection is a ceiling rather than an immunity: a qualifying volunteer is not personally liable in excess of the coverage carried, so the limit purchased is the limit of the personal protection, and a shortfall is personal exposure for the people serving on the board [S:ca-civ-code-5800].",
+			"action": "Put the current directors and officers limit in front of the board alongside this threshold, and ask your broker what carrying one million dollars requires.",
+			"when": {
+				"all": [
+					{ "field": "separate-interest-count", "op": "gt", "value": 100 },
+					{ "field": "directors-officers-limit", "op": "lt", "value": 1000000 }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5800"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "do-below-5800-100-or-fewer",
+			"kind": "gap",
+			"severity": "high",
+			"title": "Directors and officers cover is below the section 5800 threshold for a development of this size.",
+			"detail": "Section 5800(a)(4)(A) requires at least five hundred thousand dollars ($500,000) of both general liability and individual director and officer coverage where the development consists of 100 or fewer separate interests [S:ca-civ-code-5800]. The coverage must have been in effect both at the time the act or omission occurred and at the time a claim is made, so a gap in the past is not cured by buying cover now [S:ca-civ-code-5800].",
+			"action": "Ask your broker for the current directors and officers limit in writing and confirm the policy has been continuously in force.",
+			"when": {
+				"all": [
+					{ "field": "separate-interest-count", "op": "lte", "value": 100 },
+					{ "field": "directors-officers-limit", "op": "lt", "value": 500000 }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5800"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "crime-below-statutory-formula",
+			"kind": "gap",
+			"severity": "high",
+			"title": "Crime or fidelity coverage is below the amount the statute computes.",
+			"detail": "Section 5806 sets the required amount at an amount equal to or more than the combined amount of the reserves of the association and total assessments for three months, unless the governing documents require greater coverage [S:ca-civ-code-5806]. The figures recorded here put the coverage below that sum. Because the requirement floats with reserves rather than being a fixed figure, an amount that complied when the policy was placed falls out of compliance as reserves are funded, with nothing about the policy having changed [S:ca-civ-code-5806].",
+			"action": "Recompute reserves plus three months of assessments at each renewal and give your broker the current figure rather than renewing at the expiring amount.",
+			"when": {
+				"all": [
+					{ "field": "crime-coverage-amount", "op": "lt", "value": { "field": "reserves-plus-quarterly-assessments" } }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5806"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "computer-fraud-below-crime-amount",
+			"kind": "gap",
+			"severity": "high",
+			"title": "Computer and funds transfer fraud is covered for less than the crime coverage.",
+			"detail": "Section 5806 requires the coverage maintained by the association to include protection in an equal amount against computer fraud and funds transfer fraud [S:ca-civ-code-5806]. Equal is the operative word: a crime form that answers employee dishonesty at one figure and fraudulent transfer instructions at a lower one does not meet the section, and the lower figure is usually the one that matters, because the modern loss is a transfer rather than a theft of cash [S:ca-civ-code-5806].",
+			"action": "Ask your broker for the computer fraud and funds transfer fraud sublimits in writing and compare them to the crime or fidelity amount rather than assuming they match.",
+			"when": {
+				"all": [
+					{ "field": "computer-and-funds-transfer-amount", "op": "lt", "value": { "field": "crime-coverage-amount" } }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5806"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "crime-requirement-met-by-self-insurance",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The crime and fidelity requirement is recorded as met by self-insurance.",
+			"detail": "Section 5806 states expressly that self-insurance does not meet the requirements of the section [S:ca-civ-code-5806]. A reserve set aside for the purpose, however well funded, does not discharge the duty, and it also fails for the obvious structural reason that the fund and the exposure are the same money.",
+			"action": "Ask your broker to place crime, employee dishonesty or fidelity bond coverage, or their equivalent, at the amount section 5806 computes.",
+			"when": {
+				"all": [
+					{ "field": "crime-cover-is-self-insurance", "op": "eq", "value": true }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5806"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "managing-agent-outside-crime-cover",
+			"kind": "gap",
+			"severity": "high",
+			"title": "A management company is used and is not inside the crime coverage.",
+			"detail": "Where the association uses a managing agent or management company, section 5806 requires the association's crime, employee dishonesty or fidelity bond coverage to additionally include coverage for, or otherwise be endorsed to provide coverage for, dishonest acts by that person or entity and its employees [S:ca-civ-code-5806]. This is the part of the section most often left undone, and it excludes exactly the party with routine access to the funds.",
+			"action": "Ask for the endorsement naming the management company and its employees, and keep a copy with the policy rather than relying on an assurance that it is included.",
+			"when": {
+				"all": [
+					{ "field": "managing-agent-arrangement", "op": "eq", "value": "management-company" },
+					{ "field": "managing-agent-inside-crime-cover", "op": "eq", "value": "not-included" }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5806"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "managing-agent-cover-unknown",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Whether the management company is inside the crime coverage has not been established.",
+			"detail": "Section 5806 makes this a requirement rather than an option where a managing agent or management company is used [S:ca-civ-code-5806], so whether it has been done is a matter of record and not of judgement. It is answered by reading the policy or the endorsement, and it is worth answering before a loss rather than after one.",
+			"action": "Ask your broker whether the managing agent is named in the crime coverage or endorsed onto it, and ask for the document rather than the answer.",
+			"when": {
+				"all": [
+					{ "field": "managing-agent-arrangement", "op": "eq", "value": "management-company" },
+					{ "field": "managing-agent-inside-crime-cover", "op": "eq", "value": "unsure" }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5806"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "eee-inspection-overdue",
+			"kind": "timing",
+			"severity": "high",
+			"title": "The exterior elevated element inspection is more than nine years old.",
+			"detail": "Section 5551(b)(1) requires the inspection to be performed by a licensed structural engineer or architect at least once every nine years [S:ca-civ-code-5551]. The elements in scope are load-bearing components with a walking surface elevated more than six feet above ground level that are supported in whole or substantial part by wood or wood-based products, together with their associated waterproofing system [S:ca-civ-code-5551].",
+			"action": "Engage a licensed structural engineer or architect to carry out the inspection, and record the completion date where the board can find it at the next renewal.",
+			"when": {
+				"all": [
+					{ "field": "has-exterior-elevated-elements", "op": "eq", "value": "yes-wood-supported" },
+					{ "field": "last-eee-inspection-date", "op": "lt", "value": { "monthsFromToday": -108 } }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5551"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "eee-never-inspected",
+			"kind": "timing",
+			"severity": "high",
+			"title": "The development has exterior elevated elements and no inspection is recorded.",
+			"detail": "Section 5551(i) required the first inspection to be completed by January 1, 2025, and section 5551(b)(1) requires it to be repeated at least once every nine years thereafter [S:ca-civ-code-5551]. For a building whose certificate of occupancy was issued after those provisions applied, section 5551(k) requires the inspection no later than six years following issuance of that certificate [S:ca-civ-code-5551].",
+			"action": "Establish whether an inspection has ever been carried out before commissioning one, then engage a licensed structural engineer or architect if it has not.",
+			"when": {
+				"all": [
+					{ "field": "has-exterior-elevated-elements", "op": "eq", "value": "yes-wood-supported" },
+					{ "field": "last-eee-inspection-date", "op": "isEmpty" }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5551"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "eee-immediate-threat-access-open",
+			"kind": "gap",
+			"severity": "high",
+			"title": "An element was reported as an immediate threat and access has not been prevented.",
+			"detail": "Where the inspector advises that an exterior elevated element poses an immediate threat to the safety of the occupants, section 5551(g)(1) requires the association to take preventive measures immediately, including preventing occupant access to the element until repairs have been inspected and approved [S:ca-civ-code-5551]. The same provision requires the inspector to give the report to the association immediately and to the local code enforcement agency within 15 days [S:ca-civ-code-5551].",
+			"action": "Prevent access to the element now and confirm the report reached the local code enforcement agency within the 15 day window.",
+			"when": {
+				"all": [
+					{ "field": "eee-immediate-threat", "op": "eq", "value": "found-access-not-restricted" }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5551"],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "budget-summary-incomplete",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "The annual budget report insurance summary is missing some of the four required details.",
+			"detail": "Section 5300(b)(9) requires the summary to include, for each policy, the name of the insurer, the type of insurance, the policy limit, and the amount of the deductible if any [S:ca-civ-code-5300]. What the summary describes also sets the reach of the lapse notice duty, because section 5810 attaches to the policies described in the annual budget report [S:ca-civ-code-5810]. An incomplete summary therefore narrows a separate obligation as well as this one.",
+			"action": "Complete the summary to all four details for every policy before the next annual budget report is distributed.",
+			"when": {
+				"all": [
+					{ "field": "budget-report-insurance-summary", "op": "eq", "value": "present-incomplete" }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5300", "ca-civ-code-5810"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "limits-reduced-without-notice",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "Limits were reduced or a deductible raised and members were not given individual notice.",
+			"detail": "Section 5810 requires individual notice pursuant to Section 4040 to all members where there is a significant change, such as a reduction in coverage or limits or an increase in the deductible, as to any policy described in the annual budget report [S:ca-civ-code-5810]. The duty is not limited to cancellation, which is the part most often missed in a hard market where a renewal is placed at lower limits rather than declined. A reduction can also drop the association below the thresholds that carry the protections in sections 5800 and 5805 [S:ca-civ-code-5800][S:ca-civ-code-5805].",
+			"action": "Send the individual notice now, and check the reduced limits against the section 5800 and section 5805 thresholds before treating the matter as closed.",
+			"when": {
+				"all": [
+					{ "field": "policy-change-since-last-report", "op": "eq", "value": "limit-reduced-or-deductible-raised" },
+					{ "field": "members-notified-of-change", "op": "eq", "value": "not-notified" }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5810", "ca-civ-code-5800", "ca-civ-code-5805"],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "lapse-without-notice",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "A policy lapsed or was cancelled and members were not given individual notice.",
+			"detail": "Section 5810 requires the association, as soon as reasonably practicable, to give individual notice to all members where a policy described in the annual budget report has lapsed, been canceled, and is not immediately renewed, restored, or replaced [S:ca-civ-code-5810]. Where the association receives notice of nonrenewal, it must immediately notify members if replacement coverage will not be in effect by the date the existing coverage lapses [S:ca-civ-code-5810].",
+			"action": "Give the individual notice now, and record the date it was sent alongside the lapse date.",
+			"when": {
+				"all": [
+					{ "field": "policy-change-since-last-report", "op": "eq", "value": "lapse-or-cancellation" },
+					{ "field": "members-notified-of-change", "op": "eq", "value": "not-notified" }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5810"],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "declarant-on-board-outside-5800",
+			"kind": "inconsistency",
+			"severity": "medium",
+			"title": "A declarant sits on the board and is outside the volunteer protection entirely.",
+			"detail": "Section 5800(c) provides that an officer or director who at the time of the act or omission was a declarant, or who received direct or indirect compensation as an employee from the declarant, is not a volunteer for purposes of the section [S:ca-civ-code-5800]. Section 5800(e) separately limits the protection to a tenant of a residential separate interest or an owner of no more than two separate interests [S:ca-civ-code-5800]. Buying the stated limits does not extend the statutory cap to a person the section excludes.",
+			"action": "Establish with counsel which directors fall inside section 5800 and which do not, and treat the answer as an input to how the board's cover is structured.",
+			"when": {
+				"all": [
+					{ "field": "board-includes-non-volunteer", "op": "includes", "value": "declarant" }
+				]
+			},
+			"sourceIds": ["ca-civ-code-5800"],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "declaration-not-read",
+			"kind": "question",
+			"severity": "medium",
+			"title": "The statutory maintenance default is being assumed without reading the declaration.",
+			"detail": "Section 4775 allocates responsibility only unless otherwise provided in the declaration, and the default it sets is itself split: on exclusive use common area the owner maintains and the association repairs and replaces [S:ca-civ-code-4775]. A declaration may move any of that. The boundary between what the association's policy answers and what an owner's policy answers is drawn by that document, so a gap between the two usually traces to a clause nobody has read.",
+			"action": "Read the maintenance and repair article of the declaration and write the allocation down in one place the board and the broker can both work from.",
+			"when": {
+				"all": [
+					{ "field": "declaration-maintenance-reviewed", "op": "eq", "value": "not-reviewed" }
+				]
+			},
+			"sourceIds": ["ca-civ-code-4775"],
+			"relatedQuestion": null,
+			"routeToProfessional": "lawyer"
+		}
+	],
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}
