@@ -1,0 +1,21 @@
+{
+	"kind": "inconsistency",
+	"severity": "high",
+	"modules": ["earthquake-pathways", "community-association-position"],
+	"title": "Your earthquake position assumes the master policy includes it, while the association records that limits were reduced or a deductible raised.",
+	"detail": "The earthquake module records that the association's master policy includes earthquake, and the association module records a significant change to a policy described in the annual budget report. A reduction in coverage or limits or an increase in the deductible is exactly what section 5810 treats as a notifiable change, alongside a lapse [S:ca-civ-code-5810], and it is the more likely event in a hard market because a renewal is placed at lower limits rather than declined outright. What the master policy covered when you last checked is not necessarily what it covers now, and the insurance summary in the annual budget report is where the current position is stated [S:ca-civ-code-5300].",
+	"action": "Ask the association for the current declarations for the master policy and confirm whether earthquake is still included and at what deductible, rather than relying on the position recorded earlier.",
+	"when": {
+		"all": [
+			{ "field": "earthquake-pathways.hoa-master-policy-eq-status", "op": "eq", "value": "master-includes-earthquake" },
+			{ "field": "community-association-position.policy-change-since-last-report", "op": "eq", "value": "limit-reduced-or-deductible-raised" }
+		]
+	},
+	"sourceIds": ["ca-civ-code-5810", "ca-civ-code-5300"],
+	"relatedQuestion": "hoa-must-notify-members-coverage-cut-california",
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

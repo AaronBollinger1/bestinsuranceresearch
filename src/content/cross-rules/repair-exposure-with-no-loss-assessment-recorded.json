@@ -1,0 +1,21 @@
+{
+	"kind": "gap",
+	"severity": "high",
+	"modules": ["community-association-position", "earthquake-pathways"],
+	"title": "An immediate safety threat was reported on the development and you have recorded no loss assessment coverage.",
+	"detail": "The association module records an exterior elevated element found to pose an immediate threat to occupant safety with access not yet prevented, which obliges the association to take preventive measures immediately and keep occupants off the element until repairs have been inspected and approved [S:ca-civ-code-5551]. Repairs of that kind are funded, and where reserves do not meet them the cost reaches owners as an assessment. The other module records no loss assessment coverage, which is the coverage the regulator describes as answering certain assessments the association makes as a result of a loss [S:cdi-residential-insurance-guide]. One module holds the exposure and the other holds the absence of the cover for it.",
+	"action": "Ask the association what the repair is estimated to cost and whether reserves meet it, then ask your own broker what loss assessment limit is available to you and on what terms.",
+	"when": {
+		"all": [
+			{ "field": "community-association-position.eee-immediate-threat", "op": "eq", "value": "found-access-not-restricted" },
+			{ "field": "earthquake-pathways.loss-assessment-coverage-recorded", "op": "eq", "value": false }
+		]
+	},
+	"sourceIds": ["ca-civ-code-5551", "cdi-residential-insurance-guide"],
+	"relatedQuestion": "who-maintains-exclusive-use-balcony-california",
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

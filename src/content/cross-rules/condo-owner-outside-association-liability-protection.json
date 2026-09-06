@@ -1,0 +1,22 @@
+{
+	"kind": "gap",
+	"severity": "high",
+	"modules": ["property-position", "community-association-position"],
+	"title": "You have recorded a condominium unit, and the association's liability limit leaves owners outside the statutory protection.",
+	"detail": "California directs a tort claim brought solely by virtue of an owner's tenancy-in-common interest in the common area to the association rather than to the individual owners, but only where the association maintains general liability coverage of at least three million dollars for a development of more than 100 separate interests [S:ca-civ-code-5805]. The figures recorded across your two modules put the association below that. This is the case most often missed, because an association carrying one million dollars satisfies the general liability leg of the volunteer director protection in section 5800 and looks compliant while its owners are unprotected [S:ca-civ-code-5800]. Neither module can see this alone: the property module knows you own a unit and the association module knows the limit.",
+	"action": "Take the association's general liability limit and the separate interest count to the board together, and ask specifically whether the programme satisfies section 5805 rather than only section 5800.",
+	"when": {
+		"all": [
+			{ "field": "property-position.residence-type", "op": "eq", "value": "condo-unit" },
+			{ "field": "community-association-position.separate-interest-count", "op": "gt", "value": 100 },
+			{ "field": "community-association-position.general-liability-limit", "op": "lt", "value": 3000000 }
+		]
+	},
+	"sourceIds": ["ca-civ-code-5805", "ca-civ-code-5800"],
+	"relatedQuestion": "sued-personally-for-hoa-common-area-california",
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}
