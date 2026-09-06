@@ -1,0 +1,170 @@
+{
+	"name": "Condominium unit owners insurance (California)",
+	"line": "condominium-unit-owners",
+	"family": "personal",
+	"definition": "The policy an individual owner buys for the part of a common interest development that is theirs, written against a boundary set by statute and by the declaration rather than by the policy. Unless the declaration or condominium plan provides otherwise, the interior surfaces of the perimeter walls, floors, ceilings, windows, doors and outlets are part of the separate interest, and any other portion of those walls, floors or ceilings is common area [S:ca-civ-code-4185]. Everything about what this policy needs to do follows from where that line falls.",
+	"protects": [
+		"The interior of the unit and the improvements the owner is responsible to maintain under the association's governing rules [S:cdi-residential-insurance-guide]",
+		"Personal property, loss of use, personal liability and medical payments to others, in the same way renters insurance does [S:cdi-residential-insurance-guide]",
+		"The owner against certain assessments the association makes as a result of a loss, through loss assessment coverage [S:cdi-residential-insurance-guide]",
+		"The gap the Legislature warns owners about directly, since the association's policies may not cover the owner's property, improvements, or injuries at the dwelling [S:ca-civ-code-5300]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "The unit as the statute draws it",
+			"note": "Where walls, floors or ceilings are designated as boundaries, the interior surfaces of the perimeter walls, floors, ceilings, windows, doors and outlets located within the separate interest are part of it [S:ca-civ-code-4185]. That is the classic walls-in position, and it is a statutory default rather than a policy term."
+		},
+		{
+			"item": "Improvements the owner must maintain",
+			"note": "Unit-owners insurance includes coverage for damage to the interior of the unit and improvements for which the unit owner is responsible to maintain in accordance with the governing rules of the association [S:cdi-residential-insurance-guide]."
+		},
+		{
+			"item": "Personal property, loss of use, liability and medical payments",
+			"note": "The same four elements a renters policy carries, which is why the two are described together in the regulator's own guide [S:cdi-residential-insurance-guide]."
+		},
+		{
+			"item": "Loss assessment",
+			"note": "Coverage for certain assessments the condominium association makes as a result of a loss, which is the mechanism by which a shortfall on the association's side reaches the individual owner [S:cdi-residential-insurance-guide]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "The structure behind the interior surfaces",
+			"note": "Any portion of the walls, floors or ceilings other than the interior surfaces is common area [S:ca-civ-code-4185], and the association is responsible for repairing, replacing and maintaining the common area unless the declaration provides otherwise [S:ca-civ-code-4775]."
+		},
+		{
+			"item": "What the association's policy was expected to cover but does not",
+			"note": "The statutory disclosure tells members that although the association maintains the policies summarised in the annual budget report, those policies may not cover the member's property, personal property or improvements, or injuries occurring within or around the dwelling [S:ca-civ-code-5300]."
+		},
+		{
+			"item": "The association's deductible, unless something answers it",
+			"note": "The same required statement warns that even where a loss is covered the member may be responsible for paying all or a portion of any deductible that applies [S:ca-civ-code-5300]."
+		},
+		{
+			"item": "Flood, which is a separate policy on a separate form",
+			"note": "A residential condominium building is insured under its own NFIP form carrying a coinsurance article, so a shortfall in the building limit is settled differently from a shortfall on a house [S:nfip-rcbap-coinsurance]."
+		},
+		{
+			"item": "Contents kept in a basement, under the flood form",
+			"note": "Where flood cover applies, only portable or window air conditioners, clothes washers and dryers, and food freezers other than walk-in are covered below the lowest elevated floor [S:nfip-sfip-dwelling-form]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no single correct building limit here, because the amount needed depends entirely on where the boundary falls and on what the association's policy is written to reach [S:ca-civ-code-4185][S:ca-civ-code-4775].",
+		"Loss assessment is normally a stated sublimit rather than an open amount, and it is the coverage that responds when the association's own shortfall is passed to owners [S:cdi-residential-insurance-guide].",
+		"The association's deductible for each policy must be disclosed in the annual budget report, along with the insurer, the type of insurance and the policy limit [S:ca-civ-code-5300], which makes it a knowable number rather than a surprise.",
+		"Where the building is insured for flood under the residential condominium association form, a coinsurance article applies unless the amount of insurance on the damaged building is at least 80 percent of its replacement cost or the maximum amount available for that building under the NFIP [S:nfip-rcbap-coinsurance].",
+		"Under that coinsurance article, payment is computed by dividing the actual amount of insurance carried by the required amount and multiplying the loss by the result [S:nfip-rcbap-coinsurance].",
+		"Contents under a flood policy settle at actual cash value, the cost to replace at the time of loss less physical depreciation [S:nfip-sfip-dwelling-form]."
+	],
+	"endorsements": [
+		{
+			"item": "Increased loss assessment",
+			"note": "Worth sizing against the association's actual deductible and its statutory limits rather than left at a default, since the assessment is how the association's exposure becomes the owner's [S:cdi-residential-insurance-guide][S:ca-civ-code-5300]."
+		},
+		{
+			"item": "Building property or units improvements cover, at an amount matched to the boundary",
+			"note": "How much of the structure an owner must insure is a function of the declaration and of section 4185(b), so the endorsement is sized from documents rather than from the square footage [S:ca-civ-code-4185]."
+		},
+		{
+			"item": "A separate flood policy",
+			"note": "Flood is not part of this policy. The association's building is insured on the residential condominium association form and the owner's contents and improvements are a separate question [S:nfip-rcbap-coinsurance][S:nfip-sfip-dwelling-form]."
+		}
+	],
+	"relatedPolicies": [
+		"Community association insurance, which is the other side of the same boundary and is written against the same declaration",
+		"Renters insurance, which shares four of this policy's elements and omits the structure entirely [S:cdi-residential-insurance-guide]",
+		"Flood, where the building and the unit are answered by different forms [S:nfip-rcbap-coinsurance]"
+	],
+	"underwritingInputs": [
+		"Whether the development is a condominium project, a planned development, a community apartment project or a stock cooperative, because separate interest means something different in each [S:ca-civ-code-4185]",
+		"Whether walls, floors or ceilings are designated as boundaries of the separate interest [S:ca-civ-code-4185]",
+		"What the declaration or condominium plan says, since it displaces the statutory boundary where it addresses it [S:ca-civ-code-4185]",
+		"Which fixtures serve the unit but sit outside its boundaries, such as balconies, patios, exterior doors, doorframes, screens and windows [S:ca-civ-code-4145]",
+		"What the association's policies actually cover, from the insurance summary in the annual budget report [S:ca-civ-code-5300]",
+		"The association's deductible for each policy [S:ca-civ-code-5300]",
+		"Whether the association's coverage has lapsed or been reduced since the last annual budget report [S:ca-civ-code-5810]",
+		"Whether the building carries flood cover and at what amount relative to replacement cost [S:nfip-rcbap-coinsurance]"
+	],
+	"exposures": [
+		{
+			"item": "A boundary nobody has read",
+			"note": "The statutory default puts the interior surfaces inside the unit and everything behind them in the common area, but it applies only unless the declaration or condominium plan otherwise provides [S:ca-civ-code-4185]. Two policies written against different readings of the same document leave a gap that only appears at a claim."
+		},
+		{
+			"item": "Fixtures that serve the unit and sit outside it",
+			"note": "Shutters, awnings, window boxes, doorsteps, stoops, porches, balconies, patios, exterior doors, doorframes and hardware, screens and windows designed to serve a single separate interest but located outside its boundaries are exclusive use common area unless the declaration provides otherwise [S:ca-civ-code-4145]. On those, the owner maintains and the association repairs and replaces [S:ca-civ-code-4775]."
+		},
+		{
+			"item": "An assessment arriving after somebody else's loss",
+			"note": "Loss assessment exists because an association can pass the cost of a loss to its members [S:cdi-residential-insurance-guide]. The exposure is not created by anything the owner did and is not limited by the owner's own care."
+		},
+		{
+			"item": "The association's deductible landing on the owner",
+			"note": "The Legislature requires members to be told that even a covered loss may leave them paying all or part of a deductible [S:ca-civ-code-5300]. Where that deductible is large, the sum reaching an individual owner is not small."
+		},
+		{
+			"item": "Association cover reduced without the owner noticing",
+			"note": "A reduction in limits or an increase in the deductible is a significant change requiring individual notice to members [S:ca-civ-code-5810], and it moves the boundary of what the owner's own policy has to answer."
+		},
+		{
+			"item": "A tort claim reaching the owner personally",
+			"note": "A claim brought solely by virtue of an owner's tenancy-in-common interest in the common area is directed to the association instead of the owner only where the association carries at least $2,000,000 or $3,000,000 of general liability, depending on the number of separate interests [S:ca-civ-code-5805]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Read the boundary provision of the declaration before setting any limit",
+			"note": "Section 4185(b) applies unless the declaration or condominium plan otherwise provides [S:ca-civ-code-4185], so the document decides how much structure the owner has to insure, and the figure follows from it rather than from the unit's size."
+		},
+		{
+			"item": "List which fixtures serving the unit sit outside its boundaries",
+			"note": "The statutory list names balconies, patios, exterior doors, doorframes, screens and windows among others [S:ca-civ-code-4145], and on exclusive use common area the owner maintains while the association repairs and replaces [S:ca-civ-code-4775]."
+		},
+		{
+			"item": "Take the association's deductible from the annual budget report",
+			"note": "It must be stated there for each policy alongside the insurer, type and limit [S:ca-civ-code-5300], so the amount that could be passed on is a published figure rather than an estimate."
+		},
+		{
+			"item": "Size loss assessment against that figure",
+			"note": "Loss assessment answers certain assessments the association makes as a result of a loss [S:cdi-residential-insurance-guide], so the amount worth carrying is a question about the association's exposure rather than about the unit."
+		},
+		{
+			"item": "Ask to review the association's actual policies",
+			"note": "Any member may, on request and provision of reasonable notice, review them, and may obtain copies on payment of reasonable duplication charges [S:ca-civ-code-5300]. The summary is expressly not a substitute for the policy terms."
+		},
+		{
+			"item": "Treat a lapse or reduction notice as a reason to revisit your own policy",
+			"note": "Individual notice is required on lapse, cancellation without immediate replacement, or a significant change such as reduced limits or a raised deductible [S:ca-civ-code-5810], and each of those changes what the owner's policy is left to answer."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "The boundary default in section 4185(b), the exclusive use common area fixture list in section 4145, and the maintenance split in section 4775 are Davis-Stirling provisions. Other states draw the unit boundary differently, and some leave it entirely to the declaration [S:ca-civ-code-4185][S:ca-civ-code-4145]."
+		}
+	],
+	"lastReviewed": "2026-09-06",
+	"effectiveDate": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-civ-code-4185",
+		"ca-civ-code-4145",
+		"ca-civ-code-4775",
+		"ca-civ-code-5300",
+		"ca-civ-code-5805",
+		"ca-civ-code-5810",
+		"cdi-residential-insurance-guide",
+		"nfip-rcbap-coinsurance",
+		"nfip-sfip-dwelling-form"
+	],
+	"relatedQuestions": [
+		"hoa-master-policy-covers-my-unit-california",
+		"who-maintains-exclusive-use-balcony-california",
+		"sued-personally-for-hoa-common-area-california",
+		"hoa-must-notify-members-coverage-cut-california",
+		"landlord-policy-vs-homeowners"
+	]
+}

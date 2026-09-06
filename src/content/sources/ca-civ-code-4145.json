@@ -1,0 +1,24 @@
+{
+	"title": "California Civil Code Section 4145 (what counts as exclusive use common area)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=4145",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 4145(a) defines exclusive use common area as a portion of the common area designated by the declaration for the exclusive use of one or more, but fewer than all, of the owners of the separate interests, and which is or will be appurtenant to the separate interest or interests.",
+		"Section 4145(b) provides that unless the declaration otherwise provides, any shutters, awnings, window boxes, doorsteps, stoops, porches, balconies, patios, exterior doors, doorframes, and hardware incident thereto, screens and windows or other fixtures designed to serve a single separate interest, but located outside the boundaries of the separate interest, are exclusive use common area allocated exclusively to that separate interest.",
+		"Section 4145(c) provides that notwithstanding the provisions of the declaration, internal and external telephone wiring designed to serve a single separate interest, but located outside the boundaries of the separate interest, is exclusive use common area allocated exclusively to that separate interest.",
+		"Section 4145(b) and section 4145(c) differ in force: the fixture list in subdivision (b) applies unless the declaration otherwise provides, while the telephone wiring rule in subdivision (c) applies notwithstanding the provisions of the declaration."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "This is the section that answers whether a balcony or patio is exclusive use common area rather than part of the unit, which is the question the maintenance allocation in section 4775 then operates on. The distinction between subdivisions (b) and (c) is worth keeping: (b) is a default the declaration can displace, so a fixture list here does not settle any particular development, while (c) cannot be displaced at all. Reading (b) as though it were mandatory is the common error."
+}

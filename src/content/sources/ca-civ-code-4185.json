@@ -1,0 +1,25 @@
+{
+	"title": "California Civil Code Section 4185 (what a separate interest is, and where its boundaries fall)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=4185",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 4185(a)(2) provides that in a condominium project, separate interest means a separately owned unit, as specified in Section 4125.",
+		"Section 4185(a)(3) provides that in a planned development, separate interest means a separately owned lot, parcel, area, or space.",
+		"Section 4185(a)(1) provides that in a community apartment project, separate interest means the exclusive right to occupy an apartment, as specified in Section 4105, and section 4185(a)(4) provides that in a stock cooperative it means the exclusive right to occupy a portion of the real property, as specified in Section 4190.",
+		"Section 4185(b) provides that unless the declaration or condominium plan, if any exists, otherwise provides, if walls, floors, or ceilings are designated as boundaries of a separate interest, the interior surfaces of the perimeter walls, floors, ceilings, windows, doors, and outlets located within the separate interest are part of the separate interest, and any other portions of the walls, floors, or ceilings are part of the common area.",
+		"Section 4185(c) provides that the estate in a separate interest may be a fee, a life estate, an estate for years, or any combination of the foregoing."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Subdivision (b) is the sentence that decides most condominium coverage arguments, and it is a default rather than a rule: it applies unless the declaration or condominium plan otherwise provides. Where it applies it puts the interior surfaces of the perimeter walls, floors, ceilings, windows, doors and outlets inside the unit and everything behind those surfaces in the common area, which is the boundary an owner's policy and the association's policy are each written against. It also matters that the kind of development changes what a separate interest even is: a planned development owner owns a lot, not a unit, so the boundary question has a different shape there."
+}
