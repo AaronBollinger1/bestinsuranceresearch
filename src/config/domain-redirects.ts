@@ -12,17 +12,40 @@
  *     would need. That is a content decision recorded honestly, not a domain
  *     quietly pointed at the homepage to make a table look finished.
  *
- * NOTHING HERE HAS BEEN EXECUTED. No DNS record, URL forward, or Vercel domain
- * assignment has been created or changed. Three things block execution and all
- * three are the owner's to clear:
+ * STILL NOT EXECUTED, but no longer for the reasons first recorded here. All
+ * three of the original blockers are gone as of 2026-09-05, and the note is
+ * corrected rather than deleted because a stale blocker list is how a plan gets
+ * executed on assumptions that stopped being true:
  *
- *  - `bestinsuranceresearch.com` is not registered. Checked 2026-09-02: available,
- *    $11.08/year. A redirect cannot point at a domain nobody owns.
- *  - The research site has never been deployed, so there is no origin behind it.
- *  - Porkbun API access is off on 58 of the 59 domains (`apiAccess: 0`); only
- *    `bestepli.com` is opted in. The API returns API_ACCESS_DISABLED for the rest,
- *    so each domain has to be opted in from the Porkbun UI before any tooling can
- *    touch it.
+ *  - `bestinsuranceresearch.com` is registered and live. It is attached to the
+ *    Vercel project, DNS is an A record to 76.76.21.21 at Porkbun, and the
+ *    Porkbun URL forward that sent it to a parking page has been deleted.
+ *  - The research site is deployed and serves that domain, so the origin exists
+ *    and every target route below resolves.
+ *  - API access is NOT the barrier the note claimed. `apiAccess` reads 0 on
+ *    `bestinsuranceresearch.com` and on the parked domains, yet DNS writes and
+ *    forward reads both succeed against them. The flag does not gate these
+ *    operations, whatever it reports.
+ *
+ * What blocks execution now is a decision, not a capability, and it is the one
+ * thing the original note got wrong about the estate: THESE DOMAINS ARE NOT
+ * IDLE. Sampled 2026-09-05, they already carry live permanent redirects:
+ *
+ *    bestgeneralliability.com  301 -> www.bollinsure.com/general-liability
+ *    bestreplacementcost.com   301 -> www.bollinsure.com/bollinsure-replacement-cost-estimator-2026
+ *    bestjewelryinsurance.com  301 -> www.bestartinsurance.com/jewelry
+ *
+ * So executing the map below does not light up dormant domains. It repoints
+ * live 301s away from the licensed brokerage and the specialty sites and onto
+ * this one, which moves inbound traffic off bollinsure.com. That is an owner's
+ * decision about where the estate's traffic should go, it is the kind of change
+ * this file already argues is expensive to reverse once equity has moved, and
+ * nobody should make it by reading a table of `action: 'redirect'` and assuming
+ * the destinations are empty.
+ *
+ * Anyone executing this should first re-read each domain's current forward and
+ * decide, per domain, whether what it points at today is worse than what this
+ * map proposes. For a good number of them it will not be.
  */
 
 /**
