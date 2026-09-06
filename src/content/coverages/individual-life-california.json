@@ -1,0 +1,146 @@
+{
+	"name": "Individual life insurance (California)",
+	"line": "individual-life",
+	"family": "life",
+	"definition": "A policy that pays on death, and in California a set of statutory protections that attach to it whatever product form it takes. The provisions that matter most are not about what is covered but about how the policy can be lost and how long a buyer has to change their mind: a grace period of not less than 60 days that does not run concurrently with paid coverage [S:ca-ins-code-10113-71], a lapse notice that is not effective unless given at least 30 days ahead [S:ca-ins-code-10113-71], the right to name someone else to receive that notice [S:ca-ins-code-10113-72], and a stated return period on the cover page [S:ca-ins-code-10127-9].",
+	"protects": [
+		"The named beneficiary, by paying on the death of the insured",
+		"The policy owner against losing the policy quietly, through a grace period of at least 60 days that does not overlap the period already paid for [S:ca-ins-code-10113-71]",
+		"A person the owner nominates, who must be sent notice of a pending lapse alongside the owner [S:ca-ins-code-10113-72]",
+		"A buyer who changes their mind, through a return period stated on the cover page and running between 10 and 30 days [S:ca-ins-code-10127-9]",
+		"A purchaser aged 60 or older, through a 30-day return period [S:ca-ins-code-10127-10]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "A grace period of not less than 60 days",
+			"note": "Measured from the premium due date, and the section provides that it shall not run concurrently with the period of paid coverage, so it is additional time rather than a relabelling of time already bought [S:ca-ins-code-10113-71]."
+		},
+		{
+			"item": "A lapse notice that has to arrive 30 days ahead to work at all",
+			"note": "A notice of pending lapse and termination is not effective unless mailed at least 30 days prior to the effective date of termination, where termination is for nonpayment of premium [S:ca-ins-code-10113-71]."
+		},
+		{
+			"item": "A second person on the notice",
+			"note": "An individual life policy shall not be issued or delivered in California until the applicant has been given the right to designate at least one person, in addition to the applicant, to receive notice of lapse or termination for nonpayment [S:ca-ins-code-10113-72]."
+		},
+		{
+			"item": "An annual reminder of that right",
+			"note": "The insurer shall notify the policy owner annually of the right to change the written designation or to designate one or more persons [S:ca-ins-code-10113-72], so it is offered again every year rather than once at application."
+		},
+		{
+			"item": "A stated free look on the cover page",
+			"note": "Every individual life policy and annuity contract issued for delivery in California since January 1, 1990 must carry a notice on the policy jacket or cover page that it may be returned for cancellation, with the period clearly stated and set between 10 and 30 days [S:ca-ins-code-10127-9]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Any guarantee that the free look returns what you paid, on a variable policy",
+			"note": "On a variable contract what is refunded is the account value and the policy fee [S:ca-ins-code-10127-9], and for a senior citizen's variable policy invested in mutual funds it is the account value on the day the policy is received, which the statute says could be less than the premium paid [S:ca-ins-code-10127-10]."
+		},
+		{
+			"item": "A way back after the senior return period on an immediate annuity",
+			"note": "The statute states that after the 30-day period has expired the purchaser may not be able to get the purchase payment money back [S:ca-ins-code-10127-10]."
+		},
+		{
+			"item": "Protection for a policy the owner never told anyone about",
+			"note": "The designee provisions work only if a designation was made. The right must be offered [S:ca-ins-code-10113-72], and an applicant who declines it leaves the notice going to one address."
+		},
+		{
+			"item": "This page does not describe what the policy itself covers",
+			"note": "Contestability, suicide provisions, exclusions and how a claim is paid are matters for the policy form, which is not public. What is public and recorded here is the statutory frame around it."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no deductible on a life policy and the limit is the face amount, which is a commercial rather than a statutory question.",
+		"The numbers that are statutory are periods. The grace period is not less than 60 days from the premium due date [S:ca-ins-code-10113-71].",
+		"The lapse notice must be mailed at least 30 days before the effective date of termination, and a notice that is not is not effective [S:ca-ins-code-10113-71].",
+		"The free look period is set by the insurer but must be clearly stated and not less than 10 days nor more than 30 [S:ca-ins-code-10127-9].",
+		"A purchaser aged 60 or older on the date of purchase has 30 days from receipt [S:ca-ins-code-10127-10].",
+		"A refund on cancellation is due within 30 days from the date the insurer is notified [S:ca-ins-code-10127-9]."
+	],
+	"endorsements": [
+		{
+			"item": "The designation form",
+			"note": "Not an endorsement but the document the whole lapse-notice protection depends on. The insurer must provide a form giving the opportunity to submit the name, address and telephone number of at least one person [S:ca-ins-code-10113-72]."
+		},
+		{
+			"item": "Assignment, and who else must be told",
+			"note": "The lapse notice must also go to a known assignee or other person having an interest in the policy [S:ca-ins-code-10113-71], so an assignment changes who is entitled to hear about a pending lapse."
+		}
+	],
+	"relatedPolicies": [
+		"Individual annuity contracts, which share the free look provisions cited here [S:ca-ins-code-10127-9]",
+		"Employer group health coverage, where a different federal notice and continuation regime applies",
+		"Key person and buy-sell arrangements, which are uses of life insurance rather than separate protections"
+	],
+	"underwritingInputs": [
+		"Whether the purchaser is 60 years of age or older on the date of purchase, which selects the 30-day return period [S:ca-ins-code-10127-10]",
+		"Whether the contract is variable, since that changes what a cancellation returns [S:ca-ins-code-10127-9]",
+		"Whether a designee has been named to receive lapse notice, and whether their address is current [S:ca-ins-code-10113-72]",
+		"Whether the policy has been assigned, since a known assignee must also receive the lapse notice [S:ca-ins-code-10113-71]",
+		"The premium due date, from which the grace period runs [S:ca-ins-code-10113-71]",
+		"The return period actually printed on the cover page, which the insurer sets within the statutory range [S:ca-ins-code-10127-9]"
+	],
+	"exposures": [
+		{
+			"item": "A policy lost to a missed letter",
+			"note": "The section exists because the person most likely to miss a premium notice is often the person least able to act on it. California answers that by requiring the right to put a second person on the notice as a condition of issuing the policy at all [S:ca-ins-code-10113-72]."
+		},
+		{
+			"item": "A designation made once and never revisited",
+			"note": "The insurer must offer the right to change or add a designee annually [S:ca-ins-code-10113-72]. A designee named years ago at an address since changed is a protection on paper only."
+		},
+		{
+			"item": "Assuming a free look returns the premium",
+			"note": "On a variable contract the refund is the account value and the policy fee rather than premiums paid [S:ca-ins-code-10127-9], and for a senior's mutual fund policy the statute states it is the account value on the day of receipt and could be less than the premium paid [S:ca-ins-code-10127-10]."
+		},
+		{
+			"item": "A grace period assumed to overlap paid coverage",
+			"note": "It does not. The statute provides that the 60-day grace period shall not run concurrently with the period of paid coverage [S:ca-ins-code-10113-71], which is more time than most people assume rather than less."
+		},
+		{
+			"item": "An immediate annuity past its return window",
+			"note": "The statute states that after the 30-day period the purchaser may not be able to get the purchase payment money back [S:ca-ins-code-10127-10], which makes the window the decision point rather than the paperwork."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Name a designee, and check the address every year",
+			"note": "The right must be offered at issue and again annually [S:ca-ins-code-10113-72], and the lapse notice is required to go to that person as well as the owner [S:ca-ins-code-10113-71]."
+		},
+		{
+			"item": "Read the return period off the cover page rather than assuming it",
+			"note": "The insurer sets it anywhere between 10 and 30 days and must state it clearly on the policy jacket or cover page [S:ca-ins-code-10127-9], so the window is a fact about your policy rather than a general rule."
+		},
+		{
+			"item": "On a variable policy, ask what comes back before the window closes",
+			"note": "The refund is account value and policy fee rather than premiums paid [S:ca-ins-code-10127-9], so the answer depends on what the account has done since issue."
+		},
+		{
+			"item": "Keep the premium due date and count 60 days from it",
+			"note": "The grace period runs from the due date and does not overlap paid coverage [S:ca-ins-code-10113-71], so knowing the due date is what makes the protection usable."
+		},
+		{
+			"item": "Tell the insurer about an assignment",
+			"note": "A known assignee or other person having an interest must receive the lapse notice [S:ca-ins-code-10113-71], and known is doing the work in that sentence."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "Every provision on this page is California law. The 60-day non-concurrent grace period, the 30-day lapse notice, the designee requirement and the senior 30-day return period are Californian and are not general to individual life insurance elsewhere [S:ca-ins-code-10113-71][S:ca-ins-code-10113-72][S:ca-ins-code-10127-10]."
+		}
+	],
+	"lastReviewed": "2026-09-06",
+	"effectiveDate": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ins-code-10113-71",
+		"ca-ins-code-10113-72",
+		"ca-ins-code-10127-9",
+		"ca-ins-code-10127-10"
+	],
+	"relatedQuestions": []
+}

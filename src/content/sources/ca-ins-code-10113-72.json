@@ -1,0 +1,24 @@
+{
+	"title": "California Insurance Code Section 10113.72 (the right to name someone else to be told about a lapse)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10113.72",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 10113.72 provides that an individual life insurance policy shall not be issued or delivered in this state until the applicant has been given the right to designate at least one person, in addition to the applicant, to receive notice of lapse or termination of a policy for nonpayment of premium.",
+		"Section 10113.72 requires the insurer to provide each applicant with a form to make the designation, and requires that form to provide the opportunity to submit the name, address and telephone number of at least one person.",
+		"Section 10113.72 requires the insurer to notify the policy owner annually of the right to change the written designation or to designate one or more persons.",
+		"Section 10113.72 provides that no individual life insurance policy shall lapse or be terminated for nonpayment of premium unless the insurer, at least 30 days prior to the effective date of the lapse or termination, gives notice to the policy owner and to the person or persons designated."
+	],
+	"notes": "The section exists because the person most likely to miss a premium notice is the person least able to act on it, and it puts a second pair of eyes on the mail as a condition of issuing the policy at all. The annual reminder is the part most often overlooked by insurers and policyholders alike: the right is not exercised once at application, it is offered again every year."
+}

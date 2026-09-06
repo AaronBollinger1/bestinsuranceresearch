@@ -72,6 +72,14 @@ export const CANONICAL_LINES = [
 	'additional-insured',
 	'group-health',
 	'employee-benefits',
+	/*
+	 * The protections that matter most on a life policy attach to individual
+	 * life insurance as a class rather than to term or permanent separately:
+	 * the grace period, the lapse notice, the designee and the free look apply
+	 * the same way to both. `term-life` and `permanent-life` stay as the two
+	 * product forms, and this is the line the statutory material belongs to.
+	 */
+	'individual-life',
 	'term-life',
 	'permanent-life',
 	'key-person',
@@ -115,6 +123,14 @@ const ALIASES: Record<string, CanonicalLine> = {
 	'personal-auto': 'auto',
 	'private-passenger-auto': 'auto',
 	condo: 'condominium-unit-owners',
+	/*
+	 * `life` is what people type, and it is not a product. It resolves to the
+	 * class the statutory protections attach to rather than to either product
+	 * form, so a bare query lands where the grace period, the lapse notice and
+	 * the free look actually live.
+	 */
+	life: 'individual-life',
+	'life-insurance': 'individual-life',
 	/*
 	 * Readers and answer engines ask about this line by the body that buys it or
 	 * by the document it produces, almost never by the phrase we file it under.

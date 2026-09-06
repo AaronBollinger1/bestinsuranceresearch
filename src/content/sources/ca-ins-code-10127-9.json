@@ -1,0 +1,24 @@
+{
+	"title": "California Insurance Code Section 10127.9 (the free look period on an individual life policy or annuity)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10127.9",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 10127.9 requires every individual life insurance policy and every individual annuity contract initially delivered or issued for delivery in this state on and after January 1, 1990 to have printed on the front of the policy jacket or on the cover page a notice stating that, after receipt of the policy by the owner, the policy may be returned by the owner for cancellation by mail or other delivery method to the insurer or to the agent through which it was purchased.",
+		"Section 10127.9 provides that the period of time set forth by the insurer for return of the policy by the owner shall be clearly stated, and that this period shall be not less than 10 days nor more than 30 days.",
+		"Section 10127.9 requires all premiums paid and any policy fee paid for the policy to be refunded by the insurer to the owner within 30 days from the date the insurer is notified that the owner has canceled the policy.",
+		"Section 10127.9 provides for variable contracts that the account value and policy fee shall be refunded by the insurer to the owner within 30 days from the date the insurer is notified that the owner has canceled the policy."
+	],
+	"notes": "The floor is 10 days and the ceiling is 30, so the actual window is whatever the insurer stated on the cover and it varies between policies. The variable contract branch is the one that matters most: what comes back is the account value rather than the premiums paid, so a market movement during the window is the owner's."
+}

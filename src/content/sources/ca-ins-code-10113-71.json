@@ -1,0 +1,24 @@
+{
+	"title": "California Insurance Code Section 10113.71 (grace period and notice before a life policy lapses)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10113.71",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 10113.71 requires an individual life insurance policy to contain a provision for a grace period of not less than 60 days from the premium due date.",
+		"Section 10113.71 provides that the 60-day grace period shall not run concurrently with the period of paid coverage.",
+		"Section 10113.71 provides that a notice of pending lapse and termination of a life insurance policy shall not be effective unless mailed by the insurer at least 30 days prior to the effective date of termination, where termination is for nonpayment of premium.",
+		"Section 10113.71 requires that notice to be mailed to the named policy owner, to a designee named pursuant to Section 10113.72 for an individual life insurance policy, and to a known assignee or other person having an interest in the individual life insurance policy."
+	],
+	"notes": "Two features do the work and both are easy to read past. The grace period is a minimum of 60 days and it does not run concurrently with paid coverage, so it is genuinely additional time rather than a relabelling of time already bought. And the notice is not merely required: a notice that does not meet the section is not effective, which means the lapse it purports to effect does not happen. Read with section 10113.72, which supplies the designee this section requires the notice to reach."
+}
