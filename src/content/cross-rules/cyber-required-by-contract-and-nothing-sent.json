@@ -1,0 +1,21 @@
+{
+	"kind": "documentation",
+	"severity": "high",
+	"modules": ["cyber-control-readiness", "contract-requirements"],
+	"title": "A contract imposes a cyber requirement and nothing has been sent to the other party.",
+	"detail": "The cyber module records that a contract requires cyber cover, and the contract module records that nothing has been sent as evidence. Those are two halves of the same problem held in different places: one module knows the obligation exists and the other knows it has not been discharged. Sending something is not the end of it either. A certificate cannot say anything that is not the same as what is stated in the insurance policy, and a certificate holder may not use the certificate holder box to imply or confer any new or additional rights beyond what the policy or an executed endorsement provides [S:tdi-certificates-of-insurance-faq]. So the evidence that satisfies a cyber requirement is the policy and any endorsement, not the certificate describing them.",
+	"action": "Establish the evidence due date from the contract, then ask your broker for the cyber policy declarations and any endorsement the requirement calls for, rather than sending a certificate alone.",
+	"when": {
+		"all": [
+			{ "field": "cyber-control-readiness.contractual-cyber-requirement", "op": "eq", "value": true },
+			{ "field": "contract-requirements.evidence-provided", "op": "eq", "value": "nothing-sent" }
+		]
+	},
+	"sourceIds": ["tdi-certificates-of-insurance-faq"],
+	"relatedQuestion": null,
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

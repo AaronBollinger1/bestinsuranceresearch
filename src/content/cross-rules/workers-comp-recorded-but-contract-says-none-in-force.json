@@ -1,0 +1,21 @@
+{
+	"kind": "inconsistency",
+	"severity": "high",
+	"modules": ["contract-requirements", "workers-comp-classification"],
+	"title": "One module records no workers compensation policy in force while the other records the coverage.",
+	"detail": "The contract module records that no workers compensation policy is in force, and the classification module records workers compensation Part One among the coverages held. Both cannot be right, and a certificate of insurance is about to be produced against whichever answer is wrong. A certificate cannot say anything that is not the same as what is stated in the insurance policy [S:tdi-certificates-of-insurance-faq], so a certificate issued against the optimistic record is not evidence of anything. The underlying duty is not optional either: every employer except the state shall secure the payment of compensation in one of the ways the section lists, one of which is insuring with an insurer authorized to write compensation insurance in California [S:lab-3700].",
+	"action": "Pull the declarations page for the workers compensation policy and correct whichever module disagrees with it, before any certificate is issued to the other party.",
+	"when": {
+		"all": [
+			{ "field": "contract-requirements.wc-policy-in-force", "op": "eq", "value": false },
+			{ "field": "workers-comp-classification.coverage-recorded", "op": "includes", "value": "workers-compensation-part-one" }
+		]
+	},
+	"sourceIds": ["lab-3700", "tdi-certificates-of-insurance-faq"],
+	"relatedQuestion": null,
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

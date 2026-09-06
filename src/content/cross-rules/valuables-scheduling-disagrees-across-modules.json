@@ -1,0 +1,21 @@
+{
+	"kind": "inconsistency",
+	"severity": "medium",
+	"modules": ["valuables-schedule", "property-position"],
+	"title": "The two modules disagree about whether any valuables are actually scheduled.",
+	"detail": "The valuables module records that the items are covered by the homeowners contents limit only, and the property module records that scheduled valuables exist. One of those is wrong, and the two readings lead to opposite conclusions about how much is recoverable. It matters because a special limit is not additional cover: the limited amounts for specific types of personal property are not separate limits in addition to the contents limit, they are included in it and represent the maximum paid for that type of property [S:cdi-residential-insurance-guide]. If nothing is in fact scheduled, the recoverable amount is that cap rather than the contents limit, whatever the other module says.",
+	"action": "Read the declarations page and find whether any items are listed individually with their own limits, then correct whichever module disagrees with what is actually on it.",
+	"when": {
+		"all": [
+			{ "field": "valuables-schedule.how-insured-now", "op": "eq", "value": "homeowners-contents-only" },
+			{ "field": "property-position.scheduled-valuables-exist", "op": "eq", "value": true }
+		]
+	},
+	"sourceIds": ["cdi-residential-insurance-guide"],
+	"relatedQuestion": "why-jewelry-claim-paid-so-little",
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}
