@@ -1,0 +1,77 @@
+{
+	"question": "Who maintains a balcony or patio that is exclusive use common area?",
+	"aliases": [
+		"who repairs a condo balcony California",
+		"exclusive use common area maintenance responsibility",
+		"HOA balcony repair responsibility California",
+		"is my patio common area or separate interest",
+		"Davis-Stirling exclusive use common area"
+	],
+	"shortAnswer": "By statutory default the two of you split it: the owner maintains the exclusive use common area appurtenant to the separate interest, and the association repairs and replaces it [S:ca-civ-code-4775]. That split applies only unless the declaration provides otherwise [S:ca-civ-code-4775], so your declaration can move it. Separately, a wood-supported balcony more than six feet above ground is subject to a nine-year inspection the association must arrange [S:ca-civ-code-5551].",
+	"assumes": [
+		"The development is a California common interest development governed by the Davis-Stirling Act.",
+		"The balcony or patio is genuinely exclusive use common area rather than part of the separate interest. Which it is depends on the declaration, and this record cannot decide it for any particular unit.",
+		"You are asking about responsibility for the element itself, not about who pays for damage caused by somebody's negligence, which is a different question."
+	],
+	"why": "Section 4775 sets three defaults, and the third is the one that surprises people. The association is responsible for repairing, replacing and maintaining the common area [S:ca-civ-code-4775]. The owner of each separate interest is responsible for repairing, replacing and maintaining that separate interest [S:ca-civ-code-4775]. But for exclusive use common area appurtenant to a separate interest, the statute splits the verbs: the owner is responsible for maintaining it and the association is responsible for repairing and replacing it [S:ca-civ-code-4775].\n\nMaintaining and repairing are not synonyms here, and the gap between them is where disputes and coverage arguments start. Sealing, cleaning and routine upkeep sit on one side; replacing a failed structural element sits on the other. A claim that turns on which of those a particular task was can also fall between two insurance policies written against different readings of the same declaration, because each policy is drafted against the responsibility split rather than against the physical thing.\n\nEvery one of these allocations opens with the qualifier that it applies unless otherwise provided in the declaration [S:ca-civ-code-4775]. So the statute is a default, not an answer, and the only document that can answer it for your unit is the declaration itself.\n\nA separate obligation sits on top of all of this and belongs to the association regardless. Section 5551 requires inspection of exterior elevated elements, meaning load-bearing components that extend beyond the exterior walls to carry loads from decks, balconies, stairways, walkways and their railings, where the walking surface is more than six feet above ground level and the element is supported in whole or substantial part by wood or wood-based products, together with the associated waterproofing system [S:ca-civ-code-5551]. That inspection must be carried out by a licensed structural engineer or architect at least once every nine years [S:ca-civ-code-5551].",
+	"whatChanges": [
+		"What the declaration says. It can reassign any part of the section 4775 default, and it governs where it does [S:ca-civ-code-4775].",
+		"Whether the work is maintenance or is repair and replacement, because the statutory default puts those on different parties [S:ca-civ-code-4775].",
+		"Whether the element meets the section 5551 definition. A concrete podium deck is outside it, because the definition requires support in whole or substantial part by wood or wood-based products [S:ca-civ-code-5551].",
+		"Whether the walking surface is more than six feet above ground level, which is part of the same definition [S:ca-civ-code-5551].",
+		"Whether an inspector has reported an immediate threat to occupant safety, which obliges the association to prevent access until repairs are inspected and approved [S:ca-civ-code-5551]."
+	],
+	"variability": [
+		"This is the California default. Other states allocate maintenance in common interest developments differently, and many do not split maintaining from repairing at all.",
+		"Whether something is exclusive use common area, common area, or part of the separate interest is a question of the declaration and the recorded plan. Two adjacent developments can answer it differently for the same physical balcony.",
+		"Section 5551 is an inspection duty, not an allocation of repair cost. It tells the association what must be inspected and how often; it does not decide who pays for the repair that follows."
+	],
+	"nextActions": [
+		"Read the maintenance and repair article of the declaration before arguing from the statute, since the statute yields to it [S:ca-civ-code-4775].",
+		"Ask the association for the date and the findings of the most recent exterior elevated element inspection [S:ca-civ-code-5551].",
+		"If an inspection found an immediate threat, confirm that access has actually been prevented, which the statute requires until repairs are inspected and approved [S:ca-civ-code-5551].",
+		"Where the declaration is ambiguous about maintaining versus repairing, get that read by a lawyer rather than settling it between neighbours, because both insurance programmes are written against the answer."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"condominium-unit-owners",
+		"community-association"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"hoa",
+		"exclusive use common area",
+		"balcony",
+		"maintenance",
+		"davis-stirling",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"community-association-california"
+	],
+	"effectiveDate": "2026-09-05",
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"hoa-master-policy-covers-my-unit-california"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a particular balcony is exclusive use common area, and whether a given task is maintenance or repair, are readings of your declaration rather than of the Code, and both insurance programmes are written against that reading."
+	},
+	"sourceIds": [
+		"ca-civ-code-4775",
+		"ca-civ-code-5551"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

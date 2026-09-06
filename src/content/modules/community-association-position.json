@@ -227,7 +227,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5805", "ca-civ-code-5800"],
-			"relatedQuestion": null,
+			"relatedQuestion": "sued-personally-for-hoa-common-area-california",
 			"routeToProfessional": "broker"
 		},
 		{
@@ -244,7 +244,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5805"],
-			"relatedQuestion": null,
+			"relatedQuestion": "sued-personally-for-hoa-common-area-california",
 			"routeToProfessional": "broker"
 		},
 		{
@@ -261,7 +261,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5800"],
-			"relatedQuestion": null,
+			"relatedQuestion": "sued-personally-for-hoa-common-area-california",
 			"routeToProfessional": "broker"
 		},
 		{
@@ -278,7 +278,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5800"],
-			"relatedQuestion": null,
+			"relatedQuestion": "sued-personally-for-hoa-common-area-california",
 			"routeToProfessional": "broker"
 		},
 		{
@@ -294,7 +294,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5806"],
-			"relatedQuestion": null,
+			"relatedQuestion": "how-much-fidelity-insurance-must-an-hoa-carry-california",
 			"routeToProfessional": "broker"
 		},
 		{
@@ -310,7 +310,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5806"],
-			"relatedQuestion": null,
+			"relatedQuestion": "how-much-fidelity-insurance-must-an-hoa-carry-california",
 			"routeToProfessional": "broker"
 		},
 		{
@@ -326,7 +326,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5806"],
-			"relatedQuestion": null,
+			"relatedQuestion": "how-much-fidelity-insurance-must-an-hoa-carry-california",
 			"routeToProfessional": "broker"
 		},
 		{
@@ -343,7 +343,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5806"],
-			"relatedQuestion": null,
+			"relatedQuestion": "how-much-fidelity-insurance-must-an-hoa-carry-california",
 			"routeToProfessional": "broker"
 		},
 		{
@@ -360,7 +360,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5806"],
-			"relatedQuestion": null,
+			"relatedQuestion": "how-much-fidelity-insurance-must-an-hoa-carry-california",
 			"routeToProfessional": "broker"
 		},
 		{
@@ -377,7 +377,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5551"],
-			"relatedQuestion": null,
+			"relatedQuestion": "who-maintains-exclusive-use-balcony-california",
 			"routeToProfessional": "broker"
 		},
 		{
@@ -394,7 +394,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5551"],
-			"relatedQuestion": null,
+			"relatedQuestion": "who-maintains-exclusive-use-balcony-california",
 			"routeToProfessional": "broker"
 		},
 		{
@@ -410,7 +410,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5551"],
-			"relatedQuestion": null,
+			"relatedQuestion": "who-maintains-exclusive-use-balcony-california",
 			"routeToProfessional": "lawyer"
 		},
 		{
@@ -426,7 +426,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5300", "ca-civ-code-5810"],
-			"relatedQuestion": null,
+			"relatedQuestion": "hoa-must-notify-members-coverage-cut-california",
 			"routeToProfessional": "broker"
 		},
 		{
@@ -443,7 +443,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5810", "ca-civ-code-5800", "ca-civ-code-5805"],
-			"relatedQuestion": null,
+			"relatedQuestion": "hoa-must-notify-members-coverage-cut-california",
 			"routeToProfessional": "lawyer"
 		},
 		{
@@ -460,7 +460,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5810"],
-			"relatedQuestion": null,
+			"relatedQuestion": "hoa-must-notify-members-coverage-cut-california",
 			"routeToProfessional": "lawyer"
 		},
 		{
@@ -476,7 +476,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-5800"],
-			"relatedQuestion": null,
+			"relatedQuestion": "sued-personally-for-hoa-common-area-california",
 			"routeToProfessional": "lawyer"
 		},
 		{
@@ -492,7 +492,7 @@
 				]
 			},
 			"sourceIds": ["ca-civ-code-4775"],
-			"relatedQuestion": null,
+			"relatedQuestion": "who-maintains-exclusive-use-balcony-california",
 			"routeToProfessional": "lawyer"
 		}
 	],

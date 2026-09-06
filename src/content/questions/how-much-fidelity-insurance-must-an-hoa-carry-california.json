@@ -1,0 +1,76 @@
+{
+	"question": "How much crime or fidelity insurance must a California HOA carry?",
+	"aliases": [
+		"HOA fidelity bond requirement California",
+		"Civil Code 5806 crime insurance amount",
+		"association employee dishonesty coverage required",
+		"does the HOA fidelity bond cover the management company",
+		"HOA computer fraud funds transfer coverage"
+	],
+	"shortAnswer": "An amount equal to or more than the association's reserves plus three months of total assessments, unless the governing documents require more [S:ca-civ-code-5806]. The same amount must also be carried against computer fraud and funds transfer fraud, and where a managing agent or management company is used the coverage must include or be endorsed for dishonest acts by that entity and its employees [S:ca-civ-code-5806]. Self-insurance expressly does not satisfy the section [S:ca-civ-code-5806].",
+	"assumes": [
+		"The association is a California common interest development association subject to the Davis-Stirling Act.",
+		"You are asking what the statute requires as a minimum, not what any particular association should carry given its own exposure.",
+		"The governing documents have been checked, since section 5806 yields to them where they require greater amounts [S:ca-civ-code-5806]."
+	],
+	"why": "Section 5806 is the one insurance requirement in the Davis-Stirling Act written as a flat duty on the association rather than as a condition attached to somebody's liability protection. Unless the governing documents require greater coverage amounts, the association shall maintain crime insurance, employee dishonesty coverage, fidelity bond coverage, or their equivalent, for its directors, officers and employees, in an amount equal to or more than the combined amount of the reserves of the association and total assessments for three months [S:ca-civ-code-5806].\n\nThree features of that sentence are routinely missed. The first is that the required amount is a formula rather than a figure: it floats with the reserves. An amount that complied on the day the policy was placed can fall below the requirement as reserves are funded, with nothing about the policy having changed and nobody having done anything wrong. It has to be recomputed, not renewed.\n\nThe second is the scope of the peril. The coverage must also include protection in an equal amount against computer fraud and funds transfer fraud [S:ca-civ-code-5806]. Equal is doing work there. A crime form that answers employee dishonesty at the full amount and fraudulent transfer instructions at a lower sublimit does not meet the section, and the sublimited peril is usually the likelier loss, because money now leaves by instruction rather than by hand.\n\nThe third is the managing agent. If the association uses a managing agent or management company, the coverage shall additionally include, or otherwise be endorsed to provide coverage for, dishonest acts by that person or entity and its employees [S:ca-civ-code-5806]. That is the party with routine access to the funds, and it is the part of the section most often left undone. Finally, the statute forecloses the obvious shortcut: self-insurance does not meet the requirements of the section [S:ca-civ-code-5806], which is right for the structural reason that a fund set aside against the risk and the money exposed to the risk would be the same money.",
+	"whatChanges": [
+		"The reserve balance, because it is one half of the formula and it moves every year [S:ca-civ-code-5806].",
+		"Three months of total assessments, which is the other half [S:ca-civ-code-5806].",
+		"Whether the governing documents require a greater amount, in which case they control [S:ca-civ-code-5806].",
+		"Whether a managing agent or management company is used at all, which turns on the extension requirement [S:ca-civ-code-5806].",
+		"Whether the computer fraud and funds transfer fraud protection is written at the same amount rather than at a sublimit [S:ca-civ-code-5806]."
+	],
+	"variability": [
+		"This is California. Fidelity requirements for community associations are state law and the formula is not general.",
+		"The section sets a floor, not an assessment of the association's actual exposure. An association whose reserves are about to be spent on a large project may be carrying a compliant amount and an inadequate one at the same time.",
+		"What a particular crime form covers, and how its sublimits are structured, is a question about that form rather than about the statute. The section tells you what must be in place, not how any insurer words it."
+	],
+	"nextActions": [
+		"Compute reserves plus three months of total assessments from the current figures and compare it to the amount actually carried [S:ca-civ-code-5806].",
+		"Ask your broker in writing for the computer fraud and funds transfer fraud sublimits, and compare them to the crime amount rather than assuming they match [S:ca-civ-code-5806].",
+		"If a management company is used, ask for the endorsement naming it and its employees and keep a copy with the policy [S:ca-civ-code-5806].",
+		"Recompute the required amount at each renewal rather than renewing at the expiring figure, because the requirement moves with the reserves [S:ca-civ-code-5806].",
+		"Check the governing documents for a higher requirement before treating the statutory amount as sufficient [S:ca-civ-code-5806]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": [
+		"community-association"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "business-owner",
+	"topics": [
+		"hoa",
+		"fidelity bond",
+		"crime insurance",
+		"davis-stirling",
+		"managing agent",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"community-association-california"
+	],
+	"effectiveDate": "2026-09-05",
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"hoa-must-notify-members-coverage-cut-california"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "The statutory amount is a floor computed from figures that change annually, and whether a particular crime form actually extends to the managing agent and to funds transfer fraud at an equal amount is a placement question answered by the policy wording."
+	},
+	"sourceIds": [
+		"ca-civ-code-5806"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

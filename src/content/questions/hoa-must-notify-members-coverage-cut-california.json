@@ -1,0 +1,80 @@
+{
+	"question": "Does my HOA have to tell members if its insurance was cancelled or cut back?",
+	"aliases": [
+		"HOA notice of insurance lapse California",
+		"does the association have to notify members of reduced coverage",
+		"Civil Code 5810 insurance notice",
+		"HOA policy nonrenewal member notice",
+		"association insurance deductible increase notice"
+	],
+	"shortAnswer": "Yes, and the duty is broader than cancellation. The association must give individual notice to all members as soon as reasonably practicable if a policy described in the annual budget report has lapsed or been cancelled and is not immediately renewed, restored or replaced, and equally if there is a significant change such as a reduction in coverage or limits or an increase in the deductible [S:ca-civ-code-5810]. On a notice of nonrenewal it must tell members immediately if replacement cover will not be in effect before the existing cover lapses [S:ca-civ-code-5810].",
+	"assumes": [
+		"The development is a California common interest development governed by the Davis-Stirling Act.",
+		"The policy in question is one described in the annual budget report under Civil Code section 5300, because that is what section 5810 attaches to [S:ca-civ-code-5810].",
+		"You are asking about the association's duty to notify, not about whether the change to the policy was itself a good decision."
+	],
+	"why": "Section 5810 does three separate things, and only the first is widely known. It requires the association, as soon as reasonably practicable, to provide individual notice under Section 4040 to all members if any of the policies described in the annual budget report have lapsed, been canceled, and are not immediately renewed, restored, or replaced [S:ca-civ-code-5810].\n\nThe second is the one that matters more often. The same duty applies if there is a significant change, such as a reduction in coverage or limits or an increase in the deductible, as to any of those policies [S:ca-civ-code-5810]. In a hard market a renewal is far more likely to be placed at lower limits or a higher deductible than to be declined outright, so a board can honestly report that nothing was cancelled while the association's actual protection has fallen. The statute treats that as a notifiable event.\n\nThe third is a timing rule. If the association receives any notice of nonrenewal of a policy described in the annual budget report, it must immediately notify its members if replacement coverage will not be in effect by the date the existing coverage will lapse [S:ca-civ-code-5810]. That obligation runs ahead of the gap rather than after it.\n\nWhat the duty reaches is set by a different section. Section 5810 attaches to policies described in the annual budget report, and section 5300(b)(9) is what requires that report to summarise the association's property, general liability, earthquake, flood and fidelity policies, with the insurer, type, limit and deductible for each [S:ca-civ-code-5300]. An incomplete summary therefore narrows the notice duty as a side effect, which is a reason to care about the completeness of a document that otherwise looks like paperwork.",
+	"whatChanges": [
+		"Whether the policy was described in the annual budget report, which is the trigger condition for the duty [S:ca-civ-code-5810][S:ca-civ-code-5300].",
+		"Whether the change counts as significant. The statute names a reduction in coverage or limits and an increase in the deductible as examples [S:ca-civ-code-5810].",
+		"Whether the association received a notice of nonrenewal, which brings the immediate notification rule into play [S:ca-civ-code-5810].",
+		"Whether replacement coverage will be in force before the existing coverage lapses, which is the fact the immediate notice turns on [S:ca-civ-code-5810].",
+		"Whether the reduced limits still meet the thresholds that carry the statutory protections for directors and for owners, because a reduction can quietly remove those [S:ca-civ-code-5800][S:ca-civ-code-5805]."
+	],
+	"variability": [
+		"This is California. Notice duties on association insurance are state law and differ elsewhere.",
+		"Significant is not exhaustively defined. The statute gives reduction in coverage or limits and an increase in the deductible as examples rather than as the whole class [S:ca-civ-code-5810].",
+		"The section requires notice. It does not require the association to restore the coverage, and it does not by itself decide what follows from a failure to notify."
+	],
+	"nextActions": [
+		"Compare the current policies against the insurance summary in the last annual budget report, which must show insurer, type, limit and deductible for each [S:ca-civ-code-5300].",
+		"If limits fell or a deductible rose without notice going out, raise it with the board citing the significant change language rather than the cancellation language [S:ca-civ-code-5810].",
+		"Check the reduced limits against the $500,000 and $1,000,000 figures in section 5800 and the $2,000,000 and $3,000,000 figures in section 5805, because a reduction can drop the association below them [S:ca-civ-code-5800][S:ca-civ-code-5805].",
+		"Ask whether the association has received any notice of nonrenewal, since that carries its own immediate notification duty [S:ca-civ-code-5810]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"community-association",
+		"condominium-unit-owners"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"hoa",
+		"notice",
+		"lapse",
+		"davis-stirling",
+		"annual budget report",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"community-association-california"
+	],
+	"effectiveDate": "2026-09-05",
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"sued-personally-for-hoa-common-area-california",
+		"how-much-fidelity-insurance-must-an-hoa-carry-california"
+	],
+	"handoff": {
+		"recommended": false,
+		"reason": "The duty is stated in the statute and does not vary with your association, so the answer holds without a conversation. What a failure to notify means for a particular dispute is a legal question rather than a broking one."
+	},
+	"sourceIds": [
+		"ca-civ-code-5810",
+		"ca-civ-code-5300",
+		"ca-civ-code-5800",
+		"ca-civ-code-5805"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

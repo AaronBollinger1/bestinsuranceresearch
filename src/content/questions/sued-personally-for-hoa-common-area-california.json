@@ -1,0 +1,79 @@
+{
+	"question": "Can I be sued personally because I own a share of my HOA's common area?",
+	"aliases": [
+		"HOA owner personal liability common area California",
+		"can a condo owner be sued for a common area injury",
+		"tenancy in common liability homeowners association",
+		"Civil Code 5805 owner protection",
+		"does HOA insurance protect individual owners"
+	],
+	"shortAnswer": "Only if the association is carrying enough general liability insurance. California directs a tort claim brought solely by virtue of your tenancy-in-common interest in the common area to the association rather than to you, but only where the association maintains general liability coverage of at least $2,000,000 for a development of 100 or fewer separate interests, or at least $3,000,000 for one with more than 100 [S:ca-civ-code-5805]. Below those amounts the protection does not apply.",
+	"assumes": [
+		"The development is a California common interest development with commonly owned tenancy-in-common property, which is the arrangement section 5805 addresses [S:ca-civ-code-5805].",
+		"The claim against you is brought solely by virtue of your tenancy-in-common interest in the common area, rather than because of something you personally did.",
+		"You are asking about the statutory protection rather than about what any particular policy would pay."
+	],
+	"why": "Section 5805(a) states the Legislature's intent plainly: to provide civil liability protection to owners of separate interests in developments with commonly owned tenancy-in-common property, provided the association maintains specified insurance coverage for tort causes of action [S:ca-civ-code-5805]. The protection is therefore conditional by design, and the condition is money the association may or may not have spent.\n\nSubdivision (b) does the work. A tort cause of action against an owner of a separate interest, brought solely by virtue of that owner's tenancy-in-common interest in the common area, is brought against the association and not against the individual owners, if two requirements are met: the association maintained and had in effect one or more policies of general liability insurance covering the cause of action, and that coverage met the stated minimum [S:ca-civ-code-5805]. The minimum is at least two million dollars where the development consists of 100 or fewer separate interests, and at least three million dollars where it consists of more than 100 [S:ca-civ-code-5805].\n\nThere is a second, separate protection that is easy to confuse with this one and does not help an ordinary owner. Section 5800 caps the personal liability of a qualifying volunteer officer or director at the amount of insurance carried, and its thresholds are lower: at least five hundred thousand dollars for 100 or fewer separate interests, at least one million for more than 100, on both general liability and individual director and officer coverage [S:ca-civ-code-5800]. Because those figures are lower, an association can satisfy section 5800 and leave its owners outside section 5805 entirely. A development of more than 100 units carrying one million dollars is the common shape of that gap: the board is protected and the owners are not [S:ca-civ-code-5800][S:ca-civ-code-5805].",
+	"whatChanges": [
+		"The number of separate interests, because it selects which threshold applies. The line is at more than 100 [S:ca-civ-code-5805].",
+		"The general liability limit actually in force, which the annual budget report must disclose for each policy along with the insurer, type and deductible [S:ca-civ-code-5300].",
+		"Whether the claim really is brought solely by virtue of your tenancy-in-common interest. The section is written for that class of claim and not for a claim about your own conduct [S:ca-civ-code-5805].",
+		"Whether the coverage lapsed or was reduced after the last annual budget report, which the association must give members individual notice of [S:ca-civ-code-5810]."
+	],
+	"variability": [
+		"This is California and the figures are Californian. Other states protect owners in common interest developments differently or not at all.",
+		"Section 5805 governs where a claim is directed. It is not a statement that the association's policy will pay any particular claim, which is a question about that policy.",
+		"Section 5800 and section 5805 protect different people to different amounts and are frequently discussed as one thing. They are not, and meeting the lower pair of thresholds does nothing for owners [S:ca-civ-code-5800][S:ca-civ-code-5805]."
+	],
+	"nextActions": [
+		"Look up the association's general liability limit in the annual budget report insurance summary, which must state the policy limit for each policy [S:ca-civ-code-5300].",
+		"Count the separate interests in the development and compare the limit to the threshold that applies at that count [S:ca-civ-code-5805].",
+		"If the limit sits between the section 5800 and section 5805 figures, raise it with the board as a specific, quotable question rather than as a general concern about coverage.",
+		"If you have been named in a claim personally, take the question to a lawyer. Whether a particular claim is brought solely by virtue of a tenancy-in-common interest is a legal characterisation and not a reading of your policy."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"community-association",
+		"condominium-unit-owners"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"hoa",
+		"personal liability",
+		"common area",
+		"davis-stirling",
+		"limits",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"community-association-california"
+	],
+	"effectiveDate": "2026-09-05",
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"hoa-must-notify-members-coverage-cut-california",
+		"hoa-master-policy-covers-my-unit-california"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a claim naming you falls inside section 5805 is a legal characterisation of that claim, and whether the association's limits met the threshold on the date it arose is a fact about the policy then in force."
+	},
+	"sourceIds": [
+		"ca-civ-code-5805",
+		"ca-civ-code-5800",
+		"ca-civ-code-5300",
+		"ca-civ-code-5810"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

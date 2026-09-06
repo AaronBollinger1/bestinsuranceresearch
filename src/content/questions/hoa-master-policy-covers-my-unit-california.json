@@ -1,0 +1,79 @@
+{
+	"question": "Does my HOA's master policy cover the inside of my unit?",
+	"aliases": [
+		"does the HOA master policy cover my condo interior",
+		"HOA insurance and my personal property",
+		"do I need condo insurance if the HOA has insurance",
+		"what does an HOA master policy not cover",
+		"California HOA insurance summary disclaimer"
+	],
+	"shortAnswer": "Usually not, and California requires your association to tell you so in writing every year. The annual budget report must carry a statement in at least 10-point boldface saying the association's policies may not cover your property, including personal property or real property improvements to or around your dwelling, or personal injuries or other losses that occur within or around your dwelling [S:ca-civ-code-5300]. It also warns that even where a loss is covered you may still be responsible for all or part of a deductible [S:ca-civ-code-5300].",
+	"assumes": [
+		"The property is a common interest development in California governed by the Davis-Stirling Act, so the annual budget report obligations in Civil Code section 5300 apply.",
+		"You are asking about the association's own policies rather than about a policy you bought on your own unit.",
+		"The declaration has not been read to establish the boundary. Every maintenance allocation in the Act applies only unless the declaration provides otherwise [S:ca-civ-code-4775], so that document, not the statute, decides the edges."
+	],
+	"why": "The useful thing about this question in California is that the Legislature answered it directly rather than leaving it to an insurer's brochure. Section 5300(b)(9) requires the annual budget report to summarise the association's property, general liability, earthquake, flood and fidelity policies, giving for each the name of the insurer, the type of insurance, the policy limit and the deductible [S:ca-civ-code-5300]. Alongside that summary the statute prescribes a statement in at least 10-point boldface, and the statement is unusually blunt: the summary is not a substitute for the actual policies, the association's policies may not cover your property including personal property or improvements to or around your dwelling, may not cover personal injuries or other losses occurring within or around your dwelling, and even a covered loss may leave you paying all or part of a deductible [S:ca-civ-code-5300]. It closes by telling members to consult their own broker or agent for appropriate additional coverage [S:ca-civ-code-5300].\n\nUnderneath the disclosure sits the allocation that produces it. The association is responsible for repairing, replacing and maintaining the common area, and the owner of each separate interest is responsible for repairing, replacing and maintaining that separate interest [S:ca-civ-code-4775]. Exclusive use common area is split between them: the owner maintains it and the association repairs and replaces it [S:ca-civ-code-4775]. Each of those allocations applies only unless the declaration provides otherwise [S:ca-civ-code-4775], which is why no general answer can tell you where your own boundary falls.",
+	"whatChanges": [
+		"What the declaration says. It can move any of the statutory allocation, and it is the document that decides where your separate interest ends and the common area begins [S:ca-civ-code-4775].",
+		"Whether the loss is to the structure, to improvements you made, or to your belongings. The statutory warning names personal property and real property improvements to or around the dwelling specifically [S:ca-civ-code-5300].",
+		"Whether an injury happened inside or around your dwelling rather than on the common area, which the same statement addresses directly [S:ca-civ-code-5300].",
+		"The size of the association's deductible, which the annual budget report must disclose for each policy [S:ca-civ-code-5300], and who bears it under your governing documents.",
+		"Whether any policy in that report has since lapsed or been reduced, which the association must notify members about [S:ca-civ-code-5810]."
+	],
+	"variability": [
+		"This is California. The annual budget report, the prescribed statement and the maintenance default are Davis-Stirling requirements and do not describe common interest developments in other states.",
+		"Master policies differ in kind, not only in limit. Whether a form responds to original fixtures only, or to improvements and betterments as well, is a question about that policy rather than about the statute, and this record does not answer it.",
+		"Who ultimately bears the association's deductible can be allocated by the governing documents. The statute states that a member may be responsible for all or a portion of it [S:ca-civ-code-5300]; it does not decide the allocation for any particular association."
+	],
+	"nextActions": [
+		"Find the most recent annual budget report and read the insurance summary and the boldface statement that accompanies it [S:ca-civ-code-5300].",
+		"Ask the association to review the actual policies. Any member may, on request and reasonable notice, review them, and may obtain copies on payment of reasonable duplication charges [S:ca-civ-code-5300].",
+		"Read the maintenance and repair article of your declaration, because that is what sets the boundary the policies are written against [S:ca-civ-code-4775].",
+		"Take the association's deductible figure to your own broker and ask specifically how your own policy responds to it."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"condominium-unit-owners",
+		"community-association"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"hoa",
+		"condominium",
+		"master policy",
+		"davis-stirling",
+		"deductible",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"community-association-california"
+	],
+	"effectiveDate": "2026-09-05",
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"who-maintains-exclusive-use-balcony-california",
+		"sued-personally-for-hoa-common-area-california"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Where your unit ends and the common area begins is set by your declaration rather than by the statute, and matching your own policy to the association's deductible is a placement decision that turns on both documents."
+	},
+	"sourceIds": [
+		"ca-civ-code-5300",
+		"ca-civ-code-4775",
+		"ca-civ-code-5810"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}
