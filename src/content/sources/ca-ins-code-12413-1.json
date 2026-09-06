@@ -1,0 +1,27 @@
+{
+	"title": "California Insurance Code Section 12413.1 (when escrow funds may be disbursed)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=12413.1",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 12413.1 provides that no title insurance company, controlled escrow company, or underwritten title company shall disburse funds from an escrow account until the day established by the rules the section sets out.",
+		"Section 12413.1 permits funds received by cash or by electronic payment to be disbursed following deposit on the same business day.",
+		"Section 12413.1 provides that deposits carrying next business day availability may be disbursed on the business day following deposit, and that other deposits follow the availability timelines set by federal regulation.",
+		"Section 12413.1 provides that where funds are received by draft, the company shall not disburse funds from the escrow account with respect to that draft until the proceeds of the draft have become available for withdrawal.",
+		"Section 12413.1 provides that, with respect to a draft, available for withdrawal means when the draft has been submitted for collection and payment has been received.",
+		"Section 12413.1 permits recordation before funds are available for withdrawal where the parties have consented in writing beforehand.",
+		"Section 12413.1 provides that no such company shall be liable for a violation of the section if the violation was not intentional and resulted from a bona fide error notwithstanding the maintenance of procedures reasonably adapted to avoid that error."
+	],
+	"notes": "The good funds rule, and the reason a closing does not fund the moment money arrives. Recorded here in the section own terms; the interaction with federal funds availability regulation is referenced by the section rather than reproduced in it, so this record does not state those timelines."
+}

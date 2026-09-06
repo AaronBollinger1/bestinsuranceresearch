@@ -1,0 +1,55 @@
+{
+	"question": "Is the preliminary report a search of my title, and are its exceptions problems being fixed?",
+	"aliases": [
+		"what is a preliminary title report California",
+		"are preliminary report exceptions removed before closing",
+		"is a prelim a representation about the title",
+		"Insurance Code 12340.11 preliminary report",
+		"difference between a preliminary report and an abstract of title"
+	],
+	"shortAnswer": "No to both, and the statute says so directly. A preliminary report, commitment or binder is furnished in connection with an application for title insurance and is an offer to issue a policy subject to the stated exceptions set forth in it [S:ca-ins-code-12340-11]. The same section provides that such reports are not abstracts of title and do not constitute a representation as to the condition of title [S:ca-ins-code-12340-11]. The exceptions are the terms of the offer, not a repair list.",
+	"assumes": [
+		"The transaction is Californian and the document is a preliminary report, commitment or binder as section 12340.11 uses those words [S:ca-ins-code-12340-11].",
+		"You are asking what the document is, rather than what any particular exception on yours refers to.",
+		"A title policy is being contemplated, since the report is furnished in connection with an application for one [S:ca-ins-code-12340-11]."
+	],
+	"why": "The document arrives looking like the output of a search. It lists recorded matters against the property, in the order they were recorded, and it reads like a description of the title. The statute is unusually direct about what it is not.\n\nSection 12340.11 defines preliminary report, commitment and binder as reports furnished in connection with an application for title insurance which are offers to issue a title policy subject to the stated exceptions set forth in the reports [S:ca-ins-code-12340-11]. It then says three things in sequence: they are not abstracts of title, they do not constitute a representation as to the condition of title to real property, and they do constitute a statement of the terms and conditions upon which the issuer is willing to issue its policy if the offer is accepted [S:ca-ins-code-12340-11].\n\nThe contrast with an abstract is the point of the first of those. An abstract of title is a written representation, provided pursuant to a contract, intended to be relied upon by the person who contracted for it, listing all recorded conveyances, instruments or documents that impart constructive notice with respect to the chain of title [S:ca-ins-code-12340-10]. Intended to be relied upon is exactly what a preliminary report is not. And an abstract of title is itself not a title policy [S:ca-ins-code-12340-10], so the three documents are three different things.\n\nWhat follows for the exceptions is the practical half. If the report is an offer subject to stated exceptions, then each exception marks the edge of the policy being offered rather than a defect somebody has undertaken to clear. Anything still listed when the policy issues sits outside it. That is why an exception is dealt with by negotiation before closing rather than by a claim afterwards.",
+	"whatChanges": [
+		"Whether an exception is removed before the policy issues, since the report states the terms on which the issuer is willing to issue [S:ca-ins-code-12340-11].",
+		"Whether you are relying on the report or on the policy. Only the second is the contract; the first is the offer [S:ca-ins-code-12340-11].",
+		"Whether the document is actually an abstract of title, which is a representation intended to be relied upon and a different instrument entirely [S:ca-ins-code-12340-10].",
+		"What the underlying recorded matter is. The report names it; what it means for you is a question about that document rather than about the report."
+	],
+	"variability": [
+		"This is the California characterisation. Other states use commitments and binders whose legal effect is defined differently, and some rely on abstracts and attorney opinions rather than a title policy.",
+		"The section defines what the report is. It does not decide what any particular exception on your report refers to or how serious it is.",
+		"Whether an issuer will remove a given exception is a commercial and underwriting matter, not something the statute settles."
+	],
+	"nextActions": [
+		"Read the exceptions as the boundary of the policy being offered, and go through them before closing rather than after [S:ca-ins-code-12340-11].",
+		"Ask the issuer what each exception refers to and what would be required to remove it, since it states the terms on which it is willing to issue [S:ca-ins-code-12340-11].",
+		"Do not treat the report as confirmation that the title is sound; the statute says it is not a representation as to the condition of title [S:ca-ins-code-12340-11].",
+		"Keep the issued policy and its schedules, not just the report, because the policy is what answers a question years later.",
+		"If something in the report matters to the purchase, take that document to a real property lawyer rather than to the title company alone."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["title"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["title insurance", "preliminary report", "exceptions", "closing", "california"],
+	"companies": [],
+	"coverages": ["title-insurance-california"],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["does-title-insurance-cover-future-problems-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "What a particular exception refers to, and whether it matters to your purchase, are questions about recorded documents and are for a real property lawyer rather than for a general description of the report."
+	},
+	"sourceIds": ["ca-ins-code-12340-11", "ca-ins-code-12340-10"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

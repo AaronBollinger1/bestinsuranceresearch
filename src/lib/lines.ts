@@ -58,6 +58,13 @@ export const CANONICAL_LINES = [
 	'difference-in-conditions',
 	'scheduled-personal-property',
 	'wildfire',
+	/*
+	 * Title sits apart from every other line here. The others answer events that
+	 * may happen after the policy is written; this one answers the state of a
+	 * title as it already stands, which is visible in the statutory definition
+	 * rather than a characterisation laid over it.
+	 */
+	'title',
 	'inland-marine',
 	'builders-risk',
 	'motor-truck-cargo',
@@ -130,6 +137,9 @@ const ALIASES: Record<string, CanonicalLine> = {
 	 * the free look actually live.
 	 */
 	life: 'individual-life',
+	'title-insurance': 'title',
+	'owners-title-policy': 'title',
+	'preliminary-report': 'title',
 	'life-insurance': 'individual-life',
 	/*
 	 * Readers and answer engines ask about this line by the body that buys it or

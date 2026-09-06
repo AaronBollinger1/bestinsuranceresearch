@@ -1,0 +1,54 @@
+{
+	"question": "Does title insurance cover problems that arise after I buy the house?",
+	"aliases": [
+		"what does title insurance actually cover California",
+		"why is title insurance paid only once",
+		"does title insurance cover a future boundary dispute",
+		"Insurance Code 12340.1 definition of title insurance",
+		"do I need an owners title policy if the lender has one"
+	],
+	"shortAnswer": "Generally no, and that is what makes this line different from every other policy. California defines title insurance as indemnifying against loss by reason of liens or encumbrances on or defects in the title, invalidity or unenforceability of liens, and incorrectness of searches relating to the title [S:ca-ins-code-12340-1]. Each of those is a condition of the title as it already stands, which is also why the policy is bought once at closing rather than renewed.",
+	"assumes": [
+		"The policy is title insurance as section 12340.1 defines it [S:ca-ins-code-12340-1].",
+		"You are asking about the structure of the cover rather than about a specific claim.",
+		"The matters listed in your policy's exceptions are a separate question, since those are the terms on which the policy was issued [S:ca-ins-code-12340-11]."
+	],
+	"why": "Almost every policy in this corpus answers something that might happen. Title insurance answers something that already is.\n\nThe definition is short enough to read whole. Title insurance means insuring, guaranteeing or indemnifying owners of real or personal property, or the holders of liens or encumbrances on it, or others interested in it, against loss or damage suffered by reason of liens or encumbrances on or defects in the title; invalidity or unenforceability of any liens or encumbrances; or incorrectness of searches relating to the title [S:ca-ins-code-12340-1].\n\nEvery item in that list is a state of the title or of an examination of it. A lien either encumbers the property or it does not. A deed in the chain is either effective or defective. A search either found what was there or missed it. None of those is an event scheduled for the future; they are facts about the position on the day the policy issues, and the risk being transferred is that somebody looked and got it wrong.\n\nThat structure explains the two features people find strange. The premium is paid once rather than annually, because there is no ongoing period of exposure to price. And the third item, incorrectness of searches, is the reason a policy is worth more than a report: somebody is accepting the risk that the examination was wrong, which no amount of searching can eliminate.\n\nTwo boundaries are worth stating alongside it. What is covered is the definition less whatever exceptions the issuer stated in the preliminary report, because that report is an offer to issue subject to those stated exceptions [S:ca-ins-code-12340-11]. And the definition treats owners and lien holders as distinct classes [S:ca-ins-code-12340-1], which is why a lender's policy is not the buyer's policy.",
+	"whatChanges": [
+		"Whether the matter existed as a condition of the title at issue, since that is what the enumerated list reaches [S:ca-ins-code-12340-1].",
+		"Whether it was written into the policy as a stated exception, in which case it sits outside regardless [S:ca-ins-code-12340-11].",
+		"Whether the interest in question is ownership or a lien, which the definition treats separately [S:ca-ins-code-12340-1].",
+		"Whether the complaint is really about the title at all, as opposed to the condition of the building or a dispute arising later."
+	],
+	"variability": [
+		"The reading that the enumerated matters are conditions of title rather than future events follows from the list itself. The statute does not use the words past or future, and this record marks that as a reading of the definition.",
+		"This is the California definition. Other states define title insurance in their own terms and some conveyancing systems do not use a title policy at all [S:ca-ins-code-12340-10].",
+		"What a particular policy covers is that policy less its schedules, and the schedules are not public in the way the statute is."
+	],
+	"nextActions": [
+		"Check whether an owner's policy was actually issued to you, not only a lender's, since the definition covers the two interests separately [S:ca-ins-code-12340-1].",
+		"Read the exceptions on the report before closing, because they set the edge of what the policy will answer [S:ca-ins-code-12340-11].",
+		"Keep the policy and its schedules somewhere findable; the question usually arises years later and the policy is what answers it.",
+		"If a problem has arisen, establish first whether it is a condition of the title or something that happened afterwards, because that distinction decides whether this policy is the right place to look [S:ca-ins-code-12340-1]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["title"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["title insurance", "coverage", "one-time premium", "owners policy", "california"],
+	"companies": [],
+	"coverages": ["title-insurance-california"],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["what-is-a-preliminary-report-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a particular problem is a condition of the title or something arising afterwards is the question that decides it, and it turns on recorded documents rather than on the definition."
+	},
+	"sourceIds": ["ca-ins-code-12340-1", "ca-ins-code-12340-11", "ca-ins-code-12340-10"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

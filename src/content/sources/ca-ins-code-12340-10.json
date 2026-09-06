@@ -1,0 +1,22 @@
+{
+	"title": "California Insurance Code Section 12340.10 (what an abstract of title is, and that it is not a policy)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=12340.10",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 12340.10 defines abstract of title as a written representation, provided pursuant to a contract whether written or oral, intended to be relied upon by the person who has contracted for the receipt of that representation, listing all recorded conveyances, instruments or documents which under the laws of this state impart constructive notice with respect to the chain of title to the real property described therein.",
+		"Section 12340.10 provides that an abstract of title is not a title policy as defined in Section 12340.2."
+	],
+	"notes": "Kept because the contrast is what makes section 12340.11 legible. An abstract is a representation intended to be relied upon; a preliminary report expressly is not. Two documents that look similar to a buyer are on opposite sides of that line."
+}

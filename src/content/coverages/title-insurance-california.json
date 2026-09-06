@@ -1,0 +1,141 @@
+{
+	"name": "Title insurance (California)",
+	"line": "title",
+	"family": "personal",
+	"definition": "The one line here that does not answer future events. California defines title insurance as insuring, guaranteeing or indemnifying owners of property or holders of liens against loss suffered by reason of liens or encumbrances on or defects in the title, invalidity or unenforceability of liens, or incorrectness of searches relating to the title [S:ca-ins-code-12340-1]. Every matter in that list is a condition of the title as it already stands, which is why the policy is bought once at closing rather than renewed each year.",
+	"protects": [
+		"An owner of real or personal property against loss or damage by reason of the matters section 12340.1 lists [S:ca-ins-code-12340-1]",
+		"The holder of a lien or encumbrance, and others interested in the property, who are named in the same definition [S:ca-ins-code-12340-1]",
+		"Against invalidity or unenforceability of a lien or encumbrance, which is a defect in what somebody else holds rather than in what you hold [S:ca-ins-code-12340-1]",
+		"Against the incorrectness of searches relating to the title, meaning the risk that the looking itself was wrong [S:ca-ins-code-12340-1]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Liens and encumbrances on the title",
+			"note": "Named directly in the definition at subdivision (a), together with defects in the title to the property [S:ca-ins-code-12340-1]."
+		},
+		{
+			"item": "A lien that turns out not to be enforceable",
+			"note": "Subdivision (b) reaches invalidity or unenforceability of any liens or encumbrances on the property [S:ca-ins-code-12340-1]."
+		},
+		{
+			"item": "A search that was done wrong",
+			"note": "Subdivision (c) reaches incorrectness of searches relating to the title [S:ca-ins-code-12340-1]. This is the part that distinguishes an insurance policy from a report: somebody carries the risk that the examination missed something."
+		},
+		{
+			"item": "The parties the definition names beyond the owner",
+			"note": "Holders of liens or encumbrances and others interested in the property are inside the definition, which is why a lender takes its own policy [S:ca-ins-code-12340-1]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Whatever the preliminary report lists as an exception",
+			"note": "A preliminary report is an offer to issue a policy subject to the stated exceptions set forth in it [S:ca-ins-code-12340-11]. The exceptions are the terms of that offer, not a list of matters somebody has undertaken to clear."
+		},
+		{
+			"item": "Anything that happens after the policy is issued",
+			"note": "The enumerated matters in section 12340.1 are all conditions of the title or of a search of it [S:ca-ins-code-12340-1]. A dispute arising from something done later is not what this line answers."
+		},
+		{
+			"item": "Any assurance from the preliminary report itself",
+			"note": "The statute provides that such reports do not constitute a representation as to the condition of title to real property [S:ca-ins-code-12340-11]. A buyer relying on it as a description of the title is relying on something that says it is not one."
+		},
+		{
+			"item": "The protections that attach to an abstract of title",
+			"note": "An abstract is a written representation intended to be relied upon by the person who contracted for it [S:ca-ins-code-12340-10], and a preliminary report is expressly not an abstract [S:ca-ins-code-12340-11]. An abstract of title is also not a title policy [S:ca-ins-code-12340-10]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no renewal cycle. The definition answers the state of the title, so the policy is taken at the point the interest is acquired rather than carried and renewed [S:ca-ins-code-12340-1].",
+		"An owner's policy and a lender's policy are separate, because the definition reaches owners and the holders of liens or encumbrances as distinct classes [S:ca-ins-code-12340-1].",
+		"What is actually covered is the definition less the exceptions stated in the report that preceded the policy [S:ca-ins-code-12340-11].",
+		"This page does not state amounts. The policy limit and the schedule of exceptions are in the document issued to you, and the schedules are not public in the way the statute is."
+	],
+	"endorsements": [
+		{
+			"item": "Removing an exception before closing",
+			"note": "Because the exceptions define the offer rather than describe defects awaiting repair [S:ca-ins-code-12340-11], getting one removed is a negotiation with the issuer before the policy is taken rather than a claim afterwards."
+		},
+		{
+			"item": "A lender's policy alongside an owner's",
+			"note": "The definition covers holders of liens as well as owners [S:ca-ins-code-12340-1], so the two policies answer different interests and one does not stand in for the other."
+		}
+	],
+	"relatedPolicies": [
+		"Homeowners insurance, which answers damage to the property rather than the state of its title",
+		"Surety bonds, which are also three-party and also not what they first appear, and are the nearest structural cousin here",
+		"Flood, which a lender may require alongside the title work at the same closing"
+	],
+	"underwritingInputs": [
+		"The chain of title, which the abstract definition describes as all recorded conveyances, instruments or documents that impart constructive notice [S:ca-ins-code-12340-10]",
+		"Whether the interest being insured is ownership or a lien, since the definition treats them separately [S:ca-ins-code-12340-1]",
+		"The exceptions the issuer proposes to state in the report, which are the terms on which it is willing to issue [S:ca-ins-code-12340-11]",
+		"How the closing funds arrive, since disbursement timing turns on the form of the deposit [S:ca-ins-code-12413-1]",
+		"Whether the parties have consented in writing to recordation before funds are available for withdrawal [S:ca-ins-code-12413-1]"
+	],
+	"exposures": [
+		{
+			"item": "Reading the preliminary report as a description of the title",
+			"note": "The statute says in terms that it is not an abstract and does not constitute a representation as to the condition of title, and that it is an offer to issue subject to stated exceptions [S:ca-ins-code-12340-11]. It arrives looking like the result of a search, which is exactly why it is misread."
+		},
+		{
+			"item": "Treating the exceptions as a list of problems being fixed",
+			"note": "They are the terms and conditions on which the issuer is willing to issue [S:ca-ins-code-12340-11]. Anything left in them at closing is outside the policy, and it stays outside unless somebody negotiates it out first."
+		},
+		{
+			"item": "Assuming the lender's policy protects the buyer",
+			"note": "The definition reaches owners and holders of liens as separate classes [S:ca-ins-code-12340-1]. A policy taken for the lender answers the lender's interest."
+		},
+		{
+			"item": "Expecting funds to move the moment they arrive",
+			"note": "No title insurance company, controlled escrow company or underwritten title company may disburse from an escrow account until the day the section establishes, and for a draft that means not until the proceeds have become available for withdrawal, which is when the draft has been submitted for collection and payment received [S:ca-ins-code-12413-1]."
+		},
+		{
+			"item": "Recording before the money is good",
+			"note": "The section permits recordation before funds are available for withdrawal only where the parties have consented in writing beforehand [S:ca-ins-code-12413-1], so it is a decision somebody has to have made rather than a courtesy."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Read the exceptions in the preliminary report before closing, not after",
+			"note": "They are the terms of the offer to issue [S:ca-ins-code-12340-11], so the moment to deal with one is while the offer is still being negotiated."
+		},
+		{
+			"item": "Ask what each exception actually refers to",
+			"note": "The report is not a representation as to the condition of title [S:ca-ins-code-12340-11], so an exception is a boundary of the proposed policy rather than an explanation of a problem."
+		},
+		{
+			"item": "Establish whether an owner's policy is being taken at all",
+			"note": "The definition covers owners and lien holders separately [S:ca-ins-code-12340-1], and a closing can produce a lender's policy without producing one for the buyer."
+		},
+		{
+			"item": "Ask how the closing funds are being sent",
+			"note": "Cash and electronic payment may be disbursed on the same business day, while a draft cannot be disbursed against until its proceeds are available for withdrawal [S:ca-ins-code-12413-1]. The form of payment sets the timetable."
+		},
+		{
+			"item": "Keep the policy itself rather than only the report",
+			"note": "The report is the offer; the policy is what was issued [S:ca-ins-code-12340-11], and years later it is the policy and its schedules that answer the question."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "The definitions here are Californian, and the preliminary report provision in particular is a California statutory characterisation [S:ca-ins-code-12340-11]. Other states use commitments and binders with their own legal effect, and some use abstracts and attorney opinions rather than a title policy at all [S:ca-ins-code-12340-10]."
+		}
+	],
+	"lastReviewed": "2026-09-06",
+	"effectiveDate": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ins-code-12340-1",
+		"ca-ins-code-12340-11",
+		"ca-ins-code-12340-10",
+		"ca-ins-code-12413-1"
+	],
+	"relatedQuestions": [
+		"what-is-a-preliminary-report-california",
+		"does-title-insurance-cover-future-problems-california"
+	]
+}

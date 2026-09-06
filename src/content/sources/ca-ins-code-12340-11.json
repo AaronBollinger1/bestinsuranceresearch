@@ -1,0 +1,24 @@
+{
+	"title": "California Insurance Code Section 12340.11 (a preliminary report is an offer, not a representation about the title)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=12340.11",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 12340.11 defines preliminary report, commitment, or binder as reports furnished in connection with an application for title insurance that are offers to issue a title policy subject to the stated exceptions set forth in the reports.",
+		"Section 12340.11 provides that such reports are not abstracts of title.",
+		"Section 12340.11 provides that such reports do not constitute a representation as to the condition of title to real property.",
+		"Section 12340.11 provides that such reports do constitute a statement of the terms and conditions upon which the issuer is willing to issue its title policy, if the offer is accepted."
+	],
+	"notes": "This is the provision a buyer is most likely to be wrong about. A preliminary report arrives looking like the result of a search and reads like a description of the title, and the statute says in terms that it is neither an abstract nor a representation as to the condition of title. It is an offer, and the exceptions listed in it are the terms of that offer rather than a list of problems someone has promised to resolve."
+}

@@ -1,0 +1,25 @@
+{
+	"title": "California Insurance Code Section 12340.1 (what title insurance is)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=12340.1",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 12340.1 defines title insurance as insuring, guaranteeing or indemnifying owners of real or personal property, or the holders of liens or encumbrances thereon, or others interested therein, against loss or damage suffered by reason of the matters the section lists.",
+		"Section 12340.1(a) names liens or encumbrances on, or defects in the title to, the property.",
+		"Section 12340.1(b) names invalidity or unenforceability of any liens or encumbrances thereon.",
+		"Section 12340.1(c) names incorrectness of searches relating to the title to real or personal property.",
+		"Every matter the section enumerates is a state of the title or of a search of it, rather than an event occurring after the policy is issued."
+	],
+	"notes": "The last claim is a reading of the enumeration rather than a sentence lifted from it, and is marked as such. The section does not use the words past or future; what it does is list liens, encumbrances, defects, invalidity and incorrect searches, all of which are conditions of title as it stands. That is the structural difference between title insurance and every other line in this corpus, and it is visible in the definition itself rather than needing a secondary source to assert it."
+}
