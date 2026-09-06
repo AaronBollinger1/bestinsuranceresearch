@@ -1,0 +1,55 @@
+{
+	"question": "Does renters insurance cover earthquake or flood in California?",
+	"aliases": [
+		"renters insurance earthquake California",
+		"does renters insurance cover flooding",
+		"fire following an earthquake renters policy",
+		"CEA renters earthquake policy",
+		"contents flood insurance for a tenant"
+	],
+	"shortAnswer": "Neither, with one important exception. Homeowners, renters and condominium policies do not cover damage from natural disasters such as earthquakes, floods and landslides [S:cdi-earthquake-insurance-guide], and flood losses are generally not provided in a homeowners or renters policy [S:cdi-residential-insurance-guide]. The exception is fire: California law says both homeowners and renters insurance must cover fire damage that is caused by or follows an earthquake [S:cdi-earthquake-insurance-guide].",
+	"assumes": [
+		"The policy is a California renters policy.",
+		"You are asking about the peril rather than about a particular claim already made.",
+		"You do not separately hold an earthquake policy or a flood policy, which are the two things that answer these perils."
+	],
+	"why": "The two perils are excluded for the same structural reason and they are answered in two different places.\n\nOn earthquake, the regulator states that homeowners, renters and condominium insurance policies do not cover damage from natural disasters such as earthquakes, floods and landslides [S:cdi-earthquake-insurance-guide]. The shaking that breaks your belongings is outside the policy.\n\nThe exception is worth knowing precisely because it is narrow and it is a legal requirement rather than a feature some insurers offer. California law says that both homeowners and renters insurance must cover fire damage that is caused by or follows an earthquake [S:cdi-earthquake-insurance-guide]. So the earthquake itself is excluded and the fire it starts is covered, which means the cause of the damage decides the answer rather than the event.\n\nEarthquake for a tenant is bought separately. The California Earthquake Authority presents residential earthquake insurance in four categories, one of which is renters [S:cea-home], so a tenant is a contemplated buyer rather than an afterthought. The FAIR Plan also describes a renters category as personal property coverage for the tenant of an apartment or single or multi-unit dwelling [S:cfp-dwelling-policy].\n\nFlood is the same shape. Coverage for losses resulting from floods is generally not provided in a homeowners or renters policy [S:cdi-residential-insurance-guide], and the separate purchase for a tenant is contents only, since the building is not the tenant's. Belongings can be insured up to $100,000 under a residential NFIP policy [S:nfip-agents-coverage].",
+	"whatChanges": [
+		"Whether the damage was caused by shaking or by fire, since the fire following an earthquake must be covered and the shaking is not [S:cdi-earthquake-insurance-guide].",
+		"Whether a separate earthquake policy is held, which for a tenant is available as one of the CEA's four residential categories [S:cea-home].",
+		"Whether a separate flood policy is held, which for a tenant covers contents rather than the building [S:nfip-agents-coverage].",
+		"Whether the loss is better characterised as a landslide, which the regulator groups with the excluded natural disasters [S:cdi-earthquake-insurance-guide]."
+	],
+	"variability": [
+		"The requirement to cover fire following an earthquake is stated by the California regulator as California law [S:cdi-earthquake-insurance-guide]. It does not describe the position in other states.",
+		"This record states which perils sit inside and outside the line. What any particular policy covers is in that policy, and the renters form is not public.",
+		"How a loss is characterised between shaking, fire, and landslide can itself be disputed, and that characterisation is what decides the answer."
+	],
+	"nextActions": [
+		"Decide earthquake and flood as separate purchases rather than assuming the renters policy reaches them [S:cdi-earthquake-insurance-guide][S:cdi-residential-insurance-guide].",
+		"If earthquake matters at your address, look at the CEA renters category, which exists for tenants specifically [S:cea-home].",
+		"If flood matters, note that a tenant's purchase is contents only and belongings can be insured up to $100,000 under a residential policy [S:nfip-agents-coverage].",
+		"Keep the inventory the regulator advises, because on any of these perils the record of what you owned is what supports the claim [S:cdi-residential-insurance-guide].",
+		"After an earthquake, record what caused each item of damage, since fire following is covered and shaking is not [S:cdi-earthquake-insurance-guide]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["renters", "residential-earthquake", "residential-flood"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["renters", "earthquake", "flood", "fire following", "exclusions", "california"],
+	"companies": [],
+	"coverages": ["renters-california"],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["landlord-insurance-does-not-cover-my-things-california", "homeowners-earthquake-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether damage is attributed to shaking or to fire following decides the answer, and that characterisation is made on the facts of the loss rather than by any general description."
+	},
+	"sourceIds": ["cdi-earthquake-insurance-guide", "cdi-residential-insurance-guide", "cea-home", "cfp-dwelling-policy", "nfip-agents-coverage"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

@@ -1,0 +1,154 @@
+{
+	"name": "Renters insurance (California)",
+	"line": "renters",
+	"family": "personal",
+	"definition": "The policy a tenant buys for the half of the building the landlord does not insure. The regulator states it plainly: the landlord does not provide insurance for the tenant's personal property [S:cdi-residential-insurance-guide]. A renters policy carries personal property, loss of use, personal liability and medical payments to others [S:nydfs-renters-insurance], which is the same set a condominium unit owners policy carries without the part that answers the structure [S:cdi-residential-insurance-guide]. The HO-4 form itself is not public, so this page describes the structure regulators describe rather than any insurer's wording.",
+	"protects": [
+		"The tenant's own belongings, which the landlord's policy does not reach [S:cdi-residential-insurance-guide]",
+		"The tenant against personal liability for injuries others sustain at the home, including medical expenses and any resulting lawsuits, and damage to other people's property [S:nydfs-renters-insurance]",
+		"The cost of living elsewhere while the home cannot be used, through loss of use [S:nydfs-renters-insurance]",
+		"Medical payments to others, which responds without the argument about fault that liability cover involves [S:cdi-residential-insurance-guide]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Personal property, loss of use, personal liability and medical payments",
+			"note": "These are the four parts a renters policy is described in [S:nydfs-renters-insurance], and they are the same four a condominium unit owners policy carries before it adds cover for the interior of the unit [S:cdi-residential-insurance-guide]."
+		},
+		{
+			"item": "The ordinary causes of loss",
+			"note": "Published regulator material lists fire, smoke, theft, vandalism, windstorm, hail, lightning, explosion, falling objects, weight of snow, ice and sleet, and water damage from plumbing or appliance failure [S:nydfs-renters-insurance]."
+		},
+		{
+			"item": "Fire that follows an earthquake, in California",
+			"note": "California law says that both homeowners and renters insurance must cover fire damage that is caused by or follows an earthquake [S:cdi-earthquake-insurance-guide]. The shaking is not covered; the fire afterwards is."
+		},
+		{
+			"item": "Liability at a minimum the regulator states",
+			"note": "For renters policies, Coverage E Personal Liability is generally subject to a minimum of $100,000 and Coverage F Medical Payments to Others to a minimum of $1,000 [S:cdi-residential-insurance-guide]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "The building itself",
+			"note": "That is the landlord's property and the landlord's policy. A rental dwelling policy states that tenant-owned personal property is not covered by it [S:statefarm-rental-dwelling], which is the same boundary seen from the other side."
+		},
+		{
+			"item": "Earthquake shake damage",
+			"note": "Homeowners, renters and condominium policies do not cover damage from natural disasters such as earthquakes, floods and landslides [S:cdi-earthquake-insurance-guide]. Only the fire following an earthquake is required to be covered [S:cdi-earthquake-insurance-guide]."
+		},
+		{
+			"item": "Flood",
+			"note": "Insurance coverage for losses resulting from floods is generally not provided in a homeowners or renters policy [S:cdi-residential-insurance-guide], and it is a separate policy on a separate form."
+		},
+		{
+			"item": "The full value of certain categories of belongings",
+			"note": "Coverage on property especially susceptible to loss is limited, and those limited amounts are not separate limits in addition to the contents limit; they are included in it and represent the maximum paid for that type of property [S:cdi-residential-insurance-guide]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"The contents limit is chosen rather than derived, because there is no dwelling limit to take a percentage of. That is the structural difference from a homeowners policy, where loss of use is normally limited to 20 percent of Coverage A [S:cdi-residential-insurance-guide].",
+		"For renters policies the regulator states that personal liability is generally subject to a minimum of $100,000 and medical payments to others to a minimum of $1,000 [S:cdi-residential-insurance-guide].",
+		"Special limits inside the contents limit cap categories such as jewelry and firearms, and they are a ceiling within the contents number rather than cover beside it [S:cdi-residential-insurance-guide].",
+		"Contents flood, where taken, is a separate NFIP purchase and belongings can be insured up to $100,000 under a residential policy [S:nfip-agents-coverage].",
+		"Earthquake for a tenant is arranged separately. The California Earthquake Authority presents residential earthquake in four categories, one of which is renters [S:cea-home], and the FAIR Plan describes personal property coverage for the tenant of an apartment or single or multi-unit dwelling [S:cfp-dwelling-policy]."
+	],
+	"endorsements": [
+		{
+			"item": "Scheduling valuables",
+			"note": "Where a category exceeds its special limit, the route is scheduling or a floater rather than a larger contents limit, and California's marine article enumerates the floater types that may be written [S:ca-ccr-tit-10-2321]."
+		},
+		{
+			"item": "A separate earthquake policy for a tenant",
+			"note": "Available through the CEA as one of its four residential categories [S:cea-home]. It answers the shaking; the fire following is already required to be covered by the renters policy [S:cdi-earthquake-insurance-guide]."
+		},
+		{
+			"item": "Contents-only flood",
+			"note": "A tenant does not insure the building, so the flood purchase is the personal property side alone [S:nfip-agents-coverage]."
+		}
+	],
+	"relatedPolicies": [
+		"Condominium unit owners insurance, which carries the same four parts and adds cover for the interior of the unit [S:cdi-residential-insurance-guide]",
+		"Landlord and rental dwelling insurance, which is the policy on the other side of the same boundary [S:statefarm-rental-dwelling]",
+		"Scheduled personal property, where a capped category needs to move onto its own form [S:ca-ccr-tit-10-2321]"
+	],
+	"underwritingInputs": [
+		"What the belongings would cost to replace, since the contents limit is chosen rather than derived from a dwelling value [S:cdi-residential-insurance-guide]",
+		"Which capped categories are actually held, such as jewelry or firearms [S:cdi-residential-insurance-guide]",
+		"Whether an inventory exists listing items owned, dates purchased and price [S:cdi-residential-insurance-guide]",
+		"Whether the lease requires liability cover, and at what limit, against the stated minimums [S:cdi-residential-insurance-guide]",
+		"Whether earthquake or flood are real exposures at the address, since neither is in the policy [S:cdi-earthquake-insurance-guide][S:cdi-residential-insurance-guide]"
+	],
+	"exposures": [
+		{
+			"item": "Assuming the landlord's policy reaches your belongings",
+			"note": "It does not. The regulator states the landlord does not provide insurance for the tenant's personal property [S:cdi-residential-insurance-guide], and a rental dwelling policy says the same from the landlord's side [S:statefarm-rental-dwelling]. This is the single most common misunderstanding on this line."
+		},
+		{
+			"item": "Liability that follows the tenant rather than the flat",
+			"note": "Liability protection covers injuries others sustain at the tenant's home, including medical expenses and resulting lawsuits, and damage to other people's property [S:nydfs-renters-insurance]. A tenant with no policy meets that personally."
+		},
+		{
+			"item": "Nowhere to live after a fire",
+			"note": "Loss of use is one of the four parts [S:nydfs-renters-insurance]. Without a policy the tenant pays for somewhere else while still liable under the lease, which is a cost the deposit does not touch."
+		},
+		{
+			"item": "Two perils the policy does not answer",
+			"note": "Earthquake shake damage and flood are both outside it [S:cdi-earthquake-insurance-guide][S:cdi-residential-insurance-guide], and both are real in California. Only the fire following an earthquake is required to be covered [S:cdi-earthquake-insurance-guide]."
+		},
+		{
+			"item": "A capped category treated as fully insured",
+			"note": "The limited amounts for categories such as jewelry are inside the contents limit rather than additional to it [S:cdi-residential-insurance-guide], so a large contents figure does not mean a large recovery on those items."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Keep an inventory with dates and prices",
+			"note": "The regulator advises listing all items owned, the dates purchased and the price, and publishes a home inventory guide for it [S:cdi-residential-insurance-guide]. After a total loss the record is the practical obstacle rather than the limit."
+		},
+		{
+			"item": "Set the contents limit from what replacement would cost",
+			"note": "There is no dwelling figure to derive it from, unlike a homeowners policy where loss of use runs at a percentage of Coverage A [S:cdi-residential-insurance-guide], so the number has to be reasoned rather than inherited."
+		},
+		{
+			"item": "Check the liability limit against the stated minimums",
+			"note": "The regulator gives $100,000 personal liability and $1,000 medical payments as the general minimums for renters policies [S:cdi-residential-insurance-guide], which is a floor rather than a recommendation."
+		},
+		{
+			"item": "Treat earthquake and flood as separate decisions",
+			"note": "Neither is in the policy [S:cdi-earthquake-insurance-guide][S:cdi-residential-insurance-guide]. The CEA offers a renters category [S:cea-home] and contents flood is its own NFIP purchase [S:nfip-agents-coverage]."
+		},
+		{
+			"item": "Move a capped category onto its own form if it matters",
+			"note": "Scheduling or a floater is the route, and the floater types that may be written in California are enumerated by regulation [S:ca-ccr-tit-10-2321]."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "The requirement that both homeowners and renters insurance cover fire damage caused by or following an earthquake is California law as the regulator states it [S:cdi-earthquake-insurance-guide], and the CEA renters category and the FAIR Plan renters offering are Californian institutions [S:cea-home][S:cfp-dwelling-policy]."
+		},
+		{
+			"state": "NY",
+			"note": "The description of the four coverage parts and the list of covered causes of loss cited on this page comes from New York regulator material [S:nydfs-renters-insurance]. It is used because it describes the ordinary structure of the line clearly, not because New York law governs a California tenancy. That source also records an exception to the landlord point: where the landlord knew of a prior hazardous condition, failed to correct it in a reasonable time and the tenant's property was damaged as a result [S:nydfs-renters-insurance]."
+		}
+	],
+	"lastReviewed": "2026-09-06",
+	"effectiveDate": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"cdi-residential-insurance-guide",
+		"nydfs-renters-insurance",
+		"cdi-earthquake-insurance-guide",
+		"statefarm-rental-dwelling",
+		"cea-home",
+		"cfp-dwelling-policy",
+		"nfip-agents-coverage",
+		"ca-ccr-tit-10-2321"
+	],
+	"relatedQuestions": [
+		"landlord-insurance-does-not-cover-my-things-california",
+		"does-renters-insurance-cover-earthquake-or-flood-california"
+	]
+}

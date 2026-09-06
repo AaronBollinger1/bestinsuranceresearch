@@ -1,0 +1,56 @@
+{
+	"question": "My landlord has insurance on the building. Does it cover my belongings?",
+	"aliases": [
+		"does landlord insurance cover tenant belongings",
+		"do I need renters insurance if my landlord is insured",
+		"who insures a tenant's personal property",
+		"renters insurance what does it actually cover",
+		"tenant property damaged in a fire at a rental"
+	],
+	"shortAnswer": "No. The California regulator states directly that the landlord does not provide insurance for the tenant's personal property [S:cdi-residential-insurance-guide], and a rental dwelling policy says the same from the other side, that tenant-owned personal property is not covered by it [S:statefarm-rental-dwelling]. A renters policy carries personal property, loss of use, personal liability and medical payments to others [S:nydfs-renters-insurance], and the liability half is the part tenants least expect to need.",
+	"assumes": [
+		"You are a tenant rather than an owner, so the building and its structure are somebody else's insured interest.",
+		"You are asking about the landlord's ordinary property policy rather than about a claim in negligence against the landlord.",
+		"The tenancy is Californian, though the boundary between landlord and tenant property is not peculiar to California."
+	],
+	"why": "Two policies exist around a rented home and they insure different things. The landlord's policy answers the building. The tenant's policy answers everything the tenant brought into it, and the tenant's own conduct.\n\nThe regulator states the position without qualification: the landlord does not provide insurance for the tenant's personal property [S:cdi-residential-insurance-guide]. Reading the other document confirms it from the opposite direction, since a rental dwelling policy states that tenant-owned personal property is not covered by it [S:statefarm-rental-dwelling]. There is no overlap to fall back on.\n\nWhat a renters policy does carry is described in four parts: personal property, loss of use, personal liability, and medical payments to others [S:nydfs-renters-insurance]. The first is the one people buy it for. The second matters more than expected, because after a fire a tenant is paying to live somewhere else while the tenancy obligations continue. The third and fourth are the ones people do not think about: liability protection covers injuries others sustain at the tenant's home, including medical expenses and any resulting lawsuits, and damage to other people's property [S:nydfs-renters-insurance].\n\nThe causes of loss are the ordinary ones. Published regulator material lists fire, smoke, theft, vandalism, windstorm, hail, lightning, explosion, falling objects, weight of snow, ice and sleet, and water damage from plumbing or appliance failure [S:nydfs-renters-insurance].\n\nThere is one narrow exception to the landlord point, and it is a claim against the landlord rather than cover under their policy. Regulator material records that an exception can occur where the landlord was aware of a prior hazardous condition, failed to correct it in a reasonable time frame, and the tenant's property was damaged as a result [S:nydfs-renters-insurance]. That is a route to recovery, not a substitute for having a policy.",
+	"whatChanges": [
+		"Whether you hold a renters policy at all, since nothing in the landlord's policy reaches your belongings [S:cdi-residential-insurance-guide].",
+		"Whether the loss was caused by a hazardous condition the landlord knew about and failed to correct in a reasonable time [S:nydfs-renters-insurance].",
+		"What contents limit you chose, because there is no dwelling figure to derive it from as there is on a homeowners policy [S:cdi-residential-insurance-guide].",
+		"Whether the items fall into a capped category such as jewelry or firearms, where the limit sits inside the contents limit rather than beside it [S:cdi-residential-insurance-guide].",
+		"Whether the lease requires liability cover, against general minimums of $100,000 personal liability and $1,000 medical payments for renters policies [S:cdi-residential-insurance-guide]."
+	],
+	"variability": [
+		"The four-part description and the list of covered causes cited here come from New York regulator material [S:nydfs-renters-insurance]. It describes the ordinary structure of the line clearly; it is not California law and a California policy is governed by its own wording.",
+		"The HO-4 renters form is not public, so what any particular policy covers is in that document rather than in any published source.",
+		"Whether a landlord is liable for a tenant's damaged property in a given case is a legal question about that tenancy and that condition."
+	],
+	"nextActions": [
+		"Work out what replacing your belongings would actually cost, since the contents limit is chosen rather than derived [S:cdi-residential-insurance-guide].",
+		"Build the inventory the regulator advises, listing items owned, dates purchased and price [S:cdi-residential-insurance-guide].",
+		"Check the liability limit rather than only the contents limit, because that is the half that answers injuries to other people at your home [S:nydfs-renters-insurance].",
+		"Read the lease for any insurance requirement and compare it against the general minimums the regulator states [S:cdi-residential-insurance-guide].",
+		"If the loss followed a condition you had reported to the landlord, keep the reports, because that is the fact the narrow exception turns on [S:nydfs-renters-insurance]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["renters", "dwelling-fire"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["renters", "tenant property", "landlord", "liability", "california"],
+	"companies": [],
+	"coverages": ["renters-california"],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["does-renters-insurance-cover-earthquake-or-flood-california"],
+	"handoff": {
+		"recommended": false,
+		"reason": "The boundary between landlord and tenant property does not vary with your circumstances, so the answer holds without a conversation. A claim that the landlord is liable for a known hazard is a legal question rather than a broking one."
+	},
+	"sourceIds": ["cdi-residential-insurance-guide", "statefarm-rental-dwelling", "nydfs-renters-insurance"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
