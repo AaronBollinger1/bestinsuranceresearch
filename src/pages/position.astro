@@ -48,6 +48,30 @@ const payload = modules.map((m) => {
 	};
 });
 
+/*
+ * The cross-module rules travel separately because they belong to no
+ * module. Their citations resolve against their own source list, and the
+ * markers link out to the source record rather than to a ledger anchor,
+ * exactly as the module rules do here.
+ */
+const crossPayload = corpus.crossRules.map((r: (typeof corpus.crossRules)[number]) => {
+	const ruleSourceIds = idsOf(r.data.sourceIds);
+	const cite = createCiter(ruleSourceIds, `cross rule "${r.id}"`, { link: 'absolute' });
+	return {
+		id: r.id,
+		kind: r.data.kind,
+		severity: r.data.severity,
+		modules: r.data.modules,
+		title: r.data.title,
+		detail: cite.inline(r.data.detail),
+		action: r.data.action,
+		when: r.data.when,
+		sourceIds: ruleSourceIds,
+		relatedQuestion: r.data.relatedQuestion ? (r.data.relatedQuestion as { id: string }).id : null,
+		routeToProfessional: r.data.routeToProfessional,
+	};
+});
+
 const totalFields = modules.reduce((n, m) => n + m.data.fields.length, 0);
 const totalRules = modules.reduce((n, m) => n + m.data.rules.length, 0);
 const totalSources = new Set(modules.flatMap((m) => m.data.rules.flatMap((r) => idsOf(r.sourceIds)))).size;
@@ -365,6 +389,13 @@ const jsonLd = graph(
 		is:inline
 		set:html={JSON.stringify(payload)}
 	/>
+
+	<script
+		type="application/json"
+		id="position-cross-rules"
+		is:inline
+		set:html={JSON.stringify(crossPayload)}
+	/>
 </BaseLayout>
 
 <script>
@@ -373,6 +404,7 @@ const jsonLd = graph(
 		evaluatePosition,
 		positionCompleteness,
 		startedModules,
+		type CrossRuleDef,
 		type ModuleDef,
 		type OpenItem,
 	} from '../lib/position';
@@ -380,6 +412,11 @@ const jsonLd = graph(
 
 	const node = document.getElementById('position-modules');
 	const modules = JSON.parse(node?.textContent || '[]') as Array<ModuleDef & { route: string }>;
+
+	/* Rules that read across modules. They belong to no module, so they ship in
+	   their own block and are evaluated by the same engine. */
+	const crossNode = document.getElementById('position-cross-rules');
+	const crossRules = JSON.parse(crossNode?.textContent || '[]') as CrossRuleDef[];
 
 	const itemsEl = document.getElementById('position-items');
 	const noneEl = document.getElementById('position-items-none');
@@ -445,7 +482,7 @@ const jsonLd = graph(
 
 	function render() {
 		const position = loadPosition();
-		const items = evaluatePosition(modules, position);
+		const items = evaluatePosition(modules, position, crossRules);
 		const overall = positionCompleteness(modules, position);
 		const started = startedModules(modules, position);
 

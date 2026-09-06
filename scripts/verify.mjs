@@ -1969,3 +1969,32 @@ test('a cross-module rule stays silent until every module it reads is touched', 
 		);
 	}
 });
+
+test('the position page ships every cross-module rule, cited', () => {
+	/*
+	 * The rules are validated and proven to fire elsewhere. This is the other
+	 * half: that they actually reach the reader. A rule that resolves, spans
+	 * modules and can fire but is never rendered does exactly nothing, and the
+	 * payload is a separate wiring step that can be dropped without any test
+	 * above noticing.
+	 */
+	const html = read(path.join(DIST, 'position', 'index.html'));
+	const block = html.match(/id="position-cross-rules"[^>]*>([\s\S]*?)<\/script>/);
+	assert.ok(block, '/position ships no cross-rule payload');
+
+	const shipped = JSON.parse(block[1]);
+	const onDisk = fs.readdirSync(path.join(CONTENT, 'cross-rules')).filter((f) => f.endsWith('.json'));
+	assert.equal(
+		shipped.length, onDisk.length,
+		`${onDisk.length} cross rules exist but ${shipped.length} reach the page`,
+	);
+
+	for (const rule of shipped) {
+		assert.ok(rule.modules.length >= 2, `${rule.id} reaches the page naming ${rule.modules.length} module(s)`);
+		assert.ok(rule.sourceIds.length > 0, `${rule.id} reaches the page with no source`);
+		assert.ok(
+			!/\[S:/.test(rule.detail),
+			`${rule.id} reaches the page with an unresolved citation marker`,
+		);
+	}
+});

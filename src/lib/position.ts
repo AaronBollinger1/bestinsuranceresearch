@@ -491,10 +491,20 @@ export function openItemsFor(
 export function evaluatePosition(
 	modules: ModuleDef[],
 	position: Position,
+	crossRules: CrossRuleDef[] = [],
 	today: string = todayIso(),
 ): OpenItem[] {
-	return modules
-		.flatMap((m) => openItemsFor(m, position.modules[m.moduleId], today))
+	/*
+	 * Cross-module findings join the same list rather than sitting in a section
+	 * of their own. A reader working through open items should not have to look
+	 * in two places, and the severity ordering already puts the urgent ones
+	 * first regardless of which rule produced them. What marks a cross finding
+	 * is its moduleName, which names both modules.
+	 */
+	return [
+		...modules.flatMap((m) => openItemsFor(m, position.modules[m.moduleId], today)),
+		...crossOpenItems(crossRules, position, modules, today),
+	]
 		.sort((a, b) =>
 			SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity] ||
 			a.moduleId.localeCompare(b.moduleId) ||

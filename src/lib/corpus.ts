@@ -16,7 +16,7 @@ import { siteConfig } from '../config/site';
 export type Corpus = Awaited<ReturnType<typeof loadCorpus>>;
 
 export async function loadCorpus() {
-	const [sources, questions, coverages, companies, states, examples, tools, modules, people] = await Promise.all([
+	const [sources, questions, coverages, companies, states, examples, tools, modules, people, crossRules] = await Promise.all([
 		getCollection('sources'),
 		getCollection('questions'),
 		getCollection('coverages'),
@@ -26,6 +26,8 @@ export async function loadCorpus() {
 		getCollection('tools'),
 		getCollection('modules'),
 		getCollection('people'),
+		/* Rules that read across modules. Owned by the position, not by a module. */
+		getCollection('crossRules'),
 	]);
 
 	const sourceById = new Map(sources.map((s) => [s.id, s]));
@@ -38,6 +40,7 @@ export async function loadCorpus() {
 
 	return {
 		sources,
+		crossRules,
 		questions,
 		coverages,
 		companies,
