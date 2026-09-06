@@ -1503,6 +1503,40 @@ test('a coverage page and its guide link each other', () => {
 	}
 });
 
+test('no two source records describe the same document', () => {
+	/*
+	 * Six sections had been written up twice, each under two ids, because the
+	 * same statute was added on two occasions and the two URLs differed only by
+	 * a trailing dot. Both spellings resolve, so nothing looked broken. The
+	 * damage was to the citation graph rather than to any page: two source
+	 * pages for one law, a reverse dependency index split arbitrarily between
+	 * them, and one sentence of statute holding two different claim addresses.
+	 *
+	 * Comparison is on the URL with trailing dots and case normalised away,
+	 * because that is exactly the difference the duplicates hid behind. Query
+	 * parameters are otherwise left alone: two genuinely different sections
+	 * differ inside the query string, so normalising further would merge
+	 * records that must stay apart.
+	 */
+	const normalise = (url) => url.trim().replace(/\.+$/, '').toLowerCase();
+	const byUrl = new Map();
+	for (const source of sources) {
+		const key = normalise(source.data.url);
+		if (!byUrl.has(key)) byUrl.set(key, []);
+		byUrl.get(key).push(source.id);
+	}
+
+	const collisions = [...byUrl.entries()]
+		.filter(([, ids]) => ids.length > 1)
+		.map(([url, ids]) => `${ids.join(' and ')} both describe ${url}`);
+
+	assert.deepEqual(
+		collisions,
+		[],
+		`source records describing the same document:\n  ${collisions.join('\n  ')}`,
+	);
+});
+
 test('a source cannot claim a recheck it did not have', () => {
 	/*
 	 * `accessedDate` and `lastChecked` were identical on 260 of 263 records, so

@@ -261,7 +261,7 @@
 		{
 			"group": "Endorsements requested",
 			"label": "Primary and non-contributory status",
-			"detail": "Record whether the contract asks for primary and non-contributory coverage, and whether it asks for that to be evidenced by endorsement or only by wording on the certificate. Only the policy and its endorsements can create that status. In California, Insurance Code Section 384 requires a certificate used in lieu of an actual copy of the policy to say it is not an insurance policy and does not amend, extend or alter the coverage afforded by the policies listed [S:ca-ins-code-384-2]. In Minnesota, Section 60A.39 bars an insurer or licensed producer from issuing a certificate that affirmatively or negatively amends, extends, or alters approved coverage without the commissioner's written approval [S:mn-stat-60a-39]. Requirements differ by state, so check the rule in the state at issue.",
+			"detail": "Record whether the contract asks for primary and non-contributory coverage, and whether it asks for that to be evidenced by endorsement or only by wording on the certificate. Only the policy and its endorsements can create that status. In California, Insurance Code Section 384 requires a certificate used in lieu of an actual copy of the policy to say it is not an insurance policy and does not amend, extend or alter the coverage afforded by the policies listed [S:ca-ins-code-384]. In Minnesota, Section 60A.39 bars an insurer or licensed producer from issuing a certificate that affirmatively or negatively amends, extends, or alters approved coverage without the commissioner's written approval [S:mn-stat-60a-39]. Requirements differ by state, so check the rule in the state at issue.",
 			"kind": "endorsement",
 			"appliesTo": [
 				"commercial"
@@ -289,7 +289,7 @@
 		{
 			"group": "Endorsements requested",
 			"label": "Notice of cancellation to the certificate holder",
-			"detail": "If the contract asks for advance written notice of cancellation to the certificate holder, record the number of days it asks for and who it names. Any such obligation runs from the policy and any notice endorsement, not from the certificate. In Minnesota, a certificate may not be issued in a way that amends, extends or alters approved coverage without the commissioner's written approval [S:mn-stat-60a-39], and in California the certificate must state that it does not amend, extend or alter the coverage afforded [S:ca-ins-code-384-2]. Record the request, then record separately what the policy actually provides.",
+			"detail": "If the contract asks for advance written notice of cancellation to the certificate holder, record the number of days it asks for and who it names. Any such obligation runs from the policy and any notice endorsement, not from the certificate. In Minnesota, a certificate may not be issued in a way that amends, extends or alters approved coverage without the commissioner's written approval [S:mn-stat-60a-39], and in California the certificate must state that it does not amend, extend or alter the coverage afforded [S:ca-ins-code-384]. Record the request, then record separately what the policy actually provides.",
 			"kind": "endorsement",
 			"appliesTo": [
 				"commercial"
@@ -304,7 +304,7 @@
 		{
 			"group": "Evidence requested",
 			"label": "Certificate of insurance, with its limits copied onto the face of the map",
-			"detail": "Copy the limits from the certificate into the map, and mark them as evidence rather than as coverage. Under Minnesota law a certificate of insurance is a document that provides evidence of property or liability insurance coverage and the amount of insurance issued, and does not convey any contractual rights to the certificate holder [S:mn-stat-60a-39]. Under California law a certificate used in lieu of an actual copy of the policy must state that it is not an insurance policy, that it does not amend, extend or alter the coverage afforded, and that the insurance is subject to all the terms, exclusions and conditions of the policies [S:ca-ins-code-384-2]. Requirements differ by state, so check the rule in the state at issue.",
+			"detail": "Copy the limits from the certificate into the map, and mark them as evidence rather than as coverage. Under Minnesota law a certificate of insurance is a document that provides evidence of property or liability insurance coverage and the amount of insurance issued, and does not convey any contractual rights to the certificate holder [S:mn-stat-60a-39]. Under California law a certificate used in lieu of an actual copy of the policy must state that it is not an insurance policy, that it does not amend, extend or alter the coverage afforded, and that the insurance is subject to all the terms, exclusions and conditions of the policies [S:ca-ins-code-384]. Requirements differ by state, so check the rule in the state at issue.",
 			"kind": "evidence",
 			"appliesTo": [
 				"personal",
@@ -334,7 +334,7 @@
 		{
 			"group": "Evidence requested",
 			"label": "Copies of the actual endorsements and the declarations page",
-			"detail": "Ask for the additional insured, primary and non-contributory, and waiver of subrogation endorsements as issued, each with form number and edition date, plus the declarations page showing limits and named insureds. In the two states reviewed for this cluster, California and Minnesota, asking for the endorsements themselves is common market practice rather than a legal or filed requirement; no statute or filing found for either state obliges a counterparty to hand them over, so confirm the rule in the state at issue. It is also the only way to move a row from requested to documented, because in California the certificate itself must state that the insurance is subject to all the terms, exclusions and conditions of the policies [S:ca-ins-code-384-2].",
+			"detail": "Ask for the additional insured, primary and non-contributory, and waiver of subrogation endorsements as issued, each with form number and edition date, plus the declarations page showing limits and named insureds. In the two states reviewed for this cluster, California and Minnesota, asking for the endorsements themselves is common market practice rather than a legal or filed requirement; no statute or filing found for either state obliges a counterparty to hand them over, so confirm the rule in the state at issue. It is also the only way to move a row from requested to documented, because in California the certificate itself must state that the insurance is subject to all the terms, exclusions and conditions of the policies [S:ca-ins-code-384].",
 			"kind": "document",
 			"appliesTo": [
 				"commercial"
@@ -373,7 +373,7 @@
 		{
 			"group": "Evidence requested",
 			"label": "Named insured must match the contracting legal entity",
-			"detail": "Compare the legal entity name signing the contract to the named insured on the declarations, including DBAs, joint ventures, single-purpose entities and affiliated LLCs, and record any mismatch as an open item. In California a certificate does not amend, extend or alter the coverage afforded by the policies listed [S:ca-ins-code-384-2], and in Minnesota it conveys no contractual rights to the certificate holder [S:mn-stat-60a-39]. Adding an entity is done on the policy, not on the certificate.",
+			"detail": "Compare the legal entity name signing the contract to the named insured on the declarations, including DBAs, joint ventures, single-purpose entities and affiliated LLCs, and record any mismatch as an open item. In California a certificate does not amend, extend or alter the coverage afforded by the policies listed [S:ca-ins-code-384], and in Minnesota it conveys no contractual rights to the certificate holder [S:mn-stat-60a-39]. Adding an entity is done on the policy, not on the certificate.",
 			"kind": "evidence",
 			"appliesTo": [
 				"personal",
@@ -401,7 +401,7 @@
 		{
 			"group": "Separating requested from verified",
 			"label": "Keep requested terms and documented terms in two columns",
-			"detail": "For every row, hold what the contract asks for apart from what a policy document actually shows, with the document name and date next to each documented entry. Under Minnesota law a certificate provides evidence of coverage and the amount issued and conveys no contractual rights to the certificate holder [S:mn-stat-60a-39], and under California law it does not amend, extend or alter what the policies afford [S:ca-ins-code-384-2]. A requested row is not a documented row until a policy document supports it.",
+			"detail": "For every row, hold what the contract asks for apart from what a policy document actually shows, with the document name and date next to each documented entry. Under Minnesota law a certificate provides evidence of coverage and the amount issued and conveys no contractual rights to the certificate holder [S:mn-stat-60a-39], and under California law it does not amend, extend or alter what the policies afford [S:ca-ins-code-384]. A requested row is not a documented row until a policy document supports it.",
 			"kind": "question",
 			"appliesTo": [
 				"personal",
@@ -435,7 +435,7 @@
 	"sourceIds": [
 		"ca-civ-code-2782",
 		"ca-civ-code-2782-05",
-		"ca-ins-code-384-2",
+		"ca-ins-code-384",
 		"mn-stat-60a-39",
 		"mn-dli-certificates-of-insurance",
 		"cslb-workers-comp-requirements",

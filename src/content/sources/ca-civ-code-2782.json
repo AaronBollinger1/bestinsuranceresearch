@@ -1,7 +1,7 @@
 {
 	"title": "California Civil Code Section 2782 (indemnity provisions in construction contracts)",
 	"publisher": "California Legislative Information, Office of Legislative Counsel",
-	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2782.",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2782",
 	"sourceType": "statute",
 	"jurisdiction": "CA",
 	"authorityLevel": "primary-law",
@@ -25,5 +25,5 @@
 	"updateCadence": "Amended by legislation; re-check leginfo for the current version before each publication cycle.",
 	"status": "active",
 	"officialHost": true,
-	"notes": "Effective: 2012-01-01"
+	"notes": "Merged with the duplicate record ca-civ-2782 on 2026-09-06. That record covered the same section less precisely and held nothing this one does not. Effective: 2012-01-01"
 }

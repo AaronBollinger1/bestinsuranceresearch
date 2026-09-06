@@ -75,7 +75,7 @@
 		{
 			"group": "Set up the comparison",
 			"label": "Record the base form and every endorsement by number and edition date",
-			"detail": "Enter each form number with its edition date, copied from the declarations and the endorsement schedule, for every option. Do not enter a certificate or a marketing summary as the form: under California Insurance Code Section 384 a certificate used in lieu of an actual copy of the policy must state that it is not an insurance policy and does not amend, extend or alter the coverage afforded by the policies listed [S:ca-ins-code-384-2]. Two options can carry identical limits on very different forms.",
+			"detail": "Enter each form number with its edition date, copied from the declarations and the endorsement schedule, for every option. Do not enter a certificate or a marketing summary as the form: under California Insurance Code Section 384 a certificate used in lieu of an actual copy of the policy must state that it is not an insurance policy and does not amend, extend or alter the coverage afforded by the policies listed [S:ca-ins-code-384]. Two options can carry identical limits on very different forms.",
 			"kind": "document",
 			"appliesTo": [
 				"personal",
@@ -359,7 +359,7 @@
 		{
 			"group": "Reading the result honestly",
 			"label": "Turn every unresolved row into a written question for your broker or insurer",
-			"detail": "Where two options differ and you cannot tell from the forms why, write the question out with the form number, edition date and page, and send it to the broker or insurer rather than resolving it here. Coverage is determined by the policy and its endorsements, and in California a certificate or summary must state that it does not amend, extend or alter what the policies afford [S:ca-ins-code-384-2].",
+			"detail": "Where two options differ and you cannot tell from the forms why, write the question out with the form number, edition date and page, and send it to the broker or insurer rather than resolving it here. Coverage is determined by the policy and its endorsements, and in California a certificate or summary must state that it does not amend, extend or alter what the policies afford [S:ca-ins-code-384].",
 			"kind": "question",
 			"appliesTo": [
 				"personal",
@@ -412,7 +412,7 @@
 		"cdi-residential-insurance-guide",
 		"naic-homeowners",
 		"ca-10-ccr-2695-183",
-		"ca-ins-code-384-2",
+		"ca-ins-code-384",
 		"cfr-44-61-11",
 		"cfpb-1024-37",
 		"usc-42-4012a-2",

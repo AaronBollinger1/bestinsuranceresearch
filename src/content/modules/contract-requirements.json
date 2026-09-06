@@ -1325,7 +1325,7 @@
 			"kind": "question",
 			"severity": "high",
 			"title": "The contract contains an indemnity, hold harmless or duty to defend obligation, and how far it reaches is a legal question.",
-			"detail": "Statute limits certain indemnity provisions in construction contracts, and the effect of particular wording is a matter of law rather than of what any policy says [S:ca-civ-2782] [S:ca-civ-code-2782]. An insurance policy and a contractual indemnity are separate promises.",
+			"detail": "Statute limits certain indemnity provisions in construction contracts, and the effect of particular wording is a matter of law rather than of what any policy says [S:ca-civ-code-2782] [S:ca-civ-code-2782]. An insurance policy and a contractual indemnity are separate promises.",
 			"action": "Take the indemnity and defense clauses to a lawyer before signing, and separately ask your broker how, if at all, your policy responds to a contractual assumption of liability.",
 			"when": {
 				"all": [
@@ -1337,7 +1337,6 @@
 				]
 			},
 			"sourceIds": [
-				"ca-civ-2782",
 				"ca-civ-code-2782"
 			],
 			"relatedQuestion": null,
@@ -1348,7 +1347,7 @@
 			"kind": "question",
 			"severity": "high",
 			"title": "This is California-governed construction work with an indemnity obligation, which is the situation the indemnity statutes address directly.",
-			"detail": "Civil Code section 2782 addresses indemnity provisions in construction contracts and section 2782.05 addresses provisions purporting to make a subcontractor insure or indemnify another party for that party's own conduct [S:ca-civ-2782] [S:ca-civ-2782-05] [S:ca-civ-code-2782-05]. Whether this specific wording falls inside those sections is a legal reading, not a rules question.",
+			"detail": "Civil Code section 2782 addresses indemnity provisions in construction contracts and section 2782.05 addresses provisions purporting to make a subcontractor insure or indemnify another party for that party's own conduct [S:ca-civ-code-2782] [S:ca-civ-code-2782-05] [S:ca-civ-code-2782-05]. Whether this specific wording falls inside those sections is a legal reading, not a rules question.",
 			"action": "Give a lawyer the indemnity clause, the insurance exhibit, and the additional insured requirement together, and ask specifically how sections 2782 and 2782.05 apply to the wording in front of you.",
 			"when": {
 				"all": [
@@ -1370,8 +1369,7 @@
 				]
 			},
 			"sourceIds": [
-				"ca-civ-2782",
-				"ca-civ-2782-05",
+				"ca-civ-code-2782",
 				"ca-civ-code-2782-05"
 			],
 			"relatedQuestion": null,
@@ -1382,7 +1380,7 @@
 			"kind": "question",
 			"severity": "high",
 			"title": "You have recorded that the indemnity expressly reaches the other party's own active negligence or wilful misconduct.",
-			"detail": "That is the category of provision the California indemnity statutes speak to, including provisions that attempt to reach an indemnitee's own conduct [S:ca-civ-code-2782] [S:ca-civ-2782-05]. Nothing in an insurance module can tell you whether such a clause holds.",
+			"detail": "That is the category of provision the California indemnity statutes speak to, including provisions that attempt to reach an indemnitee's own conduct [S:ca-civ-code-2782] [S:ca-civ-code-2782-05]. Nothing in an insurance module can tell you whether such a clause holds.",
 			"action": "Do not sign until a lawyer has read that clause and told you in writing what it does, and ask them what alternative wording they would propose to the other party.",
 			"when": {
 				"all": [
@@ -1395,7 +1393,7 @@
 			},
 			"sourceIds": [
 				"ca-civ-code-2782",
-				"ca-civ-2782-05"
+				"ca-civ-code-2782-05"
 			],
 			"relatedQuestion": null,
 			"routeToProfessional": "lawyer"
@@ -1405,7 +1403,7 @@
 			"kind": "question",
 			"severity": "medium",
 			"title": "You marked the reach of the indemnity clause as unclear, which means the obligation you would be taking on is unknown to you.",
-			"detail": "The reach of an indemnity is what determines what you have promised beyond your policy, and statute constrains some of these provisions in construction contracts [S:ca-civ-2782] [S:ca-civ-code-2782-05].",
+			"detail": "The reach of an indemnity is what determines what you have promised beyond your policy, and statute constrains some of these provisions in construction contracts [S:ca-civ-code-2782] [S:ca-civ-code-2782-05].",
 			"action": "Send the indemnity clause to a lawyer and ask them to state in one sentence what you would be agreeing to pay for, then decide.",
 			"when": {
 				"all": [
@@ -1422,7 +1420,7 @@
 				]
 			},
 			"sourceIds": [
-				"ca-civ-2782",
+				"ca-civ-code-2782",
 				"ca-civ-code-2782-05"
 			],
 			"relatedQuestion": null,

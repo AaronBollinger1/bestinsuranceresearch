@@ -142,7 +142,7 @@
 		{
 			"group": "Documents to pull",
 			"label": "Declarations pages plus the full endorsement schedule",
-			"detail": "Pull the declarations for every policy renewing in the window, and with each one the endorsement schedule showing form numbers and edition dates. Coverage is determined by the policy and its endorsements, not by a summary or a certificate: under California Insurance Code Section 384 a certificate used in lieu of an actual copy of the policy must state that it does not amend, extend or alter the coverage afforded and that the insurance is subject to all the terms, exclusions and conditions of the policies [S:ca-ins-code-384-2].",
+			"detail": "Pull the declarations for every policy renewing in the window, and with each one the endorsement schedule showing form numbers and edition dates. Coverage is determined by the policy and its endorsements, not by a summary or a certificate: under California Insurance Code Section 384 a certificate used in lieu of an actual copy of the policy must state that it does not amend, extend or alter the coverage afforded and that the insurance is subject to all the terms, exclusions and conditions of the policies [S:ca-ins-code-384].",
 			"kind": "document",
 			"appliesTo": [
 				"personal",
@@ -356,7 +356,7 @@
 		{
 			"group": "Before you sign the renewal",
 			"label": "What this checklist does not do",
-			"detail": "This checklist organizes documents, dates and questions. It is not a coverage determination, an eligibility verdict, or legal, tax or claims advice, and it cannot tell you whether any specific property or risk is placeable, admitted, non-admitted, or eligible for any residual market program. Coverage is determined by the policy and its endorsements [S:ca-ins-code-384-2], and renewal terms are a carrier underwriting decision.",
+			"detail": "This checklist organizes documents, dates and questions. It is not a coverage determination, an eligibility verdict, or legal, tax or claims advice, and it cannot tell you whether any specific property or risk is placeable, admitted, non-admitted, or eligible for any residual market program. Coverage is determined by the policy and its endorsements [S:ca-ins-code-384], and renewal terms are a carrier underwriting decision.",
 			"kind": "question",
 			"appliesTo": [
 				"personal",
@@ -382,7 +382,7 @@
 		"cfpb-1024-37",
 		"cfr-44-61-11",
 		"usc-42-4012a-2",
-		"ca-ins-code-384-2"
+		"ca-ins-code-384"
 	],
 	"relatedQuestions": [],
 	"lastReviewed": "2026-08-31"

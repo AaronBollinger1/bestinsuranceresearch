@@ -1,7 +1,7 @@
 {
 	"title": "California Civil Code Section 2782.05 (subcontractor indemnity and defense of a general contractor)",
 	"publisher": "California Legislative Information, Office of Legislative Counsel",
-	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2782.05.",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2782.05",
 	"sourceType": "statute",
 	"jurisdiction": "CA",
 	"authorityLevel": "primary-law",
@@ -24,5 +24,5 @@
 	"updateCadence": "Amended by legislation; re-check leginfo before each publication cycle.",
 	"status": "active",
 	"officialHost": true,
-	"notes": "Effective: 2012-01-01"
+	"notes": "Merged with the duplicate record ca-civ-2782-05 on 2026-09-06. Its enumeration of the subdivision (b) exceptions is already covered here, and this record is the one that states honestly which paragraphs were verified and which were not. Effective: 2012-01-01"
 }

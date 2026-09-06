@@ -22,10 +22,11 @@
 		"Within that scope, the measure of indemnity is the amount that it would cost the insured to repair, rebuild, or replace the thing lost or injured, without a deduction for physical depreciation, or the policy limit, whichever is less.",
 		"The insurer pays the actual cash value of the damaged property until the damaged property is repaired, rebuilt, or replaced, and once it is repaired, rebuilt, or replaced the insurer pays the difference.",
 		"A time limit of less than 12 months from the date that the first payment toward the actual cash value is made shall not be placed upon an insured, and a time limit of less than 36 months shall not be placed upon the insured for a loss relating to a state of emergency.",
-		"The insurer shall provide one or more additional extensions of six months for good cause, where the insured acting in good faith and with reasonable diligence encounters delays beyond the insured's control in approval for or reconstruction of the home or residence."
+		"The insurer shall provide one or more additional extensions of six months for good cause, where the insured acting in good faith and with reasonable diligence encounters delays beyond the insured's control in approval for or reconstruction of the home or residence.",
+		"The section as displayed carries the amendment note: Amended by Stats. 2025, Ch. 542, Sec. 2. (SB 495) Effective January 1, 2026."
 	],
 	"updateCadence": "amended by legislation, including post-wildfire bills; re-check leginfo each session",
 	"status": "active",
 	"officialHost": true,
-	"notes": "Effective: 2026-07-01 for full policy-form compliance, per subdivision (e) as displayed"
+	"notes": "Merged with the duplicate record ca-ins-code-2051-point-5 on 2026-09-06. It held the amendment note this record was missing, which is appended above. Note for a later pass: several claims in this record restate one another, a legacy of the same section being written up twice. Effective: 2026-07-01 for full policy-form compliance, per subdivision (e) as displayed"
 }
