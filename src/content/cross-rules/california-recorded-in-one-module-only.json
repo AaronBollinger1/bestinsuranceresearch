@@ -1,0 +1,20 @@
+{
+	"kind": "inconsistency",
+	"severity": "medium",
+	"modules": ["workers-comp-classification", "epli-readiness"],
+	"title": "One module records California operations and another does not.",
+	"detail": "The classification module lists California among the states worked in; the employment practices module does not. Both questions ask where the same people work. California attaches obligations on both sides of that answer: securing workers compensation for every employee [S:ca-labor-code-3700], and harassment prevention training at five employees [S:ca-gov-12950-1]. Whichever answer is stale, one of these two modules is now reasoning from the wrong map.",
+	"action": "Open both modules and make the state lists agree, then re-read whichever findings changed.",
+	"when": {
+		"all": [
+			{ "field": "workers-comp-classification.states-of-operation", "op": "includes", "value": "ca" },
+			{ "field": "epli-readiness.states-of-operation", "op": "excludes", "value": "ca" }
+		]
+	},
+	"sourceIds": ["ca-labor-code-3700", "ca-gov-12950-1"],
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

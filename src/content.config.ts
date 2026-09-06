@@ -486,4 +486,35 @@ const modules = defineCollection({
 	}),
 });
 
-export const collections = { sources, questions, coverages, companies, states, examples, tools, modules, people };
+const crossRules = defineCollection({
+	loader: glob({ pattern: '**/*.json', base: './src/content/cross-rules' }),
+	/*
+	 * A finding that spans two modules is owned by the position, not by
+	 * either module, which is why these live apart. Fields are addressed
+	 * '<moduleId>.<fieldId>' and every one is resolved at build time.
+	 */
+	schema: z.object({
+		kind: z.enum(RULE_KINDS),
+		severity: z.enum(['high', 'medium', 'low']),
+		modules: z.array(z.string()).min(2),
+		title: z.string().min(10),
+		detail: z.string().min(30),
+		action: z.string().min(15),
+		when: z.object({
+			all: z
+				.array(z.object({ field: z.string(), op: z.enum(OPERATORS), value: comparand.optional() }))
+				.min(2),
+		}),
+		sourceIds: z.array(reference('sources')).min(1),
+		relatedQuestion: z.union([reference('questions'), z.null()]).default(null),
+		routeToProfessional: z
+			.union([z.enum(['broker', 'insurer', 'lawyer', 'accountant']), z.null()])
+			.default(null),
+		lastReviewed: isoDate,
+		author: z.string().min(3),
+		reviewer: z.string().min(3),
+		reviewState: z.enum(REVIEW_STATE).default('under-review'),
+	}),
+});
+
+export const collections = { crossRules, sources, questions, coverages, companies, states, examples, tools, modules, people };

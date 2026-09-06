@@ -337,6 +337,120 @@ export function evaluateCondition(
 	}
 }
 
+/**
+ * Flatten a position into one map keyed "<moduleId>.<fieldId>".
+ *
+ * This is what lets a cross-module rule reuse the whole condition engine.
+ * Module-local rules keep reading their own bare field ids from their own
+ * module state, so nothing about them changes.
+ */
+export function qualifiedFields(position: Position): Record<string, FieldValue> {
+	const out: Record<string, FieldValue> = {};
+	for (const [moduleId, state] of Object.entries(position.modules ?? {})) {
+		for (const [fieldId, value] of Object.entries(state?.fields ?? {})) {
+			out[`${moduleId}.${fieldId}`] = value;
+		}
+	}
+	return out;
+}
+
+/** A rule that spans modules. Identical to RuleDef but for the addressing. */
+export interface CrossRuleDef extends RuleDef {
+	/** The modules this rule reads, for display and for validation. */
+	modules: string[];
+}
+
+/**
+ * Open items from the cross-module rules, given a whole position.
+ * A cross rule only fires when every module it names has been touched —
+ * otherwise an untouched module reads as a blank answer and the rule
+ * reports a disagreement between something recorded and nothing at all.
+ */
+export function crossOpenItems(
+	rules: CrossRuleDef[],
+	position: Position,
+	modules: ModuleDef[] = [],
+	today: string = todayIso(),
+): OpenItem[] {
+	const fields = qualifiedFields(position);
+	const nameOf = new Map(modules.map((m) => [m.moduleId, m.name]));
+	const items: OpenItem[] = [];
+	for (const rule of rules) {
+		const allTouched = rule.modules.every((m) => position.modules?.[m]?.touchedAt);
+		if (!allTouched) continue;
+		if (!evaluateRule(rule, fields, today)) continue;
+		items.push({
+			ruleId: rule.id,
+			moduleId: rule.modules.join('+'),
+			/* Both modules are named, because which two is the finding. */
+			moduleName: rule.modules.map((m) => nameOf.get(m) ?? m).join(' and '),
+			kind: rule.kind,
+			severity: rule.severity,
+			title: rule.title,
+			detail: rule.detail,
+			action: rule.action,
+			sourceIds: rule.sourceIds ?? [],
+			relatedQuestion: rule.relatedQuestion ?? null,
+			routeToProfessional: rule.routeToProfessional ?? null,
+		});
+	}
+	return items.sort((a, b) => SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity]);
+}
+
+/**
+ * A cross rule is only meaningful if it actually spans modules and every
+ * field it names resolves. Implicit resolution is what this refuses: a
+ * qualified id that does not resolve is an error, never a silent miss.
+ */
+export function validateCrossRule(rule: CrossRuleDef, modules: ModuleDef[]): string[] {
+	const problems: string[] = [];
+	const byModule = new Map(modules.map((m) => [m.moduleId, m]));
+
+	const named = new Set<string>();
+	for (const condition of rule.when.all) {
+		const refs = [condition.field];
+		if (condition.value && typeof condition.value === 'object' && 'field' in condition.value) {
+			refs.push((condition.value as { field: string }).field);
+		}
+		for (const ref of refs) {
+			const dot = ref.indexOf('.');
+			if (dot < 0) {
+				problems.push(`${rule.id}: "${ref}" is not qualified as <module>.<field>`);
+				continue;
+			}
+			const moduleId = ref.slice(0, dot);
+			const fieldId = ref.slice(dot + 1);
+			const module = byModule.get(moduleId);
+			if (!module) {
+				problems.push(`${rule.id}: names module "${moduleId}", which does not exist`);
+				continue;
+			}
+			if (!module.fields.some((f) => f.id === fieldId)) {
+				problems.push(`${rule.id}: "${moduleId}" has no field "${fieldId}"`);
+				continue;
+			}
+			named.add(moduleId);
+		}
+	}
+
+	if (named.size < 2) {
+		problems.push(
+			`${rule.id}: reads ${named.size} module(s); a rule that does not span modules belongs in the module it reads`,
+		);
+	}
+	for (const declared of rule.modules) {
+		if (!named.has(declared)) {
+			problems.push(`${rule.id}: declares module "${declared}" but reads no field from it`);
+		}
+	}
+	for (const actual of named) {
+		if (!rule.modules.includes(actual)) {
+			problems.push(`${rule.id}: reads "${actual}" without declaring it`);
+		}
+	}
+	return problems;
+}
+
 export function evaluateRule(
 	rule: RuleDef,
 	fields: Record<string, FieldValue>,

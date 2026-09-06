@@ -1,0 +1,21 @@
+{
+	"kind": "gap",
+	"severity": "high",
+	"modules": ["group-benefits-renewal", "epli-readiness"],
+	"title": "The headcount recorded for benefits crosses a California training threshold the employment module shows no date for.",
+	"detail": "California requires an employer with five or more employees to provide sexual harassment prevention training [S:ca-gov-12950-1]. The benefits module records a headcount at or above that threshold and California operations; the employment module holds no training date. Neither module can see this on its own: one knows how many people there are, the other knows whether they were trained.",
+	"action": "Record the date training was last delivered in the employment practices module, or confirm with your employment counsel that the obligation does not attach to your headcount.",
+	"when": {
+		"all": [
+			{ "field": "group-benefits-renewal.total-employee-count", "op": "gte", "value": 5 },
+			{ "field": "group-benefits-renewal.states-of-operation", "op": "includes", "value": "ca" },
+			{ "field": "epli-readiness.last-training-date", "op": "isEmpty" }
+		]
+	},
+	"sourceIds": ["ca-gov-12950-1"],
+	"routeToProfessional": "lawyer",
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

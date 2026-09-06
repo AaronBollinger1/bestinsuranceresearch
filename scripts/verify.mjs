@@ -1840,3 +1840,132 @@ test('every rule compares a field against a value that field can hold', () => {
 		`rules comparing against values their field cannot hold:\n  ${[...new Set(offenders)].join('\n  ')}`,
 	);
 });
+
+test('every cross-module rule resolves, spans modules, and can fire', async () => {
+	/*
+	 * A cross rule is the one kind of rule nothing else can catch. A module
+	 * rule that never fires still shows up in that module’s own reachability
+	 * probe; a cross rule has no module to belong to, so if it silently stopped
+	 * matching, the position would simply never mention it again.
+	 *
+	 * Three things are asserted: every qualified field resolves to a real
+	 * module and field, the rule genuinely spans more than one module, and a
+	 * position exists that makes it fire. The last is the one that matters.
+	 */
+	const { validateCrossRule, crossOpenItems } = await import('../src/lib/position.ts');
+
+	const crossDir = path.join(CONTENT, 'cross-rules');
+	const files = fs.existsSync(crossDir) ? fs.readdirSync(crossDir).filter((f) => f.endsWith('.json')) : [];
+	assert.ok(files.length > 0, 'no cross-module rules exist');
+
+	// The module defs, in the shape the library expects.
+	const defs = modules.map((m) => ({
+		moduleId: m.id,
+		name: m.data.name,
+		summary: m.data.summary ?? '',
+		family: m.data.family ?? '',
+		lines: m.data.lines ?? [],
+		privacyBoundary: m.data.privacyBoundary ?? '',
+		uncertainty: m.data.uncertainty ?? '',
+		fields: m.data.fields ?? [],
+		rules: m.data.rules ?? [],
+	}));
+
+	const problems = [];
+	const neverFires = [];
+
+	for (const file of files) {
+		const id = file.replace(/\.json$/, "");
+		const raw = JSON.parse(read(path.join(crossDir, file)));
+		const rule = { ...raw, id };
+
+		problems.push(...validateCrossRule(rule, defs));
+
+		// Build a position that should satisfy it, from the conditions themselves.
+		const position = { version: 1, savedAt: null, profile: {}, modules: {} };
+		const touch = (moduleId) => {
+			position.modules[moduleId] ??= { fields: {}, touchedAt: "2026-01-01T00:00:00.000Z" };
+			return position.modules[moduleId];
+		};
+		for (const m of rule.modules) touch(m);
+
+		for (const c of rule.when.all) {
+			const dot = c.field.indexOf(".");
+			if (dot < 0) continue;
+			const moduleId = c.field.slice(0, dot);
+			const fieldId = c.field.slice(dot + 1);
+			const def = defs.find((d) => d.moduleId === moduleId)?.fields.find((f) => f.id === fieldId);
+			const state = touch(moduleId).fields;
+
+			// A field-to-field comparand: set the other side to something different.
+			if (c.value && typeof c.value === "object" && c.value.field) {
+				const od = c.value.field.indexOf(".");
+				const otherModule = c.value.field.slice(0, od);
+				const otherField = c.value.field.slice(od + 1);
+				const opts = def?.options?.map((o) => o.value) ?? ["__a__", "__b__"];
+				state[fieldId] = opts[0];
+				touch(otherModule).fields[otherField] = opts[1] ?? "__other__";
+				continue;
+			}
+
+			switch (c.op) {
+				case "isSet": state[fieldId] = def?.options?.[0]?.value ?? "x"; break;
+				case "isEmpty": delete state[fieldId]; break;
+				case "eq": state[fieldId] = c.value; break;
+				case "neq": state[fieldId] = "__other__"; break;
+				case "includes": state[fieldId] = [String(c.value)]; break;
+				case "excludes": state[fieldId] = ["__other__"]; break;
+				case "countGte": state[fieldId] = Array.from({ length: Number(c.value) }, (_, i) => `__p${i}__`); break;
+				case "gte": case "gt": state[fieldId] = Number(c.value) + (c.op === "gt" ? 1 : 0); break;
+				case "lte": case "lt": state[fieldId] = Number(c.value) - (c.op === "lt" ? 1 : 0); break;
+				default: break;
+			}
+		}
+
+		const fired = crossOpenItems([rule], position, defs, TODAY);
+		if (fired.length === 0) neverFires.push(id);
+	}
+
+	assert.deepEqual(problems, [], `cross-module rules that do not resolve:\n  ${problems.join('\n  ')}`);
+	assert.deepEqual(
+		neverFires, [],
+		`cross-module rules no position can trigger:\n  ${neverFires.join('\n  ')}`,
+	);
+});
+
+test('a cross-module rule stays silent until every module it reads is touched', async () => {
+	/*
+	 * An untouched module reads as blank. Without this rule, a cross rule that
+	 * compares two modules would fire the moment one of them was filled in and
+	 * report a disagreement between an answer and an absence — the most
+	 * annoying possible false positive, and one a reader cannot act on.
+	 */
+	const { crossOpenItems } = await import('../src/lib/position.ts');
+	const crossDir = path.join(CONTENT, 'cross-rules');
+	const files = fs.readdirSync(crossDir).filter((f) => f.endsWith(".json"));
+
+	for (const file of files) {
+		const raw = JSON.parse(read(path.join(crossDir, file)));
+		const rule = { ...raw, id: file.replace(/\.json$/, "") };
+
+		// Everything the rule wants, but only the first module marked touched.
+		const position = { version: 1, savedAt: null, profile: {}, modules: {} };
+		for (const [i, m] of rule.modules.entries()) {
+			position.modules[m] = { fields: {}, touchedAt: i === 0 ? "2026-01-01T00:00:00.000Z" : null };
+		}
+		for (const c of rule.when.all) {
+			const dot = c.field.indexOf(".");
+			if (dot < 0) continue;
+			const mod = c.field.slice(0, dot);
+			position.modules[mod] ??= { fields: {}, touchedAt: null };
+			position.modules[mod].fields[c.field.slice(dot + 1)] =
+				c.op === "includes" ? [String(c.value)] : c.value;
+		}
+
+		assert.equal(
+			crossOpenItems([rule], position, [], TODAY).length,
+			0,
+			`${rule.id} fired with only one of its modules touched`,
+		);
+	}
+});

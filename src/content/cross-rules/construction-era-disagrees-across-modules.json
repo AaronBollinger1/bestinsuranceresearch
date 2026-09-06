@@ -1,0 +1,25 @@
+{
+	"kind": "inconsistency",
+	"severity": "medium",
+	"modules": ["earthquake-pathways", "property-position"],
+	"title": "The two property modules record different construction eras for the same home.",
+	"detail": "Both modules ask when the home was built, and they now offer the same bands, so a difference between them is a real disagreement rather than two vocabularies talking past each other. The era drives different findings in each: the seismic questions that attach below the 1980 code line, and the systems-age comparison that a claim settlement can turn on [S:ca-10-ccr-2695-183]. One of the two answers is wrong and the findings resting on it are wrong with it.",
+	"action": "Check the year built on your declarations or county assessor record, then correct whichever module disagrees with it.",
+	"when": {
+		"all": [
+			{ "field": "earthquake-pathways.construction-era", "op": "isSet" },
+			{ "field": "property-position.construction-era", "op": "isSet" },
+			{
+				"field": "earthquake-pathways.construction-era",
+				"op": "neq",
+				"value": { "field": "property-position.construction-era" }
+			}
+		]
+	},
+	"sourceIds": ["ca-10-ccr-2695-183"],
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}
