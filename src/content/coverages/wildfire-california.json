@@ -1,0 +1,173 @@
+{
+	"name": "Wildfire coverage and availability (California)",
+	"line": "wildfire",
+	"family": "personal",
+	"definition": "Wildfire is not a policy you buy. It is a peril the residential property form already covers, and the questions that actually arise are about availability rather than coverage: whether the policy will be renewed, what notice is owed before it is not, what protection follows a declared emergency, and what the insurer of last resort does and does not include. California answers all four in statute and in published regulator material [S:ca-ins-code-678][S:ca-ins-code-675-1][S:cdi-fair-plan].",
+	"protects": [
+		"The dwelling against fire as a peril, under the residential property policy already in force rather than under a separate wildfire policy",
+		"A policyholder against losing cover at renewal without warning, through a notice regime with stated periods and stated reasons [S:ca-ins-code-678]",
+		"A residential policyholder in an affected ZIP Code against cancellation or nonrenewal for one year after a declared emergency, based solely on the wildfire [S:ca-ins-code-675-1]",
+		"A policyholder who suffered a total loss, through renewal obligations running at least 24 months from the loss [S:ca-ins-code-675-1]",
+		"An applicant who cannot find cover in the traditional market, through the FAIR Plan as a last resort [S:ca-fair-plan-how-to-apply]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "A one-year moratorium after a declared emergency",
+			"note": "An insurer shall not cancel or refuse to renew a policy of residential property insurance for a property in any ZIP Code within or adjacent to the fire perimeter, for one year after the declaration of a state of emergency, based solely on the fact that the insured structure is in an area where a wildfire occurred [S:ca-ins-code-675-1]. It reaches policyholders who suffered no loss at all as well as those who did [S:cdi-moratorium]."
+		},
+		{
+			"item": "A defined way of deciding which ZIP Codes are protected",
+			"note": "The fire perimeter is determined by the Department of Forestry and Fire Protection in consultation with the Office of Emergency Services, which supplies perimeter data to the commissioner, who then issues a bulletin telling insurers which ZIP Codes are subject to the subdivision [S:ca-ins-code-675-1][S:cdi-moratorium]."
+		},
+		{
+			"item": "Renewal obligations after a total loss",
+			"note": "Where a total loss to the primary insured residence results from a disaster and was not caused by the policyholder's negligence, the insurer must offer renewal for at least the next two annual renewal periods, and no less than 24 months of coverage from the date of loss [S:ca-ins-code-675-1]."
+		},
+		{
+			"item": "Adjustment of the policy while rebuilding",
+			"note": "Following a total loss the insurer must adjust coverage limits, issue additional policies or attach endorsements reflecting changes in exposure, and may not cancel during rebuilding except on specified statutory grounds or based solely on the damaged condition of the property [S:ca-ins-code-675-1]."
+		},
+		{
+			"item": "Notice before a policy is not renewed",
+			"note": "At least 45 days before expiration the insurer must deliver or mail either an offer of renewal stating the premium and disclosing any reduction of limits or elimination of coverage, or a notice of nonrenewal; and for policies expiring on or after July 1, 2020 a nonrenewal notice must be given at least 75 days before expiration [S:ca-ins-code-678]."
+		},
+		{
+			"item": "A reason you are entitled to read",
+			"note": "A notice of nonrenewal must contain the specific reason or reasons for the nonrenewal [S:ca-ins-code-678]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Commercial and industrial risks, from this article",
+			"note": "Section 675 applies the article to policies other than automobile and workers compensation insurance, and does not reach policies primarily insuring risks arising from the conduct of a commercial or industrial enterprise [S:ca-ins-code-675]."
+		},
+		{
+			"item": "Cases where the insured made the risk worse",
+			"note": "The section 675.1 protections do not apply where the named insured commits willful or grossly negligent acts or omissions materially increasing any of the risks insured against, where unrelated losses render the risk ineligible, or where physical or risk changes make the property uninsurable [S:ca-ins-code-675-1]."
+		},
+		{
+			"item": "Water damage and earth movement, on the FAIR Plan dwelling form",
+			"note": "The published sample dwelling property policy excludes earth movement, meaning earthquake, landslide, mine subsidence and mudflow among others, and excludes water damage meaning flood, surface water, waves, tidal water and overflow of a body of water [S:cfp-dwelling-property-policy-form]."
+		},
+		{
+			"item": "Liability, theft and additional living expenses, from the FAIR Plan's limited fire policy",
+			"note": "The regulator describes the current residential offering as a limited fire policy and directs policyholders wanting water damage, liability, theft, additional living expenses and other common coverages to a Difference in Conditions policy [S:cdi-fair-plan]."
+		},
+		{
+			"item": "Difference in Conditions and flood, from the FAIR Plan itself",
+			"note": "The Plan states that it does not offer those coverages [S:ca-fair-plan-policies], so the companion policy has to come from somewhere else."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no separate wildfire limit on a residential policy. The dwelling limit and the loss settlement basis govern, and those are questions for the homeowners line rather than this page.",
+		"The periods are the numbers that matter here. Forty-five days before expiration for an offer of renewal or a notice of nonrenewal [S:ca-ins-code-678].",
+		"Seventy-five days before expiration for a notice of nonrenewal on policies expiring on or after July 1, 2020 [S:ca-ins-code-678].",
+		"Where the insurer fails to give the required notice, the existing policy with no change in its terms and conditions remains in effect for the corresponding period from the date the notice is finally delivered or mailed [S:ca-ins-code-678].",
+		"One year of protection from cancellation and nonrenewal from the date of the emergency declaration, for residential policyholders in the affected ZIP Codes [S:ca-ins-code-675-1][S:cdi-moratorium].",
+		"At least two annual renewal periods, and no less than 24 months from the date of loss, following a qualifying total loss [S:ca-ins-code-675-1]."
+	],
+	"endorsements": [
+		{
+			"item": "A Difference in Conditions policy alongside a FAIR Plan policy",
+			"note": "This is the standard pairing rather than an optional extra, because the FAIR Plan's residential offering is a limited fire policy and the Plan does not write Difference in Conditions itself [S:cdi-fair-plan][S:ca-fair-plan-policies]."
+		},
+		{
+			"item": "Earthquake, arranged separately",
+			"note": "The FAIR Plan describes earthquake coverage for individually owned residential properties and for tenant and condominium owner personal property through the California Earthquake Authority [S:ca-fair-plan-policies], and the dwelling form itself excludes earth movement [S:cfp-dwelling-property-policy-form]."
+		},
+		{
+			"item": "Nothing that makes wildfire a separate purchase",
+			"note": "Fire is a peril of the underlying residential form. What varies is whether that form is available and on what terms, which is what the statutes on this page address [S:ca-ins-code-678]."
+		}
+	],
+	"relatedPolicies": [
+		"Homeowners insurance, which is the policy the wildfire peril actually sits in",
+		"Residential earthquake, which answers a peril the FAIR Plan dwelling form excludes [S:cfp-dwelling-property-policy-form]",
+		"Flood, which neither the FAIR Plan nor the dwelling form provides [S:ca-fair-plan-policies]"
+	],
+	"underwritingInputs": [
+		"Whether the property sits in a ZIP Code the commissioner's bulletin lists as within or adjacent to a fire perimeter [S:ca-ins-code-675-1]",
+		"Whether a state of emergency has been declared and when, since the moratorium runs one year from that date [S:ca-ins-code-675-1]",
+		"Whether the policy is residential property insurance as the section defines it, by reference to subdivision (a) of Section 10087 [S:ca-ins-code-675-1]",
+		"Whether the risk is commercial or industrial, which takes it outside the article entirely [S:ca-ins-code-675]",
+		"The policy expiration date, from which both notice periods are counted [S:ca-ins-code-678]",
+		"Whether a diligent search of the traditional market has been made, which is what the FAIR Plan expects before an application [S:ca-fair-plan-how-to-apply]",
+		"Whether a Difference in Conditions policy is in place alongside any FAIR Plan cover [S:cdi-fair-plan]"
+	],
+	"exposures": [
+		{
+			"item": "A nonrenewal that arrives with no reason attached",
+			"note": "The statute requires the notice to contain the specific reason or reasons for the nonrenewal [S:ca-ins-code-678]. A notice that does not is not merely unhelpful; it does not meet the section, and the section also fixes what happens when notice is not properly given."
+		},
+		{
+			"item": "Assuming the moratorium requires having been burned",
+			"note": "It does not. The protection reaches residential policyholders within the affected areas who suffered less than a total loss, including those who suffered no loss at all [S:cdi-moratorium], because it attaches to location rather than to damage."
+		},
+		{
+			"item": "Treating a FAIR Plan policy as a replacement for what was lost",
+			"note": "The residential offering is a limited fire policy, and the regulator directs policyholders who want water damage, liability, theft and additional living expenses to a separate Difference in Conditions policy [S:cdi-fair-plan]. Moving to the Plan without one leaves several ordinary coverages absent."
+		},
+		{
+			"item": "Two perils that arrive together and are covered apart",
+			"note": "The FAIR Plan dwelling form excludes both earth movement and water damage [S:cfp-dwelling-property-policy-form]. Debris flow after a burn scar is the case where that matters most, and it is a mudflow rather than a fire."
+		},
+		{
+			"item": "A rebuild that outlives the policy",
+			"note": "The statute answers this only where there was a qualifying total loss, requiring renewal for at least two annual periods and no less than 24 months from the loss [S:ca-ins-code-675-1]. A partial loss with a long rebuild does not carry that protection."
+		},
+		{
+			"item": "Being outside the article without realising",
+			"note": "Section 675 does not reach policies primarily insuring risks arising from the conduct of a commercial or industrial enterprise [S:ca-ins-code-675], so a property held commercially is answered by different rules than a home."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Read the nonrenewal notice for its stated reason and its date",
+			"note": "Both are required: the specific reason or reasons must appear, and the notice must be delivered or mailed at least 75 days before expiration for policies expiring on or after July 1, 2020 [S:ca-ins-code-678]."
+		},
+		{
+			"item": "Check the commissioner's bulletin for your ZIP Code",
+			"note": "The perimeter is fixed by CAL FIRE with the Office of Emergency Services and the commissioner issues a bulletin naming the ZIP Codes subject to the moratorium [S:ca-ins-code-675-1][S:cdi-moratorium], so whether you are protected is a published fact rather than a judgement."
+		},
+		{
+			"item": "Date the emergency declaration and count one year from it",
+			"note": "The protection runs one year from the date of the declaration rather than from the fire or from the notice [S:ca-ins-code-675-1][S:cdi-moratorium]."
+		},
+		{
+			"item": "If you move to the FAIR Plan, arrange the companion policy at the same time",
+			"note": "The Plan does not write Difference in Conditions or flood [S:ca-fair-plan-policies], and the regulator points policyholders wanting the ordinary coverages to a separate Difference in Conditions policy [S:cdi-fair-plan]."
+		},
+		{
+			"item": "Ask the broker to document the search of the traditional market",
+			"note": "The Plan states that a broker performs a diligent search for comprehensive coverage and that where cover is available in the traditional marketplace the Plan is not right for the applicant [S:ca-fair-plan-how-to-apply]."
+		},
+		{
+			"item": "Read the FAIR Plan form rather than assuming it matches what you had",
+			"note": "The sample dwelling property policy is published, and its general exclusions for earth movement and water damage are stated in it [S:cfp-dwelling-property-policy-form]."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "Every provision here is Californian. The moratorium mechanism in section 675.1, the 45 and 75 day notice periods in section 678, and the FAIR Plan's structure as an insurer of last resort are state law and state institutions [S:ca-ins-code-675-1][S:ca-ins-code-678][S:ca-fair-plan-how-to-apply]. The regulator has also finalised a wildfire catastrophe modelling regulation permitting forward-looking models, and states that homeowners insurers must increase writing in wildfire distressed areas to no less than 85 percent of their statewide share [S:cdi-cat-model-2024]."
+		}
+	],
+	"lastReviewed": "2026-09-06",
+	"effectiveDate": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ins-code-675-1",
+		"ca-ins-code-678",
+		"ca-ins-code-675",
+		"cdi-moratorium",
+		"cdi-fair-plan",
+		"cdi-cat-model-2024",
+		"ca-fair-plan-how-to-apply",
+		"ca-fair-plan-policies",
+		"cfp-dwelling-property-policy-form",
+		"ca-ins-code-10091"
+	],
+	"relatedQuestions": []
+}
