@@ -1,0 +1,82 @@
+{
+	"question": "Should I schedule valuables on my homeowners policy or buy a separate floater?",
+	"aliases": [
+		"scheduling jewelry vs personal articles floater",
+		"difference between scheduled property and a floater",
+		"do I need a separate policy for my art collection",
+		"personal property floater California regulation",
+		"agreed value versus actual cash value on valuables"
+	],
+	"shortAnswer": "Both routes exist and the question that separates them is valuation at a loss, not limit. California's marine article enumerates the floater types that may be written as marine or inland marine insurance, including a fine arts item covering objects of art such as pictures, statuary, bronzes and antiques, and rare manuscripts and books [S:ca-ccr-tit-10-2321]. Ask each route what it pays when the item is destroyed, because that is where they differ most and it is not visible from the limit.",
+	"assumes": [
+		"The items fall into a category a homeowners policy caps, such as jewelry, antiques, furs, collectibles, fine arts, firearms, silverware or money [S:cdi-residential-insurance-guide].",
+		"You are choosing how to cover them rather than whether they need covering.",
+		"The placement is in California, since the enumeration of permitted floater types cited here is a California regulation [S:ca-ccr-tit-10-2321]."
+	],
+	"why": "Start with why the choice arises. A homeowners policy caps certain categories, and those caps are not additional coverage: the limited amounts are included in the overall contents limit and represent the maximum paid for that type of property [S:cdi-residential-insurance-guide]. Raising the contents limit does not raise the cap, so anything meaningfully above it needs a different arrangement.\n\nThe two arrangements are scheduling the items on the homeowners policy, or placing them on a separate floater. Which floater forms exist is not a matter of insurer discretion in California. Subdivision (e) of the marine article is headed Personal Property Floater Risks, and the nationwide definition the states work from lists thirteen personal property floater items including Personal Effects Floater Policies, the Personal Property Floater, Personal Fur Floaters and Personal Jewelry Floaters [S:ca-ccr-tit-10-2321][S:naic-model-701-nationwide-inland-marine-definition].\n\nThe regulation also bounds what a marine form may not do, which is worth knowing before assuming a floater is the answer to everything. The prohibited coverage section names furniture and fixtures and improvements and betterments to buildings, and moneys and securities in safes, vaults, safety deposit vaults, banks or the assured's premises except while in course of transportation [S:ca-ccr-tit-10-2322]. Property of that kind needs a different form regardless of value.\n\nWhat the sources cannot settle is which route pays better, because that lives in the wording of each. This is the question to put to both in the same words: what will you pay if this item is destroyed, and how is that amount determined. A limit tells you the ceiling; it does not tell you the method.",
+	"whatChanges": [
+		"How each route values the item at a loss, which is the difference that matters and is not visible from the limit.",
+		"Whether the item is eligible for the marine class at all, since the prohibited coverage section places some property outside it [S:ca-ccr-tit-10-2322].",
+		"Whether the items travel, because the marine classification is organised around transit and the regulation's other subdivisions cover imports, exports and domestic shipments [S:ca-ccr-tit-10-2321].",
+		"Which category the item is in, since dedicated floater types exist for furs, jewellery and fine arts [S:naic-model-701-nationwide-inland-marine-definition].",
+		"Whether flood is a real exposure, since the flood policy caps artwork, photographs, collectibles or memorabilia, rare books, jewelry and furs at $2,500 for any one loss however they are scheduled elsewhere [S:nfip-sfip-dwelling-form]."
+	],
+	"variability": [
+		"The nationwide definition is a model rather than uniform law and states depart from it. Two of California's six prohibited items have no counterpart in the four exceptions listed in Section 3 of the model [S:ca-ccr-tit-10-2322][S:naic-model-701-nationwide-inland-marine-definition].",
+		"What any particular floater covers, how it values a loss, and whether it requires an appraisal are questions about that form. The regulation says which forms may be written, not what any of them says.",
+		"Appraisal requirements and their frequency are a documentation question that varies by insurer and by category."
+	],
+	"nextActions": [
+		"Ask both routes the same question in the same words: what is paid if this item is destroyed, and how is the amount determined.",
+		"Check the item is eligible for the class before assuming a floater is available, given the prohibited coverage section [S:ca-ccr-tit-10-2322].",
+		"Build the inventory first, listing items owned, dates purchased and price, which the regulator advises [S:cdi-residential-insurance-guide].",
+		"Ask what documentation each route wants and how often it must be refreshed, since that obligation outlives the placement decision.",
+		"If flood is a real risk where the items are kept, treat it as a separate and severe cap rather than as covered by either route [S:nfip-sfip-dwelling-form]."
+	],
+	"confidence": "contextual",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"scheduled-personal-property",
+		"inland-marine",
+		"homeowners"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"scheduling",
+		"floater",
+		"valuables",
+		"inland marine",
+		"valuation"
+	],
+	"companies": [],
+	"coverages": [
+		"scheduled-personal-property-california"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"why-jewelry-claim-paid-so-little",
+		"inland-marine-uses"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "The difference between the two routes lives in how each values a loss, which is in the wording rather than in any public source, so the comparison has to be made on the actual forms offered to you."
+	},
+	"sourceIds": [
+		"ca-ccr-tit-10-2321",
+		"ca-ccr-tit-10-2322",
+		"naic-model-701-nationwide-inland-marine-definition",
+		"cdi-residential-insurance-guide",
+		"nfip-sfip-dwelling-form"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

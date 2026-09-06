@@ -1,0 +1,81 @@
+{
+	"question": "Why did my policy pay so little for stolen jewellery when my contents limit is large?",
+	"aliases": [
+		"homeowners special limit jewelry stolen",
+		"why did insurance only pay a small amount for jewelry",
+		"are special limits in addition to contents coverage",
+		"sublimit for jewelry antiques furs firearms",
+		"California homeowners special limits of liability"
+	],
+	"shortAnswer": "Because the special limit is not extra coverage, it is a cap inside the contents limit. The regulator states that the limited coverage amounts for specific types of personal property are not separate limits in addition to the contents limit; they are included in the overall contents limit and represent the maximum paid out for that specific type of property [S:cdi-residential-insurance-guide]. The categories affected include jewelry, antiques, furs, collectibles, fine arts, firearms, silverware and money [S:cdi-residential-insurance-guide].",
+	"assumes": [
+		"The policy is a homeowners, renters or condominium unit owners policy with a Coverage C personal property limit [S:cdi-residential-insurance-guide].",
+		"The item was not separately scheduled or covered by a floater, since scheduling moves an item off the capped category.",
+		"You are asking why the payment was small rather than whether the loss was covered at all."
+	],
+	"why": "The confusion here is structural rather than anyone's fault. A homeowners policy is described in coverage parts, with Coverage C being personal property [S:cdi-residential-insurance-guide], and the contents limit is the number a household remembers. What is far less visible is that coverage on certain types of property especially susceptible to loss is limited: jewelry, antiques, furs, collectibles, fine arts, firearms, silverware and money [S:cdi-residential-insurance-guide].\n\nThe decisive sentence is about how those limits relate to the headline number. The limited coverage amounts for specific types of personal property are not separate limits in addition to the contents limit; they are included in the overall contents limit and represent the maximum paid out for that specific type of personal property [S:cdi-residential-insurance-guide]. So a large contents limit does not enlarge the jewellery cap. It contains it.\n\nThat is why the outcome feels wrong. Nothing was misrepresented and no exclusion was applied; the category simply had its own ceiling all along, and the ceiling is the figure that governs however large the contents limit is.\n\nThe categories are wider than people expect, which is the second half of the surprise. Inherited silverware and a firearms collection sit on the same list as jewellery [S:cdi-residential-insurance-guide], and they are commonly overlooked precisely because nobody thinks of them as valuables. The route out is not a bigger contents limit but a different form: the California marine article enumerates the floater types that may be written, including a fine arts item covering objects of art such as pictures, statuary, bronzes and antiques, and rare manuscripts and books [S:ca-ccr-tit-10-2321].",
+	"whatChanges": [
+		"Whether the item was scheduled or placed on a floater, which takes it out of the capped category [S:ca-ccr-tit-10-2321].",
+		"Which category the item falls into, since each has its own maximum [S:cdi-residential-insurance-guide].",
+		"Whether the loss was theft or something else, since the caps commonly attach to particular perils on particular categories, which is a question about your own policy wording.",
+		"Nothing about the size of the contents limit, because the cap sits inside it rather than beside it [S:cdi-residential-insurance-guide].",
+		"Whether the loss was a flood, in which case a separate and severe cap applies: no more than $2,500 for any one loss to listed categories including artwork, photographs, collectibles or memorabilia, rare books, jewelry and furs [S:nfip-sfip-dwelling-form]."
+	],
+	"variability": [
+		"The specific dollar figures for each category are set by the policy form rather than by statute, so this record does not state them. Your declarations page and policy do.",
+		"Which perils a given cap applies to varies between forms. Some limits apply to theft only and others more broadly, and only the wording settles it.",
+		"This describes the ordinary structure of a residential property policy as the California regulator describes it. A policy written on an unusual form may differ."
+	],
+	"nextActions": [
+		"Find the special limits of liability section of your policy and read the figure for the category in question, rather than the contents limit [S:cdi-residential-insurance-guide].",
+		"List which of the named categories you actually hold: jewelry, antiques, furs, collectibles, fine arts, firearms, silverware and money [S:cdi-residential-insurance-guide].",
+		"Build an inventory listing items owned, dates purchased and price, which the regulator advises and publishes a guide for [S:cdi-residential-insurance-guide].",
+		"Ask your broker to price both routes for anything above the cap: scheduling on the policy, and a separate floater, and ask each what it says about valuation at a loss."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"scheduled-personal-property",
+		"homeowners",
+		"renters",
+		"condominium-unit-owners"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"special limits",
+		"jewelry",
+		"contents",
+		"scheduling",
+		"homeowners"
+	],
+	"companies": [],
+	"coverages": [
+		"scheduled-personal-property-california",
+		"homeowners"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"schedule-valuables-or-separate-floater",
+		"same-limit-different-protection"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "The dollar figure for each category and the perils it attaches to are in your own policy form, and choosing between scheduling and a separate floater turns on what each says about valuation."
+	},
+	"sourceIds": [
+		"cdi-residential-insurance-guide",
+		"ca-ccr-tit-10-2321",
+		"nfip-sfip-dwelling-form"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

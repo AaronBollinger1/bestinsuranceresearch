@@ -1,0 +1,72 @@
+{
+	"question": "What do the numbers next to the coverages on my commercial auto policy mean?",
+	"aliases": [
+		"business auto covered auto symbols explained",
+		"what is symbol 1 on a commercial auto policy",
+		"CA 00 01 covered autos designation symbols",
+		"symbol 7 specifically described autos",
+		"commercial auto symbols 8 and 9"
+	],
+	"shortAnswer": "They are covered auto designation symbols, and they decide what the policy actually insures for each coverage. The Business Auto Coverage Form states that Item Two of the Declarations shows the autos that are covered autos for each coverage, and that the symbols entered next to a coverage on the Declarations do that work [S:iso-ca-00-01-10-13]. Symbol 1 is Any Auto; symbol 7 is only the autos specifically described in the Declarations for which a premium is shown [S:iso-ca-00-01-10-13].",
+	"assumes": [
+		"The policy is written on the Business Auto Coverage Form CA 00 01 or a form that follows its structure [S:iso-ca-00-01-10-13].",
+		"You are asking what the symbols do rather than which ones you should have.",
+		"The reading here is of one published edition of the form, edition 10 13, and your policy may use a different edition or a different form entirely."
+	],
+	"why": "A commercial auto policy does not have one scope. It has a scope per coverage, and the symbols are how that is expressed. Section I Covered Autos provides that Item Two of the Declarations shows the autos that are covered autos for each coverage, and that the symbols entered next to a coverage on the Declarations do the designating [S:iso-ca-00-01-10-13]. So liability, physical damage and the rest can each attach to a different set of vehicles on the same policy.\n\nThe symbols themselves run in a recognisable order. Symbol 1 is Any Auto [S:iso-ca-00-01-10-13]. Symbol 2 is Owned Autos Only, covering the autos you own and, for Covered Autos Liability Coverage, trailers you do not own while attached to power units you own [S:iso-ca-00-01-10-13]. Symbol 3 is Owned Private Passenger Autos Only and symbol 4 is Owned Autos Other Than Private Passenger Autos Only [S:iso-ca-00-01-10-13]. Symbols 5 and 6 pick out owned autos subject to no-fault and to a compulsory uninsured motorists law in the state where they are licensed or principally garaged [S:iso-ca-00-01-10-13].\n\nSymbol 7 is the one that most often produces an unpleasant surprise: Specifically Described Autos, meaning only those autos described in Item Three of the Declarations for which a premium charge is shown [S:iso-ca-00-01-10-13]. A vehicle acquired and not added is simply not on the list.\n\nSymbols 8 and 9 cover vehicles the business does not own. Symbol 8 is Hired Autos Only, meaning autos you lease, hire, rent or borrow, and it expressly does not include autos leased, hired, rented or borrowed from your employees, partners or members [S:iso-ca-00-01-10-13]. Symbol 9 is Non-owned Autos Only, meaning autos you do not own, lease, hire, rent or borrow that are used in connection with your business, and it does include autos owned by your employees, partners or members or members of their households [S:iso-ca-00-01-10-13]. The two are complementary rather than overlapping, which is why an employee's own car falls under 9 and not under 8.",
+	"whatChanges": [
+		"Which symbol sits next to which coverage, since each coverage has its own set of covered autos [S:iso-ca-00-01-10-13].",
+		"Whether symbol 7 is used, in which case only autos listed in Item Three with a premium shown are covered [S:iso-ca-00-01-10-13].",
+		"Whether the business uses vehicles it does not own, which is what symbols 8 and 9 address and which symbol 2 does not reach [S:iso-ca-00-01-10-13].",
+		"Whether a vehicle is leased or borrowed from an employee, partner or member, which symbol 8 expressly excludes [S:iso-ca-00-01-10-13].",
+		"Where an auto is licensed or principally garaged, which is how symbols 5 and 6 select no-fault and compulsory uninsured motorist autos [S:iso-ca-00-01-10-13]."
+	],
+	"variability": [
+		"This describes one published edition of one form, CA 00 01 10 13. Editions change and insurers use manuscript and company forms, so the symbols on your policy are the ones your policy defines.",
+		"The Auto Dealers and Motor Carrier coverage forms are separate forms with their own structures [S:iso-ca-20-48-10-13].",
+		"Which symbols are appropriate for a given business is an underwriting and placement question, not something a general description settles."
+	],
+	"nextActions": [
+		"Look at Item Two of your Declarations and note which symbol appears next to each coverage rather than assuming they match [S:iso-ca-00-01-10-13].",
+		"If symbol 7 appears anywhere, reconcile Item Three against the vehicles the business actually operates [S:iso-ca-00-01-10-13].",
+		"If employees drive their own cars for work, check whether symbol 9 is present, because symbol 8 does not reach vehicles borrowed from employees [S:iso-ca-00-01-10-13].",
+		"Ask your broker to explain any coverage whose symbol is narrower than the others, since that is where the gap will be."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": [
+		"commercial-auto"
+	],
+	"states": [],
+	"audience": "business-owner",
+	"topics": [
+		"commercial auto",
+		"covered auto symbols",
+		"declarations",
+		"business auto form"
+	],
+	"companies": [],
+	"coverages": [
+		"commercial-auto"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"employee-driving-own-car-for-work-coverage"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Which symbols belong against which coverages is a placement decision about how the business actually uses vehicles, and it depends on the form and edition your insurer writes."
+	},
+	"sourceIds": [
+		"iso-ca-00-01-10-13",
+		"iso-ca-20-48-10-13"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

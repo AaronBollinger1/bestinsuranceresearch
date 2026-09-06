@@ -1,0 +1,73 @@
+{
+	"question": "Does my business auto policy cover an employee driving their own car for work?",
+	"aliases": [
+		"non-owned auto coverage employee personal vehicle",
+		"does commercial auto cover staff using their own cars",
+		"symbol 9 non-owned autos employee car",
+		"employee runs an errand in their own car accident",
+		"hired and non-owned auto liability"
+	],
+	"shortAnswer": "It can cover the business, and it does not cover the employee. Symbol 9, Non-owned Autos Only, reaches autos you do not own, lease, hire, rent or borrow that are used in connection with your business, and it expressly includes autos owned by your employees, partners or members or members of their households [S:iso-ca-00-01-10-13]. But Who Is An Insured removes your employee where the covered auto is owned by that employee or a member of their household [S:iso-ca-00-01-10-13]. The same car is a covered auto and the driver is not an insured.",
+	"assumes": [
+		"The policy is written on the Business Auto Coverage Form CA 00 01, edition 10 13 as read here [S:iso-ca-00-01-10-13].",
+		"Symbol 9 is actually shown against Covered Autos Liability Coverage in Item Two of the Declarations, since the symbols decide what each coverage reaches [S:iso-ca-00-01-10-13].",
+		"The employee was using their own car in connection with the business rather than purely personally."
+	],
+	"why": "Two provisions have to be read together, and reading either alone gives the wrong answer.\n\nThe first is the covered auto designation. Symbol 9 is Non-owned Autos Only: only those autos you do not own, lease, hire, rent or borrow that are used in connection with your business, and it includes autos owned by your employees, partners or members, or members of their households [S:iso-ca-00-01-10-13]. So the employee's car can be a covered auto. That is what protects the business when the employee has an accident on an errand and the business is sued.\n\nThe second is who counts as an insured. Who Is An Insured lists you for any covered auto, and anyone else while using with your permission a covered auto you own, hire or borrow, subject to stated exceptions [S:iso-ca-00-01-10-13]. The second exception removes your employee if the covered auto is owned by that employee or a member of their household [S:iso-ca-00-01-10-13]. So the driver of the very car symbol 9 brought in is carved back out.\n\nThe result is coherent once seen: this arrangement protects the business against vicarious liability, and it leaves the employee relying on their own personal auto policy. It is not a benefit to staff and should not be described to them as one.\n\nSymbol 8 does not fill the gap either. Hired Autos Only covers autos you lease, hire, rent or borrow, and it expressly does not include any auto you lease, hire, rent or borrow from your employees, partners or members [S:iso-ca-00-01-10-13]. The two symbols are drawn to be complementary, which is why an employee's own vehicle sits under 9 rather than 8.",
+	"whatChanges": [
+		"Whether symbol 9 appears against Covered Autos Liability Coverage at all, since without it the employee's car is not a covered auto [S:iso-ca-00-01-10-13].",
+		"Who owns the vehicle. The Who Is An Insured exception turns on the auto being owned by the employee or a member of their household [S:iso-ca-00-01-10-13].",
+		"Whether the vehicle was being used in connection with the business, which is how symbol 9 defines its scope [S:iso-ca-00-01-10-13].",
+		"Whether the business instead borrows the vehicle from the employee, which symbol 8 expressly does not reach [S:iso-ca-00-01-10-13].",
+		"What the employee's own personal auto policy says, since that is what stands behind them rather than the business policy."
+	],
+	"variability": [
+		"This reads one published edition of one form, CA 00 01 10 13. Other editions, and company or manuscript forms, may be worded differently.",
+		"Whether a particular trip was in connection with the business is a question of fact that gets argued after an accident rather than settled in advance.",
+		"An endorsement can name additional insureds for Covered Autos Liability Coverage, though the one in this corpus states in terms that it does not alter coverage provided in the Coverage Form [S:iso-ca-20-48-10-13]."
+	],
+	"nextActions": [
+		"Check Item Two of the Declarations for symbol 9 against Covered Autos Liability Coverage before assuming the exposure is addressed [S:iso-ca-00-01-10-13].",
+		"Do not tell staff their own driving is covered by the business policy, because Who Is An Insured removes them for their own vehicle [S:iso-ca-00-01-10-13].",
+		"If employees drive their own cars for work, decide deliberately whether to require evidence of their personal auto cover, which is a policy decision rather than an insurance one.",
+		"Ask your broker to walk through the difference between symbols 8 and 9 for your actual vehicle use, since the two are complementary and the gap sits between them [S:iso-ca-00-01-10-13]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": [
+		"commercial-auto"
+	],
+	"states": [],
+	"audience": "business-owner",
+	"topics": [
+		"commercial auto",
+		"non-owned autos",
+		"hired autos",
+		"who is an insured",
+		"employees"
+	],
+	"companies": [],
+	"coverages": [
+		"commercial-auto"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"commercial-auto-covered-auto-symbols"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether your policy carries symbol 9, and how your insurer's edition words Who Is An Insured, are facts about your own placement that decide the answer."
+	},
+	"sourceIds": [
+		"iso-ca-00-01-10-13",
+		"iso-ca-20-48-10-13"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

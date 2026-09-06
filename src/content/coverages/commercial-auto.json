@@ -11,23 +11,68 @@
 		"A business whose employees drive their own cars on its behalf, but only if a non-owned symbol is shown for that coverage [S:iso-ca-00-01-10-13]"
 	],
 	"commonlyCovers": [
-		{ "item": "Liability for bodily injury and property damage from an accident involving a covered auto", "note": "The insuring agreement pays sums an insured legally must pay as damages because of bodily injury or property damage caused by an accident and resulting from the ownership, maintenance or use of a covered auto [S:iso-ca-00-01-10-13]. Whether a given vehicle is a covered auto for that coverage depends on the symbol shown, so read Item Two of your own declarations." },
-		{ "item": "Defence of a suit seeking those damages", "note": "The form gives the insurer the right and duty to defend an insured against a suit asking for such damages, and states there is no duty to defend a suit seeking damages the insurance does not apply to [S:iso-ca-00-01-10-13]." },
-		{ "item": "Hired autos, where a hired-autos symbol is designated", "note": "Symbol 8 covers only autos you lease, hire, rent or borrow, and expressly excludes any auto hired or borrowed from your employees, partners, members, or members of their households [S:iso-ca-00-01-10-13]. Borrowing an employee's car is therefore not a hired auto." },
-		{ "item": "Non-owned autos, where a non-owned symbol is designated", "note": "Symbol 9 covers autos you do not own, lease, hire, rent or borrow that are used in connection with your business, including employee-owned autos, but only while used in your business or your personal affairs [S:iso-ca-00-01-10-13]." },
-		{ "item": "Liability assumed in an insured contract", "note": "The contractual exclusion does not apply to damages assumed in a contract that is an insured contract, provided the bodily injury or property damage occurs after the contract was executed, or to liability the insured would have had without the contract [S:iso-ca-00-01-10-13]. What qualifies as an insured contract is defined in the form." },
-		{ "item": "Bail bond costs, up to a stated amount", "note": "Supplementary Payments include up to $2,000 for the cost of bail bonds, including bonds for related traffic law violations, required because of a covered accident, and the form states the insurer does not have to furnish the bonds [S:iso-ca-00-01-10-13]." },
-		{ "item": "Anyone liable for the conduct of an insured, to that extent", "note": "Who Is An Insured includes anyone liable for the conduct of an insured described in the provision, but only to the extent of that liability [S:iso-ca-00-01-10-13]." }
+		{
+			"item": "Liability for bodily injury and property damage from an accident involving a covered auto",
+			"note": "The insuring agreement pays sums an insured legally must pay as damages because of bodily injury or property damage caused by an accident and resulting from the ownership, maintenance or use of a covered auto [S:iso-ca-00-01-10-13]. Whether a given vehicle is a covered auto for that coverage depends on the symbol shown, so read Item Two of your own declarations."
+		},
+		{
+			"item": "Defence of a suit seeking those damages",
+			"note": "The form gives the insurer the right and duty to defend an insured against a suit asking for such damages, and states there is no duty to defend a suit seeking damages the insurance does not apply to [S:iso-ca-00-01-10-13]."
+		},
+		{
+			"item": "Hired autos, where a hired-autos symbol is designated",
+			"note": "Symbol 8 covers only autos you lease, hire, rent or borrow, and expressly excludes any auto hired or borrowed from your employees, partners, members, or members of their households [S:iso-ca-00-01-10-13]. Borrowing an employee's car is therefore not a hired auto."
+		},
+		{
+			"item": "Non-owned autos, where a non-owned symbol is designated",
+			"note": "Symbol 9 covers autos you do not own, lease, hire, rent or borrow that are used in connection with your business, including employee-owned autos, but only while used in your business or your personal affairs [S:iso-ca-00-01-10-13]."
+		},
+		{
+			"item": "Liability assumed in an insured contract",
+			"note": "The contractual exclusion does not apply to damages assumed in a contract that is an insured contract, provided the bodily injury or property damage occurs after the contract was executed, or to liability the insured would have had without the contract [S:iso-ca-00-01-10-13]. What qualifies as an insured contract is defined in the form."
+		},
+		{
+			"item": "Bail bond costs, up to a stated amount",
+			"note": "Supplementary Payments include up to $2,000 for the cost of bail bonds, including bonds for related traffic law violations, required because of a covered accident, and the form states the insurer does not have to furnish the bonds [S:iso-ca-00-01-10-13]."
+		},
+		{
+			"item": "Anyone liable for the conduct of an insured, to that extent",
+			"note": "Who Is An Insured includes anyone liable for the conduct of an insured described in the provision, but only to the extent of that liability [S:iso-ca-00-01-10-13]."
+		}
 	],
 	"commonlyExcludes": [
-		{ "item": "Any auto the declarations symbols do not designate for that coverage", "note": "This is the structural one and it is not written as an exclusion. Section I states that the symbols entered next to a coverage designate the only autos that are covered autos for it [S:iso-ca-00-01-10-13]. A vehicle can be owned, insured elsewhere on the policy, and still not be a covered auto for the coverage in question." },
-		{ "item": "Injury to an employee arising out of employment", "note": "Exclusion 4 Employee Indemnification And Employer's Liability removes bodily injury to an employee of the insured arising out of and in the course of employment, or of performing duties related to the conduct of the insured's business, and extends to that employee's spouse, child, parent, brother or sister as a consequence [S:iso-ca-00-01-10-13]. It applies whether the insured is liable as an employer or in any other capacity." },
-		{ "item": "Anything owed under a workers compensation or similar law", "note": "Exclusion 3 removes any obligation for which the insured or its insurer may be held liable under any workers compensation, disability benefits or unemployment compensation law or any similar law [S:iso-ca-00-01-10-13]." },
-		{ "item": "Liability assumed under a contract that is not an insured contract", "note": "Exclusion 2 removes liability assumed under any contract or agreement, and the exception is limited to insured contracts and to liability the insured would have had anyway [S:iso-ca-00-01-10-13]. A promise in an ordinary commercial agreement is not automatically inside the exception." },
-		{ "item": "Injury expected or intended by the insured", "note": "Exclusion 1 removes bodily injury or property damage expected or intended from the standpoint of the insured [S:iso-ca-00-01-10-13]." },
-		{ "item": "Pollution cost or expense standing alone", "note": "The insuring agreement covers a covered pollution cost or expense only if there is also bodily injury or property damage to which the insurance applies caused by the same accident [S:iso-ca-00-01-10-13]. A clean-up demand with no accompanying injury or damage does not meet that condition." },
-		{ "item": "The owner of a vehicle you hire or borrow", "note": "The first exception to Who Is An Insured removes the owner or anyone else from whom you hire or borrow a covered auto, except where the covered auto is a trailer connected to a covered auto you own [S:iso-ca-00-01-10-13]." },
-		{ "item": "An employee driving their own car, as an insured", "note": "The second exception removes your employee where the covered auto is owned by that employee or a member of their household [S:iso-ca-00-01-10-13]. The business may still be covered; the employee is not an insured under this provision." }
+		{
+			"item": "Any auto the declarations symbols do not designate for that coverage",
+			"note": "This is the structural one and it is not written as an exclusion. Section I states that the symbols entered next to a coverage designate the only autos that are covered autos for it [S:iso-ca-00-01-10-13]. A vehicle can be owned, insured elsewhere on the policy, and still not be a covered auto for the coverage in question."
+		},
+		{
+			"item": "Injury to an employee arising out of employment",
+			"note": "Exclusion 4 Employee Indemnification And Employer's Liability removes bodily injury to an employee of the insured arising out of and in the course of employment, or of performing duties related to the conduct of the insured's business, and extends to that employee's spouse, child, parent, brother or sister as a consequence [S:iso-ca-00-01-10-13]. It applies whether the insured is liable as an employer or in any other capacity."
+		},
+		{
+			"item": "Anything owed under a workers compensation or similar law",
+			"note": "Exclusion 3 removes any obligation for which the insured or its insurer may be held liable under any workers compensation, disability benefits or unemployment compensation law or any similar law [S:iso-ca-00-01-10-13]."
+		},
+		{
+			"item": "Liability assumed under a contract that is not an insured contract",
+			"note": "Exclusion 2 removes liability assumed under any contract or agreement, and the exception is limited to insured contracts and to liability the insured would have had anyway [S:iso-ca-00-01-10-13]. A promise in an ordinary commercial agreement is not automatically inside the exception."
+		},
+		{
+			"item": "Injury expected or intended by the insured",
+			"note": "Exclusion 1 removes bodily injury or property damage expected or intended from the standpoint of the insured [S:iso-ca-00-01-10-13]."
+		},
+		{
+			"item": "Pollution cost or expense standing alone",
+			"note": "The insuring agreement covers a covered pollution cost or expense only if there is also bodily injury or property damage to which the insurance applies caused by the same accident [S:iso-ca-00-01-10-13]. A clean-up demand with no accompanying injury or damage does not meet that condition."
+		},
+		{
+			"item": "The owner of a vehicle you hire or borrow",
+			"note": "The first exception to Who Is An Insured removes the owner or anyone else from whom you hire or borrow a covered auto, except where the covered auto is a trailer connected to a covered auto you own [S:iso-ca-00-01-10-13]."
+		},
+		{
+			"item": "An employee driving their own car, as an insured",
+			"note": "The second exception removes your employee where the covered auto is owned by that employee or a member of their household [S:iso-ca-00-01-10-13]. The business may still be covered; the employee is not an insured under this provision."
+		}
 	],
 	"limitsAndDeductibles": [
 		"Covered Autos Liability Coverage is written with a single limit of insurance rather than the split per-person and per-accident structure common on personal auto [S:iso-ca-00-01-10-13].",
@@ -38,9 +83,18 @@
 		"A contract that specifies a combined single limit is specifying a figure, not a form. What the policy pays on behalf of a designated insured is governed by the endorsement attached [S:iso-ca-20-48-10-13]."
 	],
 	"endorsements": [
-		{ "item": "CA 20 48 Designated Insured For Covered Autos Liability Coverage", "note": "The point most often misunderstood on this line. The endorsement states in terms that it does not alter coverage provided in the Coverage Form, and that each person shown in its Schedule is an insured only to the extent they already qualify as an insured under Who Is An Insured at Paragraph A.1. [S:iso-ca-20-48-10-13]. It names; it does not extend." },
-		{ "item": "Hired and non-owned coverage by symbol rather than by endorsement", "note": "On the standard form these are added by designating symbols 8 and 9 for the relevant coverage rather than by a separate endorsement [S:iso-ca-00-01-10-13]. If a certificate says hired and non-owned is included, the declarations symbols are where that is confirmed." },
-		{ "item": "State-specific changes endorsements", "note": "Commercial auto forms are routinely amended by state endorsements that override the base wording. None was read for this page, so nothing here describes what any state amendment does." }
+		{
+			"item": "CA 20 48 Designated Insured For Covered Autos Liability Coverage",
+			"note": "The point most often misunderstood on this line. The endorsement states in terms that it does not alter coverage provided in the Coverage Form, and that each person shown in its Schedule is an insured only to the extent they already qualify as an insured under Who Is An Insured at Paragraph A.1. [S:iso-ca-20-48-10-13]. It names; it does not extend."
+		},
+		{
+			"item": "Hired and non-owned coverage by symbol rather than by endorsement",
+			"note": "On the standard form these are added by designating symbols 8 and 9 for the relevant coverage rather than by a separate endorsement [S:iso-ca-00-01-10-13]. If a certificate says hired and non-owned is included, the declarations symbols are where that is confirmed."
+		},
+		{
+			"item": "State-specific changes endorsements",
+			"note": "Commercial auto forms are routinely amended by state endorsements that override the base wording. None was read for this page, so nothing here describes what any state amendment does."
+		}
 	],
 	"relatedPolicies": [
 		"Workers compensation and employers liability, which answers the employee-injury exposure this form excludes at Exclusion 4 [S:iso-ca-00-01-10-13]",
@@ -61,27 +115,78 @@
 		"This list describes information commonly requested in practice. It is common practice rather than a filed requirement, and whether any insurer offers terms at all is its own underwriting decision."
 	],
 	"exposures": [
-		{ "item": "A vehicle the symbols never designated", "note": "The most common and least visible exposure on this line. Section I states that the symbols entered next to a coverage designate the only autos that are covered autos for it [S:iso-ca-00-01-10-13]. A newly acquired vehicle, a rented one, or an employee's car can each fall outside the symbol actually shown while the business believes the policy covers its driving generally." },
-		{ "item": "An employee running an errand in their own car", "note": "Symbol 9 reaches autos you do not own that are used in connection with your business, including employee-owned autos, but only while used in your business or your personal affairs [S:iso-ca-00-01-10-13]. Whether the symbol is designated at all is the question, and the employee is separately removed from Who Is An Insured where the auto is theirs [S:iso-ca-00-01-10-13]." },
-		{ "item": "A borrowed or short-term rented vehicle", "note": "Symbol 8 covers autos you lease, hire, rent or borrow, but expressly not any auto hired or borrowed from your employees, partners, members, or members of their households [S:iso-ca-00-01-10-13]. Borrowing a vehicle from a member of staff is neither a hired auto nor an owned one." },
-		{ "item": "Injury to your own employee in a company vehicle", "note": "Exclusion 4 removes bodily injury to an employee arising out of and in the course of employment, and applies whether the insured is liable as an employer or in any other capacity [S:iso-ca-00-01-10-13]. That exposure belongs to workers compensation and employers liability, not here." },
-		{ "item": "A contract demanding additional insured status on the auto policy", "note": "The endorsement states that it does not alter coverage and that the designated party is an insured only to the extent they already qualify under Who Is An Insured at A.1. [S:iso-ca-20-48-10-13]. A party may therefore be named and still fall outside the provision, which is a materially different outcome from the general liability additional insured endorsements." },
-		{ "item": "Defence costs consuming the limit", "note": "The form states the duty to defend ends when the Covered Autos Liability Coverage Limit of Insurance has been exhausted by payment of judgments or settlements [S:iso-ca-00-01-10-13]. A long defence on a modest limit is an exposure in itself." },
-		{ "item": "A pollution demand with no accompanying injury or damage", "note": "The insuring agreement pays a covered pollution cost or expense only where there is also bodily injury or property damage to which the insurance applies from the same accident [S:iso-ca-00-01-10-13]. A spill that damages nothing but requires clean-up does not satisfy that condition." },
-		{ "item": "Someone else's business servicing your vehicle", "note": "The third exception to Who Is An Insured removes a person using a covered auto while working in a business of selling, servicing, repairing, parking or storing autos, unless that business is yours [S:iso-ca-00-01-10-13]. The valet or the mechanic is not your insured." }
+		{
+			"item": "A vehicle the symbols never designated",
+			"note": "The most common and least visible exposure on this line. Section I states that the symbols entered next to a coverage designate the only autos that are covered autos for it [S:iso-ca-00-01-10-13]. A newly acquired vehicle, a rented one, or an employee's car can each fall outside the symbol actually shown while the business believes the policy covers its driving generally."
+		},
+		{
+			"item": "An employee running an errand in their own car",
+			"note": "Symbol 9 reaches autos you do not own that are used in connection with your business, including employee-owned autos, but only while used in your business or your personal affairs [S:iso-ca-00-01-10-13]. Whether the symbol is designated at all is the question, and the employee is separately removed from Who Is An Insured where the auto is theirs [S:iso-ca-00-01-10-13]."
+		},
+		{
+			"item": "A borrowed or short-term rented vehicle",
+			"note": "Symbol 8 covers autos you lease, hire, rent or borrow, but expressly not any auto hired or borrowed from your employees, partners, members, or members of their households [S:iso-ca-00-01-10-13]. Borrowing a vehicle from a member of staff is neither a hired auto nor an owned one."
+		},
+		{
+			"item": "Injury to your own employee in a company vehicle",
+			"note": "Exclusion 4 removes bodily injury to an employee arising out of and in the course of employment, and applies whether the insured is liable as an employer or in any other capacity [S:iso-ca-00-01-10-13]. That exposure belongs to workers compensation and employers liability, not here."
+		},
+		{
+			"item": "A contract demanding additional insured status on the auto policy",
+			"note": "The endorsement states that it does not alter coverage and that the designated party is an insured only to the extent they already qualify under Who Is An Insured at A.1. [S:iso-ca-20-48-10-13]. A party may therefore be named and still fall outside the provision, which is a materially different outcome from the general liability additional insured endorsements."
+		},
+		{
+			"item": "Defence costs consuming the limit",
+			"note": "The form states the duty to defend ends when the Covered Autos Liability Coverage Limit of Insurance has been exhausted by payment of judgments or settlements [S:iso-ca-00-01-10-13]. A long defence on a modest limit is an exposure in itself."
+		},
+		{
+			"item": "A pollution demand with no accompanying injury or damage",
+			"note": "The insuring agreement pays a covered pollution cost or expense only where there is also bodily injury or property damage to which the insurance applies from the same accident [S:iso-ca-00-01-10-13]. A spill that damages nothing but requires clean-up does not satisfy that condition."
+		},
+		{
+			"item": "Someone else's business servicing your vehicle",
+			"note": "The third exception to Who Is An Insured removes a person using a covered auto while working in a business of selling, servicing, repairing, parking or storing autos, unless that business is yours [S:iso-ca-00-01-10-13]. The valet or the mechanic is not your insured."
+		}
 	],
 	"claimMitigation": [
-		{ "item": "Read Item Two of your own declarations, symbol by symbol", "note": "The symbols determine what is a covered auto for each coverage [S:iso-ca-00-01-10-13]. Writing down which symbol is shown against liability, and against each other coverage purchased, takes minutes and is the only way to know what the policy reaches." },
-		{ "item": "Establish whether hired and non-owned symbols are actually shown", "note": "Symbols 8 and 9 are what bring hired and employee-owned autos in [S:iso-ca-00-01-10-13]. A certificate saying hired and non-owned is included is not the declarations page, and only one of the two is the policy." },
-		{ "item": "Ask for the additional insured endorsement by form number and read it", "note": "CA 20 48 states that it does not alter coverage and confers status only to the extent the party already qualifies under Who Is An Insured [S:iso-ca-20-48-10-13]. Reading it is how a party discovers that the auto endorsement works differently from its general liability counterpart, before a claim rather than after." },
-		{ "item": "Keep a current driver list and a written record of motor vehicle record checks", "note": "Who Is An Insured turns on who was driving and with whose permission [S:iso-ca-00-01-10-13], so who is authorised to drive is a fact worth recording rather than reconstructing. Nothing here says any insurer credits the practice." },
-		{ "item": "Record whether staff use their own cars for work, and how often", "note": "Symbol 9 reaches employee-owned autos only while used in your business or your personal affairs [S:iso-ca-00-01-10-13]. That is a factual question about how the business actually operates, and it is answered before a placement more cheaply than after an accident." },
-		{ "item": "Report a new or replacement vehicle against the symbol that applies", "note": "Symbols 2, 3 and 4 include autos acquired after the policy begins; Symbol 7 covers only autos described in Item Three for which a premium charge is shown [S:iso-ca-00-01-10-13]. Whether a new vehicle is automatically in depends entirely on which of those is shown." },
-		{ "item": "Separate the employee-injury question from this policy", "note": "Exclusion 4 and Exclusion 3 place employee injury and workers compensation obligations outside this form [S:iso-ca-00-01-10-13]. Confirming the workers compensation side is in force is part of managing the auto exposure, because the auto policy will not answer it." }
+		{
+			"item": "Read Item Two of your own declarations, symbol by symbol",
+			"note": "The symbols determine what is a covered auto for each coverage [S:iso-ca-00-01-10-13]. Writing down which symbol is shown against liability, and against each other coverage purchased, takes minutes and is the only way to know what the policy reaches."
+		},
+		{
+			"item": "Establish whether hired and non-owned symbols are actually shown",
+			"note": "Symbols 8 and 9 are what bring hired and employee-owned autos in [S:iso-ca-00-01-10-13]. A certificate saying hired and non-owned is included is not the declarations page, and only one of the two is the policy."
+		},
+		{
+			"item": "Ask for the additional insured endorsement by form number and read it",
+			"note": "CA 20 48 states that it does not alter coverage and confers status only to the extent the party already qualifies under Who Is An Insured [S:iso-ca-20-48-10-13]. Reading it is how a party discovers that the auto endorsement works differently from its general liability counterpart, before a claim rather than after."
+		},
+		{
+			"item": "Keep a current driver list and a written record of motor vehicle record checks",
+			"note": "Who Is An Insured turns on who was driving and with whose permission [S:iso-ca-00-01-10-13], so who is authorised to drive is a fact worth recording rather than reconstructing. Nothing here says any insurer credits the practice."
+		},
+		{
+			"item": "Record whether staff use their own cars for work, and how often",
+			"note": "Symbol 9 reaches employee-owned autos only while used in your business or your personal affairs [S:iso-ca-00-01-10-13]. That is a factual question about how the business actually operates, and it is answered before a placement more cheaply than after an accident."
+		},
+		{
+			"item": "Report a new or replacement vehicle against the symbol that applies",
+			"note": "Symbols 2, 3 and 4 include autos acquired after the policy begins; Symbol 7 covers only autos described in Item Three for which a premium charge is shown [S:iso-ca-00-01-10-13]. Whether a new vehicle is automatically in depends entirely on which of those is shown."
+		},
+		{
+			"item": "Separate the employee-injury question from this policy",
+			"note": "Exclusion 4 and Exclusion 3 place employee injury and workers compensation obligations outside this form [S:iso-ca-00-01-10-13]. Confirming the workers compensation side is in force is part of managing the auto exposure, because the auto policy will not answer it."
+		}
 	],
 	"stateVariations": [
-		{ "state": "CA", "note": "Symbols 5 and 6 are written by reference to the law of the state where an auto is licensed or principally garaged, covering autos required to carry no-fault benefits and autos that cannot reject uninsured motorists coverage [S:iso-ca-00-01-10-13]. California is not a no-fault state, so the operative question here is the uninsured motorists one, and the answer sits in state law that was not read for this page." },
-		{ "state": "TX", "note": "The copy of the base form read for this page is hosted by the Independent Insurance Agents of Texas rather than by the publisher [S:iso-ca-00-01-10-13]. The wording is the ISO wording; the guarantee that it is current is not the publisher's. Texas requires personal injury protection and uninsured motorist coverage to be offered with a written rejection on the personal auto side [S:tdi-auto-guide], and no commercial equivalent was read here." }
+		{
+			"state": "CA",
+			"note": "Symbols 5 and 6 are written by reference to the law of the state where an auto is licensed or principally garaged, covering autos required to carry no-fault benefits and autos that cannot reject uninsured motorists coverage [S:iso-ca-00-01-10-13]. California is not a no-fault state, so the operative question here is the uninsured motorists one, and the answer sits in state law that was not read for this page."
+		},
+		{
+			"state": "TX",
+			"note": "The copy of the base form read for this page is hosted by the Independent Insurance Agents of Texas rather than by the publisher [S:iso-ca-00-01-10-13]. The wording is the ISO wording; the guarantee that it is current is not the publisher's. Texas requires personal injury protection and uninsured motorist coverage to be offered with a written rejection on the personal auto side [S:tdi-auto-guide], and no commercial equivalent was read here."
+		}
 	],
 	"lastReviewed": "2026-09-02",
 	"effectiveDate": "2026-09-02",
@@ -94,6 +199,7 @@
 		"tdi-auto-guide"
 	],
 	"relatedQuestions": [
-		"contract-additional-insured-status"
+		"commercial-auto-covered-auto-symbols",
+		"employee-driving-own-car-for-work-coverage"
 	]
 }
