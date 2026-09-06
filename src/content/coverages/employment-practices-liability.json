@@ -1,0 +1,166 @@
+{
+	"name": "Employment practices liability",
+	"line": "employment-practices-liability",
+	"family": "commercial",
+	"definition": "Cover for claims arising from the employment relationship: discrimination, harassment, retaliation, and the related failures the law treats as wrongs in themselves. The policy form is not public and differs by insurer, so this page does not describe one. What is public is the liability the form responds to, and almost all of it is statute: in California the Fair Employment and Housing Act makes discrimination, retaliation, harassment by nonemployees, and failure to prevent all separately unlawful [S:ca-gov-code-12940].",
+	"protects": [
+		"An employer against claims by employees, applicants and former employees arising from unlawful employment practices [S:ca-gov-code-12940]",
+		"An employer against exposure for harassment by people it does not employ, where it knew or should have known and failed to act [S:ca-gov-code-12940]",
+		"An employer against a claim that it failed to take all reasonable steps necessary to prevent discrimination and harassment, which is an unlawful practice in its own right [S:ca-gov-code-12940]",
+		"Not the underlying obligation. Nothing here removes a duty to train, to post, or to keep records; those run whether or not a policy exists [S:ca-gov-12950-1][S:eeoc-recordkeeping-requirements]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Discrimination on a protected characteristic",
+			"note": "Section 12940(a) reaches race, religious creed, color, national origin, ancestry, physical disability, mental disability, reproductive health decisionmaking, medical condition, genetic information, marital status, sex, gender, gender identity, gender expression, age, sexual orientation, and veteran or military status [S:ca-gov-code-12940]."
+		},
+		{
+			"item": "Retaliation for opposing a practice or taking part in a proceeding",
+			"note": "Section 12940(h) makes it unlawful to discharge, expel or otherwise discriminate against a person because they opposed a forbidden practice or filed a complaint, testified, or assisted in a proceeding [S:ca-gov-code-12940]."
+		},
+		{
+			"item": "Harassment by nonemployees",
+			"note": "Section 12940(j)(1) makes an employer responsible for the acts of nonemployees toward employees, applicants, unpaid interns or volunteers, or persons providing services under a contract in the workplace, where the employer or its agents or supervisors knew or should have known and failed to take immediate and appropriate corrective action [S:ca-gov-code-12940]. This is the statutory basis for the third-party exposure sold as a separate coverage."
+		},
+		{
+			"item": "Failure to take reasonable preventive steps",
+			"note": "Section 12940(k) makes failing to take all reasonable steps necessary to prevent discrimination and harassment an unlawful practice on its own [S:ca-gov-code-12940], so it is actionable independently of whether the underlying conduct is established."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "What the form actually excludes, which this page cannot tell you",
+			"note": "Employment practices forms are proprietary and vary by insurer. Wage and hour exposure in particular is commonly addressed by sublimit, by defence-only cover, or not at all, and only the form in front of you settles that. This page describes the liability, not the contract."
+		},
+		{
+			"item": "The obligation to train",
+			"note": "An employer with five or more employees must provide sexual harassment prevention training, two hours for supervisory and one hour for nonsupervisory employees, to each employee in California once every two years [S:ca-gov-12950-1]. Insurance does not discharge that duty."
+		},
+		{
+			"item": "The obligation to post and to keep records",
+			"note": "A poster describing the federal employment discrimination laws must be displayed, and employment records must be retained as required by law [S:eeoc-small-business-requirements][S:dol-workplace-posters]."
+		},
+		{
+			"item": "A claim brought outside the filing period",
+			"note": "A complaint alleging a section 12940 violation may not be filed with the department after three years from the date the unlawful practice occurred [S:ca-gov-code-12960], and a federal charge generally within 180 days, extended to 300 where a state or local agency enforces a law prohibiting the same conduct [S:eeoc-time-limits-filing-charge]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"Employment practices cover is written on proprietary forms, so limit structure, retention and whether defence costs erode the limit are matters for the form rather than for any general statement.",
+		"The exposure the limit is chosen against is statutory and can be read: the protected characteristics in section 12940(a), the retaliation provision in (h), the nonemployee harassment provision in (j)(1), and the failure to prevent provision in (k) [S:ca-gov-code-12940].",
+		"Which laws apply at all is a function of headcount. An employer with 15 to 19 employees is covered by the laws prohibiting discrimination based on race, color, religion, sex, national origin and disability, and an employer with 20 or more is additionally covered by the law prohibiting age discrimination for those 40 or older [S:eeoc-small-business-requirements].",
+		"California adds a lower threshold still: the harassment prevention training duty attaches at five or more employees [S:ca-gov-12950-1].",
+		"The FMLA applies to private sector employers who employ 50 or more employees for at least 20 workweeks in the current or preceding calendar year, with employee eligibility further requiring 50 or more employees within 75 miles of the worksite [S:dol-whd-fmla-faq]."
+	],
+	"endorsements": [
+		{
+			"item": "Third-party coverage",
+			"note": "Sold as an extension, but the exposure it answers is statutory rather than optional: section 12940(j)(1) already makes an employer responsible for nonemployee harassment in the circumstances it describes [S:ca-gov-code-12940]."
+		},
+		{
+			"item": "Wage and hour, where offered",
+			"note": "Usually narrower than the rest of the form. The underlying recordkeeping obligation is specific and independent: hours worked each day and each workweek, the regular hourly rate, the basis on which wages are paid, and total wages paid each pay period [S:dol-whd-fs21-flsa-recordkeeping]."
+		},
+		{
+			"item": "Defence counsel selection",
+			"note": "A form-level question rather than a statutory one, and worth settling before a claim rather than during one."
+		}
+	],
+	"relatedPolicies": [
+		"Directors and officers liability, which answers claims against the individuals rather than the employment relationship",
+		"Workers compensation and employers liability, which answer injury rather than employment practice",
+		"Commercial general liability, which does not answer employment claims"
+	],
+	"underwritingInputs": [
+		"Total headcount, because it selects which laws apply at all [S:eeoc-small-business-requirements]",
+		"Whether headcount is five or more in California, which triggers the training duty [S:ca-gov-12950-1]",
+		"Whether headcount reaches 50 for 20 workweeks, and whether 50 sit within 75 miles of a worksite [S:dol-whd-fmla-faq]",
+		"Whether harassment prevention training has been delivered within the last two years, and within six months for new hires and newly promoted supervisors [S:ca-gov-12950-1]",
+		"Whether required posters are displayed [S:dol-workplace-posters][S:eeoc-small-business-requirements]",
+		"Whether personnel records are retained for the required periods [S:eeoc-recordkeeping-requirements]",
+		"Whether payroll records are preserved for at least three years [S:dol-whd-fs21-flsa-recordkeeping]",
+		"Whether any charge has been filed, which triggers a preservation duty of its own [S:eeoc-recordkeeping-requirements]",
+		"Whether nonemployees, such as customers or contractors, are routinely present in the workplace [S:ca-gov-code-12940]"
+	],
+	"exposures": [
+		{
+			"item": "Failure to prevent, as a claim in itself",
+			"note": "Section 12940(k) makes failing to take all reasonable steps necessary to prevent discrimination and harassment an unlawful practice in its own right [S:ca-gov-code-12940]. An employer can therefore face a claim about its systems rather than about any particular incident, which is why documentation of what was done is the evidence."
+		},
+		{
+			"item": "Harassment by someone you do not employ",
+			"note": "Under section 12940(j)(1) the fact-finder considers the extent of the employer's control and any other legal responsibility it has for the nonemployee's conduct [S:ca-gov-code-12940]. Customers, delivery drivers and contractors are all inside that frame where the employer knew or should have known."
+		},
+		{
+			"item": "A three-year tail on California complaints",
+			"note": "A complaint alleging a section 12940 violation may be filed up to three years from the date the practice occurred [S:ca-gov-code-12960], and extensions exist for late discovery, mistaken employer identity and attainment of majority [S:ca-gov-code-12960]. The people who could bring a claim today include people who left long ago."
+		},
+		{
+			"item": "Crossing a headcount threshold without noticing",
+			"note": "Coverage by federal discrimination law begins at 15 employees, age discrimination law at 20, and the FMLA at 50 for 20 workweeks [S:eeoc-small-business-requirements][S:dol-whd-fmla-faq]. Growth changes the legal position without anyone deciding anything."
+		},
+		{
+			"item": "Records that were required and were not kept",
+			"note": "Personnel records must be kept for one year, and for one year from termination where an employee is involuntarily terminated; payroll records for three years under the ADEA [S:eeoc-recordkeeping-requirements]. The absence of the record is itself a problem when the claim arrives."
+		},
+		{
+			"item": "Destroying records after a charge is filed",
+			"note": "Once a charge has been filed the employer must preserve all records relevant to it until final disposition of the charge or of any lawsuit based on it [S:eeoc-recordkeeping-requirements]. Routine deletion becomes a separate exposure at that point."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Deliver the training on the statutory cycle and keep proof",
+			"note": "Two hours for supervisory and one hour for nonsupervisory employees, to each employee in California once every two years, with new nonsupervisory hires and newly promoted supervisors trained within six months [S:ca-gov-12950-1]."
+		},
+		{
+			"item": "Write down what was done about a complaint, and when",
+			"note": "Both the nonemployee provision and the failure to prevent provision turn on what the employer did after it knew or should have known [S:ca-gov-code-12940], so the contemporaneous record of the response is the evidence that answers the claim."
+		},
+		{
+			"item": "Retain personnel and payroll records for their required periods",
+			"note": "One year for personnel records, one year from the date of an involuntary termination, three years for payroll records under the ADEA, and the life of a benefit plan or seniority system plus a year [S:eeoc-recordkeeping-requirements]."
+		},
+		{
+			"item": "Stop routine deletion the moment a charge is filed",
+			"note": "The preservation duty runs until final disposition of the charge or of any lawsuit based on it [S:eeoc-recordkeeping-requirements], and it attaches to everything relevant rather than to a defined list."
+		},
+		{
+			"item": "Keep the wage and hour records the statute specifies",
+			"note": "Hours worked each day and each workweek, the regular hourly rate, the basis on which wages are paid, and total wages each pay period, with payroll preserved at least three years and computation records two [S:dol-whd-fs21-flsa-recordkeeping]."
+		},
+		{
+			"item": "Re-check which laws apply each time headcount moves",
+			"note": "Thresholds sit at five in California for training, at 15 and 20 for the federal discrimination statutes, and at 50 for the FMLA [S:ca-gov-12950-1][S:eeoc-small-business-requirements][S:dol-whd-fmla-faq]."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "California reaches further down than federal law in both directions: the training duty starts at five employees [S:ca-gov-12950-1] and the administrative filing period for a section 12940 complaint is three years [S:ca-gov-code-12960], against a federal charge deadline of 180 or 300 days [S:eeoc-time-limits-filing-charge]."
+		},
+		{
+			"state": "NY",
+			"note": "New York publishes a model sexual harassment prevention policy and training programme of its own, so a multi-state employer meets more than one standard rather than the strictest one everywhere [S:nys-sexual-harassment-prevention-policy-and-training]."
+		}
+	],
+	"lastReviewed": "2026-09-06",
+	"effectiveDate": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-gov-code-12940",
+		"ca-gov-code-12960",
+		"ca-gov-12950-1",
+		"eeoc-time-limits-filing-charge",
+		"eeoc-small-business-requirements",
+		"eeoc-recordkeeping-requirements",
+		"eeoc-promising-practices-preventing-harassment",
+		"dol-whd-fs21-flsa-recordkeeping",
+		"dol-whd-fmla-faq",
+		"dol-workplace-posters",
+		"nys-sexual-harassment-prevention-policy-and-training"
+	],
+	"relatedQuestions": []
+}

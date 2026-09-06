@@ -1,0 +1,25 @@
+{
+	"title": "California Government Code section 12940 (unlawful employment practices under the Fair Employment and Housing Act)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=12940",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 12940(a) makes it an unlawful employment practice, unless based upon a bona fide occupational qualification, for an employer to refuse to hire or employ a person because of that person's race, religious creed, color, national origin, ancestry, physical disability, mental disability, reproductive health decisionmaking, medical condition, genetic information, marital status, sex, gender, gender identity, gender expression, age, sexual orientation, or veteran or military status.",
+		"Section 12940(h) makes it an unlawful employment practice for any employer, labor organization, employment agency, or person to discharge, expel, or otherwise discriminate against any person because the person has opposed any practices forbidden under the part, or because the person has filed a complaint, testified, or assisted in any proceeding under the part.",
+		"Section 12940(j)(1) provides that an employer may also be responsible for the acts of nonemployees, with respect to harassment of employees, applicants, unpaid interns or volunteers, or persons providing services pursuant to a contract in the workplace, if the employer or its agents or supervisors knows or should have known of the conduct and fails to take immediate and appropriate corrective action.",
+		"Section 12940(j)(1) provides that in reviewing cases involving the acts of nonemployees, the extent of the employer's control and any other legal responsibility that the employer may have with respect to the conduct of those nonemployees shall be considered.",
+		"Section 12940(k) makes it an unlawful employment practice for an employer, labor organization, employment agency, apprenticeship training program, or any training program leading to employment, to fail to take all reasonable steps necessary to prevent discrimination and harassment from occurring."
+	],
+	"updateCadence": "Amended frequently by the California Legislature; the list of protected characteristics in subdivision (a) has been extended repeatedly, so confirm the current text on leginfo before relying on it.",
+	"status": "active",
+	"notes": "Subdivision (j)(1) is the provision that makes third party employment practices exposure a real thing rather than a marketing category: an employer can be responsible for harassment of its employees by people it does not employ, including customers and contractors, where it knew or should have known and failed to act. Subdivision (k) is a separate unlawful practice in its own right, so a failure to take reasonable preventive steps is actionable independently of whether any underlying discrimination is proved. Read subdivision (a) as a list that grows: characteristics have been added by amendment many times and the record here is the list as read on the access date."
+}
