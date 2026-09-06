@@ -1,0 +1,183 @@
+{
+	"name": "Flood insurance (National Flood Insurance Program)",
+	"line": "flood",
+	"family": "personal",
+	"definition": "Cover for direct physical loss by or from flood, written in the United States mostly on a policy form that is itself federal regulation. The Standard Flood Insurance Policy Dwelling Form is codified at 44 CFR part 61 appendix A(1), which makes it one of the few insurance contracts a buyer can read in full before purchase [S:nfip-sfip-dwelling-form]. Most homeowners insurance does not cover flood damage and will not satisfy a mortgage or federal disaster assistance requirement for it [S:fema-nfip-eligibility]. This page is written from the residential Dwelling Form; the condominium association and non-residential forms differ.",
+	"protects": [
+		"The building against direct physical loss by or from flood, up to the limit shown on the Declarations Page [S:nfip-sfip-dwelling-form]",
+		"Personal property, under a separate coverage with its own separate limit [S:nfip-sfip-dwelling-form]",
+		"A borrower's ability to close and keep a loan secured by property in a special flood hazard area, where the coverage is mandatory rather than optional [S:usc-42-4012a-2]",
+		"Continued eligibility for federal disaster assistance where a property has received it before and is required to maintain flood insurance [S:fema-nfip-eligibility]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Direct physical loss by or from flood",
+			"note": "The form requires evidence of physical changes to the property, so it answers damage rather than the fact of a flood having occurred nearby [S:nfip-sfip-dwelling-form]."
+		},
+		{
+			"item": "Building Property and Personal Property as two separate coverages",
+			"note": "Each has its own limit shown on the Declarations Page, and separate deductibles apply to the building and to the personal property in each loss [S:nfip-sfip-dwelling-form]."
+		},
+		{
+			"item": "A short list of building items below the lowest elevated floor",
+			"note": "Article III.A.8 restricts what is covered in a basement or below the lowest elevated floor to listed items, which must be installed in their functioning locations and, where operation requires it, connected to a power source [S:nfip-sfip-dwelling-form]."
+		},
+		{
+			"item": "Three kinds of personal property in a basement, and no others",
+			"note": "Air conditioning units of the portable or window type, clothes washers and dryers, and food freezers other than walk-in together with the food in any freezer [S:nfip-sfip-dwelling-form]."
+		},
+		{
+			"item": "Increased Cost of Compliance, up to $30,000",
+			"note": "Coverage D pays toward bringing a damaged building into compliance with floodplain management requirements, and applies only to policies that carry building coverage under Coverage A [S:nfip-sfip-dwelling-form]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Additional living expenses while the home is unliveable",
+			"note": "Article V excludes any additional living expenses incurred while the insured building is being repaired or is unable to be occupied for any reason [S:nfip-sfip-dwelling-form]. This is the single largest gap between what people expect from flood insurance and what the form does."
+		},
+		{
+			"item": "Loss of revenue, profits, or business interruption",
+			"note": "Excluded by the same article, so a flooded business recovers property and not the trading it lost [S:nfip-sfip-dwelling-form]."
+		},
+		{
+			"item": "Earth movement, even where the flood caused it",
+			"note": "Article V.C states the insurer does not insure for loss caused directly by earth movement even if the earth movement is caused by flood, listing earthquake, landslide, land subsidence, sinkholes, destabilization or movement of land from accumulation of water in subsurface land area, and gradual erosion [S:nfip-sfip-dwelling-form]."
+		},
+		{
+			"item": "Most contents kept in a basement",
+			"note": "Anything outside the three listed categories is not covered there, which reaches ordinary storage: furniture, clothing, tools, and anything kept downstairs because there was nowhere else for it [S:nfip-sfip-dwelling-form]."
+		},
+		{
+			"item": "Water that does not meet the policy's definition of flood",
+			"note": "Article II requires a general and temporary condition of partial or complete inundation of two or more acres of normally dry land, or of two or more properties one of which is yours, from overflow of inland or tidal waters, unusual and rapid accumulation or runoff of surface water, or mudflow [S:nfip-sfip-dwelling-form]. Water entering one isolated property may not qualify."
+		},
+		{
+			"item": "Replacement cost on contents",
+			"note": "Belongings are covered for their value at the time of the damage rather than their original cost, and the programme offers no full replacement cost option for contents [S:nfip-agents-coverage]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"A residential building can be insured for up to $250,000 and belongings for up to $100,000 under a residential policy [S:nfip-agents-coverage].",
+		"A non-residential building can be insured for up to $500,000, with belongings also up to $500,000 under a non-residential policy [S:nfip-agents-coverage].",
+		"Separate deductibles apply to the building and to the personal property in each loss from flood, so a single event can carry two retentions [S:nfip-sfip-dwelling-form].",
+		"Replacement cost settlement on the dwelling requires that it be a single family dwelling that is the insured's principal residence and that the amount of insurance be 80 percent or more of full replacement cost immediately before the loss, or the maximum amount available under the NFIP. The two branches are stated in the alternative, so either satisfies the condition [S:nfip-sfip-dwelling-form].",
+		"Contents settle at actual cash value, the cost to replace at the time of loss less physical depreciation [S:nfip-sfip-dwelling-form].",
+		"A $2,500 cap applies to any one loss to listed categories of personal property including artwork, photographs, collectibles or memorabilia, rare books, jewelry and furs [S:nfip-sfip-dwelling-form].",
+		"Coverage D, Increased Cost of Compliance, is limited to $30,000 and requires building coverage [S:nfip-sfip-dwelling-form].",
+		"A residential condominium building association policy carries a coinsurance article that applies unless the amount of insurance on the damaged building is at least 80 percent of its replacement cost, or the maximum amount of insurance available for that building under the NFIP [S:nfip-rcbap-coinsurance].",
+		"Where a lender requires the coverage, the amount must be at least the lesser of the outstanding principal balance of the loan or the maximum limit available for the type of property [S:cfr-12-22-3]."
+	],
+	"endorsements": [
+		{
+			"item": "Increased Cost of Compliance as a built-in coverage",
+			"note": "Not bought separately. Coverage D sits inside the form at a fixed $30,000 and depends on building coverage being present [S:nfip-sfip-dwelling-form]."
+		},
+		{
+			"item": "Private flood insurance as an alternative to the NFIP policy",
+			"note": "Regulated lending institutions must accept private flood insurance as satisfaction of the requirement where it meets the standards the statute specifies [S:usc-42-4012a-2]. Whether a given private form matches the NFIP form is a question about that form."
+		},
+		{
+			"item": "The condominium association route",
+			"note": "A residential condominium building is insured under its own form with a coinsurance condition rather than under the Dwelling Form, which changes how a shortfall in limit is settled [S:nfip-rcbap-coinsurance]."
+		}
+	],
+	"relatedPolicies": [
+		"Homeowners insurance, which generally does not cover flood damage at all [S:fema-nfip-eligibility]",
+		"Residential earthquake cover, which answers a peril this form excludes even when a flood triggers it",
+		"Commercial property, where the non-residential limits and the business interruption gap both apply"
+	],
+	"underwritingInputs": [
+		"Whether the property is in a Special Flood Hazard Area, which drives the mandatory purchase requirement [S:usc-42-4012a-2]",
+		"Whether the community participates in the NFIP's floodplain management requirements, without which the policy is not available [S:fema-nfip-eligibility]",
+		"Whether the building has a basement or is elevated, because that determines how much of it the form reaches [S:nfip-sfip-dwelling-form]",
+		"Whether the dwelling is the insured's principal residence, which is a condition of replacement cost settlement [S:nfip-sfip-dwelling-form]",
+		"The full replacement cost of the dwelling, against which the 80 percent test is run [S:nfip-sfip-dwelling-form]",
+		"Whether the property has previously received federal disaster assistance carrying a maintenance requirement [S:fema-nfip-eligibility]",
+		"The outstanding principal balance of any secured loan, which sets the lender's minimum [S:cfr-12-22-3]",
+		"Whether the building is residential or non-residential, which selects the limit pair [S:nfip-agents-coverage]"
+	],
+	"exposures": [
+		{
+			"item": "Buying the policy too late to matter",
+			"note": "A new policy, added coverage or increase generally takes effect at 12:01 a.m. local time on the 30th calendar day after application and payment [S:cfr-44-61-11]. A storm in the forecast is already too late, which makes this the rare coverage where the decision has to be made in calm weather."
+		},
+		{
+			"item": "Nowhere to live, and nothing to pay for it",
+			"note": "Flood damage routinely makes a home uninhabitable for months, and the form excludes additional living expenses incurred while the building is being repaired or cannot be occupied [S:nfip-sfip-dwelling-form]. The exposure is real, large, and entirely uninsured under this policy."
+		},
+		{
+			"item": "A finished basement treated as an empty one",
+			"note": "Below the lowest elevated floor the form reaches a listed set of building items and exactly three categories of personal property [S:nfip-sfip-dwelling-form]. A finished lower level with living space, storage and belongings is largely outside the cover regardless of the limit purchased."
+		},
+		{
+			"item": "Ground that moves after the water arrives",
+			"note": "Saturated ground fails, and the form excludes loss caused directly by earth movement even where the flood caused it, naming land subsidence and destabilization from accumulation of water in subsurface land area [S:nfip-sfip-dwelling-form]. Two perils arrive together and only one is insured."
+		},
+		{
+			"item": "Depreciated contents against a replacement cost mortgage",
+			"note": "Contents settle at actual cash value with no full replacement cost option [S:nfip-agents-coverage][S:nfip-sfip-dwelling-form], so a household replacing everything at current prices meets the gap out of pocket."
+		},
+		{
+			"item": "Force-placed cover at the lender's choosing",
+			"note": "Where a borrower does not obtain required flood coverage within 45 days of written notice, the lender or servicer shall purchase it on the borrower's behalf and may charge the borrower for it [S:usc-42-4012a-2]. Control of the placement passes to somebody else."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Start the 30 day clock before the season, not during it",
+			"note": "The waiting period runs from application and presentment of payment, so the only way to be insured for a given storm is to have applied a month earlier [S:cfr-44-61-11]. Two narrow exceptions exist: a purchase made in connection with the making, increasing, extension or renewal of a loan, and a window following a map revision [S:cfr-44-61-11]."
+		},
+		{
+			"item": "Plan for somewhere to live as a separate problem",
+			"note": "Because additional living expenses are excluded from this form [S:nfip-sfip-dwelling-form], the answer has to come from elsewhere: a homeowners policy that responds to a different peril, other resources, or an accepted decision to bear it. Naming it in advance is the point."
+		},
+		{
+			"item": "Move what matters above the lowest elevated floor",
+			"note": "The restriction on basement contents is written into the form rather than priced into it [S:nfip-sfip-dwelling-form], so the only way to bring belongings inside the cover is to keep them somewhere the form reaches."
+		},
+		{
+			"item": "Check the dwelling limit against 80 percent of full replacement cost",
+			"note": "Replacement cost settlement on the dwelling turns on that test or on carrying the maximum available under the NFIP [S:nfip-sfip-dwelling-form]. It is a condition to be met before a loss, and it cannot be fixed afterwards."
+		},
+		{
+			"item": "Schedule high value items elsewhere",
+			"note": "A $2,500 cap applies to any one loss to artwork, photographs, collectibles or memorabilia, rare books, jewelry and furs [S:nfip-sfip-dwelling-form], so this form is not where those belong."
+		},
+		{
+			"item": "Keep the declarations page where the lender can be given it",
+			"note": "A policy declaration page is accepted as evidence of flood insurance [S:fnma-b7-3-06], and producing it promptly is what stops a force-placement clock that starts 45 days after written notice [S:usc-42-4012a-2]."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "The NFIP is federal and its form, limits and waiting period do not vary by state. What varies is the mandatory purchase footprint, since it follows FEMA mapping of special flood hazard areas rather than any state line [S:usc-42-4012a-2]."
+		},
+		{
+			"state": "FL",
+			"note": "Federal terms apply identically, but state-level requirements can sit on top of them. A state property insurer may impose its own flood requirement on its policyholders independent of the federal mandatory purchase rule [S:citizens-flood-requirement]."
+		}
+	],
+	"lastReviewed": "2026-09-05",
+	"effectiveDate": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"nfip-sfip-dwelling-form",
+		"nfip-agents-coverage",
+		"nfip-rcbap-coinsurance",
+		"cfr-44-61-11",
+		"fema-nfip-eligibility",
+		"usc-42-4012a-2",
+		"cfr-12-22-3",
+		"fnma-b7-3-06",
+		"citizens-flood-requirement"
+	],
+	"relatedQuestions": [
+		"replacement-cost-vs-market-value",
+		"lender-insurance-requirement",
+		"same-limit-different-protection"
+	]
+}
