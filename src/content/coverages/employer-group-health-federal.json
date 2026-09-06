@@ -1,0 +1,152 @@
+{
+	"name": "Employer group health coverage (federal requirements)",
+	"line": "group-health",
+	"family": "health",
+	"definition": "Not a policy form so much as a set of federal obligations that attach to one. Two bodies of law do most of the work: the continuation rules that let a person keep group coverage after they would otherwise lose it, and the shared responsibility rules that decide which employers must offer coverage at all. Both are statute, so unlike most lines the governing text can be read in full. A person losing coverage generally has at least 60 days to elect continuation [S:usc-29-1165-election-period], and the plan may charge no more than 102 percent of the applicable premium for it [S:usc-29-1162-continuation-period].",
+	"protects": [
+		"A covered employee and their qualified beneficiaries against losing group coverage on the date a qualifying event occurs, by giving a right to continue it [S:usc-29-1162-continuation-period]",
+		"A spouse after divorce or legal separation, and a child who ceases to be a dependent, both of which are qualifying events in their own right [S:usc-29-1163-qualifying-events]",
+		"A retiree whose former employer enters a title 11 proceeding, which is a qualifying event reaching a substantial elimination of coverage within a year either side of commencement [S:usc-29-1163-qualifying-events]",
+		"Not the employer from the obligation. Nothing here is optional for a plan that is subject to it"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Continuation after termination or reduced hours, for 18 months",
+			"note": "Section 1162(2)(A)(i) sets the maximum period at the date which is 18 months after the qualifying event, for a termination or a reduction of hours [S:usc-29-1162-continuation-period]."
+		},
+		{
+			"item": "Continuation for 36 months after the other qualifying events",
+			"note": "Section 1162(2)(A)(iv) sets the maximum at 36 months after the date of the qualifying event for events other than termination or reduction of hours [S:usc-29-1162-continuation-period]."
+		},
+		{
+			"item": "An extension to 29 months on disability",
+			"note": "Where a qualified beneficiary is determined disabled during the first 60 days of continuation and proper notice is given before the 18 months end, the reference to 18 months is deemed a reference to 29 months with respect to all qualified beneficiaries [S:usc-29-1162-continuation-period]."
+		},
+		{
+			"item": "Six qualifying events, named in the statute",
+			"note": "Death of the covered employee; termination other than for gross misconduct, or reduction of hours; divorce or legal separation; the employee becoming entitled to Medicare benefits; a dependent child ceasing to qualify; and a title 11 proceeding with respect to the employer [S:usc-29-1163-qualifying-events]."
+		},
+		{
+			"item": "An election period of at least 60 days",
+			"note": "It begins not later than the date coverage terminates by reason of the qualifying event, runs at least 60 days, and ends not earlier than 60 days after the later of that date or the date of the notice under section 1166(4) [S:usc-29-1165-election-period]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Termination for gross misconduct",
+			"note": "The qualifying event in section 1163(2) is a termination other than by reason of the employee's gross misconduct, so a termination on that ground is outside the list entirely [S:usc-29-1163-qualifying-events]."
+		},
+		{
+			"item": "Any obligation on the employer to subsidise the continued coverage",
+			"note": "The plan may require payment of a premium not exceeding 102 percent of the applicable premium [S:usc-29-1162-continuation-period]. The right is to keep the coverage, at a cost that now falls on the individual."
+		},
+		{
+			"item": "A duty on the employer to report the two personal events",
+			"note": "For divorce or legal separation and for a child ceasing to be a dependent, the covered employee or qualified beneficiary is responsible for notifying the administrator within 60 days [S:usc-29-1166-notice-requirements]. An employer has no way of knowing about either."
+		},
+		{
+			"item": "Employers below the applicable large employer threshold, for shared responsibility",
+			"note": "The shared responsibility rules apply to an employer who employed an average of at least 50 full-time employees on business days during the preceding calendar year [S:usc-26-4980h-applicable-large-employer]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no limit structure here in the property sense. The numbers that govern are periods and thresholds.",
+		"18 months for a termination or reduction of hours, and 36 months for the other qualifying events [S:usc-29-1162-continuation-period].",
+		"29 months where the disability extension applies, and it applies with respect to all qualified beneficiaries rather than only the disabled one [S:usc-29-1162-continuation-period].",
+		"102 percent of the applicable premium is the ceiling on what the plan may charge, payable in monthly installments at the election of the payor [S:usc-29-1162-continuation-period].",
+		"No premium may be required before the day which is 45 days after the day the qualified beneficiary made the initial election [S:usc-29-1162-continuation-period].",
+		"An average of at least 50 full-time employees over the preceding calendar year makes an employer an applicable large employer, counting part-time hours by dividing aggregate non-full-time hours of service for a month by 120 [S:usc-26-4980h-applicable-large-employer].",
+		"Full-time means employed on average at least 30 hours of service per week for the month [S:usc-26-4980h-applicable-large-employer]."
+	],
+	"endorsements": [
+		{
+			"item": "State continuation, where it applies",
+			"note": "Several states extend continuation to employers below the federal threshold or lengthen the federal period. That is state law and is not described by the federal sections cited here."
+		},
+		{
+			"item": "The plan document and summary plan description",
+			"note": "The statutory floor is a floor. A multiemployer plan may provide longer notice periods than the 30 and 14 day defaults, which the statute expressly permits in its own terms [S:usc-29-1166-notice-requirements]."
+		}
+	],
+	"relatedPolicies": [
+		"Employee benefits administration generally, where the notice and recordkeeping duties sit",
+		"Employment practices liability, which answers claims arising from the employment relationship rather than from the plan",
+		"Workers compensation, which answers workplace injury and is not affected by these rules"
+	],
+	"underwritingInputs": [
+		"The average number of full-time employees over the preceding calendar year, which decides applicable large employer status [S:usc-26-4980h-applicable-large-employer]",
+		"Aggregate hours of service of employees who are not full-time, since those are converted by dividing by 120 [S:usc-26-4980h-applicable-large-employer]",
+		"Whether any employee averages at least 30 hours of service per week, which is the full-time test [S:usc-26-4980h-applicable-large-employer]",
+		"Whether the plan is a multiemployer plan, which can lengthen the statutory notice periods [S:usc-29-1166-notice-requirements]",
+		"Who administers the plan, since the 14 day notice duty sits on the administrator [S:usc-29-1166-notice-requirements]",
+		"Whether written notice procedures exist for the events the individual must report [S:usc-29-1166-notice-requirements]",
+		"The date of any qualifying event, since every period in these sections runs from it [S:usc-29-1163-qualifying-events]"
+	],
+	"exposures": [
+		{
+			"item": "A notice chain with three links and three clocks",
+			"note": "The employer has 30 days to notify the administrator of a death, termination or reduction of hours, Medicare entitlement or title 11 proceeding; the administrator then has 14 days to notify the qualified beneficiary [S:usc-29-1166-notice-requirements]. A delay anywhere in that chain is an exposure for whoever caused it."
+		},
+		{
+			"item": "The two events nobody tells the employer about",
+			"note": "Divorce or legal separation and a child ceasing to be a dependent are reported by the individual within 60 days [S:usc-29-1166-notice-requirements], and they are qualifying events carrying the longer 36 month period [S:usc-29-1162-continuation-period][S:usc-29-1163-qualifying-events]. Neither is visible from the payroll system."
+		},
+		{
+			"item": "A late notice that extends rather than forfeits the right",
+			"note": "The election period ends not earlier than 60 days after the later of coverage terminating and the notice arriving [S:usc-29-1165-election-period]. Giving notice late does not close the window early; it moves it, and the plan carries the coverage in the meantime."
+		},
+		{
+			"item": "Becoming an applicable large employer without noticing",
+			"note": "The test is an average over the preceding calendar year, and part-time hours count through the divide-by-120 rule [S:usc-26-4980h-applicable-large-employer]. An employer can cross the line without ever having 50 people on the payroll at one time."
+		},
+		{
+			"item": "Asserting gross misconduct",
+			"note": "It is the only conduct-based carve-out in the qualifying event list [S:usc-29-1163-qualifying-events], and treating a termination as outside continuation on that basis decides someone's health coverage on a contested characterisation."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Record the qualifying event date at the time it happens",
+			"note": "Every period in these sections runs from it: 18 or 36 months of coverage, 30 days for the employer notice, 14 days for the administrator notice [S:usc-29-1162-continuation-period][S:usc-29-1166-notice-requirements]."
+		},
+		{
+			"item": "Write down the procedure for the events individuals must report",
+			"note": "The statute places divorce, legal separation and a child ceasing to be a dependent on the individual within 60 days [S:usc-29-1166-notice-requirements], so whether anyone knows how to report is a plan administration question rather than a statutory one."
+		},
+		{
+			"item": "Keep proof of when each notice was sent",
+			"note": "Because the election period ends not earlier than 60 days after the later of termination and the notice [S:usc-29-1165-election-period], the notice date is what fixes the deadline, and it is the employer or administrator who has to be able to show it."
+		},
+		{
+			"item": "Recount the workforce on the statutory basis each year",
+			"note": "Average full-time employees over the preceding calendar year, plus non-full-time hours divided by 120, against a full-time test of 30 hours of service per week [S:usc-26-4980h-applicable-large-employer]."
+		},
+		{
+			"item": "Do not require payment inside the 45 day window",
+			"note": "No premium may be required before the day which is 45 days after the initial election [S:usc-29-1162-continuation-period], which matters most to the person who has just lost their income alongside their coverage."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "The sections cited here are federal and apply the same way in every state. California and several others add their own continuation requirements on top, including for employers below the federal threshold, and those are state law not described by these records [S:usc-26-4980h-applicable-large-employer]."
+		}
+	],
+	"lastReviewed": "2026-09-06",
+	"effectiveDate": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"usc-29-1162-continuation-period",
+		"usc-29-1163-qualifying-events",
+		"usc-29-1165-election-period",
+		"usc-29-1166-notice-requirements",
+		"usc-26-4980h-applicable-large-employer",
+		"cfr-29-2590-606-2-lii",
+		"cfr-29-2590-606-4-lii",
+		"cfr-26-54-4980h-1-lii",
+		"cfr-26-54-4980h-5-lii"
+	],
+	"relatedQuestions": []
+}

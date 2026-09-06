@@ -1,0 +1,23 @@
+{
+	"title": "29 U.S.C. 1166 (who must give notice of a qualifying event, and by when)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section1166&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 1166 requires the employer of an employee under a plan to notify the administrator of a qualifying event described in paragraph (1), (2), (4) or (6) of section 1163 within 30 days of the date of the qualifying event, or in the case of a group health plan which is a multiemployer plan such longer period as may be provided in the terms of the plan.",
+		"Section 1166 requires the administrator to notify any qualified beneficiary with respect to the event of that beneficiary's rights under the subsection, within 14 days of the date on which the administrator is notified, or in the case of a multiemployer plan such longer period as may be provided in the terms of the plan.",
+		"Section 1166 provides that each covered employee or qualified beneficiary is responsible for notifying the administrator of the occurrence of any qualifying event described in paragraph (3) or (5) of section 1163 within 60 days after the date of the qualifying event."
+	],
+	"notes": "The chain has three links and they run on different clocks: the employer has 30 days to tell the administrator, the administrator has 14 days to tell the beneficiary, and for divorce, legal separation or a child ceasing to be a dependent the duty to report sits on the individual with 60 days. Those two events are the ones an employer has no way of knowing about, which is the reason the statute allocates them differently."
+}

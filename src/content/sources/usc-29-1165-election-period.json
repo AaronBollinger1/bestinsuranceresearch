@@ -1,0 +1,23 @@
+{
+	"title": "29 U.S.C. 1165 (the election period for COBRA continuation coverage)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section1165&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 1165(a)(1)(A) provides that the election period begins not later than the date on which coverage terminates under the plan by reason of a qualifying event.",
+		"Section 1165(a)(1)(B) provides that the election period is of at least 60 days' duration.",
+		"Section 1165(a)(1)(C) provides that the election period ends not earlier than 60 days after the later of the date on which coverage terminates by reason of the qualifying event, or, in the case of any qualified beneficiary who receives notice under section 1166(4), the date of that notice."
+	],
+	"notes": "The election period is measured from the later of coverage ending and the notice arriving, so a late notice moves the deadline rather than shortening the window. That is the practical protection in this section and it is why the notice dates in section 1166 are worth recording at the time."
+}

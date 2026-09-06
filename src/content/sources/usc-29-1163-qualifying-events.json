@@ -1,0 +1,27 @@
+{
+	"title": "29 U.S.C. 1163 (what counts as a qualifying event for COBRA continuation)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section1163&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 1163(1) lists the death of the covered employee as a qualifying event.",
+		"Section 1163(2) lists the termination, other than by reason of the employee's gross misconduct, or reduction of hours, of the covered employee's employment.",
+		"Section 1163(3) lists the divorce or legal separation of the covered employee from the employee's spouse.",
+		"Section 1163(4) lists the covered employee becoming entitled to benefits under title XVIII of the Social Security Act.",
+		"Section 1163(5) lists a dependent child ceasing to be a dependent child under the generally applicable requirements of the plan.",
+		"Section 1163(6) lists a proceeding in a case under title 11, commencing on or after July 1, 1986, with respect to the employer from whose employment the covered employee retired at any time.",
+		"Section 1163 provides that in the case of an event described in paragraph (6), a loss of coverage includes a substantial elimination of coverage with respect to a qualified beneficiary described in section 1167(3)(C) within one year before or after the date of commencement of the proceeding."
+	],
+	"notes": "The gross misconduct carve-out in paragraph (2) is the only conduct-based exclusion in the list, and it is the provision most often asserted and least often defined. Note also that paragraphs (3) and (5), divorce or legal separation and a child ceasing to be a dependent, are the two events the statute makes the individual rather than the employer responsible for reporting, which is why they are the ones most often missed."
+}

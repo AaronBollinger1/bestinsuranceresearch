@@ -1,0 +1,23 @@
+{
+	"title": "26 U.S.C. 4980H(c) (who is an applicable large employer, and who is a full-time employee)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section4980H&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 4980H(c)(2) defines applicable large employer as, with respect to a calendar year, an employer who employed an average of at least 50 full-time employees on business days during the preceding calendar year.",
+		"Section 4980H(c)(2) provides that in counting, an employer shall, in addition to the number of full-time employees for any month otherwise determined, include for that month a number of full-time employees determined by dividing the aggregate number of hours of service of employees who are not full-time employees for the month by 120.",
+		"Section 4980H(c)(4) defines full-time employee as, with respect to any month, an employee who is employed on average at least 30 hours of service per week."
+	],
+	"notes": "Two thresholds are commonly conflated. Full-time means 30 hours of service per week on average, which is lower than most employers assume, and the 50 employee test is an average over the preceding calendar year that counts part-time hours through the divide-by-120 rule. An employer can therefore become an applicable large employer without ever having 50 people on the payroll at once."
+}

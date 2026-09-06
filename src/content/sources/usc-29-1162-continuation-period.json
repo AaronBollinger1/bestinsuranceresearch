@@ -1,0 +1,25 @@
+{
+	"title": "29 U.S.C. 1162 (COBRA continuation coverage: the period, and what the plan may charge)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section1162&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-09-06",
+	"lastChecked": "2026-09-06",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 1162(2)(A)(i) sets the maximum period of continuation coverage, for a qualifying event that is a termination or reduction of hours, at the date which is 18 months after the date of the qualifying event.",
+		"Section 1162(2)(A)(iv) sets the maximum period, for other qualifying events, at the date which is 36 months after the date of the qualifying event.",
+		"Section 1162(2)(A)(viii) provides that where a qualified beneficiary is determined to be disabled during the first 60 days of continuation coverage and proper notice is given before the end of the 18 months, any reference in clause (i) or (ii) to 18 months is deemed a reference to 29 months with respect to all qualified beneficiaries.",
+		"Section 1162(3) provides that the plan may require payment of a premium for any period of continuation coverage, provided that the premium shall not exceed 102 percent of the applicable premium for that period, and may at the election of the payor be made in monthly installments.",
+		"Section 1162(3) provides that in no event may the plan require the payment of any premium before the day which is 45 days after the day on which the qualified beneficiary made the initial election."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "The two figures people remember are 18 months and 102 percent, and the two they do not are the ones that decide whether continuation is usable in practice. The 45 day floor in subsection (3) means a person who has just lost coverage is not required to fund it on the day they elect, and the 29 month disability extension in (2)(A)(viii) reaches all qualified beneficiaries rather than only the disabled one. Read alongside sections 1163, 1165 and 1166, which supply the events, the election window and the notice chain that make this section operative."
+}
