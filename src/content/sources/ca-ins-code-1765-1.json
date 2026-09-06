@@ -1,0 +1,26 @@
+{
+	"title": "California Insurance Code Section 1765.1 (when a nonadmitted insurer is eligible for a surplus line placement)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=1765.1",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-05",
+	"lastChecked": "2026-09-05",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 1765.1 prohibits a surplus line broker from placing any coverage with a nonadmitted insurer for a home state insured unless, at the time of placement, the insurer meets the requirements of either subdivision (a) or subdivision (b), with a narrow exception for a Mexican-domiciled insurer covering only liability arising out of the ownership, maintenance or use of a motor vehicle, aircraft or boat in the Republic of Mexico.",
+		"Section 1765.1(a)(1) requires an insurer domiciled in a state or territory of the United States to be licensed to write the type of insurance in its domiciliary jurisdiction.",
+		"Section 1765.1(a)(2)(A) requires such an insurer to have capital and surplus that together total forty-five million dollars.",
+		"Section 1765.1(a)(2)(B) permits an insurer with less than forty-five million dollars to satisfy the requirement upon an affirmative finding of acceptability by the commissioner, based on factors such as quality of management, capital and surplus of any parent company, underwriting profit and investment income trends, market availability, and company record and reputation within the industry, and prohibits the commissioner from making that finding where the foreign insurer's capital and surplus is less than four million five hundred thousand dollars.",
+		"Section 1765.1(b) provides that an insurer not domiciled in a state or territory of the United States is eligible if it is listed on the Quarterly Listing of Alien Insurers maintained by the NAIC International Insurers Department and is licensed as an insurer in its domiciliary jurisdiction.",
+		"Section 1765.1(c) permits the commissioner to issue an order without prior notice and hearing if at any time the commissioner determines that an insurer is no longer eligible under subdivision (a) or (b)."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Eligibility is a floor on the insurer's balance sheet and licensing, not an endorsement of it. Nothing in this section subjects a nonadmitted insurer to California solvency regulation or to the guarantee funds, which is what section 1764.1 requires the insured to be told."
+}

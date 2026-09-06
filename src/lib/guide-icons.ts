@@ -69,6 +69,7 @@ const BY_LINE: Partial<Record<CanonicalLine, IconName>> = {
 	'inland-marine': 'Package',
 	'builders-risk': 'HardHat',
 	'motor-truck-cargo': 'Truck',
+	'surplus-lines': 'Landmark',
 	surety: 'FileSignature',
 	'contract-surety': 'FileSignature',
 	'license-and-permit-bonds': 'FileSignature',

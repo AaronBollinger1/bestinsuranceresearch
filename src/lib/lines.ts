@@ -52,6 +52,9 @@ export const CANONICAL_LINES = [
 	'inland-marine',
 	'builders-risk',
 	'motor-truck-cargo',
+	/* A route to a market rather than a coverage form, but it is how a reader
+	   names it and how the statute chapters it. */
+	'surplus-lines',
 	'surety',
 	'contract-surety',
 	'license-and-permit-bonds',
@@ -95,6 +98,10 @@ const ALIASES: Record<string, CanonicalLine> = {
 	cyber: 'cyber-liability',
 	epli: 'employment-practices-liability',
 	umbrella: 'umbrella-excess',
+	'excess-and-surplus': 'surplus-lines',
+	'non-admitted': 'surplus-lines',
+	nonadmitted: 'surplus-lines',
+	'e-and-s': 'surplus-lines',
 	/* The California personal auto page calls its line `auto`. */
 	'personal-auto': 'auto',
 	'private-passenger-auto': 'auto',

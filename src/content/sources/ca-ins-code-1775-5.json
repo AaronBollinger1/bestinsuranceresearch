@@ -1,0 +1,25 @@
+{
+	"title": "California Insurance Code Section 1775.5 (the surplus line premium tax)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=1775.5",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-05",
+	"lastChecked": "2026-09-05",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 1775.5(a) requires every surplus line broker, annually on or before the first day of March, to pay the Insurance Commissioner for the use of the State of California a tax of 3 percent of the gross premiums charged less return premiums upon business done under the authority of the broker's licence during the preceding calendar year.",
+		"Section 1775.5(a) excludes from that tax any portions of premiums upon business done involving the risk finance portion of a blended finite risk product used in the financing element of state or federal Superfund environmental settlements involving remediation of soil or groundwater contamination, and business excluded by Insurance Code section 1760.5.",
+		"Section 1775.5(a) provides that where 3 percent of return premiums exceeds 3 percent of gross premiums in a calendar year, the broker may either carry the excess forward as a credit against the following year or elect to receive a refund equal to the taxes previously paid on that excess.",
+		"Section 1775.5(b) provides that for the purpose of determining the tax, the total premium charged for all nonadmitted insurance placed in a single transaction with one underwriter or group of underwriters, whether in one or more policies, is the entire premium charged on all nonadmitted insurance for the California home state insured.",
+		"Section 1775.5(c)(1) levies a penalty of 10 percent of the amount due upon a surplus line broker who fails to make the payment within the time required, plus interest at the rate of 1 percent per calendar month or fraction of a month from the March 1 due date until payment."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "The tax is levied on the broker rather than on the insured, and is stated here in the statute's own terms. What a particular placement costs a particular buyer is a separate question this record does not answer, and the stamping fee charged by the Surplus Line Association of California is a separate charge under a different authority."
+}

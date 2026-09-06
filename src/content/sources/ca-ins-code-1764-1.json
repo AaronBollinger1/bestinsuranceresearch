@@ -8,18 +8,24 @@
 	"publishedDate": "unknown",
 	"effectiveDate": "n/a",
 	"accessedDate": "2026-08-31",
-	"lastChecked": "2026-08-31",
-	"lastCheckedBasis": "access",
+	"lastChecked": "2026-09-05",
+	"lastCheckedBasis": "recheck",
 	"primary": true,
 	"claims": [
 		"The required notice states that the insurance policy is being issued by an insurer that is not licensed by the State of California.",
 		"The required notice states that the insurer is not subject to the financial solvency regulation and enforcement that apply to California licensed insurers.",
 		"The required notice states that the insurer does not participate in any of the insurance guarantee funds created by California law, and that those funds will not pay claims or protect assets if the insurer becomes insolvent.",
 		"The disclosure must appear in boldface 16-point type on a freestanding document, and must be signed by the applicant.",
-		"The disclosure must also be included in boldface 16-point type on the front page of the policy."
+		"The disclosure must also be included in boldface 16-point type on the front page of the policy.",
+		"Section 1764.1(a)(1) places the responsibility for obtaining the applicant's signature on both the nonadmitted insurer and the surplus line broker, and applies it at the time of accepting an application for a policy other than a renewal of that policy.",
+		"Section 1764.1(a)(1) requires the surplus line broker to keep a copy of the signed disclosure in the broker's records for at least five years, and to make those records available to the commissioner and to the insured on request.",
+		"Section 1764.1(a)(1) provides that the disclosure must be signed by the applicant and is not subject to a limited power of attorney agreement between the applicant and an agent, broker, or surplus line broker.",
+		"Section 1764.1(a)(2) provides that where the applicant has not received and completed the signed disclosure form the section requires, the applicant may cancel the insurance so placed, that the cancellation shall be on a pro rata basis as to premium, and that the applicant is entitled to the return of any broker's fees charged for the placement.",
+		"Section 1764.1(b) directs the reader of the notice to ask questions of their agent, broker or surplus line broker, or to contact the California Department of Insurance at 1-800-927-4357 or at www.insurance.ca.gov, and to ask whether the insurer is licensed as a foreign or non-United States insurer.",
+		"Section 1764.1(b) requires the notice to be printed in English and in the language principally used by the surplus line broker and nonadmitted insurer to advertise, solicit, or negotiate the sale and purchase of surplus line insurance."
 	],
 	"updateCadence": "Amended by the California Legislature from time to time; verify the current text on leginfo before relying on it.",
 	"status": "active",
-	"notes": "Fetched 2026-08-31. The page loaded and the notice language above was read on the page verbatim. The section also contains recordkeeping and cancellation provisions and exceptions (for example for renewals and industrial insureds) that are not relied on in this entry, so they are not listed as claims.",
+	"notes": "Rechecked 2026-09-05 against the section's own page and extended. The earlier entry recorded only the notice text and deliberately set aside the recordkeeping and cancellation provisions; those are now read and recorded, because subdivision (a)(2) is the operative consequence of the requirement and is the part a reader is least likely to be told. A placement made without the signed disclosure is cancellable by the insured, pro rata, with the broker fee returned.",
 	"officialHost": true
 }

@@ -1,0 +1,165 @@
+{
+	"name": "Surplus lines (California)",
+	"line": "surplus-lines",
+	"family": "commercial",
+	"definition": "Not a line of insurance so much as a route to one. When no admitted California insurer will write a risk, a licensed surplus line broker may place it with a nonadmitted insurer instead [S:ca-ins-code-1763]. What changes is not the coverage but the protections around it: the insurer is outside California's solvency regulation and outside every guarantee fund the state has created, and the buyer must be told so in writing, in boldface, before the placement [S:ca-ins-code-1764-1]. Almost everything a reader needs to know about this route is written in statute rather than in a form.",
+	"protects": [
+		"A risk that admitted insurers will not write, by opening a market that is otherwise closed to it [S:ca-ins-code-1763]",
+		"The buyer's right to know what they are buying, through a signed disclosure that must be given before the placement and repeated on the policy [S:ca-ins-code-1764-1]",
+		"The buyer's ability to unwind the placement if that disclosure was never obtained [S:ca-ins-code-1764-1]",
+		"A minimum standard for the insurer itself, in capital, surplus and home-state licensing [S:ca-ins-code-1765-1]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Risks the admitted market has actually declined",
+			"note": "A surplus line broker may place with a nonadmitted insurer only where the insurance cannot be procured from insurers admitted for that class and actually writing that type in California [S:ca-ins-code-1763]. Type of insurance means the hazard or combination of hazards the contract covers [S:ca-ins-code-1763], so the test is about the specific hazard rather than about the industry."
+		},
+		{
+			"item": "Risks so unusual that fewer than three admitted insurers write them at all",
+			"note": "A diligent search is shown prima facie either by three admitted insurers that actually write the type declining the risk, or by there being fewer than three admitted insurers who write the type at all [S:ca-ins-code-1763]. The second limb is the one that carries genuinely novel exposures."
+		},
+		{
+			"item": "A commercial insured that asks for the nonadmitted market in writing",
+			"note": "The diligent search requirement does not apply to a commercial insured as defined in section 1760.1(b) where the broker has disclosed in writing that surplus insurance may or may not be available from the admitted market with greater protection and more regulatory oversight, and the insured has then requested the placement in writing [S:ca-ins-code-1763]. Both conditions are required and both must be in writing."
+		},
+		{
+			"item": "A short continuation of cover already placed",
+			"note": "An extension by the same nonadmitted insurer of the same risks for the same insured under an existing surplus lines policy sits outside the section, provided it does not exceed 90 days in aggregate in any 12-month period, does not change coverage, terms, conditions or limits, and is priced pro rata on the existing rate [S:ca-ins-code-1763]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Any protection from the California guarantee funds",
+			"note": "The prescribed notice states that the insurer does not participate in any of the insurance guarantee funds created by California law, and that those funds will not pay your claims or protect your assets if the insurer becomes insolvent and is unable to make payments as promised [S:ca-ins-code-1764-1]. This is the substantive difference between admitted and nonadmitted cover, and it is stated in the statute's own words rather than paraphrased here."
+		},
+		{
+			"item": "California solvency regulation and enforcement",
+			"note": "The same notice states that the insurer is not subject to the financial solvency regulation and enforcement that apply to California licensed insurers [S:ca-ins-code-1764-1]. Eligibility under section 1765.1 sets a floor on capital, surplus and home-state licensing [S:ca-ins-code-1765-1]; it does not import California's supervision."
+		},
+		{
+			"item": "A placement made only to get a cheaper rate",
+			"note": "Insurance may not be placed with a nonadmitted insurer for the purpose of procuring a rate lower than the lowest an admitted insurer will accept [S:ca-ins-code-1763]. A placement at a lower rate than the lowest obtainable from an admitted insurer is conclusively presumed to violate the section unless a statement is filed at attachment describing the insurance, the rate, the nearest procurable admitted rates and the reasons [S:ca-ins-code-1763]."
+		},
+		{
+			"item": "Ocean marine, aviation and railroad, which sit outside the chapter",
+			"note": "Reinsurance of an admitted insurer's liability, ocean marine and transit cover, aircraft and spacecraft insurance, and insurance on the property or operations of interstate railroads are outside the chapter's placement limits and reporting requirement [S:ca-ins-code-1760-5]. Three of those may still only be placed through a special lines' surplus line broker [S:ca-ins-code-1760-5], so being outside the chapter is not the same as being unregulated."
+		},
+		{
+			"item": "Placement by anyone other than a licensed surplus line broker",
+			"note": "A person in California may not transact insurance for a home state insured with a nonadmitted insurer except by and through a surplus line broker licensed under the chapter [S:ca-ins-code-1760-5]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no statutory limit structure here, because surplus lines is a route rather than a coverage form. Limits and deductibles are whatever the nonadmitted insurer's own form provides, and that form is not filed with or approved by California.",
+		"The insurer must, at the time of placement, be licensed to write the type in its domiciliary jurisdiction and hold capital and surplus totalling forty-five million dollars [S:ca-ins-code-1765-1].",
+		"The commissioner may accept less than forty-five million dollars on an affirmative finding of acceptability, weighing management quality, any parent's capital and surplus, underwriting and investment trends, market availability and the company's record and reputation, but may never make that finding below four million five hundred thousand dollars [S:ca-ins-code-1765-1].",
+		"An insurer not domiciled in a United States state or territory qualifies by being listed on the NAIC International Insurers Department Quarterly Listing of Alien Insurers and licensed where it is domiciled [S:ca-ins-code-1765-1].",
+		"Eligibility can end without warning: the commissioner may issue an order without prior notice and hearing on determining that an insurer is no longer eligible [S:ca-ins-code-1765-1].",
+		"A surplus line broker owes a tax of 3 percent of gross premiums less return premiums, payable annually on or before March 1 for the preceding calendar year [S:ca-ins-code-1775-5]. Late payment carries a penalty of 10 percent plus interest of 1 percent per calendar month or fraction of a month from the due date [S:ca-ins-code-1775-5].",
+		"Where one transaction with one underwriter or group produces several policies, the entire premium across all of them is treated as a single premium for the tax [S:ca-ins-code-1775-5]."
+	],
+	"endorsements": [
+		{
+			"item": "The signed disclosure statement",
+			"note": "Not an endorsement but the document that governs the placement. It must be obtained at the time of accepting the application, must be boldface 16-point type on a freestanding document, must be signed by the applicant personally rather than under a limited power of attorney, and must be kept by the broker for at least five years and produced to the insured or the commissioner on request [S:ca-ins-code-1764-1]."
+		},
+		{
+			"item": "The same notice on the policy itself",
+			"note": "Every policy issued by a nonadmitted insurer and every certificate evidencing the placement must carry or have affixed the same statement in boldface 16-point type on the front page [S:ca-ins-code-1764-1]. If it is not on the front of your policy, that is a fact about the placement and worth raising."
+		},
+		{
+			"item": "The standardized diligent search form",
+			"note": "Filed with the commissioner setting out the efforts made with admitted insurers and their results, signed by a licensed person who made the search or supervised whoever did [S:ca-ins-code-1763]. The commissioner may review it for accuracy, including whether the insurers named actually write that type and whether they declined, and may discipline the signer for a misrepresentation made negligently or intentionally [S:ca-ins-code-1763]."
+		}
+	],
+	"relatedPolicies": [
+		"Commercial general liability, commercial property and commercial auto, which are the lines most often placed this way when the admitted market declines",
+		"Reinsurance of an admitted insurer's liability, which section 1760.5 puts outside the chapter entirely [S:ca-ins-code-1760-5]",
+		"Ocean marine and inland transit, placed through a special lines' surplus line broker rather than under the ordinary chapter limits [S:ca-ins-code-1760-5]"
+	],
+	"underwritingInputs": [
+		"The specific hazard or combination of hazards to be covered, because that is what type of insurance means for the search test [S:ca-ins-code-1763]",
+		"Which admitted insurers actually write that type in California, as opposed to which are merely licensed for the class [S:ca-ins-code-1763]",
+		"Declination evidence from three such insurers, or evidence that fewer than three write the type at all [S:ca-ins-code-1763]",
+		"Whether the buyer meets the definition of a commercial insured in section 1760.1(b), which the broker is responsible for establishing [S:ca-ins-code-1763]",
+		"The name and address of the insured and verification that the insured is a home state insured, both of which go into the 60-day report [S:ca-ins-code-1763]",
+		"A description of the subject and location of the risk [S:ca-ins-code-1763]",
+		"The premium charged, and the declarations page or the broker's certificate or binder [S:ca-ins-code-1763]",
+		"The proposed insurer's domicile, home-state licensing and capital and surplus, or its presence on the NAIC alien insurers listing [S:ca-ins-code-1765-1]"
+	],
+	"exposures": [
+		{
+			"item": "Insolvency with no fund behind it",
+			"note": "The single exposure that defines this route. If the nonadmitted insurer fails, no California guarantee fund pays the claim or protects the assets, and the statute requires the buyer to be told so in those terms before the placement [S:ca-ins-code-1764-1]. Every other consideration on this page is secondary to that one."
+		},
+		{
+			"item": "Eligibility withdrawn mid-term",
+			"note": "The commissioner may order an insurer off the eligible list without prior notice and hearing [S:ca-ins-code-1765-1]. Eligibility is tested at the time of placement [S:ca-ins-code-1765-1], so a policy bought from an eligible insurer can be in force with one that no longer is."
+		},
+		{
+			"item": "A disclosure that was never signed",
+			"note": "Where the applicant did not receive and complete the signed disclosure, the applicant may cancel the placement, on a pro rata basis as to premium, and is entitled to the return of any broker's fees charged [S:ca-ins-code-1764-1]. That is a remedy for the buyer and an exposure for whoever placed it."
+		},
+		{
+			"item": "A search that will not survive review",
+			"note": "The three-declination test is prima facie evidence, not a safe harbour. The commissioner may check whether the insurers named actually write that type and whether they really declined, and may discipline the person who signed the form [S:ca-ins-code-1763]."
+		},
+		{
+			"item": "Buying nonadmitted purely on price",
+			"note": "A placement at a lower rate than the lowest obtainable from an admitted insurer is conclusively presumed to be a violation unless the statement required at attachment was filed [S:ca-ins-code-1763], and the commissioner may order the insurance terminated within 10 days [S:ca-ins-code-1763]. A cheaper nonadmitted quote is not by itself a reason to take it."
+		},
+		{
+			"item": "An extension that quietly becomes a placement",
+			"note": "The extension carve-out is narrow: same insurer, same risks, same insured, no change to coverage, terms, conditions or limits, pro rata premium, and no more than 90 days in aggregate across any 12 months [S:ca-ins-code-1763]. Anything beyond that is a new placement and needs the search."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Read the front page of the policy",
+			"note": "The disclosure must appear there in boldface 16-point type [S:ca-ins-code-1764-1]. Its absence is checkable in seconds and tells you something about how the placement was handled."
+		},
+		{
+			"item": "Ask for the signed disclosure and the search form",
+			"note": "The broker must keep the signed disclosure for at least five years and make it available to the insured on request [S:ca-ins-code-1764-1]. The standardized form recording the diligent efforts is filed with the commissioner [S:ca-ins-code-1763]."
+		},
+		{
+			"item": "Check the insurer against the eligibility basis, not the brand",
+			"note": "A United States insurer must be licensed for the type where it is domiciled and hold the capital and surplus the section requires; an alien insurer must appear on the NAIC International Insurers Department Quarterly Listing [S:ca-ins-code-1765-1]. Both are checkable facts rather than impressions."
+		},
+		{
+			"item": "Contact the Department if the insurer is unfamiliar",
+			"note": "The prescribed notice itself directs the reader to ask their broker or to contact the California Department of Insurance at 1-800-927-4357 or insurance.ca.gov, and to ask whether the insurer is licensed as a foreign or non-United States insurer [S:ca-ins-code-1764-1]."
+		},
+		{
+			"item": "Ask what was actually approached, and what declined",
+			"note": "The test turns on insurers that actually write the particular type in California rather than those merely admitted for the class [S:ca-ins-code-1763]. Asking which insurers were approached, and on what hazard, is asking the question the statute asks."
+		},
+		{
+			"item": "If you are a commercial insured, know what you signed",
+			"note": "The diligent search can be waived only where the broker disclosed in writing that the admitted market may offer greater protection with more regulatory oversight and you then requested the nonadmitted placement in writing [S:ca-ins-code-1763]. If you do not have both documents, the exemption was not available."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "This page is California law throughout. The surplus line regime is state law, and while the federal Nonadmitted and Reinsurance Reform Act made the home state the single taxing and regulating authority for a placement, the substance of the diligent search, the disclosure and the eligibility standard is in the California Insurance Code [S:ca-ins-code-1763] [S:ca-ins-code-1764-1] [S:ca-ins-code-1765-1]. Another state's rules will differ in all three."
+		},
+		{
+			"state": "CA",
+			"note": "Some classes sit outside the chapter's limits and reporting altogether: reinsurance of an admitted insurer, ocean marine and transit, aircraft and spacecraft, and interstate railroad property and operations [S:ca-ins-code-1760-5]. Ocean marine, aviation and railroad may still only be placed through a special lines' surplus line broker [S:ca-ins-code-1760-5], so a placement being outside the chapter does not make it unlicensed territory."
+		}
+	],
+	"lastReviewed": "2026-09-05",
+	"effectiveDate": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ins-code-1760-5",
+		"ca-ins-code-1763",
+		"ca-ins-code-1764-1",
+		"ca-ins-code-1765-1",
+		"ca-ins-code-1775-5"
+	],
+	"relatedQuestions": []
+}

@@ -1,0 +1,25 @@
+{
+	"title": "California Insurance Code Sections 1760.5 and 1761 (what falls outside the surplus line chapter, and who may place the rest)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=1760.5",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-05",
+	"lastChecked": "2026-09-05",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 1760.5(a) provides that the chapter's provisions limiting the insurance that may be placed with nonadmitted insurers, and requiring a report of it, do not apply to reinsurance of the liability of an admitted insurer.",
+		"Section 1760.5(a)(2) excludes insurance against perils of navigation, transit or transportation upon hulls, freights or disbursements or other shipowner interests, upon goods and other personal property in the course of exportation, importation or coastwise transportation including war risks, and marine builder's risks, drydocks and marine railways including ship repairer's liability and protection and indemnity insurance, but excluding insurance covering bridges or tunnels.",
+		"Section 1760.5(a)(3) excludes aircraft or spacecraft insurance, and section 1760.5(a)(4) excludes insurance on property or operations of railroads engaged in interstate commerce.",
+		"Section 1760.5(b) provides that the insurance specified in paragraphs (2), (3) and (4) may be placed with a nonadmitted insurer for a home state insured only by and through a special lines' surplus line broker.",
+		"Section 1761(a) provides that except as provided in sections 1760 and 1760.5 and in section 1761(b)(1) and (2), a person within this state shall not transact any insurance for a home state insured with nonadmitted insurers except by and through a surplus line broker licensed under the chapter and upon the terms and conditions prescribed in the chapter."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Read together these two sections draw the boundary of the surplus line regime: 1761 says a nonadmitted placement must go through a licensed surplus line broker, and 1760.5 lists the classes that sit outside the chapter's placement limits entirely, three of which still require a special lines' surplus line broker. Ocean marine is the commercially significant one and it is routinely described as surplus lines when the statute treats it separately."
+}
