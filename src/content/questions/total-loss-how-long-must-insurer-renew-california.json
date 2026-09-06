@@ -1,0 +1,80 @@
+{
+	"question": "My house was destroyed. How long does my insurer have to keep renewing while I rebuild?",
+	"aliases": [
+		"total loss renewal obligation California 24 months",
+		"can my insurer cancel while I am rebuilding",
+		"Insurance Code 675.1 total loss renewal",
+		"insurance during rebuild after wildfire California",
+		"two annual renewal periods after a total loss"
+	],
+	"shortAnswer": "At least two annual renewal periods, and no less than 24 months from the date of loss. Where a total loss to the primary insured residence results from a disaster and was not caused by the policyholder's negligence, section 675.1 requires the insurer to offer renewal on that basis [S:ca-ins-code-675-1]. During the rebuild the insurer must also adjust limits or attach endorsements reflecting changes in exposure, and may not cancel based solely on the damaged condition of the property [S:ca-ins-code-675-1].",
+	"assumes": [
+		"The loss was a total loss to the primary insured residence, which is the trigger the subdivision uses [S:ca-ins-code-675-1].",
+		"The loss resulted from a disaster as defined in subdivision (b) of Civil Code section 1689.14 and was not caused by the policyholder's negligence [S:ca-ins-code-675-1].",
+		"The policy is residential property insurance within the meaning the section adopts from subdivision (a) of Section 10087 [S:ca-ins-code-675-1]."
+	],
+	"why": "This is a different protection from the one-year moratorium and it is easy to conflate them. The moratorium reaches people in an affected ZIP Code who were not damaged [S:cdi-moratorium]. This one reaches the person who lost the house, and it is longer.\n\nWhere a total loss to the primary insured residence results from a qualifying disaster and was not caused by the policyholder's negligence, the insurer must offer renewal for at least the next two annual renewal periods, and no less than 24 months of coverage from the date of the loss [S:ca-ins-code-675-1]. Two annual renewals and 24 months are stated together, so the longer of the two is what the policyholder actually gets.\n\nThe rebuild itself is addressed rather than left to the policy. Following a total loss the insurer must adjust coverage limits, issue additional policies, or attach endorsements reflecting changes in exposure, and is barred from cancelling during rebuilding except on specified statutory grounds or based solely on the damaged condition of the property [S:ca-ins-code-675-1]. That last clause matters, because the damaged condition is precisely the thing an underwriter would otherwise point at.\n\nThe protections are not unconditional. They do not apply where the named insured commits willful or grossly negligent acts or omissions materially increasing any of the risks insured against, where unrelated losses render the risk ineligible, or where physical or risk changes make the property uninsurable [S:ca-ins-code-675-1].\n\nOne limit is worth stating plainly. The section addresses a total loss. A partial loss with a long rebuild does not carry the two-renewal obligation, and the ordinary notice rules in section 678 are then what governs whether and how the policy ends [S:ca-ins-code-678].",
+	"whatChanges": [
+		"Whether the loss was total rather than partial, which is what the subdivision turns on [S:ca-ins-code-675-1].",
+		"Whether the residence was the primary insured residence [S:ca-ins-code-675-1].",
+		"Whether the loss resulted from a disaster as Civil Code section 1689.14(b) defines it, and was not caused by the policyholder's negligence [S:ca-ins-code-675-1].",
+		"Whether exposure has changed during the rebuild, since the insurer must adjust limits or attach endorsements to reflect that [S:ca-ins-code-675-1].",
+		"Whether any of the three carve-outs applies: willful or grossly negligent acts materially increasing the risk, unrelated losses rendering the risk ineligible, or changes making the property uninsurable [S:ca-ins-code-675-1]."
+	],
+	"variability": [
+		"This is California and the periods are Californian. Other states address rebuilding differently or not at all.",
+		"The section fixes how long renewal must be offered. It does not fix the terms of the renewal, and it does not decide what the policy pays on the loss itself.",
+		"Whether a loss is a total loss can itself be disputed, and this record does not resolve that characterisation."
+	],
+	"nextActions": [
+		"Write down the date of loss, because the 24-month floor runs from it rather than from the policy anniversary [S:ca-ins-code-675-1].",
+		"Ask the insurer in writing to confirm it is treating the loss as within section 675.1, and to state the renewal dates it accepts as required [S:ca-ins-code-675-1].",
+		"Tell the insurer as the exposure changes during the rebuild, since the duty to adjust limits or attach endorsements operates on what it knows [S:ca-ins-code-675-1].",
+		"If a cancellation arrives during the rebuild, check whether the stated reason is the damaged condition of the property, which the section rules out [S:ca-ins-code-675-1].",
+		"If the loss was partial rather than total, work from the ordinary notice periods instead and read the notice for its stated reasons [S:ca-ins-code-678]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"wildfire",
+		"homeowners",
+		"dwelling-fire"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"total loss",
+		"rebuilding",
+		"renewal",
+		"wildfire",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"wildfire-california"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"nonrenewal-after-wildfire-moratorium-california",
+		"what-fair-plan-does-not-cover-california"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a loss is characterised as total, and whether a carve-out applies, decide the answer and are judgements about your facts rather than about the statute."
+	},
+	"sourceIds": [
+		"ca-ins-code-675-1",
+		"ca-ins-code-678",
+		"cdi-moratorium"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

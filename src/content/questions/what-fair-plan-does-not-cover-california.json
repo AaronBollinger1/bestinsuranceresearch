@@ -1,0 +1,82 @@
+{
+	"question": "What does a California FAIR Plan policy not cover?",
+	"aliases": [
+		"FAIR Plan limited fire policy what is excluded",
+		"do I need a Difference in Conditions policy with the FAIR Plan",
+		"does the FAIR Plan cover water damage or theft",
+		"FAIR Plan dwelling form exclusions California",
+		"is the FAIR Plan the same as my old homeowners policy"
+	],
+	"shortAnswer": "A great deal that an ordinary homeowners policy includes. The regulator describes the current residential offering as a limited fire policy and directs policyholders who want water damage, liability, theft, additional living expenses and other common coverages to a Difference in Conditions policy [S:cdi-fair-plan]. The Plan's own published dwelling form excludes earth movement and water damage [S:cfp-dwelling-property-policy-form], and the Plan does not write Difference in Conditions or flood itself [S:ca-fair-plan-policies].",
+	"assumes": [
+		"The policy in question is the California FAIR Plan's residential dwelling offering rather than its commercial program [S:ca-fair-plan-policies].",
+		"You are comparing it against an ordinary homeowners policy, which is the comparison that produces the surprise.",
+		"The reading here is of the published sample form; your own policy and its endorsements control."
+	],
+	"why": "The FAIR Plan exists as an insurer of last resort, established to provide basic property insurance to Californians who cannot obtain it in the traditional market [S:ca-fair-plan-how-to-apply]. Basic is doing real work in that sentence. The Department describes the Plan's current residential offering as a limited fire policy, and tells policyholders who want water damage, liability, theft, additional living expenses and other common coverages to look at a Difference in Conditions policy [S:cdi-fair-plan].\n\nThe published form is specific about two exclusions. General Exclusion 2 is earth movement, meaning earthquake including land shock waves or tremors before, during or after a volcanic eruption, landslide, mine subsidence and mudflow [S:cfp-dwelling-property-policy-form]. General Exclusion 3 is water damage, meaning flood, surface water, waves, tidal water, overflow of a body of water, or spray from any of these, whether or not driven by wind [S:cfp-dwelling-property-policy-form].\n\nThose two matter together after a fire. A burn scar sheds water, and the debris flow that follows is a mudflow rather than a fire. It arrives because of the wildfire and it is excluded by the form the wildfire made necessary.\n\nThe companion policy has to come from somewhere else, because the Plan states it does not offer Difference in Conditions or flood coverage [S:ca-fair-plan-policies]. Earthquake it addresses differently, describing cover for individually owned residential properties and for the personal property of tenants and condominium owners through the California Earthquake Authority [S:ca-fair-plan-policies].\n\nThe Plan is also explicit that it is not meant to be a first choice. It states that a broker performs a diligent search for comprehensive coverage in the traditional market, and that where coverage is available there, the FAIR Plan is not right for the applicant [S:ca-fair-plan-how-to-apply]. The Department has said a comprehensive residential option is in progress [S:cdi-fair-plan], so this is a position that may move.",
+	"whatChanges": [
+		"Whether a Difference in Conditions policy is in place alongside it, which is what the regulator points to for the missing coverages [S:cdi-fair-plan].",
+		"Whether the loss is water rather than fire, since water damage is a general exclusion on the published form [S:cfp-dwelling-property-policy-form].",
+		"Whether the loss is earth movement, including mudflow, which is separately excluded [S:cfp-dwelling-property-policy-form].",
+		"Whether coverage is actually available in the traditional market, in which case the Plan states it is not the right answer [S:ca-fair-plan-how-to-apply].",
+		"Whether the Plan's comprehensive residential option has since been completed, which the Department describes as in progress [S:cdi-fair-plan]."
+	],
+	"variability": [
+		"This describes the California FAIR Plan. FAIR Plans exist in other states with different structures and different forms; the Texas plan, for instance, is a separate association with its own eligibility rules.",
+		"The reading here is of a published sample dwelling property policy. It is a dwelling fire form rather than a homeowners form, and it is not a private carrier's filed homeowners form [S:cfp-dwelling-property-policy-form].",
+		"The Department states that a comprehensive residential policy option is in progress [S:cdi-fair-plan], so what the Plan offers is subject to change."
+	],
+	"nextActions": [
+		"Read the published dwelling property form rather than assuming it matches what you had, since the Plan publishes a sample [S:cfp-dwelling-property-policy-form].",
+		"Arrange the Difference in Conditions policy at the same time as the FAIR Plan policy, not afterwards, because the Plan does not write one [S:ca-fair-plan-policies][S:cdi-fair-plan].",
+		"Ask specifically what answers liability, theft and additional living expenses in your arrangement, since those are the ones the regulator names [S:cdi-fair-plan].",
+		"If you are in a burn scar area, ask what answers debris flow, given that mudflow sits inside the earth movement exclusion [S:cfp-dwelling-property-policy-form].",
+		"Ask your broker to record the search of the traditional market, since the Plan expects one and says it is not right for you if cover is available elsewhere [S:ca-fair-plan-how-to-apply]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"wildfire",
+		"homeowners",
+		"dwelling-fire"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"fair plan",
+		"wildfire",
+		"exclusions",
+		"difference in conditions",
+		"availability",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"wildfire-california"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"nonrenewal-after-wildfire-moratorium-california",
+		"lender-insurance-requirement"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Pairing a FAIR Plan policy with the right companion coverage is a placement decision, and what any particular Difference in Conditions policy includes is in that form rather than in any public document."
+	},
+	"sourceIds": [
+		"cdi-fair-plan",
+		"cfp-dwelling-property-policy-form",
+		"ca-fair-plan-policies",
+		"ca-fair-plan-how-to-apply"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

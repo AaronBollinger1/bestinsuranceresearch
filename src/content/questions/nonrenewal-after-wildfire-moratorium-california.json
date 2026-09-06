@@ -1,0 +1,81 @@
+{
+	"question": "My home was not damaged, but my insurer is not renewing after a nearby wildfire. Is that allowed?",
+	"aliases": [
+		"California wildfire moratorium nonrenewal one year",
+		"insurer dropped me after a fire near my house",
+		"Insurance Code 675.1 moratorium ZIP code",
+		"how much notice before a home policy is not renewed California",
+		"can my insurer cancel because I live in a fire area"
+	],
+	"shortAnswer": "Probably not, if your ZIP Code is on the commissioner's list. An insurer shall not cancel or refuse to renew a policy of residential property insurance for a property in any ZIP Code within or adjacent to the fire perimeter, for one year after the declaration of a state of emergency, based solely on the fact that the structure is in an area where a wildfire occurred [S:ca-ins-code-675-1]. The protection attaches to where you are rather than to whether you were damaged [S:cdi-moratorium].",
+	"assumes": [
+		"The policy is residential property insurance as section 675.1 uses that term, which it defines by reference to subdivision (a) of Section 10087 [S:ca-ins-code-675-1].",
+		"A state of emergency has been declared, since the one-year clock runs from that declaration [S:ca-ins-code-675-1].",
+		"The property is not primarily insuring risks arising from the conduct of a commercial or industrial enterprise, which the article does not reach [S:ca-ins-code-675]."
+	],
+	"why": "The moratorium is unusual among consumer protections because whether it applies to you is a published fact rather than a judgement call. Section 675.1 bars cancellation or nonrenewal of a residential property policy for one year after the declaration of a state of emergency, where the property sits in any ZIP Code within or adjacent to the fire perimeter, and where the decision rests solely on the structure being in an area in which a wildfire occurred [S:ca-ins-code-675-1].\n\nThe list of protected ZIP Codes is produced by a defined process. The fire perimeter is determined by the Department of Forestry and Fire Protection in consultation with the Office of Emergency Services, which supplies the perimeter data to the commissioner, who then issues a bulletin telling insurers which ZIP Codes are subject to the subdivision [S:ca-ins-code-675-1]. The Department describes the same coordination with CAL FIRE and the Governor's Office of Emergency Services in its own consumer material [S:cdi-moratorium].\n\nThe point most often missed is who it covers. The regulator states that the one-year protection applies to all residential policyholders within the affected areas who suffered less than a total loss, including those who suffered no loss at all [S:cdi-moratorium]. It is a location protection, not a damage protection, so an undamaged house inside a listed ZIP Code is squarely within it.\n\nSeparately, there are rules about how a nonrenewal must be delivered whether or not a moratorium applies. For policies expiring on or after July 1, 2020, a notice of nonrenewal must be delivered or mailed at least 75 days before expiration, and the notice must contain the specific reason or reasons for the nonrenewal [S:ca-ins-code-678]. Where the insurer fails to give the required notice, the existing policy with no change in its terms and conditions remains in effect for the corresponding period from the date the notice is finally given [S:ca-ins-code-678].",
+	"whatChanges": [
+		"Whether your ZIP Code appears in the commissioner's bulletin as within or adjacent to the fire perimeter [S:ca-ins-code-675-1].",
+		"The date of the emergency declaration, since the year runs from it rather than from the fire or from the notice [S:ca-ins-code-675-1].",
+		"Whether the stated reason is solely that the structure sits in a wildfire area, which is what the section bars [S:ca-ins-code-675-1].",
+		"Whether the named insured committed willful or grossly negligent acts materially increasing the risk, whether unrelated losses render the risk ineligible, or whether physical changes make the property uninsurable, each of which takes the protection away [S:ca-ins-code-675-1].",
+		"Whether the notice met the 75-day requirement and stated its specific reasons [S:ca-ins-code-678]."
+	],
+	"variability": [
+		"This is California. Post-disaster moratoria exist in some other states and not others, and where they exist the trigger and the length differ.",
+		"The moratorium is a pause, not a permanent entitlement. It bars nonrenewal for one year on that ground; it does not require renewal indefinitely.",
+		"Whether a particular reason is solely the wildfire location, or genuinely something else, is the point most likely to be argued, and it turns on what the notice says and what the file shows."
+	],
+	"nextActions": [
+		"Find the commissioner's bulletin for the relevant declaration and check whether your ZIP Code is listed [S:ca-ins-code-675-1][S:cdi-moratorium].",
+		"Note the date of the emergency declaration and count one year forward [S:ca-ins-code-675-1].",
+		"Read the nonrenewal notice for the specific reason it gives, which the statute requires it to contain [S:ca-ins-code-678].",
+		"Check the notice date against the 75-day requirement, because a notice given late leaves the existing policy in force for the corresponding period [S:ca-ins-code-678].",
+		"If the ZIP Code is listed and the reason is the location, raise it with the insurer in writing citing the section, and with the Department of Insurance if that does not resolve it [S:cdi-moratorium]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"wildfire",
+		"homeowners",
+		"dwelling-fire"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"wildfire",
+		"moratorium",
+		"nonrenewal",
+		"availability",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"wildfire-california"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"total-loss-how-long-must-insurer-renew-california",
+		"what-fair-plan-does-not-cover-california"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether the stated reason is solely the wildfire location is the point that decides it, and that turns on the notice and the insurer's file rather than on the statute."
+	},
+	"sourceIds": [
+		"ca-ins-code-675-1",
+		"cdi-moratorium",
+		"ca-ins-code-678",
+		"ca-ins-code-675"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}
