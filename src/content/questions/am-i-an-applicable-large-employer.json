@@ -1,0 +1,73 @@
+{
+	"question": "How is the 50-employee health coverage threshold actually counted?",
+	"aliases": [
+		"applicable large employer 50 full time employees",
+		"how are part time hours counted for ACA threshold",
+		"26 USC 4980H full-time employee definition",
+		"do part timers count toward the 50 employee test",
+		"full time equivalent divide by 120"
+	],
+	"shortAnswer": "As an average over the previous calendar year, counting part-time hours as fractions of a person. An applicable large employer is one who employed an average of at least 50 full-time employees on business days during the preceding calendar year [S:usc-26-4980h-applicable-large-employer]. Full-time means employed on average at least 30 hours of service per week for the month, and part-time hours are converted by dividing the aggregate monthly hours of employees who are not full-time by 120 [S:usc-26-4980h-applicable-large-employer].",
+	"assumes": [
+		"You are asking about the federal shared responsibility threshold in section 4980H rather than about any state requirement.",
+		"The question is how the count works rather than what an employer over the threshold must then offer.",
+		"Hours of service is being applied as the statute uses it; how particular categories of time are treated is addressed in regulation rather than in the section itself."
+	],
+	"why": "Two numbers are commonly misremembered and both run against the employer.\n\nThe first is what full-time means. The statute defines a full-time employee as, with respect to any month, an employee who is employed on average at least 30 hours of service per week [S:usc-26-4980h-applicable-large-employer]. Thirty, not forty. An employer thinking in forty-hour terms will undercount its own full-time population before it starts.\n\nThe second is that part-time work is not excluded, it is converted. In addition to the number of full-time employees otherwise determined for a month, an employer must include a number of full-time employees determined by dividing the aggregate number of hours of service of employees who are not full-time for that month by 120 [S:usc-26-4980h-applicable-large-employer]. So a group of part-timers between them produce whole units in the count even though no one of them is full-time.\n\nThe third feature is the timeframe. The test is an average of at least 50 full-time employees on business days during the preceding calendar year [S:usc-26-4980h-applicable-large-employer]. It looks backwards and it averages, which cuts both ways: a single busy quarter does not by itself cross the line, and a business that has since shrunk can still be over the threshold for the current year on last year's figures.\n\nPut together, an employer can become an applicable large employer without ever having 50 people on the payroll at one time, and without anyone deciding anything. That is why the count is worth redoing on the statutory basis each year rather than estimated from headcount.",
+	"whatChanges": [
+		"Whether hours are measured against 30 per week rather than 40, which is the statutory full-time test [S:usc-26-4980h-applicable-large-employer].",
+		"The aggregate hours of everyone who is not full-time, since those are divided by 120 and added in [S:usc-26-4980h-applicable-large-employer].",
+		"Which calendar year is being looked at, because the test runs on the preceding one [S:usc-26-4980h-applicable-large-employer].",
+		"Whether the workforce is seasonal or variable, since the test averages across business days rather than taking a point in time [S:usc-26-4980h-applicable-large-employer]."
+	],
+	"variability": [
+		"This is the federal threshold only. States set their own requirements for employers, and several reach well below 50.",
+		"The statute defines the count. How specific categories of time are treated as hours of service, and the measurement methods available for variable-hour employees, are addressed in regulation rather than in this section.",
+		"Being an applicable large employer is the beginning of the analysis rather than the end of it. What must then be offered, and to whom, is a separate question this record does not answer."
+	],
+	"nextActions": [
+		"Recount on the statutory basis for the preceding calendar year rather than from a current headcount [S:usc-26-4980h-applicable-large-employer].",
+		"Identify everyone averaging at least 30 hours of service per week for a month, which is the full-time population the test starts from [S:usc-26-4980h-applicable-large-employer].",
+		"Total the monthly hours of everyone who is not full-time and divide by 120, then add the result [S:usc-26-4980h-applicable-large-employer].",
+		"If the answer is near 50, take it to an adviser before the year turns, because the consequence attaches to the following year rather than to the moment you cross.",
+		"Keep the working, since the count is an average across a year and cannot be reconstructed from memory later."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "health",
+	"lines": [
+		"group-health",
+		"employee-benefits"
+	],
+	"states": [],
+	"audience": "business-owner",
+	"topics": [
+		"applicable large employer",
+		"shared responsibility",
+		"full-time equivalent",
+		"group health",
+		"headcount"
+	],
+	"companies": [],
+	"coverages": [
+		"employer-group-health-federal"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"how-long-to-elect-cobra-continuation"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "The count is arithmetic but the inputs are not: how particular time counts as hours of service, and which measurement method applies to variable-hour employees, are addressed in regulation and worth advice where the answer is near the threshold."
+	},
+	"sourceIds": [
+		"usc-26-4980h-applicable-large-employer"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

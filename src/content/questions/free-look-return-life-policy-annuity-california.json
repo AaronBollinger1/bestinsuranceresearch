@@ -1,0 +1,79 @@
+{
+	"question": "Can I return a life policy or annuity after buying it, and do I get everything back?",
+	"aliases": [
+		"free look period California life insurance",
+		"30 day return annuity senior California",
+		"Insurance Code 10127.9 free look",
+		"do I get a full refund if I cancel a variable policy",
+		"cancel life insurance within 10 days of receiving it"
+	],
+	"shortAnswer": "Yes, within a window printed on the policy, and not always everything. Every individual life policy and annuity contract issued for delivery in California must carry a notice on the jacket or cover page that it may be returned for cancellation, with the period clearly stated and set at not less than 10 days nor more than 30 [S:ca-ins-code-10127-9]. A purchaser aged 60 or older on the date of purchase has 30 days [S:ca-ins-code-10127-10]. On a variable contract what comes back is account value, not the premiums paid [S:ca-ins-code-10127-9].",
+	"assumes": [
+		"The contract is an individual life insurance policy or an individual annuity contract delivered or issued for delivery in California [S:ca-ins-code-10127-9].",
+		"You are within the period stated on the cover page, or within 30 days if you were 60 or older on the date of purchase [S:ca-ins-code-10127-10].",
+		"You are asking what the statute requires rather than what any particular insurer offers beyond it."
+	],
+	"why": "The window is real but it is not one number. Section 10127.9 requires the notice to be printed on the front of the policy jacket or the cover page, stating that after receipt the policy may be returned for cancellation by mail or other delivery to the insurer or to the agent through which it was purchased [S:ca-ins-code-10127-9]. The period the insurer sets must be clearly stated and shall be not less than 10 days nor more than 30 [S:ca-ins-code-10127-9]. So the answer to how long you have is on your own cover page, and two policies bought the same week can differ.\n\nAge changes it. For a purchaser who is 60 years of age or older on the date of purchase, the return period is 30 days from the date the policy is received, and the prescribed notice must appear on the cover page in 12-point bold print with an inch of space around it [S:ca-ins-code-10127-10].\n\nWhat comes back is the part that surprises people. For an ordinary policy, all premiums paid and any policy fee are refunded within 30 days from the date the insurer is notified of the cancellation [S:ca-ins-code-10127-9]. For a variable contract, what is refunded is the account value and the policy fee [S:ca-ins-code-10127-9], and the senior provision spells out the consequence: for a variable policy whose premium is invested in mutual funds, the refund is the account value on the day the policy is received by the insurer or agent, which the statute itself says could be less than the premium paid [S:ca-ins-code-10127-10]. A market movement during the window is therefore the buyer's, in both directions.\n\nOne product has no second chance after the window. The statute states that for an immediate annuity, after the 30-day period has expired, the purchaser may not be able to get the purchase payment money back [S:ca-ins-code-10127-10].",
+	"whatChanges": [
+		"The period actually printed on your cover page, which the insurer sets anywhere between 10 and 30 days [S:ca-ins-code-10127-9].",
+		"Your age on the date of purchase, since 60 or older brings the 30-day period [S:ca-ins-code-10127-10].",
+		"Whether the contract is variable, which changes the refund from premiums paid to account value [S:ca-ins-code-10127-9].",
+		"For a senior's variable policy invested in mutual funds, what the account was worth on the day the policy was received back, since that is the amount refunded [S:ca-ins-code-10127-10].",
+		"Whether the product is an immediate annuity, where the statute warns the purchase payment may not be recoverable after the window [S:ca-ins-code-10127-10]."
+	],
+	"variability": [
+		"These are California sections. Free look periods exist in most states but the lengths, the senior provisions and the variable-contract treatment differ.",
+		"An insurer may offer a longer period than the statute requires. The statute sets a floor of 10 days and a ceiling of 30 on what must be stated, and what your policy says governs your policy.",
+		"This record states the return right and the refund basis. What the policy itself covers, and whether it suits you, are separate questions it does not answer."
+	],
+	"nextActions": [
+		"Look at the front of the policy jacket or cover page and read the stated period, rather than assuming a standard one [S:ca-ins-code-10127-9].",
+		"Note the date you received the policy, because both periods run from receipt rather than from the application or the issue date [S:ca-ins-code-10127-10].",
+		"If the contract is variable, ask what the account value is before deciding, since that is what would be refunded rather than what you paid [S:ca-ins-code-10127-9].",
+		"Return it by a method that records the date, since the refund is due within 30 days from the date the insurer is notified [S:ca-ins-code-10127-9].",
+		"If it is an immediate annuity, treat the window as the decision point rather than as paperwork [S:ca-ins-code-10127-10]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "life",
+	"lines": [
+		"individual-life",
+		"term-life",
+		"permanent-life"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"free look",
+		"annuity",
+		"life insurance",
+		"refund",
+		"seniors",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"individual-life-california"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"life-policy-lapsed-missed-payment-california"
+	],
+	"handoff": {
+		"recommended": false,
+		"reason": "The window and the refund basis are set by statute and printed on your own policy, so the answer does not depend on a conversation. What the policy is worth keeping is a different question entirely."
+	},
+	"sourceIds": [
+		"ca-ins-code-10127-9",
+		"ca-ins-code-10127-10"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

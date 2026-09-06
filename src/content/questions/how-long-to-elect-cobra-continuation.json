@@ -1,0 +1,77 @@
+{
+	"question": "How long do I have to elect COBRA continuation after losing coverage?",
+	"aliases": [
+		"COBRA election period 60 days",
+		"how long to sign up for COBRA after leaving a job",
+		"29 USC 1165 election period",
+		"COBRA notice deadline employer 30 days",
+		"what if my COBRA notice arrived late"
+	],
+	"shortAnswer": "At least 60 days, and the clock is generous about a late notice. The election period begins not later than the date coverage terminates by reason of the qualifying event, runs for at least 60 days, and ends not earlier than 60 days after the later of that date or the date you receive the notice [S:usc-29-1165-election-period]. So a notice that arrives late moves the deadline rather than eating into it. Payment is not required before day 45 after the initial election [S:usc-29-1162-continuation-period].",
+	"assumes": [
+		"The plan is a group health plan subject to the federal continuation rules in this part.",
+		"A qualifying event has occurred, meaning one of the six events the statute lists [S:usc-29-1163-qualifying-events].",
+		"You are asking about the federal election window rather than about any state continuation law that may sit on top of it."
+	],
+	"why": "Three sections between them decide whether continuation is actually available, and they run on different clocks.\n\nThe election period is defined so that it cannot be shortened by somebody else's delay. It begins not later than the date on which coverage terminates by reason of the qualifying event, is of at least 60 days' duration, and ends not earlier than 60 days after the later of that date or, for a beneficiary who receives notice under section 1166(4), the date of that notice [S:usc-29-1165-election-period]. The operative word is later. A notice that should have arrived in March and arrives in June resets the end of the window to 60 days from June.\n\nGetting the notice at all depends on a chain with three links. The employer must notify the plan administrator of a death, a termination or reduction of hours, Medicare entitlement, or a title 11 proceeding within 30 days of the qualifying event [S:usc-29-1166-notice-requirements]. The administrator then has 14 days from being notified to tell the qualified beneficiary of their rights [S:usc-29-1166-notice-requirements]. But for two events the duty sits on the individual instead: divorce or legal separation, and a child ceasing to be a dependent, must be reported by the covered employee or qualified beneficiary to the administrator within 60 days [S:usc-29-1166-notice-requirements]. Those are precisely the two events no payroll system can see, which is why the statute allocates them differently, and they are the ones most often missed.\n\nElecting is not the same as paying. In no event may the plan require payment of any premium before the day which is 45 days after the day the qualified beneficiary made the initial election [S:usc-29-1162-continuation-period]. That matters to somebody who has just lost their income alongside their coverage, and it means the decision does not have to be funded on the day it is made.",
+	"whatChanges": [
+		"When coverage actually terminated by reason of the qualifying event, which is one end of the comparison [S:usc-29-1165-election-period].",
+		"When the notice was received, since the window ends 60 days after the later of the two dates [S:usc-29-1165-election-period].",
+		"Which qualifying event occurred, because that decides who had the duty to report it [S:usc-29-1166-notice-requirements][S:usc-29-1163-qualifying-events].",
+		"Whether the event was a divorce, legal separation or a child ageing out, in which case you had 60 days to tell the administrator [S:usc-29-1166-notice-requirements].",
+		"Whether the plan is a multiemployer plan, which the statute allows to provide longer notice periods in its own terms [S:usc-29-1166-notice-requirements]."
+	],
+	"variability": [
+		"This is the federal floor. Several states add their own continuation rights, including for employers below the federal threshold, and those run on their own timetables.",
+		"The statute sets minimum periods. A plan may be more generous, and what your plan documents say governs where they exceed the statute.",
+		"Whether a termination was for gross misconduct is contested territory, and it is the one carve-out in the qualifying event list [S:usc-29-1163-qualifying-events]."
+	],
+	"nextActions": [
+		"Write down two dates: the date coverage ended, and the date the notice arrived. The window is measured from the later of them [S:usc-29-1165-election-period].",
+		"Keep the envelope or the email header, because the notice date is what fixes your deadline and the burden of showing it usually falls on the plan [S:usc-29-1165-election-period].",
+		"If the event was a divorce, legal separation, or a child ceasing to be a dependent, notify the administrator promptly, since that duty is yours and runs 60 days [S:usc-29-1166-notice-requirements].",
+		"Do not assume you must pay on the day you elect. No premium may be required before day 45 after the initial election [S:usc-29-1162-continuation-period].",
+		"If no notice ever arrived, say so in writing to the administrator rather than letting the date pass, because the window turns on when notice was given [S:usc-29-1165-election-period]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "health",
+	"lines": [
+		"group-health",
+		"employee-benefits"
+	],
+	"states": [],
+	"audience": "individual",
+	"topics": [
+		"cobra",
+		"continuation coverage",
+		"election period",
+		"deadlines",
+		"group health"
+	],
+	"companies": [],
+	"coverages": [
+		"employer-group-health-federal"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"am-i-an-applicable-large-employer"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a notice was validly given, and whether a termination is characterised as gross misconduct, decide the answer and are questions about your facts rather than about the statute."
+	},
+	"sourceIds": [
+		"usc-29-1165-election-period",
+		"usc-29-1166-notice-requirements",
+		"usc-29-1162-continuation-period",
+		"usc-29-1163-qualifying-events"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

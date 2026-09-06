@@ -1,0 +1,78 @@
+{
+	"question": "My life insurance lapsed because I missed a payment. Was the insurer allowed to do that?",
+	"aliases": [
+		"life insurance lapsed for nonpayment California",
+		"60 day grace period life insurance California",
+		"did my insurer have to send a lapse notice",
+		"Insurance Code 10113.71 lapse notice",
+		"designee to receive notice of lapse life policy"
+	],
+	"shortAnswer": "Possibly not, and the question turns on notice rather than on payment. In California an individual life policy must carry a grace period of not less than 60 days from the premium due date, and that period does not run concurrently with the coverage already paid for [S:ca-ins-code-10113-71]. A notice of pending lapse and termination is not effective unless mailed at least 30 days before the termination date, to the policy owner, to any designee, and to a known assignee [S:ca-ins-code-10113-71].",
+	"assumes": [
+		"The policy is an individual life insurance policy and the termination was for nonpayment of premium, which is the situation the section addresses [S:ca-ins-code-10113-71].",
+		"The policy is subject to California law.",
+		"You are asking whether the lapse was effective, not whether the premium was owed."
+	],
+	"why": "Two provisions work together and the second is stronger than it first reads.\n\nThe first is time. An individual life policy must provide a grace period of not less than 60 days from the premium due date, and the statute adds that the 60-day grace period shall not run concurrently with the period of paid coverage [S:ca-ins-code-10113-71]. That second sentence is the one that matters: the grace period is additional time, not a relabelling of coverage already bought, so the window is longer than most people assume rather than shorter.\n\nThe second is notice, and the wording is unusual. The statute does not say the insurer must send a notice; it says a notice of pending lapse and termination shall not be effective unless mailed at least 30 days prior to the effective date of termination [S:ca-ins-code-10113-71]. A notice that does not meet the requirement therefore does not merely breach a duty. It fails to do the thing it was for, which means the lapse it purported to effect did not happen.\n\nWho it must reach is equally specific: the named policy owner, a designee named under section 10113.72, and a known assignee or other person having an interest in the policy [S:ca-ins-code-10113-71].\n\nThat designee is the point of a separate section. An individual life policy shall not be issued or delivered in California until the applicant has been given the right to designate at least one person, in addition to the applicant, to receive notice of lapse or termination for nonpayment [S:ca-ins-code-10113-72]. The insurer must supply a form for it, and must notify the policy owner annually of the right to change or add a designation [S:ca-ins-code-10113-72]. The protection exists because the person most likely to miss a premium notice is often the person least able to act on one.",
+	"whatChanges": [
+		"Whether a notice was mailed at least 30 days before the effective date of termination, since a notice that was not is not effective [S:ca-ins-code-10113-71].",
+		"Who it was mailed to. The owner, any designee, and a known assignee or other interested person are all named [S:ca-ins-code-10113-71].",
+		"Whether a designee had been named at all, and whether the annual opportunity to change one was given [S:ca-ins-code-10113-72].",
+		"When the premium was due, because the grace period runs from that date and does not overlap paid coverage [S:ca-ins-code-10113-71].",
+		"Whether the policy had been assigned, since a known assignee is entitled to the notice [S:ca-ins-code-10113-71]."
+	],
+	"variability": [
+		"These are California sections and do not describe the position elsewhere. Grace periods and lapse-notice duties are state law and vary considerably.",
+		"Whether these sections apply to a policy issued before they took effect has been the subject of litigation, and this record does not resolve that question.",
+		"Whether a particular notice satisfied the section is a legal question about what was sent, when, and to whom, decided on evidence rather than on a general description."
+	],
+	"nextActions": [
+		"Ask the insurer in writing for the date the lapse notice was mailed, the address it went to, and every person it was sent to [S:ca-ins-code-10113-71].",
+		"Ask whether a designation form was ever provided, and whether the annual notice of the right to change it was given [S:ca-ins-code-10113-72].",
+		"Establish the premium due date and count 60 days from it, remembering that the grace period does not overlap coverage already paid for [S:ca-ins-code-10113-71].",
+		"If the notice looks defective, take it to a lawyer rather than to the insurer alone, because the consequence in the statute is that the notice is not effective."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "life",
+	"lines": [
+		"individual-life",
+		"term-life",
+		"permanent-life"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"life insurance",
+		"lapse",
+		"grace period",
+		"notice",
+		"designee",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"individual-life-california"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"free-look-return-life-policy-annuity-california"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a particular notice met the section, and whether these provisions reach a policy issued before they took effect, are legal questions decided on evidence about what was actually sent."
+	},
+	"sourceIds": [
+		"ca-ins-code-10113-71",
+		"ca-ins-code-10113-72"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}
