@@ -1,0 +1,80 @@
+{
+	"question": "How long does someone have to file an employment discrimination claim in California?",
+	"aliases": [
+		"California FEHA filing deadline three years",
+		"how long to file a discrimination complaint CRD",
+		"EEOC charge deadline 180 or 300 days",
+		"Government Code 12960 time limit",
+		"employment claim statute of limitations California"
+	],
+	"shortAnswer": "Three years for a California complaint, and far less federally. A complaint alleging a violation of section 12940 may not be filed with the department after three years from the date the unlawful practice occurred [S:ca-gov-code-12960]. A federal charge generally must be filed within 180 calendar days, extended to 300 where a state or local agency enforces a law prohibiting the same conduct [S:eeoc-time-limits-filing-charge]. The two run in parallel on the same facts.",
+	"assumes": [
+		"The claim is about an unlawful employment practice under Article 1 of the Fair Employment and Housing Act, which is the branch section 12960(e)(5) covers [S:ca-gov-code-12960].",
+		"You are asking about the deadline to start an administrative complaint or charge, not the separate period to bring a civil action after a right-to-sue notice.",
+		"The employer is large enough to be covered by the law relied on, since federal coverage begins at 15 employees and age discrimination at 20 [S:eeoc-small-business-requirements]."
+	],
+	"why": "Two clocks run on the same facts and they are very different lengths, which is the practical point of this question. Section 12960(e)(5) provides that a complaint alleging a violation of Civil Code section 51.9, or any other violation of Article 1 commencing with section 12940, shall not be filed after the expiration of three years from the date upon which the unlawful practice or refusal to cooperate occurred [S:ca-gov-code-12960]. That is the California administrative deadline for the practices in section 12940, which include discrimination, retaliation, harassment and the failure to take reasonable preventive steps [S:ca-gov-code-12940].\n\nFederally the window is much shorter. In general a charge must be filed within 180 calendar days from the day the discrimination took place, extended to 300 calendar days where a state or local agency enforces a law prohibiting employment discrimination on the same basis [S:eeoc-time-limits-filing-charge]. For age discrimination the extension to 300 days applies only where a state law prohibits age discrimination in employment and a state agency enforces it [S:eeoc-time-limits-filing-charge]. Holidays and weekends count, and a deadline falling on a weekend or holiday moves to the next business day [S:eeoc-time-limits-filing-charge].\n\nNot every California claim gets three years. Section 12960(e)(1) sets one year for a complaint alleging a violation of Civil Code sections 51, 51.5, 51.7, 54, 54.1 or 54.2 [S:ca-gov-code-12960], so the deadline depends on what is alleged rather than on where the person worked. Section 12960(e)(6) provides for extensions in specified circumstances, including discovery of the facts within 90 days after expiration of the period, correction of the identity of the employer, and attainment of the age of majority [S:ca-gov-code-12960].\n\nFor an employer this is a question about tail rather than about compliance. People who left three years ago are still inside the California window, which is why the records that answer a claim have to survive longer than the employment did.",
+	"whatChanges": [
+		"What is alleged. Article 1 practices carry three years under section 12960(e)(5); the listed Civil Code claims carry one year under section 12960(e)(1) [S:ca-gov-code-12960].",
+		"Whether the claim is brought federally or in California, since the federal charge deadline is 180 or 300 days [S:eeoc-time-limits-filing-charge].",
+		"Whether a state or local agency enforces a law prohibiting the same basis of discrimination, which is what extends the federal deadline to 300 days [S:eeoc-time-limits-filing-charge].",
+		"Whether an extension under section 12960(e)(6) applies, such as late discovery, a corrected employer identity, or attainment of majority [S:ca-gov-code-12960].",
+		"Whether the employer is covered at all, which begins at 15 employees federally and at 20 for age discrimination [S:eeoc-small-business-requirements]."
+	],
+	"variability": [
+		"This record states the administrative filing period only. The separate period within which a civil action must be brought after a right-to-sue notice is a different question and is not answered here.",
+		"The three-year period is the result of amendment, and filing periods have moved before. Confirm the current text before relying on a date [S:ca-gov-code-12960].",
+		"Deadlines of this kind are frequently disputed on when the practice occurred rather than on the length of the period, and that is a legal question about the facts."
+	],
+	"nextActions": [
+		"If you are an employee, note the date the practice occurred, because both clocks run from it rather than from when you decided to act [S:ca-gov-code-12960][S:eeoc-time-limits-filing-charge].",
+		"If you are an employer, set record retention against the three-year window rather than against the one-year personnel record minimum, since the longer exposure outlives the shorter duty [S:ca-gov-code-12960][S:eeoc-recordkeeping-requirements].",
+		"Once a charge is filed, stop routine deletion. All records relevant to the charge must be preserved until final disposition of the charge or any lawsuit based on it [S:eeoc-recordkeeping-requirements].",
+		"Take the specific dates to a lawyer rather than working from a general period, because when the practice occurred is usually the contested point."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": [
+		"employment-practices-liability",
+		"wage-and-hour-defense"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "business-owner",
+	"topics": [
+		"deadlines",
+		"feha",
+		"eeoc",
+		"employment practices",
+		"recordkeeping",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"employment-practices-liability"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"customer-harasses-my-employee-liability-california"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "When the unlawful practice occurred is usually the contested question rather than the length of the period, and that is a legal judgement about specific facts."
+	},
+	"sourceIds": [
+		"ca-gov-code-12960",
+		"ca-gov-code-12940",
+		"eeoc-time-limits-filing-charge",
+		"eeoc-small-business-requirements",
+		"eeoc-recordkeeping-requirements"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

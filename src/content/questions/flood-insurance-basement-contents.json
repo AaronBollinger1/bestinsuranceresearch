@@ -1,0 +1,75 @@
+{
+	"question": "Is anything in my basement covered by flood insurance?",
+	"aliases": [
+		"NFIP basement coverage contents",
+		"does flood insurance cover a finished basement",
+		"what is covered below the lowest elevated floor",
+		"flood insurance basement exclusion list",
+		"44 CFR 61 appendix A basement property"
+	],
+	"shortAnswer": "Very little. Below the lowest elevated floor or in a basement, the only personal property the Standard Flood Insurance Policy covers is air conditioning units of the portable or window type, clothes washers and dryers, and food freezers other than walk-in together with the food in any freezer [S:nfip-sfip-dwelling-form]. That is the entire list. A defined set of building items is also covered there, but they must be installed in their functioning locations and, where operation requires it, connected to a power source [S:nfip-sfip-dwelling-form].",
+	"assumes": [
+		"The policy is a Standard Flood Insurance Policy on the Dwelling Form [S:nfip-sfip-dwelling-form].",
+		"The space in question is a basement or is below the lowest elevated floor, which is what triggers the Article III.A.8 restriction [S:nfip-sfip-dwelling-form].",
+		"You are asking what the form reaches rather than what limit to buy, since buying a larger limit does not extend the restriction."
+	],
+	"why": "Article III.A.8 of the Dwelling Form restricts coverage for property in a basement or below the lowest elevated floor to a listed set of items, and requires that those items be installed in their functioning locations and, if necessary for operation, connected to a power source [S:nfip-sfip-dwelling-form]. The building items that qualify are things that serve the structure rather than furnish it, and the personal property list is very short: portable or window air conditioning units, clothes washers and dryers, and food freezers other than walk-in, with the food in any freezer [S:nfip-sfip-dwelling-form].\n\nThe consequence is the part worth being clear about. A finished lower level with living space, furniture, clothing, electronics, tools, books and stored belongings is largely outside the cover, no matter how much personal property limit was purchased. The restriction is written into the form rather than priced into it, so it cannot be bought around on this policy.\n\nTwo related points often come up at the same time. Contents under this policy settle at actual cash value, the cost to replace at the time of loss less physical depreciation, and the programme offers no full replacement cost option for belongings [S:nfip-agents-coverage][S:nfip-sfip-dwelling-form]. And a separate cap applies regardless of where items are kept: no more than $2,500 for any one loss to listed categories including artwork, photographs, collectibles or memorabilia, rare books, jewelry and furs [S:nfip-sfip-dwelling-form].",
+	"whatChanges": [
+		"Whether the space is genuinely a basement or below the lowest elevated floor, which is what brings the restriction into play [S:nfip-sfip-dwelling-form].",
+		"Whether an item is on the listed set at all, since the personal property list names only three categories [S:nfip-sfip-dwelling-form].",
+		"Whether a listed item is installed in its functioning location and connected to a power source where operation requires it [S:nfip-sfip-dwelling-form].",
+		"Nothing about the limit purchased. The restriction is about what the form reaches rather than about how much it will pay [S:nfip-sfip-dwelling-form]."
+	],
+	"variability": [
+		"This is the NFIP Dwelling Form. A private flood policy is written on its own wording and may treat below-grade property differently.",
+		"The residential condominium association form and the non-residential forms are separate appendices and are not described by this record.",
+		"How a particular adjuster characterises a given space is a question of fact about the building rather than a question about the form."
+	],
+	"nextActions": [
+		"Move what matters above the lowest elevated floor, because that is the only way to bring belongings inside this cover [S:nfip-sfip-dwelling-form].",
+		"Read Article III of your own policy, which is public and short, rather than relying on a summary [S:nfip-sfip-dwelling-form].",
+		"Keep high value categories somewhere else entirely, given the $2,500 cap that applies to them wherever they sit [S:nfip-sfip-dwelling-form].",
+		"If a finished lower level is a large part of your exposure, ask a broker what a private flood policy says about below-grade property before assuming it matches."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"flood",
+		"residential-flood",
+		"homeowners"
+	],
+	"states": [],
+	"audience": "individual",
+	"topics": [
+		"flood",
+		"nfip",
+		"basement",
+		"contents",
+		"exclusions"
+	],
+	"companies": [],
+	"coverages": [
+		"flood-nfip"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"flood-insurance-living-expenses",
+		"replacement-cost-vs-market-value"
+	],
+	"handoff": {
+		"recommended": false,
+		"reason": "The restriction is in a published federal form and is identical on every NFIP policy, so nothing about your own placement changes it. A conversation helps only when weighing a private alternative."
+	},
+	"sourceIds": [
+		"nfip-sfip-dwelling-form",
+		"nfip-agents-coverage"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

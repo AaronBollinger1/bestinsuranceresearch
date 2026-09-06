@@ -1,0 +1,76 @@
+{
+	"question": "How long do I have to claim on a payment bond for unpaid work on a federal job?",
+	"aliases": [
+		"Miller Act payment bond deadline",
+		"90 day notice payment bond federal project",
+		"how long to sue on a Miller Act bond",
+		"40 USC 3133 notice requirement",
+		"unpaid subcontractor federal construction bond claim"
+	],
+	"shortAnswer": "One year to sue, and for some claimants a 90 day notice before that. An action must be brought no later than one year after the day the claimant last performed labor or supplied material [S:usc-40-3133-miller-act-claims]. A claimant with a contract with a subcontractor but none with the prime must additionally give the prime written notice within 90 days of that same date [S:usc-40-3133-miller-act-claims]. Both clocks run from your own last day of work, not from when payment was refused.",
+	"assumes": [
+		"The project is a federal public building or public work for which a payment bond was furnished under 40 U.S.C. 3131 [S:usc-40-3131-miller-act].",
+		"You furnished labor or material in carrying out the work provided for in that contract [S:usc-40-3133-miller-act-claims].",
+		"You are asking about the bond claim rather than about a lien, which is not available against federal property."
+	],
+	"why": "The Miller Act splits across two sections and the one people cite is not the one that pays. Section 3131 requires the bonds to exist: before a federal contract of more than $100,000 for construction, alteration or repair is awarded, a performance bond and a payment bond must be furnished, the payment bond being for the protection of all persons supplying labor and material [S:usc-40-3131-miller-act]. Section 3133 is what turns that into money.\n\nUnder section 3133(b)(1), a person who has furnished labor or material and has not been paid in full within 90 days after the day they last did so may bring a civil action on the payment bond for the amount unpaid [S:usc-40-3133-miller-act-claims]. That first 90 days is a waiting period, not a deadline.\n\nThe deadline that catches people is in section 3133(b)(2). A person having a direct contractual relationship with a subcontractor but no contractual relationship, express or implied, with the contractor furnishing the bond may bring an action only on giving written notice to the contractor within 90 days from the date on which that person last performed labor or supplied material [S:usc-40-3133-miller-act-claims]. The notice must be served by a means that provides written, third-party verification of delivery to the contractor at a place it maintains an office or conducts business or at its residence, or in any manner in which a United States marshal may by law serve summons [S:usc-40-3133-miller-act-claims].\n\nOver both sits the limitation: an action must be brought no later than one year after the day the claimant last performed labor or supplied material [S:usc-40-3133-miller-act-claims]. Both periods run from the claimant's own last day on the job, which is why waiting to see whether payment arrives is how the right is lost.\n\nOne protection runs the other way and is worth knowing before signing anything. A waiver of the right to bring a civil action on a Miller Act payment bond is void unless it is in writing, signed by the person whose right is waived, and executed after that person has furnished the labor or material [S:usc-40-3133-miller-act-claims]. A waiver buried in a subcontract at award is void.",
+	"whatChanges": [
+		"Whether you have a direct contract with the prime. If you do, the 90 day notice in subdivision (b)(2) does not apply to you; if your contract is with a subcontractor, it does [S:usc-40-3133-miller-act-claims].",
+		"The date you last performed labor or supplied material, because both the notice period and the one year limitation run from it [S:usc-40-3133-miller-act-claims].",
+		"How the notice was served, since the statute prescribes means that produce third-party verification of delivery or marshal-style service [S:usc-40-3133-miller-act-claims].",
+		"Whether a waiver was signed, and crucially whether it was signed before or after the work was furnished, because a waiver executed beforehand is void [S:usc-40-3133-miller-act-claims].",
+		"Whether the contract exceeded the threshold that required a payment bond at all [S:usc-40-3131-miller-act]. Between $35,000 and $150,000 the contracting officer selects alternative payment protections instead [S:far-28-102-1]."
+	],
+	"variability": [
+		"This is the federal Miller Act. State public works are covered by separate little Miller Act statutes with their own periods, and private projects are usually a mechanics lien question instead.",
+		"Where the contract is greater than $35,000 but not greater than $150,000, the protection may be an irrevocable letter of credit, a tripartite escrow agreement, certificates of deposit or a deposit of assets rather than a bond [S:far-28-102-1], and those are claimed differently.",
+		"Whether a particular relationship counts as a direct contractual relationship with a subcontractor is a legal question about the contracting chain, and remoteness beyond that tier is a recognised limit this record does not address."
+	],
+	"nextActions": [
+		"Fix the date you last performed labor or supplied material and diary both 90 days and one year from it, before anything else [S:usc-40-3133-miller-act-claims].",
+		"If your contract is with a subcontractor rather than the prime, send the written notice by a method producing third-party proof of delivery and keep the proof [S:usc-40-3133-miller-act-claims].",
+		"Ask for a copy of the payment bond. It was required to be furnished before the contract was awarded [S:usc-40-3131-miller-act].",
+		"Check any waiver you were asked to sign against the timing rule, since one executed before the work was furnished is void [S:usc-40-3133-miller-act-claims].",
+		"Take the dates to a construction lawyer rather than relying on a general period, because the action must be brought in the name of the United States for your use and in a specified district [S:usc-40-3133-miller-act-claims]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": [
+		"surety",
+		"contract-surety"
+	],
+	"states": [],
+	"audience": "business-owner",
+	"topics": [
+		"surety",
+		"payment bond",
+		"miller act",
+		"deadlines",
+		"construction"
+	],
+	"companies": [],
+	"coverages": [
+		"surety-bonds"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"surety-bond-vs-insurance"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether your contracting position gives you a right of action, and whether notice was validly given, are legal questions about the chain and the service method rather than about the length of the periods."
+	},
+	"sourceIds": [
+		"usc-40-3133-miller-act-claims",
+		"usc-40-3131-miller-act",
+		"far-28-102-1"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

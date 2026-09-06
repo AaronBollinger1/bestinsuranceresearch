@@ -1,0 +1,75 @@
+{
+	"question": "Does flood insurance pay for somewhere to live while my home is repaired?",
+	"aliases": [
+		"does NFIP cover additional living expenses",
+		"flood insurance loss of use coverage",
+		"where do I live after a flood insurance claim",
+		"does flood insurance pay for a hotel",
+		"NFIP additional living expense exclusion"
+	],
+	"shortAnswer": "No. The Standard Flood Insurance Policy excludes any additional living expenses incurred while the insured building is being repaired or is unable to be occupied for any reason, and also excludes loss of revenue or profits and loss from interruption of business or production [S:nfip-sfip-dwelling-form]. Flood routinely empties a home for months, and this policy pays nothing toward living elsewhere during that time.",
+	"assumes": [
+		"The policy is a Standard Flood Insurance Policy on the Dwelling Form, which is codified at 44 CFR part 61 appendix A(1) [S:nfip-sfip-dwelling-form].",
+		"You are asking about the cost of living elsewhere rather than about repairing the building itself.",
+		"The loss is a flood as the policy defines it, meaning a general and temporary condition of partial or complete inundation of two or more acres or of two or more properties, one of which is yours [S:nfip-sfip-dwelling-form]."
+	],
+	"why": "This is the largest gap between what people expect flood insurance to do and what the form actually says, and it is stated plainly rather than buried. Article V of the Dwelling Form excludes any additional living expenses incurred while the insured building is being repaired or is unable to be occupied for any reason [S:nfip-sfip-dwelling-form]. The same article excludes loss of revenue or profits and loss from interruption of business or production [S:nfip-sfip-dwelling-form], so a flooded business recovers property and not the trading it lost.\n\nThe reason this surprises people is that homeowners policies commonly do provide loss of use cover, so the expectation is carried across from a different contract. Flood is a separate policy on a separate form, and most homeowners insurance does not cover flood damage at all [S:fema-nfip-eligibility]. The two do not fill each other's gaps.\n\nThe practical size of the exposure is worth stating. Flood damage frequently makes a dwelling uninhabitable for an extended period, and during that period the household is paying for somewhere else to live while still meeting its ordinary obligations. Nothing in this policy answers that, whatever limit was purchased on the building or the contents.\n\nThere is one adjacent coverage that is sometimes confused with it. Coverage D, Increased Cost of Compliance, pays up to $30,000 toward bringing a damaged building into compliance with floodplain management requirements, and applies only to policies carrying building coverage [S:nfip-sfip-dwelling-form]. That is money for the building, not for the household.",
+	"whatChanges": [
+		"Nothing in the policy. The exclusion is unqualified as to the reason the building cannot be occupied, applying while it is being repaired or is unable to be occupied for any reason [S:nfip-sfip-dwelling-form].",
+		"Whether another policy responds. A homeowners policy may provide loss of use for a peril it covers, but it generally does not cover flood damage [S:fema-nfip-eligibility].",
+		"Whether the loss is residential or business, since loss of revenue, profits and business interruption are excluded by the same article [S:nfip-sfip-dwelling-form].",
+		"Whether the property qualifies for Increased Cost of Compliance, which is building money capped at $30,000 and requires building coverage [S:nfip-sfip-dwelling-form]."
+	],
+	"variability": [
+		"This is the NFIP Dwelling Form. Private flood policies are written on their own wordings and some address loss of use; whether any particular one does is a question about that form.",
+		"Disaster assistance programmes operate separately from insurance and on their own rules, and this record does not describe them.",
+		"The condominium association form and the non-residential forms differ from the Dwelling Form, so a reader on one of those should read theirs."
+	],
+	"nextActions": [
+		"Treat the cost of living elsewhere as a separate planning problem rather than an insured one, and decide in advance where it would be met from.",
+		"Read Article V of your own policy rather than relying on this summary, since the form is public and the exclusion is short [S:nfip-sfip-dwelling-form].",
+		"If you are considering private flood insurance, ask specifically whether loss of use or additional living expense is included and at what limit.",
+		"Do not assume your homeowners policy fills the gap, because it generally does not cover flood damage at all [S:fema-nfip-eligibility]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"flood",
+		"residential-flood",
+		"homeowners"
+	],
+	"states": [],
+	"audience": "individual",
+	"topics": [
+		"flood",
+		"nfip",
+		"additional living expenses",
+		"loss of use",
+		"exclusions"
+	],
+	"companies": [],
+	"coverages": [
+		"flood-nfip"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"flood-insurance-basement-contents",
+		"lender-insurance-requirement"
+	],
+	"handoff": {
+		"recommended": false,
+		"reason": "The exclusion is in a published federal form and does not vary between NFIP policies, so the answer holds without a conversation. A discussion is only useful if you are weighing a private flood policy against it."
+	},
+	"sourceIds": [
+		"nfip-sfip-dwelling-form",
+		"fema-nfip-eligibility"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

@@ -1,0 +1,77 @@
+{
+	"question": "Can my business be liable if a customer harasses one of my employees?",
+	"aliases": [
+		"employer liability for customer harassment California",
+		"third party harassment employer responsibility",
+		"is my company responsible for a client harassing staff",
+		"Government Code 12940 nonemployee harassment",
+		"what is third party EPLI for"
+	],
+	"shortAnswer": "In California, yes, in defined circumstances. An employer may be responsible for the acts of nonemployees with respect to harassment of employees, applicants, unpaid interns or volunteers, or people providing services under a contract in the workplace, where the employer or its agents or supervisors knew or should have known of the conduct and failed to take immediate and appropriate corrective action [S:ca-gov-code-12940]. The test looks at what you knew and what you did, not at whether you employed the person who did it.",
+	"assumes": [
+		"The workplace is in California and the employer is subject to the Fair Employment and Housing Act.",
+		"The person harassing is not an employee, which is what brings section 12940(j)(1) into play rather than the ordinary harassment provisions [S:ca-gov-code-12940].",
+		"You are asking about the employer's exposure rather than about the harasser's own liability."
+	],
+	"why": "Section 12940(j)(1) is short and it does a lot of work. It provides that an employer may also be responsible for the acts of nonemployees, with respect to harassment of employees, applicants, unpaid interns or volunteers, or persons providing services pursuant to a contract in the workplace, if the employer, or its agents or supervisors, knows or should have known of the conduct and fails to take immediate and appropriate corrective action [S:ca-gov-code-12940].\n\nTwo things follow from the wording. The first is that liability is not automatic: it attaches on knowledge, actual or constructive, plus a failure to act. An employer that learns of the conduct and responds immediately and appropriately is in a different position from one that did not want to know. The second is that the class protected is wider than employees. Applicants, unpaid interns, volunteers, and people providing services under a contract are all named.\n\nThe statute also says how a case is weighed. In reviewing cases involving the acts of nonemployees, the extent of the employer's control and any other legal responsibility the employer may have with respect to the conduct of those nonemployees shall be considered [S:ca-gov-code-12940]. Control is a factor rather than a threshold, so an employer is not automatically excused because the harasser was a customer it could not discipline.\n\nSitting beside this is a separate provision that catches the same failure from another angle. Section 12940(k) makes it an unlawful employment practice to fail to take all reasonable steps necessary to prevent discrimination and harassment from occurring [S:ca-gov-code-12940]. That is a wrong in its own right, so an employer's systems can be the subject of a claim rather than only the backdrop to one.",
+	"whatChanges": [
+		"What you knew and when. The provision turns on knowledge, actual or constructive, held by the employer or its agents or supervisors [S:ca-gov-code-12940].",
+		"What you did after you knew. The question is whether immediate and appropriate corrective action followed [S:ca-gov-code-12940].",
+		"How much control you had over the nonemployee, which the statute directs be considered along with any other legal responsibility you have for their conduct [S:ca-gov-code-12940].",
+		"Whether the person harassed was an employee, an applicant, an unpaid intern or volunteer, or someone providing services under a contract, all of whom are named [S:ca-gov-code-12940].",
+		"Whether reasonable preventive steps were in place at all, which is a separate unlawful practice under section 12940(k) [S:ca-gov-code-12940]."
+	],
+	"variability": [
+		"This is the California provision. Other states and federal law approach third party harassment differently, and an employer operating in several states is not meeting one standard.",
+		"Whether particular conduct amounts to harassment, and whether a particular response was immediate and appropriate, are questions of fact and law for a tribunal rather than matters this record can settle.",
+		"Insurance for this exposure is commonly sold as a third party extension to an employment practices policy, but those forms are proprietary and vary, so whether any given policy responds is a question about that policy."
+	],
+	"nextActions": [
+		"Make sure complaints about nonemployees reach a supervisor by the same route as complaints about staff, because the provision attaches on what the employer or its agents or supervisors knew or should have known [S:ca-gov-code-12940].",
+		"Record what was reported, when, and what was done in response. The statute turns on the response, so the contemporaneous note is the evidence [S:ca-gov-code-12940].",
+		"Review whether reasonable preventive steps exist and are documented, since failing to take them is separately unlawful [S:ca-gov-code-12940].",
+		"Confirm the harassment prevention training obligation is being met, which in California attaches at five or more employees [S:ca-gov-12950-1].",
+		"If you carry employment practices cover, ask your broker specifically whether third party claims are within it and on what terms, rather than assuming the extension is present."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": [
+		"employment-practices-liability",
+		"third-party-employment-practices-liability"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "business-owner",
+	"topics": [
+		"harassment",
+		"third party liability",
+		"feha",
+		"employment practices",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"employment-practices-liability"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"how-long-to-file-employment-claim-california"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a particular response was immediate and appropriate is a judgement about your facts, and whether any employment practices policy reaches third party claims depends on wording that is not public."
+	},
+	"sourceIds": [
+		"ca-gov-code-12940",
+		"ca-gov-12950-1"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}
