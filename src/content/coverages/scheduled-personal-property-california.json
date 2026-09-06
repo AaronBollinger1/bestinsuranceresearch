@@ -1,0 +1,160 @@
+{
+	"name": "Scheduled personal property (California)",
+	"line": "scheduled-personal-property",
+	"family": "personal",
+	"definition": "Cover for individually listed items that an ordinary contents limit will not fully answer. The reason it exists is a feature of homeowners policies rather than of the items: coverage on certain property especially susceptible to loss, including jewelry, antiques, furs, collectibles, fine arts, firearms, silverware and money, is limited [S:cdi-residential-insurance-guide]. The forms used instead are floaters, and which of them may be written as marine or inland marine insurance in California is set by regulation rather than left to the insurer [S:ca-ccr-tit-10-2321].",
+	"protects": [
+		"Categories that a homeowners contents limit caps rather than covers in full [S:cdi-residential-insurance-guide]",
+		"Objects of art such as pictures, statuary, bronzes and antiques, and rare manuscripts and books, which the marine regulation names as a fine arts item [S:ca-ccr-tit-10-2321]",
+		"Jewellery and furs, for which the nationwide definition lists dedicated floater types [S:naic-model-701-nationwide-inland-marine-definition]",
+		"Not the contents limit itself. Scheduling does not raise it; it moves specific items onto a different form"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Fine arts, on a form the regulation enumerates",
+			"note": "Fine Arts Floaters and Stamp and Coin Floaters appear at subdivision (e)(2)(A) of the California marine regulation, and the fine arts item describes objects of art such as pictures, statuary, bronzes and antiques, and rare manuscripts and books [S:ca-ccr-tit-10-2321]."
+		},
+		{
+			"item": "Personal property floater risks generally",
+			"note": "Subdivision (e) of the regulation is headed Personal Property Floater Risks, and the nationwide definition's corresponding group lists thirteen personal property floater items including Personal Effects Floater Policies, the Personal Property Floater, Personal Fur Floaters and Personal Jewelry Floaters [S:ca-ccr-tit-10-2321][S:naic-model-701-nationwide-inland-marine-definition]."
+		},
+		{
+			"item": "Items whose category a homeowners policy caps",
+			"note": "Jewelry, antiques, furs, collectibles, fine arts, firearms, silverware and money are the categories the regulator names as especially susceptible to loss and therefore limited [S:cdi-residential-insurance-guide]."
+		},
+		{
+			"item": "Property in transit rather than only at home",
+			"note": "The marine classification is built around transportation: the regulation's other subdivisions cover imports, exports, domestic shipments, and instrumentalities of transportation and communication [S:ca-ccr-tit-10-2321]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Furniture, fixtures, and improvements and betterments",
+			"note": "Item (c) of the prohibited coverage section states furniture and fixtures and improvements and betterments to buildings, so a marine form is not the route for those [S:ca-ccr-tit-10-2322]."
+		},
+		{
+			"item": "Money and securities sitting in a safe",
+			"note": "Item (e) prohibits moneys and securities in safes, vaults, safety deposit vaults, banks or the assured's premises, except while in course of transportation [S:ca-ccr-tit-10-2322]. The exception is the transit, which is the logic of the whole class."
+		},
+		{
+			"item": "Storage of the assured's own merchandise",
+			"note": "Item (a) prohibits storage of the assured's merchandise except as provided earlier in the article, and item (b) prohibits merchandise in course of manufacture on the manufacturer's own premises [S:ca-ccr-tit-10-2322]."
+		},
+		{
+			"item": "Fixed property perils on buildings and structures",
+			"note": "Item (f) reaches risks of fire, windstorm, sprinkler leakage, earthquake, hail, explosion, riot and civil commotion on buildings, structures, wharves and fixed real property [S:ca-ccr-tit-10-2322]."
+		},
+		{
+			"item": "Motor vehicles designed for highway use, on the mobile equipment form",
+			"note": "The Mobile Articles, Machinery and Equipment Floaters item excludes them expressly [S:ca-ccr-tit-10-2321]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"The single most misunderstood point on this line is that a homeowners special limit is not extra cover. The limited amounts for specific types of personal property are not separate limits in addition to the contents limit; they are included in it and represent the maximum paid for that type of property [S:cdi-residential-insurance-guide].",
+		"So a household with a large contents limit can still recover very little on a jewellery loss, because the cap sits inside the number they were reassured by [S:cdi-residential-insurance-guide].",
+		"Scheduling moves named items onto a floater form rather than raising the contents limit, which is why the two are not interchangeable [S:ca-ccr-tit-10-2321].",
+		"Flood is capped separately and severely: the Standard Flood Insurance Policy pays no more than $2,500 for any one loss to listed categories including artwork, photographs, collectibles or memorabilia, rare books, jewelry and furs [S:nfip-sfip-dwelling-form].",
+		"Whether a given floater settles at agreed value, actual cash value or something else is a question about that form, and this page does not answer it."
+	],
+	"endorsements": [
+		{
+			"item": "Scheduling on the homeowners policy",
+			"note": "One of two routes, the other being a separate floater. They differ most in what each says about valuation at a loss, which is the question worth putting to both [S:cdi-residential-insurance-guide]."
+		},
+		{
+			"item": "A separate floater form",
+			"note": "The regulation enumerates the floater types that may be written as marine or inland marine in California, so the available forms are a matter of public record rather than of insurer discretion [S:ca-ccr-tit-10-2321][S:naic-model-701-nationwide-inland-marine-definition]."
+		},
+		{
+			"item": "Appraisal, where the form requires it",
+			"note": "A documentation question rather than a coverage one, and one to settle before a loss rather than during a claim."
+		}
+	],
+	"relatedPolicies": [
+		"Homeowners insurance, whose special limits are the reason this line exists [S:cdi-residential-insurance-guide]",
+		"Renters and condominium unit owners insurance, which carry the same contents structure",
+		"Flood, which applies its own $2,500 cap to several of the same categories [S:nfip-sfip-dwelling-form]"
+	],
+	"underwritingInputs": [
+		"Which of the named categories are actually held: jewelry, antiques, furs, collectibles, fine arts, firearms, silverware or money [S:cdi-residential-insurance-guide]",
+		"Whether the items are objects of art within the fine arts item, meaning pictures, statuary, bronzes, antiques, rare manuscripts and books [S:ca-ccr-tit-10-2321]",
+		"Whether an inventory exists listing items owned, dates purchased and price [S:cdi-residential-insurance-guide]",
+		"Whether items travel, since the marine classification is organised around transit [S:ca-ccr-tit-10-2321]",
+		"Whether the property is instead furniture, fixtures or improvements and betterments, which the prohibited coverage section places outside the class [S:ca-ccr-tit-10-2322]",
+		"Whether money or securities are kept in a safe rather than in transit [S:ca-ccr-tit-10-2322]",
+		"The current contents limit, and what proportion of it any one capped category could consume [S:cdi-residential-insurance-guide]"
+	],
+	"exposures": [
+		{
+			"item": "A special limit mistaken for an additional limit",
+			"note": "The regulator states plainly that these amounts are included in the overall contents limit and represent the maximum paid for that type of property [S:cdi-residential-insurance-guide]. A household reading a large contents figure can be badly wrong about what a jewellery loss recovers, and nothing on the declarations page corrects that reading."
+		},
+		{
+			"item": "Categories that attract the cap without feeling valuable",
+			"note": "The named list runs wider than jewellery: antiques, furs, collectibles, fine arts, firearms, silverware and money are all included [S:cdi-residential-insurance-guide]. Inherited silverware and a firearms collection are commonly overlooked precisely because nobody thinks of them as valuables."
+		},
+		{
+			"item": "The same items capped again under flood",
+			"note": "Artwork, photographs, collectibles or memorabilia, rare books, jewelry and furs share a single $2,500 limit for any one loss under the Standard Flood Insurance Policy [S:nfip-sfip-dwelling-form], so a flood exposes the same categories a second time."
+		},
+		{
+			"item": "Assuming any form can be written as marine",
+			"note": "The prohibited coverage section names six classes that may not be, including furniture and fixtures, improvements and betterments, stored merchandise, and money in a safe except in course of transportation [S:ca-ccr-tit-10-2322]. What can be placed on a floater is bounded by regulation."
+		},
+		{
+			"item": "No record of what was owned",
+			"note": "The regulator advises keeping an inventory listing all items owned, the dates purchased and the price [S:cdi-residential-insurance-guide]. After a total loss the absence of that record is the practical obstacle, whatever the limit says."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Read the special limits before the contents limit",
+			"note": "The capped amounts sit inside the contents limit rather than beside it [S:cdi-residential-insurance-guide], so the number that matters for a jewellery or silverware loss is the smaller one and it is the one least likely to be quoted."
+		},
+		{
+			"item": "Keep an inventory with dates and prices",
+			"note": "The regulator advises listing all items owned, the dates purchased and the price, and publishes a home inventory guide for the purpose [S:cdi-residential-insurance-guide]."
+		},
+		{
+			"item": "Ask both routes the same valuation question",
+			"note": "Scheduling on the homeowners policy and placing a separate floater differ most in what each says about valuation at a loss, so put that question to both rather than comparing limits alone [S:ca-ccr-tit-10-2321]."
+		},
+		{
+			"item": "Check whether the item is even eligible for the class",
+			"note": "Furniture, fixtures, improvements and betterments, stored merchandise, and money in a safe outside transit are all in the prohibited coverage section [S:ca-ccr-tit-10-2322], so some property needs a different form entirely."
+		},
+		{
+			"item": "Treat flood as a separate cap on the same items",
+			"note": "The $2,500 flood limit applies to artwork, photographs, collectibles or memorabilia, rare books, jewelry and furs regardless of what is scheduled elsewhere [S:nfip-sfip-dwelling-form]."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "California adopted its marine article effective January 1, 1954, and where its provisions substantially match the superseded sections they are construed as restatements and continuations rather than new provisions [S:ca-ccr-tit-10-2320]. The article exists to help distinguish marine from other classes of insurance [S:ca-ccr-tit-10-2320-1]."
+		},
+		{
+			"state": "NY",
+			"note": "The nationwide definition is a model rather than uniform law, and states depart from it. Two of California's six prohibited items, (d) and (f), have no counterpart in the four exceptions listed in Section 3 of NAIC Model MO-701 [S:ca-ccr-tit-10-2322][S:naic-model-701-nationwide-inland-marine-definition]."
+		}
+	],
+	"lastReviewed": "2026-09-06",
+	"effectiveDate": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ccr-tit-10-2321",
+		"ca-ccr-tit-10-2322",
+		"ca-ccr-tit-10-2320",
+		"ca-ccr-tit-10-2320-1",
+		"naic-model-701-nationwide-inland-marine-definition",
+		"cdi-residential-insurance-guide",
+		"nfip-sfip-dwelling-form"
+	],
+	"relatedQuestions": [
+		"inland-marine-uses",
+		"replacement-cost-vs-market-value",
+		"same-limit-different-protection"
+	]
+}
