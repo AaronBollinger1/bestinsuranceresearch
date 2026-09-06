@@ -1,0 +1,54 @@
+{
+	"question": "Does a California guarantee fund cover my surplus lines policy if the insurer fails?",
+	"aliases": [
+		"surplus lines guarantee fund California",
+		"is surplus lines covered by CIGA",
+		"what happens if my surplus lines insurer becomes insolvent",
+		"non-admitted insurer insolvency California",
+		"does the state back a non-admitted policy"
+	],
+	"shortAnswer": "No. California requires the surplus line broker and the nonadmitted insurer to tell you in writing, in boldface 16-point type on a freestanding document you sign, that the insurer does not participate in any of the insurance guarantee funds created by California law and that those funds will not pay your claims or protect your assets if the insurer becomes insolvent [S:ca-ins-code-1764-1]. The same notice states the insurer is not subject to the financial solvency regulation and enforcement that apply to California licensed insurers [S:ca-ins-code-1764-1].",
+	"assumes": [
+		"The policy was placed with a nonadmitted insurer through a surplus line broker, which is the arrangement the disclosure statute governs.",
+		"You are asking about the California guarantee funds specifically. Whether an insurer has other financial backing, such as collateral or a parent guarantee, is a separate question this answer does not reach.",
+		"The placement is not one of the classes that sit outside the surplus line chapter entirely, such as ocean marine, aircraft or railroad risks [S:ca-ins-code-1760-5]."
+	],
+	"why": "This is one of the few points in insurance where the legislature wrote the answer as a sentence and required someone to hand it to you. Section 1764.1 prescribes a notice stating that the policy is being issued by an insurer not licensed by the State of California, that the insurer is not subject to the financial solvency regulation and enforcement that apply to California licensed insurers, and that the insurer does not participate in any of the insurance guarantee funds created by California law, so those funds will not pay claims or protect assets if the insurer becomes insolvent [S:ca-ins-code-1764-1]. The notice must appear in boldface 16-point type on a freestanding document signed by the applicant, and again in boldface 16-point type on the front page of the policy [S:ca-ins-code-1764-1].\n\nWhat fills the gap is not a fund but an eligibility floor applied before the placement. A surplus line broker may not place coverage with a nonadmitted insurer unless the insurer meets either of two tests at the time of placement [S:ca-ins-code-1765-1]. A United States domiciled insurer must be licensed to write the type of insurance in its home state and must have capital and surplus totalling forty-five million dollars, or must receive an affirmative finding of acceptability from the commissioner, which the commissioner may not make where capital and surplus is below four million five hundred thousand dollars [S:ca-ins-code-1765-1]. An insurer domiciled outside the United States is eligible if it appears on the Quarterly Listing of Alien Insurers maintained by the NAIC International Insurers Department and is licensed in its home jurisdiction [S:ca-ins-code-1765-1]. That is a balance-sheet and licensing screen, not California solvency supervision, and it is why the disclosure exists.",
+	"whatChanges": [
+		"Whether you actually received and signed the disclosure. Where the applicant has not received and completed the signed disclosure form the statute requires, the applicant may cancel the insurance, the cancellation is on a pro rata basis as to premium, and the applicant is entitled to the return of any broker's fees charged for the placement [S:ca-ins-code-1764-1].",
+		"Whether the placement is new business or a renewal. The signature requirement attaches at the time of accepting an application for a policy other than a renewal of that policy [S:ca-ins-code-1764-1].",
+		"Who signed. The disclosure must be signed by the applicant and is not subject to a limited power of attorney agreement between the applicant and an agent, broker or surplus line broker [S:ca-ins-code-1764-1].",
+		"Whether the insurer remains eligible. The commissioner may issue an order without prior notice and hearing upon determining that an insurer is no longer eligible [S:ca-ins-code-1765-1], which affects new placements rather than the policy already in force."
+	],
+	"variability": [
+		"Eligibility is a floor, not an endorsement. Meeting the capital and surplus test tells you the insurer cleared a threshold; it does not put California's solvency machinery behind the policy, which is exactly what the notice says [S:ca-ins-code-1764-1].",
+		"Guarantee fund coverage for admitted insurers is itself limited by statute in ways this record does not address. The point here is narrower: for a nonadmitted placement the funds do not apply at all.",
+		"Some coverages are commonly described as surplus lines but sit outside the chapter's placement limits, including ocean marine, aircraft or spacecraft, and railroad interstate operations, three of which may be placed only through a special lines surplus line broker [S:ca-ins-code-1760-5]. Read the placement, not the label."
+	],
+	"nextActions": [
+		"Look at the front page of the policy. The disclosure is required to appear there in boldface 16-point type [S:ca-ins-code-1764-1], so its absence is itself informative.",
+		"Ask your surplus line broker for the signed freestanding disclosure from your file. The broker must keep it for at least five years and make it available to the commissioner and to the insured on request [S:ca-ins-code-1764-1].",
+		"Ask which insurer the risk sits with and on what basis it is eligible, United States domiciled under subdivision (a) or listed on the NAIC Quarterly Listing under subdivision (b) [S:ca-ins-code-1765-1].",
+		"The notice itself directs you to ask questions of your agent, broker or surplus line broker, or to contact the California Department of Insurance at 1-800-927-4357 or at www.insurance.ca.gov, and to ask whether the insurer is licensed as a foreign or non-United States insurer [S:ca-ins-code-1764-1]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["surplus-lines"],
+	"states": ["CA"],
+	"audience": "business-owner",
+	"topics": ["surplus lines", "non-admitted", "guarantee fund", "insolvency", "disclosure", "california"],
+	"companies": [],
+	"coverages": ["surplus-lines-california"],
+	"effectiveDate": "2026-09-05",
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["three-declinations-before-surplus-lines-california"],
+	"handoff": {
+		"recommended": false,
+		"reason": "The answer is the same for every nonadmitted placement in California and is stated in the statute, so nothing about your particular policy changes it. A conversation helps only if the signed disclosure is missing from your file."
+	},
+	"sourceIds": ["ca-ins-code-1764-1", "ca-ins-code-1765-1", "ca-ins-code-1760-5"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

@@ -1,0 +1,56 @@
+{
+	"question": "Can my insurer make me use their repair shop after a California car accident?",
+	"aliases": [
+		"insurer required repair shop California",
+		"do I have to use the insurance company body shop",
+		"California right to choose auto body shop",
+		"direct repair program California rights",
+		"insurer discounting repair estimate my shop"
+	],
+	"shortAnswer": "No. California prohibits an insurer from requiring that an automobile be repaired at a specific automotive repair dealer [S:ca-ins-code-758-5]. It may not even suggest or recommend one unless you expressly asked for a referral or were told in writing of your right to select the shop [S:ca-ins-code-758-5]. If you use your own shop, the insurer may not limit or discount reasonable repair costs based on what its own shop would have charged [S:ca-ins-code-758-5].",
+	"assumes": [
+		"The repair is to an automobile and the shop is an automotive repair dealer as defined in Business and Professions Code section 9880.1, which is the definition the statute uses [S:ca-ins-code-758-5].",
+		"The claim is under a policy subject to California law.",
+		"You are a claimant within the section's meaning, which reaches a first-party claimant or insured and also a third-party claimant asserting a right of recovery for automotive repairs under a policy [S:ca-ins-code-758-5]."
+	],
+	"why": "Section 758.5 splits into a prohibition and a set of conditions on what an insurer may say. Subdivision (a) is flat: no insurer shall require that an automobile be repaired at a specific automotive repair dealer [S:ca-ins-code-758-5]. Subdivision (b)(1) goes further and bars even suggesting or recommending a specific shop unless you expressly requested a referral, or you have been informed in writing of your right to select the shop yourself [S:ca-ins-code-758-5]. Within those limits an insurer may give you specific truthful and nondeceptive information about services and benefits, which may include repair warranties offered, the type of replacement parts to be used, the anticipated time to repair and the quality of workmanship available [S:ca-ins-code-758-5].\n\nAccepting a recommendation shifts responsibility onto the insurer. If you accept its recommended shop, the insurer must cause the vehicle to be restored to its pre-loss condition at no additional cost to you other than as stated in the policy or otherwise allowed by law [S:ca-ins-code-758-5]. Where the recommendation was made orally and accepted, the insurer must mail or provide a written notice within five calendar days of the acceptance, in a separate and freestanding document in no less than 10-point type, containing the statement the statute prescribes: that the insurer is prohibited by law from requiring repairs at a specific shop and that you are entitled to select the auto body repair shop [S:ca-ins-code-758-5].\n\nThe practical protection is in subdivision (d)(2). If you elect to have the vehicle repaired at the shop of your choice, the insurer shall not limit or discount the reasonable repair costs based on charges that would have been incurred had the vehicle been repaired by its chosen shop [S:ca-ins-code-758-5]. Without that sentence the right to choose would be nominal, since an insurer could honour the choice and then pay network rates against it. And once you have chosen a shop, the insurer may not suggest or recommend that you select a different one, except for a referral you expressly requested or information of the kind subdivision (b)(2) allows [S:ca-ins-code-758-5].",
+	"whatChanges": [
+		"Whether you asked for the referral. An express request from you removes the bar on the insurer recommending a shop [S:ca-ins-code-758-5], so how the conversation started matters.",
+		"Whether the recommendation was oral or written. An oral recommendation you accepted triggers the five calendar day written notice in a separate freestanding document [S:ca-ins-code-758-5].",
+		"Whether your policy itself points to a particular shop. An insurer whose contract suggests or recommends a particular automotive repair dealer must prominently disclose that provision in writing both when the insurance is applied for and when the claim is acknowledged [S:ca-ins-code-758-5].",
+		"Whether you accepted the insurer's shop. Acceptance carries the pre-loss restoration obligation at no additional cost beyond the policy terms [S:ca-ins-code-758-5]; using your own shop instead carries the anti-discounting protection [S:ca-ins-code-758-5]."
+	],
+	"variability": [
+		"Reasonable is doing work in subdivision (d)(2). The insurer may not benchmark to its own network's charges, but the costs still have to be reasonable, and a dispute about a particular estimate is a dispute about that word rather than about the right to choose [S:ca-ins-code-758-5].",
+		"This is the California section. Other states handle steering, aftermarket parts and labour rate surveys differently, and some have no equivalent to the anti-discounting sentence.",
+		"The section governs what the insurer may do. It does not regulate the shop, its estimate or its work, which sit under the automotive repair statutes rather than the Insurance Code.",
+		"Enforcement runs through the commissioner. The commissioner's powers to enforce the section include those granted in the unfair practices article commencing at Insurance Code section 790 [S:ca-ins-code-758-5], which is a regulatory route rather than a private one."
+	],
+	"nextActions": [
+		"Tell the insurer in writing which shop you have selected. Once you have chosen, the statute bars further suggestion of a different shop outside the two narrow exceptions [S:ca-ins-code-758-5].",
+		"If a shop was recommended to you orally and you agreed, watch for the written notice within five calendar days and keep it [S:ca-ins-code-758-5].",
+		"If the payment is short of your shop's estimate, ask the insurer in writing to state the basis for each reduction, and check whether any of it is benchmarked to its own network's charges [S:ca-ins-code-758-5].",
+		"If your policy contains a provision pointing to a particular repair dealer, ask for the written disclosure the insurer was required to give you at application and at claim acknowledgement [S:ca-ins-code-758-5].",
+		"Unresolved disputes can be raised with the California Department of Insurance, which holds the enforcement powers for this section [S:ca-ins-code-758-5]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["auto"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["auto claims", "repair shop", "steering", "direct repair program", "california", "auto"],
+	"companies": [],
+	"coverages": ["personal-auto-california"],
+	"effectiveDate": "2026-09-05",
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["underinsured-motorist-paid-nothing-california"],
+	"handoff": {
+		"recommended": false,
+		"reason": "The right itself does not vary with your policy or your facts, so the answer holds without a conversation. Where a specific estimate has been reduced, the disagreement is usually about the amount rather than about the right."
+	},
+	"sourceIds": ["ca-ins-code-758-5"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

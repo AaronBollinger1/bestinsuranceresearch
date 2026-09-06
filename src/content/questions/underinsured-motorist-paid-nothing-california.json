@@ -1,0 +1,56 @@
+{
+	"question": "Why did my California underinsured motorist coverage pay nothing?",
+	"aliases": [
+		"underinsured motorist paid nothing California",
+		"UIM did not pay California",
+		"how does underinsured motorist work in California",
+		"California UIM difference in limits",
+		"underinsured motorist offset California"
+	],
+	"shortAnswer": "Most often because the at-fault driver carried liability limits equal to or above your own uninsured motorist limit, which in California leaves nothing for the coverage to pay. California defines an underinsured motor vehicle as one insured for an amount less than the uninsured motorist limits carried on the injured person's own vehicle [S:ca-ins-code-11580-2], and caps the insurer's liability at those limits less what the liable parties already paid [S:ca-ins-code-11580-2]. It is a difference-in-limits coverage, not an extra layer on top of the other driver's policy.",
+	"assumes": [
+		"The policy is a California automobile policy and the coverage in question is the underinsured half of uninsured motorist coverage, which California requires to be offered as a single coverage with uninsured motorist limits equal to those in the underlying policy [S:ca-ins-code-11580-2].",
+		"The injury is bodily injury. Uninsured and underinsured motorist coverage does not apply, as primary or as excess, to property damage sustained by the insured [S:ca-ins-code-11580-2].",
+		"The at-fault vehicle was insured. If it carried no bodily injury liability insurance at all, the uninsured rather than the underinsured half responds [S:ca-ins-code-11580-2].",
+		"You are asking about your own coverage rather than about what the at-fault driver's insurer owes."
+	],
+	"why": "The word underinsured suggests a coverage that tops up whatever the other driver had, and in some states that is close to what it does. California wrote it differently. Section 11580.2(p)(2) defines an underinsured motor vehicle as one that is insured, but insured for an amount less than the uninsured motorist limits carried on the motor vehicle of the injured person [S:ca-ins-code-11580-2]. The comparison is not between the other driver's limits and your damages; it is between the other driver's limits and your own uninsured motorist limit. Section 11580.2(p)(4) then caps the insurer's maximum liability at your underinsured motorist limits less the amount paid to you by or for anyone who may be held legally liable [S:ca-ins-code-11580-2]. Read together, the coverage responds only where the at-fault vehicle is insured for less than your own limit, and pays at most that limit reduced by what was already paid, so a driver carrying limits equal to or greater than yours leaves nothing for it to pay, however large your injury. The coverage also does not respond until the liability limits of every insured vehicle that caused the injury have been exhausted by payment of judgments or settlements, with proof of that payment submitted to the insurer [S:ca-ins-code-11580-2].",
+	"whatChanges": [
+		"Your own uninsured motorist limit, which is the number the comparison is made against. An insurer is not required to offer more than $30,000 per person and $60,000 per accident of that coverage no matter how high your liability limits are [S:ca-ins-code-11580-2], so a policy with high liability limits and minimum uninsured motorist limits is common and is exactly the shape that produces this outcome.",
+		"What the at-fault driver actually carried. Their limits being at or above yours is the difference between a claim and no claim.",
+		"Whether the liability limits were exhausted by payment and proof was submitted, which is a precondition rather than a formality [S:ca-ins-code-11580-2].",
+		"Whether anything was settled without the insurer's written consent. The coverage does not apply to an injury for which the insured settled with or took judgment against a potentially liable person without that consent [S:ca-ins-code-11580-2].",
+		"Whether a workers compensation recovery is in play, since the loss payable may be reduced by amounts paid and the present value of amounts payable under any workers compensation law, excluding nonoccupational disability benefits [S:ca-ins-code-11580-2]."
+	],
+	"variability": [
+		"This is California's construction and it is not universal. Other states define an underinsured motor vehicle by comparing the other driver's limits to the injured person's damages rather than to their own limit, which produces a different answer on the same facts. The statute cited here is the California Insurance Code and applies to policies issued or delivered in California or covering a vehicle principally used or garaged there [S:ca-ins-code-11580-2].",
+		"Limits cannot be stacked. Regardless of the number of vehicles, persons covered, claims made or premiums paid, the limits of two or more vehicles or two or more policies may not be added together or combined to determine what is available [S:ca-ins-code-11580-2].",
+		"Whether uninsured motorist coverage is present at all depends on whether it was waived. It must be in every bodily injury liability policy unless deleted by a written agreement in the exact form the statute prescribes, and that agreement carries forward through renewals and replacements and through reinstatement within 30 days of a lapse [S:ca-ins-code-11580-2]."
+	],
+	"nextActions": [
+		"Read the declarations page for your uninsured motorist limit rather than your liability limit. They are frequently different, and it is the uninsured motorist number that governs this coverage.",
+		"Ask your insurer, in writing, what limits the at-fault vehicle carried and whether those limits were exhausted by payment.",
+		"Ask whether a written waiver or reduction of uninsured motorist coverage is on file for your policy, and ask for a copy of the signed document if one exists.",
+		"If the outcome turns on the amount of the loss rather than on the limits, note that whether you are legally entitled to recover and how much is decided by agreement or, failing that, by arbitration before a single neutral arbitrator [S:ca-ins-code-11580-2]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["auto"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["uninsured motorist", "underinsured motorist", "limits", "california", "auto"],
+	"companies": [],
+	"coverages": ["personal-auto-california"],
+	"effectiveDate": "2026-09-05",
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["insurer-choose-repair-shop-california", "same-limit-different-protection"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a particular claim falls inside or outside this construction turns on the limits actually carried on both sides and on what has already been paid, which are facts about your policy and the other driver's rather than about the statute."
+	},
+	"sourceIds": ["ca-ins-code-11580-2"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

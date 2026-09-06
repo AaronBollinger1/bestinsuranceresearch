@@ -1,0 +1,55 @@
+{
+	"question": "How many insurers have to decline before a broker can place my risk in the non-admitted market?",
+	"aliases": [
+		"three declinations surplus lines California",
+		"diligent search requirement California",
+		"how many declinations for surplus lines",
+		"do I need declinations to buy surplus lines",
+		"California diligent effort form surplus lines"
+	],
+	"shortAnswer": "Three, but the number is evidence rather than the rule. California requires the broker to make a diligent search among admitted insurers that actually write the type of insurance in the state, and treats the standardized form as prima facie evidence of that search where three admitted insurers writing the type have declined the risk, or where fewer than three admitted insurers actually write it [S:ca-ins-code-1763]. A commercial insured can exempt the placement from the search entirely, on two written conditions [S:ca-ins-code-1763].",
+	"assumes": [
+		"The placement is for a home state insured in California and goes to a nonadmitted insurer through a licensed surplus line broker, which is what the chapter requires of a nonadmitted placement in the first place [S:ca-ins-code-1760-5].",
+		"The class is not one of those excluded from the chapter's placement limits, such as reinsurance of an admitted insurer's liability, ocean marine, aircraft or spacecraft, or interstate railroad property and operations [S:ca-ins-code-1760-5].",
+		"You are asking what the broker must do before placing, rather than what the policy costs or covers."
+	],
+	"why": "The obligation in section 1763(a) is not a headcount. A surplus line broker may solicit and place insurance with a nonadmitted insurer only if that insurance cannot be procured from insurers admitted for the particular class and actually writing that particular type in this state, and each broker is responsible to ensure a diligent search is made among those insurers before going to the nonadmitted market [S:ca-ins-code-1763]. Type of insurance means the hazard or combination of hazards covered by the contract [S:ca-ins-code-1763], so the search is measured against the coverage actually needed rather than against a broad line label.\n\nThe number enters through subdivision (b), which makes it prima facie evidence that a diligent search was made if the standardized form establishes that three admitted insurers actually writing that type declined the risk, or that fewer than three admitted insurers actually write it [S:ca-ins-code-1763]. The same subdivision lets the commissioner review the form for accuracy, including whether the listed insurers actually write that type at all and whether they declined, and take disciplinary action against the person who signed it for a misrepresentation made through negligence or as the result of an intentional act [S:ca-ins-code-1763]. The form must be signed by a licensed person who made the search or supervised the unlicensed people who conducted it [S:ca-ins-code-1763]. Three declinations from carriers that do not write the class is not a search; the statute anticipates that and provides for it.\n\nA separate track exists for commercial buyers. The diligent search requirement does not apply to a commercial insured as defined in section 1760.1(b) where the broker has disclosed in writing that surplus insurance may or may not be available from the admitted market and that the admitted market may provide greater protection with more regulatory oversight, and the commercial insured has subsequently requested in writing that the broker place the coverage with a nonadmitted insurer [S:ca-ins-code-1763]. Both conditions are written, and the request must follow the disclosure.",
+	"whatChanges": [
+		"Whether you meet the commercial insured definition, which turns the requirement off on the two written conditions above [S:ca-ins-code-1763]. The broker is responsible to ensure the applicant is a commercial insured, though a broker who reasonably relies on information provided in good faith by the applicant is deemed in compliance [S:ca-ins-code-1763].",
+		"Whether admitted carriers write your type of insurance at all. Where fewer than three do, that fact rather than three declinations satisfies the evidentiary test [S:ca-ins-code-1763].",
+		"Whether the placement is a mid-term extension of an existing surplus lines policy. The section does not apply to an extension by the same insurer of the same risks for the same insured, provided it does not exceed 90 days in the aggregate in any 12-month period, includes no change in coverage, terms, conditions or limits, and prices any additional premium pro rata at the existing rate [S:ca-ins-code-1763].",
+		"Whether price is the reason for the placement. Insurance may not be placed with a nonadmitted insurer to procure a rate lower than the lowest an admitted insurer will accept, and placement at a lower rate than the lowest obtainable from an admitted insurer is conclusively presumed to violate the section unless a statement explaining it is filed with the commissioner when the insurance attaches [S:ca-ins-code-1763]."
+	],
+	"variability": [
+		"This is California. Diligent effort rules, declination counts, export lists and commercial exemptions differ by state, and a broker placing a multi-state programme works to the home state's rules.",
+		"The three-declination showing is prima facie evidence, which means it establishes the point unless rebutted. It is not a safe harbour, and subdivision (b) expressly contemplates the commissioner going behind the form [S:ca-ins-code-1763].",
+		"The report and the diligent effort form are confidential filings. Statements filed under the section are not subject to public inspection unless the commissioner determines the public interest or the welfare of the filing broker requires it [S:ca-ins-code-1763], so you will not find another buyer's file to compare against.",
+		"Mexican placements are treated separately. The section does not apply to insurance issued to a home state insured by a nonadmitted Mexican insurer through a surplus line broker covering exclusively property located or operations conducted within the Republic of Mexico [S:ca-ins-code-1763]."
+	],
+	"nextActions": [
+		"Ask your broker for the diligent effort form for your placement and read which insurers were approached and what each said.",
+		"Check that the carriers listed actually write your type of insurance in California, since that is the test the form has to meet [S:ca-ins-code-1763].",
+		"If you were told the search does not apply because you are a commercial insured, ask for the written disclosure you were given and the written request you made, in that order [S:ca-ins-code-1763].",
+		"Ask whether the report of the placement was filed with the commissioner within 60 days, which the statute requires along with a copy of the declarations page, certificate or binder [S:ca-ins-code-1763]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["surplus-lines"],
+	"states": ["CA"],
+	"audience": "business-owner",
+	"topics": ["surplus lines", "diligent search", "declinations", "non-admitted", "broker duties", "california"],
+	"companies": [],
+	"coverages": ["surplus-lines-california"],
+	"effectiveDate": "2026-09-05",
+	"lastReviewed": "2026-09-05",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["surplus-lines-guarantee-fund-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether your risk genuinely has no admitted market depends on the specific hazards you need covered and on which carriers write them today, which is a question about the current market rather than about the statute."
+	},
+	"sourceIds": ["ca-ins-code-1763", "ca-ins-code-1760-5"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
