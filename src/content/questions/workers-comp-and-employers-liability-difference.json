@@ -1,0 +1,75 @@
+{
+	"question": "If I already have workers compensation, why does the policy also have employers liability?",
+	"aliases": [
+		"what is Part Two employers liability workers compensation",
+		"difference between part one and part two workers comp",
+		"why do I need employers liability if I have workers comp",
+		"employee injury not subject to workers compensation laws",
+		"California employers liability coverage explained"
+	],
+	"shortAnswer": "Because they answer different things. The workers compensation half pays the benefits the state requires for injuries that are subject to the compensation laws, and California requires every employer to secure that [S:lab-3700]. Employers liability is offered under Part Two of the same policy, and the regulator describes it as protecting the employer against instances in which an employee's injury or disease is not subject to the workers' compensation laws [S:cdi-wc-commercial-guide].",
+	"assumes": [
+		"The employer is a California employer subject to Labor Code section 3700 [S:lab-3700].",
+		"The policy is a workers compensation and employers liability policy, which is the form the regulator describes as carrying both parts [S:cdi-wc-commercial-guide].",
+		"You are asking what the two parts do rather than what limits to carry on either."
+	],
+	"why": "The two parts exist because the compensation system is a bargain with an edge to it. Every employer except the state shall secure the payment of compensation, and one of the listed ways is insuring with an insurer authorized to write compensation insurance in California [S:lab-3700]. What that buys is the statutory benefit system: the regulator names five basic types of benefit, medical care, temporary disability, permanent disability, supplemental job displacement and death benefits [S:cdi-wc-commercial-guide]. That is Part One, and for injuries inside the system it is the whole answer, because the benefits are the remedy.\n\nPart Two exists for what falls outside. Employers liability insurance is offered under Part Two of a workers compensation and employers liability policy, and it protects the employer against instances in which an employee's injury or disease is not subject to the workers compensation laws [S:cdi-wc-commercial-guide]. Those are the situations where an employee has a claim against the employer that the benefit system does not absorb, and where the employer is therefore exposed as a defendant rather than as a payer of scheduled benefits.\n\nThis is why the two are sold as one policy and why the second half is easy to overlook. Part One has no limit in the ordinary sense, because it pays what the statute requires. Part Two behaves like liability insurance and carries limits, which is what makes it something to actually decide about rather than simply accept.\n\nIt is also why a contract asking for a workers compensation certificate frequently specifies an employers liability figure alongside it. The two parts are not interchangeable, and evidence of one is not evidence of the other.",
+	"whatChanges": [
+		"Whether the injury or disease is subject to the workers compensation laws, which is the line the regulator draws between the two parts [S:cdi-wc-commercial-guide].",
+		"Whether the employer has secured compensation at all, since section 3700 requires it and lists the permitted ways, including insuring with an authorized insurer or obtaining a certificate of consent to self-insure [S:lab-3700].",
+		"What Part Two limit is carried, since that half behaves like liability insurance while Part One pays statutory benefits [S:cdi-wc-commercial-guide].",
+		"What any contract requires, because a requirement often names an employers liability figure separately from the compensation coverage."
+	],
+	"variability": [
+		"This describes the California position. Other states structure the compensation bargain and the employers liability half differently, and monopolistic state fund states may not offer Part Two on the same policy at all.",
+		"Whether a particular injury or disease is subject to the compensation laws is a legal question decided on the facts, not something a general description settles.",
+		"Self-insurance is a permitted route to securing compensation, through a certificate of consent to self-insure from the Director of Industrial Relations [S:lab-3700], and that changes how the two halves are arranged."
+	],
+	"nextActions": [
+		"Look at the declarations and find the Part Two limits, which are stated separately from the compensation coverage [S:cdi-wc-commercial-guide].",
+		"Compare those limits against what any contract you have signed requires, since the two parts are specified separately.",
+		"If you are relying on self-insurance, confirm the certificate of consent to self-insure is current, since that is the alternative route section 3700 permits [S:lab-3700].",
+		"Ask your broker what Part Two limits are available and what changes between them, rather than accepting the figure that came on the renewal."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": [
+		"employers-liability",
+		"workers-compensation"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "business-owner",
+	"topics": [
+		"employers liability",
+		"workers compensation",
+		"part two",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"workers-compensation-california"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"workers-comp-audit-bill-after-policy-ended",
+		"workers-comp-class-codes"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "What Part Two limits are appropriate depends on the workforce and on what contracts require, and whether a particular claim sits inside or outside the compensation system is a legal question about the facts."
+	},
+	"sourceIds": [
+		"cdi-wc-commercial-guide",
+		"lab-3700"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

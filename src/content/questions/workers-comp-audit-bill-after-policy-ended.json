@@ -1,0 +1,79 @@
+{
+	"question": "Why did I get a bill after my workers compensation policy ended?",
+	"aliases": [
+		"workers comp audit additional premium California",
+		"why is there an extra charge after the policy term",
+		"final premium determined by payroll audit",
+		"workers compensation payroll audit explained",
+		"disputing a workers comp classification or experience modification"
+	],
+	"shortAnswer": "Because the amount was never final while the policy was running. The regulator states that the final premium of a workers compensation policy cannot be calculated until the policy term is over and the employer's payroll records have been audited [S:cdi-wc-commercial-guide]. What is charged during the term is built on estimated payroll, so the audit reconciles the estimate against what the payroll actually was.",
+	"assumes": [
+		"The policy is a California workers compensation policy written by an insurer rather than a self-insurance arrangement [S:lab-3700].",
+		"The charge follows an audit rather than a mid-term change to the policy.",
+		"You are asking why an amount arrived after the term rather than whether it is correctly calculated."
+	],
+	"why": "A workers compensation charge is a calculation over payroll, and payroll is not known until it has happened. The payroll for each classification is estimated and then multiplied, per each $100 of payroll, by the applicable rate, and that product is the base premium [S:cdi-wc-commercial-guide]. Everything downstream is a modification of it: the base continues to be modified, increased or decreased, using rating plans and by experience modification [S:cdi-wc-commercial-guide].\n\nBecause the first input is an estimate, the answer is provisional until the estimate can be replaced with the actual figure. The regulator says so directly: the final premium cannot be calculated until the policy term is over and the employer's payroll records have been audited [S:cdi-wc-commercial-guide]. An audit that finds more payroll than was estimated, or payroll sitting in a higher-rated classification than was assumed, produces a difference, and that difference is what arrives afterwards.\n\nTwo of the inputs are worth understanding separately because both are appealable. Classifications that group distinct and identifiable occupations, industries or businesses are developed and assigned codes by the Workers' Compensation Insurance Rating Bureau of California [S:cdi-wc-commercial-guide]. Experience modification is calculated from payroll and loss information that insurers submit to the WCIRB annually, using a formula approved for the purpose, and a modification below 100 percent reflects better than average experience while one above reflects worse [S:cdi-wc-commercial-guide].\n\nSo a post-term charge can trace to any of three places: more payroll than estimated, payroll assigned to a different classification than assumed, or a modification applied that the employer disagrees with. They are disputed in different ways, which is why identifying which one moved is the first step rather than the last.",
+	"whatChanges": [
+		"Whether actual payroll exceeded the estimate the charge was built on [S:cdi-wc-commercial-guide].",
+		"Whether the audit moved payroll into a different classification, since classifications are assigned codes by the WCIRB and insurers generally use them when writing policies [S:cdi-wc-commercial-guide].",
+		"Whether payroll records distinguish activities well enough to support the split claimed, since the audit works from the records that exist rather than from what was intended.",
+		"Whether an experience modification was applied, and whether it is above or below 100 percent [S:cdi-wc-commercial-guide].",
+		"Whether the arrangement is insurance at all, since securing compensation by a certificate of consent to self-insure is a different route [S:lab-3700]."
+	],
+	"variability": [
+		"This is the California structure. Other states use different rating bureaus and different rules, and NCCI rather than the WCIRB administers classification in much of the country.",
+		"California operates an open rating system in which individual companies set rates, so two insurers can reach different figures on the same payroll [S:cdi-wc-commercial-guide].",
+		"This record explains why a post-term charge arises. Whether any particular charge is correct depends on the audit worksheet and the underlying records, which this page cannot see."
+	],
+	"nextActions": [
+		"Ask for the audit worksheet and compare the classifications and payroll it used against your own records, rather than against the estimate on the original declarations.",
+		"Establish which of the three inputs moved: payroll amount, classification assignment, or experience modification [S:cdi-wc-commercial-guide].",
+		"If a classification or experience modification is disputed, note that Title 10 of the California Code of Regulations sections 2509.40 through 2509.78 list detailed procedures for disputing them, including appeals to the CDI [S:cdi-wc-commercial-guide].",
+		"The WCIRB provides a policyholder ombudsman available to answer employer questions on classification, experience modification and rating issues [S:cdi-wc-commercial-guide].",
+		"Keep payroll records that separate distinct activities by employee, because an audit can only credit a split the records actually support."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": [
+		"workers-compensation",
+		"employers-liability"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "business-owner",
+	"topics": [
+		"workers compensation",
+		"audit",
+		"payroll",
+		"classification",
+		"experience modification",
+		"california"
+	],
+	"companies": [],
+	"coverages": [
+		"workers-compensation-california"
+	],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"workers-comp-and-employers-liability-difference",
+		"workers-comp-class-codes"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a particular audit result is correct turns on the worksheet and the payroll records behind it, and a classification or experience modification dispute follows a defined procedure worth taking advice on."
+	},
+	"sourceIds": [
+		"cdi-wc-commercial-guide",
+		"lab-3700"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}
