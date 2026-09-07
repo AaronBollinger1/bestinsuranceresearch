@@ -1,0 +1,74 @@
+{
+	"question": "Did Florida repeal no-fault insurance?",
+	"aliases": [
+		"Florida no fault repealed PIP",
+		"is PIP still required in Florida",
+		"Florida SB 54 vetoed no fault",
+		"Florida HB 1181 2025 no fault repeal",
+		"did Florida get rid of personal injury protection"
+	],
+	"shortAnswer": "No. Two attempts have failed and the Florida Motor Vehicle No-Fault Law is still in place. CS/CS/SB 54 in 2021 was titled Motor Vehicle Insurance and its description included repealing the provisions comprising the No-Fault Law; the Senate's bill history records that it was vetoed by the Governor on June 29, 2021 [S:fl-sb-54-2021-bill]. HB 1181 in 2025 would have repealed provisions relating to application of the law and was indefinitely postponed and withdrawn from consideration, dying in committee [S:fl-hb1181-2025-bill].",
+	"assumes": [
+		"You are asking about the statutory requirement rather than about any particular insurer's product.",
+		"The question concerns Florida personal auto insurance, which is where the No-Fault Law operates.",
+		"The position is as the bill histories record it on the access date; a later session could change it."
+	],
+	"why": "This is a question worth answering carefully because the wrong answer is widely repeated, and it is repeated for an understandable reason: a repeal bill passed the legislature.\n\nCS/CS/SB 54 in the 2021 session was titled Motor Vehicle Insurance, and its description includes repealing provisions which comprise the Florida Motor Vehicle No-Fault Law [S:fl-sb-54-2021-bill]. Coverage of a bill passing is easy to find. What followed is less visible: the Senate's own bill history shows an entry dated June 29, 2021 reading that the bill was vetoed by the Governor, with companion bills passed [S:fl-sb-54-2021-bill]. The history also records a veto message received on November 12, 2021 and transmitted to the Secretary of State on March 15, 2022 [S:fl-sb-54-2021-bill].\n\nA second attempt followed. HB 1181 in 2025 was also titled Motor Vehicle Insurance and would have repealed provisions relating to application of the Florida Motor Vehicle No-Fault Law and revised motor vehicle insurance coverage [S:fl-hb1181-2025-bill]. It was indefinitely postponed and withdrawn from consideration on May 3, 2025, and died in the Judiciary Committee on June 16, 2025 [S:fl-hb1181-2025-bill].\n\nSo the practical answer is that personal injury protection remains required. Every owner or registrant of a motor vehicle required to be registered and licensed in Florida must maintain the required security [S:fl-stat-627-733], and the PIP benefit is $10,000 in medical and disability benefits with $5,000 in death benefits [S:fl-stat-627-736].\n\nThe reason this matters beyond trivia is that people make coverage decisions on it. Someone who believes Florida has moved to a fault-based system may assume their own medical costs will be recovered from the other driver, and may not treat the 14-day condition on PIP medical benefits as urgent [S:fl-stat-627-736].",
+	"whatChanges": [
+		"A future legislative session. Both attempts recorded here failed, but this is a question about the current state of the law rather than a permanent answer [S:fl-sb-54-2021-bill][S:fl-hb1181-2025-bill].",
+		"Nothing about any particular policy. The requirement is statutory and applies to the owner or registrant of a vehicle required to be registered in Florida [S:fl-stat-627-733].",
+		"Whether you are reading about the bill or about the law, which is the distinction that produces the confusion [S:fl-sb-54-2021-bill]."
+	],
+	"variability": [
+		"This records the position as the Florida Senate's own bill histories state it on the access date. Confirm the current law before relying on it for a decision.",
+		"Bill histories describe what happened procedurally. They do not describe what a repeal would have done had it taken effect, and this record does not either.",
+		"Other states have their own no-fault positions, and several have repealed or never adopted one."
+	],
+	"nextActions": [
+		"Treat PIP as required and act on its conditions, in particular getting initial services and care within 14 days of an accident [S:fl-stat-627-736].",
+		"Check any article claiming repeal against the bill history itself, since both bills are traceable and both failed [S:fl-sb-54-2021-bill][S:fl-hb1181-2025-bill].",
+		"Confirm your own policy carries the required security, which is a statutory obligation of the owner or registrant [S:fl-stat-627-733].",
+		"If a decision turns on this, verify the current session's bills rather than relying on a record with an access date."
+	],
+	"confidence": "changing",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"auto"
+	],
+	"states": [
+		"FL"
+	],
+	"audience": "individual",
+	"topics": [
+		"florida",
+		"no-fault",
+		"pip",
+		"legislation",
+		"auto"
+	],
+	"companies": [],
+	"coverages": [],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"florida-pip-what-it-pays",
+		"florida-minimum-auto-insurance-and-after-dui"
+	],
+	"handoff": {
+		"recommended": false,
+		"reason": "The answer is in two published bill histories and does not depend on your circumstances. It does depend on the date, which is why the confidence here is recorded as changing rather than established."
+	},
+	"sourceIds": [
+		"fl-sb-54-2021-bill",
+		"fl-hb1181-2025-bill",
+		"fl-stat-627-733",
+		"fl-stat-627-736"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

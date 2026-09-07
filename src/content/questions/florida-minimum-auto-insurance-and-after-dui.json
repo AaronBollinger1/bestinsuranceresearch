@@ -1,0 +1,78 @@
+{
+	"question": "What auto insurance does Florida require, and what changes after a DUI?",
+	"aliases": [
+		"Florida minimum auto insurance requirements",
+		"Florida financial responsibility limits 10 20 10",
+		"insurance requirements after a DUI in Florida",
+		"Florida Statutes 324.022 property damage liability",
+		"can my registration be suspended after a crash in Florida"
+	],
+	"shortAnswer": "Every owner or registrant of a vehicle required to be registered and licensed in Florida must maintain the required security [S:fl-stat-627-733]. Financial responsibility is defined as $10,000 for bodily injury to one person, $20,000 for two or more in one crash, and $10,000 for property damage [S:fl-stat-324-021], and section 324.022 sets $10,000 for property damage or $30,000 combined for one crash [S:fl-stat-324-022]. After a DUI conviction the figures rise to $100,000, $300,000 and $50,000 and must be carried for three years [S:fl-stat-324-023].",
+	"assumes": [
+		"The vehicle is required to be registered and licensed in Florida, which is what the security requirement attaches to [S:fl-stat-627-733].",
+		"The vehicle is not a school bus, limousine or taxicab, each of which the statute treats separately [S:fl-stat-627-733].",
+		"You are asking what is required rather than what is advisable, which are different questions."
+	],
+	"why": "Florida states the requirement in two places and they do different jobs.\n\nSection 627.733(1) is the obligation. Every owner or registrant of a motor vehicle, other than one used as a school bus or limousine, required to be registered and licensed in Florida shall maintain security [S:fl-stat-627-733]. Taxicab owners are governed by section 324.032(1) instead [S:fl-stat-627-733]. That security may be provided by a policy delivered or issued for delivery in Florida by an authorised or eligible motor vehicle liability insurer, or by another method authorised by section 324.031 and approved by the Department of Highway Safety and Motor Vehicles [S:fl-stat-627-733].\n\nSections 324.021 and 324.022 supply the amounts. Proof of financial responsibility means ability to respond in damages of $10,000 for bodily injury to or death of one person in any one crash, $20,000 for two or more persons in any one crash subject to that per-person limit, and $10,000 for injury to or destruction of the property of others in any one crash [S:fl-stat-324-021]. Section 324.022 requires $10,000 for property damage, or $30,000 combined for property damage liability and bodily injury liability arising out of any one crash [S:fl-stat-324-022].\n\nPIP travels with property damage by law. A policy providing personal injury protection under section 627.736 may not be delivered or issued for delivery in Florida unless it also provides property damage liability coverage as required by section 324.022 [S:fl-stat-627-7275].\n\nTwo consequences are worth knowing before they arrive. After a DUI conviction the required ability to respond rises to $100,000 for bodily injury to one person, $300,000 for two or more, and $50,000 for property damage, and those higher limits must be carried for a minimum of three years, with the exemption conditioned on no further DUI or felony traffic conviction for three years from reinstatement of driving privileges [S:fl-stat-324-023]. And after a crash, section 324.051 provides for suspension of licences and registrations thirty days after receipt of notice unless the operator or owner shows compliance with the financial responsibility provisions [S:fl-stat-324-051].",
+	"whatChanges": [
+		"Whether the vehicle is a school bus, limousine or taxicab, since each is carved out or governed separately [S:fl-stat-627-733].",
+		"Whether there has been a DUI conviction, which raises the required amounts and imposes a three-year period [S:fl-stat-324-023].",
+		"Whether a crash has been reported, since suspension follows thirty days after notice absent proof of compliance [S:fl-stat-324-051].",
+		"Whether security is provided by a policy or by another method authorised under section 324.031 and approved by the Department [S:fl-stat-627-733].",
+		"Whether the policy provides PIP, in which case property damage liability must accompany it [S:fl-stat-627-7275]."
+	],
+	"variability": [
+		"These are Florida requirements and describe nothing about another state. Minimum limits, and whether bodily injury liability is required at all, vary considerably.",
+		"These are statutory minimums rather than adequate amounts. Whether they are enough for a given household is a separate question this record does not answer.",
+		"Commercial motor vehicles and nonpublic sector buses are governed by different sections, which section 324.021(7)(d) points to [S:fl-stat-324-021]."
+	],
+	"nextActions": [
+		"Compare your declarations page against both sets of figures, since sections 324.021 and 324.022 state the requirement differently [S:fl-stat-324-021][S:fl-stat-324-022].",
+		"If there has been a DUI conviction, confirm the higher limits are in force and diary the three-year period [S:fl-stat-324-023].",
+		"After any crash, deal with the notice promptly, because suspension follows thirty days after receipt absent proof of compliance [S:fl-stat-324-051].",
+		"Do not treat the minimum as a target. It is the floor at which a vehicle may be registered, not a measure of the exposure."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"auto"
+	],
+	"states": [
+		"FL"
+	],
+	"audience": "individual",
+	"topics": [
+		"florida",
+		"financial responsibility",
+		"minimum limits",
+		"dui",
+		"auto"
+	],
+	"companies": [],
+	"coverages": [],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"florida-pip-what-it-pays",
+		"did-florida-repeal-no-fault"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether the statutory minimum is anywhere near adequate for your circumstances is the question worth asking, and it is not one the requirement answers."
+	},
+	"sourceIds": [
+		"fl-stat-627-733",
+		"fl-stat-324-021",
+		"fl-stat-324-022",
+		"fl-stat-324-023",
+		"fl-stat-324-051",
+		"fl-stat-627-7275"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

@@ -1,0 +1,76 @@
+{
+	"question": "What does Florida PIP actually pay, and what is the 14-day rule?",
+	"aliases": [
+		"Florida personal injury protection benefits amount",
+		"Florida PIP 14 day rule medical treatment",
+		"why did my Florida PIP only pay 2500",
+		"Florida Statutes 627.736 PIP benefits",
+		"emergency medical condition Florida PIP"
+	],
+	"shortAnswer": "Ten thousand dollars, and often only a quarter of that. Florida's required personal injury protection benefit is $10,000 in medical and disability benefits and $5,000 in death benefits resulting from bodily injury [S:fl-stat-627-736]. Two conditions cut into it: medical benefits apply only if the injured individual receives initial services and care within 14 days after the accident, and reimbursement is limited to $2,500 where a qualified provider determines the person did not have an emergency medical condition [S:fl-stat-627-736].",
+	"assumes": [
+		"The vehicle is registered and licensed in Florida, since that is what triggers the required security [S:fl-stat-627-733].",
+		"You are asking about the statutory PIP benefit rather than about any optional coverage bought above it.",
+		"The injury arose from a motor vehicle accident, which is the event the 14-day clock runs from [S:fl-stat-627-736]."
+	],
+	"why": "Florida's no-fault system pays your own medical costs through your own policy regardless of who caused the crash, and the amount is smaller and more conditional than the headline suggests.\n\nThe headline is $10,000 in medical and disability benefits, with $5,000 in death benefits resulting from bodily injury [S:fl-stat-627-736]. That is the ceiling, not the entitlement.\n\nThe first condition is timing, and it is unforgiving. Medical benefits apply if the injured individual receives initial services and care within 14 days after the motor vehicle accident [S:fl-stat-627-736]. Someone who feels bruised, waits three weeks, and then finds the pain is not improving has walked past the door. The clock runs from the accident rather than from when the injury became apparent.\n\nThe second condition decides how much of the $10,000 is reachable. Reimbursement is limited to $2,500 if a qualified provider determines that the injured person did not have an emergency medical condition [S:fl-stat-627-736]. That determination is made by a provider rather than by the insurer or the patient, and it is the single largest factor in what a Florida PIP claim actually pays. The gap between $2,500 and $10,000 turns on it.\n\nPIP does not stand alone on the policy. A motor vehicle insurance policy providing personal injury protection as set forth in section 627.736 may not be delivered or issued for delivery in Florida unless it also provides property damage liability coverage as required by section 324.022 [S:fl-stat-627-7275]. So the two are sold together by law.",
+	"whatChanges": [
+		"Whether initial services and care were received within 14 days of the accident, which is the condition on medical benefits [S:fl-stat-627-736].",
+		"Whether a qualified provider determined an emergency medical condition existed, which is what separates $2,500 from $10,000 [S:fl-stat-627-736].",
+		"Whether the claim is for medical and disability benefits or for death benefits, which carry the separate $5,000 figure [S:fl-stat-627-736].",
+		"Whether coverage above the statutory minimum was purchased, since these are required amounts rather than typical ones [S:fl-stat-627-733]."
+	],
+	"variability": [
+		"This is Florida. Most states are not no-fault, and California for instance has no PIP requirement at all, so nothing here describes a policy written elsewhere.",
+		"What counts as an emergency medical condition is a clinical determination made by a qualified provider [S:fl-stat-627-736], and this record does not describe the standard applied.",
+		"These are statutory minimums. What any particular policy provides above them is in that policy."
+	],
+	"nextActions": [
+		"If you have been in an accident in Florida, get seen within 14 days even if the injury seems minor, because the medical benefit depends on it [S:fl-stat-627-736].",
+		"Ask the treating provider directly whether an emergency medical condition has been determined, since that determination governs whether the limit is $2,500 or $10,000 [S:fl-stat-627-736].",
+		"Keep the dates of first treatment, because the 14-day condition is proved by the record of when care began [S:fl-stat-627-736].",
+		"Check whether you carry more than the statutory minimum, and what your policy provides for bodily injury liability, which PIP does not answer [S:fl-stat-324-021]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"auto"
+	],
+	"states": [
+		"FL"
+	],
+	"audience": "individual",
+	"topics": [
+		"florida",
+		"pip",
+		"no-fault",
+		"medical benefits",
+		"deadlines",
+		"auto"
+	],
+	"companies": [],
+	"coverages": [],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"did-florida-repeal-no-fault",
+		"florida-minimum-auto-insurance-and-after-dui"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether an emergency medical condition was determined decides most of the benefit, and that is a clinical and evidential question about your treatment rather than about the statute."
+	},
+	"sourceIds": [
+		"fl-stat-627-736",
+		"fl-stat-627-733",
+		"fl-stat-627-7275",
+		"fl-stat-324-021"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}
