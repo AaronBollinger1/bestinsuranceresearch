@@ -1,0 +1,169 @@
+{
+	"name": "Inland marine",
+	"line": "inland-marine",
+	"family": "commercial",
+	"definition": "Inland marine is a classification before it is a policy. There is no single inland marine form; there is a regulatory boundary that decides which risks an admitted marine insurer may write, and a set of enumerated floater types that fall inside it. California's marine insurance article was adopted by the Insurance Commissioner as a necessary means for the guidance of insurers and all others concerned in observing the provisions of law relating to the insuring powers of admitted marine insurers, the California Standard Form Fire Insurance policy, rates and rating organizations, and taxation of insurers [S:ca-ccr-tit-10-2320-1]. It exists to assist in determining whether business should be reported as ocean marine insurance or otherwise, and for the guidance of all persons concerned in all other cases where it is necessary to distinguish between marine and other classes of insurance and between inland marine risks and other risks [S:ca-ccr-tit-10-2320-1]. The nationwide instrument says the same thing about itself from the other direction: its purpose is to describe the kinds of risks and coverages which may be classified or identified under state insurance laws as marine, inland marine or transportation insurance, and it does not include all of the kinds of risks and coverages which may be written under those insuring powers [S:naic-model-701-nationwide-inland-marine-definition].",
+	"protects": [
+		"Property in transit, which is the origin of the line: imports, exports and domestic shipments are the first three subdivisions of the California article [S:ca-ccr-tit-10-2321]",
+		"Instrumentalities of transportation and communication, including bridges, tunnels, piers, wharves, pipelines, transmission and telephone lines, communication equipment with towers and antennae, and outdoor cranes and loading bridges [S:naic-model-701-nationwide-inland-marine-definition]",
+		"Personal property floater risks, which in California is subdivision (e) and holds both the individual and the commercial floater types [S:ca-ccr-tit-10-2321]",
+		"Property of a mobile or floating nature in the custody of parties who intend to use it for what it was made for, under a Mobile Articles, Machinery and Equipment Floater [S:naic-model-701-nationwide-inland-marine-definition]",
+		"Property in transit to or from and in the custody of bailees, where the bailee is not owned, controlled or operated by the bailor [S:naic-model-701-nationwide-inland-marine-definition]",
+		"Not fixed real property against fire and its companion perils. That is the boundary rather than a gap, and it is stated as a prohibition [S:ca-ccr-tit-10-2322]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Imports, exports and domestic shipments",
+			"note": "The first three of the five top-level subdivisions of the California article are Imports, Exports and Domestic Shipments [S:ca-ccr-tit-10-2321]. Transit is what the classification is built around, and everything else in the article is an extension outward from it."
+		},
+		{
+			"item": "Bridges, tunnels and other instrumentalities of transportation and communication",
+			"note": "The nationwide definition's group D lists bridges, tunnels and similar instrumentalities including auxiliary facilities and equipment; piers, wharves, docks, slips, dry docks and marine railways; pipelines, excluding property at manufacturing, producing, refining, converting, treating or conditioning plants; power transmission and telephone and telegraph lines, excluding property at generating, converting or transforming stations, substations and exchanges; radio and television communication equipment in use as such including towers and antennae; and outdoor cranes, loading bridges and similar equipment used to load, unload and transport [S:naic-model-701-nationwide-inland-marine-definition]. The group expressly excludes buildings, their improvements and betterments, furniture and furnishings, fixed contents and supplies held in storage [S:naic-model-701-nationwide-inland-marine-definition]."
+		},
+		{
+			"item": "Named floater types, enumerated rather than described",
+			"note": "California places Fine Arts Floaters and Stamp and Coin Floaters at (e)(2)(A), Installation risks at (e)(2)(L), Mobile Articles, Machinery and Equipment Floaters at (e)(2)(M), property in transit to or from and in the custody of bailees at (e)(2)(N), and Accounts Receivable Policies and Valuable Papers and Records Policies at (e)(2)(R) [S:ca-ccr-tit-10-2321]. The fine arts item describes objects of art such as pictures, statuary, bronzes and antiques, and rare manuscripts and books [S:ca-ccr-tit-10-2321]."
+		},
+		{
+			"item": "Builders risks and installation risks, with a defined end",
+			"note": "The nationwide definition permits Builders Risks or Installation Risks covering the interest of owner, seller or contractor against loss to machinery, equipment, building materials or supplies being used with and during the course of installation, testing, building, renovating or repairing, at points where work is performed, while in transit, and during temporary storage of property designated for and awaiting specific installation [S:naic-model-701-nationwide-inland-marine-definition]. It limits that coverage to Builders Risks or Installation Risks where perils in addition to Fire and Extended Coverage are to be insured [S:naic-model-701-nationwide-inland-marine-definition]."
+		},
+		{
+			"item": "Bailee exposures, named by trade",
+			"note": "The California bailee item names its examples: bleacheries, throwsters, fumigatories, dyers, cleaners, laundries and similar bailees, and needleworkers [S:ca-ccr-tit-10-2321]. The nationwide definition adds that the policies shall not cover the bailee's own property at the bailee's premises [S:naic-model-701-nationwide-inland-marine-definition]."
+		},
+		{
+			"item": "Accounts receivable, valuable papers, and electronic data processing",
+			"note": "California permits Accounts Receivable Policies and Valuable Papers and Records Policies at (e)(2)(R) [S:ca-ccr-tit-10-2321]. The nationwide definition permits the same at Section 2.F.15 and adds Electronic Data Processing policies at Section 2.F.23 [S:naic-model-701-nationwide-inland-marine-definition]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Fire and its companion perils on fixed real property",
+			"note": "Item (f) of California's Prohibited Coverage section reaches risks of fire, windstorm, sprinkler leakage, earthquake, hail, explosion, riot and civil commotion on buildings, structures, wharves and fixed real property [S:ca-ccr-tit-10-2322]. This is the line's outer wall: a marine policy is not a route to writing fire cover on a building, and the prohibition is why the classification question matters before the form question."
+		},
+		{
+			"item": "Storage of the assured's own merchandise",
+			"note": "Item (a) prohibits storage of the assured's merchandise, except as provided earlier in the article [S:ca-ccr-tit-10-2322]. The same exception appears as Section 3.A of the nationwide definition [S:naic-model-701-nationwide-inland-marine-definition]. Transit is the premise; sitting still in the owner's own warehouse is generally somebody else's policy."
+		},
+		{
+			"item": "Merchandise in the course of manufacture on the manufacturer's own premises",
+			"note": "Item (b) prohibits merchandise in course of manufacture, the property of and on the premises of the manufacturer [S:ca-ccr-tit-10-2322], matching Section 3.B of the nationwide definition [S:naic-model-701-nationwide-inland-marine-definition]."
+		},
+		{
+			"item": "Furniture, fixtures, improvements and betterments to buildings",
+			"note": "Item (c) prohibits furniture and fixtures and improvements and betterments to buildings [S:ca-ccr-tit-10-2322], matching Section 3.C of the nationwide definition [S:naic-model-701-nationwide-inland-marine-definition]. A tenant's build-out is a property question, not a marine one."
+		},
+		{
+			"item": "Money and securities at rest",
+			"note": "Item (e) prohibits moneys and securities in safes, vaults, safety deposit vaults, banks or the assured's premises, except while in course of transportation [S:ca-ccr-tit-10-2322]. The exception restates the whole line: in transit is inside the classification, at rest is outside it."
+		},
+		{
+			"item": "Motor vehicles designed for highway use",
+			"note": "The Mobile Articles, Machinery and Equipment Floaters item excludes motor vehicles designed for highway use [S:ca-ccr-tit-10-2321]. The nationwide definition states the exclusion more fully, adding auto homes, trailers and semi-trailers except when hauled by tractors not designed for highway use, and snow plows constructed exclusively for highway use, and provides that the policies shall not cover furniture and fixtures not customarily used away from the premises where the property is usually kept [S:naic-model-701-nationwide-inland-marine-definition]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"The article sets no limits and no deductibles. It is a classification instrument, adopted for the guidance of insurers in observing the law on insuring powers, rating and taxation [S:ca-ccr-tit-10-2320-1], so limits and deductibles come from the insurer's own filed form rather than from the regulation.",
+		"Installation risk coverage has an end written into the classification rather than into the schedule. Coverage terminates when the interest of the insured seller or installer ceases, or in no case later than when the property has been accepted as satisfactory, whichever first occurs [S:ca-ccr-tit-10-2321].",
+		"The nationwide definition states the same termination from both sides: if written for account of owner the coverage ceases upon completion and acceptance, and if written for account of a seller or contractor it terminates when the interest of the seller or contractor ceases [S:naic-model-701-nationwide-inland-marine-definition].",
+		"A Wedding Present Floater is limited by the classification itself to a period not exceeding ninety days after the date of the wedding [S:naic-model-701-nationwide-inland-marine-definition], which is an unusually literal example of a limit living in the definition rather than in the policy.",
+		"Neither instrument is exhaustive. The nationwide definition states that it does not include all of the kinds of risks and coverages which may be written under these insuring powers, that it shall not be construed to mean the risks are solely marine in all instances, and that it shall not be construed to restrict or limit the exercise of any insuring powers granted under charters and licence [S:naic-model-701-nationwide-inland-marine-definition]. A risk absent from the list is not thereby prohibited; a risk in the Prohibited Coverage section is."
+	],
+	"endorsements": [
+		{
+			"item": "Difference in conditions, with fire and extended coverage carved out",
+			"note": "The nationwide definition permits Difference in Conditions Coverage at Section 2.F.22, excluding fire and extended coverage perils [S:naic-model-701-nationwide-inland-marine-definition]. The carve-out is the same boundary as the California prohibition on fire perils against fixed real property [S:ca-ccr-tit-10-2322], approached from the other side."
+		},
+		{
+			"item": "Electronic data processing",
+			"note": "Permitted at Section 2.F.23 of the nationwide definition [S:naic-model-701-nationwide-inland-marine-definition]. Equipment that moves, or that is worth more than the building it sits in, is the classic reason a risk is written here rather than on the property policy."
+		},
+		{
+			"item": "Fine arts, on the commercial side rather than the household one",
+			"note": "The nationwide definition permits Fine Arts Policies at Section 2.F.18 covering paintings, etchings, pictures, tapestries, art glass windows and other bona fide works of art of rarity, historical value or artistic merit, for account of museums, galleries, universities, businesses, municipalities and other similar interests [S:naic-model-701-nationwide-inland-marine-definition]. That is a different item from the personal Fine Arts Floater at Section 2.E.8 [S:naic-model-701-nationwide-inland-marine-definition]."
+		}
+	],
+	"relatedPolicies": [
+		"Scheduled personal property, which is the household end of the same floater classification [S:ca-ccr-tit-10-2321]",
+		"Commercial property, which answers the fixed real property that item (f) keeps out of a marine policy [S:ca-ccr-tit-10-2322]",
+		"Builders risk, which the nationwide definition permits as an inland marine item rather than treating as a separate line [S:naic-model-701-nationwide-inland-marine-definition]",
+		"Commercial auto, because motor vehicles designed for highway use are excluded from the mobile equipment floater [S:ca-ccr-tit-10-2321]"
+	],
+	"underwritingInputs": [
+		"Whether the property is in transit, in temporary storage awaiting installation, or at rest on the owner's premises, since the first two are inside the classification and the third is largely prohibited [S:ca-ccr-tit-10-2322]",
+		"Whether the item is a motor vehicle designed for highway use, which the mobile equipment floater excludes [S:ca-ccr-tit-10-2321]",
+		"Whose interest is being insured on an installation risk, owner or seller or contractor, because that decides when the coverage ends [S:naic-model-701-nationwide-inland-marine-definition]",
+		"Whether the risk is a bailee's own property at the bailee's premises, which the definition excludes, or the bailor's property in the bailee's custody, which it permits [S:naic-model-701-nationwide-inland-marine-definition]",
+		"Whether perils beyond Fire and Extended Coverage are being sought, which is the condition on writing an installation or builders risk here [S:naic-model-701-nationwide-inland-marine-definition]",
+		"Which enumerated item the risk is being written under, since the article works by enumeration [S:ca-ccr-tit-10-2321]",
+		"Whether the exposure is fixed real property, in which case item (f) is the answer before any form is discussed [S:ca-ccr-tit-10-2322]"
+	],
+	"exposures": [
+		{
+			"item": "Installation cover ending before anybody notices",
+			"note": "Coverage terminates when the insured seller or installer's interest ceases, or no later than when the property has been accepted as satisfactory, whichever first occurs [S:ca-ccr-tit-10-2321]. Acceptance is often informal, undocumented and earlier than the parties assume, and after it the equipment is uninsured under this policy while still on site."
+		},
+		{
+			"item": "Assuming the trade name is the classification",
+			"note": "The words contractors equipment, motor truck cargo, trip transit and job site do not appear anywhere in the nationwide definition, and the only occurrences of contractors and cranes are in Garment Contractors Floaters at Section 2.F.13 and outdoor cranes at Section 2.D.6 [S:naic-model-701-nationwide-inland-marine-definition]. Familiar market names are not the enumerated items, so a request phrased in trade language has to be mapped onto the classification before anyone can say what is permitted."
+		},
+		{
+			"item": "Fixed property arriving through the wrong door",
+			"note": "Item (f) prohibits risks of fire, windstorm, sprinkler leakage, earthquake, hail, explosion, riot and civil commotion on buildings, structures, wharves and fixed real property [S:ca-ccr-tit-10-2322]. A risk that has grown from equipment into a building is no longer a marine risk for those perils, and the classification does not follow the account."
+		},
+		{
+			"item": "Property at rest in the owner's own warehouse",
+			"note": "Storage of the assured's merchandise is prohibited except as the article otherwise provides [S:ca-ccr-tit-10-2322], and merchandise in course of manufacture on the manufacturer's own premises is prohibited outright [S:ca-ccr-tit-10-2322]. A shipment that stops moving can stop being insurable here."
+		},
+		{
+			"item": "Highway vehicles inside a fleet of mobile equipment",
+			"note": "The mobile equipment floater excludes motor vehicles designed for highway use [S:ca-ccr-tit-10-2321], and the nationwide definition extends that to auto homes, trailers and semi-trailers except when hauled by tractors not designed for highway use, and to snow plows constructed exclusively for highway use [S:naic-model-701-nationwide-inland-marine-definition]. Mixed fleets are the ordinary way an item ends up on the wrong policy."
+		},
+		{
+			"item": "Reading absence as prohibition, or presence as permission",
+			"note": "The nationwide definition states that it does not include all the kinds of risks that may be written, that the risks are not solely marine in all instances, and that it does not restrict any insuring powers granted under charters and licence [S:naic-model-701-nationwide-inland-marine-definition]. Absence from the list settles nothing; the Prohibited Coverage section is what settles things [S:ca-ccr-tit-10-2322]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Fix the date of acceptance in writing on any installation risk",
+			"note": "Because coverage terminates on the earlier of the insured's interest ceasing and the property being accepted as satisfactory [S:ca-ccr-tit-10-2321], the date of acceptance is the date the cover ends. Recording it, on both sides, is what makes the end of the policy period knowable rather than arguable."
+		},
+		{
+			"item": "Ask which enumerated item the risk is written under",
+			"note": "The California article proceeds by enumeration, with named floater types at identified subdivisions [S:ca-ccr-tit-10-2321]. Knowing the item is what lets anyone check the answer against the regulation instead of against a brochure."
+		},
+		{
+			"item": "Separate the fixed property from the moving property before placing anything",
+			"note": "Item (f) prohibits the fire perils on buildings, structures, wharves and fixed real property [S:ca-ccr-tit-10-2322]. An inventory that distinguishes what moves from what does not is what shows where each part of the risk has to be written."
+		},
+		{
+			"item": "Identify highway vehicles in the schedule",
+			"note": "Motor vehicles designed for highway use are excluded from the mobile equipment floater [S:ca-ccr-tit-10-2321], with the nationwide definition adding trailers, semi-trailers and highway snow plows [S:naic-model-701-nationwide-inland-marine-definition]. Marking them in the schedule is how they end up on the policy that answers them."
+		},
+		{
+			"item": "Keep the bailment relationship documented",
+			"note": "The definition permits property in transit to or from and in the custody of bailees not owned, controlled or operated by the bailor, and excludes the bailee's own property at the bailee's premises [S:naic-model-701-nationwide-inland-marine-definition]. Which party owns what, and where it was, is the fact the classification turns on."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "California's article is not the nationwide definition with a state header on it, and two differences are structural. First, the shape: the California section has five top-level subdivisions and no subdivision (f), so the commercial floater items sit inside subdivision (e)(2) rather than in a separate commercial group [S:ca-ccr-tit-10-2321], whereas the nationwide definition organises the same material into six lettered groups A to F with F being Commercial Property Floater Risks [S:naic-model-701-nationwide-inland-marine-definition]. Second, and more consequential, California prohibits more. Its Prohibited Coverage section has six lettered items where the nationwide definition's Exceptions section has four, and two of California's six, items (d) and (f), have no counterpart in those four [S:ca-ccr-tit-10-2322]. Item (d) concerns merchandise in permanent location sold under partial payment, contract of sale or installment sales contract, and purchaser protection after the seller's interest ends [S:ca-ccr-tit-10-2322]; item (f) is the fire perils prohibition on fixed real property [S:ca-ccr-tit-10-2322]. The article is effective January 1, 1954 and supersedes the former sections 2320, 2321 and 2322, with matching provisions construed as restatements and continuations rather than as new provisions [S:ca-ccr-tit-10-2320]."
+		}
+	],
+	"lastReviewed": "2026-09-07",
+	"effectiveDate": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ccr-tit-10-2320",
+		"ca-ccr-tit-10-2320-1",
+		"ca-ccr-tit-10-2321",
+		"ca-ccr-tit-10-2322",
+		"naic-model-701-nationwide-inland-marine-definition"
+	],
+	"relatedQuestions": ["inland-marine-uses"]
+}
