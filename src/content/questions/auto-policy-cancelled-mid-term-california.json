@@ -1,0 +1,59 @@
+{
+	"question": "My car insurance was cancelled in the middle of the policy term. Was the insurer allowed to do that?",
+	"aliases": [
+		"can my auto insurer cancel my policy mid term California",
+		"reasons an auto policy can be cancelled California",
+		"how much notice for auto insurance cancellation California",
+		"cancelled for nonpayment can I pay and keep the policy California",
+		"insurer will not tell me why my car insurance was cancelled"
+	],
+	"shortAnswer": "Only for one of five reasons, and only with notice. A notice of cancellation is effective only if it is based on one or more of the five reasons listed in section 661(a): nonpayment of premium, suspension or revocation of a licence or registration, discovery of fraud in pursuing a claim, discovery of material misrepresentation of stated rating factors, or a substantial increase in the hazard insured against [S:ca-ins-code-661]. The notice must be mailed or delivered at least 20 days before the effective date, or at least 10 days where the ground is nonpayment [S:ca-ins-code-662].",
+	"assumes": [
+		"The policy is one the chapter covers. Section 660(a) applies it to an automobile liability, physical damage or collision policy issued for delivery in California insuring an individual or individuals in the same household, covering a private passenger or station wagon type vehicle, another four-wheel vehicle of 1,500 pounds load capacity or less, or a motorcycle [S:ca-ins-code-660].",
+		"The policy is not one the chapter excludes. It does not apply to a policy issued under an automobile assigned risk plan, a policy insuring more than four automobiles, or a policy covering garage, sales agency, repair shop, service station or public parking hazards [S:ca-ins-code-660].",
+		"What happened is cancellation rather than something else. Cancellation is termination by the insurer, other than at the insured's request, during a policy period [S:ca-ins-code-660]. A refusal to renew and an expiration are different events with different rules [S:ca-ins-code-660]."
+	],
+	"why": "The list is closed, which is the part that matters. Section 661(a) does not say an insurer may cancel for good cause; it says a notice of cancellation is effective only if it is based on one or more of the reasons it then lists [S:ca-ins-code-661]. There are five.\n\nNonpayment of premium [S:ca-ins-code-661], which section 660(f) defines broadly enough to include an installment and to include amounts payable indirectly under a premium finance plan or extension of credit [S:ca-ins-code-660].\n\nSuspension or revocation of a driver's licence or vehicle registration, and not only the named insured's. It reaches any other operator who either resides in the same household or customarily operates an insured automobile, and it looks back into the 180 days immediately preceding the effective date of a renewal as well as into the policy period itself [S:ca-ins-code-661].\n\nDiscovery of fraud by the named insured in pursuing a claim, provided the insurer does not rescind the policy [S:ca-ins-code-661].\n\nDiscovery of material misrepresentation of the named insured's or a customarily-operating household resident's safety record, annual miles driven in prior years, years of driving experience, record of prior claims, or any other factor the commissioner finds to have a substantial relationship to the risk of loss [S:ca-ins-code-661].\n\nA substantial increase in the hazard insured against [S:ca-ins-code-661].\n\nTwo of those five come with a way back, and both run on short clocks.\n\nWhere the ground is negligent misrepresentation of that kind, the insured may avoid cancellation by furnishing corrected information to the insurer within 20 days after receiving the notice, and agreeing to pay any difference in premium for the policy period in which the information remained undisclosed [S:ca-ins-code-661]. Where the ground is nonpayment, the cancellation is effective on the date specified in the notice only if the insured has not cured the nonpayment identified in the notice by the end of the 10-day period [S:ca-ins-code-662]. A nonpayment notice is therefore an opportunity with a deadline attached rather than a decision already taken.\n\nThe notice itself has requirements. It must be mailed or delivered to the named insured, lienholder or additional interest at least 20 days before the effective date of cancellation, and where the ground is nonpayment at least 10 days after nonpayment of premium due by the specified due date, accompanied by the reason [S:ca-ins-code-662].\n\nIf the reason does not accompany the notice, the notice must say, or be accompanied by a statement saying, that on written request mailed or delivered to the insurer not less than 15 days before the effective date of cancellation the insurer will specify the reason [S:ca-ins-code-662]. Section 666 is the other half of that: on such a request the insurer must specify the reason in writing and mail or deliver it within five days after receiving the request [S:ca-ins-code-666]. Note where that leaves a reader who simply waits. The notice period is 20 days and the request must be made no later than 15 days before the effective date, so the window to ask closes five days after the notice arrives.\n\nOne thing that looks like a cancellation is not one. Modifying automobile physical damage coverage by including a deductible not exceeding one hundred dollars is not deemed a cancellation of the coverage or of the policy [S:ca-ins-code-661].",
+	"whatChanges": [
+		"Whether the policy is within section 660(a) at all, since an assigned risk policy, a policy insuring more than four automobiles, and a commercial garage or repair shop policy are outside the chapter [S:ca-ins-code-660].",
+		"Which of the five section 661(a) grounds the insurer is relying on, because two of them carry a cure and three do not [S:ca-ins-code-661][S:ca-ins-code-662].",
+		"Whether the ground is nonpayment, which changes the notice period from 20 days to 10 and brings the cure right in [S:ca-ins-code-662].",
+		"Whether the reason accompanied the notice, because if it did not, a written request is required and it is due not less than 15 days before the effective date [S:ca-ins-code-662][S:ca-ins-code-666].",
+		"Whether a licence or registration suspension belongs to a household member or customary operator rather than to you, since the ground reaches them too [S:ca-ins-code-661].",
+		"Whether the misrepresentation was negligent, since that is the condition on the 20-day correction route [S:ca-ins-code-661]."
+	],
+	"variability": [
+		"This is the California statutory floor for the policies section 660 describes. A policy may give the insured more than the statute requires, and where it does, the policy governs that term.",
+		"Whether a given set of facts amounts to material misrepresentation, fraud in pursuing a claim, or a substantial increase in the hazard is a factual question the statute does not resolve, and insurers and insureds routinely disagree about it.",
+		"Sections 661 and 662 both state that they do not apply to nonrenewal [S:ca-ins-code-661][S:ca-ins-code-662], so an insurer that lets a policy run to its expiry is in a different part of the chapter with different notice periods.",
+		"The commissioner may find further factors to have a substantial relationship to the risk of loss, which section 661(a)(4) contemplates without listing them [S:ca-ins-code-661]."
+	],
+	"nextActions": [
+		"Read the notice for the ground and the effective date, and work out which of the five section 661(a) reasons is being used [S:ca-ins-code-661].",
+		"If no reason is stated, send the written request at once rather than waiting for an explanation, because it must reach the insurer not less than 15 days before the effective date [S:ca-ins-code-662][S:ca-ins-code-666].",
+		"If the ground is nonpayment, establish the exact amount identified in the notice and whether it can be cured inside the 10-day period, since curing it stops the cancellation taking effect on the stated date [S:ca-ins-code-662].",
+		"If the ground is misrepresentation and the error was negligent, furnish the corrected information within 20 days of receiving the notice and agree to pay the premium difference for the period the information was undisclosed [S:ca-ins-code-661].",
+		"Keep the envelope and the postmark. Every deadline in sections 662 and 666 runs from mailing or delivery [S:ca-ins-code-662][S:ca-ins-code-666].",
+		"Do not let coverage lapse while arguing. Driving uninsured has its own consequences that are not answered by winning this argument later."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["auto"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["cancellation", "notice", "nonpayment", "misrepresentation", "auto", "california"],
+	"companies": [],
+	"coverages": ["personal-auto-california"],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["auto-policy-not-renewed-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether particular facts amount to material misrepresentation, fraud in pursuing a claim, or a substantial increase in the hazard is not settled by the statute, and a cancellation that turns on one of those is worth putting in front of someone who can act on the deadlines rather than describe them."
+	},
+	"sourceIds": ["ca-ins-code-661", "ca-ins-code-662", "ca-ins-code-660", "ca-ins-code-666"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

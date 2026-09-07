@@ -231,5 +231,10 @@
 		"ca-veh-code-16056",
 		"ca-dmv-insurance-requirements"
 	],
-	"relatedQuestions": []
+	"relatedQuestions": [
+		"auto-policy-cancelled-mid-term-california",
+		"auto-policy-not-renewed-california",
+		"insurer-choose-repair-shop-california",
+		"underinsured-motorist-paid-nothing-california"
+	]
 }

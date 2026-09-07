@@ -1,0 +1,60 @@
+{
+	"question": "My auto insurer says it will not renew my policy. What is it required to do, and how long do I have?",
+	"aliases": [
+		"auto insurance nonrenewal notice period California",
+		"how much notice for auto insurance nonrenewal California",
+		"insurer moved my policy to a different company California",
+		"insurer missed the nonrenewal notice what happens California",
+		"difference between cancellation and nonrenewal auto California"
+	],
+	"shortAnswer": "Before the policy expires the insurer must do one of two things: deliver or mail a written or verbal offer of renewal at least 20 days before expiration, contingent on payment of the premium stated in the offer, or a written notice of nonrenewal at least 30 days before expiration including the statement required by section 666 [S:ca-ins-code-663]. If it does neither, the existing policy stays in effect, with no change in its terms and conditions, for 30 days from the date the offer or the notice is finally delivered or mailed [S:ca-ins-code-663].",
+	"assumes": [
+		"The policy is one section 660(a) covers: an automobile liability, physical damage or collision policy issued for delivery in California to an individual or individuals in the same household, on a private passenger or station wagon type vehicle, another four-wheel vehicle of 1,500 pounds load capacity or less, or a motorcycle [S:ca-ins-code-660].",
+		"The policy is not an assigned risk policy, a policy insuring more than four automobiles, or a commercial garage, sales agency, repair shop, service station or parking policy, all of which the chapter excludes [S:ca-ins-code-660].",
+		"This is nonrenewal rather than cancellation. Nonrenewal is a notice by the insurer that it is unwilling to renew; cancellation is termination during a policy period [S:ca-ins-code-660]. The rules in sections 661 and 662 do not apply here [S:ca-ins-code-661][S:ca-ins-code-662]."
+	],
+	"why": "Section 663 does not give an insurer a list of permitted reasons the way section 661 does for cancellation. What it gives is a deadline and a consequence for missing it.\n\nThe insurer must, before policy expiration, deliver or mail to the named insured at the address shown on the policy either an offer of renewal at least 20 days before expiration, contingent upon payment of premium as stated in the offer, or a written notice of nonrenewal at least 30 days before expiration including the statement required by section 666 [S:ca-ins-code-663]. Twenty days to keep you, thirty to let you go: the longer period attaches to the notice that leaves you looking for cover.\n\nThat cross-reference is worth following. Section 666 requires that where the reason does not accompany the notice, the insurer must, on written request mailed or delivered not less than 15 days before the effective date, specify the reason in writing and send it within five days of receiving the request [S:ca-ins-code-666]. It is a right to ask rather than a right to be told, and the asking has its own deadline.\n\nAn offer of renewal may be verbal, and then the section adds paperwork. If a verbal offer is made and the insured declines it, the insurer must deliver or mail a written confirmation of the offer and the rejection at least 20 days before expiration [S:ca-ins-code-663]. If the insurer tries to make a verbal offer but cannot reach the named insured directly at least 20 days before expiration, it must deliver or mail a written offer to renew, contingent on payment of the premium stated, at least 20 days before expiration [S:ca-ins-code-663].\n\nThe remedy for a missed notice is the part most often misread. Where the insurer fails to give either an offer of renewal or a notice of nonrenewal as the section requires, the existing policy, with no change in its terms and conditions, remains in effect for 30 days from the date the offer or notice is delivered or mailed [S:ca-ins-code-663], and the insurer must provide a notice to that effect together with the policy or the notice of renewal or nonrenewal [S:ca-ins-code-663]. That is an extension, not a reprieve. It buys 30 days to arrange cover; it does not compel the insurer to keep writing the risk. It is also cut short: notwithstanding the insurer's failure to comply, the policy terminates on the effective date of any replacement or succeeding policy the insured or their agent or broker procures covering an automobile designated in both policies [S:ca-ins-code-663]. Buying the replacement ends the extension the moment it attaches.\n\nThere is an exception that removes the notice altogether. The insurer need not notify anyone of nonrenewal if it has mailed or delivered a notice of expiration or cancellation on or before the 30th day preceding expiration of the policy period [S:ca-ins-code-663].\n\nOne common event is not a nonrenewal at all. Renewal includes continuing coverage with an affiliated insurer as section 1215 defines that term, provided the coverage is the same or broader and the insured is notified in writing at least 20 days before the current period expires [S:ca-ins-code-660]. That notice must state that the insurer has determined it will not offer renewal with the present insurer, that it is offering replacement in an affiliated insurer, and that the insured may obtain the reasons for the change by requesting them in writing not later than one month following expiration of the policy period [S:ca-ins-code-660]. Being moved to a sister company is therefore a renewal with a disclosure attached, and the window to ask why runs for a month after expiry rather than before it.\n\nTwo definitions decide which clock applies. A policy with a term of six months or less, whether or not made continuous for successive terms on payment of additional premiums, is treated as if written for a term of six months [S:ca-ins-code-660]. A policy written for longer than a year, or with no fixed expiration date, is treated as written for successive one-year periods [S:ca-ins-code-660].",
+	"whatChanges": [
+		"Whether the insurer sent an offer of renewal or a notice of nonrenewal, since the required lead times differ, 20 days against 30 [S:ca-ins-code-663].",
+		"The date the notice was delivered or mailed, because the 30-day continuation in subdivision (c) runs from that date rather than from the original expiration [S:ca-ins-code-663].",
+		"Whether replacement coverage has been bought, since that terminates the continuation as soon as it attaches to a vehicle named in both policies [S:ca-ins-code-663].",
+		"Whether a notice of expiration or cancellation went out on or before the 30th day preceding expiration, which removes the nonrenewal notice requirement entirely [S:ca-ins-code-663].",
+		"Whether the offer was verbal, which brings the written confirmation requirements in subdivision (b) into play [S:ca-ins-code-663].",
+		"Whether what happened was a move to an affiliated insurer, which is a renewal rather than a nonrenewal if the coverage is the same or broader and the 20-day written notice was given [S:ca-ins-code-660].",
+		"The policy term, since a term of six months or less counts as six months and a term longer than a year counts as successive one-year periods [S:ca-ins-code-660]."
+	],
+	"variability": [
+		"Section 663 sets notice periods and a remedy. It does not restrict the reasons for which an insurer may decline to renew, which is the substantive difference between this section and section 661 [S:ca-ins-code-661][S:ca-ins-code-663].",
+		"The section became operative on January 1, 2019 [S:ca-ins-code-663], so material describing an earlier regime may not match it.",
+		"A policy may give more than the statute requires, and where it does, the policy term governs.",
+		"Section 666 speaks in terms of cancellation on its own text and reaches nonrenewal through the cross-reference in section 663(a) [S:ca-ins-code-663][S:ca-ins-code-666], so a request made under it should be framed against the notice actually received."
+	],
+	"nextActions": [
+		"Find the date on the notice and count backwards to expiration, because whether the insurer met 20 or 30 days is the first question and it is answerable from the document [S:ca-ins-code-663].",
+		"If no reason is given, request it in writing rather than waiting, and observe the section 666 timing [S:ca-ins-code-666].",
+		"Treat any 30-day continuation as time to shop rather than as coverage restored, since it lasts 30 days and ends early if you buy replacement cover [S:ca-ins-code-663].",
+		"Check whether the letter is actually offering replacement in an affiliated insurer, which is a renewal, and if so decide within the month after expiration whether to ask for the reasons [S:ca-ins-code-660].",
+		"Do not decline a verbal offer without keeping a record of it, since the written confirmation of the offer and the rejection is the insurer's obligation and its absence is worth noticing [S:ca-ins-code-663].",
+		"Arrange replacement coverage before expiration regardless of the argument, because a lapse creates its own problems that this section does not answer."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["auto"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["nonrenewal", "renewal", "notice", "auto", "california", "affiliated insurer"],
+	"companies": [],
+	"coverages": ["personal-auto-california"],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["auto-policy-cancelled-mid-term-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Section 663 fixes the timing but not the outcome, so the useful next step after establishing that a notice was late is placing the risk somewhere, and that is a licensed conversation rather than a statutory one."
+	},
+	"sourceIds": ["ca-ins-code-663", "ca-ins-code-660", "ca-ins-code-666", "ca-ins-code-661", "ca-ins-code-662"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
