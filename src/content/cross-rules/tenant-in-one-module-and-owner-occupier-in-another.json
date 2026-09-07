@@ -1,0 +1,21 @@
+{
+	"kind": "inconsistency",
+	"severity": "high",
+	"modules": ["earthquake-pathways", "property-position"],
+	"title": "One module records the household as a tenant and the other records it as owning and occupying the home.",
+	"detail": "These cannot both be true of the same residence, and the two readings point at opposite policies rather than at different limits on one. A tenant's policy answers personal property, loss of use, personal liability and medical payments, and the landlord does not provide insurance for the tenant's personal property [S:cdi-residential-insurance-guide]. An owner-occupier's policy is built around a dwelling limit, which should be the amount it would cost to replace the home and may have nothing to do with its purchase price or market value [S:cdi-residential-insurance-guide]. The loss of use limit is measured differently in each: normally 20 percent of Coverage A on a homeowners policy, and 20 percent of Coverage C on a renters policy [S:cdi-residential-insurance-guide]. Every earthquake finding that assumes a companion residential policy of one kind is unsafe while this disagreement stands, because the wrong companion form changes what the earthquake cover sits on top of.",
+	"action": "Establish who owns the residence and correct whichever module is wrong before relying on either module's findings. If one module was completed for a different property, complete it again for this one rather than editing it into place.",
+	"when": {
+		"all": [
+			{ "field": "earthquake-pathways.occupancy-role", "op": "eq", "value": "tenant" },
+			{ "field": "property-position.occupancy", "op": "eq", "value": "owner-primary" }
+		]
+	},
+	"sourceIds": ["cdi-residential-insurance-guide"],
+	"relatedQuestion": null,
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

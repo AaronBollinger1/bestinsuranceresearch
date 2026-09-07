@@ -1,0 +1,21 @@
+{
+	"kind": "inconsistency",
+	"severity": "medium",
+	"modules": ["property-position", "personal-auto-position"],
+	"title": "The home is recorded in California and the vehicle is recorded as principally garaged somewhere else.",
+	"detail": "These two modules describe one household, and for most households the home and the garage are the same address. The answer is not cosmetic. Section 11580.2(a)(1) reaches every policy of bodily injury liability insurance issued or delivered in California to a vehicle owner or operator, and separately a policy issued by a California-licensed insurer on a vehicle then principally used or principally garaged in California [S:ca-ins-code-11580-2]. Garaging is one of the two limbs that pull an auto policy into the section, and the section is what requires uninsured motorist cover to be in the policy unless it was deleted by a written agreement in the prescribed form [S:ca-ins-code-11580-2]. So if the garaging answer is stale, the auto findings in this position may be reasoning from a statute that does not govern the policy; and if it is accurate, there is a second location here that the property module has not been told about.",
+	"action": "Settle which address the vehicle is actually kept at and correct whichever module is wrong. If the vehicle really is kept out of state, tell your insurer in writing, because garaging affects both which state's law applies to the policy and how the risk is rated.",
+	"when": {
+		"all": [
+			{ "field": "property-position.property-state", "op": "eq", "value": "ca" },
+			{ "field": "personal-auto-position.primarily-garaged-in-california", "op": "eq", "value": false }
+		]
+	},
+	"sourceIds": ["ca-ins-code-11580-2"],
+	"relatedQuestion": "underinsured-motorist-paid-nothing-california",
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

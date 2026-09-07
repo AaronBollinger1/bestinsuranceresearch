@@ -1,0 +1,26 @@
+{
+	"kind": "inconsistency",
+	"severity": "medium",
+	"modules": ["personal-auto-position", "property-position"],
+	"title": "The auto module and the property module record different kinds of residence for the same household.",
+	"detail": "Both modules ask the same question from the same list, so a difference between them is a real disagreement rather than two vocabularies talking past each other. What rests on the answer is which policy answers a loss at all. For a condominium, the association generally purchases insurance for the building structure and common areas such as corridors and walls, and the unit owner's policy covers the interior of the unit and the improvements the owner is responsible to maintain under the association's governing rules [S:cdi-residential-insurance-guide]. For a rented unit, the landlord does not provide insurance for the tenant's personal property, and the renters loss of use limit is a percentage of the personal property limit rather than of a dwelling limit as it is on a homeowners policy [S:cdi-residential-insurance-guide]. A detached house, a condominium unit and a rented unit are three different contracts with three different starting points, so one of these two answers is wrong and the findings resting on it are wrong with it.",
+	"action": "Check the declarations page and correct whichever module disagrees with it. If the household genuinely has more than one residence, record each one in its own pass rather than mixing them.",
+	"when": {
+		"all": [
+			{ "field": "personal-auto-position.residence-type", "op": "isSet" },
+			{ "field": "property-position.residence-type", "op": "isSet" },
+			{
+				"field": "personal-auto-position.residence-type",
+				"op": "neq",
+				"value": { "field": "property-position.residence-type" }
+			}
+		]
+	},
+	"sourceIds": ["cdi-residential-insurance-guide"],
+	"relatedQuestion": null,
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}
