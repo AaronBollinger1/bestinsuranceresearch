@@ -59,6 +59,14 @@ export const CANONICAL_LINES = [
 	'scheduled-personal-property',
 	'wildfire',
 	/*
+	 * Wind and hail is a line in its own right on the Gulf coast rather than a
+	 * peril inside the property policy, because the residual market writes it
+	 * separately and writes nothing else. Keeping it apart is what lets the
+	 * corpus say the thing that matters: the policy answering the wind is not
+	 * the policy answering the water.
+	 */
+	'windstorm',
+	/*
 	 * Title sits apart from every other line here. The others answer events that
 	 * may happen after the policy is written; this one answers the state of a
 	 * title as it already stands, which is visible in the statutory definition
@@ -137,6 +145,9 @@ const ALIASES: Record<string, CanonicalLine> = {
 	 * the free look actually live.
 	 */
 	life: 'individual-life',
+	twia: 'windstorm',
+	'wind-and-hail': 'windstorm',
+	hail: 'windstorm',
 	'title-insurance': 'title',
 	'owners-title-policy': 'title',
 	'preliminary-report': 'title',

@@ -1,0 +1,154 @@
+{
+	"name": "Windstorm and hail (Texas)",
+	"line": "windstorm",
+	"family": "personal",
+	"definition": "On the Texas coast wind and hail is written separately from the rest of the property policy, and where the private market declines it the residual market writes it alone. The Texas Windstorm Insurance Association was established in 1971 to provide wind and hail coverage to applicants unable to obtain insurance in the private market [S:twia-overview], and its policies provide coverage for wind and hail losses only, with no other perils covered [S:twia-overview]. It does not cover damage caused by flooding and storm surge [S:twia-about].",
+	"protects": [
+		"Property damage caused directly by wind and hail, which is the whole of what the policy answers [S:twia-about]",
+		"Owners in the designated coastal area who have been denied coverage in the private market [S:twia-coverage-eligibility]",
+		"Residential exposures including dwellings, personal property and manufactured homes [S:twia-coverage-eligibility]",
+		"Commercial exposures including commercial buildings, business personal property, townhouses and condominiums [S:twia-coverage-eligibility]",
+		"Not the rest of the property risk. Everything other than wind and hail is somebody else's policy [S:twia-overview]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Wind and hail, and nothing else",
+			"note": "The Association states that its policies provide coverage for wind and hail losses only and that no other perils are covered by TWIA policies [S:twia-overview]. That is unusually absolute for a property form and it is the defining feature of the line."
+		},
+		{
+			"item": "Residential and commercial property in the designated area",
+			"note": "Residential coverage for dwellings, personal property and manufactured homes; commercial coverage for commercial buildings, business personal property, townhouses and condominiums [S:twia-coverage-eligibility]."
+		},
+		{
+			"item": "A precisely bounded stretch of coast",
+			"note": "All 14 first tier coastal counties, listed as Aransas, Brazoria, Calhoun, Cameron, Chambers, Galveston, Jefferson, Kenedy, Kleberg, Matagorda, Nueces, Refugio, San Patricio and Willacy, together with parts of Harris County east of Highway 146 [S:twia-overview]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Flooding and storm surge",
+			"note": "Stated directly by the Association: TWIA policies do not cover damage caused by flooding and storm surge [S:twia-about]. A hurricane delivers wind and water together and this policy answers only one of them."
+		},
+		{
+			"item": "Every peril that is not wind or hail",
+			"note": "No other perils are covered by TWIA policies [S:twia-overview], so fire, theft, liability and water damage are all outside it and belong to a separate policy."
+		},
+		{
+			"item": "Property outside the designated area",
+			"note": "Properties must be located in the area designated by the Commissioner of Insurance [S:twia-coverage-eligibility], so eligibility is geographic before it is anything else."
+		},
+		{
+			"item": "Property that cannot show building code certification",
+			"note": "Properties must be certified by the Texas Department of Insurance on a WPI-8 or WPI-8-E, or by the Association on a WPI-8-C, as having been built to applicable building codes, with limited exceptions [S:twia-coverage-eligibility]."
+		},
+		{
+			"item": "Property not maintained in an insurable condition",
+			"note": "Properties must meet the Association's other underwriting requirements, including being maintained in an insurable condition and in good repair with no unrepaired damage [S:twia-coverage-eligibility]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"The eligibility page consulted for this record does not state maximum liability limits [S:twia-coverage-eligibility]. That is a silence in the source rather than an absence of limits, and the current maximums should be confirmed with the Association before relying on any figure.",
+		"Eligibility turns on a denial. Applicants must have been denied coverage by at least one authorized insurer actively writing or renewing windstorm and hail coverage in the designated area [S:twia-coverage-eligibility].",
+		"A flood insurance condition attaches to part of the coast. Properties in flood zones V, VE or V1-30 that were constructed, altered, remodeled or enlarged on or after September 1, 2009 and that can obtain flood insurance through the National Flood Insurance Program must provide proof of flood insurance coverage [S:twia-coverage-eligibility].",
+		"The separate Texas residual market for general property applies a different denial test: the Texas FAIR Plan Association requires denial by at least two insurance companies licensed to write and actually writing property insurance in Texas [S:tfpa-coverage-eligibility].",
+		"That plan also requires policyholders to reapply for coverage in the voluntary market every two years [S:tfpa-coverage-eligibility]."
+	],
+	"endorsements": [
+		{
+			"item": "A flood policy alongside it, always",
+			"note": "Not an endorsement but the necessary companion. The Association does not cover flooding or storm surge [S:twia-about], and for some coastal properties proof of NFIP flood cover is a condition of eligibility rather than a suggestion [S:twia-coverage-eligibility]."
+		},
+		{
+			"item": "The rest of the property policy, from somewhere else",
+			"note": "Because no perils other than wind and hail are covered [S:twia-overview], fire, theft and liability come from a separate policy, which on the Texas coast may itself be the FAIR Plan [S:tfpa-coverage-eligibility]."
+		},
+		{
+			"item": "The FAIR Plan's limited coverage endorsement",
+			"note": "That plan states that for an additional premium charge a limited coverage endorsement may be added to its Homeowners, Tenant and Condominium policy forms [S:tfpa-coverage-eligibility]."
+		}
+	],
+	"relatedPolicies": [
+		"Flood, which answers the water a windstorm policy does not [S:twia-about]",
+		"Homeowners insurance, which on the coast may exclude wind and hail and leave this line to fill the gap",
+		"Wildfire and availability in California, which is the same residual-market shape answering a different peril"
+	],
+	"underwritingInputs": [
+		"Whether the property sits in the area designated by the Commissioner of Insurance [S:twia-coverage-eligibility]",
+		"Whether at least one authorized insurer actively writing in the designated area has declined the risk [S:twia-coverage-eligibility]",
+		"Whether a WPI-8, WPI-8-E or WPI-8-C certificate exists for the structure [S:twia-coverage-eligibility]",
+		"Whether the property is in flood zone V, VE or V1-30 and was constructed, altered, remodeled or enlarged on or after September 1, 2009 [S:twia-coverage-eligibility]",
+		"Whether NFIP flood insurance is obtainable for it, since that turns the flood condition on [S:twia-coverage-eligibility]",
+		"Whether the structure is in an insurable condition, in good repair and without unrepaired damage [S:twia-coverage-eligibility]",
+		"Whether the exposure is residential or commercial, since both are written but on different forms [S:twia-coverage-eligibility]"
+	],
+	"exposures": [
+		{
+			"item": "One storm, two policies, one of them missing",
+			"note": "A hurricane arrives as wind and as water. The Association covers property damage caused directly by wind and hail and does not cover flooding or storm surge [S:twia-about][S:twia-overview]. A household holding only this policy is insured for half of the event that is most likely to happen to it."
+		},
+		{
+			"item": "No certificate, no policy",
+			"note": "Building code certification on a WPI-8, WPI-8-E or WPI-8-C is an eligibility requirement rather than a discount or a preference [S:twia-coverage-eligibility]. Work done without permits or inspections can leave a structure unable to obtain the certificate later."
+		},
+		{
+			"item": "A flood requirement that attaches by zone and date",
+			"note": "For properties in flood zones V, VE or V1-30 altered or built on or after September 1, 2009 and able to obtain NFIP cover, proof of flood insurance must be provided [S:twia-coverage-eligibility]. A remodel can bring a property inside that rule without anyone noticing."
+		},
+		{
+			"item": "Deferred repairs closing the door",
+			"note": "The structure must be maintained in an insurable condition, in good repair, with no unrepaired damage [S:twia-coverage-eligibility]. Damage left from a prior storm is the common way eligibility is lost before the next one."
+		},
+		{
+			"item": "Assuming the residual markets are one thing",
+			"note": "Wind and hail come from the Association after denial by at least one insurer [S:twia-coverage-eligibility]; general property comes from the FAIR Plan after denial by at least two [S:tfpa-coverage-eligibility]. Two applications, two tests, two policies."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Get the windstorm certificate before you need the policy",
+			"note": "Certification on a WPI-8, WPI-8-E or WPI-8-C is a condition of eligibility [S:twia-coverage-eligibility], so it is obtained during construction or alteration rather than during an application after a storm is forecast."
+		},
+		{
+			"item": "Carry flood as a separate decision, not an afterthought",
+			"note": "Flooding and storm surge are not covered [S:twia-about], and for some zones and construction dates NFIP proof is required to be eligible at all [S:twia-coverage-eligibility]."
+		},
+		{
+			"item": "Record what the wind did and what the water did, separately",
+			"note": "Because the Association answers damage caused directly by wind and hail [S:twia-about] and a separate policy answers the water, the allocation between them is what the claim turns on, and it is easiest to evidence immediately."
+		},
+		{
+			"item": "Repair prior damage before the next application",
+			"note": "The structure must be in good repair with no unrepaired damage to meet the underwriting requirements [S:twia-coverage-eligibility]."
+		},
+		{
+			"item": "Confirm current maximum limits with the Association",
+			"note": "The eligibility page consulted here is silent on maximum liability limits [S:twia-coverage-eligibility], so the figure has to come from the Association rather than from this page."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "TX",
+			"note": "The Association was established by the Texas Legislature in 1971 [S:twia-overview] and operates in 14 counties, reporting 252,433 policies in force at the time the About page was reviewed [S:twia-about]. The separate Texas FAIR Plan Association answers general property rather than wind and hail, and lists ineligible property types including a mobile home unless the wheels are removed and it is tied down, a farm or ranch used for business, and any residential dwelling occupied for business use [S:tfpa-coverage-eligibility]."
+		},
+		{
+			"state": "CA",
+			"note": "California's residual market answers a different peril in the same shape: the FAIR Plan there is a limited fire policy rather than a wind and hail policy, and it too leaves the companion coverages to a separate purchase."
+		}
+	],
+	"lastReviewed": "2026-09-06",
+	"effectiveDate": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"twia-overview",
+		"twia-about",
+		"twia-coverage-eligibility",
+		"tfpa-coverage-eligibility",
+		"tfpa-home"
+	],
+	"relatedQuestions": [
+		"does-twia-cover-storm-surge",
+		"am-i-eligible-for-twia-and-what-is-a-wpi-8"
+	]
+}

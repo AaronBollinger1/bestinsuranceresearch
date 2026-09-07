@@ -1,0 +1,56 @@
+{
+	"question": "Am I eligible for Texas windstorm coverage, and what is a WPI-8?",
+	"aliases": [
+		"TWIA eligibility requirements Texas coast",
+		"what is a WPI-8 windstorm certificate",
+		"which counties does TWIA cover",
+		"denied windstorm coverage Texas what next",
+		"difference between TWIA and Texas FAIR Plan"
+	],
+	"shortAnswer": "Four things have to be true: the property is in the area designated by the Commissioner of Insurance, at least one authorized insurer actively writing wind and hail there has denied you, the structure is certified as built to applicable building codes, and it is maintained in an insurable condition [S:twia-coverage-eligibility]. The certificate is that third item, issued by the Texas Department of Insurance as a WPI-8 or WPI-8-E, or by the Association as a WPI-8-C [S:twia-coverage-eligibility].",
+	"assumes": [
+		"You are asking about the Texas Windstorm Insurance Association rather than the Texas FAIR Plan Association, which answers general property on a different test [S:tfpa-coverage-eligibility].",
+		"The property is on the Texas coast, since eligibility is geographic before it is anything else [S:twia-coverage-eligibility].",
+		"You are asking what the Association requires rather than what a private carrier might offer."
+	],
+	"why": "The Association is a last resort with entry conditions, and each condition catches somebody.\n\nGeography comes first. Properties must be located in the area designated by the Commissioner of Insurance, which currently includes all 14 first tier coastal counties and parts of Harris County east of Highway 146 [S:twia-coverage-eligibility]. The counties are named: Aransas, Brazoria, Calhoun, Cameron, Chambers, Galveston, Jefferson, Kenedy, Kleberg, Matagorda, Nueces, Refugio, San Patricio and Willacy [S:twia-overview]. The eligible portion of Harris County is within the city limits of La Porte, Morgan's Point, Pasadena, Seabrook and Shore Acres, east of Highway 146 [S:twia-overview].\n\nThen the denial. Applicants must have been denied coverage by at least one authorized insurer actively writing or renewing windstorm and hail coverage in the designated area [S:twia-coverage-eligibility]. One insurer, and it has to be one genuinely writing that cover there.\n\nThen the certificate, which is the requirement people meet too late. Properties must be certified by the Texas Department of Insurance on a WPI-8 or WPI-8-E, or by the Association on a WPI-8-C, as having been built to applicable building codes, with limited exceptions [S:twia-coverage-eligibility]. It attests that the construction met code, which means it is obtained during building or alteration, when the work can still be inspected. Work done without permits is the common way a structure ends up unable to certify.\n\nThen condition. The property must meet the Association's other underwriting requirements, including being maintained in an insurable condition, in good repair, with no unrepaired damage [S:twia-coverage-eligibility]. Damage left from the last storm is what closes the door before the next.\n\nOne further condition attaches by zone and date. Properties in flood zones V, VE or V1-30 constructed, altered, remodeled or enlarged on or after September 1, 2009 that can obtain NFIP flood insurance must provide proof of it [S:twia-coverage-eligibility].",
+	"whatChanges": [
+		"Whether the property is inside the designated area, which is defined by county and, in Harris County, by named city limits and a highway [S:twia-overview][S:twia-coverage-eligibility].",
+		"Whether the denial came from an authorized insurer actively writing or renewing wind and hail in that area [S:twia-coverage-eligibility].",
+		"Whether a WPI-8, WPI-8-E or WPI-8-C exists for the structure, and whether alterations since are covered by it [S:twia-coverage-eligibility].",
+		"Whether there is unrepaired damage, which goes to the insurable condition requirement [S:twia-coverage-eligibility].",
+		"Whether the flood zone and construction date bring the NFIP proof requirement into play [S:twia-coverage-eligibility]."
+	],
+	"variability": [
+		"The designated area is set by the Commissioner and the source describes it as what it currently includes [S:twia-coverage-eligibility], so it is a fact with a date on it rather than a fixture.",
+		"The certificate requirement carries limited exceptions which this record does not enumerate [S:twia-coverage-eligibility]; the Association is the place to establish whether one applies.",
+		"The Texas FAIR Plan Association is a different residual market answering general property, and it requires denial by at least two licensed insurers actually writing property insurance in Texas, with reapplication to the voluntary market every two years [S:tfpa-coverage-eligibility]."
+	],
+	"nextActions": [
+		"Establish whether the property is in the designated area before anything else, since nothing else matters if it is not [S:twia-coverage-eligibility].",
+		"Find out whether a WPI-8, WPI-8-E or WPI-8-C already exists for the structure, and get one during any construction or alteration rather than afterwards [S:twia-coverage-eligibility].",
+		"Repair outstanding damage, because the structure must be in good repair with no unrepaired damage [S:twia-coverage-eligibility].",
+		"Keep the written denial from the insurer, since the application depends on it [S:twia-coverage-eligibility].",
+		"If you also need cover for perils other than wind and hail, treat that as a separate application, and note the FAIR Plan's two-insurer denial test [S:tfpa-coverage-eligibility]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["windstorm", "homeowners"],
+	"states": ["TX"],
+	"audience": "individual",
+	"topics": ["windstorm", "eligibility", "wpi-8", "residual market", "twia", "texas"],
+	"companies": [],
+	"coverages": ["windstorm-texas"],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["does-twia-cover-storm-surge"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a limited exception to the certificate requirement applies, and whether alterations are covered by an existing certificate, are questions for the Association and the Department rather than for a general description."
+	},
+	"sourceIds": ["twia-coverage-eligibility", "twia-overview", "tfpa-coverage-eligibility"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

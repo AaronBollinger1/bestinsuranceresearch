@@ -1,0 +1,55 @@
+{
+	"question": "A hurricane damaged my house. Does my Texas windstorm policy cover the storm surge?",
+	"aliases": [
+		"does TWIA cover flooding storm surge",
+		"wind versus water hurricane claim Texas",
+		"is storm surge covered by windstorm insurance",
+		"TWIA policy what perils are covered",
+		"do I need flood insurance if I have TWIA"
+	],
+	"shortAnswer": "No. The Texas Windstorm Insurance Association states that its policies only provide coverage for property damage caused directly by wind and hail, and that they do not cover damage caused by flooding and storm surge [S:twia-about]. It also states that no other perils are covered by its policies at all [S:twia-overview]. A hurricane arrives as wind and as water, and this policy answers one of them.",
+	"assumes": [
+		"The policy in question is a Texas Windstorm Insurance Association policy rather than a private carrier's form [S:twia-overview].",
+		"You are asking what the policy reaches, not how a particular adjuster has allocated a specific loss.",
+		"The property is in the designated area, since that is a condition of holding the policy at all [S:twia-coverage-eligibility]."
+	],
+	"why": "This line is unusually narrow by design, and the narrowness is the answer.\n\nThe Association was established in 1971 to provide wind and hail coverage to applicants unable to obtain insurance in the private market [S:twia-overview]. Its own description of what it writes is absolute: policies provide coverage for wind and hail losses only, and no other perils are covered [S:twia-overview]. Separately and explicitly, it states that its policies only cover property damage caused directly by wind and hail and do not cover damage caused by flooding and storm surge [S:twia-about].\n\nSo a named storm produces two categories of damage and this policy addresses one. Roof and window damage from wind sits inside it. Water that arrived because the sea did is outside it, and is a flood question answered by a separate policy.\n\nThe programme itself recognises the pairing. For properties in flood zones V, VE or V1-30 that were constructed, altered, remodeled or enlarged on or after September 1, 2009 and that can obtain flood insurance through the National Flood Insurance Program, proof of flood insurance coverage must be provided [S:twia-coverage-eligibility]. On that part of the coast, flood cover is a condition of getting the wind policy rather than an optional companion to it.\n\nThe practical consequence is that the allocation between wind and water is what a hurricane claim turns on. Because two different policies answer the two halves, the evidence of which did what is worth capturing while it is capturable rather than reconstructing later.",
+	"whatChanges": [
+		"Whether the damage was caused directly by wind or hail, which is the scope of the policy [S:twia-about].",
+		"Whether a separate flood policy is in force, since flooding and storm surge are outside this one [S:twia-about].",
+		"Whether your property is in flood zone V, VE or V1-30 and was built or altered on or after September 1, 2009, in which case NFIP proof was required for eligibility [S:twia-coverage-eligibility].",
+		"Whether any part of the loss is a peril that is neither wind nor hail, since no other perils are covered at all [S:twia-overview]."
+	],
+	"variability": [
+		"This describes the Association's own statements about its policies. A private carrier writing wind on the Texas coast does so on its own form with its own terms.",
+		"How a particular loss is allocated between wind and water is a factual and often contested determination, and this record does not resolve it.",
+		"Other coastal states run their own wind pools with their own scopes; nothing here describes them."
+	],
+	"nextActions": [
+		"Confirm whether you hold a separate flood policy, because that is what answers surge [S:twia-about].",
+		"Photograph and date the damage as soon as it is safe, distinguishing wind damage from water lines, since two policies answer the two halves.",
+		"If your property is in a V zone and was built or altered on or after September 1, 2009, locate the flood policy that eligibility required [S:twia-coverage-eligibility].",
+		"Report to both insurers rather than choosing between them, and let the allocation be made on the evidence.",
+		"If the loss is substantial or the allocation is disputed, take it to a lawyer or public adjuster rather than settling the characterisation informally."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["windstorm", "flood", "homeowners"],
+	"states": ["TX"],
+	"audience": "individual",
+	"topics": ["windstorm", "storm surge", "hurricane", "flood", "twia", "texas"],
+	"companies": [],
+	"coverages": ["windstorm-texas"],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["am-i-eligible-for-twia-and-what-is-a-wpi-8"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a given item of damage is attributed to wind or to water decides which policy pays, and that allocation is made on the facts of the loss rather than by any general description."
+	},
+	"sourceIds": ["twia-about", "twia-overview", "twia-coverage-eligibility"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
