@@ -1,0 +1,58 @@
+{
+	"question": "Do I have to carry workers' compensation in California, and what are my options if I do?",
+	"aliases": [
+		"is workers compensation required in California",
+		"can I self-insure workers compensation California",
+		"what is State Compensation Insurance Fund California",
+		"do I need workers comp for one employee California",
+		"ways to secure workers compensation California Labor Code 3700"
+	],
+	"shortAnswer": "Yes, and the statute frames it as securing payment rather than buying a policy. Labor Code section 3700 provides that every employer except the state shall secure the payment of compensation in one or more of the ways the section lists [S:ca-labor-code-3700], and the Department states that all California employers must provide workers compensation benefits to their employees under that section [S:cdi-wc-commercial-guide]. The listed routes are insurance with one or more insurers duly authorized to write compensation insurance in California, or a certificate of consent to self-insure obtained from the Director of Industrial Relations [S:ca-labor-code-3700].",
+	"assumes": [
+		"You are an employer in California and not the state itself, which the section excepts, and for the purposes of the section state includes the superior courts [S:ca-labor-code-3700].",
+		"You are asking how the obligation may be discharged rather than which employees are covered, which is a separate question the section does not answer.",
+		"You are asking about securing payment of compensation, which is the statutory duty, rather than about any particular policy's terms."
+	],
+	"why": "The duty is expressed as an outcome with permitted methods, which is why the section reads as a list.\n\nEvery employer except the state shall secure the payment of compensation in one or more of the ways section 3700 lists [S:ca-labor-code-3700]. Note one or more: the routes are not mutually exclusive.\n\nThe first route is insurance. Being insured against liability to pay compensation by one or more insurers duly authorized to write compensation insurance in California [S:ca-labor-code-3700]. Duly authorized is the operative phrase, and it is checkable before you buy.\n\nThe second is self-insurance, and it is a permission rather than a decision. It means securing from the Director of Industrial Relations a certificate of consent to self-insure, either as an individual employer or as one employer in a group of employers, upon proof satisfactory to the Director of the ability to self-insure and to pay any compensation that may become due [S:ca-labor-code-3700]. Two things have to be proved, not one: ability to self-insure, and ability to pay what may become due.\n\nThe third applies to public bodies. Counties, cities, municipal corporations, public districts, public agencies and other political subdivisions of the state may secure a certificate of consent to self-insure against workers compensation claims from the same Director [S:ca-labor-code-3700].\n\nBehind the private market sits a state carrier with a statutory existence. The State Compensation Insurance Fund is continued in existence, to be administered by its board of directors, for the purpose of transacting workers compensation insurance [S:ca-ins-code-11770]. Its stated statutory purposes reach further than the ordinary policy: they include insurance against the expense of defending any suit for serious and willful misconduct against an employer or the employer's agent, and insurance to employees and other persons of the compensation fixed by the workers compensation laws for employees and their dependents [S:ca-ins-code-11770].\n\nThat first item is worth reading twice. A serious and willful misconduct allegation is the kind of claim an employer least expects to have to defend, and the Fund's enabling section names the expense of defending it as one of the things the Fund exists to insure against.\n\nWhat none of this tells you is what any particular policy covers, or which employees fall inside the obligation. The section sets the duty and the routes to discharging it.",
+	"whatChanges": [
+		"Whether you are the state, which the section excepts, and note that state includes the superior courts for this purpose [S:ca-labor-code-3700].",
+		"Whether the insurer is duly authorized to write compensation insurance in California, which is a condition of the first route rather than a preference [S:ca-labor-code-3700].",
+		"Whether you can satisfy the Director of Industrial Relations on both limbs of the self-insurance test, ability to self-insure and ability to pay what may become due [S:ca-labor-code-3700].",
+		"Whether you would self-insure individually or as one employer within a group, both of which the section contemplates [S:ca-labor-code-3700].",
+		"Whether you are a public body, which has its own route to a certificate of consent [S:ca-labor-code-3700].",
+		"Whether you are exposed to a serious and willful misconduct allegation, since the expense of defending one is named among the State Fund's statutory purposes [S:ca-ins-code-11770]."
+	],
+	"variability": [
+		"Section 3700 states the duty and the permitted methods. Which workers count as employees for that duty, and what benefits are owed, are answered elsewhere in the workers compensation law and not by this section.",
+		"Self-insurance turns on proof satisfactory to the Director of Industrial Relations [S:ca-labor-code-3700], so it is an administrative determination rather than a threshold anyone can read off the statute.",
+		"The State Compensation Insurance Fund's statutory purposes are described in its enabling section [S:ca-ins-code-11770]. What any Fund policy actually provides is in that policy.",
+		"Nothing here describes the consequences of failing to secure payment, which the sources consulted for this record do not state."
+	],
+	"nextActions": [
+		"Decide which of the listed routes you are relying on, and be able to name it, because the duty is discharged by a method rather than by intention [S:ca-labor-code-3700].",
+		"If you are buying insurance, confirm the insurer is duly authorized to write compensation insurance in California before you bind [S:ca-labor-code-3700].",
+		"If you are considering self-insurance, treat it as an application to the Director of Industrial Relations with two things to prove rather than an internal decision [S:ca-labor-code-3700].",
+		"If you are a group of related employers, ask about the group self-insurance route the section contemplates rather than assuming it is individual only [S:ca-labor-code-3700].",
+		"Ask your broker how a serious and willful misconduct allegation would be defended under whatever you buy, since that expense is named in the State Fund's own purposes [S:ca-ins-code-11770]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["workers-compensation"],
+	"states": ["CA"],
+	"audience": "business-owner",
+	"topics": ["obligation to secure", "self-insurance", "state fund", "workers compensation", "california"],
+	"companies": [],
+	"coverages": ["workers-compensation-california"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["who-sets-california-workers-comp-rates"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Which workers fall inside the obligation, and whether a self-insurance application would satisfy the Director of Industrial Relations, are determinations made on facts and evidence rather than settled by the text of the section."
+	},
+	"sourceIds": ["ca-labor-code-3700", "ca-ins-code-11770", "cdi-wc-commercial-guide"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

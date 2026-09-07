@@ -1,0 +1,65 @@
+{
+	"question": "California just announced a workers' comp rate increase. Does that mean my premium goes up?",
+	"aliases": [
+		"advisory pure premium rate California what does it mean",
+		"did California raise workers comp rates 2026",
+		"who sets workers compensation rates California",
+		"WCIRB pure premium rate is it binding",
+		"open rating system workers compensation California"
+	],
+	"shortAnswer": "Not by itself. The rate the Commissioner adopts is advisory, meaning insurance companies are not bound by it and are free to set their own rates [S:cdi-release-024-2026]. California workers compensation insurers operate under an open rating system, under which individual companies set rates based on their ability to adequately cover losses and expenses in each industry classification [S:cdi-wc-commercial-guide]. The Commissioner adopted an average advisory pure premium rate of $1.65 per $100 of payroll effective September 1, 2026, a 6.6 percent increase from the 2025 approved rate [S:cdi-release-024-2026].",
+	"assumes": [
+		"You are asking about a California workers compensation policy, where rates are filed with the Department rather than set by it [S:ca-ins-code-11735].",
+		"You are asking what the announced figure is, not what your own insurer has filed, which is a separate and checkable thing [S:ca-ins-code-11735].",
+		"Your classification and experience modification are what the rate is applied to, and those come from a different process than the rate itself [S:ca-ins-code-11734]."
+	],
+	"why": "Three different bodies touch the number on your policy, and only one of them is your insurer.\n\nThe rating organization builds the machinery. Section 11734 provides that every workers compensation insurer shall adhere to a uniform experience rating plan filed with the commissioner by a rating organization designated by the commissioner and subject to the commissioner's disapproval [S:ca-ins-code-11734]. The commissioner designates a rating organization to gather statistical information and develop a classification system, and insurers must report their experience to that designated organization under the uniform statistical reporting plan [S:ca-ins-code-11734]. The designated organization also develops and files manual rules, subject to the commissioner's approval, reasonably related to the recording and reporting of data under those plans [S:ca-ins-code-11734]. The WCIRB describes its own work as providing advisory pure premium rates, experience modifications and standard classification assignments [S:wcirb-about-us], and the Department states that classifications grouping distinct and identifiable occupations, industries or businesses are developed and assigned codes by the WCIRB [S:cdi-wc-commercial-guide].\n\nAn insurer may step outside that classification system, but not quietly. Section 11734 permits an insurer to use its own classification system if it is filed with the commissioner 30 days prior to use and the commissioner approves it [S:ca-ins-code-11734].\n\nThe Commissioner adopts a figure, and calls it advisory. The adopted average advisory pure premium rate is $1.65 per $100 of payroll, effective September 1, 2026, a 6.6 percent increase from the 2025 approved rate [S:cdi-release-024-2026]. It came in below the 10.4 percent increase the Workers' Compensation Insurance Rating Bureau had requested [S:cdi-release-024-2026], and in line with the analysis and recommendation of Department actuaries reviewing the WCIRB filing [S:cdi-release-024-2026]. And the Department says what advisory means in terms: insurance companies are not bound by it and are free to set their own rates [S:cdi-release-024-2026].\n\nSo the headline is a signal about loss costs across the system, not an instruction to your insurer.\n\nYour insurer files the rate that actually applies. Section 11735 requires every insurer to file with the commissioner all rates and supplementary rate information that are to be used in this state, not later than 30 days prior to the effective date [S:ca-ins-code-11735]. The Department states that insurers assign a specific rate to each industry classification code and that these rates must be filed with the CDI [S:cdi-wc-commercial-guide].\n\nHere is the part worth acting on. Filings of rates, supplementary rate information and supporting information are open to public inspection at any reasonable time as soon as filed [S:ca-ins-code-11735]. You do not have to take a rate on trust or infer it from a quotation; the filing is a public document from the moment it lands.\n\nWhat is then applied to that rate is your own payroll and record. The Department describes payroll for each classification being estimated and then multiplied, per each $100 of payroll, by the applicable rate [S:cdi-wc-commercial-guide], and describes an experience modification of less than 100 percent as reflecting better-than-average experience and more than 100 percent as worse-than-average [S:cdi-wc-commercial-guide].\n\nOne further filing rule is worth knowing if a deductible is being discussed. A filing of supplementary rate information for a deductible is deemed complete only if it contains stated items, including a copy of the deductible endorsement to be attached to the policy and endorsement language addressing the injured worker's entitlement to benefits regardless of the deductible [S:ca-ins-code-11735]. The worker's entitlement is not what the deductible bargains with.",
+	"whatChanges": [
+		"Whether your insurer has filed a rate change of its own, which is the filing that actually governs, rather than the advisory figure [S:ca-ins-code-11735][S:cdi-release-024-2026].",
+		"Your classification assignment, which the designated rating organization develops and which the rate is applied per $100 of payroll [S:ca-ins-code-11734][S:cdi-wc-commercial-guide].",
+		"Whether your insurer uses the designated classification system or its own approved one filed 30 days before use [S:ca-ins-code-11734].",
+		"Your experience modification, where below 100 percent reflects better-than-average experience and above reflects worse [S:cdi-wc-commercial-guide].",
+		"Your estimated payroll, since the rate is applied to it and an estimate is later trued up [S:cdi-wc-commercial-guide].",
+		"Whether a deductible programme is involved, which brings additional filing requirements including the endorsement language on the worker's entitlement [S:ca-ins-code-11735]."
+	],
+	"variability": [
+		"The advisory pure premium rate is reset periodically. The figure recorded here is the one adopted effective September 1, 2026 [S:cdi-release-024-2026], and a later adoption supersedes it, so the figure should be confirmed against the Department's current release before it is relied on.",
+		"Because the rate is advisory and the system is an open rating system [S:cdi-release-024-2026][S:cdi-wc-commercial-guide], the relationship between the adopted figure and any individual insurer's filed rate is not fixed and cannot be inferred from the announcement.",
+		"Classification assignment and experience modification are determinations made under the designated organization's plans and manual rules [S:ca-ins-code-11734], and this record does not describe how any particular assignment is reached.",
+		"Nothing here states what any insurer has filed. That is in the filing, which is a public document [S:ca-ins-code-11735]."
+	],
+	"nextActions": [
+		"Ask your broker whether your own insurer has filed a rate change, and for what effective date, rather than reading the announcement as your answer [S:ca-ins-code-11735].",
+		"Read the filing if you want the number. Filings are open to public inspection at any reasonable time as soon as filed [S:ca-ins-code-11735].",
+		"Check your classification assignment before arguing about the rate, since the rate is applied per $100 of payroll within a classification [S:cdi-wc-commercial-guide].",
+		"Ask what your experience modification is and which policy years it draws on, because it sits between the filed rate and what you pay [S:cdi-wc-commercial-guide].",
+		"Review the payroll estimate the quotation was built on, since the estimate is what the rate was applied to [S:cdi-wc-commercial-guide].",
+		"If a deductible is proposed, ask to see the deductible endorsement itself, which the filing must include [S:ca-ins-code-11735]."
+	],
+	"confidence": "changing",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["workers-compensation"],
+	"states": ["CA"],
+	"audience": "business-owner",
+	"topics": ["pure premium rate", "open rating", "rate filing", "experience modification", "workers compensation", "california"],
+	"companies": [],
+	"coverages": ["workers-compensation-california"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["must-i-carry-workers-comp-california", "workers-comp-class-codes"],
+	"handoff": {
+		"recommended": true,
+		"reason": "What your own insurer has filed, and whether your classification and experience modification are right, decide the number on the policy, and those are matters for the filing and for a broker rather than for a description of the framework."
+	},
+	"sourceIds": [
+		"cdi-release-024-2026",
+		"ca-ins-code-11734",
+		"ca-ins-code-11735",
+		"cdi-wc-commercial-guide",
+		"wcirb-about-us"
+	],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
