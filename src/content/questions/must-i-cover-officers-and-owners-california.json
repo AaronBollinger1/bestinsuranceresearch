@@ -1,0 +1,60 @@
+{
+	"question": "Do I have to carry workers' compensation for my corporate officers and owners?",
+	"aliases": [
+		"can an owner opt out of workers comp California",
+		"corporate officer workers compensation exclusion California",
+		"sole shareholder workers comp waiver",
+		"Labor Code 3352 officer exclusion requirements",
+		"do directors need workers comp coverage California"
+	],
+	"shortAnswer": "Sometimes, and only on conditions the statute sets out precisely. Labor Code section 3352 excludes from the definition of employee an officer or director of a quasi-public or private corporation who owns at least 10 percent of the issued and outstanding stock, or at least 1 percent where a parent, grandparent, sibling, spouse or child owns at least 10 percent, who is covered by a health insurance policy or health care service plan, and who executes a written waiver of rights stating under penalty of perjury that they are a qualifying officer or director [S:lab-3352]. Separately, an officer or director who is the sole shareholder is excluded unless an election has been made under section 4151(a) [S:lab-3352].",
+	"assumes": [
+		"The starting point is that coverage is required. Every employer except the state shall secure the payment of compensation [S:ca-labor-code-3700], and the Department states that all California employers must provide workers compensation benefits to their employees under section 3700 [S:dir-dwc-employer-faqs].",
+		"You are asking about exclusion from the definition of employee, which is how the statute achieves this, rather than about a policy endorsement.",
+		"You are asking about the current section, which was repealed and added by Stats. 2017, Ch. 770, Sec. 4 (SB 189), effective January 1, 2018 and operative July 1, 2018 [S:lab-3352]."
+	],
+	"why": "The exclusion is not a box to tick. It is three conditions that must all hold, plus a document.\n\nOwnership. At least 10 percent of the issued and outstanding stock, or at least 1 percent where a parent, grandparent, sibling, spouse or child owns at least 10 percent [S:lab-3352]. The 1 percent branch exists for family-held companies and is easy to miss.\n\nHealth cover. The person must be covered by a health insurance policy or a health care service plan [S:lab-3352]. This is a condition of the exclusion, not a suggestion, and it is the one most likely to lapse quietly after the waiver is signed.\n\nThe waiver itself. A written waiver of rights under the chapter, stating under penalty of perjury that the person is a qualifying officer or director [S:lab-3352]. Under penalty of perjury, which tells you how the statute regards a waiver signed by someone who does not qualify.\n\nThen the timing, which decides what happens to a claim in the gap. The waiver is effective on the date of receipt and acceptance by the corporation's insurance carrier, and the carrier may elect to backdate the acceptance up to 15 days prior to the date of receipt [S:lab-3352]. So signing is not the operative act; receipt and acceptance by the carrier is, and the only reach backwards is 15 days at the carrier's election.\n\nAnd the consequence, which is unusually strong. The section provides a conclusive presumption that a person who executes a waiver under that subdivision is not covered by workers compensation benefits [S:lab-3352]. Conclusive means it is not open to argument afterwards. An owner who waives and is later injured does not get to revisit it because the outcome turned out badly.\n\nThe sole shareholder sits under a different rule. An officer or director of a private corporation who is the sole shareholder is excluded from the definition of employee unless the officer, director or corporation has elected to be subject to liability for workers compensation under subdivision (a) of section 4151 [S:lab-3352]. Note the direction: exclusion is the default and inclusion is the election, which is the reverse of the percentage-based route.\n\nThe Department's own summary of this is shorter than the statute, and the difference is worth knowing before you rely on either. It states that executive officers and directors of corporations must be included in workers compensation coverage unless the corporation is fully owned by the directors and officers, and that if the directors and officers fully own the corporation then they may elect to be excluded [S:dir-dwc-employer-faqs]. That is a serviceable description of the general shape and it does not state the 10 percent and 1 percent thresholds, the health cover condition, the waiver under penalty of perjury, or the carrier acceptance timing that section 3352 sets out [S:lab-3352]. Where the two are read together, the statute is the one that states the conditions.\n\nOfficers and directors are also not the only exclusions in the section. It contains many others with their own conditions, including certain persons employed by a parent, spouse or child, certain persons employed for limited hours or limited earnings, certain volunteers, general partners and managing members, owners of professional corporations, and officers and directors of cooperative corporations [S:lab-3352]. Each has its own conditions and this record does not set them out.",
+	"whatChanges": [
+		"How much stock the officer or director actually owns, and whether a qualifying relative's holding brings the 1 percent branch into play [S:lab-3352].",
+		"Whether the person is covered by a health insurance policy or health care service plan, which is a condition of the exclusion rather than a preference [S:lab-3352].",
+		"Whether a written waiver exists, executed under penalty of perjury in the terms the section requires [S:lab-3352].",
+		"When the carrier received and accepted the waiver, since that is when it takes effect, with at most 15 days of backdating at the carrier's election [S:lab-3352].",
+		"Whether the corporation has a sole shareholder, which puts the question under a different rule where exclusion is the default [S:lab-3352].",
+		"Whether an election under section 4151(a) has been made, which brings a sole shareholder back in [S:lab-3352].",
+		"Whether the person falls under one of the section's other exclusions instead, several of which have nothing to do with ownership [S:lab-3352]."
+	],
+	"variability": [
+		"This describes exclusion from the statutory definition of employee. Whether a particular person qualifies turns on facts about ownership, health cover and documents, and the section does not resolve any individual case.",
+		"The Department's summary and the statute describe the same area at different levels of detail [S:dir-dwc-employer-faqs][S:lab-3352]. Nothing here suggests the summary is wrong; it states fewer conditions than the section does, and the section is the primary source.",
+		"Section 3352 contains many exclusions this record does not enumerate, each with its own conditions [S:lab-3352].",
+		"The section was repealed and added by SB 189, effective January 1, 2018 and operative July 1, 2018 [S:lab-3352], so material describing an earlier regime does not describe it."
+	],
+	"nextActions": [
+		"Check the actual share register before assuming the percentage test is met, including family holdings for the 1 percent branch [S:lab-3352].",
+		"Confirm the person still has health insurance or health care service plan cover, since that condition has to hold and not merely to have held once [S:lab-3352].",
+		"Ask the carrier for the date it received and accepted the waiver, because that is the effective date and not the date of signature [S:lab-3352].",
+		"Do not treat a signed but unaccepted waiver as effective, given the 15-day limit on backdating [S:lab-3352].",
+		"If there is a sole shareholder, establish whether an election under section 4151(a) has been made, since that reverses the default [S:lab-3352].",
+		"Take the qualification question to a lawyer or your carrier before signing, because the presumption that follows a waiver is conclusive [S:lab-3352]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["workers-compensation"],
+	"states": ["CA"],
+	"audience": "business-owner",
+	"topics": ["officer exclusion", "owner coverage", "waiver", "sole shareholder", "workers compensation", "california"],
+	"companies": [],
+	"coverages": ["workers-compensation-california"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["what-happens-if-i-have-no-workers-comp-california", "must-i-carry-workers-comp-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "The presumption following a waiver is conclusive, so a person who signs one without qualifying has given up rights they may not be able to recover. Whether the conditions are met is a question to settle with a lawyer or the carrier before signing rather than after an injury."
+	},
+	"sourceIds": ["lab-3352", "dir-dwc-employer-faqs", "ca-labor-code-3700"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

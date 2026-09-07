@@ -1,0 +1,59 @@
+{
+	"question": "What actually happens if my business has no workers' compensation in California?",
+	"aliases": [
+		"penalty for not having workers comp California",
+		"is it a crime to be uninsured for workers compensation",
+		"what is a stop order workers comp California",
+		"illegally uninsured employer penalties California",
+		"Labor Code 3700.5 misdemeanor"
+	],
+	"shortAnswer": "It is a crime, it carries penalties measured per employee, and the state can stop the work. The Department states that section 3700.5 makes failing to have workers' compensation coverage a misdemeanor punishable by either a fine of not less than $10,000 or imprisonment in the county jail for up to one year, or both [S:dir-dwc-employer-faqs]. Penalties of up to $100,000 are issued against illegally uninsured employers, calculated as either twice the amount of unpaid premium or $1,500 per employee, whichever is greater [S:dir-dwc-employer-faqs]. A stop order can prohibit the use of employee labor until coverage is obtained [S:dir-dwc-employer-faqs].",
+	"assumes": [
+		"The duty applies to you. Every employer except the state shall secure the payment of compensation [S:ca-labor-code-3700], and the Department states that all California employers must provide workers compensation benefits to their employees under that section [S:dir-dwc-employer-faqs].",
+		"You are asking what the Department publishes about the consequences, not how any particular enforcement action will be resolved.",
+		"You are asking about being uninsured rather than about a dispute over a particular claim."
+	],
+	"why": "The consequences run on four separate tracks, and they are cumulative rather than alternative.\n\nThe criminal one. The Department states that Labor Code section 3700.5 makes failing to have workers' compensation coverage a misdemeanor, punishable by either a fine of not less than $10,000 or imprisonment in the county jail for up to one year, or both [S:dir-dwc-employer-faqs]. Note the floor rather than a ceiling on the fine: not less than $10,000.\n\nThe stop order. A stop order prohibits the use of employee labor until coverage is obtained [S:dir-dwc-employer-faqs], and failure to observe it is itself a misdemeanor punishable by imprisonment in the county jail for up to 60 days, or a fine of up to $10,000, or both [S:dir-dwc-employer-faqs]. This is the one that reaches the business rather than the balance sheet: it stops the work, and it does so before any claim has been decided.\n\nThe uninsured-employer penalty. The state issues penalties of up to $100,000 against illegally uninsured employers [S:dir-dwc-employer-faqs], calculated as either twice the amount of unpaid premium or $1,500 per employee, whichever is greater [S:dir-dwc-employer-faqs]. Twice the premium you did not pay is the floor of that calculation, and the per-employee figure takes over for a business with many workers and a small premium.\n\nThe claim-linked civil penalties, which are separate again. Additional civil penalties can reach $10,000 per employee where there is a compensable claim, or $2,000 per employee where there is no compensable claim, up to a maximum of $100,000 [S:dir-dwc-employer-faqs]. Read that carefully: the lower figure applies even where nobody has been hurt. Being uninsured is penalised on its own, and an actual injury multiplies it fivefold per employee.\n\nWhat none of this describes is the injured worker's own position, which does not depend on whether the employer complied. That is the point of the duty in section 3700: it is to secure the payment of compensation [S:ca-labor-code-3700], and the statute lists the ways that may be done rather than making it optional.\n\nIf the obstacle is that cover is hard to obtain rather than that it was not sought, the state fund exists for that. The Department describes State Fund as a state-operated entity that exists to transact workers' compensation on a non-profit basis, competes with private companies for business, and also operates as the insurer of last resort if private companies are not willing to offer coverage [S:dir-dwc-employer-faqs]. Its enabling section continues it in existence, administered by its board, for the purpose of transacting workers' compensation insurance [S:ca-ins-code-11770].",
+	"whatChanges": [
+		"How many employees there are, since two of the penalty calculations are per employee [S:dir-dwc-employer-faqs].",
+		"How much premium went unpaid, since one calculation is twice that amount and the greater of the two applies [S:dir-dwc-employer-faqs].",
+		"Whether there is a compensable claim, which moves the additional civil penalty from $2,000 per employee to $10,000 per employee [S:dir-dwc-employer-faqs].",
+		"Whether a stop order has been issued, since working on regardless is a separate misdemeanor [S:dir-dwc-employer-faqs].",
+		"Whether coverage was secured by one of the routes section 3700 permits rather than not at all [S:ca-labor-code-3700].",
+		"Whether private cover was actually unobtainable, which is the situation the state fund exists as last resort for [S:dir-dwc-employer-faqs]."
+	],
+	"variability": [
+		"These figures are as the Department publishes them on its employer FAQ [S:dir-dwc-employer-faqs]. Penalty amounts and enforcement practice are set by statute and change, so they should be confirmed against the Department's current page before anyone relies on a number.",
+		"This describes what is published about consequences. Whether any penalty is assessed, and in what amount, is an enforcement decision made on the facts.",
+		"Nothing here describes the position of an injured worker whose employer was uninsured, or the routes available to that worker, which the sources consulted for this record do not address.",
+		"The criminal provisions are described here through the Department's summary of section 3700.5 [S:dir-dwc-employer-faqs] rather than from the section itself."
+	],
+	"nextActions": [
+		"If there is no cover in force, treat obtaining it as the first action, because every penalty track runs while the gap is open [S:dir-dwc-employer-faqs].",
+		"If cover has been declined in the private market, approach the state fund, which the Department describes as the insurer of last resort [S:dir-dwc-employer-faqs].",
+		"Count your employees before estimating exposure, since two of the calculations are per employee and one is capped at $100,000 [S:dir-dwc-employer-faqs].",
+		"If a stop order has been issued, stop the work rather than continuing while you arrange cover, since violating it carries its own criminal penalty [S:dir-dwc-employer-faqs].",
+		"Confirm the current figures against the Department's own page rather than relying on this record, since penalty amounts change [S:dir-dwc-employer-faqs].",
+		"Take a criminal exposure to a lawyer rather than to a broker."
+	],
+	"confidence": "changing",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["workers-compensation"],
+	"states": ["CA"],
+	"audience": "business-owner",
+	"topics": ["penalties", "stop order", "uninsured employer", "enforcement", "workers compensation", "california"],
+	"companies": [],
+	"coverages": ["workers-compensation-california"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["must-i-carry-workers-comp-california", "must-i-cover-officers-and-owners-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Failing to secure payment is described by the Department as a misdemeanor, so an employer already in that position has a criminal exposure as well as a coverage problem, and that belongs with a lawyer rather than with a broker."
+	},
+	"sourceIds": ["dir-dwc-employer-faqs", "ca-labor-code-3700", "ca-ins-code-11770"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
