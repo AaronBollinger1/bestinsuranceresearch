@@ -1,0 +1,61 @@
+{
+	"question": "Do I qualify for California's Good Driver Discount, and what is it actually worth?",
+	"aliases": [
+		"good driver discount California requirements",
+		"how much is the good driver discount California",
+		"one accident does it cost me the good driver discount California",
+		"good driver discount with a foreign driver licence California",
+		"can an insurer refuse to sell me a good driver policy California"
+	],
+	"shortAnswer": "It is a statutory entitlement rather than a company promotion. A person who meets the criteria in section 1861.025 is qualified to purchase a Good Driver Discount policy from the insurer of that person's choice, and an insurer shall not refuse to offer and sell one to a person who meets those standards [S:ca-ins-code-1861-02]. The rate must be at least 20 percent below the rate that person would otherwise have been charged for the same coverage [S:ca-ins-code-1861-02].",
+	"assumes": [
+		"You are asking about a private passenger automobile policy of the kind section 1861.02(a) describes by reference to section 660(a) [S:ca-ins-code-1861-02][S:ca-ins-code-660].",
+		"You are asking whether the statutory criteria are met, not how a particular insurer has applied them to your record.",
+		"The driving record in question is the applicant's own. The section sets criteria for a person, not for a household [S:ca-ins-code-1861-025]."
+	],
+	"why": "Section 1861.025 is a list with the word only in it: a person is qualified to purchase a Good Driver Discount policy only if that person meets all of the criteria it lists [S:ca-ins-code-1861-025]. All, not most.\n\nThree years licensed. The person must have been licensed to drive a motor vehicle for the previous three years [S:ca-ins-code-1861-025].\n\nNot more than one violation point in three years. During the previous three years the person must not have had more than one violation point count, determined as provided by the specified subdivisions of Vehicle Code section 12810 [S:ca-ins-code-1861-025]. Read that carefully, because it is the criterion people assume they have failed when they have not. One point is inside the line. Two is outside it.\n\nAn at-fault property damage accident counts as a point. A driver principally at fault in an accident that resulted only in damage to property receives one violation point count for it, in addition to any other violation points imposed for that accident [S:ca-ins-code-1861-025]. So a single at-fault fender bender, standing alone, uses the one point the criterion allows rather than exceeding it.\n\nSome violations do not count at all. Where an insurer is prohibited by section 488 or 488.5 from increasing the premium on a policy on account of a violation, that violation is not included in determining the point count [S:ca-ins-code-1861-025].\n\nNo at-fault injury accident in three years. The person must not, during the previous three years, have been the driver of a motor vehicle involved in an accident that resulted in bodily injury or the death of any person and have been principally at fault, and the commissioner is required to adopt regulations setting guidelines for insurers to determine fault for that purpose [S:ca-ins-code-1861-025]. This is a separate bar from the point count, and injury changes its character: an at-fault accident that hurt someone disqualifies outright rather than costing a point.\n\nDismissals are counted. The person must not have had more than one dismissal under Vehicle Code section 1803.5 that was not made confidential under section 1808.7, in the 36-month period, for violations that would have resulted in more than one violation point count had the complaint not been dismissed [S:ca-ins-code-1861-025].\n\nA long look back for the serious offences. During the period beginning on January 1, 1999 or ten years before the date of application, whichever is later, and ending on the date of application, the person must not have been convicted of a violation of Vehicle Code section 23140, 23152 or 23153, a felony violation of section 23550 or 23566, or a violation of Penal Code section 191.5 or subdivision (a) of section 192.5 [S:ca-ins-code-1861-025]. Ten years, against three for everything else.\n\nA licence from outside the country does not start you at zero. A person who claims to meet the criteria based entirely or partly on a licence and driving experience acquired anywhere other than the United States or Canada is rebuttably presumed to be qualified if they have been licensed to drive in the United States or Canada for at least the previous 18 months and meet the criteria for that period [S:ca-ins-code-1861-025]. Eighteen months and a presumption, rather than three years from scratch.\n\nWhat qualifying buys is two things, and the first is worth as much as the second. Choice of insurer: the qualified person may purchase from the insurer of that person's choice, and an insurer shall not refuse to offer and sell them a Good Driver Discount policy [S:ca-ins-code-1861-02]. Then price: the rate must comply with the mandatory rating factors and be at least 20 percent below the rate the insured would otherwise have been charged for the same coverage [S:ca-ins-code-1861-02].\n\nTwo further provisions catch particular applicants. Having had no insurance before cannot be held against you: the absence of prior automobile insurance coverage, in and of itself, is not a criterion for determining eligibility for a Good Driver Discount policy, or generally for automobile rates, premiums or insurability [S:ca-ins-code-1861-02]. And motorcycles are carved out: an insurer may refuse to sell a Good Driver Discount policy insuring a motorcycle unless all named insureds have been licensed to drive a motorcycle for the previous three years [S:ca-ins-code-1861-02].",
+	"whatChanges": [
+		"How many violation points sit on the record in the previous three years, since one is permitted and more than one is not [S:ca-ins-code-1861-025].",
+		"Whether an at-fault accident resulted in bodily injury or death, which disqualifies, rather than only property damage, which counts as a single point [S:ca-ins-code-1861-025].",
+		"Whether the insurer was barred by section 488 or 488.5 from surcharging a particular violation, because that violation then drops out of the count [S:ca-ins-code-1861-025].",
+		"Whether any dismissal under Vehicle Code section 1803.5 in the past 36 months was made confidential under section 1808.7 [S:ca-ins-code-1861-025].",
+		"Whether any listed drink-driving or vehicular manslaughter conviction falls inside the ten-year window, which runs on a different and longer clock than the rest of the section [S:ca-ins-code-1861-025].",
+		"Whether the licence and experience were acquired outside the United States or Canada, which brings the 18-month rebuttable presumption into play [S:ca-ins-code-1861-025].",
+		"Whether the vehicle is a motorcycle, since an insurer may decline unless every named insured has held a motorcycle licence for three years [S:ca-ins-code-1861-02]."
+	],
+	"variability": [
+		"Fault is determined under regulations the commissioner is required to adopt for that purpose [S:ca-ins-code-1861-025], so whether a driver was principally at fault is decided by that process rather than by this description.",
+		"Point counts are determined by reference to specified subdivisions of Vehicle Code section 12810, and the operation of section 488, section 488.5, section 1803.5 and section 1808.7 [S:ca-ins-code-1861-025]. This record does not describe what those sections say.",
+		"The 20 percent floor is a floor, not the discount. The statute sets a minimum below the rate that would otherwise have been charged for the same coverage [S:ca-ins-code-1861-02]; what any insurer's rate would otherwise have been is a separate question.",
+		"Section 1861.02 became operative on November 8, 1989, having been added by initiative on November 8, 1988 [S:ca-ins-code-1861-02], so it is settled law rather than a recent change.",
+		"The section preserves arrangements under which a reciprocal insurer organised before November 8, 1988 by a motor club, or an insurer requiring membership in a voluntary nonprofit organisation in existence before that date, may require that membership as a condition precedent to applying [S:ca-ins-code-1861-02], subject to conditions on dues, benefits and non-residence-based membership [S:ca-ins-code-1861-02]."
+	],
+	"nextActions": [
+		"Get your own driving record before you argue about it, because every criterion in section 1861.025 turns on what is on it [S:ca-ins-code-1861-025].",
+		"Count the points rather than the incidents. One violation point in three years is permitted, and an at-fault property-damage-only accident is one point [S:ca-ins-code-1861-025].",
+		"If you are told you do not qualify, ask which criterion is said to fail, since they are separate tests with different lookback periods [S:ca-ins-code-1861-025].",
+		"If you qualify, shop it. The entitlement is to buy from the insurer of your choice, so a refusal by one insurer is not the end of the question [S:ca-ins-code-1861-02].",
+		"If you have been uninsured, do not accept that as a reason for a higher rate or a refusal, because the absence of prior coverage in and of itself is not a permitted criterion [S:ca-ins-code-1861-02].",
+		"If your licence and experience come from outside the United States or Canada, count from 18 months of licensure here rather than three years [S:ca-ins-code-1861-025]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["auto"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["good driver discount", "rating", "proposition 103", "auto", "california", "eligibility"],
+	"companies": [],
+	"coverages": ["personal-auto-california"],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["how-california-decides-what-auto-insurers-may-charge"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a particular accident makes a driver principally at fault, and how a specific record counts under Vehicle Code section 12810, decide the answer and are not settled by the text of the section."
+	},
+	"sourceIds": ["ca-ins-code-1861-025", "ca-ins-code-1861-02", "ca-ins-code-660"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

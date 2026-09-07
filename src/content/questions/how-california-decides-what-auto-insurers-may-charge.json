@@ -1,0 +1,58 @@
+{
+	"question": "How does California decide what my auto insurer is allowed to charge me?",
+	"aliases": [
+		"California auto insurance rating factors order of importance",
+		"does California approve insurance rates before they are used",
+		"Proposition 103 prior approval how it works",
+		"can I object to my insurer's rate increase California",
+		"why is credit score not used to rate auto insurance in California"
+	],
+	"shortAnswer": "Two things at once: which facts about you may be used, and whether the rate itself was approved. Rates and premiums for an automobile policy must be determined by applying three factors in decreasing order of importance, the insured's driving safety record, the number of miles driven annually, and the years of driving experience [S:ca-ins-code-1861-02]. Since November 8, 1989 rates subject to the chapter must be approved by the commissioner before they are used [S:ca-ins-code-1861-01], and no rate may be approved or remain in effect which is excessive, inadequate, unfairly discriminatory or otherwise in violation of the chapter [S:ca-ins-code-1861-05].",
+	"assumes": [
+		"You are asking about an automobile policy of the kind section 1861.02(a) describes by reference to section 660(a) [S:ca-ins-code-1861-02][S:ca-ins-code-660].",
+		"You are asking what the statutes require, not whether a particular filing was correctly decided.",
+		"You are asking about the rate, which is approved in advance for a class, rather than about how an individual claim is handled."
+	],
+	"why": "The order is the point. Section 1861.02(a) does not give insurers a list of permitted factors to weigh as they like; it requires that rates and premiums be determined by application of the factors in decreasing order of importance, and then names them first, second and third: the insured's driving safety record, the number of miles the insured drives annually, and the number of years of driving experience the insured has had [S:ca-ins-code-1861-02].\n\nAnything else has to be earned. The commissioner may adopt by regulation other factors that have a substantial relationship to the risk of loss, and those regulations must set forth the respective weight to be given each factor in determining automobile rates and premiums [S:ca-ins-code-1861-02]. So a fourth factor is possible, but only through regulation, and only with its weight fixed.\n\nAnd the consequence of skipping that is named in the statute rather than left to inference: notwithstanding any other provision of law, the use of any criterion without approval constitutes unfair discrimination [S:ca-ins-code-1861-02]. Unapproved is not merely unauthorised; it is the statutory wrong.\n\nOne particular non-factor is spelled out. The absence of prior automobile insurance coverage, in and of itself, is not a criterion for determining eligibility for a Good Driver Discount policy, or generally for automobile rates, premiums or insurability [S:ca-ins-code-1861-02].\n\nThen the rate itself. Commencing November 8, 1989, insurance rates subject to the chapter must be approved by the commissioner prior to their use [S:ca-ins-code-1861-01]. That is what prior approval means, and it is why a California rate change is an application rather than an announcement.\n\nThe standard applied is in section 1861.05(a): no rate shall be approved or remain in effect which is excessive, inadequate, unfairly discriminatory or otherwise in violation of the chapter [S:ca-ins-code-1861-05]. Note the second half. A rate can fail after approval as well as at it, because remaining in effect is also conditioned.\n\nThe burden sits with the insurer. Every insurer that desires to change any rate must file a complete rate application, and the applicant bears the burden of proving that the requested change is justified and meets the requirements of the article [S:ca-ins-code-1861-05]. The company proves its case; nobody has to disprove it.\n\nThere is a public step, and it has a clock a member of the public can use. The commissioner must notify the public of any application for a rate change, and the application is deemed approved sixty days after public notice unless a consumer requests a hearing within 45 days of public notice, or the commissioner determines on his or her own motion to hold a hearing [S:ca-ins-code-1861-05]. A separate backstop deems an application approved 180 days after it is received, unless it has been disapproved after a hearing or extraordinary circumstances exist [S:ca-ins-code-1861-05].\n\nThat 45-day window is the practical part of this answer. The right to trigger a hearing belongs to a consumer, and it expires well before the application is deemed approved.\n\nEnforcement has a home. The Department's Rate Enforcement Bureau enforces the provisions of Proposition 103 and other laws pertaining to the availability and affordability of insurance and the rating and underwriting practices of property and casualty insurers [S:cdi-rate-enforcement-bureau], and it represents the Department's position in prior approval rate hearings before a Department administrative law judge [S:cdi-rate-enforcement-bureau].",
+	"whatChanges": [
+		"Whether the factor you are being rated on is one of the three the statute ranks, or one adopted by regulation with a fixed weight, or neither [S:ca-ins-code-1861-02].",
+		"Whether a criterion in use was approved at all, since use without approval is itself unfair discrimination under the section [S:ca-ins-code-1861-02].",
+		"Whether the rate you are being charged comes from an approved filing, since approval is required prior to use [S:ca-ins-code-1861-01].",
+		"How long ago public notice of the application was given, because the consumer hearing request runs 45 days from it and deemed approval at 60 [S:ca-ins-code-1861-05].",
+		"Whether a hearing was held, since the 180-day deemed approval does not apply where the application was disapproved after a hearing [S:ca-ins-code-1861-05].",
+		"Whether you have been told that a gap in prior coverage is the reason for your rate, which is not a permitted criterion in and of itself [S:ca-ins-code-1861-02]."
+	],
+	"variability": [
+		"Section 1861.02(a) speaks to automobile policies of the kind described in section 660(a) [S:ca-ins-code-1861-02][S:ca-ins-code-660]. The ranked three-factor requirement described here should not be assumed to govern other lines.",
+		"The commissioner's regulations set the additional factors and their weights [S:ca-ins-code-1861-02], and this record does not enumerate them, so what is currently permitted beyond the three statutory factors has to come from those regulations.",
+		"Whether a given rate is excessive, inadequate or unfairly discriminatory is decided on a filing and, where one is held, at a hearing [S:ca-ins-code-1861-05], not by reading the standard.",
+		"The deemed-approval provisions are conditioned on public notice having been given and on whether extraordinary circumstances exist [S:ca-ins-code-1861-05], both of which are facts about a particular application."
+	],
+	"nextActions": [
+		"Ask which rating factors were applied to your policy, and check them against the three the statute ranks [S:ca-ins-code-1861-02].",
+		"If you want to be heard on a pending rate change, work from the date of public notice rather than the date you heard about it, since the consumer request runs 45 days from notice [S:ca-ins-code-1861-05].",
+		"If you believe an unapproved criterion is being used, that is the specific thing the statute calls unfair discrimination, so say which criterion [S:ca-ins-code-1861-02].",
+		"Take rating and underwriting practice complaints to the Rate Enforcement Bureau, which is the unit charged with Proposition 103 enforcement [S:cdi-rate-enforcement-bureau].",
+		"Do not treat a lapse in prior coverage as a settled reason for your rate, because in and of itself it is not a permitted criterion [S:ca-ins-code-1861-02]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["auto"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["rating", "proposition 103", "prior approval", "rate hearing", "auto", "california"],
+	"companies": [],
+	"coverages": ["personal-auto-california"],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["good-driver-discount-california"],
+	"handoff": {
+		"recommended": false,
+		"reason": "This describes how rates are set and reviewed rather than anything placed or bound, and the next step for a reader who disagrees with a filing is the Department's own process rather than a licensed conversation."
+	},
+	"sourceIds": ["ca-ins-code-1861-02", "ca-ins-code-1861-05", "ca-ins-code-1861-01", "cdi-rate-enforcement-bureau", "ca-ins-code-660"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
