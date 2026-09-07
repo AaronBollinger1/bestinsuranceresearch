@@ -1,0 +1,26 @@
+{
+	"kind": "inconsistency",
+	"severity": "medium",
+	"modules": ["earthquake-pathways", "property-position"],
+	"title": "The earthquake module and the property module record different kinds of residence for the same home.",
+	"detail": "Both modules ask the same question from the same list, so a difference is a real disagreement rather than two vocabularies. It matters more here than it looks, because the earthquake module reasons from the companion residential policy, and which form that policy is written on follows from the kind of residence. For a condominium, the association generally purchases insurance for the building structure and common areas such as corridors and walls, while the unit owner's policy covers the interior of the unit and the improvements the owner is responsible to maintain under the association's governing rules [S:cdi-residential-insurance-guide]. For a rented unit, the landlord does not provide insurance for the tenant's personal property, and loss of use is measured as a percentage of the personal property limit rather than of a dwelling limit as it is on a homeowners policy [S:cdi-residential-insurance-guide]. An earthquake finding built on the wrong companion form is therefore reasoning about the wrong contract, not merely about the wrong label.",
+	"action": "Check the declarations page for the residential policy and correct whichever module disagrees with it. If the household genuinely has more than one property, record each in its own pass rather than mixing them.",
+	"when": {
+		"all": [
+			{ "field": "earthquake-pathways.residence-type", "op": "isSet" },
+			{ "field": "property-position.residence-type", "op": "isSet" },
+			{
+				"field": "earthquake-pathways.residence-type",
+				"op": "neq",
+				"value": { "field": "property-position.residence-type" }
+			}
+		]
+	},
+	"sourceIds": ["cdi-residential-insurance-guide"],
+	"relatedQuestion": "homeowners-earthquake-california",
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

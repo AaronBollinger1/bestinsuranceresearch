@@ -1,0 +1,26 @@
+{
+	"kind": "inconsistency",
+	"severity": "high",
+	"modules": ["epli-readiness", "group-benefits-renewal"],
+	"title": "The two modules record different headcounts for the same workforce.",
+	"detail": "Both modules ask how many people the business employs, and they are asking about one workforce, so a difference between them is a real disagreement rather than two ways of counting. Statutory thresholds attach on both sides at different numbers, which is why this is worth catching rather than tidying. On the employment side, an employer having five or more employees shall provide sexual harassment prevention training [S:ca-gov-12950-1], to each employee in California once every two years [S:ca-gov-12950-1]. On the benefits side, an applicable large employer is one who employed an average of at least 50 full-time employees on business days during the preceding calendar year [S:usc-26-4980h-applicable-large-employer]. The second test is not applied to a raw headcount: a full-time employee is one employed on average at least 30 hours of service per week [S:usc-26-4980h-applicable-large-employer], and the count adds a figure derived from the aggregate hours of employees who are not full-time [S:usc-26-4980h-applicable-large-employer]. So the headcount is the population both tests start from, and if the two modules disagree about it, at least one determination is starting from a number the other module contradicts.",
+	"action": "Settle the headcount from payroll rather than from memory, and correct whichever module is wrong before relying on either module's threshold findings. If the difference is because one module counted only some workers, say which, because both tests define their own population from the same starting group.",
+	"when": {
+		"all": [
+			{ "field": "epli-readiness.total-employee-count", "op": "isSet" },
+			{ "field": "group-benefits-renewal.total-employee-count", "op": "isSet" },
+			{
+				"field": "epli-readiness.total-employee-count",
+				"op": "neq",
+				"value": { "field": "group-benefits-renewal.total-employee-count" }
+			}
+		]
+	},
+	"sourceIds": ["ca-gov-12950-1", "usc-26-4980h-applicable-large-employer"],
+	"relatedQuestion": "am-i-an-applicable-large-employer",
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}
