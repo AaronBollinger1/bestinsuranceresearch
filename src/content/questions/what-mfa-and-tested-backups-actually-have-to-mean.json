@@ -1,0 +1,63 @@
+{
+	"question": "The application asks whether we have MFA and tested backups. What do those answers actually have to mean?",
+	"aliases": [
+		"is SMS multifactor authentication good enough",
+		"what counts as tested backups cyber insurance",
+		"phishing resistant MFA definition CISA",
+		"do backups have to be offline for cyber insurance",
+		"MFA on all accounts or just admin"
+	],
+	"shortAnswer": "Neither is a yes-or-no fact, and both have a published standard behind them. On authentication, CISA asks organisations to require multifactor authentication using the strongest available method, and ranks the options high to low: phishing-resistant MFA first, then mobile app-based soft tokens, then SMS or voice only when no other options are possible, with all IT accounts covered and privileged administrative accounts prioritised [S:cisa-cpg-2-0]. On backups, the goal asks that they be stored securely offsite and offline, tested on a recurring basis no less than once per year, and that their integrity be validated before restoration is initiated [S:cisa-cpg-2-0].",
+	"assumes": [
+		"You are answering a control question and want to know what the published standard behind it says, not how any insurer will treat your answer.",
+		"The vocabulary comes from public frameworks rather than from the insurer. Both goals described here are CISA performance goals, and the CPGs are voluntary [S:cisa-cpg-2-0].",
+		"You are answering for the organisation as it actually operates, since several of these goals are stated as enforced processes rather than as settings [S:cisa-cpg-2-0]."
+	],
+	"why": "Take authentication first, because the single word yes hides a ranking.\n\nCISA's goal is to require multifactor authentication to access assets using the strongest available method, and it sorts the options explicitly from high to low: phishing-resistant MFA, then mobile app-based soft tokens, then SMS or voice only when no other options are possible [S:cisa-cpg-2-0]. Three consequences follow. A codes-by-text deployment is the bottom of a published ranking rather than a tick in a box. The measure is the strongest method available to you, so what is adequate depends on what your systems support. And the scope is all IT accounts, with privileged administrative accounts prioritised [S:cisa-cpg-2-0], which means MFA on the admin console and not on everyone else is a partial answer to the question actually asked.\n\nNIST states the underlying outcome more plainly still: users, services and hardware are authenticated [S:nist-csf-2-0]. Services and hardware, not only people.\n\nTwo neighbouring goals are usually asked in the same breath and are separate goals. Administrators are to maintain separate user and privileged accounts, so that user accounts do not carry administrator privileges and administrators use a different account for activities unrelated to the admin role, such as business email and web browsing, with privileges re-evaluated on a recurring basis to validate continued need [S:cisa-cpg-2-0]. And least privilege is its own goal: all user accounts, system roles and processes operate with the minimum privileges necessary to perform their tasks, with quarterly reviews of access permissions and role assignments performed to verify compliance with established policies [S:cisa-cpg-2-0]. NIST frames the same outcome as access permissions, entitlements and authorisations defined in policy, managed, enforced and reviewed, incorporating the principles of least privilege and separation of duties [S:nist-csf-2-0].\n\nOffboarding sits alongside them and is where a real answer often falls down. The goal asks for a defined and enforced administrative process to offboard staff including revocation of all access, and for user access to be reviewed and accounts disabled when inactive for a specified period, giving 30 days as an example [S:cisa-cpg-2-0].\n\nNow backups, where the word tested is doing a lot of work.\n\nThe goal has four parts. Develop a list of all maintained backups, and the list is broader than the data: it includes installation media, licence keys, configuration information and the retention period [S:cisa-cpg-2-0]. Store backups securely offsite and offline [S:cisa-cpg-2-0] - offline as well as offsite, which is the part a cloud replica alone does not answer. Test backups and recovery on a recurring basis, no less than once per year [S:cisa-cpg-2-0]. And validate the integrity of backups before initiating restoration [S:cisa-cpg-2-0].\n\nNIST states both halves as outcomes: backups of data are created, protected, maintained and tested [S:nist-csf-2-0], and the integrity of backups and other restoration assets is verified before using them for restoration [S:nist-csf-2-0]. Note that the verification is a step at the moment of restoring, not only an annual exercise. Those are two different obligations and a yes to the annual test is not a yes to the pre-restore check.\n\nSo tested backups, read against the source, means: a list that includes the things you need to rebuild rather than only the data; a copy that is offline; an exercise within the last year; and a habit of checking integrity before you rely on a copy. An organisation that backs up nightly to a connected share and has never restored from it can answer yes to the question as usually phrased and no to the goal as written.\n\nOne more control is worth naming because it is asked in the same section and is unambiguous. Email security means, on all corporate email infrastructure, STARTTLS enabled, SPF and DKIM enabled, and DMARC enabled and set to reject [S:cisa-cpg-2-0]. Enabled and set to reject. A DMARC record in monitoring mode is a configuration, not the stated outcome.",
+	"whatChanges": [
+		"Which MFA method you actually use, since the published ranking puts phishing-resistant first and SMS or voice last, to be used only when nothing else is possible [S:cisa-cpg-2-0].",
+		"Whether MFA covers all IT accounts or only privileged ones, since the goal asks for all with privileged prioritised [S:cisa-cpg-2-0].",
+		"Whether services and hardware are authenticated as well as users, which is how NIST states the outcome [S:nist-csf-2-0].",
+		"Whether any backup copy is offline, not merely offsite [S:cisa-cpg-2-0].",
+		"Whether a restore has actually been performed within the last year, which is what recurring testing no less than annually asks [S:cisa-cpg-2-0].",
+		"Whether the backup list includes installation media, licence keys and configuration information, or only data [S:cisa-cpg-2-0].",
+		"Whether integrity is validated before a restoration is initiated, which is a separate step from the annual test [S:cisa-cpg-2-0][S:nist-csf-2-0].",
+		"Whether DMARC is set to reject rather than to monitor [S:cisa-cpg-2-0]."
+	],
+	"variability": [
+		"These are CISA performance goals and NIST outcomes, and both are voluntary frameworks rather than insurance requirements [S:cisa-cpg-2-0][S:nist-csf-2-0]. What an insurer asks and how it reads an answer is a separate matter.",
+		"The strongest available method standard is relative to your own environment [S:cisa-cpg-2-0], so the same answer can be adequate in one organisation and not in another.",
+		"The 30-day inactivity figure is given in the source as an example rather than as a fixed threshold [S:cisa-cpg-2-0].",
+		"Goal lettering within the CISA document is not stable across the version, and the source record carries later claims correcting earlier ones on two goals, so refer to goals by name rather than by letter [S:cisa-cpg-2-0].",
+		"The editions described are CPG Version 2.0 dated December 2025 [S:cisa-cpg-2-0] and CSF 2.0 published February 26, 2024 [S:nist-csf-2-0]."
+	],
+	"nextActions": [
+		"Establish which MFA method each system actually uses before answering, rather than answering once for the organisation [S:cisa-cpg-2-0].",
+		"Check whether service accounts and hardware are authenticated, since the outcome is stated to reach them [S:nist-csf-2-0].",
+		"Perform a restore from a backup and date it, because that is what turns a claim of tested backups into evidence [S:cisa-cpg-2-0].",
+		"Confirm at least one backup copy is offline as well as offsite [S:cisa-cpg-2-0].",
+		"Add installation media, licence keys, configuration information and retention periods to the backup list if it holds only data [S:cisa-cpg-2-0].",
+		"Check the DMARC policy value rather than whether a DMARC record exists [S:cisa-cpg-2-0].",
+		"Run the access review and the offboarding check on a schedule you can show, since both are stated with frequencies attached [S:cisa-cpg-2-0]."
+	],
+	"confidence": "changing",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["cyber-liability", "crime-and-social-engineering"],
+	"states": [],
+	"audience": "business-owner",
+	"topics": ["multifactor authentication", "backups", "least privilege", "email authentication", "cyber liability"],
+	"companies": [],
+	"coverages": [],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["what-controls-will-a-cyber-insurer-ask-about"],
+	"handoff": {
+		"recommended": true,
+		"reason": "What counts as the strongest available method depends on the environment, and how an insurer reads a partial answer is not something a framework states. Both are questions for a broker who can see the whole application."
+	},
+	"sourceIds": ["cisa-cpg-2-0", "nist-csf-2-0"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

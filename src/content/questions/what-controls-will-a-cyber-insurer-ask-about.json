@@ -1,0 +1,59 @@
+{
+	"question": "What security controls will a cyber insurer ask about, and where do those questions come from?",
+	"aliases": [
+		"cyber insurance application security questions",
+		"what controls do cyber underwriters require",
+		"CISA cross-sector cybersecurity performance goals list",
+		"NIST cybersecurity framework 2.0 functions",
+		"minimum security controls for cyber liability insurance"
+	],
+	"shortAnswer": "The questions are not improvised, and you can read the source before you answer. Two public documents supply most of the vocabulary: the NIST Cybersecurity Framework 2.0, published February 26, 2024 and available free of charge [S:nist-csf-2-0], and CISA's Cross-Sector Cybersecurity Performance Goals 2.0, dated December 2025 [S:cisa-cpg-2-0]. The CPGs are organised as GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND and RECOVER, aligning to the NIST framework's own six functions [S:cisa-cpg-2-0][S:nist-csf-2-0]. Neither is an insurance document, and neither is mandatory: the CPGs are voluntary [S:cisa-cpg-2-0].",
+	"assumes": [
+		"You are being asked about controls in connection with cyber cover, and you want to know what the questions mean rather than how any insurer will price the answers.",
+		"You are reading the frameworks as the origin of the vocabulary, not as a coverage grant. Nothing in either document says anything about insurance [S:nist-csf-2-0][S:cisa-cpg-2-0].",
+		"You accept that the frameworks describe outcomes rather than products. The CSF does not prescribe how outcomes should be achieved; it offers a taxonomy of high-level cybersecurity outcomes usable by any organization regardless of size, sector, or maturity [S:nist-csf-2-0]."
+	],
+	"why": "It helps to know the shape of the thing being asked about. CSF 2.0 organises outcomes under six Functions: GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND and RECOVER [S:nist-csf-2-0]. CISA's performance goals follow the same six headings [S:cisa-cpg-2-0], and CISA describes its goals as a baseline set of practices broadly applicable across critical infrastructure and a benchmark for operators to measure and improve [S:cisa-cpg-program-page].\n\nUnder GOVERN, the questions are about who owns this. Roles, responsibilities and authorities for the cybersecurity programme are to be established, communicated, enforced and aligned within the organisation and with external partners, documented in the organisation's cybersecurity policy, with scope reaching C-suite personnel, critical section leadership, security personnel, third-party contractors, vendors and suppliers [S:cisa-cpg-2-0]. Oversight is a separate goal: policies are reviewed at least annually, updated when changes are applied, communicated and enforced [S:cisa-cpg-2-0]. NIST states the same outcome as policy established on organisational context and strategy, communicated and enforced [S:nist-csf-2-0]. Incident response plans belong here too, developed, maintained, updated and regularly exercised, reviewed and drilled at a minimum annually [S:cisa-cpg-2-0].\n\nUnder IDENTIFY, the questions are about what you have and what is wrong with it. Maintain a regularly updated inventory of all organisational assets, meaning data, hardware, software, systems, facilities and personnel, with assets critical to business or operational functions updated more frequently [S:cisa-cpg-2-0]. Run a vulnerability management programme to patch and mitigate misconfigured software in a timely manner, covering all organisational assets including those facing the internet, with progress monitored through tools such as plans of action and milestones, risk registers and risk detail reports [S:cisa-cpg-2-0]. NIST adds that software is to be maintained, replaced and removed commensurate with risk [S:nist-csf-2-0], and that improvements are identified from security tests and exercises including those done with suppliers and third parties [S:nist-csf-2-0].\n\nUnder PROTECT sit most of the questions on a typical application. Multifactor authentication, with the strongest available method [S:cisa-cpg-2-0]. Least privilege, where all user accounts, system roles and processes operate with the minimum privileges necessary and quarterly reviews of access permissions and role assignments verify compliance [S:cisa-cpg-2-0]. Administrators maintaining separate accounts, so that user accounts do not carry administrator privileges and admins use a different account for things unrelated to the admin role such as business email and web browsing [S:cisa-cpg-2-0]. Offboarding, with a defined and enforced process revoking all access, and accounts disabled when inactive for a specified period, for example 30 days [S:cisa-cpg-2-0]. Training, with initial training before new employees access systems and at least annual training for all users covering recognising social engineering, reporting suspicious activity and basic hygiene [S:cisa-cpg-2-0]. Email security, meaning STARTTLS, SPF and DKIM enabled, and DMARC enabled and set to reject, with the stated outcome of reduced risk from spoofing, phishing and interception [S:cisa-cpg-2-0]. Encryption of network communications and of critical file types in transit and at rest, which may include personally identifiable information and proprietary or trade secret information [S:cisa-cpg-2-0]. NIST states the corresponding outcomes as users, services and hardware being authenticated, access permissions incorporating least privilege and separation of duties, personnel being trained, and the confidentiality, integrity and availability of data at rest and in transit being protected [S:nist-csf-2-0].\n\nUnder DETECT, establish malicious code detection using both signature-based and non-signature-based mechanisms at system endpoints organisation-wide [S:cisa-cpg-2-0], and define clear criteria and processes for adverse events with escalation through the incident response plan [S:cisa-cpg-2-0]. NIST puts it as networks and network services being monitored to find potentially adverse events [S:nist-csf-2-0].\n\nUnder RESPOND and RECOVER, the incident response plan is executed in coordination with relevant third parties once an incident is declared [S:nist-csf-2-0], and the integrity of backups and other restoration assets is verified before using them for restoration [S:nist-csf-2-0].\n\nSupply chain sits across the whole thing. Cybersecurity Supply Chain Risk Management is a category within the GOVERN function, covering processes identified, established, managed, monitored and improved by organisational stakeholders [S:nist-csf-2-0], and CISA has a separate goal on notifying a customer of security incidents and vulnerabilities within a risk-informed time frame [S:cisa-cpg-2-0]. CISA's newest goals address managed service providers, least privilege and incident communication procedures [S:cisa-cpg-program-page].\n\nOne thing worth holding onto. CISA says the goals strive to help small and medium-sized organisations kickstart their cybersecurity efforts by prioritising a limited number of essential actions with high-impact outcomes [S:cisa-cpg-program-page], and one of its stated criteria for including a goal is that it be reasonably straightforward and not cost-prohibitive for small and medium-sized entities to implement [S:cisa-cpg-2-0]. These are meant to be a floor, not a counsel of perfection.",
+	"whatChanges": [
+		"Whether your organisation can point to a written cybersecurity policy documenting roles and responsibilities, which is the first GOVERN goal rather than a formality [S:cisa-cpg-2-0].",
+		"Whether the incident response plan has been exercised, since the goal asks for it to be drilled at least annually rather than merely to exist [S:cisa-cpg-2-0].",
+		"Whether the asset inventory includes data, facilities and personnel, not only hardware and software [S:cisa-cpg-2-0].",
+		"Whether internet-facing assets are inside the vulnerability management programme, which the goal names specifically [S:cisa-cpg-2-0].",
+		"Whether privileged accounts are separated from ordinary ones, which is a distinct goal from least privilege [S:cisa-cpg-2-0].",
+		"Whether DMARC is set to reject rather than merely enabled, which is what the email security goal states [S:cisa-cpg-2-0].",
+		"Whether access reviews actually happen on a schedule, since least privilege is stated with quarterly reviews attached [S:cisa-cpg-2-0]."
+	],
+	"variability": [
+		"Neither document is an insurance requirement. The CPGs are voluntary [S:cisa-cpg-2-0], and the CSF is a taxonomy of outcomes that does not prescribe how they are achieved [S:nist-csf-2-0]. What any insurer requires is between you and that insurer.",
+		"Goal lettering in the CISA document is not stable across the version, and the source record for it carries later claims correcting earlier ones on two goals. Refer to goals by name and confirm the letter against the current PDF rather than relying on a letter alone [S:cisa-cpg-2-0].",
+		"The CPG edition recorded here is Version 2.0 dated December 2025 [S:cisa-cpg-2-0] and the CSF edition is 2.0 published February 26, 2024 [S:nist-csf-2-0]. Both are revised, and a newer edition supersedes what is described here.",
+		"Sector-Specific Goals exist for some sectors and not others, with Chemical, Energy, Healthcare and Information Technology available and Financial Services listed as coming [S:cisa-cpg-program-page], so a sector-specific expectation may sit alongside the cross-sector baseline."
+	],
+	"nextActions": [
+		"Read the CPG document before filling in an application, since it is free, public, and organised under the same six headings the questions follow [S:cisa-cpg-2-0].",
+		"Map what you already do onto the six Functions rather than onto the application form, because that is the structure both documents use [S:nist-csf-2-0][S:cisa-cpg-2-0].",
+		"Treat the annual items as dated evidence: the incident response drill, the policy review, the training cycle and the backup test each carry a frequency in the source [S:cisa-cpg-2-0].",
+		"Check whether a CPG 2.0 checklist or assessment module is available before building your own, since CISA noted both as becoming available [S:cisa-cpg-program-page].",
+		"Answer from what you can evidence rather than from what is configured somewhere, since several goals are stated as enforced processes rather than as settings [S:cisa-cpg-2-0]."
+	],
+	"confidence": "changing",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["cyber-liability", "privacy-and-network-security"],
+	"states": [],
+	"audience": "business-owner",
+	"topics": ["security controls", "cisa cpg", "nist csf", "underwriting questions", "cyber liability"],
+	"companies": [],
+	"coverages": [],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["what-mfa-and-tested-backups-actually-have-to-mean"],
+	"handoff": {
+		"recommended": true,
+		"reason": "These documents describe control outcomes and say nothing about insurance. What a particular insurer requires, and how an answer affects what it will offer, is a conversation with a broker rather than something readable from a framework."
+	},
+	"sourceIds": ["nist-csf-2-0", "cisa-cpg-2-0", "cisa-cpg-program-page"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
