@@ -27,11 +27,35 @@ ul, ol { padding-left: 1.15em; }
 hr { border: 0; border-top: var(--bw-hair) solid var(--line); margin: var(--s-8) 0; }
 [hidden] { display: none !important; }
 
-h1, h2, h3, h4 { color: var(--ink); font-weight: 500; letter-spacing: -0.005em; }
+/*
+ * Selection is a first-class interaction here rather than an incidental one.
+ * The site asks to be quoted, publishes claim addresses for the purpose, and
+ * tells crawlers to cite the sentence rather than the page. Somebody dragging
+ * across a statutory sentence is doing the thing the site is for, so the
+ * highlight is the estate's own gold rather than the browser's blue.
+ */
+::selection { background: var(--gold-wash); color: var(--ink); }
+
+/*
+ * `balance` evens the line lengths of a heading instead of leaving one word
+ * stranded on the last line. Headings here are titles of statutes and lines of
+ * insurance, so they are long, parenthesised and full of proper nouns:
+ * "Personal auto insurance (California)" is the common shape and it is exactly
+ * what balancing is for. Browsers cap it at a few lines and ignore it beyond
+ * that, so it costs nothing where it cannot help.
+ */
+h1, h2, h3, h4 { color: var(--ink); font-weight: 500; letter-spacing: -0.005em; text-wrap: balance; }
 h1 { font-family: var(--font-display); font-size: var(--text-4xl); line-height: var(--leading-tight); font-weight: 400; margin-bottom: var(--s-3); }
 h2 { font-family: var(--font-display); font-size: var(--text-2xl); line-height: var(--leading-snug); font-weight: 400; margin-bottom: var(--s-3); }
 h3 { font-size: var(--text-lg); line-height: var(--leading-snug); margin-bottom: var(--s-2); }
 h4 { font-size: var(--text-base); line-height: var(--leading-snug); margin-bottom: var(--s-2); }
+
+/*
+ * Titles set in the display face that are not h1-h4. They are headings in
+ * every sense that matters to a reader, so they balance with the rest rather
+ * than being left as the one place a stranded word still shows.
+ */
+.card-title, .row-title, .state-block .state-heading, .direct-answer p { text-wrap: balance; }
 
 .u-visually-hidden {
 	position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -91,7 +115,14 @@ code { overflow-wrap: anywhere; }
 .ledger-facts span, .ledger-title { overflow-wrap: anywhere; }
 .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
-.prose p, .prose li { font-size: var(--text-md); line-height: var(--leading-prose); max-width: 68ch; }
+/*
+ * `pretty` asks the browser to avoid leaving a single word alone on the final
+ * line. It only adjusts the last few lines, so unlike `balance` it is safe on
+ * paragraphs of any length. Prose here runs long and is read carefully, and a
+ * one-word last line is the most common way a considered paragraph looks
+ * careless.
+ */
+.prose p, .prose li { font-size: var(--text-md); line-height: var(--leading-prose); max-width: 68ch; text-wrap: pretty; }
 .prose > * + * { margin-top: var(--s-4); }
 .prose h2 { margin-top: var(--s-10); font-size: var(--text-2xl); }
 .prose h3 { margin-top: var(--s-6); }
@@ -632,6 +663,24 @@ table.data tbody tr:hover { background: var(--gold-wash); }
 	.segmented { width: 100%; }
 	.segmented button { flex: 1; justify-content: center; padding-inline: var(--s-2); }
 	.brand-name strong { font-size: var(--text-base); }
+}
+
+/* ============================================================
+   FORCED COLORS (Windows High Contrast and similar)
+   ============================================================
+   The system replaces every colour, so anything carrying meaning only in a
+   background loses it. Two things here do: the confidence chips, which are
+   distinguished by six washes, and the citation markers, which read as small
+   gold tags. Both keep a boundary drawn in the system's own text colour so the
+   shape survives even though the hue does not.
+
+   The chips are safe to flatten because the palette was already built on the
+   rule that a status wash is never the only signal; each chip carries its word.
+   That decision is what makes this block three lines instead of a redesign. */
+@media (forced-colors: active) {
+	.status, .cite { border: var(--bw-hair) solid currentColor; }
+	.cite { padding: 0 2px; }
+	.disc { border: var(--bw-hair) solid currentColor; }
 }
 
 /* ============================================================
