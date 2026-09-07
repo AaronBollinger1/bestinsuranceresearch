@@ -1,0 +1,59 @@
+{
+	"question": "What is a California auto liability policy actually allowed to exclude?",
+	"aliases": [
+		"permitted exclusions California auto liability policy",
+		"why does my auto policy not cover damage to my own car",
+		"auto policy exclusion for injury to a family member California",
+		"does auto liability cover injury to my own employee California",
+		"can an auto policy exclude one of my vehicles California"
+	],
+	"shortAnswer": "The statute lists what may be excluded rather than leaving it open. Section 11580.1(c) permits a policy to make its insurance, including the insurer's obligation to defend, inapplicable to liability assumed under contract, liability for bodily injury or property damage caused intentionally by or at the direction of the insured, liability imposed or assumed under any workers compensation law, and liability for bodily injury to an employee of the insured arising out of and in the course of employment [S:ca-ins-code-11580-1]. It also permits exclusion of bodily injury to an insured, and of damage to property in the charge of an insured, and of designated vehicles [S:ca-ins-code-11580-1].",
+	"assumes": [
+		"The policy is one section 11580.1 governs: an automobile liability policy described in Vehicle Code section 16054, issued or delivered in California [S:ca-ins-code-11580-1].",
+		"The question is about the layer at or below the financial responsibility limits, since the required provisions do not apply above the limits in Vehicle Code section 16056(a), or where the policy carries an underlying insurance requirement or a retained limit of self-insurance at least equal to them [S:ca-ins-code-11580-1][S:ca-veh-code-16056].",
+		"You are asking what the statute permits a policy to exclude, not what your particular policy says, which is in the policy."
+	],
+	"why": "Two of these permitted exclusions surprise people, and one definitional twist decides how far both of them reach.\n\nDamage to property in the charge of an insured. Subdivision (c)(6) permits exclusion of liability for damage to property owned, rented to, transported by, or in the charge of an insured, and then states that a motor vehicle operated by an insured shall be considered to be property in the charge of an insured [S:ca-ins-code-11580-1]. That last sentence is why a liability policy does not pay for the car being driven. It is not an oversight in the form; it is a permitted exclusion with a definition attached.\n\nBodily injury to an insured. Subdivision (c)(5) permits exclusion of liability for bodily injury to an insured, and also of liability for bodily injury to an insured whenever the ultimate benefits of that indemnification accrue directly or indirectly to an insured [S:ca-ins-code-11580-1]. The second half closes the route of one insured suing another so that the money lands back inside the household.\n\nNow the twist, which is easy to read past and changes the scope of everything above it. Subdivision (c) provides that the insured, as used in paragraphs (1) through (4), means only that insured under the policy against whom the particular claim is made or suit is brought, while an insured, as used in paragraphs (5) and (6), means any insured under the policy [S:ca-ins-code-11580-1]. So for the contractual, intentional, workers compensation and employee-injury exclusions, the question is about the specific person being sued. For the injury-to-an-insured and property-in-the-charge-of-an-insured exclusions, it is about anyone insured under the policy. The definite and indefinite article are doing real work, and the statute says so explicitly rather than leaving it to construction.\n\nThe workers compensation and employee exclusions sit together for a reason. A policy may exclude liability imposed upon or assumed by the insured under any workers compensation law, and liability for bodily injury to any employee of the insured arising out of and in the course of employment [S:ca-ins-code-11580-1]. An employee injured in a work vehicle is a workers compensation question rather than an auto liability one, and this is where the boundary is drawn.\n\nVehicles can be excluded by name. Subdivision (c)(8) permits exclusion of any motor vehicle or class of motor vehicles, as described or designated in the policy, with respect to which coverage is explicitly excluded in whole or in part [S:ca-ins-code-11580-1]. That connects to the required provisions: the policy must designate, by explicit description or appropriate reference, the vehicles or class of vehicles to which coverage is specifically granted, and must explicitly describe the purposes for which coverage for those vehicles is specifically excluded [S:ca-ins-code-11580-1]. Exclusion by designation has to be visible on the face of the policy, which is what makes it checkable.\n\nWhat cannot be excluded is worth stating alongside. The policy must carry limits not less than those specified in subdivision (a) of Vehicle Code section 16056 [S:ca-ins-code-11580-1][S:ca-veh-code-16056], and it must extend cover to a permissive user to the same extent as to the named insured [S:ca-ins-code-11580-1]. And since 1976 no such policy may be issued, amended or renewed containing any provision that expressly or impliedly excludes the named insured's use of an insured vehicle in performing volunteer social service transportation for a nonprofit charitable organization or governmental agency, absent remuneration beyond mileage reimbursement at or below the described rate [S:ca-ins-code-11580-1]; nor may the policy be cancelled solely because the named insured is doing that [S:ca-ins-code-11580-1].\n\nFinally, a boundary that prevents a common misreading. Nothing in the section, or in Vehicle Code section 16054 or 16450, constitutes a homeowner's policy, general liability policy, comprehensive personal liability policy, premises liability policy, special multiperil policy or similar policy as a policy of automobile liability insurance for the purposes of the section [S:ca-ins-code-11580-1]. These rules describe the auto policy and do not import themselves into the others.",
+	"whatChanges": [
+		"Which paragraph of subdivision (c) the insurer relies on, because paragraphs (1) to (4) turn on the person being sued and paragraphs (5) and (6) turn on anyone insured [S:ca-ins-code-11580-1].",
+		"Whether the damaged property was in the charge of an insured, which includes a motor vehicle being operated by an insured [S:ca-ins-code-11580-1].",
+		"Whether the injured person is an insured under the policy, or whether the benefit of the recovery would accrue to one [S:ca-ins-code-11580-1].",
+		"Whether the injured person was an employee of the insured acting in the course of employment, which moves the question to workers compensation [S:ca-ins-code-11580-1].",
+		"Whether the vehicle was designated in the policy as excluded, in whole or in part [S:ca-ins-code-11580-1].",
+		"Whether the liability was assumed under a contract, which is separately excludable [S:ca-ins-code-11580-1].",
+		"Whether the claim exceeds the financial responsibility limits, above which these required provisions do not apply [S:ca-ins-code-11580-1][S:ca-veh-code-16056]."
+	],
+	"variability": [
+		"This is a list of exclusions the statute permits, not a list every policy contains. Which of them a particular policy actually takes up is in that policy.",
+		"Whether an injury arose out of and in the course of employment, and whether damage was to property in the charge of an insured, are factual determinations the section frames and does not resolve.",
+		"The section governs the layer at and below the financial responsibility limits [S:ca-ins-code-11580-1], so an excess or umbrella layer is not described here.",
+		"The volunteer transportation protection is dated: it applies to policies issued, amended or renewed on and after January 1, 1976, and turns on whether remuneration beyond a described mileage rate was received [S:ca-ins-code-11580-1]."
+	],
+	"nextActions": [
+		"Ask the insurer which paragraph of section 11580.1(c) it is relying on, by number, since the meaning of insured differs between them [S:ca-ins-code-11580-1].",
+		"Read your own declarations page for designated vehicles and designated exclusions, because exclusion by designation has to be described explicitly in the policy [S:ca-ins-code-11580-1].",
+		"If the injured person was working at the time, establish whether a workers compensation claim is the right route rather than this one [S:ca-ins-code-11580-1].",
+		"Do not expect a liability policy to pay for the vehicle being driven; that is a physical damage question and a permitted exclusion explains why [S:ca-ins-code-11580-1].",
+		"If the denial rests on the injured person being an insured, check who the policy actually names as an insured before accepting it [S:ca-ins-code-11580-1]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["auto"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["exclusions", "auto", "california", "duty to defend", "workers compensation boundary"],
+	"companies": [],
+	"coverages": ["personal-auto-california"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["was-the-driver-of-my-car-covered-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether an injury arose in the course of employment, and whether property was in the charge of an insured, decide which exclusion applies and are questions of fact rather than of statutory reading."
+	},
+	"sourceIds": ["ca-ins-code-11580-1", "ca-veh-code-16056"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

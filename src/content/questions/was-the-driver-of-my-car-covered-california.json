@@ -1,0 +1,60 @@
+{
+	"question": "My insurer says the person driving my car was not covered. Can it say that?",
+	"aliases": [
+		"does my auto insurance cover other drivers California",
+		"permissive use California auto policy",
+		"named driver exclusion California is it legal",
+		"friend crashed my car am I covered California",
+		"can an insurer exclude one driver from my policy California"
+	],
+	"shortAnswer": "Usually not, unless somebody signed something. A California auto liability policy must afford insurance to the named insured for any owned or leased vehicle the policy covers and, to the same extent, to any other person using that vehicle, provided the use is by the named insured or with the named insured's permission, express or implied, and within the scope of that permission [S:ca-ins-code-11580-1]. Permissive use is a required provision rather than a courtesy. The main way it is lawfully removed is a named-driver exclusion agreement, which the insurer and a named insured may make in the policy or in a separate writing, naming the excluded person [S:ca-ins-code-11580-1].",
+	"assumes": [
+		"The policy is one section 11580.1 governs: a policy of automobile liability insurance described in Vehicle Code section 16054, covering liability arising out of the ownership, maintenance or use of a motor vehicle, issued or delivered in California [S:ca-ins-code-11580-1].",
+		"The question is about the layer of cover at or below the financial responsibility limits. The requirements do not apply to insurance afforded above the limits in Vehicle Code section 16056(a), or where the policy contains an underlying insurance requirement or a retained limit of self-insurance equal to or greater than those limits [S:ca-ins-code-11580-1][S:ca-veh-code-16056].",
+		"The permission question is about your permission as named insured, not about whether the driver held a licence, which is a different issue the statute does not address here."
+	],
+	"why": "The requirement is stated as a floor on what the policy must contain, not as a benefit the insurer may withdraw. Subdivision (b)(4) requires the policy to afford insurance to the named insured with respect to any owned or leased motor vehicle covered by the policy and, to the same extent that insurance is afforded to the named insured, to any other person using the vehicle, provided the use is by the named insured or with the named insured's permission, express or implied, and within the scope of that permission [S:ca-ins-code-11580-1]. Two phrases carry the weight: implied permission, and within the scope of that permission. Lending the car for an errand is not the same as lending it for a week, and the scope is where these disputes actually live.\n\nOwned motor vehicle, for the purposes of the chapter, includes all motor vehicles described and rated in the policy [S:ca-ins-code-11580-1].\n\nThere are narrower limitations the statute permits, and they are worth knowing because they are legitimate. Insurance afforded for loading or unloading the vehicle may be limited to the named insured, a relative of the named insured residing in the household, a lessee or bailee of the vehicle, or an employee of any of those [S:ca-ins-code-11580-1]. And the insurance afforded to a person other than the named insured may exclude an employee with respect to bodily injury sustained by a fellow employee injured in the scope and course of employment, and any person engaged in the business of selling, repairing, servicing, delivering, testing, road-testing, parking or storing automobiles with respect to an accident arising out of the maintenance or use of a vehicle in connection with that business [S:ca-ins-code-11580-1]. Note that the second group applies to persons other than the named insured, so it is not a general licence to exclude drivers.\n\nThe real answer to the question, where the insurer is right, is normally a named-driver exclusion. Subdivision (d)(1) permits the insurer and any named insured to agree, in the policy or a separate writing, that coverage and the obligation to defend shall not apply nor accrue to the benefit of any insured or third-party claimant while a vehicle is being used or operated by a natural person or persons designated by name [S:ca-ins-code-11580-1]. The limitation reaches any use or operation by that person, including negligent or alleged negligent entrustment to them [S:ca-ins-code-11580-1], so handing the keys over does not route around it.\n\nThat agreement is unusually powerful and unusually durable. It applies to all coverage provided by the policy, and it is sufficient to comply with section 11580.2(a)(1) so as to delete uninsured motorist coverage while the vehicle is operated by the designated person [S:ca-ins-code-11580-1][S:ca-ins-code-11580-2]. It remains in force as long as the policy remains in force, and applies to any continuation, renewal or replacement of the policy by the named insured, or reinstatement within 30 days of any lapse [S:ca-ins-code-11580-1]. An agreement made more than 60 days after the inception of the policy is effective from the date of the agreement, and with the signature of a named insured is conclusive evidence of the validity of the agreement [S:ca-ins-code-11580-1]. So the question to ask is not whether the insurer may exclude a driver in principle but whether a named insured signed something naming that person, and when.\n\nEven then, the duty to defend the named insured is preserved in three situations: where the designated person resides in the same household as the named insured, where they are jointly sued with the named insured as a result of operating the named insured's insured vehicle, and where they are an insured under a separate automobile liability policy issued to them as a named insured which does not provide a defence to the named insured [S:ca-ins-code-11580-1].\n\nOne unrelated protection sits in the same section and catches people who would not think to look for it. No policy of this kind may be issued, amended or renewed in California containing any provision that expressly or impliedly excludes from coverage the use of an insured vehicle by the named insured in the performance of volunteer services for a nonprofit charitable organization or governmental agency by providing social service transportation, unless the named insured receives remuneration of any kind other than mileage reimbursement at or below the rate the subdivision describes [S:ca-ins-code-11580-1]. Nor may such a policy be cancelled solely because the named insured is performing that volunteer transportation [S:ca-ins-code-11580-1].",
+	"whatChanges": [
+		"Whether a named insured signed a named-driver exclusion agreement naming this driver, which is the ordinary lawful route to the insurer's position [S:ca-ins-code-11580-1].",
+		"When that agreement was made, since one made more than 60 days after inception is effective from its own date rather than from inception [S:ca-ins-code-11580-1].",
+		"Whether the driver had your permission, express or implied, and whether the use stayed within the scope of it [S:ca-ins-code-11580-1].",
+		"Whether the vehicle is one described and rated in the policy, since that is what owned motor vehicle means here [S:ca-ins-code-11580-1].",
+		"Whether the loss involved loading or unloading, which the statute permits to be limited to a listed group of people [S:ca-ins-code-11580-1].",
+		"Whether the driver was acting in an automobile business or was a fellow employee of the injured person, both of which may be excluded as to persons other than the named insured [S:ca-ins-code-11580-1].",
+		"Whether the claim sits above the financial responsibility limits, where the required provisions do not reach [S:ca-ins-code-11580-1][S:ca-veh-code-16056]."
+	],
+	"variability": [
+		"Whether permission was implied, and whether a particular use stayed within its scope, are factual questions the statute frames and does not answer.",
+		"The section governs what the policy must contain at and below the financial responsibility limits. Above those limits, and where an underlying insurance requirement or a retained limit applies, the required provisions do not govern [S:ca-ins-code-11580-1].",
+		"A homeowners, general liability, comprehensive personal liability, premises liability, special multiperil or similar policy is not made an automobile liability policy for the purposes of this section [S:ca-ins-code-11580-1], so cover for a driving loss is not to be looked for there on the strength of this section.",
+		"This describes the statutory floor. A policy may be broader, and where it is, the policy governs that term."
+	],
+	"nextActions": [
+		"Ask the insurer in writing which provision it relies on, and specifically whether it is asserting a named-driver exclusion agreement [S:ca-ins-code-11580-1].",
+		"If it says there is such an agreement, ask for a copy showing the signature and the date, because both matter [S:ca-ins-code-11580-1].",
+		"Write down what permission you actually gave, when, and for what, while you still remember it precisely [S:ca-ins-code-11580-1].",
+		"Check whether uninsured motorist cover is also being denied for the same reason, since a named-driver exclusion reaches that too [S:ca-ins-code-11580-1][S:ca-ins-code-11580-2].",
+		"If the driver lives in your household or is being sued jointly with you, raise the three situations in which the duty to defend you survives the exclusion [S:ca-ins-code-11580-1].",
+		"If a third party was injured and cover is being denied, take it to a lawyer rather than negotiating the characterisation yourself."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["auto"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["permissive use", "named driver exclusion", "auto", "california", "duty to defend"],
+	"companies": [],
+	"coverages": ["personal-auto-california"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["what-can-my-auto-policy-exclude-california", "employee-driving-own-car-for-work-coverage"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether permission was implied and whether a use stayed within its scope decide the outcome and are questions of fact, and a denial that turns on a signed exclusion agreement should be read against the document rather than against a description of the statute."
+	},
+	"sourceIds": ["ca-ins-code-11580-1", "ca-ins-code-11580-2", "ca-veh-code-16056"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
