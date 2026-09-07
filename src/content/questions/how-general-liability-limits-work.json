@@ -1,0 +1,60 @@
+{
+	"question": "My general liability policy shows several different limits. How do they actually work together?",
+	"aliases": [
+		"general aggregate versus each occurrence limit",
+		"what is the products completed operations aggregate",
+		"does the duty to defend end when the limit is exhausted",
+		"do defense costs reduce my liability limit",
+		"CGL limits of insurance explained"
+	],
+	"shortAnswer": "There are six limits on the standard form and they are not alternatives, they are a stack. Section III sets a General Aggregate Limit, a Products-Completed Operations Aggregate Limit, a Personal And Advertising Injury Limit, an Each Occurrence Limit, a Damage To Premises Rented To You Limit, and a Medical Expense Limit [S:iso-cg-00-01-04-13]. The one most people miss is that products and completed operations have their own aggregate, separate from the general one [S:iso-cg-00-01-04-13], and the one that changes behaviour in a large claim is that the insurer's right and duty to defend ends once it has used up the applicable limit in the payment of judgments or settlements [S:iso-cg-00-01-04-13].",
+	"assumes": [
+		"The policy uses the standard Commercial General Liability Coverage Form as published in the April 2013 edition [S:iso-cg-00-01-04-13]. Endorsements change limits and the policy issued governs.",
+		"You are asking how the limits interact, not what any particular claim will pay.",
+		"You are reading the base form. This form sets limits only and contains no liability deductible provision [S:iso-cg-00-01-04-13], so any deductible or self-insured retention on your policy comes from an endorsement."
+	],
+	"why": "Start with what the policy promises, because the limits are limits on that. The Coverage A insuring agreement states that the insurer will pay those sums the insured becomes legally obligated to pay as damages because of bodily injury or property damage to which the insurance applies, and that the insurer will have the right and duty to defend the insured against any suit seeking those damages [S:iso-cg-00-01-04-13]. Two things are being bought there: indemnity and defence.\n\nThe defence half is bounded twice. There is no duty to defend a suit seeking damages for bodily injury or property damage to which the insurance does not apply [S:iso-cg-00-01-04-13]. And the right and duty to defend ends when the insurer has used up the applicable limit of insurance in the payment of judgments or settlements under Coverages A or B, or medical expenses under Coverage C [S:iso-cg-00-01-04-13]. So defence is not unlimited in time: it lasts until the limit is spent on paying claims, at which point the insured is on its own in whatever litigation remains.\n\nWhat does not erode the limit is the cost of that defence. Supplementary Payments under Coverages A and B include all expenses the insurer incurs, and the form states that these payments will not reduce the limits of insurance [S:iso-cg-00-01-04-13]. That is worth knowing precisely, because a policy where defence costs eat the limit behaves entirely differently, and this base form is not that policy.\n\nThe trigger is an occurrence. Coverage A applies to bodily injury and property damage only if the injury or damage is caused by an occurrence taking place in the coverage territory and occurring during the policy period, subject to the form's prior-knowledge provisions [S:iso-cg-00-01-04-13]. Occurrence is defined as an accident, including continuous or repeated exposure to substantially the same general harmful conditions [S:iso-cg-00-01-04-13]. That second half is what lets a long exposure count as one occurrence rather than many, which matters directly to the Each Occurrence Limit.\n\nNow the stack.\n\nThe Each Occurrence Limit is the most the insurer will pay for the sum of damages under Coverage A and medical expenses under Coverage C because of all bodily injury and property damage arising out of any one occurrence [S:iso-cg-00-01-04-13]. Note the sum: liability damages and medical payments draw on the same per-occurrence figure.\n\nThe General Aggregate Limit is the most the insurer will pay for the sum of medical expenses under Coverage C, damages under Coverage A other than damages included in the products-completed operations hazard, and damages under Coverage B [S:iso-cg-00-01-04-13]. Read the exception in the middle: the general aggregate deliberately excludes products and completed operations.\n\nBecause those have their own ceiling. The Products-Completed Operations Aggregate Limit is the most the insurer will pay under Coverage A for damages because of bodily injury and property damage included in the products-completed operations hazard [S:iso-cg-00-01-04-13]. A manufacturer or a contractor therefore has two separate annual buckets, and exhausting one does not touch the other.\n\nTwo of the six are capped by a third. The Damage To Premises Rented To You Limit is subject to the Each Occurrence Limit and is the most payable under Coverage A for property damage to any one premises while rented to the insured, or in the case of damage by fire, while rented to or temporarily occupied by the insured with the owner's permission [S:iso-cg-00-01-04-13]. The Medical Expense Limit is also subject to the Each Occurrence Limit and is the most payable under Coverage C for all medical expenses because of bodily injury sustained by any one person [S:iso-cg-00-01-04-13].\n\nAnd the aggregates reset on a schedule the Declarations set rather than on the policy's whole term. The limits of the Coverage Part apply separately to each consecutive annual period and to any remaining period of less than 12 months, starting with the beginning of the policy period shown in the Declarations [S:iso-cg-00-01-04-13]. A three-year policy is three aggregates, and a stub period of less than a year gets its own.\n\nThe other two coverages are worth naming. Coverage B is Personal And Advertising Injury Liability, has its own limit of insurance and its own exclusions including a pollution exclusion, and Coverage C is Medical Payments, whose payments are made regardless of fault and cannot exceed the applicable limit [S:iso-cg-00-01-04-13]. Regardless of fault is unusual on a liability policy and it is why Coverage C is small and sits under the occurrence limit.",
+	"whatChanges": [
+		"Whether the claim falls in the products-completed operations hazard, since that draws on a separate aggregate from everything else [S:iso-cg-00-01-04-13].",
+		"How much of the applicable limit has already been paid in judgments or settlements, because the duty to defend ends when it is used up [S:iso-cg-00-01-04-13].",
+		"Whether a long exposure counts as one occurrence, which the definition of occurrence allows and which decides how many times the Each Occurrence Limit applies [S:iso-cg-00-01-04-13].",
+		"Whether medical payments are in play, since they draw on the Each Occurrence Limit alongside Coverage A damages [S:iso-cg-00-01-04-13].",
+		"How long the policy period is, because the aggregates apply separately to each consecutive annual period and to any shorter remaining period [S:iso-cg-00-01-04-13].",
+		"Whether an endorsement adds a deductible or retention, since the base form has no liability deductible provision [S:iso-cg-00-01-04-13].",
+		"Whether the claim is Coverage B rather than Coverage A, since Coverage B carries its own limit and its own exclusions [S:iso-cg-00-01-04-13]."
+	],
+	"variability": [
+		"This describes the base form as published in the April 2013 edition [S:iso-cg-00-01-04-13]. Editions differ, endorsements amend limits and add retentions, and the policy issued governs.",
+		"Whether a series of events is one occurrence or several is a factual and often contested question. The form defines occurrence to include continuous or repeated exposure to substantially the same general harmful conditions [S:iso-cg-00-01-04-13] and does not resolve any particular case.",
+		"The statement that supplementary payments do not reduce the limits is a feature of this base form [S:iso-cg-00-01-04-13]. Policies exist in the market where defence costs erode the limit, and this record does not describe those.",
+		"Whether damages fall within the products-completed operations hazard is decided by that defined term, which this record does not set out in full."
+	],
+	"nextActions": [
+		"Read the Declarations for all six limits rather than the two usually quoted, and note which are aggregates and which are per occurrence [S:iso-cg-00-01-04-13].",
+		"Check whether the products-completed operations aggregate matches the general aggregate, because they are separate figures and are often set differently [S:iso-cg-00-01-04-13].",
+		"Ask your broker how much of each aggregate has been eroded this period before assuming a limit is intact [S:iso-cg-00-01-04-13].",
+		"If the policy runs longer than a year, confirm how the annual reinstatement of aggregates is shown, since the form applies them to each consecutive annual period [S:iso-cg-00-01-04-13].",
+		"Ask specifically whether defence costs sit outside the limit on your policy, because that is true of this base form and is not universal [S:iso-cg-00-01-04-13].",
+		"In a claim large enough to threaten the limit, get advice early, since the duty to defend ends when the limit is paid out [S:iso-cg-00-01-04-13]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["commercial-general-liability"],
+	"states": [],
+	"audience": "business-owner",
+	"topics": ["limits of insurance", "general aggregate", "each occurrence", "duty to defend", "commercial general liability"],
+	"companies": [],
+	"coverages": ["commercial-general-liability"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["what-a-general-liability-policy-excludes", "same-limit-different-protection"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a series of events is one occurrence or several, and how much of an aggregate has already been eroded, decide what is actually available. Both are questions about a particular policy and its claim history rather than about the form."
+	},
+	"sourceIds": ["iso-cg-00-01-04-13"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
