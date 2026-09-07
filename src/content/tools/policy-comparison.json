@@ -263,7 +263,7 @@
 		{
 			"group": "Exclusions and separate policies",
 			"label": "Test each option against what the lender requires",
-			"detail": "If a loan is involved, enter the mortgagee and loss payee wording and the lender's stated minimums per option. Under Regulation X a gap can lead to force-placed hazard insurance, which requires a written notice at least 45 days before the charge, a reminder at least 15 days before the charge and not until at least 30 days after the first notice, and cancellation with refund of overlapping premium within 15 days of proof of coverage [S:cfpb-1024-37]. For a building in a special flood hazard area securing a loan from a regulated lending institution, federal law requires flood coverage for the term of the loan in an amount at least equal to the outstanding principal balance of the loan or the maximum limit of coverage made available under the Act for that type of property, whichever is less [S:usc-42-4012a-2].",
+			"detail": "If a loan is involved, enter the mortgagee and loss payee wording and the lender's stated minimums per option. Under Regulation X a gap can lead to force-placed hazard insurance, which requires a written notice at least 45 days before the charge, a reminder at least 15 days before the charge and not until at least 30 days after the first notice, and cancellation with refund of overlapping premium within 15 days of proof of coverage [S:cfpb-1024-37]. For a building in a special flood hazard area securing a loan from a regulated lending institution, federal law requires flood coverage for the term of the loan in an amount at least equal to the outstanding principal balance of the loan or the maximum limit of coverage made available under the Act for that type of property, whichever is less [S:usc-42-4012a].",
 			"kind": "evidence",
 			"appliesTo": [
 				"personal",
@@ -415,7 +415,7 @@
 		"ca-ins-code-384",
 		"cfr-44-61-11",
 		"cfpb-1024-37",
-		"usc-42-4012a-2",
+		"usc-42-4012a",
 		"ncci-basic-manual-rule-1",
 		"ca-civ-code-2782-05"
 	],

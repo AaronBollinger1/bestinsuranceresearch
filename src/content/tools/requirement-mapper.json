@@ -234,7 +234,7 @@
 		{
 			"group": "Policies requested",
 			"label": "Flood, when the contract or a lender requires it",
-			"detail": "For a building in a special flood hazard area securing a loan from a regulated lending institution, federal law requires flood insurance for the term of the loan in an amount at least equal to the outstanding principal balance of the loan or the maximum limit of coverage made available under the Act for that type of property, whichever is less, and requires the lender to accept private flood insurance that meets the statutory standards [S:usc-42-4012a-2]. Record the flood zone, the required amount with the cap applied, the loss payee, and whether premiums must be escrowed, noting that the escrow duty carries statutory exceptions [S:usc-42-4012a-2].",
+			"detail": "For a building in a special flood hazard area securing a loan from a regulated lending institution, federal law requires flood insurance for the term of the loan in an amount at least equal to the outstanding principal balance of the loan or the maximum limit of coverage made available under the Act for that type of property, whichever is less, and requires the lender to accept private flood insurance that meets the statutory standards [S:usc-42-4012a]. Record the flood zone, the required amount with the cap applied, the loss payee, and whether premiums must be escrowed, noting that the escrow duty carries statutory exceptions [S:usc-42-4012a].",
 			"kind": "limit",
 			"appliesTo": [
 				"personal",
@@ -440,7 +440,7 @@
 		"mn-dli-certificates-of-insurance",
 		"cslb-workers-comp-requirements",
 		"cfpb-1024-37",
-		"usc-42-4012a-2",
+		"usc-42-4012a",
 		"cfr-44-61-11"
 	],
 	"relatedQuestions": [],

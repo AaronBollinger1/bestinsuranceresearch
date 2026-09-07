@@ -303,7 +303,7 @@
 		{
 			"group": "Change triggers to disclose",
 			"label": "A flood map change or a new loan can create a flood requirement",
-			"detail": "For a building in a special flood hazard area securing a loan from a regulated lending institution, federal law requires flood coverage for the term of the loan in an amount at least equal to the outstanding principal balance of the loan or the maximum limit of coverage made available under the Act for that type of property, whichever is less, and requires the lender to accept private flood insurance meeting the statutory standards; premiums must generally be escrowed for residential improved real estate, subject to statutory exceptions that include certain smaller lending institutions, junior liens, condominium and cooperative units under a master policy, business-purpose loans, home equity lines of credit, nonperforming loans, and loans with a term not exceeding 12 months [S:usc-42-4012a-2]. During the 13-month period beginning on the effective date of a revised Flood Hazard Boundary Map or Flood Insurance Rate Map, initial coverage can be effective the first calendar day after the application date and the presentment of payment of premium instead of the 30th [S:cfr-44-61-11].",
+			"detail": "For a building in a special flood hazard area securing a loan from a regulated lending institution, federal law requires flood coverage for the term of the loan in an amount at least equal to the outstanding principal balance of the loan or the maximum limit of coverage made available under the Act for that type of property, whichever is less, and requires the lender to accept private flood insurance meeting the statutory standards; premiums must generally be escrowed for residential improved real estate, subject to statutory exceptions that include certain smaller lending institutions, junior liens, condominium and cooperative units under a master policy, business-purpose loans, home equity lines of credit, nonperforming loans, and loans with a term not exceeding 12 months [S:usc-42-4012a]. During the 13-month period beginning on the effective date of a revised Flood Hazard Boundary Map or Flood Insurance Rate Map, initial coverage can be effective the first calendar day after the application date and the presentment of payment of premium instead of the 30th [S:cfr-44-61-11].",
 			"kind": "trigger",
 			"appliesTo": [
 				"personal",
@@ -381,7 +381,7 @@
 		"ncci-basic-manual-rule-1",
 		"cfpb-1024-37",
 		"cfr-44-61-11",
-		"usc-42-4012a-2",
+		"usc-42-4012a",
 		"ca-ins-code-384"
 	],
 	"relatedQuestions": [],

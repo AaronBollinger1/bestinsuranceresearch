@@ -13,7 +13,8 @@
     "astro": "astro",
     "verify": "node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs",
     "validate": "npm run check && npm run build && npm run verify",
-    "audit:estate": "node --experimental-strip-types scripts/audit-estate.mjs"
+    "audit:estate": "node --experimental-strip-types scripts/audit-estate.mjs",
+    "audit:onpage": "node scripts/audit-onpage.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

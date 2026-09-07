@@ -1192,7 +1192,7 @@
 			"kind": "gap",
 			"severity": "high",
 			"title": "A mortgage and a high risk flood zone are recorded with no flood coverage in force.",
-			"detail": "The federal statute directs regulated lending institutions not to make, increase, extend, or renew any loan secured by improved real estate located in an area identified as having special flood hazards and in which flood insurance has been made available, unless the building is covered for the term of the loan by flood insurance in a stated amount [S:usc-42-4012a][S:usc-42-4012a-2], and loan program guidelines set out their own property insurance requirements for one to four unit properties [S:fnma-b7-3-02]. Whether that statute and those guidelines reach your loan, your property, and your zone determination is a reading of the statute and of your own loan documents, and this module does not make it.",
+			"detail": "The federal statute directs regulated lending institutions not to make, increase, extend, or renew any loan secured by improved real estate located in an area identified as having special flood hazards and in which flood insurance has been made available, unless the building is covered for the term of the loan by flood insurance in a stated amount [S:usc-42-4012a][S:usc-42-4012a], and loan program guidelines set out their own property insurance requirements for one to four unit properties [S:fnma-b7-3-02]. Whether that statute and those guidelines reach your loan, your property, and your zone determination is a reading of the statute and of your own loan documents, and this module does not make it.",
 			"action": "Take your loan documents and the flood zone determination you were given to a lawyer and ask whether the federal purchase requirement and your loan's own insurance clause apply to you, and what each one requires; ask your loan servicer in writing for the zone determination and the requirement it is relying on, and bring the lawyer's answer to your broker for the placement itself.",
 			"when": {
 				"all": [
@@ -1215,7 +1215,6 @@
 			},
 			"sourceIds": [
 				"usc-42-4012a",
-				"usc-42-4012a-2",
 				"fnma-b7-3-02"
 			],
 			"relatedQuestion": "lender-insurance-requirement",

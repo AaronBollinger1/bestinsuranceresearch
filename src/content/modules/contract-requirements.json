@@ -787,7 +787,7 @@
 			"kind": "inconsistency",
 			"severity": "medium",
 			"title": "The employers liability limit you recorded is lower than the employers liability limit the contract requires.",
-			"detail": "Employers liability is a limit on the workers compensation policy and is distinct from the statutory benefits the policy pays [S:lab-3700] [S:dir-dwc-employer-faqs]. The two figures you entered do not match.",
+			"detail": "Employers liability is a limit on the workers compensation policy and is distinct from the statutory benefits the policy pays [S:ca-labor-code-3700] [S:dir-dwc-employer-faqs]. The two figures you entered do not match.",
 			"action": "Ask your broker in writing what the employers liability limit on your current workers compensation policy is and what the contract's figure would require.",
 			"when": {
 				"all": [
@@ -811,7 +811,7 @@
 				]
 			},
 			"sourceIds": [
-				"lab-3700",
+				"ca-labor-code-3700",
 				"dir-dwc-employer-faqs"
 			],
 			"relatedQuestion": null,
@@ -1267,7 +1267,7 @@
 			"kind": "gap",
 			"severity": "high",
 			"title": "The contract names an employers liability limit and you have recorded no workers compensation policy in force.",
-			"detail": "California requires employers to secure the payment of compensation by one of the specified methods, and licensing bodies check the certificate as a condition of doing the work [S:lab-3700] [S:cslb-workers-comp-requirements] [S:dir-dwc-employer-faqs]. Whether the people doing this work are employees for the purposes of that duty turns on the Labor Code definitions, and section 3352 sets out who is excluded from the statutory definition of employee [S:lab-3352]. That is a legal reading of statute, not something this module can settle.",
+			"detail": "California requires employers to secure the payment of compensation by one of the specified methods, and licensing bodies check the certificate as a condition of doing the work [S:ca-labor-code-3700] [S:cslb-workers-comp-requirements] [S:dir-dwc-employer-faqs]. Whether the people doing this work are employees for the purposes of that duty turns on the Labor Code definitions, and section 3352 sets out who is excluded from the statutory definition of employee [S:lab-3352]. That is a legal reading of statute, not something this module can settle.",
 			"action": "Take the employee question to a lawyer first: describe who does this work and how they are engaged, and ask whether they are employees for the purposes of the statute. Then take the answer to your broker for the coverage side, and tell the other party in writing only what you can evidence.",
 			"when": {
 				"all": [
@@ -1284,7 +1284,7 @@
 				]
 			},
 			"sourceIds": [
-				"lab-3700",
+				"ca-labor-code-3700",
 				"cslb-workers-comp-requirements",
 				"dir-dwc-employer-faqs",
 				"lab-3352"

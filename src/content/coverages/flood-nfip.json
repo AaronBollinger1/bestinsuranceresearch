@@ -6,7 +6,7 @@
 	"protects": [
 		"The building against direct physical loss by or from flood, up to the limit shown on the Declarations Page [S:nfip-sfip-dwelling-form]",
 		"Personal property, under a separate coverage with its own separate limit [S:nfip-sfip-dwelling-form]",
-		"A borrower's ability to close and keep a loan secured by property in a special flood hazard area, where the coverage is mandatory rather than optional [S:usc-42-4012a-2]",
+		"A borrower's ability to close and keep a loan secured by property in a special flood hazard area, where the coverage is mandatory rather than optional [S:usc-42-4012a]",
 		"Continued eligibility for federal disaster assistance where a property has received it before and is required to maintain flood insurance [S:fema-nfip-eligibility]"
 	],
 	"commonlyCovers": [
@@ -75,7 +75,7 @@
 		},
 		{
 			"item": "Private flood insurance as an alternative to the NFIP policy",
-			"note": "Regulated lending institutions must accept private flood insurance as satisfaction of the requirement where it meets the standards the statute specifies [S:usc-42-4012a-2]. Whether a given private form matches the NFIP form is a question about that form."
+			"note": "Regulated lending institutions must accept private flood insurance as satisfaction of the requirement where it meets the standards the statute specifies [S:usc-42-4012a]. Whether a given private form matches the NFIP form is a question about that form."
 		},
 		{
 			"item": "The condominium association route",
@@ -88,7 +88,7 @@
 		"Commercial property, where the non-residential limits and the business interruption gap both apply"
 	],
 	"underwritingInputs": [
-		"Whether the property is in a Special Flood Hazard Area, which drives the mandatory purchase requirement [S:usc-42-4012a-2]",
+		"Whether the property is in a Special Flood Hazard Area, which drives the mandatory purchase requirement [S:usc-42-4012a]",
 		"Whether the community participates in the NFIP's floodplain management requirements, without which the policy is not available [S:fema-nfip-eligibility]",
 		"Whether the building has a basement or is elevated, because that determines how much of it the form reaches [S:nfip-sfip-dwelling-form]",
 		"Whether the dwelling is the insured's principal residence, which is a condition of replacement cost settlement [S:nfip-sfip-dwelling-form]",
@@ -120,7 +120,7 @@
 		},
 		{
 			"item": "Force-placed cover at the lender's choosing",
-			"note": "Where a borrower does not obtain required flood coverage within 45 days of written notice, the lender or servicer shall purchase it on the borrower's behalf and may charge the borrower for it [S:usc-42-4012a-2]. Control of the placement passes to somebody else."
+			"note": "Where a borrower does not obtain required flood coverage within 45 days of written notice, the lender or servicer shall purchase it on the borrower's behalf and may charge the borrower for it [S:usc-42-4012a]. Control of the placement passes to somebody else."
 		}
 	],
 	"claimMitigation": [
@@ -146,13 +146,13 @@
 		},
 		{
 			"item": "Keep the declarations page where the lender can be given it",
-			"note": "A policy declaration page is accepted as evidence of flood insurance [S:fnma-b7-3-06], and producing it promptly is what stops a force-placement clock that starts 45 days after written notice [S:usc-42-4012a-2]."
+			"note": "A policy declaration page is accepted as evidence of flood insurance [S:fnma-b7-3-06], and producing it promptly is what stops a force-placement clock that starts 45 days after written notice [S:usc-42-4012a]."
 		}
 	],
 	"stateVariations": [
 		{
 			"state": "CA",
-			"note": "The NFIP is federal and its form, limits and waiting period do not vary by state. What varies is the mandatory purchase footprint, since it follows FEMA mapping of special flood hazard areas rather than any state line [S:usc-42-4012a-2]."
+			"note": "The NFIP is federal and its form, limits and waiting period do not vary by state. What varies is the mandatory purchase footprint, since it follows FEMA mapping of special flood hazard areas rather than any state line [S:usc-42-4012a]."
 		},
 		{
 			"state": "FL",
@@ -170,7 +170,7 @@
 		"nfip-rcbap-coinsurance",
 		"cfr-44-61-11",
 		"fema-nfip-eligibility",
-		"usc-42-4012a-2",
+		"usc-42-4012a",
 		"cfr-12-22-3",
 		"fnma-b7-3-06",
 		"citizens-flood-requirement"

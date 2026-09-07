@@ -1264,7 +1264,7 @@
 			"kind": "question",
 			"severity": "high",
 			"title": "You pay individual workers as independent contractors, which raises a statutory employment status question this instrument will not answer.",
-			"detail": "Whether a worker is an employee for workers compensation purposes is set by statute and by the definitions the labor code applies, not by how the worker is paid or what a contract calls them [S:lab-3352][S:lab-3700][S:ca-labor-code-3700][S:dir-dwc-employer-faqs]. This is a legal determination with consequences that are not insurance consequences.",
+			"detail": "Whether a worker is an employee for workers compensation purposes is set by statute and by the definitions the labor code applies, not by how the worker is paid or what a contract calls them [S:lab-3352][S:ca-labor-code-3700][S:ca-labor-code-3700][S:dir-dwc-employer-faqs]. This is a legal determination with consequences that are not insurance consequences.",
 			"action": "Take this to an employment lawyer, with your actual working arrangements written down, before your next application or audit. Do not resolve it from a form or from what the worker prefers.",
 			"when": {
 				"all": [
@@ -1277,7 +1277,6 @@
 			},
 			"sourceIds": [
 				"lab-3352",
-				"lab-3700",
 				"ca-labor-code-3700",
 				"dir-dwc-employer-faqs"
 			],
@@ -1524,7 +1523,7 @@
 			"kind": "question",
 			"severity": "high",
 			"title": "You recorded California construction or installation work, and whether coverage is legally required of you is a statutory question rather than an insurance one.",
-			"detail": "California's labor code sets out how an employer secures the payment of compensation [S:ca-labor-code-3700][S:lab-3700], the state labor agency publishes employer guidance on those obligations [S:dir-dwc-employer-faqs], and the contractor licensing board publishes its own separate requirements for licensees [S:cslb-workers-comp-requirements].",
+			"detail": "California's labor code sets out how an employer secures the payment of compensation [S:ca-labor-code-3700][S:ca-labor-code-3700], the state labor agency publishes employer guidance on those obligations [S:dir-dwc-employer-faqs], and the contractor licensing board publishes its own separate requirements for licensees [S:cslb-workers-comp-requirements].",
 			"action": "Read the state agency guidance yourself, then take any question about whether your particular arrangement satisfies the statute to a lawyer. Do not rely on a broker or on this instrument for the legal answer.",
 			"when": {
 				"all": [
@@ -1542,7 +1541,6 @@
 			},
 			"sourceIds": [
 				"ca-labor-code-3700",
-				"lab-3700",
 				"dir-dwc-employer-faqs",
 				"cslb-workers-comp-requirements"
 			],
@@ -1605,7 +1603,7 @@
 			"kind": "gap",
 			"severity": "high",
 			"title": "You recorded employees and activities but nothing recorded on any policy.",
-			"detail": "How an employer secures the payment of compensation is set by statute in each state [S:ca-labor-code-3700][S:lab-3700], and state agencies publish employer obligations directly [S:dir-dwc-employer-faqs][S:tdi-wc-employer][S:fl-dfs-wc-requirements]. The gap here is between the payroll you recorded and the absence of anything recorded against it.",
+			"detail": "How an employer secures the payment of compensation is set by statute in each state [S:ca-labor-code-3700][S:ca-labor-code-3700], and state agencies publish employer obligations directly [S:dir-dwc-employer-faqs][S:tdi-wc-employer][S:fl-dfs-wc-requirements]. The gap here is between the payroll you recorded and the absence of anything recorded against it.",
 			"action": "Read your state agency's employer page today, then contact a licensed broker to start an application. If you are unsure whether you are already out of compliance, that question goes to a lawyer, not to a broker.",
 			"when": {
 				"all": [
@@ -1618,7 +1616,6 @@
 			},
 			"sourceIds": [
 				"ca-labor-code-3700",
-				"lab-3700",
 				"dir-dwc-employer-faqs",
 				"tdi-wc-employer",
 				"fl-dfs-wc-requirements"

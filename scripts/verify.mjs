@@ -1537,6 +1537,55 @@ test('no two source records describe the same document', () => {
 	);
 });
 
+test('no two source records carry the same title on the same host', () => {
+	/*
+	 * The URL comparison above deliberately leaves query strings alone, and says
+	 * why: two genuinely different sections differ inside the query string. That
+	 * left a hole and one pair sat in it. `usc-42-4012a` and `usc-42-4012a-2`
+	 * were both 42 U.S.C. 4012a on uscode.house.gov, one addressed as
+	 * `?req=(title:42 section:4012a edition:prelim)` and the other as
+	 * `?req=granuleid:USC-prelim-title42-section4012a`. Same statute, same host,
+	 * same access date, both primary law: two citable records for one law, and
+	 * two published source pages with a byte-identical title.
+	 *
+	 * Title plus host closes the hole without touching the query string. Two
+	 * records naming the same document on one publisher's host are the same
+	 * document however they were addressed, and an identical title is the signal
+	 * the URL comparison cannot see. It is also the signal a crawler sees, which
+	 * is the second reason to hold it: duplicate titles on one origin.
+	 *
+	 * A genuinely distinct record must earn a distinct title. Where two records
+	 * really do describe different things on one host, saying which in the title
+	 * improves both rather than costing anything.
+	 */
+	const hostOf = (url) => {
+		try {
+			return new URL(url).host.toLowerCase();
+		} catch {
+			return url.trim().toLowerCase();
+		}
+	};
+	const byTitleHost = new Map();
+	for (const source of sources) {
+		const key = `${hostOf(source.data.url)} ${source.data.title.trim().toLowerCase()}`;
+		if (!byTitleHost.has(key)) byTitleHost.set(key, []);
+		byTitleHost.get(key).push(source.id);
+	}
+
+	const sameTitle = [...byTitleHost.entries()]
+		.filter(([, ids]) => ids.length > 1)
+		.map(([key, ids]) => {
+			const [host, title] = key.split(' ');
+			return `${ids.join(' and ')} both publish "${title}" on ${host}`;
+		});
+
+	assert.deepEqual(
+		sameTitle,
+		[],
+		`source records sharing a title on one host:\n  ${sameTitle.join('\n  ')}`,
+	);
+});
+
 test('a source cannot claim a recheck it did not have', () => {
 	/*
 	 * `accessedDate` and `lastChecked` were identical on 260 of 263 records, so

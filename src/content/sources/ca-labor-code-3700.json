@@ -16,10 +16,11 @@
 		"One listed method is being insured against liability to pay compensation by one or more insurers duly authorized to write compensation insurance in California.",
 		"Another listed method is securing from the Director of Industrial Relations a certificate of consent to self-insure, either as an individual employer or as one employer in a group of employers, upon proof satisfactory to the Director of ability to self-insure and to pay any compensation that may become due.",
 		"A third listed method applies to counties, cities, municipal corporations, public districts, public agencies and other political subdivisions of the state, which may secure a certificate of consent to self-insure against workers compensation claims from the Director of Industrial Relations.",
-		"The section states that for purposes of the section, state includes the superior courts."
+		"The section states that for purposes of the section, state includes the superior courts.",
+		"The section as displayed carries the amendment note: Amended by Stats. 2002, Ch. 905, Sec. 10. Effective January 1, 2003."
 	],
 	"updateCadence": "Amended by the Legislature; check leginfo for the current version before relying on it.",
 	"status": "active",
 	"officialHost": true,
-	"notes": "Published: 2003-01-01 Effective: 2003-01-01"
+	"notes": "Published: 2003-01-01 Effective: 2003-01-01. Merged on 2026-09-07 with a second record, lab-3700, which described this same section on the same leginfo host under a URL differing only in parameter order and a trailing dot after the section number. The existing URL comparison normalises trailing dots but not parameter order, so the pair sat in that gap; a new assertion on title plus host is what surfaced it. Claims were appended rather than reordered, so every address c1 to c5 on this record is unchanged. Only one claim was carried across, the amendment note, which the deleted record stated and this one did not. Where the two overlapped this record was kept because it named the political subdivisions explicitly rather than generically."
 }

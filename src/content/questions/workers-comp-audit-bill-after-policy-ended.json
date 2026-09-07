@@ -9,7 +9,7 @@
 	],
 	"shortAnswer": "Because the amount was never final while the policy was running. The regulator states that the final premium of a workers compensation policy cannot be calculated until the policy term is over and the employer's payroll records have been audited [S:cdi-wc-commercial-guide]. What is charged during the term is built on estimated payroll, so the audit reconciles the estimate against what the payroll actually was.",
 	"assumes": [
-		"The policy is a California workers compensation policy written by an insurer rather than a self-insurance arrangement [S:lab-3700].",
+		"The policy is a California workers compensation policy written by an insurer rather than a self-insurance arrangement [S:ca-labor-code-3700].",
 		"The charge follows an audit rather than a mid-term change to the policy.",
 		"You are asking why an amount arrived after the term rather than whether it is correctly calculated."
 	],
@@ -19,7 +19,7 @@
 		"Whether the audit moved payroll into a different classification, since classifications are assigned codes by the WCIRB and insurers generally use them when writing policies [S:cdi-wc-commercial-guide].",
 		"Whether payroll records distinguish activities well enough to support the split claimed, since the audit works from the records that exist rather than from what was intended.",
 		"Whether an experience modification was applied, and whether it is above or below 100 percent [S:cdi-wc-commercial-guide].",
-		"Whether the arrangement is insurance at all, since securing compensation by a certificate of consent to self-insure is a different route [S:lab-3700]."
+		"Whether the arrangement is insurance at all, since securing compensation by a certificate of consent to self-insure is a different route [S:ca-labor-code-3700]."
 	],
 	"variability": [
 		"This is the California structure. Other states use different rating bureaus and different rules, and NCCI rather than the WCIRB administers classification in much of the country.",
@@ -70,7 +70,7 @@
 	},
 	"sourceIds": [
 		"cdi-wc-commercial-guide",
-		"lab-3700"
+		"ca-labor-code-3700"
 	],
 	"schemaEligible": {
 		"faqPage": false,
