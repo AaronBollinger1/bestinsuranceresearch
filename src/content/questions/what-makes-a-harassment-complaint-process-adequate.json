@@ -1,0 +1,60 @@
+{
+	"question": "We have a harassment complaint process. What makes it adequate rather than just present?",
+	"aliases": [
+		"EEOC harassment complaint system requirements",
+		"how to investigate a harassment complaint properly",
+		"who should investigate harassment complaints",
+		"reporting harassment by a senior leader",
+		"documenting a harassment investigation"
+	],
+	"shortAnswer": "Four things the EEOC keeps returning to: more than one way in, including one that works when the complaint is about a senior leader; investigators with the standing to act; investigations that are prompt, thorough and neutral; and a written record of each one. The complaint system should provide multiple avenues of complaint, if possible, including an avenue to report complaints regarding senior leaders [S:eeoc-promising-practices-preventing-harassment], and responsible personnel should document every complaint from initial intake to investigation to resolution [S:eeoc-promising-practices-preventing-harassment].",
+	"assumes": [
+		"You are asking about federal EEOC guidance rather than a state requirement, and a state may ask for more than is described here.",
+		"You have a policy already. What it should contain is a separate question from whether the process behind it works.",
+		"You are asking what the guidance describes, not what legal effect an adequate process has. The records consulted here do not state that effect."
+	],
+	"why": "The guidance treats a complaint system as a set of capabilities rather than a document, and each capability is stated separately.\n\nMore than one way in. The complaint system should provide multiple avenues of complaint, if possible, including an avenue to report complaints regarding senior leaders [S:eeoc-promising-practices-preventing-harassment], described elsewhere in the same document as multiple, easily accessible reporting avenues [S:eeoc-promising-practices-preventing-harassment]. The senior-leader avenue is the one most often missing, and it is the one that matters when the ordinary route runs through the person complained of. The enforcement guidance makes the same point more plainly: the policy should contain a clearly described complaint process that provides accessible avenues of complaint [S:eeoc-guidance-vicarious-liability-supervisor-harassment].\n\nResourcing, which is an unusual thing for guidance to name. The complaint system should be fully resourced and accessible to all employees [S:eeoc-promising-practices-preventing-harassment], and an effective system is fully resourced in the sense of enabling the organisation to respond promptly, thoroughly and effectively to complaints [S:eeoc-promising-practices-preventing-harassment]. A process nobody has time to run is a process the guidance would not call effective.\n\nWho investigates. The personnel responsible for the complaint system should be well-trained, objective and neutral, and should have the authority, independence and resources required to receive, investigate and resolve complaints appropriately [S:eeoc-promising-practices-preventing-harassment]. Read that list against a small organisation where the investigator reports to the person being investigated: authority and independence are the two hardest of the four to arrange and the two that decide whether the rest is real.\n\nHow it is conducted. An effective system provides prompt, thorough and neutral investigations [S:eeoc-promising-practices-preventing-harassment]. The enforcement guidance uses impartial where the Promising Practices document uses neutral [S:eeoc-guidance-vicarious-liability-supervisor-harassment][S:eeoc-promising-practices-preventing-harassment], and asks the policy to promise a prompt, thorough and impartial investigation [S:eeoc-guidance-vicarious-liability-supervisor-harassment]. Confidentiality runs alongside it: the employer should assure that it will protect the confidentiality of complaints to the extent possible [S:eeoc-guidance-vicarious-liability-supervisor-harassment], with the fuller version naming those who report, alleged victims, witnesses and alleged harassers, to the extent possible and permitted by law and consistent with a thorough and impartial investigation [S:eeoc-promising-practices-preventing-harassment].\n\nThen the part that turns a process into evidence, and the most concrete instruction in either document. Responsible personnel should appropriately document every complaint, from initial intake to investigation to resolution, and prepare a written report documenting the investigation, findings, recommendations, and disciplinary action imposed if any, and corrective and preventative action taken if any [S:eeoc-promising-practices-preventing-harassment]. Five things in that report: investigation, findings, recommendations, discipline, and corrective and preventative action. An organisation that investigates well and writes nothing down has done the work and kept none of it.\n\nAnd corrective action closes the loop. The employer should assure that it will take immediate and appropriate corrective action when it determines that harassment has occurred [S:eeoc-guidance-vicarious-liability-supervisor-harassment], with the Promising Practices version asking for immediate and proportionate action [S:eeoc-promising-practices-preventing-harassment].\n\nTraining is treated as part of the system rather than as an adjunct. It should be repeated and reinforced regularly and delivered to employees at every level and location of the organisation [S:eeoc-promising-practices-preventing-harassment]. Supervisors and managers warrant additional training beyond that given to other employees [S:eeoc-promising-practices-preventing-harassment], because they have additional responsibilities [S:eeoc-promising-practices-preventing-harassment]. Effective supervisor training includes how to prevent, identify, stop, report and correct harassment, clear instructions about how to report harassment up the chain of command, an unequivocal statement that retaliation is prohibited, and explanations of the consequences of failing to fulfil those responsibilities [S:eeoc-promising-practices-preventing-harassment]. The enforcement guidance asks for periodic supervisor training covering prohibited conduct, the seriousness of the policy, supervisor responsibilities on learning of harassment, and the prohibition on retaliation [S:eeoc-guidance-vicarious-liability-supervisor-harassment].\n\nOne caveat the EEOC applies to itself. It describes the Promising Practices as promising practices rather than strict legal requirements under federal law [S:eeoc-promising-practices-preventing-harassment], and says that although they are not legal requirements they may enhance compliance efforts [S:eeoc-promising-practices-preventing-harassment].",
+	"whatChanges": [
+		"Whether there is a reporting avenue that works when the complaint concerns a senior leader [S:eeoc-promising-practices-preventing-harassment].",
+		"Whether the investigator has authority and independence, not merely training [S:eeoc-promising-practices-preventing-harassment].",
+		"Whether every complaint is documented from intake through to resolution, or only the ones that escalate [S:eeoc-promising-practices-preventing-harassment].",
+		"Whether the written report covers all five items, including corrective and preventative action taken [S:eeoc-promising-practices-preventing-harassment].",
+		"Whether training reaches every level and location, or only head office [S:eeoc-promising-practices-preventing-harassment].",
+		"Whether supervisors are told how to report up the chain of command and what happens if they do not [S:eeoc-promising-practices-preventing-harassment].",
+		"Whether the confidentiality assurance is qualified as to the extent possible and permitted by law, which is how the guidance states it [S:eeoc-promising-practices-preventing-harassment]."
+	],
+	"variability": [
+		"The EEOC states that its Promising Practices are not legal requirements under federal employment discrimination laws, though they may enhance compliance efforts [S:eeoc-promising-practices-preventing-harassment]. Adequacy in the guidance's sense is not the same as adequacy in law.",
+		"The two documents use different words for the same qualities, impartial against neutral and appropriate against proportionate [S:eeoc-guidance-vicarious-liability-supervisor-harassment][S:eeoc-promising-practices-preventing-harassment]. Neither record resolves which governs.",
+		"Nothing recorded here states what legal consequence follows from an adequate or an inadequate process, and this page does not supply one.",
+		"This is federal guidance only. A state may impose its own requirements on complaint handling or training, and none is described here."
+	],
+	"nextActions": [
+		"Test the senior-leader route by asking who a complaint about the most senior person would reach [S:eeoc-promising-practices-preventing-harassment].",
+		"Write down who investigates and to whom they report, then check that against the authority and independence the guidance asks for [S:eeoc-promising-practices-preventing-harassment].",
+		"Adopt a standing report format covering investigation, findings, recommendations, discipline imposed, and corrective and preventative action [S:eeoc-promising-practices-preventing-harassment].",
+		"Log every complaint at intake rather than at escalation, since the documentation instruction starts at intake [S:eeoc-promising-practices-preventing-harassment].",
+		"Schedule supervisor training separately from general training rather than as the same session [S:eeoc-promising-practices-preventing-harassment].",
+		"Take the question of what your process needs to withstand to an employment lawyer, because the guidance describes practices and not consequences."
+	],
+	"confidence": "contextual",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["employment-practices-liability", "third-party-employment-practices-liability"],
+	"states": [],
+	"audience": "business-owner",
+	"topics": ["complaint process", "investigation", "documentation", "supervisor training", "employment practices"],
+	"companies": [],
+	"coverages": ["employment-practices-liability"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["what-an-anti-harassment-policy-must-contain"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether an investigator has genuine independence is a question about a particular organisation's reporting lines, and what a process needs to withstand is a legal question the guidance does not answer. Both belong with an employment lawyer."
+	},
+	"sourceIds": ["eeoc-promising-practices-preventing-harassment", "eeoc-guidance-vicarious-liability-supervisor-harassment"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
