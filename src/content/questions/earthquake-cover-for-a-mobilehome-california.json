@@ -1,0 +1,59 @@
+{
+	"question": "I live in a mobilehome. Can I get earthquake cover, and what does the policy look like?",
+	"aliases": [
+		"CEA mobilehome earthquake policy California",
+		"manufactured home earthquake insurance California",
+		"does the California Earthquake Authority cover mobile homes",
+		"mobilehome earthquake deductible options",
+		"emergency repairs no deductible CEA"
+	],
+	"shortAnswer": "Yes, and it is a separate policy rather than an endorsement. The California Earthquake Authority describes a mobilehome and manufactured home earthquake policy distinct from its homeowners policy [S:cea-mobilehome-policy], covering the mobilehome itself, personal property and loss of use [S:cea-mobilehome-policy]. The condition is the same as for any CEA policy: it is available to Californians whose home is insured by one of the participating residential insurance companies [S:cea-mobilehome-policy], and CEA offers its policies exclusively through those companies [S:cea-participating-insurers].",
+	"assumes": [
+		"The mobilehome is individually owned, which is how the earthquake chapter's own definition reaches it [S:ca-ins-code-10087].",
+		"You are asking about the CEA policy rather than about a private earthquake policy, which is written on its own terms.",
+		"You hold, or can obtain, a residential policy with a participating insurer, since that is the condition of buying a CEA policy at all [S:cea-mobilehome-policy]."
+	],
+	"why": "Start with the statutory framing, because it settles a question people ask first: whether a mobilehome counts as residential property for this purpose. Within the earthquake chapter, a policy of residential property insurance means a policy insuring individually owned residential structures of not more than four dwelling units, individually owned condominium units, or individually owned mobilehomes, and their contents, located in this state and used exclusively for residential purposes, or a tenant's policy insuring personal contents [S:ca-ins-code-10087]. Mobilehomes are named in the definition rather than accommodated by it. The same definition excludes policies that do not provide the perils of a standard fire policy [S:ca-ins-code-10087], and it is scoped to the chapter it sits in rather than defining residential property insurance for any other purpose [S:ca-ins-code-10087].\n\nThen the route to buying it, which is not through the authority. CEA works with residential insurance companies, and a CEA earthquake policy is available to Californians whose home is insured by one of those participating companies [S:cea-mobilehome-policy]. CEA states that it offers earthquake insurance policies exclusively through the residential insurance companies it lists [S:cea-participating-insurers]. So the companion policy is a condition, not a convenience: no participating residential insurer, no CEA policy.\n\nWhat the mobilehome policy contains is stated as three coverages: the mobilehome itself as the dwelling, personal property, and loss of use [S:cea-mobilehome-policy].\n\nThe deductible is where an earthquake policy differs most from ordinary property cover, and CEA publishes the choices as 5, 10, 15, 20 and 25 percent [S:cea-mobilehome-policy]. A percentage deductible on a total loss is a large number, and choosing among five of them is the main decision on this policy.\n\nTwo things sit outside that deductible, and both matter more than their size suggests. The first $1,500 of Emergency Repairs carries no deductible [S:cea-mobilehome-policy], which is the money available in the days after a quake when the percentage deductible would otherwise mean nothing is payable yet. And Loss of Use carries no deductible at all [S:cea-mobilehome-policy], so somewhere to live is not gated behind the percentage.\n\nOne item is recorded here with a caution rather than a figure. CEA states that Building Code Upgrade coverage of $10,000 is included automatically [S:cea-mobilehome-policy]. But under its own Building Code Upgrade heading, the page states that a $10,000 building code upgrade coverage is included with every CEA homeowner policy, and does not state that this coverage is part of the mobilehome and manufactured home policy [S:cea-mobilehome-policy]. The page says both things, and this record does not resolve which governs the mobilehome policy. That is a question for the insurer placing it, and it is worth asking rather than assuming.",
+	"whatChanges": [
+		"Whether the mobilehome is individually owned, which is the form the chapter's definition names [S:ca-ins-code-10087].",
+		"Whether your residential insurer is one of the participating companies, since CEA policies are offered exclusively through them [S:cea-participating-insurers][S:cea-mobilehome-policy].",
+		"Which of the five published deductible percentages is selected, since that is the main variable on the policy [S:cea-mobilehome-policy].",
+		"Whether the loss is an emergency repair within the first $1,500, which carries no deductible [S:cea-mobilehome-policy].",
+		"Whether the claim is loss of use, which carries no deductible at all [S:cea-mobilehome-policy].",
+		"Whether building code upgrade coverage is actually part of the mobilehome policy, which the page states inconsistently [S:cea-mobilehome-policy].",
+		"Whether the underlying residential policy provides the perils of a standard fire policy, since the chapter's definition excludes policies that do not [S:ca-ins-code-10087]."
+	],
+	"variability": [
+		"CEA publishes both that building code upgrade coverage is included automatically and, under its own heading for that coverage, that the $10,000 is included with every CEA homeowner policy without stating it applies to the mobilehome policy [S:cea-mobilehome-policy]. This record reports both statements and resolves neither.",
+		"The definition relied on here is scoped to the earthquake chapter it sits in and does not define residential property insurance for other purposes [S:ca-ins-code-10087].",
+		"CEA does not state a total number of participating insurers on the page listing them [S:cea-participating-insurers], so whether a particular insurer participates has to be checked rather than inferred.",
+		"What any CEA policy actually covers is in that policy. This describes what CEA publishes about the mobilehome and manufactured home policy rather than the policy wording."
+	],
+	"nextActions": [
+		"Check whether your residential insurer is a participating company before anything else, since that is the condition of eligibility [S:cea-participating-insurers][S:cea-mobilehome-policy].",
+		"Ask for the deductible percentages priced side by side rather than choosing the lowest premium, because the choice is the policy's main variable [S:cea-mobilehome-policy].",
+		"Ask specifically whether building code upgrade coverage forms part of the mobilehome policy, since CEA's page says two different things [S:cea-mobilehome-policy].",
+		"Note that emergency repairs to $1,500 and loss of use carry no deductible, because those are what respond first after a quake [S:cea-mobilehome-policy].",
+		"Confirm the underlying residential policy provides standard fire policy perils, since the chapter's definition turns on that [S:ca-ins-code-10087]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["mobilehome", "residential-earthquake"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["mobilehome", "earthquake", "cea", "deductible", "loss of use", "california"],
+	"companies": [],
+	"coverages": ["residential-earthquake-california"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["how-a-cea-policy-is-actually-bought-and-serviced"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether building code upgrade coverage forms part of the mobilehome policy is stated two ways on the same page, and eligibility turns on whether a particular residential insurer participates. Both are questions for the insurer placing the cover."
+	},
+	"sourceIds": ["cea-mobilehome-policy", "ca-ins-code-10087", "cea-participating-insurers"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

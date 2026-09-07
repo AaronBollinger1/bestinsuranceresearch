@@ -288,6 +288,17 @@ export function buildSearchIndex(corpus: Corpus): SearchIndex {
 		for (const alias of q.data.aliases) aliases.push({ slug: q.id, entryType: 'question', text: alias });
 	}
 	for (const c of corpus.coverages) aliases.push({ slug: c.id, entryType: 'coverage', text: c.data.name });
+	/*
+	 * Modules were the one entry type whose own name was never registered here,
+	 * so a module could not receive the exact-intent boost that questions,
+	 * coverages, companies and states all get. It stayed retrievable by its name
+	 * only by out-scoring everything else on ordinary term matching, which held
+	 * until two more questions were written about earthquakes and the earthquake
+	 * module fell out of the top ten for its own name. The assertion caught it.
+	 * This gives modules the same treatment as every other entry type rather than
+	 * a thumb on the scale for them.
+	 */
+	for (const m of corpus.liveModules) aliases.push({ slug: m.id, entryType: 'tool', text: m.data.name });
 	for (const c of corpus.companies) {
 		aliases.push({ slug: c.id, entryType: 'company', text: c.data.legalName });
 		aliases.push({ slug: c.id, entryType: 'company', text: c.data.shortName });

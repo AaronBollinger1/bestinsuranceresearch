@@ -1,0 +1,57 @@
+{
+	"question": "The California Earthquake Authority is a state body. So why does buying its policy go through my own insurer?",
+	"aliases": [
+		"how do I buy a CEA earthquake policy",
+		"can I buy earthquake insurance directly from the CEA",
+		"CEA participating insurers list",
+		"who services a CEA earthquake policy",
+		"CEA contact number for policy questions"
+	],
+	"shortAnswer": "Because that is how the authority is set up to operate. CEA states that it offers earthquake insurance policies exclusively through the residential insurance companies it lists [S:cea-participating-insurers], and its own contact page says that if you have a question about your policy, need billing or payment help, or want to buy a policy, the fastest way to get support is to contact your insurance company or agent [S:cea-contact]. The statute makes room for it: the board may contract with participating insurers to service the policies of basic residential earthquake insurance issued by the authority [S:ca-ins-code-10089-point-7].",
+	"assumes": [
+		"You are asking about a CEA policy rather than a private earthquake policy sold outside the authority.",
+		"You are asking how the policy is bought and serviced, not what it covers, which is in the policy.",
+		"You already hold or are seeking a residential policy, since a CEA policy is sold through the residential insurer rather than alongside nothing."
+	],
+	"why": "The confusion is reasonable. The authority is unmistakably a public body: it is governed by a three-member board consisting of the Governor, the Treasurer and the Insurance Commissioner, each of whom may name designees to serve in their place [S:ca-ins-code-10089-point-7], with the Speaker of the Assembly and the Chairperson of the Senate Committee on Rules serving as nonvoting ex officio members who may also name designees [S:ca-ins-code-10089-point-7]. An advisory panel sits alongside it, including four members representing insurance companies licensed to transact fire insurance in the state, two licensed insurance agents, and three members of the public not connected with the insurance industry, at least one of whom is a consumer representative, with the Speaker and the Chairperson each able to appoint a member of the public as well [S:ca-ins-code-10089-point-7].\n\nSo it is a state authority with a public board, and yet you cannot buy its product from it.\n\nThe reason is in the same section. The board may contract with participating insurers to service the policies of basic residential earthquake insurance issued by the authority [S:ca-ins-code-10089-point-7]. The policy is issued by the authority; the servicing is contracted out to the insurers. That is the arrangement, stated in the statute rather than adopted as a convenience.\n\nCEA describes the consumer-facing half of it plainly. It offers earthquake insurance policies exclusively through the residential insurance companies listed on its partners page [S:cea-participating-insurers], and that page lists individual residential insurance companies to contact for a quote or to buy a policy [S:cea-participating-insurers]. One practical caution: the page does not state a total number of participating insurers [S:cea-participating-insurers], so whether your own insurer is among them is something to check rather than assume.\n\nAnd CEA is direct about where to take a question. Its contact page states that if you have a question about your CEA insurance policy, need billing or payment help, or are interested in purchasing a policy, the fastest way to get support is to contact your insurance company or agent [S:cea-contact]. That is the authority telling you not to call it about your policy.\n\nIt does publish numbers, and they are worth distinguishing because only one of them is a general enquiry line. There is an Information Desk on (888) 423-2322 [S:cea-contact]. Separately published are (877) 797-4300 and (916) 325-3800 for reaching CEA human resources or a specific employee [S:cea-contact], and (877) 232-4300 for the CEA Brace and Bolt programme [S:cea-contact]. The mailing address is 400 Capitol Mall, Suite 1200, Sacramento, CA 95814, with hours of 8:00 a.m. to 5:00 p.m., Monday through Friday [S:cea-contact]. No email address is published on that page [S:cea-contact].\n\nThe practical consequence is that the residential insurer is the counterparty for everything transactional, and the authority is the body standing behind the policy. Knowing which is which saves a call to the wrong number at the worst moment.",
+	"whatChanges": [
+		"Whether your residential insurer is one of the participating companies, which decides whether a CEA policy can be bought at all [S:cea-participating-insurers].",
+		"Whether the question is transactional, in which case CEA directs you to your insurer or agent [S:cea-contact].",
+		"Which CEA number is the right one, since several are published for different purposes and only one is an information desk [S:cea-contact].",
+		"Whether you are asking about the Brace and Bolt programme, which has its own line [S:cea-contact].",
+		"Whether you need to write rather than call, since no email address is published on the contact page [S:cea-contact]."
+	],
+	"variability": [
+		"CEA does not state a total number of participating insurers on the page listing them [S:cea-participating-insurers], so the list is the thing to check rather than a count.",
+		"The statute permits the board to contract with participating insurers to service policies [S:ca-ins-code-10089-point-7]. It does not follow that every servicing arrangement is identical, and this record does not describe any particular one.",
+		"Telephone numbers, hours and addresses are as published when this record was read [S:cea-contact]. Contact details change and the authority's own page is where to confirm them.",
+		"This describes how the policy is bought and serviced. What any CEA policy covers is in that policy and is not described here."
+	],
+	"nextActions": [
+		"Check the participating insurers list against your own residential insurer before pursuing a CEA policy [S:cea-participating-insurers].",
+		"Take policy, billing and purchase questions to your insurer or agent first, which is what CEA itself recommends [S:cea-contact].",
+		"Use the Information Desk number for general enquiries rather than the human resources or Brace and Bolt lines [S:cea-contact].",
+		"If your insurer does not participate, treat that as the constraint to solve rather than looking for a direct route to the authority [S:cea-participating-insurers].",
+		"Confirm current contact details on CEA's own page rather than from this record [S:cea-contact]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["residential-earthquake"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["cea", "participating insurers", "servicing", "governance", "earthquake", "california"],
+	"companies": [],
+	"coverages": ["residential-earthquake-california"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["earthquake-cover-for-a-mobilehome-california"],
+	"handoff": {
+		"recommended": false,
+		"reason": "Everything here is answered by checking the participating insurers list and contacting the residential insurer, which CEA itself names as the fastest route. Nothing needs a licensed conversation to establish."
+	},
+	"sourceIds": ["cea-participating-insurers", "cea-contact", "ca-ins-code-10089-point-7"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
