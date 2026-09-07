@@ -46,6 +46,17 @@
   ],
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.bestinsuranceresearch.com"
+        }
+      ],
+      "destination": "https://bestinsuranceresearch.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
