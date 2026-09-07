@@ -1,0 +1,631 @@
+{
+	"name": "Personal Auto Position (California)",
+	"summary": "Record the limits your California auto policy actually carries, what was agreed about uninsured motorist cover, who drives, and what has changed lately, then see which published statutes attach to that position. It produces no premium, no eligibility decision and no statement about what your policy covers.",
+	"family": "personal",
+	"lines": ["auto"],
+	"order": 15,
+	"status": "live",
+	"privacyBoundary": "This module refuses to collect your name, your address, your policy number, your insurer's name, your vehicle identification number, your licence number, or the name of any driver in your household. It asks for limits as figures, counts as numbers, and everything else as a choice from a list. It does not ask who anybody is. Nothing you enter leaves your own browser, there is no account, and there is no file input anywhere on this site, so no declarations page or notice can be uploaded here even by accident.",
+	"uncertainty": "It cannot tell you what your policy covers, whether a particular accident makes a driver principally at fault, how a violation counts under Vehicle Code section 12810, whether you qualify for a Good Driver Discount as your insurer will assess it, or what any claim is worth. Fault for the Good Driver criteria is determined under regulations the commissioner is required to adopt, not by this page. What a policy means is a question for the insurer and the form; what a loss is worth is a question for a lawyer or a public adjuster.",
+	"domain": null,
+	"fields": [
+		{
+			"id": "bodily-injury-limit-per-person",
+			"label": "Bodily injury liability limit, per person",
+			"help": "The first of the three figures on your declarations page, as a number. If your page reads 30/60/15 in thousands, enter 30000.",
+			"kind": "number",
+			"unit": "dollars",
+			"group": "The limits you carry",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "bodily-injury-limit-per-accident",
+			"label": "Bodily injury liability limit, per accident",
+			"kind": "number",
+			"unit": "dollars",
+			"group": "The limits you carry",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "property-damage-limit",
+			"label": "Property damage liability limit",
+			"kind": "number",
+			"unit": "dollars",
+			"group": "The limits you carry",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "um-uim-status",
+			"label": "What does the policy say about uninsured motorist cover?",
+			"help": "Uninsured motorist cover is required to be in the policy unless it was deleted or reduced by a written agreement.",
+			"kind": "select",
+			"options": [
+				{ "value": "carried-equal-to-liability", "label": "Carried, at the same limits as bodily injury liability" },
+				{ "value": "carried-lower", "label": "Carried, but at lower limits than bodily injury liability" },
+				{ "value": "deleted", "label": "Deleted, so the policy carries none" },
+				{ "value": "not-recorded", "label": "Not recorded" }
+			],
+			"group": "The limits you carry",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "um-uim-limit-per-person",
+			"label": "Uninsured motorist limit, per person",
+			"help": "Leave blank if the cover was deleted or you do not know.",
+			"kind": "number",
+			"unit": "dollars",
+			"group": "The limits you carry",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "um-uim-agreement-in-writing",
+			"label": "Was the deletion or reduction agreed in writing?",
+			"kind": "boolean",
+			"group": "The limits you carry",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "vehicles-count",
+			"label": "How many vehicles are on the policy?",
+			"kind": "number",
+			"group": "Vehicles and where they are kept",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "primarily-garaged-in-california",
+			"label": "Is the vehicle principally used or principally garaged in California?",
+			"kind": "boolean",
+			"group": "Vehicles and where they are kept",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "residence-type",
+			"label": "What kind of residence is it?",
+			"help": "Recorded because where a vehicle is kept is a rating and garaging question, and because the same answer belongs on the property side of your brief.",
+			"kind": "select",
+			"options": [
+				{ "value": "single-family-detached", "label": "Detached single-family house" },
+				{ "value": "attached-townhouse", "label": "Attached townhouse" },
+				{ "value": "condo-unit", "label": "Condominium unit" },
+				{ "value": "two-to-four-unit", "label": "Two to four unit building I own" },
+				{ "value": "manufactured-or-mobile", "label": "Manufactured or mobile home" },
+				{ "value": "rented-unit", "label": "A unit I rent" },
+				{ "value": "other", "label": "Something else" }
+			],
+			"group": "Vehicles and where they are kept",
+			"required": false,
+			"purpose": "brief-only"
+		},
+		{
+			"id": "household-drivers-count",
+			"label": "How many people in the household drive the vehicles?",
+			"kind": "number",
+			"group": "Who drives",
+			"required": true,
+			"purpose": "brief-only"
+		},
+		{
+			"id": "years-licensed-band",
+			"label": "How long has the main driver been licensed?",
+			"kind": "band",
+			"options": [
+				{ "value": "under-18-months", "label": "Less than 18 months" },
+				{ "value": "18-months-to-3-years", "label": "18 months to 3 years" },
+				{ "value": "3-years-or-more", "label": "3 years or more" }
+			],
+			"group": "Who drives",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "licence-acquired-outside-us-canada",
+			"label": "Was the licence and driving experience acquired outside the United States or Canada?",
+			"kind": "boolean",
+			"group": "Who drives",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "violation-points-3-years",
+			"label": "How many violation points in the previous three years?",
+			"help": "Counts only. An at-fault accident causing only property damage counts as one point in addition to any other points for that accident.",
+			"kind": "number",
+			"group": "Who drives",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "at-fault-injury-accident-3-years",
+			"label": "In the previous three years, was any driver principally at fault in an accident causing bodily injury or death?",
+			"kind": "boolean",
+			"group": "Who drives",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "dui-conviction-10-years",
+			"label": "Any of the listed drink-driving or vehicular manslaughter convictions in the lookback period?",
+			"help": "The period runs from January 1, 1999 or ten years before the application, whichever is later.",
+			"kind": "boolean",
+			"group": "Who drives",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "good-driver-discount-on-policy",
+			"label": "Is a Good Driver Discount shown on the policy?",
+			"kind": "select",
+			"options": [
+				{ "value": "yes", "label": "Yes" },
+				{ "value": "no", "label": "No" },
+				{ "value": "not-recorded", "label": "Not recorded" }
+			],
+			"group": "Who drives",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "policy-status-change",
+			"label": "Has anything changed about the policy itself?",
+			"kind": "select",
+			"options": [
+				{ "value": "none", "label": "Nothing has changed" },
+				{ "value": "cancelled-mid-term", "label": "Cancelled during the policy term" },
+				{ "value": "nonrenewal-notice", "label": "A notice of nonrenewal arrived" },
+				{ "value": "moved-to-affiliated-insurer", "label": "Being moved to a different company in the same group" },
+				{ "value": "not-recorded", "label": "Not recorded" }
+			],
+			"group": "Notices and dates",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "notice-days-given",
+			"label": "How many days between the notice and the date it takes effect?",
+			"help": "Count from the date the notice was mailed or delivered. Leave blank if no notice arrived.",
+			"kind": "number",
+			"unit": "days",
+			"group": "Notices and dates",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "reason-stated-in-notice",
+			"label": "Did the notice state the reason?",
+			"kind": "boolean",
+			"group": "Notices and dates",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "nonpayment-cure-still-open",
+			"label": "If the reason was nonpayment, is the ten-day period still running?",
+			"kind": "boolean",
+			"group": "Notices and dates",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "open-claim",
+			"label": "Is there an open claim?",
+			"kind": "boolean",
+			"group": "A claim in progress",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "repair-shop-chosen-by",
+			"label": "Who chose the repair shop?",
+			"kind": "select",
+			"options": [
+				{ "value": "me", "label": "I chose it" },
+				{ "value": "insurer-recommended-accepted", "label": "The insurer recommended one and I accepted" },
+				{ "value": "insurer-required", "label": "The insurer told me it had to be a particular shop" },
+				{ "value": "no-open-claim", "label": "No open claim" },
+				{ "value": "not-recorded", "label": "Not recorded" }
+			],
+			"group": "A claim in progress",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "steering-notice-received",
+			"label": "Did a separate written notice about your right to choose the shop arrive?",
+			"kind": "boolean",
+			"group": "A claim in progress",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "at-fault-driver-insurance",
+			"label": "What cover did the at-fault driver have?",
+			"kind": "select",
+			"options": [
+				{ "value": "uninsured", "label": "None" },
+				{ "value": "insured-lower-than-my-um", "label": "Insured, for less than my uninsured motorist limit" },
+				{ "value": "insured-equal-or-higher", "label": "Insured, for the same as or more than my uninsured motorist limit" },
+				{ "value": "unknown", "label": "Not established yet" },
+				{ "value": "no-open-claim", "label": "No open claim" }
+			],
+			"group": "A claim in progress",
+			"required": false,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "declarations-page-on-hand",
+			"label": "Do you have the current declarations page in front of you?",
+			"kind": "boolean",
+			"group": "Documentation",
+			"required": true,
+			"purpose": "rule-input"
+		},
+		{
+			"id": "questions-for-broker",
+			"label": "Anything you want to raise at renewal",
+			"help": "Free text. Do not enter any name, policy number, or other personal detail. This stays in your browser and is printed on your brief.",
+			"kind": "text",
+			"group": "Documentation",
+			"required": false,
+			"purpose": "brief-only",
+			"privacyNote": "Free text. Do not enter any name, policy number, or driver detail. Nothing here leaves your browser."
+		}
+	],
+	"rules": [
+		{
+			"id": "bi-per-person-below-financial-responsibility",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The bodily injury limit per person is below what California's financial responsibility requirement asks for.",
+			"detail": "Vehicle Code section 16056 states the limits applicable on and after January 1, 2025 as $30,000 for bodily injury to or death of one person, $60,000 for bodily injury to or death of all persons in one accident, and $15,000 for property damage [S:ca-veh-code-16056]. The figure recorded here is below the per-person amount. The section was amended by Stats. 2023, Ch. 204, Sec. 19 (AB 1140), effective January 1, 2024 and operative January 1, 2025 by its own provisions [S:ca-veh-code-16056], so a policy written to the older $15,000 figure is written to a superseded requirement.",
+			"action": "Take the declarations page to your broker and ask what it costs to bring the liability limits to at least the current statutory figures. Ask for the next tier up at the same time, because the gap between the minimum and the next step is usually smaller than people expect.",
+			"when": { "all": [{ "field": "bodily-injury-limit-per-person", "op": "lt", "value": 30000 }] },
+			"sourceIds": ["ca-veh-code-16056"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "bi-per-accident-below-financial-responsibility",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The bodily injury limit per accident is below the current statutory figure.",
+			"detail": "The per-accident amount applicable on and after January 1, 2025 is $60,000 for bodily injury to or death of all persons in one accident [S:ca-veh-code-16056]. One accident with two injured people is the ordinary case this figure is measured against.",
+			"action": "Ask your broker to quote the per-accident limit at the current statutory figure and at the next tier, and to show both against your current premium.",
+			"when": { "all": [{ "field": "bodily-injury-limit-per-accident", "op": "lt", "value": 60000 }] },
+			"sourceIds": ["ca-veh-code-16056"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "property-damage-below-financial-responsibility",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The property damage limit is below the current statutory figure.",
+			"detail": "The property damage amount applicable on and after January 1, 2025 is $15,000 [S:ca-veh-code-16056]. That figure is measured against the cost of the other vehicle, and the gap between it and a common new vehicle is the exposure it leaves.",
+			"action": "Ask what the property damage limit costs at several levels. It is usually the cheapest of the three figures to raise.",
+			"when": { "all": [{ "field": "property-damage-limit", "op": "lt", "value": 15000 }] },
+			"sourceIds": ["ca-veh-code-16056"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "limits-at-statutory-minimum-only",
+			"kind": "question",
+			"severity": "medium",
+			"title": "The limits recorded are exactly the statutory minimum, and the statute already has its next step written into it.",
+			"detail": "Section 16056 provides for a further step-up effective January 1, 2035, expressed as an increase by $20,000 for bodily injury to or death of one person, by $40,000 for all persons in one accident, and by $10,000 for property damage [S:ca-veh-code-16056]. Applied to the amounts operative from January 1, 2025 that produces $50,000, $100,000 and $25,000 [S:ca-veh-code-16056]. The legislature's own view of an adequate floor rises; a policy pinned to today's minimum is pinned to the lowest lawful figure rather than to a considered one.",
+			"action": "Ask for the premium difference between the statutory minimum and the next two tiers. Decide the limit against what you could be sued for, not against what the state will accept.",
+			"when": { "all": [{ "field": "bodily-injury-limit-per-person", "op": "eq", "value": 30000 }] },
+			"sourceIds": ["ca-veh-code-16056"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "um-deleted-without-written-agreement",
+			"kind": "inconsistency",
+			"severity": "high",
+			"title": "Uninsured motorist cover is recorded as deleted, and no written agreement is recorded.",
+			"detail": "Section 11580.2(a)(1) requires every bodily injury liability policy issued or delivered in California, or issued by a California-licensed insurer on a vehicle principally used or garaged here, to contain or have added by endorsement a provision insuring against the owner or operator of an uninsured motor vehicle [S:ca-ins-code-11580-2]. The insurer and a named insured may agree in writing to delete it, and section 11580.2(a)(2) and (a)(3) prescribe the exact form of words such an agreement must take [S:ca-ins-code-11580-2]. Execution of that agreement is what relieves the insurer of liability under the section [S:ca-ins-code-11580-2]. Absent the writing, the cover is what the statute requires it to be rather than what anyone remembers agreeing.",
+			"action": "Ask your insurer in writing for a copy of the signed uninsured motorist deletion agreement. If none exists, ask what the policy provides, because the statute rather than the recollection decides it.",
+			"when": {
+				"all": [
+					{ "field": "um-uim-status", "op": "eq", "value": "deleted" },
+					{ "field": "um-uim-agreement-in-writing", "op": "eq", "value": false }
+				]
+			},
+			"sourceIds": ["ca-ins-code-11580-2"],
+			"relatedQuestion": "underinsured-motorist-paid-nothing-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "um-limit-below-liability-limit",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The uninsured motorist limit is below the bodily injury liability limit.",
+			"detail": "Section 11580.2(m) requires uninsured motorist coverage to be offered with limits equal to the limits of liability for bodily injury in the underlying policy, though it need not be offered above $30,000 per person and $60,000 for two or more persons in any one accident [S:ca-ins-code-11580-2]. Read with subdivision (a)(1), which sets the required limits as at least equal to subdivision (m) and in no case less than the section 16056 financial responsibility requirements, the subdivision (m) amounts operate as a ceiling on what an insurer must offer rather than a floor on what the cover must provide [S:ca-ins-code-11580-2]. Carrying less than your own liability limit means you have bought more protection for the people you might injure than for the people in your own car.",
+			"action": "Ask your broker to price uninsured motorist cover at your liability limits, and ask what reduction agreement is on file if the answer is that it cannot be done.",
+			"when": {
+				"all": [
+					{ "field": "um-uim-limit-per-person", "op": "lt", "value": { "field": "bodily-injury-limit-per-person" } }
+				]
+			},
+			"sourceIds": ["ca-ins-code-11580-2"],
+			"relatedQuestion": "underinsured-motorist-paid-nothing-california",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "uim-is-difference-in-limits-not-a-layer",
+			"kind": "question",
+			"severity": "high",
+			"title": "The at-fault driver's limits equal or exceed your uninsured motorist limit, which is the case in which this cover pays nothing.",
+			"detail": "Section 11580.2(p)(2) defines an underinsured motor vehicle as one insured for an amount less than the uninsured motorist limits carried on the injured person's own vehicle [S:ca-ins-code-11580-2], and section 11580.2(p)(4) caps the insurer's liability at the underinsured motorist limit less what was paid by or for anyone legally liable [S:ca-ins-code-11580-2]. Read together those make California underinsured motorist cover a difference-in-limits coverage rather than an additional layer of its own, so an at-fault driver whose limits equal or exceed your own uninsured motorist limit leaves nothing for it to pay [S:ca-ins-code-11580-2].",
+			"action": "Do not count on this coverage to top up a settlement. If the exposure you are worried about is a serious injury against a low-limit driver, the figure to raise is your own uninsured motorist limit, and the conversation is with your broker before a loss rather than after one.",
+			"when": {
+				"all": [
+					{ "field": "open-claim", "op": "eq", "value": true },
+					{ "field": "at-fault-driver-insurance", "op": "eq", "value": "insured-equal-or-higher" }
+				]
+			},
+			"sourceIds": ["ca-ins-code-11580-2"],
+			"relatedQuestion": "underinsured-motorist-paid-nothing-california",
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "uim-requires-exhaustion-and-proof",
+			"kind": "timing",
+			"severity": "high",
+			"title": "Underinsured motorist cover does not respond until the at-fault policies are exhausted and proof is submitted.",
+			"detail": "Section 11580.2(p)(3) provides that underinsured motorist coverage does not apply to any bodily injury until the limits of the bodily injury liability policies applicable to all insured motor vehicles causing the injury have been exhausted by payment of judgments or settlements, and proof of that payment is submitted to the insurer providing the coverage [S:ca-ins-code-11580-2]. Exhaustion by payment, and then proof: two steps, in that order, and the second is the one people omit.",
+			"action": "Settle or obtain judgment against the at-fault policies first, then submit proof of payment to your own insurer in writing. Keep the proof, because the coverage is conditioned on it rather than on the facts being obvious.",
+			"when": {
+				"all": [
+					{ "field": "at-fault-driver-insurance", "op": "eq", "value": "insured-lower-than-my-um" }
+				]
+			},
+			"sourceIds": ["ca-ins-code-11580-2"],
+			"relatedQuestion": "underinsured-motorist-paid-nothing-california",
+			"routeToProfessional": "lawyer"
+		},
+		{
+			"id": "no-stacking-across-vehicles",
+			"kind": "question",
+			"severity": "medium",
+			"title": "More than one vehicle is on the policy, and the limits cannot be added together.",
+			"detail": "Section 11580.2(q) provides that regardless of the number of vehicles involved, persons covered, claims made, premiums paid or premiums shown on the policy, in no event shall the limit of liability for two or more motor vehicles or two or more policies be added together, combined or stacked to determine the limit of insurance coverage available to injured persons [S:ca-ins-code-11580-2]. Paying the uninsured motorist premium three times does not buy three limits.",
+			"action": "When you choose an uninsured motorist limit, choose it as the single figure available to an injured person, not as a per-vehicle amount you can multiply.",
+			"when": { "all": [{ "field": "vehicles-count", "op": "gte", "value": 2 }] },
+			"sourceIds": ["ca-ins-code-11580-2"],
+			"relatedQuestion": "underinsured-motorist-paid-nothing-california",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "good-driver-criteria-met-no-discount-shown",
+			"kind": "gap",
+			"severity": "high",
+			"title": "Every Good Driver criterion recorded here is satisfied and no Good Driver Discount is shown on the policy.",
+			"detail": "Section 1861.025 makes a person qualified to purchase a Good Driver Discount policy where they have been licensed three years, have not had more than one violation point count in the previous three years, have not been principally at fault in an accident causing bodily injury or death in that period, and have none of the listed convictions in the longer lookback [S:ca-ins-code-1861-025]. Section 1861.02(b)(1) then provides that a qualifying person may purchase such a policy from the insurer of that person's choice, and that an insurer shall not refuse to offer and sell one to a person who meets the standards [S:ca-ins-code-1861-02]. The rate must be at least 20 percent below the rate that person would otherwise have been charged for the same coverage [S:ca-ins-code-1861-02].",
+			"action": "Ask your insurer in writing whether the Good Driver Discount has been applied and, if not, which criterion it says fails. Then price the same coverage elsewhere, because the entitlement is to buy from the insurer of your choice.",
+			"when": {
+				"all": [
+					{ "field": "years-licensed-band", "op": "eq", "value": "3-years-or-more" },
+					{ "field": "violation-points-3-years", "op": "lt", "value": 2 },
+					{ "field": "at-fault-injury-accident-3-years", "op": "eq", "value": false },
+					{ "field": "dui-conviction-10-years", "op": "eq", "value": false },
+					{ "field": "good-driver-discount-on-policy", "op": "eq", "value": "no" }
+				]
+			},
+			"sourceIds": ["ca-ins-code-1861-025", "ca-ins-code-1861-02"],
+			"relatedQuestion": "good-driver-discount-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "good-driver-points-above-one",
+			"kind": "question",
+			"severity": "medium",
+			"title": "More than one violation point is recorded in the previous three years.",
+			"detail": "Section 1861.025(b)(1) requires that during the previous three years the person has not had more than one violation point count, determined as provided by the specified subdivisions of Vehicle Code section 12810 [S:ca-ins-code-1861-025]. One point is inside the criterion; more than one is outside it. Two qualifications matter before concluding the criterion fails: an at-fault accident causing only property damage counts as one point in addition to any other points for that accident [S:ca-ins-code-1861-025], and where an insurer is prohibited by section 488 or 488.5 from increasing the premium on account of a violation, that violation is not included in the count [S:ca-ins-code-1861-025].",
+			"action": "Get your own driving record and count the points against those two qualifications rather than counting incidents. If a violation could not be surcharged, ask your insurer whether it was excluded from the count.",
+			"when": { "all": [{ "field": "violation-points-3-years", "op": "gte", "value": 2 }] },
+			"sourceIds": ["ca-ins-code-1861-025"],
+			"relatedQuestion": "good-driver-discount-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "good-driver-at-fault-injury-accident",
+			"kind": "question",
+			"severity": "medium",
+			"title": "An at-fault accident causing injury or death is recorded in the previous three years, which is a separate bar from the point count.",
+			"detail": "Section 1861.025(b)(3) provides that the person must not, during the previous three years, have been the driver of a motor vehicle involved in an accident that resulted in bodily injury or the death of any person and have been principally at fault, and requires the commissioner to adopt regulations setting guidelines for insurers to determine fault for that purpose [S:ca-ins-code-1861-025]. Injury changes the character of the test: this disqualifies outright rather than costing a point.",
+			"action": "Establish how fault was determined, since it is decided under the commissioner's regulations rather than by the police report alone. Note the date, because the bar runs three years.",
+			"when": { "all": [{ "field": "at-fault-injury-accident-3-years", "op": "eq", "value": true }] },
+			"sourceIds": ["ca-ins-code-1861-025"],
+			"relatedQuestion": "good-driver-discount-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "foreign-licence-eighteen-month-presumption",
+			"kind": "question",
+			"severity": "medium",
+			"title": "The licence came from outside the United States or Canada, and the three-year rule may not be the one that applies.",
+			"detail": "Section 1861.025(d) provides that a person claiming to meet the criteria based entirely or partly on a licence and driving experience acquired anywhere other than the United States or Canada is rebuttably presumed to be qualified to purchase a Good Driver Discount policy if they have been licensed to drive in the United States or Canada for at least the previous 18 months and meet those criteria for that period [S:ca-ins-code-1861-025]. Eighteen months and a presumption, rather than three years from nothing.",
+			"action": "Ask your insurer to apply the subdivision (d) presumption by name, and be ready to show 18 months of licensure here plus a clean record over that period.",
+			"when": {
+				"all": [
+					{ "field": "licence-acquired-outside-us-canada", "op": "eq", "value": true },
+					{ "field": "years-licensed-band", "op": "eq", "value": "18-months-to-3-years" }
+				]
+			},
+			"sourceIds": ["ca-ins-code-1861-025"],
+			"relatedQuestion": "good-driver-discount-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "prior-coverage-gap-is-not-a-permitted-criterion",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Rating factors are set by statute in a fixed order, and a gap in prior coverage is not one of them.",
+			"detail": "Section 1861.02(a) requires rates and premiums for an automobile policy to be determined by application of the insured's driving safety record, annual miles driven and years of driving experience, in decreasing order of importance, and provides that the use of any criterion without approval constitutes unfair discrimination [S:ca-ins-code-1861-02]. Section 1861.02(c) provides that the absence of prior automobile insurance coverage, in and of itself, is not a criterion for determining eligibility for a Good Driver Discount policy or generally for rates, premiums or insurability [S:ca-ins-code-1861-02].",
+			"action": "If a gap in cover has been given as the reason for a premium or a refusal, ask which approved rating factor is being applied instead, and name section 1861.02(c) when you ask.",
+			"when": { "all": [{ "field": "good-driver-discount-on-policy", "op": "eq", "value": "not-recorded" }] },
+			"sourceIds": ["ca-ins-code-1861-02"],
+			"relatedQuestion": "how-california-decides-what-auto-insurers-may-charge",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "cancellation-notice-shorter-than-twenty-days",
+			"kind": "timing",
+			"severity": "high",
+			"title": "A mid-term cancellation is recorded with fewer than 20 days of notice.",
+			"detail": "Section 662(a)(1) provides that a notice of cancellation is not effective unless mailed or delivered to the named insured, lienholder or additional interest at least 20 days prior to the effective date of cancellation, and that where cancellation is for nonpayment of premium at least 10 days notice accompanied by the reason shall be given [S:ca-ins-code-662]. Separately, a notice of cancellation is effective only if based on one of the five grounds section 661(a) lists [S:ca-ins-code-661].",
+			"action": "Keep the envelope and the postmark, because every period in the section runs from mailing or delivery. Then ask the insurer which of the five section 661(a) grounds it relies on and how it calculates the notice period.",
+			"when": {
+				"all": [
+					{ "field": "policy-status-change", "op": "eq", "value": "cancelled-mid-term" },
+					{ "field": "notice-days-given", "op": "lt", "value": 20 }
+				]
+			},
+			"sourceIds": ["ca-ins-code-662", "ca-ins-code-661"],
+			"relatedQuestion": "auto-policy-cancelled-mid-term-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "nonpayment-cure-window-still-open",
+			"kind": "timing",
+			"severity": "high",
+			"title": "The cancellation is for nonpayment and the ten-day period has not closed, which is a cure right rather than a decision already taken.",
+			"detail": "Section 662(a)(2) provides that a cancellation based on nonpayment of premium shall only be effective on the date specified in the notice if the insured has not cured the nonpayment identified in the notice by the end of the 10-day period [S:ca-ins-code-662]. Section 660(f) defines nonpayment of premium broadly enough to include an installment and amounts payable indirectly under a premium finance plan or extension of credit [S:ca-ins-code-660].",
+			"action": "Establish the exact amount identified in the notice and pay it inside the ten days if you can, because curing it stops the cancellation taking effect on the stated date. Get written confirmation that the policy remains in force.",
+			"when": { "all": [{ "field": "nonpayment-cure-still-open", "op": "eq", "value": true }] },
+			"sourceIds": ["ca-ins-code-662", "ca-ins-code-660"],
+			"relatedQuestion": "auto-policy-cancelled-mid-term-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "no-reason-stated-request-window-closing",
+			"kind": "timing",
+			"severity": "high",
+			"title": "A cancellation notice arrived without a reason, and the window to demand one closes before the cancellation does.",
+			"detail": "Section 662(a)(1) requires that unless the reason accompanies or is included in the notice, the notice state or be accompanied by a statement that upon written request mailed or delivered to the insurer not less than 15 days prior to the effective date of cancellation the insurer will specify the reason [S:ca-ins-code-662]. Section 666 completes it: on such a request the insurer shall specify the reason in writing and mail or deliver it within five days after receipt [S:ca-ins-code-666]. The notice period is 20 days and the request is due no later than 15 days before the effective date, so the window to ask closes about five days after the notice arrives.",
+			"action": "Send the written request today rather than waiting for an explanation to arrive. Date it, keep proof of mailing, and note that the insurer then has five days to answer in writing.",
+			"when": {
+				"all": [
+					{ "field": "policy-status-change", "op": "eq", "value": "cancelled-mid-term" },
+					{ "field": "reason-stated-in-notice", "op": "eq", "value": false }
+				]
+			},
+			"sourceIds": ["ca-ins-code-662", "ca-ins-code-666"],
+			"relatedQuestion": "auto-policy-cancelled-mid-term-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "nonrenewal-notice-shorter-than-thirty-days",
+			"kind": "timing",
+			"severity": "high",
+			"title": "A nonrenewal notice is recorded with fewer than 30 days before expiration.",
+			"detail": "Section 663(a) requires an insurer, before policy expiration, to deliver or mail either an offer of renewal at least 20 days before expiration or a written notice of nonrenewal at least 30 days before expiration including the statement section 666 requires [S:ca-ins-code-663]. That cross-referenced statement is the one giving the insured a written request route to the reason, which the insurer must answer within five days of receipt [S:ca-ins-code-666]. Where the insurer gives neither as required, the existing policy, with no change in its terms and conditions, remains in effect for 30 days from the date the offer or notice is delivered or mailed [S:ca-ins-code-663]. That is an extension rather than continued coverage, and it terminates on the effective date of any replacement policy covering a vehicle named in both [S:ca-ins-code-663].",
+			"action": "Work out the notice date and count backwards to expiration. Treat any continuation as time to place cover rather than as cover restored, and note that buying the replacement ends it the moment it attaches.",
+			"when": {
+				"all": [
+					{ "field": "policy-status-change", "op": "eq", "value": "nonrenewal-notice" },
+					{ "field": "notice-days-given", "op": "lt", "value": 30 }
+				]
+			},
+			"sourceIds": ["ca-ins-code-663", "ca-ins-code-666"],
+			"relatedQuestion": "auto-policy-not-renewed-california",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "moved-to-affiliated-insurer-is-a-renewal",
+			"kind": "question",
+			"severity": "medium",
+			"title": "Being moved to another company in the same group is a renewal with disclosure attached, not a nonrenewal.",
+			"detail": "Section 660(e) defines renewal to include continuing coverage with an affiliated insurer as section 1215 defines that term, provided the coverage is the same or broader and the insured is notified in writing at least 20 days before the current policy period expires [S:ca-ins-code-660]. That notice must state that the insurer has determined it will not offer renewal with the present insurer, that it is offering replacement in an affiliated insurer, and that the insured may obtain the reasons for the change by requesting them in writing not later than one month following expiration of the policy period [S:ca-ins-code-660].",
+			"action": "Compare the new policy against the old one for the same or broader coverage rather than assuming it. If you want the reasons, the window runs for a month after expiration, so it is still open after the move.",
+			"when": { "all": [{ "field": "policy-status-change", "op": "eq", "value": "moved-to-affiliated-insurer" }] },
+			"sourceIds": ["ca-ins-code-660"],
+			"relatedQuestion": "auto-policy-not-renewed-california",
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "insurer-required-a-specific-repair-shop",
+			"kind": "gap",
+			"severity": "high",
+			"title": "The insurer is recorded as requiring a particular repair shop, which the statute prohibits outright.",
+			"detail": "Section 758.5(a) provides that no insurer shall require that an automobile be repaired at a specific automotive repair dealer as defined in Business and Professions Code section 9880.1 [S:ca-ins-code-758-5]. Section 758.5(b)(1) permits a suggestion or recommendation only where a referral is expressly requested by the claimant or the claimant has been informed in writing of the right to select the repair dealer [S:ca-ins-code-758-5]. The commissioner's powers to enforce the section include those in the unfair practices article commencing at section 790 [S:ca-ins-code-758-5].",
+			"action": "Say in writing that you are selecting your own shop and cite section 758.5(a). If the position does not change, that is a complaint to the Department of Insurance rather than an argument with the adjuster.",
+			"when": { "all": [{ "field": "repair-shop-chosen-by", "op": "eq", "value": "insurer-required" }] },
+			"sourceIds": ["ca-ins-code-758-5"],
+			"relatedQuestion": "insurer-choose-repair-shop-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "oral-shop-recommendation-without-written-notice",
+			"kind": "documentation",
+			"severity": "high",
+			"title": "An insurer's shop recommendation was accepted and the written notice the statute requires is not recorded.",
+			"detail": "Section 758.5(b)(3) requires that where the recommendation is made orally and accepted, the insurer mail or provide a written notice within five calendar days of the acceptance, in a separate and freestanding document, in no less than 10-point type [S:ca-ins-code-758-5]. The subdivision prescribes the text, which states that the insurer is prohibited by law from requiring that repairs be done at a specific automotive repair dealer and that the claimant is entitled to select the auto body repair shop [S:ca-ins-code-758-5]. Where the recommendation is accepted, the insurer shall cause the vehicle to be restored to its pre-loss condition at no additional cost to the claimant other than as stated in the policy or otherwise allowed by law [S:ca-ins-code-758-5].",
+			"action": "Ask for that notice in writing and note the date you accepted the recommendation. Keep it, because the restoration obligation in the same subdivision attaches to the recommendation you accepted.",
+			"when": {
+				"all": [
+					{ "field": "repair-shop-chosen-by", "op": "eq", "value": "insurer-recommended-accepted" },
+					{ "field": "steering-notice-received", "op": "eq", "value": false }
+				]
+			},
+			"sourceIds": ["ca-ins-code-758-5"],
+			"relatedQuestion": "insurer-choose-repair-shop-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "chose-own-shop-and-costs-may-not-be-discounted",
+			"kind": "question",
+			"severity": "medium",
+			"title": "You chose the shop, and the insurer may not discount the repair cost to what its own shop would have charged.",
+			"detail": "Section 758.5(d)(2) provides that if the claimant elects to have the vehicle repaired at the shop of the claimant's choice, the insurer shall not limit or discount the reasonable repair costs based on charges that would have been incurred had the vehicle been repaired by the insurer's chosen shop [S:ca-ins-code-758-5]. Section 758.5(c) separately provides that after the claimant has chosen a repair dealer the insurer shall not suggest or recommend a different one, except for a referral the claimant expressly requested or information of the kind subdivision (b)(2) authorises [S:ca-ins-code-758-5].",
+			"action": "If the estimate is being cut to a competitor's rate, put section 758.5(d)(2) in writing and ask for the basis of the reduction. Keep the shop's own estimate as the measure of reasonable cost.",
+			"when": {
+				"all": [
+					{ "field": "open-claim", "op": "eq", "value": true },
+					{ "field": "repair-shop-chosen-by", "op": "eq", "value": "me" }
+				]
+			},
+			"sourceIds": ["ca-ins-code-758-5"],
+			"relatedQuestion": "insurer-choose-repair-shop-california",
+			"routeToProfessional": "insurer"
+		},
+		{
+			"id": "vehicle-not-principally-garaged-in-california",
+			"kind": "question",
+			"severity": "medium",
+			"title": "The vehicle is recorded as not principally used or garaged in California, which is one of the tests deciding whether the California uninsured motorist provision attaches.",
+			"detail": "Section 11580.2(a)(1) reaches every policy of bodily injury liability insurance issued or delivered in California to a vehicle owner or operator, and also a policy issued by a California-licensed insurer on a vehicle then principally used or principally garaged in California [S:ca-ins-code-11580-2]. Where neither limb is satisfied, the statutory uninsured motorist requirement described throughout this module is not the provision governing the policy, and another state's law may be.",
+			"action": "Tell your insurer where the vehicle is actually kept, in writing. Garaging affects both which state's law applies and how the risk is rated, and a wrong address is the sort of thing that surfaces at a claim.",
+			"when": { "all": [{ "field": "primarily-garaged-in-california", "op": "eq", "value": false }] },
+			"sourceIds": ["ca-ins-code-11580-2"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		},
+		{
+			"id": "no-declarations-page-in-hand",
+			"kind": "documentation",
+			"severity": "medium",
+			"title": "The declarations page is not to hand, and every figure above is read off it.",
+			"detail": "The provisions this module applies are keyed to what the policy actually says: the limits measured against Vehicle Code section 16056 [S:ca-veh-code-16056], the uninsured motorist provision and any written deletion or reduction agreement under section 11580.2 [S:ca-ins-code-11580-2], and whether a Good Driver Discount is shown at all [S:ca-ins-code-1861-02]. Recollection is not a substitute, and the declarations page is where all three are stated.",
+			"action": "Ask your insurer or broker to email the current declarations page and any uninsured motorist agreement on file, then come back and complete this from the document rather than from memory.",
+			"when": { "all": [{ "field": "declarations-page-on-hand", "op": "eq", "value": false }] },
+			"sourceIds": ["ca-veh-code-16056", "ca-ins-code-11580-2", "ca-ins-code-1861-02"],
+			"relatedQuestion": null,
+			"routeToProfessional": "broker"
+		}
+	],
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}
