@@ -1,0 +1,69 @@
+{
+	"question": "Before I buy a California home insurance policy, what can I actually check about the insurer and the agent?",
+	"aliases": [
+		"is this insurance company licensed in California",
+		"how to check an insurance agent licence California",
+		"where can I see an insurer's complaint history California",
+		"California Department of Insurance premium comparison homeowners",
+		"how do I know an insurance company is legitimate"
+	],
+	"shortAnswer": "More than most people realise, and all of it free. The Department publishes Insurance Company Profiles, and tells consumers to search them to verify that a company is authorized to conduct business in California [S:cdi-check-insurance-company]. A profile includes licence status, company type, state of domicile, the lines of insurance the company is authorized to transact, the agent for service of process, former names of the company, and complaint history [S:cdi-company-profiles]. Separately, a License Status Inquiry retrieves licence details including enforcement actions for an agent, broker, adjuster, bail agent, or agency [S:cdi-license-status].",
+	"assumes": [
+		"You are buying a residential policy in California, which is one of the lines the Department publishes a premium comparison for, alongside condominium, renters and earthquake coverage [S:cdi-premium-comparison].",
+		"You want to check the company and the person selling it, which are two separate lookups on two separate systems [S:cdi-company-profiles][S:cdi-license-status].",
+		"You are checking before you buy. Everything described here is public and none of it requires you to be a policyholder."
+	],
+	"why": "There are four public checks, and they answer different questions.\n\nIs the company allowed to write this. The Department tells consumers to search Insurance Company Profiles to verify that an insurance company is authorized to conduct business in California, entering the name of the company to view the full information [S:cdi-check-insurance-company]. A profile can be searched by partial or full company name, or alternatively by what kind of insurance the company is able to sell in California [S:cdi-company-profiles]. What comes back includes location, former names of the company, the agent for service of process, reference information covering licence status, company type and state of domicile, the lines of insurance the company is authorized to transact, and complaint history [S:cdi-company-profiles].\n\nTwo of those fields are worth dwelling on. Former names matter because a company that has changed its name has a history under the old one. And the lines it is authorized to transact matters because being admitted in California is not the same as being admitted for the line you are buying.\n\nIs the person allowed to sell it. The License Status Inquiry describes retrieving licence details, including enforcement actions, for an insurance agent, broker, adjuster, bail agent, and agency or organization [S:cdi-license-status]. It offers a licence number search, an individual name search, a business name search, and an enforcement actions lookup [S:cdi-license-status]. The current public address of that service is cdicloud.insurance.ca.gov/cal [S:cdi-license-status]. The Department also publishes a separate licensing hotline, 800-967-9331, distinct from its consumer hotline [S:cdi-contact].\n\nEnforcement actions are the part people do not know to look for. It is a different question from whether a licence is current.\n\nWhat is on file about the company's conduct and its rates. The Virtual Viewing Room allows you to see insurance company rate filings, examination reports, and related information [S:cdi-vvr], and groups documents including enforcement actions, health insurance rates, financial filing requirements, market conduct examination reports, property and casualty insurance rates, and prior approval rate hearing case files [S:cdi-vvr]. A market conduct examination report is a regulator's account of how a company actually handled its business, which is a different kind of evidence from a complaint count.\n\nWhat it costs, roughly, and what that figure is not. The Department publishes premium comparison tools for private passenger automobile and motorcycle insurance, homeowners insurance including condominium, renters and earthquake coverage, long-term care, Medicare supplement, and an online rate comparison for the top 50 workers compensation insurers [S:cdi-premium-comparison]. The Department states plainly that the results of these surveys are not premium quotes [S:cdi-premium-comparison].\n\nOne trap sits across all of this, and the NAIC names it. An insurance company may have different subsidiaries with different names, and you are told to check your policy for the correct name [S:naic-cis]. Looking up the brand on the advertisement rather than the entity on the declarations page is how people check the wrong company. The NAIC also directs readers to their own state's insurance department website to confirm a company or HMO is licensed [S:naic-cis], and says that if a company cannot be found in its search, contact the insurance department where you live [S:naic-cis].\n\nAnd a caution about what to do with all of it. The Department's own residential guide says that if you shop by comparing prices only and not by comparing coverage, you are doing yourself a disservice [S:cdi-residential-insurance-guide]. It also records an obligation on the other side of the table: your producer must provide you with a copy of the current Department of Insurance pamphlet Residential Insurance when placing residential coverage [S:cdi-residential-insurance-guide].",
+	"whatChanges": [
+		"Whether the entity you look up is the one on the declarations page, since a company may have subsidiaries under different names [S:naic-cis].",
+		"Whether the company is authorized for the line you are buying, which is a separate field from whether it is authorized at all [S:cdi-company-profiles].",
+		"Whether the company has former names, which changes what history you are able to find [S:cdi-company-profiles].",
+		"Whether there are enforcement actions against the producer, which is a different lookup from licence status [S:cdi-license-status].",
+		"Whether a market conduct examination report exists for the company, which is a fuller account than a complaint count [S:cdi-vvr].",
+		"Whether you are treating a premium survey figure as a quote, which the Department says it is not [S:cdi-premium-comparison]."
+	],
+	"variability": [
+		"These are the Department's own tools and their contents are what the Department publishes. Nothing here says a company is good or bad, and a complaint history is a record rather than a verdict.",
+		"The address of the License Status Inquiry service is recorded as it stood when this record was read [S:cdi-license-status]; a regulator's tool can move.",
+		"For receivership information the Department points to the National Association of Insurance Commissioners' Global Receivership Information Database for United States jurisdictions, and to California's Conservation and Liquidation Office for additional California information [S:cdi-company-profiles]. Those are separate systems from the profile.",
+		"Premium comparison surveys cover the lines the Department lists [S:cdi-premium-comparison] and do not cover every line, so absence of a survey is not a finding about a line."
+	],
+	"nextActions": [
+		"Get the exact legal name of the insurer from the declarations page or the binder before looking anything up, because that is the name to search [S:naic-cis].",
+		"Search Insurance Company Profiles for that name and read the lines it is authorized to transact, not only its licence status [S:cdi-check-insurance-company][S:cdi-company-profiles].",
+		"Run the producer through the License Status Inquiry, and run the enforcement actions lookup as a separate step [S:cdi-license-status].",
+		"Look for a market conduct examination report in the Virtual Viewing Room before deciding on the strength of a complaint count [S:cdi-vvr].",
+		"Use the premium comparison as a range, not a figure, since the Department says the results are not quotes [S:cdi-premium-comparison].",
+		"Ask for the Residential Insurance pamphlet if the producer has not given it to you, because providing it is their obligation [S:cdi-residential-insurance-guide].",
+		"Compare coverage alongside price rather than price alone [S:cdi-residential-insurance-guide]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["homeowners", "renters", "condominium-unit-owners"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["licensing", "company profiles", "enforcement actions", "shopping", "california", "regulator"],
+	"companies": [],
+	"coverages": ["homeowners"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["complaint-about-a-california-insurer-where-it-goes"],
+	"handoff": {
+		"recommended": false,
+		"reason": "Every check described here is a public lookup a reader can run without help, and the useful next step is running them rather than asking anyone to interpret them."
+	},
+	"sourceIds": [
+		"cdi-check-insurance-company",
+		"cdi-company-profiles",
+		"cdi-license-status",
+		"cdi-vvr",
+		"cdi-premium-comparison",
+		"cdi-contact",
+		"naic-cis",
+		"cdi-residential-insurance-guide"
+	],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

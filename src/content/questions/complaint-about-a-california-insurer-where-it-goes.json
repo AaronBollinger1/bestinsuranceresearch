@@ -1,0 +1,66 @@
+{
+	"question": "I have a complaint about my home insurer. Where does it go, and what does the regulator actually do with it?",
+	"aliases": [
+		"how to file a complaint against an insurance company California",
+		"California Department of Insurance complaint form",
+		"insurance consumer hotline California number",
+		"does complaining to the state make my insurer pay",
+		"how to research complaints against an insurance company"
+	],
+	"shortAnswer": "To the California Department of Insurance, and electronically if you can. The Department offers electronic complaint forms and also printable ones, recommends using the electronic forms, and states that use of non-electronic forms may delay the process [S:cdi-getting-help]. Its consumer hotline is 1-800-927-4357 [S:cdi-getting-help], published on a second official page as 800-927-4357 (HELP) [S:cdi-contact], with a TTY number of 800-482-4833 [S:cdi-contact]. The NAIC does not take the complaint: it publishes no telephone number and routes consumers who want to file one to their own state insurance department through a state selector [S:naic-consumer].",
+	"assumes": [
+		"The insurer is one authorized in California, whose regulator is therefore the California Department of Insurance [S:cdi-company-profiles].",
+		"You are asking where a complaint goes and what the record of it becomes, not whether your particular claim should have been paid.",
+		"You want the regulator's route. It is not a substitute for a lawyer where the amount in dispute justifies one."
+	],
+	"why": "There are two things going on, and it helps to keep them apart: the complaint you file, and the data every complaint becomes.\n\nThe complaint you file goes to the state. The Department publishes both electronic and printable complaint forms, recommends the electronic ones, and warns that use of non-electronic forms may delay the process [S:cdi-getting-help]. Its consumer hotline for insurance information and questions is 1-800-927-4357 [S:cdi-getting-help], corroborated on the Department's own Contact Us page as 800-927-4357 (HELP) [S:cdi-contact]. A Spanish-language help link is published on the same page [S:cdi-getting-help].\n\nTwo other numbers on that page are worth separating out, because sending a matter to the wrong one costs time. The licensing hotline is 800-967-9331, published separately from the consumer hotline [S:cdi-contact]. The Fraud Division has its own main line, 916-854-5760, and its own email, fraud@insurance.ca.gov [S:cdi-contact]. The Department also lists headquarters offices in Los Angeles, Sacramento and Oakland with their own telephone numbers [S:cdi-contact]. One honest gap: the Contact Us page does not state hours of operation for the consumer hotline or for any office [S:cdi-contact], so a caller cannot plan around published hours.\n\nThe NAIC is not an alternative destination. It publishes no telephone number and routes consumers who want to file a complaint to their own state insurance department through a state selector [S:naic-consumer]. What the NAIC does instead is aggregate. It compiles closed, confirmed complaint information about insurance carriers from state insurance departments [S:naic-complaint-article], and you can look up information by state, company and insurance type for the past three years [S:naic-complaint-article]. It also produces reports combining data submitted by state insurance departments, providing information about common closed complaints by reason and type of insurance, as well as how the complaints were resolved [S:naic-cis-agg-reason].\n\nSo a complaint is not only a request for help with your own matter; it is an entry in the record the next buyer reads. Complaint history appears in the Department's own company profiles [S:cdi-company-profiles].\n\nWhich leads to the caution the NAIC itself attaches to that data, and it cuts both ways. You should not use just one factor to decide which insurance company to use, and should compare the complaints, financials, and direct premiums written of several companies [S:naic-complaint-article]. More pointedly, a company's complaint index can vary not only because of fluctuations in the company's own complaints or premiums but also because of fluctuations in the complaints or premiums of the United States market for the type of insurance being sold [S:naic-complaint-article]. An index that moved may say more about the market than about the company.\n\nThe NAIC's consumer page also lists other things worth knowing exist: a Life Insurance Policy Locator described as a free tool helping beneficiaries search for unclaimed life insurance policies, a glossary, an online fraud reporting system, and the Global Receivership Information Database [S:naic-consumer].",
+	"whatChanges": [
+		"Whether you file electronically, since the Department recommends it and says non-electronic forms may delay the process [S:cdi-getting-help].",
+		"Which number the matter belongs on, since the consumer hotline, the licensing hotline and the Fraud Division are published separately [S:cdi-contact].",
+		"Whether the matter is a fraud allegation, which has its own line and its own email address [S:cdi-contact].",
+		"Whether the complaint is closed and confirmed, since that is the category the NAIC aggregates and publishes [S:naic-complaint-article].",
+		"How old the conduct is, because the NAIC lookup covers the past three years [S:naic-complaint-article].",
+		"Whether you are reading a complaint index in isolation, which the NAIC advises against [S:naic-complaint-article]."
+	],
+	"variability": [
+		"This describes where a complaint goes and what becomes of it as a record. It does not describe what the Department will decide, or what any complaint will achieve.",
+		"The Contact Us page does not publish hours of operation for the hotline or the offices [S:cdi-contact], so availability is not stated in the source.",
+		"A complaint index is a comparative figure whose movement can reflect the wider market rather than the company [S:naic-complaint-article], and this record does not interpret any particular index.",
+		"The numbers and addresses recorded here are those the Department published when these records were read. A regulator's contact details change, and the Department's own pages are the place to confirm them."
+	],
+	"nextActions": [
+		"Use the electronic complaint form rather than the printable one, since the Department says the non-electronic route may delay things [S:cdi-getting-help].",
+		"Send a fraud allegation to the Fraud Division rather than through the consumer hotline [S:cdi-contact].",
+		"Keep your own copy of everything you submit, because the complaint becomes a record and the record is what is later aggregated [S:naic-complaint-article].",
+		"Before you buy from a different company, read its complaint history in the Department's profile rather than starting from its advertising [S:cdi-company-profiles].",
+		"Compare complaints alongside financials and direct premiums written for several companies rather than relying on one figure [S:naic-complaint-article].",
+		"If the amount in dispute is substantial, treat the complaint as one route and take advice on the others rather than waiting on it."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["homeowners", "renters", "condominium-unit-owners"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["complaints", "regulator", "consumer hotline", "complaint index", "california", "fraud reporting"],
+	"companies": [],
+	"coverages": ["homeowners"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["how-to-check-a-california-insurer-and-agent-before-you-buy"],
+	"handoff": {
+		"recommended": true,
+		"reason": "A complaint records a dispute and does not resolve it, so where the amount at stake is substantial the question of what else to do alongside the complaint is one for a lawyer rather than for a description of the route."
+	},
+	"sourceIds": [
+		"cdi-getting-help",
+		"cdi-contact",
+		"cdi-company-profiles",
+		"naic-consumer",
+		"naic-complaint-article",
+		"naic-cis-agg-reason"
+	],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
