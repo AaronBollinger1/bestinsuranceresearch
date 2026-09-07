@@ -1,0 +1,168 @@
+{
+	"name": "Professional liability (claims-made)",
+	"line": "professional-liability",
+	"family": "commercial",
+	"definition": "Professional liability is written claims-made, and the claims-made trigger is the substance of the line rather than a technicality inside it. Three states define it in nearly the same words. New York's Regulation 121 defines a claims-made policy as one covering liability for injury or damage the insured is legally obligated to pay, including injury or damage occurring prior to the effective date of the policy but subsequent to the retroactive date, if any, as long as the claim is first made during the policy period or any extended reporting period [S:ny-11-nycrr-73-1]. Virginia defines claims-made liability insurance as covering liability for injury, damage, or wrongful act or omission occurring prior to the termination of coverage but subsequent to any applicable retroactive date, provided the claim is first made during the policy period or any extended reporting period [S:va-14vac5-335-20]. Colorado defines it as providing coverage for those claims that are made or reported to the carrier during the term of the policy or for an extended reporting term for which coverage has been purchased [S:co-crs-10-4-419]. Two dates therefore decide every question on this line: the retroactive date, which bounds how far back the act may have occurred, and the date the claim was first made, which must fall inside the policy period or a reporting period. What the form says about the professional service matters less than where those two dates fall.",
+	"protects": [
+		"Liability for a wrongful act or omission occurring after the retroactive date and before termination, where the claim is first made during the policy period [S:va-14vac5-335-20]",
+		"Acts that occurred before this policy started, provided they fall after the retroactive date, which is what makes prior acts coverage possible [S:ny-11-nycrr-73-1]",
+		"Claims first made after the policy ends, during an extended reporting period, which the regulations treat as though made during the policy term [S:ny-11-nycrr-73-1]",
+		"A defined list of coverages rather than liability at large. New York enumerates the coverages claims-made may be written for, including professional liability and medical malpractice, errors and omissions, directors and officers, employment practices, fiduciary, pollution and environmental impairment, and public entity liability [S:ny-11-nycrr-73-2]",
+		"Not the period before the retroactive date. That is the boundary of the line and the regulations require it to be disclosed in those terms [S:ny-11-nycrr-73-7]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "The claim, not the mistake",
+			"note": "The trigger is when the claim is first made, not when the act occurred. New York's definition turns on the claim being first made during the policy period or any extended reporting period [S:ny-11-nycrr-73-1], and Virginia's on the same condition [S:va-14vac5-335-20]. An occurrence policy is the opposite instrument: it covers liability arising out of incidents that occurred during the policy period, and the claim may be made during or after that period [S:ny-11-nycrr-73-1]."
+		},
+		{
+			"item": "Acts before inception, back to the retroactive date",
+			"note": "A retroactive date is a date concurrent with the effective date of the policy, or a particular date prior to it, upon which the insurer and insured agree that coverage will apply [S:ny-11-nycrr-73-1]. Where a policy has no retroactive date, or one earlier than the inception date, that feature is prior acts coverage [S:irmi-prior-acts-coverage]. This is why an unbroken succession of policies can answer an old mistake and a fresh policy cannot."
+		},
+		{
+			"item": "Claims reported after the policy ends",
+			"note": "Extended reporting period coverage, also called tail coverage, is coverage for a period specified in the policy in which claims first made after termination, for injury or damage occurring during the policy term or on or after the retroactive date, will be considered made during the policy term [S:ny-11-nycrr-73-1]. Virginia distinguishes a basic extended reporting period, provided automatically at no additional premium charge, from a supplemental one the insured may purchase [S:va-14vac5-335-20]."
+		},
+		{
+			"item": "An automatic reporting period, without asking",
+			"note": "New York requires that upon termination of coverage a 60-day automatic extended reporting period be provided by the insurer, or 90 days in the case of public entity liability policies [S:ny-11-nycrr-73-3]. Colorado's commissioner may prohibit the use of a claims-made form that lacks a provision assuring the insured a sixty-day period to purchase extended reporting period coverage in the event of cancellation or nonrenewal for any reason [S:co-crs-10-4-419]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Anything before the retroactive date",
+			"note": "New York requires the policy to disclose that it provides no coverage for claims arising out of incidents, occurrences or alleged wrongful acts which took place prior to the retroactive date stated in the policy [S:ny-11-nycrr-73-7]. That is a required disclosure rather than a drafting choice, which is a measure of how often it decides a claim."
+		},
+		{
+			"item": "Claims first made after the reporting period closes",
+			"note": "New York requires disclosure of the length of any automatic or additional extended reporting period and, unless that coverage is unlimited in time, a statement advising the insured specifically of potential coverage gaps that may arise upon its expiration [S:ny-11-nycrr-73-7]. The regulation names the gap because the structure creates one."
+		},
+		{
+			"item": "Motor vehicle liability, and risks the statute reserves",
+			"note": "New York provides that claims-made coverage shall not be permitted for motor vehicle liability, or for any liability risk or coverage subject to section 3425 of the Insurance Law [S:ny-11-nycrr-73-2]. Some risks may not be written on this basis at all, which is a limit on the instrument rather than on any particular policy."
+		},
+		{
+			"item": "The reporting-period offer, where termination was for nonpayment or fraud",
+			"note": "Virginia requires no offer of a supplemental extended reporting period where the cancellation or nonrenewal is due to nonpayment of premium, failure to comply with terms or conditions of the policy, or fraud [S:va-14vac5-335-30]. New York provides that on cancellation for nonpayment or fraud an insurer need not provide a premium quotation for extended reporting period coverage unless the insured requests it [S:ny-11-nycrr-73-3]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"The regulations consulted here set reporting periods and notice deadlines, not limits or deductibles. Those come from the insurer's filed form, and nothing on this page states what any form provides.",
+		"New York requires, except as its own subdivisions otherwise provide, that upon termination of coverage an insurer offer the insured a three-year extended reporting period [S:ny-11-nycrr-73-3].",
+		"New York then lists eight coverages for which the offer is one year rather than three: directors and officers liability except for not-for-profit organizations, employee benefits liability, fiduciary liability, public entity liability, pollution and environmental impairment liability, ski resort liability subject to its own section, employment practices liability, and policies issued or renewed under section 73.2(d) [S:ny-11-nycrr-73-3].",
+		"New York requires the insurer, within 30 days after termination of coverage, to advise the insured in writing of the automatic extended reporting period and of the availability of, the premium for, and the importance of purchasing additional extended reporting period coverage [S:ny-11-nycrr-73-3].",
+		"New York gives the insured the greater of 60 days from the effective date of termination or 30 days from the date the required advice was mailed or delivered in which to submit written acceptance of extended reporting period coverage [S:ny-11-nycrr-73-3].",
+		"New York requires the declarations page, or an addendum to it, to state the premium that will be charged for each extended reporting period option if the policy is terminated on the next anniversary date [S:ny-11-nycrr-73-7].",
+		"Virginia requires the offer of a supplemental extended reporting period to be made in writing no earlier than the date of notification of termination and not later than 15 days after termination, and requires the insured to have a minimum of 30 days from policy termination to purchase it [S:va-14vac5-335-30].",
+		"Colorado conditions delivery of a claims-made form on the policy offering, at the insured's option, an extended reporting period of at least one year, and provides that the premium for it may not exceed two hundred percent of the expiring policy premium unless the commissioner determines the adjusted premium to be inadequate on an actuary's opinion submitted for the insurer [S:co-crs-10-4-419].",
+		"Colorado's commissioner may also prohibit a form that lacks a provision allowing the insured, at the insured's option, to purchase an extended reporting period of at least the length of time of exposure under the applicable statute of limitation [S:co-crs-10-4-419].",
+		"New York provides that where a claims-made relationship has continued for less than one year, several of its reporting-period subdivisions do not apply upon termination for nonpayment of premium or fraud [S:ny-11-nycrr-73-3]."
+	],
+	"endorsements": [
+		{
+			"item": "A supplemental extended reporting period",
+			"note": "Virginia defines this as an extended reporting period available for the insured to purchase, as distinct from the basic one provided automatically at no additional premium charge [S:va-14vac5-335-20], and requires every claims-made policy to include a provision that the named insured may purchase one upon termination [S:va-14vac5-335-30]."
+		},
+		{
+			"item": "A retroactive date earlier than inception, or none at all",
+			"note": "Prior acts coverage is the feature of a claims-made policy that has either no retroactive date or a retroactive date earlier than the inception date of the policy [S:irmi-prior-acts-coverage]. Because the retroactive date is agreed in the policy [S:ny-11-nycrr-73-1], where it sits is a negotiated term rather than a fixed consequence of the renewal date."
+		}
+	],
+	"relatedPolicies": [
+		"Commercial general liability, which is the occurrence instrument this line is usually contrasted with [S:ny-11-nycrr-73-1]",
+		"Errors and omissions, directors and officers, employment practices and fiduciary liability, all of which New York enumerates as claims-made coverages alongside professional liability [S:ny-11-nycrr-73-2]",
+		"Medical professional liability, which New York names within professional liability rather than apart from it [S:ny-11-nycrr-73-2]",
+		"Pollution and environmental impairment liability, which shares the one-year reporting-period treatment [S:ny-11-nycrr-73-3]"
+	],
+	"underwritingInputs": [
+		"The retroactive date, which decides how far back an act may have occurred and still be reached [S:ny-11-nycrr-73-1]",
+		"When the claim was first made, which is the trigger rather than when the act occurred [S:va-14vac5-335-20]",
+		"How long the claims-made relationship has run, which New York defines as the period from the first claims-made policy between the parties to the cancellation or nonrenewal of the last consecutive one, with no gap in coverage [S:ny-11-nycrr-73-1]",
+		"Whether any gap in coverage has occurred, since a gap ends the relationship on that definition [S:ny-11-nycrr-73-1]",
+		"Which enumerated coverage the risk falls under, since eight of them carry a one-year reporting-period offer rather than three years [S:ny-11-nycrr-73-3]",
+		"Why the policy is terminating, because nonpayment, breach of terms and fraud remove the supplemental offer in Virginia [S:va-14vac5-335-30]",
+		"Whether the retroactive date is being advanced, which Virginia treats as a termination for the purpose of the offer [S:va-14vac5-335-30]"
+	],
+	"exposures": [
+		{
+			"item": "The retroactive date is the real boundary, and moving it is a termination",
+			"note": "New York provides that a retroactive date may not be changed during the term of the claims-made relationship and any extended reporting period [S:ny-11-nycrr-73-3]. Virginia goes further at the point of renewal: termination, for the purpose of the duty to offer a supplemental extended reporting period, includes advancement of any applicable retroactive date [S:va-14vac5-335-30]. An advanced retroactive date can therefore quietly delete years of past work from cover while the policy number stays the same."
+		},
+		{
+			"item": "A gap in coverage ends the relationship, not just the year",
+			"note": "New York defines the claims-made relationship as running from the first claims-made policy between the insurer and insured to the cancellation or nonrenewal of the last consecutive one, where there has been no gap in coverage, and states that it does not include any period covered by extended reporting period coverage [S:ny-11-nycrr-73-1]. A lapse of a few days is not a small administrative matter on this line."
+		},
+		{
+			"item": "Renewal on a different basis counts as termination",
+			"note": "Virginia's requirement to offer a supplemental extended reporting period is triggered by termination, which it defines to include cancellation or nonrenewal, advancement of any retroactive date, and renewal on other than a claims-made basis [S:va-14vac5-335-30]. Moving to an occurrence form is not simply an upgrade; it ends the claims-made structure behind it."
+		},
+		{
+			"item": "The acceptance window is short and runs from paperwork",
+			"note": "New York gives the insured the greater of 60 days from termination or 30 days from the mailing of the required advice to submit written acceptance of extended reporting period coverage [S:ny-11-nycrr-73-3]. Virginia gives a minimum of 30 days from termination to purchase [S:va-14vac5-335-30]. These windows close while a business is usually busy with whatever caused the termination."
+		},
+		{
+			"item": "Nonpayment or fraud can remove the tail altogether",
+			"note": "Virginia requires no supplemental offer where cancellation or nonrenewal is for nonpayment of premium, failure to comply with policy terms, or fraud [S:va-14vac5-335-30], and New York relieves the insurer of providing a quotation in the nonpayment and fraud cases unless asked [S:ny-11-nycrr-73-3]. A missed instalment can cost the reporting period as well as the policy."
+		},
+		{
+			"item": "The gap after the reporting period expires",
+			"note": "New York requires a statement advising the insured specifically of potential coverage gaps that may arise upon expiration of extended reporting period coverage, unless that coverage is unlimited in time [S:ny-11-nycrr-73-7]. Someone who retires or closes a practice is exposed for as long as claims can still be brought, which the reporting period may not match; Colorado addresses this by letting the commissioner require an option to purchase a period at least as long as the statute of limitation exposure [S:co-crs-10-4-419]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Read the retroactive date at every renewal and write it down",
+			"note": "It cannot be changed during the claims-made relationship and any extended reporting period [S:ny-11-nycrr-73-3], but advancing it at renewal is treated as a termination in Virginia [S:va-14vac5-335-30]. Comparing this year's date against last year's is the single check that catches the loss of past cover."
+		},
+		{
+			"item": "Diary the acceptance deadline the day any termination notice arrives",
+			"note": "The window is the greater of 60 days from termination or 30 days from the mailing of the insurer's required advice in New York [S:ny-11-nycrr-73-3], and a minimum of 30 days from termination in Virginia [S:va-14vac5-335-30]. Both run from documents rather than from the day anyone remembers reading them."
+		},
+		{
+			"item": "Establish which reporting-period length applies before you need it",
+			"note": "New York's default offer is three years, and eight enumerated coverages carry a one-year offer instead, including directors and officers, fiduciary, employment practices and pollution liability [S:ny-11-nycrr-73-3]. Which list a risk sits on changes the answer by two years."
+		},
+		{
+			"item": "Keep the disclosure pages with the policy",
+			"note": "New York requires the claims-made disclosures to appear in the policy application and the declarations page, or addenda to them, and to be conspicuously displayed [S:ny-11-nycrr-73-7], and requires the declarations page to state what will be charged for each extended reporting period option on the next anniversary [S:ny-11-nycrr-73-7]. Those pages are where the structure is recorded."
+		},
+		{
+			"item": "Before changing insurers, settle what happens to the retroactive date",
+			"note": "The relationship New York defines depends on consecutive policies with no gap in coverage [S:ny-11-nycrr-73-1], and prior acts cover depends on where the retroactive date sits [S:irmi-prior-acts-coverage]. Both questions belong in the conversation before a policy is moved, not after."
+		},
+		{
+			"item": "Report a circumstance as soon as it looks like one",
+			"note": "Colorado conditions delivery of a claims-made form on the policy clearly defining the events and conditions which trigger coverage and defining when and how a claim is deemed to be made [S:co-crs-10-4-419]. Reading that definition tells you what your own policy treats as a claim, which is what the reporting deadline attaches to."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "NY",
+			"note": "Regulation 121 is the most prescriptive of the three consulted. It enumerates the coverages claims-made may be written for and forbids the basis for motor vehicle liability and for risks subject to section 3425 of the Insurance Law [S:ny-11-nycrr-73-2]; fixes the retroactive date for the duration of the relationship [S:ny-11-nycrr-73-3]; requires a 60-day automatic reporting period, 90 days for public entity liability [S:ny-11-nycrr-73-3]; sets a three-year offer with a one-year offer for eight named coverages [S:ny-11-nycrr-73-3]; and prescribes conspicuous disclosure in both the application and the declarations page [S:ny-11-nycrr-73-7]."
+		},
+		{
+			"state": "VA",
+			"note": "Virginia's rules are shorter and turn on the offer. Every claims-made policy must include a provision that the named insured may purchase a supplemental extended reporting period on termination, where termination includes cancellation or nonrenewal, advancement of any applicable retroactive date, and renewal on other than a claims-made basis [S:va-14vac5-335-30]. The offer must be in writing, no earlier than notification of termination and no later than 15 days after it, with a minimum of 30 days for the insured to purchase [S:va-14vac5-335-30]. Virginia also draws the basic and supplemental distinction in its definitions [S:va-14vac5-335-20]."
+		},
+		{
+			"state": "CO",
+			"note": "Colorado works through conditions on delivery and a power to prohibit. A form may be delivered only if it clearly defines the events and conditions triggering coverage and when a claim is deemed made, and offers at the insured's option an extended reporting period of at least one year, with its premium capped at two hundred percent of the expiring policy premium absent an actuarial showing accepted by the commissioner [S:co-crs-10-4-419]. The commissioner may prohibit a form lacking a sixty-day purchase period on cancellation or nonrenewal for any reason, or lacking an option to buy a period at least as long as the applicable statute of limitation exposure [S:co-crs-10-4-419]. Insurers writing claims-made in Colorado must file an annual listing of forms by July 1 and any new form at least thirty-one days before use [S:co-crs-10-4-419]."
+		}
+	],
+	"lastReviewed": "2026-09-07",
+	"effectiveDate": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ny-11-nycrr-73-1",
+		"ny-11-nycrr-73-2",
+		"ny-11-nycrr-73-3",
+		"ny-11-nycrr-73-7",
+		"va-14vac5-335-20",
+		"va-14vac5-335-30",
+		"co-crs-10-4-419",
+		"irmi-prior-acts-coverage"
+	],
+	"relatedQuestions": ["claims-made-retroactive-date", "general-liability-vs-professional-liability"]
+}

@@ -60,6 +60,7 @@
 		"california-department-of-insurance"
 	],
 	"coverages": [
+		"professional-liability",
 		"commercial-general-liability"
 	],
 	"effectiveDate": "2026-08-31",
