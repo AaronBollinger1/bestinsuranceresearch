@@ -1,0 +1,58 @@
+{
+	"question": "My closing funds have arrived at escrow. Why has nothing been disbursed yet?",
+	"aliases": [
+		"California good funds law escrow disbursement",
+		"when can escrow disburse funds California",
+		"why does escrow hold my wire before closing",
+		"can escrow record before funds clear California",
+		"Insurance Code 12413.1 explained"
+	],
+	"shortAnswer": "Because the day funds may be paid out is set by statute rather than by when they arrived. Section 12413.1 provides that no title insurance company, controlled escrow company or underwritten title company shall disburse funds from an escrow account until the day established by the rules the section sets out [S:ca-ins-code-12413-1]. How the money was sent decides that day: funds received by cash or by electronic payment may be disbursed following deposit on the same business day [S:ca-ins-code-12413-1], while funds received by draft may not be disbursed until the proceeds of that draft have become available for withdrawal [S:ca-ins-code-12413-1].",
+	"assumes": [
+		"The escrow is held by one of the companies the section names: a title insurance company, a controlled escrow company or an underwritten title company [S:ca-ins-code-12413-1].",
+		"You are asking why disbursement has not happened, not whether the transaction is otherwise ready to close, which turns on the file rather than on this section.",
+		"You are asking about California, since this is a California statute [S:ca-ins-code-12413-1]."
+	],
+	"why": "This is the good funds rule, and it explains something that otherwise looks like delay for its own sake: money arriving is not the same event as money being available.\n\nThe section sets a floor rather than a practice. No company of the kinds it names shall disburse funds from an escrow account until the day established by the rules it sets out [S:ca-ins-code-12413-1]. So an escrow officer holding your funds is not exercising caution; the officer is prohibited from paying out earlier.\n\nWhich day that is depends entirely on the form the money took.\n\nCash or electronic payment is the fast route. Funds received by cash or by electronic payment may be disbursed following deposit on the same business day [S:ca-ins-code-12413-1]. This is why a wire sent in the morning can fund the same day and a cheque cannot.\n\nDeposits carrying next business day availability may be disbursed on the business day following deposit, and other deposits follow the availability timelines set by federal regulation [S:ca-ins-code-12413-1]. That last clause is a reference rather than a rule stated here: the section points at the federal availability regime without reproducing it, so how long any particular instrument takes is answered there and not in this section.\n\nA draft is the slow route and the section is specific about it. Where funds are received by draft, the company shall not disburse from the escrow account with respect to that draft until the proceeds of the draft have become available for withdrawal [S:ca-ins-code-12413-1]. And available for withdrawal is defined rather than left to ordinary meaning: with respect to a draft it means when the draft has been submitted for collection and payment has been received [S:ca-ins-code-12413-1]. Submitted and paid, not merely deposited and apparently good.\n\nThere is one route around the timing, and it is consensual. The section permits recordation before funds are available for withdrawal where the parties have consented in writing beforehand [S:ca-ins-code-12413-1]. Note what that permits and what it does not: recordation, in advance, with written consent. It is the mechanism behind a transaction that records ahead of funding, and it exists because someone agreed to it in writing rather than because the escrow officer decided to be helpful.\n\nThe section also carries a limited safe harbour for the company. No such company shall be liable for a violation if the violation was not intentional and resulted from a bona fide error notwithstanding the maintenance of procedures reasonably adapted to avoid that error [S:ca-ins-code-12413-1]. Three conditions there, not one: unintentional, a bona fide error, and reasonable procedures actually maintained.\n\nThe practical consequence for a buyer or seller is that the question to ask is not when did my money arrive but what form did it arrive in, because the second answer is the one the statute reads.",
+	"whatChanges": [
+		"Whether the funds came by cash or electronic payment, which permits disbursement following deposit on the same business day [S:ca-ins-code-12413-1].",
+		"Whether the funds came by draft, which holds disbursement until the proceeds have become available for withdrawal [S:ca-ins-code-12413-1].",
+		"For a draft, whether it has been submitted for collection and payment received, which is what available for withdrawal means here [S:ca-ins-code-12413-1].",
+		"Whether the deposit carries next business day availability, which permits disbursement on the following business day [S:ca-ins-code-12413-1].",
+		"Whether the parties gave written consent beforehand to recordation ahead of availability [S:ca-ins-code-12413-1].",
+		"Whether the escrow is held by one of the companies the section names, since the rule is addressed to them [S:ca-ins-code-12413-1]."
+	],
+	"variability": [
+		"The section refers to the availability timelines set by federal regulation without reproducing them [S:ca-ins-code-12413-1], so how long any particular instrument takes to become available is answered by that regime and is not stated in this record.",
+		"This describes when funds may be disbursed. Whether a transaction is otherwise ready to close depends on the file, and the section does not address it.",
+		"The safe harbour protects the company from liability for an unintentional bona fide error where reasonable procedures were maintained [S:ca-ins-code-12413-1]. Whether those conditions are met in any instance is a factual question the section does not resolve.",
+		"Recordation ahead of availability requires prior written consent of the parties [S:ca-ins-code-12413-1]. Nothing here says whether agreeing to that is wise in any particular transaction."
+	],
+	"nextActions": [
+		"Ask escrow what form your funds arrived in rather than when they arrived, because the form is what sets the disbursement day [S:ca-ins-code-12413-1].",
+		"If you are sending funds and timing matters, send by wire rather than by draft, since electronic payment may be disbursed following deposit on the same business day [S:ca-ins-code-12413-1].",
+		"If a draft was used, ask whether it has been submitted for collection and whether payment has been received, since both are required before it is available for withdrawal [S:ca-ins-code-12413-1].",
+		"If you are being asked to consent to recordation before funds are available, read what you are signing, because that consent is what makes it lawful [S:ca-ins-code-12413-1].",
+		"Do not treat a holding period as a sign that something is wrong with the transaction; the section prohibits earlier disbursement regardless of how ready the file is [S:ca-ins-code-12413-1]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["title"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["escrow", "good funds", "disbursement", "recordation", "title", "california"],
+	"companies": [],
+	"coverages": ["title-insurance-california"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["what-is-a-preliminary-report-california", "does-title-insurance-cover-future-problems-california"],
+	"handoff": {
+		"recommended": false,
+		"reason": "The question is answered by asking escrow what form the funds took, which a reader can do directly. Nothing here needs a licensed conversation, and the transaction itself is already with an escrow holder."
+	},
+	"sourceIds": ["ca-ins-code-12413-1"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
