@@ -1,0 +1,58 @@
+{
+	"question": "How do I make a claim against a contractor's licence bond, and what else should I file at the same time?",
+	"aliases": [
+		"how to file a claim against a contractor bond California",
+		"contractor bond claim process CSLB",
+		"do I complain to CSLB or to the surety company",
+		"small claims court contractor California limit",
+		"what documents do I need to claim on a contractor bond"
+	],
+	"shortAnswer": "The claim goes to the surety company, not to the regulator. To file a claim against a bond a consumer should contact the contractor's surety company and include a detailed written description of the problem, a copy of the contract, and all other pertinent documents and information [S:cslb-license-bonds-fast-facts]. File the CSLB complaint as well rather than instead: the surety investigates the claim against the bond and CSLB investigates the complaint against the licence, and the two resolve their issues independently under their respective jurisdictions [S:cslb-license-bonds-fast-facts].",
+	"assumes": [
+		"The contractor held an active California licence, since the bond is a condition of holding one [S:ca-bpc-7071-6-contractor-bond].",
+		"You are one of the beneficiaries section 7071.5 lists, which is what decides whether you can claim at all [S:ca-bpc-7071-5-bond-beneficiaries].",
+		"You are asking about the licence bond rather than a payment or performance bond on a specific project."
+	],
+	"why": "There are two processes and they answer different questions. Confusing them costs people the one that pays.\n\nThe surety company answers money. A claim is made by contacting the contractor's surety and sending a detailed written description of the problem, a copy of the contract, and all other pertinent documents and information [S:cslb-license-bonds-fast-facts]. That is a claim on the bond, and what stands behind it is a surety company's promise to the State of California that it will pay damages if the contractor violates contractors' state licence law [S:cslb-license-bonds-fast-facts].\n\nCSLB answers the licence. It investigates the complaint filed against the licence while the surety investigates the claim filed against the bond, and the two bodies independently resolve the issues under their respective jurisdictions [S:cslb-license-bonds-fast-facts]. A regulator's finding is not a payment, and a surety's payment is not discipline. Both are worth having and neither substitutes for the other.\n\nIf the surety's response does not satisfy you, the guide points at the courts, and the threshold is where the route changes. A consumer who is not satisfied with the response of the surety company may take the contractor to small claims court for amounts up to $10,000, and claims above $10,000 must be filed in a superior court [S:cslb-license-bonds-fast-facts].\n\nTiming matters more here than in most claims, for a reason that has nothing to do with any deadline. The bond amount is not per job; it is the amount available for all the jobs a contractor takes on during the life of the bond [S:cslb-license-bonds-fast-facts], and once the bond has been depleted the contractor must purchase a new one for the licence to remain in effect [S:cslb-license-bonds-fast-facts]. A contractor whose work has damaged several customers is being drawn down by all of them against the same sum. Preparing a perfect claim slowly can be worse than filing an adequate one promptly.\n\nWhat you can reach is set before any of this starts. The bond is written in the sum of twenty-five thousand dollars [S:ca-bpc-7071-6-contractor-bond], but excluding claims by section 7071.5(a) beneficiaries the surety's aggregate liability shall not exceed seven thousand five hundred dollars, with the excess reserved exclusively for those beneficiaries [S:ca-bpc-7071-6-contractor-bond]. Subdivision (a) is the homeowner contracting for home improvement on their own personal family residence [S:ca-bpc-7071-5-bond-beneficiaries]. So the same paperwork is worth two very different amounts depending on which subdivision describes you, and it is worth establishing that before deciding how much effort the claim deserves.\n\nOne more instrument may exist behind the same licence. CSLB may require a separate disciplinary bond of contractors who have been disciplined, and some licence qualifiers including responsible managing employees are required to have a $25,000 bond on file with CSLB [S:cslb-license-bonds-fast-facts]. Asking what is on file is worth doing before assuming a single depleted bond is the end of it.",
+	"whatChanges": [
+		"Which subdivision of section 7071.5 you claim under, since that decides whether you are inside the $7,500 aggregate or reaching the reserved excess [S:ca-bpc-7071-5-bond-beneficiaries][S:ca-bpc-7071-6-contractor-bond].",
+		"Whether other claimants have already drawn on the bond, because it is shared across every job over the life of the bond [S:cslb-license-bonds-fast-facts].",
+		"Whether the amount in dispute is above or below $10,000, which decides small claims against superior court [S:cslb-license-bonds-fast-facts].",
+		"Whether a disciplinary bond or a qualifier's bond is also on file for that licence [S:cslb-license-bonds-fast-facts].",
+		"Whether you have the contract in writing, since it is one of the documents the claim is expected to carry [S:cslb-license-bonds-fast-facts]."
+	],
+	"variability": [
+		"The CSLB guide relied on here carries the revision footer Rev. 12/22 [S:cslb-license-bonds-fast-facts], so the small claims threshold and the bond figures should be confirmed against the current publication and the current court limits before anyone relies on them.",
+		"This describes the route the regulator publishes. Individual sureties have their own claim forms and evidentiary requirements, and this record does not describe any particular surety's process.",
+		"How a surety resolves a claim, and how CSLB resolves a complaint, are separate determinations on separate records, and neither binds the other [S:cslb-license-bonds-fast-facts].",
+		"Nothing here describes any limitation period. That is a question for a lawyer and is not answered by the sources consulted for this record."
+	],
+	"nextActions": [
+		"Identify the surety company on the licence before writing anything, since the claim goes to the surety rather than to CSLB [S:cslb-license-bonds-fast-facts].",
+		"Assemble the detailed written description, the contract, and the supporting documents as one package, because that is what the claim is expected to contain [S:cslb-license-bonds-fast-facts].",
+		"File the CSLB complaint in parallel rather than waiting for the surety, since the two investigations run independently [S:cslb-license-bonds-fast-facts].",
+		"File promptly if there is any sign of other claimants, because the bond depletes as it pays [S:cslb-license-bonds-fast-facts].",
+		"Work out whether the dispute is above $10,000 before choosing a court, since that is where the route divides [S:cslb-license-bonds-fast-facts].",
+		"If the loss materially exceeds what the bond can reach, treat the bond as one recovery among several and take the remainder to a lawyer rather than to the surety."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["license-and-permit-bonds", "surety"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["contractor bond", "bond claim", "cslb", "surety", "california", "small claims"],
+	"companies": [],
+	"coverages": ["surety-bonds"],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["contractor-license-bond-what-it-pays-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "The sources consulted here describe how to file and where the court threshold sits, and say nothing about any limitation period. Anyone whose loss is substantial should establish that with a lawyer rather than from a description of the claim route."
+	},
+	"sourceIds": ["cslb-license-bonds-fast-facts", "ca-bpc-7071-6-contractor-bond", "ca-bpc-7071-5-bond-beneficiaries"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

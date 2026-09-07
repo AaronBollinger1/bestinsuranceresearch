@@ -1,0 +1,59 @@
+{
+	"question": "My contractor is licensed and bonded. If the work is defective, what will the bond actually pay me?",
+	"aliases": [
+		"how much is a California contractor license bond worth to me",
+		"contractor bond 25000 or 7500 California",
+		"who can claim on a contractor license bond California",
+		"is a contractor bond per job California",
+		"contractor bonded and insured what does bonded mean"
+	],
+	"shortAnswer": "Probably far less than the bond's face amount, and for most claimants the ceiling is $7,500 rather than $25,000. The bond is written in the sum of twenty-five thousand dollars [S:ca-bpc-7071-6-contractor-bond], but excluding claims brought by the beneficiaries specified in section 7071.5(a), the aggregate liability of the surety shall not exceed seven thousand five hundred dollars, and the proceeds above that figure are reserved exclusively for those beneficiaries [S:ca-bpc-7071-6-contractor-bond]. Section 7071.5(a) means a homeowner contracting for home improvement on the homeowner's own personal family residence [S:ca-bpc-7071-5-bond-beneficiaries].",
+	"assumes": [
+		"The bond in question is the contractor's licence bond required as a condition of holding a California licence [S:ca-bpc-7071-6-contractor-bond], not a payment or performance bond on a particular job.",
+		"The contractor held an active licence. A bond is not required of the holder of a licence that has been inactivated during the period it is inactive [S:ca-bpc-7071-6-contractor-bond].",
+		"You are asking what the bond can pay, not whether your particular loss is proved, which the surety decides on the evidence [S:cslb-license-bonds-fast-facts]."
+	],
+	"why": "Two provisions do the work, and reading either one alone gives the wrong answer.\n\nSection 7071.5 says who the bond is for, and it is a closed list of five kinds of claimant.\n\nSubdivision (a): a homeowner contracting for home improvement upon the homeowner's personal family residence, damaged as a result of a violation of the chapter by the licensee [S:ca-bpc-7071-5-bond-beneficiaries].\n\nSubdivision (b): a property owner contracting for the construction of a single-family dwelling, damaged by a violation of the chapter, but only where the dwelling is not intended for sale or offered for sale at the time the damages were incurred [S:ca-bpc-7071-5-bond-beneficiaries]. Building to sell takes you outside it.\n\nSubdivision (c): a person damaged as a result of a willful and deliberate violation of the chapter, or by the fraud of the licensee in the execution or performance of a construction contract [S:ca-bpc-7071-5-bond-beneficiaries]. Note the adjectives. Ordinary bad work by someone who is not your home-improvement contractor does not reach this subdivision; it asks for willfulness or fraud.\n\nSubdivisions (d) and (e): an employee damaged by the licensee's failure to pay wages, and a person or entity owed fringe benefits under an agreement with the employee or their bargaining agent [S:ca-bpc-7071-5-bond-beneficiaries].\n\nThen section 7071.6 says how much, and it splits the bond in two. The board requires a bond in the sum of twenty-five thousand dollars as a condition precedent to issuing, reinstating, reactivating, renewing or continuing a licence [S:ca-bpc-7071-6-contractor-bond]. But excluding the claims brought by subdivision (a) beneficiaries, the aggregate liability of the surety on claims against that bond shall not exceed seven thousand five hundred dollars, and the proceeds in excess of that figure are reserved exclusively for subdivision (a) beneficiaries [S:ca-bpc-7071-6-contractor-bond].\n\nSo the $25,000 that everyone quotes is really $17,500 held back for one category of claimant and $7,500 shared by everyone else.\n\nThe other thing the number is not is per job. The bond amount is not per job; it is the amount available for all the jobs a contractor takes on during the life of the bond [S:cslb-license-bonds-fast-facts]. Once the bond has been depleted, the contractor must purchase a new one for the licence to remain in effect [S:cslb-license-bonds-fast-facts]. A contractor who has already damaged several customers may have very little bond left by the time you reach it, and being first matters in a way nothing on the licence tells you.\n\nTwo situations put more money behind the licence. As a condition precedent to licensure the board may require an applicant to post twice the required amount until the licence is renewed, where the applicant has been convicted of a violation of section 7028 or cited under section 7028.7 reduced to a final order, and the violation or the basis for the citation constituted a substantial injury to the public [S:ca-bpc-7071-6-contractor-bond]. Separately, CSLB may require a disciplinary bond of contractors who have been disciplined, and some licence qualifiers including responsible managing employees are required to have a $25,000 bond on file [S:cslb-license-bonds-fast-facts].\n\nWhat the bond is for, in the regulator's own framing, is consumers damaged because of defective construction or other violations of contractors' state licence law, and employees who have not been paid wages they are owed [S:cslb-license-bonds-fast-facts]. It is a surety company promising the State of California that it will pay damages if the contractor violates that law [S:cslb-license-bonds-fast-facts]. It is not the contractor's liability insurance, and bonded and insured are two different words.",
+	"whatChanges": [
+		"Which subdivision of section 7071.5 you fall under, because subdivision (a) reaches the whole bond and every other subdivision shares $7,500 [S:ca-bpc-7071-5-bond-beneficiaries][S:ca-bpc-7071-6-contractor-bond].",
+		"Whether the work was home improvement on your own personal family residence, which is the subdivision (a) test [S:ca-bpc-7071-5-bond-beneficiaries].",
+		"Whether a single-family dwelling was intended for sale or offered for sale when the damages were incurred, which takes subdivision (b) away [S:ca-bpc-7071-5-bond-beneficiaries].",
+		"Whether the violation was willful and deliberate, or fraud, since subdivision (c) requires one of those rather than ordinary breach [S:ca-bpc-7071-5-bond-beneficiaries].",
+		"How much of the bond earlier claimants have already taken, since it covers every job over the life of the bond rather than yours alone [S:cslb-license-bonds-fast-facts].",
+		"Whether the licence was active, since no bond is required while a licence is inactive [S:ca-bpc-7071-6-contractor-bond].",
+		"Whether a doubled bond or a disciplinary bond is on file, which changes what is available [S:ca-bpc-7071-6-contractor-bond][S:cslb-license-bonds-fast-facts]."
+	],
+	"variability": [
+		"Section 7071.6 was repealed and added by Stats. 2021, Ch. 367, Sec. 17 (SB 607), effective January 1, 2022 and operative January 1, 2023 [S:ca-bpc-7071-6-contractor-bond], so material describing an earlier bond amount or an earlier structure does not describe the current section.",
+		"The CSLB guide relied on here carries the revision footer Rev. 12/22 [S:cslb-license-bonds-fast-facts]. Its figures should be confirmed against the current publication before anyone relies on a number.",
+		"Whether a given set of facts is a violation of the chapter, and whether it was willful and deliberate, are determinations made on evidence rather than settled by the text of the section.",
+		"The bond is one of several things standing behind a licence. This record describes the licence bond and does not describe the contractor's liability insurance or workers compensation coverage, which answer different losses."
+	],
+	"nextActions": [
+		"Work out first whether you are a subdivision (a) beneficiary, because that single question is worth $17,500 [S:ca-bpc-7071-5-bond-beneficiaries][S:ca-bpc-7071-6-contractor-bond].",
+		"Move promptly rather than thoroughly if the contractor has other unhappy customers, since the bond is shared across all jobs over its life and is depleted as it pays [S:cslb-license-bonds-fast-facts].",
+		"Establish whether the licence was active at the time, since an inactive licence carries no bond requirement [S:ca-bpc-7071-6-contractor-bond].",
+		"Do not treat the bond as a measure of your recovery. It is a floor set by statute for licensing purposes, not an estimate of what defective construction costs.",
+		"If the loss is larger than the bond, treat the bond as one route among several rather than the answer, and take the size of the gap to a lawyer."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["license-and-permit-bonds", "surety"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["contractor bond", "license bond", "cslb", "surety", "california", "defective construction"],
+	"companies": [],
+	"coverages": ["surety-bonds"],
+	"effectiveDate": "2026-09-06",
+	"lastReviewed": "2026-09-06",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["claiming-on-a-contractor-license-bond-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a particular loss is a violation of the chapter, and whether it was willful and deliberate rather than merely bad, decides which subdivision applies and therefore whether the ceiling is $7,500 or the whole bond. That is an evidentiary question rather than a statutory one."
+	},
+	"sourceIds": ["ca-bpc-7071-5-bond-beneficiaries", "ca-bpc-7071-6-contractor-bond", "cslb-license-bonds-fast-facts"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
