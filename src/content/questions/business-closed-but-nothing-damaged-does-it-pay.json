@@ -1,0 +1,59 @@
+{
+	"question": "My business had to close but nothing was physically damaged. Does business income coverage pay?",
+	"aliases": [
+		"business interruption without physical damage California",
+		"does COVID closure count as direct physical loss",
+		"what is direct physical loss or damage California Supreme Court",
+		"business income coverage no damage denied",
+		"Another Planet Entertainment v Vigilant what it decided"
+	],
+	"shortAnswer": "Generally no, and in California the Supreme Court has said so. The Business Income form pays for the actual loss of Business Income sustained due to the necessary suspension of operations during the period of restoration, and requires the suspension to be caused by direct physical loss of or damage to property at the described premises from a Covered Cause of Loss [S:iso-cp-00-30-10-12]. Asked whether the actual or potential presence of COVID-19 on an insured's premises can constitute direct physical loss or damage, the Supreme Court of California answered that it generally does not [S:another-planet-2024], and held that direct physical loss or damage requires a distinct, demonstrable, physical alteration to property [S:another-planet-2024].",
+	"assumes": [
+		"The policy uses the standard Business Income (And Extra Expense) Coverage Form, which is a separate commercial property coverage form from the Building And Personal Property Coverage Form [S:iso-cp-00-30-10-12].",
+		"You are asking about the coverage trigger rather than about a specific endorsement, since an endorsement can change the trigger and the policy issued governs.",
+		"California law is the relevant authority, since the holding described here is a decision of the Supreme Court of California [S:another-planet-2024]."
+	],
+	"why": "The trigger is a physical one, stated twice over, and the closure itself is not the trigger.\n\nThe form pays for the actual loss of Business Income sustained due to the necessary suspension of operations during the period of restoration, and conditions that on the suspension being caused by direct physical loss of or damage to property at premises described in the Declarations for which a Business Income Limit Of Insurance is shown, with the loss or damage caused by or resulting from a Covered Cause of Loss [S:iso-cp-00-30-10-12]. Extra Expense runs on the same footing: it means necessary expenses incurred during the period of restoration that would not have been incurred had there been no direct physical loss or damage to property from a Covered Cause of Loss [S:iso-cp-00-30-10-12].\n\nSo two things must be true before the money question is reached. Operations must be suspended, which the form defines as the slowdown or cessation of business activities, or the described premises being rendered untenantable where Rental Value coverage applies [S:iso-cp-00-30-10-12]. And that suspension must have been caused by direct physical loss of or damage to property. A business that closed because it was ordered to, or because nobody came, has satisfied the first and not the second.\n\nWhat direct physical loss or damage means was, until recently, the argument. In California it is now answered. The certified question in Another Planet Entertainment, LLC v. Vigilant Insurance Company was whether the actual or potential presence of the COVID-19 virus on an insured's premises can constitute direct physical loss or damage to property for purposes of coverage under a commercial property insurance policy [S:another-planet-2024]. The Supreme Court of California, in an opinion filed May 23, 2024, answered that the actual or potential presence of COVID-19 on an insured's premises generally does not constitute direct physical loss or damage to property [S:another-planet-2024].\n\nThe test the court stated is the part worth carrying forward beyond the pandemic, and it is more subtle than it is usually reported. Direct physical loss or damage to property requires a distinct, demonstrable, physical alteration to property [S:another-planet-2024]. But the alteration need not be visible to the naked eye and need not be structural; it must result in some injury to or impairment of the property as property [S:another-planet-2024].\n\nRead those two sentences together. The threshold is not whether you can see the damage, and it is not whether the building moved. Something invisible and non-structural can still qualify if it injures or impairs the property as property. What does not qualify is a loss of use with the property itself unaltered. That distinction, rather than the pandemic, is the durable holding, and it will decide the next argument about contamination, odour, smoke residue or anything else that changes what a space can be used for without changing the space.\n\nThe insured in the case operated venues for live entertainment including concerts, festivals and events at locations in California and Nevada [S:another-planet-2024], which is to say a business whose loss was as real as any and still outside this trigger. The underlying federal appellate proceeding is reported at 56 F.4th 730 [S:another-planet-2024].",
+	"whatChanges": [
+		"Whether there was a distinct, demonstrable, physical alteration to property, which is the test the court stated [S:another-planet-2024].",
+		"Whether that alteration injured or impaired the property as property, rather than merely limiting what could be done there [S:another-planet-2024].",
+		"Whether operations were suspended in the form's sense, being a slowdown or cessation of business activities [S:iso-cp-00-30-10-12].",
+		"Whether the loss or damage was at premises described in the Declarations with a Business Income Limit Of Insurance shown [S:iso-cp-00-30-10-12].",
+		"Whether the cause was a Covered Cause of Loss, which is a separate question from whether there was physical alteration [S:iso-cp-00-30-10-12].",
+		"Whether an endorsement addresses closure without physical damage, since the form's own trigger does not."
+	],
+	"variability": [
+		"The holding described is that of the Supreme Court of California on a certified question [S:another-planet-2024]. Another state's highest court may state the test differently, and this record does not describe any other jurisdiction.",
+		"The court's answer was that the presence of COVID-19 generally does not constitute direct physical loss or damage [S:another-planet-2024]. Generally is the court's own qualifier and is recorded here rather than smoothed away.",
+		"This describes the standard form's trigger [S:iso-cp-00-30-10-12]. A policy may be endorsed differently, and what any particular policy covers is in that policy.",
+		"Whether a given set of facts amounts to a distinct, demonstrable, physical alteration is a factual question decided on evidence, and the test does not resolve it."
+	],
+	"nextActions": [
+		"Establish first whether anything physical changed at the premises, because that is the question the trigger turns on rather than whether the business closed [S:another-planet-2024].",
+		"If something did change, document it as an alteration to the property rather than as an interruption to the business, since the test asks about injury to or impairment of the property as property [S:another-planet-2024].",
+		"Do not concede the point because the change was invisible or non-structural, neither of which the court required [S:another-planet-2024].",
+		"Read your own Declarations for whether a Business Income Limit Of Insurance is shown for the premises in question [S:iso-cp-00-30-10-12].",
+		"Check for any endorsement addressing closure or loss of use without physical damage, because the form itself does not reach it [S:iso-cp-00-30-10-12].",
+		"If the loss is substantial and the alteration is arguable, take it to a lawyer rather than settling the characterisation with the adjuster."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["business-income", "commercial-property"],
+	"states": ["CA"],
+	"audience": "business-owner",
+	"topics": ["business interruption", "direct physical loss", "period of restoration", "commercial property", "california"],
+	"companies": [],
+	"coverages": ["commercial-property"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["how-business-income-coverage-measures-what-it-pays"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether particular facts amount to a distinct, demonstrable, physical alteration that injured or impaired the property as property is decided on evidence, and a substantial business interruption claim turning on that question belongs with a lawyer rather than with a description of the test."
+	},
+	"sourceIds": ["another-planet-2024", "iso-cp-00-30-10-12"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

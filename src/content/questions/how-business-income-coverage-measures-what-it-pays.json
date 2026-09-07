@@ -1,0 +1,60 @@
+{
+	"question": "How does business income coverage work out what it pays, and when does the clock start and stop?",
+	"aliases": [
+		"business income period of restoration 72 hours",
+		"how is business interruption loss calculated",
+		"business income coinsurance 12 months following",
+		"does business income cover delay from building code upgrades",
+		"business income versus extra expense when does it start"
+	],
+	"shortAnswer": "It pays net income you would have earned plus continuing normal operating expenses, over a defined window rather than until you have actually recovered. Business Income means the Net Income, meaning net profit or loss before income taxes, that would have been earned or incurred, plus continuing normal operating expenses incurred including payroll [S:iso-cp-00-30-10-12]. The period of restoration begins 72 hours after the time of direct physical loss or damage for Business Income, and immediately for Extra Expense [S:iso-cp-00-30-10-12], and ends on the earlier of when the property should be repaired, rebuilt or replaced with reasonable speed and similar quality, or when business is resumed at a new permanent location [S:iso-cp-00-30-10-12].",
+	"assumes": [
+		"The policy uses the standard Business Income (And Extra Expense) Coverage Form, a separate commercial property coverage form from the Building And Personal Property Coverage Form [S:iso-cp-00-30-10-12].",
+		"The trigger has been satisfied, meaning there was direct physical loss of or damage to property at the described premises from a Covered Cause of Loss [S:iso-cp-00-30-10-12]. Whether it was is a separate question.",
+		"You are asking how the form measures the loss, not what any insurer has offered on a particular claim."
+	],
+	"why": "Four mechanics decide the number, and three of them surprise people.\n\nWhat is measured. Business Income is Net Income, net profit or loss before income taxes, that would have been earned or incurred, plus continuing normal operating expenses incurred, including payroll [S:iso-cp-00-30-10-12]. For manufacturing risks Net Income includes the net sales value of production [S:iso-cp-00-30-10-12]. So it is not revenue, and it is not profit alone: it is the profit that did not happen plus the costs that carried on anyway.\n\nWhen the clock starts. The period of restoration begins 72 hours after the time of direct physical loss or damage for Business Income Coverage, and immediately after that time for Extra Expense Coverage [S:iso-cp-00-30-10-12]. Those first three days are a waiting period on the income side and not on the expense side, which is why the two coverages behave differently in the first week of a loss.\n\nWhen the clock stops, which is the part most often misread. The period ends on the earlier of the date when the property at the described premises should be repaired, rebuilt or replaced with reasonable speed and similar quality, or the date when business is resumed at a new permanent location [S:iso-cp-00-30-10-12]. Should, not was. The measure is a reasonable reconstruction period rather than the actual one, so delay that is not reasonable is not covered by extending the window.\n\nAnd one specific delay is excluded by name. The period of restoration does not include any increased period required due to the enforcement of or compliance with any ordinance or law that regulates the construction, use or repair, or requires the tearing down, of any property [S:iso-cp-00-30-10-12]. Code compliance routinely lengthens a real rebuild and does not lengthen this period. That gap is the reason ordinance or law coverage exists as a separate purchase on the property side.\n\nWhat counts as a suspension. Suspension means the slowdown or cessation of business activities, or that part or all of the described premises is rendered untenantable, where Rental Value coverage applies [S:iso-cp-00-30-10-12]. A slowdown counts, so a partial continuation of trading does not by itself end the claim.\n\nThen the coinsurance condition, which catches people who set the limit from last year's figures. The form has its own Coinsurance Additional Condition, applying if a coinsurance percentage is shown in the Declarations, and it measures adequacy against the coinsurance percentage multiplied by the sum of Net Income and operating expenses including payroll that would have been earned or incurred for the 12 months following the inception or last previous anniversary date of the policy, whichever is later [S:iso-cp-00-30-10-12]. Following. The test looks forward from the policy date, not backward at the accounts you have.\n\nThe arithmetic is stated: multiply that 12-month figure by the coinsurance percentage, divide the Limit of Insurance by the result, multiply the total amount of loss by that fraction, and pay the lesser of that result or the limit of insurance [S:iso-cp-00-30-10-12]. A limit set from historical figures in a growing business is how a penalty arrives on top of a loss.\n\nThere are ways to switch that condition off. The form's Optional Coverages are Maximum Period Of Indemnity, Monthly Limit Of Indemnity, Business Income Agreed Value, and Extended Period Of Indemnity [S:iso-cp-00-30-10-12], and the Maximum Period Of Indemnity and Monthly Limit Of Indemnity options each state that the Coinsurance Additional Condition does not apply [S:iso-cp-00-30-10-12]. Which of those is selected in the Declarations changes the shape of the recovery, not merely its size.\n\nFinally, what the coverage is written as. Business Income coverage may be written as Business Income Including Rental Value, or as Rental Value only, depending on which option is selected in the Declarations [S:iso-cp-00-30-10-12].",
+	"whatChanges": [
+		"Whether Business Income or Extra Expense is in issue, since the 72-hour wait applies to the first and not the second [S:iso-cp-00-30-10-12].",
+		"What a reasonable repair, rebuild or replacement period is, since the window closes on when the property should be restored rather than when it was [S:iso-cp-00-30-10-12].",
+		"Whether business resumed at a new permanent location, which ends the period on that date if it comes first [S:iso-cp-00-30-10-12].",
+		"How much of the delay is attributable to ordinance or law compliance, which the period of restoration excludes [S:iso-cp-00-30-10-12].",
+		"Whether a coinsurance percentage is shown in the Declarations, and whether the limit was set against the 12 months following the policy date rather than against past accounts [S:iso-cp-00-30-10-12].",
+		"Which Optional Coverage is selected, since two of the four switch the coinsurance condition off [S:iso-cp-00-30-10-12].",
+		"Whether the coverage is written including Rental Value, or as Rental Value only [S:iso-cp-00-30-10-12]."
+	],
+	"variability": [
+		"This describes the standard form as published in the October 2012 edition [S:iso-cp-00-30-10-12]. Editions differ and endorsements change terms, so the policy issued governs.",
+		"What constitutes reasonable speed and similar quality for a rebuild is a factual judgement the form frames and does not settle.",
+		"The coinsurance figure is a forward-looking estimate of net income and operating expenses [S:iso-cp-00-30-10-12], so its adequacy is only known in retrospect.",
+		"Whether the trigger was satisfied at all is a separate question from how the loss is measured, and this record assumes rather than establishes it [S:iso-cp-00-30-10-12]."
+	],
+	"nextActions": [
+		"Find whether a coinsurance percentage is shown in your Declarations before anything else, since that is what turns the condition on [S:iso-cp-00-30-10-12].",
+		"Set the limit from a forward projection of the next 12 months of net income and continuing expenses, because that is the period the condition measures against [S:iso-cp-00-30-10-12].",
+		"Ask your broker whether Maximum Period Of Indemnity or Monthly Limit Of Indemnity would suit better, since both remove the coinsurance condition [S:iso-cp-00-30-10-12].",
+		"Ask separately about ordinance or law coverage, because code-driven delay is excluded from the period of restoration [S:iso-cp-00-30-10-12].",
+		"Keep payroll and continuing expenses identifiable in your accounts, since both sit inside the measure of Business Income [S:iso-cp-00-30-10-12].",
+		"Record the time of the loss precisely, because the 72-hour period runs from it [S:iso-cp-00-30-10-12]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["business-income", "commercial-property"],
+	"states": [],
+	"audience": "business-owner",
+	"topics": ["business interruption", "period of restoration", "coinsurance", "extra expense", "ordinance or law"],
+	"companies": [],
+	"coverages": ["commercial-property"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["business-closed-but-nothing-damaged-does-it-pay"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Setting a business income limit requires a forward projection of net income and continuing expenses against the coinsurance condition, and choosing between the Optional Coverages changes the shape of the recovery. Both are decisions to take with a broker on your own figures."
+	},
+	"sourceIds": ["iso-cp-00-30-10-12"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
