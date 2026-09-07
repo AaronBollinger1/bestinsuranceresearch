@@ -1,0 +1,22 @@
+{
+	"kind": "gap",
+	"severity": "high",
+	"modules": ["contract-requirements", "personal-auto-position"],
+	"title": "A contract requires automobile liability, no commercial auto limit is recorded, and the only auto policy in this position is a personal one.",
+	"detail": "The contract module records an automobile liability limit the contract requires and records nothing carried against it, while the personal auto module records a personal policy. The two are not substitutes for one another, and the business auto form is explicit about why. Symbol 9, Non-owned Autos Only, reaches autos you do not own, lease, hire, rent or borrow that are used in connection with your business, and it expressly includes autos owned by your employees, partners or members, or members of their households, but only while used in your business or your personal affairs [S:iso-ca-00-01-10-13]. So a business auto policy can answer for the business when someone drives their own car on its behalf. What it does not do is insure that person: the second exception to Who Is An Insured removes your employee if the covered auto is owned by that employee or a member of his or her household [S:iso-ca-00-01-10-13]. Symbol 8, Hired Autos Only, draws the same boundary from the other side, covering autos you lease, hire, rent or borrow but expressly not any you take from your employees, partners, members or members of their households [S:iso-ca-00-01-10-13]. The two policies therefore answer different people, and nothing recorded here answers the contract.",
+	"action": "Ask your broker what the contract's automobile liability requirement is actually being satisfied by, and get the answer before the work starts rather than at a certificate request. If people drive their own vehicles on the business's behalf, ask specifically about non-owned auto cover for the business and about what the driver's own policy does when the trip is a business one.",
+	"when": {
+		"all": [
+			{ "field": "contract-requirements.required-auto-csl", "op": "isSet" },
+			{ "field": "contract-requirements.carried-auto-csl", "op": "isEmpty" },
+			{ "field": "personal-auto-position.bodily-injury-limit-per-person", "op": "isSet" }
+		]
+	},
+	"sourceIds": ["iso-ca-00-01-10-13"],
+	"relatedQuestion": "employee-driving-own-car-for-work-coverage",
+	"routeToProfessional": "broker",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}
