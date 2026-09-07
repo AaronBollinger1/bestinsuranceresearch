@@ -9,7 +9,7 @@
 		"all": [
 			{ "field": "group-benefits-renewal.total-employee-count", "op": "gte", "value": 5 },
 			{ "field": "group-benefits-renewal.states-of-operation", "op": "includes", "value": "ca" },
-			{ "field": "epli-readiness.last-training-date", "op": "isEmpty" }
+			{ "field": "epli-readiness.harassment-training-date", "op": "isEmpty" }
 		]
 	},
 	"sourceIds": ["ca-gov-12950-1"],

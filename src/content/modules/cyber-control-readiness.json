@@ -623,8 +623,8 @@
 			"privacyNote": "Answer yes or no. Do not enter the names of the people who completed or missed training."
 		},
 		{
-			"id": "last-training-date",
-			"label": "On what date did the most recent round of training close?",
+			"id": "security-awareness-training-date",
+			"label": "On what date did the most recent security awareness training round close?",
 			"kind": "date",
 			"group": "Controls: state and evidence",
 			"required": false,
@@ -1444,7 +1444,7 @@
 			"when": {
 				"all": [
 					{
-						"field": "last-training-date",
+						"field": "security-awareness-training-date",
 						"op": "lt",
 						"value": {
 							"monthsFromToday": -12

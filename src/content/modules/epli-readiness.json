@@ -483,8 +483,8 @@
 			"purpose": "rule-input"
 		},
 		{
-			"id": "last-training-date",
-			"label": "On what date was the most recent training session delivered?",
+			"id": "harassment-training-date",
+			"label": "On what date was the most recent harassment prevention training session delivered?",
 			"kind": "date",
 			"group": "Training",
 			"required": false,
@@ -1061,7 +1061,7 @@
 						"value": 5
 					},
 					{
-						"field": "last-training-date",
+						"field": "harassment-training-date",
 						"op": "lt",
 						"value": {
 							"monthsFromToday": -24
@@ -1090,7 +1090,7 @@
 						"value": "ny"
 					},
 					{
-						"field": "last-training-date",
+						"field": "harassment-training-date",
 						"op": "lt",
 						"value": {
 							"monthsFromToday": -12
@@ -1202,7 +1202,7 @@
 			"when": {
 				"all": [
 					{
-						"field": "last-training-date",
+						"field": "harassment-training-date",
 						"op": "lt",
 						"value": {
 							"monthsFromToday": -24

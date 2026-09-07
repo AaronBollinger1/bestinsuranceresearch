@@ -1887,6 +1887,75 @@ test('a field id means the same thing in every module that defines it', () => {
 	);
 });
 
+test('a field id shared across modules is one somebody decided to share', async () => {
+	/*
+	 * Agreeing on kind and options is necessary and it is not sufficient.
+	 * `last-training-date` proved that: two modules declared it, both as `date`,
+	 * both with no options, so the assertion above passed. The cyber module meant
+	 * the last round of security awareness training, measured against the annual
+	 * expectation in the CISA performance goals. The employment module meant the
+	 * last harassment prevention session, measured against California's two-year
+	 * interval and New York's one-year one. Two facts, two clocks, one id.
+	 *
+	 * Nothing rendered wrong, because every rule reading it lived inside one
+	 * module. The hazard was the next cross-module rule: a finding that those two
+	 * dates disagreed would have been nonsense, since they are supposed to
+	 * differ, and it would have looked right to whoever wrote it.
+	 *
+	 * Comparing labels does not catch it. Four of the legitimate shares are
+	 * worded differently in each module while asking for the same fact, and the
+	 * two that collided were worded almost identically. So the check is not on
+	 * the text: a shared id has to be a decision recorded in
+	 * src/config/shared-fields.ts, saying what single fact it holds.
+	 *
+	 * The effect is that an id colliding with another module's fails here until
+	 * somebody either renames it or states that the two really are one fact.
+	 */
+	const { SHARED_FIELDS, sharedField } = await import(
+		new URL('../src/config/shared-fields.ts', import.meta.url).href
+	);
+
+	const byId = new Map();
+	for (const module of modules) {
+		for (const field of module.data.fields ?? []) {
+			const defs = byId.get(field.id) ?? [];
+			defs.push({ module: module.id, kind: field.kind });
+			byId.set(field.id, defs);
+		}
+	}
+
+	const undeclared = [];
+	const wrongKind = [];
+	for (const [id, defs] of byId) {
+		if (defs.length < 2) continue;
+		const declared = sharedField(id);
+		if (!declared) {
+			undeclared.push(`${id} is declared in ${defs.map((d) => d.module).join(' and ')}`);
+			continue;
+		}
+		if (declared.kind !== defs[0].kind) {
+			wrongKind.push(`${id} is registered as ${declared.kind} but declared as ${defs[0].kind}`);
+		}
+	}
+
+	assert.deepEqual(
+		undeclared, [],
+		'field ids shared between modules without being registered in src/config/shared-fields.ts.\n' +
+			'Either rename one of them, or add it there with a sentence saying what one fact it records:\n  ' +
+			undeclared.join('\n  '),
+	);
+	assert.deepEqual(
+		wrongKind, [],
+		`shared fields whose registered kind does not match the modules:\n  ${wrongKind.join('\n  ')}`,
+	);
+
+	// A registration nobody uses is a claim about the corpus that is no longer true.
+	const stale = SHARED_FIELDS.filter((f) => (byId.get(f.id) ?? []).length < 2).map(
+		(f) => `${f.id} is registered as shared but is declared in fewer than two modules`,
+	);
+	assert.deepEqual(stale, [], `stale shared-field registrations:\n  ${stale.join('\n  ')}`);
+});
+
 test('every rule compares a field against a value that field can hold', () => {
 	/*
 	 * Reconciling the vocabularies rewrote comparands across four modules. A
