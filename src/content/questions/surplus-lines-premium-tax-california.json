@@ -1,0 +1,58 @@
+{
+	"question": "There is a surplus lines tax on my policy. What is it, and who is actually required to pay it?",
+	"aliases": [
+		"California surplus lines premium tax rate",
+		"who pays the surplus line tax California",
+		"3 percent surplus lines tax explained",
+		"surplus lines tax return premium refund",
+		"Insurance Code 1775.5 penalty for late payment"
+	],
+	"shortAnswer": "The statute levies it on the broker, not on the insured. Section 1775.5(a) requires every surplus line broker, annually on or before the first day of March, to pay the Insurance Commissioner for the use of the State of California a tax of 3 percent of the gross premiums charged less return premiums upon business done under the authority of that broker's licence during the preceding calendar year [S:ca-ins-code-1775-5]. It is an annual obligation of the licensee measured across a year of business, rather than a charge the section imposes on any particular policy.",
+	"assumes": [
+		"The placement is surplus line business done through a licensed surplus line broker, which is what the tax attaches to [S:ca-ins-code-1775-5].",
+		"You are asking what the section provides, not how any broker allocates the cost, on which the section is silent.",
+		"The business is not within the categories the chapter excludes, since those are outside the tax [S:ca-ins-code-1775-5][S:ca-ins-code-1760-5]."
+	],
+	"why": "Four features of the section are worth knowing, and the first changes how the charge should be read.\n\nWho owes it. The duty runs to the broker: every surplus line broker shall pay the Commissioner, for the use of the State of California, a tax of 3 percent of gross premiums charged less return premiums on business done under the authority of that broker's licence during the preceding calendar year [S:ca-ins-code-1775-5]. The section says nothing about who ultimately bears the cost, and this record does not say either. What it does settle is that the taxpayer named in the statute is the licensee.\n\nWhat it is measured on. Gross premiums charged less return premiums, across the preceding calendar year [S:ca-ins-code-1775-5]. That is a net figure over a period rather than a percentage struck on each transaction, which is why the mechanics below exist at all.\n\nWhat happens when a year runs the other way. Where 3 percent of return premiums exceeds 3 percent of gross premiums in a calendar year, the broker may either carry the excess forward as a credit against the following year or elect to receive a refund equal to the taxes previously paid on that excess [S:ca-ins-code-1775-5]. A year of heavy cancellations therefore produces a credit or a refund rather than a negative liability, and the broker chooses which.\n\nHow a single placement is counted. For the purpose of determining the tax, the total premium charged for all nonadmitted insurance placed in a single transaction with one underwriter or group of underwriters, whether in one or more policies, is the entire premium charged on all nonadmitted insurance for the California home state insured [S:ca-ins-code-1775-5]. So splitting one placement across several policies with the same underwriter does not split the base; the transaction is measured whole.\n\nThen the enforcement, which is unusually specific. A surplus line broker who fails to pay within the time required incurs a penalty of 10 percent of the amount due, plus interest at the rate of 1 percent per calendar month or fraction of a month from the March 1 due date until payment [S:ca-ins-code-1775-5]. A fraction of a month counts as a month, so the interest is not prorated within a month.\n\nTwo carve-outs sit in the same subdivision. The tax excludes portions of premiums on business involving the risk finance portion of a blended finite risk product used in the financing element of state or federal Superfund environmental settlements involving remediation of soil or groundwater contamination, and business excluded by section 1760.5 [S:ca-ins-code-1775-5].\n\nThat second cross-reference is worth following, because it is a real category rather than a technicality. Section 1760.5 places outside the chapter's limits reinsurance of the liability of an admitted insurer [S:ca-ins-code-1760-5]; insurance against perils of navigation, transit or transportation on hulls, freights, disbursements and other shipowner interests, goods in the course of exportation, importation or coastwise transportation including war risks, and marine builder's risks, drydocks and marine railways including ship repairer's liability and protection and indemnity, but not insurance covering bridges or tunnels [S:ca-ins-code-1760-5]; aircraft or spacecraft insurance; and insurance on the property or operations of railroads engaged in interstate commerce [S:ca-ins-code-1760-5]. Those last three may be placed with a nonadmitted insurer for a home state insured only by and through a special lines surplus line broker [S:ca-ins-code-1760-5].\n\nSo a marine or aviation placement sits in a different part of the chapter from an ordinary surplus lines placement, and the tax follows that division rather than cutting across it.",
+	"whatChanges": [
+		"Whether the placement is surplus line business done under a broker's licence, since that is what the tax attaches to [S:ca-ins-code-1775-5].",
+		"Whether the business falls within the section 1760.5 categories, which are excluded from the tax [S:ca-ins-code-1775-5][S:ca-ins-code-1760-5].",
+		"Whether several policies were placed in a single transaction with one underwriter, since the whole premium is then the base [S:ca-ins-code-1775-5].",
+		"How return premiums compare with gross premiums across the calendar year, which decides whether a credit or refund arises [S:ca-ins-code-1775-5].",
+		"Whether payment was made by March 1, since lateness triggers a 10 percent penalty and monthly interest [S:ca-ins-code-1775-5].",
+		"Whether the risk is marine, aviation or railroad, which requires a special lines surplus line broker rather than an ordinary one [S:ca-ins-code-1760-5]."
+	],
+	"variability": [
+		"The section imposes the tax on the broker and says nothing about how the cost is allocated between broker and insured. Nothing here states who ultimately bears it.",
+		"The tax is measured on a calendar year of business under a licence [S:ca-ins-code-1775-5], so it is not straightforwardly attributable to any single policy, and this record does not attempt that attribution.",
+		"Whether a particular placement falls inside a section 1760.5 category is a question about the risk rather than about the paperwork, and neither section resolves any individual case [S:ca-ins-code-1760-5].",
+		"Rates and thresholds in the Insurance Code change by legislation. The 3 percent figure and the penalty terms should be confirmed against the current section before anyone relies on them [S:ca-ins-code-1775-5]."
+	],
+	"nextActions": [
+		"If a surplus lines tax appears on a document you were given, ask what it is calculated on, since the statutory duty is an annual one on the broker rather than a per-policy charge [S:ca-ins-code-1775-5].",
+		"If a placement is marine, aviation or railroad, establish whether it sits under section 1760.5, because both the tax treatment and the broker licence required differ [S:ca-ins-code-1775-5][S:ca-ins-code-1760-5].",
+		"If several policies were placed together with one underwriter, expect them to be measured as one transaction [S:ca-ins-code-1775-5].",
+		"Brokers should diary March 1, since the penalty is 10 percent plus 1 percent per month or fraction of a month from that date [S:ca-ins-code-1775-5].",
+		"Where a year produced more return premium than gross, decide deliberately between carrying the credit forward and electing the refund, because the section gives the broker the choice [S:ca-ins-code-1775-5]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["surplus-lines"],
+	"states": ["CA"],
+	"audience": "business-owner",
+	"topics": ["surplus lines", "premium tax", "nonadmitted", "broker duties", "california"],
+	"companies": [],
+	"coverages": ["surplus-lines-california"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["three-declinations-before-surplus-lines-california", "surplus-lines-guarantee-fund-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a placement falls inside a section 1760.5 category, and how a broker has calculated a charge on a particular document, are both questions about that placement rather than about the statute."
+	},
+	"sourceIds": ["ca-ins-code-1775-5", "ca-ins-code-1760-5"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
