@@ -1,0 +1,59 @@
+{
+	"question": "My employees do completely different jobs. Why is the whole business on one workers' comp class code?",
+	"aliases": [
+		"NCCI Rule 1 assignment of classifications",
+		"governing classification workers compensation",
+		"standard exception classifications 8810 8742 7380",
+		"why is my office staff not on a separate class code",
+		"clerical office employees physical separation requirement"
+	],
+	"shortAnswer": "Because the manual classifies the business, not the jobs inside it. NCCI Basic Manual Rule 1 states that, subject to certain exceptions, it is the business of the employer within a state that is classified, not the separate employments, occupations, or operations within the business [S:ncci-basic-manual-rule-1]. Where more than one basic classification could apply at a location, the governing classification is the one producing the greatest amount of payroll [S:ncci-basic-manual-rule-1]. There are exactly five standard exceptions, and everything else folds into the governing code [S:ncci-basic-manual-rule-1].",
+	"assumes": [
+		"The state you are in uses the NCCI Basic Manual. NCCI publishes that its Experience Rating Plan is approved in 39 jurisdictions and does not apply in California, Delaware, Michigan, New Jersey, New York or Pennsylvania, nor in the four monopolistic states of North Dakota, Ohio, Washington and Wyoming [S:ncci-abcs-experience-rating]. That is a statement about that Plan, and this record does not establish which manual governs classification where you are.",
+		"You are asking why the codes look the way they do, not whether a particular assignment is correct, which the carrier and the rating organisation decide.",
+		"You are asking about classification rather than experience rating, which is a separate mechanism applied after the classification is set."
+	],
+	"why": "The instinct behind the question is that a payroll clerk and a roofer are obviously different risks, so they should obviously be rated differently. The manual starts from the opposite premise.\n\nRule 1 states that, subject to certain exceptions, it is the business of the employer within a state that is classified, not the separate employments, occupations, or operations within the business [S:ncci-basic-manual-rule-1]. A roofing company is a roofing company. The fact that somebody in it answers the phone does not make part of it an office.\n\nWhere more than one basic classification could describe a location, one of them governs. The governing classification at a specific location or job is the basic classification, other than a standard exception classification, determined in accordance with the Governing Classification Determination Table, under which the basic classification producing the greatest amount of payroll governs [S:ncci-basic-manual-rule-1]. Greatest payroll, not greatest headcount and not greatest hazard.\n\nThen the exceptions, and there are five of them, named: Code 8810 Clerical Office Employees NOC, Code 8871 Clerical Office Telecommuter Employees, Code 8742 Salespersons or Collectors - Outside, Code 7380 Drivers, Chauffeurs, Messengers, and Their Helpers NOC - Commercial, and Code 8748 Automobile Salespersons [S:ncci-basic-manual-rule-1]. Those are the standard exception classifications. If the job you have in mind is not one of those five, the answer to why it is not separately coded is that the manual does not separate it.\n\nThe clerical exception carries a physical condition that decides more disputes than anything else in this rule. Rule 1 conditions Code 8810 treatment on the clerical work area being physically separated from the operating hazards by at least one of floors, walls, partitions, counters, or other physical barriers [S:ncci-basic-manual-rule-1]. A desk in the corner of the shop floor is not a clerical office for this purpose. A counter between the desk and the shop is. That is a checkable, physical fact about your premises, and it is worth checking before an audit checks it for you.\n\nTwo further categories cut in opposite directions.\n\nGeneral inclusions fold in. Rule 1 treats certain general inclusions, such as a restaurant or cafeteria operated for employees and equipment repair, as part of the basic classification rather than separately classified [S:ncci-basic-manual-rule-1]. Running a staff canteen does not make you a restaurant.\n\nGeneral exclusions fall out. Rule 1 treats general exclusions, specifically aviation in all operations, new construction or alterations, stevedoring, and sawmill operations, as separately classified unless included in the basic classification wording [S:ncci-basic-manual-rule-1]. Those four come out of the governing code by default and go to their own.\n\nAnd there is one place where the separation depends entirely on your own bookkeeping. Rule 1 states that each type of construction, erection, or oil and gas field operation is assigned to the classification describing that operation only if separate payroll records are maintained for each operation [S:ncci-basic-manual-rule-1]. Only if. A contractor who does not keep payroll separated by operation does not get the benefit of separate classifications, and that is an outcome decided in the accounts rather than in the underwriting.\n\nSo the practical version of the answer: the business is classified as a whole, the code with the most payroll governs, five named jobs can be carved out and nothing else can, clerical carve-out needs a physical barrier, and construction carve-outs need separate payroll records.",
+	"whatChanges": [
+		"Whether your state uses the NCCI manual at all, since NCCI names ten jurisdictions where its Experience Rating Plan does not apply [S:ncci-abcs-experience-rating].",
+		"Which basic classification produces the greatest payroll at the location, since that is what governs [S:ncci-basic-manual-rule-1].",
+		"Whether the job is one of the five standard exception classifications, because nothing outside that list is separated [S:ncci-basic-manual-rule-1].",
+		"Whether the clerical area is physically separated by a floor, wall, partition, counter or other barrier, which is the condition on Code 8810 [S:ncci-basic-manual-rule-1].",
+		"Whether the activity is a general inclusion, which folds into the basic classification, or a general exclusion, which comes out of it [S:ncci-basic-manual-rule-1].",
+		"Whether separate payroll records are actually maintained per operation, which is the condition on separate construction and oil and gas classifications [S:ncci-basic-manual-rule-1]."
+	],
+	"variability": [
+		"This describes NCCI Basic Manual Rule 1. Which rating organisation's manual governs classification in a particular state is a question about that state, and this record does not establish it. The reach statement cited here is about NCCI's Experience Rating Plan specifically [S:ncci-abcs-experience-rating], which is a different instrument from the Basic Manual.",
+		"Rule 1 opens with subject to certain exceptions [S:ncci-basic-manual-rule-1], and this record sets out the standard exceptions, general inclusions and general exclusions it names rather than every exception in the manual.",
+		"Whether a particular business or operation falls in a given classification is a determination made by the carrier and the rating organisation on the facts, and nothing here decides any assignment.",
+		"Manual rules are amended. The rule as described should be confirmed against the current Basic Manual before anyone relies on a code or a condition."
+	],
+	"nextActions": [
+		"Establish which rating organisation's manual applies in your state before arguing about a code, since the answer differs by jurisdiction [S:ncci-abcs-experience-rating].",
+		"Check where the payroll actually sits, because the classification producing the greatest payroll is what governs the location [S:ncci-basic-manual-rule-1].",
+		"Walk the premises and look for the physical barrier between clerical work and operating hazards, since Code 8810 turns on it [S:ncci-basic-manual-rule-1].",
+		"If you do construction, erection, or oil and gas field work, check that payroll records are genuinely separated by operation, because separate classification depends on it [S:ncci-basic-manual-rule-1].",
+		"Do not expect a staff canteen or in-house equipment repair to be separately classified, since both are general inclusions [S:ncci-basic-manual-rule-1].",
+		"Do expect aviation, new construction or alterations, stevedoring and sawmill operations to come out of the governing code [S:ncci-basic-manual-rule-1]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["workers-compensation"],
+	"states": [],
+	"audience": "business-owner",
+	"topics": ["classification", "governing classification", "standard exceptions", "ncci", "basic manual", "payroll records"],
+	"companies": [],
+	"coverages": ["workers-compensation-california"],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["workers-comp-class-codes", "must-i-carry-workers-comp-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a business falls in a given classification is decided by the carrier and the rating organisation on the facts of the operation, and which manual governs depends on the state. Both are questions for a broker who can see the payroll and the premises."
+	},
+	"sourceIds": ["ncci-basic-manual-rule-1", "ncci-abcs-experience-rating"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
