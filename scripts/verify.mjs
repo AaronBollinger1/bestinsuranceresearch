@@ -1586,6 +1586,80 @@ test('no two source records carry the same title on the same host', () => {
 	);
 });
 
+test('a record citing a source that is no longer current says so', () => {
+	/*
+	 * Source records carry a status, and five of them are not `active`. Two
+	 * published questions cited the EEOC 1999 vicarious liability guidance as
+	 * current agency guidance while its own record said `superseded`, its page
+	 * had carried a supersession notice since April 2024, and its replacement had
+	 * been partly vacated and then rescinded. A walkthrough in this same corpus
+	 * had set out that whole chain six days before those questions were written.
+	 *
+	 * So the failure was not that the facts were hard to find. They were already
+	 * recorded here and nobody read them before citing. Nothing in the build
+	 * noticed, because citing a source has never required reading its status.
+	 *
+	 * This makes it required. A record that cites a non-active source must name
+	 * that status in its own text, in the vocabulary of the status itself: a
+	 * superseded source needs the word, a rescinded one needs the word, a bill
+	 * that never became law needs to say so. The point is disclosure to a reader
+	 * rather than policing vocabulary, which is why each status accepts the
+	 * phrasings a careful writer would actually reach for.
+	 *
+	 * A status with no disclosure pattern fails rather than passing quietly, so
+	 * introducing a new status forces a decision about how it must be disclosed
+	 * instead of silently exempting every record that cites it.
+	 */
+	const DISCLOSURE = {
+		superseded: /supersed/i,
+		rescinded: /rescind/i,
+		withdrawn: /withdraw/i,
+		repealed: /repeal/i,
+		'not-adopted': /not adopted|never adopted|did not pass|was not enacted|not enacted|failed to pass/i,
+	};
+
+	const stale = new Map();
+	for (const source of sources) {
+		if (source.data.status && source.data.status !== 'active') stale.set(source.id, source.data.status);
+	}
+
+	const unknownStatus = [...new Set(stale.values())].filter((s) => !DISCLOSURE[s]);
+	assert.deepEqual(
+		unknownStatus,
+		[],
+		'source statuses with no disclosure pattern in this test. Add one, deciding how a citing record must disclose it:\n  ' +
+			unknownStatus.join('\n  '),
+	);
+
+	const crossRules = collection('cross-rules');
+	const citing = [
+		['question', questions],
+		['coverage', coverages],
+		['module', modules],
+		['cross-rule', crossRules],
+		['example', examples],
+		['tool', tools],
+	];
+
+	const silent = [];
+	for (const [kind, records] of citing) {
+		for (const record of records) {
+			const text = JSON.stringify(record.data);
+			for (const [id, status] of stale) {
+				if (!text.includes(id)) continue;
+				if (DISCLOSURE[status].test(text)) continue;
+				silent.push(`${kind} ${record.id} cites ${id}, which is ${status}, without saying so`);
+			}
+		}
+	}
+
+	assert.deepEqual(
+		silent,
+		[],
+		'records citing a source that is no longer current without disclosing it:\n  ' + silent.join('\n  '),
+	);
+});
+
 test('a source cannot claim a recheck it did not have', () => {
 	/*
 	 * `accessedDate` and `lastChecked` were identical on 260 of 263 records, so
