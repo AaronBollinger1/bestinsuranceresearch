@@ -20,3 +20,11 @@ RECOMMENDED HTML:
 <link rel="manifest" href="/site.webmanifest">
 
 The PNG/SVG assets use transparent backgrounds.
+
+---
+Amended 2026-09-08: the site now serves /favicon.svg, a true vector traced from
+icon-master-black-transparent.png by scripts/trace-mark.mjs. It carries its own
+prefers-color-scheme rule, so it replaces both favicon-light.svg and
+favicon-dark.svg in the RECOMMENDED HTML above. Those two files remain here but
+are no longer referenced: despite the extension, each is a 340x340 base64 PNG
+wrapped in an <svg> element rather than vector artwork.

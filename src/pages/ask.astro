@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Callout from '../components/Callout.astro';
 import StateBlock from '../components/StateBlock.astro';
-import MarkResolving from '../components/MarkResolving.astro';
+import MarkConverging from '../components/MarkConverging.astro';
 import StatusChip from '../components/StatusChip.astro';
 import { siteConfig } from '../config/site';
 import { stripMarkers } from '../lib/citations';
@@ -213,7 +213,7 @@ const FAMILY_LABEL: Record<string, string> = {
 
 			<div id="ask-loading" hidden>
 				<div class="ask-resolving">
-					<MarkResolving size={72} label={null} />
+					<MarkConverging size={72} label={null} />
 					<p class="mono" aria-hidden="true">Resolving against the library</p>
 				</div>
 				<div class="skeleton" aria-hidden="true">

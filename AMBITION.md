@@ -255,10 +255,18 @@ resolved answer.** Nothing about the artwork changes. What changes is that it
 now earns its place on the Commons as well as the Record, because the funnel
 is what the Commons feeds.
 
-The mark has no vector source. Every asset in `public/` derives from
-`icon-master-black-transparent.png`, which is why dark mode needs a second file
-and why nothing can animate it cleanly. Producing a true vector of it is
-therefore a real task, not housekeeping.
+**The vector now exists, and this paragraph used to say it did not.**
+`scripts/trace-mark.mjs` recovers the artwork from
+`icon-master-black-transparent.png` by connected-component analysis of the
+alpha channel and emits `public/mark.svg`: 37 real circles and one traced
+arrowhead, in `currentColor`, at 3.4KB against the master's 7.3KB. It is
+checked before it is allowed to write - 37 dots against the 37 recorded here,
+radius falling toward the point (correlation 0.852, so the mark measurably is
+a funnel), and 0.975 intersection over union against the master's own ink.
+
+Three things were blocked on that and are no longer: dark mode needs no second
+file, the mark scales past 512px, and the loading animation can be the one
+briefed below rather than a wipe. `BRAND-SYSTEM.md` is the full system.
 
 ### The loading animation
 
@@ -270,10 +278,16 @@ choice of clip:
   literally what the product does. The ink-bloom clip
   (`public/media/ask-loading-ink-bloom.mp4`) is atmospheric and means nothing
   in particular; the mark resolving means the thing. Prefer the mark.
-- **It is generated from the real asset, not from a description.** The master
-  PNG goes in as both the first and the last frame, so the clip begins and
-  ends on the actual artwork and loops seamlessly. Any model drift is confined
-  to the middle, and a clip whose dots distort is rejected rather than shipped.
+- **It is derived from the geometry, not generated at all.** This bullet used
+  to brief a clip with the master PNG as first and last frame, on the
+  reasoning that model drift would at least be confined to the middle. That
+  is no longer the best available option and the clip is not needed: with the
+  vector in hand the 37 dots are real elements, each animated from its own
+  measured distance to the arrowhead, and the resolved frame is provably the
+  artwork coordinate for coordinate. Nothing drifts because nothing is
+  invented. `src/components/MarkConverging.astro`, and
+  `scripts/mark-frames.mjs` renders the cycle to a contact sheet so it can be
+  reviewed without a browser.
 - Everything else from `DIRECTION.md` holds: `/ask` loading state only, never a
   hero, muted, behind `prefers-reduced-motion` with a static poster, and never
   on a page carrying a claim.

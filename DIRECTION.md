@@ -112,14 +112,23 @@ Decided placement, and the reasoning, so this is not reopened:
   poster.** A reader who has asked for less motion gets the still.
 - **Never on a page that carries a claim.** Nothing animates behind evidence.
 
-### Superseded: which clip fills that slot
+### Closed: no clip fills that slot
 
-The placement reasoning above stands. The choice of clip does not.
-`AMBITION.md` re-briefs the loading state around the logo mark resolving
-rather than ink blooming, on the ground that the mark converging is what the
-site does and the bloom is only atmosphere. The ink-bloom file stays in
-`public/media/` and is the fallback if a generated mark animation distorts the
-artwork.
+The placement reasoning above stands. The choice of clip is settled by there
+not being one.
+
+`AMBITION.md` re-briefed the beat as the mark converging rather than ink
+blooming, on the ground that the mark resolving is what the site does. That is
+now built from the mark's own measured geometry rather than generated:
+`scripts/trace-mark.mjs` produced the vector the mark never had, and
+`src/components/MarkConverging.astro` animates its 37 real dots inward, each
+timed from its own distance to the arrowhead.
+
+So the earlier reasoning for preferring a generated clip is spent. Two
+Higgsfield passes had already replaced the mark with a random dot cloud, and
+the argument against a third is no longer that it failed - it is that there is
+nothing left for it to do. The ink-bloom file stays in `public/media/` and is
+no longer a fallback for anything. `BRAND-SYSTEM.md` holds the motion rules.
 
 ## What success looks like
 

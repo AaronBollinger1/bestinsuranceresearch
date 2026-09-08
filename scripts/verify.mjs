@@ -969,6 +969,7 @@ test('every required document exists and is substantive', () => {
 		'EDITORIAL-AND-CITATION-STANDARD.md', 'AI-RETRIEVAL-ARCHITECTURE.md',
 		'DOMAIN-ROUTING-MANIFEST.md', 'AUTHORITY-AND-DISTRIBUTION-PLAN.md',
 		'TOOL-REGISTRY-AND-ROADMAP.md', 'ANALYTICS-EVENT-SPEC.md', 'LAUNCH-GATE.md',
+		'BRAND-SYSTEM.md',
 	];
 	for (const doc of required) {
 		const full = path.join(ROOT, doc);
@@ -2831,4 +2832,126 @@ test('every class the ask script renders at runtime has CSS that can actually re
 		/\.thread\[data-astro-cid-[a-z0-9]+\] \.turn\{/.test(html),
 		'/ask has no reachable rule for a conversation turn',
 	);
+});
+
+/* ------------------------------------------------------------------ */
+/* The mark, and the assets that carry it                              */
+/* ------------------------------------------------------------------ */
+
+/*
+ * A foreign logo sat at public/favicon.svg for ninety commits - the Astro
+ * starter's own mark, one filled path in a 128 viewBox - and nothing noticed,
+ * because no assertion had ever looked at what the brand assets contain. These
+ * do. The mark is 37 circles and one arrowhead, measured by
+ * scripts/trace-mark.mjs and recorded in BRAND-SYSTEM.md, so any asset
+ * claiming to be the mark can be checked against that rather than by eye.
+ */
+const MARK_DOTS = 37;
+
+test('every asset that claims to be the mark is the mark', () => {
+	for (const rel of ['mark.svg', 'favicon.svg']) {
+		const file = path.join(DIST, rel);
+		assert.ok(fs.existsSync(file), `${rel} is missing from the build`);
+		const svg = read(file);
+		const circles = (svg.match(/<circle/g) || []).length;
+		assert.equal(circles, MARK_DOTS, `${rel} has ${circles} dots; the mark has ${MARK_DOTS}`);
+		assert.equal((svg.match(/<path/g) || []).length, 1, `${rel} does not have exactly one arrowhead`);
+		assert.ok(svg.includes('BestInsurance Research'), `${rel} does not identify itself as this mark`);
+		// A raster wrapped in an <svg> element is not a vector, whatever the
+		// extension says. Both shipped favicon "vectors" were exactly that.
+		assert.ok(!/<image|base64/.test(svg), `${rel} wraps a raster rather than being vector artwork`);
+	}
+});
+
+test('the served favicon is the vector, and colours itself', () => {
+	/*
+	 * A favicon is not in the page, so it cannot inherit currentColor and has to
+	 * carry its own rule. That rule is what collapses favicon-light.svg and
+	 * favicon-dark.svg into one asset.
+	 */
+	const svg = read(path.join(DIST, 'favicon.svg'));
+	assert.match(svg, /prefers-color-scheme: dark/, 'favicon.svg has no dark-scheme rule');
+	assert.ok(svg.includes('#17212e'), 'favicon.svg does not use --ink for light browsers');
+
+	const html = read(path.join(DIST, 'ask', 'index.html'));
+	assert.ok(
+		html.includes('href="/favicon.svg" type="image/svg+xml"'),
+		'the layout does not serve the vector favicon',
+	);
+	for (const stale of ['favicon-light.svg', 'favicon-dark.svg']) {
+		assert.ok(!html.includes(stale), `the layout still references ${stale}, which is a raster`);
+	}
+});
+
+test('the loading animation is the traced mark, and rests for a reader who asks', () => {
+	const html = read(path.join(DIST, 'ask', 'index.html'));
+
+	const dots = (html.match(/class="mc-dot"/g) || []).length;
+	assert.equal(dots, MARK_DOTS, `/ask renders ${dots} animated dots; the mark has ${MARK_DOTS}`);
+	assert.equal((html.match(/class="mc-head"/g) || []).length, 1, '/ask renders no arrowhead');
+
+	/*
+	 * DIRECTION.md: muted, behind prefers-reduced-motion, with the static mark as
+	 * the resting state. The guard has to be on the animation rather than the
+	 * artwork, so a reader who asked for less motion gets the mark and not a
+	 * blank space. Matched without a space after the colon because the build
+	 * minifies it out.
+	 */
+	assert.match(
+		html,
+		/@media \(prefers-reduced-motion:\s*no-preference\)\{[^}]*\.mc-dot/,
+		'the mark animation is not behind prefers-reduced-motion',
+	);
+	/*
+	 * Checked by removing the guarded blocks and looking at what is left, not
+	 * by pattern. A regex cannot see brace nesting, so matching
+	 * `.mc-dot{...animation:` finds the rule INSIDE the media query and the
+	 * assertion passes or fails for the wrong reason - which is what the first
+	 * version of this check did.
+	 */
+	const withoutMotionGuards = (css) => {
+		const open = '@media (prefers-reduced-motion:no-preference){';
+		let out = css;
+		for (;;) {
+			const at = out.indexOf(open);
+			if (at === -1) return out;
+			let depth = 1;
+			let i = at + open.length;
+			while (i < out.length && depth > 0) {
+				if (out[i] === '{') depth++;
+				else if (out[i] === '}') depth--;
+				i++;
+			}
+			out = out.slice(0, at) + out.slice(i);
+		}
+	};
+
+	const unguarded = withoutMotionGuards(html);
+	assert.ok(
+		!/\.mc-dot\[data-astro-cid-[a-z0-9]+\][^{]*\{[^}]*animation:/.test(unguarded),
+		'the mark animates outside the reduced-motion guard',
+	);
+	assert.ok(
+		unguarded.length < html.length,
+		'no reduced-motion guard was found to strip, so the check above is vacuous',
+	);
+
+	// Every dot must carry the one number the whole motion is derived from.
+	const withT = (html.match(/class="mc-dot"[^>]*--t:/g) || []).length;
+	assert.equal(withT, MARK_DOTS, `${MARK_DOTS - withT} animated dots carry no --t, so their timing is undefined`);
+});
+
+test('no page animates behind a claim', () => {
+	/*
+	 * DIRECTION.md: nothing animates behind evidence. The loading mark belongs to
+	 * /ask and nowhere else, so its presence on a page carrying a source ledger
+	 * would be the rule being broken rather than bent.
+	 */
+	const offenders = [];
+	for (const file of htmlFiles) {
+		const route = routeOf(file);
+		if (route === '/ask' || route.startsWith('/design')) continue;
+		if (read(file).includes('class="mc-dot"')) offenders.push(route);
+	}
+	assert.deepEqual(offenders, [], `the loading animation appears outside /ask: ${offenders.join(', ')}`);
 });

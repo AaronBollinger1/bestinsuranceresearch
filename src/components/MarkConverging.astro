@@ -1,0 +1,250 @@
+---
+/**
+ * The brand mark converging, for the `/ask` loading state.
+ *
+ * WHAT CHANGED, AND WHY IT COULD NOT BE DONE BEFORE
+ *
+ * `AMBITION.md` briefs this beat as convergence: scattered dots drifting inward
+ * and resolving into the arrowhead, because that is literally what the site
+ * does - many sources narrowing into one answer. The shipped version could not
+ * do it. It was a mask sliding across `icon-master-black-transparent.png`,
+ * which is a wipe, not a convergence, because a raster has no per-dot handles
+ * to move. Two Higgsfield passes conditioned on that same raster had already
+ * failed worse: a video model handed a picture of the mark has no geometry to
+ * preserve, so it invented a random dot cloud both times.
+ *
+ * `scripts/trace-mark.mjs` removed the constraint by producing the vector the
+ * mark never had. It recovers the artwork by connected-component analysis of
+ * the master's alpha - 37 dots and one arrowhead, matching the geometry
+ * `AMBITION.md` records - and the trace is checked two ways before it is
+ * allowed to write: radius must fall toward the point (measured correlation
+ * 0.852, so the mark really is a funnel) and the rasterised result must cover
+ * the master's ink (measured 0.975 intersection over union, the remainder
+ * being anti-aliasing on both sides).
+ *
+ * So the dots are now real elements with measured centres and radii, and the
+ * end state of the animation is the traced artwork itself. Nothing can drift,
+ * for a stronger reason than before: previously the geometry was untouchable
+ * because it was a photograph, now it is exact because it was measured.
+ *
+ * HOW THE MOTION IS DERIVED RATHER THAN CHOSEN
+ *
+ * Each dot carries `data-t`, its own distance from the arrowhead normalised
+ * across the field. Everything else follows from that one number:
+ *
+ *   - it starts displaced further out along its own radius from the point, so
+ *     the field opens along the funnel axis instead of scattering at random;
+ *   - it arrives on a delay of (1 - t), so the open edge lands first and the
+ *     dots nearest the point land last;
+ *   - the arrowhead lands after all of them, which is the resolution.
+ *
+ * No easing curve or offset is hand-tuned per dot. Change the artwork, re-run
+ * the tracer, and the motion re-derives itself.
+ *
+ * No gold. A first pass put a hairline gold edge on the reveal front; it could
+ * not be kept in sync and read louder than the mark, and `DIRECTION.md` is
+ * explicit that gold appearing without meaning should be removed. The
+ * arrowhead landing is the resolution and does not need a highlighter. Making
+ * the arrowhead itself gold was considered and rejected for a different
+ * reason: it recolours the logo, and restraint is the brand.
+ */
+import { readFileSync } from 'node:fs';
+
+interface Props {
+	/** Rendered size in px. The mark is square, so one number is enough. */
+	size?: number;
+	/** Accessible label. Set to null when an adjacent live region already says it. */
+	label?: string | null;
+}
+
+const { size = 96, label = 'Resolving your question against the library' } = Astro.props;
+
+/*
+ * Read at build time, not fetched at runtime. The dots have to be real elements
+ * in the document for CSS to reach them, and inlining also means the loading
+ * indicator needs no network request of its own - which would be its own small
+ * joke, a loading state that waits to load.
+ */
+const source = readFileSync('public/mark.svg', 'utf8');
+
+const headX = Number(source.match(/data-head-x="([\d.]+)"/)?.[1] ?? 170);
+const headY = Number(source.match(/data-head-y="([\d.]+)"/)?.[1] ?? 170);
+const viewBox = source.match(/viewBox="([^"]+)"/)?.[1] ?? '0 0 340 340';
+const headPath = source.match(/<path class="mk-head" d="([^"]+)"/)?.[1] ?? '';
+
+const dots = [...source.matchAll(/<circle[^>]*data-t="([\d.]+)"[^>]*cx="([\d.]+)"[^>]*cy="([\d.]+)"[^>]*r="([\d.]+)"/g)].map(
+	(m) => {
+		const t = Number(m[1]);
+		const cx = Number(m[2]);
+		const cy = Number(m[3]);
+		const r = Number(m[4]);
+		/*
+		 * Outward along this dot's own line from the arrowhead. Scaled by t so a
+		 * dot at the open edge travels further than one already near the point,
+		 * which is what makes the field appear to funnel rather than to zoom.
+		 */
+		const dx = cx - headX;
+		const dy = cy - headY;
+		const len = Math.hypot(dx, dy) || 1;
+		const throwBy = 26 * t + 6;
+		return {
+			cx,
+			cy,
+			r,
+			t: t.toFixed(3),
+			ox: ((dx / len) * throwBy).toFixed(1),
+			oy: ((dy / len) * throwBy).toFixed(1),
+		};
+	},
+);
+
+if (dots.length === 0) {
+	throw new Error(
+		'MarkConverging: public/mark.svg carries no traced dots. Run `node scripts/trace-mark.mjs --write`.',
+	);
+}
+---
+
+<div
+	class="mark-converging"
+	style={`--mc-size: ${size}px`}
+	role={label ? 'img' : undefined}
+	aria-label={label ?? undefined}
+	aria-hidden={label ? undefined : 'true'}
+>
+	<svg viewBox={viewBox} fill="currentColor" aria-hidden="true" focusable="false">
+		{headPath && <path class="mc-head" d={headPath} />}
+		{
+			dots.map((dot) => (
+				<circle
+					class="mc-dot"
+					cx={dot.cx}
+					cy={dot.cy}
+					r={dot.r}
+					style={`--t: ${dot.t}; --ox: ${dot.ox}; --oy: ${dot.oy}`}
+				/>
+			))
+		}
+	</svg>
+</div>
+
+<style>
+	.mark-converging {
+		position: relative;
+		width: var(--mc-size);
+		height: var(--mc-size);
+		flex: none;
+		color: var(--ink);
+	}
+	.mark-converging svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	/*
+	 * At rest the whole mark is present and still. That is also exactly what a
+	 * reader who has asked for less motion gets, which is why the animation is
+	 * added on top rather than being something the static case opts out of.
+	 */
+	.mc-dot,
+	.mc-head {
+		transform-box: fill-box;
+		transform-origin: center;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		/*
+		 * A 2600ms cycle. Measured in a browser rather than described from the
+		 * keyframes: every dot is in place by 700ms, the arrowhead is solid by
+		 * 1000ms, and the mark then holds still until about 2200ms. Roughly half
+		 * the cycle is the resolved mark doing nothing, which is deliberate - a
+		 * loading indicator that never rests reads as agitation rather than as
+		 * work in progress.
+		 */
+		.mc-dot {
+			animation: mc-dot-in 2600ms cubic-bezier(0.22, 0.61, 0.24, 1) infinite both;
+			/* Open edge first, point last. (1 - t) is the whole stagger rule. */
+			animation-delay: calc((1 - var(--t)) * 520ms);
+		}
+
+		.mc-head {
+			animation: mc-head-in 2600ms cubic-bezier(0.22, 0.61, 0.24, 1) infinite both;
+			animation-delay: 560ms;
+		}
+	}
+
+	/*
+	 * A dot arrives from outside and leaves in place, which is not symmetry for
+	 * its own sake. Sampling the first version in a browser showed the loop
+	 * ending by flinging all 37 dots back outward - the mark visibly exploding
+	 * once per cycle, which is the opposite of the brief in AMBITION.md that the
+	 * clip should begin and end on the artwork. So opacity now reaches zero
+	 * before the translate runs: the dot fades where it stands, travels while
+	 * invisible, and the next pass fades it in from the outside again. Read at
+	 * speed, the loop is convergence repeated rather than assembly and collapse.
+	 */
+	@keyframes mc-dot-in {
+		0% {
+			opacity: 0;
+			transform: translate(calc(var(--ox) * 1px), calc(var(--oy) * 1px)) scale(0.55);
+		}
+		/* Arrival. Everything after this is the mark simply being the mark. */
+		38% {
+			opacity: 1;
+			transform: translate(0, 0) scale(1);
+		}
+		84% {
+			opacity: 1;
+			transform: translate(0, 0) scale(1);
+		}
+		/* Gone, still in position. The journey back is never seen. */
+		93% {
+			opacity: 0;
+			transform: translate(0, 0) scale(1);
+		}
+		100% {
+			opacity: 0;
+			transform: translate(calc(var(--ox) * 1px), calc(var(--oy) * 1px)) scale(0.55);
+		}
+	}
+
+	/*
+	 * The arrowhead does not drift in. It is the thing the dots resolve into, so
+	 * it arrives by taking its own shape rather than by travelling: anything
+	 * else makes the destination look as provisional as the field.
+	 */
+	@keyframes mc-head-in {
+		0% {
+			opacity: 0;
+			transform: scale(0.6);
+		}
+		26% {
+			opacity: 1;
+			transform: scale(1);
+		}
+		84% {
+			opacity: 1;
+			transform: scale(1);
+		}
+		/* Same rule as the dots: it goes out at full size and shrinks unseen. */
+		93% {
+			opacity: 0;
+			transform: scale(1);
+		}
+		100% {
+			opacity: 0;
+			transform: scale(0.6);
+		}
+	}
+
+	/*
+	 * Deliberately no prefers-color-scheme branch. This site is light-only:
+	 * there is no data-theme anywhere and no dark block in tokens.css, so the
+	 * page renders on cream whatever the reader's OS says, and keying the mark
+	 * off the OS preference painted a white mark onto cream for every visitor
+	 * with a dark desktop. The vector uses currentColor, so when dark mode does
+	 * ship this needs no second file and no second asset - which is the other
+	 * thing the trace bought.
+	 */
+</style>

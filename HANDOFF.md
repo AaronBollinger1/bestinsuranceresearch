@@ -15,7 +15,7 @@ pass if you learn them the hard way.
 | | |
 | --- | --- |
 | Branch | `launch/initial-publication`, 88 commits, **never push to `main`** |
-| Suite | `npm run validate` = 110 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
+| Suite | `npm run validate` = 118 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
 | Built pages | 840 (299 are noindex verification sheets) |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
@@ -285,14 +285,41 @@ repos and was caught by the estate audit.
 **Porkbun MCP is fully wired** for reads and writes estate-wide. The
 `apiAccess: 0` flag in `list_domains` is misleading — verified empirically.
 
-**Higgsfield cannot animate the logo.** The mark is 37 precisely placed dots on
-a tapering lattice; two Seedance passes conditioned on the master PNG both
-replaced it with a random dot cloud and neither returned to the artwork. The
-shipped animation is `src/components/MarkResolving.astro` — CSS masking over
-the real `icon-master-black-transparent.png`, so geometry cannot drift. The site
-is **light-only**: no `data-theme`, no dark block in `tokens.css`. Do not key
-anything off `prefers-color-scheme` or you will paint the white master onto
-cream.
+**The mark has a true vector now, and that closed three open items.**
+`scripts/trace-mark.mjs` traces `icon-master-black-transparent.png` by
+connected-component analysis into `public/mark.svg` - 37 circles and one
+arrowhead, validated at 0.975 IoU against the master and refusing to write if
+the geometry disagrees with the 37 dots `AMBITION.md` records. It also emits
+`public/favicon.svg`, self-colouring, which replaces `favicon-light.svg` and
+`favicon-dark.svg` - both of which were a base64 PNG in an `<svg>` wrapper,
+22KB between them. **Do not hand-edit either SVG. Re-run the tracer.**
+
+The loading animation is `src/components/MarkConverging.astro`: the 37 real
+dots converge inward, each timed from its own measured distance to the
+arrowhead, so the resolved frame is the artwork exactly.
+`scripts/mark-frames.mjs` renders the cycle to a contact sheet and asserts
+both that the resolved frame reproduces `mark.svg` and that no visible dot is
+displaced on the way out - the first version failed the second, ending each
+loop by flinging all 37 dots outward. `MarkResolving.astro` was the masked-
+raster wipe and is deleted.
+
+**Higgsfield has no remaining job here.** Two Seedance passes conditioned on
+the master both replaced the mark with a random dot cloud. The reason not to
+try a third is no longer that it failed; it is that the geometry is measured,
+the motion derives from it, and a generated clip could only be less exact.
+Generated imagery has no home in this brand more generally, because
+`BRAND-SYSTEM.md` rules out the things it would be for: no stock photography,
+no illustrated people, no decorative graphics.
+
+The site is **light-only**: no `data-theme`, no dark block in `tokens.css`. Do
+not key anything in the interface off `prefers-color-scheme` or you will paint
+a white mark onto cream. The favicon is the one exception, because it renders
+outside the page.
+
+**A foreign logo sat at `public/favicon.svg` for 90 commits** - the Astro
+starter's own mark, one filled path in a 128 viewBox. Nothing referenced it
+and nothing noticed. Four assertions now check that every asset claiming to be
+the mark is 37 circles and one arrowhead.
 
 ---
 
