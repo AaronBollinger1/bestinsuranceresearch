@@ -158,5 +158,9 @@
 		"naic-medical-malpractice",
 		"ny-11-nycrr-73-2"
 	],
-	"relatedQuestions": ["claims-made-retroactive-date", "same-limit-different-protection"]
+	"relatedQuestions": [
+		"is-the-california-malpractice-cap-still-250000",
+		"claims-made-retroactive-date",
+		"same-limit-different-protection"
+	]
 }

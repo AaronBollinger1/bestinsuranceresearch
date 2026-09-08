@@ -1,0 +1,59 @@
+{
+	"question": "Everything I read says California caps medical malpractice damages at $250,000. Is that still the number?",
+	"aliases": [
+		"is the MICRA cap still 250000",
+		"California medical malpractice damages cap current amount",
+		"AB 35 MICRA noneconomic damages schedule",
+		"Civil Code 3333.2 current limit on noneconomic damages",
+		"how much can you recover against a doctor in California"
+	],
+	"shortAnswer": "No, and it has not been for years. As amended by AB 35 and effective January 1, 2023, Civil Code section 3333.2 limits damages for noneconomic losses starting at three hundred fifty thousand dollars ($350,000) in an action other than wrongful death, rising forty thousand dollars ($40,000) each January 1 for 10 years to a ceiling of seven hundred fifty thousand dollars ($750,000); for wrongful death it starts at five hundred thousand dollars ($500,000), rising fifty thousand dollars ($50,000) each January 1 to one million dollars ($1,000,000) [S:ca-civ-code-3333-2]. After those steps the amounts are adjusted for inflation on January 1 of each year by 2 percent, beginning January 1, 2034 [S:ca-civ-code-3333-2]. Two things follow that matter more than the figure: the limit is on noneconomic losses only, and there may be three separate limits in one action rather than one [S:ca-civ-code-3333-2].",
+	"assumes": [
+		"You are asking about California, and about an action for injury or death against a health care provider based upon professional negligence, which is what these sections are written for [S:ca-ccp-340-5].",
+		"You are asking what the statute says rather than what a particular claim is worth. Nothing here values any claim, and nothing here is a prediction about any award.",
+		"You are reading the official text. All four sections are quoted here from the California Legislative Counsel's own site [S:ca-civ-code-3333-2][S:ca-ccp-340-5][S:ca-ccp-364][S:ca-civ-code-3333-1]."
+	],
+	"why": "The two hundred and fifty thousand dollar figure is not a myth. It was the number, for a very long time, and that is exactly why it is still being repeated. But the section it came from has been rewritten, and the version on the official host is stated as amended by Stats. 2022, Ch. 17, Sec. 3 (AB 35), effective January 1, 2023 [S:ca-civ-code-3333-2]. Material quoting a flat two hundred and fifty thousand dollars is describing the section as it stood before that.\n\nHere is what replaced it. In an action other than one for wrongful death, the limit on damages for noneconomic losses begins at three hundred fifty thousand dollars ($350,000), with an increase of forty thousand dollars ($40,000) each January 1 for 10 years, up to seven hundred fifty thousand dollars ($750,000) [S:ca-civ-code-3333-2]. In an action for wrongful death it begins at five hundred thousand dollars ($500,000), with an increase of fifty thousand dollars ($50,000) each January 1 for 10 years, up to one million dollars ($1,000,000) [S:ca-civ-code-3333-2]. Once the stepped increases are complete, the amounts are adjusted for inflation on January 1 of each year by 2 percent, beginning January 1, 2034 [S:ca-civ-code-3333-2].\n\nRead that last sentence again, because it changes the kind of thing the limit is. There is no year after 2022 in which the answer to what is the cap is a single durable number. It moves every January 1, first by a stated step and then by an index, and no further legislation is required for it to move. Anyone maintaining a guideline, a reserve, an internal manual or a training slide that names one figure is maintaining something the statute will make wrong on the next New Year's Day.\n\nThere is a nice piece of evidence for why the old figure stuck. Look at the amendment notes on the sections around it. Civil Code section 3333.1, which handles collateral source evidence, is stated as amended by Stats. 1976, Ch. 1079 [S:ca-civ-code-3333-1]. Code of Civil Procedure section 340.5, the limitations rule, and section 364, the notice requirement, are both stated as amended by Stats. 1975, 2nd Ex. Sess., Ch. 2 [S:ca-ccp-340-5][S:ca-ccp-364]. Three of the four sections still carry notes from the mid-1970s. One of them does not. The part of this regime that moved is the part everybody quotes, and the parts nobody quotes stayed still.\n\nNow the two corrections that matter more than the number itself.\n\nThe first is what the limit is on. It is a limit on damages for noneconomic losses, which subdivision (a) describes as compensating for pain, suffering, inconvenience, physical impairment, disfigurement and other nonpecuniary damage [S:ca-civ-code-3333-2]. Medical expenses, lost earnings and other economic loss are not limited by that section. So a claim described as capped is not a claim worth at most the cap: on a serious injury with long-term care needs and lost earning capacity, the limited part can be the smaller part. Reporting that treats the MICRA figure as the value of a case is comparing one head of damages against a whole claim.\n\nThe second is that there may not be one limit. Subdivision (f) states that the applicable dollar amounts set forth in subdivisions (b), (g) and (h) provide three separate limits of liability that may apply, with corresponding language for a wrongful death action [S:ca-civ-code-3333-2]. Separately, the section provides that no health care provider defendant shall be liable for damages for noneconomic losses in more than one of the categories it sets out [S:ca-civ-code-3333-2]. Those two provisions do different jobs and are easily run together: the first says an action can engage more than one limit, the second says a single defendant cannot be reached under more than one. One of the three turns on a defendant being unaffiliated, tested by reference to the definition of affiliated in Section 150 of the Corporations Code and to whether the defendant is employed by, performing under a contract with, an owner of, or in a joint venture with another specified entity [S:ca-civ-code-3333-2].\n\nOne last thing, because people who ask about the cap are often further along than they realise. The clock on this line is short and it is not the clock the limitations section appears to state. An action must be commenced within three years of the date of injury or one year after the plaintiff discovers, or with reasonable diligence should have discovered, the injury, whichever occurs first, and the three-year period is tolled only for fraud, intentional concealment, or a foreign body with no therapeutic or diagnostic purpose [S:ca-ccp-340-5]. But no action may be commenced without at least 90 days' prior notice of intention to sue, and a notice served within 90 days of the expiration of the limitations period extends the time to commence by 90 days from service [S:ca-ccp-364]. Whether a claim is in time is a question for a lawyer and it is a more urgent one than the size of the limit.",
+	"whatChanges": [
+		"Which year the limit is being applied in, because it steps up every January 1 and then indexes at 2 percent from January 1, 2034 [S:ca-civ-code-3333-2].",
+		"Whether the action is for wrongful death or for injury, since the two run on separate schedules with different starting figures and different ceilings [S:ca-civ-code-3333-2].",
+		"How much of the loss is noneconomic, because the section limits that head of damages and not economic loss [S:ca-civ-code-3333-2].",
+		"How many limit categories the action engages, given that subdivision (f) contemplates three separate limits that may apply [S:ca-civ-code-3333-2].",
+		"Whether any defendant is unaffiliated within the meaning the section adopts, which is what one of those limits turns on [S:ca-civ-code-3333-2].",
+		"Whether the claim is in time at all, which turns on the date of injury, the date of discovery, and whether a section 364 notice has been served [S:ca-ccp-340-5][S:ca-ccp-364]."
+	],
+	"variability": [
+		"The amount is a moving target by design. This record states the schedule the section sets out [S:ca-civ-code-3333-2] rather than asserting a figure for the current year, because the figure for any given year is a function of that schedule and the section may be amended again.",
+		"On the schedule as stated, and counting the increases from the January 1, 2023 starting amounts, the 2026 figures work out at four hundred and seventy thousand dollars for injury and six hundred and fifty thousand dollars for wrongful death. Those two numbers are arithmetic from the schedule rather than amounts the section prints, and they should be confirmed against the section before either is relied on [S:ca-civ-code-3333-2].",
+		"This record establishes that subdivision (f) provides three separate limits of liability that may apply, and that one of them turns on a defendant being unaffiliated [S:ca-civ-code-3333-2]. It does not establish which category each of subdivisions (g) and (h) names, and that mapping should be read in the section itself.",
+		"Everything here is California. This corpus holds no damages limit, limitations period or notice requirement for any other state on this line, and a state with no limit, a different limit, or a different clock is the ordinary case rather than the exception.",
+		"Nothing on this page values a claim, applies a limit to any set of facts, or says how a court would allocate damages between economic and noneconomic heads. Those are determinations made in the action."
+	],
+	"nextActions": [
+		"Check which year's figure applies before quoting one, since the amount moves every January 1 without any amendment to the section [S:ca-civ-code-3333-2].",
+		"Separate the noneconomic part of the loss from the economic part, because only the first is limited by this section [S:ca-civ-code-3333-2].",
+		"Ask how many limit categories the action engages and whether any defendant is unaffiliated, since subdivision (f) contemplates three separate limits [S:ca-civ-code-3333-2].",
+		"Take the dates to a lawyer before anything else. Three years from injury or one year from discovery, whichever occurs first, with a closed list of tolling grounds [S:ca-ccp-340-5], and a 90-day notice that both precedes the action and can extend the period [S:ca-ccp-364].",
+		"Read section 3333.2 on the official host rather than relying on a secondary summary, because the summaries are where the two hundred and fifty thousand dollar figure survives [S:ca-civ-code-3333-2]."
+	],
+	"confidence": "changing",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": ["medical-professional-liability"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["micra", "noneconomic damages", "damages limit", "ab 35", "medical malpractice", "statute of limitations", "california"],
+	"companies": [],
+	"coverages": ["medical-professional-liability-california"],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["claims-made-retroactive-date", "same-limit-different-protection"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a claim is in time, how a loss divides between economic and noneconomic damages, and how many limit categories an action engages are all legal determinations on the facts. The limitations question in particular is time-critical and is not one to resolve from a statute read online."
+	},
+	"sourceIds": ["ca-civ-code-3333-2", "ca-ccp-340-5", "ca-ccp-364", "ca-civ-code-3333-1"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
