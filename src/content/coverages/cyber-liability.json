@@ -1,0 +1,193 @@
+{
+	"name": "Cyber liability and privacy",
+	"line": "cyber-liability",
+	"family": "commercial",
+	"definition": "Cyber policy forms are not public the way personal lines forms are, so this page does not state what any cyber policy covers, and nothing here should be read as doing so. What is public is the other half of the line: the legal duties a breach triggers and the liability it creates, which is what a cyber programme is written against and what decides the size of the loss. In California those duties changed recently and in a way most material has not caught up with. Breach notification used to run on a standard rather than a deadline, and the operative words were that notice be given in the most expedient time possible and without unreasonable delay. Those words are gone. As amended by SB 446, effective January 1, 2026, Civil Code section 1798.82(a) provides that the disclosure shall be made within 30 calendar days of discovery or notification of the data breach [S:ca-civ-code-1798-82]. A second, separate clock runs alongside it: a business notifying more than 500 California residents from a single breach must submit a sample copy of the notification to the Attorney General within 15 calendar days of notifying affected consumers [S:ca-civ-code-1798-82]. And the liability sits in a different statute again. Civil Code section 1798.150(a)(1)(A) allows a consumer whose nonencrypted personal information was subject to unauthorized access and exfiltration, theft, or disclosure, as a result of the business's violation of the duty to implement and maintain reasonable security procedures and practices, to recover not less than one hundred dollars ($100) and not greater than seven hundred and fifty dollars ($750) per consumer per incident, or actual damages, whichever is greater [S:ca-civ-code-1798-150]. That duty is set out at section 1798.81.5(b) rather than in the action itself [S:ca-civ-code-1798-81-5]. Three statutes, two clocks, and one arithmetic that scales with the size of the affected class rather than with harm.",
+	"protects": [
+		"Not what this page can tell you. Cyber forms are not publicly filed and this record has read none, so what any policy covers is in that policy",
+		"The line is written against a statutory notification duty. Section 1798.82(a) obliges a business that owns or licenses computerized data including personal information to disclose a breach to a California resident whose unencrypted personal information was, or is reasonably believed to have been, acquired by an unauthorized person [S:ca-civ-code-1798-82]",
+		"And against a statutory liability. Section 1798.150(a)(1) gives the consumer a civil action where the unauthorized access resulted from the business's violation of the reasonable security duty [S:ca-civ-code-1798-150]",
+		"The duty being sued on is section 1798.81.5(b): implement and maintain reasonable security procedures and practices appropriate to the nature of the information, to protect it from unauthorized access, destruction, use, modification, or disclosure [S:ca-civ-code-1798-81-5]",
+		"For a HIPAA covered entity a parallel federal duty runs on its own clock: notification without unreasonable delay and in no case later than 60 calendar days after discovery of a breach [S:cfr-45-164-404-lii]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "The obligations set out below, not a form wording this record has read",
+			"note": "Everything in this list is a legal duty or liability created by a statute or rule, taken from that statute or rule. None of it is a policy term. Whether a particular cyber policy funds any of it, and on what conditions, is in that policy and is not established anywhere on this page."
+		},
+		{
+			"item": "The notification exercise itself, on a 30 calendar day clock in California",
+			"note": "Section 1798.82(a) requires disclosure within 30 calendar days of discovery or notification of the data breach [S:ca-civ-code-1798-82]. The phrase that governed earlier versions, in the most expedient time possible and without unreasonable delay, is no longer present in the subdivision [S:ca-civ-code-1798-82]. Subdivision (c) permits delay if a law enforcement agency determines that notification will impede a criminal investigation [S:ca-civ-code-1798-82]."
+		},
+		{
+			"item": "A notice with statutory contents, a statutory title and a minimum type size",
+			"note": "Subdivision (d)(1) requires the notice to be written in plain language, titled Notice of Data Breach, and presented in at least 10-point type [S:ca-civ-code-1798-82]. Subdivision (d)(2) requires it to state the reporting entity and its contact information, the types of personal information involved, the date or estimated date of the breach and the date of the notice, whether notification was delayed by a law enforcement investigation, a general description of the incident, contact details for the major credit reporting agencies where social security or driver's licence numbers were involved, and any offer of identity theft prevention and mitigation services [S:ca-civ-code-1798-82]."
+		},
+		{
+			"item": "A separate submission to the Attorney General, on a separate 15 day clock",
+			"note": "Where a single breach requires notification to more than 500 California residents, subdivision (f) requires a single sample copy of the notification to be submitted electronically to the Attorney General within 15 calendar days of notifying affected consumers [S:ca-civ-code-1798-82]. The two deadlines are measured from different events: the 30 days runs from discovery, this 15 days runs from the consumer notice."
+		},
+		{
+			"item": "Statutory damages measured per consumer per incident",
+			"note": "Section 1798.150(a)(1)(A) allows not less than one hundred dollars ($100) and not greater than seven hundred and fifty dollars ($750) per consumer per incident, or actual damages, whichever is greater [S:ca-civ-code-1798-150]. Subdivision (a)(1)(B) allows injunctive or declaratory relief and (a)(1)(C) any other relief the court deems proper [S:ca-civ-code-1798-150]. In assessing statutory damages a court considers the nature and seriousness of the misconduct, the number of violations, its persistence, the length of time over which it occurred, willfulness, and the defendant's assets, liabilities and net worth [S:ca-civ-code-1798-150]."
+		},
+		{
+			"item": "Substitute notice, once the class or the cost passes a stated threshold",
+			"note": "Subdivision (j)(3) permits substitute notice where the business demonstrates that the cost of providing notice would exceed two hundred fifty thousand dollars ($250,000), or that the affected class to be notified exceeds 500,000 [S:ca-civ-code-1798-82]. Substitute notice consists of email notice, conspicuous posting on the business's internet website for a minimum of 30 days, and notification to major statewide media [S:ca-civ-code-1798-82]."
+		},
+		{
+			"item": "A duty that follows the data to a vendor",
+			"note": "Section 1798.81.5(c) requires a business disclosing personal information about a California resident to a nonaffiliated third party under a contract to include a provision requiring that third party to implement and maintain reasonable security procedures and practices appropriate to the nature of the information [S:ca-civ-code-1798-81-5]. The duty does not stop at the business's own perimeter, which is why vendor contracts are part of this line rather than adjacent to it."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Whatever your own form excludes, which this record does not establish",
+			"note": "This list sets out the boundaries of the statutory duties described above. It is not a list of policy exclusions, and no policy exclusion is established anywhere on this page. A cyber form's exclusions, conditions, sublimits and waiting periods are in that form."
+		},
+		{
+			"item": "Encrypted personal information, for the California notification duty",
+			"note": "Section 1798.82(a) is written for a resident whose unencrypted personal information was, or is reasonably believed to have been, acquired by an unauthorized person [S:ca-civ-code-1798-82]. Section 1798.150(a)(1) is likewise written for nonencrypted personal information [S:ca-civ-code-1798-150]. Encryption therefore bears on whether the duty and the action arise at all, not only on how bad the incident is."
+		},
+		{
+			"item": "Paper records, for the definition of a breach",
+			"note": "Subdivision (g) defines breach of the security of the system as unauthorized acquisition of computerized data that compromises the security, confidentiality, or integrity of personal information maintained by the individual or business [S:ca-civ-code-1798-82]. Computerized data is the object of the definition, and this record does not establish any notification duty under this section for a paper file."
+		},
+		{
+			"item": "Several classes of regulated entity, for the reasonable security duty",
+			"note": "Section 1798.81.5(e) exempts a number of entities from that section, including providers of health care subject to the Confidentiality of Medical Information Act, financial institutions subject to the California Financial Information Privacy Act, entities subject to HIPAA, entities obtaining information under the Vehicle Code, and businesses regulated by state or federal law providing greater protection to personal information [S:ca-civ-code-1798-81-5]. A business assuming the duty applies to it should read that list first, because the governing duty may be a different one."
+		},
+		{
+			"item": "Statutory damages, where a noticed violation is cured inside 30 days",
+			"note": "Section 1798.150(b) requires a consumer to give the business 30 days' written notice identifying the specific provisions alleged to have been violated before initiating an action for statutory damages, and provides that no such action may be initiated if the business cures the noticed violation within that period [S:ca-civ-code-1798-150]. This record establishes that carve-out for statutory damages and does not establish that it reaches a claim for actual damages."
+		},
+		{
+			"item": "Any other law, as a route to a private right of action",
+			"note": "Section 1798.150(c) provides that nothing in the title shall be interpreted to serve as the basis for a private right of action under any other law [S:ca-civ-code-1798-150]. The action this line is written against is the one the section itself creates."
+		}
+	],
+	"limitsAndDeductibles": [
+		"None of these statutes sets a policy limit or a deductible. What they set is the arithmetic the limit has to answer, and it is worth reading in that order rather than the other way round.",
+		"Statutory damages run per consumer per incident, at not less than one hundred dollars ($100) and not greater than seven hundred and fifty dollars ($750), or actual damages, whichever is greater [S:ca-civ-code-1798-150]. The figure therefore scales with the size of the affected class, and the floor applies without a consumer showing loss.",
+		"Notification cost has a statutory reference point built into it: substitute notice becomes available once the business demonstrates the cost of notice would exceed two hundred fifty thousand dollars ($250,000), or that the class exceeds 500,000 [S:ca-civ-code-1798-82]. A business well below that threshold is a business expected to notify individually.",
+		"Where an offer of identity theft prevention and mitigation services is made under subdivision (d)(2), the section describes it as provided at no cost for not less than 12 months [S:ca-civ-code-1798-82]. That is a per-person, twelve-month commitment rather than a one-off cost.",
+		"The Attorney General submission is triggered at more than 500 California residents from a single breach [S:ca-civ-code-1798-82], so 500 is the number at which the incident acquires a regulator audience as well as a consumer one.",
+		"Time is the constraint the limits sit inside. Thirty calendar days from discovery covers investigation, scoping, drafting to the statutory content requirements, and delivery [S:ca-civ-code-1798-82], and for a HIPAA covered entity the federal outer limit is 60 calendar days from discovery while still requiring notification without unreasonable delay [S:cfr-45-164-404-lii]."
+	],
+	"underwritingInputs": [
+		"Which multifactor authentication method is in use, and on what. CISA's goal 3.F asks organizations to require MFA to access assets using the strongest available method, ordering the options phishing-resistant MFA, then mobile app-based soft tokens, then SMS or voice [S:cisa-cpg-2-0]",
+		"Whether backups are stored offsite and offline and have actually been restored from. CISA's goal 3.O asks for a list of all maintained backups including installation media, license keys, configuration information and retention period, securely stored offsite and offline [S:cisa-cpg-2-0], and NIST CSF 2.0 states the outcome RC.RP-03, that the integrity of backups and other restoration assets is verified before using them for restoration [S:nist-csf-2-0]",
+		"Whether a vulnerability management programme exists and covers internet-facing assets, which is CISA's goal 2.B [S:cisa-cpg-2-0]",
+		"Whether administrators hold separate non-privileged accounts and privileges are reviewed on a recurring basis, which are CISA's goals 3.G and 3.H [S:cisa-cpg-2-0] and the NIST outcome PR.AA-05 [S:nist-csf-2-0]",
+		"Whether departing staff lose access on a defined and enforced process, and whether inactive accounts are disabled, which is CISA's goal 3.D [S:cisa-cpg-2-0]",
+		"Whether email authentication is in place with DMARC set to reject, alongside STARTTLS, SPF and DKIM, which is CISA's goal 3.L [S:cisa-cpg-2-0]",
+		"Whether an incident response plan exists and is exercised, which CISA's goal 1.C asks be reviewed and drilled at a minimum on an annual basis [S:cisa-cpg-2-0]",
+		"Whether there is a current inventory of organizational assets, meaning data, hardware, software, systems, facilities and personnel, which is CISA's goal 2.A [S:cisa-cpg-2-0]",
+		"Whether personnel receive initial training before accessing systems and at least annual training after that, which is CISA's goal 3.J [S:cisa-cpg-2-0] and the NIST outcome PR.AT-01 [S:nist-csf-2-0]",
+		"Which data elements the business actually holds, because section 1798.82(h)(1) enumerates them and the enumeration decides whether an incident is notifiable at all [S:ca-civ-code-1798-82]",
+		"Whether vendor contracts carry the reasonable security provision section 1798.81.5(c) requires [S:ca-civ-code-1798-81-5]",
+		"Whether the business is inside one of the section 1798.81.5(e) exemptions, since that changes which duty governs [S:ca-civ-code-1798-81-5]"
+	],
+	"exposures": [
+		{
+			"item": "Unauthorized acquisition of computerized data",
+			"note": "This is the event the statute is built around: subdivision (g) defines breach of the security of the system as unauthorized acquisition of computerized data that compromises the security, confidentiality, or integrity of personal information maintained by the individual or business [S:ca-civ-code-1798-82]. Acquisition, not merely access, is the word the definition uses."
+		},
+		{
+			"item": "A credential pair with no name attached to it",
+			"note": "Most people picture a breach as a file of names and social security numbers. Subdivision (h) also treats a username or email address, in combination with a password or security question and answer that would permit access to an online account, as personal information, with no name element required [S:ca-civ-code-1798-82]. Section 1798.150(a)(1) reaches the same combination [S:ca-civ-code-1798-150]. A leaked credential list can therefore be a notifiable event on its own."
+		},
+		{
+			"item": "The size of the affected class, rather than the severity of the harm",
+			"note": "Because statutory damages are stated per consumer per incident at a floor of one hundred dollars ($100) [S:ca-civ-code-1798-150], the exposure is a multiplication rather than an assessment of injury. The court's factors under subdivision (a)(2) address the defendant's conduct and finances, not each consumer's loss [S:ca-civ-code-1798-150]. Two incidents with identical facts and different record counts are not comparable losses."
+		},
+		{
+			"item": "A vendor holding your data under a contract that says nothing about security",
+			"note": "Section 1798.81.5(c) requires the contract with a nonaffiliated third party to include a provision requiring that third party to implement and maintain reasonable security procedures and practices appropriate to the nature of the information [S:ca-civ-code-1798-81-5]. NIST CSF 2.0 carries cybersecurity supply chain risk management as a category within the GOVERN function [S:nist-csf-2-0], and CISA's goal 1.D addresses notifying a customer of security incidents and vulnerabilities within a risk-informed time frame [S:cisa-cpg-2-0]."
+		},
+		{
+			"item": "Known vulnerabilities that were never patched",
+			"note": "CISA's goal 2.B asks for a vulnerability management programme to patch and mitigate misconfigured software in a timely manner, scoped to all organizational assets including those that face the internet [S:cisa-cpg-2-0]. NIST states the outcome PR.PS-02, that software is maintained, replaced and removed commensurate with risk [S:nist-csf-2-0]. This is the exposure most often documented before the incident rather than discovered after it."
+		},
+		{
+			"item": "Access that outlived the person who held it",
+			"note": "CISA's goal 3.D asks for a defined and enforced administrative process to offboard staff including revocation of all access, and for user access to be reviewed and accounts disabled when inactive for a specified period [S:cisa-cpg-2-0]. An account nobody owns is an exposure nobody is monitoring."
+		},
+		{
+			"item": "The clock, as an exposure in its own right",
+			"note": "Thirty calendar days from discovery has to absorb investigation, scoping, and a notice meeting the content, title and type-size requirements of subdivision (d) [S:ca-civ-code-1798-82]. An organisation without a current asset inventory, which is CISA's goal 2.A [S:cisa-cpg-2-0], cannot enumerate whose data was involved inside that window, and the only delay this record establishes is the law enforcement delay in subdivision (c) [S:ca-civ-code-1798-82]."
+		},
+		{
+			"item": "An incident response plan that has never been run",
+			"note": "CISA's goal 1.C asks that incident response plans be developed, maintained, updated and regularly exercised, and reviewed and drilled at a minimum on an annual basis [S:cisa-cpg-2-0]. NIST states the outcome RS.MA-01, that the incident response plan is executed in coordination with relevant third parties once an incident is declared [S:nist-csf-2-0]. A plan first opened on day one of a thirty-day clock is a document rather than a capability."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Encryption, which is legally operative here and not only protective",
+			"note": "Both the notification duty and the private action are written for unencrypted or nonencrypted personal information [S:ca-civ-code-1798-82][S:ca-civ-code-1798-150]. So encryption bears on whether the duty and the action arise at all. CISA's goal 3.K asks for encryption, digital signatures and cryptographic hashes protecting the confidentiality and integrity of network communications, and for critical file types and data to be identified and protected [S:cisa-cpg-2-0]; NIST states PR.DS-01 and PR.DS-02 for data at rest and data in transit [S:nist-csf-2-0]. Whether any particular implementation meets the statutory description is a legal question and is not answered here."
+		},
+		{
+			"item": "Multifactor authentication, at the strongest method available",
+			"note": "CISA's goal 3.F asks organizations to require MFA to access assets using the strongest available method, ordering the options from phishing-resistant MFA, through mobile app-based soft tokens, to SMS or voice [S:cisa-cpg-2-0]. NIST states the outcome PR.AA-03, that users, services and hardware are authenticated [S:nist-csf-2-0]. The ordering matters as much as the presence, because MFA is not one control."
+		},
+		{
+			"item": "Backups that have been restored from, not merely taken",
+			"note": "CISA's goal 3.O asks for a list of all maintained backups including installation media, license keys, configuration information and retention period, stored securely offsite and offline [S:cisa-cpg-2-0]. NIST states PR.DS-11, that backups of data are created, protected, maintained and tested, and RC.RP-03, that the integrity of backups and other restoration assets is verified before using them for restoration [S:nist-csf-2-0]. The verification is the control; the copy on its own is an assumption."
+		},
+		{
+			"item": "An incident response plan exercised on a schedule",
+			"note": "CISA's goal 1.C asks that incident response plans be reviewed and drilled at a minimum on an annual basis [S:cisa-cpg-2-0], and NIST states RS.MA-01 for executing the plan in coordination with relevant third parties once an incident is declared [S:nist-csf-2-0]. Given a fixed 30 calendar day disclosure period running from discovery [S:ca-civ-code-1798-82], the drill is what determines whether the deadline is workable."
+		},
+		{
+			"item": "Least privilege, with administrators on separate accounts",
+			"note": "CISA's goals 3.G and 3.H ask that user accounts not hold administrator privileges, that administrators maintain separate accounts for activity unrelated to their admin role, and that privileges be re-evaluated on a recurring basis [S:cisa-cpg-2-0]. NIST states PR.AA-05, that access permissions, entitlements and authorizations are defined in policy, managed, enforced and reviewed, incorporating least privilege and separation of duties [S:nist-csf-2-0]."
+		},
+		{
+			"item": "Email authentication set to reject, not to monitor",
+			"note": "CISA's goal 3.L asks that on all corporate email infrastructure STARTTLS is enabled, SPF and DKIM are enabled, and DMARC is enabled and set to reject [S:cisa-cpg-2-0]. The final clause is the substance of the goal: a DMARC record in monitoring mode reports on abuse rather than stopping it."
+		},
+		{
+			"item": "A vendor contract that carries the security provision the statute asks for",
+			"note": "Section 1798.81.5(c) requires the contract with a nonaffiliated third party to include a provision requiring that third party to implement and maintain reasonable security procedures and practices appropriate to the nature of the information [S:ca-civ-code-1798-81-5]. This is a drafting step rather than a technical one, and it is the only item on this list that lives in a contract file."
+		},
+		{
+			"item": "Knowing which enumerated data elements you hold, before anything happens",
+			"note": "Subdivision (h)(1) enumerates the elements that make information personal information for the notification duty, from social security and government identification numbers through account numbers with a security code, medical information, health insurance information, biometric data, automated licence plate recognition data and genetic data [S:ca-civ-code-1798-82]. CISA's goal 2.A asks for a regularly updated inventory of all organizational assets, data included [S:cisa-cpg-2-0]. The enumeration decides whether an incident is notifiable, so the inventory is what makes that determinable inside the window."
+		},
+		{
+			"item": "Training before access, and at least annually after it",
+			"note": "CISA's goal 3.J asks that new employees receive initial cybersecurity training prior to accessing computer systems, and that at least annual training be provided for all organizational users [S:cisa-cpg-2-0]. NIST states PR.AT-01, that personnel are provided with awareness and training so they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind [S:nist-csf-2-0]."
+		}
+	],
+	"relatedPolicies": [
+		"Crime and social engineering, which answers the funds-transfer end of the same incident rather than the data end [S:cisa-cpg-2-0]",
+		"Technology errors and omissions, where the failure is in a service delivered to a customer rather than in the business's own security [S:ca-civ-code-1798-81-5]",
+		"Employer group health and any HIPAA covered function, which runs on a different notification clock entirely: not later than 60 calendar days after discovery, and still without unreasonable delay [S:cfr-45-164-404-lii]",
+		"Commercial general liability, which is where the question of whether a data incident is covered at all usually starts before a cyber policy exists [S:ca-civ-code-1798-150]"
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "Everything statutory on this page is California, and the most recent change is the one to watch. Section 1798.82 on the official host is stated as amended by Stats. 2025, Ch. 319, Sec. 1 (SB 446), effective January 1, 2026, and subdivision (a) now requires disclosure within 30 calendar days of discovery or notification of the data breach [S:ca-civ-code-1798-82]. The earlier standard, in the most expedient time possible and without unreasonable delay, is no longer in the subdivision [S:ca-civ-code-1798-82], so an incident response plan, vendor playbook or checklist written against that phrasing is describing a rule that no longer applies. The private action at section 1798.150 is stated as amended by Stats. 2024, Ch. 121, Sec. 6 (AB 3286), effective January 1, 2025 [S:ca-civ-code-1798-150], and the reasonable security duty at section 1798.81.5 as amended by Stats. 2021, Ch. 527, Sec. 2 (AB 825), effective January 1, 2022 [S:ca-civ-code-1798-81-5]. This corpus holds no breach notification statute for any other state, so a duty described here should not be assumed to match the one where you operate: the only other notification rule cited on this page is the federal HIPAA rule, which runs to 60 calendar days from discovery [S:cfr-45-164-404-lii]. The control frameworks cited here are national and voluntary rather than Californian: CISA describes the Cross-Sector Cybersecurity Performance Goals as voluntary and as a baseline set of practices [S:cisa-cpg-2-0][S:cisa-cpg-program-page], and NIST states that the Framework does not prescribe how outcomes should be achieved but offers a taxonomy of high-level cybersecurity outcomes usable by any organization regardless of size, sector or maturity [S:nist-csf-2-0]."
+		}
+	],
+	"lastReviewed": "2026-09-08",
+	"effectiveDate": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-civ-code-1798-82",
+		"ca-civ-code-1798-150",
+		"ca-civ-code-1798-81-5",
+		"cfr-45-164-404-lii",
+		"cisa-cpg-2-0",
+		"cisa-cpg-program-page",
+		"nist-csf-2-0"
+	],
+	"relatedQuestions": [
+		"what-controls-will-a-cyber-insurer-ask-about",
+		"what-mfa-and-tested-backups-actually-have-to-mean"
+	]
+}

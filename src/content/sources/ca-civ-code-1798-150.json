@@ -1,0 +1,27 @@
+{
+	"title": "California Civil Code Section 1798.150 (the CCPA private right of action for a data breach, and its statutory damages)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.150",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "2025-01-01",
+	"accessedDate": "2026-09-08",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The section is headed Personal Information Security Breaches, and the version on the official host is stated as amended by Stats. 2024, Ch. 121, Sec. 6 (AB 3286), effective January 1, 2025.",
+		"Subdivision (a)(1) gives a civil action to a consumer whose nonencrypted and nonredacted personal information, or whose email address in combination with a password or security question and answer that would permit access to the account, is subject to unauthorized access and exfiltration, theft, or disclosure as a result of the business's violation of the duty to implement and maintain reasonable security procedures and practices appropriate to the nature of the information.",
+		"Subdivision (a)(1)(A) allows recovery of damages in an amount not less than one hundred dollars ($100) and not greater than seven hundred and fifty dollars ($750) per consumer per incident, or actual damages, whichever is greater.",
+		"Subdivision (a)(1)(B) allows injunctive or declaratory relief, and subdivision (a)(1)(C) allows any other relief the court deems proper.",
+		"Subdivision (a)(2) requires a court, in assessing statutory damages, to consider the nature and seriousness of the misconduct, the number of violations, the persistence of the misconduct, the length of time over which the misconduct occurred, the willfulness of the defendant's misconduct, and the defendant's assets, liabilities, and net worth.",
+		"Subdivision (b) requires a consumer, before initiating an action for statutory damages, to provide the business 30 days' written notice identifying the specific provisions alleged to have been violated, and provides that no action for statutory damages may be initiated if the business cures the noticed violation within that 30 days.",
+		"Subdivision (c) provides that nothing in the title shall be interpreted to serve as the basis for a private right of action under any other law."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "This is the exposure that makes a California data breach a liability event rather than only a notification exercise. Two features matter to anyone reading a limit. The statutory damages in subdivision (a)(1)(A) are stated per consumer per incident, so the arithmetic scales with the size of the affected class rather than with any measure of harm, and the floor of one hundred dollars applies whether or not a consumer can show loss. And the duty the action is built on is the reasonable security procedures and practices duty, which is set out at Civil Code section 1798.81.5 rather than in this section, so the standard being litigated lives somewhere else. The 30-day notice and cure in subdivision (b) applies to statutory damages, and this record does not establish that it applies to a claim for actual damages."
+}

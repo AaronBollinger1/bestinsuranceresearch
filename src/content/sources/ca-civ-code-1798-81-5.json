@@ -1,0 +1,26 @@
+{
+	"title": "California Civil Code Section 1798.81.5 (the reasonable security duty, and its exemptions)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.81.5",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "2022-01-01",
+	"accessedDate": "2026-09-08",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The version on the official host is stated as amended by Stats. 2021, Ch. 527, Sec. 2 (AB 825), effective January 1, 2022.",
+		"Subdivision (a)(1) states the intent of the section as ensuring that personal information about California residents is protected, and as encouraging businesses that own, license, or maintain personal information about Californians to provide reasonable security for that information.",
+		"Subdivision (b) requires a business that owns, licenses, or maintains personal information about a California resident to implement and maintain reasonable security procedures and practices appropriate to the nature of the information, to protect the personal information from unauthorized access, destruction, use, modification, or disclosure.",
+		"Subdivision (c) addresses a business that discloses personal information about a California resident to a nonaffiliated third party under a contract, and requires the contract to include a provision requiring the third party to implement and maintain reasonable security procedures and practices appropriate to the nature of the information.",
+		"Subdivision (d) defines personal information for this section as an individual's name in combination with enumerated unencrypted and unredacted data elements, including a social security number, government identification numbers, a financial account or card number with any required security code or password, medical information, health insurance information, unique biometric data, and genetic data, and separately as a username or email address in combination with a password or security question and answer that would permit access to an online account.",
+		"Subdivision (e) exempts certain entities from the section, including providers of health care subject to the Confidentiality of Medical Information Act, financial institutions subject to the California Financial Information Privacy Act, entities subject to the Health Insurance Portability and Accountability Act of 1996, entities obtaining information under the Vehicle Code, and businesses regulated by state or federal law providing greater protection to personal information."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "This is the duty that Civil Code section 1798.150 sues on, which is why it belongs alongside it rather than on its own. The section does not define reasonable security, and this record does not establish any standard, framework or control set as satisfying it: subdivision (b) states a standard of appropriateness to the nature of the information and stops there. Two provisions are easy to miss. Subdivision (c) reaches contracts with third parties, so the duty follows the data to a vendor rather than ending at the business's own perimeter. And subdivision (e) carves out several classes of regulated entity, so a business assuming this section applies to it should check that list first, because for a health care provider or a financial institution the governing duty may be a different one."
+}
