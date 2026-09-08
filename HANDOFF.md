@@ -296,21 +296,33 @@ cream.
 
 ---
 
-## 5. Suggested order for the next several passes
+## 5. The order
 
-1. **Get the Record reviewed.** The instrument is built - `/review-queue`
-   plus 299 verification sheets - so what is left is the reading, by the
-   licensed reviewer. Everything public-facing still waits on this. The one
-   code task remaining underneath it is giving `tools` a `reviewState` and a
-   `reviewer`, so the 3 live worksheets stop being published with no review
-   state recorded.
-2. **Company entity pages** from CDI and NAIC published records — the
-   highest-value Record surface that is currently near-empty.
-3. **Hazard geography and residual markets** — the area-specific layer, from
-   FEMA, CAL FIRE, USGS, CEA, Citizens, FHCF.
-4. **Risk-score explainers** — how scoring works, never a score.
-5. **Recheck pass** on the dated-figure sources, flipping `lastCheckedBasis`.
-6. **New York and Texas** questions and lines, to break the California skew.
-7. **Versioned dataset release.**
-8. Commons, in the order `AMBITION.md` sets: case reports, then practitioner
-   annotation, then open discussion last.
+**`AMBITION.md` now holds the reconciled order**, in the section *One order,
+reconciled from the four that existed*. Read it there rather than here, because
+this estate had four different orderings of the same work in four files and
+copying a fifth into this one is how that happened. The short version:
+
+1. **Promote to production.** The user, one command. Nothing is cited that does
+   not exist, and everything else is downstream.
+2. **Licensed sign-off.** Brian reading. The instrument is built; no code left.
+3. **Recheck the figure sources.** 19 published figures rest on 11 documents and
+   none of the 11 has ever been rechecked. Next pass. Bounded, and a moved
+   amount produces a correction, which is the point.
+4. **Give `tools` a `reviewState` and a `reviewer`**, so the 3 live worksheets
+   stop publishing 80 cited sentences with no review state recordable.
+5. **Carrier entity records.** Route measured and settled: state DOI filing
+   libraries, not CDI company profiles. See the map in `AMBITION.md`.
+6. Hazard geography, then risk-score explainers, then New York and Texas depth,
+   then the versioned dataset release, then the Commons.
+
+### What the goal is, so it stops being re-asked
+
+`AMBITION.md` opens with *The goal, stated once*, and maps every ask made so far
+- forms, exclusions, policy understanding, companies, mapping, risk scores,
+threads, opinions, audits, contribution levels, automation - to a layer, with
+what it may publish and what it never publishes. Two words in the brief do not
+survive contact with the rules and are replaced there rather than argued about
+again: **advice** becomes the document quoted and cited, and **unbiased** means
+publishing the regulator record and declining to rank. Neither loses anything
+the ambition actually wanted.

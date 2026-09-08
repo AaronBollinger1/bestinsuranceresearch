@@ -72,6 +72,99 @@ on whether a claim should have been paid.** That is not a citability
 consideration, it is the licensing line, and it holds on the Commons even
 though nothing else does.
 
+## The goal, stated once
+
+**The public reference for insurance: what the rule is, what the form says,
+what the numbers show, and what actually happened to people - free, in one
+place, and citable to the document.**
+
+Every ask so far fits that sentence. Nothing so far has needed a rule to bend.
+Three of them need a *different origin*, and two of them need a word replaced,
+and that is the whole of the collision. This section exists so it stops being
+re-litigated every pass.
+
+**The word that has to go is "advice."** Not the ambition behind it - the
+ambition is right and is most of what this property already does. The word.
+Telling a named person whether their policy covers their loss is a coverage
+determination, and a coverage determination published on a page whose header
+reads *Operated by Bollinsure* under licence 6013787 is an unlicensed
+individualized opinion no disclaimer undoes. What replaces it is stronger
+anyway, and is the actual reason to cite this site: **we publish what the
+document says, quote the clause that says it, and let the reader apply it.**
+"Your CGL excludes this" is advice. "CG 00 01 04 13 excludes it at exclusion
+j.(5), here is the text, and here is what turns on it" is evidence. The second
+is what an answer engine cites and a lawyer trusts, and it is not a smaller
+product - it is the one nobody else is building.
+
+The second word is **"unbiased."** Unbiased about carriers cannot mean a
+league table with the bias averaged out. It means we publish the regulator's
+own record and decline to rank. A source that refuses to publish a verdict is
+more citable, not less, and a carrier ranking is the single largest liability
+on the list.
+
+### Every ask, and where it goes
+
+| Ask | Layer | May publish | Never publishes | State |
+| --- | --- | --- | --- | --- |
+| Coverage understanding, all lines | Record | The form's own words, the statute, the mechanism | A determination on a reader's policy | 27 of 51 lines |
+| **Exclusions** | Record | The exclusion quoted, its endorsement history, what turns on it | Whether an exclusion applies to a reader's claim | Live; `commonlyExcludes` on every coverage page |
+| **Policy understanding** | Record | What a clause does, what defeats it, what changes it | An eligibility or coverage verdict | The core product |
+| **Carrier coverage forms** | Record | Filed form text, quoted and cited, hosted by its publisher | A rehosted copy of a copyrighted form | 26 `policy-form` sources; route proven, see below |
+| Company-level entity pages | Record | Licence status, domicile, group, former names, authorised lines, receivership - all regulator-published | Any rating, ranking, score or aggregated opinion | 3 records, all institutions; no carrier records yet |
+| Hazard and insurance mapping | Numbers | Published hazard geography and residual-market structure | A per-address risk output | Not started |
+| Risk-score understanding | Record | How scoring works, what a CLUE report is, consumer rights in it | Any score, for anyone | Not started |
+| **Audits** | Two different things | See below | See below | One built, one forbidden |
+| Claims-handling discussion | Commons | Attributed accounts, moderated, labelled for provenance | Whether a claim should have been paid | Not started |
+| Chat threads, discussions, opinions | Commons | Named human account and practitioner annotation | The same verdict prohibition, enforced by moderation | Not started |
+| Contribution levels | Commons | Standing earned by verified licence and cited contribution | Standing earned by volume of answers | Not started |
+| **Automation** | Machinery | Ingest, recheck, release, audit, on a schedule | Automated determination or scoring of anything | See below |
+
+### The three that are underlined, because they are the ones that get confused
+
+**Audits.** The word covers one thing this property should do and one it must
+never do, and they look similar from outside.
+
+- *Auditing the corpus* is already built and is the best thing here. The
+  verification sheets at `/review-queue/<source-id>` are exactly an audit
+  instrument: every one of 4,948 cited sentences traced to the document under
+  it. `npm run audit:estate` and `npm run audit:onpage` are the same idea
+  pointed at the estate. More of this is pure gain.
+- *Auditing a reader's coverage* is a coverage determination wearing a
+  clipboard. The line is already drawn and already enforced: the ten live
+  modules record a position and surface gaps **against cited rules**, and
+  `scripts/verify-instrument.mjs` rejects any rule that states an eligibility,
+  price, appetite or coverage verdict. That is the allowed shape of an audit -
+  *this rule exists, your recorded position does not address it, here is the
+  rule* - and it is the shape every future one takes.
+
+**Automation.** Allowed, wanted, and the constraint is on the output not the
+mechanism. Automate the machinery: ingest from government data, the recheck
+cadence, dataset releases, the estate audit on a schedule, moderation queues.
+Never automate a conclusion the rules forbid a human from publishing - an
+automated coverage determination is not more defensible than a manual one, it
+is the same publication at scale. The distinction that matters: automation may
+decide *what to check and when*, never *what the answer is*.
+
+**Carrier coverage forms, and the route to them.** Measured on 8 September
+rather than assumed, and the result reversed the plan:
+
+- **CDI company profiles are a dead end at scale.** The lookup carries exactly
+  the right fields - licence status, company type, state of domicile, former
+  names, agent for service of process, authorised lines, complaint history -
+  and sits behind a session-based search on `interactive.web.insurance.ca.gov`
+  with no stable per-company URL. Same failure as the NAIC complaint aggregate,
+  which killed Layer 2 step 1. A source we cannot address per company is a
+  source no record can cite.
+- **State filing document libraries are the route, and this corpus already
+  proves it twice.** `iso-ho-00-03-05-11-nv-doi` is American Family/Homesite's
+  filed HO 3, a static PDF on `doi.nv.gov`. `iso-dp-00-03-12-02-nv` is CSAA's
+  filed DP 3 on `docs.nv.gov`. `iso-ho-00-06-05-11-me-bureau` is on
+  `maine.gov`. Stable government-hosted URLs, carrier-specific, quotable.
+  Nevada and Maine are open; that is where carrier-level form work starts.
+- Note what those records get right and keep getting right:
+  `officialHost: false`. The state hosts the copy; ISO and the carrier publish
+  the text. We cite and quote the clause. We never rehost the form.
+
 ## Layer 2: The Numbers
 
 This is the largest unclaimed ground and it breaks no rule at all, because a
@@ -192,14 +285,83 @@ moderation, it needs no account, and it is the half that makes the Commons
 worth joining. A statistics reference nobody else publishes is also the
 strongest possible answer to *why would a practitioner annotate here*.
 
-1. The dated-figures table. Free; the material is already written.
-2. Complaints by carrier and reason, from data already sourced.
-3. Get the Record reviewed. 139 records currently say a review is open and
-   none is signed off. Layer 3 cannot credibly moderate anything while
-   Layer 1 is unreviewed.
-4. Case-report intake, moderated, into the existing `examples` schema.
-5. Practitioner annotation, licence-verified, against claim addresses.
-6. Open discussion, separate origin, last.
+The ordered plan is **one order, reconciled** above, and it supersedes the
+six-step list this section used to carry as well as the separate orderings in
+`ESTATE-PLAN.md`, `LAUNCH-GATE.md` and `AUTHORITY-AND-DISTRIBUTION-PLAN.md`.
+Two items from that old list are now done and should not be re-proposed: the
+dated-figures table shipped as `/figures`, and complaints by carrier and reason
+was measured and found unbuildable, because the NAIC sources describe the
+search tools and hold no data and the aggregate report sits behind an
+interactive form with no static download.
+### One order, reconciled from the four that existed
+
+This estate held four orderings of the same work, in four files, and none of
+them agreed. That is most of why the direction kept being re-asked:
+
+- `HANDOFF.md` section 5 ordered by what a session can pick up next.
+- `ESTATE-PLAN.md` ordered by what the instrument structurally needs.
+- `LAUNCH-GATE.md` ordered by what blocks a production flip.
+- `AUTHORITY-AND-DISTRIBUTION-PLAN.md` ordered by what earns a citation.
+
+The last one wins where they conflict, because `DIRECTION.md` says citability
+is the goal and traffic is a side effect of it. Reconciled against the state as
+measured on 8 September, with 90 commits in:
+
+| # | Work | Blocked on | Why here |
+| --- | --- | --- | --- |
+| 1 | **Promote a deployment to production** | The user, one command | Nothing is cited that does not exist. Highest leverage on the citation list and every other item is downstream of it. |
+| 2 | **Licensed sign-off** | Brian's reading | A hub whose 173 records say "under review" is not the thing being described. The instrument for it is built: `/review-queue` plus 299 verification sheets. No code left. |
+| 3 | **Recheck the figure sources** | Nothing | Next, and the next pass. See below. |
+| 4 | **Give `tools` a `reviewState` and a `reviewer`** | Nothing | 3 live worksheets publish 80 cited sentences and cannot state whether anyone checked them. Schema change to a 16-record collection. |
+| 5 | **Carrier entity records** | Nothing, now the route is known | The gap behind every "unbiased on companies" ask. 3 organisation records exist and none is a carrier. Strongest review discipline on the site, because this is where appetite claims creep in. |
+| 6 | **Hazard geography and residual markets** | Nothing | Largest unclaimed ground, breaks no rule, and it is the area-specific layer. |
+| 7 | **Risk-score explainers** | Nothing | The honest version of the risk-score ask, and a real gap nobody fills. |
+| 8 | **New York and Texas depth** | Nothing | 141 of 299 sources are California. NY DFS and the Texas code are both fully public. |
+| 9 | **Versioned dataset release** | Nothing | The single strongest citability move available. Addressable claims with checksums already exist; a dated release with a stable schema is what makes other people's tools cite it. |
+| 10 | **Commons**, in `AMBITION.md` order | Item 2 | Case reports, then practitioner annotation, then open discussion. Cannot credibly moderate while Layer 1 is unreviewed. |
+
+Breadth is deliberately last among the content items, and the reason is worth
+keeping: an answer engine cites the page that answers the question asked, so
+breadth does matter - but breadth published before review and before deployment
+earns nothing at all.
+
+### Why the recheck pass is next, and how small it is
+
+`DIRECTION.md` counts rechecks as success measure four, and the corpus is at
+**6 of 299**: 293 sources carry the date somebody first read them and nothing
+more. An authority that never re-reads decays, and `lastCheckedBasis` exists
+precisely so the site cannot overstate itself.
+
+The bounded place to start is the figures. **19 published figures rest on 11
+distinct source documents, and not one of those 11 has ever been rechecked.**
+Eleven documents to confirm every amount this site publishes. A figure whose
+amount has moved is the most damaging error class available here - a wrong
+number is what a reader acts on - and finding one produces a correction, which
+is success measure five.
+
+The verification sheets make this cheap in a way it was not last week: each
+sheet already holds the document, the claims recorded against it, and every
+sentence resting on it, so a recheck is a comparison rather than an
+investigation.
+
+Two disciplines for that pass, both from
+`EDITORIAL-AND-CITATION-STANDARD.md`. A recheck is made by reading the
+document, so it needs the operative language quoted back verbatim and compared
+against the recorded claim - a summary of a page is not a reading of it. And
+where the text cannot be retrieved, the honest outcome is no recheck at all
+rather than a flipped flag, because `verify.mjs` asserts the flag and the flag
+is the whole point of the field.
+
+### A note on the older planning files
+
+`ESTATE-PLAN.md`, `LAUNCH-GATE.md` and `AUTHORITY-AND-DISTRIBUTION-PLAN.md`
+carry state tables written between 8 and 20 commits ago and now understate the
+corpus - 8 modules where there are 10, 231 rules where there are 272, 251
+sources where there are 299, 35 records under review where there are 173. Their
+*reasoning* is current and is why they are still worth reading; their counts are
+not. `HANDOFF.md` section 1 is the live figure and the only one to trust. Do not
+spend a pass syncing numbers across five files: that is how they came to
+disagree in the first place.
 
 ## What would make this fail
 
