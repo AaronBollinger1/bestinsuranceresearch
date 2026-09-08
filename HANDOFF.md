@@ -8,6 +8,19 @@ Read `DIRECTION.md` (what this is, and the rules that do not bend) and
 anything. This file is the state of play plus the things that will cost you a
 pass if you learn them the hard way.
 
+**To run a pass, invoke the `continue-bir` skill** in
+`.claude/skills/continue-bir/SKILL.md`. It is the continuation prompt, checked
+in next to the rules it enforces rather than living in a chat message that
+drifts. It encodes the rules that do not bend, how to choose the next item, and
+the things an unsupervised pass must never do - write a claim without reading
+the source, mark anything reviewed, flip a recheck flag without a verbatim
+match, run `vercel promote`, or manufacture work when nothing is eligible.
+
+CI runs in `.github/workflows/`: the suite on every push in both the preview
+and production indexing postures, and the estate audit weekly. Neither needs a
+secret. There was no CI for the first 99 commits, and the one thing a
+122-assertion suite cannot assert is that somebody ran it.
+
 ---
 
 ## 1. Where the work stands

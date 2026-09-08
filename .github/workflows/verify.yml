@@ -1,0 +1,74 @@
+# The suite, on every push and every pull request.
+#
+# There was no CI at all for 99 commits. `npm run validate` has been run by hand
+# every pass, which worked only because every pass happened to run it - and the
+# one thing a 122-assertion suite cannot do is assert that somebody ran it.
+#
+# Nothing here needs a secret. The build is a preview build (no
+# PUBLIC_SITE_ENV), which is the environment the suite is calibrated against:
+# `verify.mjs` reads PUBLIC_SITE_ENV itself and asserts the correct indexing
+# posture for whichever environment it finds, so both postures are checked - the
+# preview one here and the production one in the release job below.
+name: verify
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  suite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.12'
+          cache: npm
+
+      # `npm ci` rather than `npm install`, so the lockfile is what is tested.
+      - run: npm ci
+
+      - name: Types
+        run: npm run check
+
+      - name: Build and verify, preview posture
+        run: npm run validate
+
+  production-posture:
+    # The build nobody had ever run until the suite was taught to check both.
+    # A production build must drop the blanket noindex and must not advertise a
+    # sitemap from a robots.txt that still says Disallow. Getting that wrong is
+    # the single most expensive one-line mistake available on this property, so
+    # it is checked on every push rather than discovered at the promote.
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.12'
+          cache: npm
+      - run: npm ci
+
+      - name: Build and verify, production posture
+        env:
+          PUBLIC_SITE_ENV: production
+          PUBLIC_SITE_ORIGIN: https://bestinsuranceresearch.com
+        run: |
+          npx astro build
+          node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs
+
+      # audit:onpage refuses to run against a preview build, so this is the only
+      # job it can run in.
+      - name: On-page audit
+        env:
+          PUBLIC_SITE_ENV: production
+          PUBLIC_SITE_ORIGIN: https://bestinsuranceresearch.com
+        run: npm run audit:onpage

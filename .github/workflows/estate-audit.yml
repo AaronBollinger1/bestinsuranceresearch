@@ -1,0 +1,60 @@
+# The estate audit, weekly.
+#
+# `HANDOFF.md` has recommended this since the audit was written: it had been run
+# by hand at least three times in three sessions and left nothing behind each
+# time, because the findings lived in a transcript and the next session
+# re-derived them from scratch.
+#
+# It is the one check `verify.mjs` structurally cannot do. The suite asserts
+# against a freshly built dist/; this asserts properties of what nine separately
+# deployed sites are actually serving right now, over the network. A canonical
+# host that starts answering 200 on both apex and www, or a robots.txt whose
+# Sitemap line stops resolving, is invisible to a build and visible here.
+#
+# Weekly rather than per-push, because it measures the live estate rather than
+# the commit, and nothing in a commit changes it.
+#
+# No secrets. The audit reads public responses only; it holds no credentials and
+# needs none.
+name: estate-audit
+
+on:
+  schedule:
+    # Mondays, 13:00 UTC. Early enough in the week that a finding can be acted
+    # on, and after the weekend so a Friday deploy that broke something is not
+    # sitting unreported for three days.
+    - cron: '0 13 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  estate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.12'
+          cache: npm
+      - run: npm ci
+
+      # `tee` so the report survives as an artifact even when the audit exits
+      # non-zero, and `pipefail` so piping does not swallow that exit code -
+      # which would turn a failing audit into a green run, the exact failure
+      # this job exists to prevent.
+      - name: Audit the live estate
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run audit:estate 2>&1 | tee estate-audit.txt
+
+      - name: Keep the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: estate-audit
+          path: estate-audit.txt
+          retention-days: 90
