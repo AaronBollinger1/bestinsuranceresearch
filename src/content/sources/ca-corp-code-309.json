@@ -1,0 +1,26 @@
+{
+	"title": "California Corporations Code Section 309 (a director's standard of care, permitted reliance, and the resulting protection)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=309",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "1987",
+	"effectiveDate": "1987-09-27",
+	"accessedDate": "2026-09-08",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The version on the official host is stated as amended by Stats. 1987, Ch. 1203, Sec. 2, effective September 27, 1987.",
+		"Subdivision (a) requires a director to perform the duties of a director in good faith, in a manner the director believes to be in the best interests of the corporation and its shareholders, and with such care, including reasonable inquiry, as an ordinarily prudent person in a like position would use under similar circumstances.",
+		"The care standard in subdivision (a) expressly includes reasonable inquiry, so the duty is not satisfied by good faith alone.",
+		"Subdivision (b) permits a director to rely on information, opinions, reports or statements prepared or presented by one or more officers or employees of the corporation, by counsel, independent accountants or other persons as to matters which the director believes to be within such person's professional or expert competence, and by a committee of the board upon which the director does not serve.",
+		"Reliance under subdivision (b) is permitted only where the director acts without knowledge that would cause such reliance to be unwarranted.",
+		"Subdivision (c) provides that a person who performs the duties of a director in accordance with subdivisions (a) and (b) shall have no liability based upon any alleged failure to discharge the person's obligations as a director."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "This is the standard that the good faith conditions in Corporations Code section 317 are measured against, which is why the two sections belong together rather than apart. Three details are load-bearing and routinely dropped in summary. The care standard includes reasonable inquiry in terms, so a director who acted honestly but asked nothing has not necessarily met it. The reliance safe harbour in subdivision (b) is conditioned on the absence of knowledge that would make the reliance unwarranted, so it protects a director who did not know rather than one who preferred not to. And the committee limb is limited to a committee on which the director does not serve, which means a director cannot rely on the work of a committee they sat on. Subdivision (c) then states the consequence positively: compliance produces no liability for an alleged failure to discharge the obligations of a director."
+}

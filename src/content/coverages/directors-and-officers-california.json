@@ -1,0 +1,173 @@
+{
+	"name": "Directors and officers liability (California)",
+	"line": "directors-and-officers",
+	"family": "commercial",
+	"definition": "Directors and officers forms are not publicly filed, so this page states no policy term. What it can state is why the line exists at all, and California says so in one clause. Corporations Code section 317 spends most of its length setting conditions on when a corporation may indemnify an agent, and barring indemnification outright in places, most obviously in a derivative action where the agent has been adjudged liable to the corporation or where a settlement was not approved by the court [S:ca-corp-code-317]. Then subdivision (i) permits the corporation to purchase and maintain insurance on behalf of an agent against liability asserted against or incurred by the agent in that capacity, whether or not the corporation would have the power to indemnify the agent against that liability under the section [S:ca-corp-code-317]. The insurance is expressly allowed to reach further than the indemnity. That is the commercial rationale of the line, stated by statute rather than by a broker. What the exposure is measured against sits in section 309: a director must act in good faith, in a manner the director believes to be in the best interests of the corporation and its shareholders, and with such care, including reasonable inquiry, as an ordinarily prudent person in a like position would use under similar circumstances [S:ca-corp-code-309]. And in one California setting the relationship runs the other way entirely: for a volunteer director or officer of a residential common interest development, the personal liability protection in Civil Code section 5800 is conditioned on the association having maintained the required insurance at the time of the act and at the time the claim is made [S:ca-civ-code-5800]. In that context the insurance is not a backstop to the protection; it is a precondition of it.",
+	"protects": [
+		"Not what this page can tell you. Directors and officers forms are not publicly filed and this record has read none, so what any policy covers is in that policy",
+		"The line answers liability asserted against or incurred by an agent in that capacity, which is the exposure section 317(i) permits a corporation to insure [S:ca-corp-code-317]",
+		"An agent means any person who is or was a director, officer, employee or other agent of the corporation, and a proceeding means any threatened, pending or completed action or proceeding, whether civil, criminal, administrative or investigative [S:ca-corp-code-317]",
+		"It reaches where a corporate indemnity cannot, because section 317(i) applies whether or not the corporation would have the power to indemnify the agent under the section [S:ca-corp-code-317]",
+		"It is written claims-made. New York enumerates directors and officers liability among the coverages claims-made policies may be written for [S:ny-11-nycrr-73-2], so the retroactive date and the date the claim is first made govern this line as they govern the rest of that family"
+	],
+	"commonlyCovers": [
+		{
+			"item": "A statutory framework, described here from the statutes rather than from a form",
+			"note": "Every entry here is drawn from the California Corporations Code or the Civil Code. None of it is a policy term, and no policy term is established anywhere on this page. Whether a particular directors and officers policy responds to any of it, and within what limit, is in that policy."
+		},
+		{
+			"item": "Expenses, defined more broadly than legal fees",
+			"note": "Section 317(a) defines expenses as including without limitation attorneys' fees and any expenses of establishing a right to indemnification [S:ca-corp-code-317]. The cost of arguing about entitlement is inside the definition, which matters because the authorisation route in subdivision (e) can itself be contested."
+		},
+		{
+			"item": "Indemnification the corporation may give, on a good faith standard",
+			"note": "For a proceeding other than a derivative action, section 317(b) permits indemnification where the agent acted in good faith and in a manner the person reasonably believed to be in the best interests of the corporation, and in a criminal proceeding had no reasonable cause to believe the conduct was unlawful [S:ca-corp-code-317]. Section 309 supplies the standard that good faith is judged beside: good faith, best interests of the corporation and its shareholders, and care including reasonable inquiry [S:ca-corp-code-309]."
+		},
+		{
+			"item": "Indemnification the corporation must give, where the agent wins",
+			"note": "Section 317(d) is mandatory rather than permissive: where an agent has been successful on the merits, the agent shall be indemnified against expenses actually and reasonably incurred [S:ca-corp-code-317]. It is the one entitlement in the section that does not run through the authorisation methods in subdivision (e) [S:ca-corp-code-317]."
+		},
+		{
+			"item": "Defence costs advanced before the case ends, against an undertaking",
+			"note": "Section 317(f) permits expenses incurred in defending a proceeding to be advanced before final disposition upon receipt of an undertaking by or on behalf of the agent to repay that amount if it is ultimately determined that the agent is not entitled to be indemnified [S:ca-corp-code-317]. The money moves before entitlement is settled, and the undertaking is the mechanism for it moving back."
+		},
+		{
+			"item": "The protection a volunteer HOA director has, if the association insured",
+			"note": "Section 5800(a) protects a qualifying volunteer officer or director of an association managing a residential or mixed use common interest development from personal liability in excess of the insurance coverage, subject to the conditions in (a)(1) to (a)(4) [S:ca-civ-code-5800]. Those conditions require the act to be within the scope of association duties, in good faith, and not willful, wanton or grossly negligent, and require the association to have maintained the specified policies both when the act occurred and when the claim is made [S:ca-civ-code-5800]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Whatever your own form excludes, which this record does not establish",
+			"note": "This list sets out the boundaries the statutes draw around indemnity and immunity. It is not a list of policy exclusions, and none is established anywhere on this page. A directors and officers form's conduct exclusions, insured versus insured provisions, severability wording and allocation terms are in that form."
+		},
+		{
+			"item": "Indemnification where a derivative claim ends badly, or settles without the court",
+			"note": "Section 317(c) restricts indemnification in a derivative action in respect of claims where the person has been adjudged liable to the corporation, and where a settlement has not been approved by the court [S:ca-corp-code-317]. Note what this is a boundary on: the corporation's power to indemnify. Subdivision (i) then permits insurance whether or not that power exists [S:ca-corp-code-317], so the two provisions do not draw the same line and should not be read as if they did."
+		},
+		{
+			"item": "Reliance on a committee you sat on",
+			"note": "The reliance permitted by section 309(b) covers a committee of the board upon which the director does not serve [S:ca-corp-code-309]. A director cannot rely on the work of a committee they were part of, which is a limit easy to lose when the safe harbour is summarised as reliance on committees."
+		},
+		{
+			"item": "Reliance where the director knew better",
+			"note": "Reliance on officers, employees, counsel, independent accountants or other experts is permitted only where the director acts without knowledge that would cause such reliance to be unwarranted [S:ca-corp-code-309]. The safe harbour protects a director who did not know, not one who preferred not to."
+		},
+		{
+			"item": "Good faith on its own, as a way of meeting the standard of care",
+			"note": "Section 309(a) requires care including reasonable inquiry, as an ordinarily prudent person in a like position would use under similar circumstances [S:ca-corp-code-309]. Inquiry is written into the standard, so an honest director who asked nothing has not thereby satisfied it, and subdivision (c) gives its protection only to a person who performed the duties in accordance with both subdivisions (a) and (b) [S:ca-corp-code-309]."
+		},
+		{
+			"item": "The volunteer protection, for anyone the section takes outside it",
+			"note": "Section 5800(c) removes the protection from an officer or director who at the time of the act or omission was a declarant, or who received direct or indirect compensation as an employee from the declarant or from a financial institution described in the section [S:ca-civ-code-5800], and section 5800(e) limits it to a volunteer who is a tenant of a residential separate interest or an owner of no more than two separate interests on the stated basis [S:ca-civ-code-5800]. Section 5800(d) adds that nothing in the section limits the liability of the association itself [S:ca-civ-code-5800]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"None of these statutes sets a policy limit or a retention. Section 317(i) sets no amount at all: it authorises the purchase of insurance without stating how much [S:ca-corp-code-317], so the limit on a corporate programme is a judgement rather than a compliance figure.",
+		"The one place California states an amount on this subject is not about the policy limit either, it is about eligibility for a personal liability protection. Section 5800(a)(4)(A) and (a)(4)(B) set the minimum amounts at at least five hundred thousand dollars ($500,000) where the development consists of 100 or fewer separate interests, and at least one million dollars where it consists of more, for both general liability of the association and individual liability of officers and directors for negligent acts within the scope of their duties [S:ca-civ-code-5800].",
+		"Those figures are a condition, not a limit. Section 5800(a) protects the volunteer from personal liability in excess of the coverage of insurance, so the protection is measured by the coverage actually carried and the statutory amounts are the floor at which it becomes available at all [S:ca-civ-code-5800].",
+		"And the coverage must be in place twice: the association must have maintained the policies both at the time the act or omission occurred and at the time a claim is made [S:ca-civ-code-5800]. A lapse between those two moments is not a gap in cover so much as a removal of the protection.",
+		"Advancement under section 317(f) is a cash-flow question with a claw-back attached, since the undertaking is to repay if it is ultimately determined the agent is not entitled to be indemnified [S:ca-corp-code-317]. Whether any policy funds an advance, and on what terms, is in that policy."
+	],
+	"underwritingInputs": [
+		"Whether the entity is a business corporation under the Corporations Code or an association managing a common interest development, since the applicable framework differs [S:ca-corp-code-317][S:ca-civ-code-5800]",
+		"Whether the articles or bylaws address indemnification, given that section 317 operates as the statutory baseline [S:ca-corp-code-317]",
+		"Which authorisation route the corporation would use under section 317(e): disinterested directors, independent legal counsel, shareholders, or the court [S:ca-corp-code-317]",
+		"Whether the corporation has ever advanced expenses under an undertaking, and whether any advance was repaid [S:ca-corp-code-317]",
+		"Whether the exposure includes derivative claims, where the indemnity restrictions in section 317(c) bite hardest [S:ca-corp-code-317]",
+		"How the board records inquiry, not just approval, since reasonable inquiry is written into the standard of care [S:ca-corp-code-309]",
+		"Whether directors sit on the committees whose work they rely on, which takes them outside the section 309(b) reliance limb [S:ca-corp-code-309]",
+		"For an association, how many separate interests the development contains, because the section 5800 minimums step at 100 [S:ca-civ-code-5800]",
+		"For an association, whether the required policies were in force both when the act occurred and when the claim was made [S:ca-civ-code-5800]",
+		"Whether any director is a declarant or compensated by a declarant, which removes the section 5800 protection [S:ca-civ-code-5800]",
+		"The retroactive date and the reporting period, since this line is written claims-made [S:ny-11-nycrr-73-2]"
+	],
+	"exposures": [
+		{
+			"item": "A liability the corporation is not permitted to indemnify",
+			"note": "Section 317(c) restricts indemnification in derivative actions where the person has been adjudged liable to the corporation and where a settlement was not court-approved [S:ca-corp-code-317]. This is the exposure the line exists for, because subdivision (i) permits insurance whether or not the corporation would have the power to indemnify [S:ca-corp-code-317]. A director relying on the company indemnity alone is relying on the narrower of the two instruments."
+		},
+		{
+			"item": "A proceeding that is not yet a lawsuit",
+			"note": "Section 317(a) defines proceeding as any threatened, pending or completed action or proceeding, whether civil, criminal, administrative or investigative [S:ca-corp-code-317]. Regulatory and investigative matters are inside the definition, and they can consume expenses, which the same subdivision defines to include the cost of establishing a right to indemnification [S:ca-corp-code-317]."
+		},
+		{
+			"item": "Honest decisions taken without inquiry",
+			"note": "The standard in section 309(a) is good faith and the best interests of the corporation and its shareholders and care including reasonable inquiry, as an ordinarily prudent person in a like position would use under similar circumstances [S:ca-corp-code-309]. Because inquiry is part of the standard, the exposure is not limited to bad faith: a board that approved something nobody examined is exposed on the care limb even where everyone acted honestly."
+		},
+		{
+			"item": "Reliance that turns out to be unwarranted",
+			"note": "Section 309(b) allows reliance on officers, employees, counsel, independent accountants or other experts within their professional competence, and on committees the director does not serve on, but only without knowledge that would cause such reliance to be unwarranted [S:ca-corp-code-309]. What the director knew is a factual question decided after the event, so the safe harbour is a position to be established rather than a shield to be assumed."
+		},
+		{
+			"item": "An advance that has to come back",
+			"note": "Expenses advanced under section 317(f) rest on an undertaking to repay if it is ultimately determined that the agent is not entitled to be indemnified [S:ca-corp-code-317]. The exposure is personal and it crystallises at the end of a matter the agent has already lost, which is the least convenient moment for it to appear."
+		},
+		{
+			"item": "An association lapse that removes a director's protection",
+			"note": "Section 5800(a)(4) requires the association to have maintained and had in effect the specified policies both at the time the act or omission occurred and at the time a claim is made [S:ca-civ-code-5800]. A volunteer director cannot control the association's renewal, and yet the condition is measured against it, so the exposure belongs to the individual while the decision belongs to the board."
+		},
+		{
+			"item": "Being outside the volunteer definition without having noticed",
+			"note": "Section 5800(e) limits the protection to a volunteer who is a tenant of a residential separate interest or an owner of no more than two separate interests on the stated basis [S:ca-civ-code-5800], and section 5800(c) removes it from a declarant or a person compensated by a declarant or by a financial institution described in the section [S:ca-civ-code-5800]. An owner who acquires a third unit has changed their own position under the section."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Minuting the inquiry, not only the decision",
+			"note": "Reasonable inquiry is written into the standard of care in section 309(a) [S:ca-corp-code-309], and subdivision (c) gives its protection to a person who performed the duties in accordance with subdivisions (a) and (b) [S:ca-corp-code-309]. A minute recording what was asked, of whom, and what was produced is the evidence that limb was met; a minute recording only the resolution is not."
+		},
+		{
+			"item": "Naming the expert and the competence relied on",
+			"note": "Section 309(b) permits reliance on counsel, independent accountants or other persons as to matters which the director believes to be within such person's professional or expert competence [S:ca-corp-code-309]. The belief is about competence in the specific matter, so recording which question went to which adviser is what makes the reliance identifiable later."
+		},
+		{
+			"item": "Keeping directors off the committees whose reports they rely on",
+			"note": "The committee limb of section 309(b) is confined to a committee of the board upon which the director does not serve [S:ca-corp-code-309]. Where a board is small enough that the same people sit everywhere, that limb is unavailable and reliance has to be built on the officer or expert limbs instead."
+		},
+		{
+			"item": "Deciding the section 317(e) route before it is needed",
+			"note": "Indemnification may be authorised by a majority vote of directors who are not parties, by a written opinion of independent legal counsel, by the shareholders with the interested shares not counted, or by the court [S:ca-corp-code-317]. Working out in advance which route a live proceeding would leave available is cheaper than discovering mid-claim that the disinterested majority no longer exists."
+		},
+		{
+			"item": "Documenting the undertaking when expenses are advanced",
+			"note": "Section 317(f) conditions advancement on receipt of an undertaking by or on behalf of the agent to repay if entitlement is ultimately not established [S:ca-corp-code-317]. The undertaking is what the section requires, so an advance made without one is an advance made outside the provision that authorises it."
+		},
+		{
+			"item": "For an association, proving the cover existed on both dates",
+			"note": "The section 5800(a)(4) condition is that the policies were maintained and in effect at the time of the act or omission and at the time the claim is made [S:ca-civ-code-5800]. Retaining evidence of continuous cover, rather than only the current certificate, is what makes the condition demonstrable for an act that surfaces years later."
+		},
+		{
+			"item": "For an association, checking the amount against the unit count",
+			"note": "The minimums are at least five hundred thousand dollars for 100 or fewer separate interests and at least one million dollars above that, for both the general liability of the association and the individual liability of officers and directors for negligent acts within the scope of their duties [S:ca-civ-code-5800]. A development that has grown past 100 interests has moved its own threshold."
+		}
+	],
+	"relatedPolicies": [
+		"Community association insurance, where the section 5800 conditions on the association's own programme are set out in their setting [S:ca-civ-code-5800]",
+		"Employment practices liability, which New York enumerates alongside directors and officers among claims-made coverages and which answers a different set of allegations against the same people [S:ny-11-nycrr-73-2]",
+		"Professional liability, which shares the claims-made mechanics that govern this line [S:ny-11-nycrr-73-2]",
+		"Fiduciary liability, also enumerated among claims-made coverages, for exposures arising from benefit plan administration rather than from corporate governance [S:ny-11-nycrr-73-2]"
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "The three statutes on this page are California and their effect is specific to it. Corporations Code section 317 is stated on the official host as amended by Stats. 1995, Ch. 154, Sec. 4, effective January 1, 1996 [S:ca-corp-code-317], and section 309 as amended by Stats. 1987, Ch. 1203, Sec. 2, effective September 27, 1987 [S:ca-corp-code-309]. Two consequences are worth stating for a reader outside California. Indemnification of directors and officers is a matter of the law of the state of incorporation and of the corporation's own articles and bylaws, and this corpus holds no indemnification statute for any other state, so nothing here describes the position of a Delaware or New York corporation. And the conditional volunteer protection in Civil Code section 5800 is a Davis-Stirling provision for residential and mixed use common interest developments in California [S:ca-civ-code-5800]; a comparable statute elsewhere may set different conditions, different amounts or none. The only non-California source cited here is a New York regulation, and it is cited for how the line is written rather than for what it is worth: Regulation 121 enumerates directors and officers liability among the coverages for which claims-made policies may be written [S:ny-11-nycrr-73-2]."
+		}
+	],
+	"lastReviewed": "2026-09-08",
+	"effectiveDate": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-corp-code-317",
+		"ca-corp-code-309",
+		"ca-civ-code-5800",
+		"ny-11-nycrr-73-2"
+	],
+	"relatedQuestions": [
+		"sued-personally-for-hoa-common-area-california",
+		"claims-made-retroactive-date",
+		"general-liability-vs-professional-liability"
+	]
+}

@@ -1,0 +1,28 @@
+{
+	"title": "California Corporations Code Section 317 (indemnification of agents, and the power to insure beyond it)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=317",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "1995",
+	"effectiveDate": "1996-01-01",
+	"accessedDate": "2026-09-08",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The version on the official host is stated as amended by Stats. 1995, Ch. 154, Sec. 4, effective January 1, 1996.",
+		"Subdivision (a) defines agent as any person who is or was a director, officer, employee or other agent of the corporation, defines proceeding as any threatened, pending or completed action or proceeding, whether civil, criminal, administrative or investigative, and defines expenses as including without limitation attorneys' fees and any expenses of establishing a right to indemnification.",
+		"Subdivision (b) permits a corporation to indemnify an agent in a proceeding other than a derivative action if the agent acted in good faith and in a manner the person reasonably believed to be in the best interests of the corporation, and in the case of a criminal proceeding had no reasonable cause to believe the conduct was unlawful.",
+		"Subdivision (c) permits indemnification against expenses in a derivative action where the agent acted in good faith, in a manner the person believed to be in the best interests of the corporation and its shareholders, and restricts it where the person has been adjudged liable to the corporation and where a settlement has not been approved by the court.",
+		"Subdivision (d) makes indemnification mandatory on success: where an agent has been successful on the merits, the agent shall be indemnified against expenses actually and reasonably incurred.",
+		"Subdivision (e) sets out who may authorise indemnification: a majority vote of directors who are not parties to the proceeding, a written opinion of independent legal counsel, approval of the shareholders with the shares of the person to be indemnified not counted, or the court in which the proceeding is pending.",
+		"Subdivision (f) permits expenses incurred in defending a proceeding to be advanced before final disposition upon receipt of an undertaking by or on behalf of the agent to repay that amount if it shall be determined ultimately that the agent is not entitled to be indemnified.",
+		"Subdivision (i) permits a corporation to purchase and maintain insurance on behalf of an agent against liability asserted against or incurred by the agent in that capacity, whether or not the corporation would have the power to indemnify the agent against that liability under this section."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Subdivision (i) is the reason directors and officers insurance exists as a product distinct from a corporate indemnity. The section spends most of its length setting conditions on when a corporation may indemnify an agent, and where indemnification is barred, most obviously in a derivative action where the agent has been adjudged liable to the corporation, or where a settlement has not been court-approved. Then subdivision (i) permits the corporation to buy insurance for the agent whether or not the corporation would have the power to indemnify that liability. The insurance is therefore expressly allowed to reach further than the indemnity, which is the whole commercial rationale of the line. Two other provisions decide real disputes. Subdivision (d) is mandatory rather than permissive on success on the merits, which makes it the one entitlement in the section that does not depend on the authorisation procedure in subdivision (e). And subdivision (f) advancement is conditioned on an undertaking to repay, so the money moves before the entitlement is settled and can have to move back."
+}
