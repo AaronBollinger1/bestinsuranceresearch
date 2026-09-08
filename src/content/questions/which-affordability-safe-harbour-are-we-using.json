@@ -1,0 +1,59 @@
+{
+	"question": "Which affordability safe harbour is our health contribution measured against, and does the choice change the answer?",
+	"aliases": [
+		"ACA affordability safe harbor W-2 rate of pay federal poverty line",
+		"26 CFR 54.4980H-5 affordability safe harbors",
+		"rate of pay safe harbor 130 hours calculation",
+		"which affordability safe harbour should an employer use",
+		"9.5 percent affordability threshold employer coverage"
+	],
+	"shortAnswer": "There are three, and the choice changes what the contribution is compared to. Paragraph (e)(2) provides the Form W-2 safe harbor, the rate of pay safe harbor and the federal poverty line safe harbor [S:cfr-26-54-4980h-5-lii]. All three in that section are expressed against the same 9.5 percent threshold [S:cfr-26-54-4980h-5-lii], so the percentage is not what separates them. The denominator is: one is that employee's Form W-2 wages for the calendar year, one is 130 hours multiplied by their hourly rate of pay, and one is the federal poverty line for a single individual divided by 12 [S:cfr-26-54-4980h-5-lii].",
+	"assumes": [
+		"You are an applicable large employer, since the assessable payments this section is about arise under section 4980H. An applicable large employer is one that employed an average of at least 50 full-time employees, including full-time equivalent employees, on business days during the preceding calendar year [S:cfr-26-54-4980h-1-lii].",
+		"You are asking what the three safe harbours measure, not whether a particular contribution meets one. Nothing here tests a figure or determines any employer's liability.",
+		"You are reading a reproduction of the regulation rather than the official text. Both sections are quoted here from Cornell's Legal Information Institute [S:cfr-26-54-4980h-5-lii][S:cfr-26-54-4980h-1-lii] rather than from an official government host."
+	],
+	"why": "The part everyone quotes is the percentage. The part that decides the answer is what sits underneath it.\n\nParagraph (e)(2) provides three affordability safe harbors: the Form W-2 safe harbor, the rate of pay safe harbor, and the federal poverty line safe harbor [S:cfr-26-54-4980h-5-lii]. All three in that section are expressed against the same 9.5 percent threshold [S:cfr-26-54-4980h-5-lii]. Same percentage, three times. So a disagreement about whether coverage is affordable is almost never a disagreement about the percentage.\n\nTake them one at a time, because the three denominators are not the same kind of number.\n\nThe Form W-2 safe harbor measures the employee contribution against 9.5 percent of that employee's Form W-2 wages from the employer for the calendar year [S:cfr-26-54-4980h-5-lii]. Two things follow from the wording. It is that employee's wages, so the denominator is different for every person on the plan. And it is wages for the calendar year, so it is a figure that is complete only once the calendar year has ended, which is a different kind of number from one you can read off a payroll record when the contribution is being set.\n\nThe rate of pay safe harbor, for an hourly employee, measures the contribution against 9.5 percent of an amount equal to 130 hours multiplied by the employee's hourly rate of pay [S:cfr-26-54-4980h-5-lii]. The multiplier is 130. It is not the hours the person worked. Where the 130 comes from is worth knowing, because it is not arbitrary: the definitions section provides that 130 hours of service in a calendar month is treated as the monthly equivalent of at least 30 hours of service per week [S:cfr-26-54-4980h-1-lii]. That is the monthly measure of full-time. So the rate of pay denominator is a notional full-time month priced at that employee's rate, and the same 130 does two separate jobs in this scheme: it identifies who counts as full-time by the month, and it sets the multiplier in this safe harbor's denominator.\n\nThe federal poverty line safe harbor measures the contribution against 9.5 percent of a monthly amount determined as the federal poverty line for a single individual for the applicable calendar year, divided by 12 [S:cfr-26-54-4980h-5-lii]. Notice what is missing from that sentence. No wages, no rate, no hours, no employee. It is one published figure for the year, divided by twelve, and it is the same denominator for everybody.\n\nSo the three can be ranked by how much they move. The W-2 denominator moves with what a person actually earned. The rate of pay denominator moves with their rate but not with their hours. The federal poverty line denominator does not move between employees at all. Identical coverage at an identical contribution is being compared against three different quantities depending on which harbour was elected, which is why the election is doing as much work in the answer as the plan design is.\n\nThat also explains a result people find surprising. Under either wage-based harbour the comparison is made per employee, so one contribution can sit below the line for a higher-paid person and above it for a lower-paid one in the same plan. The federal poverty line harbour is the only one of the three where that cannot happen, because there is no employee in its denominator.\n\nOne piece of precision on the percentage, and it matters. The 9.5 percent figure is what this section states, and what it states is that all three safe harbors in this section are expressed against it [S:cfr-26-54-4980h-5-lii]. Nothing cited on this page establishes that 9.5 percent is the percentage in force for any particular plan year, and nothing here should be read as saying so. If a decision turns on the number, the number is the first thing to confirm.\n\nWhich leaves the practical question, and it is a documentation question rather than a legal one. The election exists whether or not anyone wrote it down. If nobody in the business can say which of the three the contribution was built from, then whether the coverage is affordable has not been worked out, only assumed, and the year in which that gets discovered is usually not the year the contribution was set.",
+	"whatChanges": [
+		"Which of the three safe harbours the contribution was actually set against, since the percentage is common to all three and only the denominator differs [S:cfr-26-54-4980h-5-lii].",
+		"Whether the employee is paid hourly, since the rate of pay figure quoted here is stated for an hourly employee [S:cfr-26-54-4980h-5-lii].",
+		"That employee's own Form W-2 wages from you for the calendar year, if the Form W-2 harbour is the one elected [S:cfr-26-54-4980h-5-lii].",
+		"The federal poverty line for a single individual for the applicable calendar year, if that harbour is the one elected [S:cfr-26-54-4980h-5-lii].",
+		"Whether you are an applicable large employer at all, which turns on an average of at least 50 full-time employees, including full-time equivalent employees, on business days during the preceding calendar year [S:cfr-26-54-4980h-1-lii].",
+		"Which employees are full-time, since a full-time employee is one employed an average of at least 30 hours of service per week, with 130 hours in a calendar month as the monthly equivalent [S:cfr-26-54-4980h-1-lii]."
+	],
+	"variability": [
+		"Both regulation sections here are quoted from a reproduction on Cornell's Legal Information Institute rather than an official government host [S:cfr-26-54-4980h-5-lii][S:cfr-26-54-4980h-1-lii]. Nothing on this page is corroborated by a second source, so anything that matters to a decision should be read against the official text of the regulation.",
+		"The 9.5 percent threshold is stated here as the threshold all three safe harbors in that section are expressed against [S:cfr-26-54-4980h-5-lii]. This record does not establish what the applicable percentage is for any given plan year, and it should not be quoted as though it does.",
+		"Paragraph (e)(2) is longer than what is set out here. This record names the three safe harbors and the denominator each one uses [S:cfr-26-54-4980h-5-lii]; it does not reproduce the conditions, elections or exceptions the paragraph attaches to them.",
+		"The rate of pay computation quoted here is the one stated for an hourly employee [S:cfr-26-54-4980h-5-lii]. Nothing in this record establishes how that safe harbor is computed for a salaried employee.",
+		"Nothing here tests affordability, applies a safe harbor to a workforce, or determines whether any assessable payment is owed. Those are determinations made under the regulation with your own advisors."
+	],
+	"nextActions": [
+		"Ask whoever sets the employee contribution which of the three safe harbours the figure was built from, and get the answer in writing with the plan year it applies to.",
+		"Note whether the harbour named is a per-employee figure or a single figure for the whole workforce, since two of the three vary by employee and one does not [S:cfr-26-54-4980h-5-lii].",
+		"If the answer is the rate of pay harbour, check that the multiplier used was 130 hours rather than hours actually worked, because 130 is what the section states [S:cfr-26-54-4980h-5-lii].",
+		"Confirm the applicable percentage for the plan year with your benefits advisor rather than taking 9.5 percent from this page, since this record establishes only what the section says [S:cfr-26-54-4980h-5-lii].",
+		"Read both sections on an official host before relying on any of it, since both are quoted here from a reproduction [S:cfr-26-54-4980h-5-lii][S:cfr-26-54-4980h-1-lii]."
+	],
+	"confidence": "contextual",
+	"reviewState": "under-review",
+	"family": "health",
+	"lines": ["group-health", "employee-benefits"],
+	"states": [],
+	"audience": "business-owner",
+	"topics": ["affordability", "safe harbor", "employer shared responsibility", "group health", "employee contribution", "full-time employee"],
+	"companies": [],
+	"coverages": ["employer-group-health-federal"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["am-i-an-applicable-large-employer", "how-long-to-elect-cobra-continuation"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Which safe harbour a workforce supports, and what percentage applies to a plan year, are determinations made with a benefits advisor and an employee benefits lawyer against the current regulation. Both sections here are quoted from a reproduction rather than an official host, and nothing on the page tests a figure."
+	},
+	"sourceIds": ["cfr-26-54-4980h-5-lii", "cfr-26-54-4980h-1-lii"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
