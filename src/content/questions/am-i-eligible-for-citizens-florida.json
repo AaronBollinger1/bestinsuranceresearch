@@ -1,0 +1,60 @@
+{
+	"question": "Can I insure my Florida home with Citizens, and what actually makes me eligible?",
+	"aliases": [
+		"Citizens Property Insurance eligibility Florida",
+		"Citizens 20 percent rule explained",
+		"why was I told I do not qualify for Citizens",
+		"Citizens flood insurance requirement phase in",
+		"Citizens eligibility replacement cost limit"
+	],
+	"shortAnswer": "Eligibility is not about being declined. For a Personal Lines new-business risk, the premium for coverage from an authorized insurer must be more than 20 percent greater than the premium for comparable coverage from Citizens [S:citizens-eligibility-pl-20pct]. So a private offer does not disqualify you; a private offer priced within 20 percent of Citizens does. Underneath that sits the statutory purpose: Citizens coverage is for applicants who are in good faith entitled to procure insurance through the voluntary market but are unable to do so [S:fl-stat-627-351].",
+	"assumes": [
+		"You are asking about a Florida residential property risk, which is what Citizens writes under the apportionment plan [S:fl-stat-627-351].",
+		"You are asking about new business, since the percentage rules are stated for new-business risks [S:citizens-eligibility-pl-20pct][S:citizens-eligibility-20pct].",
+		"You are asking what the published rules say, not how the Clearinghouse will treat a particular file, which it decides [S:citizens-eligibility-pl-20pct]."
+	],
+	"why": "Start with what Citizens is, because it explains the shape of everything else. Section 627.351(6) describes Citizens Property Insurance Corporation as a government entity that is an integral part of the state, and that is not a private insurance company [S:fl-stat-627-351]. Its coverage is for applicants who are in good faith entitled to procure insurance through the voluntary market but are unable to do so [S:fl-stat-627-351].\n\nThat phrase, unable to do so, has been given a price test rather than left to judgement.\n\nFor Personal Lines new business, the premium for coverage from an authorized insurer must be more than 20 percent greater than the premium for comparable coverage from Citizens [S:citizens-eligibility-pl-20pct]. The prior threshold was 15 percent [S:citizens-eligibility-pl-20pct], and the change took effect July 1, 2021 to comply with Senate Bill 76 [S:citizens-eligibility-pl-20pct]. There is also an alternative no-offer-of-coverage standard for Personal Lines new business [S:citizens-eligibility-pl-20pct], which is the route for an applicant nobody will quote at all.\n\nFor residential Commercial Lines new business the rule is stated slightly differently: the premium from an authorized insurer must be at least 20 percent higher than the comparable Citizens premium [S:citizens-eligibility-20pct], where the prior threshold was also 15 percent [S:citizens-eligibility-20pct] and the change responded to Senate Bill 2A, signed on December 16, 2022 [S:citizens-eligibility-20pct]. More than 20 percent greater on one side and at least 20 percent higher on the other are not the same test at exactly 20 percent, and which applies depends on which line the risk sits in.\n\nThe test is administered rather than asserted. The Property Insurance Clearinghouse determines eligibility under the rule, and agents must upload documentation verifying that an authorized insurer's premium exceeds Citizens' comparable premium by more than 20 percent [S:citizens-eligibility-pl-20pct]. So the quote you were given is evidence in the file, not an inconvenience to be worked around.\n\nThen three structural bars that have nothing to do with price.\n\nValue. A personal lines residential structure with a dwelling replacement cost of $700,000 or more is not eligible, except that in counties the office determines lack a reasonable degree of competition a structure with a replacement cost of less than $1 million remains eligible [S:fl-stat-627-351]. The exception is county-specific and is a determination the office makes, not something a homeowner can assume.\n\nWind-borne debris. A personal lines residential structure in the wind-borne debris region with an insured value of $750,000 or more is not eligible unless the structure has opening protections [S:fl-stat-627-351]. Note that this bar is keyed to insured value while the first is keyed to dwelling replacement cost, and that opening protections turn it off.\n\nThe coastal construction control line. A structure newly constructed, or rebuilt, repaired, restored or remodeled, seaward of that line is not eligible [S:fl-stat-627-351]. Repaired and remodeled are in that list, so work done on an existing seaward structure can move it out of eligibility.\n\nFinally, a condition that applies after you are in. Existing Personal Lines residential policyholders, except condominium unit owner policies, in designated FEMA flood hazard areas whose policy includes wind coverage were required to have flood insurance when their policies renewed on or after July 1, 2023 [S:citizens-flood-requirement]. The requirement then phases in by dwelling replacement cost: $600,000 or more from January 1, 2024; $500,000 or more from January 1, 2025; $400,000 or more from January 1, 2026; and all remaining eligible Personal Lines residential policies from January 1, 2027 [S:citizens-flood-requirement]. The required flood policy must come from the National Flood Insurance Program or a private carrier authorized to write flood insurance [S:citizens-flood-requirement].\n\nRead that schedule against a calendar. By January 2027 the requirement reaches every remaining eligible Personal Lines residential policy, so a Citizens policyholder who does not carry flood today is on a dated path to needing it.",
+	"whatChanges": [
+		"Whether a private offer exists and how its premium compares, since the test is a percentage above the comparable Citizens premium rather than a refusal [S:citizens-eligibility-pl-20pct].",
+		"Whether the risk is Personal Lines or residential Commercial Lines, because the two rules are worded differently at the threshold [S:citizens-eligibility-pl-20pct][S:citizens-eligibility-20pct].",
+		"Whether nobody will offer at all, which is the alternative no-offer standard rather than the percentage test [S:citizens-eligibility-pl-20pct].",
+		"The dwelling replacement cost, since $700,000 or more is a bar unless the county lacks a reasonable degree of competition [S:fl-stat-627-351].",
+		"Whether the structure is in the wind-borne debris region and insured for $750,000 or more, and whether it has opening protections [S:fl-stat-627-351].",
+		"Whether any construction, rebuilding, repair, restoration or remodeling has been done seaward of the coastal construction control line [S:fl-stat-627-351].",
+		"The dwelling replacement cost again for the flood phase-in, which reaches lower values each January [S:citizens-flood-requirement]."
+	],
+	"variability": [
+		"Eligibility is determined by the Property Insurance Clearinghouse on the documentation filed [S:citizens-eligibility-pl-20pct], so nothing here decides any individual application.",
+		"The county exception to the $700,000 bar depends on the office determining that a county lacks a reasonable degree of competition [S:fl-stat-627-351], which is a determination this record does not reproduce or predict.",
+		"Citizens rules and the statute are both amended by legislation, and the two threshold changes described here followed Senate Bill 76 in 2021 and Senate Bill 2A in 2022 [S:citizens-eligibility-pl-20pct][S:citizens-eligibility-20pct]. Figures should be confirmed against the current rule before anyone relies on them.",
+		"The flood phase-in dates run to January 1, 2027 [S:citizens-flood-requirement]. A record read after that date describes a completed phase-in rather than a schedule."
+	],
+	"nextActions": [
+		"Get an actual quotation from an authorized insurer, because the comparison is the evidence the Clearinghouse works from [S:citizens-eligibility-pl-20pct].",
+		"Ask your agent to compare that premium against comparable Citizens coverage rather than against a different set of limits, since the test is on comparable coverage [S:citizens-eligibility-pl-20pct].",
+		"Establish the dwelling replacement cost before assuming eligibility, since it is the number two separate bars are measured against [S:fl-stat-627-351][S:citizens-flood-requirement].",
+		"If the structure is in the wind-borne debris region, find out whether it has opening protections, which is what turns that bar off [S:fl-stat-627-351].",
+		"If any work has been done seaward of the coastal construction control line, raise it early rather than at binding [S:fl-stat-627-351].",
+		"Arrange flood cover on the schedule rather than at renewal, since the requirement reaches all remaining eligible Personal Lines residential policies from January 1, 2027 [S:citizens-flood-requirement]."
+	],
+	"confidence": "changing",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["homeowners"],
+	"states": ["FL"],
+	"audience": "individual",
+	"topics": ["citizens", "residual market", "eligibility", "flood requirement", "florida", "homeowners"],
+	"companies": [],
+	"coverages": ["homeowners"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["what-backs-a-citizens-policy-florida"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Eligibility turns on a documented premium comparison filed through the Clearinghouse and on determinations about replacement cost, opening protections and county competition. Assembling that is agent work rather than something a reader settles alone."
+	},
+	"sourceIds": ["fl-stat-627-351", "citizens-eligibility-pl-20pct", "citizens-eligibility-20pct", "citizens-flood-requirement"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}

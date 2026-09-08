@@ -1,0 +1,57 @@
+{
+	"question": "Citizens is run by the state. What stands behind my policy, and can I be charged more after a hurricane?",
+	"aliases": [
+		"Citizens policyholder surcharge Florida",
+		"Florida Hurricane Catastrophe Fund explained",
+		"emergency assessment Florida property insurance",
+		"is Citizens Property Insurance backed by the state",
+		"who pays if Citizens runs out of money"
+	],
+	"shortAnswer": "Yes, and not only if you are a Citizens policyholder. Citizens may levy a policyholder surcharge as a uniform percentage of the premium of up to 15 percent, and emergency assessments may be levied when surcharges are insufficient [S:fl-stat-627-351]. Separately, the Florida Hurricane Catastrophe Fund can in some circumstances be funded by revenue bonds backed by emergency assessments on most types of property and casualty insurance premiums [S:fhcf-about], which reaches well beyond people insured with Citizens.",
+	"assumes": [
+		"You hold or are considering a Florida residential property policy, which is what both mechanisms described here sit behind [S:fl-stat-627-351][S:fhcf-about].",
+		"You are asking what the published statutes and fund descriptions provide, not what will happen after any particular storm.",
+		"You are asking about the funding structure rather than about what a policy covers, which is in the policy."
+	],
+	"why": "Two separate mechanisms sit behind Florida residential property insurance, and they reach different groups of people.\n\nThe first is Citizens itself. Section 627.351(6) describes Citizens Property Insurance Corporation as a government entity that is an integral part of the state, and that is not a private insurance company [S:fl-stat-627-351]. That is not a description of ownership so much as of what happens when losses exceed what premiums funded: a private insurer that runs out of money goes into receivership, and a government entity that is an integral part of the state has other options.\n\nOne of those options is charging its own policyholders again after the fact. Citizens may levy a policyholder surcharge as a uniform percentage of the premium for the policy of up to 15 percent of such premium [S:fl-stat-627-351]. Uniform percentage, up to 15 percent, and levied on the policy rather than on the loss. And where surcharges are insufficient, emergency assessments may be levied [S:fl-stat-627-351].\n\nThe second mechanism sits behind every residential property insurer in the state, not only Citizens. The Florida Hurricane Catastrophe Fund is a tax-exempt state trust fund created by section 215.555, Florida Statutes, under the direction and control of the State Board of Administration [S:fhcf-about]. It provides reimbursements to residential property insurance companies for a portion of their catastrophic hurricane losses in Florida [S:fhcf-about]. So it is reinsurance for insurers rather than insurance for households, and the households never see it until it matters.\n\nParticipation is not optional. Participation in the FHCF is mandatory for all residential property insurance companies doing business in Florida, and each company is required to enter into a reimbursement contract with the FHCF [S:fhcf-about]. Every residential property insurer in the state is inside the same structure, which is why the structure matters to a policyholder who has never heard of it.\n\nAnd here is the part that reaches beyond Citizens. The FHCF is funded only with premium revenues paid by residential property insurance companies, investment income, and in some circumstances revenue bonds backed by emergency assessments on most types of property and casualty insurance premiums [S:fhcf-about]. Most types of property and casualty insurance premiums, not most types of residential property insurance premiums. On that description the assessment base is wider than the group being protected, so somebody insuring a shop or a vehicle can end up contributing to the cost of a residential hurricane season.\n\nWhat that means for a reader deciding between Citizens and a private offer is narrower than it first appears. A Citizens surcharge falls on Citizens policyholders specifically, and it is capped as a percentage of premium [S:fl-stat-627-351]. The FHCF assessment mechanism does not depend on which residential insurer you chose, because every residential property insurer participates [S:fhcf-about]. So the choice changes your exposure to the first and not to the second.\n\nNothing here says how likely either is, or how large any assessment has been or would be. The statute and the fund's own description state the mechanisms and this record does not model them.",
+	"whatChanges": [
+		"Whether you are a Citizens policyholder, since the policyholder surcharge falls on Citizens policies [S:fl-stat-627-351].",
+		"Whether surcharges prove insufficient, which is the condition on emergency assessments being levied [S:fl-stat-627-351].",
+		"Whether the FHCF issues revenue bonds, which is the circumstance in which emergency assessments on property and casualty premiums arise [S:fhcf-about].",
+		"What other property and casualty policies you hold, since the FHCF assessment base is described as most types of property and casualty insurance premiums [S:fhcf-about].",
+		"Nothing about which residential insurer you chose, so far as the FHCF is concerned, because participation is mandatory for all of them [S:fhcf-about]."
+	],
+	"variability": [
+		"These are the mechanisms as the statute and the fund describe them. Neither source states how likely any surcharge or assessment is, or what any past assessment has cost, and this record does not estimate either.",
+		"The Citizens surcharge is described as up to 15 percent of premium as a uniform percentage [S:fl-stat-627-351]. What is actually levied in any year is a decision this record does not predict.",
+		"The FHCF description says revenue bonds backed by emergency assessments arise in some circumstances [S:fhcf-about]. The conditions are not enumerated in the material recorded here.",
+		"Florida property insurance legislation changes frequently. Both sources should be confirmed as current before anyone relies on a figure."
+	],
+	"nextActions": [
+		"Read the surcharge provision as a feature of the policy rather than a remote possibility, since it is capped but not conditional on anything you control [S:fl-stat-627-351].",
+		"When comparing Citizens against a private offer, treat the Citizens surcharge exposure as part of the comparison and the FHCF mechanism as common to both [S:fl-stat-627-351][S:fhcf-about].",
+		"If you hold other property and casualty policies in Florida, note that the FHCF assessment base is described as reaching most of them [S:fhcf-about].",
+		"Ask your agent what surcharges or assessments have actually been levied historically, because the sources here state the mechanisms and not the history.",
+		"Do not read a state entity as a state guarantee; the section describes what Citizens is and what it may levy, and says nothing about anyone standing behind it [S:fl-stat-627-351]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["homeowners"],
+	"states": ["FL"],
+	"audience": "individual",
+	"topics": ["citizens", "surcharge", "emergency assessment", "hurricane catastrophe fund", "florida", "homeowners"],
+	"companies": [],
+	"coverages": ["homeowners"],
+	"effectiveDate": "2026-09-07",
+	"lastReviewed": "2026-09-07",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["am-i-eligible-for-citizens-florida"],
+	"handoff": {
+		"recommended": true,
+		"reason": "The sources state the mechanisms and not their likelihood or history. Anyone weighing Citizens against a private offer needs what has actually been levied, which is a question for an agent rather than for a statute."
+	},
+	"sourceIds": ["fl-stat-627-351", "fhcf-about"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
