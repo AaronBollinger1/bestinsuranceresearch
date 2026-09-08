@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Callout from '../components/Callout.astro';
 import StateBlock from '../components/StateBlock.astro';
+import MarkResolving from '../components/MarkResolving.astro';
 import StatusChip from '../components/StatusChip.astro';
 import { siteConfig } from '../config/site';
 import { stripMarkers } from '../lib/citations';
@@ -210,7 +211,12 @@ const FAMILY_LABEL: Record<string, string> = {
 				</div>
 			</div>
 
-			<div id="ask-loading" class="skeleton" hidden aria-hidden="true">
+			<div id="ask-loading" hidden>
+				<div class="ask-resolving">
+					<MarkResolving size={72} label={null} />
+					<p class="mono" aria-hidden="true">Resolving against the library</p>
+				</div>
+				<div class="skeleton" aria-hidden="true">
 				{
 					[0, 1, 2].map(() => (
 						<div class="skeleton-row">
@@ -218,8 +224,9 @@ const FAMILY_LABEL: Record<string, string> = {
 							<div class="skeleton-bar w-85"></div>
 							<div class="skeleton-bar w-30"></div>
 						</div>
-					))
-				}
+						))
+					}
+				</div>
 			</div>
 
 			<div id="ask-hits" class="rows"></div>
@@ -653,3 +660,21 @@ const FAMILY_LABEL: Record<string, string> = {
 		}, 6000);
 	}
 </script>
+
+<style>
+	/* The resolving mark sits above the row skeleton, not instead of it: the
+	   mark says the library is being searched, the bars say what is coming. */
+	.ask-resolving {
+		display: flex;
+		align-items: center;
+		gap: var(--s-4);
+		padding: var(--s-6) 0 var(--s-5);
+	}
+
+	.ask-resolving p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.8125rem;
+		letter-spacing: 0.02em;
+	}
+</style>
