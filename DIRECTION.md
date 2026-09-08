@@ -5,6 +5,9 @@ re-decided every pass. Where a later decision genuinely supersedes something
 here, change this file in the same commit rather than leaving the two to
 disagree.
 
+What the property is trying to become is in `AMBITION.md`. That file is
+subordinate to this one.
+
 ## What this is
 
 An evidence instrument for insurance, published free, that answers questions
@@ -109,6 +112,15 @@ Decided placement, and the reasoning, so this is not reopened:
   poster.** A reader who has asked for less motion gets the still.
 - **Never on a page that carries a claim.** Nothing animates behind evidence.
 
+### Superseded: which clip fills that slot
+
+The placement reasoning above stands. The choice of clip does not.
+`AMBITION.md` re-briefs the loading state around the logo mark resolving
+rather than ink blooming, on the ground that the mark converging is what the
+site does and the bloom is only atmosphere. The ink-bloom file stays in
+`public/media/` and is the fallback if a generated mark animation distorts the
+artwork.
+
 ## What success looks like
 
 In this order, and none of them is sessions:
@@ -125,6 +137,8 @@ In this order, and none of them is sessions:
 - Publish a verdict on whether a claim should have been paid.
 - Publish an estimate, a premium, or a figure the source did not state.
 - Collect an email address, an account, an upload, or an application.
+  This is a rule about *this origin*. `AMBITION.md` puts human contribution on
+  a separate origin precisely so this one does not have to bend.
 - Say a policy covers something without quoting what says so.
 - Present a superseded document as current.
 - Let a page rank by saying more than the sources support.
