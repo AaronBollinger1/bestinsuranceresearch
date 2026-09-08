@@ -1,0 +1,59 @@
+{
+	"question": "Where does my condominium unit legally end, and what is on the other side of that line?",
+	"aliases": [
+		"condo unit boundaries California Civil Code 4185",
+		"are the walls mine in a condominium",
+		"what is exclusive use common area California",
+		"interior surfaces rule condominium boundary",
+		"separate interest definition common interest development"
+	],
+	"shortAnswer": "For most condominiums the line runs at the paint. Unless the declaration or condominium plan otherwise provides, where walls, floors or ceilings are designated as boundaries of a separate interest, the interior surfaces of the perimeter walls, floors, ceilings, windows, doors and outlets located within the separate interest are part of the separate interest, and any other portions of those walls, floors or ceilings are common area [S:ca-civ-code-4185]. But there is a third zone between the two, and most disputes live in it [S:ca-civ-code-4145].",
+	"assumes": [
+		"The property is a common interest development to which the Davis-Stirling definitions apply, since these are the sections that define its parts [S:ca-civ-code-4185][S:ca-civ-code-4145].",
+		"You are asking where the legal boundary falls, not what any policy covers. What the master policy reaches and what your own policy reaches are separate questions decided by those policies.",
+		"Your declaration has not displaced the statutory default, which most of these provisions expressly allow it to do [S:ca-civ-code-4185][S:ca-civ-code-4145][S:ca-civ-code-4775]."
+	],
+	"why": "Start with what you own, because it is not the same thing in every kind of development. Separate interest means a separately owned unit in a condominium project; a separately owned lot, parcel, area or space in a planned development [S:ca-civ-code-4185]; the exclusive right to occupy an apartment in a community apartment project, and the exclusive right to occupy a portion of the real property in a stock cooperative [S:ca-civ-code-4185]. Four project types, four different things called by one term, which is why an answer that fits a neighbour's building may not fit yours.\n\nThe estate itself is also flexible: the estate in a separate interest may be a fee, a life estate, an estate for years, or any combination of those [S:ca-civ-code-4185].\n\nThen the boundary, which is the sentence people actually need. Unless the declaration or condominium plan, if any exists, otherwise provides, if walls, floors or ceilings are designated as boundaries of a separate interest, the interior surfaces of the perimeter walls, floors, ceilings, windows, doors and outlets located within the separate interest are part of the separate interest, and any other portions of the walls, floors or ceilings are part of the common area [S:ca-civ-code-4185].\n\nRead that twice. The interior surface is yours. The structure behind it is not. Outlets located within the unit are yours; the wiring beyond them is not addressed by this sentence. And the whole rule opens with unless the declaration or condominium plan otherwise provides, so it is a default rather than a fixture of ownership.\n\nNow the third zone, which is where the arguments are.\n\nExclusive use common area is a portion of the common area designated by the declaration for the exclusive use of one or more, but fewer than all, of the owners of the separate interests, and which is or will be appurtenant to that separate interest [S:ca-civ-code-4145]. It is common area. You do not own it. Only you may use it.\n\nThe statute then names what falls into that zone by default. Unless the declaration otherwise provides, any shutters, awnings, window boxes, doorsteps, stoops, porches, balconies, patios, exterior doors, doorframes and the hardware incident to them, screens and windows or other fixtures designed to serve a single separate interest but located outside its boundaries, are exclusive use common area allocated exclusively to that separate interest [S:ca-civ-code-4145]. That is the balcony, the patio, the front door and its frame: not yours, not quite the association's either.\n\nOne item in the section behaves differently, and the difference is deliberate. Internal and external telephone wiring designed to serve a single separate interest but located outside its boundaries is exclusive use common area allocated exclusively to that separate interest notwithstanding the provisions of the declaration [S:ca-civ-code-4145]. The fixture list in subdivision (b) applies unless the declaration otherwise provides; the telephone wiring rule in subdivision (c) applies notwithstanding what the declaration says [S:ca-civ-code-4145]. One yields to your governing documents and the other does not, which is unusual enough to be worth knowing before anyone quotes the declaration at you.\n\nThe three zones then carry three different maintenance duties, each a default the declaration may displace. Unless otherwise provided in the declaration, the association is responsible for repairing, replacing and maintaining the common area [S:ca-civ-code-4775]; the owner of each separate interest is responsible for repairing, replacing and maintaining that separate interest [S:ca-civ-code-4775]; and the owner is responsible for maintaining the exclusive use common area appurtenant to that separate interest [S:ca-civ-code-4775]. Each of those subdivisions opens with the same qualifier, so the statutory allocation is a starting point a particular development's declaration may rearrange [S:ca-civ-code-4775].\n\nSo the balcony is common area you do not own, that only you may use, that you are presumptively responsible for maintaining, and that your declaration may reassign. That combination is why balconies generate more argument than any other part of a condominium.",
+	"whatChanges": [
+		"Which kind of common interest development it is, since separate interest means something different in each [S:ca-civ-code-4185].",
+		"Whether the declaration or condominium plan designates boundaries differently, because the interior-surfaces rule applies only in default of that [S:ca-civ-code-4185].",
+		"Whether the item sits inside the boundary, is exclusive use common area, or is plain common area, since three different maintenance duties attach [S:ca-civ-code-4775].",
+		"Whether the fixture is on the subdivision (b) list, which the declaration may override, or is telephone wiring under subdivision (c), which it may not [S:ca-civ-code-4145].",
+		"Whether the declaration reallocates any maintenance duty, which every relevant subdivision expressly permits [S:ca-civ-code-4775].",
+		"Whether the fixture serves a single separate interest, since that is the test for the exclusive use allocation [S:ca-civ-code-4145]."
+	],
+	"variability": [
+		"Almost every rule described here is a default that the declaration, and in some cases the condominium plan, may displace [S:ca-civ-code-4185][S:ca-civ-code-4145][S:ca-civ-code-4775]. Your governing documents are the first thing to read, not the last.",
+		"The exception is the telephone wiring rule, which applies notwithstanding the provisions of the declaration [S:ca-civ-code-4145].",
+		"These sections define the parts of a development and allocate maintenance. They say nothing about what any insurance policy covers, and nothing here should be read as stating that.",
+		"Whether a particular fixture is designed to serve a single separate interest is a question about that fixture, and the section does not resolve any individual case [S:ca-civ-code-4145]."
+	],
+	"nextActions": [
+		"Read the declaration before the statute, since most of what the statute provides applies only where the declaration is silent [S:ca-civ-code-4185][S:ca-civ-code-4775].",
+		"Ask which of the three zones the item in dispute sits in, because that is the question the maintenance duty turns on [S:ca-civ-code-4775].",
+		"For anything on the subdivision (b) fixture list, check whether the declaration has reallocated it [S:ca-civ-code-4145].",
+		"For telephone wiring, note that the declaration does not override the statutory allocation [S:ca-civ-code-4145].",
+		"Take the boundary answer to your insurer and the association's separately, since where the line falls and what each policy covers are different questions.",
+		"If a repair bill turns on the boundary and the sums are material, take the declaration to a lawyer rather than settling it at a board meeting."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["condominium-unit-owners", "community-association"],
+	"states": ["CA"],
+	"audience": "individual",
+	"topics": ["separate interest", "exclusive use common area", "boundaries", "maintenance duty", "davis-stirling", "california"],
+	"companies": [],
+	"coverages": ["condominium-unit-owners-california"],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["hoa-master-policy-covers-my-unit-california", "who-maintains-exclusive-use-balcony-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Every allocation here except the telephone wiring rule is a default the declaration may displace, so the answer for a particular building is in that building's governing documents. Reading them against a disputed repair is legal work rather than statutory reading."
+	},
+	"sourceIds": ["ca-civ-code-4185", "ca-civ-code-4145", "ca-civ-code-4775"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
