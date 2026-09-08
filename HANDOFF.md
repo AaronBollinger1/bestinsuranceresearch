@@ -15,18 +15,18 @@ pass if you learn them the hard way.
 | | |
 | --- | --- |
 | Branch | `launch/initial-publication`, 88 commits, **never push to `main`** |
-| Suite | `npm run validate` = 121 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
+| Suite | `npm run validate` = 122 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
 | Built pages | 840 (299 are noindex verification sheets) |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
 | Coverage pages | 27 of 51 canonical lines |
 | Figures | 19 (`/figures`, the amounts and what moves them) |
 | Modules | 10 live, 15 cross-module rules |
-| Records signed off | **0.** 169 `under-review`, 4 `corrected` |
+| Records signed off | **0.** 172 `under-review`, 4 `corrected`. 176 records now carry a review state |
 | Sources ever re-checked | **11 of 299.** The 5 new ones are the eligible figure sources, re-read 8 September |
 | Sources no question reaches | 48 |
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
-| Published records with no review state | **3.** The live worksheets; the tools schema has no `reviewState` field |
+| Published records with no review state | **0.** Was 3; the tools schema now carries review fields, required on live worksheets and forbidden on unbuilt ones |
 
 ### The two things blocking everything else
 
@@ -255,13 +255,13 @@ because the record still appeared on the sheet. Use a non-global regex for the
 presence check. The suite now asserts which section a dependency lands in, not
 just that it appears.
 
-**The dependency set is wider than the reviewable set.** `reviewableRecords()`
-in `src/lib/review.ts` is the one list of collections carrying a `reviewState`,
-and `dependentRecords()` in `src/lib/verification.ts` adds the live worksheets,
-which publish 80 cited sentences on 29 sources with no `reviewState` field in
-their schema at all. Do not paper that over by defaulting them to
-`under-review`: that asserts a review is open on a record that cannot record
-one. Giving `tools` a review state is a real pass of its own.
+**One enumeration, and it is now genuinely one.** `reviewableRecords()` in
+`src/lib/review.ts` is the single list of everything carrying a `reviewState`,
+and the verification sheets read it directly again. There was briefly a wider
+`dependentRecords()` because live worksheets published citations while having
+no review state to record; the tools schema fix removed the need for it and it
+is deleted. If you add a collection that publishes `[S:]` markers, add it
+there - a test now fails if a citation-bearing collection is not enumerated.
 
 **A recheck is only possible on a source read on an earlier day.** The
 schema asserts `lastChecked > accessedDate` for a `recheck` basis, so a
@@ -374,8 +374,9 @@ copying a fifth into this one is how that happened. The short version:
    were ineligible; they are eligible from 9 September and are listed in
    section 4. Then widen the recheck beyond the figures: 288 of 299 sources
    still carry only the date somebody read them once.
-4. **Give `tools` a `reviewState` and a `reviewer`**, so the 3 live worksheets
-   stop publishing 80 cited sentences with no review state recordable.
+4. ~~Give `tools` a `reviewState`~~ **done.** Required on live worksheets by a
+   schema refinement and forbidden on unbuilt ones, so the queue counts the 3
+   that publish and none of the 13 that assert nothing. Queue is 176 records.
 5. **Carrier entity records.** Route measured and settled: state DOI filing
    libraries, not CDI company profiles. See the map in `AMBITION.md`.
 6. Hazard geography, then risk-score explainers, then New York and Texas depth,

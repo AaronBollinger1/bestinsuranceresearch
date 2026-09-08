@@ -67,7 +67,7 @@ export interface AssertionUnit {
 	text: string;
 	/** Every source cited by this sentence, so shared attribution is visible. */
 	sourceIds: string[];
-	reviewState: ReviewState | null;
+	reviewState: ReviewState;
 }
 
 /**
@@ -80,7 +80,7 @@ export interface DeclaredDependency {
 	recordId: string;
 	recordTitle: string;
 	path: string;
-	reviewState: ReviewState | null;
+	reviewState: ReviewState;
 	/** The substantive fields carrying what rests on the document. */
 	fields: Array<{ field: string; value: string }>;
 }
@@ -145,35 +145,6 @@ function walk(
 	}
 }
 
-/**
- * Every record that publishes an assertion resting on a source.
- *
- * Wider than `reviewableRecords`, and the difference is itself a finding. The
- * three live worksheets declare 29 sources and publish 80 cited sentences
- * between them, and the tools schema carries no `reviewState` and no
- * `reviewer` - only a `spec.reviewOwner` and a `lastReviewed`. So they are
- * outside the review model while being fully published, and a sheet built
- * from the reviewable set alone omitted all 80. A reviewer would have signed
- * a document off having been shown less than rests on it, which is the exact
- * failure these sheets exist to prevent.
- *
- * They are therefore included, and shown as what they are rather than given a
- * review state the schema does not have.
- */
-export function dependentRecords(corpus: Corpus): ReviewableRecord[] {
-	return [
-		...reviewableRecords(corpus),
-		...corpus.liveTools.map((t) => ({
-			kind: 'Worksheet',
-			id: t.id,
-			title: t.data.name,
-			path: t.data.route || `/tools/${t.id}`,
-			data: t.data as unknown as Record<string, unknown>,
-			extraTriggers: [],
-		})),
-	];
-}
-
 /** Every cited sentence in one record, in document order. */
 export function assertionsInRecord(record: ReviewableRecord): AssertionUnit[] {
 	const out: AssertionUnit[] = [];
@@ -186,7 +157,7 @@ export function assertionsInRecord(record: ReviewableRecord): AssertionUnit[] {
 			field,
 			text,
 			sourceIds,
-			reviewState: reviewStateOf(record),
+			reviewState: (record.data.reviewState ?? 'under-review') as ReviewState,
 		});
 	});
 	return out;
@@ -199,16 +170,6 @@ function declaredIn(record: ReviewableRecord): string[] {
 		for (const id of idsOf(rule.sourceIds ?? [])) ids.add(id);
 	}
 	return [...ids];
-}
-
-/**
- * A record's review state, or null where its collection has none. Null is
- * not a default of "under review": claiming a review is open on a record
- * whose schema cannot record one would be a claim the site cannot support.
- */
-function reviewStateOf(record: ReviewableRecord): ReviewState | null {
-	const value = record.data.reviewState;
-	return typeof value === 'string' ? (value as ReviewState) : null;
 }
 
 function substantiveFields(record: ReviewableRecord): Array<{ field: string; value: string }> {
@@ -232,8 +193,6 @@ export interface VerificationIndex {
 		sentences: number;
 		edges: number;
 		declaredOnly: number;
-		/** Records publishing a cited assertion with no review state at all. */
-		unreviewable: number;
 	};
 }
 
@@ -244,7 +203,7 @@ export interface VerificationIndex {
 export function verificationIndex(corpus: Corpus): VerificationIndex {
 	const assertions = new Map<string, AssertionUnit[]>();
 	const declared = new Map<string, DeclaredDependency[]>();
-	const records = dependentRecords(corpus);
+	const records = reviewableRecords(corpus);
 	let sentences = 0;
 	let edges = 0;
 	let declaredOnly = 0;
@@ -272,7 +231,7 @@ export function verificationIndex(corpus: Corpus): VerificationIndex {
 				recordId: record.id,
 				recordTitle: record.title,
 				path: record.path,
-				reviewState: reviewStateOf(record),
+				reviewState: (record.data.reviewState ?? 'under-review') as ReviewState,
 				fields,
 			};
 			const bucket = declared.get(id);
@@ -289,7 +248,6 @@ export function verificationIndex(corpus: Corpus): VerificationIndex {
 			sentences,
 			edges,
 			declaredOnly,
-			unreviewable: records.filter((r) => reviewStateOf(r) === null).length,
 		},
 	};
 }
@@ -299,7 +257,7 @@ export interface AssertionGroup {
 	recordId: string;
 	recordTitle: string;
 	path: string;
-	reviewState: ReviewState | null;
+	reviewState: ReviewState;
 	units: AssertionUnit[];
 }
 
@@ -314,8 +272,6 @@ export interface VerificationSheet {
 	shared: number;
 	/** Outstanding records among the dependents. */
 	outstanding: number;
-	/** Dependents whose collection records no review state at all. */
-	unreviewable: number;
 }
 
 /**
@@ -354,8 +310,7 @@ export function verificationSheet(index: VerificationIndex, sourceId: string): V
 	const key = (x: { kind: string; recordId: string }) => x.kind + ':' + x.recordId;
 	const all = [...groups, ...declared];
 	const identities = new Set(all.map(key));
-	const outstanding = new Set(all.filter((x) => x.reviewState === 'under-review' || x.reviewState === 'corrected').map(key));
-	const unreviewable = new Set(all.filter((x) => x.reviewState === null).map(key));
+	const outstanding = new Set(all.filter((x) => x.reviewState !== 'reviewed').map(key));
 
 	return {
 		sourceId,
@@ -365,6 +320,5 @@ export function verificationSheet(index: VerificationIndex, sourceId: string): V
 		records: identities.size,
 		shared: units.filter((u) => u.sourceIds.length > 1).length,
 		outstanding: outstanding.size,
-		unreviewable: unreviewable.size,
 	};
 }

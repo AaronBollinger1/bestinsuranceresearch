@@ -200,6 +200,13 @@ export function reviewableRecords(corpus: Corpus): ReviewableRecord[] {
 	   under-review badge, cited sources that no queue counted and no source page
 	   reported. They evaluate on the position rather than on a page of their
 	   own, which is why they were easy to forget and no reason to exclude them. */
+	/* Live worksheets publish 85 citation markers between them and had no
+	   reviewState at all until the tools schema gained one, so they were
+	   published content no queue could count. Unbuilt entries carry no
+	   review fields by schema refinement and are correctly absent. */
+	for (const t of corpus.liveTools) {
+		push('Worksheet', t.id, t.data.name, t.data.route || `/tools/${t.id}`, t.data);
+	}
 	for (const r of corpus.crossRules) push('Cross-rule', r.id, r.data.title, '/position', r.data);
 
 	return out;

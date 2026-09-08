@@ -394,6 +394,50 @@ const tools = defineCollection({
 		sourceIds: z.array(reference('sources')).default([]),
 		relatedQuestions: z.array(reference('questions')).default([]),
 		lastReviewed: isoDate,
+		/*
+		 * Review state, required only where there is something to review.
+		 *
+		 * This collection had no `reviewState` and no `reviewer` at all, only a
+		 * `spec.reviewOwner`. The three live worksheets publish 85 citation
+		 * markers on 29 source records between them, so they were fully published
+		 * content that could not state whether anyone had checked it and that no
+		 * review queue could count. The verification sheets had to render them as
+		 * "no review state recorded", which was honest and not a fix.
+		 *
+		 * The other thirteen entries are specifications with no items, no sources
+		 * and no markers. A roadmap entry publishes nothing, so giving it an
+		 * under-review badge would add records to the queue that assert nothing.
+		 * Hence the refinement below rather than a required field: a live
+		 * worksheet publishes and must say who stands behind it, and an unbuilt
+		 * one must not pretend to.
+		 */
+		author: z.string().min(3).optional(),
+		reviewer: z.string().min(3).optional(),
+		reviewState: z.enum(REVIEW_STATE).optional(),
+		correction: correctionRecord,
+	})
+	.superRefine((tool, ctx) => {
+		if (tool.status !== 'live') {
+			for (const field of ['author', 'reviewer', 'reviewState'] as const) {
+				if (tool[field] !== undefined) {
+					ctx.addIssue({
+						code: 'custom',
+						path: [field],
+						message: `only a live worksheet carries ${field}; this one is ${tool.status} and publishes nothing to review`,
+					});
+				}
+			}
+			return;
+		}
+		for (const field of ['author', 'reviewer', 'reviewState'] as const) {
+			if (tool[field] === undefined) {
+				ctx.addIssue({
+					code: 'custom',
+					path: [field],
+					message: `a live worksheet publishes citations and must name its ${field}`,
+				});
+			}
+		}
 	}),
 });
 

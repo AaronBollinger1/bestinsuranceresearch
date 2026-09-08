@@ -67,6 +67,7 @@ const companies = collection('companies');
 const states = collection('states');
 const examples = collection('examples');
 const tools = collection('tools');
+const liveTools = tools.filter((t) => t.data.status === 'live');
 
 const { canonicalLine, sharesLine } = await import(
 	new URL('../src/lib/lines.ts', import.meta.url).href,
@@ -1984,14 +1985,19 @@ test('the review queue lists every record that needs review', () => {
 		   evaluate on the position rather than on a page of their own, so they
 		   are matched on their title rather than on a route. */
 		...collection('cross-rules').map((r) => ['position', r]),
+		/* Live worksheets, which had no review state at all until the tools
+		   schema gained one. Matched on title: they route by their own
+		   `route` field rather than by a collection segment. */
+		...liveTools.map((t) => ['worksheet', t]),
 	];
 
 	for (const [segment, record] of expected) {
 		if (record.data.reviewState === 'reviewed') continue;
-		if (segment === 'position') {
+		if (segment === 'position' || segment === 'worksheet') {
+			const name = record.data.title || record.data.name;
 			assert.ok(
-				textOf(page).includes(record.data.title.replace(/\s+/g, ' ')),
-				`the review queue omits cross-rule ${record.id}, which is not reviewed`,
+				textOf(page).includes(name.replace(/\s+/g, ' ')),
+				`the review queue omits ${segment} ${record.id}, which is not reviewed`,
 			);
 			continue;
 		}
@@ -2526,6 +2532,9 @@ const REVIEWABLE = {
 	figures,
 	modules,
 	'cross-rules': collection('cross-rules'),
+	/* Only live worksheets. An unbuilt entry carries no review fields by
+	   schema refinement, publishes no items and cites nothing. */
+	tools: liveTools,
 };
 
 /**
@@ -2639,8 +2648,12 @@ test('the review queue counts every collection that carries a reviewState', () =
 		.filter((d) => d.isDirectory())
 		.map((d) => d.name)
 		.filter((name) => {
+			/* `some`, not `every`. The tools collection is deliberately mixed:
+			   live worksheets carry a review state and unbuilt specifications must
+			   not. `every` silently excluded the whole collection from this check
+			   the moment that became true. */
 			const entries = collection(name);
-			return entries.length > 0 && entries.every((e) => typeof e.data.reviewState === 'string');
+			return entries.some((e) => typeof e.data.reviewState === 'string');
 		});
 
 	const queue = textOf(read(path.join(DIST, 'review-queue', 'index.html')));
@@ -2650,6 +2663,11 @@ test('the review queue counts every collection that carries a reviewState', () =
 			name + ' carries a reviewState and is not in the list this suite checks',
 		);
 		for (const entry of collection(name)) {
+			/* Only records that actually carry a state. The tools collection is
+			   deliberately mixed: a live worksheet carries one, and an unbuilt
+			   specification must not, so iterating the whole collection asserted
+			   that thirteen roadmap entries should be in the review queue. */
+			if (typeof entry.data.reviewState !== 'string') continue;
 			const title = titleOf(entry.data).replace(/\s+/g, ' ');
 			assert.ok(
 				queue.includes(title),
@@ -3035,4 +3053,51 @@ test('a rechecked source was returned to, not merely read once', () => {
 		);
 	}
 	assert.ok(rechecked > 0, 'no source has ever been rechecked, so this check is vacuous');
+});
+
+test('nothing publishes citations without being reviewable', () => {
+	/*
+	 * The gap this closes: the tools collection had no reviewState and no
+	 * reviewer, only a spec.reviewOwner, while three live worksheets published
+	 * 85 citation markers on 29 source records. Fully published content that
+	 * could not state whether anyone had checked it, and that no review queue
+	 * could count. The inverse matters too - an unbuilt specification must not
+	 * carry a review state, or the queue fills with records asserting nothing.
+	 */
+	for (const tool of tools) {
+		const markers = (JSON.stringify(tool.data).match(/\[S:[a-z0-9-]+\]/g) || []).length;
+		if (tool.data.status === 'live') {
+			assert.ok(tool.data.reviewState, `live worksheet ${tool.id} states no reviewState`);
+			assert.ok(tool.data.reviewer, `live worksheet ${tool.id} names no reviewer`);
+			assert.ok(tool.data.author, `live worksheet ${tool.id} names no author`);
+			continue;
+		}
+		assert.equal(
+			markers,
+			0,
+			`${tool.id} is ${tool.data.status} but publishes ${markers} citations, so it needs a reviewer`,
+		);
+		assert.ok(
+			!tool.data.reviewState,
+			`${tool.id} is ${tool.data.status} and carries a reviewState, which puts a record asserting nothing into the queue`,
+		);
+	}
+
+	/* And every citation-bearing collection is one the queue enumerates. */
+	const cited = [];
+	for (const name of fs.readdirSync(CONTENT, { withFileTypes: true })) {
+		if (!name.isDirectory() || name.name === "sources") continue;
+		const entries = collection(name.name);
+		const markers = entries.reduce(
+			(n, e) => n + (JSON.stringify(e.data).match(/\[S:[a-z0-9-]+\]/g) || []).length,
+			0,
+		);
+		if (markers > 0) cited.push(name.name);
+	}
+	for (const name of cited) {
+		assert.ok(
+			Object.hasOwn(REVIEWABLE, name),
+			`${name} publishes citations but is not a collection the review queue enumerates`,
+		);
+	}
 });

@@ -321,24 +321,6 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 					next document in this order, and from every record page in{' '}
 					<a href="/sources">the source registry</a>.
 				</p>
-
-				<Callout tone="warn" label="What building the sheets turned up">
-					<p>
-						Assembling them found {verification.totals.unreviewable} published records that
-						carry no review state at all, and so cannot appear in the count above however it
-						is ordered. They are the live worksheets. The tools schema records a review
-						owner and a last-reviewed date, and no <code>reviewState</code> and no
-						<code> reviewer</code> - so a worksheet cannot state whether its insurance
-						substance has been checked, and between them they publish 80 cited sentences
-						resting on 29 source records.
-					</p>
-					<p>
-						That is recorded here rather than fixed here, because the fix is a schema
-						change to a collection with sixteen records and it deserves its own pass. The
-						sheets show those sentences meanwhile, labelled as having no review state, so
-						a reviewer verifying a document sees everything that rests on it.
-					</p>
-				</Callout>
 			</div>
 		</section>
 
