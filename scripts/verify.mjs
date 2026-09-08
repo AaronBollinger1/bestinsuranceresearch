@@ -970,6 +970,7 @@ test('every required document exists and is substantive', () => {
 		'DOMAIN-ROUTING-MANIFEST.md', 'AUTHORITY-AND-DISTRIBUTION-PLAN.md',
 		'TOOL-REGISTRY-AND-ROADMAP.md', 'ANALYTICS-EVENT-SPEC.md', 'LAUNCH-GATE.md',
 		'BRAND-SYSTEM.md',
+		'COMMONS.md',
 	];
 	for (const doc of required) {
 		const full = path.join(ROOT, doc);

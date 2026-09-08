@@ -195,6 +195,11 @@ figure, not an opinion about a carrier.
 
 ## Layer 3: The Commons
 
+**`COMMONS.md` is the specification.** This section states the shape; that file
+fixes the origin question this one left open, and holds the account model, the
+moderation rule, contribution levels, the naming constraints, and what makes a
+user account citable rather than merely present.
+
 Two mechanisms, both of which extend something the schema already has. Neither
 is a free-posting forum, and that is deliberate: the moderated versions capture
 most of the value with almost none of the exposure.

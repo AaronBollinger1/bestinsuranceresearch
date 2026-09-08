@@ -381,6 +381,28 @@ copying a fifth into this one is how that happened. The short version:
 6. Hazard geography, then risk-score explainers, then New York and Texas depth,
    then the versioned dataset release, then the Commons.
 
+**`COMMONS.md` settles the Commons**, which was the largest unspecified piece
+of the ambition: `AMBITION.md` said "a separate origin" and never said which,
+so it was blocked on a decision rather than on work. That file holds the origin
+question, the account model and what is never collected, moderation before
+publication, contribution levels earned by verified licence rather than volume,
+the naming constraints, and the part that decides whether it works at all -
+what makes a user account citable rather than merely present.
+
+The finding worth carrying: **the Commons is not a new content model.** The
+`examples` schema already asks for label, labelNote, provenance, whatHappened,
+decidedBy and cannotGeneralize, which is exactly the structure that makes a
+lived account citable, and it already holds 11 records. What is missing is the
+moderated route in, plus one schema change: `sourceIds` must be optional on the
+Commons side, because a reader account may never touch law.
+
+BestInsurance Research is **not** renamed. The brandable name is for the
+Commons, which cannot be called BestInsurance Research because it carries no
+agency branding. Section 10 of that file lists what the name must not sound
+like: not the Record, not a carrier or agency (no verb of selling, and `.insure`
+is a TLD carriers buy), and not a regulator - `Bureau`, `Institute`,
+`Authority` imply standing the estate does not have, which is the worse error.
+
 ### What the goal is, so it stops being re-asked
 
 `AMBITION.md` opens with *The goal, stated once*, and maps every ask made so far
