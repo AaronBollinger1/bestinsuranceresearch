@@ -71,8 +71,14 @@ const site = process.env.PUBLIC_SITE_ORIGIN || 'https://bestinsuranceresearch.co
  *  - *.json     machine-readable companions. They are discovered through the
  *               rel=alternate link on their own page, which is the correct path.
  *  - /404       error page.
+ *  - /review-queue/<source>  the per-source verification sheets. They reproduce
+ *               prose that is already published on its own canonical page, so
+ *               299 of them would be the largest block of internal duplication
+ *               on the origin, competing with the pages they quote. Public, and
+ *               noindex, for the same reason /design is. The index page
+ *               /review-queue itself stays in the sitemap.
  */
-const EXCLUDED = [/\/design\//, /\.json$/, /\/404\/?$/];
+const EXCLUDED = [/\/design\//, /\.json$/, /\/404\/?$/, /\/review-queue\/[^/]/];
 
 export default defineConfig({
 	site,

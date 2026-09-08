@@ -391,6 +391,15 @@ export function citingPages(corpus: Corpus, sourceId: string): CitingPage[] {
 	for (const t of corpus.liveTools) {
 		if (cites(t.data.sourceIds)) out.push({ title: t.data.name, path: t.data.route || '/tools', kind: 'Worksheet' });
 	}
+	/* Cross-rules were the second collection to be omitted here for the same
+	   reason as figures: they evaluate on the position rather than on a page of
+	   their own, so nothing enumerating pages found them. Fifteen records citing
+	   sources whose pages reported no dependency. Named individually rather than
+	   collapsed into one /position entry, because the rule is what a reviewer
+	   has to read. */
+	for (const r of corpus.crossRules) {
+		if (cites(r.data.sourceIds)) out.push({ title: r.data.title, path: '/position', kind: 'Cross-rule' });
+	}
 	// A module cites through its rules, so name the rules that depend on it. That
 	// is more useful than naming the module: it says which check would change.
 	for (const m of corpus.liveModules) {

@@ -26,6 +26,7 @@ import StatusChip from '../components/StatusChip.astro';
 import { siteConfig } from '../config/site';
 import { isStale, loadCorpus } from '../lib/corpus';
 import { reviewQueue, reviewSummary, sourceReviewOrder, sourceReviewSummary } from '../lib/review';
+import { verificationIndex } from '../lib/verification';
 import { breadcrumbs, graph, organization, website } from '../lib/schema';
 
 const corpus = await loadCorpus();
@@ -52,6 +53,16 @@ const batchRows = kinds.map((kind) => {
    re-reading that record-first ordering forces. */
 const sourceOrder = sourceReviewOrder(corpus);
 const sourceStats = sourceReviewSummary(sourceOrder);
+
+/* The sentence-level size of the same job. `sourceReviewSummary` counts
+   record-to-source dependencies, which is the right number for deciding a
+   reading order and the wrong one for stating what a sign-off commits to: a
+   reviewer confirms sentences, not pages. */
+const verification = verificationIndex(corpus);
+const sentenceCounts = corpus.sources
+	.map((s) => (verification.assertions.get(s.id) ?? []).length)
+	.sort((a, b) => a - b);
+const medianSentences = sentenceCounts[Math.floor(sentenceCounts.length / 2)] ?? 0;
 const movedSources = sourceOrder.filter((x) => x.priority === 'moved');
 const sourceRows = sourceOrder
 	.slice(0, 24)
@@ -236,7 +247,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 							<ul>
 								{movedSources.map((x) => (
 									<li>
-										<a href={`/sources/${x.id}`}><code>{x.id}</code></a> is{' '}
+										<a href={`/review-queue/${x.id}`}><code>{x.id}</code></a> is{' '}
 										<strong>{x.status}</strong> and carries {x.dependents}{' '}
 										{x.dependents === 1 ? 'record' : 'records'}
 									</li>
@@ -259,6 +270,75 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 						<code> lastCheckedBasis </code> records, and it is why the field exists.
 					</p>
 				</div>
+			</div>
+		</section>
+
+		<section class="band band-paper" aria-labelledby="sheets">
+			<div class="shell">
+				<span class="eyebrow">The worksheet</span>
+				<h2 id="sheets">Every source has a verification sheet</h2>
+				<div class="prose">
+					<p>
+						An ordered list still leaves the hard part undone. This page can say which document
+						to read first; it could not say what the corpus is <em>using</em> that document to
+						assert, because the unit it counts is the record and the unit a reviewer verifies is
+						the sentence. Finding out meant opening every dependent page and searching it for
+						the citation marker.
+					</p>
+					<p>
+						So each of the {sourceStats.sources} sources now has a sheet holding the whole job
+						for that one document: the claims the corpus records against it with their addresses
+						and checksums, every sentence anywhere in the corpus that rests on it with the field
+						it sits in and the page it publishes on, and the exact edit each possible verdict
+						implies. It is the real size of the commitment, too:{' '}
+						<strong>{verification.totals.sentences.toLocaleString('en-US')} cited sentences</strong>{' '}
+						across {verification.totals.edges.toLocaleString('en-US')} sentence-to-source edges,
+						rather than {summary.total} records and {sourceStats.dependencies} dependencies. A
+						median source carries {medianSentences} sentences, so one document is a sitting
+						rather than a project.
+					</p>
+					<p>
+						The sheets record nothing and are not indexed. Every sentence on them is published
+						on its own page, which is the citable one; a sheet is a worksheet in the printed
+						sense, and sign-off is an edit to the record's own file.
+					</p>
+				</div>
+				<ol class="sheet-index">
+					{
+						sourceOrder.slice(0, 24).map((x) => (
+							<li>
+								<a href={`/review-queue/${x.id}`}><code>{x.id}</code></a>
+								<span>
+									{(verification.assertions.get(x.id) ?? []).length} sentences, {x.dependents}{' '}
+									{x.dependents === 1 ? 'record' : 'records'}
+								</span>
+							</li>
+						))
+					}
+				</ol>
+				<p class="prose">
+					The remaining {sourceStats.sources - 24} are reachable from any sheet, which links the
+					next document in this order, and from every record page in{' '}
+					<a href="/sources">the source registry</a>.
+				</p>
+
+				<Callout tone="warn" label="What building the sheets turned up">
+					<p>
+						Assembling them found {verification.totals.unreviewable} published records that
+						carry no review state at all, and so cannot appear in the count above however it
+						is ordered. They are the live worksheets. The tools schema records a review
+						owner and a last-reviewed date, and no <code>reviewState</code> and no
+						<code> reviewer</code> - so a worksheet cannot state whether its insurance
+						substance has been checked, and between them they publish 80 cited sentences
+						resting on 29 source records.
+					</p>
+					<p>
+						That is recorded here rather than fixed here, because the fix is a schema
+						change to a collection with sixteen records and it deserves its own pass. The
+						sheets show those sentences meanwhile, labelled as having no review state, so
+						a reviewer verifying a document sees everything that rests on it.
+					</p>
+				</Callout>
 			</div>
 		</section>
 
@@ -391,4 +471,39 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 	.trigger-high svg { color: var(--gold-edge); }
 	.trigger-medium svg { color: var(--faint); }
 	.trigger b { color: var(--ink); font-weight: 600; }
+
+	/* The ordinal is the reading order, so it is shown rather than suppressed. */
+	.sheet-index {
+		list-style: none;
+		margin: var(--s-4) 0;
+		padding: 0;
+		counter-reset: s;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+		gap: var(--s-2) var(--s-5);
+	}
+	.sheet-index > li {
+		counter-increment: s;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: var(--s-2);
+		border-bottom: 1px solid var(--line);
+		padding-bottom: var(--s-2);
+	}
+	.sheet-index > li::before {
+		content: counter(s);
+		font-family: var(--font-mono);
+		font-variant-numeric: tabular-nums;
+		font-size: var(--text-2xs);
+		color: var(--faint);
+		min-width: 1.6em;
+	}
+	.sheet-index > li > a { font-size: var(--text-sm); }
+	.sheet-index > li > span {
+		margin-left: auto;
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+		color: var(--faint);
+	}
 </style>

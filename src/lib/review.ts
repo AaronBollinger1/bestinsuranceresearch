@@ -127,6 +127,85 @@ function sourceTriggers(
 }
 
 /**
+ * One record that carries a review state, normalized across collections.
+ *
+ * This exists because the enumeration kept being written twice. `citingPages`
+ * and `reviewQueue` each held their own list of collections, and each one has
+ * now silently omitted a collection that carried an under-review badge: figures
+ * from both, cross-rules from both. A page that says nothing depends on a
+ * source, or a queue that reports a smaller backlog than exists, is the most
+ * expensive kind of quiet wrong on this property.
+ *
+ * So the list of what is reviewable lives here once, and `reviewQueue`,
+ * `sourceReviewOrder` and the verification sheets all read it. Adding a
+ * collection means adding it in one place. `scripts/verify.mjs` asserts that
+ * every collection carrying a `reviewState` appears in the result.
+ */
+export interface ReviewableRecord {
+	kind: string;
+	id: string;
+	title: string;
+	/** The page this record publishes on. Several records may share one. */
+	path: string;
+	data: Record<string, unknown>;
+	/** Triggers only this collection can compute. */
+	extraTriggers: ReviewTrigger[];
+}
+
+export function reviewableRecords(corpus: Corpus): ReviewableRecord[] {
+	const out: ReviewableRecord[] = [];
+	const push = (
+		kind: string,
+		id: string,
+		title: string,
+		path: string,
+		data: unknown,
+		extraTriggers: ReviewTrigger[] = [],
+	) => out.push({ kind, id, title, path, data: data as Record<string, unknown>, extraTriggers });
+
+	for (const c of corpus.coverages) push('Coverage', c.id, c.data.name, `/insurance/${c.id}`, c.data);
+	for (const q of corpus.questions) push('Question', q.id, q.data.question, `/questions/${q.id}`, q.data);
+
+	for (const m of corpus.modules) {
+		/* A rule that compares against a moving date changes meaning without
+		   anyone editing it, which is the one case where time alone is a review
+		   trigger. */
+		const dated = (m.data.rules ?? []).filter((r: unknown) =>
+			/daysFromToday|monthsFromToday|yearsSince|fixedDate/.test(JSON.stringify(r)),
+		).length;
+		const extra: ReviewTrigger[] = dated
+			? [
+					{
+						code: 'dated-rule',
+						label: 'Contains rules that compare against today',
+						detail: `${dated} of ${(m.data.rules ?? []).length} rules resolve a date at build time, so their output changes as time passes without the module being edited. Worth re-reading whenever the review is refreshed.`,
+						severity: 'medium',
+					},
+				]
+			: [];
+		push('Module', m.id, m.data.name, `/tools/${m.id}`, m.data, extra);
+	}
+
+	for (const e of corpus.examples) push('Example', e.id, e.data.title, `/examples/${e.id}`, e.data);
+	/* Figures arrived as a collection without being added here, so nineteen
+	   records published an under-review badge while the queue said the backlog
+	   was smaller than it was. */
+	for (const f of corpus.figures) push('Figure', f.id, f.data.label, `/figures#${f.id}`, f.data);
+	for (const s of corpus.states) push('State', s.id, s.data.name, `/states/${s.id}`, s.data);
+	for (const c of corpus.companies) {
+		push('Entity', c.id, c.data.shortName || c.data.legalName, `/companies/${c.id}`, c.data);
+	}
+	/* Cross-rules were the second collection to go missing the same way. Fifteen
+	   records, each naming Brian Bollinger as reviewer and each carrying an
+	   under-review badge, cited sources that no queue counted and no source page
+	   reported. They evaluate on the position rather than on a page of their
+	   own, which is why they were easy to forget and no reason to exclude them. */
+	for (const r of corpus.crossRules) push('Cross-rule', r.id, r.data.title, '/position', r.data);
+
+	return out;
+}
+
+/**
  * The queue. `isStaleFn` is injected rather than imported so this stays
  * testable and so the caller keeps ownership of what "stale" means.
  */
@@ -172,45 +251,8 @@ export function reviewQueue(
 		});
 	};
 
-	for (const c of corpus.coverages) {
-		add('Coverage', c.id, c.data.name, `/insurance/${c.id}`, c.data as Record<string, unknown>);
-	}
-	for (const q of corpus.questions) {
-		add('Question', q.id, q.data.question, `/questions/${q.id}`, q.data as Record<string, unknown>);
-	}
-	for (const m of corpus.modules) {
-		/* A rule that compares against a moving date changes meaning without
-		   anyone editing it, which is the one case where time alone is a review
-		   trigger. */
-		const dated = (m.data.rules ?? []).filter((r: unknown) =>
-			/daysFromToday|monthsFromToday|yearsSince|fixedDate/.test(JSON.stringify(r)),
-		).length;
-		const extra: ReviewTrigger[] = dated
-			? [
-					{
-						code: 'dated-rule',
-						label: 'Contains rules that compare against today',
-						detail: `${dated} of ${(m.data.rules ?? []).length} rules resolve a date at build time, so their output changes as time passes without the module being edited. Worth re-reading whenever the review is refreshed.`,
-						severity: 'medium',
-					},
-				]
-			: [];
-		add('Module', m.id, m.data.name, `/tools/${m.id}`, m.data as Record<string, unknown>, extra);
-	}
-	for (const e of corpus.examples) {
-		add('Example', e.id, e.data.title, `/examples/${e.id}`, e.data as Record<string, unknown>);
-	}
-	/* Figures arrived as a collection without being added here, so nineteen
-	   records published an under-review badge while the queue said the backlog
-	   was smaller than it was. */
-	for (const f of corpus.figures) {
-		add('Figure', f.id, f.data.label, `/figures#${f.id}`, f.data as Record<string, unknown>);
-	}
-	for (const s of corpus.states) {
-		add('State', s.id, s.data.name, `/states/${s.id}`, s.data as Record<string, unknown>);
-	}
-	for (const c of corpus.companies) {
-		add('Entity', c.id, c.data.shortName || c.data.legalName, `/companies/${c.id}`, c.data as Record<string, unknown>);
+	for (const record of reviewableRecords(corpus)) {
+		add(record.kind, record.id, record.title, record.path, record.data, record.extraTriggers);
 	}
 
 	/* A high escalation first, then how many escalations, then how much the

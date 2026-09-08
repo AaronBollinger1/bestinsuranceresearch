@@ -244,7 +244,7 @@ export function toolRecord(entry: CollectionEntry<'tools'>, sources: CollectionE
  * says what it said, which a URL alone cannot express. A corrected claim is a
  * different claim and gets a different checksum, deliberately.
  */
-function claimChecksum(text: string): string {
+export function claimChecksum(text: string): string {
 	return createHash('sha256').update(text, 'utf8').digest('hex').slice(0, 12);
 }
 

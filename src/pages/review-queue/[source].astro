@@ -1,0 +1,710 @@
+---
+/**
+ * One source's verification sheet.
+ *
+ * The review queue orders the backlog; this is the thing a reviewer actually
+ * works from. `/review-queue` can tell Brian that 299 sources sit under the
+ * outstanding records and which to read first. It could not tell him what any
+ * one of them is being used to assert, because the queue counts records and a
+ * reviewer verifies sentences. Finding out meant opening every dependent page
+ * and searching it for the marker.
+ *
+ * So this page puts the whole job for one document in one place: what the
+ * corpus records the document as saying, every sentence anywhere in the corpus
+ * that rests on it, and the edit each possible verdict implies.
+ *
+ * WHY THESE PAGES ARE NOINDEX
+ *
+ * They reproduce prose that is already published on its canonical page. 299
+ * sheets carrying 4,948 sentences between them would be the largest block of
+ * internal duplication on the origin, competing with the pages they quote for
+ * the same words. Citability is the whole asset, so the sheets stay public -
+ * publishing how the review is run is worth something - and stay out of the
+ * index, out of the sitemap, and out of llms.txt. The same posture /design
+ * already has.
+ *
+ * WHAT IT DOES NOT DO
+ *
+ * It records nothing. No form, no field, no account: `DIRECTION.md` forbids
+ * collecting anything on this origin and a review worksheet is not an
+ * exception. Sign-off lives in the record's own JSON, so the sheet states the
+ * edit each verdict implies and stops there rather than implying a control it
+ * does not have.
+ */
+import { ArrowLeft, ArrowRight, ExternalLink, TriangleAlert } from '@lucide/astro';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Callout from '../../components/Callout.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { escapeHtml } from '../../lib/citations';
+import { isStale, loadCorpus } from '../../lib/corpus';
+import { longDate } from '../../lib/cite';
+import { claimChecksum } from '../../lib/machine';
+import { sourceReviewOrder } from '../../lib/review';
+import { breadcrumbs, graph, organization, website } from '../../lib/schema';
+import { TODAY } from '../../lib/today';
+import { verificationIndex, verificationSheet } from '../../lib/verification';
+
+export const getStaticPaths = (async () => {
+	const corpus = await loadCorpus();
+	/* Built once and handed to every page. Walking the corpus per sheet would
+	   walk it 299 times for the same answer. */
+	const index = verificationIndex(corpus);
+	/* Review priority, so a sheet can offer the next reading rather than
+	   leaving the reviewer to go back to the queue for it. */
+	const order = sourceReviewOrder(corpus);
+	const position = new Map(order.map((item, i) => [item.id, i]));
+
+	return corpus.sources.map((entry) => ({
+		params: { source: entry.id },
+		props: { entry, corpus, index, order, position },
+	}));
+}) satisfies GetStaticPaths;
+
+const { entry, corpus, index, order, position } = Astro.props;
+const d = entry.data;
+const sheet = verificationSheet(index, entry.id);
+const stale = isStale(d.lastChecked, TODAY);
+
+const rank = position.get(entry.id);
+const priority = rank === undefined ? undefined : order[rank];
+const previous = rank === undefined || rank === 0 ? undefined : order[rank - 1];
+const next = rank === undefined || rank >= order.length - 1 ? undefined : order[rank + 1];
+
+const STATUS_LABEL: Record<string, string> = {
+	active: 'Active',
+	superseded: 'Superseded',
+	rescinded: 'Rescinded',
+	unavailable: 'Unavailable',
+	disputed: 'Disputed',
+	'not-adopted': 'Never adopted',
+};
+
+const replacement = d.supersededBy ? corpus.sourceById.get(d.supersededBy.id) : undefined;
+
+/**
+ * Markers rendered rather than stripped. The reviewer needs to see that a
+ * sentence rests on three documents and not only this one: a sentence with
+ * shared attribution cannot be judged against this document alone.
+ */
+function renderMarkers(text: string): string {
+	return escapeHtml(text).replace(/\[S:([a-z0-9][a-z0-9-]*)\]/g, (_whole, id: string) =>
+		id === entry.id
+			? '<b class="m-self">[this document]</b>'
+			: `<a class="m-other" href="/sources/${id}">[${escapeHtml(id)}]</a>`,
+	);
+}
+
+/* A reading order, not a whitelist. Any kind not named here still renders,
+   after the named ones: dropping a group because a collection was added after
+   this list was written is exactly the failure the sheets exist to prevent. */
+const KIND_ORDER = ['Question', 'Coverage', 'Example', 'State', 'Entity', 'Figure', 'Module', 'Cross-rule', 'Worksheet'];
+const kindsPresent = [
+	...KIND_ORDER.filter((k) => sheet.groups.some((g) => g.kind === k)),
+	...[...new Set(sheet.groups.map((g) => g.kind))].filter((k) => !KIND_ORDER.includes(k)).sort(),
+];
+const byKind = kindsPresent.map((kind) => ({
+	kind,
+	groups: sheet.groups.filter((g) => g.kind === kind),
+}));
+
+const path = `/review-queue/${entry.id}`;
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Review queue', path: '/review-queue' },
+	{ name: `Verify ${entry.id}`, path },
+];
+
+const description = `Verification sheet for the source record ${entry.id}. ${sheet.sentences} cited sentences across ${sheet.records} records rest on this document, of which ${sheet.outstanding} are not signed off.`;
+
+const jsonLd = graph(organization(), website(), breadcrumbs(trail));
+---
+
+<BaseLayout title={`Verify ${entry.id}`} description={description} jsonLd={jsonLd} pageType="editorial" noindex>
+	<article>
+		<section class="band band-tight">
+			<div class="shell">
+				<Breadcrumbs trail={trail} />
+				<span class="eyebrow">Verification sheet</span>
+				<h1>{d.title}</h1>
+				<p class="page-lede">{description}</p>
+
+				<div class="figures" style="margin-top:var(--s-5)">
+					<div class="figure"><b>{sheet.sentences}</b><span>cited sentences</span></div>
+					<div class="figure"><b>{sheet.records}</b><span>records</span></div>
+					<div class="figure"><b>{d.claims.length}</b><span>claims recorded</span></div>
+					<div class="figure"><b>{sheet.outstanding}</b><span>not signed off</span></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-tight">
+			<div class="shell">
+				<Callout tone="limit" label="What this sheet is">
+					<p>
+						A worksheet for one document, assembled from the corpus rather than written.
+						It is not a page for readers and it is not indexed: every sentence on it is
+						published on its own page, linked beside it, and that page is the citable one.
+					</p>
+					<p>
+						<strong>It records nothing.</strong> There is no field, no form and no account on
+						this origin. Sign-off lives in the record's own JSON file, so the last section
+						states the exact edit each verdict implies and stops there.
+					</p>
+				</Callout>
+			</div>
+		</section>
+
+		<section class="band band-paper" aria-labelledby="document">
+			<div class="shell">
+				<span class="eyebrow">The document</span>
+				<h2 id="document">Open this first</h2>
+
+				<p class="doc-link">
+					<a href={d.url} rel="nofollow noopener" target="_blank">
+						{d.url} <ExternalLink size={14} aria-hidden="true" />
+					</a>
+				</p>
+
+				<dl class="facts">
+					<div><dt>Source id</dt><dd><code>{entry.id}</code></dd></div>
+					<div><dt>Publisher</dt><dd>{d.publisher}</dd></div>
+					<div><dt>Status</dt><dd>{STATUS_LABEL[d.status] ?? d.status}</dd></div>
+					<div><dt>Host</dt><dd>{d.officialHost ? "The publisher's own site" : 'Reproduction'}</dd></div>
+					<div><dt>Published</dt><dd>{longDate(d.publishedDate)}</dd></div>
+					<div><dt>Effective</dt><dd>{longDate(d.effectiveDate)}</dd></div>
+					<div><dt>First read</dt><dd>{longDate(d.accessedDate)}</dd></div>
+					<div><dt>Last checked</dt><dd>{longDate(d.lastChecked)}{stale ? ' (past the window)' : ''}</dd></div>
+					<div>
+						<dt>Basis of that check</dt>
+						<dd>{d.lastCheckedBasis === 'recheck' ? 'Returned to and confirmed' : 'Read once, never returned to'}</dd>
+					</div>
+					<div><dt>Update cadence</dt><dd>{d.updateCadence}</dd></div>
+					<div><dt>Record page</dt><dd><a href={`/sources/${entry.id}`}>/sources/{entry.id}</a></dd></div>
+					<div><dt>Machine record</dt><dd><a href={`/sources/${entry.id}.json`}>{entry.id}.json</a></dd></div>
+				</dl>
+
+				{
+					!d.officialHost && (
+						<Callout tone="warn" label="Not the publisher's own copy">
+							<p>
+								This text is a reproduction on a third party's site. The words may be identical
+								and the guarantee is not, so a verdict of <em>confirms</em> here confirms the
+								reproduction. Where the publisher hosts its own copy, that is the one to read.
+							</p>
+						</Callout>
+					)
+				}
+
+				{
+					d.status !== 'active' && (
+						<Callout tone="warn" label={`This document is ${d.status}`}>
+							<p>{d.statusNote}</p>
+							{replacement ? (
+								<p>
+									It names a replacement:{' '}
+									<a href={`/sources/${replacement.id}`}>{replacement.data.title}</a>, itself{' '}
+									<strong>{replacement.data.status}</strong>.
+								</p>
+							) : (
+								<p>
+									No replacement is recorded, so nothing here should imply a current version
+									exists to consult.
+								</p>
+							)}
+							<p>
+								Every record below has to say so in its own text. That is the first thing to
+								check on this sheet, ahead of whether any individual sentence is accurate.
+							</p>
+						</Callout>
+					)
+				}
+
+				{
+					priority && (
+						<div class="prose">
+							<p>
+								<strong>Why this one.</strong> {priority.reason}
+							</p>
+						</div>
+					)
+				}
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="claims">
+			<div class="shell">
+				<span class="eyebrow">Step one</span>
+				<h2 id="claims">Does the document say these {d.claims.length} things?</h2>
+				<div class="prose">
+					<p>
+						These are the claims the corpus records against this document, and they are what
+						everything below inherits. Each one has a stable address and a checksum over its
+						exact wording, so a citing party can tell later whether the sentence they relied on
+						moved. A corrected claim is a different claim and gets a different checksum.
+					</p>
+				</div>
+				<ol class="claims">
+					{
+						d.claims.map((claim, i) => (
+							<li id={`c${i + 1}`}>
+								<p>{claim}</p>
+								<p class="addr">
+									<a href={`/sources/${entry.id}#c${i + 1}`}>{entry.id}#c{i + 1}</a>
+									<span class="sum">{claimChecksum(claim)}</span>
+								</p>
+							</li>
+						))
+					}
+				</ol>
+			</div>
+		</section>
+
+		<section class="band band-paper" aria-labelledby="assertions">
+			<div class="shell">
+				<span class="eyebrow">Step two</span>
+				<h2 id="assertions">Does anything here say more than the document does?</h2>
+				<div class="prose">
+					<p>
+						Every sentence in the corpus that cites this document, grouped by the record that
+						publishes it and labelled with the field it sits in. This is the exposure a sign-off
+						commits to: {sheet.sentences} sentences, not {sheet.records} pages.
+					</p>
+					{
+						sheet.shared > 0 && (
+							<p>
+								{sheet.shared} of them {sheet.shared === 1 ? 'cites' : 'cite'} another document alongside this one, shown inline.
+								Those cannot be judged against this document alone - the sentence may rest its
+								weight on the other citation - and a marker reading{' '}
+								<b class="m-self">[this document]</b> is where this one carries it.
+							</p>
+						)
+					}
+				</div>
+
+				{
+					sheet.unreviewable > 0 && (
+						<Callout tone="warn" label="Some of this is outside the review model">
+							<p>
+								{sheet.unreviewable} of the records below{' '}
+								{sheet.unreviewable === 1 ? 'belongs' : 'belong'} to a collection that records no
+								review state at all. The worksheets are the case: the tools schema carries a
+								review owner and a last-reviewed date, and no <code>reviewState</code> and no
+								<code> reviewer</code>, so a published worksheet cannot say whether its
+								insurance substance has been checked and the review queue cannot count it.
+							</p>
+							<p>
+								They are shown here anyway, because they publish sentences that rest on this
+								document and a sheet that hid them would understate what a sign-off is being
+								asked to cover. Giving them a state they do not have would be the other kind
+								of dishonesty, so neither is done.
+							</p>
+						</Callout>
+					)
+				}
+
+				{
+					byKind.map((bucket) => (
+						<div class="kind">
+							<h3>{bucket.kind}{bucket.groups.length === 1 ? '' : 's'} <span class="n">{bucket.groups.length}</span></h3>
+							{bucket.groups.map((group) => (
+								<div class="rec">
+									<div class="rec-head">
+										<h4><a href={group.path}>{group.recordTitle}</a></h4>
+										{group.reviewState ? (
+											<StatusChip kind={group.reviewState} />
+										) : (
+											<span class="no-state">No review state recorded</span>
+										)}
+										<span class="rec-n">{group.units.length} {group.units.length === 1 ? 'sentence' : 'sentences'}</span>
+									</div>
+									<ul class="units">
+										{group.units.map((unit) => (
+											<li>
+												<code class="field">{unit.field}</code>
+												<p set:html={renderMarkers(unit.text)} />
+											</li>
+										))}
+									</ul>
+								</div>
+							))}
+						</div>
+					))
+				}
+			</div>
+		</section>
+
+		{
+			sheet.declared.length > 0 && (
+				<section class="band band-tight" aria-labelledby="declared">
+					<div class="shell">
+						<span class="eyebrow">Step three</span>
+						<h2 id="declared">Declared without a sentence pointing at it</h2>
+						<div class="prose">
+							<p>
+								{sheet.declared.length}{' '}
+								{sheet.declared.length === 1 ? 'record names' : 'records name'} this document in
+								its own source list without any sentence carrying a marker to it. That is two
+								different situations and the sheet cannot tell them apart, so both are here.
+							</p>
+							<p>
+								A <strong>figure</strong> cites structurally by design: its amount has to appear
+								verbatim inside a claim of a cited source, which the build asserts, and it
+								carries no prose to mark up. Verify the amount against the claims above.
+								Anything else is a source sitting in a page's visible ledger that nothing on the
+								page actually uses - worth deciding whether the citation belongs there at all.
+							</p>
+						</div>
+						<ul class="declared">
+							{sheet.declared.map((dep) => (
+								<li>
+									<div class="rec-head">
+										<h4><a href={dep.path}>{dep.recordTitle}</a></h4>
+										{dep.reviewState ? (
+											<StatusChip kind={dep.reviewState} />
+										) : (
+											<span class="no-state">No review state recorded</span>
+										)}
+										<span class="rec-n">{dep.kind}</span>
+									</div>
+									<dl class="fields">
+										{dep.fields.map((f) => (
+											<div><dt>{f.field}</dt><dd set:html={renderMarkers(f.value)} /></div>
+										))}
+									</dl>
+								</li>
+							))}
+						</ul>
+					</div>
+				</section>
+			)
+		}
+
+		<section class="band band-paper" aria-labelledby="outcome">
+			<div class="shell">
+				<span class="eyebrow">Recording it</span>
+				<h2 id="outcome">Four verdicts, and what each one changes</h2>
+				<div class="prose">
+					<p>
+						This page cannot record a verdict, and that is deliberate rather than unfinished:
+						nothing on this origin collects anything. Each verdict is an edit to a JSON record in
+						the repository, and the edits are small enough to state exactly.
+					</p>
+				</div>
+
+				<ol class="verdicts">
+					<li>
+						<h3>The document still says what the claims above record</h3>
+						<p>
+							Then the check is a recheck rather than a first read, and{' '}
+							<code>src/content/sources/{entry.id}.json</code> can say so. The build asserts that
+							a recheck carries a later date than the access, so the field cannot claim a
+							confirmation it did not have.
+						</p>
+						<pre><code>{`"lastChecked": "${TODAY}",\n"lastCheckedBasis": "recheck"`}</code></pre>
+					</li>
+					<li>
+						<h3>The document has moved</h3>
+						<p>
+							Superseded, rescinded, or never adopted. Set the status and say why in the
+							publisher's own terms, name the replacement where one exists, and leave{' '}
+							<code>supersededBy</code> null where the issuer withdrew the document and put
+							nothing in its place. Then every record listed above has to state that in its own
+							text, which is the part that cannot be automated.
+						</p>
+						<pre><code>{`"status": "superseded",\n"statusNote": "...in the publisher's own words",\n"supersededBy": "<source-id>"`}</code></pre>
+					</li>
+					<li>
+						<h3>A sentence above says more than the document supports</h3>
+						<p>
+							The record is corrected rather than quietly edited. Set{' '}
+							<code>reviewState</code> to <code>corrected</code> on that record with a{' '}
+							<code>correction</code> block giving the date, what it said, and what it says now.
+							It appears in <a href="/corrections">the corrections log</a> and its claim
+							checksums change, which is how a citing party can tell.
+						</p>
+						<pre><code>{`"reviewState": "corrected",\n"correction": { "date": "${TODAY}", "was": "...", "now": "..." }`}</code></pre>
+					</li>
+					<li>
+						<h3>The document is silent on what a sentence attributes to it</h3>
+						<p>
+							Silence is a finding, not a gap to fill. The record says the source is silent, or
+							the sentence loses the citation and the assertion with it. There is no third
+							option in which the sentence stays and the citation is assumed.
+						</p>
+					</li>
+				</ol>
+
+				<div class="prose">
+					<p>
+						Where the document is confirmed and nothing above overstates it, the records listed
+						become signable: <code>reviewState</code> to <code>reviewed</code> with{' '}
+						<code>lastReviewed</code> set and the reviewer named. A record is only signable once{' '}
+						<em>every</em> source under it has been through a sheet like this one, which is why{' '}
+						<a href="/review-queue#by-source">the source ordering</a> exists.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<nav class="band band-tight" aria-label="Review order">
+			<div class="shell nav-pair">
+				{
+					previous ? (
+						<a class="pair prev" href={`/review-queue/${previous.id}`}>
+							<span><ArrowLeft size={13} aria-hidden="true" /> Previous in order</span>
+							<b>{previous.id}</b>
+						</a>
+					) : (
+						<span class="pair empty">First in the order</span>
+					)
+				}
+				{
+					next ? (
+						<a class="pair next" href={`/review-queue/${next.id}`}>
+							<span>Next in order <ArrowRight size={13} aria-hidden="true" /></span>
+							<b>{next.id}</b>
+						</a>
+					) : (
+						<span class="pair empty">Last in the order</span>
+					)
+				}
+			</div>
+		</nav>
+
+		{
+			rank === undefined && (
+				<section class="band band-tight">
+					<div class="shell">
+						<Callout tone="note" label="Not in the review order">
+							<p>
+								<TriangleAlert size={15} aria-hidden="true" /> Every record depending on this
+								document is already signed off, so it does not appear in the source ordering on{' '}
+								<a href="/review-queue">the review queue</a>. The sheet is still here because a
+								confirmed document can stop being current.
+							</p>
+						</Callout>
+					</div>
+				</section>
+			)
+		}
+	</article>
+</BaseLayout>
+
+<style>
+	.doc-link {
+		margin: var(--s-4) 0 var(--s-5);
+		font-family: var(--font-mono);
+		font-size: var(--text-sm);
+		word-break: break-all;
+	}
+	.doc-link a { display: inline-flex; align-items: center; gap: 6px; }
+
+	.facts {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+		gap: var(--s-3) var(--s-5);
+		margin: 0 0 var(--s-5);
+		border-top: 1px solid var(--line);
+		padding-top: var(--s-4);
+	}
+	.facts dt,
+	.fields dt {
+		font-family: var(--font-mono);
+		font-size: 0.5625rem;
+		letter-spacing: 0.09em;
+		text-transform: uppercase;
+		color: var(--faint);
+	}
+	.facts dd,
+	.fields dd { margin: 0; font-size: var(--text-sm); color: var(--ink-2); }
+
+	/* The ordinal is the claim address, so it is shown. c3 is a citable thing. */
+	.claims {
+		list-style: none;
+		margin: var(--s-4) 0 0;
+		padding: 0;
+		counter-reset: c;
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-3);
+	}
+	.claims > li {
+		counter-increment: c;
+		border: 1px solid var(--line);
+		border-left: 3px solid var(--line-strong);
+		background: var(--paper);
+		padding: var(--s-4);
+	}
+	.claims > li::before {
+		content: 'c' counter(c);
+		display: block;
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+		color: var(--faint);
+		margin-bottom: var(--s-2);
+	}
+	.claims p { margin: 0; max-width: 76ch; }
+	.claims .addr {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2) var(--s-4);
+		margin-top: var(--s-3);
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+	}
+	.claims .sum { color: var(--faint); }
+
+	.kind { margin-top: var(--s-5); }
+	.kind > h3 {
+		font-family: var(--font-sans);
+		font-size: 0.5625rem;
+		letter-spacing: 0.09em;
+		text-transform: uppercase;
+		color: var(--faint);
+		border-bottom: 1px solid var(--line);
+		padding-bottom: var(--s-2);
+		margin: 0 0 var(--s-3);
+		font-weight: 600;
+	}
+	.kind > h3 .n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+	.rec,
+	.declared > li {
+		border: 1px solid var(--line);
+		background: var(--paper);
+		padding: var(--s-4);
+		margin-bottom: var(--s-3);
+	}
+	.rec-head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: var(--s-2) var(--s-3);
+		margin-bottom: var(--s-3);
+	}
+	.rec-head h4 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: var(--text-base);
+		font-weight: 400;
+		line-height: 1.3;
+	}
+	/* Not a StatusChip: a chip would assert a state, and there is none. */
+	.no-state {
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+		color: var(--faint);
+		border: 1px dashed var(--line-strong);
+		padding: 1px 6px;
+	}
+	.rec-n {
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+		color: var(--faint);
+	}
+
+	.units {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-3);
+		border-top: 1px solid var(--line);
+		padding-top: var(--s-3);
+	}
+	.units > li { display: flex; flex-direction: column; gap: 4px; }
+	.units p { margin: 0; font-size: var(--text-sm); line-height: 1.6; max-width: 78ch; }
+	.field {
+		font-family: var(--font-mono);
+		font-size: 0.5625rem;
+		letter-spacing: 0.06em;
+		color: var(--faint);
+	}
+
+	/* A marker is not decoration here: it says which document a sentence leans
+	   on, and gold means the resolved thing, so this one gets gold. */
+	:global(.m-self) {
+		font-family: var(--font-mono);
+		font-size: 0.6875em;
+		font-weight: 400;
+		color: var(--gold-text);
+		white-space: nowrap;
+	}
+	:global(.m-other) {
+		font-family: var(--font-mono);
+		font-size: 0.6875em;
+		white-space: nowrap;
+	}
+
+	.declared { list-style: none; margin: var(--s-4) 0 0; padding: 0; }
+	.fields {
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-2);
+		margin: 0;
+		border-top: 1px solid var(--line);
+		padding-top: var(--s-3);
+	}
+
+	.verdicts {
+		list-style: none;
+		margin: var(--s-4) 0 var(--s-5);
+		padding: 0;
+		counter-reset: v;
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-4);
+	}
+	.verdicts > li {
+		counter-increment: v;
+		border-left: 3px solid var(--line-strong);
+		padding-left: var(--s-4);
+	}
+	.verdicts h3 {
+		margin: 0 0 var(--s-2);
+		font-family: var(--font-display);
+		font-size: var(--text-base);
+		font-weight: 400;
+	}
+	.verdicts h3::before {
+		content: counter(v) '. ';
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+		color: var(--faint);
+	}
+	.verdicts p { margin: 0; font-size: var(--text-sm); line-height: 1.6; max-width: 78ch; color: var(--ink-2); }
+	.verdicts pre {
+		margin: var(--s-3) 0 0;
+		padding: var(--s-3);
+		background: var(--cream);
+		border: 1px solid var(--line);
+		overflow-x: auto;
+		font-size: var(--text-2xs);
+	}
+
+	.nav-pair {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: var(--s-3);
+		border-top: 1px solid var(--line);
+		padding-top: var(--s-4);
+	}
+	.pair { display: flex; flex-direction: column; gap: 3px; }
+	.pair span {
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+		font-family: var(--font-sans);
+		font-size: 0.5625rem;
+		letter-spacing: 0.09em;
+		text-transform: uppercase;
+		color: var(--faint);
+	}
+	.pair b { font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 400; }
+	.pair.next { text-align: right; align-items: flex-end; }
+	.pair.empty { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--faint); }
+</style>

@@ -241,6 +241,13 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 								</StateBlock>
 							)
 						}
+						<p class="mono claim-note">
+							That lists the pages. The individual sentences resting on this document, each with
+							the field it sits in, are on{' '}
+							<a href={`/review-queue/${entry.id}`}>its verification sheet</a> - the worksheet a
+							licensed reviewer signs this document off from. Not indexed, because every sentence
+							on it is published on its own page.
+						</p>
 					</section>
 
 					{d.notes && (

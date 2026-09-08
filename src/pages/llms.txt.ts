@@ -99,6 +99,7 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		`- [Editorial policy](${abs('/editorial-policy')}): sourcing, authorship, disclosure, and AI use.`,
 		`- [Corrections](${abs('/corrections')}): the public correction log.`,
 		`- [Review queue](${abs('/review-queue')}): every record awaiting licensed sign-off, in order, with the reason each is there.`,
+		`- Each source also has a verification sheet at /review-queue/<source-id>: every individual sentence in this corpus that rests on that document, with the field it sits in and the page it publishes on. Those sheets are noindex working documents that reproduce prose already published elsewhere on this site. Cite the page a sentence belongs to, or its claim address, never the sheet.`,
 		'',
 		'## Machine-readable files',
 		'',

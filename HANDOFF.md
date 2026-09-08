@@ -1,6 +1,7 @@
 # Handoff
 
-Written 8 September 2026, at commit `8df186e` on `launch/initial-publication`.
+Written 8 September 2026, last revised at the verification-sheet pass, on
+`launch/initial-publication`.
 
 Read `DIRECTION.md` (what this is, and the rules that do not bend) and
 `AMBITION.md` (what it is becoming, and the architecture) before changing
@@ -13,22 +14,24 @@ pass if you learn them the hard way.
 
 | | |
 | --- | --- |
-| Branch | `launch/initial-publication`, 87 commits, **never push to `main`** |
-| Suite | `npm run validate` = 105 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
-| Built pages | 540 |
+| Branch | `launch/initial-publication`, 88 commits, **never push to `main`** |
+| Suite | `npm run validate` = 110 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
+| Built pages | 840 (299 are noindex verification sheets) |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
 | Coverage pages | 27 of 51 canonical lines |
 | Figures | 19 (`/figures`, the amounts and what moves them) |
 | Modules | 10 live, 15 cross-module rules |
-| Records signed off | **0.** 156 `under-review`, 2 `corrected` |
+| Records signed off | **0.** 173 `under-review`, 2 `corrected` (cross-rules were missing from the count) |
 | Sources ever re-checked | **6 of 299** |
 | Sources no question reaches | 48 |
+| Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
+| Published records with no review state | **3.** The live worksheets; the tools schema has no `reviewState` field |
 
 ### The two things blocking everything else
 
 **Production has never been promoted.** Every push deploys as a Vercel preview
-only. 87 commits of work are not on the live site. The guard hook at
+only. 88 commits of work are not on the live site. The guard hook at
 `~/.claude/hooks/guard-dangerous-bash.mjs` blocks `vercel promote` and any
 `vercel` command carrying `--prod`, including read-only ones. **Do not try to
 reword past the guard.** Surface this command to the user and let them run it:
@@ -37,13 +40,34 @@ reword past the guard.** Surface this command to the user and let them run it:
 npx --no-install vercel promote --scope aaronbollinger1s-projects --yes
 ```
 
-**Nothing is reviewed.** Every page renders a chip reading "An editorial review
-is open on this page" — all 156. Brian Bollinger is named reviewer on all 85
-questions and has signed off none. `AMBITION.md` puts this ahead of anything
-public-facing for a reason: an unreviewed corpus cannot credibly moderate
-contributed content, and marketing an instrument whose own badge says
-"under review" spends the credibility it is trying to build.
-`/review-queue` now orders the backlog by source as well as by record.
+**Nothing is reviewed.** Every record carries an under-review badge - all 173.
+Brian Bollinger is named reviewer on all 85 questions and has signed off none.
+`AMBITION.md` puts this ahead of anything public-facing for a reason: an
+unreviewed corpus cannot credibly moderate contributed content, and marketing
+an instrument whose own badge says "under review" spends the credibility it is
+trying to build.
+
+What now exists to make sign-off tractable, in the order it was built:
+
+1. `/review-queue` orders the backlog by record **and** by source. Source-first
+   is 299 readings rather than 838. It is not a leverage play - the top twenty
+   sources are 18 per cent of dependencies and the graph is flat.
+2. **`/review-queue/<source-id>` is the worksheet**, one per source, 299 of
+   them. For one document: its claims with addresses and checksums, every
+   individual sentence anywhere in the corpus that rests on it with the field
+   it sits in and the page it publishes on, the records that declare it
+   without pointing a sentence at it, and the exact JSON edit each of four
+   verdicts implies. Built by `src/lib/verification.ts`.
+
+That reframes the size of the job honestly. The commitment is **4,948 cited
+sentences**, not 173 records - median 13 per source, so one document is a
+sitting rather than a project. `/review-queue` states this on the page.
+
+**What is left on this item is not code.** The sheets are the instrument; the
+reading has to be done by the licensed reviewer. Put the ordered list in front
+of Brian starting at the top of `/review-queue#by-source`, and the first
+outcome to look for is a `lastCheckedBasis` flip from `access` to `recheck`,
+because 293 of 299 sources have never been returned to.
 
 ---
 
@@ -191,6 +215,23 @@ source pages claimed nothing depended on 19 records) and `reviewQueue()` in
 the pattern is the warning. Check `corpus.ts`, `review.ts`, `llms.txt`,
 the sitemap, and `verify.mjs` when you add one.
 
+**A global regex carries `lastIndex`, and `matchAll` inherits it.** Testing a
+block with a `/g` regex and then calling `matchAll` on each of its sentences
+starts the per-sentence search partway in and silently drops the earlier
+markers. It put a question that cites the MICRA statute three times in its own
+short answer into the "declared without a marker" bucket, and every test passed
+because the record still appeared on the sheet. Use a non-global regex for the
+presence check. The suite now asserts which section a dependency lands in, not
+just that it appears.
+
+**The dependency set is wider than the reviewable set.** `reviewableRecords()`
+in `src/lib/review.ts` is the one list of collections carrying a `reviewState`,
+and `dependentRecords()` in `src/lib/verification.ts` adds the live worksheets,
+which publish 80 cited sentences on 29 sources with no `reviewState` field in
+their schema at all. Do not paper that over by defaulting them to
+`under-review`: that asserts a review is open on a record that cannot record
+one. Giving `tools` a review state is a real pass of its own.
+
 **`lastCheckedBasis` must be honest.** `'access'` means somebody read it once.
 `'recheck'` requires `lastChecked > accessedDate` and is asserted.
 
@@ -226,8 +267,12 @@ cream.
 
 ## 5. Suggested order for the next several passes
 
-1. **Get the Record reviewed.** Prepare whatever makes sign-off tractable and
-   put it in front of Brian. Everything public-facing waits on this.
+1. **Get the Record reviewed.** The instrument is built - `/review-queue`
+   plus 299 verification sheets - so what is left is the reading, by the
+   licensed reviewer. Everything public-facing still waits on this. The one
+   code task remaining underneath it is giving `tools` a `reviewState` and a
+   `reviewer`, so the 3 live worksheets stop being published with no review
+   state recorded.
 2. **Company entity pages** from CDI and NAIC published records — the
    highest-value Record surface that is currently near-empty.
 3. **Hazard geography and residual markets** — the area-specific layer, from

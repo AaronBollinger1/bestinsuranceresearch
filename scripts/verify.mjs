@@ -172,7 +172,11 @@ test(`the ${SITE_ENV} build emits the correct indexing directive on every page`,
 		// override; what must not happen is the blanket preview directive
 		// surviving the flip on a page meant to be indexed.
 		const route = routeOf(file);
-		const deliberatelyHidden = /^\/(design|404)/.test(route);
+		/* /review-queue/<source> are the verification sheets: public, linked, and
+		   deliberately out of the index because they reproduce prose whose
+		   canonical home is elsewhere on this origin. /review-queue itself is
+		   indexed, so the pattern requires a segment after it. */
+		const deliberatelyHidden = /^\/(design|404)/.test(route) || /^\/review-queue\/./.test(route);
 		if (deliberatelyHidden) continue;
 		assert.ok(
 			!/<meta name="robots" content="noindex, nofollow">/.test(html),
@@ -1972,10 +1976,23 @@ test('the review queue lists every record that needs review', () => {
 		...companies.map((c) => ['companies', c]),
 		/* Figures share one route, so they are addressed by anchor. */
 		...figures.map((f) => ['figures#', f]),
+		/* Cross-rules were the third place this enumeration was written by hand
+		   and the third place they were left out, so the assertion this test
+		   makes was itself understating the backlog by fifteen records. They
+		   evaluate on the position rather than on a page of their own, so they
+		   are matched on their title rather than on a route. */
+		...collection('cross-rules').map((r) => ['position', r]),
 	];
 
 	for (const [segment, record] of expected) {
 		if (record.data.reviewState === 'reviewed') continue;
+		if (segment === 'position') {
+			assert.ok(
+				textOf(page).includes(record.data.title.replace(/\s+/g, ' ')),
+				`the review queue omits cross-rule ${record.id}, which is not reviewed`,
+			);
+			continue;
+		}
 		const href = segment.endsWith('#') ? `/${segment}${record.id}` : `/${segment}/${record.id}`;
 		assert.ok(
 			page.includes(href),
@@ -2479,4 +2496,198 @@ test('the position page ships every cross-module rule, cited', () => {
 			`${rule.id} reaches the page with an unresolved citation marker`,
 		);
 	}
+});
+
+/* ------------------------------------------------------------------ */
+/* Verification sheets                                                 */
+/* ------------------------------------------------------------------ */
+
+/*
+ * The sheets are what makes sign-off tractable, so what is asserted here is
+ * completeness rather than appearance. A sheet that omits a dependency is worse
+ * than no sheet at all: a reviewer would sign a record off believing they had
+ * seen everything resting on the document.
+ *
+ * Counted from the content files rather than from the library that renders the
+ * sheets, so a bug in the extractor cannot agree with itself.
+ */
+
+const MARKER_G = /\[S:([a-z0-9][a-z0-9-]*)\]/g;
+
+/** Collections whose records carry a reviewState, keyed as they are on disk. */
+const REVIEWABLE = {
+	questions,
+	coverages,
+	companies,
+	states,
+	examples,
+	figures,
+	modules,
+	'cross-rules': collection('cross-rules'),
+};
+
+/**
+ * Every collection that publishes an assertion resting on a source, which is
+ * wider than REVIEWABLE. The live worksheets declare sources and publish cited
+ * sentences while carrying no reviewState at all, so they belong on the sheets
+ * and cannot belong in the review count. Non-live tools declare no sources and
+ * contribute nothing.
+ */
+const DEPENDENT = { ...REVIEWABLE, tools };
+
+/** Whatever the record calls its title, in the order the site picks one. */
+const titleOf = (data) =>
+	data.question || data.name || data.title || data.label || data.shortName || data.legalName;
+
+/** Rendered text with tags and entities removed, so a match is not a guess. */
+const textOf = (html) =>
+	html
+		.replace(/<[^>]+>/g, ' ')
+		.replace(/&#39;/g, "'")
+		.replace(/&quot;/g, '"')
+		.replace(/&lt;/g, '<')
+		.replace(/&gt;/g, '>')
+		.replace(/&amp;/g, '&')
+		.replace(/\s+/g, ' ');
+
+const sheetPath = (id) => path.join(DIST, 'review-queue', id, 'index.html');
+
+test('every source has a verification sheet that links the document', () => {
+	for (const source of sources) {
+		const file = sheetPath(source.id);
+		assert.ok(fs.existsSync(file), 'no verification sheet for ' + source.id);
+		const html = read(file);
+		assert.ok(
+			html.includes(source.data.url.replace(/&/g, '&amp;')),
+			'the sheet for ' + source.id + ' does not link the document it exists to verify',
+		);
+		// Claim addresses are the first thing a reviewer confirms.
+		assert.ok(
+			html.includes(source.id + '#c1'),
+			'the sheet for ' + source.id + ' shows no claim addresses',
+		);
+	}
+});
+
+test('the verification sheets are noindex, and out of the sitemap', () => {
+	/*
+	 * They reproduce prose whose canonical home is elsewhere on this origin.
+	 * 299 sheets competing with the pages they quote for the same words would be
+	 * the largest block of internal duplication here, and citability is the
+	 * whole asset. Public, linked, and not indexed - the /design posture.
+	 */
+	for (const source of sources) {
+		assert.match(
+			read(sheetPath(source.id)),
+			/<meta name="robots" content="noindex, nofollow">/,
+			'the sheet for ' + source.id + ' is indexable',
+		);
+	}
+	const xml = walk(DIST, (f) => /sitemap.*\.xml$/.test(f)).map(read).join('\n');
+	assert.ok(!/\/review-queue\/[a-z0-9]/.test(xml), 'a verification sheet reached the sitemap');
+	assert.ok(xml.includes('/review-queue<'), 'the review queue itself is missing from the sitemap');
+});
+
+test('every record-to-source dependency reaches the sheet for that source', () => {
+	const expected = new Map();
+	const note = (id, where) => {
+		if (!expected.has(id)) expected.set(id, new Set());
+		expected.get(id).add(where);
+	};
+
+	for (const [name, entries] of Object.entries(DEPENDENT)) {
+		for (const entry of entries) {
+			for (const [, id] of JSON.stringify(entry.data).matchAll(MARKER_G)) {
+				note(id, name + '/' + entry.id);
+			}
+			for (const id of idsOf(entry.data.sourceIds)) note(id, name + '/' + entry.id);
+			for (const rule of entry.data.rules ?? []) {
+				for (const id of idsOf(rule.sourceIds)) note(id, name + '/' + entry.id);
+			}
+		}
+	}
+
+	const missing = [];
+	for (const [id, wheres] of expected) {
+		if (!fs.existsSync(sheetPath(id))) {
+			missing.push(id + ': no sheet at all');
+			continue;
+		}
+		const rendered = textOf(read(sheetPath(id)));
+		for (const where of wheres) {
+			const [name, record] = where.split('/');
+			const entry = DEPENDENT[name].find((e) => e.id === record);
+			const title = titleOf(entry.data).replace(/\s+/g, ' ');
+			if (!rendered.includes(title)) missing.push(id + ' sheet omits ' + where);
+		}
+	}
+	assert.deepEqual(missing, [], 'verification sheets are incomplete:\n' + missing.join('\n'));
+});
+
+test('the review queue counts every collection that carries a reviewState', () => {
+	/*
+	 * Two collections have now been added to this project and silently left out
+	 * of everything that enumerates records - figures first, then cross-rules -
+	 * so the queue understated the backlog and source pages reported no
+	 * dependents. Both enumerations now read one list in review.ts. This is the
+	 * check that makes the third omission fail loudly instead of quietly.
+	 */
+	const onDisk = fs
+		.readdirSync(CONTENT, { withFileTypes: true })
+		.filter((d) => d.isDirectory())
+		.map((d) => d.name)
+		.filter((name) => {
+			const entries = collection(name);
+			return entries.length > 0 && entries.every((e) => typeof e.data.reviewState === 'string');
+		});
+
+	const queue = textOf(read(path.join(DIST, 'review-queue', 'index.html')));
+	for (const name of onDisk) {
+		assert.ok(
+			Object.hasOwn(REVIEWABLE, name),
+			name + ' carries a reviewState and is not in the list this suite checks',
+		);
+		for (const entry of collection(name)) {
+			const title = titleOf(entry.data).replace(/\s+/g, ' ');
+			assert.ok(
+				queue.includes(title),
+				name + '/' + entry.id + ' carries a reviewState but does not reach /review-queue',
+			);
+		}
+	}
+});
+
+test('a source cited in prose is filed as prose on that sheet, not as structural', () => {
+	/*
+	 * Record-level completeness is not enough, and this is why. On its first
+	 * build the extractor tested each block with a global regex before
+	 * matching each sentence, so lastIndex carried over and the earlier
+	 * markers were lost - a question citing the MICRA statute three times in
+	 * its own short answer was filed under "declared without a sentence
+	 * pointing at it". The record still appeared on the sheet, so every test
+	 * passed while the sheet told the reviewer the opposite of the truth.
+	 *
+	 * A dependency asserted in prose has to appear above the structural
+	 * heading; one that is only declared has to appear below it.
+	 */
+	const STRUCTURAL_HEADING = 'Declared without a sentence pointing at it';
+	const wrong = [];
+
+	for (const [name, entries] of Object.entries(DEPENDENT)) {
+		for (const entry of entries) {
+			const json = JSON.stringify(entry.data);
+			const inProse = new Set([...json.matchAll(MARKER_G)].map((m) => m[1]));
+			const title = titleOf(entry.data).replace(/\s+/g, ' ');
+			for (const id of inProse) {
+				if (!fs.existsSync(sheetPath(id))) continue;
+				const rendered = textOf(read(sheetPath(id)));
+				const cut = rendered.indexOf(STRUCTURAL_HEADING);
+				const prose = cut === -1 ? rendered : rendered.slice(0, cut);
+				if (!prose.includes(title)) {
+					wrong.push(id + ' sheet does not show ' + name + '/' + entry.id + ' as citing it in prose');
+				}
+			}
+		}
+	}
+	assert.deepEqual(wrong, [], 'prose citations misfiled on a verification sheet:\n' + wrong.join('\n'));
 });
