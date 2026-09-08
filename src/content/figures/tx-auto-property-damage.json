@@ -1,0 +1,29 @@
+{
+	"label": "Texas auto liability minimum, property damage",
+	"amount": "$25,000",
+	"applies": "The minimum property damage coverage establishing financial responsibility in Texas",
+	"basis": "amendment",
+	"movesWhen": "Only by legislation",
+	"nextMove": "n/a",
+	"lastMoved": "2011-01-01",
+	"instrument": "Texas Transportation Code section 601.072",
+	"note": "Worth setting beside California, which requires $15,000 for property damage as of 1 January 2025. Two neighbouring states, two different floors, and neither is a statement about what any driver should carry.",
+	"family": "personal",
+	"lines": [
+		"auto"
+	],
+	"states": [
+		"TX"
+	],
+	"sourceIds": [
+		"tx-transp-601-072"
+	],
+	"relatedQuestions": [
+		"texas-minimum-auto-and-what-you-carry-by-default"
+	],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

@@ -1,0 +1,29 @@
+{
+	"label": "MICRA indexation rate once the stepped increases end",
+	"amount": "2 percent",
+	"applies": "Annual adjustment to both MICRA noneconomic damages limits after the ten stepped increases are complete",
+	"basis": "scheduled",
+	"movesWhen": "Applies on 1 January of each year beginning 1 January 2034",
+	"nextMove": "2034-01-01",
+	"lastMoved": "n/a",
+	"instrument": "Stats. 2022, Ch. 17, Sec. 3 (AB 35)",
+	"note": "This is why the MICRA limit has no fixed value at any future date. After 2033 the amount is a function of an index rather than a schedule of steps, so a reserve or internal guideline naming a single figure is naming something the statute moves annually without amending itself.",
+	"family": "commercial",
+	"lines": [
+		"medical-professional-liability"
+	],
+	"states": [
+		"CA"
+	],
+	"sourceIds": [
+		"ca-civ-code-3333-2"
+	],
+	"relatedQuestions": [
+		"is-the-california-malpractice-cap-still-250000"
+	],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

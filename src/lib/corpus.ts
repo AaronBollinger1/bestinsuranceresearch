@@ -16,13 +16,14 @@ import { siteConfig } from '../config/site';
 export type Corpus = Awaited<ReturnType<typeof loadCorpus>>;
 
 export async function loadCorpus() {
-	const [sources, questions, coverages, companies, states, examples, tools, modules, people, crossRules] = await Promise.all([
+	const [sources, questions, coverages, companies, states, examples, figures, tools, modules, people, crossRules] = await Promise.all([
 		getCollection('sources'),
 		getCollection('questions'),
 		getCollection('coverages'),
 		getCollection('companies'),
 		getCollection('states'),
 		getCollection('examples'),
+		getCollection('figures'),
 		getCollection('tools'),
 		getCollection('modules'),
 		getCollection('people'),
@@ -46,6 +47,7 @@ export async function loadCorpus() {
 		companies,
 		states,
 		examples,
+		figures,
 		tools,
 		modules,
 		people,

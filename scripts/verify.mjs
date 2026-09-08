@@ -60,6 +60,7 @@ const TODAY = process.env.PUBLIC_BUILD_DATE || new Date().toISOString().slice(0,
 const questions = collection('questions');
 const modules = collection('modules');
 const coverages = collection('coverages');
+const figures = collection('figures');
 const idsOf = (refs) => (refs ?? []).map((r) => (typeof r === 'string' ? r : r.id));
 const companies = collection('companies');
 const states = collection('states');
@@ -1531,6 +1532,106 @@ test('a coverage page and the tool on its line link each other', () => {
 			assert.ok(
 				cov.includes(`/tools/${module.id}`),
 				`/insurance/${coverage.id} shares a line with ${module.id} but does not link it`,
+			);
+		}
+	}
+});
+
+test('every published figure is one a cited source actually states', () => {
+	/*
+	 * The figures page is the first surface of AMBITION.md layer 2, and its only
+	 * claim to authority is that it introduces no numbers of its own. So the
+	 * amount on each record must appear verbatim in a claim of one of that
+	 * record's own sources, and that is checked rather than trusted.
+	 *
+	 * Matching is boundary-aware, because a plain substring test is wrong for
+	 * currency in both directions. "$5,000" sits inside "$5,000,000", which
+	 * grounded the household goods cargo minimum against the hazardous
+	 * substance public liability minimum instead - a real mis-grounding this
+	 * assertion was written after catching. But rejecting any adjacent comma is
+	 * also wrong: the MICRA indexation claim reads "by 2 percent, beginning on
+	 * January 1, 2034", where the comma is punctuation. So a comma or point
+	 * counts as part of the number only when a digit sits on its far side.
+	 */
+	const groundedIn = (amount, claim) => {
+		const numberish = (i, dir) => {
+			if (i < 0 || i >= claim.length) return false;
+			const c = claim[i];
+			if (/\d/.test(c)) return true;
+			const far = dir === 'before' ? claim[i - 1] : claim[i + 1];
+			return /[,.]/.test(c) && /\d/.test(far ?? '');
+		};
+		for (let from = 0; ; ) {
+			const i = claim.indexOf(amount, from);
+			if (i === -1) return false;
+			if (!numberish(i - 1, 'before') && !numberish(i + amount.length, 'after')) return true;
+			from = i + 1;
+		}
+	};
+
+	// Prove the matcher bites before trusting what it passes.
+	assert.ok(groundedIn('$5,000', 'a limit of $5,000 per vehicle'), 'matcher rejects a real match');
+	assert.ok(!groundedIn('$5,000', 'a limit of $5,000,000 per occurrence'), 'matcher accepts a truncated currency match');
+	assert.ok(groundedIn('2 percent', 'adjusted by 2 percent, beginning on January 1, 2034'), 'matcher rejects a match followed by punctuation');
+
+	const sourceById = new Map(sources.map((x) => [x.id, x]));
+	const ungrounded = [];
+	for (const figure of figures) {
+		const d = figure.data;
+		const claims = idsOf(d.sourceIds).flatMap((id) => sourceById.get(id)?.data.claims ?? []);
+		if (!claims.some((c) => groundedIn(d.amount, c))) {
+			ungrounded.push(`${figure.id}: "${d.amount}" appears in no claim of ${idsOf(d.sourceIds).join(', ')}`);
+		}
+	}
+	assert.deepEqual(
+		ungrounded,
+		[],
+		`a figure may not state an amount its own sources do not carry:\n  ${ungrounded.join('\n  ')}`,
+	);
+});
+
+test('the figures page renders every figure, and its schedule is coherent', () => {
+	/*
+	 * A figure recorded but not rendered is worse than one not recorded: the
+	 * corpus counts it and no reader can reach it.
+	 */
+	const html = read(path.join(DIST, 'figures', 'index.html'));
+	for (const figure of figures) {
+		assert.ok(
+			html.includes(`id="${figure.id}"`),
+			`/figures does not render ${figure.id}`,
+		);
+		assert.ok(
+			html.includes(figure.data.amount.replace(/&/g, '&amp;')),
+			`/figures does not show the amount for ${figure.id}`,
+		);
+	}
+
+	const iso = /^\d{4}-\d{2}-\d{2}$/;
+	for (const figure of figures) {
+		const d = figure.data;
+
+		// A scheduled figure that names no next move is not scheduled.
+		if (d.basis === 'scheduled') {
+			assert.ok(
+				iso.test(d.nextMove),
+				`${figure.id} is basis 'scheduled' but states no dated nextMove`,
+			);
+		}
+
+		// A next move already in the past means the table is stale, which is the
+		// one failure this page cannot survive.
+		if (iso.test(d.nextMove)) {
+			assert.ok(
+				d.nextMove > TODAY,
+				`${figure.id} says it next moves on ${d.nextMove}, which has passed: the figure needs re-reading`,
+			);
+		}
+
+		if (iso.test(d.lastMoved) && iso.test(d.nextMove)) {
+			assert.ok(
+				d.lastMoved < d.nextMove,
+				`${figure.id} last moved after it next moves`,
 			);
 		}
 	}

@@ -1,0 +1,27 @@
+{
+	"label": "Insurance a California association must carry for volunteer director protection, 100 or fewer separate interests",
+	"amount": "$500,000",
+	"applies": "The minimum general liability and individual officer and director liability coverage conditioning the personal liability protection",
+	"basis": "amendment",
+	"movesWhen": "Only by legislation",
+	"nextMove": "n/a",
+	"lastMoved": "unknown",
+	"instrument": "California Civil Code section 5800(a)(4)",
+	"note": "Above 100 separate interests the figure is at least one million dollars. This is a condition rather than a limit: the protection is from personal liability in excess of the coverage actually carried, and the coverage must be in force both when the act occurred and when the claim is made. A development that has grown past 100 interests has moved its own threshold.",
+	"family": "commercial",
+	"lines": [
+		"community-association"
+	],
+	"states": [
+		"CA"
+	],
+	"sourceIds": [
+		"ca-civ-code-5800"
+	],
+	"relatedQuestions": [],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

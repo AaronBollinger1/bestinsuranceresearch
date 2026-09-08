@@ -517,4 +517,53 @@ const crossRules = defineCollection({
 	}),
 });
 
-export const collections = { crossRules, sources, questions, coverages, companies, states, examples, tools, modules, people };
+
+/* ------------------------------------------------------------------
+   FIGURE
+
+   Layer 2 of AMBITION.md: the amounts, and what moves them.
+
+   A figure record does not introduce a number. It points at one a source
+   record already carries, which is why `amount` must appear verbatim inside a
+   claim of one of its own `sourceIds` — asserted in scripts/verify.mjs so the
+   table cannot drift away from the corpus it is drawn from.
+
+   `basis` is the honest distinction the table exists to draw:
+     'scheduled'  the instrument itself states when and by how much it moves
+     'amendment'  it moved once, by legislation, and holds until it moves again
+     'rulemaking' revised administratively, on no schedule this corpus holds
+     'as-stated'  the source states the figure and establishes no indexing rule,
+                  so we publish what it says and decline to imply currency
+   ------------------------------------------------------------------ */
+const figures = defineCollection({
+	loader: glob({ pattern: '**/*.json', base: './src/content/figures' }),
+	schema: z.object({
+		label: z.string().min(8),
+		/** Must appear verbatim in a claim of a cited source. */
+		amount: z.string().min(2),
+		applies: z.string().min(15),
+		basis: z.enum(['scheduled', 'amendment', 'rulemaking', 'as-stated']),
+		/** What moves it, in the instrument's own terms. */
+		movesWhen: z.string().min(10),
+		/** When it next moves, where the instrument says. 'n/a' where nothing is scheduled. */
+		nextMove: partialDate,
+		/** When it last moved, where the source states it. */
+		lastMoved: partialDate,
+		/** The chaptering or rule that set it, where the source states one. */
+		instrument: z.string().min(4),
+		/** The precision that would be lost by reading the amount alone. */
+		note: z.string().min(30),
+		family: z.enum(INSURANCE_FAMILY),
+		lines: z.array(z.string()).min(1),
+		states: z.array(z.string().length(2)).default([]),
+		sourceIds: z.array(reference('sources')).min(1),
+		relatedQuestions: z.array(reference('questions')).default([]),
+		effectiveDate: isoDate,
+		lastReviewed: isoDate,
+		author: z.string().min(3),
+		reviewer: z.string().min(3),
+		reviewState: z.enum(REVIEW_STATE).default('under-review'),
+	}),
+});
+
+export const collections = { crossRules, sources, questions, coverages, companies, states, examples, figures, tools, modules, people };

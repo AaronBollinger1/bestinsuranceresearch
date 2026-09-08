@@ -1,0 +1,27 @@
+{
+	"label": "Federal public liability minimum, freight vehicle at or above 10,001 pounds carrying non-hazardous property",
+	"amount": "$750,000",
+	"applies": "Bodily injury and property damage liability security for a motor carrier subject to the federal minimums",
+	"basis": "rulemaking",
+	"movesWhen": "By rulemaking, on no schedule this corpus holds",
+	"nextMove": "unknown",
+	"lastMoved": "unknown",
+	"instrument": "49 CFR 387.303(b)",
+	"note": "This is the figure quoted in broker and carrier packets, and it is a public liability figure - bodily injury and property damage - not a cargo figure. It says nothing about the freight on the trailer. The section also provides that carriers subject to its minimums are at no time required to hold more than them.",
+	"family": "commercial",
+	"lines": [
+		"motor-truck-cargo"
+	],
+	"states": [],
+	"sourceIds": [
+		"cfr-49-387-303-lii"
+	],
+	"relatedQuestions": [
+		"how-long-to-file-a-freight-damage-claim"
+	],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

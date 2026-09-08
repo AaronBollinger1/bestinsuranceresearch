@@ -1,0 +1,27 @@
+{
+	"label": "Minimum period a carrier must allow for filing a freight claim",
+	"amount": "9 months",
+	"applies": "The shortest claim filing period a bill of lading may lawfully provide for interstate motor carriage",
+	"basis": "as-stated",
+	"movesWhen": "Only by legislation",
+	"nextMove": "n/a",
+	"lastMoved": "unknown",
+	"instrument": "49 U.S.C. 14706(e)",
+	"note": "A floor on what the carrier must allow, not a deadline the statute imposes. The operative period is the one written into the bill of lading and it cannot be shorter than this, so nine months is the shortest the deadline can lawfully be rather than the deadline itself. The companion floor for bringing a civil action is two years, running from written notice disallowing any part of the claim.",
+	"family": "commercial",
+	"lines": [
+		"motor-truck-cargo"
+	],
+	"states": [],
+	"sourceIds": [
+		"usc-49-14706-carmack"
+	],
+	"relatedQuestions": [
+		"how-long-to-file-a-freight-damage-claim"
+	],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

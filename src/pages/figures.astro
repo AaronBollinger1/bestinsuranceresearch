@@ -1,0 +1,286 @@
+---
+/**
+ * Layer 2 of AMBITION.md, first surface: the amounts, and what moves them.
+ *
+ * The point of the page is the `basis` grouping rather than the list. Almost
+ * every published reference states an insurance figure as though it were a
+ * fact with no expiry. Some of these move on a schedule the statute prints,
+ * some moved once and hold, some are revised administratively with no schedule
+ * at all, and one is stated by its section without any indexing rule this
+ * corpus can establish. Those are four different kinds of number and quoting
+ * them the same way is how a reference goes stale without anyone noticing.
+ *
+ * No figure here is introduced by this page. Every `amount` is asserted in
+ * scripts/verify.mjs to appear verbatim in a claim of one of its own cited
+ * sources, so the table cannot drift from the corpus.
+ */
+import { ArrowRight, CalendarClock } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Callout from '../components/Callout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import StatusChip from '../components/StatusChip.astro';
+import { loadCorpus } from '../lib/corpus';
+import { longDate } from '../lib/cite';
+import { breadcrumbs, graph, organization, website } from '../lib/schema';
+import { TODAY } from '../lib/today';
+
+const corpus = await loadCorpus();
+
+const BASIS = [
+	{
+		key: 'scheduled',
+		heading: 'Moves on a schedule the instrument prints',
+		lede: 'The statute states when the amount changes and by how much. These have no fixed value at a future date, and no further legislation is needed for them to move.',
+	},
+	{
+		key: 'amendment',
+		heading: 'Moved once, by legislation, and holds until it moves again',
+		lede: 'A date, not a schedule. The useful fact is when it last moved, because material written before that date is describing a different rule.',
+	},
+	{
+		key: 'rulemaking',
+		heading: 'Revised administratively, on no schedule this corpus holds',
+		lede: 'These change by rulemaking rather than by statute. We record the figure and the date we read it, and decline to imply it is current beyond that.',
+	},
+	{
+		key: 'as-stated',
+		heading: 'Stated by the source, with no indexing rule we can establish',
+		lede: 'The section prints the figure. Nothing in this corpus establishes it as the operative number for a given year, so it is published as what the source says and no further.',
+	},
+] as const;
+
+/* A full ISO date, as opposed to 'n/a', 'unknown', or a year-only value. Kept
+   as a helper rather than inlined: a regex literal immediately after `{` in
+   the template reads as the opening of a JSX comment and fails to parse. */
+const isDated = (d: string) => /^\d{4}-\d{2}-\d{2}$/.test(d);
+
+const figures = corpus.figures;
+const grouped = BASIS.map((b) => ({
+	...b,
+	items: figures
+		.filter((f) => f.data.basis === b.key)
+		.sort((a, b2) => a.data.label.localeCompare(b2.data.label)),
+}));
+
+/* Anything with a printed next move that has not happened yet, soonest first.
+   This is the part a reader cannot get anywhere else. */
+const upcoming = figures
+	.filter((f) => isDated(f.data.nextMove) && f.data.nextMove > TODAY)
+	.sort((a, b) => (a.data.nextMove < b.data.nextMove ? -1 : 1));
+
+const jurisdictions = [...new Set(figures.flatMap((f) => (f.data.states.length ? f.data.states : ['federal'])))].sort();
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Figures', path: '/figures' },
+];
+
+const jsonLd = graph(organization(), website(), breadcrumbs(trail));
+---
+
+<BaseLayout
+	title="Figures, and what moves them"
+	description="Every amount this library holds, grouped by what changes it: a printed schedule, a single amendment, administrative rulemaking, or nothing we can establish. Each figure cites the source record that states it."
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
+	<PageHeader
+		eyebrow="Figures"
+		title="Every amount, and what moves it"
+		lede="Insurance figures are usually quoted as though they were facts with no expiry. They are not all the same kind of number, and the difference decides whether a figure you read last year is still the figure."
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell answer-grid">
+			<div class="prose">
+				<Callout tone="privacy">
+					<p>
+						<strong>No figure on this page originates here.</strong> Each one appears verbatim in a
+						claim of the source record cited beside it, and that is checked at build time rather
+						than trusted. Where a figure has moved since it was set, the note says so; where the
+						operative amount for a later year has to be derived, the note says that the derivation
+						is arithmetic rather than something the source prints.
+					</p>
+				</Callout>
+
+				{
+					upcoming.length > 0 && (
+						<section class="answer-section" aria-labelledby="upcoming">
+							<h2 id="upcoming">Already scheduled to change</h2>
+							<p>
+								Each of these has a date printed in the instrument that sets it. Nothing has to
+								be enacted for them to move.
+							</p>
+							<div class="rows">
+								{upcoming.map((f) => (
+									<div class="row">
+										<div>
+											<h3 class="row-title">{f.data.label}</h3>
+											<div class="row-meta">
+												<span class="mono">{f.data.amount}</span>
+												<span class="meta">
+													<CalendarClock size={13} aria-hidden="true" /> next moves{' '}
+													{longDate(f.data.nextMove)}
+												</span>
+											</div>
+										</div>
+										<div class="row-tail">
+											<a href={`#${f.id}`} aria-label={`Detail for ${f.data.label}`}>
+												<ArrowRight size={16} aria-hidden="true" />
+											</a>
+										</div>
+									</div>
+								))}
+							</div>
+						</section>
+					)
+				}
+
+				{
+					grouped
+						.filter((g) => g.items.length > 0)
+						.map((g) => (
+							<section class="answer-section" aria-labelledby={`basis-${g.key}`}>
+								<h2 id={`basis-${g.key}`}>{g.heading}</h2>
+								<p>{g.lede}</p>
+								<dl class="figure-list">
+									{g.items.map((f) => (
+										<div class="figure" id={f.id}>
+											<dt>
+												<span class="figure-amount mono">{f.data.amount}</span>
+												<span class="figure-label">{f.data.label}</span>
+											</dt>
+											<dd>
+												<p class="figure-applies">{f.data.applies}</p>
+												<p class="figure-note">{f.data.note}</p>
+												<div class="figure-meta">
+													<span><strong>Moves</strong> {f.data.movesWhen}</span>
+													{f.data.lastMoved !== 'n/a' && f.data.lastMoved !== 'unknown' && (
+														<span><strong>Last moved</strong> {longDate(f.data.lastMoved)}</span>
+													)}
+													{isDated(f.data.nextMove) && (
+														<span><strong>Next moves</strong> {longDate(f.data.nextMove)}</span>
+													)}
+													<span><strong>Set by</strong> {f.data.instrument}</span>
+													<span>
+														<strong>Source</strong>{' '}
+														{f.data.sourceIds.map((s, i) => (
+															<span>
+																{i > 0 ? ', ' : ''}
+																<a href={`/sources/${s.id}`}><code>{s.id}</code></a>
+															</span>
+														))}
+													</span>
+													{f.data.states.length > 0 && (
+														<span><strong>Jurisdiction</strong> {f.data.states.join(', ')}</span>
+													)}
+													<StatusChip kind={f.data.reviewState} />
+												</div>
+												{f.data.relatedQuestions.length > 0 && (
+													<p class="figure-related">
+														{f.data.relatedQuestions.map((q) => (
+															<a href={`/questions/${q.id}`}>Read the question behind this figure</a>
+														))}
+													</p>
+												)}
+											</dd>
+										</div>
+									))}
+								</dl>
+							</section>
+						))
+				}
+			</div>
+
+			<aside class="rail">
+				<div class="rail-block">
+					<h2>What this holds</h2>
+					<dl>
+						<div><dt>Figures</dt><dd>{figures.length}</dd></div>
+						{grouped.filter((g) => g.items.length).map((g) => (
+							<div><dt>{g.key}</dt><dd>{g.items.length}</dd></div>
+						))}
+						<div><dt>Scheduled to move</dt><dd>{upcoming.length}</dd></div>
+						<div><dt>Jurisdictions</dt><dd>{jurisdictions.join(', ')}</dd></div>
+					</dl>
+				</div>
+
+				<div class="rail-block">
+					<h2>Why this page exists</h2>
+					<p>
+						A figure with no date beside it is a liability. The four groupings here are four
+						different kinds of number, and the grouping is the point rather than the list.
+					</p>
+					<p>
+						<a href="/sources">The source registry</a> holds the records these are drawn from, and
+						<a href="/corrections"> corrections</a> is where an error in one gets logged.
+					</p>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.figure-list {
+		display: grid;
+		gap: var(--s-6);
+		margin: var(--s-5) 0 0;
+	}
+
+	.figure {
+		border-top: var(--bw-hair) solid var(--line-strong);
+		padding-top: var(--s-4);
+		scroll-margin-top: var(--s-10);
+	}
+
+	.figure dt {
+		display: flex;
+		align-items: baseline;
+		gap: var(--s-3);
+		flex-wrap: wrap;
+	}
+
+	.figure-amount {
+		font-size: 1.25rem;
+		font-weight: 600;
+		font-variant-numeric: tabular-nums;
+		color: var(--ink);
+	}
+
+	.figure-label {
+		font-weight: 500;
+		color: var(--ink-2);
+	}
+
+	.figure dd {
+		margin: var(--s-3) 0 0;
+	}
+
+	.figure-applies {
+		margin: 0 0 var(--s-2);
+	}
+
+	.figure-note {
+		margin: 0 0 var(--s-3);
+		color: var(--ink-2);
+	}
+
+	.figure-meta {
+		display: grid;
+		gap: var(--s-1);
+		font-size: 0.8125rem;
+		color: var(--muted);
+	}
+
+	.figure-meta strong {
+		color: var(--ink-2);
+		font-weight: 600;
+	}
+
+	.figure-related {
+		margin: var(--s-3) 0 0;
+		font-size: 0.875rem;
+	}
+</style>

@@ -1,0 +1,27 @@
+{
+	"label": "California cash deposit alternative to an auto liability policy",
+	"amount": "$75,000",
+	"applies": "The deposit that satisfies proof of financial responsibility instead of a liability policy",
+	"basis": "scheduled",
+	"movesWhen": "Increases by $50,000 on 1 January 2035",
+	"nextMove": "2035-01-01",
+	"lastMoved": "2025-01-01",
+	"instrument": "Stats. 2022, Ch. 717 (SB 1107)",
+	"note": "This is the route that does not involve insurance at all, and it moves on the same schedule as the policy limits. Nothing in this record establishes who is eligible to use it or how the deposit is made.",
+	"family": "personal",
+	"lines": [
+		"auto"
+	],
+	"states": [
+		"CA"
+	],
+	"sourceIds": [
+		"ca-sb-1107"
+	],
+	"relatedQuestions": [],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

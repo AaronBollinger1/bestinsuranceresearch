@@ -1,0 +1,27 @@
+{
+	"label": "Federal cargo insurance minimum, household goods carrier, per motor vehicle",
+	"amount": "$5,000",
+	"applies": "Loss of or damage to household goods carried on any one motor vehicle, for a household goods motor carrier",
+	"basis": "rulemaking",
+	"movesWhen": "By rulemaking, on no schedule this corpus holds",
+	"nextMove": "unknown",
+	"lastMoved": "unknown",
+	"instrument": "49 CFR 387.303(c)",
+	"note": "The aggregate figure for losses at any one time and place is $10,000. This requirement reaches household goods motor carriers alone, so the section states no cargo insurance minimum at all for a general freight carrier - which is why a cargo limit is a contract term rather than a regulatory floor.",
+	"family": "commercial",
+	"lines": [
+		"motor-truck-cargo"
+	],
+	"states": [],
+	"sourceIds": [
+		"cfr-49-387-303-lii"
+	],
+	"relatedQuestions": [
+		"how-long-to-file-a-freight-damage-claim"
+	],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

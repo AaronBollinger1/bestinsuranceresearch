@@ -1,0 +1,29 @@
+{
+	"label": "Texas auto liability minimum, bodily injury or death of one person",
+	"amount": "$30,000",
+	"applies": "The minimum coverage establishing financial responsibility through a motor vehicle liability insurance policy in Texas",
+	"basis": "amendment",
+	"movesWhen": "Only by legislation",
+	"nextMove": "n/a",
+	"lastMoved": "2011-01-01",
+	"instrument": "Texas Transportation Code section 601.072",
+	"note": "Effective 1 January 2011, and the subsection carrying the earlier lower amounts is shown as expired, so material quoting lower figures is quoting a subsection that no longer operates. The statute also permits the coverage to exclude the first $250 of liability for bodily injury to one person.",
+	"family": "personal",
+	"lines": [
+		"auto"
+	],
+	"states": [
+		"TX"
+	],
+	"sourceIds": [
+		"tx-transp-601-072"
+	],
+	"relatedQuestions": [
+		"texas-minimum-auto-and-what-you-carry-by-default"
+	],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

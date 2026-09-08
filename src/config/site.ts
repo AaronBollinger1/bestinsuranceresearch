@@ -124,6 +124,7 @@ export const primaryNav = [
 	{ label: 'Questions', href: '/questions', description: 'Every canonical question' },
 	{ label: 'Companies', href: '/companies', description: 'Insurers, regulators, public entities' },
 	{ label: 'Tools', href: '/tools', description: 'Free decision support' },
+	{ label: 'Figures', href: '/figures', description: 'Every amount, and what moves it' },
 	{ label: 'Sources', href: '/sources', description: 'The source registry' },
 ] as const;
 

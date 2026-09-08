@@ -1,0 +1,27 @@
+{
+	"label": "California deadline to submit a breach notice sample to the Attorney General",
+	"amount": "15 calendar days",
+	"applies": "A single sample copy of the notification, where a single breach requires notice to more than 500 California residents",
+	"basis": "amendment",
+	"movesWhen": "Only by legislation",
+	"nextMove": "n/a",
+	"lastMoved": "2026-01-01",
+	"instrument": "Stats. 2025, Ch. 319, Sec. 1 (SB 446)",
+	"note": "This clock is measured from notifying affected consumers, not from discovery of the breach, so it runs from a different event than the 30-day deadline and can expire after it. The 500-resident trigger is the point at which an incident acquires a regulator audience as well as a consumer one.",
+	"family": "commercial",
+	"lines": [
+		"cyber-liability"
+	],
+	"states": [
+		"CA"
+	],
+	"sourceIds": [
+		"ca-civ-code-1798-82"
+	],
+	"relatedQuestions": [],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

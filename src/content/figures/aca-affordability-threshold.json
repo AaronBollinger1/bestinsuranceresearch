@@ -1,0 +1,27 @@
+{
+	"label": "ACA employer coverage affordability threshold, as the regulation states it",
+	"amount": "9.5 percent",
+	"applies": "The threshold all three affordability safe harbors in the section are expressed against",
+	"basis": "as-stated",
+	"movesWhen": "Not established by this corpus. The section states the figure and no indexing rule we hold",
+	"nextMove": "unknown",
+	"lastMoved": "unknown",
+	"instrument": "26 CFR 54.4980H-5(e)(2)",
+	"note": "Published here as what the section states, carefully scoped: all three safe harbors in that section are expressed against this threshold. Nothing in this corpus establishes it as the percentage in force for any particular plan year, and it should not be quoted as though it were. If a decision turns on the number, the number is the first thing to confirm.",
+	"family": "health",
+	"lines": [
+		"group-health"
+	],
+	"states": [],
+	"sourceIds": [
+		"cfr-26-54-4980h-5-lii"
+	],
+	"relatedQuestions": [
+		"which-affordability-safe-harbour-are-we-using"
+	],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

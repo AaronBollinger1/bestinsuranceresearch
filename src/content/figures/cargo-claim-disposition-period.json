@@ -1,0 +1,27 @@
+{
+	"label": "Period within which a carrier must dispose of a freight claim",
+	"amount": "120 days",
+	"applies": "Paying, declining, or making a firm compromise settlement offer in writing after receipt of a cargo claim",
+	"basis": "rulemaking",
+	"movesWhen": "By rulemaking, on no schedule this corpus holds",
+	"nextMove": "unknown",
+	"lastMoved": "unknown",
+	"instrument": "49 CFR 370.9",
+	"note": "Where the claim cannot be disposed of in that period the carrier must advise the claimant in writing every succeeding 60 days, with the reason for the delay. That paper trail is also what establishes when the two-year period for suit began, so a claim pending a year with no written disposition is one where neither side can date its own deadline.",
+	"family": "commercial",
+	"lines": [
+		"motor-truck-cargo"
+	],
+	"states": [],
+	"sourceIds": [
+		"cfr-49-370-9-lii"
+	],
+	"relatedQuestions": [
+		"how-long-to-file-a-freight-damage-claim"
+	],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

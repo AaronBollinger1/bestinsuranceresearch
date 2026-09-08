@@ -1,0 +1,29 @@
+{
+	"label": "MICRA limit on noneconomic damages, wrongful death - starting amount",
+	"amount": "$500,000",
+	"applies": "Noneconomic losses in a wrongful death action against a health care provider based on professional negligence",
+	"basis": "scheduled",
+	"movesWhen": "Increases by $50,000 each 1 January for 10 years, to a ceiling of $1,000,000",
+	"nextMove": "2027-01-01",
+	"lastMoved": "2026-01-01",
+	"instrument": "Stats. 2022, Ch. 17, Sec. 3 (AB 35), effective 1 January 2023",
+	"note": "The starting amount from 1 January 2023, on a separate and more generous schedule than the injury limit. Counting the stated increases gives $650,000 for 2026, which is arithmetic from the schedule rather than a printed figure.",
+	"family": "commercial",
+	"lines": [
+		"medical-professional-liability"
+	],
+	"states": [
+		"CA"
+	],
+	"sourceIds": [
+		"ca-civ-code-3333-2"
+	],
+	"relatedQuestions": [
+		"is-the-california-malpractice-cap-still-250000"
+	],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

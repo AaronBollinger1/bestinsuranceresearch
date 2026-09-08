@@ -1,0 +1,27 @@
+{
+	"label": "California data breach notification deadline",
+	"amount": "30 calendar days",
+	"applies": "Disclosure to a California resident whose unencrypted personal information was acquired by an unauthorized person",
+	"basis": "amendment",
+	"movesWhen": "Only by legislation. It last moved on 1 January 2026 and holds until amended again",
+	"nextMove": "n/a",
+	"lastMoved": "2026-01-01",
+	"instrument": "Stats. 2025, Ch. 319, Sec. 1 (SB 446)",
+	"note": "The duty previously ran on a standard rather than a deadline: notice in the most expedient time possible and without unreasonable delay. That phrasing is gone from subdivision (a). Any incident response plan or checklist drafted against it is describing a rule that no longer applies. The only carve-out this corpus establishes is the law enforcement delay in subdivision (c).",
+	"family": "commercial",
+	"lines": [
+		"cyber-liability"
+	],
+	"states": [
+		"CA"
+	],
+	"sourceIds": [
+		"ca-civ-code-1798-82"
+	],
+	"relatedQuestions": [],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

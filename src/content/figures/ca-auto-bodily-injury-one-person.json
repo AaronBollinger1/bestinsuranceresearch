@@ -1,0 +1,28 @@
+{
+	"label": "California auto liability minimum, bodily injury or death of one person",
+	"amount": "$30,000",
+	"applies": "The liability limit a policy must carry to satisfy California financial responsibility",
+	"basis": "scheduled",
+	"movesWhen": "By statute on 1 January 2035, stated as an increment rather than as a resulting figure",
+	"nextMove": "2035-01-01",
+	"lastMoved": "2025-01-01",
+	"instrument": "Stats. 2022, Ch. 717 (SB 1107), the section as amended by Stats. 2023, Ch. 204, Sec. 19 (AB 1140)",
+	"note": "Operative from 1 January 2025, replacing $15,000 which applied through 31 December 2024. The 2035 step is expressed in the section as an increase BY $20,000, not as a resulting limit; applied to the current figure that produces $50,000, and the increment must not be quoted as the 2035 limit.",
+	"family": "personal",
+	"lines": [
+		"auto"
+	],
+	"states": [
+		"CA"
+	],
+	"sourceIds": [
+		"ca-veh-code-16056",
+		"ca-sb-1107"
+	],
+	"relatedQuestions": [],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

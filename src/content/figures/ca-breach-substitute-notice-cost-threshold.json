@@ -1,0 +1,27 @@
+{
+	"label": "California cost threshold for substitute breach notice",
+	"amount": "$250,000",
+	"applies": "The demonstrated cost of providing notice above which substitute notice becomes available",
+	"basis": "amendment",
+	"movesWhen": "Only by legislation",
+	"nextMove": "n/a",
+	"lastMoved": "unknown",
+	"instrument": "California Civil Code section 1798.82(j)(3)",
+	"note": "The alternative trigger is an affected class exceeding 500,000. A business well below either threshold is a business expected to notify individually, so this figure is a useful reference point for what individual notification is assumed to cost.",
+	"family": "commercial",
+	"lines": [
+		"cyber-liability"
+	],
+	"states": [
+		"CA"
+	],
+	"sourceIds": [
+		"ca-civ-code-1798-82"
+	],
+	"relatedQuestions": [],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}

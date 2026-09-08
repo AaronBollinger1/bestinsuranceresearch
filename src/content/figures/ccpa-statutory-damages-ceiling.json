@@ -1,0 +1,27 @@
+{
+	"label": "CCPA statutory damages ceiling, per consumer per incident",
+	"amount": "$750",
+	"applies": "A consumer action for a breach resulting from a violation of the duty to maintain reasonable security procedures and practices",
+	"basis": "amendment",
+	"movesWhen": "Only by legislation",
+	"nextMove": "n/a",
+	"lastMoved": "2025-01-01",
+	"instrument": "Stats. 2024, Ch. 121, Sec. 6 (AB 3286)",
+	"note": "The floor is $100, and the statute allows actual damages instead where greater. Because the range is stated per consumer per incident, the exposure scales with the size of the affected class rather than with any measure of harm, and the floor applies whether or not a consumer can show loss.",
+	"family": "commercial",
+	"lines": [
+		"cyber-liability"
+	],
+	"states": [
+		"CA"
+	],
+	"sourceIds": [
+		"ca-civ-code-1798-150"
+	],
+	"relatedQuestions": [],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review"
+}
