@@ -1,0 +1,57 @@
+{
+	"question": "What auto insurance does Texas require, and what am I carrying that I never asked for?",
+	"aliases": [
+		"Texas minimum auto insurance limits 30 60 25",
+		"is PIP automatic in Texas",
+		"how to decline uninsured motorist coverage Texas",
+		"Texas financial responsibility requirement amounts",
+		"Transportation Code 601.072 minimum coverage"
+	],
+	"shortAnswer": "The minimums are 30/60/25, and two coverages are in your policy unless you removed them in writing. Texas requires at least $30,000 of coverage for injuries per person, up to a total of $60,000 per accident, and $25,000 for property damage [S:tdi-auto-guide]. Beyond that, the Department states that all auto policies in Texas include personal injury protection, and a policyholder who does not want it must tell the company in writing [S:tdi-auto-guide], and that companies must offer uninsured and underinsured motorist coverage, which again must be declined in writing [S:tdi-auto-guide].",
+	"assumes": [
+		"You are establishing financial responsibility through a motor vehicle liability insurance policy, which is what the minimum amounts in the Transportation Code are stated for [S:tx-transp-601-072].",
+		"You are asking what Texas requires and what a Texas policy contains by default, not whether any particular claim is covered.",
+		"You are reading a reproduction of the statute rather than the official text. The section is quoted here from a public reproduction [S:tx-transp-601-072], corroborated on the figures by the Department's own guide [S:tdi-auto-guide]."
+	],
+	"why": "Two different things are worth separating: the floor the state sets, and what a Texas policy contains when nobody has said otherwise.\n\nThe floor. Effective January 1, 2011 the minimum amounts of motor vehicle liability insurance required to establish financial responsibility are $30,000 for bodily injury to or death of one person in one collision, $60,000 for bodily injury to or death of two or more persons in one collision subject to the amount for one person, and $25,000 for damage to or destruction of property of others in one collision [S:tx-transp-601-072]. The Department states the same three figures in its consumer guide [S:tdi-auto-guide], so a reproduction of the statute and the regulator agree on them, which is the strongest position this record can be in.\n\nThe earlier version of the subsection, carrying the older amounts, is shown as expired [S:tx-transp-601-072], so material quoting lower figures is quoting a subsection that no longer operates.\n\nOne oddity in the same section is worth knowing because it is unusual in a liability statute. Subsection (b) provides that the coverage may exclude the first $250 of liability for bodily injury to or death of one person, the first $500 for bodily injury to or death of two or more persons, and the first $250 of liability for property damage [S:tx-transp-601-072]. A liability policy with a small deductible at the front of it is not what most people picture, and the statute permits it.\n\nNow the part that answers the second half of the question, and it is the reverse of what most drivers assume.\n\nPersonal injury protection is in the policy unless you took it out. The Department states that all auto policies in Texas include personal injury protection coverage, and that a policyholder who does not want it must tell the company in writing [S:tdi-auto-guide]. Not offered, not available on request: included, with a written opt-out.\n\nUninsured and underinsured motorist coverage runs the same way. Companies must offer it, and a policyholder who does not want it must tell the company in writing [S:tdi-auto-guide].\n\nSo a Texas driver who has never signed anything declining either one is carrying both. And a Texas driver who believes they have a bare minimum-limits policy may be wrong about that in two respects at once. The document to look for is not the declarations page but the rejection: if no written rejection exists, the coverage is not gone.\n\nThe statute also obliges the state to explain itself. Subsection (c) requires the Texas Department of Insurance to establish an outreach programme to inform the public of the financial responsibility requirements, designed to encourage compliance and made available in English and Spanish [S:tx-transp-601-072].\n\nOne dating discrepancy, recorded rather than smoothed. The statutory reproduction gives January 1, 2011 as the effective date of the current amounts [S:tx-transp-601-072]; the Department's guide states the same figures with no effective date at all [S:tdi-auto-guide], and carries a last updated date of December 11, 2025 [S:tdi-auto-guide]. The figures agree; only the dating differs, and the statute is where the effective date comes from.",
+	"whatChanges": [
+		"Whether a written rejection of personal injury protection exists, since without one the coverage is in the policy [S:tdi-auto-guide].",
+		"Whether a written rejection of uninsured and underinsured motorist coverage exists, on the same footing [S:tdi-auto-guide].",
+		"Whether the policy takes the subsection (b) exclusion of the first $250, $500 and $250 of liability [S:tx-transp-601-072].",
+		"Whether the figures being quoted to you are the current ones, since the subsection carrying the earlier amounts is expired [S:tx-transp-601-072].",
+		"Whether financial responsibility is being established by a liability policy at all, since the amounts are stated for that method [S:tx-transp-601-072]."
+	],
+	"variability": [
+		"The statutory text here is quoted from a public reproduction rather than an official host [S:tx-transp-601-072]. The three figures are independently corroborated by the Department's guide [S:tdi-auto-guide]; anything in this record resting on the reproduction alone, including subsection (b) and subsection (c), should be confirmed against the official text before it is relied on.",
+		"The section has been amended more than once, by Acts 2007, 80th Leg., R.S., Ch. 1298 (S.B. 502) effective September 1, 2007 and by Acts 2023, 88th Leg., R.S., Ch. 709 (H.B. 2190) effective September 1, 2023 [S:tx-transp-601-072]. Minimum amounts move by legislation and should be checked as current.",
+		"The Department states that policies include personal injury protection and that companies must offer uninsured motorist coverage [S:tdi-auto-guide]. What any particular policy provides, and what a signed rejection covers, is in that policy and that document.",
+		"Nothing here describes what personal injury protection or uninsured motorist coverage pays in Texas, only that both are in the policy absent a written rejection."
+	],
+	"nextActions": [
+		"Ask your insurer for a copy of any written rejection of personal injury protection or uninsured motorist coverage on your policy, because its absence means the coverage is there [S:tdi-auto-guide].",
+		"Read the declarations page against that answer rather than instead of it, since the rejection is the document that removes the coverage [S:tdi-auto-guide].",
+		"Check whether the quoted limits are 30/60/25 or the expired earlier amounts [S:tx-transp-601-072].",
+		"Ask whether the policy takes the statutory exclusion of the first $250, $500 and $250 of liability, since the statute permits it [S:tx-transp-601-072].",
+		"Confirm the current minimum amounts against the official statute rather than a reproduction if a figure matters to a decision [S:tx-transp-601-072]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": ["auto"],
+	"states": ["TX"],
+	"audience": "individual",
+	"topics": ["financial responsibility", "minimum limits", "personal injury protection", "uninsured motorist", "texas", "auto"],
+	"companies": [],
+	"coverages": [],
+	"effectiveDate": "2026-09-08",
+	"lastReviewed": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": ["florida-minimum-auto-insurance-and-after-dui", "underinsured-motorist-paid-nothing-california"],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a written rejection exists on a particular policy is a document question for the insurer, and the statutory text here is quoted from a reproduction rather than an official host. Anything turning on a figure should be confirmed before it is acted on."
+	},
+	"sourceIds": ["tdi-auto-guide", "tx-transp-601-072"],
+	"schemaEligible": { "faqPage": false, "techArticle": true }
+}
