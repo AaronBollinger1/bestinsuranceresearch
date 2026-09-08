@@ -1,0 +1,26 @@
+{
+	"title": "California Civil Code Section 3333.1 (collateral source evidence in a medical professional negligence action)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3333.1",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "1976",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-08",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The version on the official host is stated as amended by Stats. 1976, Ch. 1079.",
+		"Subdivision (a) permits a defendant in an action for personal injury against a health care provider based upon professional negligence to introduce evidence of benefits paid or payable to the plaintiff under the United States Social Security Act, any state or federal income disability or worker's compensation act, any health, sickness or income-disability insurance, and accident insurance that provides health benefits.",
+		"Subdivision (a) also reaches any contract or agreement of any group, organization, partnership, or corporation to provide, pay for, or reimburse the cost of medical, hospital, dental, or other health care services.",
+		"Where the defendant introduces that evidence, the plaintiff may introduce evidence of any amount which the plaintiff has paid or contributed to secure the right to any insurance benefits concerning which the defendant has introduced evidence.",
+		"Subdivision (b) provides that no source of collateral benefits introduced pursuant to subdivision (a) shall recover any amount against the plaintiff, nor shall it be subrogated to the rights of the plaintiff.",
+		"Health care provider is defined as any person licensed or certified pursuant to Division 2, commencing with Section 500, of the Business and Professions Code, and any clinic, health dispensary, or health facility licensed pursuant to Division 2 of the Health and Safety Code, and the definition includes legal representatives."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "The collateral source rule ordinarily keeps a plaintiff's own insurance out of the damages calculation. This section reverses that for medical professional negligence, and the reversal runs in both directions at once: the defendant may put the plaintiff's collateral benefits in front of the jury, and in exchange the collateral source loses its subrogation and reimbursement rights against the plaintiff. Reading only subdivision (a) makes the section look one-sided; subdivision (b) is the other half of the bargain and it is the half a health plan or disability carrier needs to know about, because it is their recovery that the section removes. Note the definition of health care provider here is drawn slightly differently from the one in section 3333.2, which uses a defined health care institution term instead of naming clinics and facilities in the provider definition."
+}

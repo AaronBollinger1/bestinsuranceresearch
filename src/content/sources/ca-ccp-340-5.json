@@ -1,0 +1,27 @@
+{
+	"title": "California Code of Civil Procedure Section 340.5 (the limitations period for professional negligence against a health care provider)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=340.5",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "1975",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-08",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The version on the official host is stated as amended by Stats. 1975, 2nd Ex. Sess., Ch. 2.",
+		"The section sets the time for commencement of an action for injury or death against a health care provider based upon professional negligence at three years after the date of injury or one year after the plaintiff discovers, or through the use of reasonable diligence should have discovered, the injury, whichever occurs first.",
+		"The three-year period from the date of injury operates as the outer limit, so a claim discovered late can be barred by the date of injury even where the one-year discovery period has not run.",
+		"The three-year period is tolled only upon proof of fraud, intentional concealment, or the presence of a foreign body which has no therapeutic or diagnostic purpose or effect.",
+		"For an action by or on behalf of a minor, the action shall be commenced within three years from the date of the alleged wrongful act, and where the minor is under the full age of six years the period is three years or prior to the minor's eighth birthday, whichever provides a longer period.",
+		"The minor's period is tolled for any period during which the parent or guardian and the defendant's insurer or health care provider have committed fraud or collusion in the failure to bring an action on behalf of the injured minor.",
+		"Professional negligence is defined as a negligent act or omission to act by a health care provider in the rendering of professional services, which act or omission is the proximate cause of a personal injury or wrongful death."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "The structure that catches people is the interaction of the two periods rather than either one alone. One year runs from discovery and three years from the date of injury, and whichever occurs first ends the claim, so an injury discovered in year four is barred by the three-year limit even though the discovery year has barely started. The tolling list is closed and short: fraud, intentional concealment, and a foreign body with no therapeutic or diagnostic purpose. Nothing else in this record tolls the three years. Because both periods are measured from dated events, the medical record is what decides the defence, which is why record-keeping belongs on this line rather than beside it. Note that the notice of intention to sue under Code of Civil Procedure section 364 can extend the time to commence an action, so this section should not be read alone."
+}

@@ -1,0 +1,30 @@
+{
+	"title": "California Civil Code Section 3333.2 (the MICRA limit on noneconomic damages, as rewritten by AB 35)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3333.2",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "2022",
+	"effectiveDate": "2023-01-01",
+	"accessedDate": "2026-09-08",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The version on the official host is stated as amended by Stats. 2022, Ch. 17, Sec. 3 (AB 35), effective January 1, 2023.",
+		"Subdivision (a) addresses an action for injury against a health care provider based on professional negligence, in which the injured plaintiff may recover noneconomic losses to compensate for pain, suffering, inconvenience, physical impairment, disfigurement and other nonpecuniary damage.",
+		"In an action other than one for wrongful death, the limit on damages for noneconomic losses begins at three hundred fifty thousand dollars ($350,000), and the section provides for an increase of forty thousand dollars ($40,000) each January 1 for 10 years, up to seven hundred fifty thousand dollars ($750,000).",
+		"In an action for wrongful death, the limit on damages for noneconomic losses begins at five hundred thousand dollars ($500,000), and the section provides for an increase of fifty thousand dollars ($50,000) each January 1 for 10 years, up to one million dollars ($1,000,000).",
+		"Once the stepped increases are complete the amounts are adjusted for inflation on January 1 of each year by 2 percent, beginning on January 1, 2034.",
+		"Subdivision (f) states that the applicable dollar amounts set forth in subdivisions (b), (g) and (h) provide three separate limits of liability that may apply, with corresponding language for a wrongful death action.",
+		"The section provides that no health care provider defendant shall be liable for damages for noneconomic losses in more than one of the categories set forth in the section.",
+		"The section provides a separate limit where a defendant is unaffiliated, and the test for whether a defendant is unaffiliated refers to the definition of affiliated, or affiliated with, in Section 150 of the Corporations Code, and to whether the defendant is employed by, performing under a contract with, an owner of, or in a joint venture with another specified entity.",
+		"Health care provider is defined as any person licensed or certified pursuant to Division 2, commencing with Section 500, of the Business and Professions Code, and the definition includes the legal representatives of a health care provider and the health care provider's employer, professional corporation, partnership, or other form of legally recognized professional practice organization.",
+		"Health care institution is defined as one or more health care facilities licensed pursuant to Chapter 2, commencing with Section 1250, of Division 2 of the Health and Safety Code, owned or operated by the same entity or its affiliates, and includes all persons and entities for which vicarious liability theories may apply."
+	],
+	"updateCadence": "Amended only by legislation, but the operative figure changes every January 1 by the schedule in the section itself rather than by amendment.",
+	"status": "active",
+	"notes": "Two things about this section are routinely got wrong, and both matter to anyone reading a limit on a policy. The first is the number. AB 35 replaced the flat two hundred and fifty thousand dollar limit that had stood since 1975 with a stepped schedule starting at $350,000 for injury and $500,000 for wrongful death on January 1, 2023, rising annually and then indexing at 2 percent from January 1, 2034. Any material stating $250,000 is describing the pre-2023 section. The second is that there is not one limit. Subdivision (f) states that subdivisions (b), (g) and (h) provide three separate limits of liability that may apply in a single action, and the section separately bars a defendant from being liable for noneconomic losses in more than one category. This record establishes that the three-limit structure exists and that one of the limits turns on a defendant being unaffiliated within the meaning of Corporations Code section 150; it does not establish the precise category each of subdivisions (g) and (h) names, and that mapping should be read in the section itself before it is relied on."
+}

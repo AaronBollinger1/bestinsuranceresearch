@@ -1,0 +1,162 @@
+{
+	"name": "Medical professional liability (California)",
+	"line": "medical-professional-liability",
+	"family": "commercial",
+	"definition": "Medical professional liability policy forms are not public, so this page does not state what any policy covers. What is public, and what decides the size of a California claim, is the statutory regime the line is written against: four sections enacted or rewritten as MICRA. The number most material still quotes is wrong. AB 35 replaced the flat limit that had stood since 1975, and as amended effective January 1, 2023 the limit on damages for noneconomic losses begins at three hundred fifty thousand dollars ($350,000) in an action other than wrongful death, rising by forty thousand dollars ($40,000) each January 1 for 10 years to a ceiling of seven hundred fifty thousand dollars ($750,000); for wrongful death it begins at five hundred thousand dollars ($500,000), rising by fifty thousand dollars ($50,000) each January 1 for 10 years to one million dollars ($1,000,000), after which the amounts are adjusted for inflation on January 1 of each year by 2 percent beginning January 1, 2034 [S:ca-civ-code-3333-2]. Nor is there one limit. Subdivision (f) states that subdivisions (b), (g) and (h) provide three separate limits of liability that may apply in a single action, and the section separately bars a defendant from being liable for noneconomic losses in more than one of its categories [S:ca-civ-code-3333-2]. Around that sit a limitations rule with two clocks running to whichever expires first [S:ca-ccp-340-5], a 90-day notice that is both a precondition and an extension [S:ca-ccp-364], and a reversal of the collateral source rule that takes a health plan's subrogation rights with it [S:ca-civ-code-3333-1].",
+	"protects": [
+		"Not what this page can tell you. Medical professional liability forms are not publicly filed and this record has read none, so what any policy covers is in that policy",
+		"The line answers liability for professional negligence, defined as a negligent act or omission to act by a health care provider in the rendering of professional services which is the proximate cause of a personal injury or wrongful death [S:ca-ccp-340-5]",
+		"It is generally written claims-made. NAIC states that many insurers write on a claims-made form basis, where a policy in effect at the time a claim is reported responds for the loss while the policy remains in force and during any applicable reporting period [S:naic-medical-malpractice]",
+		"New York's enumeration of the coverages claims-made may be written for names medical malpractice among them, alongside professional liability, errors and omissions and the rest [S:ny-11-nycrr-73-2], so the two dates that govern any claims-made line govern this one",
+		"Not the economic side of a California award. The limit in section 3333.2 is on noneconomic losses, meaning pain, suffering, inconvenience, physical impairment, disfigurement and other nonpecuniary damage [S:ca-civ-code-3333-2]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "The statutory regime set out below, not a form wording this record has read",
+			"note": "Every entry here is drawn from a California statute. None of it is a policy term, and no policy term is established anywhere on this page. Whether a particular medical professional liability policy responds to any of it, and within what limit, is in that policy."
+		},
+		{
+			"item": "Liability for professional negligence, on a definition the statutes supply",
+			"note": "Professional negligence is a negligent act or omission to act by a health care provider in the rendering of professional services, which act or omission is the proximate cause of a personal injury or wrongful death [S:ca-ccp-340-5]. Section 364 states it in nearly the same terms and adds that the services be within the scope of the services for which the provider is licensed [S:ca-ccp-364]."
+		},
+		{
+			"item": "Whoever falls inside the statutory definition of health care provider",
+			"note": "Section 3333.2 defines a health care provider as any person licensed or certified pursuant to Division 2, commencing with Section 500, of the Business and Professions Code, and includes the legal representatives of a provider and the provider's employer, professional corporation, partnership, or other form of legally recognized professional practice organization [S:ca-civ-code-3333-2]. The practice entity is inside the definition, not beside it, which is why who is named as a defendant is a structural question rather than a formality."
+		},
+		{
+			"item": "And whoever falls inside the separate definition of health care institution",
+			"note": "A health care institution is one or more health care facilities licensed pursuant to Chapter 2, commencing with Section 1250, of Division 2 of the Health and Safety Code, owned or operated by the same entity or its affiliates, and includes all persons and entities for which vicarious liability theories may apply [S:ca-civ-code-3333-2]. Vicarious liability is written into the definition, so an institution's exposure reaches conduct it did not itself perform."
+		},
+		{
+			"item": "A claim reported during the policy period, on a claims-made form",
+			"note": "NAIC states that many insurers write medical malpractice on a claims-made basis, where the policy in effect when a claim is reported responds while the policy remains in force and during any applicable reporting period, and that an occurrence policy is the opposite instrument, covering a loss occurring during the policy period regardless of when the claim was made and even after cancellation [S:naic-medical-malpractice]. Which of the two a provider holds decides what happens when they change carriers or retire."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Whatever your own form excludes, which this record does not establish",
+			"note": "This list sets out the boundaries the statutes draw. It is not a list of policy exclusions, and none is established anywhere on this page. A medical professional liability form's exclusions, consent-to-settle clause, reporting conditions and tail terms are in that form."
+		},
+		{
+			"item": "Economic damages, which the California limit does not touch",
+			"note": "Section 3333.2 limits damages for noneconomic losses, described as pain, suffering, inconvenience, physical impairment, disfigurement and other nonpecuniary damage [S:ca-civ-code-3333-2]. Medical expenses, lost earnings and other economic loss are outside that limit, so a capped award is not a small one and the limit is a poor proxy for the size of a claim."
+		},
+		{
+			"item": "More than one limit category per defendant",
+			"note": "The section provides that no health care provider defendant shall be liable for damages for noneconomic losses in more than one of the categories set forth in it [S:ca-civ-code-3333-2]. That is a limit on stacking against a single defendant, and it sits alongside subdivision (f), which states that subdivisions (b), (g) and (h) provide three separate limits of liability that may apply in one action [S:ca-civ-code-3333-2]. The two provisions do different jobs and are easy to confuse."
+		},
+		{
+			"item": "Almost everything, as a way of tolling the three-year period",
+			"note": "The three-year period from the date of injury is tolled only upon proof of fraud, intentional concealment, or the presence of a foreign body which has no therapeutic or diagnostic purpose or effect [S:ca-ccp-340-5]. The list is closed and this record establishes no other ground, so late discovery on its own does not extend it."
+		},
+		{
+			"item": "A collateral source's right to come back against the plaintiff",
+			"note": "Where a defendant introduces evidence of collateral benefits under subdivision (a), section 3333.1(b) provides that no such source shall recover any amount against the plaintiff nor be subrogated to the rights of the plaintiff [S:ca-civ-code-3333-1]. The subrogation right is removed as the price of the evidence being admissible, which is a loss to the health plan or disability carrier rather than to anyone in the action."
+		}
+	],
+	"limitsAndDeductibles": [
+		"The statutes set no policy limit and no deductible. They set the ceiling on one head of damages and the clocks around the claim, and both move on dates rather than on facts.",
+		"For an action other than wrongful death the limit on noneconomic losses began at three hundred fifty thousand dollars ($350,000) and rises by forty thousand dollars ($40,000) each January 1 for 10 years, to seven hundred fifty thousand dollars ($750,000) [S:ca-civ-code-3333-2]. For wrongful death it began at five hundred thousand dollars ($500,000) and rises by fifty thousand dollars ($50,000) each January 1 for 10 years, to one million dollars ($1,000,000) [S:ca-civ-code-3333-2].",
+		"On that schedule, and counting the increases from the January 1, 2023 starting figures, the amounts in 2026 work out at four hundred and seventy thousand dollars for injury and six hundred and fifty thousand dollars for wrongful death. Those two figures are arithmetic from the schedule rather than amounts the section prints, so confirm them against the section before relying on either [S:ca-civ-code-3333-2].",
+		"Once the stepped increases are complete the amounts are adjusted for inflation on January 1 of each year by 2 percent, beginning January 1, 2034 [S:ca-civ-code-3333-2]. The limit therefore has no fixed value at any future date and a policy or reserve set against a single number is set against a moving one.",
+		"There may be three limits in play rather than one. Subdivision (f) states that the applicable amounts in subdivisions (b), (g) and (h) provide three separate limits of liability that may apply [S:ca-civ-code-3333-2], and one of them turns on a defendant being unaffiliated, tested by reference to the definition of affiliated in Section 150 of the Corporations Code and to whether the defendant is employed by, performing under a contract with, an owner of, or in a joint venture with another specified entity [S:ca-civ-code-3333-2].",
+		"The time limits are the other constraint. Three years from the date of injury or one year from discovery, whichever occurs first [S:ca-ccp-340-5], but no action may be commenced without at least 90 days' prior notice of intention to sue, and a notice served within 90 days of the expiration of the limitations period extends the time to commence by 90 days from service [S:ca-ccp-364]. The date on the calendar is therefore not the date section 340.5 states."
+	],
+	"underwritingInputs": [
+		"Whether the policy is claims-made or occurrence, since NAIC describes the two as responding to different events entirely [S:naic-medical-malpractice]",
+		"Which entity is the named insured, because the section 3333.2 definition of health care provider already includes the provider's employer, professional corporation, partnership or other legally recognized professional practice organization [S:ca-civ-code-3333-2]",
+		"Whether any defendant would be a health care institution rather than a provider, which is a separate definition resting on facility licensure under Health and Safety Code Chapter 2 commencing with Section 1250 [S:ca-civ-code-3333-2]",
+		"Whether the practice is affiliated with an institution or is unaffiliated, since one of the three limits turns on that and the test refers out to Corporations Code section 150 [S:ca-civ-code-3333-2]",
+		"Whether vicarious liability theories could reach the entity, which the health care institution definition expressly contemplates [S:ca-civ-code-3333-2]",
+		"How the date of injury and the date of discovery are recorded in the chart, because the limitations period runs from those two events and ends at whichever comes first [S:ca-ccp-340-5]",
+		"Whether any patient is a minor, and whether under the full age of six, because the periods differ and the under-six rule runs to the longer of three years or the eighth birthday [S:ca-ccp-340-5]",
+		"Whether the licensed scope of services matches the services actually rendered, which is how section 364 frames professional negligence [S:ca-ccp-364]",
+		"Whether the exposure is noneconomic or economic in character, since only the former is limited [S:ca-civ-code-3333-2]"
+	],
+	"exposures": [
+		{
+			"item": "An award whose largest component is not the one that is limited",
+			"note": "Section 3333.2 limits noneconomic losses: pain, suffering, inconvenience, physical impairment, disfigurement and other nonpecuniary damage [S:ca-civ-code-3333-2]. Economic loss is not limited by that section. On a severe injury with long-term care and lost earning capacity, the limited head of damages can be the smaller one, which is why treating the MICRA figure as the size of the claim understates it."
+		},
+		{
+			"item": "Three limits where the reader expected one",
+			"note": "Subdivision (f) states that the applicable dollar amounts in subdivisions (b), (g) and (h) provide three separate limits of liability that may apply in a single action, with corresponding language for wrongful death [S:ca-civ-code-3333-2]. A programme built on one limit against one defendant is built on an assumption the section does not make."
+		},
+		{
+			"item": "A limit that changes every January 1",
+			"note": "The amounts step up by forty thousand dollars for injury and fifty thousand for wrongful death each January 1 for 10 years, and are then adjusted for inflation on January 1 of each year by 2 percent from January 1, 2034 [S:ca-civ-code-3333-2]. The exposure a policy was written against in one year is not the exposure it faces in the next, and no amendment is needed for that to happen."
+		},
+		{
+			"item": "Vicarious liability written into the definition of the defendant",
+			"note": "A health care institution includes all persons and entities for which vicarious liability theories may apply [S:ca-civ-code-3333-2]. So the institution's exposure is not bounded by the conduct of its employees as a matter of the statutory definition, and the question of who is affiliated with whom is doing real work in the limit analysis [S:ca-civ-code-3333-2]."
+		},
+		{
+			"item": "The three-year outer limit, which can bar a claim nobody could have found",
+			"note": "The period is three years from the date of injury or one year from discovery, whichever occurs first, and the three years is tolled only for fraud, intentional concealment, or a foreign body with no therapeutic or diagnostic purpose [S:ca-ccp-340-5]. This cuts both ways as an exposure: it is a defence a provider may hold, and it is also the reason a claim can arrive with the chart long since closed."
+		},
+		{
+			"item": "A minor's claim that stays open far longer than three years",
+			"note": "An action by or on behalf of a minor must be commenced within three years of the alleged wrongful act, but where the minor is under the full age of six the period is three years or prior to the eighth birthday, whichever provides the longer period [S:ca-ccp-340-5]. Paediatric and obstetric exposure therefore has a tail that adult exposure does not, and the period is tolled where a parent or guardian and the defendant's insurer or provider have committed fraud or collusion in failing to bring the action [S:ca-ccp-340-5]."
+		},
+		{
+			"item": "A deadline that is not the one on the limitations statute",
+			"note": "No action may be commenced without at least 90 days' prior notice of intention to sue [S:ca-ccp-364], and a notice served within 90 days of the expiration of the applicable limitations period extends the time to commence by 90 days from the service of the notice [S:ca-ccp-364]. A provider or carrier calendaring only the section 340.5 date will close a file that is still open."
+		},
+		{
+			"item": "The plaintiff's own insurance in front of the jury, and what it costs to put it there",
+			"note": "A defendant may introduce evidence of benefits payable under Social Security, state or federal disability or workers' compensation, health, sickness or income-disability insurance, accident insurance providing health benefits, and any group or corporate agreement to provide or reimburse health care [S:ca-civ-code-3333-1]. The plaintiff may then introduce what they paid to secure those benefits [S:ca-civ-code-3333-1], and the collateral source loses any recovery against the plaintiff and any subrogation [S:ca-civ-code-3333-1]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "A chart that fixes the date of injury and the date of discovery",
+			"note": "Both limitations periods are measured from dated events: three years from the date of injury, one year from when the plaintiff discovered or through reasonable diligence should have discovered the injury, whichever occurs first [S:ca-ccp-340-5]. The record is what establishes those dates, so the availability of the defence is decided by documentation written long before any claim."
+		},
+		{
+			"item": "Calendaring section 364 alongside section 340.5, not instead of it",
+			"note": "The 90-day notice is a precondition to commencing the action, and a notice served inside the last 90 days of the limitations period extends the time to commence by 90 days from service [S:ca-ccp-364]. A file closed on the section 340.5 date alone is closed early [S:ca-ccp-340-5], and this is a diary entry rather than a clinical measure."
+		},
+		{
+			"item": "Knowing which entity is which before a claim decides it for you",
+			"note": "The provider definition already takes in the employer, professional corporation, partnership or other legally recognized professional practice organization [S:ca-civ-code-3333-2], the institution definition rests on facility licensure and reaches entities for which vicarious liability theories may apply [S:ca-civ-code-3333-2], and one of the three limits turns on being unaffiliated by reference to Corporations Code section 150 [S:ca-civ-code-3333-2]. Recording the ownership, employment and contracting relationships is what makes that analysis possible."
+		},
+		{
+			"item": "Documenting the licensed scope against the services actually rendered",
+			"note": "Section 364 frames professional negligence as an act or omission in the rendering of professional services within the scope of the services for which the provider is licensed [S:ca-ccp-364]. Where scope and practice have drifted apart, the drift is a factual question, and this record does not establish how any policy responds to it."
+		},
+		{
+			"item": "Treating paediatric and obstetric files as long-tail files",
+			"note": "For a minor under the full age of six the period runs to three years or the eighth birthday, whichever provides the longer period [S:ca-ccp-340-5]. Retention and retrieval practices set against a three-year horizon will not reach that far, and the material a defence needs is the material that was kept."
+		},
+		{
+			"item": "Reading the limit as a schedule rather than as a number",
+			"note": "The amounts step up each January 1 and then index at 2 percent from January 1, 2034 [S:ca-civ-code-3333-2], and there may be three separate limits in one action [S:ca-civ-code-3333-2]. A reserve, a limit selection or an internal guideline written against a single figure is written against something the statute changes annually without amending itself."
+		}
+	],
+	"relatedPolicies": [
+		"Professional liability written claims-made, which is where the two dates that govern this line are set out in regulatory terms rather than statutory ones [S:ny-11-nycrr-73-2]",
+		"Employer group health and any disability programme, because section 3333.1(b) removes their subrogation and reimbursement rights once collateral source evidence is introduced [S:ca-civ-code-3333-1]",
+		"Workers' compensation, which section 3333.1(a) names among the collateral sources a defendant may put in evidence [S:ca-civ-code-3333-1]",
+		"An occurrence-form alternative where one is available, since NAIC describes occurrence coverage as responding to a loss occurring in the policy period regardless of when the claim was made and even after cancellation [S:naic-medical-malpractice]"
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "Everything statutory on this page is California, and the change worth flagging is recent enough that most secondary material has not caught up. Section 3333.2 on the official host is stated as amended by Stats. 2022, Ch. 17, Sec. 3 (AB 35), effective January 1, 2023, and the limit on noneconomic losses now begins at three hundred fifty thousand dollars ($350,000) for injury and five hundred thousand dollars ($500,000) for wrongful death, rising annually and then indexing at 2 percent from January 1, 2034 [S:ca-civ-code-3333-2]. Material quoting a flat two hundred and fifty thousand dollar cap is describing the section as it stood before 2023. The three surrounding sections are older: section 3333.1 is stated as amended by Stats. 1976, Ch. 1079 [S:ca-civ-code-3333-1], and both Code of Civil Procedure section 340.5 and section 364 as amended by Stats. 1975, 2nd Ex. Sess., Ch. 2 [S:ca-ccp-340-5][S:ca-ccp-364]. This corpus holds no damages limit, limitations statute or notice requirement for any other state on this line, so nothing here should be read as describing the position where you practise: a state with no limit, a different limit, or a different clock is the ordinary case rather than the exception. The two non-California sources cited here are about how the line is written rather than what it is worth: NAIC on claims-made and occurrence form basis [S:naic-medical-malpractice], and New York's Regulation 121 enumerating medical malpractice among the coverages claims-made may be written for [S:ny-11-nycrr-73-2]."
+		}
+	],
+	"lastReviewed": "2026-09-08",
+	"effectiveDate": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-civ-code-3333-2",
+		"ca-ccp-340-5",
+		"ca-ccp-364",
+		"ca-civ-code-3333-1",
+		"naic-medical-malpractice",
+		"ny-11-nycrr-73-2"
+	],
+	"relatedQuestions": ["claims-made-retroactive-date", "same-limit-different-protection"]
+}

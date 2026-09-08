@@ -1,0 +1,25 @@
+{
+	"title": "California Code of Civil Procedure Section 364 (the 90-day notice of intention to sue a health care provider)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=364",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "1975",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-08",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The chapter is stated on the official host as added by Stats. 1975, 2nd Ex. Sess., Ch. 1, and the section as amended by Stats. 1975, 2nd Ex. Sess., Ch. 2.",
+		"Subdivision (a) provides that no action based upon the health care provider's professional negligence may be commenced unless the defendant has been given at least 90 days' prior notice of the intention to commence the action.",
+		"Subdivision (b) requires the notice to notify the defendant of the legal basis of the claim and the type of loss sustained, including with specificity the nature of the injuries suffered.",
+		"Subdivision (d) provides that where the notice is served within 90 days of the expiration of the applicable statute of limitations, the time for the commencement of the action shall be extended 90 days from the service of the notice.",
+		"Professional negligence is defined as a negligent act or omission by a health care provider in the rendering of professional services within the scope of the services for which the provider is licensed, which act or omission is the proximate cause of a personal injury or wrongful death."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "This section is the reason the limitations analysis under Code of Civil Procedure section 340.5 cannot be done on its own. The 90-day notice is a precondition to commencing the action, and subdivision (d) turns it into an extension: a notice served inside the last 90 days of the limitations period buys 90 days from the date of service. So the practical deadline for a health care provider is not the date section 340.5 states, and a provider or carrier reading only that section will calendar the wrong date. This record sets out subdivisions (a), (b) and (d) and the definition of professional negligence; it does not establish the contents of subdivisions (c), (e) or (f), including whether any class of action is excluded from the section, and that should be read directly."
+}
