@@ -1,0 +1,25 @@
+{
+	"title": "49 CFR 370.3 - Filing of claims",
+	"publisher": "Cornell Legal Information Institute, reproducing the Code of Federal Regulations",
+	"url": "https://www.law.cornell.edu/cfr/text/49/370.3",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "secondary",
+	"officialHost": false,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-08",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"The section is headed Filing of claims, and sits in the part on principles and practices for the investigation and voluntary disposition of loss and damage claims and processing salvage.",
+		"A written or electronic communication is treated as a claim only where it contains facts sufficient to identify the baggage or shipment, or shipments, of property, asserts liability for alleged loss, damage, injury, or delay, and makes claim for the payment of a specified or determinable amount of money.",
+		"The section provides that bad order reports, appraisal reports of damage and similar documents shall, standing alone, not be considered by carriers as sufficient to comply with the minimum claim filing requirements.",
+		"Before voluntary payment the section requires that a formal claim in writing for a specified or determinable amount of money shall have been filed.",
+		"A claim is to be filed with the receiving or delivering carrier, or the carrier issuing the bill of lading, receipt, ticket or baggage check, or the carrier on whose line the alleged loss, damage, injury or delay occurred, within the specified time limits applicable thereto."
+	],
+	"updateCadence": "Amended by rulemaking.",
+	"status": "active",
+	"notes": "This is the section that decides whether the thing you sent counts as a claim at all. Three elements are required together, and the third is the one most often missing: a specified or determinable amount of money. A note describing damage, a photograph, or a delivery receipt marked short does not meet the requirement, and the section says expressly that bad order reports and appraisal reports standing alone do not. That matters because the period in the bill of lading runs against the filing of a claim, so a communication failing these elements can let the period expire while the shipper believes a claim is pending. This text is a reproduction rather than the official eCFR, which did not serve at the time of access."
+}

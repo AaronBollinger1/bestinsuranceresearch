@@ -1,0 +1,157 @@
+{
+	"name": "Motor truck cargo",
+	"line": "motor-truck-cargo",
+	"family": "commercial",
+	"definition": "This line is unusual in that the liability it answers is statutory while the insurance answering it is not. A motor carrier's liability for freight comes from the Carmack Amendment: 49 U.S.C. 14706(a)(1) requires a carrier to issue a receipt or bill of lading for property it receives, provides that failure to issue one does not affect its liability, and makes the carrier liable for the actual loss or injury to the property caused by the receiving carrier, the delivering carrier, or another carrier over whose line or route the property is transported [S:usc-49-14706-carmack]. The policy that responds is a commercial contract this record has not read, and nothing here states what any motor truck cargo form covers. The name itself is a trade name rather than a classification: the words motor truck cargo do not appear anywhere in the nationwide inland marine definition [S:naic-model-701-nationwide-inland-marine-definition]. And the federal number everyone quotes is the wrong one for the question. 49 CFR 387.303(b) sets public liability minimums from three hundred thousand dollars for a light non-hazardous vehicle to five million for certain hazardous commodities, with seven hundred fifty thousand dollars for a freight vehicle of 10,001 pounds or more carrying non-hazardous property [S:cfr-49-387-303-lii]. The only cargo insurance minimum in that section is five thousand dollars per vehicle and ten thousand per occurrence, and it applies to household goods motor carriers alone [S:cfr-49-387-303-lii]. A general freight carrier can satisfy every federal requirement in the section holding no cargo insurance at all, which is why the cargo limit is a contract term rather than a regulatory floor.",
+	"protects": [
+		"Not what this page can tell you. Motor truck cargo forms are not publicly filed and this record has read none, so what any policy covers is in that policy",
+		"The line answers a carrier's statutory liability for the actual loss or injury to the property [S:usc-49-14706-carmack]",
+		"That liability reaches carriers who never handled the damage: the receiving carrier, the delivering carrier, and any carrier over whose line or route the property was transported [S:usc-49-14706-carmack]",
+		"It answers a liability that survives the paperwork failing. A carrier must issue a receipt or bill of lading, and failure to issue one does not affect the carrier's liability [S:usc-49-14706-carmack]",
+		"Not the public liability exposure, which is a separate requirement with its own and much larger minimums [S:cfr-49-387-303-lii]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "A statutory liability, described here from the statute rather than from a form",
+			"note": "Everything below is drawn from the Carmack Amendment or from the federal regulations on motor carrier security and claim handling. None of it is a policy term, and no policy term is established anywhere on this page. Whether a particular cargo policy responds to any of it, and within what limit, is in that policy. One note on the sources: section 14706 is quoted from the preliminary edition on the Office of the Law Revision Counsel own site [S:usc-49-14706-carmack], while the three regulations are quoted from a reproduction on Cornell Legal Information Institute because the official eCFR did not serve at the time of access [S:cfr-49-387-303-lii][S:cfr-49-370-3-lii][S:cfr-49-370-9-lii]."
+		},
+		{
+			"item": "The actual loss or injury to the property",
+			"note": "Section 14706(a)(1) fixes the carrier's liability at the actual loss or injury to the property [S:usc-49-14706-carmack]. That is the default measure, and it is the measure a limitation of liability then works against rather than replaces."
+		},
+		{
+			"item": "Whichever carrier the shipper chooses to pursue, on an interlined move",
+			"note": "Liability attaches to the receiving carrier, the delivering carrier, or another carrier over whose line or route the property is transported [S:usc-49-14706-carmack]. So who caused the loss and who can be sued are separate questions. A civil action may be brought against the delivering carrier in a district or state court where that carrier operates, or against the carrier alleged to have caused the loss in the district where the loss occurred [S:usc-49-14706-carmack]."
+		},
+		{
+			"item": "For household goods, replacement value up to the declared value",
+			"note": "Subsection (f) establishes maximum liability for household goods at replacement value up to the declared value, unless a waiver is provided in writing under subsection (f)(3) [S:usc-49-14706-carmack]. The waiver is the document that changes the answer, so its absence is as significant as its presence."
+		},
+		{
+			"item": "A claim the carrier is obliged to dispose of on a schedule",
+			"note": "A carrier must pay, decline, or make a firm compromise settlement offer in writing within 120 days after receipt of the claim, and where it cannot, must advise the claimant in writing at the expiration of each succeeding 60-day period of the status of the claim and the reason for the delay [S:cfr-49-370-9-lii]. Silence for a year is not a permitted disposition."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Whatever your own form excludes, which this record does not establish",
+			"note": "This list sets out the boundaries the statute and the regulations draw. It is not a list of policy exclusions, and none is established anywhere on this page. A cargo form's exclusions, its schedule of commodities, its refrigeration and theft conditions and its limit basis are in that form."
+		},
+		{
+			"item": "Full value, wherever the shipper declared less",
+			"note": "Section 14706(c)(1)(A) permits a carrier to establish rates under which its liability is limited to a value established by written or electronic declaration of the shipper, or by written agreement between carrier and shipper, if that value would be reasonable under the circumstances [S:usc-49-14706-carmack]. The limitation is created by a document the shipper signed or a rate the shipper accepted, which is why the bill of lading is read before the policy."
+		},
+		{
+			"item": "Any federal cargo minimum, for a carrier that is not moving household goods",
+			"note": "The cargo requirement at 49 CFR 387.303(c) is five thousand dollars per vehicle and ten thousand dollars per occurrence, and it applies only to household goods motor carriers [S:cfr-49-387-303-lii]. The section states no cargo insurance minimum for a general freight carrier, and provides that carriers subject to its minimum limits are at no time required to have security for more than those minimums [S:cfr-49-387-303-lii]."
+		},
+		{
+			"item": "A communication that describes damage but claims no amount",
+			"note": "A claim is treated as filed only where the communication identifies the shipment, asserts liability for the alleged loss, damage, injury or delay, and makes claim for the payment of a specified or determinable amount of money [S:cfr-49-370-3-lii]. The section states expressly that bad order reports, appraisal reports of damage and similar documents shall, standing alone, not be considered sufficient to comply with the minimum claim filing requirements [S:cfr-49-370-3-lii]."
+		},
+		{
+			"item": "The inland marine classification, which does not use this name",
+			"note": "The words motor truck cargo do not appear anywhere in the nationwide inland marine definition [S:naic-model-701-nationwide-inland-marine-definition]. The coverage is written and sold under a trade name, so a question about whether something is within the classification cannot be answered by pointing at the product name."
+		},
+		{
+			"item": "Intrastate carriage, which this framework may not reach at all",
+			"note": "Everything described here is federal: the Carmack Amendment [S:usc-49-14706-carmack] and the federal rules on security minimums and claim handling [S:cfr-49-387-303-lii][S:cfr-49-370-3-lii][S:cfr-49-370-9-lii]. This corpus holds no state regulation of intrastate motor carriage, which is a separate body of law, and whether a purely intrastate move is governed by the framework on this page should be settled before any of it is applied to a shipment."
+		}
+	],
+	"limitsAndDeductibles": [
+		"The statute sets no policy limit. It sets the measure of liability, at the actual loss or injury to the property [S:usc-49-14706-carmack], and then permits that measure to be limited by declaration or written agreement where the value would be reasonable under the circumstances [S:usc-49-14706-carmack]. Both the measure and the limitation therefore sit in the transportation paperwork rather than in the policy.",
+		"The only cargo figures in the federal minimums are five thousand dollars for loss of or damage to household goods carried on any one motor vehicle, and ten thousand dollars for the aggregate of losses or damages occurring at any one time and place, for household goods motor carriers [S:cfr-49-387-303-lii]. Neither figure is a useful reference point for a trailer of general freight.",
+		"The public liability minimums are the large numbers in the same section and they are a different exposure: three hundred thousand dollars for a vehicle under 10,001 pounds carrying non-hazardous property, seven hundred fifty thousand dollars at 10,001 pounds or more, one million dollars for oil or hazardous waste, and five million dollars for certain hazardous substances and for Division 1.1, 1.2 or 1.3 materials in a light vehicle [S:cfr-49-387-303-lii]. Passenger carriers are set at five million dollars for 16 or more seats and one million five hundred thousand dollars for 15 or fewer [S:cfr-49-387-303-lii].",
+		"The periods are floors on what the carrier must allow rather than deadlines the statute imposes: no less than 9 months for filing a claim and no less than 2 years for bringing a civil action [S:usc-49-14706-carmack]. The operative period is the one in the bill of lading, and it cannot be shorter than these.",
+		"The two-year period runs from the date the carrier gives written notice that it has disallowed any part of the claim [S:usc-49-14706-carmack]. The start of the period is therefore established by a document the carrier produces, and the carrier is separately obliged to pay, decline or make a firm written compromise offer within 120 days of receiving the claim [S:cfr-49-370-9-lii]."
+	],
+	"underwritingInputs": [
+		"What commodity is being carried, since the public liability minimum turns on it and ranges from three hundred thousand dollars to five million [S:cfr-49-387-303-lii]",
+		"Gross vehicle weight rating, because the minimum changes at 10,001 pounds [S:cfr-49-387-303-lii]",
+		"Whether the operation is a household goods motor carrier, which is the only class the federal cargo minimum reaches [S:cfr-49-387-303-lii]",
+		"Whether the carrier interlines, since liability can attach to a carrier over whose line or route the property merely moved [S:usc-49-14706-carmack]",
+		"What the bill of lading says about declared value or released value, because that is where a limitation of liability is created [S:usc-49-14706-carmack]",
+		"What period the bill of lading gives for filing a claim and for suit, given the statutory floors of 9 months and 2 years [S:usc-49-14706-carmack]",
+		"Whether household goods shippers are offered full value protection and whether any waiver is taken in writing [S:usc-49-14706-carmack]",
+		"How claims are logged and dispositioned, since the carrier owes a written disposition within 120 days and written status every 60 days after that [S:cfr-49-370-9-lii]",
+		"Whether the claim intake process captures a specified or determinable amount of money, without which a communication is not a claim [S:cfr-49-370-3-lii]"
+	],
+	"exposures": [
+		{
+			"item": "Liability for a loss another carrier caused",
+			"note": "Section 14706(a)(1) makes the carrier liable for the actual loss or injury caused by the receiving carrier, the delivering carrier, or another carrier over whose line or route the property is transported [S:usc-49-14706-carmack]. A delivering carrier can therefore answer for damage that happened before it took the freight, and venue rules let the shipper choose between the delivering carrier where it operates and the causing carrier where the loss occurred [S:usc-49-14706-carmack]."
+		},
+		{
+			"item": "A limitation of liability that turns out not to hold",
+			"note": "The limitation permitted by section 14706(c)(1)(A) rests on a written or electronic declaration by the shipper or a written agreement, and applies only if that value would be reasonable under the circumstances [S:usc-49-14706-carmack]. The reasonableness condition is part of the provision, so a limitation is a position to be established rather than a number to be relied on."
+		},
+		{
+			"item": "The gap between the federal minimum and the value on the trailer",
+			"note": "There is no federal cargo insurance minimum for a general freight carrier: paragraph (c) reaches household goods motor carriers only, at five thousand dollars per vehicle and ten thousand per occurrence [S:cfr-49-387-303-lii]. A fully compliant carrier can be carrying freight worth many multiples of anything the regulation requires, and the section adds that carriers are at no time required to hold more than its minimums [S:cfr-49-387-303-lii]."
+		},
+		{
+			"item": "A claim that was never a claim",
+			"note": "Three elements must be present together before a communication is treated as a claim, and the one most often missing is a specified or determinable amount of money [S:cfr-49-370-3-lii]. Bad order reports and appraisal reports of damage standing alone are stated not to comply with the minimum requirements [S:cfr-49-370-3-lii], so a period can run out while a shipper believes something is pending."
+		},
+		{
+			"item": "A filing period as short as nine months",
+			"note": "The statute permits a carrier to provide a period of no less than 9 months for filing a claim [S:usc-49-14706-carmack]. Nine months is the floor, not the norm, and it is short relative to how long concealed damage or a shortage can take to surface in a receiver's own inventory."
+		},
+		{
+			"item": "A limitation clock that has not started, and may not be recorded anywhere",
+			"note": "The two-year period for suit runs from written notice that the carrier has disallowed any part of the claim [S:usc-49-14706-carmack]. Where the carrier owes a written disposition within 120 days and written status every 60 days thereafter [S:cfr-49-370-9-lii] but has produced neither, both parties are holding a file whose deadline nobody can date."
+		},
+		{
+			"item": "Household goods, where the default is more generous and the waiver is easy to miss",
+			"note": "Subsection (f) sets maximum liability for household goods at replacement value up to the declared value unless a waiver is provided in writing under subsection (f)(3) [S:usc-49-14706-carmack]. A mover whose file contains no written waiver is a mover holding the replacement value exposure, whatever the tariff says."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Keeping the bill of lading, and reading it before the policy",
+			"note": "A carrier must issue a receipt or bill of lading for property it receives, and failure to issue one does not affect its liability [S:usc-49-14706-carmack]. That document carries the declared or released value that limits liability [S:usc-49-14706-carmack] and the periods for claim and suit, so it decides more of the outcome than the policy does."
+		},
+		{
+			"item": "Filing something that satisfies all three elements at once",
+			"note": "Identify the shipment, assert liability for the loss, damage, injury or delay, and claim payment of a specified or determinable amount of money [S:cfr-49-370-3-lii]. Where the amount is not yet known, the section still requires a formal claim in writing for a specified or determinable amount before voluntary payment [S:cfr-49-370-3-lii], so a placeholder that names no figure is not a substitute for one that does."
+		},
+		{
+			"item": "Filing with a carrier the section names",
+			"note": "The claim goes to the receiving or delivering carrier, the carrier issuing the bill of lading, receipt, ticket or baggage check, or the carrier on whose line the loss, damage, injury or delay occurred, within the applicable time limits [S:cfr-49-370-3-lii]. On an interlined move that is a choice rather than a single address, and it is worth making deliberately given who else can be liable [S:usc-49-14706-carmack]."
+		},
+		{
+			"item": "Diarising 120 days and then every 60, on the carrier as well as on yourself",
+			"note": "The carrier must pay, decline or make a firm compromise settlement offer in writing within 120 days, and advise in writing every succeeding 60 days of the status and the reason for delay [S:cfr-49-370-9-lii]. Asking for the written disposition is also how the date the two-year period began gets fixed [S:usc-49-14706-carmack]."
+		},
+		{
+			"item": "Taking any household goods waiver in writing, and keeping it",
+			"note": "Maximum liability for household goods is replacement value up to the declared value unless a waiver is provided in writing [S:usc-49-14706-carmack]. The written waiver under subsection (f)(3) is the only thing the statute names as displacing that measure, so the file either contains it or it does not."
+		},
+		{
+			"item": "Matching the security to the commodity and the weight, not to a remembered figure",
+			"note": "The public liability minimum moves with commodity and gross vehicle weight rating, from three hundred thousand dollars to five million, with the step at 10,001 pounds [S:cfr-49-387-303-lii]. A fleet whose mix has changed since the filing was set is a fleet whose minimum may have changed with it, and the cargo side is separate again [S:cfr-49-387-303-lii]."
+		}
+	],
+	"relatedPolicies": [
+		"Commercial auto, which answers the public liability exposure the same regulation sets much larger minimums for [S:cfr-49-387-303-lii]",
+		"Inland marine, which is the classification family this coverage is sold beside even though the nationwide definition never uses the words motor truck cargo [S:naic-model-701-nationwide-inland-marine-definition]",
+		"Commercial property, for goods at rest at the shipper's or receiver's own premises rather than in the carrier's custody [S:usc-49-14706-carmack]",
+		"A shipper-side or owner-side policy on the freight itself, which is a different insured interest from the carrier's liability that section 14706 creates [S:usc-49-14706-carmack]"
+	],
+	"lastReviewed": "2026-09-08",
+	"effectiveDate": "2026-09-08",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"usc-49-14706-carmack",
+		"cfr-49-387-303-lii",
+		"cfr-49-370-3-lii",
+		"cfr-49-370-9-lii",
+		"naic-model-701-nationwide-inland-marine-definition"
+	],
+	"relatedQuestions": [
+		"inland-marine-uses",
+		"commercial-auto-covered-auto-symbols"
+	]
+}

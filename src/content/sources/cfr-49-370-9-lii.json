@@ -1,0 +1,23 @@
+{
+	"title": "49 CFR 370.9 - Disposition of claims",
+	"publisher": "Cornell Legal Information Institute, reproducing the Code of Federal Regulations",
+	"url": "https://www.law.cornell.edu/cfr/text/49/370.9",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "secondary",
+	"officialHost": false,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-08",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"The section is headed Disposition of claims.",
+		"A carrier must pay, decline, or make a firm compromise settlement offer in writing within 120 days after receipt of the claim by the carrier.",
+		"Where a claim cannot be disposed of within that period, the carrier must, at the expiration of each succeeding 60-day period while the claim remains pending, advise the claimant in writing of the status of the claim and the reason for the delay."
+	],
+	"updateCadence": "Amended by rulemaking.",
+	"status": "active",
+	"notes": "This section is the counterweight to the clock in 49 U.S.C. 14706(e). The statutory two-year period for suit runs from written notice that the carrier has disallowed any part of the claim, and this section obliges the carrier to pay, decline or make a firm written compromise offer within 120 days, then to report in writing every 60 days with the reason for the delay. So a claim pending for a year with no written disposition is a claim where this section has not been complied with, and the paper trail it requires is also the paper trail that establishes when the limitation period began. This record sets out 370.9 only: the acknowledgment requirement in 370.5 and the investigation requirement in 370.7 were not read, and nothing here establishes their contents. This text is a reproduction rather than the official eCFR, which did not serve at the time of access."
+}

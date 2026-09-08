@@ -1,0 +1,28 @@
+{
+	"title": "49 U.S.C. 14706 (the Carmack Amendment: liability of carriers under receipts and bills of lading)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title49-section14706&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-08",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The section is headed Liability of carriers under receipts and bills of lading.",
+		"Subsection (a)(1) requires a carrier to issue a receipt or bill of lading for property it receives for transportation, and provides that failure to issue one does not affect the liability of the carrier.",
+		"Subsection (a)(1) makes the carrier liable for the actual loss or injury to the property caused by (A) the receiving carrier, (B) the delivering carrier, or (C) another carrier over whose line or route the property is transported.",
+		"Subsection (c)(1)(A) permits a carrier to establish rates under which its liability is limited to a value established by written or electronic declaration of the shipper or by written agreement between the carrier and shipper, if that value would be reasonable under the circumstances.",
+		"A civil action under the section may be brought against the delivering carrier in a district court or state court in a judicial district where the carrier operates, or against the carrier alleged to have caused the loss in the district where the loss occurred.",
+		"Subsection (e) sets floors on the periods a carrier may provide: no less than 9 months for filing a claim, and no less than 2 years for bringing a civil action.",
+		"The 2-year period for bringing a civil action runs from the date the carrier gives a person written notice that the carrier has disallowed any part of the claim.",
+		"Subsection (f) addresses household goods, establishing maximum liability at replacement value up to the declared value unless a waiver is provided in writing under subsection (f)(3)."
+	],
+	"updateCadence": "Amended only by legislation. No amendment note was captured from the preliminary edition on the official host at the time of access.",
+	"status": "active",
+	"notes": "Two features of this section decide most cargo disputes and neither is intuitive. The first is that liability reaches carriers who never touched the damage: subsection (a)(1) names the receiving carrier, the delivering carrier, and any carrier over whose line or route the property moved, so on an interlined shipment the question of who caused the loss is separable from the question of who can be sued. The second is that the 9 months and 2 years in subsection (e) are floors on what a carrier must allow rather than deadlines the statute itself imposes. The operative period is the one in the bill of lading, which cannot be shorter than these. Note also what starts the 2-year clock: written notice that the carrier has disallowed any part of the claim. The date the period begins is therefore established by a document the carrier produces, which is why 49 CFR 370.9 and its 120-day duty to pay, decline or offer in writing belongs alongside this section."
+}

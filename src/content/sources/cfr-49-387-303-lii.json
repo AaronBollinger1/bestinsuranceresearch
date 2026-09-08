@@ -1,0 +1,27 @@
+{
+	"title": "49 CFR 387.303 - Security for the protection of the public: Minimum limits",
+	"publisher": "Cornell Legal Information Institute, reproducing the Code of Federal Regulations",
+	"url": "https://www.law.cornell.edu/cfr/text/49/387.303",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "secondary",
+	"officialHost": false,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-08",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"claims": [
+		"The section is headed Security for the protection of the public: Minimum limits.",
+		"Paragraph (b) sets minimum limits for bodily injury and property damage liability that vary by vehicle weight and commodity: for freight vehicles of 10,001 pounds gross vehicle weight rating or more carrying non-hazardous property, seven hundred fifty thousand dollars ($750,000); for vehicles under 10,001 pounds carrying non-hazardous property, three hundred thousand dollars ($300,000).",
+		"Paragraph (b) sets a five million dollar ($5,000,000) minimum for freight vehicles of 10,001 pounds or more carrying certain hazardous substances, a one million dollar ($1,000,000) minimum for those carrying oil or hazardous waste, and a five million dollar ($5,000,000) minimum for vehicles under 10,001 pounds carrying Division 1.1, 1.2 or 1.3 materials.",
+		"Paragraph (b) sets minimums for passenger carriers of five million dollars ($5,000,000) for vehicles seating 16 or more passengers and one million five hundred thousand dollars ($1,500,000) for vehicles seating 15 or fewer.",
+		"Paragraph (c) sets the cargo minimums for household goods motor carriers at five thousand dollars ($5,000) for loss of or damage to household goods carried on any one motor vehicle, and ten thousand dollars ($10,000) for the aggregate of losses or damages occurring at any one time and place.",
+		"The cargo requirement in paragraph (c) applies only to household goods motor carriers, so the section states no cargo insurance minimum for a carrier of general freight.",
+		"The section provides that motor carriers subject to the minimum limits governed by it are at no time required to have security for more than the required minimum limits."
+	],
+	"updateCadence": "Amended by rulemaking. The dollar figures have been revised over the life of the part and should be read as current only as at the access date.",
+	"status": "active",
+	"notes": "The figure people quote from this part is a public liability figure, not a cargo figure. Paragraph (b) sets bodily injury and property damage minimums running from three hundred thousand to five million dollars depending on weight and commodity, and those are the numbers that appear in broker packets and carrier packets alike. The only cargo insurance minimum the section states is in paragraph (c), it is five thousand dollars per vehicle and ten thousand per occurrence, and it applies to household goods motor carriers alone. A general freight carrier meeting every federal requirement in this section may hold no cargo insurance at all under it. That is why cargo limits are settled in the transportation contract and the bill of lading rather than by this regulation, and why quoting a seven hundred fifty thousand dollar federal minimum in a conversation about the freight on the trailer is quoting the wrong number for the question. This text is a reproduction rather than the official eCFR, which did not serve at the time of access."
+}
