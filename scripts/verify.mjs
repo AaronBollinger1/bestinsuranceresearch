@@ -2691,3 +2691,144 @@ test('a source cited in prose is filed as prose on that sheet, not as structural
 	}
 	assert.deepEqual(wrong, [], 'prose citations misfiled on a verification sheet:\n' + wrong.join('\n'));
 });
+
+/* ------------------------------------------------------------------ */
+/* The /ask conversation thread                                        */
+/* ------------------------------------------------------------------ */
+
+/*
+ * The thread keeps what a reader typed, so its storage choice is a privacy
+ * property and not a preference. AI-RETRIEVAL-ARCHITECTURE.md states that
+ * localStorage on this page holds a controlled vocabulary and never text, and
+ * a durable record of what somebody asked in the middle of a denied claim -
+ * possibly on a shared computer - is a real harm rather than a notional one.
+ * So the thread lives in sessionStorage, and that is asserted against the
+ * built bundle rather than trusted.
+ */
+
+const askScript = walk(
+	path.join(DIST, '_astro'),
+	(f) => /ask\.astro_astro_type_script.*\.js$/.test(f),
+)[0];
+
+test('the ask conversation is rendered, hidden until there is one, and says where it is kept', () => {
+	const html = read(path.join(DIST, 'ask', 'index.html'));
+	assert.match(html, /id="ask-thread-band"[^>]*hidden/, 'the thread band is not hidden by default');
+	assert.ok(html.includes('id="ask-thread"'), '/ask has no thread list');
+	assert.ok(html.includes('id="ask-thread-clear"'), '/ask offers no way to clear the conversation');
+
+	// The reader is told the boundary in the same place the boundary applies.
+	const text = textOf(html);
+	assert.ok(text.includes('sessionStorage'), '/ask does not name where the conversation is kept');
+	assert.ok(
+		/gone when you close the tab/i.test(text),
+		'/ask does not say the conversation is discarded with the tab',
+	);
+});
+
+test('the ask conversation never reaches durable storage', () => {
+	assert.ok(askScript, 'the ask client script was not emitted');
+	const js = read(askScript);
+
+	const bound = js.match(/(\w+)\s*=\s*[`'"]bir_ask_thread[`'"]/);
+	assert.ok(bound, 'the thread storage key is not a bound literal, so this check cannot run');
+	const v = bound[1];
+
+	assert.ok(
+		new RegExp(`sessionStorage\\.setItem\\(${v}\\b`).test(js),
+		'the thread is not written to sessionStorage',
+	);
+	for (const op of ['setItem', 'getItem', 'removeItem']) {
+		assert.ok(
+			!new RegExp(`localStorage\\.${op}\\(${v}\\b`).test(js),
+			`the thread reaches localStorage via ${op}, which would make what a reader asked durable`,
+		);
+	}
+
+	/* And the one durable write on this page is still the controlled-vocabulary
+	   context, not anything carrying text. */
+	const ctx = js.match(/(\w+)\s*=\s*[`'"]bir_context[`'"]/);
+	assert.ok(ctx, 'the context key is not a bound literal');
+	assert.equal(
+		(js.match(/localStorage\.setItem/g) || []).length,
+		1,
+		'/ask makes more than one durable write; only the filter context may be durable',
+	);
+	assert.ok(
+		new RegExp(`localStorage\\.setItem\\(${ctx[1]}\\b`).test(js),
+		'the single durable write on /ask is not the filter context',
+	);
+});
+
+test('the ask conversation keeps a refusal a refusal', () => {
+	/*
+	 * The refusal path is the most important behaviour on this page and the
+	 * easiest to lose when results start being kept: a history that records only
+	 * successful turns reads as though the library answered everything. Every
+	 * outcome the lookup can produce must be recordable as a turn.
+	 */
+	const js = read(askScript);
+	for (const status of ['ok', 'insufficient', 'no-result']) {
+		assert.ok(
+			js.includes(`"${status}"`) || js.includes(`'${status}'`) || js.includes('`' + status + '`'),
+			`the thread cannot record a ${status} turn`,
+		);
+	}
+	assert.ok(
+		/nothing in the library matched/i.test(js),
+		'the thread has no wording for a turn that found nothing',
+	);
+	assert.ok(
+		/related material only, not an answer/i.test(js),
+		'the thread has no wording for a turn that found only background',
+	);
+});
+
+test('every class the ask script renders at runtime has CSS that can actually reach it', () => {
+	/*
+	 * The bug this exists for is silent, which is the only reason it is worth a
+	 * test. Astro scopes a component style block by appending its
+	 * data-astro-cid to each selector, and elements built by a client script
+	 * never carry that attribute - so a rule written as `.turn { ... }` compiles
+	 * to `.turn[data-astro-cid-x]` and matches nothing. The first version of the
+	 * conversation thread had a full style block that was entirely inert, the
+	 * build was green, and only loading the page and reading a computed style
+	 * showed it. The fix is to nest the rules under a server-rendered ancestor
+	 * and mark the runtime classes :global(), which compiles to
+	 * `.thread[data-astro-cid-x] .turn` - cid on the ancestor, not on the class.
+	 *
+	 * So: no class the script assigns may appear in this page's CSS with a cid
+	 * attached to the class itself.
+	 */
+	const html = read(path.join(DIST, 'ask', 'index.html'));
+	const js = read(askScript);
+
+	/* The class names the script assigns, read out of the script rather than
+	   listed here, so adding one to the renderer brings it under the check. */
+	const rendered = new Set();
+	for (const m of js.matchAll(/class="([a-z0-9 _-]+)"/g)) {
+		for (const name of m[1].split(/\s+/)) if (name) rendered.add(name);
+	}
+	for (const m of js.matchAll(/`?turn-\$\{[^}]*\}`?/g)) void m; // template-built variants
+	for (const variant of ['turn-ok', 'turn-insufficient', 'turn-no-result']) rendered.add(variant);
+
+	assert.ok(rendered.size > 0, 'no runtime-rendered classes found in the ask script');
+
+	const unreachable = [];
+	for (const name of rendered) {
+		const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+		// A rule is reachable unless the cid is pinned to this class itself.
+		if (new RegExp(`\\.${escaped}\\[data-astro-cid`).test(html)) unreachable.push(name);
+	}
+	assert.deepEqual(
+		unreachable,
+		[],
+		`these /ask classes are rendered by the client but their CSS is scoped so it can never match them: ${unreachable.join(', ')}`,
+	);
+
+	/* And the thread rules must exist at all, or the check above passes vacuously. */
+	assert.ok(
+		/\.thread\[data-astro-cid-[a-z0-9]+\] \.turn\{/.test(html),
+		'/ask has no reachable rule for a conversation turn',
+	);
+});

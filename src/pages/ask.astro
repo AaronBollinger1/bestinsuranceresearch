@@ -273,6 +273,42 @@ const FAMILY_LABEL: Record<string, string> = {
 		</div>
 	</section>
 
+	<section class="band band-tight" id="ask-thread-band" hidden aria-labelledby="ask-thread-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">This conversation</span>
+					<h2 id="ask-thread-title">What you have asked, in order</h2>
+					<p>
+						An insurance question is rarely one question. This keeps the thread so you can go
+						back a step, re-run a turn against different filters, or refine the wording without
+						losing what you already found.
+					</p>
+				</div>
+				<button class="btn btn-secondary btn-sm" type="button" id="ask-thread-clear">
+					Clear this conversation
+				</button>
+			</div>
+
+			<ol class="thread" id="ask-thread"></ol>
+
+			<Callout tone="privacy" label="Where this conversation is kept">
+				<p>
+					In this browser tab, and nowhere else. It is held in <code>sessionStorage</code>, which
+					means it survives a reload and is <strong>gone when you close the tab</strong>. It is
+					never sent to a server, never written to a durable store, and never attached to an
+					analytics event - the lookup itself already runs entirely in your browser against a
+					static index.
+				</p>
+				<p>
+					That is deliberate rather than a limitation. Somebody reading this in the middle of a
+					denied claim should not find a permanent record of what they were worried about sitting
+					on a shared computer afterwards.
+				</p>
+			</Callout>
+		</div>
+	</section>
+
 	<section class="band band-paper" aria-labelledby="browse-title">
 		<div class="shell">
 			<div class="band-head">
@@ -419,6 +455,193 @@ const FAMILY_LABEL: Record<string, string> = {
 		return div.innerHTML;
 	}
 
+	/* ------------------------------------------------------------------ */
+	/* The conversation thread                                             */
+	/* ------------------------------------------------------------------ */
+
+	/*
+	 * An insurance question is rarely one question, and the lookup was
+	 * single-shot: asking the next one erased the last answer. This keeps the
+	 * turns so a reader can go back, re-run one against different filters, or
+	 * refine the wording without losing what they found.
+	 *
+	 * WHY sessionStorage AND NOT localStorage
+	 *
+	 * AI-RETRIEVAL-ARCHITECTURE.md states the privacy properties of this page,
+	 * and one of them is that localStorage holds a controlled vocabulary and
+	 * never text. A durable thread would break that, and it would do real harm
+	 * rather than notional harm: DIRECTION.md's second reader is a person whose
+	 * claim was just denied, and a permanent local record of what they were
+	 * worried about, on what may be a shared computer, is worse than the
+	 * convenience is worth. sessionStorage survives a reload and dies with the
+	 * tab, which is the actual life of a conversation.
+	 *
+	 * The question still never reaches a server, never enters a URL, and cannot
+	 * reach an analytics event: the contract drops any parameter outside a fixed
+	 * vocabulary and no vocabulary accepts free text.
+	 */
+
+	interface ThreadHit {
+		title: string;
+		path: string;
+		entryType: string;
+	}
+
+	interface Turn {
+		q: string;
+		/** The lookup outcome, so a refusal stays a refusal in the history. */
+		status: 'ok' | 'insufficient' | 'no-result';
+		count: number;
+		hits: ThreadHit[];
+	}
+
+	const THREAD_KEY = 'bir_ask_thread';
+	const THREAD_VERSION = 1;
+	/** Enough to hold a real line of enquiry, bounded so storage cannot grow without limit. */
+	const THREAD_MAX = 20;
+	/** Per turn. The full result set is one click away on the record's own page. */
+	const THREAD_HITS = 5;
+
+	const threadBand = document.getElementById('ask-thread-band');
+	const threadList = document.getElementById('ask-thread');
+	const threadClear = document.getElementById('ask-thread-clear');
+
+	let turns: Turn[] = [];
+
+	const STATUS_LINE: Record<Turn['status'], string> = {
+		ok: 'answered from the library',
+		insufficient: 'related material only, not an answer',
+		'no-result': 'nothing in the library matched',
+	};
+
+	function readThread(): Turn[] {
+		try {
+			const raw = sessionStorage.getItem(THREAD_KEY);
+			if (!raw) return [];
+			const parsed = JSON.parse(raw) as { version?: number; turns?: Turn[] };
+			if (parsed.version !== THREAD_VERSION || !Array.isArray(parsed.turns)) return [];
+			return parsed.turns;
+		} catch {
+			return [];
+		}
+	}
+
+	function writeThread() {
+		try {
+			sessionStorage.setItem(
+				THREAD_KEY,
+				JSON.stringify({ version: THREAD_VERSION, turns: turns.slice(-THREAD_MAX) }),
+			);
+		} catch {
+			/* Private mode, or storage disabled. The thread stays in memory for this
+			   page view and the page keeps working, which is the whole requirement. */
+		}
+	}
+
+	function renderThread() {
+		if (!threadList || !threadBand) return;
+		show(threadBand, turns.length > 0);
+		if (turns.length === 0) {
+			threadList.innerHTML = '';
+			return;
+		}
+
+		/* Newest first. The composer is at the top of the page, so the turn a
+		   reader just made should be the one nearest it. */
+		threadList.innerHTML = [...turns]
+			.reverse()
+			.map((turn, i) => {
+				const n = turns.length - i;
+				const rows = turn.hits
+					.map(
+						(hit) =>
+							`<li><a href="${escape(hit.path)}">${escape(hit.title)}</a>` +
+							`<span class="meta">${escape(TYPE_LABEL[hit.entryType] || hit.entryType)}</span></li>`,
+					)
+					.join('');
+				const more =
+					turn.count > turn.hits.length
+						? `<li class="t-more">and ${turn.count - turn.hits.length} more</li>`
+						: '';
+				return [
+					`<li class="turn turn-${escape(turn.status)}">`,
+					'<div class="t-head">',
+					`<span class="t-n">Turn ${n}</span>`,
+					`<p class="t-q">${escape(turn.q)}</p>`,
+					'</div>',
+					`<p class="t-status">${escape(STATUS_LINE[turn.status])}`,
+					turn.status === 'ok' || turn.status === 'insufficient'
+						? ` - ${turn.count} record${turn.count === 1 ? '' : 's'}`
+						: '',
+					'</p>',
+					rows || more ? `<ul class="t-hits">${rows}${more}</ul>` : '',
+					'<div class="t-actions">',
+					`<button class="btn btn-quiet btn-sm" type="button" data-thread-refine="${escape(turn.q)}">Refine this</button>`,
+					`<button class="btn btn-quiet btn-sm" type="button" data-thread-rerun="${escape(turn.q)}">Run it again</button>`,
+					'</div>',
+					'</li>',
+				].join('');
+			})
+			.join('');
+	}
+
+	/** Record a completed turn. Called by run() once the outcome is known. */
+	function addTurn(turn: Turn) {
+		/* Asking the identical question twice in a row is a re-run, not a new
+		   turn, so it replaces rather than repeats. */
+		const last = turns[turns.length - 1];
+		if (last && last.q === turn.q) turns[turns.length - 1] = turn;
+		else turns.push(turn);
+		if (turns.length > THREAD_MAX) turns = turns.slice(-THREAD_MAX);
+		writeThread();
+		renderThread();
+	}
+
+	threadList?.addEventListener('click', (event) => {
+		const target = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>(
+			'[data-thread-refine], [data-thread-rerun]',
+		);
+		if (!target) return;
+		const refine = target.dataset.threadRefine;
+		const rerun = target.dataset.threadRerun;
+		if (refine !== undefined) {
+			field!.value = refine;
+			field!.focus();
+			field!.setSelectionRange(refine.length, refine.length);
+			say('Loaded that turn back into the question. Edit it and ask again.');
+			field!.scrollIntoView({ block: 'center' });
+			return;
+		}
+		if (rerun !== undefined) {
+			field!.value = rerun;
+			void run(rerun);
+		}
+	});
+
+	threadClear?.addEventListener('click', () => {
+		turns = [];
+		try {
+			sessionStorage.removeItem(THREAD_KEY);
+		} catch {
+			/* Nothing to remove, and nothing to report. */
+		}
+		renderThread();
+		say('Conversation cleared. Nothing was stored anywhere else.');
+	});
+
+	turns = readThread();
+	if (turns.length > 0) {
+		renderThread();
+		say(`Restored ${turns.length} earlier turn${turns.length === 1 ? '' : 's'} from this tab.`);
+	}
+
+	/** What a turn keeps of its results: enough to return to, and no more. */
+	function threadHits(outcome: Extract<SearchOutcome, { hits: unknown }>): ThreadHit[] {
+		return sortHits(outcome)
+			.slice(0, THREAD_HITS)
+			.map((hit) => ({ title: hit.title, path: hit.path, entryType: hit.entryType }));
+	}
+
 	function sortHits(outcome: Extract<SearchOutcome, { hits: unknown }>) {
 		const list = [...outcome.hits];
 		if (rank === 'reviewed') list.sort((a, b) => (a.lastReviewed < b.lastReviewed ? 1 : -1));
@@ -487,16 +710,24 @@ const FAMILY_LABEL: Record<string, string> = {
 		if (outcome.status === 'no-result') {
 			show(emptyState, true);
 			say('No match in the library.');
+			addTurn({ q: query, status: 'no-result', count: 0, hits: [] });
 			return;
 		}
 		if (outcome.status === 'insufficient') {
 			show(insufficientState, true);
 			renderHits(outcome);
 			say('Related material only. Not enough evidence for a direct answer.');
+			addTurn({
+				q: query,
+				status: 'insufficient',
+				count: outcome.hits.length,
+				hits: threadHits(outcome),
+			});
 			return;
 		}
 		renderHits(outcome);
 		say(`${outcome.hits.length} match${outcome.hits.length === 1 ? '' : 'es'} in the library.`);
+		addTurn({ q: query, status: 'ok', count: outcome.hits.length, hits: threadHits(outcome) });
 	}
 
 	form.addEventListener('submit', (event) => {
@@ -669,6 +900,94 @@ const FAMILY_LABEL: Record<string, string> = {
 		align-items: center;
 		gap: var(--s-4);
 		padding: var(--s-6) 0 var(--s-5);
+	}
+
+	/* The thread. Numbered because the order is the point: turn 3 usually only
+	   makes sense as a narrowing of turn 2. Gold on an answered turn because in
+	   this token system gold means the thing that resolved, and an answered
+	   lookup is exactly that; amber where the library could only offer
+	   background, and a plain rule where it found nothing.
+
+	   Every selector inside the list is :global() and every one of them has to
+	   be. Astro scopes this block to elements carrying its data-astro-cid, and
+	   the turns are built by the client script, so they never carry it - the
+	   first version of these rules was entirely inert and only running the page
+	   showed it. They stay nested under .thread, which IS in the template, so
+	   going global here cannot leak beyond this list. The existing result rows
+	   did not hit this because .row and .meta are global classes in
+	   global.css. */
+	.thread {
+		list-style: none;
+		margin: var(--s-4) 0 var(--s-6);
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-3);
+	}
+	.thread :global(.turn) {
+		border: 1px solid var(--line);
+		border-left: 3px solid var(--line-strong);
+		background: var(--paper);
+		padding: var(--s-4);
+	}
+	.thread :global(.turn-ok) { border-left-color: var(--gold-edge); }
+	.thread :global(.turn-insufficient) { border-left-color: var(--amber); }
+
+	.thread :global(.t-head) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2) var(--s-3);
+		align-items: baseline;
+	}
+	.thread :global(.t-n) {
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+		color: var(--faint);
+		white-space: nowrap;
+	}
+	.thread :global(.t-q) {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: var(--text-base);
+		line-height: 1.35;
+		max-width: 72ch;
+	}
+	.thread :global(.t-status) {
+		margin: var(--s-2) 0 0;
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+		color: var(--muted);
+	}
+
+	.thread :global(.t-hits) {
+		list-style: none;
+		margin: var(--s-3) 0 0;
+		padding: var(--s-3) 0 0;
+		border-top: 1px solid var(--line);
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+	}
+	.thread :global(.t-hits li) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2) var(--s-3);
+		align-items: baseline;
+		font-size: var(--text-sm);
+	}
+	.thread :global(.t-hits li a) { max-width: 68ch; }
+	.thread :global(.t-hits .meta) { margin-left: auto; }
+	.thread :global(.t-more) {
+		color: var(--faint);
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+	}
+
+	.thread :global(.t-actions) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2);
+		margin-top: var(--s-3);
 	}
 
 	.ask-resolving p {
