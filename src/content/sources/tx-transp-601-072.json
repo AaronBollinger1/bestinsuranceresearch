@@ -8,8 +8,8 @@
 	"publishedDate": "unknown",
 	"effectiveDate": "unknown",
 	"accessedDate": "2026-08-31",
-	"lastChecked": "2026-08-31",
-	"lastCheckedBasis": "access",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "recheck",
 	"primary": false,
 	"claims": [
 		"This reproduction of Texas Transportation Code section 601.072 states in subsection (a-1) that effective January 1, 2011, the minimum amounts of motor vehicle liability insurance coverage required to establish financial responsibility under the chapter are $30,000 for bodily injury to or death of one person in one collision, $60,000 for bodily injury to or death of two or more persons in one collision subject to the amount for one person, and $25,000 for damage to or destruction of property of others in one collision.",
@@ -21,5 +21,5 @@
 	"updateCadence": "Re-verify after each Texas legislative session.",
 	"status": "active",
 	"officialHost": false,
-	"notes": "Effective: 2011-01-01"
+	"notes": "Effective: 2011-01-01 Re-read 2026-09-08: 5 of 5 claims confirmed, including subsection (a) shown as expired and the Sec. 68 source note."
 }

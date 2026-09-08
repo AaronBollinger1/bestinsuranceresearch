@@ -37,6 +37,20 @@ const AUDIENCE = ['individual', 'business-owner', 'professional'] as const;
 const CONFIDENCE = ['established', 'contextual', 'disputed', 'changing', 'insufficient'] as const;
 const REVIEW_STATE = ['reviewed', 'under-review', 'corrected'] as const;
 
+/**
+ * A material correction: the date, the prior wording, and the revised wording.
+ * Present only when `reviewState` is `corrected`.
+ *
+ * This used to exist on `questions` alone, and `/corrections` scanned only
+ * questions, so the log described itself as every material correction while
+ * being structurally incapable of holding one made anywhere else. The gap
+ * surfaced the first time a recheck corrected a module rule. It is on every
+ * collection carrying a `reviewState` now, so the log can be true.
+ */
+const correctionRecord = z
+	.object({ date: isoDate, was: z.string().min(10), now: z.string().min(10) })
+	.optional();
+
 /* ------------------------------------------------------------------
    SOURCE
    ------------------------------------------------------------------ */
@@ -142,10 +156,7 @@ const questions = defineCollection({
 		nextActions: z.array(z.string().min(10)).min(2),
 		confidence: z.enum(CONFIDENCE),
 		reviewState: z.enum(REVIEW_STATE).default('reviewed'),
-		/** Present only when reviewState is 'corrected'. */
-		correction: z
-			.object({ date: isoDate, was: z.string().min(10), now: z.string().min(10) })
-			.optional(),
+		correction: correctionRecord,
 		family: z.enum(INSURANCE_FAMILY),
 		lines: z.array(z.string()).min(1),
 		states: z.array(z.string().length(2)).default([]),
@@ -211,6 +222,7 @@ const coverages = defineCollection({
 		author: z.string().min(3),
 		reviewer: z.string().min(3),
 		reviewState: z.enum(REVIEW_STATE).default('reviewed'),
+		correction: correctionRecord,
 		sourceIds: z.array(reference('sources')).min(1),
 		relatedQuestions: z.array(reference('questions')).default([]),
 	}),
@@ -257,6 +269,7 @@ const companies = defineCollection({
 		author: z.string().min(3),
 		reviewer: z.string().min(3),
 		reviewState: z.enum(REVIEW_STATE).default('reviewed'),
+		correction: correctionRecord,
 		sourceIds: z.array(reference('sources')).min(1),
 		relatedQuestions: z.array(reference('questions')).default([]),
 	}),
@@ -290,6 +303,7 @@ const states = defineCollection({
 		author: z.string().min(3),
 		reviewer: z.string().min(3),
 		reviewState: z.enum(REVIEW_STATE).default('reviewed'),
+		correction: correctionRecord,
 		sourceIds: z.array(reference('sources')).min(1),
 		relatedQuestions: z.array(reference('questions')).default([]),
 	}),
@@ -324,6 +338,7 @@ const examples = defineCollection({
 		author: z.string().min(3),
 		reviewer: z.string().min(3),
 		reviewState: z.enum(REVIEW_STATE).default('reviewed'),
+		correction: correctionRecord,
 		sourceIds: z.array(reference('sources')).min(1),
 		relatedQuestions: z.array(reference('questions')).default([]),
 	}),
@@ -483,6 +498,7 @@ const modules = defineCollection({
 		author: z.string().min(3),
 		reviewer: z.string().min(3),
 		reviewState: z.enum(REVIEW_STATE).default('under-review'),
+		correction: correctionRecord,
 	}),
 });
 
@@ -514,6 +530,7 @@ const crossRules = defineCollection({
 		author: z.string().min(3),
 		reviewer: z.string().min(3),
 		reviewState: z.enum(REVIEW_STATE).default('under-review'),
+		correction: correctionRecord,
 	}),
 });
 
@@ -563,6 +580,7 @@ const figures = defineCollection({
 		author: z.string().min(3),
 		reviewer: z.string().min(3),
 		reviewState: z.enum(REVIEW_STATE).default('under-review'),
+		correction: correctionRecord,
 	}),
 });
 

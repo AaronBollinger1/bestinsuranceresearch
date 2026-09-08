@@ -9,8 +9,8 @@
 	"publishedDate": "unknown",
 	"effectiveDate": "2018-01-01",
 	"accessedDate": "2026-09-05",
-	"lastChecked": "2026-09-05",
-	"lastCheckedBasis": "access",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "recheck",
 	"primary": true,
 	"claims": [
 		"Section 5800(a) provides that a volunteer officer or director described in subdivision (e) of an association that manages a residential or mixed use common interest development shall not be personally liable in excess of the coverage of insurance specified in paragraph (4) to any person who suffers injury, including but not limited to bodily injury, emotional distress, wrongful death, or property damage or loss, as a result of the tortious act or omission of that volunteer officer or director, if all of the criteria in the subdivision are met.",
@@ -25,5 +25,5 @@
 	],
 	"updateCadence": "Amended only by legislation. Last amended by Stats. 2017, Ch. 278, Sec. 2 (AB 1412), effective January 1, 2018.",
 	"status": "active",
-	"notes": "The protection is a cap rather than an immunity, and the cap is the amount of insurance carried. An association that lets the directors and officers coverage lapse does not expose the association alone; it removes the ceiling on its volunteers' personal exposure. Note also that the section protects a narrow class: subdivision (e) excludes a director who owns three or more separate interests, and subdivision (c) excludes a declarant."
+	"notes": "The protection is a cap rather than an immunity, and the cap is the amount of insurance carried. An association that lets the directors and officers coverage lapse does not expose the association alone; it removes the ceiling on its volunteers' personal exposure. Note also that the section protects a narrow class: subdivision (e) excludes a director who owns three or more separate interests, and subdivision (c) excludes a declarant. Re-read 2026-09-08: 9 of 9 claims confirmed, including the $500,000 and $1,000,000 thresholds at 100 separate interests."
 }

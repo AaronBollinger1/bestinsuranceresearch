@@ -8,8 +8,8 @@
 	"publishedDate": "unknown",
 	"effectiveDate": "unknown",
 	"accessedDate": "2026-09-02",
-	"lastChecked": "2026-09-02",
-	"lastCheckedBasis": "access",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "recheck",
 	"primary": true,
 	"claims": [
 		"Vehicle Code section 16056 states the liability limits a policy must carry to satisfy California's financial responsibility requirement as $15,000 for bodily injury to or death of one person, $30,000 for bodily injury to or death of all persons in one accident, and $5,000 for property damage for the period through December 31, 2024.",
@@ -20,5 +20,5 @@
 	"updateCadence": "Amended only by legislation; the January 1, 2035 step-up is already written into the section.",
 	"status": "active",
 	"officialHost": true,
-	"notes": "Effective: 2025-01-01"
+	"notes": "Effective: 2025-01-01 Re-read 2026-09-08: 4 of 4 claims confirmed, including that the 2035 provision states increments and not resulting limits."
 }

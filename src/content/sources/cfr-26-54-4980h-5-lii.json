@@ -10,16 +10,19 @@
 	"publishedDate": "unknown",
 	"effectiveDate": "unknown",
 	"accessedDate": "2026-09-02",
-	"lastChecked": "2026-09-02",
-	"lastCheckedBasis": "access",
+	"lastChecked": "2026-09-08",
+	"lastCheckedBasis": "recheck",
 	"updateCadence": "on-amendment",
 	"status": "active",
 	"claims": [
 		"The section is headed Assessable payments under section 4980H(b).",
 		"Paragraph (e)(2) provides three affordability safe harbors: the Form W-2 safe harbor, the rate of pay safe harbor, and the federal poverty line safe harbor.",
 		"The Form W-2 safe harbor measures the employee contribution against 9.5 percent of that employee's Form W-2 wages from the employer for the calendar year.",
-		"The rate of pay safe harbor, for an hourly employee, measures the contribution against 9.5 percent of an amount equal to 130 hours multiplied by the employee's hourly rate of pay.",
+		"The rate of pay safe harbor, for an hourly employee, measures the contribution against 9.5 percent of an amount equal to 130 hours multiplied by the lower of the employee's hourly rate of pay as of the first day of the coverage period or the employee's lowest hourly rate of pay during the calendar month.",
 		"The federal poverty line safe harbor measures the contribution against 9.5 percent of a monthly amount determined as the federal poverty line for a single individual for the applicable calendar year, divided by 12.",
-		"All three safe harbors in this section are expressed against the same 9.5 percent threshold."
-	]
+		"All three safe harbors in this section are expressed against the same 9.5 percent threshold.",
+		"For an employee who is not paid hourly, the rate of pay safe harbor uses the employee's monthly salary as of the first day of the coverage period rather than the 130-hour calculation.",
+		"Where a non-hourly employee's monthly salary is reduced, including a reduction due to a reduction in work hours, the rate of pay safe harbor is not available."
+	],
+	"notes": "Re-read 2026-09-08. Claim 4 previously omitted \"the lower of\" and both of the rates the regulation takes the lower of; corrected, and the two claims covering non-hourly employees appended, both of which the corpus had asserted nothing about."
 }

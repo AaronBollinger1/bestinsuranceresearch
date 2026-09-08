@@ -15,15 +15,15 @@ pass if you learn them the hard way.
 | | |
 | --- | --- |
 | Branch | `launch/initial-publication`, 88 commits, **never push to `main`** |
-| Suite | `npm run validate` = 118 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
+| Suite | `npm run validate` = 121 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
 | Built pages | 840 (299 are noindex verification sheets) |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
 | Coverage pages | 27 of 51 canonical lines |
 | Figures | 19 (`/figures`, the amounts and what moves them) |
 | Modules | 10 live, 15 cross-module rules |
-| Records signed off | **0.** 173 `under-review`, 2 `corrected` (cross-rules were missing from the count) |
-| Sources ever re-checked | **6 of 299** |
+| Records signed off | **0.** 169 `under-review`, 4 `corrected` |
+| Sources ever re-checked | **11 of 299.** The 5 new ones are the eligible figure sources, re-read 8 September |
 | Sources no question reaches | 48 |
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
 | Published records with no review state | **3.** The live worksheets; the tools schema has no `reviewState` field |
@@ -263,6 +263,42 @@ their schema at all. Do not paper that over by defaulting them to
 `under-review`: that asserts a review is open on a record that cannot record
 one. Giving `tools` a review state is a real pass of its own.
 
+**A recheck is only possible on a source read on an earlier day.** The
+schema asserts `lastChecked > accessedDate` for a `recheck` basis, so a
+source first read this morning cannot honestly be rechecked this afternoon -
+and that is right, because rereading something hours old confirms nothing.
+It bounded the figure-source pass hard: 19 figures rest on 11 documents, and
+only 5 of the 11 were eligible because the other 6 had been added the same
+day. **The remaining 6 become eligible tomorrow** and are the cheapest
+available recheck: `ca-civ-code-1798-82`, `ca-civ-code-3333-2`,
+`ca-civ-code-1798-150`, `cfr-49-370-9-lii`, `cfr-49-387-303-lii`,
+`usc-49-14706-carmack`.
+
+**Rechecking found a real error, which is the argument for doing it.** Of 29
+claims across the 5 eligible documents, 28 confirmed verbatim and one did
+not. The corpus described the ACA rate of pay safe harbor denominator as
+"130 hours multiplied by the employee's hourly rate of pay"; 26 CFR
+54.4980H-5(e)(2) says 130 hours multiplied by **the lower of** the rate as of
+the first day of the coverage period or the lowest hourly rate during the
+calendar month. An omitted branch, which
+`EDITORIAL-AND-CITATION-STANDARD.md` calls the most damaging failure class,
+and it had propagated to four places - worst of all into the module rule
+that fires on variable pay, which is exactly where taking the lower rate
+matters. Corrected in all four, two claims about non-hourly employees
+appended to the source, and both affected records carry a published
+correction.
+
+**The corrections log was not the whole log, and could not have been.**
+`/corrections` scanned `corpus.questions` alone and the `correction` field
+existed only on questions, so a correction made to a module, figure,
+coverage or cross-rule could neither be recorded nor displayed - on a page
+that calls itself the log of every material correction. Invisible while
+every corrected record happened to be a question. `correction` is now on all
+8 collections carrying a `reviewState`, `correctionLog()` in
+`src/lib/review.ts` reads `reviewableRecords`, and a test fails if a
+corrected record does not reach the page. The same page was hand-summing
+"under review" across five collections and understating it by 44.
+
 **`lastCheckedBasis` must be honest.** `'access'` means somebody read it once.
 `'recheck'` requires `lastChecked > accessedDate` and is asserted.
 
@@ -333,9 +369,11 @@ copying a fifth into this one is how that happened. The short version:
 1. **Promote to production.** The user, one command. Nothing is cited that does
    not exist, and everything else is downstream.
 2. **Licensed sign-off.** Brian reading. The instrument is built; no code left.
-3. **Recheck the figure sources.** 19 published figures rest on 11 documents and
-   none of the 11 has ever been rechecked. Next pass. Bounded, and a moved
-   amount produces a correction, which is the point.
+3. **Finish the figure-source recheck.** 5 of 11 done on 8 September, and it
+   produced one correction. The other 6 were first read that same day so
+   were ineligible; they are eligible from 9 September and are listed in
+   section 4. Then widen the recheck beyond the figures: 288 of 299 sources
+   still carry only the date somebody read them once.
 4. **Give `tools` a `reviewState` and a `reviewer`**, so the 3 live worksheets
    stop publishing 80 cited sentences with no review state recordable.
 5. **Carrier entity records.** Route measured and settled: state DOI filing

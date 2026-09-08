@@ -8,19 +8,28 @@ import StatusChip from '../components/StatusChip.astro';
 import { siteConfig } from '../config/site';
 import { loadCorpus } from '../lib/corpus';
 import { longDate } from '../lib/cite';
+import { correctionLog, reviewableRecords } from '../lib/review';
 import { breadcrumbs, graph, organization, website } from '../lib/schema';
 
 const corpus = await loadCorpus();
 
-const corrected = corpus.questions
-	.filter((q) => q.data.reviewState === 'corrected' && q.data.correction)
-	.sort((a, b) => (a.data.correction!.date < b.data.correction!.date ? 1 : -1));
+/*
+ * Read from the whole corpus rather than from questions.
+ *
+ * This page calls itself the log of every material correction. It scanned
+ * `corpus.questions` alone, so it was structurally unable to hold a correction
+ * made to a module, a figure, a coverage page or a cross-rule - and the schema
+ * only had a `correction` field on questions, so one could not be recorded
+ * anywhere else either. The gap became real the first time a source recheck
+ * corrected a module rule. `correctionLog` reads `reviewableRecords`, which is
+ * the one enumeration of everything carrying a review state.
+ */
+const corrected = correctionLog(corpus);
 
-const underReview = corpus.questions.filter((q) => q.data.reviewState === 'under-review').length
-	+ corpus.coverages.filter((c) => c.data.reviewState === 'under-review').length
-	+ corpus.companies.filter((c) => c.data.reviewState === 'under-review').length
-	+ corpus.states.filter((s) => s.data.reviewState === 'under-review').length
-	+ corpus.examples.filter((e) => e.data.reviewState === 'under-review').length;
+/* Hand-summed across five collections previously, which omitted modules,
+   figures and cross-rules and so understated the count by 44. One
+   enumeration now. */
+const underReview = reviewableRecords(corpus).filter((r) => r.data.reviewState === 'under-review').length;
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -126,24 +135,25 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 				{
 					corrected.length > 0 ? (
 						<div class="rows" style="margin-top: var(--s-4)">
-							{corrected.map((q) => (
+							{corrected.map((entry) => (
 								<div class="row" style="grid-template-columns: minmax(0, 1fr)">
 									<div>
 										<h3 class="row-title">
-											<a href={`/questions/${q.id}`} style="text-decoration: none">{q.data.question}</a>
+											<a href={entry.path} style="text-decoration: none">{entry.title}</a>
 										</h3>
 										<div class="row-meta">
 											<StatusChip kind="corrected" />
-											<span class="meta">Corrected {longDate(q.data.correction!.date)}</span>
+											<span class="status status-plain">{entry.kind}</span>
+											<span class="meta">Corrected {longDate(entry.date)}</span>
 										</div>
 										<dl style="margin-top: var(--s-3); display: grid; gap: var(--s-2)">
 											<dt class="meta">Previously said</dt>
 											<dd style="margin: 0; font-size: var(--text-sm); color: var(--muted)">
-												{q.data.correction!.was}
+												{entry.was}
 											</dd>
 											<dt class="meta">Now says</dt>
 											<dd style="margin: 0; font-size: var(--text-sm); color: var(--ink)">
-												{q.data.correction!.now}
+												{entry.now}
 											</dd>
 										</dl>
 									</div>

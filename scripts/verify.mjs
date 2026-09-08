@@ -2955,3 +2955,83 @@ test('no page animates behind a claim', () => {
 	}
 	assert.deepEqual(offenders, [], `the loading animation appears outside /ask: ${offenders.join(', ')}`);
 });
+
+/* ------------------------------------------------------------------ */
+/* The corrections log, and whether it is the whole log                */
+/* ------------------------------------------------------------------ */
+
+/*
+ * /corrections calls itself the public log of every material correction. It
+ * scanned corpus.questions alone, and the `correction` field existed only on
+ * questions, so a correction made anywhere else could neither be recorded nor
+ * displayed. That was invisible while every corrected record happened to be a
+ * question, and became real the first time a source recheck corrected a module
+ * rule. Both halves are fixed; these assert it stays fixed.
+ */
+
+test('every corrected record reaches the corrections log', () => {
+	const page = textOf(read(path.join(DIST, 'corrections', 'index.html')));
+	const missing = [];
+	for (const [name, entries] of Object.entries(REVIEWABLE)) {
+		for (const entry of entries) {
+			if (entry.data.reviewState !== 'corrected') continue;
+			const title = titleOf(entry.data).replace(/\s+/g, ' ');
+			if (!page.includes(title)) missing.push(`${name}/${entry.id}`);
+		}
+	}
+	assert.deepEqual(
+		missing,
+		[],
+		`records are corrected but absent from the log that claims to hold every correction: ${missing.join(', ')}`,
+	);
+});
+
+test('a corrected record says what changed, and an uncorrected one makes no such claim', () => {
+	for (const [name, entries] of Object.entries(REVIEWABLE)) {
+		for (const entry of entries) {
+			const c = entry.data.correction;
+			if (entry.data.reviewState === 'corrected') {
+				assert.ok(c, `${name}/${entry.id} is corrected with no correction block`);
+				assert.match(c.date, /^\d{4}-\d{2}-\d{2}$/, `${name}/${entry.id} correction has no ISO date`);
+				assert.ok(c.was && c.was.length > 10, `${name}/${entry.id} does not say what it previously said`);
+				assert.ok(c.now && c.now.length > 10, `${name}/${entry.id} does not say what it says now`);
+				/* The prior wording has to survive, or the log is a rewrite. */
+				assert.notEqual(c.was, c.now, `${name}/${entry.id} records an identical before and after`);
+			} else {
+				assert.ok(
+					!c,
+					`${name}/${entry.id} carries a correction block while its reviewState is ${entry.data.reviewState}`,
+				);
+			}
+		}
+	}
+});
+
+test('a rechecked source was returned to, not merely read once', () => {
+	/*
+	 * lastCheckedBasis is the field that stops the site overstating itself, so
+	 * the two states are asserted in both directions: a recheck must carry a date
+	 * later than the first read, and an access-basis source must not claim one.
+	 * The five sources rechecked on 8 September were each re-read against the
+	 * publisher's own page and every claim confirmed; one of them produced a
+	 * correction, which is what the pass was for.
+	 */
+	let rechecked = 0;
+	for (const source of sources) {
+		const d = source.data;
+		if (d.lastCheckedBasis === 'recheck') {
+			rechecked++;
+			assert.ok(
+				d.lastChecked > d.accessedDate,
+				`${source.id} claims a recheck dated ${d.lastChecked} but was first read ${d.accessedDate}`,
+			);
+			continue;
+		}
+		assert.equal(
+			d.lastChecked,
+			d.accessedDate,
+			`${source.id} is access-basis but lastChecked (${d.lastChecked}) differs from accessedDate (${d.accessedDate}), which asserts a confirmation it does not have`,
+		);
+	}
+	assert.ok(rechecked > 0, 'no source has ever been rechecked, so this check is vacuous');
+});

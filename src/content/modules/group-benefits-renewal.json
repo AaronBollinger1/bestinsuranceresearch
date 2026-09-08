@@ -534,7 +534,7 @@
 			"kind": "documentation",
 			"severity": "medium",
 			"title": "A plan is offered and no affordability safe harbour is recorded as the basis for the employee contribution.",
-			"detail": "The regulation provides three safe harbors and expresses all of them against the same 9.5 percent threshold: the Form W-2 safe harbor, measured against 9.5 percent of the employee's Form W-2 wages from the employer for the calendar year; the rate of pay safe harbor, measured for an hourly employee against 9.5 percent of 130 hours multiplied by the hourly rate of pay; and the federal poverty line safe harbor, measured against 9.5 percent of a monthly amount determined as the federal poverty line for a single individual for the applicable year, divided by 12 [S:cfr-26-54-4980h-5-lii]. Which one the contribution is set against is a decision, and it is the kind of decision that should exist on paper before a renewal rather than after.",
+			"detail": "The regulation provides three safe harbors and expresses all of them against the same 9.5 percent threshold: the Form W-2 safe harbor, measured against 9.5 percent of the employee's Form W-2 wages from the employer for the calendar year; the rate of pay safe harbor, measured for an hourly employee against 9.5 percent of 130 hours multiplied by the lower of the employee's hourly rate of pay as of the first day of the coverage period or their lowest hourly rate during the calendar month; and the federal poverty line safe harbor, measured against 9.5 percent of a monthly amount determined as the federal poverty line for a single individual for the applicable year, divided by 12 [S:cfr-26-54-4980h-5-lii]. Which one the contribution is set against is a decision, and it is the kind of decision that should exist on paper before a renewal rather than after.",
 			"action": "Ask whoever sets the contribution which of the three the figure was built from, and write the answer down with the plan year it applies to. Nothing here says whether any contribution is affordable; that determination is made under the regulation with your own advisors.",
 			"when": {
 				"all": [
@@ -561,7 +561,7 @@
 			"kind": "question",
 			"severity": "medium",
 			"title": "A wage-based affordability safe harbour is recorded alongside tipped or variable wages.",
-			"detail": "You recorded that the contribution is set against Form W-2 wages or against rate of pay, and that a meaningful number of employees receive tips or variable wages. The Form W-2 safe harbor is measured against 9.5 percent of that employee's Form W-2 wages for the calendar year, and the rate of pay safe harbor against 9.5 percent of 130 hours multiplied by the hourly rate of pay [S:cfr-26-54-4980h-5-lii]. Both are wage figures, so both move when pay varies. The federal poverty line safe harbor in the same paragraph is not a wage figure [S:cfr-26-54-4980h-5-lii].",
+			"detail": "You recorded that the contribution is set against Form W-2 wages or against rate of pay, and that a meaningful number of employees receive tips or variable wages. The Form W-2 safe harbor is measured against 9.5 percent of that employee's Form W-2 wages for the calendar year, and the rate of pay safe harbor against 9.5 percent of 130 hours multiplied by the lower of the employee's hourly rate of pay as of the first day of the coverage period or their lowest hourly rate during the calendar month [S:cfr-26-54-4980h-5-lii]. Both are wage figures, so both move when pay varies, and the second takes the lower of those two rates precisely because it does. The federal poverty line safe harbor in the same paragraph is not a wage figure [S:cfr-26-54-4980h-5-lii].",
 			"action": "Ask your benefits advisor and an employee benefits lawyer to confirm which safe harbour the workforce actually supports, and to say so in writing for the plan year. This item raises the question; it does not answer it and it does not test any figure.",
 			"when": {
 				"all": [
@@ -862,8 +862,13 @@
 			"routeToProfessional": "lawyer"
 		}
 	],
-	"lastReviewed": "2026-08-31",
+	"lastReviewed": "2026-09-08",
 	"author": "Aaron Bollinger",
 	"reviewer": "Brian Bollinger",
-	"reviewState": "under-review"
+	"reviewState": "corrected",
+	"correction": {
+		"date": "2026-09-08",
+		"was": "Two rules described the rate of pay safe harbor denominator as 130 hours multiplied by the hourly rate of pay.",
+		"now": "Both now state that the regulation takes the lower of the rate as of the first day of the coverage period or the lowest hourly rate during the calendar month. The rule that fires on variable pay is where the omission mattered most."
+	}
 }

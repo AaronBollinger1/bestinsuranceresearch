@@ -383,3 +383,43 @@ export function reviewSummary(items: ReviewItem[]) {
 			.length,
 	};
 }
+
+/**
+ * Every published correction, newest first.
+ *
+ * Reads `reviewableRecords`, so it cannot omit a collection the way
+ * `/corrections` did: that page scanned questions alone and therefore
+ * described itself as the log of every material correction while being unable
+ * to hold one made to a module, a figure or a cross-rule. The first recheck to
+ * correct a module rule made the overstatement real.
+ */
+export interface CorrectionEntry {
+	kind: string;
+	id: string;
+	title: string;
+	path: string;
+	date: string;
+	was: string;
+	now: string;
+}
+
+export function correctionLog(corpus: Corpus): CorrectionEntry[] {
+	const out: CorrectionEntry[] = [];
+	for (const record of reviewableRecords(corpus)) {
+		const correction = record.data.correction as
+			| { date?: string; was?: string; now?: string }
+			| undefined;
+		if (record.data.reviewState !== 'corrected' || !correction) continue;
+		if (!correction.date || !correction.was || !correction.now) continue;
+		out.push({
+			kind: record.kind,
+			id: record.id,
+			title: record.title,
+			path: record.path,
+			date: correction.date,
+			was: correction.was,
+			now: correction.now,
+		});
+	}
+	return out.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.title.localeCompare(b.title)));
+}
