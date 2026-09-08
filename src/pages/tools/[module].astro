@@ -37,6 +37,11 @@ const cite = createCiter(ruleSourceIds, `module "${entry.id}"`);
    declared in different vocabularies, so this matches on canonical ids. */
 const relatedExamples = corpus.examples.filter((e) => sharesLine(d.lines, e.data.lines));
 
+/* The reference page for each line this module covers. A specialty domain 301s
+   to this page, so without this the reader who arrives from bestcyberliability.com
+   or bestepli.com never reaches the sourced write-up of the line they came for. */
+const relatedCoverages = corpus.coverages.filter((c) => sharesLine(d.lines, [c.data.line]));
+
 const relatedQuestions = [
 	...new Set(d.rules.map((r) => (r.relatedQuestion ? r.relatedQuestion.id : null)).filter(Boolean)),
 ]
@@ -277,6 +282,43 @@ const jsonLd = graph(
 								<p>{example.data.labelNote}</p>
 								<div class="card-foot">
 									<span class="meta">Read the example</span>
+									<ArrowRight size={15} aria-hidden="true" />
+								</div>
+							</a>
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
+
+	{
+		relatedCoverages.length > 0 && (
+			<section class="band band-tight" aria-labelledby="reference-title">
+				<div class="shell">
+					<div class="band-head">
+						<div>
+							<span class="eyebrow">The line itself</span>
+							<h2 id="reference-title">Reference pages for what this module covers</h2>
+							<p class="band-lede">
+								This tool reads what you record. These pages set out the line it reads against:
+								what the law obliges, what the policy is written for, and every source behind both.
+							</p>
+						</div>
+					</div>
+					<div class="card-grid">
+						{relatedCoverages.map((coverage) => (
+							<a class="card" href={`/insurance/${coverage.id}`}
+								data-event="related_coverage_opened"
+								data-insurance-family={coverage.data.family}
+								data-page-type="tool">
+								<div class="card-top">
+									<span class="status status-plain">{coverage.data.sourceIds.length} sources</span>
+								</div>
+								<h3 class="card-title">{coverage.data.name}</h3>
+								<p>{coverage.data.protects[0].replace(/[S:[a-z0-9-]+]/g, '').trim()}</p>
+								<div class="card-foot">
+									<span class="meta">Read the line</span>
 									<ArrowRight size={15} aria-hidden="true" />
 								</div>
 							</a>

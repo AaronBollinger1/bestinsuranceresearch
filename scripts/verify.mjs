@@ -1503,6 +1503,39 @@ test('a coverage page and its guide link each other', () => {
 	}
 });
 
+test('a coverage page and the tool on its line link each other', () => {
+	/*
+	 * Each specialty domain 301s to a module page, so that page is the front door
+	 * for everyone arriving from bestcyberliability.com, bestepli.com and the rest.
+	 * Seven of those front doors linked no reference page at all, and no reference
+	 * page linked back, so the two halves of a line sat on the same site with
+	 * nothing joining them: the tool that reads what you hold, and the sourced
+	 * write-up of what the line is. A reader could exhaust one without learning
+	 * the other existed, and the reference pages received no equity from the
+	 * pages the domains actually point at.
+	 *
+	 * Asserted in both directions, on canonical line ids, because module lines and
+	 * coverage lines are declared in different vocabularies and raw slug
+	 * comparison reports written lines as unwritten.
+	 */
+	for (const module of modules.filter((m) => m.data.status === 'live')) {
+		const matching = coverages.filter((c) => sharesLine(module.data.lines, [c.data.line]));
+		if (matching.length === 0) continue;
+		const tool = read(path.join(DIST, 'tools', module.id, 'index.html'));
+		for (const coverage of matching) {
+			assert.ok(
+				tool.includes(`/insurance/${coverage.id}`),
+				`/tools/${module.id} shares a line with ${coverage.id} but does not link it`,
+			);
+			const cov = read(path.join(DIST, 'insurance', coverage.id, 'index.html'));
+			assert.ok(
+				cov.includes(`/tools/${module.id}`),
+				`/insurance/${coverage.id} shares a line with ${module.id} but does not link it`,
+			);
+		}
+	}
+});
+
 test('no two source records describe the same document', () => {
 	/*
 	 * Six sections had been written up twice, each under two ids, because the

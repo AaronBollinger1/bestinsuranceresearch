@@ -39,6 +39,11 @@ const alsoAsked = corpus.questions.filter(
 );
 const relatedExamples = corpus.examples.filter((e) => sharesLine([d.line], e.data.lines));
 const relatedStates = corpus.states.filter((s) => d.stateVariations.some((v) => v.state === s.data.code));
+/* The module on this line is where a specialty domain lands, so a reader can
+   arrive at the tool without ever seeing the reference page, and vice versa.
+   Matched on canonical ids because module lines and coverage lines are declared
+   in different vocabularies. */
+const relatedModules = corpus.liveModules.filter((m) => sharesLine(m.data.lines, [d.line]));
 
 const description = stripMarkers(d.definition).slice(0, 300);
 
@@ -57,6 +62,7 @@ const sections = [
 	{ id: 'endorsements', label: 'Endorsements and connected policies' },
 	{ id: 'underwriting', label: 'Information underwriters request' },
 	...(d.stateVariations.length ? [{ id: 'states', label: 'State variations' }] : []),
+	...(relatedModules.length ? [{ id: 'tools', label: 'Tools on this line' }] : []),
 	{ id: 'source-ledger', label: 'Source ledger' },
 ];
 
@@ -337,6 +343,32 @@ const jsonLd = graph(
 						)
 					}
 
+					{
+						relatedModules.length > 0 && (
+							<section class="answer-section" aria-labelledby="tools">
+								<h2 id="tools">Tools on this line</h2>
+								<p>
+									These record what you already hold and read it against the same sources this
+									page cites. None of them collects an application or returns a price.
+								</p>
+								<div class="card-grid">
+									{relatedModules.map((module) => (
+										<a class="card" href={`/tools/${module.id}`}>
+											<div class="card-top">
+												<span class="status status-plain">{module.data.rules.length} rules</span>
+											</div>
+											<h3 class="card-title">{module.data.name}</h3>
+											<p>{module.data.summary}</p>
+											<div class="card-foot">
+												<span class="meta">Open the tool</span>
+												<ArrowRight size={15} aria-hidden="true" />
+											</div>
+										</a>
+									))}
+								</div>
+							</section>
+						)
+					}
 					<div style="margin-top: var(--s-12)">
 						<Handoff
 							sourcePath={path}
