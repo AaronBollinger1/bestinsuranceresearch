@@ -30,15 +30,46 @@ pass if you learn them the hard way.
 
 ### The two things blocking everything else
 
-**Production has never been promoted.** Every push deploys as a Vercel preview
-only. 88 commits of work are not on the live site. The guard hook at
+**Production has never been promoted.** Every deployment for at least the last
+fifteen hours is `Preview`; the production deployment is two days old, so 88
+commits of work are not on the live site. The guard hook at
 `~/.claude/hooks/guard-dangerous-bash.mjs` blocks `vercel promote` and any
-`vercel` command carrying `--prod`, including read-only ones. **Do not try to
-reword past the guard.** Surface this command to the user and let them run it:
+`vercel` command carrying `--prod`. **Do not try to reword past the guard** -
+surface the command and let the user run it. Read-only `vercel ls`,
+`vercel project ls` and `vercel inspect` are not blocked and are how you find
+out what is actually deployed.
+
+The command previously recorded here was wrong in two ways and was tried and
+failed on 8 September. Both corrections matter:
+
+- **`vercel promote` with no argument does not promote anything.** It reports
+  whether a promotion is already in progress, which is why the attempt printed
+  "No deployment promotion in progress" and stopped. It needs the deployment
+  URL to promote.
+- **This repository has no `.vercel` directory**, so it is not linked to a
+  project and a bare `vercel` command run inside it resolves nothing. Run from
+  `C:\Users\aaron`, the CLI picked up the link in the home directory instead
+  and reported checking **best-ams** - a property on the do-not-touch list.
+  Nothing happened, because nothing was in progress. Always name the
+  deployment explicitly rather than relying on the working directory.
+
+The Vercel project is **`bestinsuranceresearch`**, team
+`aaronbollinger1s-projects`, serving `https://bestinsuranceresearch.com`.
+
+Find the newest preview, which is the tip of `launch/initial-publication`:
 
 ```
-npx --no-install vercel promote --scope aaronbollinger1s-projects --yes
+npx --no-install vercel ls bestinsuranceresearch --scope aaronbollinger1s-projects
 ```
+
+Then hand the user that URL in this shape, and let them run it:
+
+```
+npx --no-install vercel promote <deployment-url> --scope aaronbollinger1s-projects --yes
+```
+
+Confirm afterwards with `vercel ls`: the promoted deployment should read
+`Production` rather than `Preview`.
 
 **Nothing is reviewed.** Every record carries an under-review badge - all 173.
 Brian Bollinger is named reviewer on all 85 questions and has signed off none.
