@@ -353,6 +353,14 @@ export function claimIndex(
 			'That we have determined coverage or eligibility. We publish no such determination.',
 			'That we endorse, rate, rank, or price any insurer, or state the appetite of any carrier.',
 			'That a claim is current merely because it appears here. Read status and lastChecked.',
+			/*
+			 * The inference this corpus most invites, and the one it had never warned
+			 * against. byJurisdiction sits immediately below and is heavily
+			 * concentrated, so a page about a line reads as national when it is not.
+			 * A jurisdiction absent from that tally is one we hold no source for,
+			 * which is a different statement from the rule being the same there.
+			 */
+			"That a line works the same way in the reader's jurisdiction. Read byJurisdiction: this corpus is concentrated, and a jurisdiction missing from it is one we hold no source for rather than one where the rule matches.",
 		],
 		counts: {
 			claims: claims.length,

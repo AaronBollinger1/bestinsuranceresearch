@@ -1586,6 +1586,53 @@ test('no two source records carry the same title on the same host', () => {
 	);
 });
 
+test('the manifest states the corpus jurisdictional scope, and states it truthfully', () => {
+	/*
+	 * The manifest said what this site is, what it refuses, and what it does not
+	 * answer, and never once said where it applies. 54 of 79 questions are
+	 * written for California and 132 of 286 source records are Californian, so a
+	 * page about a line reads as national when it was written from one state's
+	 * law. That is the inference this corpus most invites, and nothing was
+	 * blocking it.
+	 *
+	 * The section is generated from the corpus rather than written in prose, and
+	 * this holds it to that. A hand-edit that hard-codes a figure, or a corpus
+	 * that grows past the numbers already published, fails here rather than
+	 * quietly telling a reader something that stopped being true.
+	 */
+	const manifest = read(path.join(DIST, 'llms.txt'));
+	assert.ok(
+		manifest.includes('## Jurisdictional scope'),
+		'llms.txt does not state the jurisdictional scope of the corpus',
+	);
+
+	const byState = {};
+	for (const question of questions) {
+		for (const state of question.data.states ?? []) byState[state] = (byState[state] ?? 0) + 1;
+	}
+	const ranked = Object.entries(byState).sort((a, b) => b[1] - a[1]);
+	const notStateSpecific = questions.filter((q) => (q.data.states ?? []).length === 0).length;
+
+	if (ranked.length > 0) {
+		const [code, count] = ranked[0];
+		assert.ok(
+			manifest.includes(`Deepest jurisdiction: ${code}, with ${count} of ${questions.length} questions`),
+			`llms.txt does not name the actual deepest jurisdiction. The corpus says ${code} with ${count} of ${questions.length}.`,
+		);
+	}
+
+	assert.ok(
+		manifest.includes(`Questions that are not state specific: ${notStateSpecific}.`),
+		`llms.txt does not carry the real count of questions that are not state specific, which is ${notStateSpecific}.`,
+	);
+
+	// The sentence that does the actual work: absence is not equivalence.
+	assert.ok(
+		/holds no source for your state on that line\. It does not mean the rule is the same there\./.test(manifest),
+		'llms.txt states the distribution without warning that a missing state is a gap rather than a match',
+	);
+});
+
 test('a record citing a source that is no longer current says so', () => {
 	/*
 	 * Source records carry a status, and five of them are not `active`. Two

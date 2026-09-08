@@ -18,6 +18,28 @@ const ruleCount = corpus.liveModules.reduce((n, m) => n + m.data.rules.length, 0
 /* The line index covers far more lines than there are written coverage
    pages, so the manifest states both numbers rather than implying that
    every indexed line has been written up. */
+/*
+ * Jurisdictional scope, derived rather than described.
+ *
+ * The manifest stated what this site is, what it refuses and what it does
+ * not answer, and never once said where it applies. The corpus is not
+ * national in equal measure, so a reader or an engine meeting a page about
+ * a line has nothing telling them it was written from one state law. That
+ * is the inference this site most invites and was doing nothing to block.
+ *
+ * Counted here rather than written in prose so it cannot drift as the
+ * corpus grows, and asserted in scripts/verify.mjs against the same data.
+ */
+const tallyBy = (values: string[]) => {
+	const out: Record<string, number> = {};
+	for (const v of values) out[v] = (out[v] ?? 0) + 1;
+	return Object.entries(out).sort((a, b) => b[1] - a[1]);
+};
+const questionStates = tallyBy(corpus.questions.flatMap((q) => q.data.states ?? []));
+const sourceJurisdictions = tallyBy(corpus.sources.map((s) => s.data.jurisdiction));
+const notStateSpecific = corpus.questions.filter((q) => (q.data.states ?? []).length === 0).length;
+const deepest = questionStates[0];
+
 const hubs = allLineHubs(corpus);
 const indexedLines = hubs.filter((h) => h.hasSubstance);
 const writtenLines = indexedLines.filter((h) => h.coverageId).length;
@@ -129,6 +151,17 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		'## States',
 		'',
 		...corpus.states.map((s) => `- [${s.data.name}](${abs(`/states/${s.id}`)}): regulator ${s.data.regulator.name}.`),
+		'',
+		'## Jurisdictional scope',
+		'',
+		'This corpus is not national in equal measure. The distribution is published here rather than left to be inferred from any page.',
+		'',
+		`- Questions written for a named state: ${questionStates.map(([s, n]) => `${s} ${n}`).join(', ')}.`,
+		`- Questions that are not state specific: ${notStateSpecific}.`,
+		`- Source records by jurisdiction: ${sourceJurisdictions.map(([s, n]) => `${s} ${n}`).join(', ')}.`,
+		`- Deepest jurisdiction: ${deepest ? `${deepest[0]}, with ${deepest[1]} of ${corpus.questions.length} questions written for it` : 'none'}.`,
+		'- A line described here without a note for your state means this corpus holds no source for your state on that line. It does not mean the rule is the same there.',
+		'- Where a coverage page carries a state variation marked US, that note describes a national instrument or states that the page is scoped to one state and others differ.',
 		'',
 		'## What this site deliberately does not answer',
 		'',
