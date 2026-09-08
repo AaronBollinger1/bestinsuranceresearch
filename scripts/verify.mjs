@@ -61,6 +61,7 @@ const questions = collection('questions');
 const modules = collection('modules');
 const coverages = collection('coverages');
 const figures = collection('figures');
+const byIdMap = new Map(sources.map((x) => [x.id, x]));
 const idsOf = (refs) => (refs ?? []).map((r) => (typeof r === 'string' ? r : r.id));
 const companies = collection('companies');
 const states = collection('states');
@@ -1637,6 +1638,77 @@ test('the figures page renders every figure, and its schedule is coherent', () =
 	}
 });
 
+test('the review queue names every source a record still rests on, and gets the arithmetic right', () => {
+	/*
+	 * The page states a saving - N source readings rather than M record-to-source
+	 * dependencies - and a reader is entitled to have that be true. Both numbers
+	 * are derived, so both are recomputed here from the records rather than
+	 * trusted from the page.
+	 *
+	 * The load-bearing half is the disclosure: a source that is superseded,
+	 * rescinded or never adopted, and that outstanding records still cite, has to
+	 * be surfaced. A separate assertion already requires each such record to say
+	 * so in its own text; this one requires the review surface to tell a reviewer
+	 * where to look, which is a different failure.
+	 */
+	const html = read(path.join(DIST, 'review-queue', 'index.html'));
+
+	const reviewable = [
+		...questions.map((x) => ({ x, path: `/questions/${x.id}` })),
+		...coverages.map((x) => ({ x, path: `/insurance/${x.id}` })),
+		...examples.map((x) => ({ x, path: `/examples/${x.id}` })),
+		...figures.map((x) => ({ x, path: `/figures#${x.id}` })),
+		...states.map((x) => ({ x, path: `/states/${x.id}` })),
+		...companies.map((x) => ({ x, path: `/companies/${x.id}` })),
+	];
+
+	// Which sources do records that are not signed off actually depend on?
+	const dependents = new Map();
+	const note = (sid, key) => {
+		if (!dependents.has(sid)) dependents.set(sid, new Set());
+		dependents.get(sid).add(key);
+	};
+	for (const { x, path: pth } of reviewable) {
+		if (x.data.reviewState === 'reviewed') continue;
+		for (const sid of idsOf(x.data.sourceIds)) note(sid, `${pth}#${x.id}`);
+	}
+	for (const m of modules.filter((m) => m.data.status === 'live')) {
+		if (m.data.reviewState === 'reviewed') continue;
+		const sids = new Set(idsOf(m.data.sourceIds));
+		for (const r of m.data.rules) for (const sid of idsOf(r.sourceIds)) sids.add(sid);
+		for (const sid of sids) note(sid, `/tools/${m.id}`);
+	}
+
+	assert.ok(dependents.size > 0, 'no outstanding record depends on any source, which cannot be right');
+
+	// Every source that has moved and still carries an outstanding record must be
+	// named on the page, by id.
+	const movedAndDepended = [...dependents.keys()]
+		.map((sid) => byIdMap.get(sid))
+		.filter((src) => src && src.data.status !== 'active');
+
+	const unnamed = movedAndDepended
+		.filter((src) => !html.includes(src.id))
+		.map((src) => `${src.id} [${src.data.status}]`);
+
+	assert.deepEqual(
+		unnamed,
+		[],
+		`/review-queue does not name sources that have moved and still carry outstanding records:\n  ${unnamed.join('\n  ')}`,
+	);
+
+	// And the stated saving has to be the real one.
+	const totalDependencies = [...dependents.values()].reduce((n, set) => n + set.size, 0);
+	assert.ok(
+		html.includes(String(dependents.size)),
+		`/review-queue does not state the source count (${dependents.size})`,
+	);
+	assert.ok(
+		totalDependencies > dependents.size,
+		'source-first ordering is only worth stating if it removes re-reading',
+	);
+});
+
 test('no two source records describe the same document', () => {
 	/*
 	 * Six sections had been written up twice, each under two ids, because the
@@ -1898,13 +1970,16 @@ test('the review queue lists every record that needs review', () => {
 		...examples.map((e) => ['examples', e]),
 		...states.map((s) => ['states', s]),
 		...companies.map((c) => ['companies', c]),
+		/* Figures share one route, so they are addressed by anchor. */
+		...figures.map((f) => ['figures#', f]),
 	];
 
 	for (const [segment, record] of expected) {
 		if (record.data.reviewState === 'reviewed') continue;
+		const href = segment.endsWith('#') ? `/${segment}${record.id}` : `/${segment}/${record.id}`;
 		assert.ok(
-			page.includes(`/${segment}/${record.id}`),
-			`the review queue omits ${segment}/${record.id}, which is not reviewed`,
+			page.includes(href),
+			`the review queue omits ${segment}${record.id}, which is not reviewed`,
 		);
 	}
 

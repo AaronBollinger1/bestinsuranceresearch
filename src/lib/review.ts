@@ -24,6 +24,7 @@
  * subject.
  */
 import type { Corpus } from './corpus';
+import { citingPages } from './corpus';
 
 export type TriggerSeverity = 'high' | 'medium';
 
@@ -199,6 +200,12 @@ export function reviewQueue(
 	for (const e of corpus.examples) {
 		add('Example', e.id, e.data.title, `/examples/${e.id}`, e.data as Record<string, unknown>);
 	}
+	/* Figures arrived as a collection without being added here, so nineteen
+	   records published an under-review badge while the queue said the backlog
+	   was smaller than it was. */
+	for (const f of corpus.figures) {
+		add('Figure', f.id, f.data.label, `/figures#${f.id}`, f.data as Record<string, unknown>);
+	}
 	for (const s of corpus.states) {
 		add('State', s.id, s.data.name, `/states/${s.id}`, s.data as Record<string, unknown>);
 	}
@@ -217,6 +224,110 @@ export function reviewQueue(
 			b.statements - a.statements ||
 			a.title.localeCompare(b.title),
 	);
+}
+
+/**
+ * The same job ordered by source rather than by record.
+ *
+ * A record is signed off by verifying every source under it, so ordering by
+ * record means re-opening the same statute once per record that cites it.
+ * Measured on the corpus as it stands: 148 outstanding records rest on 299
+ * distinct sources across 838 record-to-source dependencies. Verified
+ * source-first that is 299 readings rather than 838 - the same job at roughly
+ * a third of the reading.
+ *
+ * What it is NOT is a leverage play. The obvious hope was that a handful of
+ * sources would carry most of the corpus, so twenty readings would clear the
+ * backlog. They do not: the twenty most-depended-on sources account for 18
+ * per cent of dependencies and 58 sources carry exactly one record each. The
+ * graph is flat. The saving is real but it comes from de-duplication, not from
+ * concentration, and the list below is honest about that rather than
+ * presenting a top-twenty as though it were a shortcut.
+ *
+ * Priority is therefore not the dependent count. It is whether the source has
+ * already moved underneath the records citing it.
+ */
+export type SourcePriority = 'moved' | 'never-rechecked' | 'ordinary';
+
+export interface SourceReviewItem {
+	id: string;
+	title: string;
+	status: string;
+	priority: SourcePriority;
+	/** Why this source needs reading before the ones below it. */
+	reason: string;
+	officialHost: boolean;
+	lastChecked: string;
+	rechecked: boolean;
+	/** Outstanding records that cannot be signed off until this is verified. */
+	dependents: number;
+	dependentPaths: string[];
+}
+
+export function sourceReviewOrder(corpus: Corpus): SourceReviewItem[] {
+	const outstanding = new Set(
+		reviewQueue(corpus, () => false)
+			.filter((i) => i.reviewState !== 'reviewed')
+			.map((i) => i.path),
+	);
+
+	const items: SourceReviewItem[] = [];
+	for (const source of corpus.sources) {
+		const paths = citingPages(corpus, source.id)
+			.map((c) => c.path)
+			.filter((path) => outstanding.has(path));
+		if (paths.length === 0) continue;
+
+		const status = source.data.status;
+		const rechecked = source.data.lastCheckedBasis === 'recheck';
+
+		let priority: SourcePriority = 'ordinary';
+		let reason = 'Read once when it was added, and nothing has changed under it that we know of.';
+		if (status !== 'active') {
+			priority = 'moved';
+			reason = `The document itself is ${status}. Every record citing it must state that in its own text, and a reviewer should confirm it does before signing anything off.`;
+		} else if (!rechecked) {
+			priority = 'never-rechecked';
+			reason = 'Never returned to since it was added, so the only assurance is that somebody read it once.';
+		}
+
+		items.push({
+			id: source.id,
+			title: source.data.title,
+			status,
+			priority,
+			reason,
+			officialHost: source.data.officialHost,
+			lastChecked: source.data.lastChecked,
+			rechecked,
+			dependents: new Set(paths).size,
+			dependentPaths: [...new Set(paths)].sort(),
+		});
+	}
+
+	const rank: Record<SourcePriority, number> = { moved: 0, 'never-rechecked': 1, ordinary: 2 };
+	return items.sort(
+		(a, b) =>
+			rank[a.priority] - rank[b.priority] ||
+			b.dependents - a.dependents ||
+			a.id.localeCompare(b.id),
+	);
+}
+
+/** The arithmetic that justifies reading source-first, stated rather than implied. */
+export function sourceReviewSummary(items: SourceReviewItem[]) {
+	const dependencies = items.reduce((n, i) => n + i.dependents, 0);
+	const top20 = [...items].sort((a, b) => b.dependents - a.dependents).slice(0, 20);
+	return {
+		sources: items.length,
+		dependencies,
+		moved: items.filter((i) => i.priority === 'moved').length,
+		neverRechecked: items.filter((i) => i.priority === 'never-rechecked').length,
+		singletons: items.filter((i) => i.dependents === 1).length,
+		top20Share: dependencies
+			? Math.round((top20.reduce((n, i) => n + i.dependents, 0) / dependencies) * 100)
+			: 0,
+	};
 }
 
 /** Headline counts, so the page can state the size of the job before the list. */

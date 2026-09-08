@@ -25,7 +25,7 @@ import DataTable from '../components/DataTable.astro';
 import StatusChip from '../components/StatusChip.astro';
 import { siteConfig } from '../config/site';
 import { isStale, loadCorpus } from '../lib/corpus';
-import { reviewQueue, reviewSummary } from '../lib/review';
+import { reviewQueue, reviewSummary, sourceReviewOrder, sourceReviewSummary } from '../lib/review';
 import { breadcrumbs, graph, organization, website } from '../lib/schema';
 
 const corpus = await loadCorpus();
@@ -46,6 +46,21 @@ const batchRows = kinds.map((kind) => {
 		String(rows.filter((i) => i.triggers.some((t) => t.severity === 'high')).length),
 	];
 });
+
+/* The same backlog ordered by source instead of by record. A record is signed
+   off by verifying the sources under it, so reading source-first removes the
+   re-reading that record-first ordering forces. */
+const sourceOrder = sourceReviewOrder(corpus);
+const sourceStats = sourceReviewSummary(sourceOrder);
+const movedSources = sourceOrder.filter((x) => x.priority === 'moved');
+const sourceRows = sourceOrder
+	.slice(0, 24)
+	.map((x) => [
+		x.id,
+		String(x.dependents),
+		x.status === 'active' ? (x.rechecked ? 'rechecked' : 'read once') : x.status,
+		x.officialHost ? 'official' : 'reproduction',
+	]);
 
 const outstanding = summary.total - summary.reviewed;
 
@@ -177,6 +192,73 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 					columns={['Record type', 'Records', 'Cited statements', 'Escalated']}
 					rows={batchRows}
 				/>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="by-source">
+			<div class="shell">
+				<span class="eyebrow">The other ordering</span>
+				<h2 id="by-source">Read by source, not by record</h2>
+				<div class="prose">
+					<p>
+						A record is signed off by verifying every source under it, so working record by
+						record means opening the same statute once for every record that cites it.
+						{' '}{outstanding} outstanding records rest on {sourceStats.sources} distinct sources
+						across {sourceStats.dependencies} record-to-source dependencies. Read source-first,
+						that is {sourceStats.sources} readings instead of {sourceStats.dependencies}.
+					</p>
+					<p>
+						It is worth saying what this is <em>not</em>, because the obvious hope does not
+						survive measurement. There is no small set of sources carrying the corpus: the
+						twenty most-depended-on sources account for {sourceStats.top20Share} per cent of
+						those dependencies, and {sourceStats.singletons} sources carry exactly one record
+						each. The graph is flat. The saving is real but it comes from not reading the same
+						document twice, not from finding a shortcut.
+					</p>
+					<p>
+						So priority here is not the dependent count. It is whether the document has already
+						moved underneath the records citing it.
+					</p>
+				</div>
+
+				{
+					movedSources.length > 0 && (
+						<Callout tone="warn">
+							<p>
+								<strong>
+									{movedSources.length} {movedSources.length === 1 ? 'source is' : 'sources are'} no
+									longer current, and outstanding records still rest on them.
+								</strong>{' '}
+								Every record citing a superseded, rescinded or never-adopted document has to say
+								so in its own text. These are the readings to do first, because a reviewer is
+								checking a disclosure as well as a claim.
+							</p>
+							<ul>
+								{movedSources.map((x) => (
+									<li>
+										<a href={`/sources/${x.id}`}><code>{x.id}</code></a> is{' '}
+										<strong>{x.status}</strong> and carries {x.dependents}{' '}
+										{x.dependents === 1 ? 'record' : 'records'}
+									</li>
+								))}
+							</ul>
+						</Callout>
+					)
+				}
+
+				<DataTable
+					caption={`Sources by review priority, the first 24 of ${sourceStats.sources}. Documents that have moved first, then those never re-read, then the rest.`}
+					columns={['Source', 'Outstanding records', 'Last check', 'Host']}
+					rows={sourceRows}
+				/>
+
+				<div class="prose">
+					<p>
+						{sourceStats.neverRechecked} of these have never been returned to since they were
+						added, so the only assurance on them is that somebody read them once. That is what
+						<code> lastCheckedBasis </code> records, and it is why the field exists.
+					</p>
+				</div>
 			</div>
 		</section>
 

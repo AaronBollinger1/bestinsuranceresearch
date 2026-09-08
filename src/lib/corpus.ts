@@ -382,6 +382,12 @@ export function citingPages(corpus: Corpus, sourceId: string): CitingPage[] {
 	for (const e of corpus.examples) {
 		if (cites(e.data.sourceIds)) out.push({ title: e.data.title, path: `/examples/${e.id}`, kind: 'Example' });
 	}
+	/* Figures share one page, so the dependency is on an anchor rather than a
+	   route. Omitting them entirely is the mistake this collection arrived with:
+	   nineteen figure records cited sources whose pages said nothing cited them. */
+	for (const f of corpus.figures) {
+		if (cites(f.data.sourceIds)) out.push({ title: f.data.label, path: `/figures#${f.id}`, kind: 'Figure' });
+	}
 	for (const t of corpus.liveTools) {
 		if (cites(t.data.sourceIds)) out.push({ title: t.data.name, path: t.data.route || '/tools', kind: 'Worksheet' });
 	}
