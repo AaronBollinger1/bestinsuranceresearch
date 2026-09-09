@@ -157,6 +157,88 @@ export interface SubmissionDraft {
 	verdictFlags: string[];
 }
 
+/* ------------------------------------------------------------------ */
+/* Threads                                                             */
+/* ------------------------------------------------------------------ */
+
+/**
+ * A thread is conversation, and it is stored rather than committed.
+ *
+ * A published case report is a file in the repository, because it is a durable
+ * artifact that deserves a diff. A thread is not - it is a conversation about a
+ * subject, it changes constantly, and putting it in git would make the
+ * repository a database with worse tooling.
+ *
+ * The trade is real and worth stating rather than glossing: a thread has no
+ * version history, so a reader cannot see what a post said before it was
+ * edited. The answer is that a post CANNOT be edited. It can be withdrawn by
+ * its author, and it can be hidden by a moderator, and both leave a tombstone.
+ * Immutable-and-removable is the honest shape for something with no diff.
+ */
+export type ThreadState =
+	/** Anybody signed in can reply. */
+	| 'open'
+	/** Readable, no new replies. A moderator's decision, with a reason. */
+	| 'locked'
+	/** Removed from the index and from its subject. The page says why. */
+	| 'hidden';
+
+export interface Thread {
+	id: string;
+	/** `company:...`, `coverage:...` or `question:...`, resolving in SUBJECTS. */
+	subjectId: string;
+	title: string;
+	/** The account that started it. Attribution is not optional here either. */
+	startedBy: string;
+	startedAt: string;
+	state: ThreadState;
+	/** Denormalised so an index page is one query rather than one per thread. */
+	postCount: number;
+	lastPostAt: string;
+	lockedReason?: string;
+	hiddenReason?: string;
+}
+
+export type PostState =
+	| 'visible'
+	/** A moderator removed it. The tombstone and the reason stay. */
+	| 'hidden'
+	/** The author took it back. The tombstone stays; the reason is nobody's business. */
+	| 'withdrawn';
+
+export interface Post {
+	id: string;
+	threadId: string;
+	email: string;
+	body: string;
+	postedAt: string;
+	state: PostState;
+	hiddenAt?: string;
+	hiddenBy?: string;
+	hiddenReason?: string;
+	withdrawnAt?: string;
+	/**
+	 * When a moderator last looked at it. Moderation here is after the fact, so
+	 * "reviewed" means seen and left standing rather than approved before
+	 * publication - and the difference is stated on /moderation rather than
+	 * left for a reader to assume the stronger one.
+	 */
+	reviewedAt?: string;
+	/**
+	 * Set when a moderator asked for this post to be written up as a structured
+	 * case report and the contributor did it. The promotion path is the reason
+	 * the forum is worth having: it is where the corpus finds its material.
+	 */
+	promotedToSubmission?: string;
+}
+
+export interface ThreadDraft {
+	subjectId: string;
+	title: string;
+	startedBy: string;
+	body: string;
+}
+
 export interface Store {
 	/* --- Accounts --- */
 	getAccount(email: string): Promise<Account | null>;
@@ -214,6 +296,30 @@ export interface Store {
 	): Promise<void>;
 	/** Published reports whose author has asked for them to be taken down. */
 	withdrawalRequests(): Promise<Submission[]>;
+
+	/* --- Threads --- */
+	createThread(draft: ThreadDraft, ids: { threadId: string; postId: string }, at: string): Promise<Thread>;
+	getThread(id: string): Promise<Thread | null>;
+	/** Newest activity first, which is what a forum index is for. */
+	listThreads(options?: { subjectId?: string; limit?: number }): Promise<Thread[]>;
+	/** In the order they were written. A conversation read backwards is not one. */
+	postsIn(threadId: string): Promise<Post[]>;
+	addPost(post: Post): Promise<void>;
+	getPost(id: string): Promise<Post | null>;
+	/**
+	 * Author or moderator removing a post. Separate arguments rather than one
+	 * `state` field with an optional reason, because the two are different acts:
+	 * a moderator owes a reason and an author owes nobody one, and a schema that
+	 * cannot tell them apart afterwards has lost the thing worth recording.
+	 */
+	withdrawPost(id: string, at: string): Promise<void>;
+	hidePost(id: string, by: string, reason: string, at: string): Promise<void>;
+	setThreadState(id: string, state: ThreadState, reason: string): Promise<void>;
+	/** Posts a moderator has not yet looked at, oldest first. */
+	unreviewedPosts(): Promise<Post[]>;
+	markPostReviewed(id: string): Promise<void>;
+	/** What one person has written, so their account page can show it. */
+	postsBy(email: string): Promise<Post[]>;
 
 	/** Drops expired tokens and sessions. Nothing keeps what it does not need. */
 	purgeExpired(now: number): Promise<void>;

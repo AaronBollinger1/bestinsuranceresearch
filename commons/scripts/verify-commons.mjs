@@ -309,7 +309,7 @@ test('nothing behind a session reaches the sitemap', () => {
 	const file = path.join(DIST, 'sitemap-0.xml');
 	if (!fs.existsSync(file)) return;
 	const xml = read(file);
-	for (const route of ['/sign-in', '/account', '/moderate', '/contribute/new']) {
+	for (const route of ['/sign-in', '/account', '/moderate', '/contribute/new', '/threads/new', '/moderate/posts']) {
 		assert.ok(!xml.includes(`${route}<`), `${route} is in the sitemap`);
 	}
 });

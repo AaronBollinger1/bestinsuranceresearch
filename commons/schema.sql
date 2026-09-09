@@ -135,3 +135,83 @@ create table if not exists submissions (
 
 create index if not exists submissions_queue on submissions (state, submitted_at);
 create index if not exists submissions_by_author on submissions (email, submitted_at desc);
+
+
+-- ---------------------------------------------------------------------------
+-- Threads: the conversation layer
+-- ---------------------------------------------------------------------------
+--
+-- A published case report is a file in the repository, because it is a durable
+-- artifact that deserves a diff. A thread is not: it is a conversation, it
+-- changes constantly, and putting it in git would make the repository a
+-- database with worse tooling.
+--
+-- The trade is that a thread has no version history. The answer is that a post
+-- CANNOT BE EDITED - there is no update path for `body` anywhere in the store,
+-- and that is deliberate rather than unfinished. A post can be withdrawn by its
+-- author and hidden by a moderator, and both leave the row and its timestamp
+-- behind. Immutable-and-removable is the honest shape for something with no
+-- diff, and it is the only shape where "what did that say before?" has an
+-- answer a reader can trust.
+--
+-- Still nowhere to put a policy number, a claim number, a date of birth, a
+-- government identifier, health information, a payment method or a file. The
+-- promise in COMMONS.md section 6 is enforceable only because the database has
+-- no column for any of it.
+
+create table if not exists threads (
+	id                text primary key,
+	-- 'company:...', 'coverage:...' or 'question:...'. Deliberately not a foreign
+	-- key: the subjects live in the evidence layer's content collections, not in
+	-- this database, and scripts/sync-subjects.mjs is what keeps them honest.
+	subject_id        text not null,
+	title             text not null,
+	started_by        text not null references accounts (email) on delete cascade,
+	started_at        timestamptz not null,
+	state             text not null default 'open'
+	                    check (state in ('open', 'locked', 'hidden')),
+	-- Denormalised so a forum index is one query rather than one per thread.
+	-- Moved inside the same transaction as the insert that changes it, or a
+	-- count can show replies that never happened.
+	post_count        integer not null default 0,
+	last_post_at      timestamptz not null,
+	locked_reason     text,
+	hidden_reason     text
+);
+
+create index if not exists threads_recent on threads (state, last_post_at desc);
+create index if not exists threads_by_subject on threads (subject_id, last_post_at desc);
+
+create table if not exists posts (
+	id                     text primary key,
+	thread_id              text not null references threads (id) on delete cascade,
+	email                  text not null references accounts (email) on delete cascade,
+	body                   text not null,
+	posted_at              timestamptz not null,
+	state                  text not null default 'visible'
+	                         check (state in ('visible', 'hidden', 'withdrawn')),
+
+	-- A moderator removed it, and owes a reason.
+	hidden_at              timestamptz,
+	hidden_by              text,
+	hidden_reason          text,
+	-- The author took it back, and owes nobody one. Separate columns rather than
+	-- one nullable reason, because the two acts must stay distinguishable
+	-- afterwards.
+	withdrawn_at           timestamptz,
+
+	-- Seen by a moderator and left standing. Moderation here is AFTER the fact,
+	-- so this is not approval before publication, and /moderation says so rather
+	-- than letting a reader assume the stronger thing.
+	reviewed_at            timestamptz,
+
+	-- Set when this post was written up as a structured case report. The
+	-- promotion path is why the forum is worth having: it is where the corpus
+	-- finds its material.
+	promoted_to_submission text references submissions (id) on delete set null
+);
+
+create index if not exists posts_in_thread on posts (thread_id, posted_at);
+create index if not exists posts_unreviewed on posts (reviewed_at, posted_at)
+	where reviewed_at is null;
+create index if not exists posts_by_author on posts (email, posted_at desc);

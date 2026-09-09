@@ -1,4 +1,15 @@
-import type { Account, Session, SignInToken, Store, Submission, SubmissionDraft } from './store';
+import type {
+	Account,
+	Post,
+	Session,
+	SignInToken,
+	Store,
+	Submission,
+	SubmissionDraft,
+	Thread,
+	ThreadDraft,
+	ThreadState,
+} from './store';
 
 /**
  * The in-memory store.
@@ -17,6 +28,8 @@ export function memoryStore(): Store {
 	const tokens = new Map<string, SignInToken>();
 	const sessions = new Map<string, Session>();
 	const submissions = new Map<string, Submission>();
+	const threads = new Map<string, Thread>();
+	const posts = new Map<string, Post>();
 	/** Issue times per email, for the rate limit. Trimmed in purgeExpired. */
 	const issued = new Map<string, number[]>();
 
@@ -125,6 +138,107 @@ export function memoryStore(): Store {
 			return [...submissions.values()]
 				.filter((s) => s.state === 'withdrawal-requested')
 				.sort((a, b) => (a.withdrawnAt ?? '').localeCompare(b.withdrawnAt ?? ''));
+		},
+
+		/* --- Threads --- */
+
+		async createThread(draft, ids, at) {
+			const thread: Thread = {
+				id: ids.threadId,
+				subjectId: draft.subjectId,
+				title: draft.title,
+				startedBy: draft.startedBy,
+				startedAt: at,
+				state: 'open',
+				postCount: 1,
+				lastPostAt: at,
+			};
+			threads.set(thread.id, thread);
+			/* The opening post is a post like any other, so it can be withdrawn,
+			   hidden or promoted by exactly the same code. A thread whose first
+			   message lived on the thread row would need all of that twice. */
+			posts.set(ids.postId, {
+				id: ids.postId,
+				threadId: thread.id,
+				email: draft.startedBy,
+				body: draft.body,
+				postedAt: at,
+				state: 'visible',
+			});
+			return thread;
+		},
+
+		async getThread(id) {
+			return threads.get(id) ?? null;
+		},
+
+		async listThreads(options = {}) {
+			let all = [...threads.values()].filter((t) => t.state !== 'hidden');
+			if (options.subjectId) all = all.filter((t) => t.subjectId === options.subjectId);
+			all.sort((a, b) => b.lastPostAt.localeCompare(a.lastPostAt));
+			return options.limit ? all.slice(0, options.limit) : all;
+		},
+
+		async postsIn(threadId) {
+			return [...posts.values()]
+				.filter((p) => p.threadId === threadId)
+				.sort((a, b) => a.postedAt.localeCompare(b.postedAt));
+		},
+
+		async addPost(post) {
+			posts.set(post.id, post);
+			const thread = threads.get(post.threadId);
+			if (thread) {
+				threads.set(thread.id, {
+					...thread,
+					postCount: thread.postCount + 1,
+					lastPostAt: post.postedAt,
+				});
+			}
+		},
+
+		async getPost(id) {
+			return posts.get(id) ?? null;
+		},
+
+		async withdrawPost(id, at) {
+			const post = posts.get(id);
+			if (post) posts.set(id, { ...post, state: 'withdrawn', withdrawnAt: at });
+		},
+
+		async hidePost(id, by, reason, at) {
+			const post = posts.get(id);
+			if (post) {
+				posts.set(id, { ...post, state: 'hidden', hiddenBy: by, hiddenReason: reason, hiddenAt: at, reviewedAt: at });
+			}
+		},
+
+		async setThreadState(id, state: ThreadState, reason) {
+			const thread = threads.get(id);
+			if (!thread) return;
+			threads.set(id, {
+				...thread,
+				state,
+				lockedReason: state === 'locked' ? reason : undefined,
+				hiddenReason: state === 'hidden' ? reason : undefined,
+			});
+		},
+
+		async unreviewedPosts() {
+			return [...posts.values()]
+				.filter((p) => !p.reviewedAt && p.state === 'visible')
+				.sort((a, b) => a.postedAt.localeCompare(b.postedAt));
+		},
+
+		async markPostReviewed(id) {
+			const post = posts.get(id);
+			if (post) posts.set(id, { ...post, reviewedAt: new Date().toISOString() });
+		},
+
+		async postsBy(email) {
+			return [...posts.values()]
+				.filter((p) => p.email === email)
+				.sort((a, b) => b.postedAt.localeCompare(a.postedAt));
 		},
 
 		async purgeExpired(now) {

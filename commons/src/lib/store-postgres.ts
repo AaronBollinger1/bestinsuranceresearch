@@ -1,5 +1,16 @@
 import type { Pool } from 'pg';
-import type { Account, Session, SignInToken, Store, Submission, SubmissionDraft } from './store';
+import type {
+	Account,
+	Post,
+	Session,
+	SignInToken,
+	Store,
+	Submission,
+	SubmissionDraft,
+	Thread,
+	ThreadDraft,
+	ThreadState,
+} from './store';
 
 /**
  * The Postgres store, for Neon.
@@ -56,6 +67,44 @@ export function postgresStore(pool: Pool): Store {
 			};
 		}
 		return account;
+	};
+
+	const rowToThread = (row: Record<string, unknown>): Thread => ({
+		id: row.id as string,
+		subjectId: row.subject_id as string,
+		title: row.title as string,
+		startedBy: row.started_by as string,
+		startedAt: new Date(row.started_at as string).toISOString(),
+		state: row.state as ThreadState,
+		postCount: Number(row.post_count),
+		lastPostAt: new Date(row.last_post_at as string).toISOString(),
+		...(row.locked_reason ? { lockedReason: row.locked_reason as string } : {}),
+		...(row.hidden_reason ? { hiddenReason: row.hidden_reason as string } : {}),
+	});
+
+	const rowToPost = (row: Record<string, unknown>): Post => ({
+		id: row.id as string,
+		threadId: row.thread_id as string,
+		email: row.email as string,
+		body: row.body as string,
+		postedAt: new Date(row.posted_at as string).toISOString(),
+		state: row.state as Post['state'],
+		...(row.hidden_at ? { hiddenAt: new Date(row.hidden_at as string).toISOString() } : {}),
+		...(row.hidden_by ? { hiddenBy: row.hidden_by as string } : {}),
+		...(row.hidden_reason ? { hiddenReason: row.hidden_reason as string } : {}),
+		...(row.withdrawn_at ? { withdrawnAt: new Date(row.withdrawn_at as string).toISOString() } : {}),
+		...(row.reviewed_at ? { reviewedAt: new Date(row.reviewed_at as string).toISOString() } : {}),
+		...(row.promoted_to_submission ? { promotedToSubmission: row.promoted_to_submission as string } : {}),
+	});
+
+	/*
+	 * Hoisted for the same reason as getAccount: createThread reads the row back,
+	 * and `this` inside an object literal breaks the moment a caller destructures
+	 * the store. That exact bug was already found and fixed once in this file.
+	 */
+	const getThread = async (id: string): Promise<Thread | null> => {
+		const { rows } = await pool.query('select * from threads where id = $1', [id]);
+		return rows[0] ? rowToThread(rows[0]) : null;
 	};
 
 	const rowToSubmission = (row: Record<string, unknown>): Submission => ({
@@ -262,6 +311,141 @@ export function postgresStore(pool: Pool): Store {
 				`select * from submissions where state = 'withdrawal-requested' order by withdrawn_at asc`,
 			);
 			return rows.map(rowToSubmission);
+		},
+
+		/* --- Threads --- */
+
+		async createThread(draft: ThreadDraft, ids, at) {
+			/*
+			 * A CLIENT, not the pool, for the same reason the token insert uses one:
+			 * pool.query('begin') checks out a connection, runs BEGIN and hands it
+			 * straight back, so the following statements can land on a different
+			 * connection outside the transaction. A thread row with no opening post
+			 * is a page that renders empty forever.
+			 */
+			const client = await pool.connect();
+			try {
+				await client.query('begin');
+				await client.query(
+					`insert into threads (id, subject_id, title, started_by, started_at, state, post_count, last_post_at)
+					      values ($1, $2, $3, $4, $5, 'open', 1, $5)`,
+					[ids.threadId, draft.subjectId, draft.title, draft.startedBy, at],
+				);
+				await client.query(
+					`insert into posts (id, thread_id, email, body, posted_at, state)
+					      values ($1, $2, $3, $4, $5, 'visible')`,
+					[ids.postId, ids.threadId, draft.startedBy, draft.body, at],
+				);
+				await client.query('commit');
+			} catch (error) {
+				await client.query('rollback');
+				throw error;
+			} finally {
+				client.release();
+			}
+			const thread = await getThread(ids.threadId);
+			if (!thread) throw new Error('thread insert did not produce a row');
+			return thread;
+		},
+
+		getThread,
+
+		async listThreads(options = {}) {
+			const { rows } = options.subjectId
+				? await pool.query(
+						`select * from threads where state <> 'hidden' and subject_id = $1
+						  order by last_post_at desc limit $2`,
+						[options.subjectId, options.limit ?? 200],
+					)
+				: await pool.query(
+						`select * from threads where state <> 'hidden'
+						  order by last_post_at desc limit $1`,
+						[options.limit ?? 200],
+					);
+			return rows.map(rowToThread);
+		},
+
+		async postsIn(threadId) {
+			const { rows } = await pool.query(
+				'select * from posts where thread_id = $1 order by posted_at asc',
+				[threadId],
+			);
+			return rows.map(rowToPost);
+		},
+
+		async addPost(post) {
+			const client = await pool.connect();
+			try {
+				await client.query('begin');
+				await client.query(
+					`insert into posts (id, thread_id, email, body, posted_at, state)
+					      values ($1, $2, $3, $4, $5, 'visible')`,
+					[post.id, post.threadId, post.email, post.body, post.postedAt],
+				);
+				/* The counter is denormalised, so it has to move inside the same
+				   transaction as the insert or an index page can show a count that
+				   never happened. */
+				await client.query(
+					'update threads set post_count = post_count + 1, last_post_at = $2 where id = $1',
+					[post.threadId, post.postedAt],
+				);
+				await client.query('commit');
+			} catch (error) {
+				await client.query('rollback');
+				throw error;
+			} finally {
+				client.release();
+			}
+		},
+
+		async getPost(id) {
+			const { rows } = await pool.query('select * from posts where id = $1', [id]);
+			return rows[0] ? rowToPost(rows[0]) : null;
+		},
+
+		async withdrawPost(id, at) {
+			await pool.query(
+				"update posts set state = 'withdrawn', withdrawn_at = $2 where id = $1",
+				[id, at],
+			);
+		},
+
+		async hidePost(id, by, reason, at) {
+			await pool.query(
+				`update posts set state = 'hidden', hidden_by = $2, hidden_reason = $3,
+				        hidden_at = $4, reviewed_at = $4
+				  where id = $1`,
+				[id, by, reason, at],
+			);
+		},
+
+		async setThreadState(id, state, reason) {
+			await pool.query(
+				`update threads set state = $2,
+				        locked_reason = case when $2 = 'locked' then $3 else null end,
+				        hidden_reason = case when $2 = 'hidden' then $3 else null end
+				  where id = $1`,
+				[id, state, reason],
+			);
+		},
+
+		async unreviewedPosts() {
+			const { rows } = await pool.query(
+				"select * from posts where reviewed_at is null and state = 'visible' order by posted_at asc",
+			);
+			return rows.map(rowToPost);
+		},
+
+		async markPostReviewed(id) {
+			await pool.query('update posts set reviewed_at = now() where id = $1', [id]);
+		},
+
+		async postsBy(email) {
+			const { rows } = await pool.query(
+				'select * from posts where email = $1 order by posted_at desc',
+				[email],
+			);
+			return rows.map(rowToPost);
 		},
 
 		async purgeExpired(now) {

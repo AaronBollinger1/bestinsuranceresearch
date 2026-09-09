@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SESSION_COOKIE, accountFromSession, sameOrigin } from '../../lib/auth';
+import { isModerator } from '../../lib/moderators';
+import { getStore, selfOrigin } from '../../lib/runtime';
+import { LIMITS, STANDING_LINE, byline, newPostId, subject, validateReply } from '../../lib/threads';
+import type { FieldError } from '../../lib/threads';
+import type { Account, Post } from '../../lib/store';
+import { commons } from '../../config/commons';
+
+export const prerender = false;
+
+const { id } = Astro.params;
+const store = getStore();
+const account = await accountFromSession(store, Astro.cookies.get(SESSION_COOKIE)?.value);
+
+let thread = await store.getThread(id ?? '');
+if (!thread) return new Response('Not found', { status: 404 });
+
+let errors: FieldError[] = [];
+let replyBody = '';
+
+if (Astro.request.method === 'POST') {
+	if (!sameOrigin(Astro.request, selfOrigin(Astro.request))) {
+		return new Response('Bad request', { status: 400 });
+	}
+	if (!account) return Astro.redirect('/sign-in', 303);
+	if (!account.displayName) return Astro.redirect('/account?welcome=1', 303);
+
+	const form = await Astro.request.formData();
+	const intent = String(form.get('intent') ?? 'reply');
+
+	if (intent === 'withdraw') {
+		const postId = String(form.get('postId') ?? '');
+		const post = await store.getPost(postId);
+		/*
+		 * The author, and only the author. A moderator removing a post is a
+		 * different act with a different record - it owes a reason and it says who
+		 * did it - and routing both through one handler is how the two stop being
+		 * distinguishable afterwards.
+		 */
+		if (post && post.threadId === thread.id && post.email === account.email && post.state === 'visible') {
+			await store.withdrawPost(postId, new Date().toISOString());
+		}
+		return Astro.redirect(`/threads/${thread.id}#post-${postId}`, 303);
+	}
+
+	if (thread.state !== 'open') return new Response('This thread is not open', { status: 409 });
+
+	replyBody = String(form.get('body') ?? '');
+	const { errors: found, body } = validateReply({ body: replyBody });
+	errors = found;
+
+	if (body) {
+		const at = new Date().toISOString();
+		await store.addPost({
+			id: newPostId(),
+			threadId: thread.id,
+			email: account.email,
+			body,
+			postedAt: at,
+			state: 'visible',
+		});
+		return Astro.redirect(`/threads/${thread.id}`, 303);
+	}
+}
+
+/* Re-read after a write so the count and the last-activity time are the ones
+   this render is about, not the ones it started with. */
+thread = (await store.getThread(thread.id)) ?? thread;
+const posts = await store.postsIn(thread.id);
+const about = subject(thread.subjectId);
+const moderator = isModerator(account?.email, process.env);
+
+/*
+ * One account lookup per distinct author rather than per post. A thread of
+ * forty posts by three people is three reads.
+ */
+const authors = new Map<string, Account | null>();
+for (const post of posts) {
+	if (!authors.has(post.email)) authors.set(post.email, await store.getAccount(post.email));
+}
+
+const shownByline = (post: Post) => {
+	const author = authors.get(post.email);
+	return author ? byline(author) : { name: 'A reader, unnamed', role: null };
+};
+
+const day = (iso: string) => new Date(iso).toISOString().slice(0, 10);
+const paragraphs = (body: string) => body.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
+---
+
+<BaseLayout
+	title={thread.title}
+	eyebrow="Discussion"
+	lede={about ? `A thread about ${about.name}.` : 'A thread.'}
+	crumbs={[{ name: 'Home', href: '/' }, { name: 'Discussion', href: '/threads' }, { name: thread.title }]}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				{
+					about && (
+						<p class="meta">
+							The cited answer on this subject is on the research library:{' '}
+							<a href={`${commons.record.origin}${about.recordPath}`} rel="noopener">
+								{about.name} at {commons.record.name}
+							</a>
+							. Nothing below is cited, and nothing below is a finding.
+						</p>
+					)
+				}
+
+				{
+					thread.state === 'locked' && (
+						<div class="callout" data-tone="stop">
+							<p>
+								<strong>This thread is locked.</strong> {thread.lockedReason}
+							</p>
+						</div>
+					)
+				}
+
+				<ol class="posts">
+					{
+						posts.map((post) => {
+							const who = shownByline(post);
+							return (
+								<li id={`post-${post.id}`} data-state={post.state}>
+									{post.state === 'withdrawn' ? (
+										/*
+										 * The tombstone is deliberate. Deleting the row would leave a
+										 * conversation with replies to nothing, and would hide that a
+										 * removal happened at all - which is the thing a reader most
+										 * needs to know when a thread reads oddly.
+										 */
+										<p class="tombstone">
+											Withdrawn by its author on {day(post.withdrawnAt ?? post.postedAt)}. The
+											text is gone; the fact that it was here is not.
+										</p>
+									) : post.state === 'hidden' ? (
+										<p class="tombstone">
+											Removed by a moderator on {day(post.hiddenAt ?? post.postedAt)}:{' '}
+											{post.hiddenReason}
+										</p>
+									) : (
+										<>
+											<p class="meta">
+												<strong>{who.name}</strong>
+												{who.role && <span class="role"> · {who.role}</span>} ·{' '}
+												{day(post.postedAt)}
+											</p>
+											{paragraphs(post.body).map((p) => (
+												<p>{p}</p>
+											))}
+											{post.promotedToSubmission && (
+												<p class="meta">
+													This account was written up as a case report, which is read before
+													it publishes and has a permanent address.
+												</p>
+											)}
+											{account?.email === post.email && (
+												<form method="post" class="inline-form">
+													<input type="hidden" name="intent" value="withdraw" />
+													<input type="hidden" name="postId" value={post.id} />
+													<button class="btn btn-quiet btn-sm" type="submit">
+														Withdraw this post
+													</button>
+												</form>
+											)}
+											{moderator && (
+												<p class="meta">
+													<a href={`/moderate/posts#post-${post.id}`}>Moderate this post</a>
+												</p>
+											)}
+										</>
+									)}
+								</li>
+							);
+						})
+					}
+				</ol>
+
+				<p class="standing-line">{STANDING_LINE}</p>
+
+				{
+					thread.state === 'open' &&
+						(account ? (
+							<form method="post" class="stack" style="margin-top: var(--s-6)">
+								{errors.length > 0 && (
+									<div class="callout" data-tone="stop">
+										<h2>This reply has not been posted.</h2>
+										<ul>
+											{errors.map((e) => (
+												<li>{e.message}</li>
+											))}
+										</ul>
+									</div>
+								)}
+								<div class="field">
+									<label for="body">Reply</label>
+									<textarea
+										id="body"
+										name="body"
+										rows="8"
+										maxlength={LIMITS.body.max}
+										style="width: 100%; padding: var(--s-3); font: inherit; border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); background: var(--white)"
+										required>{replyBody}</textarea
+									>
+								</div>
+								<p><button class="btn" type="submit">Post the reply</button></p>
+							</form>
+						) : (
+							<p style="margin-top: var(--s-6)">
+								<a href="/sign-in">Sign in</a> to reply. There is no password; a link arrives by
+								email.
+							</p>
+						))
+				}
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.posts { list-style: none; padding: 0; }
+	.posts > li { padding: var(--s-4) 0; border-top: var(--bw-hair) solid var(--line); }
+	.tombstone { color: var(--muted); font-style: italic; }
+	.role { color: var(--muted); }
+	.standing-line {
+		margin-top: var(--s-5);
+		padding-top: var(--s-3);
+		border-top: var(--bw-hair) solid var(--line);
+		color: var(--muted);
+		font-size: var(--text-sm);
+	}
+	.inline-form { display: inline; }
+</style>

@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SESSION_COOKIE, accountFromSession, sameOrigin } from '../../lib/auth';
+import { isModerator } from '../../lib/moderators';
+import { getStore, selfOrigin } from '../../lib/runtime';
+import { subject } from '../../lib/threads';
+
+export const prerender = false;
+
+const store = getStore();
+const account = await accountFromSession(store, Astro.cookies.get(SESSION_COOKIE)?.value);
+if (!account) return Astro.redirect('/sign-in', 303);
+if (!isModerator(account.email, process.env)) return new Response('Not found', { status: 404 });
+
+let problem = '';
+
+if (Astro.request.method === 'POST') {
+	if (!sameOrigin(Astro.request, selfOrigin(Astro.request))) {
+		return new Response('Bad request', { status: 400 });
+	}
+	const form = await Astro.request.formData();
+	const intent = String(form.get('intent') ?? '');
+	const postId = String(form.get('postId') ?? '');
+	const reason = String(form.get('reason') ?? '').trim();
+
+	if (intent === 'hide') {
+		/*
+		 * A reason is required and it is shown to every reader in place of the
+		 * post. Moderation that leaves no trace is indistinguishable from a bug,
+		 * and COMMONS.md section 8 makes the moderation record part of the
+		 * product rather than an internal note.
+		 */
+		if (reason.length < 15) {
+			problem = 'Removing a post needs a reason of at least 15 characters, because the reason is what readers see in its place.';
+		} else {
+			await store.hidePost(postId, account.email, reason, new Date().toISOString());
+		}
+	} else if (intent === 'leave') {
+		await store.markPostReviewed(postId);
+	}
+
+	if (!problem) return Astro.redirect('/moderate/posts', 303);
+}
+
+const queue = await store.unreviewedPosts();
+const threadsById = new Map(
+	await Promise.all(queue.map(async (p) => [p.threadId, await store.getThread(p.threadId)] as const)),
+);
+---
+
+<BaseLayout
+	title="Posts awaiting a look"
+	eyebrow="Moderation"
+	lede="Thread posts are published as they are written and read afterwards. This is the queue of what nobody has looked at yet."
+	crumbs={[{ name: 'Home', href: '/' }, { name: 'Moderation', href: '/moderate' }, { name: 'Posts' }]}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				{problem && <div class="callout" data-tone="stop"><p>{problem}</p></div>}
+
+				<div class="callout" data-tone="note">
+					<p>
+						<strong>This queue is not approval.</strong> Everything in it is already public. Marking
+						a post as looked at records that a person read it and left it standing; it does not mean
+						anybody vouched for it. The distinction is stated on{' '}
+						<a href="/moderation">the moderation page</a> too, because a reader who thinks every
+						post was approved before publication has been misled by us rather than by the post.
+					</p>
+				</div>
+
+				{
+					queue.length === 0 ? (
+						<div class="empty">
+							<h2>Nothing is waiting.</h2>
+							<p>Every post that has been written has been read.</p>
+						</div>
+					) : (
+						<ol class="queue">
+							{queue.map((post) => {
+								const thread = threadsById.get(post.threadId);
+								const about = thread ? subject(thread.subjectId) : null;
+								return (
+									<li id={`post-${post.id}`}>
+										<h2>
+											<a href={`/threads/${post.threadId}#post-${post.id}`}>
+												{thread ? thread.title : post.threadId}
+											</a>
+										</h2>
+										<p class="meta">
+											{about ? about.name : ''} &middot; {post.email} &middot;{' '}
+											{post.postedAt.slice(0, 10)}
+										</p>
+										<blockquote>{post.body}</blockquote>
+										<form method="post" class="stack">
+											<input type="hidden" name="postId" value={post.id} />
+											<div class="field">
+												<label for={`reason-${post.id}`}>
+													Reason, shown to readers if you remove it
+												</label>
+												<input
+													id={`reason-${post.id}`}
+													name="reason"
+													type="text"
+													style="width: 100%; padding: var(--s-3); font: inherit; border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); background: var(--white)"
+												/>
+											</div>
+											<p>
+												<button class="btn btn-quiet" type="submit" name="intent" value="leave">
+													Read it, leaving it up
+												</button>{' '}
+												<button class="btn" type="submit" name="intent" value="hide">
+													Remove it
+												</button>
+											</p>
+										</form>
+									</li>
+								);
+							})}
+						</ol>
+					)
+				}
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.queue { list-style: none; padding: 0; }
+	.queue > li { padding: var(--s-5) 0; border-top: var(--bw-hair) solid var(--line); }
+</style>

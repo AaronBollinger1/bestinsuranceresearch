@@ -51,7 +51,7 @@ export const commons = {
 	 * without contaminating the citable unit.
 	 */
 	record: {
-		name: 'BestInsurance Research',
+		name: 'Birch Research',
 		origin: import.meta.env.PUBLIC_RECORD_ORIGIN || 'https://bestinsuranceresearch.com',
 	},
 
@@ -92,6 +92,7 @@ export const LABELS = {
 export type Label = keyof typeof LABELS;
 
 export const nav = [
+	{ label: 'Discussion', href: '/threads' },
 	{ label: 'Reports', href: '/reports' },
 	{ label: 'Standards', href: '/standards' },
 	{ label: 'Moderation', href: '/moderation' },
