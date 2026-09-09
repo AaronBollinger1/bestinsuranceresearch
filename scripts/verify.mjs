@@ -113,6 +113,65 @@ test('core routes exist', () => {
 	}
 });
 
+test('no line the coverage index calls planned has already been published', async () => {
+	/*
+	 * /insurance tells the reader, in a callout, that the planned lines "have no
+	 * route, no sitemap entry, and no navigation link until a reviewed page
+	 * exists". That is a claim about this build, made from a hand-maintained
+	 * literal that nothing pruned as pages were written. Twelve of its lines had
+	 * all three - renters, personal auto, flood, cyber, EPL, D&O, inland marine,
+	 * surety bonds among them - so the index of a library with a renters page
+	 * told a reader looking for renters insurance that it was planned.
+	 *
+	 * The list now carries the slug each line would be published under, which is
+	 * what makes this measurable rather than a fuzzy match between "Scheduled
+	 * valuables" and "Scheduled personal property (California)".
+	 */
+	const { ROADMAP, roadmapLines } = await import('../src/lib/roadmap.ts');
+	const published = new Set(coverages.map((c) => c.id));
+	const sitemap = walk(DIST, (f) => /sitemap.*\.xml$/.test(f)).map(read).join('\n');
+
+	const alreadyThere = roadmapLines()
+		.filter((line) => published.has(line.id) || routes.has(`/insurance/${line.id}`))
+		.map((line) => `${line.name} (/insurance/${line.id})`);
+	assert.deepEqual(
+		alreadyThere,
+		[],
+		'the coverage index calls these lines planned, and says they have no route, ' +
+			`but they are published: ${alreadyThere.join(', ')}`,
+	);
+
+	/* And the other direction: a planned line must really be absent, not merely
+	   unlisted in the coverages collection. */
+	for (const line of roadmapLines()) {
+		assert.ok(
+			!sitemap.includes(`/insurance/${line.id}`),
+			`${line.name} is called planned but is in the sitemap`,
+		);
+	}
+
+	/*
+	 * The list and the page cannot drift either. A line dropped from the render
+	 * would leave the id checked above enforcing nothing, which is the vacuous
+	 * check this suite keeps having to unlearn.
+	 */
+	const html = read(path.join(DIST, 'insurance', 'index.html'));
+	assert.ok(roadmapLines().length >= 10, 'the roadmap is too short for this check to mean much');
+	for (const line of roadmapLines()) {
+		assert.ok(html.includes(`<li>${line.name}</li>`), `${line.name} is on the roadmap but not on the page`);
+	}
+	for (const group of ROADMAP) {
+		assert.ok(html.includes(group.family), `the roadmap family "${group.family}" is not on the page`);
+	}
+
+	/* The callout is the claim the rest of this test enforces. If somebody
+	   softens it, this check should stop pretending to hold them to it. */
+	assert.ok(
+		html.includes('They have no route, no sitemap entry, and no navigation link'),
+		'/insurance no longer makes the claim this test exists to hold',
+	);
+});
+
 test('a tool without a published route never appears in navigation or the sitemap', () => {
 	const unbuilt = tools.filter((t) => t.data.status !== 'live');
 	assert.ok(unbuilt.length > 0, 'expected some specified-but-unbuilt tools in the registry');
