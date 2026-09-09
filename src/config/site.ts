@@ -144,6 +144,7 @@ export const footerNav = {
 	],
 	standards: [
 		{ label: 'Methodology', href: '/methodology' },
+		{ label: 'What changed', href: '/changed' },
 		{ label: 'Editorial policy', href: '/editorial-policy' },
 		{ label: 'Source registry', href: '/sources' },
 		{ label: 'Corrections', href: '/corrections' },

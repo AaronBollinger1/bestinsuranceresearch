@@ -3364,3 +3364,152 @@ test('a release is immutable at the HTTP layer too, not only in prose', () => {
 		);
 	}
 });
+
+/* ------------------------------------------------------------------ */
+/* The change feed                                                     */
+/* ------------------------------------------------------------------ */
+
+/*
+ * /changed is assembled from fields on records rather than written, which is
+ * the property worth protecting: there is no prose to fall out of date, but
+ * there is a filter, and a filter is how a change silently stops appearing.
+ * Every source that is not active, every source returned to, and every
+ * published correction must reach the feed. A feed that quietly drops one is
+ * worse than no feed, because it reads as an assertion that nothing moved.
+ */
+const changeFeed = JSON.parse(read(path.join(DIST, 'changed.json')));
+
+test('every recorded change reaches the feed, and nothing else does', () => {
+	const inFeed = new Set(changeFeed.recorded.map((c) => `${c.kind}:${c.url}`));
+
+	for (const source of sources) {
+		const url = `https://bestinsuranceresearch.com/sources/${source.id}`;
+		if (source.data.status !== 'active') {
+			const kind = source.data.status === 'not-adopted' ? 'not-adopted' : source.data.status;
+			assert.ok(
+				inFeed.has(`${kind}:${url}`),
+				`${source.id} is ${source.data.status} but does not appear in the change feed`,
+			);
+		}
+		if (source.data.lastCheckedBasis === 'recheck') {
+			assert.ok(
+				inFeed.has(`rechecked:${url}`),
+				`${source.id} was rechecked but does not appear in the change feed`,
+			);
+		}
+	}
+
+	/* And the feed invents nothing: every entry resolves to a page in the build. */
+	for (const entry of changeFeed.recorded) {
+		const route = entry.url.replace('https://bestinsuranceresearch.com', '').split('#')[0];
+		assert.ok(
+			fs.existsSync(path.join(DIST, route.slice(1), 'index.html')) ||
+				fs.existsSync(path.join(DIST, `${route.slice(1)}.html`)),
+			`the change feed points at ${route}, which is not in the build`,
+		);
+	}
+});
+
+test('every published correction is in the change feed as well as the log', () => {
+	/*
+	 * /corrections and /changed read the same records through different
+	 * functions, and the corrections page has already been wrong once by
+	 * enumerating a subset. Two readers of one truth is fine; two readers that
+	 * disagree is the bug.
+	 */
+	const corrected = [];
+	for (const name of Object.keys(REVIEWABLE)) {
+		for (const entry of collection(name)) {
+			if (entry.data.reviewState === 'corrected' && entry.data.correction) corrected.push(entry);
+		}
+	}
+	const feedCorrections = changeFeed.recorded.filter((c) => c.kind === 'corrected');
+	assert.equal(
+		feedCorrections.length,
+		corrected.length,
+		`${corrected.length} records are corrected but the change feed carries ${feedCorrections.length}`,
+	);
+});
+
+test('the change feed keeps its two date bases apart', () => {
+	/*
+	 * The misreading this endpoint invites is treating our filing date as the
+	 * date an event occurred. Every entry therefore carries dateBasis, and the
+	 * two vocabularies are disjoint by construction.
+	 */
+	for (const entry of changeFeed.recorded) {
+		assert.equal(entry.dateBasis, 'recorded', `recorded change ${entry.url} claims a different date basis`);
+		assert.match(entry.date, /^\d{4}-\d{2}-\d{2}$/, `recorded change ${entry.url} has no ISO date`);
+	}
+	for (const entry of changeFeed.scheduled) {
+		assert.equal(entry.dateBasis, 'instrument', `scheduled change ${entry.label} claims a different date basis`);
+		assert.ok(
+			entry.date > TODAY,
+			`${entry.label} is listed as scheduled but its date ${entry.date} has passed; it belongs in scheduledMovesAlreadyPassed`,
+		);
+	}
+	assert.ok(
+		changeFeed.mayNotBeInferred.some((line) => /dateBasis/.test(line)),
+		'the feed does not warn against reading the recorded date as the event date',
+	);
+});
+
+test('the change feed publishes no amount its figure record does not state', () => {
+	/*
+	 * A scheduled increase is the most tempting place on this site to compute a
+	 * number: the instrument gives a start, a step and a count, so the operative
+	 * amount is one multiplication away. DIRECTION.md forbids publishing a figure
+	 * the source did not state, and several of these are exactly that case - the
+	 * figure records carry the arithmetic in a hedged note precisely because the
+	 * statute does not print it. So the feed may only echo `amount` verbatim.
+	 */
+	const amountById = new Map(figures.map((f) => [f.id, f.data.amount]));
+	for (const entry of changeFeed.scheduled) {
+		const id = entry.url.split('#')[1];
+		assert.ok(amountById.has(id), `scheduled change points at figure ${id}, which does not exist`);
+		assert.equal(
+			entry.amountToday,
+			amountById.get(id),
+			`the feed states ${entry.amountToday} for ${id} but the figure record says ${amountById.get(id)}`,
+		);
+	}
+
+	/* Nothing on the page may present a computed future amount as published. */
+	const html = read(path.join(DIST, 'changed/index.html'));
+	assert.ok(
+		html.includes('We do not compute what the new amount will be'),
+		'/changed does not state that it declines to compute a scheduled amount',
+	);
+});
+
+test('every figure with a scheduled move is either ahead of us or flagged overdue', () => {
+	/* The filter that keeps a past date out of the scheduled list is the same
+	   filter that could hide a stale figure entirely. Each one lands in exactly
+	   one of the two buckets, and the page shows the second. */
+	const scheduled = new Set(changeFeed.scheduled.map((s) => s.url.split('#')[1]));
+	const overdue = new Set(changeFeed.scheduledMovesAlreadyPassed.map((s) => s.url.split('#')[1]));
+	for (const figure of figures) {
+		if (!/^\d{4}-\d{2}-\d{2}$/.test(figure.data.nextMove || '')) continue;
+		const inOne = scheduled.has(figure.id) !== overdue.has(figure.id);
+		assert.ok(
+			inOne,
+			`figure ${figure.id} names a move date and is in ${scheduled.has(figure.id) ? 1 : 0} + ${overdue.has(figure.id) ? 1 : 0} buckets, not exactly one`,
+		);
+	}
+});
+
+test('/changed says it is a record of what we recorded, not of what happened', () => {
+	const html = read(path.join(DIST, 'changed/index.html'));
+	assert.ok(
+		html.includes('This is what we have recorded, not what has happened'),
+		'/changed does not disclaim the completeness a change feed implies',
+	);
+	assert.ok(
+		/A recorded change is dated by when we recorded it/.test(html),
+		'/changed does not explain that its recorded dates are filing dates',
+	);
+	/* The page is a feed of movement, not a verdict on any of it. */
+	for (const banned of ['should have been paid', 'we recommend', 'best carrier']) {
+		assert.ok(!html.toLowerCase().includes(banned), `/changed contains prohibited language: ${banned}`);
+	}
+});

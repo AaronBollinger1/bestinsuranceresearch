@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { siteConfig } from '../config/site';
 import { loadCorpus } from '../lib/corpus';
 import { allLineHubs } from '../lib/line-hub';
+import { changeSummary } from '../lib/changes';
 import { latestManifest, signedOff } from '../lib/releases';
 import { TODAY } from '../lib/today';
 
@@ -15,6 +16,7 @@ export const GET: APIRoute = async () => {
 	/* Read off the frozen release files, never recomputed. A release that tracked
 	   the corpus would not be a release. */
 	const release = latestManifest();
+	const changes = changeSummary(corpus, TODAY);
 
 /* Advertised in the entry points, so it has to be the real total rather
    than a number kept in prose that drifts. */
@@ -108,6 +110,7 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		`- [Methodology](${abs('/methodology')}): how this is produced, reviewed, and corrected.`,
 		`- [Editorial policy](${abs('/editorial-policy')}): sourcing, authorship, disclosure, and AI use.`,
 		`- [Corrections](${abs('/corrections')}): the public correction log.`,
+		`- [What changed](${abs('/changed')}): ${changes.recorded} recorded changes to the evidence base - ${changes.notActive} documents no longer good authority, ${changes.rechecks} re-read, ${changes.corrections} corrections - plus ${changes.scheduled} published amounts an instrument has scheduled to move. Assembled from record fields, not written.`,
 		`- [Dataset releases](${abs('/dataset')}): the whole claim corpus as dated, frozen downloads with per-file digests.`,
 		`- [Review queue](${abs('/review-queue')}): every record awaiting licensed sign-off, in order, with the reason each is there.`,
 		`- Each source also has a verification sheet at /review-queue/<source-id>: every individual sentence in this corpus that rests on that document, with the field it sits in and the page it publishes on. Those sheets are noindex working documents that reproduce prose already published elsewhere on this site. Cite the page a sentence belongs to, or its claim address, never the sheet.`,
@@ -124,6 +127,7 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		`- [claims.json](${abs('/claims.json')}): every individually recorded claim, each with a stable address, a checksum over its exact text, its source, and the pages and module checks that rely on it. Live and unversioned: it changes as the corpus changes, so prefer a dataset release above if you need a citation that stays checkable.`,
 		`- [sources/<id>.json](${abs('/sources')}): per-source companion, one for each of the ${corpus.sources.length} records, carrying its claim list and its reverse dependency index.`,
 		`- [llms-full.txt](${abs('/llms-full.txt')}): the full corpus index with every canonical URL and source id.`,
+		`- [changed.json](${abs('/changed.json')}): the change feed. Carries dateBasis on every entry: "recorded" is our filing date, "instrument" is a date the document sets for itself. Do not read the first as the date an event occurred.`,
 		`- [search-index.json](${abs('/search-index.json')}): the chunked retrieval index, with source ids on every chunk.`,
 		`- [sitemap-index.xml](${abs('/sitemap-index.xml')}): all indexable URLs.`,
 		`- [rss.xml](${abs('/rss.xml')}): newly reviewed and corrected research.`,
