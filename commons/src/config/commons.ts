@@ -7,31 +7,42 @@
  * sentence; the Commons holds what happened to people, attributed and moderated
  * before publication.
  *
- * THE NAME IS NOT CHOSEN YET, AND THAT IS DELIBERATE
+ * THE NAME, AND THE ONE RESERVATION ON IT
  *
- * `COMMONS.md` section 10 fixes the constraints and leaves the choice to the
- * owner: it must not read as the Record, as a carrier or agency (no verb of
- * selling; `.insure` is a TLD carriers buy), or as a regulator - `Bureau`,
- * `Institute`, `Authority` imply standing this estate does not have, and that
- * is the worse error because the pull toward it is strongest.
+ * Birch, at birch.insure. It clears the three constraints in `COMMONS.md`
+ * section 10 - not the Record, no verb of selling, no implied official standing.
  *
- * So the name lives here, once, and nothing else in this project hardcodes it.
- * Naming the property is an edit to two lines and a wordmark, not a search and
- * replace across a build.
+ * The reservation, recorded so it is not rediscovered as a surprise: `.insure`
+ * is a TLD that carriers and agencies buy, and this property's whole value is
+ * being visibly independent of both. The mitigation is not the name, it is the
+ * site: no agency branding anywhere, a footer that states plainly it is not an
+ * insurer, an agency or a regulator, and a suite that fails the build if any of
+ * that appears. A `.com` would carry the point without needing the mitigation,
+ * and is worth taking if the word is obtainable.
+ *
+ * The name still lives here once, so changing it stays an edit to two lines and
+ * a wordmark rather than a search and replace across a build.
  */
-export const PLACEHOLDER_NAME = true;
+export const PLACEHOLDER_NAME = false;
 
 export const commons = {
-	/** Placeholder. Replace together with `origin` when the name is chosen. */
-	name: 'The Commons',
-	/** Placeholder. A brandable word on .com is the recommendation in COMMONS.md. */
-	origin: import.meta.env.PUBLIC_COMMONS_ORIGIN || 'https://commons.example',
+	/**
+	 * Chosen 9 September 2026. Measured against the three constraints in
+	 * `COMMONS.md` section 10 and it clears them: it is not the Record, it
+	 * carries no verb of selling, and it claims no official standing the way
+	 * Bureau, Institute or Authority would. It is a place, which is what a
+	 * community has instead of a job title, and the paper birch is the tree the
+	 * estate's visual system already comes from.
+	 */
+	name: 'Birch',
+	origin: import.meta.env.PUBLIC_COMMONS_ORIGIN || 'https://birch.insure',
 
-	tagline: 'What actually happened, said by the person it happened to, checked before it publishes.',
+	tagline: 'What actually happened, from the people it happened to and the people who handle it.',
 	description:
-		'Moderated accounts of real insurance situations, and notes from licence-verified practitioners. ' +
-		'Every account says what kind of evidence it is and where it came from. Nobody here publishes a ' +
-		'view on whether a claim should have been paid.',
+		'An independent forum for insurance experience. Moderated accounts of real situations, and ' +
+		'notes from licence-verified brokers, adjusters and lawyers. Every account says what kind of ' +
+		'evidence it is and where it came from. Nobody here publishes a view on whether a claim should ' +
+		'have been paid.',
 
 	/**
 	 * The Record. The Commons links to it and cites it; it does not link back,

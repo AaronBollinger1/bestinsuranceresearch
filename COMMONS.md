@@ -263,10 +263,23 @@ TLD is the problem with it rather than the word, and *birch* itself is a good
 fit for the estate, since the paper birch is the tree the visual system is
 already made of.
 
-**Recommended: a brandable word on `.com`, with the `.insure` variant held only
-as a defensive redirect if at all.** The decision is the owner's; what this
-document fixes is the constraint list above, so the choice cannot accidentally
-land on a name that positions the Commons as a seller or as a regulator.
+### Decided 9 September 2026: Birch, at birch.insure
+
+It clears all three constraints. It is not the Record. It carries no verb of
+selling. And it claims no official standing - which was the constraint most at
+risk, because the pull toward sounding like a regulator is strongest when the
+goal is to sound impartial. It is a place, which is what a community has
+instead of a job title, and the paper birch is the tree the estate's visual
+system already comes from.
+
+**The reservation stands and is worth keeping written down.** `.insure` is a
+TLD that carriers and agencies buy, and this property's entire value is being
+visibly independent of both. That is a real cost and the name does not pay it;
+the site does. No agency branding anywhere, a footer that states plainly it is
+not an insurer, an agency or a regulator, and a suite that fails the build if
+any of that appears. A `.com` would carry the point without needing the
+mitigation and is worth taking if the word is obtainable - as an upgrade rather
+than a correction, since changing the origin is two lines and a wordmark.
 
 ## 11. How it looks, so a reader knows where they are
 
@@ -300,13 +313,19 @@ with its own `package.json`, its own build and its own suite, deployed as its
 own Vercel project to its own origin. One repository, two properties, and no
 shared build output.
 
-**The name is still yours to choose, and nothing is blocked on it.**
-`commons/src/config/commons.ts` holds the name and the origin, once. Every page,
-the wordmark, the canonical URLs and `llms.txt` read from it, and a test fails
-if any other file hardcodes the placeholder. Naming the property is an edit to
-two lines plus a wordmark. Until then the build stamps `noindex` on every page
-and `robots.txt` disallows everything, because the canonical URLs point at a
-host that does not resolve and indexing that is worse than not existing.
+**Named on 9 September 2026: Birch, at birch.insure.** The name and origin live
+in `commons/src/config/commons.ts`, once, and every page, the wordmark, the
+canonical URLs and `llms.txt` read from it. Naming it lifted the `noindex` and
+the `robots.txt` disallow automatically, because both were keyed off the
+placeholder origin rather than set by hand, and it brought in the sitemap -
+which had been held back precisely because it would otherwise have advertised
+URLs on a host that does not resolve.
+
+One thing broke on naming and is worth the warning: **the origin was in two
+files.** `astro.config.mjs` feeds the sitemap and `config/commons.ts` feeds
+everything else, and only the second was updated - so the launch build served a
+robots.txt pointing at a sitemap of URLs on the old placeholder host. Nothing
+failed because nothing compared them. A test now does.
 
 Built and passing 12 assertions:
 

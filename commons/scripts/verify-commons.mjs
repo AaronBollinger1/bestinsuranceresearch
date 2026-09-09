@@ -271,23 +271,74 @@ test('the prohibition is stated on the pages a contributor actually reads', () =
 	}
 });
 
-test('an unnamed property is not advertised to crawlers', () => {
+test('indexing matches whether the property is actually named', () => {
 	/*
-	 * The origin is a placeholder until COMMONS.md section 10 is decided, so
-	 * every canonical URL in this build points at a host that does not resolve.
-	 * Indexing that is worse than not existing. Opening it is part of naming the
-	 * property, not a separate decision to remember.
+	 * Both directions, because the interesting one changed. While the origin was
+	 * a placeholder every canonical URL pointed at a host that did not resolve,
+	 * and indexing that is worse than not existing. Now that it is named, the
+	 * risk inverts: a property that stays noindex after launch is one nobody
+	 * finds, and the flag is easy to leave set because nothing complains.
 	 */
 	const config = read(path.join(ROOT, 'src/config/commons.ts'));
-	const placeholder = /commons\.example/.test(config);
-	if (!placeholder) return;
+	const unnamed = /commons\.example/.test(config);
+	const robots = read(path.join(DIST, 'robots.txt'));
 
-	assert.match(read(path.join(DIST, 'robots.txt')), /Disallow: \//, 'robots.txt does not close an unlaunched origin');
+	if (unnamed) {
+		assert.match(robots, /Disallow: \//, 'robots.txt does not close an unlaunched origin');
+		for (const file of htmlFiles) {
+			assert.match(read(file), /noindex/, `${path.relative(DIST, file)} is indexable while the origin is a placeholder`);
+		}
+		return;
+	}
+
+	assert.doesNotMatch(robots, /Disallow: \/\s*$/m, 'the property is named but robots.txt still closes it');
+	assert.match(robots, /Sitemap:/, 'a named property advertises no sitemap');
 	for (const file of htmlFiles) {
-		assert.match(
+		assert.doesNotMatch(
 			read(file),
 			/noindex/,
-			`${path.relative(DIST, file)} is indexable while the origin is still a placeholder`,
+			`${path.relative(DIST, file)} is still noindex although the property is named`,
+		);
+	}
+});
+
+test('nothing behind a session reaches the sitemap', () => {
+	/* A crawler finding a moderation queue listed is a bad look even when it
+	   correctly 404s, and an intake form in an index is a page nobody signed in
+	   can use. */
+	const file = path.join(DIST, 'sitemap-0.xml');
+	if (!fs.existsSync(file)) return;
+	const xml = read(file);
+	for (const route of ['/sign-in', '/account', '/moderate', '/contribute/new']) {
+		assert.ok(!xml.includes(`${route}<`), `${route} is in the sitemap`);
+	}
+});
+
+test('the build config and the site config agree on the origin', () => {
+	/*
+	 * Two files carry the origin - src/config/commons.ts, which every page and
+	 * robots.txt read, and astro.config.mjs, which the sitemap reads. They
+	 * disagreed the moment the property was named: robots.txt advertised a
+	 * sitemap at birch.insure listing URLs at commons.example. Nothing failed,
+	 * because nothing compared them. Now something does.
+	 */
+	const fromConfig = read(path.join(ROOT, 'src/config/commons.ts')).match(/origin:[^|]*\|\|\s*'([^']+)'/)?.[1];
+	const fromBuild = read(path.join(ROOT, 'astro.config.mjs')).match(/site:[^|]*\|\|\s*'([^']+)'/)?.[1];
+
+	assert.ok(fromConfig, 'no default origin found in src/config/commons.ts');
+	assert.ok(fromBuild, 'no default site found in astro.config.mjs');
+	assert.equal(
+		fromBuild,
+		fromConfig,
+		'astro.config.mjs and src/config/commons.ts name different origins, so the sitemap and every canonical URL disagree',
+	);
+
+	/* And the sitemap actually carries it. */
+	const sitemap = path.join(DIST, 'sitemap-0.xml');
+	if (fs.existsSync(sitemap)) {
+		assert.ok(
+			read(sitemap).includes(fromConfig),
+			`the sitemap lists URLs that are not on ${fromConfig}`,
 		);
 	}
 });
@@ -295,6 +346,8 @@ test('an unnamed property is not advertised to crawlers', () => {
 test('the name and origin are declared in exactly one place', () => {
 	/* Naming the property should be an edit to two lines and a wordmark, not a
 	   search and replace across a build. */
+	/* astro.config.mjs is outside src/ and is covered by the agreement test
+	   above, which is the right check for it: it legitimately needs the value. */
 	const sources = walk(path.join(ROOT, 'src'), (f) => /\.(astro|ts|css)$/.test(f));
 	for (const file of sources) {
 		if (file.endsWith('config/commons.ts')) continue;
