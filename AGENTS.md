@@ -18,6 +18,13 @@ rather than held in a conversation. Read these before changing anything:
 - **`.claude/skills/continue-bir/SKILL.md`** - the continuation prompt. Invoke
   the `continue-bir` skill to run a pass.
 
+**What this is building, in one line:** Birch - one insurance property carrying
+a cited evidence layer (Birch Research) and a validated discussion layer, so a
+reader gets the sourced answer and what practitioners and policyholders actually
+saw, without either contaminating the other. `HANDOFF.md` section 1 has the
+state, and the "What to pick up next" list under it is ordered and says what is
+blocked.
+
 `git log` is the audit trail. Commit messages are long on purpose: each says
 what was measured, what the measurement returned, and what was proved before the
 fix was believed.
@@ -30,7 +37,7 @@ PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://bestinsuranceresearch.com 
 PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://bestinsuranceresearch.com \
   node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs
 npm run audit:onpage                   # production build only, by design
-cd commons && npm run verify           # the second property, its own suite
+cd commons && npm run validate         # Birch, the community: its own suite
 ```
 
 ## Development

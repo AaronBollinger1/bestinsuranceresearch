@@ -29,8 +29,9 @@ secret. There was no CI for the first 99 commits, and the one thing a
 
 | | |
 | --- | --- |
-| Branch | `claude/bold-hopper-mqcyen`, 64 commits (14 ahead of `launch/initial-publication`), **never push to `main`** |
-| Suite | `npm run validate` = **150 tests**, 0 failing, in both indexing postures. **CI is green** as of 9 September; it had been red on every run before that | Also `npm run audit:estate`, `npm run audit:onpage` (0 findings across 540 indexable pages) |
+| The product | **Birch.** One property: a cited evidence layer (**Birch Research**) and a validated discussion layer (**Birch**). Read `BIRCH.md` before anything else - it is the current direction and it says what the rebrand is not allowed to relax |
+| Branch | `claude/bold-hopper-mqcyen`, 69 commits (19 ahead of `launch/initial-publication`), **never push to `main`** |
+| Suite | `npm run validate` = **151 tests**, 0 failing, in both indexing postures. **CI is green** as of 9 September; it had been red on every run before that | Also `npm run audit:estate`, `npm run audit:onpage` (0 findings across 540 indexable pages) |
 | Built pages | 842 (299 are noindex verification sheets), plus 88 JSON companions |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
@@ -43,8 +44,43 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
 | Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file |
 | Change feed | `/changed`: 20 recorded changes, 7 scheduled amount moves, built from record fields |
-| The Commons | `commons/`, its own project and origin. 55 assertions, 54 passing, 1 skipped for want of a database. Sign-in, case-report intake, the moderation queue and withdrawal all run end to end on an in-memory store; Postgres and Resend are wired but unexercised. Named **Birch**, at `birch.insure`, so indexed with a sitemap |
+| Birch, the community | `commons/`, its own project and origin at `birch.insure`. **69 assertions, 68 passing, 1 skipped** for want of a database. Sign-in, case-report intake, the moderation queue, withdrawal **and threads** all run end to end on an in-memory store; Postgres and Resend are wired but unexercised |
+| Threads | Built 9 September. 115 subjects a thread can attach to, generated from the evidence layer. A verdict phrase **blocks** a post where it only flags a submission, because a post publishes on write. A post cannot be edited - only withdrawn by its author or hidden by a moderator, both leaving a tombstone |
 | Published records with no review state | **0.** Was 3; the tools schema now carries review fields, required on live worksheets and forbidden on unbuilt ones |
+
+### What to pick up next, in order
+
+Written for a session arriving cold, including one that is not this model.
+`BIRCH.md` section 7 is the same sequence with the reasoning; this is the short
+form with what is actually blocked.
+
+1. **Licence verification and the role badge** - *unblocked, and the largest
+   product gap.* `Account.kind` and `Account.license` already exist in the store
+   and `byline()` in `commons/src/lib/threads.ts` already renders the badge with
+   the register it was checked against. What does not exist is the flow that
+   sets it. Until it does, "validated user contributions" means only that the
+   email is real, which is not what the word promises. The check itself needs a
+   regulator lookup, so the *verification* is network-blocked; the flow, the
+   moderator-confirms step and the record are not.
+2. **Thread promotion into a case report** - *unblocked.* `Post` already carries
+   `promotedToSubmission` and nothing writes it. This is the path that makes the
+   forum feed the corpus rather than sit beside it: a moderator recognises an
+   account worth keeping and asks its author to put it through the structured
+   form. `BIRCH.md` section 5 argues why this is the point of having a forum.
+3. **Cross-linking the two layers** - *unblocked once threads have content.* An
+   evidence page names how many accounts exist for its subject and links to
+   them, without citing them. Note the constraint that already caught this
+   project once: do not advertise a host that does not resolve. `birch.insure`
+   is not live.
+4. **Carrier pages** - *blocked on network.* `BIRCH.md` section 6 has the
+   three-band design. Every regulator host is blocked at `CONNECT` in this
+   environment, and a pass that cannot reach a regulator must not write a
+   carrier record from a search snippet.
+5. **Continue the audit lens** - *unblocked, needs nothing but the build.*
+   Section 1b. `/about` is the largest unmeasured surface.
+
+Do not start a sixth thing. Items 1 and 2 in the next section are blocked on
+people and cannot be substituted for.
 
 ### The two things blocking everything else
 
@@ -149,11 +185,18 @@ PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://bestinsuranceresearch.com 
 npm run audit:onpage      # refuses to run against a preview build, by design
 ```
 
-The Commons is a separate project with a separate suite:
+Birch, the community, is a separate project with a separate suite:
 
 ```
-cd commons && npm ci && npm run verify
+cd commons && npm ci
+npm run validate            # check + build + 69 assertions
+node scripts/sync-subjects.mjs   # after adding a company, coverage or question
 ```
+
+`sync-subjects.mjs` regenerates the list of things a thread can be about from
+the evidence layer's collections. The suite fails when the generated file is
+stale, so a new carrier record needs one command before the Commons build is
+correct again.
 
 `.github/workflows/verify.yml` runs all three jobs on every push and is the
 only thing that proves a pass was actually run. It needs no secret.
@@ -199,6 +242,7 @@ Findings so far, newest first, each with the commit that argues it:
 
 | Assertion | Where | What was actually true |
 | --- | --- | --- |
+| Planned routes are advertised to crawlers | `commons` sitemap | `/threads/new` was in the sitemap, a page nobody signed out can use. Caught by widening a check that already existed |
 | "every rule is validated at build time against this boundary" | `/position` | Two of six promises had no phrase behind them (class code, risk score); 15 cross-module rules went through a validator that checked no boundary at all |
 | "They have no route, no sitemap entry, and no navigation link" | `/insurance` | Twelve of the lines listed as planned were published, routed and sitemapped |
 | "both are named on every page" (author and reviewer) | `/methodology` | 27 guides named only a reviewer; 3 state pages named neither |
