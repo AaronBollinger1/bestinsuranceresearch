@@ -97,7 +97,18 @@ Prefer, in this order:
    success measure four and the corpus is still overwhelmingly first-reads.
 2. **A finding from a previous pass that was recorded rather than fixed.**
    `HANDOFF.md` names these. They are pre-scoped and the reasoning is written.
-3. **The next unblocked item on the reconciled order.**
+3. **An audit of a global assertion the site makes.** This is the most
+   productive work available when the network is closed, and it needs nothing
+   but the build. The site constantly says "every page", "always", "never", "no
+   route", "enforced in code" - each of those is a testable proposition, and six
+   of them had quietly stopped being true. `HANDOFF.md` section 1b lists what
+   has been measured, what it returned, and which surfaces are still
+   unexamined. The method: measure first, fix second, and make the third thing
+   a test that holds the assertion in **both** directions, because a one-way
+   check goes vacuous the moment the page changes. Run every new check against
+   a page you know is broken before believing it - two measurements were wrong
+   in the direction of good news before this rule was adopted.
+4. **The next unblocked item on the reconciled order.**
 
 Anything that needs a decision - the Commons name, whether `.org` is
 defensible, whether to promote - is the owner's. Ask, do not choose.

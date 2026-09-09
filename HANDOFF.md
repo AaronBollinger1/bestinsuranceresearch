@@ -1,7 +1,7 @@
 # Handoff
 
-Written 8 September 2026, last revised at the verification-sheet pass, on
-`launch/initial-publication`.
+Written 8 September 2026, last revised 9 September at the corpus-assertion
+audit, on `claude/bold-hopper-mqcyen`.
 
 Read `DIRECTION.md` (what this is, and the rules that do not bend) and
 `AMBITION.md` (what it is becoming, and the architecture) before changing
@@ -27,21 +27,21 @@ secret. There was no CI for the first 99 commits, and the one thing a
 
 | | |
 | --- | --- |
-| Branch | `launch/initial-publication`, 88 commits, **never push to `main`** |
-| Suite | `npm run validate` = 147 tests, 0 failing. **CI is green** as of 9 September; it had been red on every run before that | Also `npm run audit:estate`, `npm run audit:onpage` (0 findings) |
-| Built pages | 842 (299 are noindex verification sheets), plus 88 new JSON companions |
+| Branch | `claude/bold-hopper-mqcyen`, 64 commits (14 ahead of `launch/initial-publication`), **never push to `main`** |
+| Suite | `npm run validate` = **150 tests**, 0 failing, in both indexing postures. **CI is green** as of 9 September; it had been red on every run before that | Also `npm run audit:estate`, `npm run audit:onpage` (0 findings across 540 indexable pages) |
+| Built pages | 842 (299 are noindex verification sheets), plus 88 JSON companions |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
 | Coverage pages | 27 of 51 canonical lines |
 | Figures | 19 (`/figures`, the amounts and what moves them) |
-| Modules | 10 live, 15 cross-module rules |
+| Modules | 10 live, 272 module rules, 15 cross-module rules |
 | Records signed off | **0.** 172 `under-review`, 4 `corrected`. 176 records now carry a review state |
 | Sources ever re-checked | **11 of 299.** The 5 new ones are the eligible figure sources, re-read 8 September |
 | Sources no question reaches | 48 |
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
 | Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file |
 | Change feed | `/changed`: 20 recorded changes, 7 scheduled amount moves, built from record fields |
-| The Commons | `commons/`, its own project and origin. 53 assertions. Sign-in, case-report intake, the moderation queue and withdrawal all run end to end on an in-memory store; Postgres and Resend are wired but unexercised. Named **Birch**, at `birch.insure`, so indexed with a sitemap |
+| The Commons | `commons/`, its own project and origin. 55 assertions, 54 passing, 1 skipped for want of a database. Sign-in, case-report intake, the moderation queue and withdrawal all run end to end on an in-memory store; Postgres and Resend are wired but unexercised. Named **Birch**, at `birch.insure`, so indexed with a sitemap |
 | Published records with no review state | **0.** Was 3; the tools schema now carries review fields, required on live worksheets and forbidden on unbuilt ones |
 
 ### The two things blocking everything else
@@ -72,7 +72,7 @@ failed on 8 September. Both corrections matter:
 The Vercel project is **`bestinsuranceresearch`**, team
 `aaronbollinger1s-projects`, serving `https://bestinsuranceresearch.com`.
 
-Find the newest preview, which is the tip of `launch/initial-publication`:
+Find the newest preview, which is the tip of `claude/bold-hopper-mqcyen`:
 
 ```
 npx --no-install vercel ls bestinsuranceresearch --scope aaronbollinger1s-projects
@@ -115,6 +115,111 @@ reading has to be done by the licensed reviewer. Put the ordered list in front
 of Brian starting at the top of `/review-queue#by-source`, and the first
 outcome to look for is a `lastCheckedBasis` flip from `access` to `recheck`,
 because 293 of 299 sources have never been returned to.
+
+---
+
+## 1a. Picking this up on another machine
+
+Everything in this repository is the record. There is no state in a chat log
+that matters: the rules are in `DIRECTION.md`, the order of work is in
+`AMBITION.md`, the continuation prompt is in
+`.claude/skills/continue-bir/SKILL.md`, and every finding is argued in its own
+commit message rather than summarised here. `git log` is the audit trail -
+the messages are long on purpose, and they say what was measured, what the
+measurement returned, and what was proved before the fix was believed.
+
+```
+git clone <repo> && cd bestinsuranceresearch
+git checkout claude/bold-hopper-mqcyen
+npm ci
+npm run validate          # check + build + 150 tests, PREVIEW posture
+```
+
+**Run the suite in both postures or you have only run half of it.** `verify.mjs`
+reads `PUBLIC_SITE_ENV` and asserts whichever indexing posture it finds, so the
+same 150 tests mean different things in each:
+
+```
+# production posture: no blanket noindex, robots.txt advertises the sitemap
+PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://bestinsuranceresearch.com npx astro build
+PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://bestinsuranceresearch.com \
+  node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs
+npm run audit:onpage      # refuses to run against a preview build, by design
+```
+
+The Commons is a separate project with a separate suite:
+
+```
+cd commons && npm ci && npm run verify
+```
+
+`.github/workflows/verify.yml` runs all three jobs on every push and is the
+only thing that proves a pass was actually run. It needs no secret.
+
+### Traps that have each cost a pass
+
+- **The commons job needs root dependencies installed too.** Astro parses every
+  `tsconfig.json` on the way up from the project it builds, so building
+  `commons/` reads the repository-root tsconfig, whose bare
+  `astro/tsconfigs/strict` resolves against the root `node_modules`. The
+  workflow comment says this; do not "simplify" it away.
+- **Node's test runner starts a test body before module evaluation finishes.**
+  A function reading a module-level `const` declared below the first test that
+  calls it is a race - won locally, lost on CI. Declare it above, or inside.
+- **The adapter splits `commons/dist` into `client/` and `server/`.** A scan
+  that only walks the static half silently covers less than it claims; the
+  operator's name was once found in a *comment* that survived into the server
+  bundle.
+- **A test that cannot fail is worth less than no test.** Two measurements this
+  week were wrong in the direction of good news: checking for an `/authors/`
+  link that is in the global footer, and matching `/Author/` against
+  "California Earthquake **Author**ity". Run every new check against a page you
+  know is broken before believing it.
+- **Root `astro check` must exclude `commons/`** or it reports 64 false errors.
+
+---
+
+## 1b. The audit lens, and what it has found
+
+One method has produced every finding since the excerpt pass, and it is worth
+stating because it is repeatable by somebody who has never seen this codebase:
+
+> **Find a global assertion the site makes, and measure it against the build.**
+
+The site is unusually full of them - it is a property whose argument is its own
+discipline, so it says "every page", "always", "never", "no route", "enforced in
+code" constantly. Each of those is a testable proposition, and several had
+quietly stopped being true. Measure first, fix second, and make the third thing
+a test that holds the assertion in *both* directions, because a one-way check
+goes vacuous the moment the page changes.
+
+Findings so far, newest first, each with the commit that argues it:
+
+| Assertion | Where | What was actually true |
+| --- | --- | --- |
+| "every rule is validated at build time against this boundary" | `/position` | Two of six promises had no phrase behind them (class code, risk score); 15 cross-module rules went through a validator that checked no boundary at all |
+| "They have no route, no sitemap entry, and no navigation link" | `/insurance` | Twelve of the lines listed as planned were published, routed and sitemapped |
+| "both are named on every page" (author and reviewer) | `/methodology` | 27 guides named only a reviewer; 3 state pages named neither |
+| `llms.txt` promises a JSON companion for every page | site-wide | 88 pages had none - the second recurrence |
+| "you may withdraw a contribution" | 4 Commons pages | No mechanism existed |
+| Card and description text is a faithful shortening | site-wide | 21 call sites cut at a character, which can strip a hedge and invert a claim |
+
+### Surfaces of this kind not yet measured
+
+`/about` is the largest unexamined one. Its testable claims are: "It collects
+nothing"; "Nothing on this site reads from [BestAMS], writes to it, or is
+trained on it"; "The research journey never requires a handoff"; the podcast
+paragraph ("does not mirror the feed... does not import transcripts as research
+pages", and that a cited episode links to the canonical Bollinsure episode
+page). A first pass found every `<form>` on all 842 pages is `method="get"`
+pointing at `/ask`, which supports "collects nothing" but was not written up as
+a test.
+
+`AUTHORITY-AND-DISTRIBUTION-PLAN.md`, `LAUNCH-GATE.md` and `ESTATE-PLAN.md`
+carry stale counts (8 modules where there are 10, 231 rules where there are
+272, 251 sources where there are 299). **Do not spend a pass syncing numbers
+across five files: that is how they came to disagree in the first place.**
+Published surfaces are worth more than planning files.
 
 ---
 
