@@ -9,6 +9,7 @@ import { loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
 
+import { excerpt, shortList } from '../../lib/excerpt';
 const corpus = await loadCorpus();
 
 const questions = [...corpus.questions].sort((a, b) => a.data.question.localeCompare(b.data.question));
@@ -137,12 +138,12 @@ const FAMILY_LABEL: Record<string, string> = {
 						>
 							<div>
 								<h3 class="row-title">{question.data.question}</h3>
-								<p>{stripMarkers(question.data.shortAnswer).slice(0, 200)}</p>
+								<p>{excerpt(stripMarkers(question.data.shortAnswer), 200)}</p>
 								<div class="row-meta">
 									<StatusChip kind={question.data.confidence} />
 									{question.data.reviewState !== 'reviewed' && <StatusChip kind={question.data.reviewState} />}
 									<span class="meta">{FAMILY_LABEL[question.data.family] ?? question.data.family}</span>
-									<span class="meta">{question.data.lines.join(', ')}</span>
+									<span class="meta">{shortList(question.data.lines)}</span>
 									{question.data.states.length > 0 && <span class="meta">{question.data.states.join(', ')}</span>}
 									<span class="meta">{question.data.sourceIds.length} sources</span>
 									<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>

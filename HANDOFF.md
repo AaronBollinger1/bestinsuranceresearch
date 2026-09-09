@@ -28,7 +28,7 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | | |
 | --- | --- |
 | Branch | `launch/initial-publication`, 88 commits, **never push to `main`** |
-| Suite | `npm run validate` = 141 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
+| Suite | `npm run validate` = 146 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
 | Built pages | 842 (299 are noindex verification sheets), plus 88 new JSON companions |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
@@ -252,6 +252,15 @@ a test fails if any other file hardcodes the placeholder. Naming the property
 is two lines plus a wordmark, and it also lifts the `noindex` and the
 `Disallow: /`, which are keyed off the placeholder origin rather than set by
 hand.
+
+**Never shorten prose with `.slice()`.** Use `excerpt()`, `clip()` or
+`metaDescription()` from `src/lib/excerpt.ts`; the suite fails the build
+otherwise. Twenty-one call sites cut at a character count, so the homepage
+shipped "in at least 10-point boldface ty" and "NASBP describes a su" above the
+fold and every meta description could stop mid-clause. It is an editorial fault
+rather than a cosmetic one - `DIRECTION.md` holds that a hedge is the finding,
+and an arbitrary cut strips hedges silently and at scale. `BRAND-SYSTEM.md`
+section 10a has the rule.
 
 **`llms.txt` makes claims about the whole site, and they go stale silently.**
 It told every AI system that "every substantive page has a machine-readable

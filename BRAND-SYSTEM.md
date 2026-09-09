@@ -300,6 +300,54 @@ And the two words that do not survive contact with the rules, per
 `AMBITION.md`: **advice** becomes the document quoted and cited, and
 **unbiased** means publishing the regulator's record and declining to rank.
 
+## 10a. Shortening a passage
+
+Added 9 September 2026, after the homepage was found shipping six severed words
+above the fold.
+
+**Prose is never cut at a character count.** `src/lib/excerpt.ts` is the only
+sanctioned way to shorten a passage, and `scripts/verify.mjs` fails the build on
+any `.slice(0, n)` where n is 40 or more and the thing being sliced is not an
+array.
+
+Three functions, and the distinction between them matters:
+
+- **`excerpt(text, budget)`** for something written in sentences. It takes whole
+  sentences up to the budget, tolerating a quarter over rather than amputating
+  one, and falls back to whole words with an ellipsis only where a single
+  sentence is longer than that.
+- **`clip(text, budget)`** for a name or a title, which is *not* prose. Word
+  boundary only. Running the sentence rule over "Cal. Code Regs. tit. 19,
+  section 901" produced the description "Source record: Cal. Code Regs. tit." -
+  correct by that rule and useless.
+- **`metaDescription(text)`** for `<meta name="description">`, at 155
+  characters, because that is roughly what a search engine shows and a
+  description that stops mid-clause reads as a broken page before anybody has
+  opened it.
+
+### Why this is a brand rule and not a formatting preference
+
+Two reasons, and both go to section 1: the brand is selling checkability.
+
+**A cut at an arbitrary character can invert a claim.** `DIRECTION.md` holds
+that a hedge is the finding - often, may, commonly, depends on the policy form.
+"Generally covered, unless the form excludes earth movement" truncated at the
+comma is not a shorter version of that sentence. A summarising rule that can
+reverse a claim is an editorial fault wearing a typographic costume.
+
+**Prose severed mid-word is the signature of a page nobody read.** It is the
+most recognisable texture of machine-assembled text, and this property's entire
+argument is that a person checked this. Every element on the page is supposed to
+survive the test in section 1 - does this help a reader check something - and a
+card reading "NASBP describes a su" fails it before the reader gets to the
+citation.
+
+### The same rule for lists
+
+A question tagged with five lines of business rendered all five as a wrapping
+wall of monospace, which reads as output rather than as metadata.
+`shortList(items, keep)` shows three and counts the rest.
+
 ## 11. The California launch position
 
 The MVP is California, and that is not a retreat - it is already what exists:

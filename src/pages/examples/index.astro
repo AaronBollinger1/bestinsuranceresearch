@@ -10,6 +10,7 @@ import { loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
 
+import { excerpt, shortList } from '../../lib/excerpt';
 const corpus = await loadCorpus();
 const examples = [...corpus.examples].sort((a, b) => a.data.title.localeCompare(b.data.title));
 
@@ -84,13 +85,13 @@ const labelRules = [
 							<a class="row" href={`/examples/${example.id}`}>
 								<div>
 									<h2 class="row-title">{example.data.title}</h2>
-									<p>{stripMarkers(example.data.whatHappened).slice(0, 210)}</p>
+									<p>{excerpt(stripMarkers(example.data.whatHappened), 210)}</p>
 									<div class="row-meta">
 										<span class={`status ${isReal ? 'status-established' : 'status-insufficient'}`}>
 											{LABEL_TEXT[example.data.label] ?? example.data.label}
 										</span>
 										<StatusChip kind={example.data.reviewState} />
-										<span class="meta">{example.data.lines.join(', ')}</span>
+										<span class="meta">{shortList(example.data.lines)}</span>
 										<span class="meta">{example.data.sourceIds.length} sources</span>
 										<span class="meta">Reviewed {longDate(example.data.lastReviewed)}</span>
 									</div>

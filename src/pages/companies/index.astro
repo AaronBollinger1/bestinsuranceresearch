@@ -9,6 +9,7 @@ import { loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
 
+import { excerpt } from '../../lib/excerpt';
 const corpus = await loadCorpus();
 const companies = [...corpus.companies].sort((a, b) => a.data.legalName.localeCompare(b.data.legalName));
 
@@ -70,7 +71,7 @@ const jsonLd = graph(
 						<a class="row" href={`/companies/${company.id}`}>
 							<div>
 								<h2 class="row-title">{company.data.legalName}</h2>
-								<p>{stripMarkers(company.data.summary).slice(0, 210)}</p>
+								<p>{excerpt(stripMarkers(company.data.summary), 210)}</p>
 								<div class="row-meta">
 									<StatusChip kind={company.data.reviewState} />
 									<span class="meta">{ORG_TYPE_LABEL[company.data.orgType] ?? company.data.orgType}</span>

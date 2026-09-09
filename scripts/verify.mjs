@@ -13,6 +13,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+/* The excerpt helpers are plain TypeScript with no Astro imports, so the suite
+   exercises the real implementation rather than a copy of its rules. */
+import { excerpt, sentences } from '../src/lib/excerpt.ts';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -3687,4 +3690,153 @@ test('the figures companion quotes amounts and computes none', () => {
 		body.mayNotBeInferred.some((line) => /did not state/.test(line)),
 		'the figures companion does not warn against calculating an amount from a schedule',
 	);
+});
+
+/* ------------------------------------------------------------------ */
+/* Excerpts                                                            */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Prose severed mid-word is the single most recognisable tell of a page
+ * assembled by a program that never read it, and this site shipped six of them
+ * above the fold on the homepage plus one in every meta description. On a
+ * property whose whole argument is that a person checked this, that texture
+ * costs more than it looks like it should.
+ *
+ * It is also an editorial fault rather than a cosmetic one. DIRECTION.md holds
+ * that a hedge is the finding - often, may, commonly, depends on the policy
+ * form - and a cut at an arbitrary character strips hedges silently and at
+ * scale. "Generally covered, unless the form excludes earth movement" cut at
+ * the comma is not a shorter version of that sentence.
+ */
+
+test('no page cuts prose at an arbitrary character', () => {
+	/*
+	 * The rule, not the instance. Twenty-one call sites did this and fixing them
+	 * one by one fixes nothing durable, because the next card added does it
+	 * again - it is the obvious thing to write. `excerpt()` and
+	 * `metaDescription()` are the only sanctioned way to shorten a passage.
+	 */
+	const pages = walk(path.join(ROOT, 'src'), (f) => /\.(astro|ts)$/.test(f));
+	const offenders = [];
+
+	for (const file of pages) {
+		if (file.endsWith('lib/excerpt.ts')) continue;
+		const body = read(file)
+			.replace(/\/\*[\s\S]*?\*\//g, '')
+			.replace(/^\s*\/\/.*$/gm, '');
+
+		for (const match of body.matchAll(/\.slice\(0,\s*(\d+)\)(\s*\.\w+\()?/g)) {
+			const budget = Number(match[1]);
+			/* Short slices are dates (10), checksums (12) and years (4). A slice of
+			   40 or more is being applied to a sentence - unless what follows is an
+			   array method, in which case it is taking the first N of a list, which
+			   is fine and common. Strings have none of these. */
+			const follows = match[2] ?? '';
+			if (/\.(map|filter|forEach|join|reverse|sort|flatMap|some|every|reduce)\($/.test(follows)) continue;
+			if (budget >= 40) offenders.push(`${path.relative(ROOT, file)} slice(0, ${budget})`);
+		}
+	}
+
+	assert.deepEqual(
+		offenders,
+		[],
+		`prose is being cut at a character count, which severs words and can strip a hedge. Use excerpt() or metaDescription(): ${offenders.join(', ')}`,
+	);
+});
+
+test('an excerpt never ends mid-word', () => {
+	const corpus = [
+		...questions.map((q) => q.data.shortAnswer),
+		...collection('coverages').map((c) => c.data.definition),
+		...collection('states').map((s) => s.data.summary),
+		...collection('examples').map((e) => e.data.whatHappened),
+	].filter(Boolean);
+
+	assert.ok(corpus.length > 50, 'not enough real prose to test against');
+
+	for (const budget of [155, 170, 190, 210, 230]) {
+		for (const raw of corpus) {
+			const text = raw.replace(/\[S:[a-z0-9-]+\]/g, '').replace(/\s+/g, ' ').trim();
+			const short = excerpt(text, budget);
+			if (short === text) continue;
+
+			/* Either it ends a sentence, or it ends with an ellipsis after a whole
+			   word. Nothing else is allowed. */
+			const endsCleanly = /[.!?][")\]”]?$/.test(short) || short.endsWith('…');
+			assert.ok(endsCleanly, `excerpt at ${budget} ended badly: "…${short.slice(-60)}"`);
+
+			if (short.endsWith('…')) {
+				const stem = short.slice(0, -1);
+				/*
+				 * A whole word was taken if the next character in the original is not
+				 * itself a word character. Whitespace is the usual case; punctuation
+				 * is the other, because a trailing comma is deliberately stripped -
+				 * "the policy,…" reads as a transcription error rather than an
+				 * abridgement, and the word before it is still whole.
+				 */
+				const next = text[stem.length] ?? ' ';
+				assert.ok(
+					!text.startsWith(stem) || !/[A-Za-z0-9]/.test(next),
+					`excerpt at ${budget} cut inside a word: "…${short.slice(-40)}"`,
+				);
+			}
+		}
+	}
+});
+
+test('an excerpt is a prefix of what it shortens, so it invents nothing', () => {
+	for (const q of questions.slice(0, 40)) {
+		const text = q.data.shortAnswer.replace(/\[S:[a-z0-9-]+\]/g, '').replace(/\s+/g, ' ').trim();
+		const short = excerpt(text, 170).replace(/…$/, '');
+		assert.ok(
+			text.startsWith(short),
+			`the excerpt for ${q.id} is not a prefix of the answer, so it has changed the words`,
+		);
+	}
+});
+
+test('a legal citation is not mistaken for the end of a sentence', () => {
+	const cases = [
+		['For flood, 42 U.S.C. 4012a requires it.', 1],
+		['Amended by Stats. 2022, Ch. 17, Sec. 3 (AB 35).', 1],
+		['See 26 C.F.R. 54.4980H-5(e)(2) for the denominator.', 1],
+		['Civil Code section 1798.82 is the section. It was amended.', 2],
+		['It took effect January 1, 2023. That replaced the flat limit.', 2],
+	];
+	for (const [text, expected] of cases) {
+		assert.equal(
+			sentences(text).length,
+			expected,
+			`"${text}" split into ${sentences(text).length} sentences, expected ${expected}`,
+		);
+	}
+});
+
+test('every meta description is whole and within what a search engine shows', () => {
+	/*
+	 * The description is the first thing anybody sees of this site, often before
+	 * they see the site at all. One that stops mid-clause reads as a broken page
+	 * from the search results.
+	 */
+	for (const file of htmlFiles) {
+		const html = read(file);
+		const match = html.match(/<meta name="description" content="([^"]*)"/);
+		if (!match) continue;
+		const description = match[1]
+			.replace(/&quot;/g, '"')
+			.replace(/&#39;/g, "'")
+			.replace(/&amp;/g, '&');
+		if (!description) continue;
+
+		const where = routeOf(file);
+		assert.ok(
+			/[.!?][")\]”]?$/.test(description) || description.endsWith('…'),
+			`${where} has a description that stops mid-sentence: "…${description.slice(-70)}"`,
+		);
+		assert.ok(
+			description.length <= 320,
+			`${where} has a ${description.length}-character description, which is well past what any engine shows`,
+		);
+	}
 });

@@ -20,6 +20,7 @@ import { graph, organization, website } from '../lib/schema';
 import { TODAY } from '../lib/today';
 import { allLineHubs } from '../lib/line-hub';
 
+import { excerpt, shortList } from '../lib/excerpt';
 const corpus = await loadCorpus();
 
 /* Source-quality strip: counted from the registry, never asserted. */
@@ -309,10 +310,10 @@ const jsonLd = graph(organization(), website());
 						<a class="row" href={`/questions/${question.id}`}>
 							<div>
 								<h3 class="row-title">{question.data.question}</h3>
-								<p>{stripMarkers(question.data.shortAnswer).slice(0, 190)}</p>
+								<p>{excerpt(stripMarkers(question.data.shortAnswer), 190)}</p>
 								<div class="row-meta">
 									<StatusChip kind={question.data.confidence} />
-									<span class="meta">{question.data.lines.join(', ')}</span>
+									<span class="meta">{shortList(question.data.lines)}</span>
 									{question.data.states.length > 0 && <span class="meta">{question.data.states.join(', ')}</span>}
 									<span class="meta">{question.data.sourceIds.length} sources</span>
 									<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
@@ -386,7 +387,7 @@ const jsonLd = graph(organization(), website());
 						<a class="row" href={item.path}>
 							<div>
 								<h3 class="row-title">{item.title}</h3>
-								<p>{stripMarkers(item.summary).slice(0, 170)}</p>
+								<p>{excerpt(stripMarkers(item.summary), 170)}</p>
 								<div class="row-meta">
 									<span class="status status-plain">{item.kind}</span>
 									<span class="meta">Reviewed {longDate(item.date)}</span>

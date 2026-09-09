@@ -16,6 +16,7 @@ import { longDate } from '../../lib/cite';
 import { breadcrumbs, graph, organization, webApplication, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
+import { metaDescription } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
 	const corpus = await loadCorpus();
 	assertModulesValid(corpus);
@@ -85,7 +86,7 @@ const jsonLd = graph(
 
 <BaseLayout
 	title={d.name}
-	description={d.summary}
+	description={metaDescription(d.summary)}
 	jsonLd={jsonLd}
 	pageType="tool"
 	bodyClass="instrument"

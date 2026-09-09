@@ -15,6 +15,7 @@ import { longDate } from '../../lib/cite';
 import { breadcrumbs, graph, organization, techArticle, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
+import { excerpt, metaDescription } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
 	const corpus = await loadCorpus();
 	return corpus.questions.map((entry) => ({
@@ -43,7 +44,7 @@ const relatedCompanies = d.companies
 	.filter((c): c is NonNullable<typeof c> => Boolean(c));
 const relatedStates = corpus.states.filter((s) => d.states.includes(s.data.code));
 
-const description = stripMarkers(d.shortAnswer).slice(0, 300);
+const description = metaDescription(stripMarkers(d.shortAnswer));
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -261,7 +262,7 @@ const reviewer = corpus.personByName.get(d.reviewer);
 											data-page-type="question">
 											<div>
 												<h3 class="row-title">{question.data.question}</h3>
-												<p>{stripMarkers(question.data.shortAnswer).slice(0, 180)}</p>
+												<p>{excerpt(stripMarkers(question.data.shortAnswer), 180)}</p>
 												<div class="row-meta">
 													<StatusChip kind={question.data.confidence} />
 													<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>

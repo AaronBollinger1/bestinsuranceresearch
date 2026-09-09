@@ -13,6 +13,7 @@ import { longDate } from '../../lib/cite';
 import { breadcrumbs, graph, organization, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
+import { clip, endSentence } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
 	const corpus = await loadCorpus();
 	return corpus.sources.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
@@ -81,7 +82,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 
 <BaseLayout
 	title={d.title}
-	description={`Source record: ${d.title}, published by ${d.publisher}. ${d.claims.length} claims in the library depend on it.`}
+	description={`Source record: ${endSentence(clip(d.title, 140))} Published by ${endSentence(clip(d.publisher, 60))} ${d.claims.length} claims in the library depend on it.`}
 	jsonLd={jsonLd}
 	pageType="source"
 	machinePath={machinePath}

@@ -35,6 +35,7 @@ import { loadCorpus } from '../../lib/corpus';
 import { iconFor } from '../../lib/guide-icons';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
 
+import { excerpt } from '../../lib/excerpt';
 const corpus = await loadCorpus();
 
 const ICONS = {
@@ -115,7 +116,7 @@ const jsonLd = graph(
 											<g.Mark size={22} stroke-width={1.6} />
 										</span>
 										<h3 class="card-title">{g.name}</h3>
-										<p>{g.definition.slice(0, 190)}{g.definition.length > 190 ? '…' : ''}</p>
+										<p>{excerpt(g.definition, 190)}</p>
 										<div class="card-foot">
 											<span class="meta">{g.sections} sections &middot; {g.sources} sources</span>
 											<ArrowRight size={15} aria-hidden="true" />

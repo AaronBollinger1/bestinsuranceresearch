@@ -12,6 +12,7 @@ import { loadCorpus } from '../lib/corpus';
 import { longDate } from '../lib/cite';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../lib/schema';
 
+import { excerpt, shortList } from '../lib/excerpt';
 const corpus = await loadCorpus();
 
 const lines = [...new Set(corpus.questions.flatMap((q) => q.data.lines))].sort();
@@ -332,10 +333,10 @@ const FAMILY_LABEL: Record<string, string> = {
 								<a class="row" href={`/questions/${question.id}`}>
 									<div>
 										<h4 class="row-title">{question.data.question}</h4>
-										<p>{stripMarkers(question.data.shortAnswer).slice(0, 170)}</p>
+										<p>{excerpt(stripMarkers(question.data.shortAnswer), 170)}</p>
 										<div class="row-meta">
 											<StatusChip kind={question.data.confidence} />
-											<span class="meta">{question.data.lines.join(', ')}</span>
+											<span class="meta">{shortList(question.data.lines)}</span>
 											<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
 											<span class="meta">{question.data.sourceIds.length} sources</span>
 										</div>
@@ -363,6 +364,7 @@ const FAMILY_LABEL: Record<string, string> = {
 </BaseLayout>
 
 <script>
+	import { excerpt as shorten } from '../lib/excerpt';
 	import { search, type SearchIndex, type SearchOutcome } from '../lib/retrieval';
 
 	const form = document.getElementById('ask-form') as HTMLFormElement | null;
@@ -652,7 +654,10 @@ const FAMILY_LABEL: Record<string, string> = {
 	function renderHits(outcome: Extract<SearchOutcome, { hits: unknown }>) {
 		hits!.innerHTML = sortHits(outcome)
 			.map((hit) => {
-				const excerpt = hit.bestChunk.text.replace(/\[S:[a-z0-9-]+\]/g, '').slice(0, 230);
+				/* The same sentence-aware shortening the server-rendered cards use,
+				   imported rather than reimplemented: a search result cut mid-word is
+				   the most visible text on the site and was the worst offender. */
+				const excerpt = shorten(hit.bestChunk.text.replace(/\[S:[a-z0-9-]+\]/g, ''), 230);
 				return [
 					`<a class="row" href="${escape(hit.path)}" data-event="research_answer_viewed" data-answer-status="${escape(hit.confidence)}" data-page-type="ask">`,
 					'<div>',

@@ -17,6 +17,7 @@ import { longDate } from '../../lib/cite';
 import { breadcrumbs, definedTerm, graph, organization, techArticle, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
+import { excerpt, metaDescription } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
 	const corpus = await loadCorpus();
 	return corpus.coverages.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
@@ -45,7 +46,7 @@ const relatedStates = corpus.states.filter((s) => d.stateVariations.some((v) => 
    in different vocabularies. */
 const relatedModules = corpus.liveModules.filter((m) => sharesLine(m.data.lines, [d.line]));
 
-const description = stripMarkers(d.definition).slice(0, 300);
+const description = metaDescription(stripMarkers(d.definition));
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -306,7 +307,7 @@ const jsonLd = graph(
 											data-page-type="coverage">
 											<div>
 												<h3 class="row-title">{question.data.question}</h3>
-												<p>{stripMarkers(question.data.shortAnswer).slice(0, 170)}</p>
+												<p>{excerpt(stripMarkers(question.data.shortAnswer), 170)}</p>
 												<div class="row-meta">
 													<StatusChip kind={question.data.confidence} />
 													<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>

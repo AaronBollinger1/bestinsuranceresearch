@@ -10,6 +10,7 @@ import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
 import { breadcrumbs, graph, organization, webApplication, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
+import { metaDescription } from '../../lib/excerpt';
 const corpus = await loadCorpus();
 const tool = corpus.tools.find((t) => t.id === 'policy-comparison');
 if (!tool) throw new Error('Tool registry entry "policy-comparison" is missing.');
@@ -71,7 +72,7 @@ const COLUMNS = ['A', 'B', 'C'];
 
 <BaseLayout
 	title={tool.data.name}
-	description={tool.data.summary}
+	description={metaDescription(tool.data.summary)}
 	jsonLd={jsonLd}
 	pageType="tool"
 	bodyClass="tool-page"

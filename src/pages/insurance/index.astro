@@ -9,6 +9,7 @@ import { loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
 
+import { excerpt } from '../../lib/excerpt';
 const corpus = await loadCorpus();
 const coverages = [...corpus.coverages].sort((a, b) => a.data.name.localeCompare(b.data.name));
 
@@ -98,7 +99,7 @@ const jsonLd = graph(
 								<a class="row" href={`/insurance/${coverage.id}`}>
 									<div>
 										<h3 class="row-title">{coverage.data.name}</h3>
-										<p>{stripMarkers(coverage.data.definition).slice(0, 210)}</p>
+										<p>{excerpt(stripMarkers(coverage.data.definition), 210)}</p>
 										<div class="row-meta">
 											<StatusChip kind={coverage.data.reviewState} />
 											<span class="meta">{coverage.data.sourceIds.length} sources</span>
