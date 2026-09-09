@@ -28,7 +28,7 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | | |
 | --- | --- |
 | Branch | `launch/initial-publication`, 88 commits, **never push to `main`** |
-| Suite | `npm run validate` = 146 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
+| Suite | `npm run validate` = 147 tests, 0 failing. **CI is green** as of 9 September; it had been red on every run before that | Also `npm run audit:estate`, `npm run audit:onpage` (0 findings) |
 | Built pages | 842 (299 are noindex verification sheets), plus 88 new JSON companions |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
@@ -261,6 +261,16 @@ fold and every meta description could stop mid-clause. It is an editorial fault
 rather than a cosmetic one - `DIRECTION.md` holds that a hedge is the finding,
 and an arbitrary cut strips hedges silently and at scale. `BRAND-SYSTEM.md`
 section 10a has the rule.
+
+**Read the CI result. It was red on every run for a day and nobody looked.**
+The workflow exists because "the one thing a 122-assertion suite cannot assert
+is that somebody ran it", and then eleven consecutive failures went unread while
+every local run passed. Two causes, both the same shape - something that
+resolved on a developer machine and not on a clean one: a temporal dead zone in
+`verify.mjs` that is a race Node's test runner wins locally and loses on CI, and
+`astro check` in `commons/` needing the ROOT `node_modules` because Astro reads
+the root tsconfig on the way up. Neither is reproducible without a clean clone.
+`git clone` to /tmp and build there before believing a green local run.
 
 **`llms.txt` makes claims about the whole site, and they go stale silently.**
 It told every AI system that "every substantive page has a machine-readable

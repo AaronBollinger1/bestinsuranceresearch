@@ -94,6 +94,11 @@ const jsonLd = graph(
 				<dl class="answer-dates">
 					<div><dt>Effective</dt><dd><time datetime={d.effectiveDate}>{longDate(d.effectiveDate)}</time></dd></div>
 					<div><dt>Last reviewed</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
+					{/* A written page names who wrote it and who checked it. These three
+					    were the only record pages on the site that named neither, while
+					    /methodology said every page names both. */}
+					<div><dt>Author</dt><dd>{d.author}</dd></div>
+					<div><dt>Reviewer</dt><dd>{d.reviewer}</dd></div>
 					<div><dt>Regulator</dt><dd><a href={d.regulator.url} rel="noopener nofollow" target="_blank">{d.regulator.name}</a></dd></div>
 					{d.regulator.consumerPhone && <div><dt>Consumer line</dt><dd class="num">{d.regulator.consumerPhone}</dd></div>}
 					<div><dt>Sources</dt><dd><a href="#source-ledger">{sources.length} records</a></dd></div>

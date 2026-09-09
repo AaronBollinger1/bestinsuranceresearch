@@ -3877,3 +3877,61 @@ test('every meta description is whole and within what a search engine shows', ()
 
 	assert.ok(checked > 400, `only ${checked} descriptions were checked, so this test has quietly stopped covering the site`);
 });
+
+test('a written page names both its author and its reviewer, and an assembled one says it has neither', () => {
+	/*
+	 * /methodology claims drafting and review are separate functions and both are
+	 * named. That was false in two different ways at once, which is why it needed
+	 * measuring rather than reading: guides named a reviewer and no author,
+	 * although the coverage record they are generated from carries both; and
+	 * /changed, /figures, /dataset and the line indexes named neither.
+	 *
+	 * The two are not the same fault. The guides were a gap with the answer in
+	 * hand. The assembled pages are correct to name nobody - attributing a feed
+	 * built from record fields to a person would be the opposite lie - so the
+	 * sentence was made precise instead, and this holds both halves of it.
+	 */
+	const ASSEMBLED = ['/changed', '/figures', '/dataset'];
+	const visible = (html) =>
+		html
+			.replace(/<script[\s\S]*?<\/script>/g, '')
+			.replace(/<style[\s\S]*?<\/style>/g, '')
+			.replace(/<[^>]+>/g, ' ')
+			.replace(/\s+/g, ' ');
+
+	/* Every written record page names both roles. */
+	for (const section of ['insurance', 'questions', 'guides', 'examples', 'states', 'companies']) {
+		const dir = path.join(DIST, section);
+		if (!fs.existsSync(dir)) continue;
+		for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+			if (!entry.isDirectory()) continue;
+			const file = path.join(dir, entry.name, 'index.html');
+			if (!fs.existsSync(file)) continue;
+			const text = visible(read(file));
+			/* \b on both sides: a loose /Author/ matches "California Earthquake
+			   Authority" and reported a byline that was not there. */
+			assert.match(text, /\bAuthor\b/, `/${section}/${entry.name} names no author`);
+			assert.match(text, /\bReviewer\b/, `/${section}/${entry.name} names no reviewer`);
+		}
+	}
+
+	/* And an assembled page names none, so the claim stays true by being narrow
+	   rather than by being unchecked. */
+	for (const route of ASSEMBLED) {
+		const file = path.join(DIST, route.slice(1), 'index.html');
+		if (!fs.existsSync(file)) continue;
+		const text = visible(read(file));
+		assert.ok(
+			!/\bAuthor\b/.test(text),
+			`${route} names an author, but it is assembled from records rather than written by anybody`,
+		);
+	}
+
+	/* The page making the claim says which kind is which. */
+	const methodology = visible(read(path.join(DIST, 'methodology/index.html')));
+	assert.match(
+		methodology,
+		/assembled rather than written/,
+		'/methodology claims both are named on every page without excepting the pages nobody wrote',
+	);
+});

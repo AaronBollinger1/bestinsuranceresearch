@@ -185,6 +185,11 @@ const jsonLd = graph(
 					<StatusChip kind={d.reviewState === 'reviewed' ? 'reviewed' : 'under-review'} />
 					<span class="meta">Reviewed {longDate(d.lastReviewed)}</span>
 					<span class="meta">{sources.length} sources</span>
+					{/* Both roles, because /methodology says both are named on every page
+					    and this page named only one. A guide is written from a coverage
+					    record that carries an author; omitting it made the claim false
+					    on twenty-seven pages that had the answer in hand. */}
+					<span class="meta">Author: {d.author}</span>
 					<span class="meta">Reviewer: {d.reviewer}</span>
 				</div>
 			</div>
