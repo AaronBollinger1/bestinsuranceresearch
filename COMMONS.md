@@ -293,6 +293,67 @@ From `AMBITION.md`, and the point is epistemics rather than decoration:
 - Treating thread count as the measure. The measure is still the five things in
   `DIRECTION.md`, and none of them is sessions.
 
+## 12a. What is built, as of 9 September 2026
+
+The scaffold exists. `commons/` in this repository is a second Astro project
+with its own `package.json`, its own build and its own suite, deployed as its
+own Vercel project to its own origin. One repository, two properties, and no
+shared build output.
+
+**The name is still yours to choose, and nothing is blocked on it.**
+`commons/src/config/commons.ts` holds the name and the origin, once. Every page,
+the wordmark, the canonical URLs and `llms.txt` read from it, and a test fails
+if any other file hardcodes the placeholder. Naming the property is an edit to
+two lines plus a wordmark. Until then the build stamps `noindex` on every page
+and `robots.txt` disallows everything, because the canonical URLs point at a
+host that does not resolve and indexing that is worse than not existing.
+
+Built and passing 12 assertions:
+
+- **The visual separation from section 11.** Cool grey paper against the
+  Record's cream, a dark masthead where the Record's is light, and no gold
+  token defined at all. A test fails the build if any of the Record's four gold
+  hex values or a `--gold` reference reaches the output.
+- **The absences that justify the separate origin.** No agency name, no licence
+  number, no phone, no address, no handoff. Asserted against the literal
+  strings on every file in the build, because a footer copied from the Record
+  in a hurry is exactly how one would arrive.
+- **`reports`, the collection.** The `examples` schema with the two changes
+  section 4 specifies and no others: `sourceIds` optional, renamed
+  `citesRecord` because the documents live on the other origin, plus a
+  `contributor` block. `cannotGeneralize` keeps its floor of three.
+- **`annotations`, defined and deliberately empty.** Section 13 gates
+  practitioner annotation on the Record's licensed review, and the schema
+  existing is not the mechanism launching. It requires a verified licence by
+  refinement, so an unverified annotation cannot validate.
+- **No mechanism to upload anything.** Not a setting: there is no file input in
+  the output and no field in the schema, and both are asserted. A field that
+  was never built cannot be quietly filled in by a later form, which is the
+  only version of that promise worth making.
+- **The verdict prohibition as a lint.** Six patterns matched against every
+  report, as a backstop under moderation rather than a substitute for it. It is
+  also asserted to appear on the three pages a contributor actually reads.
+- **Machine records.** A JSON companion per report carrying `truthModel`, so a
+  system reading it knows it has an attributed human account rather than a
+  statute. `llms.txt` states the truth model and the one-way relationship.
+- **Withdrawal renders rather than deletes.** A withdrawn report keeps its
+  address and says what happened to it, because a citation that silently 404s
+  is worse for the person who relied on it than one that explains itself.
+
+One report is published, labelled `hypothetical`, saying in its own text that
+it did not happen. It exists so a contributor can see a finished report before
+writing one and so the pages and machine records around it are real rather than
+mocked. The home page counts constructed illustrations separately from real
+accounts and says there are none of the latter, because "1 published report"
+would have been the first misleading sentence on a site whose whole proposition
+is that it is not misleading.
+
+**Not built, and needing provisioning rather than design:** accounts. The
+decision taken is Neon Postgres, Auth.js magic-link email, and Resend. No
+passwords and no uploads at any point. Until a database and a mail sender exist
+there is no sign-in, no intake and no moderation queue, and `/contribute` says
+so plainly rather than showing a form that cannot submit.
+
 ## 13. Sequence, and the gate
 
 **The gate: the Record has to be reviewed first.** 169 records currently carry

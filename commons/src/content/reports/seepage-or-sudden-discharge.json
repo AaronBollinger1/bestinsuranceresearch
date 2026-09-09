@@ -1,0 +1,32 @@
+{
+	"title": "A water loss where everything turned on how long the leak had been running",
+	"label": "hypothetical",
+	"labelNote": "Constructed to demonstrate the format before any real account has been submitted. It did not happen to anyone. It is published so that a contributor can see what a finished report looks like, and so that the pages and machine records around it are real rather than mocked.",
+	"moderation": "published",
+	"contributor": {
+		"displayName": "Editorial",
+		"kind": "staff"
+	},
+	"whatHappened": "A homeowner finds a stain spreading across a downstairs ceiling and calls a plumber, who opens the ceiling and finds a failed joint on a supply line inside the floor cavity. The homeowner reports the loss the same week. The carrier inspects, and the adjuster's report turns on a single question that the homeowner had not thought about at all: whether the joint failed at once or had been weeping slowly for months. The plumber's invoice describes corrosion around the fitting. The carrier's position is that the resulting damage to the ceiling and flooring is one thing and the failed pipe itself is another, and that the two are treated differently by the form.",
+	"informationThatMattered": [
+		"The plumber's invoice wording, which described corrosion rather than a single failure, and which nobody had read as an insurance document before it became one.",
+		"The date the stain was first noticed, which the homeowner had mentioned in passing on the first call and which then appeared in the file as the date of discovery.",
+		"Whether the policy was a named-peril or an open-peril form, which the homeowner did not know and which changed who had to prove what.",
+		"That the cost of accessing the pipe and the cost of repairing the pipe are separate items, and only one of them was in dispute."
+	],
+	"insuranceQuestion": "How a homeowners form distinguishes damage caused by water from the failure of the plumbing that released it, and what a gradual-seepage exclusion is doing in that distinction.",
+	"decidedBy": "No authority decided this. It is illustrative only, and it is published to show the shape of a report rather than to record an outcome.",
+	"cannotGeneralize": [
+		"Homeowners forms differ on this specific point, and a form that excludes seepage over a period of weeks is not the same as one that says months. The reader's own form and its endorsements control, not this account.",
+		"The treatment of the pipe itself versus the water damage it caused varies by form and by endorsement, and some forms cover the cost of tearing out and replacing the part of the building needed to reach it while excluding the part that failed.",
+		"State law differs on the burden of proof between named-peril and open-peril forms, and this account names no state precisely because it would then read as a statement about that state.",
+		"Nothing here says what any carrier would decide on these facts, and no such statement is published anywhere on this site."
+	],
+	"provenance": "Written by the editors as a constructed illustration. No claim file, no policyholder, and no carrier is behind it, and no part of it is drawn from a real matter. Verified before publication only in the sense that it describes a mechanism the Record holds sources on, not in the sense that it happened.",
+	"lines": ["homeowners"],
+	"states": [],
+	"occurredOn": "Not applicable, constructed",
+	"publishedOn": "2026-09-09",
+	"moderatedBy": "Editorial",
+	"citesRecord": []
+}

@@ -72,3 +72,31 @@ jobs:
           PUBLIC_SITE_ENV: production
           PUBLIC_SITE_ORIGIN: https://bestinsuranceresearch.com
         run: npm run audit:onpage
+
+  commons:
+    # The second property, on its own origin and with its own suite. It is
+    # checked here rather than in a separate workflow because the two build
+    # from one repository and a change to the estate's rules should fail both
+    # in one place.
+    #
+    # Its suite mostly asserts ABSENCES - no agency branding, no licence
+    # number, no gold, no upload mechanism - because those absences are the
+    # entire reason COMMONS.md puts the Commons on a separate origin. A footer
+    # copied over from the Record in a hurry is exactly how one would arrive,
+    # and nothing but a check on every build would catch it.
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: commons
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.12'
+          cache: npm
+          cache-dependency-path: commons/package-lock.json
+      - run: npm ci
+
+      - name: Build and verify the Commons
+        run: npm run validate

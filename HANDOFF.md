@@ -40,6 +40,8 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | Sources no question reaches | 48 |
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
 | Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file |
+| Change feed | `/changed`: 20 recorded changes, 7 scheduled amount moves, built from record fields |
+| The Commons | Scaffolded in `commons/`, its own project, own suite (12 assertions), own origin. Unnamed, so `noindex` and `Disallow: /` |
 | Published records with no review state | **0.** Was 3; the tools schema now carries review fields, required on live worksheets and forbidden on unbuilt ones |
 
 ### The two things blocking everything else
@@ -231,6 +233,25 @@ give coverage advice, which is the thing that must not happen.
 ---
 
 ## 4. Working practices that will save you a pass
+
+**This repository now builds two properties.** The Record is the root project;
+the Commons is `commons/`, a second Astro project with its own `package.json`,
+`node_modules`, build and suite. Run its checks from inside that directory -
+`cd commons && npm run validate` - and note that the root `npm run validate`
+does not cover it. CI runs both, in one workflow, as separate jobs.
+
+The Commons suite mostly asserts **absences**: no agency name, no licence
+number, no gold, no file input, no field for anything section 6 of
+`COMMONS.md` promises never to collect. Those absences are the entire reason
+the Commons is a separate origin, so they are checked on every build rather
+than remembered. If you copy a component across from the Record, expect the
+suite to catch the footer.
+
+The Commons name and origin live in `commons/src/config/commons.ts`, once, and
+a test fails if any other file hardcodes the placeholder. Naming the property
+is two lines plus a wordmark, and it also lifts the `noindex` and the
+`Disallow: /`, which are keyed off the placeholder origin rather than set by
+hand.
 
 **Check whether you can reach a source before planning a pass around one.**
 Claude Code on the web runs behind an egress proxy, and on 9 September every

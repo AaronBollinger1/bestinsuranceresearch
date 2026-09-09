@@ -337,7 +337,7 @@ measured on 8 September, with 90 commits in:
 | 7 | **Risk-score explainers** | Nothing | The honest version of the risk-score ask, and a real gap nobody fills. |
 | 8 | **New York and Texas depth** | Nothing | 141 of 299 sources are California. NY DFS and the Texas code are both fully public. |
 | 9 | ~~Versioned dataset release~~ **done.** | - | Release 2026-09-09 is cut and frozen: 1,905 claims, 299 sources, published at `/dataset` with a SHA-256 per file. See below. |
-| 10 | **Commons**, in `AMBITION.md` order | Item 2 | Case reports, then practitioner annotation, then open discussion. Cannot credibly moderate while Layer 1 is unreviewed. |
+| 10 | **Commons** | Item 2, and provisioning | **Scaffolded.** `commons/` is a second project on its own origin with its own suite; see `COMMONS.md` section 12a. What remains is a name, a database and a mail sender. Practitioner annotation still cannot launch before item 2. |
 
 ### What the dataset release actually changed
 

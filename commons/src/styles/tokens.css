@@ -1,0 +1,130 @@
+/*
+ * Commons design tokens.
+ *
+ * Same estate, different property, and a reader must be able to tell which one
+ * they are standing in without reading a disclaimer. `COMMONS.md` section 11
+ * sets the two moves that do that work, and both are here:
+ *
+ * 1. A COOLER PAPER. The Record is cream - warm, printed-document. The Commons
+ *    is a cool grey paper. Same family, unmistakably not the same page.
+ *
+ * 2. NO GOLD. Not "less gold": none. In the Record's token system gold means
+ *    the thing that resolved - the answer, the citation, the action. An
+ *    unsourced human account is precisely the thing that has not resolved, so
+ *    gold on this origin would be a lie in the system's own terms. There is no
+ *    gold token here to reach for by accident, and the suite fails the build if
+ *    one of the Record's gold values appears in the output.
+ *
+ * The interactive colour is therefore a deep slate-blue. It carries no meaning
+ * beyond "this is a link or a control" - deliberately, because the Commons has
+ * no equivalent of "resolved" to signal.
+ *
+ * Type, spacing, radius, elevation and motion are the estate's, unchanged.
+ * `BRAND-SYSTEM.md` governs both properties: restraint, no stock photography,
+ * no illustrated people, no decorative graphics.
+ */
+:root {
+	/* --- Ink and paper. Cooler than the Record's, and that is the point. --- */
+	--ink: #1b232c;
+	--ink-2: #2f3a45;
+	--body: #414d59;
+	--muted: #616d7a;
+	--faint: #6f7a86;
+	--cream: #f2f3f4;
+	--paper: #fafbfb;
+	--white: #ffffff;
+	--line: #dcdfe3;
+	--line-strong: #c2c7ce;
+	--line-ink: #3c4753;
+
+	/* --- Interactive. Not an accent, and never a status. --- */
+	--link: #2d5570;
+	--link-edge: #234157;
+	--link-text: #1f3b4f;
+	--link-wash: #eaeff3;
+
+	/* --- Evidence labels. What kind of account this is, never how good it is. --- */
+	--label-record: #2f6247;
+	--label-record-wash: #e8f2ec;
+	--label-account: #34607e;
+	--label-account-wash: #e9f1f6;
+	--label-constructed: #6a5d7a;
+	--label-constructed-wash: #efecf3;
+	--label-note: #55616f;
+	--label-note-wash: #eef0f3;
+
+	/* --- States --- */
+	--warn: #8a6410;
+	--warn-wash: #f7f0df;
+	--stop: #8c4f3f;
+	--stop-wash: #f4ebe8;
+
+	/* --- Type: the estate's, unchanged --- */
+	--font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+	--font-sans: 'Schibsted Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+	--text-2xs: 0.6875rem;
+	--text-xs: 0.75rem;
+	--text-sm: 0.8125rem;
+	--text-base: 0.9375rem;
+	--text-md: 1rem;
+	--text-lg: 1.125rem;
+	--text-xl: 1.3125rem;
+	--text-2xl: 1.5rem;
+	--text-3xl: 1.75rem;
+	--text-4xl: 2.125rem;
+	--text-5xl: 2.5rem;
+
+	--leading-tight: 1.18;
+	--leading-snug: 1.34;
+	--leading-normal: 1.55;
+	--leading-prose: 1.7;
+
+	/* --- Spacing (4px base) --- */
+	--s-1: 4px;
+	--s-2: 8px;
+	--s-3: 12px;
+	--s-4: 16px;
+	--s-5: 20px;
+	--s-6: 24px;
+	--s-8: 32px;
+	--s-10: 40px;
+	--s-12: 48px;
+	--s-16: 64px;
+	--s-20: 80px;
+
+	/* --- Radius: never above 8px --- */
+	--r-0: 0px;
+	--r-1: 2px;
+	--r-2: 4px;
+	--r-3: 6px;
+	--r-4: 8px;
+
+	--bw-hair: 1px;
+	--bw-strong: 2px;
+	--bw-marker: 3px;
+
+	--elev-1: 0 1px 2px rgba(27, 35, 44, 0.06);
+	--elev-2: 0 4px 12px rgba(27, 35, 44, 0.08);
+	--elev-3: 0 12px 28px rgba(27, 35, 44, 0.11);
+
+	--dur-1: 120ms;
+	--dur-2: 180ms;
+	--dur-3: 240ms;
+	--ease: cubic-bezier(0.2, 0, 0.2, 1);
+
+	--shell-w: 1120px;
+	--prose-w: 680px;
+	--gutter: 24px;
+	--header-h: 60px;
+	--tap: 44px;
+}
+
+@media (max-width: 640px) {
+	:root {
+		--gutter: 16px;
+		--text-4xl: 1.75rem;
+		--text-5xl: 2rem;
+	}
+}

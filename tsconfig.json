@@ -1,5 +1,6 @@
 {
   "extends": "astro/tsconfigs/strict",
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "//": "commons/ is a separate Astro project with its own tsconfig, its own content collections and its own generated types. Type-checking it from here compares Commons records against the Record's schemas and reports errors that are not errors. It has its own `npm run check`, and CI runs both.",
+  "exclude": ["dist", "commons"]
 }

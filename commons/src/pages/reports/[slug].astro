@@ -1,0 +1,161 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { LABELS, commons } from '../../config/commons';
+
+/*
+ * Withdrawn reports still build a page. A contributor may withdraw at any time,
+ * and where an account has already been cited, an address that 404s is worse
+ * for the person who relied on it than one that says plainly what happened to
+ * it. So the route resolves for every report and the page renders the
+ * withdrawal instead of the content.
+ */
+export const getStaticPaths = (async () => {
+	const reports = await getCollection('reports');
+	return reports.map((report) => ({ params: { slug: report.id }, props: { report } }));
+}) satisfies GetStaticPaths;
+
+const { report } = Astro.props;
+const d = report.data;
+const withdrawn = d.moderation === 'withdrawn';
+
+const GROUP: Record<string, string> = {
+	'public-record': 'record',
+	'published-industry': 'record',
+	'carrier-authored': 'record',
+	'contributed-account': 'account',
+	'practitioner-note': 'note',
+	composite: 'constructed',
+	hypothetical: 'constructed',
+};
+
+const crumbs = [
+	{ name: 'Home', href: '/' },
+	{ name: 'Reports', href: '/reports' },
+	{ name: d.title },
+];
+---
+
+<BaseLayout
+	title={d.title}
+	description={d.labelNote}
+	eyebrow="Report"
+	crumbs={crumbs}
+	machinePath={`/reports/${report.id}.json`}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				{
+					withdrawn ? (
+						<div class="callout" data-tone="warn">
+							<h3>Withdrawn</h3>
+							<p>
+								This report was withdrawn at the contributor's request and is no longer published.
+								The address keeps resolving so that anyone who cited it can see what happened to it
+								rather than meeting a dead link.
+							</p>
+						</div>
+					) : (
+						<>
+							{/* Label and provenance above the fold, in the position the
+							    Record shows its review state. A reader has to know what
+							    kind of evidence this is before they read it. */}
+							<div class="callout">
+								<h3>What this is</h3>
+								<p>
+									<span class="label" data-group={GROUP[d.label] ?? 'note'}>{d.label}</span>
+								</p>
+								<p>{LABELS[d.label as keyof typeof LABELS]}</p>
+								<p><strong>Why it carries that label.</strong> {d.labelNote}</p>
+								<p><strong>Provenance.</strong> {d.provenance}</p>
+							</div>
+
+							<h2>What happened</h2>
+							<p>{d.whatHappened}</p>
+
+							<h2>The insurance question it turned on</h2>
+							<p>{d.insuranceQuestion}</p>
+
+							<h2>What mattered</h2>
+							<ul>{d.informationThatMattered.map((item) => <li>{item}</li>)}</ul>
+
+							<h2>Who decided</h2>
+							<p>{d.decidedBy}</p>
+							<p style="font-size: var(--text-sm); color: var(--muted)">
+								This records the decision-maker. It is not a statement that the decision was right
+								or wrong, and nobody on this site publishes one.
+							</p>
+
+							<h2>Why this does not transfer to your situation</h2>
+							<ul>{d.cannotGeneralize.map((item) => <li>{item}</li>)}</ul>
+
+							{d.citesRecord.length > 0 && (
+								<>
+									<h2>The law it touches</h2>
+									<ul>
+										{d.citesRecord.map((address) => (
+											<li>
+												<a href={`${commons.record.origin}/${address}`} rel="noopener">
+													{address}
+												</a>
+											</li>
+										))}
+									</ul>
+									<p style="font-size: var(--text-sm); color: var(--muted)">
+										Claim addresses on {commons.record.name}. Each resolves to one sentence with the
+										document behind it and a checksum over its exact text.
+									</p>
+								</>
+							)}
+						</>
+					)
+				}
+			</div>
+
+			<aside aria-label="About this report">
+				<div class="rail-block">
+					<h2>This report</h2>
+					<dl>
+						<div><dt>Label</dt><dd>{d.label}</dd></div>
+						<div><dt>Occurred</dt><dd>{d.occurredOn}</dd></div>
+						{d.states.length > 0 && <div><dt>State</dt><dd>{d.states.join(', ')}</dd></div>}
+						<div><dt>Lines</dt><dd>{d.lines.join(', ')}</dd></div>
+						<div><dt>Published</dt><dd>{d.publishedOn}</dd></div>
+						<div><dt>Moderated by</dt><dd>{d.moderatedBy}</dd></div>
+					</dl>
+				</div>
+				<div class="rail-block">
+					<h2>Contributor</h2>
+					<dl>
+						<div><dt>Name</dt><dd>{d.contributor.displayName}</dd></div>
+						<div><dt>Role</dt><dd>{d.contributor.kind}</dd></div>
+						{d.contributor.license && (
+							<>
+								<div><dt>Licence</dt><dd>{d.contributor.license.number}</dd></div>
+								<div><dt>Authority</dt><dd>{d.contributor.license.authority}</dd></div>
+								<div>
+									<dt>Verified</dt>
+									<dd>
+										<a href={d.contributor.license.verifiedAgainst} rel="noopener">
+											public register
+										</a>, {d.contributor.license.verifiedOn}
+									</dd>
+								</div>
+							</>
+						)}
+					</dl>
+				</div>
+				<div class="rail-block no-print">
+					<h2>Related</h2>
+					<ul>
+						<li><a href="/reports">All reports</a></li>
+						<li><a href="/standards">Standards</a></li>
+						<li><a href="/moderation">Moderation</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>
