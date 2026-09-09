@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SESSION_COOKIE, accountFromSession, sameOrigin } from '../lib/auth';
+import { getStore, selfOrigin } from '../lib/runtime';
+
+export const prerender = false;
+
+const store = getStore();
+const sessionId = Astro.cookies.get(SESSION_COOKIE)?.value;
+let account = await accountFromSession(store, sessionId);
+
+if (!account) return Astro.redirect('/sign-in', 303);
+
+let saved = false;
+let problem = '';
+
+if (Astro.request.method === 'POST') {
+	if (!sameOrigin(Astro.request, selfOrigin(Astro.request))) {
+		return new Response('Bad request', { status: 400 });
+	}
+	const form = await Astro.request.formData();
+	const displayName = String(form.get('displayName') ?? '').trim();
+
+	if (displayName.length < 2 || displayName.length > 60) {
+		problem = 'A display name needs to be between 2 and 60 characters.';
+	} else {
+		await store.setDisplayName(account.email, displayName);
+		account = await store.getAccount(account.email);
+		saved = true;
+	}
+}
+
+const welcome = Astro.url.searchParams.get('welcome') === '1';
+---
+
+<BaseLayout
+	title="Your account"
+	eyebrow="Account"
+	crumbs={[{ name: 'Home', href: '/' }, { name: 'Account' }]}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				{
+					welcome && !account?.displayName && (
+						<div class="callout">
+							<h3>You are signed in</h3>
+							<p>
+								One thing to set before you can contribute anything: a display name. It is what
+								appears on a report or a note, and it is the only part of your account anybody
+								else ever sees.
+							</p>
+						</div>
+					)
+				}
+
+				{saved && <div class="callout"><p>Saved.</p></div>}
+				{problem && <div class="callout" data-tone="stop"><p>{problem}</p></div>}
+
+				<h2>Display name</h2>
+				<form method="post" style="max-width: 32rem">
+					<label for="displayName" style="display: block; margin-bottom: var(--s-2)">
+						What should appear on anything you contribute
+					</label>
+					<input
+						type="text"
+						id="displayName"
+						name="displayName"
+						value={account?.displayName ?? ''}
+						required
+						minlength="2"
+						maxlength="60"
+						autocomplete="nickname"
+						style="width: 100%; padding: var(--s-3); font: inherit; border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); background: var(--white)"
+					/>
+					<button
+						type="submit"
+						style="margin-top: var(--s-4); padding: var(--s-3) var(--s-5); font: inherit; color: var(--white); background: var(--link); border: 0; border-radius: var(--r-2); cursor: pointer"
+					>
+						Save
+					</button>
+				</form>
+				<p style="font-size: var(--text-sm); color: var(--muted)">
+					It does not have to be your legal name. It does have to be a name a reader can weigh —
+					an account attributed to nobody in particular is one nobody can cite.
+				</p>
+
+				<h2>Everything this account holds</h2>
+				<p>
+					This is the whole of it. Not a summary of it, and not the fields we chose to show
+					you — the record has no other columns, which is the only version of that promise
+					worth making.
+				</p>
+				<dl class="fields">
+					<div>
+						<dt>Email</dt>
+						<dd>{account?.email}</dd>
+					</div>
+					<div>
+						<dt>Display name</dt>
+						<dd>{account?.displayName || 'Not set'}</dd>
+					</div>
+					<div>
+						<dt>Role</dt>
+						<dd>{account?.kind}</dd>
+					</div>
+					<div>
+						<dt>Account created</dt>
+						<dd>{account?.createdAt?.slice(0, 10)}</dd>
+					</div>
+					{
+						account?.license && (
+							<div>
+								<dt>Verified licence</dt>
+								<dd>
+									{account.license.number} ({account.license.authority}), checked against{' '}
+									<a href={account.license.verifiedAgainst} rel="noopener">the public register</a>{' '}
+									on {account.license.verifiedOn}
+								</dd>
+							</div>
+						)
+					}
+				</dl>
+
+				<h2>Contributing</h2>
+				<p>
+					Case-report intake is not open yet. When it is, this is where it starts.{' '}
+					<a href="/standards">What a published report has to contain</a> is written up already,
+					and it is worth reading before writing one — most of the work is in the fields, not the
+					prose.
+				</p>
+
+				<h2>Signing out</h2>
+				<form method="post" action="/sign-out">
+					<button
+						type="submit"
+						style="padding: var(--s-3) var(--s-5); font: inherit; color: var(--ink); background: var(--white); border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); cursor: pointer"
+					>
+						Sign out
+					</button>
+				</form>
+			</div>
+
+			<aside aria-label="Your account">
+				<div class="rail-block">
+					<h2>Never stored</h2>
+					<ul>
+						<li>A password</li>
+						<li>Any document</li>
+						<li>Policy or claim numbers</li>
+						<li>Date of birth or government id</li>
+						<li>Health information</li>
+						<li>A payment method</li>
+					</ul>
+				</div>
+				<div class="rail-block">
+					<h2>Related</h2>
+					<ul>
+						<li><a href="/contribute">What contributing involves</a></li>
+						<li><a href="/standards">Standards</a></li>
+						<li><a href="/moderation">Moderation</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

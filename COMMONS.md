@@ -348,11 +348,79 @@ accounts and says there are none of the latter, because "1 published report"
 would have been the first misleading sentence on a site whose whole proposition
 is that it is not misleading.
 
-**Not built, and needing provisioning rather than design:** accounts. The
-decision taken is Neon Postgres, Auth.js magic-link email, and Resend. No
-passwords and no uploads at any point. Until a database and a mail sender exist
-there is no sign-in, no intake and no moderation queue, and `/contribute` says
-so plainly rather than showing a form that cannot submit.
+### Accounts, built 9 September 2026
+
+Sign-in works. The Commons is now `output: 'static'` with a Node adapter, so
+every page stays prerendered except the four that opt out - sign-in, verify,
+sign-out and the account page. A report and the standards are files, because
+they do not depend on who is reading.
+
+**Magic link, no password.** A password is a second secret to store, leak,
+reset and reuse across sites, and the email round trip verifies the same thing
+either way. What that buys is that the account table has no password column to
+be dumped.
+
+Six rules hold the flow up, and each is asserted in `verify-auth.mjs` rather
+than trusted to a comment:
+
+1. **Only hashes are stored.** The emailed token and the session cookie are
+   random 32-byte values; the store holds SHA-256 of each. A test proves the
+   point by address rather than by inspecting internals - looking a row up by
+   the raw value finds nothing, while the flow that hashes first works.
+2. **A link works once, for fifteen minutes,** and is spent by being followed
+   even when it turns out to be expired. Email is forwarded, screenshotted and
+   followed by scanners.
+3. **Sign-in never reveals whether an address has an account.** Same page for
+   a valid address, an unknown one, a rate-limited one and a malformed one.
+   Otherwise the form is an oracle for "does this person contribute here",
+   which on a site about people's insurance problems is a real disclosure.
+4. **Five links per address per hour,** counted from an issue log rather than
+   from outstanding tokens - a consumed link is still a message that was sent,
+   and counting token rows would reset the limit every time somebody signed in.
+   There is a test for exactly that bug.
+5. **Origin is checked on every state-changing request,** and the cookie is
+   HttpOnly, SameSite=Lax and Secure on https. Astro's own origin check fires
+   first, so a cross-site POST is refused twice independently.
+6. **A GET never signs anyone out.** A link anybody can put anywhere that logs
+   somebody out is a small harm with no upside.
+
+**The store is an interface, and that is the auditable part.** `src/lib/store.ts`
+is the entire permitted surface of what the Commons may remember about a person,
+and it fits on a screen. `schema.sql` reads as a list of what is not there: no
+column for a policy number, a claim number, a date of birth, a government
+identifier, health information or a payment method, and no table for a file. A
+test greps both for those names. A field that was never built cannot be quietly
+filled in by a well-meaning form later, and `/account` shows the reader the
+whole record rather than a summary of it.
+
+**What is verified and what is not.** Everything above the store is exercised:
+the flow runs against `memoryStore` in 17 assertions, and the whole thing was
+run end to end against a live server - link issued, session opened, replay
+refused, display name saved, sign-out clearing the cookie. `store-postgres.ts`
+is **unexercised**: there was no database to reach. The conformance block at
+the end of `verify-auth.mjs` runs the same operations against a real one when
+`COMMONS_DATABASE_URL` is set, and skips loudly when it is not. Run it once
+against a scratch Neon database before opening sign-in to anybody.
+
+**To turn accounts on:**
+
+1. Create a Neon database and apply `commons/schema.sql`.
+2. Put `COMMONS_DATABASE_URL` in `commons/.env.local`.
+3. Create a Resend key and a verified sender; add `RESEND_API_KEY` and
+   `COMMONS_MAIL_FROM`.
+4. Run `npm run verify` with `COMMONS_DATABASE_URL` set, to exercise the SQL.
+5. Send yourself one sign-in link before anybody else gets one. The Resend
+   integration has never made a live call.
+
+Without a database the in-memory store runs the whole flow locally, which is
+what makes this reviewable at all. **In production the absence of either a
+database or a mail key is a hard failure at boot**, deliberately: an in-memory
+store on a serverless platform gives each instance its own idea of who is
+signed in, and a console mailer in production prints session-granting links
+into a log.
+
+**Still not built:** case-report intake and the moderation queue. That is the
+next mechanism, and it is now unblocked by everything except provisioning.
 
 ## 13. Sequence, and the gate
 

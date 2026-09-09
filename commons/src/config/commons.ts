@@ -48,12 +48,15 @@ export const commons = {
 	 * NOT PRESENT, AND ASSERTED BY THE SUITE
 	 *
 	 * No agency name, no licence number, no phone number, no address, no
-	 * handoff to a brokerage. `COMMONS.md` section 2 calls this the
-	 * load-bearing reason for a separate origin: unlicensed people discussing
-	 * coverage on a page headed "Operated by Bollinsure" under licence 6013787
-	 * is a regulatory problem that a disclaimer does not fix. The absence is
-	 * the feature, so `scripts/verify-commons.mjs` fails the build if any of it
-	 * appears in the output.
+	 * handoff to a brokerage. `COMMONS.md` section 2 has the reasoning and calls
+	 * this the load-bearing reason for a separate origin; the short version is
+	 * that unlicensed people discussing coverage under a brokerage's masthead
+	 * and licence is a regulatory problem a disclaimer does not fix.
+	 *
+	 * The operator is deliberately not named anywhere in this codebase, not even
+	 * in a comment explaining its absence - `scripts/verify-commons.mjs` scans
+	 * the build for the literal strings, and comments survive into the server
+	 * bundle. The one file allowed to name them is the test that forbids them.
 	 */
 	operatorBranding: null,
 
@@ -82,4 +85,5 @@ export const nav = [
 	{ label: 'Standards', href: '/standards' },
 	{ label: 'Moderation', href: '/moderation' },
 	{ label: 'Contribute', href: '/contribute' },
+	{ label: 'Sign in', href: '/sign-in' },
 ] as const;

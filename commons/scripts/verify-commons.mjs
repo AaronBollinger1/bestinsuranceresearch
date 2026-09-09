@@ -21,7 +21,17 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DIST = path.join(ROOT, 'dist');
+const BUILD = path.join(ROOT, 'dist');
+
+/*
+ * With an adapter, Astro splits the output: prerendered files land in
+ * dist/client and the server bundle in dist/server. Page assertions read the
+ * static root, but the branding scan has to cover BOTH - a licence number in a
+ * server-rendered page never appears in dist/client at all, and scanning only
+ * the static half would quietly stop checking the account pages the moment they
+ * became dynamic. Which is exactly what just happened.
+ */
+const DIST = fs.existsSync(path.join(BUILD, 'client')) ? path.join(BUILD, 'client') : BUILD;
 const CONTENT = path.join(ROOT, 'src/content');
 
 if (!fs.existsSync(DIST)) {
@@ -41,7 +51,7 @@ function walk(dir, filter, out = []) {
 const read = (f) => fs.readFileSync(f, 'utf8');
 const htmlFiles = walk(DIST, (f) => f.endsWith('.html'));
 const cssFiles = walk(DIST, (f) => f.endsWith('.css'));
-const textFiles = walk(DIST, (f) => /\.(html|css|js|txt|json)$/.test(f));
+const textFiles = walk(BUILD, (f) => /\.(html|css|js|mjs|txt|json)$/.test(f) && !f.includes('node_modules'));
 
 const reports = fs.existsSync(path.join(CONTENT, 'reports'))
 	? fs
@@ -79,7 +89,25 @@ test('no agency branding reaches this origin', () => {
 		for (const term of FORBIDDEN) {
 			assert.ok(
 				!body.includes(term),
-				`${path.relative(DIST, file)} contains "${term}". This origin carries no agency branding and no licence number - that absence is why it is a separate origin.`,
+				`${path.relative(BUILD, file)} contains "${term}". This origin carries no agency branding and no licence number - that absence is why it is a separate origin.`,
+			);
+		}
+	}
+
+	/*
+	 * And not in the source either, comments included. Comments survive into the
+	 * server bundle, so a comment explaining why the operator is absent puts the
+	 * operator's name into the shipped output - which is how this assertion first
+	 * failed. The rule is therefore the strong one: this file is the only place in
+	 * the Commons permitted to name them, because its job is to forbid them.
+	 */
+	const sources = walk(path.join(ROOT, 'src'), (f) => /\.(astro|ts|css|json)$/.test(f));
+	for (const file of sources) {
+		const body = read(file);
+		for (const term of FORBIDDEN) {
+			assert.ok(
+				!body.includes(term),
+				`${path.relative(ROOT, file)} names "${term}". Keep it out of the source, comments included: COMMONS.md carries the reasoning.`,
 			);
 		}
 	}
