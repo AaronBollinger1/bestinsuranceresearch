@@ -1115,11 +1115,24 @@ test('no source claims to have been checked in the future', () => {
 	}
 });
 
-const LD_BLOCK = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
-
 function ldNodes(html) {
+	/*
+	 * The pattern is built per call, and both reasons are real.
+	 *
+	 * It was a module-level `const` declared at this point in the file, which
+	 * put it in the temporal dead zone for the tests above that call this
+	 * helper: Node's runner starts a test body before module evaluation
+	 * finishes, so "Cannot access 'LD_BLOCK' before initialization" was a race
+	 * this machine won and CI lost. Every run on this branch failed on it and
+	 * every local run passed.
+	 *
+	 * It also removes the footgun HANDOFF.md already records - a shared /g
+	 * regex carries lastIndex between calls - so there is nothing to reuse and
+	 * nothing to reset.
+	 */
+	const block = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
 	const out = [];
-	for (const match of html.matchAll(LD_BLOCK)) {
+	for (const match of html.matchAll(block)) {
 		const parsed = JSON.parse(match[1]);
 		out.push(...(parsed['@graph'] ?? [parsed]));
 	}
