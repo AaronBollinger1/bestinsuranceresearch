@@ -3513,3 +3513,178 @@ test('/changed says it is a record of what we recorded, not of what happened', (
 		assert.ok(!html.toLowerCase().includes(banned), `/changed contains prohibited language: ${banned}`);
 	}
 });
+
+/* ------------------------------------------------------------------ */
+/* Machine companions                                                  */
+/* ------------------------------------------------------------------ */
+
+/*
+ * llms.txt tells every AI system reading this site: "Every substantive page has
+ * a machine-readable JSON companion at the same path plus .json. Prefer it over
+ * scraping the HTML."
+ *
+ * That sentence has now been false twice. It was false for 244 source pages
+ * until source companions were built, and it was false again for 88 pages -
+ * every guide, every line hub, every module, every worksheet and the figures
+ * table - because those page types were added afterwards and the promise was
+ * never re-read against them. `toolRecord()` sat in machine.ts the whole time,
+ * written and never routed.
+ *
+ * Twice is a pattern, and the fix for a pattern is not a third careful pass. It
+ * is this: enumerate the record pages in the build and require a companion for
+ * each. A new page type now fails here on the day it is added, which is the
+ * only moment the omission is cheap.
+ */
+
+/**
+ * Route segments whose child pages are RECORD pages - one page, one record,
+ * citing sources. Their index pages are hubs and are correctly companion-less;
+ * llms.txt lists those separately as entry points rather than as citable units.
+ */
+const RECORD_SECTIONS = [
+	'questions',
+	'insurance',
+	'guides',
+	'lines',
+	'companies',
+	'states',
+	'examples',
+	'sources',
+	'tools',
+];
+
+/** Single pages that are records in their own right. */
+const RECORD_PAGES = ['figures'];
+
+test('every record page has the JSON companion llms.txt promises', () => {
+	const missing = [];
+
+	for (const section of RECORD_SECTIONS) {
+		const dir = path.join(DIST, section);
+		if (!fs.existsSync(dir)) continue;
+		for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+			/* dist/<section>/<slug>/index.html is a record page; the section's own
+			   index.html is the hub and is excluded by being a file, not a dir. */
+			if (!entry.isDirectory()) continue;
+			if (!fs.existsSync(path.join(dir, entry.name, 'index.html'))) continue;
+			if (!fs.existsSync(path.join(dir, `${entry.name}.json`))) {
+				missing.push(`/${section}/${entry.name}`);
+			}
+		}
+	}
+
+	for (const page of RECORD_PAGES) {
+		if (fs.existsSync(path.join(DIST, page, 'index.html')) && !fs.existsSync(path.join(DIST, `${page}.json`))) {
+			missing.push(`/${page}`);
+		}
+	}
+
+	assert.deepEqual(
+		missing,
+		[],
+		`${missing.length} record pages have no JSON companion, so llms.txt overstates what this site offers: ${missing.slice(0, 12).join(', ')}${missing.length > 12 ? ', …' : ''}`,
+	);
+});
+
+test('every companion is valid JSON and says what kind of record it is', () => {
+	const companions = [];
+	for (const section of [...RECORD_SECTIONS]) {
+		const dir = path.join(DIST, section);
+		if (!fs.existsSync(dir)) continue;
+		for (const file of fs.readdirSync(dir)) {
+			if (file.endsWith('.json')) companions.push(path.join(dir, file));
+		}
+	}
+	companions.push(path.join(DIST, 'figures.json'));
+
+	assert.ok(companions.length > 300, `only ${companions.length} companions found, which is fewer than the corpus has record pages`);
+
+	for (const file of companions) {
+		const body = JSON.parse(read(file));
+		const where = path.relative(DIST, file);
+		assert.ok(body.recordType, `${where} does not say what kind of record it is`);
+		assert.ok(body.canonicalUrl, `${where} carries no canonical URL`);
+		assert.ok(body.contentVersion, `${where} carries no content version`);
+
+		/* A companion must point at the page it belongs to, not at a neighbour.
+		   A copy-pasted route that keeps the wrong path is the failure this
+		   catches, and nothing else would. */
+		const expected = `/${where.replace(/\.json$/, '')}`;
+		if (body.recordType !== 'claim-index' && body.recordType !== 'change-feed') {
+			assert.ok(
+				body.canonicalUrl.endsWith(expected),
+				`${where} claims to be ${body.canonicalUrl}, which is not the page it sits beside`,
+			);
+		}
+	}
+});
+
+test('a guide says it is the same evidence as its coverage page', () => {
+	/*
+	 * A guide is generated one-for-one from a coverage record: same sources, same
+	 * claims. A system that read both and counted them as two would be
+	 * double-counting one reading of one set of documents, which is the
+	 * corroboration error this corpus most invites. Saying so in the record is
+	 * the only defence; it cannot be inferred from an identical source list.
+	 */
+	const dir = path.join(DIST, 'guides');
+	const guides = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
+	assert.ok(guides.length > 0, 'no guide companions were built');
+
+	for (const file of guides) {
+		const body = JSON.parse(read(path.join(dir, file)));
+		const slug = file.replace(/\.json$/, '');
+		assert.ok(
+			body.sameEvidenceAs?.endsWith(`/insurance/${slug}`),
+			`${file} does not name the coverage page it duplicates`,
+		);
+		assert.match(body.doNotDoubleCount, /count one reading twice/i, `${file} does not warn against double counting`);
+	}
+});
+
+test('a module companion publishes its rules and states that nothing is submitted', () => {
+	const dir = path.join(DIST, 'tools');
+	const modules = fs
+		.readdirSync(dir)
+		.filter((f) => f.endsWith('.json'))
+		.map((f) => JSON.parse(read(path.join(dir, f))))
+		.filter((body) => body.recordType === 'module');
+
+	assert.ok(modules.length > 0, 'no module companions were built');
+	for (const body of modules) {
+		assert.ok(body.ruleCount > 0, `${body.id} publishes no rules`);
+		assert.equal(body.rules.length, body.ruleCount, `${body.id} states a rule count it does not publish`);
+		assert.match(
+			body.privacy,
+			/no server copy/i,
+			`${body.id} does not state that nothing a reader enters is transmitted`,
+		);
+		/* Citation markers are stripped from prose in a companion, as everywhere. */
+		assert.ok(
+			!JSON.stringify(body.rules).includes('[S:'),
+			`${body.id} leaks raw citation markers into its machine record`,
+		);
+	}
+});
+
+test('the figures companion quotes amounts and computes none', () => {
+	const body = JSON.parse(read(path.join(DIST, 'figures.json')));
+	const source = collection('figures');
+	assert.equal(body.count, source.length);
+
+	const byId = new Map(source.map((f) => [f.id, f.data]));
+	for (const row of body.figures) {
+		assert.equal(
+			row.amount,
+			byId.get(row.id)?.amount,
+			`${row.id} publishes an amount its figure record does not state`,
+		);
+		/* The hedge travels with the number. Several of these are stepped
+		   schedules whose operative value is arithmetic rather than printed. */
+		assert.ok(row.note, `${row.id} publishes an amount with no note`);
+	}
+	assert.ok(
+		body.mayNotBeInferred.some((line) => /did not state/.test(line)),
+		'the figures companion does not warn against calculating an amount from a schedule',
+	);
+});

@@ -28,8 +28,8 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | | |
 | --- | --- |
 | Branch | `launch/initial-publication`, 88 commits, **never push to `main`** |
-| Suite | `npm run validate` = 130 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
-| Built pages | 841 (299 are noindex verification sheets) |
+| Suite | `npm run validate` = 141 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
+| Built pages | 842 (299 are noindex verification sheets), plus 88 new JSON companions |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
 | Coverage pages | 27 of 51 canonical lines |
@@ -252,6 +252,21 @@ a test fails if any other file hardcodes the placeholder. Naming the property
 is two lines plus a wordmark, and it also lifts the `noindex` and the
 `Disallow: /`, which are keyed off the placeholder origin rather than set by
 hand.
+
+**`llms.txt` makes claims about the whole site, and they go stale silently.**
+It told every AI system that "every substantive page has a machine-readable
+JSON companion" and that was false twice: once for 244 source pages, and again
+for 88 - every guide, line hub, module, worksheet and the figures table -
+because those page types were added afterwards and nobody re-read the promise
+against them. `toolRecord()` sat in `machine.ts` written and never routed for
+the whole period.
+
+Both are fixed and, more usefully, a test now enumerates record pages in the
+build and requires a companion for each, so a new page type fails on the day it
+is added. **When you add a page type, the question to ask is not "does it
+work" but "which existing sentence about this site did it just make false".**
+`llms.txt`, `/methodology` and `/editorial-policy` all describe the corpus as a
+whole and none of them is regenerated from it.
 
 **Check whether you can reach a source before planning a pass around one.**
 Claude Code on the web runs behind an egress proxy, and on 9 September every
