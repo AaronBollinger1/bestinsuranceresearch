@@ -41,7 +41,7 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
 | Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file |
 | Change feed | `/changed`: 20 recorded changes, 7 scheduled amount moves, built from record fields |
-| The Commons | `commons/`, its own project and origin. 47 assertions. Sign-in, case-report intake and the moderation queue all run end to end on an in-memory store; Postgres and Resend are wired but unexercised. Unnamed, so `noindex` and `Disallow: /` |
+| The Commons | `commons/`, its own project and origin. 53 assertions. Sign-in, case-report intake, the moderation queue and withdrawal all run end to end on an in-memory store; Postgres and Resend are wired but unexercised. Unnamed, so `noindex` and `Disallow: /` |
 | Published records with no review state | **0.** Was 3; the tools schema now carries review fields, required on live worksheets and forbidden on unbuilt ones |
 
 ### The two things blocking everything else

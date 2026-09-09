@@ -20,6 +20,11 @@ if (!account) return Astro.redirect('/sign-in', 303);
 if (!isModerator(account.email, process.env)) return new Response('Not found', { status: 404 });
 
 const pending = await store.pendingSubmissions();
+/* Withdrawals come first in the page, not because there will be many but
+   because a report its author has asked to remove is still published while it
+   waits. That is the only thing in this queue where delay has a cost to
+   somebody other than the moderator. */
+const withdrawals = await store.withdrawalRequests();
 ---
 
 <BaseLayout
@@ -31,6 +36,53 @@ const pending = await store.pendingSubmissions();
 	<section class="band band-tight">
 		<div class="shell page-grid">
 			<div class="prose">
+				{
+					withdrawals.length > 0 && (
+						<>
+							<h2>Withdrawals to action</h2>
+							<div class="callout" data-tone="warn">
+								<p>
+									{withdrawals.length === 1 ? 'A contributor has' : `${withdrawals.length} contributors have`}{' '}
+									asked for a published report to be taken down. It is still live until the file
+									changes. No reason is asked for and none is needed — withdrawal is theirs.
+								</p>
+								<p>
+									For each: set <code>"moderation": "withdrawn"</code> in the file and commit. Do
+									not delete it. The address keeps resolving and says it was withdrawn, so
+									anybody who cited it sees what happened rather than meeting a dead link.
+								</p>
+							</div>
+							<div class="rows">
+								{withdrawals.map((submission) => (
+									<article class="row">
+										<h3 class="row-title">{submission.title}</h3>
+										<div class="row-meta">
+											<span class="label" data-group="constructed">withdrawal requested</span>
+											<span>asked {submission.withdrawnAt?.slice(0, 10)}</span>
+										</div>
+										<p class="mono" style="margin-top: var(--s-2); font-size: var(--text-sm)">
+											{submission.publishedSlug
+												? `src/content/reports/${submission.publishedSlug}.json`
+												: 'No filename recorded — this predates slug tracking. Find it by title.'}
+										</p>
+										<form method="post" action={`/moderate/${submission.id}`} style="margin-top: var(--s-2)">
+											<button
+												type="submit"
+												name="action"
+												value="confirm-withdrawal"
+												style="padding: var(--s-2) var(--s-4); font: inherit; font-size: var(--text-sm); color: var(--ink); background: var(--white); border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); cursor: pointer"
+											>
+												I have committed the change
+											</button>
+										</form>
+									</article>
+								))}
+							</div>
+						</>
+					)
+				}
+
+				<h2>Waiting to be read</h2>
 				{
 					pending.length === 0 ? (
 						<div class="empty">
@@ -73,6 +125,7 @@ const pending = await store.pendingSubmissions();
 					<h2>Queue</h2>
 					<dl>
 						<div><dt>Waiting</dt><dd>{pending.length}</dd></div>
+						<div><dt>Withdrawals</dt><dd>{withdrawals.length}</dd></div>
 						<div><dt>Order</dt><dd>Oldest first</dd></div>
 						<div><dt>You</dt><dd>{account.displayName || account.email}</dd></div>
 					</dl>

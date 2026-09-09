@@ -42,6 +42,20 @@ if (Astro.request.method === 'POST') {
 	const note = String(form.get('note') ?? '').trim();
 	const now = new Date().toISOString();
 
+	if (action === 'confirm-withdrawal') {
+		/*
+		 * The moderator acknowledging that they have committed the file. It does
+		 * not itself unpublish anything - the report is a file and the commit is
+		 * what removes it - so the button says so rather than claiming to act.
+		 */
+		if (submission.state !== 'withdrawal-requested') {
+			problem = 'That submission is not awaiting withdrawal.';
+		} else {
+			await store.withdrawSubmission(submission.id, 'withdrawn', now);
+			await refresh();
+		}
+	}
+
 	if (action === 'decline' || action === 'needs-more') {
 		if (note.length < 20) {
 			problem = 'A decision that goes back to the contributor needs a note saying why. Twenty characters is not much to ask for somebody who spent twenty minutes.';
@@ -75,12 +89,16 @@ if (Astro.request.method === 'POST') {
 					name: moderator.displayName || moderator.email,
 					publishedOn: now.slice(0, 10),
 				});
-				published = { slug: reportSlug(submission.title), json: `${JSON.stringify(record, null, '\t')}\n` };
+				const slug = reportSlug(submission.title);
+				published = { slug, json: `${JSON.stringify(record, null, '\t')}\n` };
 				await store.decideSubmission(submission.id, {
 					state: 'published',
 					moderator: moderator.email,
 					note: note || 'Published.',
 					decidedAt: now,
+					/* Recorded now so a withdrawal request later can name the file
+					   rather than asking the moderator to find it by title. */
+					publishedSlug: slug,
 				});
 				await refresh();
 			}
@@ -214,6 +232,26 @@ const box =
 								</p>
 							</form>
 						</>
+					) : d.state === 'withdrawal-requested' ? (
+						<div class="callout" data-tone="warn">
+							<h3>The contributor has asked for this to be taken down</h3>
+							<p>
+								Asked {d.withdrawnAt?.slice(0, 10)}. No reason is given and none is needed. It is
+								still published until the file changes.
+							</p>
+							<p class="mono">
+								{d.publishedSlug ? `src/content/reports/${d.publishedSlug}.json` : 'No filename recorded. Find it by title.'}
+							</p>
+							<p>
+								Set <code>"moderation": "withdrawn"</code> and commit. Do not delete the file — the
+								address has to keep resolving so anybody who cited it sees what happened.
+							</p>
+							<form method="post">
+								<button type="submit" name="action" value="confirm-withdrawal" style="padding: var(--s-3) var(--s-5); font: inherit; color: var(--ink); background: var(--white); border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); cursor: pointer">
+									I have committed the change
+								</button>
+							</form>
+						</div>
 					) : (
 						<div class="callout">
 							<h3>Already decided</h3>

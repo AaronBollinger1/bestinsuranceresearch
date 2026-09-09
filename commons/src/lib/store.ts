@@ -64,6 +64,30 @@ export interface Session {
 
 
 /**
+ * Where a submission has got to.
+ *
+ * `withdrawal-requested` exists because a published report is a file in the
+ * repository, not a row here. A contributor withdrawing something unpublished
+ * is done in one step - nobody has read it and nothing is live. Withdrawing
+ * something published needs a moderator to edit the file and commit, so the
+ * request has to be a state a queue can show rather than a flag nobody sees.
+ *
+ * `COMMONS.md` section 8 promises withdrawal "at any time, for any reason or
+ * none", and the "or none" is load-bearing: nothing in this flow asks a
+ * contributor to justify taking their own account back.
+ */
+export type SubmissionState =
+	| 'pending'
+	| 'published'
+	| 'declined'
+	| 'needs-more'
+	| 'withdrawal-requested'
+	| 'withdrawn';
+
+/** Unpublished states a contributor can withdraw from in one step. */
+export const WITHDRAWABLE_IMMEDIATELY: SubmissionState[] = ['pending', 'needs-more'];
+
+/**
  * A submitted account, before anybody has read it.
  *
  * Submissions live in the database. **Published reports do not** - they are
@@ -84,7 +108,7 @@ export interface Submission {
 	id: string;
 	/** The account that submitted it. Attribution is not optional here. */
 	email: string;
-	state: 'pending' | 'published' | 'declined' | 'needs-more';
+	state: SubmissionState;
 
 	title: string;
 	whatHappened: string;
@@ -110,6 +134,13 @@ export interface Submission {
 	decidedAt?: string;
 	decidedByModerator?: string;
 	moderatorNote?: string;
+	/**
+	 * The report file this became, once published. Recorded because withdrawal
+	 * needs it: a moderator handling a request has to be told which file to edit,
+	 * and asking them to search for it by title is how the wrong one gets edited.
+	 */
+	publishedSlug?: string;
+	withdrawnAt?: string;
 }
 
 export interface SubmissionDraft {
@@ -160,8 +191,29 @@ export interface Store {
 	submissionsBy(email: string): Promise<Submission[]>;
 	decideSubmission(
 		id: string,
-		decision: { state: Submission['state']; moderator: string; note: string; decidedAt: string },
+		decision: {
+			state: Submission['state'];
+			moderator: string;
+			note: string;
+			decidedAt: string;
+			/** Set only when publishing, so withdrawal can find the file later. */
+			publishedSlug?: string;
+		},
 	): Promise<void>;
+	/**
+	 * The contributor taking their own account back. Separate from
+	 * `decideSubmission` so the two are distinguishable afterwards: a report that
+	 * a moderator declined and one that its author withdrew are different things,
+	 * and collapsing them into one state field with one timestamp would lose
+	 * which happened.
+	 */
+	withdrawSubmission(
+		id: string,
+		state: Extract<Submission['state'], 'withdrawn' | 'withdrawal-requested'>,
+		at: string,
+	): Promise<void>;
+	/** Published reports whose author has asked for them to be taken down. */
+	withdrawalRequests(): Promise<Submission[]>;
 
 	/** Drops expired tokens and sessions. Nothing keeps what it does not need. */
 	purgeExpired(now: number): Promise<void>;

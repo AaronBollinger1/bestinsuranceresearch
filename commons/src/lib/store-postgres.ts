@@ -76,6 +76,8 @@ export function postgresStore(pool: Pool): Store {
 		...(row.decided_at ? { decidedAt: new Date(row.decided_at as string).toISOString() } : {}),
 		...(row.decided_by_moderator ? { decidedByModerator: String(row.decided_by_moderator) } : {}),
 		...(row.moderator_note ? { moderatorNote: String(row.moderator_note) } : {}),
+		...(row.published_slug ? { publishedSlug: String(row.published_slug) } : {}),
+		...(row.withdrawn_at ? { withdrawnAt: new Date(row.withdrawn_at as string).toISOString() } : {}),
 	});
 
 	const getSubmission = async (id: string): Promise<Submission | null> => {
@@ -242,10 +244,24 @@ export function postgresStore(pool: Pool): Store {
 		async decideSubmission(id, decision) {
 			await pool.query(
 				`update submissions
-				    set state = $2, decided_at = $3, decided_by_moderator = $4, moderator_note = $5
+				    set state = $2, decided_at = $3, decided_by_moderator = $4, moderator_note = $5,
+				        published_slug = coalesce($6, published_slug)
 				  where id = $1`,
-				[id, decision.state, decision.decidedAt, decision.moderator, decision.note],
+				[id, decision.state, decision.decidedAt, decision.moderator, decision.note, decision.publishedSlug ?? null],
 			);
+		},
+
+		async withdrawSubmission(id, state, at) {
+			/* Moderator fields deliberately untouched: a report its author withdrew
+			   and one a moderator declined are different things. */
+			await pool.query('update submissions set state = $2, withdrawn_at = $3 where id = $1', [id, state, at]);
+		},
+
+		async withdrawalRequests() {
+			const { rows } = await pool.query(
+				`select * from submissions where state = 'withdrawal-requested' order by withdrawn_at asc`,
+			);
+			return rows.map(rowToSubmission);
 		},
 
 		async purgeExpired(now) {

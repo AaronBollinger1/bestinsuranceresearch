@@ -294,3 +294,128 @@ test('the report slug is a filename and stays short', () => {
 	assert.match(reportSlug("An adjuster's visit, in March (2025)"), /^[a-z0-9-]+$/);
 	assert.ok(!reportSlug('-- Leading and trailing --').startsWith('-'));
 });
+
+/* ------------------------------------------------------------------ */
+/* Withdrawal                                                          */
+/* ------------------------------------------------------------------ */
+
+/*
+ * The Commons promises withdrawal on four pages: "at any time, before or after
+ * it publishes, for any reason or none". These assert the promise rather than
+ * the implementation, because the promise is the thing that was made.
+ */
+
+const withStore = async () => {
+	const store = memoryStore();
+	await store.upsertAccount('reader@example.com');
+	const { draft } = validateSubmission(good());
+	const submission = await store.createSubmission(
+		{ ...draft, email: 'reader@example.com' },
+		newSubmissionId(),
+		new Date().toISOString(),
+	);
+	return { store, submission };
+};
+
+test('an unpublished submission is withdrawn on the spot', async () => {
+	const { store, submission } = await withStore();
+	await store.withdrawSubmission(submission.id, 'withdrawn', new Date().toISOString());
+
+	const after = await store.getSubmission(submission.id);
+	assert.equal(after.state, 'withdrawn');
+	assert.ok(after.withdrawnAt, 'the withdrawal was not dated');
+	assert.equal((await store.pendingSubmissions()).length, 0, 'a withdrawn submission is still in the queue');
+});
+
+test('withdrawing asks for no reason', async () => {
+	/*
+	 * "For any reason or none" is the promise, and the shape of the API is what
+	 * keeps it: there is nowhere to put a justification, so no later page can
+	 * start requiring one without changing this signature.
+	 */
+	const { store, submission } = await withStore();
+	assert.equal(
+		store.withdrawSubmission.length,
+		3,
+		'withdrawSubmission takes something other than (id, state, at) - if that is a reason, the promise is broken',
+	);
+	await store.withdrawSubmission(submission.id, 'withdrawn', new Date().toISOString());
+	assert.equal((await store.getSubmission(submission.id)).state, 'withdrawn');
+});
+
+test('a published report is requested rather than pulled, and stays up until the file changes', async () => {
+	const { store, submission } = await withStore();
+	await store.decideSubmission(submission.id, {
+		state: 'published',
+		moderator: 'mod@example.com',
+		note: 'Published.',
+		decidedAt: new Date().toISOString(),
+		publishedSlug: 'a-water-loss-where-everything-turned-on-how',
+	});
+
+	await store.withdrawSubmission(submission.id, 'withdrawal-requested', new Date().toISOString());
+	const after = await store.getSubmission(submission.id);
+	assert.equal(after.state, 'withdrawal-requested', 'a published report was marked withdrawn before the file changed');
+
+	/* And it reaches the moderator with the filename, because "find it by title"
+	   is how the wrong file gets edited. */
+	const queue = await store.withdrawalRequests();
+	assert.equal(queue.length, 1);
+	assert.equal(queue[0].publishedSlug, 'a-water-loss-where-everything-turned-on-how');
+});
+
+test('withdrawal does not overwrite what the moderator decided', async () => {
+	/* A report a moderator declined and one its author withdrew are different
+	   things. One state field with one timestamp cannot say which happened, so
+	   the two are recorded separately. */
+	const { store, submission } = await withStore();
+	const decidedAt = new Date('2026-09-01T00:00:00.000Z').toISOString();
+	await store.decideSubmission(submission.id, {
+		state: 'published',
+		moderator: 'mod@example.com',
+		note: 'Published with the label contributed-account.',
+		decidedAt,
+		publishedSlug: 'slug',
+	});
+	await store.withdrawSubmission(submission.id, 'withdrawal-requested', new Date().toISOString());
+
+	const after = await store.getSubmission(submission.id);
+	assert.equal(after.decidedByModerator, 'mod@example.com', 'the moderator record was overwritten by the withdrawal');
+	assert.equal(after.decidedAt, decidedAt);
+	assert.equal(after.moderatorNote, 'Published with the label contributed-account.');
+	assert.notEqual(after.withdrawnAt, after.decidedAt, 'the two events share a timestamp, so neither can be told from the other');
+});
+
+test('the moderator completing a withdrawal clears it from the queue', async () => {
+	const { store, submission } = await withStore();
+	await store.decideSubmission(submission.id, {
+		state: 'published', moderator: 'mod@example.com', note: 'ok', decidedAt: new Date().toISOString(), publishedSlug: 'slug',
+	});
+	await store.withdrawSubmission(submission.id, 'withdrawal-requested', new Date().toISOString());
+	await store.withdrawSubmission(submission.id, 'withdrawn', new Date().toISOString());
+
+	assert.equal((await store.withdrawalRequests()).length, 0);
+	assert.equal((await store.getSubmission(submission.id)).state, 'withdrawn');
+});
+
+test('the promise of withdrawal is made on pages that can deliver it', () => {
+	/*
+	 * This is the assertion that would have caught the gap. Four pages promised
+	 * withdrawal "at any time" and nothing on the site could do it. A promise
+	 * with no mechanism behind it is the defect this project treats most
+	 * seriously, so the promise and the route are now checked together.
+	 */
+	const route = path.join(ROOT, 'src/pages/contribute/withdraw.ts');
+	assert.ok(fs.existsSync(route), 'the withdrawal route does not exist');
+
+	const account = fs.readFileSync(path.join(ROOT, 'src/pages/account.astro'), 'utf8');
+	assert.match(
+		account,
+		/action="\/contribute\/withdraw"/,
+		'the account page never offers withdrawal, so the promise has no path a contributor can take',
+	);
+
+	/* And the route never asks why. */
+	const body = fs.readFileSync(route, 'utf8');
+	assert.ok(!/reason/i.test(body.replace(/\/\*[\s\S]*?\*\//g, '')), 'the withdrawal route reads a reason from the request');
+});

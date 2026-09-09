@@ -93,8 +93,13 @@ create index if not exists sessions_expiry on sessions (expires_at);
 create table if not exists submissions (
 	id                        uuid primary key,
 	email                     text not null references accounts (email) on delete cascade,
+	-- 'withdrawal-requested' is a state rather than a flag because a published
+	-- report is a file in the repository, not a row here: withdrawing one needs
+	-- a moderator to edit the file and commit, so the request has to be
+	-- something a queue can show.
 	state                     text not null default 'pending'
-	                          check (state in ('pending', 'published', 'declined', 'needs-more')),
+	                          check (state in ('pending', 'published', 'declined',
+	                                           'needs-more', 'withdrawal-requested', 'withdrawn')),
 
 	title                     text not null,
 	what_happened             text not null,
@@ -116,7 +121,16 @@ create table if not exists submissions (
 	submitted_at              timestamptz not null,
 	decided_at                timestamptz,
 	decided_by_moderator      text,
-	moderator_note            text
+	moderator_note            text,
+
+	-- The report file this became. Recorded so a withdrawal request can tell the
+	-- moderator which file to edit; asking them to find it by title is how the
+	-- wrong one gets edited.
+	published_slug            text,
+	-- Separate from decided_at on purpose. A report a moderator declined and one
+	-- its author withdrew are different things, and one timestamp cannot say
+	-- which happened.
+	withdrawn_at              timestamptz
 );
 
 create index if not exists submissions_queue on submissions (state, submitted_at);

@@ -468,6 +468,43 @@ somebody stops contributing.
 
 Set `COMMONS_MODERATORS` to the reviewer's address to open the queue.
 
+### Withdrawal, built 9 September 2026
+
+Section 8 promised withdrawal "at any time, for any reason or none", and four
+pages repeated it. **Nothing on the site could do it.** A promise with no
+mechanism behind it is the defect this estate treats most seriously, so closing
+it came before the next mechanism.
+
+Two paths, because a published report is a file rather than a row:
+
+- **Unpublished** - pending or sent back - is withdrawn on the spot. Nobody has
+  read it and nothing is live.
+- **Published** is recorded as a request, which puts it at the top of the
+  moderator's queue with the filename to edit. The report stays up until the
+  file changes, and the contributor is told exactly that rather than shown a
+  confirmation that is not yet true.
+
+**Nothing asks why.** There is no textarea, no confirmation step that argues,
+and no reason field anywhere in the route - and a test asserts the function
+signature has nowhere to put one, so a later page cannot start requiring a
+justification without that failing. "Or none" is the part of the promise most
+easily lost.
+
+**A withdrawal never overwrites a moderator's decision.** They are separate
+fields with separate timestamps, because a report a moderator declined and one
+its author withdrew are different things and one state field cannot say which
+happened. `publishedSlug` is recorded at publication for the same reason: a
+moderator handling a withdrawal has to be told which file to edit, and "find it
+by title" is how the wrong one gets edited.
+
+Somebody else's submission returns 404 rather than 403, so the endpoint cannot
+be used to test whether an id exists.
+
+One wording fix came with it. `/moderation` said "a contributor may have their
+account withdrawn at any time" - written before user accounts existed, and now
+reading two ways. It says *report*, and says plainly that withdrawing one does
+not close the account.
+
 **Still not built:** practitioner annotation (gated on the Record's licensed
 review) and open discussion (last, and waiting on the first two being worth
 reading).

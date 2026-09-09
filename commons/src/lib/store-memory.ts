@@ -108,7 +108,23 @@ export function memoryStore(): Store {
 				decidedAt: decision.decidedAt,
 				decidedByModerator: decision.moderator,
 				moderatorNote: decision.note,
+				...(decision.publishedSlug ? { publishedSlug: decision.publishedSlug } : {}),
 			});
+		},
+
+		async withdrawSubmission(id, state, at) {
+			const submission = submissions.get(id);
+			if (!submission) return;
+			/* Moderator fields are left alone. A report its author withdrew and one
+			   a moderator declined are different things, and overwriting the
+			   decision here would lose which happened. */
+			submissions.set(id, { ...submission, state, withdrawnAt: at });
+		},
+
+		async withdrawalRequests() {
+			return [...submissions.values()]
+				.filter((s) => s.state === 'withdrawal-requested')
+				.sort((a, b) => (a.withdrawnAt ?? '').localeCompare(b.withdrawnAt ?? ''));
 		},
 
 		async purgeExpired(now) {

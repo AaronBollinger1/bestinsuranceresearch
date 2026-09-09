@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { SESSION_COOKIE, accountFromSession, sameOrigin } from '../lib/auth';
 import { isModerator } from '../lib/moderators';
 import { getStore, selfOrigin } from '../lib/runtime';
+import { WITHDRAWABLE_IMMEDIATELY } from '../lib/store';
 
 export const prerender = false;
 
@@ -40,7 +41,16 @@ const STATE_TEXT: Record<string, string> = {
 	published: 'Published. It is live once the moderator has committed the file.',
 	'needs-more': 'Sent back with questions. Read the note below.',
 	declined: 'Not published. The note below says why.',
+	'withdrawal-requested':
+		'You have asked for this to be taken down. It stays up until a moderator removes the file, which is usually the same day.',
+	withdrawn: 'Withdrawn at your request. It is no longer published.',
 };
+
+const notice = Astro.url.searchParams;
+/* A published report can only be requested, not pulled on the spot, because it
+   is a file somebody has to remove. Saying which is the difference between an
+   honest confirmation and one that is not yet true. */
+const canWithdraw = (state: string) => WITHDRAWABLE_IMMEDIATELY.includes(state as never) || state === 'published';
 ---
 
 <BaseLayout
@@ -65,6 +75,21 @@ const STATE_TEXT: Record<string, string> = {
 				}
 
 				{saved && <div class="callout"><p>Saved.</p></div>}
+				{notice.has('withdrawn') && (
+					<div class="callout"><p>Withdrawn. It is no longer published and nothing more is needed from you.</p></div>
+				)}
+				{notice.has('withdrawal-requested') && (
+					<div class="callout">
+						<p>
+							Asked for. The report stays up until a moderator removes the file, which is usually
+							the same day. Its address will keep working afterwards and will say it was
+							withdrawn, so anybody who cited it sees what happened rather than a dead link.
+						</p>
+					</div>
+				)}
+				{notice.has('withdrawal-noop') && (
+					<div class="callout"><p>Nothing to withdraw — that one is not published.</p></div>
+				)}
 				{problem && <div class="callout" data-tone="stop"><p>{problem}</p></div>}
 
 				<h2>Display name</h2>
@@ -162,10 +187,28 @@ const STATE_TEXT: Record<string, string> = {
 										<p style="margin-top: var(--s-2); font-size: var(--text-sm); color: var(--muted)">
 											{STATE_TEXT[submission.state]}
 										</p>
-										{submission.moderatorNote && (
-											<p style="margin-top: var(--s-2); font-size: var(--text-sm)">
-												<strong>From the moderator:</strong> {submission.moderatorNote}
-											</p>
+										{/* Only where the note is the operative message. The note kept
+										    from a publication decision is still on the record - it is
+										    deliberately not overwritten by a later withdrawal - but
+										    showing "Withdrawn at your request" above "From the
+										    moderator: Published." reads as a contradiction. */}
+										{submission.moderatorNote &&
+											(submission.state === 'needs-more' || submission.state === 'declined') && (
+												<p style="margin-top: var(--s-2); font-size: var(--text-sm)">
+													<strong>From the moderator:</strong> {submission.moderatorNote}
+												</p>
+											)}
+										{canWithdraw(submission.state) && (
+											<form method="post" action="/contribute/withdraw" style="margin-top: var(--s-3)">
+												<input type="hidden" name="id" value={submission.id} />
+												<button
+													type="submit"
+													style="padding: var(--s-2) var(--s-4); font: inherit; font-size: var(--text-sm); color: var(--stop); background: var(--white); border: var(--bw-hair) solid var(--stop); border-radius: var(--r-2); cursor: pointer"
+												>
+													{submission.state === 'published' ? 'Ask for this to be taken down' : 'Withdraw this'}
+												</button>
+												<span class="meta" style="margin-left: var(--s-3)">No reason needed.</span>
+											</form>
 										)}
 									</div>
 								))}
