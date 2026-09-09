@@ -72,6 +72,17 @@ separate from the rules above because breaking one of them looks like progress.
 
 ## Choosing the item
 
+**First, check what this session can reach.** Every content item on the order -
+the recheck, carrier records, hazard geography, risk-score explainers, New York
+and Texas depth - is "read the document and record what it says", and a session
+behind a restrictive egress proxy can do none of them. On 9 September a Claude
+Code on the web pass found every primary-law and regulator host blocked at
+`CONNECT` while web search still worked, which is the worst combination
+available: search results are exactly what the editorial standard forbids
+citing. Probe a host before planning around one. If sources are unreachable,
+the eligible work is engineering over the corpus that already exists, and the
+pass should say so rather than quietly citing a snippet.
+
 Work the reconciled order in `AMBITION.md`. Items 1 and 2 - promote to
 production, and the licensed review - are **blocked on people, not on work**.
 Do not attempt them; do not substitute busywork for them.

@@ -11,6 +11,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -3098,6 +3099,268 @@ test('nothing publishes citations without being reviewable', () => {
 		assert.ok(
 			Object.hasOwn(REVIEWABLE, name),
 			`${name} publishes citations but is not a collection the review queue enumerates`,
+		);
+	}
+});
+
+/* ------------------------------------------------------------------ */
+/* Dataset releases                                                    */
+/* ------------------------------------------------------------------ */
+
+/*
+ * A release is frozen bytes committed to public/dataset, and the only thing
+ * that makes it worth citing is that it stays that way. "Frozen" asserted in a
+ * comment is a wish, so it is asserted here instead: the manifest must describe
+ * the bytes actually on disk, and every checksum in the release must be
+ * reproducible from the release's own claim text.
+ *
+ * The second assertion is the load-bearing one. cut-release.mjs computes claim
+ * checksums with its own copy of the algorithm, because it runs outside Astro
+ * and cannot import claimChecksum() from src/lib/machine.ts. Two copies of a
+ * hash function is exactly the arrangement that drifts silently, and a drifted
+ * checksum would invalidate every citation carrying one without failing
+ * anything. This holds them to the same answer without requiring a frozen
+ * release to track a corpus that has moved on.
+ */
+const DATASET = path.join(ROOT, 'public/dataset');
+const releaseIds = fs.existsSync(DATASET)
+	? fs
+			.readdirSync(DATASET, { withFileTypes: true })
+			.filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name))
+			.map((e) => e.name)
+			.sort()
+	: [];
+
+const releaseClaimChecksum = (text) =>
+	createHash('sha256').update(text, 'utf8').digest('hex').slice(0, 12);
+
+test('a dataset release has been cut, and the index describes releases that exist', () => {
+	assert.ok(releaseIds.length > 0, 'no dataset release exists in public/dataset');
+
+	const indexFile = path.join(DATASET, 'releases.json');
+	assert.ok(fs.existsSync(indexFile), 'public/dataset/releases.json is missing');
+	const index = JSON.parse(read(indexFile));
+
+	assert.equal(
+		index.releases.length,
+		releaseIds.length,
+		'the release index and the release directories disagree on how many releases exist',
+	);
+	for (const entry of index.releases) {
+		assert.ok(
+			releaseIds.includes(entry.release),
+			`the index lists release ${entry.release}, which has no directory`,
+		);
+	}
+	assert.equal(
+		index.latest,
+		releaseIds[releaseIds.length - 1],
+		'the index names a latest release that is not the newest one on disk',
+	);
+});
+
+test('every dataset release is frozen: the manifest describes the bytes on disk', () => {
+	for (const id of releaseIds) {
+		const dir = path.join(DATASET, id);
+		const manifest = JSON.parse(read(path.join(dir, 'manifest.json')));
+
+		assert.equal(manifest.release, id, `manifest in ${id} names a different release`);
+		assert.ok(manifest.schemaVersion >= 1, `release ${id} states no schema version`);
+		assert.ok(manifest.files.length > 0, `release ${id} lists no files`);
+
+		for (const entry of manifest.files) {
+			const file = path.join(dir, entry.name);
+			assert.ok(fs.existsSync(file), `release ${id} lists ${entry.name}, which is not there`);
+			const bytes = fs.readFileSync(file);
+			assert.equal(
+				bytes.length,
+				entry.bytes,
+				`release ${id} file ${entry.name} is ${bytes.length} bytes, manifest says ${entry.bytes}`,
+			);
+			assert.equal(
+				createHash('sha256').update(bytes).digest('hex'),
+				entry.sha256,
+				`release ${id} file ${entry.name} does not match its recorded digest, so the release has been edited after publication`,
+			);
+		}
+	}
+});
+
+test('every claim checksum in a release is reproducible from that release', () => {
+	for (const id of releaseIds) {
+		const lines = read(path.join(DATASET, id, 'claims.jsonl'))
+			.split('\n')
+			.filter((l) => l.trim());
+		assert.ok(lines.length > 0, `release ${id} publishes no claims`);
+
+		const seen = new Set();
+		for (const line of lines) {
+			const row = JSON.parse(line);
+			assert.equal(
+				releaseClaimChecksum(row.text),
+				row.checksum,
+				`claim ${row.claimId} in release ${id} carries a checksum that does not match its own text`,
+			);
+			assert.ok(!seen.has(row.claimId), `claim ${row.claimId} appears twice in release ${id}`);
+			seen.add(row.claimId);
+			assert.match(
+				row.claimId,
+				/^[a-z0-9-]+#c\d+$/,
+				`claim id ${row.claimId} in release ${id} is not a claim address`,
+			);
+		}
+	}
+});
+
+test('the release checksum algorithm still agrees with the one the site publishes', () => {
+	/*
+	 * The site's own claim index is the reference. Only claims whose text is
+	 * byte-identical in both are compared: a claim corrected since the release
+	 * is supposed to differ, and asserting otherwise would forbid corrections.
+	 */
+	const live = JSON.parse(read(path.join(DIST, 'claims.json')));
+	const liveById = new Map(live.claims.map((c) => [c.claimId, c]));
+
+	let compared = 0;
+	for (const id of releaseIds) {
+		const lines = read(path.join(DATASET, id, 'claims.jsonl'))
+			.split('\n')
+			.filter((l) => l.trim());
+		for (const line of lines) {
+			const row = JSON.parse(line);
+			const current = liveById.get(row.claimId);
+			if (!current || current.text !== row.text) continue;
+			compared += 1;
+			assert.equal(
+				current.checksum,
+				row.checksum,
+				`claim ${row.claimId} has identical text in release ${id} and on the site but a different checksum, so cut-release.mjs and claimChecksum() have drifted apart`,
+			);
+		}
+	}
+	assert.ok(compared > 0, 'no claim could be compared between a release and the live index');
+});
+
+test('a release states its review posture rather than reading as verified', () => {
+	for (const id of releaseIds) {
+		const manifest = JSON.parse(read(path.join(DATASET, id, 'manifest.json')));
+
+		/* The counts a consumer needs to not over-trust the file. */
+		assert.ok(manifest.reviewStatus, `release ${id} states no review posture`);
+		assert.equal(
+			typeof manifest.verification.sourcesRechecked,
+			'number',
+			`release ${id} does not say how many of its sources were re-read`,
+		);
+		assert.equal(
+			manifest.verification.sourcesRechecked + manifest.verification.sourcesReadOnce,
+			manifest.counts.sources,
+			`release ${id} verification counts do not add up to its source count`,
+		);
+		assert.ok(
+			manifest.mayNotBeInferred.length >= 5,
+			`release ${id} carries fewer inference warnings than the live claim index does`,
+		);
+		assert.ok(
+			manifest.immutability,
+			`release ${id} does not tell a consumer that it is frozen`,
+		);
+
+		/* And the prohibited vocabulary never appears in a release header. */
+		for (const word of ['rating', 'ranking', 'risk score']) {
+			assert.ok(
+				!manifest.description.toLowerCase().includes(`${word} of`),
+				`release ${id} description reads as though it publishes a ${word}`,
+			);
+		}
+	}
+});
+
+test('the dataset page and the release files are in the build', () => {
+	const page = path.join(DIST, 'dataset/index.html');
+	assert.ok(fs.existsSync(page), '/dataset did not build');
+	const html = read(page);
+
+	const latest = releaseIds[releaseIds.length - 1];
+	assert.ok(
+		html.includes(`/dataset/${latest}/claims.jsonl`),
+		'/dataset does not link the newest release claim file',
+	);
+	assert.ok(
+		html.includes('"@type":"Dataset"') || html.includes('"@type": "Dataset"'),
+		'/dataset publishes no Dataset node',
+	);
+
+	/* The frozen files have to survive the build, or the page links nothing. */
+	for (const id of releaseIds) {
+		for (const name of ['claims.jsonl', 'sources.json', 'manifest.json']) {
+			assert.ok(
+				fs.existsSync(path.join(DIST, 'dataset', id, name)),
+				`release file ${id}/${name} is not in the build output`,
+			);
+		}
+	}
+	assert.ok(
+		fs.existsSync(path.join(DIST, 'dataset/releases.json')),
+		'the release index is not in the build output',
+	);
+});
+
+test('the Dataset node points at frozen distributions, not at the live index', () => {
+	/*
+	 * /sources also carries a Dataset node, and its distributions are the live
+	 * endpoints - which is correct there, because that node describes the corpus
+	 * as it stands. The one on /dataset describes a release, so pointing it at a
+	 * file that changes under the reader would be the exact failure this page was
+	 * built to fix.
+	 */
+	const html = read(path.join(DIST, 'dataset/index.html'));
+	const match = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+	assert.ok(match, '/dataset emits no JSON-LD');
+	const parsed = JSON.parse(match[1]);
+	const nodes = parsed['@graph'] || [parsed];
+	const node = nodes.find((n) => n['@type'] === 'Dataset');
+	assert.ok(node, '/dataset emits no Dataset node');
+
+	const latest = releaseIds[releaseIds.length - 1];
+	assert.equal(node.version, latest, 'the Dataset node names a version that is not the newest release');
+	assert.ok(node.distribution.length > 0, 'the Dataset node offers no distribution');
+	for (const dist of node.distribution) {
+		assert.ok(
+			dist.contentUrl.includes(`/dataset/${latest}/`),
+			`the Dataset node offers ${dist.contentUrl}, which is not a frozen release file`,
+		);
+	}
+});
+
+test('a release is immutable at the HTTP layer too, not only in prose', () => {
+	/*
+	 * /dataset says a release is frozen and never changes. That is a promise
+	 * about bytes, and the response headers are where a consumer or a CDN
+	 * actually learns it. An immutable cache directive would be a lie on the
+	 * live endpoints and is simply true here, which is the whole difference
+	 * between the two surfaces.
+	 */
+	const vercel = JSON.parse(read(path.join(ROOT, 'vercel.json')));
+	const rules = vercel.headers.filter((h) => h.source.startsWith('/dataset/'));
+	assert.ok(rules.length >= 2, 'vercel.json carries no header rules for dataset releases');
+
+	const values = rules.flatMap((r) => r.headers.map((h) => `${h.key}: ${h.value}`));
+	assert.ok(
+		values.some((v) => v.startsWith('Cache-Control') && v.includes('immutable')),
+		'release files are not served immutable, so the freeze is only a claim on the page',
+	);
+	assert.ok(
+		values.some((v) => v === 'Content-Type: application/x-ndjson; charset=utf-8'),
+		'claims.jsonl is not served as ndjson, and nosniff means a consumer gets a download of unknown type',
+	);
+
+	/* The index is not frozen - it gains a row every time a release is cut. */
+	for (const rule of rules) {
+		assert.ok(
+			!'/dataset/releases.json'.startsWith(rule.source.split(':')[0]) ||
+				rule.source.includes(':version'),
+			'the release index is covered by an immutable rule, but it changes with every release',
 		);
 	}
 });

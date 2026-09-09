@@ -28,8 +28,8 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | | |
 | --- | --- |
 | Branch | `launch/initial-publication`, 88 commits, **never push to `main`** |
-| Suite | `npm run validate` = 122 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
-| Built pages | 840 (299 are noindex verification sheets) |
+| Suite | `npm run validate` = 130 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
+| Built pages | 841 (299 are noindex verification sheets) |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
 | Coverage pages | 27 of 51 canonical lines |
@@ -39,6 +39,7 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | Sources ever re-checked | **11 of 299.** The 5 new ones are the eligible figure sources, re-read 8 September |
 | Sources no question reaches | 48 |
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
+| Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file |
 | Published records with no review state | **0.** Was 3; the tools schema now carries review fields, required on live worksheets and forbidden on unbuilt ones |
 
 ### The two things blocking everything else
@@ -231,6 +232,38 @@ give coverage advice, which is the thing that must not happen.
 
 ## 4. Working practices that will save you a pass
 
+**Check whether you can reach a source before planning a pass around one.**
+Claude Code on the web runs behind an egress proxy, and on 9 September every
+primary-law and regulator host this corpus rests on was blocked by it:
+`leginfo.legislature.ca.gov`, `law.cornell.edu`, `ecfr.gov`,
+`uscode.house.gov`, `govinfo.gov`, `insurance.ca.gov`, `content.naic.org`,
+`dfs.ny.gov`, `tdi.texas.gov`, `floir.com` and `filingaccess.serff.com` all
+returned `403` on `CONNECT`. Web *search* worked; fetching the documents did
+not, and a search snippet is exactly what
+`EDITORIAL-AND-CITATION-STANDARD.md` prohibits citing.
+
+That single fact decides what a web pass can attempt. It blocks the recheck
+(item 3) and every content item on the reconciled order - carrier records,
+hazard geography, risk-score explainers, New York and Texas depth - because all
+of them are "read the document and record what it says". Those need a session
+that can reach the internet, which in practice means a local run. What a web
+pass *can* do is engineering over the corpus that already exists, which is what
+item 9 turned out to be. Probe the hosts first with `curl -o /dev/null -w
+"%{http_code}"` and pick accordingly rather than discovering it three documents
+in.
+
+**A dataset release is frozen and is cut deliberately.**
+`node scripts/cut-release.mjs [YYYY-MM-DD]` writes
+`public/dataset/<date>/{claims.jsonl,sources.json,manifest.json}` and rebuilds
+`public/dataset/releases.json`. It refuses to overwrite an existing release
+without `--force`, and `--force` is only ever right on a release that has not
+been committed. Do not hand-edit a release: four assertions compare the
+manifest digests against the bytes, compare every claim checksum against the
+claim's own text, and compare the release against the site's live claim index
+wherever the text is identical. Cut a new release after a correction rather
+than repairing an old one - the `changesSince` block exists to make that
+legible, and it is the honest record of a claim having moved.
+
 **One item per pass.** The standing instruction is to pick one, do it properly,
 run `npm run validate` until green, commit and push, and not start a second.
 Honour it — the commit messages are the project's record and they are written to
@@ -382,7 +415,8 @@ copying a fifth into this one is how that happened. The short version:
 1. **Promote to production.** The user, one command. Nothing is cited that does
    not exist, and everything else is downstream.
 2. **Licensed sign-off.** Brian reading. The instrument is built; no code left.
-3. **Finish the figure-source recheck.** 5 of 11 done on 8 September, and it
+3. **Finish the figure-source recheck.** Needs a session that can reach the
+   documents; see the egress note in section 4. 5 of 11 done on 8 September, and it
    produced one correction. The other 6 were first read that same day so
    were ineligible; they are eligible from 9 September and are listed in
    section 4. Then widen the recheck beyond the figures: 288 of 299 sources

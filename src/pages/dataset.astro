@@ -1,0 +1,351 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Callout from '../components/Callout.astro';
+import DataTable from '../components/DataTable.astro';
+import PageHeader from '../components/PageHeader.astro';
+import StateBlock from '../components/StateBlock.astro';
+import { siteConfig } from '../config/site';
+import { longDate } from '../lib/cite';
+import { allManifests, fileSize, releaseIndex, signedOff } from '../lib/releases';
+import { breadcrumbs, dataset, graph, organization, website } from '../lib/schema';
+
+/*
+ * Everything on this page is read off the frozen release files in
+ * public/dataset, never recomputed from the corpus. If a count here is behind
+ * the count on /sources, that gap is the honest content of the page: it is how
+ * much the corpus has moved since the last release was cut.
+ */
+const index = releaseIndex();
+const manifests = allManifests();
+const latest = manifests[0];
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Dataset', path: '/dataset' },
+];
+
+const releaseRows = manifests.map((m) => [
+	m.release,
+	String(m.counts.claims),
+	String(m.counts.sources),
+	m.changesSince
+		? `+${m.changesSince.addedCount} added, ${m.changesSince.changedCount} corrected, ${m.changesSince.removedCount} removed`
+		: 'Initial release',
+	m.files.map((f) => fileSize(f.bytes)).join(' + '),
+]);
+
+/*
+ * The Dataset node points at the frozen distributions of the newest release,
+ * not at /claims.json. A dataset declaration whose distributions change under
+ * the reader is the thing this page exists to stop doing.
+ */
+const jsonLd = latest
+	? graph(
+			organization(),
+			website(),
+			breadcrumbs(trail),
+			dataset({
+				path: '/dataset',
+				name: latest.name,
+				description: latest.description,
+				version: latest.release,
+				dateModified: latest.datePublished,
+				license: latest.license,
+				distributions: latest.files.map((f) => ({
+					name: f.name,
+					path: `/dataset/${latest.release}/${f.name}`,
+					encodingFormat: f.encodingFormat || 'application/json',
+					description: f.description || '',
+				})),
+				measurements: [
+					{ name: 'claims', value: latest.counts.claims },
+					{ name: 'sourceRecords', value: latest.counts.sources },
+					{ name: 'primarySources', value: latest.counts.primarySources },
+					{ name: 'sourcesRechecked', value: latest.verification.sourcesRechecked },
+				],
+			}),
+		)
+	: graph(organization(), website(), breadcrumbs(trail));
+---
+
+<BaseLayout
+	title="Dataset releases"
+	description="Dated, frozen releases of the claim corpus. Every claim with its stable address and a checksum over its exact text, published free, with the review posture stated on the release itself."
+	jsonLd={jsonLd}
+	pageType="editorial"
+	machinePath="/dataset/releases.json"
+>
+	<PageHeader
+		eyebrow="Dataset"
+		title="A release you can cite, because its bytes will not move"
+		lede="The whole claim corpus as a dated, frozen download. Each release is immutable, carries a checksum over every claim, and states what has and has not been through licensed review."
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell answer-grid">
+			<div class="prose">
+				{
+					!latest ? (
+						<StateBlock kind="empty" heading="No release has been cut yet.">
+							<p>
+								Run <code>node scripts/cut-release.mjs</code> to cut one. Until then the corpus is
+								available only as the live index at <a href="/claims.json">/claims.json</a>, which
+								is deliberately not versioned.
+							</p>
+						</StateBlock>
+					) : null
+				}
+
+				<h2 id="why">Why a release, when the whole corpus is already free</h2>
+				<p>
+					<a href="/claims.json">/claims.json</a> publishes every claim in the library and always
+					will. It is a live endpoint: it is regenerated on every build and it has no identity
+					beyond its URL. That makes it downloadable, which is not the same as citable. A paper, a
+					tool or a dataset registry that says <em>we used the BestInsurance Research claim
+					index</em> has named nothing anyone can fetch again and compare against.
+				</p>
+				<p>
+					A release fixes that by being frozen. The files below were written once and committed.
+					Nothing regenerates them — not a rebuild, not a correction, not a later release. When a
+					claim is corrected, the correction appears in the <em>next</em> release, beside this one,
+					and never inside it. So a citation to a release stays checkable for as long as the release
+					exists, which is the only property that makes a corpus worth citing rather than merely
+					reading.
+				</p>
+
+				<h2 id="releases">Releases</h2>
+				{
+					manifests.length > 0 && (
+						<DataTable
+							caption="Every published release, newest first"
+							columns={['Release', 'Claims', 'Sources', 'Since the last one', 'Size']}
+							rows={releaseRows}
+						/>
+					)
+				}
+				{
+					latest && (
+						<div class="rows" style="margin-top: var(--s-4)">
+							{latest.files.map((f) => (
+								<div class="row" style="grid-template-columns: minmax(0, 1fr)">
+									<div>
+										<h3 class="row-title">
+											<a href={`/dataset/${latest.release}/${f.name}`} style="text-decoration: none">
+												{f.name}
+											</a>
+										</h3>
+										<div class="row-meta">
+											<span class="status status-plain">{f.encodingFormat}</span>
+											<span class="meta">{fileSize(f.bytes)}</span>
+										</div>
+										<p style="margin-top: var(--s-2); font-size: var(--text-sm); color: var(--muted)">
+											{f.description}
+										</p>
+										<p class="mono" style="margin-top: var(--s-2); font-size: var(--text-xs); word-break: break-all">
+											sha256 {f.sha256}
+										</p>
+									</div>
+								</div>
+							))}
+							<div class="row" style="grid-template-columns: minmax(0, 1fr)">
+								<div>
+									<h3 class="row-title">
+										<a href={`/dataset/${latest.release}/manifest.json`} style="text-decoration: none">
+											manifest.json
+										</a>
+									</h3>
+									<div class="row-meta">
+										<span class="status status-plain">application/json</span>
+									</div>
+									<p style="margin-top: var(--s-2); font-size: var(--text-sm); color: var(--muted)">
+										The release itself: counts by authority level, source type, jurisdiction and
+										status, the review posture, the digest of every file, the citation line, and
+										what changed since the previous release.
+									</p>
+								</div>
+							</div>
+						</div>
+					)
+				}
+				{
+					index && (
+						<p style="margin-top: var(--s-4)">
+							A machine-readable list of every release, with the digests, is at{' '}
+							<a href="/dataset/releases.json">/dataset/releases.json</a>. Read{' '}
+							<code>latest</code> from it rather than guessing a date.
+						</p>
+					)
+				}
+
+				<h2 id="verify">Checking what you downloaded</h2>
+				<p>
+					Every file carries a SHA-256 digest in the manifest, and every individual claim carries
+					its own short checksum over its exact text. The first tells you the download is intact;
+					the second tells you, later, whether the specific sentence you relied on still says what
+					it said.
+				</p>
+				{
+					latest && (
+						<pre class="mono" style="overflow-x: auto"><code>{`shasum -a 256 claims.jsonl
+# ${latest.files[0]?.sha256}`}</code></pre>
+					)
+				}
+
+				<h2 id="cite">How to cite it</h2>
+				{
+					latest && (
+						<>
+							<p>
+								Cite the release when you are describing the corpus as a whole, or when your result
+								depends on which version of it you read:
+							</p>
+							<blockquote>
+								<p style="font-size: var(--text-sm)">{latest.citation.text}</p>
+							</blockquote>
+						</>
+					)
+				}
+				<p>
+					Cite an individual claim by its own address and checksum, both of which are on every line
+					of <code>claims.jsonl</code>. A claim address looks like{' '}
+					<code>/sources/&lt;source-id&gt;#c3</code>, meaning the third recorded claim on that
+					source record, and it resolves to the sentence itself. Claims are appended and never
+					inserted, so an address cut into a release keeps pointing at the sentence it was cut for.
+				</p>
+				<p>
+					<strong>Prefer the underlying source over us.</strong> Every claim names the document it
+					rests on, with that document's publisher, URL and dates in <code>sources.json</code>.
+					Cite us when you are relying on our reading of a document rather than on the document.
+				</p>
+
+				<h2 id="schema">What is in the files</h2>
+				<p>
+					<code>claims.jsonl</code> is newline-delimited JSON: one claim per line, so it streams
+					and nothing has to parse the whole file to count it. Each line carries:
+				</p>
+				<DataTable
+					caption="claims.jsonl fields"
+					columns={['Field', 'What it is']}
+					rows={[
+						['claimId', 'The stable address, as source-id#cN. Positional and permanent.'],
+						['url', 'The canonical URL that resolves to the sentence on this site.'],
+						['checksum', 'The first 12 hex characters of the SHA-256 of the claim text.'],
+						['sourceId', 'The source record in sources.json that supports the claim.'],
+						['text', 'The claim itself: one sentence stating what the source supports.'],
+					]}
+				/>
+				<p>
+					<code>sources.json</code> is the source registry as it stood at the release. Beyond the
+					publisher, URL and dates, two fields carry most of the meaning:
+				</p>
+				<DataTable
+					caption="The two fields to read first in sources.json"
+					columns={['Field', 'What it is']}
+					rows={[
+						[
+							'lastCheckedBasis',
+							'"access" means the document was read once, on accessedDate. "recheck" means somebody returned to it and compared the operative language against what we recorded. The two are not the same claim about freshness.',
+						],
+						[
+							'status',
+							'"active", "superseded", "rescinded" or "not-adopted". A source that is not active is kept rather than deleted, because a record citing it has to say so in its own text.',
+						],
+					]}
+				/>
+
+				<h2 id="posture">What a release does not assert</h2>
+				{
+					latest && (
+						<Callout tone="limit">
+							<p>
+								<strong>
+									{signedOff(latest)} of {latest.reviewStatus.recordsWithReviewState} records in
+									release {latest.release} have been signed off by a licensed reviewer.
+								</strong>{' '}
+								The release states that breakdown itself rather than leaving a clean
+								machine-readable file to read as a verified one. Of {latest.counts.sources} source
+								documents, {latest.verification.sourcesRechecked} have been returned to and re-read;
+								the other {latest.verification.sourcesReadOnce} carry the date somebody read them
+								once.
+							</p>
+						</Callout>
+					)
+				}
+				{
+					latest && (
+						<ul>
+							{latest.mayNotBeInferred.map((line) => (
+								<li>{line}</li>
+							))}
+						</ul>
+					)
+				}
+
+				<h2 id="cadence">Cadence, and what a new release means</h2>
+				<p>
+					Releases are cut when the corpus has moved enough to be worth pinning, not on a calendar.
+					Each one records what changed since the last: claims added, claims whose checksum moved
+					because the text was corrected, and claims removed. A changed checksum is the interesting
+					row — it means a sentence you may have cited has since been corrected, and the{' '}
+					<a href="/corrections">corrections log</a> says how.
+				</p>
+				<p>
+					A citation carrying an older release's checksum is still a valid citation of what we
+					published then. That is the point of carrying the checksum rather than only the URL.
+				</p>
+
+				<h2 id="licence">Licence and cost</h2>
+				<p>
+					{latest ? latest.license : 'Records may be quoted and redistributed with attribution and a link to the canonical URL.'}
+				</p>
+				<p>
+					There is no cost, no account, no key, and no rate limit. {siteConfig.name} collects
+					nothing and sells nothing, which is the reason it is worth citing.
+				</p>
+			</div>
+
+			<aside class="answer-rail" aria-label="Page contents">
+				<nav class="rail-block" aria-labelledby="on-this-page">
+					<h2 id="on-this-page">On this page</h2>
+					<ol>
+						<li><a href="#why">Why a release</a></li>
+						<li><a href="#releases">Releases</a></li>
+						<li><a href="#verify">Checking a download</a></li>
+						<li><a href="#cite">How to cite it</a></li>
+						<li><a href="#schema">What is in the files</a></li>
+						<li><a href="#posture">What it does not assert</a></li>
+						<li><a href="#cadence">Cadence</a></li>
+						<li><a href="#licence">Licence and cost</a></li>
+					</ol>
+				</nav>
+				{
+					latest && (
+						<div class="rail-block">
+							<h2>Latest release</h2>
+							<dl>
+								<div><dt>Release</dt><dd>{longDate(latest.release)}</dd></div>
+								<div><dt>Claims</dt><dd>{latest.counts.claims}</dd></div>
+								<div><dt>Sources</dt><dd>{latest.counts.sources}</dd></div>
+								<div><dt>Primary sources</dt><dd>{latest.counts.primarySources}</dd></div>
+								<div><dt>Rechecked</dt><dd>{latest.verification.sourcesRechecked} of {latest.counts.sources}</dd></div>
+								<div><dt>Signed off</dt><dd>{signedOff(latest)} of {latest.reviewStatus.recordsWithReviewState}</dd></div>
+								<div><dt>Schema version</dt><dd>{latest.schemaVersion}</dd></div>
+							</dl>
+						</div>
+					)
+				}
+				<div class="rail-block no-print">
+					<h2>Machine surface</h2>
+					<ul>
+						<li><a href="/dataset/releases.json">Release index</a></li>
+						<li><a href="/claims.json">Live claim index</a></li>
+						<li><a href="/llms.txt">llms.txt</a></li>
+						<li><a href="/sources">Source registry</a></li>
+						<li><a href="/methodology">Methodology</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

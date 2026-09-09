@@ -150,6 +150,7 @@ export const footerNav = {
 		{ label: 'About the operator', href: '/about' },
 	],
 	machine: [
+		{ label: 'Dataset releases', href: '/dataset' },
 		{ label: 'RSS feed', href: '/rss.xml' },
 		{ label: 'llms.txt', href: '/llms.txt' },
 		{ label: 'llms-full.txt', href: '/llms-full.txt' },
