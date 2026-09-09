@@ -3832,6 +3832,7 @@ test('every meta description is whole and within what a search engine shows', ()
 	 * they see the site at all. One that stops mid-clause reads as a broken page
 	 * from the search results.
 	 */
+	let checked = 0;
 	for (const file of htmlFiles) {
 		const html = read(file);
 		const match = html.match(/<meta name="description" content="([^"]*)"/);
@@ -3843,6 +3844,16 @@ test('every meta description is whole and within what a search engine shows', ()
 		if (!description) continue;
 
 		const where = routeOf(file);
+		/*
+		 * By route, not by the robots meta. A preview build stamps noindex on
+		 * every page, so skipping noindex pages would make this assert nothing at
+		 * all in the preview job - the vacuous-test failure this codebase keeps
+		 * finding. These three are never search results in either posture: /404,
+		 * the noindex verification sheets, and the internal design references.
+		 */
+		if (where === '/404' || where.startsWith('/review-queue/') || where.startsWith('/design/')) continue;
+		checked += 1;
+
 		assert.ok(
 			/[.!?][")\]”]?$/.test(description) || description.endsWith('…'),
 			`${where} has a description that stops mid-sentence: "…${description.slice(-70)}"`,
@@ -3851,5 +3862,18 @@ test('every meta description is whole and within what a search engine shows', ()
 			description.length <= 320,
 			`${where} has a ${description.length}-character description, which is well past what any engine shows`,
 		);
+		/*
+		 * And a floor. The sentence rule returns the first sentence, and several
+		 * answers here open with the whole answer in two words - "Very little.",
+		 * "Generally no." That is exactly right on a card and useless as a search
+		 * result, and twelve pages shipped one before audit:onpage caught it. The
+		 * suite should not have needed the audit to find that.
+		 */
+		assert.ok(
+			description.length >= 50,
+			`${where} has a ${description.length}-character description: "${description}". Too short to tell anybody anything in a search result.`,
+		);
 	}
+
+	assert.ok(checked > 400, `only ${checked} descriptions were checked, so this test has quietly stopped covering the site`);
 });

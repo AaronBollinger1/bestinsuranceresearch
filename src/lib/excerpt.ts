@@ -192,7 +192,7 @@ export function sentences(text: string): string[] {
  */
 const TOLERANCE = 1.25;
 
-export function excerpt(text: string, budget: number): string {
+export function excerpt(text: string, budget: number, min = 0): string {
 	const clean = (text ?? '').replace(/\s+/g, ' ').trim();
 	if (!clean) return '';
 	if (clean.length <= budget) return clean;
@@ -208,7 +208,17 @@ export function excerpt(text: string, budget: number): string {
 		if (taken.length >= budget) break;
 	}
 
-	if (taken && taken.length <= budget * TOLERANCE) return taken;
+	/*
+	 * `min` exists because of a real regression. Several answers here open with
+	 * the whole answer in two words - "Very little.", "Generally no." - and the
+	 * loop above will not add the next sentence if doing so exceeds the budget.
+	 * On a card that is perfect: the direct answer, punchy, and complete. As a
+	 * search-result description it is useless, and twelve pages shipped one.
+	 *
+	 * So a caller that needs substance sets a floor, and below it we take whole
+	 * words instead. Cards deliberately do not set one.
+	 */
+	if (taken && taken.length >= min && taken.length <= budget * TOLERANCE) return taken;
 
 	/*
 	 * The first sentence is very long, so fall back to whole words. The trailing
@@ -264,7 +274,12 @@ export function endSentence(text: string): string {
  * opened it, and it is the first thing anyone sees of this site.
  */
 export function metaDescription(text: string): string {
-	return excerpt(text, 155);
+	/*
+	 * The floor is 80 rather than the audit's 50, so a description that only just
+	 * clears the check is not treated as fine. `npm run audit:onpage` fails a
+	 * production build under 50 characters, and it is the thing that caught this.
+	 */
+	return excerpt(text, 155, 80);
 }
 
 /**
