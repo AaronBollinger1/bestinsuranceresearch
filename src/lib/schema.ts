@@ -16,7 +16,7 @@ export const organizationId = `${siteConfig.origin}/#organization`;
 export const websiteId = `${siteConfig.origin}/#website`;
 
 /**
- * The publisher is the operator. BestInsurance Research does not present itself
+ * The publisher is the operator. Birch Research does not present itself
  * as a regulator, rating agency, carrier, or independent consumer organization.
  */
 export function organization(): Json {

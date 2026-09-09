@@ -243,6 +243,18 @@ The Commons then discusses those changes. The Record states them.
 
 ## 10. Naming and origin
 
+> **Superseded in part on 9 September 2026 by `BIRCH.md`.** The owner's decision
+> is that the whole property is Birch: the evidence layer is **Birch Research**,
+> the community is **Birch**, and they are one brand rather than two. What
+> follows still records why the name was chosen and the reservation about the
+> TLD, both of which stand. What it no longer holds is the claim below that the
+> community "cannot be called BestInsurance Research" *because a reader must be
+> able to tell which origin they are standing in* - the reader now tells the
+> layers apart by what the page discloses, not by what it is called. Section 2's
+> load-bearing reason survives the rebrand and is restated in `BIRCH.md`
+> section 2 as a rule the build can check.
+
+
 The Commons needs its own name, and it must not sound like any of three things.
 
 - **Not the Record.** It cannot be called BestInsurance Research, because it

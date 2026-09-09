@@ -3,9 +3,11 @@
 Written 8 September 2026, last revised 9 September at the corpus-assertion
 audit, on `claude/bold-hopper-mqcyen`.
 
-Read `DIRECTION.md` (what this is, and the rules that do not bend) and
-`AMBITION.md` (what it is becoming, and the architecture) before changing
-anything. This file is the state of play plus the things that will cost you a
+Read `DIRECTION.md` (what this is, and the rules that do not bend),
+`AMBITION.md` (what it is becoming, and the architecture) and **`BIRCH.md`**
+(the 9 September rebrand: one property called Birch, carrying both the cited
+evidence and validated discussion, and what that is not allowed to change)
+before changing anything. This file is the state of play plus the things that will cost you a
 pass if you learn them the hard way.
 
 **To run a pass, invoke the `continue-bir` skill** in

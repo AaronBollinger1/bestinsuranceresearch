@@ -3046,7 +3046,7 @@ test('every asset that claims to be the mark is the mark', () => {
 		const circles = (svg.match(/<circle/g) || []).length;
 		assert.equal(circles, MARK_DOTS, `${rel} has ${circles} dots; the mark has ${MARK_DOTS}`);
 		assert.equal((svg.match(/<path/g) || []).length, 1, `${rel} does not have exactly one arrowhead`);
-		assert.ok(svg.includes('BestInsurance Research'), `${rel} does not identify itself as this mark`);
+		assert.ok(svg.includes('Birch Research'), `${rel} does not identify itself as this mark`);
 		// A raster wrapped in an <svg> element is not a vector, whatever the
 		// extension says. Both shipped favicon "vectors" were exactly that.
 		assert.ok(!/<image|base64/.test(svg), `${rel} wraps a raster rather than being vector artwork`);
@@ -3444,6 +3444,64 @@ test('a release states its review posture rather than reading as verified', () =
 			);
 		}
 	}
+});
+
+test('the old name survives only in the release that was frozen under it', () => {
+	/*
+	 * The property is Birch. The evidence layer is Birch Research, the community
+	 * is Birch, and "BestInsurance Research" is what it was called before
+	 * 9 September 2026.
+	 *
+	 * Exactly one thing keeps the old name, and it is not an oversight: the
+	 * frozen dataset release. Its manifest promises immutability and its files
+	 * are checksummed, so rewriting it to tidy a brand is precisely the thing
+	 * that promise exists to prevent. A release is a historical artifact and
+	 * reads as one - the suggested citation on /dataset names the publisher the
+	 * release was actually published under, which is what a citation is for.
+	 *
+	 * Everything else carrying the old name is a leak, and there were 44 of them
+	 * across 26 files at the rename, so the next one is likely to be missed the
+	 * same way.
+	 */
+	const OLD = 'BestInsurance Research';
+
+	/* Whatever the releases say is allowed to reach the reader through them. */
+	const releaseText = walk(path.join(DIST, 'dataset'), (f) => f.endsWith('.json'))
+		.map(read)
+		.join('\n');
+	assert.ok(
+		releaseText.includes(OLD),
+		'no frozen release carries the old name any more, so either a release was rewritten - ' +
+			'which its own immutability promise forbids - or this check has stopped meaning anything',
+	);
+
+	let checked = 0;
+	const leaks = [];
+	for (const file of htmlFiles) {
+		checked += 1;
+		const html = read(file);
+		if (!html.includes(OLD)) continue;
+		/* On /dataset the old name is quoted from a release. Anywhere else, or in
+		   any wording the releases do not contain, it is the rename leaking. */
+		const route = routeOf(file);
+		const quoted = route === '/dataset' || route.startsWith('/dataset/');
+		if (!quoted) leaks.push(route);
+	}
+	assert.ok(checked > 800, `only ${checked} pages read, so this check covers less than the site`);
+	assert.deepEqual(
+		leaks,
+		[],
+		`these pages still carry the old name, which now belongs only to the frozen release: ${leaks.join(', ')}`,
+	);
+
+	/* And the new name is actually rendered, rather than the old one merely
+	   deleted. A wordmark reading nothing would pass everything above. */
+	const home = read(path.join(DIST, 'index.html'));
+	assert.ok(home.includes('Birch <em>Research</em>'), 'the wordmark does not render the new name');
+	assert.ok(
+		/<title>[^<]*Birch Research/.test(home),
+		'the home page title never names the property',
+	);
 });
 
 test('the dataset page and the release files are in the build', () => {

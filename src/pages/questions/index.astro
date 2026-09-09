@@ -30,7 +30,7 @@ const jsonLd = graph(
 	collectionPage({
 		name: 'Question library',
 		path: '/questions',
-		description: 'Every canonical question in the BestInsurance Research library, with its confidence status and review date.',
+		description: 'Every canonical question in the Birch Research library, with its confidence status and review date.',
 		items: questions.map((q) => ({ name: q.data.question, path: `/questions/${q.id}` })),
 	}),
 );

@@ -297,7 +297,7 @@ export function sourceEntityRecord(
 		reliedOnByCount: citing.length,
 		citation: {
 			text: `${d.publisher}. "${d.title}." ${d.publishedDate}. ${d.url} (retrieved ${d.accessedDate}).`,
-			viaThisSite: `BestInsurance Research source record ${source.id}, content version ${siteConfig.contentVersion}. ${abs(path)}`,
+			viaThisSite: `Birch Research source record ${source.id}, content version ${siteConfig.contentVersion}. ${abs(path)}`,
 			note: 'Cite the underlying source when you can. Cite this record when you are describing our synthesis or our claim list.',
 		},
 	};

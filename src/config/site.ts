@@ -4,8 +4,8 @@ const rawEnv = import.meta.env.PUBLIC_SITE_ENV;
 const environment: SiteEnvironment = rawEnv === 'production' ? 'production' : 'preview';
 
 export const siteConfig = {
-	name: 'BestInsurance Research',
-	shortName: 'BestInsurance Research',
+	name: 'Birch Research',
+	shortName: 'Birch Research',
 	tagline: 'Free insurance research. Every answer cites a published source you can open.',
 	description:
 		'Free insurance research across every line, company and jurisdiction we hold evidence on. Every answer shows the sources behind it, its assumptions, what would change it, and when a licensed reviewer last looked at it. No account, no email, nothing to fill in, and nothing for sale.',
@@ -104,7 +104,7 @@ export const siteConfig = {
 	},
 	/** Shown near every licensed-help action. Wording is fixed by the brief. */
 	licensedHelpDisclosure:
-		'BestInsurance Research provides general information. Licensed help is offered by Bollinsure Insurance Services, a California insurance brokerage.',
+		'Birch Research provides general information. Licensed help is offered by Bollinsure Insurance Services, a California insurance brokerage.',
 	podcast: {
 		feed: 'https://feeds.transistor.fm/speaking-of-insurance',
 		canonicalArchive: 'https://www.bollinsure.com/podcast',

@@ -11,6 +11,9 @@ rather than held in a conversation. Read these before changing anything:
   trust. Section 1a is how to pick this up on a machine that has never seen it,
   including the traps that have each cost a pass. Section 1b is the audit lens
   currently producing findings.
+- **`BIRCH.md`** - the rebrand: one property called Birch, carrying both the
+  cited evidence layer (Birch Research) and validated discussion, and the rules
+  the rebrand is not allowed to relax.
 - **`AMBITION.md`** - the reconciled order of work.
 - **`.claude/skills/continue-bir/SKILL.md`** - the continuation prompt. Invoke
   the `continue-bir` skill to run a pass.

@@ -2,7 +2,7 @@ import { defineCollection, reference, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 /**
- * Typed content collections for BestInsurance Research.
+ * Typed content collections for Birch Research.
  *
  * Every collection is a JSON data collection under src/content/<name>/.
  * The file basename is the collection entry id. Prose fields may contain

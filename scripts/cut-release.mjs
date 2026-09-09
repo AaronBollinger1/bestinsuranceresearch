@@ -10,7 +10,7 @@
  * /claims.json is a live endpoint. It is regenerated on every build, it carries
  * a `generatedFor` stamp that changes daily whether or not a word moved, and it
  * has no identity beyond the URL. A paper, a dataset registry or somebody
- * else's tool cannot cite it: "we used the BestInsurance Research claim index"
+ * else's tool cannot cite it: "we used the Birch Research claim index"
  * names nothing that can be fetched again and compared. That is the difference
  * between being downloadable and being citable, and only the second one is the
  * goal in DIRECTION.md.
@@ -275,7 +275,7 @@ for (const f of files) fs.writeFileSync(path.join(dir, f.name), f.body);
 const manifest = {
 	release,
 	schemaVersion: SCHEMA_VERSION,
-	name: `BestInsurance Research claim corpus, release ${release}`,
+	name: `Birch Research claim corpus, release ${release}`,
 	description:
 		`${claims.length} individually recorded claims across ${sources.length} source records. Each ` +
 		'claim is one sentence stating exactly what one source supports and nothing beyond it, with a ' +
@@ -285,7 +285,7 @@ const manifest = {
 	datePublished: release,
 	documentation: `${ORIGIN}/dataset`,
 	publisher: {
-		name: 'BestInsurance Research',
+		name: 'Birch Research',
 		operator: 'WJB Services, Inc. dba Bollinsure Insurance Services',
 		license: '6013787',
 		licenseAuthority: 'California Department of Insurance',
@@ -343,7 +343,7 @@ const manifest = {
 	}),
 	citation: {
 		text:
-			`BestInsurance Research. "Claim corpus, release ${release}." ${ORIGIN}/dataset/${release}/. ` +
+			`Birch Research. "Claim corpus, release ${release}." ${ORIGIN}/dataset/${release}/. ` +
 			`${claims.length} claims across ${sources.length} sources.`,
 		note:
 			'Cite an individual claim by its own address and checksum from claims.jsonl. Cite the ' +
@@ -378,7 +378,7 @@ const all = fs
 	.reverse();
 
 const index = {
-	name: 'BestInsurance Research claim corpus',
+	name: 'Birch Research claim corpus',
 	documentation: `${ORIGIN}/dataset`,
 	about:
 		'Dated, frozen releases of the claim corpus. Each release is immutable: cite one by its date ' +

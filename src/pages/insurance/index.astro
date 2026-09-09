@@ -41,7 +41,7 @@ const jsonLd = graph(
 	{
 		'@type': 'DefinedTermSet',
 		'@id': `${new URL('/insurance', Astro.site ?? 'https://bestinsuranceresearch.com').toString()}#termset`,
-		name: 'BestInsurance Research coverage library',
+		name: 'Birch Research coverage library',
 		hasDefinedTerm: coverages.map((c) => ({
 			'@type': 'DefinedTerm',
 			name: c.data.name,

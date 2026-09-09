@@ -1,4 +1,4 @@
-BestInsurance Research favicon package
+Birch Research favicon package
 
 Exact icon extracted from the approved brand board.
 

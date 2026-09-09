@@ -47,7 +47,7 @@ const { DOMAIN_ROUTES, OUT_OF_SCOPE } = await import(
 const CONTROL_HOST = 'www.bestepli.com';
 const MARKERS = [
 	{ path: '/position', needle: 'Coverage position' },
-	{ path: '/', needle: 'BestInsurance Research' },
+	{ path: '/', needle: 'Birch Research' },
 ];
 
 async function probe(url) {
