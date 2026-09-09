@@ -2553,6 +2553,101 @@ test('a cross-module rule stays silent until every module it reads is touched', 
 	}
 });
 
+test('every boundary the position page promises is a boundary the build enforces', async () => {
+	/*
+	 * /position prints what this instrument will not do and then says:
+	 * "Enforced in code and in tests, not only in policy: every rule is
+	 * validated at build time against this boundary."
+	 *
+	 * That sentence was two-thirds true. The promises were prose on the page and
+	 * the guard was a flat phrase list in src/lib/position.ts, with nothing
+	 * joining them, so two of the six promises were enforced by no phrase at all
+	 * - "Assign a class code or any rating-bureau classification" and "Give you a
+	 * risk score", the two DIRECTION.md treats as absolute. A seventh phrase
+	 * group, refusing to tell somebody what to buy, was enforced with no promise
+	 * printed anywhere: the same drift running the other way.
+	 *
+	 * This is the join. It fails if a promise appears on the page with no phrases
+	 * behind it, or a phrase group exists with no promise in front of it.
+	 */
+	const { BOUNDARY } = await import('../src/lib/position.ts');
+	const html = read(path.join(DIST, 'position', 'index.html'));
+
+	const card = html.match(/It will not<\/h3>([\s\S]*?)<\/ul>/);
+	assert.ok(card, '/position no longer prints an "It will not" card, so this check cannot run');
+	const printed = [...card[1].matchAll(/<li>([\s\S]*?)<\/li>/g)].map((m) =>
+		m[1].replace(/<[^>]+>/g, '').replace(/&#39;/g, "'").replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim(),
+	);
+	assert.ok(printed.length >= 6, `the boundary card lists ${printed.length} promises, which is fewer than it had`);
+
+	const unenforced = printed.filter(
+		(line) => !BOUNDARY.some((entry) => line.startsWith(entry.promise)),
+	);
+	assert.deepEqual(
+		unenforced,
+		[],
+		'/position promises these and no phrase in the guard enforces them, so a rule ' +
+			`could say it and build: ${unenforced.join(' | ')}`,
+	);
+
+	const unpromised = BOUNDARY.filter(
+		(entry) => !printed.some((line) => line.startsWith(entry.promise)),
+	).map((entry) => entry.promise);
+	assert.deepEqual(
+		unpromised,
+		[],
+		`the build enforces these and /position never tells the reader: ${unpromised.join(' | ')}`,
+	);
+
+	for (const entry of BOUNDARY) {
+		assert.ok(entry.phrases.length > 0, `"${entry.promise}" is promised and enforced by nothing`);
+	}
+});
+
+test('every rule that reaches a reader is measured against the boundary, cross rules included', async () => {
+	/*
+	 * The fifteen cross-module rules render in the same open-item list as the 272
+	 * module rules, through the same component and the same engine, and went
+	 * through a validator that checked field resolution and module spanning and
+	 * nothing else. None of them was over the line - this is a hole in the guard
+	 * rather than a fault in the corpus - but the page's claim covers "every
+	 * rule", so the check has to.
+	 */
+	const { boundaryBreaches, validateCrossRule } = await import('../src/lib/position.ts');
+
+	const everyRule = [
+		...modules.flatMap((m) => (m.data.rules ?? []).map((r) => [`${m.id}/${r.id}`, r])),
+		...collection('cross-rules').map((r) => [`cross-rules/${r.id}`, r.data]),
+	];
+	assert.ok(everyRule.length > 250, `only ${everyRule.length} rules found, so this check covers too little`);
+
+	const over = [];
+	for (const [where, rule] of everyRule) {
+		for (const phrase of boundaryBreaches(`${rule.title} ${rule.detail} ${rule.action}`)) {
+			over.push(`${where}: "${phrase}"`);
+		}
+	}
+	assert.deepEqual(over, [], `rules that state a verdict this instrument may not state:\n  ${over.join('\n  ')}`);
+
+	/* And the cross-rule validator itself has to be the thing that catches it,
+	   not this test standing in for it. */
+	const breach = {
+		id: 'probe',
+		kind: 'gap',
+		severity: 'high',
+		modules: ['a', 'b'],
+		title: 'Probe',
+		detail: 'This is covered under the form you recorded.',
+		action: 'Nothing.',
+		when: { all: [] },
+		sourceIds: [],
+	};
+	assert.ok(
+		validateCrossRule(breach, []).some((x) => x.includes('crosses the boundary')),
+		'validateCrossRule accepted a cross rule stating that a loss is covered',
+	);
+});
+
 test('the position page ships every cross-module rule, cited', () => {
 	/*
 	 * The rules are validated and proven to fire elsewhere. This is the other
