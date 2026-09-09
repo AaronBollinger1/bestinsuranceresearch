@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SESSION_COOKIE, accountFromSession, sameOrigin } from '../../lib/auth';
+import { LABELS } from '../../config/commons';
+import { isModerator } from '../../lib/moderators';
+import { getStore, selfOrigin } from '../../lib/runtime';
+import { draftReport, reportSlug } from '../../lib/submissions';
+
+export const prerender = false;
+
+const store = getStore();
+const moderator = await accountFromSession(store, Astro.cookies.get(SESSION_COOKIE)?.value);
+if (!moderator) return Astro.redirect('/sign-in', 303);
+if (!isModerator(moderator.email, process.env)) return new Response('Not found', { status: 404 });
+
+const { id } = Astro.params;
+const loaded = await store.getSubmission(String(id));
+if (!loaded) return new Response('Not found', { status: 404 });
+
+/*
+ * `loaded` is the non-null anchor. Re-reading after a decision returns
+ * `Submission | null`, which widens the variable back to nullable for every
+ * line below it - so the refresh falls back to what we already had rather than
+ * scattering non-null assertions through the page. If the row vanished between
+ * the write and the read, showing the pre-decision copy is the honest outcome.
+ */
+let submission = loaded;
+const refresh = async () => {
+	submission = (await store.getSubmission(loaded.id)) ?? submission;
+};
+
+let published: { slug: string; json: string } | null = null;
+let problem = '';
+
+if (Astro.request.method === 'POST') {
+	if (!sameOrigin(Astro.request, selfOrigin(Astro.request))) {
+		return new Response('Bad request', { status: 400 });
+	}
+
+	const form = await Astro.request.formData();
+	const action = String(form.get('action') ?? '');
+	const note = String(form.get('note') ?? '').trim();
+	const now = new Date().toISOString();
+
+	if (action === 'decline' || action === 'needs-more') {
+		if (note.length < 20) {
+			problem = 'A decision that goes back to the contributor needs a note saying why. Twenty characters is not much to ask for somebody who spent twenty minutes.';
+		} else {
+			await store.decideSubmission(submission.id, {
+				state: action === 'decline' ? 'declined' : 'needs-more',
+				moderator: moderator.email,
+				note,
+				decidedAt: now,
+			});
+			await refresh();
+		}
+	}
+
+	if (action === 'publish') {
+		const label = String(form.get('label') ?? '');
+		const labelNote = String(form.get('labelNote') ?? '').trim();
+		const provenance = String(form.get('provenance') ?? '').trim();
+
+		if (!(label in LABELS)) problem = 'Pick a label.';
+		else if (labelNote.length < 30) problem = 'Say why it carries that label, in at least 30 characters. A label with no reasoning behind it is an assertion.';
+		else if (provenance.length < 40) problem = 'Record what you actually checked, in at least 40 characters. This is the field a researcher reads first.';
+		else {
+			const author = await store.getAccount(submission.email);
+			if (!author) problem = 'The contributing account no longer exists.';
+			else {
+				const record = draftReport(submission, author, {
+					label,
+					labelNote,
+					provenance,
+					name: moderator.displayName || moderator.email,
+					publishedOn: now.slice(0, 10),
+				});
+				published = { slug: reportSlug(submission.title), json: `${JSON.stringify(record, null, '\t')}\n` };
+				await store.decideSubmission(submission.id, {
+					state: 'published',
+					moderator: moderator.email,
+					note: note || 'Published.',
+					decidedAt: now,
+				});
+				await refresh();
+			}
+		}
+	}
+}
+
+const d = submission;
+const box =
+	'width: 100%; padding: var(--s-3); font: inherit; border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); background: var(--white)';
+---
+
+<BaseLayout
+	title="Moderating a submission"
+	eyebrow="Moderation"
+	crumbs={[{ name: 'Home', href: '/' }, { name: 'Queue', href: '/moderate' }, { name: d.title }]}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				{problem && <div class="callout" data-tone="stop"><p>{problem}</p></div>}
+
+				{
+					published && (
+						<div class="callout">
+							<h3>Publish it by committing this file</h3>
+							<p>
+								Save the following as{' '}
+								<code>src/content/reports/{published.slug}.json</code> and commit it. The
+								submission is marked published, but a report is only live once the file is in the
+								repository.
+							</p>
+							<p class="meta">
+								Published reports are files rather than rows on purpose: version history, a
+								reviewable diff, and a correction trail that keeps the prior wording. It is the
+								same discipline the Record runs on, and it means a reader never depends on the
+								database being up.
+							</p>
+							<pre style="overflow-x: auto; background: var(--white); padding: var(--s-3); border: var(--bw-hair) solid var(--line); border-radius: var(--r-2)"><code>{published.json}</code></pre>
+						</div>
+					)
+				}
+
+				{
+					d.verdictFlags.length > 0 && (
+						<div class="callout" data-tone="warn">
+							<h3>Verdict flags</h3>
+							<p>Phrases that read as a view on whether a claim should have been paid:</p>
+							<ul>{d.verdictFlags.map((flag) => <li><code>{flag}</code></li>)}</ul>
+							<p>
+								These are matches, not findings. Reporting that somebody <em>else</em> said it is
+								exactly the kind of fact this site wants and the check cannot tell the difference.
+								Read them in context.
+							</p>
+						</div>
+					)
+				}
+
+				<h2>{d.title}</h2>
+				<dl class="fields">
+					<div><dt>State</dt><dd>{d.state}</dd></div>
+					<div><dt>When it happened</dt><dd>{d.occurredOn}</dd></div>
+					<div><dt>Where</dt><dd>{d.states.join(', ') || 'not stated'}</dd></div>
+					<div><dt>Lines</dt><dd>{d.lines.join(', ')}</dd></div>
+					<div><dt>Submitted</dt><dd>{d.submittedAt.slice(0, 10)}</dd></div>
+				</dl>
+
+				<h3>What happened</h3>
+				<p style="white-space: pre-wrap">{d.whatHappened}</p>
+
+				<h3>The insurance question</h3>
+				<p>{d.insuranceQuestion}</p>
+
+				<h3>What mattered</h3>
+				<ul>{d.informationThatMattered.map((item) => <li>{item}</li>)}</ul>
+
+				<h3>Who decided</h3>
+				<p style="white-space: pre-wrap">{d.decidedBy}</p>
+
+				<h3>Why it does not generalise</h3>
+				<ul>{d.cannotGeneralize.map((item) => <li>{item}</li>)}</ul>
+
+				{
+					d.state === 'pending' ? (
+						<>
+							<h2>Decide</h2>
+							<form method="post">
+								<h3>Publish</h3>
+								<p>
+									<label for="label"><strong>What kind of evidence is this?</strong></label><br />
+									<select id="label" name="label" style={box}>
+										{Object.entries(LABELS).map(([key, meaning]) => (
+											<option value={key}>{key} — {meaning}</option>
+										))}
+									</select>
+								</p>
+								<p>
+									<label for="labelNote"><strong>Why it carries that label</strong></label><br />
+									<textarea id="labelNote" name="labelNote" rows="3" style={box}></textarea>
+								</p>
+								<p>
+									<label for="provenance"><strong>What you checked before publishing</strong></label><br />
+									<span class="meta">
+										Not what the contributor said. What you did: what was removed, what was
+										corroborated, and what remains only their account.
+									</span><br />
+									<textarea id="provenance" name="provenance" rows="4" style={box}></textarea>
+								</p>
+								<p>
+									<label for="note"><strong>A note back to the contributor</strong></label><br />
+									<textarea id="note" name="note" rows="3" style={box}></textarea>
+								</p>
+								<p>
+									<button type="submit" name="action" value="publish" style="padding: var(--s-3) var(--s-5); font: inherit; color: var(--white); background: var(--link); border: 0; border-radius: var(--r-2); cursor: pointer">
+										Approve and generate the report file
+									</button>
+								</p>
+								<h3>Or send it back</h3>
+								<p class="meta">
+									Both of these need the note above filled in. Most submissions are incomplete
+									rather than wrong, and "needs more" with two questions is usually the right
+									answer.
+								</p>
+								<p style="display: flex; gap: var(--s-3); flex-wrap: wrap">
+									<button type="submit" name="action" value="needs-more" style="padding: var(--s-3) var(--s-5); font: inherit; color: var(--ink); background: var(--white); border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); cursor: pointer">
+										Needs more
+									</button>
+									<button type="submit" name="action" value="decline" style="padding: var(--s-3) var(--s-5); font: inherit; color: var(--stop); background: var(--white); border: var(--bw-hair) solid var(--stop); border-radius: var(--r-2); cursor: pointer">
+										Decline
+									</button>
+								</p>
+							</form>
+						</>
+					) : (
+						<div class="callout">
+							<h3>Already decided</h3>
+							<p>
+								Marked <strong>{d.state}</strong> on {d.decidedAt?.slice(0, 10)} by{' '}
+								{d.decidedByModerator}.
+							</p>
+							{d.moderatorNote && <p>{d.moderatorNote}</p>}
+						</div>
+					)
+				}
+			</div>
+
+			<aside aria-label="Checklist">
+				<div class="rail-block">
+					<h2>Before publishing</h2>
+					<ul>
+						<li>No view on whether the claim should have been paid</li>
+						<li>No individual named</li>
+						<li>No third-party personal information</li>
+						<li>No policy or claim numbers</li>
+						<li>No premium, quote or rate</li>
+						<li>Three or more reasons it does not generalise</li>
+						<li>decidedBy names who decided, or says nobody did</li>
+					</ul>
+				</div>
+				<div class="rail-block">
+					<h2>Contributor</h2>
+					<dl>
+						<div><dt>Account</dt><dd>{d.email}</dd></div>
+					</dl>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

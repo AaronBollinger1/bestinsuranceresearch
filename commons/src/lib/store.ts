@@ -62,6 +62,70 @@ export interface Session {
 	expiresAt: number;
 }
 
+
+/**
+ * A submitted account, before anybody has read it.
+ *
+ * Submissions live in the database. **Published reports do not** - they are
+ * JSON files in the repository, and the moderation queue emits one for commit
+ * rather than flipping a row to visible.
+ *
+ * That looks like extra work and it is the right trade. Published content in
+ * git gets version history, a reviewable diff, and corrections that keep their
+ * prior wording, which is exactly the discipline the Record runs on and exactly
+ * what `COMMONS.md` section 8 means by moderation being the product. It also
+ * means a reader never depends on a database being up, and that there is one
+ * source of truth for what is published rather than two that can disagree.
+ *
+ * The fields mirror the `reports` collection because the moderator's job is to
+ * turn one into the other, not to retype it.
+ */
+export interface Submission {
+	id: string;
+	/** The account that submitted it. Attribution is not optional here. */
+	email: string;
+	state: 'pending' | 'published' | 'declined' | 'needs-more';
+
+	title: string;
+	whatHappened: string;
+	insuranceQuestion: string;
+	informationThatMattered: string[];
+	decidedBy: string;
+	cannotGeneralize: string[];
+	lines: string[];
+	states: string[];
+	occurredOn: string;
+
+	/**
+	 * Phrases that read as a verdict on whether a claim should have been paid,
+	 * found at submission time. Not a block - a contributor phrasing something
+	 * badly should be guided rather than silently rejected, and a false positive
+	 * must not cost somebody their whole account. Stored so the moderator sees
+	 * exactly what tripped and can judge it.
+	 */
+	verdictFlags: string[];
+
+	submittedAt: string;
+	/** Set when a moderator decides. Their note is for the contributor. */
+	decidedAt?: string;
+	decidedByModerator?: string;
+	moderatorNote?: string;
+}
+
+export interface SubmissionDraft {
+	email: string;
+	title: string;
+	whatHappened: string;
+	insuranceQuestion: string;
+	informationThatMattered: string[];
+	decidedBy: string;
+	cannotGeneralize: string[];
+	lines: string[];
+	states: string[];
+	occurredOn: string;
+	verdictFlags: string[];
+}
+
 export interface Store {
 	/* --- Accounts --- */
 	getAccount(email: string): Promise<Account | null>;
@@ -85,6 +149,19 @@ export interface Store {
 	createSession(session: Session): Promise<void>;
 	getSession(idHash: string): Promise<Session | null>;
 	deleteSession(idHash: string): Promise<void>;
+
+	/* --- Submissions --- */
+	createSubmission(draft: SubmissionDraft, id: string, submittedAt: string): Promise<Submission>;
+	getSubmission(id: string): Promise<Submission | null>;
+	/** Everything awaiting a decision, oldest first. The queue is FIFO on purpose:
+	    ordering by anything else is a judgement about whose account matters more. */
+	pendingSubmissions(): Promise<Submission[]>;
+	/** What one person has sent, so they can see where it got to. */
+	submissionsBy(email: string): Promise<Submission[]>;
+	decideSubmission(
+		id: string,
+		decision: { state: Submission['state']; moderator: string; note: string; decidedAt: string },
+	): Promise<void>;
 
 	/** Drops expired tokens and sessions. Nothing keeps what it does not need. */
 	purgeExpired(now: number): Promise<void>;

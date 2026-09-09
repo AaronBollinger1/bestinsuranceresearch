@@ -1,4 +1,4 @@
-import type { Account, Session, SignInToken, Store } from './store';
+import type { Account, Session, SignInToken, Store, Submission, SubmissionDraft } from './store';
 
 /**
  * The in-memory store.
@@ -16,6 +16,7 @@ export function memoryStore(): Store {
 	const accounts = new Map<string, Account>();
 	const tokens = new Map<string, SignInToken>();
 	const sessions = new Map<string, Session>();
+	const submissions = new Map<string, Submission>();
 	/** Issue times per email, for the rate limit. Trimmed in purgeExpired. */
 	const issued = new Map<string, number[]>();
 
@@ -72,6 +73,42 @@ export function memoryStore(): Store {
 
 		async deleteSession(idHash) {
 			sessions.delete(idHash);
+		},
+
+		async createSubmission(draft: SubmissionDraft, id: string, submittedAt: string) {
+			const submission: Submission = { ...draft, id, state: 'pending', submittedAt };
+			submissions.set(id, submission);
+			return submission;
+		},
+
+		async getSubmission(id) {
+			return submissions.get(id) ?? null;
+		},
+
+		async pendingSubmissions() {
+			/* Oldest first. Ordering a moderation queue by anything else is a
+			   judgement about whose account matters more. */
+			return [...submissions.values()]
+				.filter((s) => s.state === 'pending')
+				.sort((a, b) => a.submittedAt.localeCompare(b.submittedAt));
+		},
+
+		async submissionsBy(email) {
+			return [...submissions.values()]
+				.filter((s) => s.email === email)
+				.sort((a, b) => b.submittedAt.localeCompare(a.submittedAt));
+		},
+
+		async decideSubmission(id, decision) {
+			const submission = submissions.get(id);
+			if (!submission) return;
+			submissions.set(id, {
+				...submission,
+				state: decision.state,
+				decidedAt: decision.decidedAt,
+				decidedByModerator: decision.moderator,
+				moderatorNote: decision.note,
+			});
 		},
 
 		async purgeExpired(now) {

@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SESSION_COOKIE, accountFromSession } from '../../lib/auth';
+import { getStore } from '../../lib/runtime';
+
+export const prerender = false;
+
+const account = await accountFromSession(getStore(), Astro.cookies.get(SESSION_COOKIE)?.value);
+if (!account) return Astro.redirect('/sign-in', 303);
+
+const flags = Number(Astro.url.searchParams.get('flags') ?? '0');
+---
+
+<BaseLayout
+	title="Sent to the moderator"
+	eyebrow="Contribute"
+	crumbs={[{ name: 'Home', href: '/' }, { name: 'Contribute', href: '/contribute' }, { name: 'Sent' }]}
+>
+	<section class="band band-tight">
+		<div class="shell">
+			<div class="prose">
+				<h2>Sent</h2>
+				<p>
+					It is in the queue. Nothing publishes until a moderator has read it, and that is done by
+					one person, so it will not be quick. You can see where it got to on{' '}
+					<a href="/account">your account page</a>.
+				</p>
+
+				{
+					flags > 0 && (
+						<div class="callout" data-tone="warn">
+							<h3>One thing the moderator will look at closely</h3>
+							<p>
+								{flags === 1 ? 'A phrase' : `${flags} phrases`} in what you wrote{' '}
+								{flags === 1 ? 'reads' : 'read'} like a view on whether the claim should have been
+								paid. That may be a misreading — reporting that <em>somebody else</em> said it is
+								exactly the kind of fact this site wants, and the check cannot tell the
+								difference.
+							</p>
+							<p>
+								It has been flagged rather than blocked, and a person will judge it. If it does
+								turn out to be a verdict, the moderator will come back to you rather than quietly
+								cutting it.
+							</p>
+						</div>
+					)
+				}
+
+				<h2>What happens next</h2>
+				<ol>
+					<li>A moderator reads it against <a href="/standards">the standards</a>.</li>
+					<li>Identifying detail is removed before publication, not after.</li>
+					<li>
+						They set the label — what kind of evidence this is — and write down what was checked.
+					</li>
+					<li>
+						If something is missing, they come back to you. Most submissions are not rejected;
+						they are incomplete, and the fix is usually two questions.
+					</li>
+				</ol>
+
+				<h2>Changing your mind</h2>
+				<p>
+					You can have it withdrawn at any point, before or after it publishes, for any reason or
+					none. A withdrawn report keeps its address and says it was withdrawn, so anybody who
+					cited it sees what happened rather than a dead link.
+				</p>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

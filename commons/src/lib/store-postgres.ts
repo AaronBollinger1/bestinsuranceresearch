@@ -1,5 +1,5 @@
 import type { Pool } from 'pg';
-import type { Account, Session, SignInToken, Store } from './store';
+import type { Account, Session, SignInToken, Store, Submission, SubmissionDraft } from './store';
 
 /**
  * The Postgres store, for Neon.
@@ -56,6 +56,31 @@ export function postgresStore(pool: Pool): Store {
 			};
 		}
 		return account;
+	};
+
+	const rowToSubmission = (row: Record<string, unknown>): Submission => ({
+		id: String(row.id),
+		email: String(row.email),
+		state: row.state as Submission['state'],
+		title: String(row.title),
+		whatHappened: String(row.what_happened),
+		insuranceQuestion: String(row.insurance_question),
+		informationThatMattered: row.information_that_mattered as string[],
+		decidedBy: String(row.decided_by),
+		cannotGeneralize: row.cannot_generalize as string[],
+		lines: row.lines as string[],
+		states: row.states as string[],
+		occurredOn: String(row.occurred_on),
+		verdictFlags: row.verdict_flags as string[],
+		submittedAt: new Date(row.submitted_at as string).toISOString(),
+		...(row.decided_at ? { decidedAt: new Date(row.decided_at as string).toISOString() } : {}),
+		...(row.decided_by_moderator ? { decidedByModerator: String(row.decided_by_moderator) } : {}),
+		...(row.moderator_note ? { moderatorNote: String(row.moderator_note) } : {}),
+	});
+
+	const getSubmission = async (id: string): Promise<Submission | null> => {
+		const { rows } = await pool.query('select * from submissions where id = $1', [id]);
+		return rows[0] ? rowToSubmission(rows[0]) : null;
 	};
 
 	return {
@@ -163,6 +188,64 @@ export function postgresStore(pool: Pool): Store {
 
 		async deleteSession(idHash) {
 			await pool.query('delete from sessions where id_hash = $1', [idHash]);
+		},
+
+		async createSubmission(draft: SubmissionDraft, id: string, submittedAt: string) {
+			/* Arrays go in as jsonb rather than as text[]: they are ordered lists a
+			   reader sees in order, and jsonb round-trips them without the array
+			   literal quoting that turns an apostrophe into a support ticket. */
+			await pool.query(
+				`insert into submissions
+				   (id, email, state, title, what_happened, insurance_question,
+				    information_that_mattered, decided_by, cannot_generalize,
+				    lines, states, occurred_on, verdict_flags, submitted_at)
+				 values ($1, $2, 'pending', $3, $4, $5, $6::jsonb, $7, $8::jsonb,
+				         $9::jsonb, $10::jsonb, $11, $12::jsonb, $13)`,
+				[
+					id,
+					draft.email,
+					draft.title,
+					draft.whatHappened,
+					draft.insuranceQuestion,
+					JSON.stringify(draft.informationThatMattered),
+					draft.decidedBy,
+					JSON.stringify(draft.cannotGeneralize),
+					JSON.stringify(draft.lines),
+					JSON.stringify(draft.states),
+					draft.occurredOn,
+					JSON.stringify(draft.verdictFlags),
+					submittedAt,
+				],
+			);
+			const created = await getSubmission(id);
+			if (!created) throw new Error('submission insert did not produce a row');
+			return created;
+		},
+
+		getSubmission,
+
+		async pendingSubmissions() {
+			const { rows } = await pool.query(
+				`select * from submissions where state = 'pending' order by submitted_at asc`,
+			);
+			return rows.map(rowToSubmission);
+		},
+
+		async submissionsBy(email) {
+			const { rows } = await pool.query(
+				'select * from submissions where email = $1 order by submitted_at desc',
+				[email],
+			);
+			return rows.map(rowToSubmission);
+		},
+
+		async decideSubmission(id, decision) {
+			await pool.query(
+				`update submissions
+				    set state = $2, decided_at = $3, decided_by_moderator = $4, moderator_note = $5
+				  where id = $1`,
+				[id, decision.state, decision.decidedAt, decision.moderator, decision.note],
+			);
 		},
 
 		async purgeExpired(now) {

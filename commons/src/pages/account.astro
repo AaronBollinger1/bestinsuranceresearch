@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SESSION_COOKIE, accountFromSession, sameOrigin } from '../lib/auth';
+import { isModerator } from '../lib/moderators';
 import { getStore, selfOrigin } from '../lib/runtime';
 
 export const prerender = false;
@@ -31,6 +32,15 @@ if (Astro.request.method === 'POST') {
 }
 
 const welcome = Astro.url.searchParams.get('welcome') === '1';
+const submissions = account ? await store.submissionsBy(account.email) : [];
+const moderates = isModerator(account?.email, process.env);
+
+const STATE_TEXT: Record<string, string> = {
+	pending: 'With a moderator. Nothing publishes until it has been read.',
+	published: 'Published. It is live once the moderator has committed the file.',
+	'needs-more': 'Sent back with questions. Read the note below.',
+	declined: 'Not published. The note below says why.',
+};
 ---
 
 <BaseLayout
@@ -123,12 +133,53 @@ const welcome = Astro.url.searchParams.get('welcome') === '1';
 				</dl>
 
 				<h2>Contributing</h2>
-				<p>
-					Case-report intake is not open yet. When it is, this is where it starts.{' '}
-					<a href="/standards">What a published report has to contain</a> is written up already,
-					and it is worth reading before writing one — most of the work is in the fields, not the
-					prose.
-				</p>
+				{
+					account?.displayName ? (
+						<p>
+							<a href="/contribute/new">Write a case report</a>. It is worth reading{' '}
+							<a href="/standards">what a published report has to contain</a> first — most of the
+							work is in the fields rather than the prose.
+						</p>
+					) : (
+						<p>Set a display name above first. A report is published under a name, and an unattributed account is not citable by anybody.</p>
+					)
+				}
+
+				{
+					submissions.length > 0 && (
+						<>
+							<h3>What you have sent</h3>
+							<div class="rows">
+								{submissions.map((submission) => (
+									<div class="row">
+										<h4 class="row-title">{submission.title}</h4>
+										<div class="row-meta">
+											<span class="label" data-group={submission.state === 'published' ? 'record' : 'note'}>
+												{submission.state}
+											</span>
+											<span>sent {submission.submittedAt.slice(0, 10)}</span>
+										</div>
+										<p style="margin-top: var(--s-2); font-size: var(--text-sm); color: var(--muted)">
+											{STATE_TEXT[submission.state]}
+										</p>
+										{submission.moderatorNote && (
+											<p style="margin-top: var(--s-2); font-size: var(--text-sm)">
+												<strong>From the moderator:</strong> {submission.moderatorNote}
+											</p>
+										)}
+									</div>
+								))}
+							</div>
+						</>
+					)
+				}
+
+				{moderates && (
+					<>
+						<h2>Moderation</h2>
+						<p>You are a moderator on this deployment. <a href="/moderate">Open the queue</a>.</p>
+					</>
+				)}
 
 				<h2>Signing out</h2>
 				<form method="post" action="/sign-out">

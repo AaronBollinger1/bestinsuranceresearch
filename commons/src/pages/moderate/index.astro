@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SESSION_COOKIE, accountFromSession } from '../../lib/auth';
+import { isModerator } from '../../lib/moderators';
+import { getStore } from '../../lib/runtime';
+
+export const prerender = false;
+
+const store = getStore();
+const account = await accountFromSession(store, Astro.cookies.get(SESSION_COOKIE)?.value);
+
+/*
+ * 404 rather than 403 for somebody who is signed in but not a moderator.
+ * Telling a signed-in stranger that a moderation queue exists at this address,
+ * and that they are merely not allowed into it, is information they have no use
+ * for and an attacker does. A signed-out visitor gets the sign-in page, because
+ * that is indistinguishable from any other page needing an account.
+ */
+if (!account) return Astro.redirect('/sign-in', 303);
+if (!isModerator(account.email, process.env)) return new Response('Not found', { status: 404 });
+
+const pending = await store.pendingSubmissions();
+---
+
+<BaseLayout
+	title="Moderation queue"
+	eyebrow="Moderation"
+	lede="Oldest first. Nothing here is published, and nothing publishes without a decision on this page."
+	crumbs={[{ name: 'Home', href: '/' }, { name: 'Moderation queue' }]}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				{
+					pending.length === 0 ? (
+						<div class="empty">
+							<h2>Nothing waiting.</h2>
+							<p>
+								An empty queue on this site is the ordinary state rather than a problem. Intake is
+								slow by design and one person reads everything.
+							</p>
+						</div>
+					) : (
+						<div class="rows">
+							{pending.map((submission) => (
+								<article class="row">
+									<h2 class="row-title">
+										<a href={`/moderate/${submission.id}`}>{submission.title}</a>
+									</h2>
+									<div class="row-meta">
+										<span>{submission.occurredOn}</span>
+										{submission.states.length > 0 && <span>{submission.states.join(', ')}</span>}
+										<span>{submission.lines.join(', ')}</span>
+										<span>sent {submission.submittedAt.slice(0, 10)}</span>
+									</div>
+									{submission.verdictFlags.length > 0 && (
+										<p style="margin-top: var(--s-2)">
+											<span class="label" data-group="constructed">
+												{submission.verdictFlags.length} verdict{' '}
+												{submission.verdictFlags.length === 1 ? 'flag' : 'flags'}
+											</span>
+										</p>
+									)}
+								</article>
+							))}
+						</div>
+					)
+				}
+			</div>
+
+			<aside aria-label="Queue">
+				<div class="rail-block">
+					<h2>Queue</h2>
+					<dl>
+						<div><dt>Waiting</dt><dd>{pending.length}</dd></div>
+						<div><dt>Order</dt><dd>Oldest first</dd></div>
+						<div><dt>You</dt><dd>{account.displayName || account.email}</dd></div>
+					</dl>
+				</div>
+				<div class="rail-block">
+					<h2>Reject outright</h2>
+					<ul>
+						<li>A view on whether a claim should have been paid</li>
+						<li>An individual adjuster or employee named</li>
+						<li>Personal information about a third party</li>
+						<li>A premium, quote or rate claim</li>
+						<li>A ranking of carriers</li>
+						<li>Anything framed as a brokerage's client result</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

@@ -11,7 +11,7 @@
     "check": "astro check",
     "build": "astro build",
     "preview": "astro preview",
-    "verify": "node --experimental-strip-types --test scripts/verify-commons.mjs scripts/verify-auth.mjs",
+    "verify": "node --experimental-strip-types --test scripts/verify-commons.mjs scripts/verify-auth.mjs scripts/verify-intake.mjs",
     "validate": "npm run check && npm run build && npm run verify"
   },
   "dependencies": {

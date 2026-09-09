@@ -419,8 +419,58 @@ store on a serverless platform gives each instance its own idea of who is
 signed in, and a console mailer in production prints session-granting links
 into a log.
 
-**Still not built:** case-report intake and the moderation queue. That is the
-next mechanism, and it is now unblocked by everything except provisioning.
+### Case reports and the queue, built 9 September 2026
+
+Mechanism 5.1 works end to end. A signed-in contributor writes a report at
+`/contribute/new`, it lands in a queue, a moderator decides, and an approved
+one becomes a report record.
+
+**Published reports are files, not rows.** Submissions live in the database;
+the queue emits a `src/content/reports/<slug>.json` for commit. That is more
+work per report and it is the right trade: published content in git gets
+version history, a reviewable diff and a correction trail that keeps the prior
+wording, which is the discipline the Record runs on. It also means a reader
+never depends on the database being up, and that there is one source of truth
+for what is published rather than two that can disagree. The generated file was
+dropped into the collection and built during this pass, so it is confirmed to
+satisfy the `reports` schema rather than assumed to.
+
+**What the contributor is asked, and what they are not.** The form asks the six
+fields in plain language plus state, line and date. It does not ask for the
+`label` or the `provenance`, and that is deliberate: a person describing their
+own situation is not the best judge of what kind of evidence it is, and
+provenance records *what a moderator checked*, which the contributor cannot
+testify to. `cannotGeneralize` is asked for, with the floor of three, because
+somebody who cannot name three reasons their situation is particular has
+usually not finished thinking about it - and the alternative is a moderator
+inventing limits on an account they did not live.
+
+**The verdict check flags, it does not block.** Seven patterns run over every
+field at submission time. A match is stored and shown to the moderator, and the
+contributor is told it was flagged. It is not a rejection, for one reason worth
+keeping: *"the adjuster told me it should have been covered"* is a report of
+what somebody said, which is exactly the kind of fact this site wants, and no
+pattern can tell that from a verdict. A person decides, and a false positive
+must not cost somebody the twenty minutes they just spent.
+
+**Moderator status comes from `COMMONS_MODERATORS` and from nowhere else.** No
+page grants it, no field on the account form sets it, and a test fails if any
+page ever assigns it or writes `kind: 'staff'`. The whole privilege-escalation
+surface of the application is a deployment setting. A signed-in non-moderator
+gets a 404 rather than a 403 at `/moderate`: telling a stranger that a queue
+exists there, and that they are merely not allowed in, is information they have
+no use for.
+
+**Sending it back is the common case.** Most submissions will be incomplete
+rather than wrong. `needs-more` and `declined` both require a note to the
+contributor, enforced, because a decision that goes back with no reason is how
+somebody stops contributing.
+
+Set `COMMONS_MODERATORS` to the reviewer's address to open the queue.
+
+**Still not built:** practitioner annotation (gated on the Record's licensed
+review) and open discussion (last, and waiting on the first two being worth
+reading).
 
 ## 13. Sequence, and the gate
 

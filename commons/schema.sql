@@ -77,3 +77,47 @@ create table if not exists sessions (
 );
 
 create index if not exists sessions_expiry on sessions (expires_at);
+
+-- Submitted accounts, before anybody has read them.
+--
+-- Submissions live here. PUBLISHED REPORTS DO NOT: those are JSON files in the
+-- repository, and the moderation queue emits one for commit rather than
+-- flipping a row to visible. Published content in git gets version history, a
+-- reviewable diff and a correction trail, which is the discipline the Record
+-- runs on; it also means a reader never depends on this database being up, and
+-- that there is one source of truth for what is published rather than two that
+-- can disagree.
+--
+-- Note what is still absent. There is no attachment column and no blob: intake
+-- asks people to describe, never to upload.
+create table if not exists submissions (
+	id                        uuid primary key,
+	email                     text not null references accounts (email) on delete cascade,
+	state                     text not null default 'pending'
+	                          check (state in ('pending', 'published', 'declined', 'needs-more')),
+
+	title                     text not null,
+	what_happened             text not null,
+	insurance_question        text not null,
+	information_that_mattered jsonb not null,
+	decided_by                text not null,
+	cannot_generalize         jsonb not null,
+	lines                     jsonb not null,
+	states                    jsonb not null,
+	occurred_on               text not null,
+
+	-- Phrases that read as a verdict, found at submission time. A flag for the
+	-- moderator, never a block: a false positive must not cost somebody the
+	-- twenty minutes they just spent, and "the adjuster said it should have been
+	-- covered" is a report of what somebody said, which is exactly the kind of
+	-- fact this site wants.
+	verdict_flags             jsonb not null default '[]'::jsonb,
+
+	submitted_at              timestamptz not null,
+	decided_at                timestamptz,
+	decided_by_moderator      text,
+	moderator_note            text
+);
+
+create index if not exists submissions_queue on submissions (state, submitted_at);
+create index if not exists submissions_by_author on submissions (email, submitted_at desc);
