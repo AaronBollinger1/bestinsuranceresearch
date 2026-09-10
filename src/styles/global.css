@@ -167,7 +167,7 @@ h4 { font-size: var(--text-base); line-height: var(--leading-snug); margin-botto
 	text-decoration: none;
 	transition: color var(--dur-1) var(--ease), padding-left var(--dur-2) var(--ease-soft), background var(--dur-1) var(--ease);
 }
-.home-sequence-step:hover, .home-sequence-step:focus-visible { padding-left: var(--s-2); color: var(--brand-blue-deep); background: linear-gradient(90deg, var(--brand-blue-wash), transparent 75%); }
+.home-sequence-step:hover, .home-sequence-step:focus-visible { padding-left: var(--s-2); color: var(--brand-blue-deep); background: color-mix(in srgb, var(--brand-blue-wash) 72%, transparent); }
 .home-sequence-step > svg { color: var(--brand-blue-text); opacity: .4; transition: opacity var(--dur-1) var(--ease), transform var(--dur-2) var(--ease-soft); }
 .home-sequence-step:hover > svg, .home-sequence-step:focus-visible > svg { opacity: 1; transform: translateX(3px); }
 .home-sequence-number { align-self: start; padding-top: 2px; color: var(--gold-text); font-family: var(--font-mono); font-size: var(--text-xs); }
