@@ -67,7 +67,7 @@ const unlaunched = commons.origin.includes('example');
 						<span>{commons.brandDescriptor}</span>
 					</span>
 				</a>
-				<nav aria-label="Primary">
+				<nav class="desktop-nav" aria-label="Primary">
 					{nav.filter((item) => item.label !== 'Sign in').map((item) => (
 						<a
 							href={item.href}
@@ -78,6 +78,22 @@ const unlaunched = commons.origin.includes('example');
 						</a>
 					))}
 				</nav>
+				<details class="mobile-nav">
+					<summary>Menu</summary>
+					<div class="mobile-nav-panel">
+						<nav aria-label="Mobile primary">
+							{nav.filter((item) => item.label !== 'Sign in').map((item) => (
+								<a
+									href={item.href}
+									rel={'external' in item && item.external ? 'noopener' : undefined}
+									aria-current={isCurrent(item.href) ? 'page' : undefined}
+								>
+									{item.label}
+								</a>
+							))}
+						</nav>
+					</div>
+				</details>
 				<a class="btn btn-sm masthead-signin" href="/sign-in">Sign in</a>
 			</div>
 		</header>

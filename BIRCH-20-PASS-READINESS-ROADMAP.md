@@ -89,6 +89,8 @@ Deliverables:
 - keyboard equivalents for hover, menu, disclosure, and focus states;
 - reduced-motion behavior that removes spatial movement rather than merely
   shortening it;
+- a contained mobile Commons menu with 44px navigation targets and no
+  horizontal overflow;
 - explicit empty, disabled, error, and success states for every public form.
 
 Ship gate: representative mobile LCP target under 2.5 seconds, CLS under 0.1,

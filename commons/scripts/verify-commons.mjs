@@ -391,3 +391,17 @@ test('the production preflight pins the two public origins', () => {
 		assert.match(invalid.stderr, new RegExp(`${name} must be`));
 	}
 });
+
+test('the Commons shell has a touch-safe mobile navigation mode', () => {
+	const layout = read(path.join(ROOT, 'src/layouts/BaseLayout.astro'));
+	const css = read(path.join(ROOT, 'src/styles/global.css'));
+
+	assert.match(layout, /class="desktop-nav"/, 'the full navigation needs a desktop-only hook');
+	assert.match(layout, /<details class="mobile-nav">/, 'the shell has no accessible mobile menu');
+	assert.match(layout, /<summary>Menu<\/summary>/, 'the mobile menu has no visible disclosure control');
+	assert.match(css, /\.masthead \.desktop-nav \{ display: none; \}/, 'desktop navigation is not hidden at mobile widths');
+	assert.match(css, /\.masthead \.mobile-nav \{ display: block; \}/, 'mobile navigation is not enabled at mobile widths');
+	assert.match(css, /\.mobile-nav summary[\s\S]*?min-height: var\(--tap\)/, 'mobile menu trigger is not touch-safe');
+	assert.match(css, /\.btn-sm \{ min-height: var\(--tap\)/, 'small controls are below the shared tap target');
+	assert.match(css, /@media \(prefers-reduced-motion: reduce\)/, 'the Commons has no reduced-motion contract');
+});
