@@ -24,9 +24,22 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 			<div class="shell">
 				<Breadcrumbs trail={trail} />
 				<div class="lens-hero-grid">
-					<div><span class="eyebrow">Coverage Lens / Private preview</span><h1>Understand your policy setup before you ask for advice.</h1><p class="page-lede">Prepare a declarations page or policy excerpt for a future professional conversation. This first interface is a privacy gate: the selected file and redaction preview stay in this browser session and are not sent anywhere.</p><div class="lens-hero-actions"><a class="btn btn-secondary" href="/position">Use a blank review instead <ArrowRight size={15} aria-hidden="true" /></a><a class="btn btn-quiet" href="/privacy">Read the privacy rules</a></div></div>
+					<div><span class="eyebrow">Coverage Lens / Private preview</span><h1>Understand your policy setup before you ask for advice.</h1><p class="page-lede">Prepare a declarations page or policy excerpt for a future professional conversation. This first interface is a privacy gate: the selected file and redaction preview stay in this browser session and are not sent anywhere.</p><div class="lens-hero-actions"><a class="btn btn-secondary" href="/position">Use a blank review instead <ArrowRight size={15} aria-hidden="true" /></a><a class="btn btn-quiet" href="/privacy#coverage-lens">Read the privacy rules</a></div></div>
 					<div class="lens-lock-card"><LockKeyhole size={22} aria-hidden="true" /><strong>Private by default</strong><p>No public post. No carrier lookup. No quote request. No model training by default.</p></div>
 				</div>
+			</div>
+		</section>
+
+		<section class="band band-paper" aria-labelledby="lens-contract-title">
+			<div class="shell">
+				<div class="lens-contract-heading"><div><span class="eyebrow">Before activation</span><h2 id="lens-contract-title">A document never becomes advice by itself.</h2><p class="lede">The finished Lens will show what it found, what it could not find, and what still needs a professional. It will not decide what is covered.</p></div><span class="lens-contract-status">No upload before consent</span></div>
+				<div class="lens-contract-grid">
+					<div><strong>Keep the original private</strong><p>In this preview, a selected file stays in browser memory. It is not opened, parsed, uploaded, or sent to a model.</p></div>
+					<div><strong>Review every proposed field</strong><p>A future extraction is a draft map. You correct or remove fields before choosing whether to share any context.</p></div>
+					<div><strong>Use honest statuses</strong><p>Outputs can say found, not found, unclear, or needs professional review. They cannot say covered, denied, eligible, or underinsured.</p></div>
+					<div><strong>Delete before you leave</strong><p>Reset is available now. Any future private workspace must document expiry, deletion, provider copies, and account removal first.</p></div>
+				</div>
+				<Callout tone="privacy"><p><strong>Current state:</strong> file selection and the excerpt heuristic are the entire feature. OCR, server storage, AI analysis, public sharing, and automatic professional handoff are disabled until the <a href="/privacy#coverage-lens">data contract</a> is approved.</p></Callout>
 			</div>
 		</section>
 
@@ -176,6 +189,15 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 	.lens-step > span { color: var(--brand-blue-text); font-family: var(--font-mono); font-size: var(--text-xs); }
 	.lens-step h3 { margin-top: var(--s-4); }
 	.lens-step p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
+	.lens-contract-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-8); }
+	.lens-contract-heading h2 { margin-top: var(--s-2); }
+	.lens-contract-heading .lede { max-width: 62ch; }
+	.lens-contract-status { flex: 0 0 auto; padding: 6px 9px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--cream); color: var(--brand-blue-text); font: var(--text-2xs)/1.3 var(--font-mono); font-weight: 600; }
+	.lens-contract-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-6); }
+	.lens-contract-grid > div { min-height: 150px; padding: var(--s-4); border-top: 2px solid var(--brand-blue); background: var(--paper); }
+	.lens-contract-grid strong { display: block; color: var(--ink); font-size: var(--text-md); }
+	.lens-contract-grid p { margin: var(--s-3) 0 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.lens-contract-grid + .callout { margin-top: var(--s-5); }
 	.lens-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: var(--s-12); align-items: start; }
 	.lens-dropzone { display: grid; justify-items: center; gap: var(--s-2); padding: var(--s-12) var(--s-5); margin-top: var(--s-6); border: 1px dashed var(--line-strong); background: var(--cream); text-align: center; border-radius: var(--r-3); }
 	.lens-dropzone svg { color: var(--brand-blue-text); }
@@ -199,6 +221,6 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 	.lens-aside-card h3 { margin-top: var(--s-3); }
 	.lens-aside-card p, .lens-aside-card li { color: var(--muted); font-size: var(--text-sm); }
 	.lens-aside-card p { margin-bottom: 0; }
-	@media (max-width: 900px) { .lens-hero-grid, .lens-layout { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); } .lens-step-grid { grid-template-columns: minmax(0, 1fr); } }
-	@media (max-width: 640px) { .lens-hero-actions .btn, .lens-controls .btn, .lens-redaction-actions .btn { width: 100%; } }
+	@media (max-width: 900px) { .lens-hero-grid, .lens-layout { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); } .lens-step-grid, .lens-contract-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+	@media (max-width: 640px) { .lens-hero-actions .btn, .lens-controls .btn, .lens-redaction-actions .btn { width: 100%; } .lens-contract-heading { flex-direction: column; gap: var(--s-4); } .lens-step-grid, .lens-contract-grid { grid-template-columns: minmax(0, 1fr); } }
 </style>

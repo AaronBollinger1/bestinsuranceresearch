@@ -644,14 +644,20 @@ test('no analytics attribute on any element carries free text', () => {
 test('Coverage Lens redaction preview stays local and states its limits', () => {
 	const source = read(path.join(ROOT, 'src', 'pages', 'lens.astro'));
 	const html = read(path.join(DIST, 'lens', 'index.html'));
+	const privacySource = read(path.join(ROOT, 'src', 'pages', 'privacy.astro'));
+	const privacyHtml = read(path.join(DIST, 'privacy', 'index.html'));
 	assert.match(source, /id="lens-redaction"/);
 	assert.match(source, /not a complete privacy filter/);
 	assert.match(source, /coverage conclusion/);
+	assert.match(source, /No upload before consent/);
+	assert.match(source, /OCR, server storage, AI analysis/);
 	assert.match(source, /redactedOutput\.textContent/);
 	assert.doesNotMatch(source, /\b(?:fetch|XMLHttpRequest|localStorage|sessionStorage)\b/);
 	assert.doesNotMatch(source, /state\.innerHTML/);
 	assert.ok(html.includes('Short excerpt for a local redaction preview'));
 	assert.ok(html.includes('The text remains in this page only'));
+	assert.ok(privacySource.includes('Coverage Lens is not document storage'));
+	assert.ok(privacyHtml.includes('Lens selection stays local'));
 });
 
 test('company directory filtering is local and has an honest empty state', () => {
@@ -1282,6 +1288,7 @@ test('every required document exists and is substantive', () => {
 		'TOOL-REGISTRY-AND-ROADMAP.md', 'ANALYTICS-EVENT-SPEC.md', 'LAUNCH-GATE.md',
 		'BRAND-SYSTEM.md',
 		'COMMONS.md',
+		'COVERAGE-LENS-DATA-CONTRACT.md',
 	];
 	for (const doc of required) {
 		const full = path.join(ROOT, doc);

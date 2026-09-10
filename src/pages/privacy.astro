@@ -32,6 +32,12 @@ const storageRows = [
 		'Pressing Start over, or clearing site data',
 	],
 	[
+		'Coverage Lens file selection',
+		'Browser memory in the current session',
+		'File name and approximate size only. The file is not opened, parsed, uploaded, or sent to a provider in Preview.',
+		'Pressing Reset, or closing the tab',
+	],
+	[
 		'Search index',
 		'Downloaded to your device',
 		'A static file of published page text. Downloading it tells us nothing about what you then search for.',
@@ -66,7 +72,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 						index file.
 					</li>
 					<li>Your question is never written into a URL by this site, and is stripped if it arrives in one.</li>
-					<li>Nothing you type into a tool is uploaded. No file upload exists anywhere on the site.</li>
+					<li>Nothing you type into a tool is uploaded. The Coverage Lens file picker is local selection, not a file upload.</li>
 					<li>No analytics event ever contains free text.</li>
 					<li>No session replay, anywhere, ever.</li>
 				</ul>
@@ -108,6 +114,25 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 					There is no server-side store of anything a visitor types. There is no database of
 					questions, no log of searches, and no profile of any kind.
 				</p>
+
+				<h2 id="coverage-lens">Coverage Lens is not document storage</h2>
+				<p>
+					The current Coverage Lens preview can display a selected file's name and size, then lets you
+					paste a short excerpt into a local redaction heuristic. It does not open the file, run OCR, call
+					an AI provider, upload bytes, create an account, or save an excerpt. Reset clears the selected
+					file and the page state.
+				</p>
+				<p>
+					A future private workflow is not approved by this page. Before any document leaves the browser,
+					Birch must choose the storage and extraction providers, document encryption and access controls,
+					set retention and deletion windows, prove provider-side deletion, and obtain the required legal,
+					security, and professional-review sign-off. The original document, extracted fields, and any
+					attestation must remain private and must never enter Research, Commons, analytics, URLs, or model
+					training data.
+				</p>
+				<Callout tone="limit">
+					<p><strong>What Lens may eventually say:</strong> found, not found, unclear, or needs professional review. It may not decide covered, denied, eligible, or underinsured.</p>
+				</Callout>
 
 				<h2 id="analytics">Analytics</h2>
 				{
@@ -201,6 +226,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 						<li><a href="#short">The short version</a></li>
 						<li><a href="#questions">Why lookup is local</a></li>
 						<li><a href="#storage">What is stored</a></li>
+						<li><a href="#coverage-lens">Coverage Lens</a></li>
 						<li><a href="#analytics">Analytics</a></li>
 						<li><a href="#handoff">The Bollinsure handoff</a></li>
 						<li><a href="#third-parties">Third parties</a></li>
@@ -213,7 +239,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 					<dl>
 						<div><dt>Account required</dt><dd>No</dd></div>
 						<div><dt>Question sent to a server</dt><dd>No</dd></div>
-						<div><dt>File upload</dt><dd>None exists</dd></div>
+						<div><dt>File upload</dt><dd>None; Lens selection stays local</dd></div>
 						<div><dt>Session replay</dt><dd>No</dd></div>
 						<div><dt>Analytics in preview</dt><dd>{isPreview ? 'Disabled' : 'Enabled'}</dd></div>
 					</dl>
