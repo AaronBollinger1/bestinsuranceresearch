@@ -9,7 +9,7 @@
  *
  * THE NAME, AND THE ONE RESERVATION ON IT
  *
- * Birch, at birch.insure. It clears the three constraints in `COMMONS.md`
+ * Birch Commons, at commons.birch.insure. It clears the three constraints in `COMMONS.md`
  * section 10 - not the Record, no verb of selling, no implied official standing.
  *
  * The reservation, recorded so it is not rediscovered as a surprise: `.insure`
@@ -36,7 +36,7 @@ export const commons = {
 	 */
 	name: 'Birch',
 	brandDescriptor: 'Community, carefully moderated',
-	origin: import.meta.env.PUBLIC_COMMONS_ORIGIN || 'https://birch.insure',
+	origin: import.meta.env.PUBLIC_COMMONS_ORIGIN || 'https://commons.birch.insure',
 
 	tagline: 'What actually happened, from the people it happened to and the people who handle it.',
 	description:
@@ -53,7 +53,7 @@ export const commons = {
 	 */
 	record: {
 		name: 'Birch Research',
-		origin: import.meta.env.PUBLIC_RECORD_ORIGIN || 'https://bestinsuranceresearch.com',
+		origin: import.meta.env.PUBLIC_RECORD_ORIGIN || 'https://birch.insure',
 	},
 
 	/**

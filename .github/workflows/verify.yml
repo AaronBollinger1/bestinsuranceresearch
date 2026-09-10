@@ -60,7 +60,7 @@ jobs:
       - name: Build and verify, production posture
         env:
           PUBLIC_SITE_ENV: production
-          PUBLIC_SITE_ORIGIN: https://bestinsuranceresearch.com
+          PUBLIC_SITE_ORIGIN: https://birch.insure
         run: |
           npx astro build
           node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs
@@ -70,7 +70,7 @@ jobs:
       - name: On-page audit
         env:
           PUBLIC_SITE_ENV: production
-          PUBLIC_SITE_ORIGIN: https://bestinsuranceresearch.com
+          PUBLIC_SITE_ORIGIN: https://birch.insure
         run: npm run audit:onpage
 
   commons:

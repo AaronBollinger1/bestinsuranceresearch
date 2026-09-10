@@ -50,7 +50,7 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
 | Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file |
 | Change feed | `/changed`: 20 recorded changes, 7 scheduled amount moves, built from record fields |
-| Birch, the community | `commons/`, intended as its own Vercel project and origin at `birch.insure`. **78 assertions, 77 passing, 1 skipped** for want of a database. Sign-in, case-report intake, thread-to-case-report promotion, the moderation queue, withdrawal, threads, and professional-verification requests all run end to end on an in-memory store; Postgres and Resend are wired but unexercised. The app now targets the official `@astrojs/vercel` SSR adapter; `commons/.env.example`, `commons/README.md`, and `npm run preflight:production` define the external launch gate |
+| Birch, the community | `commons/`, intended as its own Vercel project and origin at `commons.birch.insure`. **78 assertions, 77 passing, 1 skipped** for want of a database. Sign-in, case-report intake, thread-to-case-report promotion, the moderation queue, withdrawal, threads, and professional-verification requests all run end to end on an in-memory store; Postgres and Resend are wired but unexercised. The app now targets the official `@astrojs/vercel` SSR adapter; `commons/.env.example`, `commons/README.md`, and `npm run preflight:production` define the external launch gate |
 | Threads | Built 9 September. 115 subjects a thread can attach to, generated from the evidence layer. A verdict phrase **blocks** a post where it only flags a submission, because a post publishes on write. A post cannot be edited - only withdrawn by its author or hidden by a moderator, both leaving a tombstone |
 | Published records with no review state | **0.** Was 3; the tools schema now carries review fields, required on live worksheets and forbidden on unbuilt ones |
 
@@ -116,7 +116,9 @@ failed on 8 September. Both corrections matter:
   deployment explicitly rather than relying on the working directory.
 
 The Vercel project is **`bestinsuranceresearch`**, team
-`aaronbollinger1s-projects`, serving `https://bestinsuranceresearch.com`.
+`aaronbollinger1s-projects`. Its current branch deployment is a protected
+preview candidate; `birch.insure` is the intended Research production origin
+but is not attached to this Vercel project yet.
 
 Find the newest preview, which is the tip of `claude/bold-hopper-mqcyen`:
 
@@ -187,8 +189,8 @@ same 150 tests mean different things in each:
 
 ```
 # production posture: no blanket noindex, robots.txt advertises the sitemap
-PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://bestinsuranceresearch.com npx astro build
-PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://bestinsuranceresearch.com \
+PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://birch.insure npx astro build
+PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://birch.insure \
   node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs
 npm run audit:onpage      # refuses to run against a preview build, by design
 ```
@@ -564,7 +566,7 @@ corrected record does not reach the page. The same page was hand-summing
 
 **Local `npm run build` is a preview build** — it stamps `noindex` on every
 page. `npm run audit:onpage` refuses to run against one. For production output:
-`PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://bestinsuranceresearch.com npx astro build`.
+`PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://birch.insure npx astro build`.
 
 **Shell gotchas on this machine.** Heredocs break on apostrophes and backticks —
 use the Write tool for any script or content with either. Backticks inside a

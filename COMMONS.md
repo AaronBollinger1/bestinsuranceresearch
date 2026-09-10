@@ -277,7 +277,7 @@ TLD is the problem with it rather than the word, and *birch* itself is a good
 fit for the estate, since the paper birch is the tree the visual system is
 already made of.
 
-### Decided 9 September 2026: Birch, at birch.insure
+### Decided 9 September 2026: Birch Commons, at commons.birch.insure
 
 It clears all three constraints. It is not the Record. It carries no verb of
 selling. And it claims no official standing - which was the constraint most at
@@ -327,7 +327,7 @@ with its own `package.json`, its own build and its own suite, deployed as its
 own Vercel project to its own origin. One repository, two properties, and no
 shared build output.
 
-**Named on 9 September 2026: Birch, at birch.insure.** The name and origin live
+**Named on 9 September 2026: Birch Commons, at commons.birch.insure.** The name and origin live
 in `commons/src/config/commons.ts`, once, and every page, the wordmark, the
 canonical URLs and `llms.txt` read from it. Naming it lifted the `noindex` and
 the `robots.txt` disallow automatically, because both were keyed off the

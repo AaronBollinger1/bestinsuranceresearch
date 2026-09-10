@@ -287,6 +287,21 @@ test(`the ${SITE_ENV} robots.txt matches the environment`, () => {
 	);
 });
 
+test('the checked-in Vercel config cannot turn review previews indexable', () => {
+	const config = JSON.parse(fs.readFileSync(path.join(ROOT, 'vercel.json'), 'utf8'));
+	const buildEnv = config.build?.env ?? {};
+	assert.notEqual(
+		buildEnv.PUBLIC_SITE_ENV,
+		'production',
+		'vercel.json must not force production indexing on every preview deployment',
+	);
+	assert.notEqual(
+		buildEnv.PUBLIC_SITE_ORIGIN,
+		'https://bestinsuranceresearch.com',
+		'vercel.json still points builds at the retired Research origin',
+	);
+});
+
 
 /* ------------------------------------------------------------------ */
 /* Structured data                                                     */

@@ -27,6 +27,10 @@ The latest preview branch is the integration candidate. Production promotion is
 intentionally separate from validation and should only happen after the content
 review gate is complete.
 
+For the private review boundary and the no-signup policy, see
+`PREVIEW-ACCESS.md`. The preview must be protected at the Vercel project layer;
+the static frontend does not pretend that a browser-only password is security.
+
 ## What is here
 
 **Research** is a static, citable evidence layer with 299 source records, 85

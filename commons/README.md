@@ -19,11 +19,10 @@ Recommended Vercel project settings:
 - Build command: `npm run build`
 - Install command: `npm install`
 - Runtime: Node 24 on Vercel
-- Production domain: `birch.insure`
+- Production domain: `commons.birch.insure`
 
 The repository's existing `bestinsuranceresearch` project remains the Research
-site at `bestinsuranceresearch.com`. No production alias should be changed by
-this app.
+site at `birch.insure`. No production alias should be changed by this app.
 
 ## Required production setup
 
@@ -65,7 +64,7 @@ Use a real non-production moderator mailbox and a test account to verify:
 
 The public Research site currently defaults to `PUBLIC_COMMONS_READY=false`.
 That is intentional. Do not flip it merely because a Vercel preview exists:
-the database, Resend, moderator access, `birch.insure` DNS/SSL, and the smoke
+the database, Resend, moderator access, `commons.birch.insure` DNS/SSL, and the smoke
 test all need to be complete first. Keep the Research production promotion as
 a separate, explicit review action.
 

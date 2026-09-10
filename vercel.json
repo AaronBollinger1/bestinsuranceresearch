@@ -1,11 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "build": {
-    "env": {
-      "PUBLIC_SITE_ENV": "production",
-      "PUBLIC_SITE_ORIGIN": "https://bestinsuranceresearch.com"
-    }
-  },
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [

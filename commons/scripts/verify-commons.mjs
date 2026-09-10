@@ -257,7 +257,7 @@ test('the Commons cites the Record, and says the Record does not cite back', () 
 		'/standards does not state the one-way relationship, which is the rule that keeps the Record citable',
 	);
 	const home = read(path.join(DIST, 'index.html'));
-	assert.ok(home.includes('bestinsuranceresearch.com'), 'the home page does not link to the Record');
+	assert.ok(home.includes('https://birch.insure'), 'the home page does not link to the Record');
 });
 
 test('the prohibition is stated on the pages a contributor actually reads', () => {

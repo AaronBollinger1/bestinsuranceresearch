@@ -31,7 +31,7 @@ export default defineConfig({
 	 * commons.example, so the launch build advertised a sitemap of URLs on a host
 	 * that does not exist. Nothing failed, because nothing compared them.
 	 */
-	site: process.env.PUBLIC_COMMONS_ORIGIN || 'https://birch.insure',
+	site: process.env.PUBLIC_COMMONS_ORIGIN || 'https://commons.birch.insure',
 	trailingSlash: 'never',
 	build: { format: 'directory' },
 	output: 'static',
