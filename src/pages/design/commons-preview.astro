@@ -1,0 +1,278 @@
+---
+import { ArrowRight, BadgeCheck, BookOpen, Building2, Flag, LockKeyhole, Search, ShieldCheck, UserRound } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Design', path: '/design/commons-preview' },
+];
+
+const threads = [
+	{
+		type: 'Experience',
+		tone: 'experience',
+		title: 'The renewal notice arrived before I understood what changed',
+		body: 'A first-person account can show the timeline, the question asked, and the documents that another reader may want to check.',
+		byline: 'Reader · identity protected in specimen',
+		context: 'California · homeowners',
+		icon: UserRound,
+	},
+	{
+		type: 'Professional note',
+		tone: 'professional',
+		title: 'What a “claims-made” date changes in the research record',
+		body: 'A credentialed perspective is useful when it names its role, jurisdiction, sources, and conflicts without pretending to decide a specific policy.',
+		byline: 'Licensed professional · verification pending in specimen',
+		context: 'Professional liability · source attached',
+		icon: BadgeCheck,
+	},
+	{
+		type: 'Company response',
+		tone: 'company',
+		title: 'A published response can add context without deleting the account',
+		body: 'Official replies belong in their own lane. They can identify a process or correction, but they do not rewrite a person’s experience or the citable record.',
+		byline: 'Organization account · domain verification required in specimen',
+		context: 'Company page · attributed response',
+		icon: Building2,
+	},
+];
+
+const rooms = ['All conversations', 'Homeowners', 'Auto', 'Business insurance', 'Life and health'];
+const flow = [
+	['01', 'Read', 'Open the cited research first.'],
+	['02', 'Discuss', 'Ask what the record does not answer.'],
+	['03', 'Verify', 'Attach role, company, or policy context only when needed.'],
+	['04', 'Review', 'Moderation checks provenance, privacy, and conflicts.'],
+];
+---
+
+<BaseLayout
+	title="Commons product specimen"
+	description="Internal Birch Commons design specimen showing the future forum, thread, professional, company response, and moderation experience."
+	noindex
+	pageType="editorial"
+>
+	<PageHeader
+		eyebrow="Internal product specimen / noindex"
+		title="Commons: the conversation around insurance, with context attached."
+		lede="A future social layer for questions, first-person experiences, professional perspectives, and attributed company responses. This page demonstrates the interaction model; it is not live activity and does not create an account."
+		trail={trail}
+	>
+		<div class="commons-preview-actions">
+			<a class="btn btn-primary" href="/ask">Read the cited research <ArrowRight size={15} aria-hidden="true" /></a>
+			<a class="btn btn-secondary" href="/professionals">For professionals</a>
+		</div>
+	</PageHeader>
+
+	<section class="band band-tight band-paper" aria-labelledby="commons-preview-title">
+		<div class="shell">
+			<Callout tone="limit" label="Preview boundary">
+				<p>
+					<strong>Specimen only.</strong> The rows below are illustrative interface states, not current
+					posts, counts, endorsements, ratings, or company activity. The real Commons opens only after
+					identity, moderation, retention, reporting, and response controls are live.
+				</p>
+			</Callout>
+
+			<div class="commons-preview-shell">
+				<aside class="commons-preview-sidebar" aria-label="Commons room navigation">
+					<div class="commons-preview-sidebar-head">
+						<span class="eyebrow">Birch Commons</span>
+						<strong>Find the right room.</strong>
+					</div>
+					<label class="commons-preview-search">
+						<Search size={15} aria-hidden="true" />
+						<span class="u-visually-hidden">Search Commons specimen</span>
+						<input type="search" aria-label="Search Commons specimen" placeholder="Search a room or thread" disabled />
+					</label>
+					<nav class="commons-preview-rooms" aria-label="Conversation rooms">
+						{rooms.map((room, index) => <a href="#threads" class={index === 0 ? 'is-active' : undefined}>{room}</a>)}
+					</nav>
+					<div class="commons-preview-sidebar-note">
+						<span class="meta">No popularity ranking</span>
+						<p>Rooms sort by recency, evidence state, and moderation—not by a reputation score.</p>
+					</div>
+				</aside>
+
+				<div class="commons-preview-main" id="threads" role="region" aria-labelledby="commons-preview-title">
+					<div class="commons-preview-main-head">
+						<div>
+							<span class="eyebrow">Conversation room / specimen</span>
+							<h2 id="commons-preview-title">Questions, experiences, and replies.</h2>
+							<p>Every durable conversation carries a type, author context, moderation state, and a path back to research.</p>
+						</div>
+						<span class="status status-plain">Future / gated</span>
+					</div>
+
+					<div class="commons-preview-composer" aria-label="Future thread composer">
+						<div class="commons-preview-composer-top">
+							<div class="commons-preview-avatar" aria-hidden="true">B</div>
+							<div>
+								<strong>Start a useful thread.</strong>
+								<span>Choose the kind of context before you write.</span>
+							</div>
+						</div>
+						<div class="commons-preview-composer-controls" role="group" aria-label="Future composer controls">
+							<button type="button" class="btn btn-secondary btn-sm" disabled>Experience</button>
+							<button type="button" class="btn btn-secondary btn-sm" disabled>Professional note</button>
+							<button type="button" class="btn btn-secondary btn-sm" disabled>Source request</button>
+							<button type="button" class="btn btn-primary btn-sm" disabled><LockKeyhole size={14} aria-hidden="true" /> Sign in to continue</button>
+						</div>
+						<p class="mono">Authentication, privacy review, and moderation are required before anything can publish.</p>
+					</div>
+
+					<div class="commons-preview-thread-list" aria-label="Illustrative conversation threads">
+						{threads.map((thread) => {
+							const Icon = thread.icon;
+							return (
+								<article class={`commons-preview-thread commons-preview-thread-${thread.tone}`}>
+									<div class="commons-preview-thread-top">
+										<span class={`commons-preview-type ${thread.tone}`}><Icon size={14} aria-hidden="true" /> {thread.type}</span>
+										<span class="meta">Specimen state</span>
+									</div>
+									<h3>{thread.title}</h3>
+									<p>{thread.body}</p>
+									<div class="commons-preview-thread-foot">
+										<span>{thread.byline}</span>
+										<span>{thread.context}</span>
+										<a href="/methodology">How this is handled <ArrowRight size={14} aria-hidden="true" /></a>
+									</div>
+								</article>
+							);
+						})}
+					</div>
+				</div>
+
+				<aside class="commons-preview-context" aria-label="Conversation context rail">
+					<div class="commons-preview-context-card">
+						<span class="eyebrow">Research stays primary</span>
+						<h3>Keep the answer and the conversation separate.</h3>
+						<p>A thread can ask for clarification or add lived context. It cannot silently change a cited research page.</p>
+						<a class="text-link" href="/methodology">Read the boundary <ArrowRight size={14} aria-hidden="true" /></a>
+					</div>
+					<div class="commons-preview-context-card">
+						<span class="eyebrow">Contribution signals</span>
+						<ul class="commons-preview-checks">
+							<li><BookOpen size={15} aria-hidden="true" /><span>Source attached where a claim is made.</span></li>
+							<li><ShieldCheck size={15} aria-hidden="true" /><span>Role and affiliation visible when relevant.</span></li>
+							<li><Flag size={15} aria-hidden="true" /><span>Report, correction, and withdrawal paths stay available.</span></li>
+						</ul>
+					</div>
+					<div class="commons-preview-context-card commons-preview-coverage-card">
+						<span class="eyebrow">Future / Your Coverage</span>
+						<h3>Ask about your setup privately.</h3>
+						<p>When enabled, a private workspace can redact policy pages locally before a person chooses whether to request professional context.</p>
+						<span class="meta">Canopy Connect or document verification · not enabled</span>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight" aria-labelledby="commons-flow-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">The conversation protocol</span>
+					<h2 id="commons-flow-title">The path from a question to useful context.</h2>
+					<p>Progressive disclosure keeps the social layer approachable while the backend enforces the hard parts: provenance, privacy, moderation, and attribution.</p>
+				</div>
+				<a class="btn btn-secondary btn-sm" href="/contribute">Contribution rules <ArrowRight size={14} aria-hidden="true" /></a>
+			</div>
+			<div class="commons-preview-flow">
+				{flow.map(([number, title, detail]) => (
+					<div class="commons-preview-flow-step">
+						<span class="commons-preview-flow-number">{number}</span>
+						<div><strong>{title}</strong><p>{detail}</p></div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-ink" aria-labelledby="commons-build-title">
+		<div class="shell commons-preview-build">
+			<div>
+				<span class="eyebrow">Build gate</span>
+				<h2 id="commons-build-title">The interface is ready before the community is.</h2>
+				<p class="lede">This order lets Birch earn trust with the citable research core first, then add durable conversation only when the product can protect contributors and preserve the record.</p>
+			</div>
+			<div class="commons-preview-build-list">
+				<div><span class="status status-established">Built</span><span>Research, citations, source ledger, tools</span></div>
+				<div><span class="status status-plain">Next</span><span>Account, identity, moderation, notifications</span></div>
+				<div><span class="status status-plain">Later</span><span>Policy verification, company response, reputation context</span></div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.commons-preview-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-6); }
+	.commons-preview-shell { display: grid; grid-template-columns: 190px minmax(0, 1fr) 260px; gap: 1px; margin-top: var(--s-6); border: 1px solid var(--line-strong); background: var(--line-strong); border-radius: var(--r-3); overflow: hidden; box-shadow: var(--elev-2); }
+	.commons-preview-sidebar, .commons-preview-main, .commons-preview-context { min-width: 0; background: var(--paper); }
+	.commons-preview-sidebar { padding: var(--s-4); }
+	.commons-preview-sidebar-head { display: grid; gap: 3px; padding-bottom: var(--s-4); border-bottom: 1px solid var(--line); }
+	.commons-preview-sidebar-head .eyebrow { margin-bottom: 0; }
+	.commons-preview-sidebar-head strong { color: var(--ink); font-size: var(--text-sm); }
+	.commons-preview-search { display: flex; align-items: center; gap: 7px; margin-top: var(--s-4); padding: 7px 8px; border: 1px solid var(--line); border-radius: var(--r-2); color: var(--faint); background: var(--cream); }
+	.commons-preview-search input { width: 100%; min-width: 0; padding: 0; border: 0; outline: 0; background: transparent; color: var(--muted); font-size: var(--text-xs); }
+	.commons-preview-rooms { display: grid; gap: 3px; margin-top: var(--s-4); }
+	.commons-preview-rooms a { padding: 8px; border-radius: var(--r-2); color: var(--muted); font-size: var(--text-sm); text-decoration: none; }
+	.commons-preview-rooms a:hover, .commons-preview-rooms a:focus-visible, .commons-preview-rooms a.is-active { background: var(--brand-blue-wash); color: var(--brand-blue-deep); }
+	.commons-preview-sidebar-note { margin-top: var(--s-8); padding-top: var(--s-3); border-top: 1px solid var(--line); }
+	.commons-preview-sidebar-note p { margin: var(--s-2) 0 0; color: var(--muted); font-size: var(--text-xs); line-height: var(--leading-snug); }
+	.commons-preview-main { padding: var(--s-5); }
+	.commons-preview-main-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-4); padding-bottom: var(--s-5); border-bottom: 1px solid var(--line); }
+	.commons-preview-main-head h2 { margin-bottom: var(--s-2); font-size: var(--text-2xl); }
+	.commons-preview-main-head p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-snug); }
+	.commons-preview-composer { margin-top: var(--s-5); padding: var(--s-4); border: 1px dashed var(--line-strong); border-radius: var(--r-3); background: var(--cream); }
+	.commons-preview-composer-top { display: flex; align-items: center; gap: var(--s-3); }
+	.commons-preview-avatar { display: grid; place-items: center; width: 34px; height: 34px; flex: 0 0 auto; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: var(--text-sm); }
+	.commons-preview-composer-top strong, .commons-preview-composer-top span { display: block; }
+	.commons-preview-composer-top strong { color: var(--ink); font-size: var(--text-sm); }
+	.commons-preview-composer-top span { margin-top: 2px; color: var(--muted); font-size: var(--text-xs); }
+	.commons-preview-composer-controls { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-4); }
+	.commons-preview-composer .mono { margin: var(--s-3) 0 0; font-size: var(--text-2xs); }
+	.commons-preview-thread-list { display: grid; gap: var(--s-3); margin-top: var(--s-5); }
+	.commons-preview-thread { padding: var(--s-4); border: 1px solid var(--line); border-left: 3px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); transition: transform var(--dur-2) var(--ease-soft), box-shadow var(--dur-2) var(--ease), border-color var(--dur-1) var(--ease); }
+	.commons-preview-thread:hover { transform: translateY(-2px); border-color: var(--brand-blue); box-shadow: var(--elev-2); }
+	.commons-preview-thread-experience { border-left-color: var(--gold-edge); }
+	.commons-preview-thread-professional { border-left-color: var(--brand-blue); }
+	.commons-preview-thread-company { border-left-color: var(--green); }
+	.commons-preview-thread-top, .commons-preview-thread-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-2); }
+	.commons-preview-type { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: .03em; text-transform: uppercase; }
+	.commons-preview-type.experience { color: var(--gold-text); }
+	.commons-preview-type.professional { color: var(--brand-blue-text); }
+	.commons-preview-type.company { color: var(--green-text); }
+	.commons-preview-thread h3 { margin: var(--s-3) 0 var(--s-2); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; line-height: var(--leading-snug); }
+	.commons-preview-thread > p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.commons-preview-thread-foot { margin-top: var(--s-4); padding-top: var(--s-3); border-top: 1px solid var(--line); color: var(--muted); font-size: var(--text-2xs); }
+	.commons-preview-thread-foot a { display: inline-flex; align-items: center; gap: 4px; color: var(--brand-blue-text); font-weight: 600; text-decoration: none; }
+	.commons-preview-thread-foot a:hover { color: var(--ink); }
+	.commons-preview-context { display: grid; align-content: start; gap: 1px; background: var(--line); }
+	.commons-preview-context-card { padding: var(--s-5); background: var(--paper); }
+	.commons-preview-context-card h3 { margin-bottom: var(--s-2); font-size: var(--text-lg); }
+	.commons-preview-context-card p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-snug); }
+	.commons-preview-context-card .text-link { display: inline-flex; align-items: center; gap: 5px; margin-top: var(--s-4); color: var(--brand-blue-text); font-size: var(--text-sm); font-weight: 600; text-decoration: none; }
+	.commons-preview-checks { display: grid; gap: var(--s-3); padding: 0; margin: var(--s-4) 0 0; list-style: none; }
+	.commons-preview-checks li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: var(--s-2); color: var(--body); font-size: var(--text-sm); line-height: var(--leading-snug); }
+	.commons-preview-checks svg { color: var(--brand-blue-text); margin-top: 1px; }
+	.commons-preview-coverage-card { border-top: 3px solid var(--gold-edge); }
+	.commons-preview-coverage-card .meta { display: block; margin-top: var(--s-4); line-height: var(--leading-snug); }
+	.commons-preview-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: var(--s-6); border-top: 1px solid var(--line-strong); }
+	.commons-preview-flow-step { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: var(--s-3); padding: var(--s-4) var(--s-4) 0 0; }
+	.commons-preview-flow-step + .commons-preview-flow-step { padding-left: var(--s-4); border-left: 1px solid var(--line); }
+	.commons-preview-flow-number { color: var(--gold-text); font-family: var(--font-mono); font-size: var(--text-xs); }
+	.commons-preview-flow-step strong { color: var(--ink); font-size: var(--text-sm); }
+	.commons-preview-flow-step p { margin: 3px 0 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-snug); }
+	.commons-preview-build { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 420px); gap: var(--s-12); align-items: center; }
+	.commons-preview-build h2 { max-width: 18ch; }
+	.commons-preview-build-list { display: grid; gap: var(--s-3); }
+	.commons-preview-build-list div { display: flex; align-items: center; gap: var(--s-3); padding-bottom: var(--s-3); border-bottom: 1px solid var(--line-ink); color: #dce2e9; font-size: var(--text-sm); }
+	.commons-preview-build-list .status { flex: 0 0 auto; }
+	@media (max-width: 1080px) { .commons-preview-shell { grid-template-columns: 170px minmax(0, 1fr); } .commons-preview-context { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); } .commons-preview-context-card + .commons-preview-context-card { border-left: 1px solid var(--line); } }
+	@media (max-width: 760px) { .commons-preview-shell { grid-template-columns: minmax(0, 1fr); } .commons-preview-sidebar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, .85fr); gap: var(--s-4); align-items: start; } .commons-preview-sidebar-head { border-bottom: 0; padding: 0; } .commons-preview-search { margin-top: 0; } .commons-preview-rooms { grid-column: 1 / -1; display: flex; flex-wrap: wrap; margin-top: 0; } .commons-preview-sidebar-note { grid-column: 1 / -1; margin-top: 0; } .commons-preview-context { grid-column: auto; grid-template-columns: minmax(0, 1fr); } .commons-preview-context-card + .commons-preview-context-card { border-left: 0; border-top: 1px solid var(--line); } .commons-preview-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); } .commons-preview-flow-step:nth-child(3) { padding-left: 0; border-left: 0; } .commons-preview-flow-step:nth-child(n+3) { border-top: 1px solid var(--line); padding-top: var(--s-4); } .commons-preview-build { grid-template-columns: minmax(0, 1fr); gap: var(--s-6); } }
+	@media (max-width: 480px) { .commons-preview-actions .btn { width: 100%; } .commons-preview-main, .commons-preview-sidebar, .commons-preview-context-card { padding: var(--s-4); } .commons-preview-main-head { flex-direction: column; } .commons-preview-composer-controls .btn { width: 100%; } .commons-preview-flow { grid-template-columns: minmax(0, 1fr); } .commons-preview-flow-step, .commons-preview-flow-step + .commons-preview-flow-step { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } .commons-preview-flow-step:first-child { border-top: 0; } }
+</style>

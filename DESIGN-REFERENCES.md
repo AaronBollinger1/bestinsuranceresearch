@@ -3,7 +3,7 @@
 How the interface was decided, what was borrowed and from where, and why the shipped homepage
 is the one it is.
 
-Last updated: 2026-09-09
+Last updated: 2026-09-10
 
 ## Direction
 
@@ -206,6 +206,22 @@ the real components. It is noindex and out of the sitemap. It exists so a review
 states side by side without inventing content to trigger them: showing a "corrected" badge
 there is a specimen, whereas faking a correction on a real answer to demonstrate the badge
 would be exactly the kind of thing this site exists not to do.
+
+## Commons product specimen
+
+`/design/commons-preview` is the internal, noindex specimen for the future conversation layer.
+It is intentionally visible only through a protected preview and labels every thread, identity,
+state, and control as illustrative. It must never imply live activity, popularity, ratings,
+endorsements, company responses, or a working account system before those systems exist.
+
+The chosen interaction order is: room navigation → gated composer → typed thread cards → persistent
+context rail → conversation protocol. The protocol is `Read → Discuss → Verify → Review`: Research
+remains the citable record, Commons adds attributed context around it, and moderation protects the
+boundary between the two. The eventual durable model needs account and role verification, source
+attachments, privacy/redaction, report/correction/withdrawal paths, company response lanes, and an
+audit log before public publishing is enabled. A future Your Coverage workspace is deliberately
+described as a private, consent-based capability; policy upload, Canopy Connect, and personalized
+advice are not enabled by this specimen.
 
 ## Mobbin pass three: discovery and comparison
 
