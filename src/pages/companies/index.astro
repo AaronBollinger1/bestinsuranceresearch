@@ -85,6 +85,15 @@ const jsonLd = graph(
 					))
 				}
 			</div>
+
+			<div class="company-next-step">
+				<div>
+					<span class="eyebrow">Add context</span>
+					<strong>Have a California experience or a source correction?</strong>
+					<p>Prepare it privately first. Public discussion opens through the separate, moderated Commons.</p>
+				</div>
+				<a class="btn btn-secondary btn-sm" href="/contribute?type=experience">Prepare a contribution <ArrowRight size={15} aria-hidden="true" /></a>
+			</div>
 		</div>
 	</section>
 
@@ -113,3 +122,10 @@ const jsonLd = graph(
 		</div>
 	</section>
 </BaseLayout>
+
+<style>
+	.company-next-step { display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); margin-top: var(--s-6); padding: var(--s-5); border: 1px solid var(--line-strong); border-left: 3px solid var(--brand-blue); background: var(--paper); border-radius: var(--r-3); }
+	.company-next-step strong { display: block; color: var(--ink); }
+	.company-next-step p { margin: var(--s-1) 0 0; color: var(--muted); font-size: var(--text-sm); }
+	@media (max-width: 640px) { .company-next-step { align-items: flex-start; flex-direction: column; } .company-next-step .btn { width: 100%; } }
+</style>

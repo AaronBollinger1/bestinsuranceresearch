@@ -135,6 +135,7 @@ const communityNavItem = {
 } as const;
 
 export const primaryNav = [
+	{ label: 'Start here', href: '/start', description: 'Choose the right Birch path' },
 	{ label: 'Ask Birch', href: '/ask', description: 'Search the question library' },
 	{ label: 'Coverage', href: '/insurance', description: 'Explore coverage, questions and guides' },
 	{ label: 'Tools', href: '/tools', description: 'Free decision support' },
@@ -143,7 +144,8 @@ export const primaryNav = [
 ] as const;
 
 export const footerNav = {
-		research: [
+	 research: [
+		{ label: 'Start here', href: '/start' },
 		{ label: 'Coverage position', href: '/position' },
 		{ label: 'Insurance guides', href: '/guides' },
 		{ label: 'Ask a question', href: '/ask' },
@@ -151,6 +153,8 @@ export const footerNav = {
 		{ label: 'Every line indexed', href: '/lines' },
 		{ label: 'Written coverage pages', href: '/insurance' },
 		{ label: 'Companies and regulators', href: '/companies' },
+		{ label: 'Contribute an experience', href: '/contribute' },
+		{ label: 'For professionals', href: '/professionals' },
 		{ label: 'States', href: '/states' },
 		{ label: 'Examples', href: '/examples' },
 		{ label: 'Modules and worksheets', href: '/tools' },

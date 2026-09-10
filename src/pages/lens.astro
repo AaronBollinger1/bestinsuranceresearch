@@ -1,0 +1,118 @@
+---
+import { ArrowRight, FileKey, FileText, LockKeyhole, RotateCcw, ShieldCheck, Trash2 } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Callout from '../components/Callout.astro';
+import { breadcrumbs, graph, organization, website } from '../lib/schema';
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Coverage Lens', path: '/lens' },
+];
+const jsonLd = graph(organization(), website(), breadcrumbs(trail));
+---
+
+<BaseLayout
+	title="Coverage Lens private preview"
+	description="A private-first intake for understanding a California insurance setup. This preview does not upload or analyze your file."
+	jsonLd={jsonLd}
+	pageType="tool"
+	noindex
+>
+	<article>
+		<section class="band band-tight band-first band-paper lens-hero">
+			<div class="shell">
+				<Breadcrumbs trail={trail} />
+				<div class="lens-hero-grid">
+					<div><span class="eyebrow">Coverage Lens / Private preview</span><h1>Understand your policy setup before you ask for advice.</h1><p class="page-lede">Upload a declarations page or policy document only when you are ready. This first interface is a privacy gate: the selected file stays in this browser session and is not sent anywhere.</p><div class="lens-hero-actions"><a class="btn btn-secondary" href="/position">Use a blank review instead <ArrowRight size={15} aria-hidden="true" /></a><a class="btn btn-quiet" href="/privacy">Read the privacy rules</a></div></div>
+					<div class="lens-lock-card"><LockKeyhole size={22} aria-hidden="true" /><strong>Private by default</strong><p>No public post. No carrier lookup. No quote request. No model training by default.</p></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="lens-steps-title">
+			<div class="shell"><span class="eyebrow">The safe path</span><h2 id="lens-steps-title">Three gates before an observation.</h2><div class="lens-step-grid"><div class="lens-step is-active"><span>01</span><h3>Select</h3><p>Choose a PDF or image. The browser reports the file metadata without uploading it.</p></div><div class="lens-step"><span>02</span><h3>Redact</h3><p>Review names, addresses, policy numbers, vehicle IDs, and other identifiers before extraction.</p></div><div class="lens-step"><span>03</span><h3>Understand</h3><p>Receive source-bound education and questions for a licensed professional—not a coverage verdict.</p></div></div></div>
+		</section>
+
+		<section class="band band-paper" aria-labelledby="lens-upload-title">
+			<div class="shell lens-layout">
+				<div>
+					<span class="eyebrow">Step 01 / Select</span><h2 id="lens-upload-title">Choose a file for this session.</h2><p class="lede">This interface intentionally stops before OCR and extraction are enabled. It proves the consent and privacy experience first.</p>
+					<div class="lens-dropzone" data-lens-zone><FileKey size={24} aria-hidden="true" /><strong>Choose a declarations page or policy PDF</strong><span>PDF, PNG, or JPG · file stays in this browser session</span><label class="btn btn-secondary btn-sm" for="lens-file">Choose file</label><input id="lens-file" type="file" accept="application/pdf,image/png,image/jpeg" /></div>
+					<div class="lens-file-state" id="lens-file-state" role="status" aria-live="polite"><FileText size={17} aria-hidden="true" /><span>No file selected.</span></div>
+					<div class="lens-controls"><button class="btn btn-primary" id="lens-continue" type="button" disabled>Continue to redaction preview <ArrowRight size={15} aria-hidden="true" /></button><button class="btn btn-secondary" id="lens-reset" type="button"><RotateCcw size={15} aria-hidden="true" /> Reset</button></div>
+					<p class="hint" id="lens-status">The next implementation adds on-device text extraction and a visible redaction review. Until then, do not treat this as a document analyzer.</p>
+				</div>
+				<aside class="lens-aside"><Callout tone="limit" label="Do not upload these yet"><p>Do not select a file containing a Social Security number, bank details, medical information, claim number, or another person’s private information in this preview.</p></Callout><div class="lens-aside-card"><ShieldCheck size={18} aria-hidden="true" /><h3>What the finished Lens will show</h3><ul><li>Fields it found.</li><li>What was redacted.</li><li>What evidence supports an observation.</li><li>What remains unknown.</li><li>How to delete the session.</li></ul></div><div class="lens-aside-card"><Trash2 size={18} aria-hidden="true" /><h3>Deletion is a first-class action</h3><p>Close the session or press delete; the experience should make removal as clear as creation.</p></div></aside>
+			</div>
+		</section>
+	</article>
+</BaseLayout>
+
+<script>
+	const input = document.getElementById('lens-file') as HTMLInputElement | null;
+	const state = document.getElementById('lens-file-state');
+	const continueButton = document.getElementById('lens-continue') as HTMLButtonElement | null;
+	const resetButton = document.getElementById('lens-reset');
+	const status = document.getElementById('lens-status');
+	let selectedFile: File | null = null;
+
+	function renderState(message: string) {
+		if (state) state.innerHTML = `<span>${message}</span>`;
+		if (continueButton) continueButton.disabled = !selectedFile;
+	}
+
+	input?.addEventListener('change', () => {
+		selectedFile = input.files?.[0] ?? null;
+		if (!selectedFile) {
+			renderState('No file selected.');
+			return;
+		}
+		const size = selectedFile.size < 1024 * 1024 ? `${Math.max(1, Math.round(selectedFile.size / 1024))} KB` : `${(selectedFile.size / (1024 * 1024)).toFixed(1)} MB`;
+		renderState(`${selectedFile.name} · ${size} · selected locally, not uploaded`);
+		if (status) status.textContent = 'Ready for the redaction gate. The file has not left this page.';
+	});
+
+	continueButton?.addEventListener('click', () => {
+		if (!selectedFile || !status) return;
+		status.textContent = 'Redaction preview is the next gated step. No file was sent or analyzed in this preview.';
+	});
+
+	resetButton?.addEventListener('click', () => {
+		selectedFile = null;
+		if (input) input.value = '';
+		renderState('No file selected.');
+		if (status) status.textContent = 'Session reset. No file was retained.';
+	});
+</script>
+
+<style>
+	.lens-hero { padding-bottom: var(--s-10); }
+	.lens-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: var(--s-12); align-items: end; margin-top: var(--s-8); }
+	.lens-hero h1 { max-width: 14ch; font-size: clamp(2.7rem, 6vw, 5rem); letter-spacing: -.045em; }
+	.lens-hero-actions, .lens-controls { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-6); }
+	.lens-lock-card { display: grid; gap: var(--s-2); padding: var(--s-5); border: 1px solid var(--line-strong); border-top: 3px solid var(--brand-blue); background: var(--cream); border-radius: var(--r-3); }
+	.lens-lock-card svg { color: var(--brand-blue-text); }
+	.lens-lock-card p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
+	.lens-step-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-5); }
+	.lens-step { padding: var(--s-5); border-top: 2px solid var(--line-strong); background: var(--paper); }
+	.lens-step.is-active { border-top-color: var(--brand-blue); }
+	.lens-step > span { color: var(--brand-blue-text); font-family: var(--font-mono); font-size: var(--text-xs); }
+	.lens-step h3 { margin-top: var(--s-4); }
+	.lens-step p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
+	.lens-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: var(--s-12); align-items: start; }
+	.lens-dropzone { display: grid; justify-items: center; gap: var(--s-2); padding: var(--s-12) var(--s-5); margin-top: var(--s-6); border: 1px dashed var(--line-strong); background: var(--cream); text-align: center; border-radius: var(--r-3); }
+	.lens-dropzone svg { color: var(--brand-blue-text); }
+	.lens-dropzone span { color: var(--muted); font-size: var(--text-sm); }
+	.lens-dropzone input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+	.lens-file-state { display: flex; align-items: center; gap: var(--s-2); min-height: 46px; margin-top: var(--s-3); padding: var(--s-3) var(--s-4); border: 1px solid var(--line); color: var(--muted); font-size: var(--text-sm); }
+	.lens-file-state svg { flex: 0 0 auto; color: var(--brand-blue-text); }
+	.lens-aside { display: grid; gap: var(--s-5); }
+	.lens-aside-card { padding: var(--s-5); border: 1px solid var(--line); background: var(--paper); border-radius: var(--r-3); }
+	.lens-aside-card > svg { color: var(--brand-blue-text); }
+	.lens-aside-card h3 { margin-top: var(--s-3); }
+	.lens-aside-card p, .lens-aside-card li { color: var(--muted); font-size: var(--text-sm); }
+	.lens-aside-card p { margin-bottom: 0; }
+	@media (max-width: 900px) { .lens-hero-grid, .lens-layout { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); } .lens-step-grid { grid-template-columns: minmax(0, 1fr); } }
+	@media (max-width: 640px) { .lens-hero-actions .btn, .lens-controls .btn { width: 100%; } }
+</style>

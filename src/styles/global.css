@@ -132,6 +132,13 @@ h4 { font-size: var(--text-base); line-height: var(--leading-snug); margin-botto
 .home-boundary .meta { color: var(--brand-blue-text); }
 .home-boundary p { margin: var(--s-2) 0 0; color: var(--ink-2); font-size: var(--text-sm); line-height: var(--leading-snug); }
 .commons-handoff-status { margin: var(--s-3) 0 0; padding-left: var(--s-3); border-left: 2px solid var(--line-strong); color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-snug); }
+.home-ca-launch { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 300px); gap: var(--s-8); align-items: center; margin-top: var(--s-8); padding: var(--s-5); border: 1px solid var(--line-strong); border-left: 3px solid var(--brand-blue); background: var(--paper); border-radius: var(--r-3); }
+.home-ca-launch h2 { max-width: 22ch; font-size: var(--text-2xl); }
+.home-ca-launch p { max-width: 68ch; margin: 0; color: var(--muted); font-size: var(--text-sm); }
+.home-ca-facts { display: grid; gap: var(--s-2); align-content: start; }
+.home-ca-facts > span { display: flex; justify-content: space-between; gap: var(--s-3); padding-bottom: var(--s-2); border-bottom: 1px solid var(--line); color: var(--muted); font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: .03em; }
+.home-ca-facts b { color: var(--ink); font-weight: 500; }
+.home-ca-facts .btn { margin-top: var(--s-2); }
 
 .stack > * + * { margin-top: var(--s-4); }
 .stack-tight > * + * { margin-top: var(--s-2); }
@@ -689,6 +696,8 @@ table.data tbody tr:hover { background: var(--gold-wash); }
 	.home-quick-actions { align-items: stretch; flex-direction: column; }
 	.home-quick-actions .btn { width: 100%; }
 	.home-research-cta { align-items: flex-start; flex-direction: column; }
+	.home-ca-launch { grid-template-columns: minmax(0, 1fr); gap: var(--s-5); }
+	.home-ca-facts .btn { width: 100%; }
 	.answer-head h1 { font-size: var(--text-3xl); }
 	.direct-answer { padding: var(--s-4); }
 	.direct-answer p { font-size: var(--text-lg); }

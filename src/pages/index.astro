@@ -22,6 +22,10 @@ import { allLineHubs } from '../lib/line-hub';
 
 import { excerpt, shortList } from '../lib/excerpt';
 const corpus = await loadCorpus();
+const california = corpus.states.find((state) => state.id === 'california');
+if (!california) throw new Error('California state record is missing.');
+const caQuestions = corpus.questions.filter((question) => question.data.states.includes('CA'));
+const caCoverages = corpus.coverages.filter((coverage) => coverage.data.stateVariations.some((variation) => variation.state === 'CA'));
 
 /* Source-quality strip: counted from the registry, never asserted. */
 const totalSources = corpus.sources.length;
@@ -289,6 +293,23 @@ const jsonLd = graph(organization(), website());
 						<dt>Corrected</dt>
 						<dd>{correctedPages} pages</dd>
 					</dl>
+				</div>
+			</div>
+
+			<div class="home-ca-launch" aria-labelledby="ca-launch-title">
+				<div>
+					<span class="eyebrow">California launch desk</span>
+					<h2 id="ca-launch-title">Start with the questions California makes unusually hard.</h2>
+					<p>
+						Wildfire, earthquake, FAIR Plan, rate review, auto limits, and workers’ compensation each have a
+						local context. Birch starts there, with the Bollinger family’s California insurance experience named
+						as the operator—not hidden behind a generic information brand.
+					</p>
+				</div>
+				<div class="home-ca-facts" aria-label="California launch desk counts">
+					<span><b>{caQuestions.length}</b> CA questions</span>
+					<span><b>{caCoverages.length}</b> CA coverage pages</span>
+					<a class="btn btn-secondary btn-sm" href="/start">Open the California desk <ArrowRight size={15} aria-hidden="true" /></a>
 				</div>
 			</div>
 		</div>

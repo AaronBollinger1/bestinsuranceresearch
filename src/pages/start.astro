@@ -1,0 +1,262 @@
+---
+import { ArrowRight, BookOpen, FileCheck, LockKeyhole, MessageCircle, ShieldCheck, Sparkles } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import StatusChip from '../components/StatusChip.astro';
+import { siteConfig } from '../config/site';
+import { stripMarkers } from '../lib/citations';
+import { loadCorpus } from '../lib/corpus';
+import { excerpt } from '../lib/excerpt';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../lib/schema';
+
+const corpus = await loadCorpus();
+const california = corpus.states.find((state) => state.id === 'california');
+if (!california) throw new Error('California state record is missing.');
+
+const caQuestions = corpus.questions
+	.filter((question) => question.data.states.includes('CA'))
+	.sort((a, b) => b.data.lastReviewed.localeCompare(a.data.lastReviewed));
+const caCoverages = corpus.coverages.filter((coverage) => coverage.data.stateVariations.some((variation) => variation.state === 'CA'));
+const topQuestions = caQuestions.slice(0, 4);
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Start here', path: '/start' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'Start with Birch',
+		path: '/start',
+		description: 'A simple starting point for California insurance research, coverage review, company context, and contribution.',
+		items: [
+			{ name: 'Ask Birch', path: '/ask' },
+			{ name: 'California insurance context', path: '/states/california' },
+			{ name: 'Coverage position', path: '/position' },
+			{ name: 'Contribute', path: '/contribute' },
+		],
+	}),
+);
+---
+
+<BaseLayout
+	title="Start with Birch"
+	description="Choose the right starting point for California insurance research, coverage review, company context, or contribution."
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
+	<article>
+		<section class="band band-tight band-first band-paper start-hero">
+			<div class="shell">
+				<Breadcrumbs trail={trail} />
+				<div class="start-hero-grid">
+					<div>
+						<div class="start-identity">
+							<img src="/birch-bird-transparent.png" width="46" height="46" alt="" />
+							<div>
+								<span class="eyebrow">Birch / California first</span>
+								<span class="start-identity-note">A calmer way into a complicated policy.</span>
+							</div>
+						</div>
+						<h1>Start with the thing you are actually trying to figure out.</h1>
+						<p class="page-lede">
+							Birch is a free research desk for insurance. Begin with a question, a coverage line, a company,
+							or your own policy setup. You can read everything without creating an account.
+						</p>
+						<div class="start-steps" aria-label="Birch path">
+							<span class="start-step is-active"><b>01</b> Ask</span>
+							<span><b>02</b> Understand</span>
+							<span><b>03</b> Check</span>
+							<span><b>04</b> Share</span>
+						</div>
+					</div>
+					<aside class="start-signal" aria-label="California launch context">
+						<span class="eyebrow">California launch desk</span>
+						<h2>Local context before generic advice.</h2>
+						<p>{excerpt(stripMarkers(california.data.summary), 330)}</p>
+						<div class="start-signal-meta">
+							<StatusChip kind={california.data.reviewState} />
+							<span class="meta">{caQuestions.length} questions</span>
+							<span class="meta">{caCoverages.length} coverage pages</span>
+						</div>
+						<a class="btn btn-secondary btn-sm" href="/states/california">Open California context <ArrowRight size={15} aria-hidden="true" /></a>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="path-title">
+			<div class="shell">
+				<div class="band-head">
+					<div>
+						<span class="eyebrow">Choose a path</span>
+						<h2 id="path-title">One front door. Four useful next steps.</h2>
+						<p>No account, sales pitch, or document upload is required to begin.</p>
+					</div>
+				</div>
+
+				<div class="start-path-grid">
+					<a class="start-path" href="/ask">
+						<span class="start-path-icon"><Sparkles size={20} aria-hidden="true" /></span>
+						<span class="eyebrow">Understand</span>
+						<h3>Ask Birch</h3>
+						<p>Search a plain-language question and open the evidence behind the answer.</p>
+						<span class="start-path-link">Ask a question <ArrowRight size={15} aria-hidden="true" /></span>
+					</a>
+					<a class="start-path" href="/insurance">
+						<span class="start-path-icon"><BookOpen size={20} aria-hidden="true" /></span>
+						<span class="eyebrow">Explore</span>
+						<h3>Browse coverage</h3>
+						<p>See what a line is designed to protect, what commonly changes it, and what to ask next.</p>
+						<span class="start-path-link">Open the coverage library <ArrowRight size={15} aria-hidden="true" /></span>
+					</a>
+					<a class="start-path" href="/position">
+						<span class="start-path-icon"><FileCheck size={20} aria-hidden="true" /></span>
+						<span class="eyebrow">Check</span>
+						<h3>Review my setup</h3>
+						<p>Use browser-based worksheets to organize limits, renewal questions, or contract requirements.</p>
+						<span class="start-path-link">Open Coverage Position <ArrowRight size={15} aria-hidden="true" /></span>
+					</a>
+					<a class="start-path" href="/contribute">
+						<span class="start-path-icon"><MessageCircle size={20} aria-hidden="true" /></span>
+						<span class="eyebrow">Participate</span>
+						<h3>Share what happened</h3>
+						<p>Prepare a first-person experience, correction, or professional research contribution.</p>
+						<span class="start-path-link">See contribution rules <ArrowRight size={15} aria-hidden="true" /></span>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-paper" aria-labelledby="audience-title">
+			<div class="shell">
+				<span class="eyebrow">The same evidence, different starting point</span>
+				<h2 id="audience-title">Tell Birch what brings you here.</h2>
+				<div class="start-switcher" data-start-switcher>
+					<div class="segmented" role="group" aria-label="Choose your starting point">
+						<button type="button" aria-pressed="true" data-start-mode="policy">I have a policy</button>
+						<button type="button" aria-pressed="false" data-start-mode="shopping">I am shopping</button>
+						<button type="button" aria-pressed="false" data-start-mode="company">I am researching a company</button>
+						<button type="button" aria-pressed="false" data-start-mode="professional">I am a professional</button>
+					</div>
+					<div class="start-mode-panel" data-start-panel="policy">
+						<div><h3>Understand the setup you already have.</h3><p>Start with a coverage line, then use the worksheets to organize questions before speaking with anyone.</p></div>
+						<div class="start-mode-actions"><a class="btn btn-primary btn-sm" href="/position">Review coverage setup</a><a class="btn btn-secondary btn-sm" href="/lens">Private Coverage Lens preview</a></div>
+					</div>
+					<div class="start-mode-panel" data-start-panel="shopping" hidden>
+						<div><h3>Learn the vocabulary before you compare.</h3><p>Birch explains the line, the tradeoffs, and the California context. It does not rank carriers or promise a quote.</p></div>
+						<div class="start-mode-actions"><a class="btn btn-primary btn-sm" href="/insurance">Browse coverage</a><a class="btn btn-secondary btn-sm" href="/ask?q=What%20should%20I%20ask%20before%20buying%20insurance">Ask a shopping question</a></div>
+					</div>
+					<div class="start-mode-panel" data-start-panel="company" hidden>
+						<div><h3>See what can actually be checked.</h3><p>Company pages organize identity, regulator records, official documents, current research, and clearly labeled experiences.</p></div>
+						<div class="start-mode-actions"><a class="btn btn-primary btn-sm" href="/companies">Browse organizations</a><a class="btn btn-secondary btn-sm" href="/contribute?type=experience">Share an experience</a></div>
+					</div>
+					<div class="start-mode-panel" data-start-panel="professional" hidden>
+						<div><h3>Contribute expertise without taking over the record.</h3><p>Verified professionals can publish research, disclose conflicts, suggest corrections, and respond to questions.</p></div>
+						<div class="start-mode-actions"><a class="btn btn-primary btn-sm" href="/professionals">Professional contribution</a><a class="btn btn-secondary btn-sm" href="/methodology">Read the method</a></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="ca-title">
+			<div class="shell">
+				<div class="band-head">
+					<div>
+						<span class="eyebrow">Start with California</span>
+						<h2 id="ca-title">The launch topics people are already asking about.</h2>
+					</div>
+					<a class="btn btn-secondary btn-sm" href="/questions">See every question <ArrowRight size={15} aria-hidden="true" /></a>
+				</div>
+				<div class="rows">
+					{topQuestions.map((question) => (
+						<a class="row" href={`/questions/${question.id}`}>
+							<div>
+								<h3 class="row-title">{question.data.question}</h3>
+								<p>{excerpt(stripMarkers(question.data.shortAnswer), 190)}</p>
+								<div class="row-meta"><StatusChip kind={question.data.confidence} /><span class="meta">{question.data.sourceIds.length} sources</span><span class="meta">Reviewed {question.data.lastReviewed}</span></div>
+							</div>
+							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-ink" aria-labelledby="trust-title">
+			<div class="shell">
+				<div class="start-trust-grid">
+					<div>
+						<span class="eyebrow">Trust, stated plainly</span>
+						<h2 id="trust-title">Birch is operated by people who work in California insurance. That is context, not a hidden endorsement.</h2>
+						<p class="lede">The Bollinger family’s independent brokerage experience informs the questions Birch knows to ask. It does not buy editorial placement, change a cited answer, or make Birch the only source of help.</p>
+						<a class="btn btn-secondary" href={siteConfig.bollinsureOrigin + '/about'} rel="noopener">Meet the Bollinger family <ArrowRight size={15} aria-hidden="true" /></a>
+					</div>
+					<div class="start-boundary-list">
+						<div><ShieldCheck size={18} aria-hidden="true" /><span><b>Research</b> says what a source supports.</span></div>
+						<div><MessageCircle size={18} aria-hidden="true" /><span><b>Commons</b> says what a person experienced.</span></div>
+						<div><LockKeyhole size={18} aria-hidden="true" /><span><b>Coverage Lens</b> keeps private files private.</span></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</article>
+</BaseLayout>
+
+<script>
+	const switcher = document.querySelector<HTMLElement>('[data-start-switcher]');
+	if (switcher) {
+		const buttons = [...switcher.querySelectorAll<HTMLButtonElement>('[data-start-mode]')];
+		const panels = [...switcher.querySelectorAll<HTMLElement>('[data-start-panel]')];
+		buttons.forEach((button) => {
+			button.addEventListener('click', () => {
+				const mode = button.dataset.startMode;
+				buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+				panels.forEach((panel) => { panel.hidden = panel.dataset.startPanel !== mode; });
+			});
+		});
+	}
+</script>
+
+<style>
+	.start-hero { padding-bottom: var(--s-10); }
+	.start-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); gap: var(--s-12); align-items: end; margin-top: var(--s-8); }
+	.start-identity { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-5); }
+	.start-identity img { width: 46px; height: 46px; object-fit: contain; }
+	.start-identity-note { display: block; color: var(--muted); font-size: var(--text-sm); }
+	.start-hero h1 { max-width: 13ch; font-size: clamp(2.7rem, 6vw, 5rem); letter-spacing: -0.045em; }
+	.start-steps { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); margin-top: var(--s-6); color: var(--faint); font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: .04em; }
+	.start-steps span { display: inline-flex; gap: 5px; align-items: center; }
+	.start-steps b { color: var(--brand-blue-text); font-weight: 400; }
+	.start-steps .is-active { color: var(--ink); }
+	.start-signal { padding: var(--s-5); border: 1px solid var(--line-strong); border-top: 3px solid var(--brand-blue); background: var(--cream); border-radius: var(--r-3); }
+	.start-signal h2 { font-size: var(--text-2xl); }
+	.start-signal p { color: var(--muted); font-size: var(--text-sm); }
+	.start-signal-meta { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; margin: var(--s-4) 0; }
+	.start-path-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); }
+	.start-path { display: flex; flex-direction: column; gap: var(--s-2); min-height: 250px; padding: var(--s-5); border: 1px solid var(--line); background: var(--paper); text-decoration: none; border-radius: var(--r-3); transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease), transform var(--dur-1) var(--ease); }
+	.start-path:hover { border-color: var(--brand-blue); box-shadow: var(--elev-2); transform: translateY(-2px); }
+	.start-path-icon { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: var(--s-3); color: var(--brand-blue-deep); background: var(--brand-blue-wash); border-radius: 50%; }
+	.start-path .eyebrow { margin-bottom: 0; }
+	.start-path h3 { margin: 0; font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; }
+	.start-path p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
+	.start-path-link { display: inline-flex; align-items: center; gap: 5px; margin-top: auto; color: var(--brand-blue-text); font-size: var(--text-sm); font-weight: 600; }
+	.start-switcher { display: grid; gap: var(--s-4); margin-top: var(--s-5); }
+	.start-switcher .segmented { overflow-x: auto; }
+	.start-mode-panel { display: flex; justify-content: space-between; gap: var(--s-5); align-items: center; padding: var(--s-5); border: 1px solid var(--line-strong); background: var(--cream); border-radius: var(--r-3); }
+	.start-mode-panel h3 { margin-bottom: var(--s-1); }
+	.start-mode-panel p { max-width: 60ch; margin: 0; color: var(--muted); font-size: var(--text-sm); }
+	.start-mode-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--s-2); }
+	.start-trust-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: var(--s-12); align-items: center; }
+	.start-trust-grid h2 { max-width: 18ch; }
+	.start-boundary-list { display: grid; gap: var(--s-4); }
+	.start-boundary-list div { display: flex; gap: var(--s-3); align-items: flex-start; padding-top: var(--s-3); border-top: 1px solid var(--line-ink); color: #cbd3dc; font-size: var(--text-sm); }
+	.start-boundary-list svg { flex: 0 0 auto; color: var(--brand-cyan); }
+	.start-boundary-list b { color: var(--paper); }
+	@media (max-width: 900px) { .start-hero-grid, .start-trust-grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); } .start-path-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+	@media (max-width: 640px) { .start-path-grid { grid-template-columns: minmax(0, 1fr); } .start-mode-panel { align-items: flex-start; flex-direction: column; } .start-mode-actions { justify-content: flex-start; } .start-mode-actions .btn { width: 100%; } }
+	@media (prefers-reduced-motion: reduce) { .start-path { transition: none; } .start-path:hover { transform: none; } }
+</style>

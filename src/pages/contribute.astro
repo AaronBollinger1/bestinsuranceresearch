@@ -1,0 +1,147 @@
+---
+import { ArrowRight, Check, FileText, Flag, LockKeyhole, ShieldCheck, UserRound } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Callout from '../components/Callout.astro';
+import { siteConfig } from '../config/site';
+import { breadcrumbs, graph, organization, website } from '../lib/schema';
+
+const requestedType = Astro.url.searchParams.get('type');
+const initialType = requestedType === 'experience' || requestedType === 'research' || requestedType === 'correction' ? requestedType : 'experience';
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Contribute', path: '/contribute' },
+];
+const jsonLd = graph(organization(), website(), breadcrumbs(trail));
+---
+
+<BaseLayout
+	title="Contribute to Birch"
+	description="Prepare a first-person insurance experience, a correction, or professional research contribution for Birch."
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
+	<article>
+		<section class="band band-tight band-first band-paper contribution-hero">
+			<div class="shell">
+				<Breadcrumbs trail={trail} />
+				<div class="contribution-hero-grid">
+					<div>
+						<span class="eyebrow">Birch / Contribution desk</span>
+						<h1>Bring context to the record without taking it over.</h1>
+						<p class="page-lede">Birch accepts carefully labeled experiences, source corrections, and professional research. A contribution can add context; it cannot turn an anecdote into a fact or buy a better position.</p>
+						<div class="contribution-actions"><a class="btn btn-primary" href="#draft">Prepare a private draft <ArrowRight size={15} aria-hidden="true" /></a><a class="btn btn-secondary" href="/editorial-policy">Read the rules</a></div>
+					</div>
+					<div class="contribution-boundary">
+						<div><LockKeyhole size={18} aria-hidden="true" /><strong>Drafts stay in this browser.</strong><span>This preview does not send your text anywhere.</span></div>
+						<div><Flag size={18} aria-hidden="true" /><strong>Disputes stay visible.</strong><span>Corrections and company responses are attributed, not hidden.</span></div>
+						<div><ShieldCheck size={18} aria-hidden="true" /><strong>Identity is not the same as endorsement.</strong><span>Verification informs trust; it does not decide the editorial result.</span></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="types-title">
+			<div class="shell">
+				<span class="eyebrow">Three contribution types</span>
+				<h2 id="types-title">Choose what you are adding.</h2>
+				<div class="contribution-type-grid">
+					<div class="contribution-type"><span class="contribution-type-icon"><UserRound size={19} aria-hidden="true" /></span><h3>First-person experience</h3><p>What you asked, what happened, when, and what documents or messages you can point to. This stays labeled as an experience.</p></div>
+					<div class="contribution-type"><span class="contribution-type-icon"><FileText size={19} aria-hidden="true" /></span><h3>Professional research</h3><p>A sourced explanation published under your name, license or credential, affiliation, and conflict disclosure.</p></div>
+					<div class="contribution-type"><span class="contribution-type-icon"><Check size={19} aria-hidden="true" /></span><h3>Correction or source note</h3><p>A precise claim, link, date, and explanation of what needs checking. Birch keeps the prior wording in the public history.</p></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-paper" id="draft" aria-labelledby="draft-title">
+			<div class="shell contribution-layout">
+				<div>
+					<span class="eyebrow">Private draft preview</span>
+					<h2 id="draft-title">Prepare the contribution before you create an account.</h2>
+					<p class="lede">This is intentionally local-only. The production submission, login, verification, and moderation queue will be connected after the Commons backend is provisioned.</p>
+					<form id="contribution-form" class="contribution-form">
+						<div class="field-row">
+							<div class="field"><label for="contribution-type">I am adding</label><select id="contribution-type" name="type"><option value="experience" selected={initialType === 'experience'}>A first-person experience</option><option value="research" selected={initialType === 'research'}>Professional research</option><option value="correction" selected={initialType === 'correction'}>A correction or source note</option></select></div>
+							<div class="field"><label for="contribution-line">Insurance line</label><select id="contribution-line" name="line"><option>Homeowners</option><option>Auto</option><option>Wildfire</option><option>Earthquake</option><option>Renters</option><option>Workers’ compensation</option><option>Business insurance</option><option>Other California line</option></select></div>
+						</div>
+						<div class="field"><label for="contribution-title">Working title</label><input id="contribution-title" name="title" type="text" placeholder="What should another reader understand?" maxlength="120" /></div>
+						<div class="field"><label for="contribution-body">Your draft</label><textarea id="contribution-body" name="body" rows="9" placeholder="Start with what you know first-hand or the exact claim and source that needs checking. Do not include names, addresses, policy numbers, claim numbers, or health information."></textarea><span class="hint">Nothing is sent in this preview. Do not paste a full policy or private correspondence.</span></div>
+						<div class="contribution-checks"><label class="check"><input type="checkbox" name="firsthand" required /><span>I have separated what I experienced from what I am inferring.</span></label><label class="check"><input type="checkbox" name="private" required /><span>I have removed personal, account, and policy identifiers.</span></label><label class="check"><input type="checkbox" name="rules" required /><span>I understand this is reviewed, may be edited for clarity, and is not guaranteed to publish.</span></label></div>
+						<div class="contribution-form-actions"><button class="btn btn-primary" type="submit">Create private draft <ArrowRight size={15} aria-hidden="true" /></button><button class="btn btn-secondary" type="button" id="contribution-reset">Clear draft</button></div>
+						<p class="live-status" id="contribution-status" role="status" aria-live="polite"></p>
+					</form>
+				</div>
+				<aside class="contribution-aside">
+					<Callout tone="limit" label="What this preview does not do">
+						<p>It does not create a public post, verify a license, contact a company, or collect an email address. Those actions belong to the authenticated Commons workflow.</p>
+					</Callout>
+					<div class="contribution-aside-block"><span class="eyebrow">When Commons opens</span><ol class="action-list"><li><p>Sign in with a durable account.</p></li><li><p>Choose a public name and disclosure settings.</p></li><li><p>Attach sources or supporting context.</p></li><li><p>Submit to moderation before publication.</p></li></ol></div>
+					<a class="text-link" href="/professionals">Are you a financial professional? <ArrowRight size={15} aria-hidden="true" /></a>
+				</aside>
+			</div>
+		</section>
+
+		<section class="band band-ink" aria-labelledby="contribution-operator-title">
+			<div class="shell contribution-operator">
+				<div><span class="eyebrow">A named operator</span><h2 id="contribution-operator-title">Birch is operated by {siteConfig.operator.dba}.</h2><p class="lede">The relationship is disclosed because credibility comes from showing who built the desk, how licensed help is separated, and where independent research can disagree with a broker.</p></div>
+				<a class="btn btn-secondary" href={siteConfig.bollinsureOrigin + '/about'} rel="noopener">About Bollinsure <ArrowRight size={15} aria-hidden="true" /></a>
+			</div>
+		</section>
+	</article>
+</BaseLayout>
+
+<script is:inline define:vars={{ initialType }}>
+	const form = document.getElementById('contribution-form');
+	const status = document.getElementById('contribution-status');
+	const reset = document.getElementById('contribution-reset');
+	const type = document.getElementById('contribution-type');
+	if (type && ['experience', 'research', 'correction'].includes(initialType)) type.value = initialType;
+
+	form?.addEventListener('submit', (event) => {
+		event.preventDefault();
+		const data = new FormData(form);
+		const title = String(data.get('title') || '').trim();
+		const body = String(data.get('body') || '').trim();
+		if (!title || !body) {
+			if (status) status.textContent = 'Add a working title and draft before saving.';
+			return;
+		}
+		if (status) status.textContent = 'Private draft ready. Nothing was sent; this preview keeps the text in the current page only.';
+		form.classList.add('is-saved');
+	});
+
+	reset?.addEventListener('click', () => {
+		form?.reset();
+		if (status) status.textContent = 'Draft cleared.';
+		form?.classList.remove('is-saved');
+	});
+</script>
+
+<style>
+	.contribution-hero { padding-bottom: var(--s-10); }
+	.contribution-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); gap: var(--s-12); align-items: end; margin-top: var(--s-8); }
+	.contribution-hero h1 { max-width: 15ch; font-size: clamp(2.7rem, 6vw, 5rem); letter-spacing: -.045em; }
+	.contribution-actions, .contribution-form-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-6); }
+	.contribution-boundary { display: grid; gap: var(--s-4); padding: var(--s-5); border: 1px solid var(--line-strong); border-top: 3px solid var(--brand-blue); background: var(--cream); border-radius: var(--r-3); }
+	.contribution-boundary div { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: var(--s-2); }
+	.contribution-boundary svg { grid-row: span 2; color: var(--brand-blue-text); }
+	.contribution-boundary strong { color: var(--ink); font-size: var(--text-sm); }
+	.contribution-boundary span { color: var(--muted); font-size: var(--text-sm); }
+	.contribution-type-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-5); }
+	.contribution-type { padding: var(--s-5); border: 1px solid var(--line); background: var(--paper); border-radius: var(--r-3); }
+	.contribution-type-icon { display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: var(--s-4); color: var(--brand-blue-deep); background: var(--brand-blue-wash); border-radius: 50%; }
+	.contribution-type h3 { margin-bottom: var(--s-2); }
+	.contribution-type p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
+	.contribution-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--s-12); align-items: start; }
+	.contribution-form { margin-top: var(--s-6); max-width: 780px; }
+	.contribution-form textarea { min-height: 210px; resize: vertical; }
+	.contribution-checks { display: grid; gap: var(--s-2); margin-top: var(--s-5); }
+	.contribution-form.is-saved { border-left: 3px solid var(--green); padding-left: var(--s-4); }
+	.contribution-aside { display: grid; gap: var(--s-6); }
+	.contribution-aside-block { padding-top: var(--s-2); }
+	.contribution-aside .action-list { margin-top: var(--s-3); }
+	.contribution-operator { display: flex; justify-content: space-between; gap: var(--s-8); align-items: center; }
+	.contribution-operator h2 { max-width: 20ch; }
+	@media (max-width: 900px) { .contribution-hero-grid, .contribution-layout { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); } .contribution-type-grid { grid-template-columns: minmax(0, 1fr); } .contribution-operator { align-items: flex-start; flex-direction: column; } }
+	@media (max-width: 640px) { .contribution-actions .btn, .contribution-form-actions .btn { width: 100%; } }
+</style>
