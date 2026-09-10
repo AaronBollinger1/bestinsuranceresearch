@@ -26,6 +26,12 @@ export const GENERATED_SUBJECTS: Subject[] = [
 		"recordPath": "/companies/naic"
 	},
 	{
+		"id": "company:state-farm-general-insurance-company",
+		"kind": "company",
+		"name": "State Farm General Insurance Company",
+		"recordPath": "/companies/state-farm-general-insurance-company"
+	},
+	{
 		"id": "coverage:commercial-auto",
 		"kind": "coverage",
 		"name": "Commercial Auto Insurance",
