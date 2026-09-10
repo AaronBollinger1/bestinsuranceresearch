@@ -538,6 +538,43 @@ test('no outbound Bollinsure link carries a question or free text', () => {
 	}
 });
 
+test('the about page keeps its accountless boundary true', () => {
+	const about = read(path.join(DIST, 'about', 'index.html'));
+	const formTags = [...about.matchAll(/<form\b[^>]*>/g)].map((match) => match[0]);
+
+	/*
+	 * /about says Birch Research collects nothing. The global header and the
+	 * closed mobile panel both contain a search form, so "no form" would be the
+	 * wrong check. What the page may contain is an explicit GET into /ask; no
+	 * form may post, upload, or point at a third party.
+	 */
+	const accountless = (html) => {
+		const forms = [...html.matchAll(/<form\b[^>]*>/g)].map((match) => match[0]);
+		return (
+			forms.length > 0 &&
+			forms.every((tag) => /method="get"/i.test(tag) && /action="\/ask"/i.test(tag)) &&
+			!/<form\b[^>]*method="post"/i.test(html) &&
+			!/<input\b[^>]*type="file"/i.test(html)
+		);
+	};
+
+	assert.equal(formTags.length, 2, `about changed its two accountless search controls: found ${formTags.length}`);
+	assert.equal(accountless(about), true, 'about has a non-search submission or upload control');
+	/* Prove the predicate is not vacuous by breaking a known-good tag. */
+	assert.equal(accountless(about.replace('method="get"', 'method="post"')), false, 'boundary check would not catch a POST form');
+
+	assert.match(about, /It collects nothing\./, 'about no longer states the collection boundary');
+	assert.match(
+		about,
+		/Nothing on this site[\s\S]+reads from it, writes to it, or is trained on it\./,
+		'about no longer states the BestAMS boundary',
+	);
+	assert.match(about, /research journey never requires a handoff\./, 'about no longer states the optional handoff boundary');
+	assert.match(about, /does not mirror the feed/, 'about no longer states that the podcast feed is not mirrored');
+	assert.match(about, /does not import transcripts as research pages/, 'about no longer states that transcripts are not imported');
+	assert.ok(!about.includes('https://feeds.transistor.fm/'), 'about exposes the podcast feed as a fetched or embedded resource');
+});
+
 /* ------------------------------------------------------------------ */
 /* Editorial integrity                                                 */
 /* ------------------------------------------------------------------ */

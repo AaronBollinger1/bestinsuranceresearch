@@ -264,17 +264,22 @@ Findings so far, newest first, each with the commit that argues it:
 | `llms.txt` promises a JSON companion for every page | site-wide | 88 pages had none - the second recurrence |
 | "you may withdraw a contribution" | 4 Commons pages | No mechanism existed |
 | Card and description text is a faithful shortening | site-wide | 21 call sites cut at a character, which can strip a hedge and invert a claim |
+| `/about` says the Research room collects nothing and keeps the handoff optional | `/about` and built controls | Exactly two explicit GET search forms point to `/ask`; no POST, file input, or embedded podcast feed is present |
 
-### Surfaces of this kind not yet measured
+### Remaining surfaces of this kind
 
-`/about` is the largest unexamined one. Its testable claims are: "It collects
-nothing"; "Nothing on this site reads from [BestAMS], writes to it, or is
-trained on it"; "The research journey never requires a handoff"; the podcast
-paragraph ("does not mirror the feed... does not import transcripts as research
-pages", and that a cited episode links to the canonical Bollinsure episode
-page). A first pass found every `<form>` on all 842 pages is `method="get"`
-pointing at `/ask`, which supports "collects nothing" but was not written up as
-a test.
+The `/about` audit is now measured in `scripts/verify.mjs`. Its two search forms
+are both explicit GET requests to `/ask`; the negative fixture proves the check
+would fail on a POST, and the output contains no file input or Transistor feed
+resource. The page still offers the optional Bollinsure handoff in its contact
+section while stating that the research answer and source ledger are complete
+without it. No podcast episode is currently in the corpus, so the rule that a
+cited episode must link to the canonical Bollinsure archive remains a future
+source-ingestion gate rather than a claim about a current record.
+
+The next unexamined surface is not yet a reason to add product code. Continue
+the same measure-first method against any new global assertion before changing
+the public feature surface.
 
 `AUTHORITY-AND-DISTRIBUTION-PLAN.md`, `LAUNCH-GATE.md` and `ESTATE-PLAN.md`
 carry stale counts (8 modules where there are 10, 231 rules where there are
