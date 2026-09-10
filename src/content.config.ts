@@ -237,6 +237,12 @@ const linkItem = z.object({
 	note: z.string().min(10).optional(),
 });
 
+const sourceLinkedDocument = z.object({
+	label: z.string().min(8),
+	sourceId: reference('sources'),
+	note: z.string().min(30),
+});
+
 const companies = defineCollection({
 	loader: glob({ pattern: '**/*.json', base: './src/content/companies' }),
 	schema: z.object({
@@ -260,6 +266,8 @@ const companies = defineCollection({
 			.array(z.object({ label: z.string().min(3), value: z.string().min(3), note: z.string().optional() }))
 			.default([]),
 		regulatorRecords: z.array(linkItem).default([]),
+		/** Filed forms are visible only when the source is in this entity's ledger. */
+		filedForms: z.array(sourceLinkedDocument).default([]),
 		publications: z.array(linkItem).default([]),
 		statutoryBasis: z.array(linkItem).default([]),
 		jurisdictions: z.array(z.string()).min(1),

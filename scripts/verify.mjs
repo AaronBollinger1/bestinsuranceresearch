@@ -485,6 +485,26 @@ test('company machine records expose only declared research relationships', () =
 	}
 });
 
+test('filed company forms are source-linked policy-form records', () => {
+	const sourceById = new Map(sources.map((source) => [source.id, source]));
+	for (const company of companies) {
+		const companySourceIds = idsOf(company.data.sourceIds);
+		const forms = company.data.filedForms ?? [];
+		const html = read(path.join(DIST, 'companies', company.id, 'index.html'));
+		const machine = JSON.parse(read(path.join(DIST, 'companies', `${company.id}.json`)));
+		assert.equal(machine.filedForms.length, forms.length, `${company.id} machine filed-form count drifted`);
+		for (const form of forms) {
+			const source = sourceById.get(form.sourceId.id);
+			assert.ok(source, `${company.id} filed form ${form.label} has no source record`);
+			assert.equal(source.data.sourceType, 'policy-form', `${company.id} filed form ${form.label} is not a policy-form source`);
+			assert.ok(companySourceIds.includes(form.sourceId.id), `${company.id} filed form ${form.label} is not in the entity source ledger`);
+			assert.ok(html.includes(form.label), `${company.id} does not render filed form ${form.label}`);
+			assert.ok(html.includes(`/sources/${form.sourceId.id}`), `${company.id} does not link filed form ${form.label} to its source page`);
+		}
+		if (forms.length > 0) assert.match(html, /Filed forms in the source registry/);
+	}
+});
+
 test('machine records leak no private or generated content', () => {
 	const banned = ['bir_session', 'utm_', 'dataLayer', 'sessionStorage', 'localStorage'];
 	for (const file of jsonFiles) {

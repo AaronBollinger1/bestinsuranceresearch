@@ -67,6 +67,7 @@ const pageMap = [
 	{ number: '03', label: 'Official website', detail: 'Channels and records to check', href: '#official' },
 	{ number: '04', label: 'Financial context', detail: 'No Birch score or ranking', href: '#financial-context' },
 	{ number: '05', label: 'Community lanes', detail: 'Forums, threads, and experiences', href: '#community' },
+	...(d.filedForms.length ? [{ number: '06', label: 'Filed forms', detail: 'Source-linked documents only', href: '#filed-forms' }] : []),
 ];
 
 const communityLanes = [
@@ -115,6 +116,7 @@ const sections = [
 	{ id: 'financial-context', label: 'Financial context' },
 	...(d.statutoryBasis.length ? [{ id: 'statute', label: 'Statutory basis' }] : []),
 	...(d.publications.length ? [{ id: 'publications', label: 'Publications' }] : []),
+	...(d.filedForms.length ? [{ id: 'filed-forms', label: 'Filed forms' }] : []),
 	{ id: 'notclaimed', label: 'What this page does not claim' },
 	{ id: 'source-ledger', label: 'Source ledger' },
 	{ id: 'community', label: 'Community lanes' },
@@ -241,9 +243,27 @@ const jsonLd = graph(
 											<div class="company-coverage-empty"><p>No coverage Research page is explicitly connected to this organization yet.</p></div>
 										)
 										}
-										<p class="mono company-coverage-boundary">This is not a current product catalog, availability statement, policy comparison, or coverage determination. A missing link means only that Birch has not declared the relationship.</p>
-									</div>
-								</section>
+						<p class="mono company-coverage-boundary">This is not a current product catalog, availability statement, policy comparison, or coverage determination. A missing link means only that Birch has not declared the relationship.</p>
+					</div>
+				</section>
+
+					{
+						d.filedForms.length > 0 && (
+							<section class="answer-section company-filed-forms" id="filed-forms" aria-labelledby="filed-forms-title" data-company-lane="filed-forms">
+								<h2 id="filed-forms-title">Filed forms in the source registry</h2>
+								<p>These are source-linked documents, not a rehosted form library. Read the source page for the publisher, host, dates, document status, and the exact claims Birch records.</p>
+								<div class="company-filed-form-grid">
+									{d.filedForms.map((form) => (
+										<a class="company-filed-form" href={`/sources/${form.sourceId.id}`}>
+											<span><strong>{form.label}</strong><small>{form.note}</small></span>
+											<ArrowRight size={15} aria-hidden="true" />
+										</a>
+									))}
+								</div>
+								<p class="mono company-filed-form-boundary">A filed form can explain what that document says. It does not establish a carrier's complete product offering, current availability, or the terms of a reader's policy.</p>
+							</section>
+						)
+					}
 
 					<section class="answer-section" aria-labelledby="official">
 						<h2 id="official">Official website and contact</h2>
@@ -524,6 +544,15 @@ const jsonLd = graph(
 	.company-coverage-empty { margin-top: var(--s-4); padding: var(--s-4); border: var(--bw-hair) dashed var(--line-strong); border-radius: var(--r-2); background: var(--slate-wash); }
 	.company-coverage-empty p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
 	.company-coverage-boundary { margin: var(--s-4) 0 0; }
+	.company-filed-forms > p { max-width: 70ch; color: var(--muted); }
+	.company-filed-form-grid { display: grid; gap: var(--s-2); margin-top: var(--s-5); }
+	.company-filed-form { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-4); padding: var(--s-4); border: var(--bw-hair) solid var(--line); border-radius: var(--r-2); color: var(--body); text-decoration: none; transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease), transform var(--dur-2) var(--ease-soft); }
+	.company-filed-form:hover, .company-filed-form:focus-visible { border-color: var(--brand-blue); box-shadow: var(--elev-1); transform: translateY(-2px); }
+	.company-filed-form strong, .company-filed-form small { display: block; }
+	.company-filed-form strong { color: var(--ink); font-size: var(--text-sm); line-height: var(--leading-snug); }
+	.company-filed-form small { margin-top: var(--s-1); color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-snug); }
+	.company-filed-form > svg { flex: 0 0 auto; margin-top: 2px; color: var(--brand-blue-text); }
+	.company-filed-form-boundary { margin-top: var(--s-4); }
 
 	.company-empty-state { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--s-4); padding: var(--s-5); border: var(--bw-hair) dashed var(--line-strong); border-radius: var(--r-3); background: var(--slate-wash); }
 	.company-empty-state-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--paper); color: var(--brand-blue-text); }
@@ -555,7 +584,7 @@ const jsonLd = graph(
 		.company-coverage-count { align-self: flex-start; }
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.company-page-map-card, .company-coverage-link { transition: none; }
-		.company-page-map-card:hover, .company-page-map-card:focus-visible, .company-coverage-link:hover, .company-coverage-link:focus-visible { transform: none; }
+		.company-page-map-card, .company-coverage-link, .company-filed-form { transition: none; }
+		.company-page-map-card:hover, .company-page-map-card:focus-visible, .company-coverage-link:hover, .company-coverage-link:focus-visible, .company-filed-form:hover, .company-filed-form:focus-visible { transform: none; }
 	}
 </style>

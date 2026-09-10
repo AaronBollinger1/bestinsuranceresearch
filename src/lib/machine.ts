@@ -157,6 +157,12 @@ export function companyRecord(
 		officialUrls: d.officialUrls,
 		contactChannels: d.contactChannels,
 		regulatorRecords: d.regulatorRecords,
+		filedForms: d.filedForms.map((form) => ({
+			label: form.label,
+			sourceId: form.sourceId.id,
+			sourceUrl: abs(`/sources/${form.sourceId.id}`),
+			note: form.note,
+		})),
 		publications: d.publications,
 		statutoryBasis: d.statutoryBasis,
 		jurisdictions: d.jurisdictions,
