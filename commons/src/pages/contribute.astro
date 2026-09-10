@@ -23,20 +23,20 @@ const COLLECTED = [
 <BaseLayout
 	title="What contributing will involve"
 	eyebrow="Contribute"
-	lede="Accounts are not open yet. This is what the route in will ask for, and — more importantly — what it will never ask for."
+	lede="Accounts are open. Sign in first, then choose whether you want to write a case report or wait for the practitioner verification route."
 	crumbs={crumbs}
 >
 	<section class="band band-tight">
 		<div class="shell page-grid">
 			<div class="prose">
-				<div class="callout" data-tone="warn">
-					<h3>Not open yet</h3>
-					<p>
-						There is no sign-in on this site today and no way to submit anything. This page is
-						published ahead of the mechanism so that what it will and will not ask for is on the
-						record before anyone is asked to trust it.
-					</p>
-				</div>
+					<div class="callout" data-tone="note">
+						<h3>How it works today</h3>
+						<p>
+							Passwordless sign-in, case-report intake, and the public-register verification request are
+							live. A submission stays private until a moderator has read it, and a published report can be
+							withdrawn by its author.
+						</p>
+					</div>
 
 				<h2>Two ways to contribute, in this order</h2>
 				<h3>1. A case report</h3>
@@ -50,19 +50,18 @@ const COLLECTED = [
 					answers that — <a href="/standards">and nobody is permitted to</a>.
 				</p>
 
-				<h3>2. A practitioner note</h3>
-				<p>
-					If you hold a professional licence — broker, adjuster, attorney — you can attach a signed,
-					named note to a specific claim on{' '}
-					<a href={commons.record.origin} rel="noopener">{commons.record.name}</a>: a sentence of
-					law, with your reading of how it plays out in practice beside it.
-				</p>
-				<p>
-					Verification is a licence number checked against the regulator's own public register.
-					Because that register is public, verifying you needs <strong>no identity documents and
-					stores nothing sensitive</strong>. That is precisely why practitioner notes come before
-					verified policyholder status: cheaper to verify, and worth more.
-				</p>
+					<h3>2. A verified practitioner note</h3>
+					<p>
+						If you hold a professional licence — broker, adjuster, attorney — the next contributor route
+						will let you attach a signed, named note to a specific subject on{' '}
+						<a href={commons.record.origin} rel="noopener">{commons.record.name}</a>: a sentence of
+						law, with your reading of how it plays out in practice beside it.
+					</p>
+					<p>
+						<a href="/account/verify">Request professional verification</a> first. A moderator checks the
+						number against the regulator's own public register, with <strong>no identity documents and
+						no sensitive uploads</strong>. A role remains self-described until it is approved.
+					</p>
 
 				<h2>What is collected</h2>
 				<ul>{COLLECTED.map((c) => <li>{c}</li>)}</ul>
@@ -89,13 +88,11 @@ const COLLECTED = [
 					<li>Corrections accepted — worth more than anything else on this list.</li>
 				</ul>
 
-				<h2>Open discussion</h2>
-				<p>
-					Threads come last, and only once the two mechanisms above are worth reading. When they
-					open they will be for what changed and what it means — a bill moving, a regulation
-					adopted, a form edition superseded, a carrier withdrawing from a county — because that is
-					where public discussion is genuinely additive. The Record can say what the rule is; it
-					cannot say what practitioners are seeing this month.
+					<h2>Open discussion</h2>
+					<p>
+						Threads are open now for questions and observations attached to published subjects. They are
+						conversation, not evidence: posts are not cited by the Record and a verdict-shaped post is
+						blocked before it publishes.
 				</p>
 			</div>
 

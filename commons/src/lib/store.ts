@@ -48,6 +48,34 @@ export interface Account {
 	createdAt: string;
 }
 
+export type ProfessionalKind = Exclude<Account['kind'], 'reader' | 'staff'>;
+
+export type VerificationRequestState = 'pending' | 'approved' | 'declined';
+
+/** A request to have a professional role checked against a public register. */
+export interface VerificationRequest {
+	id: string;
+	email: string;
+	kind: ProfessionalKind;
+	licenseNumber: string;
+	authority: string;
+	registerUrl: string;
+	state: VerificationRequestState;
+	submittedAt: string;
+	decidedAt?: string;
+	decidedByModerator?: string;
+	moderatorNote?: string;
+}
+
+export interface VerificationDecision {
+	state: Exclude<VerificationRequestState, 'pending'>;
+	moderator: string;
+	note: string;
+	decidedAt: string;
+	/** Required when approving, because the badge must carry a check date. */
+	verifiedOn?: string;
+}
+
 /** A pending magic link. The token itself is never stored - only its hash. */
 export interface SignInToken {
 	tokenHash: string;
@@ -86,6 +114,34 @@ export type SubmissionState =
 
 /** Unpublished states a contributor can withdraw from in one step. */
 export const WITHDRAWABLE_IMMEDIATELY: SubmissionState[] = ['pending', 'needs-more'];
+
+/**
+ * A moderator invitation is not publication and it is not an endorsement of
+ * the post. It is a request to do the slower, structured work that can make an
+ * account worth citing. The author has to submit the report themselves; a
+ * moderator can never turn a post into a report by copying it silently.
+ */
+export type PromotionState = 'pending' | 'declined' | 'submitted';
+
+export interface PromotionRequest {
+	id: string;
+	postId: string;
+	threadId: string;
+	subjectId: string;
+	email: string;
+	state: PromotionState;
+	createdAt: string;
+	decidedAt?: string;
+	submissionId?: string;
+}
+
+/** The private join retained on a database submission; reports expose only the public ids. */
+export interface PromotionSource {
+	requestId: string;
+	threadId: string;
+	postId: string;
+	subjectId: string;
+}
 
 /**
  * A submitted account, before anybody has read it.
@@ -141,6 +197,8 @@ export interface Submission {
 	 */
 	publishedSlug?: string;
 	withdrawnAt?: string;
+	/** Present only for a report the author explicitly submitted from a thread. */
+	promotedFrom?: PromotionSource;
 }
 
 export interface SubmissionDraft {
@@ -245,6 +303,13 @@ export interface Store {
 	/** Creates on first sign-in. There is no separate signup step, by design. */
 	upsertAccount(email: string): Promise<Account>;
 	setDisplayName(email: string, displayName: string): Promise<void>;
+	createVerificationRequest(request: VerificationRequest): Promise<void>;
+	getVerificationRequest(id: string): Promise<VerificationRequest | null>;
+	verificationRequestsBy(email: string): Promise<VerificationRequest[]>;
+	/** Pending requests are oldest first so the queue does not rank people. */
+	pendingVerificationRequests(): Promise<VerificationRequest[]>;
+	/** Approval changes the account and request together; decline changes only the request. */
+	decideVerificationRequest(id: string, decision: VerificationDecision): Promise<void>;
 
 	/* --- Sign-in tokens --- */
 	createSignInToken(token: SignInToken): Promise<void>;
@@ -296,6 +361,25 @@ export interface Store {
 	): Promise<void>;
 	/** Published reports whose author has asked for them to be taken down. */
 	withdrawalRequests(): Promise<Submission[]>;
+	/** Moderator invitation; the request itself does not make anything public. */
+	createPromotionRequest(request: PromotionRequest): Promise<PromotionRequest>;
+	getPromotionRequest(id: string): Promise<PromotionRequest | null>;
+	/** The most recent invitation for a post, including declined requests. */
+	promotionByPost(postId: string): Promise<PromotionRequest | null>;
+	/** What one person has been invited to write up, newest first. */
+	promotionRequestsBy(email: string): Promise<PromotionRequest[]>;
+	/** Pending invitations are oldest first so the author is not ranked. */
+	pendingPromotionRequests(): Promise<PromotionRequest[]>;
+	/** The author can decline without explaining why. */
+	declinePromotionRequest(id: string, email: string, at: string): Promise<void>;
+	/** Atomically creates the report and marks the source post as promoted. */
+	submitPromotion(
+		requestId: string,
+		email: string,
+		draft: Omit<SubmissionDraft, 'email'>,
+		id: string,
+		submittedAt: string,
+	): Promise<Submission>;
 
 	/* --- Threads --- */
 	createThread(draft: ThreadDraft, ids: { threadId: string; postId: string }, at: string): Promise<Thread>;

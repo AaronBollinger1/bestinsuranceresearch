@@ -2,6 +2,7 @@ import type { Pool } from 'pg';
 import type {
 	Account,
 	Post,
+	PromotionRequest,
 	Session,
 	SignInToken,
 	Store,
@@ -10,6 +11,8 @@ import type {
 	Thread,
 	ThreadDraft,
 	ThreadState,
+	VerificationRequest,
+	VerificationDecision,
 } from './store';
 
 /**
@@ -67,6 +70,25 @@ export function postgresStore(pool: Pool): Store {
 			};
 		}
 		return account;
+	};
+
+	const rowToVerificationRequest = (row: Record<string, unknown>): VerificationRequest => ({
+		id: String(row.id),
+		email: String(row.email),
+		kind: row.kind as VerificationRequest['kind'],
+		licenseNumber: String(row.license_number),
+		authority: String(row.authority),
+		registerUrl: String(row.register_url),
+		state: row.state as VerificationRequest['state'],
+		submittedAt: new Date(row.submitted_at as string).toISOString(),
+		...(row.decided_at ? { decidedAt: new Date(row.decided_at as string).toISOString() } : {}),
+		...(row.decided_by_moderator ? { decidedByModerator: String(row.decided_by_moderator) } : {}),
+		...(row.moderator_note ? { moderatorNote: String(row.moderator_note) } : {}),
+	});
+
+	const getVerificationRequest = async (id: string): Promise<VerificationRequest | null> => {
+		const { rows } = await pool.query('select * from verification_requests where id = $1', [id]);
+		return rows[0] ? rowToVerificationRequest(rows[0]) : null;
 	};
 
 	const rowToThread = (row: Record<string, unknown>): Thread => ({
@@ -127,6 +149,28 @@ export function postgresStore(pool: Pool): Store {
 		...(row.moderator_note ? { moderatorNote: String(row.moderator_note) } : {}),
 		...(row.published_slug ? { publishedSlug: String(row.published_slug) } : {}),
 		...(row.withdrawn_at ? { withdrawnAt: new Date(row.withdrawn_at as string).toISOString() } : {}),
+		...(row.promotion_request_id && row.source_thread_id && row.source_post_id && row.source_subject_id
+			? {
+					promotedFrom: {
+						requestId: String(row.promotion_request_id),
+						threadId: String(row.source_thread_id),
+						postId: String(row.source_post_id),
+						subjectId: String(row.source_subject_id),
+					},
+				}
+			: {}),
+	});
+
+	const rowToPromotionRequest = (row: Record<string, unknown>): PromotionRequest => ({
+		id: String(row.id),
+		postId: String(row.post_id),
+		threadId: String(row.thread_id),
+		subjectId: String(row.subject_id),
+		email: String(row.email),
+		state: row.state as PromotionRequest['state'],
+		createdAt: new Date(row.created_at as string).toISOString(),
+		...(row.decided_at ? { decidedAt: new Date(row.decided_at as string).toISOString() } : {}),
+		...(row.submission_id ? { submissionId: String(row.submission_id) } : {}),
 	});
 
 	const getSubmission = async (id: string): Promise<Submission | null> => {
@@ -153,6 +197,89 @@ export function postgresStore(pool: Pool): Store {
 
 		async setDisplayName(email, displayName) {
 			await pool.query('update accounts set display_name = $2 where email = $1', [email, displayName]);
+		},
+
+		async createVerificationRequest(request) {
+			await pool.query(
+				`insert into verification_requests
+				   (id, email, kind, license_number, authority, register_url, state, submitted_at)
+				 values ($1, $2, $3, $4, $5, $6, 'pending', $7)`,
+				[
+					request.id,
+					request.email,
+					request.kind,
+					request.licenseNumber,
+					request.authority,
+					request.registerUrl,
+					request.submittedAt,
+				],
+			);
+		},
+
+		getVerificationRequest,
+
+		async verificationRequestsBy(email) {
+			const { rows } = await pool.query(
+				'select * from verification_requests where email = $1 order by submitted_at desc',
+				[email],
+			);
+			return rows.map(rowToVerificationRequest);
+		},
+
+		async pendingVerificationRequests() {
+			const { rows } = await pool.query(
+				`select * from verification_requests where state = 'pending' order by submitted_at asc`,
+			);
+			return rows.map(rowToVerificationRequest);
+		},
+
+		async decideVerificationRequest(id, decision: VerificationDecision) {
+			if (decision.state === 'approved' && !decision.verifiedOn) {
+				throw new Error('An approved verification needs the date the public register was checked.');
+			}
+			const client = await pool.connect();
+			try {
+				await client.query('begin');
+				const { rows } = await client.query(
+					`select * from verification_requests where id = $1 and state = 'pending' for update`,
+					[id],
+				);
+				const request = rows[0] ? rowToVerificationRequest(rows[0]) : null;
+				if (!request) {
+					await client.query('commit');
+					return;
+				}
+
+				await client.query(
+					`update verification_requests
+					    set state = $2, decided_at = $3, decided_by_moderator = $4, moderator_note = $5
+					  where id = $1`,
+					[id, decision.state, decision.decidedAt, decision.moderator, decision.note],
+				);
+
+				if (decision.state === 'approved') {
+					await client.query(
+						`update accounts
+						    set kind = $2, license_number = $3, license_authority = $4,
+						        license_verified_against = $5, license_verified_on = $6
+						  where email = $1`,
+						[
+							request.email,
+							request.kind,
+							request.licenseNumber,
+							request.authority,
+							request.registerUrl,
+							decision.verifiedOn,
+						],
+					);
+				}
+				await client.query('commit');
+			} catch (error) {
+				await client.query('rollback');
+				throw error;
+			} finally {
+				client.release();
+			}
 		},
 
 		async createSignInToken(token: SignInToken) {
@@ -311,6 +438,132 @@ export function postgresStore(pool: Pool): Store {
 				`select * from submissions where state = 'withdrawal-requested' order by withdrawn_at asc`,
 			);
 			return rows.map(rowToSubmission);
+		},
+
+		async createPromotionRequest(request: PromotionRequest) {
+			await pool.query(
+				`insert into promotion_requests
+				   (id, post_id, thread_id, subject_id, email, state, created_at)
+				 values ($1, $2, $3, $4, $5, 'pending', $6)`,
+				[request.id, request.postId, request.threadId, request.subjectId, request.email, request.createdAt],
+			);
+			const created = await pool.query('select * from promotion_requests where id = $1', [request.id]);
+			if (!created.rows[0]) throw new Error('promotion request insert did not produce a row');
+			return rowToPromotionRequest(created.rows[0]);
+		},
+
+		async getPromotionRequest(id) {
+			const { rows } = await pool.query('select * from promotion_requests where id = $1', [id]);
+			return rows[0] ? rowToPromotionRequest(rows[0]) : null;
+		},
+
+		async promotionByPost(postId) {
+			const { rows } = await pool.query(
+				'select * from promotion_requests where post_id = $1 order by created_at desc limit 1',
+				[postId],
+			);
+			return rows[0] ? rowToPromotionRequest(rows[0]) : null;
+		},
+
+		async promotionRequestsBy(email) {
+			const { rows } = await pool.query(
+				'select * from promotion_requests where email = $1 order by created_at desc',
+				[email],
+			);
+			return rows.map(rowToPromotionRequest);
+		},
+
+		async pendingPromotionRequests() {
+			const { rows } = await pool.query(
+			`select * from promotion_requests where state = 'pending' order by created_at asc`,
+			);
+			return rows.map(rowToPromotionRequest);
+		},
+
+		async declinePromotionRequest(id, email, at) {
+			await pool.query(
+				`update promotion_requests
+				    set state = 'declined', decided_at = $3
+				  where id = $1 and email = $2 and state = 'pending'`,
+				[id, email, at],
+			);
+		},
+
+		async submitPromotion(requestId, email, draft, id, submittedAt) {
+			const client = await pool.connect();
+			try {
+				await client.query('begin');
+				const { rows } = await client.query(
+					`select p.*, po.email as post_email, po.state as post_state,
+					        po.promoted_to_submission, t.state as thread_state
+					   from promotion_requests p
+					   join posts po on po.id = p.post_id
+					   join threads t on t.id = p.thread_id
+					  where p.id = $1 and p.email = $2
+					  for update`,
+					[requestId, email],
+				);
+				const request = rows[0];
+				if (!request || request.state !== 'pending') {
+					throw new Error('That promotion invitation is no longer available to this account.');
+				}
+				if (request.post_email !== email || request.post_state !== 'visible' || request.thread_state === 'hidden') {
+					throw new Error('The conversation source is no longer available.');
+				}
+				if (request.promoted_to_submission) throw new Error('That post already has a case report.');
+
+				await client.query(
+					`insert into submissions
+					   (id, email, state, title, what_happened, insurance_question,
+					    information_that_mattered, decided_by, cannot_generalize,
+					    lines, states, occurred_on, verdict_flags, submitted_at,
+					    promotion_request_id, source_thread_id, source_post_id, source_subject_id)
+					 values ($1, $2, 'pending', $3, $4, $5, $6::jsonb, $7, $8::jsonb,
+					         $9::jsonb, $10::jsonb, $11, $12::jsonb, $13,
+					         $14, $15, $16, $17)`,
+					[
+						id,
+						email,
+						draft.title,
+						draft.whatHappened,
+						draft.insuranceQuestion,
+						JSON.stringify(draft.informationThatMattered),
+						draft.decidedBy,
+						JSON.stringify(draft.cannotGeneralize),
+						JSON.stringify(draft.lines),
+						JSON.stringify(draft.states),
+						draft.occurredOn,
+						JSON.stringify(draft.verdictFlags),
+						submittedAt,
+						requestId,
+						request.thread_id,
+						request.post_id,
+						request.subject_id,
+					],
+				);
+				const post = await client.query(
+					`update posts set promoted_to_submission = $2
+					  where id = $1 and promoted_to_submission is null`,
+					[request.post_id, id],
+				);
+				if (post.rowCount !== 1) throw new Error('The source post was already promoted.');
+				const completed = await client.query(
+					`update promotion_requests
+					    set state = 'submitted', decided_at = $2, submission_id = $3
+					  where id = $1 and state = 'pending'`,
+					[requestId, submittedAt, id],
+				);
+				if (completed.rowCount !== 1) throw new Error('The promotion invitation was already completed.');
+				await client.query('commit');
+			} catch (error) {
+				await client.query('rollback');
+				throw error;
+			} finally {
+				client.release();
+			}
+			const created = await getSubmission(id);
+			if (!created) throw new Error('promoted submission insert did not produce a row');
+			return created;
 		},
 
 		/* --- Threads --- */

@@ -1,4 +1,5 @@
 ---
+import { ArrowRight } from '@lucide/astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { commons } from '../config/commons';
@@ -21,7 +22,54 @@ const lived = reports.filter((r) => !constructed.includes(r));
 	eyebrow="The Commons"
 	title="What actually happened, checked before it publishes"
 	lede="The other half of the estate. Where the Record says what the rule is and cites a document for every sentence, this holds what happened to people - attributed, labelled for what kind of evidence it is, and read by a moderator before anyone else reads it."
+	hideIntro
 >
+	<section class="band band-first band-tight">
+		<div class="shell commons-hero">
+			<div>
+				<div class="commons-hero-mark">
+					<img src="/birch-bird-transparent.png" width="50" height="50" alt="" />
+					<div>
+						<span class="eyebrow">Birch / Commons</span>
+						<p>Community, carefully moderated</p>
+					</div>
+				</div>
+				<h1>Talk about what insurance was like.</h1>
+				<p class="lede">
+					A place for real accounts, practitioner notes, and questions attached to the research they are
+					about. The conversation stays human; the cited answer stays checkable.
+				</p>
+				<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-5)">
+					<a class="btn" href="/threads">Browse discussion <ArrowRight size={16} aria-hidden="true" /></a>
+					<a class="btn btn-light" href="/contribute">See how to contribute</a>
+				</div>
+			</div>
+
+			<aside class="commons-entry-panel" aria-label="Start here">
+				<span class="eyebrow">Start here</span>
+				<h2>Choose your way in</h2>
+				<ol class="commons-entry-list">
+					<li>
+						<a href="/threads"><span>Read or start a thread</span><ArrowRight size={15} aria-hidden="true" /></a>
+						<p>Questions and observations attached to a research subject.</p>
+					</li>
+					<li>
+						<a href="/reports"><span>Read a case report</span><ArrowRight size={15} aria-hidden="true" /></a>
+						<p>Structured accounts with a label, context, and moderation history.</p>
+					</li>
+					<li>
+						<a href="/sign-in"><span>Sign in without a password</span><ArrowRight size={15} aria-hidden="true" /></a>
+						<p>A one-time link is all an account needs to get started.</p>
+					</li>
+				</ol>
+				<div class="commons-boundary">
+					<span class="mono">The boundary</span>
+					<p>No one here decides whether a claim should have been paid.</p>
+				</div>
+			</aside>
+		</div>
+	</section>
+
 	<section class="band band-tight">
 		<div class="shell page-grid">
 			<div class="prose">
@@ -71,8 +119,8 @@ const lived = reports.filter((r) => !constructed.includes(r));
 							<h2>No real account has been published yet.</h2>
 							<p>
 								That is the honest state rather than an outage, and it will be true for a while.
-								Accounts are not open, moderation happens before publication rather than after, and
-								nothing appears here until somebody has read it.
+								Accounts are open, but nothing appears here until a submitted account has been read by a
+								moderator before publication.
 							</p>
 							{constructed.length > 0 && (
 								<p>
@@ -108,7 +156,7 @@ const lived = reports.filter((r) => !constructed.includes(r));
 						<div><dt>Constructed illustrations</dt><dd>{constructed.length}</dd></div>
 						<div><dt>Practitioner notes</dt><dd>{annotations.length}</dd></div>
 						<div><dt>Moderation</dt><dd>Before publication</dd></div>
-						<div><dt>Accounts</dt><dd>Not open yet</dd></div>
+						<div><dt>Accounts</dt><dd>Open</dd></div>
 					</dl>
 				</div>
 				<div class="rail-block">

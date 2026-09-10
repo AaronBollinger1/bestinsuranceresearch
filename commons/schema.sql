@@ -78,6 +78,27 @@ create table if not exists sessions (
 
 create index if not exists sessions_expiry on sessions (expires_at);
 
+-- Professional role requests. A contributor supplies only facts that a
+-- moderator can check against a public register. The account remains a reader
+-- until the request is approved; a self-described role is never a badge.
+create table if not exists verification_requests (
+	id                       uuid primary key,
+	email                    text not null references accounts (email) on delete cascade,
+	kind                     text not null check (kind in ('broker', 'adjuster', 'attorney')),
+	license_number           text not null,
+	authority                text not null,
+	register_url              text not null check (register_url ~ '^https://'),
+	state                    text not null default 'pending'
+	                         check (state in ('pending', 'approved', 'declined')),
+	submitted_at             timestamptz not null,
+	decided_at               timestamptz,
+	decided_by_moderator     text,
+	moderator_note           text
+);
+
+create index if not exists verification_requests_queue on verification_requests (state, submitted_at);
+create index if not exists verification_requests_by_author on verification_requests (email, submitted_at desc);
+
 -- Submitted accounts, before anybody has read them.
 --
 -- Submissions live here. PUBLISHED REPORTS DO NOT: those are JSON files in the
@@ -130,8 +151,22 @@ create table if not exists submissions (
 	-- Separate from decided_at on purpose. A report a moderator declined and one
 	-- its author withdrew are different things, and one timestamp cannot say
 	-- which happened.
-	withdrawn_at              timestamptz
+	withdrawn_at              timestamptz,
+
+	-- Present only when the contributor explicitly completed a promotion invite
+	-- from a Commons post. These are join keys, not a citation: the report page
+	-- labels the thread as context and keeps the Record citation list separate.
+	promotion_request_id      uuid,
+	source_thread_id          text,
+	source_post_id            text,
+	source_subject_id         text
 );
+
+-- Keep an already-provisioned database compatible with the current model.
+alter table submissions add column if not exists promotion_request_id uuid;
+alter table submissions add column if not exists source_thread_id text;
+alter table submissions add column if not exists source_post_id text;
+alter table submissions add column if not exists source_subject_id text;
 
 create index if not exists submissions_queue on submissions (state, submitted_at);
 create index if not exists submissions_by_author on submissions (email, submitted_at desc);
@@ -215,3 +250,28 @@ create index if not exists posts_in_thread on posts (thread_id, posted_at);
 create index if not exists posts_unreviewed on posts (reviewed_at, posted_at)
 	where reviewed_at is null;
 create index if not exists posts_by_author on posts (email, posted_at desc);
+
+-- A moderator invitation is an inbox item, not an email and not publication.
+-- The author must sign in, review the prefilled report, and submit it. The
+-- source post remains a conversation row and is never copied into the report
+-- as a claim or a Record citation.
+create table if not exists promotion_requests (
+	id             uuid primary key,
+	post_id        text not null references posts (id) on delete cascade,
+	thread_id      text not null references threads (id) on delete cascade,
+	subject_id     text not null,
+	email          text not null references accounts (email) on delete cascade,
+	state          text not null default 'pending'
+	               check (state in ('pending', 'declined', 'submitted')),
+	created_at     timestamptz not null,
+	decided_at     timestamptz,
+	submission_id  uuid references submissions (id) on delete set null
+);
+
+-- A post may be invited again after declining, but cannot have two live
+-- invitations or two separate report submissions at once.
+create unique index if not exists promotion_requests_one_active_post
+	on promotion_requests (post_id)
+	where state in ('pending', 'submitted');
+create index if not exists promotion_requests_queue on promotion_requests (state, created_at);
+create index if not exists promotion_requests_by_author on promotion_requests (email, created_at desc);

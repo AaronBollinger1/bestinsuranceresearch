@@ -157,6 +157,19 @@ const box =
 					)
 				}
 
+				{d.promotedFrom && (
+					<div class="callout" data-tone="note">
+						<h3>Promoted from conversation</h3>
+						<p>
+							The author explicitly completed this report from{' '}
+							<a href={`/threads/${d.promotedFrom.threadId}#post-${d.promotedFrom.postId}`}>
+								the source thread
+							</a>. Treat it as provenance context only. It is not a Record citation and does not
+								endorse the account.
+						</p>
+					</div>
+				)}
+
 				<h2>{d.title}</h2>
 				<dl class="fields">
 					<div><dt>State</dt><dd>{d.state}</dd></div>

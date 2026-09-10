@@ -5,10 +5,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
+import CommonsHandoff from '../../components/CommonsHandoff.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
 import Handoff from '../../components/Handoff.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
+import { siteConfig } from '../../config/site';
 import { createCiter, stripMarkers } from '../../lib/citations';
 import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
@@ -28,6 +30,7 @@ const { entry, corpus } = Astro.props;
 const d = entry.data;
 const path = `/questions/${entry.id}`;
 const machinePath = `${path}.json`;
+const commonsHref = `${siteConfig.communityOrigin}/threads?subject=${encodeURIComponent(`question:${entry.id}`)}`;
 
 const sourceIds = idsOf(d.sourceIds);
 const sources = ledgerFor(sourceIds, corpus.sourceById, `question "${entry.id}"`);
@@ -59,6 +62,7 @@ const sections = [
 	{ id: 'variability', label: 'Where it varies' },
 	{ id: 'actions', label: 'Next actions' },
 	{ id: 'source-ledger', label: 'Source ledger' },
+	{ id: 'commons', label: 'Commons discussion' },
 	...(related.length ? [{ id: 'related', label: 'Related questions' }] : []),
 ];
 
@@ -249,6 +253,8 @@ const reviewer = corpus.personByName.get(d.reviewer);
 							pageType: 'question',
 						}}
 					/>
+
+					<CommonsHandoff href={commonsHref} />
 
 					{
 						related.length > 0 && (

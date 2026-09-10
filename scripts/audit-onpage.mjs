@@ -41,7 +41,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const ROOT = 'dist';
-const ORIGIN = 'https://bestinsuranceresearch.com';
+const ORIGIN = (process.env.PUBLIC_SITE_ORIGIN || 'https://bestinsuranceresearch.com').replace(/\/$/, '');
 const MIN_DESCRIPTION = 50;
 const asJson = process.argv.includes('--json');
 

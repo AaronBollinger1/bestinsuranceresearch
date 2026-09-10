@@ -3,12 +3,12 @@
 How the interface was decided, what was borrowed and from where, and why the shipped homepage
 is the one it is.
 
-Last updated: 2026-09-02
+Last updated: 2026-09-09
 
 ## Direction
 
-A premium editorial-fintech utility. Precise, calm, unusually usable, visibly evidence-led. It
-may feel AI-capable; it must not look like AI marketing.
+A premium editorial insurance utility with a moderated community room. Precise, calm, unusually
+usable, visibly evidence-led. It may feel AI-capable; it must not look like AI marketing.
 
 What that ruled out, deliberately:
 
@@ -27,6 +27,11 @@ What it ruled in:
 - corner radii at 8px or less, everywhere, with no exceptions;
 - controls that look like controls, and every one of them wired up.
 
+The final Birch landing direction is intentionally lighter than the first
+working surface: one question field, one primary research action, a small set
+of browse paths, and an optional Commons handoff. Filters remain on the library
+and Ask surfaces where they help; they do not compete with the front-door task.
+
 ## Type and colour
 
 The font system was inherited and kept, because the audit found it working rather than broken:
@@ -41,11 +46,13 @@ All three are self-hosted through `@fontsource`. No font CDN, so no third party 
 visit.
 
 The palette is a restrained multi-colour system, not a one-hue theme: ink, paper, cream, white,
-gold, green, blue, amber, rust, slate. Gold is the single primary action colour and is never
-used for status. The semantic colours carry meaning only in combination with an icon and a text
-label, so status survives greyscale printing and colour-blind viewing. The full token list is
-in `src/styles/tokens.css`, which is the single source of truth and is mirrored into the Figma
-variable set.
+Birch blue, gold, green, blue, amber, rust, slate. Birch blue is the primary action colour;
+gold is reserved for resolved evidence and is never used as general navigation. The semantic
+colours carry meaning only in combination with an icon and a text label, so status survives
+greyscale printing and colour-blind viewing. The full token list is
+in `src/styles/tokens.css`, which is the single source of truth. The current Figma exploration
+file uses the same verified values directly; it is a planning artifact rather than a second token
+authority.
 
 Contrast was checked against `--paper` (#fffdf9) for every text colour in the system. The
 lowest ratio in use is 4.6:1 on `--faint`, which is reserved for metadata labels and is never
@@ -160,10 +167,11 @@ would split the decision rather than make it.
 
 ## First viewport contract
 
-The shipped homepage first screen contains, in order: identity and a one-sentence scope
-statement; the corpus counts; a labelled question field with a motion-gated rotating example;
-four context selects (insurance type, line, state, audience); a browse-by-topic row; and the
-source-quality strip.
+The current homepage first screen contains, in order: the Birch Research identity and a clear
+scope statement; the corpus counts; one labelled question field with a motion-gated rotating
+example; the blue `Ask Birch` action; two deliberate browse paths; a separate Commons handoff;
+a three-step entry rail; and the source-quality strip. Filters remain on the library and Ask
+surfaces where they help; they do not compete with the front-door task.
 
 It contains no email field, no phone field, no account prompt, and no quote call to action.
 
@@ -181,13 +189,14 @@ Nothing animated is the LCP element on any page.
 
 ## Figma
 
-`src/styles/tokens.css` is the source of truth. The Figma variable set mirrors it exactly:
-colour, spacing, type, radius, border, elevation, and motion. Frames at 1440, 1024, 768, and
-390. Component variants cover hover, focus, active, selected, disabled, stale, loading, cited,
-disputed, and reviewed.
+The current planning file is [Birch Research + Commons — product surface explorations](https://www.figma.com/design/okHFaikGZGx1MJmvUgTWHj).
+It records the chosen editorial research-first front door, two retained landing alternatives, and
+the first answer/source-ledger, Commons thread, and professional contribution/review states. The
+supplied bird mark is placed as the exact uploaded PNG asset, and Newsreader, Schibsted Grotesk,
+and IBM Plex Mono were verified before building the frames.
 
-The implementation is the source of truth in both directions. Figma reflects working code; it
-does not describe an unbuildable parallel concept.
+`src/styles/tokens.css` remains the implementation source of truth. Figma reflects the working
+visual language and product decisions; it does not describe an unbuildable parallel concept.
 
 `/design/component-states` is the live specimen gallery of every required state, rendered from
 the real components. It is noindex and out of the sitemap. It exists so a reviewer can compare

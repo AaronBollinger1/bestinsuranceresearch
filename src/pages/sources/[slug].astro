@@ -71,7 +71,7 @@ const trail = [
 
 const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 	'@type': 'CreativeWork',
-	'@id': `${new URL(path, 'https://bestinsuranceresearch.com').toString()}#source`,
+	'@id': `${new URL(path, siteConfig.origin).toString()}#source`,
 	name: d.title,
 	url: d.url,
 	publisher: { '@type': 'Organization', name: d.publisher },

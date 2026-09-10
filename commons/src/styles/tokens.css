@@ -38,10 +38,11 @@
 	--line-ink: #3c4753;
 
 	/* --- Interactive. Not an accent, and never a status. --- */
-	--link: #2d5570;
-	--link-edge: #234157;
-	--link-text: #1f3b4f;
-	--link-wash: #eaeff3;
+	--link: #2f6fe6;
+	--link-edge: #173f86;
+	--link-text: #214f9f;
+	--link-wash: #eaf2ff;
+	--brand-cyan: #8bd1f7;
 
 	/* --- Evidence labels. What kind of account this is, never how good it is. --- */
 	--label-record: #2f6247;

@@ -55,6 +55,7 @@ export const GET: APIRoute = ({ props }) => {
 					occurredOn: d.occurredOn,
 					publishedOn: d.publishedOn,
 					moderatedBy: d.moderatedBy,
+					...(d.promotedFrom ? { promotedFrom: d.promotedFrom } : {}),
 					contributor: {
 						displayName: d.contributor.displayName,
 						kind: d.contributor.kind,

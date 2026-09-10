@@ -5,6 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
+import CommonsHandoff from '../../components/CommonsHandoff.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
@@ -13,6 +14,7 @@ import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, describedOrganization, graph, organization, techArticle, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
+import { siteConfig } from '../../config/site';
 
 import { excerpt, metaDescription } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
@@ -24,6 +26,7 @@ const { entry, corpus } = Astro.props;
 const d = entry.data;
 const path = `/companies/${entry.id}`;
 const machinePath = `${path}.json`;
+const commonsHref = `${siteConfig.communityOrigin}/threads?subject=${encodeURIComponent(`company:${entry.id}`)}`;
 
 const sourceIds = idsOf(d.sourceIds);
 const sources = ledgerFor(sourceIds, corpus.sourceById, `organization "${entry.id}"`);
@@ -62,6 +65,7 @@ const sections = [
 	...(d.publications.length ? [{ id: 'publications', label: 'Publications' }] : []),
 	{ id: 'notclaimed', label: 'What this page does not claim' },
 	{ id: 'source-ledger', label: 'Source ledger' },
+	{ id: 'commons', label: 'Commons discussion' },
 ];
 
 const jsonLd = graph(
@@ -246,6 +250,8 @@ const jsonLd = graph(
 							pageType: 'organization',
 						}}
 					/>
+
+					<CommonsHandoff href={commonsHref} />
 
 					{
 						allRelated.length > 0 && (

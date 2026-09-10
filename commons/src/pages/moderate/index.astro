@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { SESSION_COOKIE, accountFromSession } from '../../lib/auth';
+import { SESSION_COOKIE, accountFromSession, sameOrigin } from '../../lib/auth';
 import { isModerator } from '../../lib/moderators';
-import { getStore } from '../../lib/runtime';
+import { getStore, selfOrigin } from '../../lib/runtime';
+import { PROFESSIONAL_ROLES } from '../../lib/verification';
 
 export const prerender = false;
 
@@ -19,12 +20,50 @@ const account = await accountFromSession(store, Astro.cookies.get(SESSION_COOKIE
 if (!account) return Astro.redirect('/sign-in', 303);
 if (!isModerator(account.email, process.env)) return new Response('Not found', { status: 404 });
 
+let problem = '';
+const notice = Astro.url.searchParams.get('verification') ?? '';
+
+if (Astro.request.method === 'POST') {
+	if (!sameOrigin(Astro.request, selfOrigin(Astro.request))) {
+		return new Response('Bad request', { status: 400 });
+	}
+	const form = await Astro.request.formData();
+	const action = String(form.get('action') ?? '');
+	const requestId = String(form.get('requestId') ?? '');
+	const note = String(form.get('note') ?? '').trim();
+	if (action === 'approve-verification' || action === 'decline-verification') {
+		if (note.length < 20) {
+			problem = 'Write at least 20 characters explaining what you checked or why the request is declined.';
+		} else {
+			const request = await store.getVerificationRequest(requestId);
+			if (!request || request.state !== 'pending') {
+				problem = 'That verification request is no longer pending.';
+			} else {
+				const now = new Date().toISOString();
+				await store.decideVerificationRequest(request.id, {
+					state: action === 'approve-verification' ? 'approved' : 'declined',
+					moderator: account.email,
+					note,
+					decidedAt: now,
+					...(action === 'approve-verification' ? { verifiedOn: now.slice(0, 10) } : {}),
+				});
+				return Astro.redirect(`/moderate?verification=${action === 'approve-verification' ? 'approved' : 'declined'}`, 303);
+			}
+		}
+	}
+}
+
 const pending = await store.pendingSubmissions();
 /* Withdrawals come first in the page, not because there will be many but
    because a report its author has asked to remove is still published while it
    waits. That is the only thing in this queue where delay has a cost to
    somebody other than the moderator. */
 const withdrawals = await store.withdrawalRequests();
+const pendingVerifications = await store.pendingVerificationRequests();
+const pendingPromotions = await store.pendingPromotionRequests();
+const promotionThreads = new Map(
+	await Promise.all(pendingPromotions.map(async (request) => [request.threadId, await store.getThread(request.threadId)] as const)),
+);
 ---
 
 <BaseLayout
@@ -36,6 +75,16 @@ const withdrawals = await store.withdrawalRequests();
 	<section class="band band-tight">
 		<div class="shell page-grid">
 			<div class="prose">
+				{problem && <div class="callout" data-tone="stop"><p>{problem}</p></div>}
+				{(notice === 'approved' || notice === 'declined') && (
+					<div class="callout" data-tone="note">
+						<p>
+							Verification request {notice}. The account and public badge now reflect that decision only
+							if the request was approved.
+						</p>
+					</div>
+				)}
+
 				{
 					withdrawals.length > 0 && (
 						<>
@@ -82,6 +131,70 @@ const withdrawals = await store.withdrawalRequests();
 					)
 				}
 
+				<h2>Professional verification</h2>
+				{
+					pendingVerifications.length === 0 ? (
+						<div class="empty">
+							<h3>Nothing waiting.</h3>
+							<p>Approved roles are visible on their account and byline. New requests appear here oldest first.</p>
+						</div>
+					) : (
+						<div class="rows">
+							{pendingVerifications.map((request) => (
+								<article class="row">
+									<h3 class="row-title">{PROFESSIONAL_ROLES[request.kind]} · {request.licenseNumber}</h3>
+									<p>{request.authority} · requested {request.submittedAt.slice(0, 10)} · {request.email}</p>
+									<p style="margin-top: var(--s-2)">
+										<a href={request.registerUrl} rel="noopener">Open the public register or lookup</a>
+									</p>
+									<form method="post" class="stack" style="margin-top: var(--s-3)">
+										<input type="hidden" name="requestId" value={request.id} />
+										<div class="field">
+											<label for={`verification-note-${request.id}`}>Decision note</label>
+											<textarea id={`verification-note-${request.id}`} name="note" rows="3" required></textarea>
+											<span class="hint">Record what the register showed, or what remains unresolved.</span>
+										</div>
+										<div style="display:flex;gap:var(--s-2);flex-wrap:wrap">
+											<button class="btn btn-primary btn-sm" type="submit" name="action" value="approve-verification">Approve role</button>
+											<button class="btn btn-secondary btn-sm" type="submit" name="action" value="decline-verification">Decline request</button>
+										</div>
+									</form>
+								</article>
+							))}
+						</div>
+					)
+				}
+
+				<h2>Case-report invitations</h2>
+				<p class="meta">
+					These authors have not submitted anything yet. The invitation is not an endorsement, and nothing
+					publishes until the author completes the separate case-report form and you review it.
+				</p>
+				{
+					pendingPromotions.length === 0 ? (
+						<div class="empty">
+							<h3>Nothing waiting.</h3>
+							<p>A pending invitation appears here until the author submits or declines it.</p>
+						</div>
+					) : (
+						<div class="rows">
+							{pendingPromotions.map((request) => {
+								const thread = promotionThreads.get(request.threadId);
+								return (
+									<article class="row">
+										<h3 class="row-title">
+											<a href={`/threads/${request.threadId}#post-${request.postId}`}>
+												{thread?.title ?? request.threadId}
+											</a>
+										</h3>
+										<p>{request.email} · invited {request.createdAt.slice(0, 10)}</p>
+									</article>
+								);
+							})}
+						</div>
+					)
+				}
+
 				<h2>Waiting to be read</h2>
 				{
 					pending.length === 0 ? (
@@ -124,6 +237,8 @@ const withdrawals = await store.withdrawalRequests();
 				<div class="rail-block">
 					<h2>Queue</h2>
 					<dl>
+						<div><dt>Role requests</dt><dd>{pendingVerifications.length}</dd></div>
+						<div><dt>Invitations</dt><dd>{pendingPromotions.length}</dd></div>
 						<div><dt>Waiting</dt><dd>{pending.length}</dd></div>
 						<div><dt>Withdrawals</dt><dd>{withdrawals.length}</dd></div>
 						<div><dt>Order</dt><dd>Oldest first</dd></div>

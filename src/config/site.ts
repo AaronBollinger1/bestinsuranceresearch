@@ -2,14 +2,25 @@ export type SiteEnvironment = 'preview' | 'production';
 
 const rawEnv = import.meta.env.PUBLIC_SITE_ENV;
 const environment: SiteEnvironment = rawEnv === 'production' ? 'production' : 'preview';
+const communityReady = import.meta.env.PUBLIC_COMMONS_READY === 'true';
 
 export const siteConfig = {
 	name: 'Birch Research',
 	shortName: 'Birch Research',
-	tagline: 'Free insurance research. Every answer cites a published source you can open.',
+	brandName: 'Birch',
+	brandDescriptor: 'Insurance, with the source attached',
+	tagline: 'Understand the policy. Check the source. Share what happened.',
 	description:
-		'Free insurance research across every line, company and jurisdiction we hold evidence on. Every answer shows the sources behind it, its assumptions, what would change it, and when a licensed reviewer last looked at it. No account, no email, nothing to fill in, and nothing for sale.',
+		'Free insurance research and community conversation. Read sourced answers, compare the context around a policy, and share what happened without turning a person’s experience into a verdict.',
 	origin: import.meta.env.PUBLIC_SITE_ORIGIN || 'https://bestinsuranceresearch.com',
+	communityOrigin: import.meta.env.PUBLIC_COMMONS_ORIGIN || 'https://birch.insure',
+	/**
+	 * The Research room must not advertise a Commons origin until the separate
+	 * application has a working deployment, database, mailer, and moderation
+	 * owner. Keep the default closed so a preview or an incomplete production
+	 * promotion cannot ship dead discussion links.
+	 */
+	communityReady,
 	bollinsureOrigin: import.meta.env.PUBLIC_BOLLINSURE_ORIGIN || 'https://www.bollinsure.com',
 	environment,
 	/**
@@ -116,20 +127,23 @@ export const siteConfig = {
 
 export const isPreview = environment !== 'production';
 
+const communityNavItem = {
+	label: 'Community',
+	href: `${siteConfig.communityOrigin}/`,
+	description: 'Discuss what happened',
+	external: true,
+} as const;
+
 export const primaryNav = [
-	{ label: 'Position', href: '/position', description: 'Your coverage position' },
-	{ label: 'Ask', href: '/ask', description: 'Search the question library' },
-	{ label: 'Guides', href: '/guides', description: 'A plain guide to each line' },
-	{ label: 'Coverage', href: '/lines', description: 'Every line, and what we hold on it' },
-	{ label: 'Questions', href: '/questions', description: 'Every canonical question' },
-	{ label: 'Companies', href: '/companies', description: 'Insurers, regulators, public entities' },
+	{ label: 'Ask Birch', href: '/ask', description: 'Search the question library' },
+	{ label: 'Coverage', href: '/insurance', description: 'Explore coverage, questions and guides' },
 	{ label: 'Tools', href: '/tools', description: 'Free decision support' },
-	{ label: 'Figures', href: '/figures', description: 'Every amount, and what moves it' },
-	{ label: 'Sources', href: '/sources', description: 'The source registry' },
+	{ label: 'Sources', href: '/sources', description: 'Open the source registry' },
+	...(siteConfig.communityReady ? [communityNavItem] : []),
 ] as const;
 
 export const footerNav = {
-	research: [
+		research: [
 		{ label: 'Coverage position', href: '/position' },
 		{ label: 'Insurance guides', href: '/guides' },
 		{ label: 'Ask a question', href: '/ask' },
@@ -140,7 +154,7 @@ export const footerNav = {
 		{ label: 'States', href: '/states' },
 		{ label: 'Examples', href: '/examples' },
 		{ label: 'Modules and worksheets', href: '/tools' },
-		{ label: 'The Best network', href: '/network' },
+		...(siteConfig.communityReady ? [communityNavItem] : []),
 	],
 	standards: [
 		{ label: 'Methodology', href: '/methodology' },
@@ -149,6 +163,7 @@ export const footerNav = {
 		{ label: 'Source registry', href: '/sources' },
 		{ label: 'Corrections', href: '/corrections' },
 		{ label: 'About the operator', href: '/about' },
+		{ label: 'Birch network', href: '/network' },
 	],
 	machine: [
 		{ label: 'Dataset releases', href: '/dataset' },

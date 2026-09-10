@@ -1,7 +1,7 @@
 # Handoff
 
-Written 8 September 2026, last revised 9 September at the corpus-assertion
-audit, on `claude/bold-hopper-mqcyen`.
+Written 8 September 2026, last revised 9 September after the Higgsfield
+refinement and professional-verification pass, on `claude/bold-hopper-mqcyen`.
 
 Read `DIRECTION.md` (what this is, and the rules that do not bend),
 `AMBITION.md` (what it is becoming, and the architecture) and **`BIRCH.md`**
@@ -44,7 +44,7 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
 | Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file |
 | Change feed | `/changed`: 20 recorded changes, 7 scheduled amount moves, built from record fields |
-| Birch, the community | `commons/`, its own project and origin at `birch.insure`. **69 assertions, 68 passing, 1 skipped** for want of a database. Sign-in, case-report intake, the moderation queue, withdrawal **and threads** all run end to end on an in-memory store; Postgres and Resend are wired but unexercised |
+| Birch, the community | `commons/`, its own project and origin at `birch.insure`. **78 assertions, 77 passing, 1 skipped** for want of a database. Sign-in, case-report intake, thread-to-case-report promotion, the moderation queue, withdrawal, threads, and professional-verification requests all run end to end on an in-memory store; Postgres and Resend are wired but unexercised |
 | Threads | Built 9 September. 115 subjects a thread can attach to, generated from the evidence layer. A verdict phrase **blocks** a post where it only flags a submission, because a post publishes on write. A post cannot be edited - only withdrawn by its author or hidden by a moderator, both leaving a tombstone |
 | Published records with no review state | **0.** Was 3; the tools schema now carries review fields, required on live worksheets and forbidden on unbuilt ones |
 
@@ -54,33 +54,35 @@ Written for a session arriving cold, including one that is not this model.
 `BIRCH.md` section 7 is the same sequence with the reasoning; this is the short
 form with what is actually blocked.
 
-1. **Licence verification and the role badge** - *unblocked, and the largest
-   product gap.* `Account.kind` and `Account.license` already exist in the store
-   and `byline()` in `commons/src/lib/threads.ts` already renders the badge with
-   the register it was checked against. What does not exist is the flow that
-   sets it. Until it does, "validated user contributions" means only that the
-   email is real, which is not what the word promises. The check itself needs a
-   regulator lookup, so the *verification* is network-blocked; the flow, the
-   moderator-confirms step and the record are not.
-2. **Thread promotion into a case report** - *unblocked.* `Post` already carries
-   `promotedToSubmission` and nothing writes it. This is the path that makes the
-   forum feed the corpus rather than sit beside it: a moderator recognises an
-   account worth keeping and asks its author to put it through the structured
-   form. `BIRCH.md` section 5 argues why this is the point of having a forum.
-3. **Cross-linking the two layers** - *unblocked once threads have content.* An
+1. **Cross-linking the two layers** - *unblocked once threads have content.* An
    evidence page names how many accounts exist for its subject and links to
    them, without citing them. Note the constraint that already caught this
    project once: do not advertise a host that does not resolve. `birch.insure`
    is not live.
-4. **Carrier pages** - *blocked on network.* `BIRCH.md` section 6 has the
+2. **Carrier pages** - *blocked on network.* `BIRCH.md` section 6 has the
    three-band design. Every regulator host is blocked at `CONNECT` in this
    environment, and a pass that cannot reach a regulator must not write a
    carrier record from a search snippet.
-5. **Continue the audit lens** - *unblocked, needs nothing but the build.*
+3. **Continue the audit lens** - *unblocked, needs nothing but the build.*
    Section 1b. `/about` is the largest unmeasured surface.
 
-Do not start a sixth thing. Items 1 and 2 in the next section are blocked on
-people and cannot be substituted for.
+The former promotion item is complete in this branch. A moderator can invite an
+author from `/moderate/posts`; the author sees a private, prefilled form at
+`/contribute/from-post/[id]`, confirms or declines it, and a confirmed report is
+submitted atomically with a private provenance link back to the thread. The report
+surface explicitly says that the originating conversation is context, not a citation.
+
+The Research build now has a launch-safe `PUBLIC_COMMONS_READY` gate. It is
+`false` by default, so preview builds describe Commons as private preview and
+do not emit dead external discussion links. Set it to `true` only after the
+separate Commons deployment, Postgres database, Resend mailer, moderator list,
+and sign-in/thread/moderation/withdrawal smoke test are all complete. The full
+surface map, design decision, direct Mobbin references, and continuation
+sequence are in `outputs/BIRCH-END-TO-END-SETUP-AUDIT-2026-09-09.md`.
+
+Do not start a new feature ahead of the three items above. The next product feature
+is public subject cross-linking, but it must remain gated until Commons content and
+the `birch.insure` origin are genuinely live.
 
 ### The two things blocking everything else
 

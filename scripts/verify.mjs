@@ -220,6 +220,17 @@ test('every page has exactly one self-referential canonical', () => {
  * build that forgets to drop noindex fails instead of shipping.
  */
 const SITE_ENV = process.env.PUBLIC_SITE_ENV === 'production' ? 'production' : 'preview';
+const COMMONS_READY = process.env.PUBLIC_COMMONS_READY === 'true';
+
+test('research never advertises an unready Commons origin', () => {
+	const communityHref = (process.env.PUBLIC_COMMONS_ORIGIN || 'https://birch.insure').replace(/\/+$/, '');
+	const advertised = htmlFiles.filter((file) => read(file).includes(`href="${communityHref}`));
+	if (COMMONS_READY) {
+		assert.ok(advertised.length > 0, 'Commons is marked ready but no Research CTA advertises it');
+		return;
+	}
+	assert.equal(advertised.length, 0, 'Commons links are present before PUBLIC_COMMONS_READY=true');
+});
 
 test(`the ${SITE_ENV} build emits the correct indexing directive on every page`, () => {
 	for (const file of htmlFiles) {
@@ -3028,107 +3039,30 @@ test('every class the ask script renders at runtime has CSS that can actually re
 /* The mark, and the assets that carry it                              */
 /* ------------------------------------------------------------------ */
 
-/*
- * A foreign logo sat at public/favicon.svg for ninety commits - the Astro
- * starter's own mark, one filled path in a 128 viewBox - and nothing noticed,
- * because no assertion had ever looked at what the brand assets contain. These
- * do. The mark is 37 circles and one arrowhead, measured by
- * scripts/trace-mark.mjs and recorded in BRAND-SYSTEM.md, so any asset
- * claiming to be the mark can be checked against that rather than by eye.
- */
-const MARK_DOTS = 37;
-
-test('every asset that claims to be the mark is the mark', () => {
-	for (const rel of ['mark.svg', 'favicon.svg']) {
+test('the supplied Birch assets are present and shared by both surfaces', () => {
+	for (const rel of ['birch-bird-logo-transparent.png', 'birch-bird-transparent.png', 'birch-bird-32x32.png', 'favicon.ico']) {
 		const file = path.join(DIST, rel);
 		assert.ok(fs.existsSync(file), `${rel} is missing from the build`);
-		const svg = read(file);
-		const circles = (svg.match(/<circle/g) || []).length;
-		assert.equal(circles, MARK_DOTS, `${rel} has ${circles} dots; the mark has ${MARK_DOTS}`);
-		assert.equal((svg.match(/<path/g) || []).length, 1, `${rel} does not have exactly one arrowhead`);
-		assert.ok(svg.includes('Birch Research'), `${rel} does not identify itself as this mark`);
-		// A raster wrapped in an <svg> element is not a vector, whatever the
-		// extension says. Both shipped favicon "vectors" were exactly that.
-		assert.ok(!/<image|base64/.test(svg), `${rel} wraps a raster rather than being vector artwork`);
+		assert.ok(fs.statSync(file).size > 64, `${rel} is unexpectedly empty`);
 	}
+	const home = read(path.join(DIST, 'index.html'));
+	assert.ok(home.includes('src="/birch-bird-transparent.png"'), 'the home page does not use the supplied Birch mark');
 });
 
-test('the served favicon is the vector, and colours itself', () => {
-	/*
-	 * A favicon is not in the page, so it cannot inherit currentColor and has to
-	 * carry its own rule. That rule is what collapses favicon-light.svg and
-	 * favicon-dark.svg into one asset.
-	 */
-	const svg = read(path.join(DIST, 'favicon.svg'));
-	assert.match(svg, /prefers-color-scheme: dark/, 'favicon.svg has no dark-scheme rule');
-	assert.ok(svg.includes('#17212e'), 'favicon.svg does not use --ink for light browsers');
-
+test('the layout serves the accurate raster favicon package', () => {
 	const html = read(path.join(DIST, 'ask', 'index.html'));
 	assert.ok(
-		html.includes('href="/favicon.svg" type="image/svg+xml"'),
-		'the layout does not serve the vector favicon',
+		html.includes('href="/birch-bird-32x32.png" type="image/png" sizes="32x32"'),
+		'the layout does not serve the supplied 32px Birch favicon',
 	);
-	for (const stale of ['favicon-light.svg', 'favicon-dark.svg']) {
-		assert.ok(!html.includes(stale), `the layout still references ${stale}, which is a raster`);
-	}
+	assert.ok(html.includes('href="/favicon.ico"'), 'the layout does not serve the supplied ICO fallback');
 });
 
-test('the loading animation is the traced mark, and rests for a reader who asks', () => {
+test('the loading state is the supplied mark and rests for a reader who asks', () => {
 	const html = read(path.join(DIST, 'ask', 'index.html'));
-
-	const dots = (html.match(/class="mc-dot"/g) || []).length;
-	assert.equal(dots, MARK_DOTS, `/ask renders ${dots} animated dots; the mark has ${MARK_DOTS}`);
-	assert.equal((html.match(/class="mc-head"/g) || []).length, 1, '/ask renders no arrowhead');
-
-	/*
-	 * DIRECTION.md: muted, behind prefers-reduced-motion, with the static mark as
-	 * the resting state. The guard has to be on the animation rather than the
-	 * artwork, so a reader who asked for less motion gets the mark and not a
-	 * blank space. Matched without a space after the colon because the build
-	 * minifies it out.
-	 */
-	assert.match(
-		html,
-		/@media \(prefers-reduced-motion:\s*no-preference\)\{[^}]*\.mc-dot/,
-		'the mark animation is not behind prefers-reduced-motion',
-	);
-	/*
-	 * Checked by removing the guarded blocks and looking at what is left, not
-	 * by pattern. A regex cannot see brace nesting, so matching
-	 * `.mc-dot{...animation:` finds the rule INSIDE the media query and the
-	 * assertion passes or fails for the wrong reason - which is what the first
-	 * version of this check did.
-	 */
-	const withoutMotionGuards = (css) => {
-		const open = '@media (prefers-reduced-motion:no-preference){';
-		let out = css;
-		for (;;) {
-			const at = out.indexOf(open);
-			if (at === -1) return out;
-			let depth = 1;
-			let i = at + open.length;
-			while (i < out.length && depth > 0) {
-				if (out[i] === '{') depth++;
-				else if (out[i] === '}') depth--;
-				i++;
-			}
-			out = out.slice(0, at) + out.slice(i);
-		}
-	};
-
-	const unguarded = withoutMotionGuards(html);
-	assert.ok(
-		!/\.mc-dot\[data-astro-cid-[a-z0-9]+\][^{]*\{[^}]*animation:/.test(unguarded),
-		'the mark animates outside the reduced-motion guard',
-	);
-	assert.ok(
-		unguarded.length < html.length,
-		'no reduced-motion guard was found to strip, so the check above is vacuous',
-	);
-
-	// Every dot must carry the one number the whole motion is derived from.
-	const withT = (html.match(/class="mc-dot"[^>]*--t:/g) || []).length;
-	assert.equal(withT, MARK_DOTS, `${MARK_DOTS - withT} animated dots carry no --t, so their timing is undefined`);
+	assert.match(html, /class="birch-loading-mark"[^>]*>\s*<img src="\/birch-bird-transparent\.png"/, '/ask does not render the supplied mark');
+	assert.match(html, /@media\s*\(prefers-reduced-motion:\s*no-preference\)\{[^}]*birch-bird-breathe/, 'the mark animation is not behind prefers-reduced-motion');
+	assert.ok(!html.includes('class="mc-dot"'), 'the retired traced-dot loading mark is still rendered');
 });
 
 test('no page animates behind a claim', () => {
@@ -3497,7 +3431,7 @@ test('the old name survives only in the release that was frozen under it', () =>
 	/* And the new name is actually rendered, rather than the old one merely
 	   deleted. A wordmark reading nothing would pass everything above. */
 	const home = read(path.join(DIST, 'index.html'));
-	assert.ok(home.includes('Birch <em>Research</em>'), 'the wordmark does not render the new name');
+	assert.ok(home.includes('<strong>Birch</strong>'), 'the wordmark does not render the new name');
 	assert.ok(
 		/<title>[^<]*Birch Research/.test(home),
 		'the home page title never names the property',

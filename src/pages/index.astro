@@ -60,10 +60,6 @@ const featured = FEATURED.map((slug) => corpus.questionBySlug.get(slug)).filter(
 const featuredQuestions = featured.length >= 4 ? featured : corpus.questions.slice(0, 6);
 const examples = featuredQuestions.slice(0, 5).map((q) => q.data.question);
 
-const families = [...new Set(corpus.questions.map((q) => q.data.family))].sort();
-const lines = [...new Set(corpus.questions.flatMap((q) => q.data.lines))].sort();
-const states = [...new Set(corpus.states.map((s) => s.data.code))].sort();
-
 const recent = recentlyReviewed(corpus, 6);
 
 const atlas = [
@@ -117,108 +113,119 @@ const atlas = [
 	},
 ];
 
-const FAMILY_LABEL: Record<string, string> = {
-	personal: 'Personal lines',
-	commercial: 'Commercial lines',
-	life: 'Life',
-	health: 'Health and benefits',
-};
-
 const jsonLd = graph(organization(), website());
 ---
 
 <BaseLayout
-	description="Free insurance research across 39 lines. Every answer shows the sources behind it, its assumptions, what would change it, and when a licensed reviewer last looked. No account, no email, nothing to fill in, and nothing for sale."
+	description="Free insurance research and community conversation from Birch. Start with a question, open the sources behind the answer, and share what happened without turning a person’s experience into a verdict."
 	jsonLd={jsonLd}
 	pageType="home"
 >
-	<!-- First viewport: the working surface, not a marketing hero. -->
+	<!-- First viewport: the working surface, now with a clearer Birch entry point. -->
 	<section class="band band-tight band-first band-paper" aria-labelledby="home-title">
 		<div class="shell">
-			<span class="eyebrow">Free insurance research</span>
-			<h1 id="home-title" style="font-size: var(--text-3xl); max-width: 34ch">
-				Insurance answers with the evidence attached. Free to read, and nothing to fill in.
-			</h1>
-			<p class="lede" style="font-size: var(--text-base)">
-				{indexedLines} lines of insurance indexed, {corpus.coverages.length} written up in full,{' '}
-				{corpus.questions.length} questions answered, {totalSources} source records behind them.{' '}
-				Operated by {siteConfig.operator.legalName} dba {siteConfig.operator.dba}. No account, no
-				email, and no quote is required to read any of it.
-			</p>
-
-			<form
-				action="/ask"
-				method="get"
-				role="search"
-				data-question-form
-				class="stack"
-				style="max-width: 800px; margin-top: var(--s-6)"
-			>
-				<div class="field">
-					<label for="home-q">Your insurance question</label>
-					<div style="display:flex;gap:var(--s-2);align-items:flex-start;flex-wrap:wrap">
-						<input
-							id="home-q"
-							name="q"
-							type="search"
-							autocomplete="off"
-							enterkeyhint="search"
-							placeholder={examples[0] ?? 'Ask an insurance question'}
-							aria-describedby="home-q-hint"
-							style="flex:1 1 320px"
-						/>
-						<button class="btn btn-primary" type="submit">
-							<Search size={16} aria-hidden="true" /> Find the answer
-						</button>
-					</div>
-					<span class="hint" id="home-q-hint">
-						General facts only. Leave out names, addresses, policy or claim numbers, and health
-						details. The lookup runs on your device.
-					</span>
-				</div>
-
-				<div class="field-row" style="max-width: 780px">
-					<div class="field">
-						<label for="home-family">Insurance type</label>
-						<select id="home-family" name="family">
-							<option value="any">Any</option>
-							{families.map((family) => <option value={family}>{FAMILY_LABEL[family] ?? family}</option>)}
-						</select>
-					</div>
-					<div class="field">
-						<label for="home-line">Line</label>
-						<select id="home-line" name="line">
-							<option value="any">Any</option>
-							{lines.map((line) => <option value={line}>{line.replace(/-/g, ' ')}</option>)}
-						</select>
-					</div>
-					<div class="field">
-						<label for="home-state">State</label>
-						<select id="home-state" name="state">
-							<option value="any">Any</option>
-							{states.map((state) => <option value={state}>{state}</option>)}
-						</select>
-					</div>
-					<div class="field">
-						<label for="home-audience">Audience</label>
-						<select id="home-audience" name="audience">
-							<option value="any">Any</option>
-							<option value="individual">Individual or household</option>
-							<option value="business-owner">Business owner</option>
-							<option value="professional">Professional adviser</option>
-						</select>
+			<div class="home-hero">
+			<div class="home-hero-copy">
+				<div class="home-identity">
+					<img src="/birch-bird-transparent.png" width="52" height="52" alt="" />
+					<div>
+						<span class="eyebrow">Birch / Research</span>
+						<span class="home-identity-note">Insurance, with the source attached</span>
 					</div>
 				</div>
+				<h1 id="home-title">Insurance answers with the source attached.</h1>
+				<p class="lede">
+					Birch is free, independent research for the moments when insurance gets hard to read. Ask a question,
+					see the assumptions, and open the source behind the answer.
+				</p>
+				<p class="home-stat-line">
+					<span>{indexedLines} lines indexed</span>
+					<span>{corpus.questions.length} questions</span>
+					<span>{totalSources} source records</span>
+				</p>
 
-				<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center">
-					<span class="meta">Or browse</span>
-					<a class="btn btn-secondary btn-sm" href="/questions">Questions</a>
-					<a class="btn btn-secondary btn-sm" href="/insurance">Coverage</a>
-					<a class="btn btn-secondary btn-sm" href="/states">States</a>
-					<a class="btn btn-secondary btn-sm" href="/tools">Tools</a>
-					<a class="btn btn-secondary btn-sm" href="/sources">Sources</a>
+				<form action="/ask" method="get" role="search" data-question-form class="home-search-form">
+					<div class="field">
+						<label for="home-q">Start with a question</label>
+						<div class="home-search-row">
+							<input
+								id="home-q"
+								name="q"
+								type="search"
+								autocomplete="off"
+								enterkeyhint="search"
+								placeholder={examples[0] ?? 'Ask an insurance question'}
+								aria-describedby="home-q-hint"
+							/>
+							<button class="btn btn-primary" type="submit">
+								<Search size={16} aria-hidden="true" /> Ask Birch
+							</button>
+						</div>
+						<span class="hint" id="home-q-hint">
+							Search stays on your device. Leave out names, addresses, policy or claim numbers, and health details.
+						</span>
+					</div>
+				</form>
+
+				<div class="home-quick-actions" aria-label="Explore Birch">
+					<a class="btn btn-secondary" href="/insurance">Browse coverage</a>
+					<a class="btn btn-quiet" href="/questions">Read the question library <ArrowRight size={15} aria-hidden="true" /></a>
 				</div>
-			</form>
+
+				<div class="home-research-cta">
+					<div>
+						<span class="meta">Free to read · no account required</span>
+						<strong>
+							{siteConfig.communityReady
+								? 'Read the research first. Bring your experience to Commons when you’re ready.'
+								: 'Read the research first. Commons is in private preview while the discussion layer is prepared.'}
+						</strong>
+					</div>
+					{
+						siteConfig.communityReady ? (
+							<a href={siteConfig.communityOrigin} rel="noopener">
+								Open Birch Commons <ArrowRight size={15} aria-hidden="true" />
+							</a>
+						) : (
+							<span class="home-research-cta-status">Commons · private preview</span>
+						)
+					}
+				</div>
+			</div>
+
+			<aside class="home-compass" aria-label="How Birch works">
+				<span class="eyebrow">How Birch works</span>
+				<h2>{siteConfig.communityReady ? 'Three ways in' : 'Two ways in'}</h2>
+				<ol class="home-entry-list">
+					<li>
+						<a href="/ask"><span>Ask a question</span><ArrowRight size={15} aria-hidden="true" /></a>
+						<p>Search the cited library in plain language.</p>
+					</li>
+					<li>
+						<a href="/insurance"><span>Browse a coverage line</span><ArrowRight size={15} aria-hidden="true" /></a>
+						<p>See what a policy is designed to do, and what commonly changes it.</p>
+					</li>
+					<li>
+						{
+							siteConfig.communityReady ? (
+								<a href={siteConfig.communityOrigin} rel="noopener"><span>Share what happened</span><ArrowRight size={15} aria-hidden="true" /></a>
+							) : (
+								<span class="home-entry-list-status">Share what happened · coming in private preview</span>
+							)
+						}
+						<p>
+							{siteConfig.communityReady
+								? 'Continue in the separate Commons, where conversations stay conversations.'
+								: 'The separate Commons will open after its deployment and moderation systems are ready.'}
+						</p>
+					</li>
+				</ol>
+				<div class="home-boundary">
+					<span class="meta">The boundary</span>
+					<p>Research says what a source supports. Community says what a person experienced. Neither publishes a verdict.</p>
+				</div>
+			</aside>
+			</div>
 
 			<!-- Source-quality strip, still inside the first viewport. -->
 			<div class="table-scroll" style="margin-top: var(--s-6); max-width: 920px">

@@ -102,7 +102,9 @@ Validation is three separate things, and conflating them is how forums rot:
 2. **The contributor is who they say they are.** A licence number checked
    against the state regulator's public lookup earns a badge and a role -
    broker, adjuster, attorney, accountant. Anybody else posts as a reader, and
-   the difference is visible on every post. Not built.
+   the difference is visible on every post. The request and moderator-decision
+   flow is built; the actual register lookup remains a human/network-dependent
+   action.
 3. **The contribution itself has been read by a person.** Case reports are
    moderated before publication and land in git as files, with version history
    and a reviewable diff. Threads cannot work that way and must not pretend to -
@@ -165,11 +167,14 @@ write a carrier record, and must not fake one from a snippet.
    survives where it must.
 2. **Threads on the community, attached to subjects.** The data layer, the
    permitted surface, moderation after the fact, and the promotion path to a
-   case report.
+   case report are built and covered by the Commons suite.
 3. **Licence verification and the role badge.** What makes "validated" true.
-4. **Carrier pages**, when a regulator host is reachable.
-5. **Cross-linking**, once threads exist: an evidence page names how many
+   The request and moderator decision are wired; the checked-register lookup
+   remains a human/network-dependent action.
+4. **Cross-linking**, once Commons content exists: an evidence page names how many
    accounts exist for its subject and links to them, without citing them.
+5. **Carrier pages**, when a regulator host is reachable.
+6. **Coverage Lens**, only as a separately threat-modeled, local-first service.
 
 ## 8. What must not change to make this easier
 

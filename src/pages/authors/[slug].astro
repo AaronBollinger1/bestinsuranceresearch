@@ -6,6 +6,7 @@ import PageHeader from '../../components/PageHeader.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { stripMarkers } from '../../lib/citations';
 import { loadCorpus } from '../../lib/corpus';
+import { siteConfig } from '../../config/site';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, graph, organization, organizationId, website } from '../../lib/schema';
 
@@ -42,7 +43,7 @@ const trail = [
 
 const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 	'@type': 'Person',
-	'@id': `${new URL(path, 'https://bestinsuranceresearch.com').toString()}#person`,
+	'@id': `${new URL(path, siteConfig.origin).toString()}#person`,
 	name: d.name,
 	jobTitle: d.role,
 	description: d.bio,

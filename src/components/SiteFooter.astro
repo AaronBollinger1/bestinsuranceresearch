@@ -12,17 +12,16 @@ const producers = siteConfig.operator.producers.map((p) => `${p.name} (${p.licen
 	<div class="shell">
 		<div class="footer-grid">
 			<div class="footer-about">
-				<a class="brand on-ink" href="/">
-					<img src="/icon-master-white-transparent.png" width="26" height="26" alt="" />
+				<a class="brand on-ink" href="/" aria-label="Birch home">
+					<img src="/birch-bird-transparent.png" width="38" height="38" alt="" />
 					<span class="brand-name">
-						<strong>Birch <em>Research</em></strong>
-						<span>Operated by Bollinsure</span>
+						<strong>{siteConfig.brandName}</strong>
+						<span>{siteConfig.brandDescriptor}</span>
 					</span>
 				</a>
 				<p>
-					A public insurance advisory instrument, built on a research library. Every answer and every
-					open item shows its sources, its assumptions, what would change it, and when a person last
-					reviewed it.
+					A free place to understand insurance: sourced answers, browser-based tools, and a separate
+					community for lived experience. Read first, check the source, then decide what to ask next.
 				</p>
 			</div>
 
@@ -77,8 +76,8 @@ const producers = siteConfig.operator.producers.map((p) => `${p.name} (${p.licen
 		</div>
 
 		<div class="footer-legal">
-			<p>
-				{siteConfig.licensedHelpDisclosure} Operated by {siteConfig.operator.legalName} dba{' '}
+					<p>
+						{siteConfig.licensedHelpDisclosure} Operated by {siteConfig.operator.legalName} dba{' '}
 				{siteConfig.operator.dba}. {siteConfig.operator.licenseAuthority} agency license{' '}
 				{siteConfig.operator.agencyLicense}. Licensed producers: {producers}.
 			</p>

@@ -63,8 +63,8 @@ export const GET: APIRoute = async () => {
 		'',
 		`- Published reports: ${reports.length}`,
 		`- Practitioner notes: ${annotations.length}`,
-		'- Accounts: not open yet. Moderated intake is the next mechanism to launch.',
-		'- Open discussion: not built, and deliberately last. This site has to be worth reading before it is worth posting to.',
+		'- Accounts: open through passwordless sign-in. Submitted accounts are moderated before publication.',
+		'- Open discussion: threads are available now, but conversation is not evidence and verdict-shaped posts are rejected.',
 		'',
 		...(reports.length > 0
 			? [

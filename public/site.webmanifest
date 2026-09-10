@@ -1,5 +1,5 @@
 {
-  "name": "Birch Research",
+  "name": "Birch — Insurance, with the source attached",
   "short_name": "Birch",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#f7fbff",
+  "background_color": "#f7fbff",
   "display": "standalone"
 }

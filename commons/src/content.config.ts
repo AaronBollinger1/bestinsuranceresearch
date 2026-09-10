@@ -123,6 +123,13 @@ const reports = defineCollection({
 		 * live on the other origin.
 		 */
 		citesRecord: z.array(z.string().min(3)).default([]),
+		/** Context only. A thread is never a legal citation or a source claim. */
+		promotedFrom: z
+			.object({
+				threadId: z.string().min(1),
+				postId: z.string().min(1),
+			})
+			.optional(),
 	}),
 });
 

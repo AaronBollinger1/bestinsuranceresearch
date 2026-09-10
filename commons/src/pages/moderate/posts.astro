@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { SESSION_COOKIE, accountFromSession, sameOrigin } from '../../lib/auth';
 import { isModerator } from '../../lib/moderators';
 import { getStore, selfOrigin } from '../../lib/runtime';
+import { newPromotionRequestId, promotionRequestFromPost } from '../../lib/promotions';
 import { subject } from '../../lib/threads';
 
 export const prerender = false;
@@ -37,6 +38,25 @@ if (Astro.request.method === 'POST') {
 		}
 	} else if (intent === 'leave') {
 		await store.markPostReviewed(postId);
+	} else if (intent === 'promote') {
+		const post = await store.getPost(postId);
+		const thread = post ? await store.getThread(post.threadId) : null;
+		const existing = await store.promotionByPost(postId);
+		if (!post || !thread || thread.state === 'hidden' || post.state !== 'visible') {
+			problem = 'Only a visible post in a readable thread can be invited to become a case report.';
+		} else if (post.promotedToSubmission || existing?.state === 'submitted') {
+			problem = 'That post already has a case report.';
+		} else if (existing?.state === 'pending') {
+			problem = 'That author already has a pending invitation for this post.';
+		} else {
+			await store.createPromotionRequest(
+				promotionRequestFromPost(post, thread, newPromotionRequestId(), new Date().toISOString()),
+			);
+			/* Promotion is a moderation action and therefore also records that the
+			   moderator read the post. It is not an approval of its contents. */
+			await store.markPostReviewed(postId);
+			return Astro.redirect('/moderate/posts?promoted=1', 303);
+		}
 	}
 
 	if (!problem) return Astro.redirect('/moderate/posts', 303);
@@ -46,6 +66,10 @@ const queue = await store.unreviewedPosts();
 const threadsById = new Map(
 	await Promise.all(queue.map(async (p) => [p.threadId, await store.getThread(p.threadId)] as const)),
 );
+const promotionsByPost = new Map(
+	await Promise.all(queue.map(async (p) => [p.id, await store.promotionByPost(p.id)] as const)),
+);
+const promoted = Astro.url.searchParams.get('promoted') === '1';
 ---
 
 <BaseLayout
@@ -58,6 +82,15 @@ const threadsById = new Map(
 		<div class="shell page-grid">
 			<div class="prose">
 				{problem && <div class="callout" data-tone="stop"><p>{problem}</p></div>}
+				{promoted && (
+					<div class="callout" data-tone="note">
+						<p>
+							Invitation created. The author will see it after signing in; no email was sent and nothing
+							was published. The post remains a conversation until the author writes and submits a separate
+							case report.
+						</p>
+					</div>
+				)}
 
 				<div class="callout" data-tone="note">
 					<p>
@@ -92,6 +125,11 @@ const threadsById = new Map(
 											{post.postedAt.slice(0, 10)}
 										</p>
 										<blockquote>{post.body}</blockquote>
+										{promotionsByPost.get(post.id)?.state === 'pending' && (
+											<p class="meta">
+												An invitation is already waiting in this author's account.
+											</p>
+										)}
 										<form method="post" class="stack">
 											<input type="hidden" name="postId" value={post.id} />
 											<div class="field">
@@ -109,6 +147,17 @@ const threadsById = new Map(
 												<button class="btn btn-quiet" type="submit" name="intent" value="leave">
 													Read it, leaving it up
 												</button>{' '}
+												{!promotionsByPost.get(post.id) || promotionsByPost.get(post.id)?.state === 'declined' ? (
+													<button class="btn btn-quiet" type="submit" name="intent" value="promote">
+														Invite author to write a case report
+													</button>
+												) : (
+													<span class="meta" style="margin: 0 var(--s-2)">
+														{promotionsByPost.get(post.id)?.state === 'submitted'
+															? 'Case report submitted'
+															: 'Invitation pending'}
+													</span>
+												)}{' '}
 												<button class="btn" type="submit" name="intent" value="hide">
 													Remove it
 												</button>

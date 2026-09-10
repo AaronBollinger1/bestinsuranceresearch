@@ -223,6 +223,14 @@ export function draftReport(
 		publishedOn: moderator.publishedOn,
 		moderatedBy: moderator.name,
 		citesRecord: [],
+		...(submission.promotedFrom
+			? {
+					promotedFrom: {
+						threadId: submission.promotedFrom.threadId,
+						postId: submission.promotedFrom.postId,
+					},
+				}
+			: {}),
 	};
 }
 

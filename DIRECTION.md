@@ -79,15 +79,17 @@ It is never a form here.
 
 ## Visual direction
 
-The world is **ink on cream paper with one gold accent**. Printed research
-document, not software product. `src/styles/tokens.css` is the single source of
-truth: three elevations, radius never above 8px, one accent.
+The world is **Birch blue on pale paper with evidence accents**. Printed
+research document meets a calm community utility, not a software-product
+dashboard. `src/styles/tokens.css` is the single source of truth: three
+elevations, radius never above 8px, brand blue for actions, and evidence colors
+reserved for meaning.
 
 - **Type**: Newsreader for display, Schibsted Grotesk for interface, IBM Plex
   Mono for data and addresses.
-- **Gold** is the single primary action colour. It means *this is the thing you
-  act on or the thing that resolved*. It is never decoration. If gold appears
-  and means nothing, remove it.
+- **Birch blue** is the primary action and navigation color. **Gold** means
+  *this is the thing that resolved* and remains reserved for evidence edges and
+  citation markers. If gold appears and means nothing, remove it.
 - **Restraint is the brand.** No hero video, no stock photography, no
   illustration of people, no icons carrying meaning on their own. The corpus is
   the product and the design gets out of its way.
@@ -117,18 +119,16 @@ Decided placement, and the reasoning, so this is not reopened:
 The placement reasoning above stands. The choice of clip is settled by there
 not being one.
 
-`AMBITION.md` re-briefed the beat as the mark converging rather than ink
-blooming, on the ground that the mark resolving is what the site does. That is
-now built from the mark's own measured geometry rather than generated:
-`scripts/trace-mark.mjs` produced the vector the mark never had, and
-`src/components/MarkConverging.astro` animates its 37 real dots inward, each
-timed from its own distance to the arrowhead.
+`AMBITION.md` re-briefed the beat as the mark resolving rather than ink
+blooming, on the ground that the mark resolving is what the site does. The
+current implementation uses the approved bird asset directly in
+`src/components/BirchLoadingMark.astro` and adds a restrained pulse instead of
+generating or redrawing the logo.
 
-So the earlier reasoning for preferring a generated clip is spent. Two
-Higgsfield passes had already replaced the mark with a random dot cloud, and
-the argument against a third is no longer that it failed - it is that there is
-nothing left for it to do. The ink-bloom file stays in `public/media/` and is
-no longer a fallback for anything. `BRAND-SYSTEM.md` holds the motion rules.
+So the earlier reasoning for preferring a generated clip is spent. Interface
+concept renderings can inform layout and hierarchy, but the supplied bird stays
+the only production mark. The ink-bloom file stays in `public/media/` and is no
+longer a fallback for anything. `BRAND-SYSTEM.md` holds the motion rules.
 
 ## What success looks like
 

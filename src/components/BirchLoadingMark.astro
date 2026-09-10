@@ -1,0 +1,52 @@
+---
+/**
+ * Birch's loading mark for the local research lookup.
+ *
+ * The approved bird asset is intentionally used as-is. The logo package is
+ * raster artwork rather than a geometry source, so this state uses a quiet
+ * pulse instead of inventing a new motion system or redrawing the mark.
+ */
+interface Props {
+	size?: number;
+	label?: string | null;
+}
+
+const { size = 96, label = 'Resolving your question against the library' } = Astro.props;
+---
+
+<div
+	class="birch-loading-mark"
+	style={`--birch-mark-size: ${size}px`}
+	role={label ? 'img' : undefined}
+	aria-label={label ?? undefined}
+	aria-hidden={label ? undefined : 'true'}
+>
+	<img src="/birch-bird-transparent.png" width={size} height={size} alt="" />
+</div>
+
+<style>
+	.birch-loading-mark {
+		display: grid;
+		place-items: center;
+		width: var(--birch-mark-size);
+		height: var(--birch-mark-size);
+		flex: none;
+	}
+
+	.birch-loading-mark img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.birch-loading-mark img {
+			animation: birch-bird-breathe 2.4s ease-in-out infinite;
+		}
+	}
+
+	@keyframes birch-bird-breathe {
+		0%, 100% { opacity: 0.64; transform: scale(0.96); }
+		50% { opacity: 1; transform: scale(1); }
+	}
+</style>

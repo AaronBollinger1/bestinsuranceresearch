@@ -9,6 +9,7 @@ import { loadCorpus } from '../../lib/corpus';
 import { ROADMAP } from '../../lib/roadmap';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
+import { siteConfig } from '../../config/site';
 
 import { excerpt } from '../../lib/excerpt';
 const corpus = await loadCorpus();
@@ -40,12 +41,12 @@ const jsonLd = graph(
 	}),
 	{
 		'@type': 'DefinedTermSet',
-		'@id': `${new URL('/insurance', Astro.site ?? 'https://bestinsuranceresearch.com').toString()}#termset`,
+			'@id': `${new URL('/insurance', siteConfig.origin).toString()}#termset`,
 		name: 'Birch Research coverage library',
 		hasDefinedTerm: coverages.map((c) => ({
 			'@type': 'DefinedTerm',
 			name: c.data.name,
-			url: new URL(`/insurance/${c.id}`, Astro.site ?? 'https://bestinsuranceresearch.com').toString(),
+				url: new URL(`/insurance/${c.id}`, siteConfig.origin).toString(),
 		})),
 	},
 );

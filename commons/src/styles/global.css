@@ -154,9 +154,9 @@ blockquote {
 /* --- Header and footer -------------------------------------------- */
 
 .masthead {
-	background: var(--ink);
-	color: var(--paper);
-	border-bottom: var(--bw-marker) solid var(--line-ink);
+	background: var(--paper);
+	color: var(--ink);
+	border-bottom: var(--bw-hair) solid var(--line);
 }
 
 .masthead .shell {
@@ -168,12 +168,22 @@ blockquote {
 	flex-wrap: wrap;
 }
 
+.masthead-bar { min-height: 68px; }
+
 .wordmark {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--s-2);
 	font-family: var(--font-display);
 	font-size: var(--text-xl);
-	color: var(--paper);
+	color: var(--ink);
 	text-decoration: none;
 }
+
+.wordmark img { width: 34px; height: 34px; object-fit: contain; }
+.wordmark-copy { display: grid; gap: 2px; line-height: 1.05; }
+.wordmark-copy strong { font-weight: 500; color: var(--ink); }
+.wordmark-copy span { font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
 
 .wordmark span {
 	display: block;
@@ -192,14 +202,39 @@ blockquote {
 }
 
 .masthead nav a {
-	color: #d5dde3;
+	color: var(--body);
 	text-decoration: none;
 	padding: var(--s-2) 0;
 }
 
-.masthead nav a:hover { color: var(--white); text-decoration: underline; }
+.masthead nav a:hover,
+.masthead nav a[aria-current='page'] { color: var(--link-edge); text-decoration: underline; text-underline-offset: 4px; }
 
-.masthead a:focus-visible { outline-color: var(--white); }
+.masthead a:focus-visible { outline-color: var(--link); }
+
+/* The Commons uses Birch blue for actions. Gold is intentionally absent here. */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--s-2);
+	min-height: var(--tap);
+	padding: 10px var(--s-4);
+	border: var(--bw-hair) solid var(--link-edge);
+	border-radius: var(--r-2);
+	background: var(--link);
+	color: var(--white);
+	font-size: var(--text-base);
+	font-weight: 600;
+	text-decoration: none;
+	transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+.btn:hover { background: var(--link-edge); color: var(--white); }
+.btn:active { transform: translateY(1px); }
+.btn-sm { min-height: 36px; padding: 6px var(--s-3); font-size: var(--text-sm); }
+.btn-light { background: var(--paper); color: var(--link-edge); border-color: var(--paper); }
+.btn-light:hover { background: var(--link-wash); color: var(--link-edge); border-color: var(--link-wash); }
+.masthead-signin { margin-left: auto; }
 
 .site-footer {
 	background: var(--ink);
@@ -346,6 +381,27 @@ blockquote {
 
 .empty p:last-child { margin-bottom: 0; }
 
+/* ============================================================
+   BIRCH COMMUNITY ENTRY SURFACE
+   ============================================================ */
+.commons-hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(250px, 0.7fr); gap: clamp(var(--s-8), 7vw, var(--s-16)); align-items: start; }
+.commons-hero h1 { max-width: 15ch; font-size: clamp(2.4rem, 5vw, 4.1rem); letter-spacing: -0.04em; }
+.commons-hero .lede { max-width: 58ch; }
+.commons-hero-mark { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-5); }
+.commons-hero-mark img { width: 50px; height: 50px; object-fit: contain; }
+.commons-hero-mark .eyebrow { margin-bottom: 2px; color: var(--link-text); }
+.commons-hero-mark p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
+.commons-entry-panel { padding: var(--s-5); border: var(--bw-hair) solid var(--line-strong); border-top: 3px solid var(--link); background: var(--paper); border-radius: var(--r-3); }
+.commons-entry-panel h2 { margin-bottom: var(--s-4); }
+.commons-entry-list { list-style: none; margin: 0; padding: 0; counter-reset: community-entry; }
+.commons-entry-list li { counter-increment: community-entry; padding: var(--s-3) 0; border-top: var(--bw-hair) solid var(--line); }
+.commons-entry-list li::before { content: '0' counter(community-entry); display: block; margin-bottom: 3px; color: var(--faint); font-family: var(--font-mono); font-size: var(--text-2xs); }
+.commons-entry-list a { display: flex; justify-content: space-between; gap: var(--s-2); font-weight: 600; text-decoration: none; }
+.commons-entry-list a:hover { text-decoration: underline; }
+.commons-entry-list p { margin: 3px 0 0; font-size: var(--text-sm); line-height: var(--leading-snug); }
+.commons-boundary { margin-top: var(--s-5); padding-top: var(--s-4); border-top: var(--bw-hair) solid var(--line); }
+.commons-boundary p { margin: var(--s-2) 0 0; color: var(--ink); font-size: var(--text-sm); line-height: var(--leading-snug); }
+
 /* --- Definition grid -------------------------------------------------- */
 
 .fields { margin: var(--s-5) 0; display: grid; gap: var(--s-4); }
@@ -372,6 +428,18 @@ blockquote {
 	color: var(--ink);
 	padding: var(--s-2) var(--s-3);
 	border-radius: var(--r-2);
+}
+
+@media (max-width: 900px) {
+	.masthead nav { order: 3; width: 100%; overflow-x: auto; padding-bottom: var(--s-2); }
+	.masthead nav a { white-space: nowrap; }
+	.commons-hero { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); }
+}
+
+@media (max-width: 640px) {
+	.masthead-bar { min-height: 60px; }
+	.commons-hero h1 { font-size: var(--text-3xl); }
+	.commons-entry-panel { padding: var(--s-4); }
 }
 
 @media print {

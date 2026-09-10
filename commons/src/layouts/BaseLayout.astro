@@ -16,13 +16,18 @@ interface Props {
 	crumbs?: Array<{ name: string; href?: string }>;
 	jsonLd?: Record<string, unknown>;
 	machinePath?: string;
+	hideIntro?: boolean;
 }
 
-const { title, description = commons.description, eyebrow, lede, crumbs = [], jsonLd, machinePath } = Astro.props;
+const { title, description = commons.description, eyebrow, lede, crumbs = [], jsonLd, machinePath, hideIntro = false } = Astro.props;
 
 const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '');
 const canonical = new URL(canonicalPath, commons.origin).toString();
 const fullTitle = title ? `${title} | ${commons.name}` : `${commons.name} | ${commons.tagline}`;
+const isCurrent = (href: string) => {
+	const path = href.startsWith('http') ? '' : href.replace(/\/+$/, '') || '/';
+	return path !== '' && (canonicalPath === path || (path !== '/' && canonicalPath.startsWith(`${path}/`)));
+};
 
 /*
  * Noindex while the property is unnamed and unlaunched. The origin is a
@@ -40,8 +45,13 @@ const unlaunched = commons.origin.includes('example');
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{fullTitle}</title>
 		<meta name="description" content={description} />
+		<meta name="theme-color" content="#f2f7ff" />
 		{unlaunched && <meta name="robots" content="noindex, nofollow" />}
 		<link rel="canonical" href={canonical} />
+		<link rel="icon" href="/birch-bird-32x32.png" type="image/png" sizes="32x32" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
 		{machinePath && <link rel="alternate" type="application/json" href={machinePath} />}
 		{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 	</head>
@@ -49,19 +59,31 @@ const unlaunched = commons.origin.includes('example');
 		<a class="skip" href="#main">Skip to content</a>
 
 		<header class="masthead">
-			<div class="shell">
-				<a class="wordmark" href="/">
-					{commons.name}
-					<span>Moderated accounts and practitioner notes</span>
+			<div class="shell masthead-bar">
+				<a class="wordmark" href="/" aria-label="Birch Community home">
+					<img src="/birch-bird-transparent.png" width="34" height="34" alt="" />
+					<span class="wordmark-copy">
+						<strong>{commons.name}</strong>
+						<span>{commons.brandDescriptor}</span>
+					</span>
 				</a>
 				<nav aria-label="Primary">
-					{nav.map((item) => <a href={item.href}>{item.label}</a>)}
+					{nav.filter((item) => item.label !== 'Sign in').map((item) => (
+						<a
+							href={item.href}
+							rel={'external' in item && item.external ? 'noopener' : undefined}
+							aria-current={isCurrent(item.href) ? 'page' : undefined}
+						>
+							{item.label}
+						</a>
+					))}
 				</nav>
+				<a class="btn btn-sm masthead-signin" href="/sign-in">Sign in</a>
 			</div>
 		</header>
 
 		{
-			(eyebrow || title) && (
+			!hideIntro && (eyebrow || title) && (
 				<div class="page-head">
 					<div class="shell">
 						{crumbs.length > 0 && (
@@ -105,7 +127,7 @@ const unlaunched = commons.origin.includes('example');
 				<div>
 					<h2>This site</h2>
 					<ul>
-						{nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+						{nav.map((item) => <li><a href={item.href} rel={'external' in item && item.external ? 'noopener' : undefined}>{item.label}</a></li>)}
 						<li><a href="/llms.txt">llms.txt</a></li>
 					</ul>
 				</div>

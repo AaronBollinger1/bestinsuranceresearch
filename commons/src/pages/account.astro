@@ -34,6 +34,16 @@ if (Astro.request.method === 'POST') {
 
 const welcome = Astro.url.searchParams.get('welcome') === '1';
 const submissions = account ? await store.submissionsBy(account.email) : [];
+const verificationRequests = account ? await store.verificationRequestsBy(account.email) : [];
+const promotionRequests = account ? await store.promotionRequestsBy(account.email) : [];
+const promotionRows = await Promise.all(
+	promotionRequests.map(async (request) => ({
+		request,
+		post: await store.getPost(request.postId),
+		thread: await store.getThread(request.threadId),
+	})),
+);
+const pendingVerification = verificationRequests.find((request) => request.state === 'pending');
 const moderates = isModerator(account?.email, process.env);
 
 const STATE_TEXT: Record<string, string> = {
@@ -89,6 +99,9 @@ const canWithdraw = (state: string) => WITHDRAWABLE_IMMEDIATELY.includes(state a
 				)}
 				{notice.has('withdrawal-noop') && (
 					<div class="callout"><p>Nothing to withdraw — that one is not published.</p></div>
+				)}
+				{notice.has('promotion-declined') && (
+					<div class="callout"><p>Invitation declined. The original conversation remains unchanged.</p></div>
 				)}
 				{problem && <div class="callout" data-tone="stop"><p>{problem}</p></div>}
 
@@ -157,6 +170,73 @@ const canWithdraw = (state: string) => WITHDRAWABLE_IMMEDIATELY.includes(state a
 					}
 				</dl>
 
+				<h2>Professional verification</h2>
+				{
+					account?.license ? (
+						<p>
+							Your role is verified against the public register named above. The badge is for context,
+							not endorsement. <a href="/account/verify">Review the verification details</a>.
+						</p>
+					) : pendingVerification ? (
+						<div class="callout" data-tone="note">
+							<p>
+								<strong>Verification is pending.</strong> A moderator will check{' '}
+								{pendingVerification.authority}'s public register before a role badge appears. Your account
+								remains a reader account until then.
+							</p>
+							<p><a href="/account/verify">View the pending request</a></p>
+						</div>
+					) : (
+						<p>
+							A role badge is optional. If you are an insurance broker, claims adjuster, or insurance
+							attorney, you can request verification against a public register.{' '}
+							<a class="btn btn-secondary btn-sm" href="/account/verify">Request professional verification</a>
+						</p>
+					)
+				}
+
+				<h2>Case-report invitations</h2>
+				<p>
+					A moderator may invite you to turn something you wrote into a separate case report. This is an
+					invitation, not an endorsement: the original thread stays conversation, and your report is read
+					before it can publish. No email is sent; invitations appear here after you sign in.
+				</p>
+				{
+					promotionRows.length === 0 ? (
+						<p class="meta">No invitations yet.</p>
+					) : (
+						<div class="rows">
+							{promotionRows.map(({ request, post, thread }) => (
+								<div class="row">
+									<h3 class="row-title">{thread?.title ?? 'Conversation no longer available'}</h3>
+									<div class="row-meta">
+										<span class="label" data-group={request.state === 'submitted' ? 'record' : 'note'}>
+											{request.state}
+										</span>
+										<span>invited {request.createdAt.slice(0, 10)}</span>
+									</div>
+									{request.state === 'pending' && post?.state === 'visible' && thread && (
+										<p style="margin-top: var(--s-2)">
+											<a class="btn btn-primary btn-sm" href={`/contribute/from-post/${request.id}`}>
+												Review and write the report
+											</a>
+										</p>
+									)}
+									{request.state === 'submitted' && request.submissionId && (
+										<p class="meta" style="margin-top: var(--s-2)">
+											Submitted to the moderator queue. The original post is{' '}
+											<a href={`/threads/${request.threadId}#post-${request.postId}`}>still conversation</a>.
+										</p>
+									)}
+									{request.state === 'declined' && (
+										<p class="meta" style="margin-top: var(--s-2)">You declined this invitation. Nothing was changed.</p>
+									)}
+								</div>
+							))}
+						</div>
+					)
+				}
+
 				<h2>Contributing</h2>
 				{
 					account?.displayName ? (
@@ -198,6 +278,14 @@ const canWithdraw = (state: string) => WITHDRAWABLE_IMMEDIATELY.includes(state a
 													<strong>From the moderator:</strong> {submission.moderatorNote}
 												</p>
 											)}
+										{submission.promotedFrom && (
+											<p class="meta" style="margin-top: var(--s-2)">
+												Started from{' '}
+												<a href={`/threads/${submission.promotedFrom.threadId}#post-${submission.promotedFrom.postId}`}>
+													the conversation
+												</a>; the thread is not a citation.
+											</p>
+										)}
 										{canWithdraw(submission.state) && (
 											<form method="post" action="/contribute/withdraw" style="margin-top: var(--s-3)">
 												<input type="hidden" name="id" value={submission.id} />

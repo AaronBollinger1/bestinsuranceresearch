@@ -35,6 +35,7 @@ export const commons = {
 	 * estate's visual system already comes from.
 	 */
 	name: 'Birch',
+	brandDescriptor: 'Community, carefully moderated',
 	origin: import.meta.env.PUBLIC_COMMONS_ORIGIN || 'https://birch.insure',
 
 	tagline: 'What actually happened, from the people it happened to and the people who handle it.',
@@ -92,6 +93,7 @@ export const LABELS = {
 export type Label = keyof typeof LABELS;
 
 export const nav = [
+	{ label: 'Research', href: `${commons.record.origin}/`, external: true },
 	{ label: 'Discussion', href: '/threads' },
 	{ label: 'Reports', href: '/reports' },
 	{ label: 'Standards', href: '/standards' },

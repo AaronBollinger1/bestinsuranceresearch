@@ -70,6 +70,16 @@ const crumbs = [
 								<p>{LABELS[d.label as keyof typeof LABELS]}</p>
 								<p><strong>Why it carries that label.</strong> {d.labelNote}</p>
 								<p><strong>Provenance.</strong> {d.provenance}</p>
+								{d.promotedFrom && (
+									<p>
+										<strong>Conversation origin.</strong> This report began as an author-confirmed
+										write-up from a Commons thread.{' '}
+										<a href={`${commons.origin}/threads/${d.promotedFrom.threadId}#post-${d.promotedFrom.postId}`} rel="noopener">
+											Read the conversation
+										</a>. The thread is context, not a citation; the report's research citations are
+										listed separately below.
+									</p>
+								)}
 							</div>
 
 							<h2>What happened</h2>

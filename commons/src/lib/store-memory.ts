@@ -1,6 +1,7 @@
 import type {
 	Account,
 	Post,
+	PromotionRequest,
 	Session,
 	SignInToken,
 	Store,
@@ -9,6 +10,8 @@ import type {
 	Thread,
 	ThreadDraft,
 	ThreadState,
+	VerificationRequest,
+	VerificationDecision,
 } from './store';
 
 /**
@@ -28,6 +31,8 @@ export function memoryStore(): Store {
 	const tokens = new Map<string, SignInToken>();
 	const sessions = new Map<string, Session>();
 	const submissions = new Map<string, Submission>();
+	const promotionRequests = new Map<string, PromotionRequest>();
+	const verificationRequests = new Map<string, VerificationRequest>();
 	const threads = new Map<string, Thread>();
 	const posts = new Map<string, Post>();
 	/** Issue times per email, for the rate limit. Trimmed in purgeExpired. */
@@ -57,6 +62,58 @@ export function memoryStore(): Store {
 		async setDisplayName(email, displayName) {
 			const account = accounts.get(email);
 			if (account) accounts.set(email, { ...account, displayName });
+		},
+
+		async createVerificationRequest(request) {
+			verificationRequests.set(request.id, { ...request });
+		},
+
+		async getVerificationRequest(id) {
+			return verificationRequests.get(id) ?? null;
+		},
+
+		async verificationRequestsBy(email) {
+			return [...verificationRequests.values()]
+				.filter((request) => request.email === email)
+				.sort((a, b) => b.submittedAt.localeCompare(a.submittedAt));
+		},
+
+		async pendingVerificationRequests() {
+			return [...verificationRequests.values()]
+				.filter((request) => request.state === 'pending')
+				.sort((a, b) => a.submittedAt.localeCompare(b.submittedAt));
+		},
+
+		async decideVerificationRequest(id, decision: VerificationDecision) {
+			const request = verificationRequests.get(id);
+			if (!request || request.state !== 'pending') return;
+
+			if (decision.state === 'approved') {
+				const verifiedOn = decision.verifiedOn;
+				if (!verifiedOn) {
+					throw new Error('An approved verification needs the date the public register was checked.');
+				}
+				const account = accounts.get(request.email);
+				if (!account) throw new Error('The account for this verification no longer exists.');
+				accounts.set(request.email, {
+					...account,
+					kind: request.kind,
+					license: {
+						number: request.licenseNumber,
+						authority: request.authority,
+						verifiedAgainst: request.registerUrl,
+						verifiedOn,
+					},
+				});
+			}
+
+			verificationRequests.set(id, {
+				...request,
+				state: decision.state,
+				decidedAt: decision.decidedAt,
+				decidedByModerator: decision.moderator,
+				moderatorNote: decision.note,
+			});
 		},
 
 		async createSignInToken(token) {
@@ -138,6 +195,89 @@ export function memoryStore(): Store {
 			return [...submissions.values()]
 				.filter((s) => s.state === 'withdrawal-requested')
 				.sort((a, b) => (a.withdrawnAt ?? '').localeCompare(b.withdrawnAt ?? ''));
+		},
+
+		async createPromotionRequest(request: PromotionRequest) {
+			const post = posts.get(request.postId);
+			const thread = threads.get(request.threadId);
+			if (!post || !thread || post.threadId !== thread.id) {
+				throw new Error('The promotion source does not exist.');
+			}
+			if (post.state !== 'visible') throw new Error('Only a visible post can be promoted.');
+			if (post.email !== request.email || thread.subjectId !== request.subjectId) {
+				throw new Error('The promotion source and author do not match.');
+			}
+			const existing = [...promotionRequests.values()]
+				.find((item) => item.postId === request.postId && (item.state === 'pending' || item.state === 'submitted'));
+			if (existing) throw new Error('That post already has an active promotion request.');
+			promotionRequests.set(request.id, { ...request });
+			return request;
+		},
+
+		async getPromotionRequest(id) {
+			return promotionRequests.get(id) ?? null;
+		},
+
+		async promotionByPost(postId) {
+			return (
+				[...promotionRequests.values()]
+					.filter((request) => request.postId === postId)
+					.sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0] ?? null
+			);
+		},
+
+		async promotionRequestsBy(email) {
+			return [...promotionRequests.values()]
+				.filter((request) => request.email === email)
+				.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+		},
+
+		async pendingPromotionRequests() {
+			return [...promotionRequests.values()]
+				.filter((request) => request.state === 'pending')
+				.sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+		},
+
+		async declinePromotionRequest(id, email, at) {
+			const request = promotionRequests.get(id);
+			if (!request || request.state !== 'pending' || request.email !== email) return;
+			promotionRequests.set(id, { ...request, state: 'declined', decidedAt: at });
+		},
+
+		async submitPromotion(requestId, email, draft, id, submittedAt) {
+			const request = promotionRequests.get(requestId);
+			if (!request || request.state !== 'pending' || request.email !== email) {
+				throw new Error('That promotion invitation is no longer available to this account.');
+			}
+			const post = posts.get(request.postId);
+			const thread = threads.get(request.threadId);
+			if (!post || !thread || post.threadId !== thread.id || post.state !== 'visible') {
+				throw new Error('The conversation source is no longer available.');
+			}
+			if (post.promotedToSubmission) throw new Error('That post already has a case report.');
+
+			const submission: Submission = {
+				...draft,
+				email,
+				id,
+				state: 'pending',
+				submittedAt,
+				promotedFrom: {
+					requestId,
+					threadId: request.threadId,
+					postId: request.postId,
+					subjectId: request.subjectId,
+				},
+			};
+			submissions.set(id, submission);
+			posts.set(post.id, { ...post, promotedToSubmission: id });
+			promotionRequests.set(requestId, {
+				...request,
+				state: 'submitted',
+				decidedAt: submittedAt,
+				submissionId: id,
+			});
+			return submission;
 		},
 
 		/* --- Threads --- */

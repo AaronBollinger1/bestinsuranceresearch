@@ -1,0 +1,33 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import Callout from './Callout.astro';
+import { siteConfig } from '../config/site';
+
+interface Props {
+	href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<section class="answer-section commons-handoff" aria-labelledby="commons-handoff-title">
+	<h2 id="commons-handoff-title">Continue the conversation in Commons</h2>
+	<Callout tone="note">
+		<p>
+			Research is the citable record. Commons is where people can add a clearly labeled experience or
+			question about this subject. Posts are moderated and do not change the research answer.
+		</p>
+		{
+			siteConfig.communityReady ? (
+				<a class="btn btn-secondary btn-sm" href={href} rel="noopener">
+					Open discussions about this subject <ArrowRight size={15} aria-hidden="true" />
+				</a>
+			) : (
+				<p class="commons-handoff-status">
+					<strong>Commons is in private preview.</strong> The discussion layer will open after its
+					deployment, database, mail delivery, and moderation gate are ready.
+				</p>
+			)
+		}
+	</Callout>
+</section>

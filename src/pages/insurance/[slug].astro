@@ -6,6 +6,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
+import CommonsHandoff from '../../components/CommonsHandoff.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
 import Handoff from '../../components/Handoff.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
@@ -14,6 +15,7 @@ import { createCiter, escapeHtml, stripMarkers } from '../../lib/citations';
 import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
 import { shareImageForFamily } from '../../lib/share-image';
 import { longDate } from '../../lib/cite';
+import { siteConfig } from '../../config/site';
 import { breadcrumbs, definedTerm, graph, organization, techArticle, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
@@ -27,6 +29,7 @@ const { entry, corpus } = Astro.props;
 const d = entry.data;
 const path = `/insurance/${entry.id}`;
 const machinePath = `${path}.json`;
+const commonsHref = `${siteConfig.communityOrigin}/threads?subject=${encodeURIComponent(`coverage:${entry.id}`)}`;
 
 const sourceIds = idsOf(d.sourceIds);
 const sources = ledgerFor(sourceIds, corpus.sourceById, `coverage "${entry.id}"`);
@@ -65,6 +68,7 @@ const sections = [
 	...(d.stateVariations.length ? [{ id: 'states', label: 'State variations' }] : []),
 	...(relatedModules.length ? [{ id: 'tools', label: 'Tools on this line' }] : []),
 	{ id: 'source-ledger', label: 'Source ledger' },
+	{ id: 'commons', label: 'Commons discussion' },
 ];
 
 const jsonLd = graph(
@@ -294,6 +298,8 @@ const jsonLd = graph(
 							pageType: 'coverage',
 						}}
 					/>
+
+					<CommonsHandoff href={commonsHref} />
 
 					{
 						(relatedQuestions.length > 0 || alsoAsked.length > 0) && (
