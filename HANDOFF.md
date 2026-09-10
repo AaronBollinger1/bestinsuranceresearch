@@ -1,7 +1,13 @@
 # Handoff
 
-Written 8 September 2026, last revised 9 September after the Higgsfield
-refinement and professional-verification pass, on `claude/bold-hopper-mqcyen`.
+Written 8 September 2026, last revised 10 September after the final product
+logic and rendered UX audit, on `claude/bold-hopper-mqcyen`.
+
+The current product decision and mockup audit are in
+`outputs/BIRCH-FINAL-PRODUCT-AUDIT-2026-09-10.md`. It supersedes the old
+tool-first wording in `POSITIONING.md`: Research is the front door, Coverage
+Position is the optional activation layer, Commons is the attributed context
+layer, and Coverage Lens is a later private service.
 
 Read `DIRECTION.md` (what this is, and the rules that do not bend),
 `AMBITION.md` (what it is becoming, and the architecture) and **`BIRCH.md`**

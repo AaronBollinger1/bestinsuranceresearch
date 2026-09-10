@@ -262,6 +262,33 @@ brand asset was imported.
 | 32 | [Stripe / detail timeline](https://mobbin.com/screens/464dcf70-a0d4-4ba9-b23d-ca6ba18e60f5) | Freshness and change history belong in the record view. | Company and research records show last reviewed, source dates, revisions, and response history. |
 | 33 | [Confluence / related searches](https://mobbin.com/screens/8cf8c9fd-cf5c-473f-b21f-2327ce2c8f02) | A useful next path can be suggested without taking over the current task. | Every answer and thread offers adjacent coverage questions, comparable companies, and source trails. |
 
+## Mobbin pass five: final conversion and truth-surface audit
+
+Run 2026-09-10. The direct Mobbin pages now resolve under `/explore/`; those
+canonical links are recorded below so the interaction references remain
+openable. This pass did not change the Birch mark, type, palette, or Research /
+Commons boundary. It resolved how the product should convert a reader into a
+returning contributor without turning the evidence layer into a social feed.
+
+| # | Direct reference | Observed pattern | Final Birch decision |
+| --- | --- | --- | --- |
+| 34 | [ChatGPT Web research answer](https://mobbin.com/explore/screens/73833b79-1dd5-4354-8fc4-a2e99c33a75e) | Research answer with adjacent source activity. | Keep the answer and evidence rail on one page; do not make Birch look like an unsourced chat transcript. |
+| 35 | [HoneyBook completing setup guide](https://mobbin.com/explore/flows/1922e5d2-1f9c-43c7-82ba-6bbc28fba7d9) | Setup is a visible sequence with completion states. | Explain the account benefit before the magic-link field; show contribution state as pending, needs more, published, declined, or withdrawn. |
+| 36 | [Slite type filter](https://mobbin.com/explore/screens/1593defe-aec1-49d2-abc2-37fc84dbd8ad) | Search results can be segmented by type and filtered explicitly. | Separate research records, source records, accounts, and verified professional perspectives; never collapse them into one “trust” filter. |
+| 37 | [Mintlify documentation screen](https://mobbin.com/explore/screens/22382df2-2420-4b63-b02f-5c309c95dc85) | Persistent page orientation supports long-form reading. | Coverage and company pages keep a local contents rail, dates, truth model, and source path visible. |
+| 38 | [Stripe detail screen](https://mobbin.com/explore/screens/464dcf70-a0d4-4ba9-b23d-ca6ba18e60f5) | Detail views make history, freshness, and metadata first-class. | Company pages and research records expose last reviewed, source dates, revision history, and response state near the record. |
+| 39 | [Confluence similar-items screen](https://mobbin.com/explore/screens/8cf8c9fd-cf5c-473f-b21f-2327ce2c8f02) | A related-items path helps a user continue without losing the current item. | Every answer and thread offers related questions, companies, lines, or sources based on stable subject ids, not popularity. |
+
+### Pass-five lock
+
+The strongest product shape is now fixed: Research-first landing → cited answer
+with source rail → optional Coverage Position → optional Commons context →
+moderated durable account. Signup is action-triggered, not a first-visit gate.
+The generated product mockup is a composition reference only; its browser URL,
+source names, counts, and dates are not production content.
+
+No Mobbin screenshot, logo, copy, or component library is copied into Birch.
+
 ### Figma translation
 
 The existing planning file now has a dedicated page, [Birch / Mobbin references + product

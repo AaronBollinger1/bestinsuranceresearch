@@ -7,6 +7,12 @@ extends `DIRECTION.md`, `BIRCH.md`, `AMBITION.md`, and `HANDOFF.md`; those files
 remain authoritative when a proposed feature conflicts with a rule already
 settled there.
 
+The 10 September final product audit and logic lock is in
+`outputs/BIRCH-FINAL-PRODUCT-AUDIT-2026-09-10.md`. It supersedes the old
+tool-first wording in `POSITIONING.md`: Research is the front door, Coverage
+Position is the optional activation layer, Commons is the attributed context
+layer, and Coverage Lens is a later private service.
+
 The final visual lock is in
 `outputs/BIRCH-FINAL-DESIGN-REFINEMENT-2026-09-09.md`. The recommended legal and
 governance structure is in
