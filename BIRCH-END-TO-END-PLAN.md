@@ -7,6 +7,12 @@ extends `DIRECTION.md`, `BIRCH.md`, `AMBITION.md`, and `HANDOFF.md`; those files
 remain authoritative when a proposed feature conflicts with a rule already
 settled there.
 
+The final visual lock is in
+`outputs/BIRCH-FINAL-DESIGN-REFINEMENT-2026-09-09.md`. The recommended legal and
+governance structure is in
+`outputs/BIRCH-ENTITY-GOVERNANCE-ARCHITECTURE-2026-09-09.md`; both are counsel
+and implementation planning documents, not legal advice.
+
 ## The recommendation in one sentence
 
 Make Birch the fastest way to move from an insurance question to a citable
