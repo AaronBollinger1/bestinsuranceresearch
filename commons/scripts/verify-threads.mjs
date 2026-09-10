@@ -285,10 +285,14 @@ test('an account is not a byline, and a licence badge names its register', () =>
 test('the discussion pages are in the build and say what they are', () => {
 	/*
 	 * The adapter splits the output, and the server half is where a rendered
-	 * page lives. Reading only dist/client silently narrowed a scan once before.
+	 * page lives. Vercel places that half in `.vercel/output/_functions`, while
+	 * the local Node adapter places it in `dist/server`. Reading only the client
+	 * half silently narrowed a scan once before.
 	 */
-	const server = path.join(DIST, 'server');
-	assert.ok(fs.existsSync(server), 'no server build, so the rendered pages cannot be checked');
+	const server = [path.join(DIST, 'server'), path.join(ROOT, '.vercel', 'output', '_functions')].find((candidate) =>
+		fs.existsSync(candidate),
+	);
+	assert.ok(server, 'no server build, so the rendered pages cannot be checked');
 
 	const bundle = [];
 	const walk = (dir) => {

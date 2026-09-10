@@ -1,21 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 
 /**
  * The Commons build.
  *
- * `output: 'static'` with an adapter, which is the important part: every page
- * stays prerendered except the handful that opt out with `prerender = false`.
- * Only sign-in, verify, sign-out and the account page are server-rendered. A
- * report, the standards, the moderation policy and llms.txt are files, and they
- * should be - they do not depend on who is reading.
- *
- * The node adapter rather than the Vercel one, deliberately: it means the whole
- * thing boots with `node dist/server/entry.mjs` and the sign-in flow can be
- * exercised end to end without deploying. Swapping to @astrojs/vercel for
- * deployment is a one-line change and nothing above the adapter cares.
+ * Commons has a static-first build: public research-linked records and policy
+ * pages remain cacheable artifacts, while the handful of pages that opt out
+ * with `prerender = false` are request-time concerns. The Vercel adapter keeps
+ * those routes on the supported Vercel runtime without turning every public
+ * page into a function.
  *
  * The sitemap went in when the property was named, which is when it stopped
  * being a list of URLs on a host that does not resolve. It excludes everything
@@ -40,6 +35,6 @@ export default defineConfig({
 	trailingSlash: 'never',
 	build: { format: 'directory' },
 	output: 'static',
-	adapter: node({ mode: 'standalone' }),
+	adapter: vercel(),
 	integrations: [sitemap({ filter: (page) => !PRIVATE.some((pattern) => pattern.test(page)) })],
 });

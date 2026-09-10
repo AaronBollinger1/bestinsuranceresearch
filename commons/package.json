@@ -12,11 +12,12 @@
     "build": "astro build",
     "preview": "astro preview",
     "verify": "node --experimental-strip-types --test scripts/verify-commons.mjs scripts/verify-auth.mjs scripts/verify-intake.mjs scripts/verify-threads.mjs scripts/verify-verification.mjs scripts/verify-promotions.mjs",
+    "preflight:production": "node scripts/preflight-production.mjs",
     "validate": "npm run check && npm run build && npm run verify"
   },
   "dependencies": {
-    "@astrojs/node": "^11.1.5",
     "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vercel": "^11.0.10",
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "@fontsource/newsreader": "^5.3.0",
     "@fontsource/schibsted-grotesk": "^5.3.0",
