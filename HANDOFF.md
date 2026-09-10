@@ -56,7 +56,7 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | Figures | 19 (`/figures`, the amounts and what moves them) |
 | Modules | 10 live, 272 module rules, 15 cross-module rules |
 | Records signed off | **0.** 172 `under-review`, 4 `corrected`. 176 records now carry a review state |
-| Sources ever re-checked | **13 of 299.** Seven figure-source documents are now re-read; four of the eleven figure-source documents remain first-read only |
+| Sources ever re-checked | **14 of 299.** Eight figure-source documents are now re-read; three of the eleven figure-source documents remain first-read only |
 | Sources no question reaches | 48 |
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
 | Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file |
@@ -398,10 +398,10 @@ give coverage advice, which is the thing that must not happen.
    available. The corpus is already addressable per claim with checksums and a
    JSON companion on every path; a dated release with a stable schema is what
    makes other people's papers and tools cite it.
-2. **A published recheck cadence.** 286 of 299 sources have
+2. **A published recheck cadence.** 285 of 299 sources have
    `lastCheckedBasis: 'access'` — read once, never returned to. An authority
    that never re-reads decays, and the field exists precisely so the site cannot
-   overstate itself. Four dated-figure sources remain in the first-read queue.
+   overstate itself. Three dated-figure sources remain in the first-read queue.
 3. **Wikidata item plus a consistent `sameAs` graph** across all nine
    properties.
 4. **Search Console and Bing verification.** Blocked only on the user generating
@@ -652,10 +652,10 @@ copying a fifth into this one is how that happened. The short version:
    not exist, and everything else is downstream.
 2. **Licensed sign-off.** Brian reading. The instrument is built; no code left.
 3. **Finish the figure-source recheck.** Needs a session that can reach the
-   documents; see the egress note in section 4. 7 of 11 are now rechecked,
-   including the 10 September direct recheck of `cfr-49-370-9-lii`. The
-   remaining 4 are listed in section 4. Then widen the recheck beyond the
-   figures: 286 of 299 sources
+   documents; see the egress note in section 4. 8 of 11 are now rechecked,
+   including the 10 September direct recheck of `usc-49-14706-carmack`. The
+   remaining 3 are listed in section 4. Then widen the recheck beyond the
+   figures: 285 of 299 sources
    still carry only the date somebody read them once.
 4. ~~Give `tools` a `reviewState`~~ **done.** Required on live worksheets by a
    schema refinement and forbidden on unbuilt ones, so the queue counts the 3
