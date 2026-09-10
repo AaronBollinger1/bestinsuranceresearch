@@ -16,6 +16,7 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -356,5 +357,37 @@ test('the name and origin are declared in exactly one place', () => {
 			!body.includes('commons.example'),
 			`${path.relative(ROOT, file)} hardcodes the placeholder origin instead of reading it from config/commons.ts`,
 		);
+	}
+});
+
+test('the production preflight pins the two public origins', () => {
+	const script = path.join(ROOT, 'scripts/preflight-production.mjs');
+	const env = {
+		...process.env,
+		COMMONS_ENV: 'production',
+		COMMONS_DATABASE_URL: 'postgresql://commons:pass@localhost:5432/commons',
+		RESEND_API_KEY: 're_test_key',
+		COMMONS_MAIL_FROM: 'Birch Commons <hello@birch.insure>',
+		COMMONS_MODERATORS: 'moderator@example.com',
+		PUBLIC_COMMONS_ORIGIN: 'https://commons.birch.insure',
+		PUBLIC_RECORD_ORIGIN: 'https://birch.insure',
+	};
+
+	const run = (overrides = {}) =>
+		spawnSync(process.execPath, [script], {
+			env: { ...env, ...overrides },
+			encoding: 'utf8',
+		});
+
+	const valid = run();
+	assert.equal(valid.status, 0, valid.stderr || valid.stdout);
+
+	for (const [name, value] of [
+		['PUBLIC_COMMONS_ORIGIN', 'https://preview.example'],
+		['PUBLIC_RECORD_ORIGIN', 'https://record.example'],
+	]) {
+		const invalid = run({ [name]: value });
+		assert.notEqual(invalid.status, 0, `${name} drifted from the Birch production origin`);
+		assert.match(invalid.stderr, new RegExp(`${name} must be`));
 	}
 });

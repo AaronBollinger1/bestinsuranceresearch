@@ -40,7 +40,10 @@ site at `birch.insure`. No production alias should be changed by this app.
    ```
 
    The preflight never prints secrets and does not claim that a database or
-   mail provider has been reached.
+   mail provider has been reached. In production it also requires the public
+   origins to remain exactly `https://commons.birch.insure` and
+   `https://birch.insure`, so a preview or accidental alternate host cannot
+   become the canonical cross-link target.
 5. Deploy Commons as a preview and complete the smoke test below. Only after
    that should the Research project set `PUBLIC_COMMONS_READY=true` and expose
    public Commons links.

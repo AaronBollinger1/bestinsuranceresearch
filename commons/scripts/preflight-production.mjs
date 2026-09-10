@@ -8,6 +8,11 @@ const required = [
 	'PUBLIC_RECORD_ORIGIN',
 ];
 
+const expectedOrigins = {
+	PUBLIC_COMMONS_ORIGIN: 'https://commons.birch.insure',
+	PUBLIC_RECORD_ORIGIN: 'https://birch.insure',
+};
+
 const missing = required.filter((name) => !process.env[name]?.trim());
 const problems = [];
 
@@ -24,6 +29,18 @@ function requireHttps(name) {
 		if (url.username || url.password) problems.push(`${name} must not contain credentials`);
 	} catch {
 		problems.push(`${name} must be a valid URL`);
+	}
+}
+
+function requireExpectedOrigin(name, expected) {
+	const value = process.env[name];
+	if (!value) return;
+	try {
+		if (new URL(value).origin !== expected) {
+			problems.push(`${name} must be ${expected} in production`);
+		}
+	} catch {
+		/* requireHttps reports malformed URLs without duplicating the detail. */
 	}
 }
 
@@ -64,6 +81,7 @@ function requireModerators(name) {
 
 requireHttps('PUBLIC_COMMONS_ORIGIN');
 requireHttps('PUBLIC_RECORD_ORIGIN');
+for (const [name, expected] of Object.entries(expectedOrigins)) requireExpectedOrigin(name, expected);
 requirePostgresUrl('COMMONS_DATABASE_URL');
 requireFromAddress('COMMONS_MAIL_FROM');
 requireModerators('COMMONS_MODERATORS');
