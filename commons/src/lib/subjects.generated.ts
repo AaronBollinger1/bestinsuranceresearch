@@ -20,6 +20,12 @@ export const GENERATED_SUBJECTS: Subject[] = [
 		"recordPath": "/companies/california-earthquake-authority"
 	},
 	{
+		"id": "company:farmers-insurance-exchange",
+		"kind": "company",
+		"name": "Farmers Insurance Exchange",
+		"recordPath": "/companies/farmers-insurance-exchange"
+	},
+	{
 		"id": "company:naic",
 		"kind": "company",
 		"name": "National Association of Insurance Commissioners",
