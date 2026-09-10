@@ -30,12 +30,11 @@ const isCurrent = (href: string) => {
 };
 
 /*
- * Noindex while the property is unnamed and unlaunched. The origin is a
- * placeholder, so every canonical URL on this build points somewhere that does
- * not resolve; indexing that would be worse than not existing. Removing this
- * is part of naming the property, not a separate decision.
+ * A named Preview is still closed to crawlers. Naming the origin and opening
+ * the public index are separate release decisions; the latter happens only
+ * after the database, mail, moderation and smoke-test gates are complete.
  */
-const unlaunched = commons.origin.includes('example');
+const unlaunched = !commons.publicReady;
 ---
 
 <!doctype html>

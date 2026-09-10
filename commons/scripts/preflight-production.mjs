@@ -1,5 +1,6 @@
 const required = [
 	'COMMONS_ENV',
+	'PUBLIC_COMMONS_READY',
 	'COMMONS_DATABASE_URL',
 	'RESEND_API_KEY',
 	'COMMONS_MAIL_FROM',
@@ -18,6 +19,10 @@ const problems = [];
 
 if (process.env.COMMONS_ENV && process.env.COMMONS_ENV !== 'production') {
 	problems.push('COMMONS_ENV must equal production');
+}
+
+if (process.env.PUBLIC_COMMONS_READY && !['true', 'false'].includes(process.env.PUBLIC_COMMONS_READY)) {
+	problems.push('PUBLIC_COMMONS_READY must equal true or false');
 }
 
 function requireHttps(name) {

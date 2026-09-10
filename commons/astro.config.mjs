@@ -12,13 +12,15 @@ import sitemap from '@astrojs/sitemap';
  * those routes on the supported Vercel runtime without turning every public
  * page into a function.
  *
- * The sitemap went in when the property was named, which is when it stopped
- * being a list of URLs on a host that does not resolve. It excludes everything
+ * The sitemap is emitted only when the explicit public-ready flag is true,
+ * which is after the property has a real deployment and has passed its release
+ * gates. It excludes everything
  * behind a session and everything that only exists for one person: sign-in, the
  * account page, the intake form and the moderation queue. A crawler finding a
  * moderation queue in a sitemap is a bad look even when it correctly 404s.
  */
 const PRIVATE = [/\/sign-in/, /\/account/, /\/moderate/, /\/contribute\/(new|sent|withdraw)/, /\/threads\/new/, /\/healthz/];
+const publicReady = process.env.PUBLIC_COMMONS_READY === 'true';
 export default defineConfig({
 	/*
 	 * Kept in step with `origin` in src/config/commons.ts by an assertion rather
@@ -36,5 +38,5 @@ export default defineConfig({
 	build: { format: 'directory' },
 	output: 'static',
 	adapter: vercel(),
-	integrations: [sitemap({ filter: (page) => !PRIVATE.some((pattern) => pattern.test(page)) })],
+	integrations: [sitemap({ filter: (page) => publicReady && !PRIVATE.some((pattern) => pattern.test(page)) })],
 });

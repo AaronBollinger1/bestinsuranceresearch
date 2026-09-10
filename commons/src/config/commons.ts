@@ -25,6 +25,13 @@
  */
 export const PLACEHOLDER_NAME = false;
 
+/*
+ * Naming the origin and opening it to crawlers are different decisions. A
+ * named Preview is useful for review, but it must not become a public source
+ * before the database, mail, moderation and smoke-test gates are complete.
+ */
+const publicReady = import.meta.env.PUBLIC_COMMONS_READY === 'true';
+
 export const commons = {
 	/**
 	 * Chosen 9 September 2026. Measured against the three constraints in
@@ -37,6 +44,7 @@ export const commons = {
 	name: 'Birch',
 	brandDescriptor: 'Community, carefully moderated',
 	origin: import.meta.env.PUBLIC_COMMONS_ORIGIN || 'https://commons.birch.insure',
+	publicReady,
 
 	tagline: 'What actually happened, from the people it happened to and the people who handle it.',
 	description:

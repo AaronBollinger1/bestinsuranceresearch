@@ -274,31 +274,31 @@ test('the prohibition is stated on the pages a contributor actually reads', () =
 
 test('indexing matches whether the property is actually named', () => {
 	/*
-	 * Both directions, because the interesting one changed. While the origin was
-	 * a placeholder every canonical URL pointed at a host that did not resolve,
-	 * and indexing that is worse than not existing. Now that it is named, the
-	 * risk inverts: a property that stays noindex after launch is one nobody
-	 * finds, and the flag is easy to leave set because nothing complains.
+	 * Naming the origin and opening it to crawlers are separate decisions. The
+	 * default build is a useful private Preview, so it stays noindex and emits
+	 * Disallow until the database, mail, moderation and smoke-test gates have
+	 * passed. A launch build opts in explicitly with PUBLIC_COMMONS_READY=true.
 	 */
 	const config = read(path.join(ROOT, 'src/config/commons.ts'));
-	const unnamed = /commons\.example/.test(config);
+	const ready = process.env.PUBLIC_COMMONS_READY === 'true';
 	const robots = read(path.join(DIST, 'robots.txt'));
 
-	if (unnamed) {
-		assert.match(robots, /Disallow: \//, 'robots.txt does not close an unlaunched origin');
+	if (!ready) {
+		assert.match(config, /PUBLIC_COMMONS_READY === 'true'/, 'the public indexing flag is not explicit');
+		assert.match(robots, /Disallow: \//, 'robots.txt does not close a private Preview');
 		for (const file of htmlFiles) {
-			assert.match(read(file), /noindex/, `${path.relative(DIST, file)} is indexable while the origin is a placeholder`);
+			assert.match(read(file), /noindex/, `${path.relative(DIST, file)} is indexable while Commons is not ready`);
 		}
 		return;
 	}
 
-	assert.doesNotMatch(robots, /Disallow: \/\s*$/m, 'the property is named but robots.txt still closes it');
+	assert.doesNotMatch(robots, /Disallow: \/\s*$/m, 'the release is ready but robots.txt still closes it');
 	assert.match(robots, /Sitemap:/, 'a named property advertises no sitemap');
 	for (const file of htmlFiles) {
 		assert.doesNotMatch(
 			read(file),
 			/noindex/,
-			`${path.relative(DIST, file)} is still noindex although the property is named`,
+			`${path.relative(DIST, file)} is still noindex although Commons is ready`,
 		);
 	}
 });
@@ -365,6 +365,7 @@ test('the production preflight pins the two public origins', () => {
 	const env = {
 		...process.env,
 		COMMONS_ENV: 'production',
+		PUBLIC_COMMONS_READY: 'false',
 		COMMONS_DATABASE_URL: 'postgresql://commons:pass@localhost:5432/commons',
 		RESEND_API_KEY: 're_test_key',
 		COMMONS_MAIL_FROM: 'Birch Commons <hello@birch.insure>',
@@ -381,6 +382,9 @@ test('the production preflight pins the two public origins', () => {
 
 	const valid = run();
 	assert.equal(valid.status, 0, valid.stderr || valid.stdout);
+	const invalidReady = run({ PUBLIC_COMMONS_READY: 'yes' });
+	assert.notEqual(invalidReady.status, 0, 'PUBLIC_COMMONS_READY accepted a non-boolean value');
+	assert.match(invalidReady.stderr, /PUBLIC_COMMONS_READY must equal true or false/);
 
 	for (const [name, value] of [
 		['PUBLIC_COMMONS_ORIGIN', 'https://preview.example'],

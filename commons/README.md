@@ -11,6 +11,10 @@ Commons is a static-first Astro app with request-time routes using the official
 Vercel adapter. Create a separate Vercel project for this directory; do not attach it to the existing
 `bestinsuranceresearch` Research project.
 
+The release decision is tracked in the repository-level
+[`COMMONS-RELEASE-GATE.md`](../COMMONS-RELEASE-GATE.md). It is a readiness
+contract, not approval to launch.
+
 Recommended Vercel project settings:
 
 - Project name: `birch-commons`
@@ -33,6 +37,7 @@ site at `birch.insure`. No production alias should be changed by this app.
    `COMMONS_MAIL_FROM` domain must be one Resend has approved.
 3. Add the variables in `.env.example` to the Vercel Production environment.
    Use at least one real mailbox in `COMMONS_MODERATORS`.
+   Keep `PUBLIC_COMMONS_READY=false` until the smoke test below is complete.
 4. Run the shape-only gate locally with values from a secure environment:
 
    ```sh
@@ -44,9 +49,11 @@ site at `birch.insure`. No production alias should be changed by this app.
    origins to remain exactly `https://commons.birch.insure` and
    `https://birch.insure`, so a preview or accidental alternate host cannot
    become the canonical cross-link target.
-5. Deploy Commons as a preview and complete the smoke test below. Only after
-   that should the Research project set `PUBLIC_COMMONS_READY=true` and expose
-   public Commons links.
+5. Deploy Commons as a preview and complete the smoke test below. The Commons
+   build itself stays noindex and emits `Disallow: /` while
+   `PUBLIC_COMMONS_READY=false`; its sitemap is empty. Only after that should
+   the Commons deployment set `PUBLIC_COMMONS_READY=true`, and only after the
+   same review should the Research project set its own flag to expose the link.
 
 The request-time `/healthz` route is a liveness check for deployment tooling.
 It returns `200` only when the configured store is reachable and the production
@@ -71,8 +78,8 @@ Use a real non-production moderator mailbox and a test account to verify:
 
 ## Release gate
 
-The public Research site currently defaults to `PUBLIC_COMMONS_READY=false`.
-That is intentional. Do not flip it merely because a Vercel preview exists:
+Both properties currently default to `PUBLIC_COMMONS_READY=false`. That is
+intentional. Do not flip either flag merely because a Vercel preview exists:
 the database, Resend, moderator access, `commons.birch.insure` DNS/SSL, and the smoke
 test all need to be complete first. Keep the Research production promotion as
 a separate, explicit review action.
