@@ -41,10 +41,18 @@ The other two directions remain useful planning references:
 - **Option 03 / Two rooms** is the clearest future product-shell direction once
   Research and Commons are both fully populated.
 
-The exploration board and the three downstream surface mockups are in the
+The exploration board, the linked Mobbin reference translation, and the four
+downstream surface compositions are in the
 [Birch Research + Commons Figma exploration file](https://www.figma.com/design/okHFaikGZGx1MJmvUgTWHj).
 The supplied bird mark is used as an exact image asset; it is not redrawn or
 recolored.
+
+The latest Figma additions are the `Birch / Mobbin references + product
+blueprint` page (root frame `30:3`) and the `Birch / Core surface compositions`
+page. The latter contains editable artboards for `01 / Landing + ask gate`,
+`02 / Signup / magic link`, `03 / Company dossier / no score`, and `04 /
+Contribution / redact and review`. The Mobbin references are direct links and
+annotations only; they are not copied product screenshots or brand assets.
 
 Higgsfield is connected and permissioned, but this workspace does not expose a
 Higgsfield generation action. No Figma frame or raster preview is being

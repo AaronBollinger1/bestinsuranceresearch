@@ -244,3 +244,45 @@ Nothing was rejected outright, which is itself worth recording: the three-pass t
 27 references with one rejection (Ghost's segmented control, ref 18). A pass with no rejections is
 a sign the queries were too close to the answer already chosen, so the next pass should deliberately
 search shapes this site does not currently use.
+
+## Mobbin pass four: Birch product system
+
+Run 2026-09-09 against the public Mobbin MCP and selected public screen/flow pages. This pass
+was for the next product surface set rather than the existing research-only site: signup,
+forums, company dossiers, professional contributions, and evidence-led feedback. The references
+were reviewed read-only in the browser and translated into Figma annotations. No Mobbin image or
+brand asset was imported.
+
+| # | Reference | Pattern taken | Birch application |
+| --- | --- | --- | --- |
+| 28 | [ChatGPT Web / research answer](https://mobbin.com/screens/73833b79-1dd5-4354-8fc4-a2e99c33a75e) | Source activity can stay beside the answer without interrupting reading. | A persistent source rail shows claim links, source posture, freshness, and related records. |
+| 29 | [HoneyBook / setup guide](https://mobbin.com/flows/1922e5d2-1f9c-43c7-82ba-6bbc28fba7d9) | Progressive disclosure and completion states reduce setup anxiety. | Read without an account; ask for a magic-link account only when a visitor saves, follows, posts, or shares. |
+| 30 | [Slite / type filter](https://mobbin.com/screens/1593defe-aec1-49d2-abc2-37fc84dbd8ad) | Verification should be a visible filter, not an unexplained trust badge. | Filter documented sources, verified professional perspectives, and community accounts independently. |
+| 31 | [Mintlify / documentation rail](https://mobbin.com/screens/22382df2-2420-4b63-b02f-5c309c95dc85) | A long-form information product needs persistent orientation. | Coverage pages keep an on-page rail for contents, definitions, sources, dates, and next questions. |
+| 32 | [Stripe / detail timeline](https://mobbin.com/screens/464dcf70-a0d4-4ba9-b23d-ca6ba18e60f5) | Freshness and change history belong in the record view. | Company and research records show last reviewed, source dates, revisions, and response history. |
+| 33 | [Confluence / related searches](https://mobbin.com/screens/8cf8c9fd-cf5c-473f-b21f-2327ce2c8f02) | A useful next path can be suggested without taking over the current task. | Every answer and thread offers adjacent coverage questions, comparable companies, and source trails. |
+
+### Figma translation
+
+The existing planning file now has a dedicated page, [Birch / Mobbin references + product
+blueprint](https://www.figma.com/design/okHFaikGZGx1MJmvUgTWHj), with the root frame
+`07 / Reference patterns + product blueprint` (`30:3`). It contains six linked reference cards,
+six buildable Birch surface cards, and a non-negotiables strip. The surface cards lock the
+following product model:
+
+- **Landing + signup:** `Ask Birch` is the primary action; `Explore the research` is secondary;
+  `Browse Commons` is tertiary. Signup is delayed until an account is useful.
+- **Research answer:** direct explanation first, source rail second, with claim-level evidence and
+  a reviewed date. An AI draft is never a published fact without the research gate.
+- **Commons thread:** attributable, revision-visible, reportable, and never silently rewritten.
+  Withdrawal produces a tombstone rather than a disappearing citation target.
+- **Company dossier:** documented record, community accounts, and official responses are separate
+  bands. There is no composite star score or paid ranking.
+- **Professional/partner contribution:** role, jurisdiction, license or credential, employer,
+  compensation, and conflicts are explicit. A professional perspective is a perspective, not a
+  verdict.
+- **Feedback:** structured experience reports carry product, date, state, claim, evidence, outcome,
+  and resolution. Ratings may be summarized as evidence-backed signals, never as a single oracle.
+
+The Figma board is a planning artifact and follows the implementation tokens in
+`src/styles/tokens.css`; it is not a second token authority.
