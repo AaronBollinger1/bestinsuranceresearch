@@ -1,9 +1,10 @@
 # Birch Research
 
-Birch is a free insurance research and community estate. The Research room
-publishes answers, coverage context, figures, tools, and the sources behind
-them. The separate Commons room at `birch.insure` is for moderated discussion,
-case reports, and practitioner notes when verification is available.
+Birch is a free insurance research and community estate. The primary Research
+product at `birch.insure` publishes answers, coverage context, figures, tools,
+and the sources behind them. The separate Commons room at
+`commons.birch.insure` is for moderated discussion, case reports, and
+practitioner notes when verification is available.
 
 The product is operated by WJB Services, Inc. dba Bollinsure Insurance Services,
 a California insurance brokerage. That relationship is disclosed on the
@@ -58,7 +59,7 @@ not supplied.
 | --- | --- |
 | `PUBLIC_SITE_ENV` | `preview` by default or `production`; controls indexing and analytics |
 | `PUBLIC_SITE_ORIGIN` | Research canonical origin |
-| `PUBLIC_COMMONS_ORIGIN` | Commons canonical origin, default `https://birch.insure` |
+| `PUBLIC_COMMONS_ORIGIN` | Commons canonical origin, default `https://commons.birch.insure` |
 | `PUBLIC_COMMONS_READY` | Set to `true` only after the separate Commons deployment, database, mailer, and moderation gate are live; defaults to `false` |
 | `PUBLIC_BOLLINSURE_ORIGIN` | Optional licensed-help handoff destination |
 | `PUBLIC_BUILD_DATE` | Optional reproducible build date |

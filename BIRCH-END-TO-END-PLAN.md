@@ -63,8 +63,9 @@ annotations only; they are not copied product screenshots or brand assets.
 The next infrastructure slice is now wired in `commons/`: the app uses the
 official `@astrojs/vercel` SSR adapter, has a production environment example,
 and has a secret-safe `preflight:production` gate. The deployment target is a
-separate Vercel project named `birch-commons`, with `birch.insure` as its
-eventual origin. The Research-to-Commons public link remains off until the
+separate Vercel project named `birch-commons`, with `commons.birch.insure` as
+its eventual origin. `birch.insure` is the primary Research product. The
+Research-to-Commons public link remains off until the
 external Postgres, Resend, moderator, DNS/SSL, and smoke-test gates are
 complete. See `commons/README.md` for the runbook.
 

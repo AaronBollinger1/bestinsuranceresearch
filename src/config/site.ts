@@ -12,8 +12,13 @@ export const siteConfig = {
 	tagline: 'Understand the policy. Check the source. Share what happened.',
 	description:
 		'Free insurance research and community conversation. Read sourced answers, compare the context around a policy, and share what happened without turning a person’s experience into a verdict.',
-	origin: import.meta.env.PUBLIC_SITE_ORIGIN || 'https://bestinsuranceresearch.com',
-	communityOrigin: import.meta.env.PUBLIC_COMMONS_ORIGIN || 'https://birch.insure',
+	/* Birch is now the primary product and canonical public origin. The former
+	 * Best Insurance Research name remains a migration/redirect concern, not a
+	 * user-facing identity. */
+	origin: import.meta.env.PUBLIC_SITE_ORIGIN || 'https://birch.insure',
+	/* The social room remains separate so accounts, moderation, and lived
+	 * experience never get confused with the citable Research record. */
+	communityOrigin: import.meta.env.PUBLIC_COMMONS_ORIGIN || 'https://commons.birch.insure',
 	/**
 	 * The Research room must not advertise a Commons origin until the separate
 	 * application has a working deployment, database, mailer, and moderation

@@ -1,6 +1,8 @@
 # The Commons
 
-Settled 8 September 2026. Layer 3 of `AMBITION.md`, specified end to end.
+Settled 8 September 2026; origin refined 10 September 2026. Layer 3 of
+`AMBITION.md`, specified end to end. The current product lock is in
+`BIRCH-EIGHT-FIGURE-PRODUCT-PLAN.md`.
 
 `AMBITION.md` said the Commons goes on "a separate origin" and never said which,
 which left the largest piece of the ambition unbuilt for want of a decision
@@ -13,7 +15,7 @@ Two properties, one estate, and the division is the whole design.
 
 | | **The Record** | **The Commons** |
 | --- | --- | --- |
-| Origin | `bestinsuranceresearch.com` | a separate origin, named below |
+| Origin | `birch.insure` | `commons.birch.insure` |
 | What it holds | what the rule is, what the form says, what the numbers show | what actually happened to people, and what named practitioners say about it |
 | Truth model | every claim cites a document | attributed human account, moderated before publication |
 | Agency branding, licence number | yes | **never** |

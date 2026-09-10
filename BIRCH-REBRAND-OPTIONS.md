@@ -1,6 +1,6 @@
 # Birch rebrand options
 
-Decision record: 9 September 2026
+Decision record: 10 September 2026
 
 The supplied `birch-final-favicon-package` is the canonical mark. It is used
 unchanged; the interface does not redraw it, recolour it, or put it in a badge.
@@ -10,11 +10,11 @@ layout only and never replace the supplied logo asset.
 
 ## Option A — Birch estate, two clear rooms (selected)
 
-`Birch Research` remains the citable evidence room and `Birch` is the public
-umbrella. `birch.insure` is the independent community room. The two origins
-share the bird, type system, blue action language, and navigation vocabulary,
-but the Commons keeps its cooler paper and has no agency branding or evidence
-status colors.
+`Birch Research` is the citable primary product at `birch.insure` and `Birch`
+is the public umbrella. `commons.birch.insure` is the independent community
+room. The two origins share the bird, type system, blue action language, and
+navigation vocabulary, but the Commons keeps its cooler paper and has no agency
+branding or evidence status colors.
 
 This is the current implementation because it preserves the important boundary:
 
@@ -69,6 +69,8 @@ hierarchy.
   Commons entry panels. It explains the Birch umbrella most clearly, but its
   imagery is more expressive than the research surface needs to be.
 
-Product-specific forums, threads, and experience pages remain unchanged while
-this aesthetic decision is made. The generated images are review references,
-not production logo or illustration assets.
+The current implementation lock and full feature sequence are in
+`BIRCH-EIGHT-FIGURE-PRODUCT-PLAN.md`. Product-specific forums, threads, and
+experience pages remain a separate build behind the Commons readiness gate. The
+generated images are review references, not production logo or illustration
+assets.

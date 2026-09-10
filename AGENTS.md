@@ -33,8 +33,8 @@ fix was believed.
 
 ```
 npm run validate                       # preview posture: check + build + tests
-PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://bestinsuranceresearch.com npx astro build
-PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://bestinsuranceresearch.com \
+PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://birch.insure npx astro build
+PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://birch.insure \
   node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs
 npm run audit:onpage                   # production build only, by design
 cd commons && npm run validate         # Birch, the community: its own suite

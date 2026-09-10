@@ -1,23 +1,26 @@
 # Birch
 
-Written 9 September 2026, on the owner's instruction to rebrand BestInsurance
-Research as **Birch** - one insurance property carrying both the cited evidence
-and validated human discussion: forum threads, carrier pages, practitioner
-contributions.
+Written 9 September 2026 and refined 10 September 2026, on the owner's
+instruction to rebrand BestInsurance Research as **Birch** - one product family
+carrying both the cited evidence and validated human discussion: forum threads,
+company pages, practitioner contributions, and research.
 
-This supersedes `COMMONS.md` section 10 on naming. It does **not** supersede
-section 2, and the difference between those two things is the whole document.
+The current primary-origin, disclosure, design, and feature lock is
+`BIRCH-EIGHT-FIGURE-PRODUCT-PLAN.md`; this file remains the trust-boundary
+record. It supersedes `COMMONS.md` section 10 on naming but does not relax the
+separation between evidence and user-contributed prose.
 
 ---
 
 ## 1. The decision
 
-**Birch is the brand, and it covers everything.** The research corpus and the
-community are one property under one name, one wordmark, one navigation. A
-reader arrives at Birch, asks a question, reads a cited answer, and finds
-underneath it what practitioners and policyholders have said about the same
-subject. That is the product, and splitting it across two names was making it
-two products.
+**Birch is the brand, and it covers the product family.** Birch Research at
+`birch.insure` is the primary public product. Birch Commons at
+`commons.birch.insure` is the separately moderated discussion room. They share
+one name, bird mark, vocabulary, and design system, while keeping different
+truth models and account boundaries. A reader arrives at Birch, asks a
+question, reads a cited answer, and can continue to attributed experience only
+when that second room is ready.
 
 The name clears the three constraints `COMMONS.md` set and still does: it is not
 a verb of selling, it claims no official standing, and it is a place rather than
@@ -64,22 +67,18 @@ riskiest part of the change with the least product value.
 
 | | Origin | Carries |
 | --- | --- | --- |
-| **Birch Research** - the evidence layer | `bestinsuranceresearch.com` today | Cited corpus, 299 sources, the operator's legal name and licence number on every page. No accounts, no forms that post, nothing collected |
-| **Birch** - the community | `birch.insure` | Accounts, case reports, threads, moderation. No agency branding, no licence number |
+| **Birch Research** - the evidence layer | `birch.insure` | Cited corpus, 299 sources, the operator's legal name and licence number on every page. No accounts, no forms that post, nothing collected |
+| **Birch Commons** - the community | `commons.birch.insure` | Accounts, case reports, threads, moderation. No agency branding, no licence number |
 
 **The origin is a DNS decision and it is the owner's.** Three options, in the
 order I would take them:
 
-1. **Leave the evidence layer where it is and rebrand the name only.** Zero
-   migration risk, keeps whatever authority the domain has accumulated, and the
-   two layers cross-link under one wordmark. This is what is being built now.
-2. **Move it to `research.birch.insure`** once the community is real. One
-   registrable domain, still two origins, and the reader sees one property. This
-   is the intended end state.
-3. **Acquire a `.com`.** `.insure` is a TLD carriers and agencies buy, and this
-   property's value is being visibly independent of both. The reservation
-   recorded in `COMMONS.md` section 10 stands. Worth taking as an upgrade if the
-   word is obtainable.
+1. **Use `birch.insure` as the Research product now.** This is the current
+   implementation target and the public-facing brand decision.
+2. **Use `commons.birch.insure` for the social room.** It is a distinct origin
+   with its own database, moderation owner, and readiness gate.
+3. **Acquire a `.com` only as a future migration.** It is not needed to prove
+   the product and should not delay the Research launch.
 
 Nothing in the codebase should hardcode the choice. The Record's origin is one
 value in `src/config/site.ts`; the community's is one value in

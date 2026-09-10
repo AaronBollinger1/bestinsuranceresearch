@@ -197,7 +197,7 @@ test('every page has exactly one self-referential canonical', () => {
 		assert.ok(href, `${routeOf(file)} has no canonical href`);
 		const url = new URL(href);
 		assert.equal(url.pathname, routeOf(file) === '/' ? '/' : routeOf(file), `${routeOf(file)} canonical points elsewhere: ${href}`);
-		assert.ok(!href.endsWith('/') || href.endsWith('.com/'), `${routeOf(file)} canonical has a trailing slash`);
+		assert.ok(!href.endsWith('/') || url.pathname === '/', `${routeOf(file)} canonical has a trailing slash`);
 	}
 });
 
@@ -220,10 +220,11 @@ test('every page has exactly one self-referential canonical', () => {
  * build that forgets to drop noindex fails instead of shipping.
  */
 const SITE_ENV = process.env.PUBLIC_SITE_ENV === 'production' ? 'production' : 'preview';
+const SITE_ORIGIN = (process.env.PUBLIC_SITE_ORIGIN || 'https://birch.insure').replace(/\/+$/, '');
 const COMMONS_READY = process.env.PUBLIC_COMMONS_READY === 'true';
 
 test('research never advertises an unready Commons origin', () => {
-	const communityHref = (process.env.PUBLIC_COMMONS_ORIGIN || 'https://birch.insure').replace(/\/+$/, '');
+	const communityHref = (process.env.PUBLIC_COMMONS_ORIGIN || 'https://commons.birch.insure').replace(/\/+$/, '');
 	const advertised = htmlFiles.filter((file) => read(file).includes(`href="${communityHref}`));
 	if (COMMONS_READY) {
 		assert.ok(advertised.length > 0, 'Commons is marked ready but no Research CTA advertises it');
@@ -3545,7 +3546,7 @@ test('every recorded change reaches the feed, and nothing else does', () => {
 	const inFeed = new Set(changeFeed.recorded.map((c) => `${c.kind}:${c.url}`));
 
 	for (const source of sources) {
-		const url = `https://bestinsuranceresearch.com/sources/${source.id}`;
+		const url = `${SITE_ORIGIN}/sources/${source.id}`;
 		if (source.data.status !== 'active') {
 			const kind = source.data.status === 'not-adopted' ? 'not-adopted' : source.data.status;
 			assert.ok(
@@ -3563,7 +3564,7 @@ test('every recorded change reaches the feed, and nothing else does', () => {
 
 	/* And the feed invents nothing: every entry resolves to a page in the build. */
 	for (const entry of changeFeed.recorded) {
-		const route = entry.url.replace('https://bestinsuranceresearch.com', '').split('#')[0];
+		const route = entry.url.replace(SITE_ORIGIN, '').split('#')[0];
 		assert.ok(
 			fs.existsSync(path.join(DIST, route.slice(1), 'index.html')) ||
 				fs.existsSync(path.join(DIST, `${route.slice(1)}.html`)),

@@ -37,7 +37,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CONTENT = path.join(ROOT, 'src/content');
 const DATASET = path.join(ROOT, 'public/dataset');
 
-const ORIGIN = 'https://bestinsuranceresearch.com';
+const ORIGIN = 'https://birch.insure';
 
 /** The shape of a release. Bumped when a consumer would have to change code. */
 const SCHEMA_VERSION = 1;

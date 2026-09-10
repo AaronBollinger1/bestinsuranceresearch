@@ -63,6 +63,7 @@ const featured = FEATURED.map((slug) => corpus.questionBySlug.get(slug)).filter(
 );
 const featuredQuestions = featured.length >= 4 ? featured : corpus.questions.slice(0, 6);
 const examples = featuredQuestions.slice(0, 5).map((q) => q.data.question);
+const previewQuestion = featuredQuestions[0];
 
 const recent = recentlyReviewed(corpus, 6);
 
@@ -312,6 +313,53 @@ const jsonLd = graph(organization(), website());
 					<a class="btn btn-secondary btn-sm" href="/start">Open the California desk <ArrowRight size={15} aria-hidden="true" /></a>
 				</div>
 			</div>
+
+			<section class="home-product-sequence" aria-labelledby="sequence-title">
+				<div class="home-product-sequence-head">
+					<div>
+						<span class="eyebrow">The Birch loop</span>
+						<h2 id="sequence-title">A better insurance answer has a next move.</h2>
+					</div>
+					<p>Birch turns uncertainty into a small, repeatable research path: ask plainly, inspect the evidence, then add context only when it can be labelled honestly.</p>
+				</div>
+
+				<div class="home-product-sequence-grid">
+					<div class="home-sequence-list" aria-label="The Birch research loop">
+						<a class="home-sequence-step" href="/ask">
+							<span class="home-sequence-number">01</span>
+							<span class="home-sequence-copy"><strong>Ask in plain language</strong><span>Begin with the question you would actually ask a person.</span></span>
+							<ArrowRight size={15} aria-hidden="true" />
+						</a>
+						<a class="home-sequence-step" href="/sources">
+							<span class="home-sequence-number">02</span>
+							<span class="home-sequence-copy"><strong>Open the source</strong><span>See the publisher, date, and exact claims a record supports.</span></span>
+							<ArrowRight size={15} aria-hidden="true" />
+						</a>
+						<a class="home-sequence-step" href="/contribute">
+							<span class="home-sequence-number">03</span>
+							<span class="home-sequence-copy"><strong>Improve the context</strong><span>Suggest a correction or draft an experience without turning it into a verdict.</span></span>
+							<ArrowRight size={15} aria-hidden="true" />
+						</a>
+					</div>
+
+					{
+						previewQuestion && (
+							<aside class="home-sequence-preview" aria-label="Cited Birch answer preview">
+								<div class="home-sequence-preview-top">
+									<span class="eyebrow">A Birch answer</span>
+									<span class="status status-plain">{previewQuestion.data.sourceIds.length} sources</span>
+								</div>
+								<p class="home-sequence-question">{previewQuestion.data.question}</p>
+								<p class="home-sequence-answer">{excerpt(stripMarkers(previewQuestion.data.shortAnswer), 235)}</p>
+								<div class="home-sequence-preview-foot">
+									<span class="meta">{shortList(previewQuestion.data.lines)} · {previewQuestion.data.states.join(', ') || 'U.S. context'}</span>
+									<a href={`/questions/${previewQuestion.id}`}>Read the cited answer <ArrowRight size={14} aria-hidden="true" /></a>
+								</div>
+							</aside>
+						)
+					}
+				</div>
+			</section>
 		</div>
 	</section>
 

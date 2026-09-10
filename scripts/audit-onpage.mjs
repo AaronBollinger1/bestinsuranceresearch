@@ -41,7 +41,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const ROOT = 'dist';
-const ORIGIN = (process.env.PUBLIC_SITE_ORIGIN || 'https://bestinsuranceresearch.com').replace(/\/$/, '');
+const ORIGIN = (process.env.PUBLIC_SITE_ORIGIN || 'https://birch.insure').replace(/\/$/, '');
 const MIN_DESCRIPTION = 50;
 const asJson = process.argv.includes('--json');
 
@@ -114,7 +114,7 @@ if (pages.length > 0 && indexable.length === 0) {
 	console.error(
 		'every page carries noindex, so this is a preview build and there is nothing to audit.\n' +
 			'Rebuild as production first:\n' +
-			'  PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://bestinsuranceresearch.com npx astro build',
+			'  PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://birch.insure npx astro build',
 	);
 	process.exit(2);
 }

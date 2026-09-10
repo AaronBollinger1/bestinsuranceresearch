@@ -15,7 +15,9 @@ What that ruled out, deliberately:
 - gradient orbs, bokeh, glassmorphism, and SVG hero illustrations;
 - oversized marketing headings on a page whose job is to be a working surface;
 - decorative cards, cards inside cards, and pill-shaped everything;
-- a looping video or animation anywhere near the LCP element;
+- a looping video or animation anywhere near the LCP element; shell transitions
+  are allowed only for navigation, disclosure, onboarding, and non-claim preview
+  states;
 - a single-hue theme in beige, purple, blue-purple, dark slate, or orange-brown.
 
 What it ruled in:
@@ -177,8 +179,9 @@ It contains no email field, no phone field, no account prompt, and no quote call
 
 ## Motion
 
-Subtle CSS only, on four things: focus, disclosure, state change, and continuity. Durations are
-120ms, 180ms, and 240ms on one shared easing curve.
+Subtle CSS only, on navigation, focus, disclosure, state change, and continuity. Durations are
+120ms, 180ms, 240ms, and one 360ms menu/preview reveal on two shared easing curves. The answer,
+claim, source, and review layers remain still.
 
 `prefers-reduced-motion: reduce` collapses every animation and transition to 0.01ms and
 disables smooth scrolling. The rotating example on the question field checks

@@ -131,26 +131,34 @@ party learns that somebody read a page about a denied claim.
 
 ## 6. Motion
 
-**One animation exists on this site.** That is the whole motion system, and the
-restraint is the point.
+**The evidence remains still; the product shell can move.** This is the motion
+system now that Birch is being presented as a full product rather than a static
+reference page.
 
 `src/components/BirchLoadingMark.astro`, the `/ask` loading state, renders the
 approved bird asset and adds one restrained pulse when motion is allowed. The
 resolved state is always the real logo, not a generated approximation. The
-effect communicates that the local lookup is working without making the
-evidence layer feel like a marketing surface.
+product shell also uses short transitions for the announcement bar, header
+mega-menu, CTA press, and landing-page preview states. Those transitions help a
+visitor understand where the next action is; they do not animate the answer,
+claim, source, or review status.
 
 ### The rules that apply to any future motion
 
-- **Loading states only.** Nothing animates behind evidence. Never on a page
-  carrying a claim.
-- **Never a hero.** A research instrument that opens with a video reads as
-  marketing.
+- **Shell states only.** Loading, navigation, hover, focus, disclosure, and
+  continuity may move. Nothing animates behind evidence, citations, claim text,
+  source records, or review status.
+- **No autoplay hero.** The landing page may have a quiet state transition or
+  hover reveal, but it does not open with video, a carousel, or a simulated
+  product claim.
 - **Behind `prefers-reduced-motion`, with the static bird as the resting
   state** - so the animation is additive rather than something the still case
   has to opt out of.
-- Interface transitions use `--dur-1` to `--dur-3` (120-240ms) and `--ease`.
-  Anything longer is an effect.
+- Interface transitions use `--dur-1` to `--dur-3` (120-240ms), with `--dur-4`
+  (360ms) reserved for a larger menu or preview reveal. Use `--ease` for state
+  changes and `--ease-soft` for a small spatial glide.
+- Every hover action has a keyboard/focus equivalent and every disclosure has a
+  button state, an accessible name, and an Escape path.
 
 ### Why generative video is not in this system
 
