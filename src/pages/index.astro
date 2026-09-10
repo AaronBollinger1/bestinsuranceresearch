@@ -177,6 +177,21 @@ const jsonLd = graph(organization(), website());
 					<a class="btn btn-quiet" href="/questions">Read the question library <ArrowRight size={15} aria-hidden="true" /></a>
 				</div>
 
+				<div class="home-question-prompts" aria-label="Example questions from the Birch library">
+					<div class="home-question-prompts-head">
+						<span class="meta">Try a real question</span>
+						<span class="home-question-prompts-note">No account or upload required</span>
+					</div>
+					<div class="home-question-prompt-list">
+						{featuredQuestions.slice(0, 3).map((question) => (
+							<a class="home-question-prompt" href={`/questions/${question.id}`}>
+								<span>{question.data.question}</span>
+								<ArrowRight size={14} aria-hidden="true" />
+							</a>
+						))}
+					</div>
+				</div>
+
 				<div class="home-research-cta">
 					<div>
 						<span class="meta">Free to read · no account required</span>
@@ -199,8 +214,8 @@ const jsonLd = graph(organization(), website());
 			</div>
 
 			<aside class="home-compass" aria-label="How Birch works">
-				<span class="eyebrow">How Birch works</span>
-				<h2>{siteConfig.communityReady ? 'Three ways in' : 'Two ways in'}</h2>
+				<span class="eyebrow">Research path</span>
+				<h2>Start with one question.</h2>
 				<ol class="home-entry-list">
 					<li>
 						<a href="/ask"><span>Ask a question</span><ArrowRight size={15} aria-hidden="true" /></a>
@@ -228,6 +243,12 @@ const jsonLd = graph(organization(), website());
 				<div class="home-boundary">
 					<span class="meta">The boundary</span>
 					<p>Research says what a source supports. Community says what a person experienced. Neither publishes a verdict.</p>
+					{siteConfig.environment === 'preview' && (
+						<div class="home-preview-note">
+							<span class="status status-plain">Private review</span>
+							<span>Only invited reviewers can access this build. Birch signup is not enabled.</span>
+						</div>
+					)}
 				</div>
 			</aside>
 			</div>

@@ -11,6 +11,13 @@
 # preview one here and the production one in the release job below.
 name: verify
 
+# A pull request and the branch push that feeds it can arrive together. Keep
+# one current run per branch so an older red result cannot remain the thing a
+# reviewer sees while a newer commit is already being checked.
+concurrency:
+  group: verify-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
 on:
   push:
     branches: ['**']

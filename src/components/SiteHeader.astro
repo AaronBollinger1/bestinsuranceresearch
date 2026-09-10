@@ -1,6 +1,6 @@
 ---
 import { ArrowRight, ChevronDown, Menu, Search, X } from '@lucide/astro';
-import { primaryNav, siteConfig } from '../config/site';
+import { primaryNav, siteConfig, isPreview } from '../config/site';
 
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
@@ -38,6 +38,9 @@ const menuGroups = [
 			{ label: 'For professionals', href: '/professionals', description: 'See the rules for credentialed contributions.' },
 			{ label: 'Methodology', href: '/methodology', description: 'Learn how Birch separates evidence from experience.' },
 			{ label: 'Editorial policy', href: '/editorial-policy', description: 'Read the publication and correction standards.' },
+			...(isPreview
+				? [{ label: 'Review queue', href: '/review-queue', description: 'See what still needs one source-first review pass.' }]
+				: []),
 			...(siteConfig.communityReady
 				? [{ label: 'Birch Commons', href: siteConfig.communityOrigin, description: 'Continue to the separately moderated discussion room.', external: true }]
 				: []),
@@ -48,8 +51,11 @@ const menuGroups = [
 
 <div class="site-announcement" data-announcement>
 	<div class="shell site-announcement-inner">
-		<span class="site-announcement-kicker">Birch / California launch desk</span>
-		<a href="/start">Start with the questions California makes hard <ArrowRight size={14} aria-hidden="true" /></a>
+		<span class="site-announcement-kicker">{isPreview ? 'Birch / Private review preview' : 'Birch / California launch desk'}</span>
+		<a href="/start">
+			{isPreview ? 'Review the current Birch research surface' : 'Start with the questions California makes hard'}
+			<ArrowRight size={14} aria-hidden="true" />
+		</a>
 		<button class="site-announcement-dismiss" type="button" data-announcement-dismiss aria-label="Dismiss launch desk notice">
 			<X size={15} aria-hidden="true" />
 		</button>
