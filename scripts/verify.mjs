@@ -452,6 +452,39 @@ test('every substantive page has a JSON companion that parses', () => {
 	}
 });
 
+test('company machine records expose only declared research relationships', () => {
+	for (const company of companies) {
+		const record = JSON.parse(read(path.join(DIST, 'companies', `${company.id}.json`)));
+		assert.ok(record.relatedResearch, `${company.id} has no relatedResearch object`);
+		assert.ok(Array.isArray(record.relatedResearch.questions), `${company.id} has no related question list`);
+		assert.ok(Array.isArray(record.relatedResearch.coverages), `${company.id} has no related coverage list`);
+
+		const explicit = idsOf(company.data.relatedQuestions);
+		const mentioning = questions
+			.filter((question) => idsOf(question.data.companies).includes(company.id))
+			.filter((question) => !explicit.includes(question.id));
+		const expectedQuestions = [...explicit, ...mentioning.map((question) => question.id)];
+		assert.deepEqual(
+			record.relatedResearch.questions.map((question) => question.id),
+			expectedQuestions,
+			`${company.id} machine question links drifted from the visible relationship set`,
+		);
+
+		const expectedCoverages = [...new Set(
+			[...explicit.map((id) => questions.find((question) => question.id === id)).filter(Boolean), ...mentioning]
+				.flatMap((question) => idsOf(question.data.coverages)),
+		)];
+		assert.deepEqual(
+			record.relatedResearch.coverages.map((coverage) => coverage.id),
+			expectedCoverages,
+			`${company.id} machine coverage links are not derived from declared Research relationships`,
+		);
+		for (const link of [...record.relatedResearch.questions, ...record.relatedResearch.coverages]) {
+			assert.ok(routes.has(new URL(link.url).pathname), `${company.id} has an unbuilt research relationship URL`);
+		}
+	}
+});
+
 test('machine records leak no private or generated content', () => {
 	const banned = ['bir_session', 'utm_', 'dataLayer', 'sessionStorage', 'localStorage'];
 	for (const file of jsonFiles) {

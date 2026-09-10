@@ -138,9 +138,15 @@ export function coverageRecord(
 export function companyRecord(
 	entry: CollectionEntry<'companies'>,
 	sources: CollectionEntry<'sources'>[],
+	relatedResearch: {
+		questions?: CollectionEntry<'questions'>[];
+		coverages?: CollectionEntry<'coverages'>[];
+	} = {},
 ) {
 	const path = `/companies/${entry.id}`;
 	const d = entry.data;
+	const relatedQuestions = relatedResearch.questions ?? [];
+	const relatedCoverages = relatedResearch.coverages ?? [];
 	return {
 		...base('organization', entry.id, path),
 		legalName: d.legalName,
@@ -160,6 +166,18 @@ export function companyRecord(
 		reviewer: d.reviewer,
 		sourceIds: sources.map((s) => s.id),
 		sources: sources.map(sourceRecord),
+		relatedResearch: {
+			questions: relatedQuestions.map((question) => ({
+				id: question.id,
+				question: question.data.question,
+				url: abs(`/questions/${question.id}`),
+			})),
+			coverages: relatedCoverages.map((coverage) => ({
+				id: coverage.id,
+				name: coverage.data.name,
+				url: abs(`/insurance/${coverage.id}`),
+			})),
+		},
 	};
 }
 
