@@ -252,7 +252,7 @@ test(`the ${SITE_ENV} build emits the correct indexing directive on every page`,
 		   deliberately out of the index because they reproduce prose whose
 		   canonical home is elsewhere on this origin. /review-queue itself is
 		   indexed, so the pattern requires a segment after it. */
-		const deliberatelyHidden = /^\/(design|404)/.test(route) || /^\/review-queue\/./.test(route);
+		const deliberatelyHidden = /^\/(design|404|lens)(?:\/|$)/.test(route) || /^\/review-queue\/./.test(route);
 		if (deliberatelyHidden) continue;
 		assert.ok(
 			!/<meta name="robots" content="noindex, nofollow">/.test(html),
