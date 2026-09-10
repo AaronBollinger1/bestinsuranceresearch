@@ -9,6 +9,11 @@ tool-first wording in `POSITIONING.md`: Research is the front door, Coverage
 Position is the optional activation layer, Commons is the attributed context
 layer, and Coverage Lens is a later private service.
 
+The next 20 improvements are sequenced in
+`BIRCH-20-PASS-READINESS-ROADMAP.md`. Pass 01 is the current protected
+review-snapshot pass; do not reopen the settled aesthetic or activate live
+Commons behavior while using this roadmap.
+
 Read `DIRECTION.md` (what this is, and the rules that do not bend),
 `AMBITION.md` (what it is becoming, and the architecture) and **`BIRCH.md`**
 (the 9 September rebrand: one property called Birch, carrying both the cited
@@ -37,8 +42,8 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | --- | --- |
 | The product | **Birch.** One property: a cited evidence layer (**Birch Research**) and a validated discussion layer (**Birch**). Read `BIRCH.md` before anything else - it is the current direction and it says what the rebrand is not allowed to relax |
 | Branch | `claude/bold-hopper-mqcyen`, 69 commits (19 ahead of `launch/initial-publication`), **never push to `main`** |
-| Suite | `npm run validate` = **151 tests**, 0 failing, in both indexing postures. **CI is green** as of 9 September; it had been red on every run before that | Also `npm run audit:estate`, `npm run audit:onpage` (0 findings across 540 indexable pages) |
-| Built pages | 842 (299 are noindex verification sheets), plus 88 JSON companions |
+| Suite | `npm run validate` = **153 tests**, 0 failing, in both indexing postures. **CI is green** as of 9 September; it had been red on every run before that | Also `npm run audit:estate`, `npm run audit:onpage` (0 findings across 543 indexable pages) |
+| Built pages | **847 static routes** in the latest build; on-page audit scanned 846 HTML pages (303 noindex), plus JSON companions |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
 | Coverage pages | 27 of 51 canonical lines |
