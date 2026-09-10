@@ -179,6 +179,13 @@ export function postgresStore(pool: Pool): Store {
 	};
 
 	return {
+		async checkLiveness() {
+			/* Liveness only. Do not select from an application table or include
+			   provider details in the response: this endpoint needs to prove the
+			   pool can reach Postgres, not disclose somebody's account state. */
+			await pool.query('select 1');
+		},
+
 		getAccount,
 
 		async upsertAccount(email) {

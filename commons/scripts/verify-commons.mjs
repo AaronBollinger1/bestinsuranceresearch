@@ -405,3 +405,17 @@ test('the Commons shell has a touch-safe mobile navigation mode', () => {
 	assert.match(css, /\.btn-sm \{ min-height: var\(--tap\)/, 'small controls are below the shared tap target');
 	assert.match(css, /@media \(prefers-reduced-motion: reduce\)/, 'the Commons has no reduced-motion contract');
 });
+
+test('the liveness route is no-store and reveals no configuration details', () => {
+	const route = read(path.join(ROOT, 'src/pages/healthz.ts'));
+
+	assert.match(route, /export const prerender = false/);
+	assert.match(route, /checkLiveness\(\)/, 'healthz does not check the backing store');
+	assert.match(route, /getMailer\(\)/, 'healthz does not enforce production mail configuration');
+	assert.match(route, /'Cache-Control': 'no-store'/, 'healthz may be cached');
+	assert.match(route, /return json\(503/, 'healthz has no unavailable response');
+	assert.match(route, /service: 'birch-commons'/, 'healthz has no stable service identifier');
+	for (const secret of ['COMMONS_DATABASE_URL', 'RESEND_API_KEY', 'COMMONS_MAIL_FROM']) {
+		assert.doesNotMatch(route, new RegExp(secret), `${secret} leaked into the public route`);
+	}
+});

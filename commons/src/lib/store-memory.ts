@@ -39,6 +39,11 @@ export function memoryStore(): Store {
 	const issued = new Map<string, number[]>();
 
 	return {
+		async checkLiveness() {
+			/* The development store lives in this process, so reachability is
+			   guaranteed as long as the store was created. */
+		},
+
 		async getAccount(email) {
 			return accounts.get(email) ?? null;
 		},

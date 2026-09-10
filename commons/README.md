@@ -48,6 +48,12 @@ site at `birch.insure`. No production alias should be changed by this app.
    that should the Research project set `PUBLIC_COMMONS_READY=true` and expose
    public Commons links.
 
+The request-time `/healthz` route is a liveness check for deployment tooling.
+It returns `200` only when the configured store is reachable and the production
+mailer configuration is present, or `503` otherwise. It never sends an email,
+checks DNS, or proves that the moderation smoke test has passed; a successful
+response is operational evidence, not a public-launch approval.
+
 ## Smoke test before public linking
 
 Use a real non-production moderator mailbox and a test account to verify:

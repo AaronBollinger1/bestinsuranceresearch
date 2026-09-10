@@ -91,6 +91,8 @@ Deliverables:
   shortening it;
 - a contained mobile Commons menu with 44px navigation targets and no
   horizontal overflow;
+- a no-store Commons `/healthz` liveness route that checks the backing store
+  and production mail configuration without exposing secrets;
 - explicit empty, disabled, error, and success states for every public form.
 
 Ship gate: representative mobile LCP target under 2.5 seconds, CLS under 0.1,
@@ -184,6 +186,11 @@ Run the existing Commons account, thread, report, moderation, withdrawal, and
 professional-verification flows against the production-shaped Postgres adapter
 in a staging environment. Add migrations, seed only non-public test fixtures,
 and prove rollback/deletion behavior.
+
+The code now exposes `/healthz` for this gate. It is a liveness check, not a
+substitute for the staging smoke test: it confirms Postgres reachability and
+production mail configuration, but it does not send mail, check DNS, or prove
+moderation readiness.
 
 Ship gate: `COMMONS_DATABASE_URL`, mailer, moderator list, and origin are present
 in staging; the conformance suite passes; no in-memory fallback is reachable in

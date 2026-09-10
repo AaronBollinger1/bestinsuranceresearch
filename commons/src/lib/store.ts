@@ -298,6 +298,9 @@ export interface ThreadDraft {
 }
 
 export interface Store {
+	/** Confirms the backing store is reachable without reading any user data. */
+	checkLiveness(): Promise<void>;
+
 	/* --- Accounts --- */
 	getAccount(email: string): Promise<Account | null>;
 	/** Creates on first sign-in. There is no separate signup step, by design. */

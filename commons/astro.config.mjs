@@ -18,7 +18,7 @@ import sitemap from '@astrojs/sitemap';
  * account page, the intake form and the moderation queue. A crawler finding a
  * moderation queue in a sitemap is a bad look even when it correctly 404s.
  */
-const PRIVATE = [/\/sign-in/, /\/account/, /\/moderate/, /\/contribute\/(new|sent|withdraw)/, /\/threads\/new/];
+const PRIVATE = [/\/sign-in/, /\/account/, /\/moderate/, /\/contribute\/(new|sent|withdraw)/, /\/threads\/new/, /\/healthz/];
 export default defineConfig({
 	/*
 	 * Kept in step with `origin` in src/config/commons.ts by an assertion rather
