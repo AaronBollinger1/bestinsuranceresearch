@@ -330,7 +330,7 @@ measured on 8 September, with 90 commits in:
 | --- | --- | --- | --- |
 | 1 | **Promote a deployment to production** | The user, one command | Nothing is cited that does not exist. Highest leverage on the citation list and every other item is downstream of it. |
 | 2 | **Licensed sign-off** | Brian's reading | A hub whose 173 records say "under review" is not the thing being described. The instrument for it is built: `/review-queue` plus 299 verification sheets. No code left. |
-| 3 | **Recheck the remaining figure sources** | Nothing | Next, and the next pass. Ten of eleven figure-source documents are now rechecked; one remains. See below. |
+| 3 | **Recheck the remaining figure sources** | Nothing | **Done.** All eleven figure-source documents are now rechecked. See below for the wider source cadence. |
 | 4 | **Give `tools` a `reviewState` and a `reviewer`** | Nothing | 3 live worksheets publish 80 cited sentences and cannot state whether anyone checked them. Schema change to a 16-record collection. |
 | 5 | **Carrier entity records** | Nothing, now the route is known | The gap behind every "unbiased on companies" ask. 3 organisation records exist and none is a carrier. Strongest review discipline on the site, because this is where appetite claims creep in. |
 | 6 | **Hazard geography and residual markets** | Nothing | Largest unclaimed ground, breaks no rule, and it is the area-specific layer. |
@@ -387,12 +387,12 @@ earns nothing at all.
 ### Why the recheck pass is next, and how small it is
 
 `DIRECTION.md` counts rechecks as success measure four, and the corpus is at
-**16 of 299**: 283 sources carry the date somebody first read them and nothing
+**17 of 299**: 282 sources carry the date somebody first read them and nothing
 more. An authority that never re-reads decays, and `lastCheckedBasis` exists
 precisely so the site cannot overstate itself.
 
 The bounded place to start remains the figures. **19 published figures rest on
-11 distinct source documents; ten are now rechecked and one remains
+11 distinct source documents; all 11 are now rechecked and none remains
 first-read only.** Eleven documents confirm every amount this site publishes.
 A figure whose amount has moved is the most damaging error class available here
 - a wrong number is what a reader acts on - and finding one produces a
