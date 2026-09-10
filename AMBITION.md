@@ -387,7 +387,7 @@ earns nothing at all.
 ### Why the recheck pass is next, and how small it is
 
 `DIRECTION.md` counts rechecks as success measure four, and the corpus is at
-**19 of 299**: 280 sources carry the date somebody first read them and nothing
+**20 of 299**: 279 sources carry the date somebody first read them and nothing
 more. An authority that never re-reads decays, and `lastCheckedBasis` exists
 precisely so the site cannot overstate itself.
 
