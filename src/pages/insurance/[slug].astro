@@ -8,6 +8,7 @@ import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
 import CommonsHandoff from '../../components/CommonsHandoff.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
+import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
 import Handoff from '../../components/Handoff.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
@@ -134,6 +135,12 @@ const jsonLd = graph(
 							<p set:html={cite.inline(d.definition)} />
 						</div>
 					</section>
+
+					<EvidenceBoundary
+						says="The cited records explain what this line is designed to do, its common limits, and the form or jurisdiction caveats attached to it."
+						assumes="“Commonly” describes a source-backed pattern, not a promise across every carrier, policy form, or endorsement."
+						cannotDecide="It cannot determine what a specific policy covers, its price, or whether an insurer will accept a risk."
+					/>
 
 					<Callout tone="warn">
 						<p>

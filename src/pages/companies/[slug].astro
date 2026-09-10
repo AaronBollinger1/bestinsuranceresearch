@@ -7,6 +7,7 @@ import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
 import CommonsHandoff from '../../components/CommonsHandoff.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
+import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { createCiter, stripMarkers } from '../../lib/citations';
@@ -124,6 +125,12 @@ const jsonLd = graph(
 						<h2 id="identity" class="u-visually-hidden">Verified identity</h2>
 						<div class="direct-answer"><p set:html={cite.inline(d.summary)} /></div>
 					</section>
+
+					<EvidenceBoundary
+						says="This record makes the organization’s identity, published channels, and source-backed records visible and addressable."
+						assumes="Official material, regulator records, and third-party experience remain separate, with dates and jurisdiction attached."
+						cannotDecide="It cannot rate the organization or predict an outcome in a specific claim, policy, or interaction."
+					/>
 
 					<section class="answer-section" aria-labelledby="official">
 						<h2 id="official">Official channels</h2>

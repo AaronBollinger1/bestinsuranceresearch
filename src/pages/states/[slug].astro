@@ -6,6 +6,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
+import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { createCiter, stripMarkers } from '../../lib/citations';
@@ -113,6 +114,12 @@ const jsonLd = graph(
 						<h2 id="overview" class="u-visually-hidden">Overview</h2>
 						<div class="direct-answer"><p set:html={cite.inline(d.summary)} /></div>
 					</section>
+
+					<EvidenceBoundary
+						says="The cited records describe this jurisdiction’s insurance mechanisms, regulator guidance, and effective-date context."
+						assumes={`The page is read in ${d.name} and against the dates shown; rules can change and programs can have their own eligibility conditions.`}
+						cannotDecide="It cannot determine a person’s eligibility, placement, coverage, claim result, or current legal position."
+					/>
 
 					<Callout tone="warn">
 						<p>

@@ -7,6 +7,7 @@ import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
 import CommonsHandoff from '../../components/CommonsHandoff.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
+import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
 import Handoff from '../../components/Handoff.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
@@ -148,6 +149,12 @@ const reviewer = corpus.personByName.get(d.reviewer);
 							<p set:html={cite.inline(d.shortAnswer)} />
 						</div>
 					</section>
+
+					<EvidenceBoundary
+						says="The cited records support the answer above, with their publishers, dates, and claim addresses visible in the source ledger."
+						assumes={`This answer uses the stated audience, ${d.family} line, jurisdiction, and facts; a different form or situation can change it.`}
+						cannotDecide="It cannot determine how a specific policy, claim, price, or eligibility decision will turn out."
+					/>
 
 					{
 						d.reviewState === 'corrected' && d.correction && (

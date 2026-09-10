@@ -649,6 +649,48 @@ a.card:hover .card-title { color: var(--brand-blue-text); }
 .direct-answer p { margin: 0; font-family: var(--font-display); font-size: var(--text-xl); line-height: var(--leading-snug); color: var(--ink); max-width: 62ch; }
 .direct-answer p + p { margin-top: var(--s-3); }
 
+/*
+ * The answer boundary is the bridge between a useful record and an implied
+ * verdict. It mirrors the Figma answer-detail surface and is deliberately
+ * compact: three statements, always in the same order, before the reader
+ * reaches the longer evidence sections.
+ */
+.evidence-boundary {
+	margin-top: var(--s-5);
+	padding: var(--s-5);
+	border-radius: var(--r-3);
+	background: var(--ink);
+	color: #dce2e9;
+	box-shadow: var(--elev-1);
+}
+.evidence-boundary-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--s-6);
+}
+.evidence-boundary-item { min-width: 0; }
+.evidence-boundary-item + .evidence-boundary-item {
+	padding-left: var(--s-6);
+	border-left: 1px solid var(--line-ink);
+}
+.evidence-boundary-label {
+	display: block;
+	margin-bottom: var(--s-3);
+	color: var(--brand-cyan);
+	font-family: var(--font-mono);
+	font-size: var(--text-2xs);
+	line-height: 1.4;
+	letter-spacing: .05em;
+	text-transform: uppercase;
+}
+.evidence-boundary p {
+	margin: 0;
+	color: #dce2e9;
+	font-size: var(--text-sm);
+	line-height: var(--leading-snug);
+	text-wrap: pretty;
+}
+
 .answer-section { margin-top: var(--s-10); }
 .answer-section > h2 {
 	font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 700;
@@ -885,6 +927,12 @@ table.data tbody tr:hover { background: var(--gold-wash); }
 @media (max-width: 640px) {
 	.band { padding-block: var(--s-8); }
 	.band-tight { padding-block: var(--s-6); }
+	.evidence-boundary { padding: var(--s-4); }
+	.evidence-boundary-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
+	.evidence-boundary-item { padding-block: var(--s-4); }
+	.evidence-boundary-item:first-child { padding-top: 0; }
+	.evidence-boundary-item:last-child { padding-bottom: 0; }
+	.evidence-boundary-item + .evidence-boundary-item { padding-left: 0; border-top: 1px solid var(--line-ink); border-left: 0; }
 	.home-hero h1 { font-size: clamp(2.35rem, 13vw, 3.5rem); }
 	.home-identity img { width: 44px; height: 44px; }
 	.home-search-row .btn { width: 100%; }
