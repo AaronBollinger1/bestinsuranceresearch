@@ -1,11 +1,10 @@
 ---
-import { ArrowRight, ExternalLink, Ban, FileText, Landmark, Phone, Scale } from '@lucide/astro';
+import { ArrowRight, Ban, BookOpen, ExternalLink, FileText, Landmark, LockKeyhole, MessageCircle, Phone, Scale, ShieldCheck } from '@lucide/astro';
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
-import CommonsHandoff from '../../components/CommonsHandoff.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
 import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
@@ -58,15 +57,64 @@ const ORG_TYPE_LABEL: Record<string, string> = {
 	'residual-market': 'Residual market mechanism',
 };
 
+const pageMap = [
+	{ number: '01', label: 'Documented identity', detail: 'The sourced organization record', href: '#identity' },
+	{ number: '02', label: 'Coverage context', detail: 'Scope without a personal verdict', href: '#coverage-context' },
+	{ number: '03', label: 'Official website', detail: 'Channels and records to check', href: '#official' },
+	{ number: '04', label: 'Financial context', detail: 'No Birch score or ranking', href: '#financial-context' },
+	{ number: '05', label: 'Community lanes', detail: 'Forums, threads, and experiences', href: '#community' },
+];
+
+const communityLanes = [
+	{
+		id: 'forums',
+		label: 'Forums',
+		status: 'Private preview',
+		detail: 'A place for broad, company-specific questions once moderated discussion is open.',
+		policy: false,
+	},
+	{
+		id: 'threads',
+		label: 'Threads',
+		status: 'Private preview',
+		detail: 'Conversation stays attributed to its author and remains separate from the sourced record.',
+		policy: false,
+	},
+	{
+		id: 'experiences',
+		label: 'Experiences',
+		status: 'Private preview',
+		detail: 'Structured accounts can add context when they disclose what they know and how it was verified.',
+		policy: false,
+	},
+	{
+		id: 'official-responses',
+		label: 'Official responses',
+		status: 'Private preview',
+		detail: 'A clearly labeled response lane may sit beside a conversation; it never edits the Research page.',
+		policy: false,
+	},
+	{
+		id: 'reviews',
+		label: 'Reviews and ratings',
+		status: 'Not a Birch lane',
+		detail: 'Birch will not turn anecdotes into stars, rankings, complaint rates, or a reputation score.',
+		policy: true,
+	},
+];
+
 const sections = [
-	{ id: 'identity', label: 'Verified identity' },
-	{ id: 'official', label: 'Official channels' },
+	{ id: 'identity', label: 'Documented identity' },
+	{ id: 'coverage-context', label: 'Coverage context' },
+	{ id: 'official', label: 'Official website and contact' },
 	...(d.regulatorRecords.length ? [{ id: 'records', label: 'Records you can look up' }] : []),
+	{ id: 'financial-context', label: 'Financial context' },
 	...(d.statutoryBasis.length ? [{ id: 'statute', label: 'Statutory basis' }] : []),
 	...(d.publications.length ? [{ id: 'publications', label: 'Publications' }] : []),
 	{ id: 'notclaimed', label: 'What this page does not claim' },
 	{ id: 'source-ledger', label: 'Source ledger' },
-	{ id: 'commons', label: 'Commons discussion' },
+	{ id: 'community', label: 'Community lanes' },
+	...(allRelated.length ? [{ id: 'related', label: 'Related Research' }] : []),
 ];
 
 const jsonLd = graph(
@@ -132,8 +180,44 @@ const jsonLd = graph(
 						cannotDecide="It cannot rate the organization or predict an outcome in a specific claim, policy, or interaction."
 					/>
 
+					<section class="company-page-map" aria-labelledby="company-page-map-title">
+						<div class="company-page-map-heading">
+							<span class="eyebrow">Company page map</span>
+							<h2 id="company-page-map-title">One record, separate contexts</h2>
+							<p>Use the lane that matches the question. Sourced facts, official material, and community conversation never share a status badge.</p>
+						</div>
+						<div class="company-page-map-grid">
+							{pageMap.map((item) => (
+								<a class="company-page-map-card" href={item.href}>
+									<span class="company-page-map-number">{item.number}</span>
+									<span><strong>{item.label}</strong><small>{item.detail}</small></span>
+									<ArrowRight size={15} aria-hidden="true" />
+								</a>
+							))}
+						</div>
+					</section>
+
+					<section class="answer-section company-context-section" aria-labelledby="coverage-context" data-company-lane="coverage">
+						<h2 id="coverage-context">Coverage context</h2>
+						<div class="company-context-grid">
+							<div class="company-context-card">
+								<div class="company-context-label"><BookOpen size={15} aria-hidden="true" /> Sourced scope</div>
+								<p>The overview above is the place to read what the cited record says about this organization. This page does not turn that summary into a complete, current line-of-business catalog.</p>
+								<div class="company-jurisdictions" aria-label="Jurisdictions in this record">
+									<span class="company-context-label">Jurisdiction</span>
+									{d.jurisdictions.map((jurisdiction) => <span class="company-jurisdiction">{jurisdiction}</span>)}
+								</div>
+							</div>
+							<div class="company-context-card company-context-card-muted">
+								<div class="company-context-label"><ShieldCheck size={15} aria-hidden="true" /> Boundary</div>
+								<p>Coverage pages explain insurance concepts. They do not determine whether a person, property, policy, limit, deductible, or claim is covered.</p>
+								<p class="mono">Use the official material and the policy actually issued when a decision depends on current terms.</p>
+							</div>
+						</div>
+					</section>
+
 					<section class="answer-section" aria-labelledby="official">
-						<h2 id="official">Official channels</h2>
+						<h2 id="official">Official website and contact</h2>
 						<ul class="fact-list">
 							{
 								d.officialUrls.map((link) => (
@@ -182,6 +266,18 @@ const jsonLd = graph(
 							</section>
 						)
 					}
+
+					<section class="answer-section company-context-section" aria-labelledby="financial-context" data-company-lane="financial">
+						<h2 id="financial-context">Financial context</h2>
+						<div class="company-empty-state">
+							<div class="company-empty-state-icon"><Scale size={18} aria-hidden="true" /></div>
+							<div>
+								<strong>No Birch financial score or conclusion</strong>
+								<p>Birch does not calculate, summarize, or rank financial strength, solvency, claim-paying capacity, or reputation. When an official filing or rating-agency record is relevant, it belongs in the source ledger and should be read at the publisher.</p>
+								<p class="mono">This empty state is intentional: unavailable or unverified information is not a reason to invent a placeholder number.</p>
+							</div>
+						</div>
+					</section>
 
 					{
 						d.statutoryBasis.length > 0 && (
@@ -258,7 +354,31 @@ const jsonLd = graph(
 						}}
 					/>
 
-					<CommonsHandoff href={commonsHref} />
+					<section class="answer-section company-context-section" aria-labelledby="community" data-company-lane="community">
+						<h2 id="community">Community lanes</h2>
+						<p class="company-section-intro">These are separate conversation surfaces, not evidence rows. Every future post needs an author, a date, a subject, and moderation; none is published in this preview.</p>
+						<div class="company-community-grid">
+							{communityLanes.map((lane) => (
+								<article class:list={["company-community-card", lane.policy && "company-community-card-policy"]} id={lane.id}>
+									<div class="company-community-top">
+										<span class="company-community-icon">{lane.policy ? <LockKeyhole size={16} aria-hidden="true" /> : <MessageCircle size={16} aria-hidden="true" />}</span>
+										<span class:list={["company-lane-status", lane.policy && "company-lane-status-policy"]}>{lane.status}</span>
+									</div>
+									<h3>{lane.label}</h3>
+									<p>{lane.detail}</p>
+								</article>
+							))}
+						</div>
+						{
+							siteConfig.communityReady ? (
+								<a class="btn btn-secondary btn-sm" href={commonsHref} rel="noopener">Open discussions about this subject <ArrowRight size={15} aria-hidden="true" /></a>
+							) : (
+								<Callout tone="privacy" label="Community availability">
+									<p><strong>Commons is in private preview.</strong> The discussion layer will open after deployment, database, mail delivery, and moderation gates are ready.</p>
+								</Callout>
+							)
+						}
+					</section>
 
 					{
 						allRelated.length > 0 && (
@@ -312,3 +432,84 @@ const jsonLd = graph(
 		</div>
 	</article>
 </BaseLayout>
+
+<style>
+	.company-page-map {
+		margin-top: var(--s-8);
+		padding: var(--s-5);
+		border: var(--bw-hair) solid var(--line-strong);
+		border-radius: var(--r-3);
+		background: var(--paper);
+	}
+	.company-page-map-heading { max-width: 62ch; }
+	.company-page-map-heading h2 { margin: var(--s-2) 0 var(--s-1); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; line-height: var(--leading-snug); }
+	.company-page-map-heading p, .company-section-intro { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.company-page-map-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s-2); margin-top: var(--s-5); }
+	.company-page-map-card {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr) auto;
+		align-items: start;
+		gap: var(--s-2);
+		min-height: 92px;
+		padding: var(--s-3);
+		border: var(--bw-hair) solid var(--line);
+		border-radius: var(--r-2);
+		color: var(--body);
+		text-decoration: none;
+		transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease), transform var(--dur-2) var(--ease-soft);
+	}
+	.company-page-map-card:hover, .company-page-map-card:focus-visible { border-color: var(--brand-blue); box-shadow: var(--elev-1); transform: translateY(-2px); }
+	.company-page-map-card > svg { margin-top: 3px; color: var(--brand-blue-text); }
+	.company-page-map-number { color: var(--gold-text); font-family: var(--font-mono); font-size: var(--text-2xs); }
+	.company-page-map-card strong, .company-page-map-card small { display: block; }
+	.company-page-map-card strong { color: var(--ink); font-size: var(--text-sm); line-height: var(--leading-snug); }
+	.company-page-map-card small { margin-top: var(--s-1); color: var(--muted); font-size: var(--text-2xs); line-height: var(--leading-snug); }
+
+	.company-context-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3); }
+	.company-context-card {
+		padding: var(--s-5);
+		border: var(--bw-hair) solid var(--line-strong);
+		border-radius: var(--r-3);
+		background: var(--paper);
+	}
+	.company-context-card-muted { background: var(--slate-wash); border-color: var(--line); }
+	.company-context-card p { margin: var(--s-3) 0 0; max-width: 58ch; font-size: var(--text-md); line-height: var(--leading-normal); }
+	.company-context-card p + p { margin-top: var(--s-3); }
+	.company-context-label { display: flex; align-items: center; gap: var(--s-2); color: var(--brand-blue-text); font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+	.company-context-label svg { flex: 0 0 auto; }
+	.company-jurisdictions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin-top: var(--s-5); }
+	.company-jurisdictions .company-context-label { margin-right: var(--s-1); }
+	.company-jurisdiction { padding: 3px 8px; border: var(--bw-hair) solid var(--line-strong); border-radius: 999px; background: var(--cream); color: var(--ink); font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 600; }
+
+	.company-empty-state { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--s-4); padding: var(--s-5); border: var(--bw-hair) dashed var(--line-strong); border-radius: var(--r-3); background: var(--slate-wash); }
+	.company-empty-state-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--paper); color: var(--brand-blue-text); }
+	.company-empty-state strong { display: block; color: var(--ink); font-size: var(--text-md); }
+	.company-empty-state p { margin: var(--s-2) 0 0; max-width: 70ch; font-size: var(--text-sm); line-height: var(--leading-normal); }
+
+	.company-community-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-4); }
+	.company-community-card { min-height: 154px; padding: var(--s-4); border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); }
+	.company-community-card-policy { background: var(--slate-wash); border-style: dashed; }
+	.company-community-top { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
+	.company-community-icon { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--blue-wash); color: var(--brand-blue-text); }
+	.company-community-card-policy .company-community-icon { background: var(--paper); color: var(--muted); }
+	.company-lane-status { padding: 3px 7px; border-radius: 999px; background: var(--blue-wash); color: var(--brand-blue-text); font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 600; }
+	.company-lane-status-policy { background: var(--cream); color: var(--muted); }
+	.company-community-card h3 { margin: var(--s-4) 0 var(--s-1); color: var(--ink); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; }
+	.company-community-card p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.company-community-grid + .callout, .company-community-grid + .btn { margin-top: var(--s-4); }
+
+	@media (max-width: 900px) {
+		.company-page-map-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		.company-page-map-card:last-child { grid-column: span 2; }
+	}
+	@media (max-width: 640px) {
+		.company-page-map { padding: var(--s-4); }
+		.company-page-map-grid, .company-context-grid, .company-community-grid { grid-template-columns: minmax(0, 1fr); }
+		.company-page-map-card:last-child { grid-column: auto; }
+		.company-empty-state { grid-template-columns: minmax(0, 1fr); }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.company-page-map-card { transition: none; }
+		.company-page-map-card:hover, .company-page-map-card:focus-visible { transform: none; }
+	}
+</style>

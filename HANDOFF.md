@@ -14,6 +14,12 @@ The next 20 improvements are sequenced in
 review-snapshot pass; do not reopen the settled aesthetic or activate live
 Commons behavior while using this roadmap.
 
+The company-page surface contract is in `COMPANY-PAGE-QUEUE.md`. It is now
+implemented as a sourced trust shell across the three existing organization
+records: documented identity, coverage context, official channels, financial
+empty state, Research links, and separately gated forums, threads, experiences,
+official responses, and reviews policy.
+
 Read `DIRECTION.md` (what this is, and the rules that do not bend),
 `AMBITION.md` (what it is becoming, and the architecture) and **`BIRCH.md`**
 (the 9 September rebrand: one property called Birch, carrying both the cited
@@ -42,7 +48,7 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | --- | --- |
 | The product | **Birch.** One property: a cited evidence layer (**Birch Research**) and a validated discussion layer (**Birch**). Read `BIRCH.md` before anything else - it is the current direction and it says what the rebrand is not allowed to relax |
 | Branch | `claude/bold-hopper-mqcyen`, 69 commits (19 ahead of `launch/initial-publication`), **never push to `main`** |
-| Suite | `npm run validate` = **153 tests**, 0 failing, in both indexing postures. **CI is green** as of 9 September; it had been red on every run before that | Also `npm run audit:estate`, `npm run audit:onpage` (0 findings across 543 indexable pages) |
+| Suite | `npm run validate` = **155 tests**, 0 failing, in both indexing postures. **CI is green** as of 9 September; it had been red on every run before that | Also `npm run audit:estate`, `npm run audit:onpage` (0 findings across 543 indexable pages) |
 | Built pages | **847 static routes** in the latest build; on-page audit scanned 846 HTML pages (303 noindex), plus JSON companions |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
@@ -74,8 +80,9 @@ form with what is actually blocked.
    three-band design. Every regulator host is blocked at `CONNECT` in this
    environment, and a pass that cannot reach a regulator must not write a
    carrier record from a search snippet.
-3. **Continue the audit lens** - *unblocked, needs nothing but the build.*
-   Section 1b. `/about` is the largest unmeasured surface.
+3. **Performance, accessibility, and motion budget** - *unblocked, needs a
+   representative browser audit.* Measure Research, company, contribution,
+   professional, and Commons-specimen surfaces at desktop and mobile widths.
 
 The former promotion item is complete in this branch. A moderator can invite an
 author from `/moderate/posts`; the author sees a private, prefilled form at

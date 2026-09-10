@@ -222,10 +222,10 @@ test('every page has exactly one self-referential canonical', () => {
 const SITE_ENV = process.env.PUBLIC_SITE_ENV === 'production' ? 'production' : 'preview';
 const SITE_ORIGIN = (process.env.PUBLIC_SITE_ORIGIN || 'https://birch.insure').replace(/\/+$/, '');
 const COMMONS_READY = process.env.PUBLIC_COMMONS_READY === 'true';
+const COMMUNITY_ORIGIN = (process.env.PUBLIC_COMMONS_ORIGIN || 'https://commons.birch.insure').replace(/\/+$/, '');
 
 test('research never advertises an unready Commons origin', () => {
-	const communityHref = (process.env.PUBLIC_COMMONS_ORIGIN || 'https://commons.birch.insure').replace(/\/+$/, '');
-	const advertised = htmlFiles.filter((file) => read(file).includes(`href="${communityHref}`));
+	const advertised = htmlFiles.filter((file) => read(file).includes(`href="${COMMUNITY_ORIGIN}`));
 	if (COMMONS_READY) {
 		assert.ok(advertised.length > 0, 'Commons is marked ready but no Research CTA advertises it');
 		return;
@@ -609,6 +609,32 @@ test('no fabricated authority language on any company page', () => {
 		const text = JSON.stringify(company.data);
 		assert.ok(!banned.test(text), `company ${company.id} contains a ranking claim`);
 		assert.ok(company.data.whatWeDoNotClaim.length >= 2, `company ${company.id} states too few non-claims`);
+	}
+});
+
+test('every company page keeps sourced, contextual, and community lanes separate', () => {
+	const required = [
+		'data-company-lane="coverage"',
+		'data-company-lane="financial"',
+		'data-company-lane="community"',
+		'id="forums"',
+		'id="threads"',
+		'id="experiences"',
+		'id="official-responses"',
+		'id="reviews"',
+	];
+	const hasCompanyShell = (html) => required.every((marker) => html.includes(marker));
+	for (const company of companies) {
+		const file = path.join(DIST, 'companies', company.id, 'index.html');
+		assert.ok(fs.existsSync(file), `missing company page ${company.id}`);
+		const html = read(file);
+		assert.equal(hasCompanyShell(html), true, `${company.id} is missing a company-page lane`);
+		assert.match(html, /No Birch financial score or conclusion/, `${company.id} exposes an unbounded financial lane`);
+		assert.match(html, /Reviews and ratings/, `${company.id} does not state the review boundary`);
+		/* Prove the structural predicate can fail; a global footer or repeated heading
+		   must not be enough to make this check pass. */
+		assert.equal(hasCompanyShell(html.replace('id="forums"', 'id="forum"')), false, `${company.id} lane check is vacuous`);
+		if (!COMMONS_READY) assert.ok(!html.includes(`href="${COMMUNITY_ORIGIN}`), `${company.id} links to closed Commons`);
 	}
 });
 
