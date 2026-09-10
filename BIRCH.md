@@ -67,7 +67,7 @@ riskiest part of the change with the least product value.
 
 | | Origin | Carries |
 | --- | --- | --- |
-| **Birch Research** - the evidence layer | `birch.insure` | Cited corpus, 299 sources, the operator's legal name and licence number on every page. No accounts, no forms that post, nothing collected |
+| **Birch Research** - the evidence layer | `birch.insure` | Cited corpus, 301 sources, the operator's legal name and licence number on every page. No accounts, no forms that post, nothing collected |
 | **Birch Commons** - the community | `commons.birch.insure` | Accounts, case reports, threads, moderation. No agency branding, no licence number |
 
 **The origin is a DNS decision and it is the owner's.** Three options, in the
@@ -140,8 +140,9 @@ carry, because it is the model for the whole property:**
 
 ## 6. Carrier pages
 
-The owner asked for pages for carriers. Three records exist. A carrier page
-under Birch has three bands, and the order is the argument:
+The owner asked for pages for carriers. Two source-backed carrier records now
+exist alongside the regulator, standards, and public-entity pages. A carrier
+page under Birch has three bands, and the order is the argument:
 
 1. **What is documented.** Filings, market conduct actions, statutory
    obligations, financial statements - cited, with an openable source, exactly
@@ -152,12 +153,11 @@ under Birch has three bands, and the order is the argument:
 3. **What people say.** Threads and case reports about that carrier, clearly
    marked as accounts rather than findings, never mixed into band 1.
 
-**This is blocked on network access, not on design.** Every primary-law and
-regulator host - the CDI, the NAIC, SERFF, the DFS, the TDI, the FLOIR - is
-blocked at `CONNECT` in the current environment while web search still works,
-which is the worst combination available: search results are exactly what the
-editorial standard forbids citing. A pass that cannot reach a regulator cannot
-write a carrier record, and must not fake one from a snippet.
+**The source-read gate is selective, not waived.** The CDI company-profile
+route was reachable for this pass, so State Farm General and Farmers Insurance
+Exchange were added from pages that were opened and read. Other carrier records
+remain blocked until a primary regulator or official record can be reached in
+full; search snippets are not acceptable evidence.
 
 ## 7. Sequence
 
@@ -172,7 +172,8 @@ write a carrier record, and must not fake one from a snippet.
    remains a human/network-dependent action.
 4. **Cross-linking**, once Commons content exists: an evidence page names how many
    accounts exist for its subject and links to them, without citing them.
-5. **Carrier pages**, when a regulator host is reachable.
+5. **Continue carrier pages**, one source-read record at a time, when a primary
+   regulator host is reachable.
 6. **Coverage Lens**, only as a separately threat-modeled, local-first service.
 
 ## 8. What must not change to make this easier

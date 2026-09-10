@@ -15,10 +15,10 @@ review-snapshot pass; do not reopen the settled aesthetic or activate live
 Commons behavior while using this roadmap.
 
 The company-page surface contract is in `COMPANY-PAGE-QUEUE.md`. It is now
-implemented as a sourced trust shell across the three existing organization
-records: documented identity, coverage context, official channels, financial
-empty state, Research links, and separately gated forums, threads, experiences,
-official responses, and reviews policy.
+implemented as a sourced trust shell across five organization records: documented
+identity, coverage context, official channels, financial empty state, Research
+links, and separately gated forums, threads, experiences, official responses,
+and reviews policy.
 
 Read `DIRECTION.md` (what this is, and the rules that do not bend),
 `AMBITION.md` (what it is becoming, and the architecture) and **`BIRCH.md`**
@@ -48,21 +48,21 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | --- | --- |
 | The product | **Birch.** One property: a cited evidence layer (**Birch Research**) and a validated discussion layer (**Birch**). Read `BIRCH.md` before anything else - it is the current direction and it says what the rebrand is not allowed to relax |
 | Branch | `claude/bold-hopper-mqcyen`, 69 commits (19 ahead of `launch/initial-publication`), **never push to `main`** |
-| Suite | `npm run validate` = **156 tests**, 0 failing, in both indexing postures. **CI is green** as of 9 September; it had been red on every run before that | Also `npm run audit:estate`, `npm run audit:onpage` (0 findings across 543 indexable pages) |
-| Built pages | **847 static routes** in the latest build; on-page audit scanned 846 HTML pages (303 noindex), plus JSON companions |
-| Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
+| Suite | `npm run validate` = **161 tests**, 0 failing, in both indexing postures. **CI is green** as of 10 September; the latest hosted run is green across suite, Commons, and production-posture jobs | Also `npm run audit:estate`, `npm run audit:onpage` |
+| Built pages | **853 static routes** in the latest build; on-page audit scans the generated HTML plus JSON companions |
+| Sources | 301 (122 primary-law, 71 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
 | Coverage pages | 27 of 51 canonical lines |
 | Figures | 19 (`/figures`, the amounts and what moves them) |
 | Modules | 10 live, 272 module rules, 15 cross-module rules |
 | Records signed off | **0.** 172 `under-review`, 4 `corrected`. 176 records now carry a review state |
-| Sources ever re-checked | **22 of 299.** All eleven figure-source documents are re-read, plus five high-impact evidence sources; 277 sources remain first-read only |
+| Sources ever re-checked | **22 of 301.** All eleven figure-source documents are re-read, plus five high-impact evidence sources; 279 sources remain first-read only |
 | Sources no question reaches | 48 |
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
 | Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file |
 | Change feed | `/changed`: 20 recorded changes, 7 scheduled amount moves, built from record fields |
 | Birch, the community | `commons/`, intended as its own Vercel project and origin at `commons.birch.insure`. **81 assertions, 80 passing, 1 skipped** for want of a database. Sign-in, case-report intake, thread-to-case-report promotion, the moderation queue, withdrawal, threads, and professional-verification requests all run end to end on an in-memory store; Postgres and Resend are wired but unexercised. The app now targets the official `@astrojs/vercel` SSR adapter; `commons/.env.example`, `commons/README.md`, and `npm run preflight:production` define the external launch gate, including exact production-origin checks. The shared Commons shell now has a touch-safe, contained mobile menu and reduced-motion contract. The request-time `/healthz` liveness route checks store reachability and production mail configuration without exposing details or entering the sitemap. |
-| Threads | Built 9 September. 115 subjects a thread can attach to, generated from the evidence layer. A verdict phrase **blocks** a post where it only flags a submission, because a post publishes on write. A post cannot be edited - only withdrawn by its author or hidden by a moderator, both leaving a tombstone |
+| Threads | Built 9 September. 117 subjects a thread can attach to, generated from the evidence layer. A verdict phrase **blocks** a post where it only flags a submission, because a post publishes on write. A post cannot be edited - only withdrawn by its author or hidden by a moderator, both leaving a tombstone |
 | Published records with no review state | **0.** Was 3; the tools schema now carries review fields, required on live worksheets and forbidden on unbuilt ones |
 
 ### What to pick up next, in order
@@ -76,10 +76,11 @@ form with what is actually blocked.
    them, without citing them. Note the constraint that already caught this
    project once: do not advertise a host that does not resolve. `birch.insure`
    is not live.
-2. **Carrier pages** - *blocked on network.* `BIRCH.md` section 6 has the
-   three-band design. Every regulator host is blocked at `CONNECT` in this
-   environment, and a pass that cannot reach a regulator must not write a
-   carrier record from a search snippet.
+2. **Carrier pages** - *partially complete.* State Farm General Insurance
+   Company and Farmers Insurance Exchange now have source-linked California
+   regulator identity snapshots and structured pages. Continue one company at a
+   time only when the official regulator profile can be opened and read; do not
+   fill the directory from search snippets or marketing copy.
 3. **Performance, accessibility, and motion budget** - *complete on 10
    September.* `MOTION-AND-A11Y-BUDGET.md` now makes the 44px control target and
    reduced-motion contract explicit. The shared header, buttons, segmented
@@ -101,9 +102,11 @@ and sign-in/thread/moderation/withdrawal smoke test are all complete. The full
 surface map, design decision, direct Mobbin references, and continuation
 sequence are in `outputs/BIRCH-END-TO-END-SETUP-AUDIT-2026-09-09.md`.
 
-Do not start a new feature ahead of the three items above. The next product feature
-is public subject cross-linking, but it must remain gated until Commons content and
-the `birch.insure` origin are genuinely live.
+The company-directory trust-cue pass is now complete. The next product feature
+is public subject cross-linking, but it must remain gated until Commons content
+and the `birch.insure` origin are genuinely live. Continue adding carrier pages
+only through the source-read gate described above; do not bulk-import names or
+marketing claims.
 
 ### The two things blocking everything else
 
@@ -289,7 +292,10 @@ source-ingestion gate rather than a claim about a current record.
 
 The next unexamined surface is not yet a reason to add product code. Continue
 the same measure-first method against any new global assertion before changing
-the public feature surface.
+the public feature surface. The live company directory now exposes five
+organizations, with source-backed regulator snapshots for State Farm General
+Insurance Company and Farmers Insurance Exchange; the generated Commons subject
+registry is synchronized to those Research records.
 
 `AUTHORITY-AND-DISTRIBUTION-PLAN.md`, `LAUNCH-GATE.md` and `ESTATE-PLAN.md`
 carry stale counts (8 modules where there are 10, 231 rules where there are
@@ -332,7 +338,7 @@ has the three-layer design; this is how the new asks map onto it.
 ### Allowed on the Record (this origin), now
 
 **Company pages as entity records, not review pages.** The `companies`
-collection exists with 3 records and is the most under-built high-value surface
+collection exists with 5 records and is the most under-built high-value surface
 in the corpus. Regulator-published fact is abundant: CDI company profiles carry
 licence status, company type, state of domicile, former names, agent for service
 of process, and the lines the company is authorised to transact; NAIC carries
