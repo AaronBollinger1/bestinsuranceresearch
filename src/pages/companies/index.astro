@@ -7,12 +7,21 @@ import StatusChip from '../../components/StatusChip.astro';
 import { stripMarkers } from '../../lib/citations';
 import { loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
+import { siteConfig } from '../../config/site';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
 
 import { excerpt } from '../../lib/excerpt';
 const corpus = await loadCorpus();
 const companies = [...corpus.companies].sort((a, b) => a.data.legalName.localeCompare(b.data.legalName));
 const companyCount = companies.length;
+const coverageIdsByCompany = new Map<string, Set<string>>();
+for (const question of corpus.questions) {
+	for (const company of question.data.companies) {
+		const coverageIds = coverageIdsByCompany.get(company.id) ?? new Set<string>();
+		for (const coverage of question.data.coverages) coverageIds.add(coverage.id);
+		coverageIdsByCompany.set(company.id, coverageIds);
+	}
+}
 
 const ORG_TYPE_LABEL: Record<string, string> = {
 	regulator: 'Insurance regulator',
@@ -84,7 +93,12 @@ const jsonLd = graph(
 									<span class="meta">{ORG_TYPE_LABEL[company.data.orgType] ?? company.data.orgType}</span>
 									<span class="meta">{company.data.jurisdictions.join(', ')}</span>
 									<span class="meta">{company.data.sourceIds.length} sources</span>
-									<span class="meta">Reviewed {longDate(company.data.lastReviewed)}</span>
+									<span class="meta">{company.data.regulatoryIdentity ? 'Snapshot' : 'Updated'} {longDate(company.data.lastReviewed)}</span>
+								</div>
+								<div class="company-row-signals" aria-label="Record signals">
+									{company.data.regulatoryIdentity && <span class="company-signal company-signal-regulator">Regulator snapshot</span>}
+									<span class="company-signal">{coverageIdsByCompany.get(company.id)?.size ?? 0} linked coverage pages</span>
+									<span class="company-signal company-signal-community">{siteConfig.communityReady ? 'Commons available' : 'Commons private preview'}</span>
 								</div>
 							</div>
 							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
@@ -161,6 +175,10 @@ const jsonLd = graph(
 	.company-filters .field { margin: 0; }
 	.company-filter-status { margin: var(--s-3) 0 0; color: var(--muted); font: var(--text-xs)/1.5 var(--font-mono); }
 	.company-filter-empty { margin: var(--s-6) 0 0; padding: var(--s-5); border: 1px dashed var(--line-strong); color: var(--muted); background: var(--paper); }
+	.company-row-signals { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-2); margin-top: var(--s-2); }
+	.company-signal { padding: 3px 7px; border: var(--bw-hair) solid var(--line); border-radius: 999px; background: var(--paper); color: var(--muted); font: var(--text-2xs)/1.3 var(--font-mono); }
+	.company-signal-regulator { border-color: color-mix(in srgb, var(--brand-blue) 40%, var(--line)); background: var(--blue-wash); color: var(--brand-blue-text); }
+	.company-signal-community { border-style: dashed; }
 	.company-next-step { display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); margin-top: var(--s-6); padding: var(--s-5); border: 1px solid var(--line-strong); border-left: 3px solid var(--brand-blue); background: var(--paper); border-radius: var(--r-3); }
 	.company-next-step strong { display: block; color: var(--ink); }
 	.company-next-step p { margin: var(--s-1) 0 0; color: var(--muted); font-size: var(--text-sm); }

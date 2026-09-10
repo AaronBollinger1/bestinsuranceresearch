@@ -661,10 +661,15 @@ test('company directory filtering is local and has an honest empty state', () =>
 	assert.match(source, /id="company-type"/);
 	assert.match(source, /data-company-row/);
 	assert.match(source, /id="company-filter-empty"/);
+	assert.match(source, /coverageIdsByCompany/);
+	assert.match(source, /company-row-signals/);
+	assert.match(source, /Commons private preview/);
 	assert.match(source, /row\.hidden =/);
 	assert.doesNotMatch(source, /\b(?:fetch|XMLHttpRequest|localStorage|sessionStorage)\b/);
 	assert.ok(html.includes('Find an organization'));
 	assert.ok(html.includes('No organization matches those filters'));
+	assert.equal((html.match(/class="company-row-signals"/g) ?? []).length, companies.length, 'every organization row should expose record signals');
+	assert.equal((html.match(/<span class="company-signal company-signal-community/g) ?? []).length, companies.length, 'every organization row should state community availability');
 });
 
 test('no outbound Bollinsure link carries a question or free text', () => {
