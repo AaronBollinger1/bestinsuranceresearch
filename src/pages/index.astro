@@ -13,12 +13,11 @@ import {
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StatusChip from '../components/StatusChip.astro';
 import { siteConfig } from '../config/site';
-import { createCiter, stripMarkers } from '../lib/citations';
-import { idsOf, isStale, loadCorpus, recentlyReviewed } from '../lib/corpus';
+import { stripMarkers } from '../lib/citations';
+import { isStale, loadCorpus, recentlyReviewed } from '../lib/corpus';
 import { longDate } from '../lib/cite';
 import { graph, organization, website } from '../lib/schema';
 import { TODAY } from '../lib/today';
-import { allLineHubs } from '../lib/line-hub';
 
 import { excerpt, shortList } from '../lib/excerpt';
 const corpus = await loadCorpus();
@@ -36,14 +35,6 @@ const staleSources = corpus.sources.filter((s) => isStale(s.data.lastChecked, TO
    so publishing a per-source freshness date without this ratio overstated
    what the date establishes. */
 const rechecked = corpus.sources.filter((s) => s.data.lastCheckedBasis === 'recheck').length;
-/* The count the front door leads with, so it is computed rather than
-   written down where it would drift. */
-const indexedLines = allLineHubs(corpus).filter((h) => h.hasSubstance).length;
-const lastReview = corpus.questions
-	.map((q) => q.data.lastReviewed)
-	.concat(corpus.coverages.map((c) => c.data.lastReviewed))
-	.sort()
-	.at(-1);
 const correctedPages = corpus.questions.filter((q) => q.data.reviewState === 'corrected').length;
 
 /*
@@ -64,12 +55,6 @@ const featured = FEATURED.map((slug) => corpus.questionBySlug.get(slug)).filter(
 const featuredQuestions = featured.length >= 4 ? featured : corpus.questions.slice(0, 6);
 const examples = featuredQuestions.slice(0, 5).map((q) => q.data.question);
 const previewQuestion = featuredQuestions[0];
-const previewSourceIds = previewQuestion ? idsOf(previewQuestion.data.sourceIds) : [];
-const previewSentence = previewQuestion?.data.shortAnswer.match(/^.*?\[S:[a-z0-9][a-z0-9-]*\][.!?]/)?.[0] ?? previewQuestion?.data.shortAnswer ?? '';
-const previewCiter = previewQuestion
-	? createCiter(previewSourceIds, `homepage preview "${previewQuestion.id}"`, { link: 'absolute' })
-	: null;
-const previewAnswerHtml = previewCiter ? previewCiter.inline(previewSentence) : '';
 
 const recent = recentlyReviewed(corpus, 6);
 
@@ -143,17 +128,13 @@ const jsonLd = graph(organization(), website());
 						<span class="eyebrow">Birch / Research</span>
 						<span class="home-identity-note">Insurance, with the source attached</span>
 					</div>
-				</div>
-				<h1 id="home-title">Insurance answers with the source attached.</h1>
-				<p class="lede">
-					Birch is free, independent research for the moments when insurance gets hard to read. Ask a question,
-					see the assumptions, and open the source behind the answer.
-				</p>
-				<p class="home-stat-line">
-					<span>{indexedLines} lines indexed</span>
-					<span>{corpus.questions.length} questions</span>
-					<span>{totalSources} source records</span>
-				</p>
+					</div>
+					<h1 id="home-title">Insurance answers with the source attached.</h1>
+					<p class="lede">
+						Birch is free, independent research for the moments when insurance gets hard to read. Ask a question,
+						see the assumptions, and open the source behind the answer.
+					</p>
+					<p class="home-hero-boundary">No quotes. No rankings. No sales pitch. Just context you can check.</p>
 
 				<form action="/ask" method="get" role="search" data-question-form class="home-search-form">
 					<div class="field">
@@ -178,101 +159,42 @@ const jsonLd = graph(organization(), website());
 					</div>
 				</form>
 
-				<div class="home-quick-actions" aria-label="Explore Birch">
-					<a class="btn btn-secondary" href="/insurance">Browse coverage</a>
-					<a class="btn btn-quiet" href="/questions">Read the question library <ArrowRight size={15} aria-hidden="true" /></a>
-				</div>
-
-				{previewQuestion && previewCiter && (
-					<section class="home-answer-preview" aria-labelledby="home-answer-preview-title">
-						<div class="home-answer-preview-top">
-							<div>
-								<span class="eyebrow">See the answer shape</span>
-								<span class="home-answer-preview-kicker">A real Birch question, not a demo</span>
-							</div>
-							<StatusChip kind={previewQuestion.data.reviewState} />
-						</div>
-						<div class="home-answer-preview-grid">
-							<div>
-								<h2 id="home-answer-preview-title">{previewQuestion.data.question}</h2>
-								<p class="home-answer-preview-answer" set:html={previewAnswerHtml}></p>
-							</div>
-							<aside class="home-answer-preview-rail" aria-label="Evidence attached to this answer">
-								<span class="meta">Evidence attached</span>
-								<strong>{previewQuestion.data.sourceIds.length} sources</strong>
-								<span class="meta">Reviewed {longDate(previewQuestion.data.lastReviewed)}</span>
-								<a href={`/questions/${previewQuestion.id}#source-1`}>Open source ledger <ArrowRight size={14} aria-hidden="true" /></a>
-							</aside>
-						</div>
-					</section>
-				)}
-
-				<div class="home-question-prompts" aria-label="Example questions from the Birch library">
-					<div class="home-question-prompts-head">
-						<span class="meta">Try a real question</span>
-						<span class="home-question-prompts-note">No account or upload required</span>
-					</div>
-					<div class="home-question-prompt-list">
-						{featuredQuestions.slice(0, 3).map((question) => (
-							<a class="home-question-prompt" href={`/questions/${question.id}`}>
-								<span>{question.data.question}</span>
-								<ArrowRight size={14} aria-hidden="true" />
-							</a>
-						))}
+					<div class="home-quick-actions" aria-label="Explore Birch">
+						<a class="btn btn-secondary" href="/insurance">Browse coverage</a>
+						<a class="btn btn-quiet" href="/questions">Read the question library <ArrowRight size={15} aria-hidden="true" /></a>
 					</div>
 				</div>
 
-				<div class="home-research-cta">
-					<div>
-						<span class="meta">Free to read · no account required</span>
-						<strong>
-							{siteConfig.communityReady
-								? 'Read the research first. Bring your experience to Commons when you’re ready.'
-								: 'Read the research first. Commons is in private preview while the discussion layer is prepared.'}
-						</strong>
-					</div>
-					{
-						siteConfig.communityReady ? (
-							<a href={siteConfig.communityOrigin} rel="noopener">
-								Open Birch Commons <ArrowRight size={15} aria-hidden="true" />
-							</a>
-						) : (
-							<span class="home-research-cta-status">Commons · private preview</span>
-						)
-					}
-				</div>
-			</div>
-
-			<aside class="home-compass" aria-label="How Birch works">
-				<span class="eyebrow">Research path</span>
-				<h2>Start with one question.</h2>
-				<ol class="home-entry-list">
-					<li>
-						<a href="/ask"><span>Ask a question</span><ArrowRight size={15} aria-hidden="true" /></a>
-						<p>Search the cited library in plain language.</p>
-					</li>
-					<li>
-						<a href="/insurance"><span>Browse a coverage line</span><ArrowRight size={15} aria-hidden="true" /></a>
-						<p>See what a policy is designed to do, and what commonly changes it.</p>
-					</li>
-					<li>
-						{
-							siteConfig.communityReady ? (
-								<a href={siteConfig.communityOrigin} rel="noopener"><span>Share what happened</span><ArrowRight size={15} aria-hidden="true" /></a>
-							) : (
-								<span class="home-entry-list-status">Share what happened · coming in private preview</span>
-							)
-						}
-						<p>
-							{siteConfig.communityReady
-								? 'Continue in the separate Commons, where conversations stay conversations.'
-								: 'The separate Commons will open after its deployment and moderation systems are ready.'}
-						</p>
-					</li>
-				</ol>
-				<div class="home-boundary">
-					<span class="meta">The boundary</span>
-					<p>Research says what a source supports. Community says what a person experienced. Neither publishes a verdict.</p>
+				<aside class="home-compass" aria-label="How Birch works">
+					<span class="eyebrow">How Birch works</span>
+					<h2>A calmer way to get oriented.</h2>
+					<ol class="home-entry-list">
+						<li>
+							<a href="/ask"><span>Ask a plain-language question</span><ArrowRight size={15} aria-hidden="true" /></a>
+							<p>Start with the situation, not the product label.</p>
+						</li>
+						<li>
+							<a href="/sources"><span>Read the evidence trail</span><ArrowRight size={15} aria-hidden="true" /></a>
+							<p>See what the answer assumes and where it came from.</p>
+						</li>
+						<li>
+							{
+								siteConfig.communityReady ? (
+									<a href={siteConfig.communityOrigin} rel="noopener"><span>Bring context to Commons</span><ArrowRight size={15} aria-hidden="true" /></a>
+								) : (
+									<span class="home-entry-list-status">Bring context to Commons · private preview</span>
+								)
+							}
+							<p>
+								{siteConfig.communityReady
+									? 'Share an experience without turning it into a verdict.'
+									: 'The separate Commons will open after its deployment and moderation systems are ready.'}
+							</p>
+						</li>
+					</ol>
+					<div class="home-boundary">
+						<span class="meta">A note on trust</span>
+						<p>Birch separates research from lived experience so you can tell what is documented, what is reported, and what still needs review.</p>
 					{siteConfig.environment === 'preview' && (
 						<div class="home-preview-note">
 							<span class="status status-plain">Private review</span>
@@ -283,70 +205,33 @@ const jsonLd = graph(organization(), website());
 			</aside>
 			</div>
 
-			<!-- Source-quality strip, still inside the first viewport. -->
-			<div class="table-scroll" style="margin-top: var(--s-6); max-width: 920px">
-				<table class="data">
-					<caption>Current state of the published corpus, counted from the source registry.</caption>
-					<thead>
-						<tr>
-							<th scope="col">Measure</th>
-							<th scope="col">Value</th>
-							<th scope="col">What it means</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">Source records</th>
-							<td class="num">{totalSources}</td>
-							<td>Each carries a publisher, dates, and the exact claims it supports.</td>
-						</tr>
-						<tr>
-							<th scope="row">Primary sources</th>
-							<td class="num">{primarySources} of {totalSources}</td>
-							<td>Statutes, regulations, regulator guidance, and official records.</td>
-						</tr>
-						<tr>
-							<th scope="row">Stale sources</th>
-							<td class="num">{staleSources}</td>
-							<td>Past the review window. Flagged on every page that cites them.</td>
-						</tr>
-						<tr>
-							<th scope="row">Independently rechecked</th>
-							<td class="num">{rechecked} of {totalSources}</td>
-							<td>
-								Confirmed again after the day it was added. The rest carry the date they were
-								read on, and say so.
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">Most recent review</th>
-							<td class="num">{lastReview ? longDate(lastReview) : 'n/a'}</td>
-							<td>A named person signed off on that page before it published.</td>
-						</tr>
-						<tr>
-							<th scope="row">Pages corrected</th>
-							<td class="num">{correctedPages}</td>
-							<td>Every material correction is logged in public.</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-
-			<div class="table-stack">
-				<p class="mono">Current state of the published corpus, counted from the source registry.</p>
-				<div class="table-stack-item">
-					<dl>
-						<dt>Sources</dt>
-						<dd>{totalSources} records, {primarySources} primary</dd>
-						<dt>Stale</dt>
-						<dd>{staleSources} past the review window</dd>
-						<dt>Reviewed</dt>
-						<dd>{lastReview ? longDate(lastReview) : 'n/a'}</dd>
-						<dt>Corrected</dt>
-						<dd>{correctedPages} pages</dd>
-					</dl>
+			<section class="home-proof-band" aria-labelledby="proof-title">
+				<div class="home-proof-head">
+					<span class="eyebrow" id="proof-title">Built for clarity</span>
+					<a class="text-link" href="/sources">Open the source registry <ArrowRight size={14} aria-hidden="true" /></a>
 				</div>
-			</div>
+				<div class="home-proof-grid">
+					<div><strong>Source attached</strong><span>Open the record behind the answer.</span></div>
+					<div><strong>Assumptions visible</strong><span>See what changes the answer.</span></div>
+					<div><strong>Free to read</strong><span>No account or upload required.</span></div>
+				</div>
+			</section>
+
+			<section class="home-corpus" aria-labelledby="corpus-title">
+				<div class="home-corpus-head">
+					<div>
+						<span class="eyebrow">Research record</span>
+						<h2 id="corpus-title">The current library, counted from its source registry.</h2>
+					</div>
+					<span class="home-corpus-note">{rechecked} of {totalSources} independently rechecked · updated as the corpus changes.</span>
+				</div>
+				<div class="home-corpus-grid">
+					<a class="home-corpus-metric" href="/sources"><span class="meta">Source records</span><strong>{totalSources}</strong><span>Publisher, dates, and supported claims.</span></a>
+					<a class="home-corpus-metric" href="/sources"><span class="meta">Primary sources</span><strong>{primarySources}<small> / {totalSources}</small></strong><span>Statutes, regulations, guidance, and official records.</span></a>
+					<a class="home-corpus-metric" href="/sources"><span class="meta">Stale sources</span><strong>{staleSources}</strong><span>Past the review window and flagged.</span></a>
+					<a class="home-corpus-metric" href="/corrections"><span class="meta">Pages corrected</span><strong>{correctedPages}</strong><span>Material changes logged publicly.</span></a>
+				</div>
+			</section>
 
 			<div class="home-ca-launch" aria-labelledby="ca-launch-title">
 				<div>
