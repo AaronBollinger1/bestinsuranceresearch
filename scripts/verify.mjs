@@ -505,6 +505,54 @@ test('the analytics contract published to the page uses controlled vocabularies 
 	}
 });
 
+/* ------------------------------------------------------------------ */
+/* Motion and interaction budget                                      */
+/* ------------------------------------------------------------------ */
+
+test('the shared shell enforces Birch interaction and reduced-motion budgets', () => {
+	const css = read(path.join(ROOT, 'src/styles/global.css'));
+	const tokens = read(path.join(ROOT, 'src/styles/tokens.css'));
+	const loadingMark = read(path.join(ROOT, 'src/components/BirchLoadingMark.astro'));
+	const convergingMark = read(path.join(ROOT, 'src/components/MarkConverging.astro'));
+	const budget = read(path.join(ROOT, 'MOTION-AND-A11Y-BUDGET.md'));
+
+	assert.match(tokens, /--tap:\s*44px/, 'the shared tap target token moved below 44px');
+	for (const token of ['--dur-1: 120ms', '--dur-2: 180ms', '--dur-3: 240ms', '--dur-4: 360ms']) {
+		assert.ok(tokens.includes(token), `motion token is missing or changed: ${token}`);
+	}
+
+	/* These are the controls that were previously below the declared target on
+	   desktop. Keep the assertion close to the source of truth instead of
+	   relying on a single browser viewport to catch a CSS regression. */
+	for (const [selector, pattern] of [
+		['header navigation', /\.header-nav a, \.header-menu-trigger \{[\s\S]*?min-height:\s*var\(--tap\)/],
+		['header search', /\.header-search input \{[\s\S]*?min-height:\s*var\(--tap\)/],
+		['compact buttons', /\.btn-sm \{\s*min-height:\s*var\(--tap\)/],
+		['segmented controls', /\.segmented button \{\s*\n?\s*min-height:\s*var\(--tap\)/],
+		['tabs', /\.tablist \[role='tab'\] \{\s*\n?\s*min-height:\s*var\(--tap\)/],
+	]) {
+		assert.match(css, pattern, `${selector} no longer uses the shared tap target`);
+	}
+
+	const reduceStart = css.lastIndexOf('@media (prefers-reduced-motion: reduce)');
+	assert.ok(reduceStart >= 0, 'global reduced-motion contract is missing');
+	const reduced = css.slice(reduceStart);
+	assert.match(reduced, /animation:\s*none\s*!important/, 'reduced motion only shortens animation instead of disabling it');
+	assert.match(reduced, /transition:\s*none\s*!important/, 'reduced motion only shortens transitions instead of disabling them');
+	assert.match(reduced, /\.header-menu\.is-open \.header-menu-panel \{\s*transform:\s*translate\(-50%, 0\) !important;/, 'reduced-motion menus do not preserve their open state');
+
+	/* The loading marks may animate only inside an explicit no-preference media
+	   query. The final mark remains available to readers who request less motion. */
+	for (const [name, source] of [['BirchLoadingMark', loadingMark], ['MarkConverging', convergingMark]]) {
+		const media = source.indexOf('@media (prefers-reduced-motion: no-preference)');
+		const animation = source.indexOf('animation:');
+		assert.ok(media >= 0 && animation > media, `${name} animation is not gated by no-preference`);
+	}
+
+	assert.match(budget, /minimum height for header navigation/, 'the interaction budget no longer documents the tap rule');
+	assert.match(budget, /disables animation and transitions/, 'the motion budget no longer documents the reduced-motion rule');
+});
+
 test('no analytics attribute on any element carries free text', () => {
 	for (const file of htmlFiles) {
 		const html = read(file);

@@ -6,7 +6,7 @@
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; color-scheme: light; }
 
 body {
 	margin: 0;
@@ -278,7 +278,7 @@ code { overflow-wrap: anywhere; }
 
 .header-nav { display: flex; align-items: center; gap: 2px; margin-left: var(--s-2); }
 .header-nav a, .header-menu-trigger {
-	display: inline-flex; align-items: center; min-height: 34px; padding: 5px 9px;
+	display: inline-flex; align-items: center; min-height: var(--tap); padding: 5px 9px;
 	border-radius: var(--r-2); text-decoration: none; color: var(--body);
 	font-size: var(--text-sm); font-weight: 500;
 	transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
@@ -340,7 +340,7 @@ code { overflow-wrap: anywhere; }
 
 .header-search { position: relative; display: flex; align-items: center; }
 .header-search input {
-	width: 196px; min-height: 34px; padding: 5px 10px 5px 30px;
+	width: 196px; min-height: var(--tap); padding: 5px 10px 5px 30px;
 	border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2);
 	background: var(--paper); color: var(--ink); font-size: var(--text-sm);
 	transition: width var(--dur-2) var(--ease), border-color var(--dur-1) var(--ease);
@@ -401,18 +401,13 @@ code { overflow-wrap: anywhere; }
 			0 0 0 var(--brand-blue-deep),
 			0 4px 10px rgba(47, 111, 230, .26);
 }
-/* A pressable control that cannot move is worse than one that never moved. */
-@media (prefers-reduced-motion: reduce) {
-	.btn-primary { transition: background .12s cubic-bezier(.22, .61, .36, 1); }
-	.btn-primary:active { transform: none; }
-}
 .btn-secondary { background: var(--paper); color: var(--ink); border-color: var(--line-strong); }
 .btn-secondary:hover { border-color: var(--brand-blue); background: var(--brand-blue-wash); }
 .btn-quiet { background: transparent; color: var(--brand-blue-text); border-color: transparent; padding-inline: var(--s-2); }
 .btn-quiet:hover { background: var(--brand-blue-wash); }
 .btn-ink { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .btn-ink:hover { background: var(--ink-2); }
-.btn-sm { min-height: 36px; padding: 6px var(--s-3); font-size: var(--text-sm); }
+.btn-sm { min-height: var(--tap); padding: 6px var(--s-3); font-size: var(--text-sm); }
 .btn[aria-disabled='true'], .btn:disabled { opacity: 0.55; cursor: not-allowed; }
 .btn-full { width: 100%; }
 /* For buttons whose label is a whole sentence, such as the example questions. */
@@ -448,7 +443,7 @@ code { overflow-wrap: anywhere; }
 /* Segmented control: modes */
 .segmented { display: inline-flex; padding: 2px; gap: 2px; background: var(--cream); border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-3); }
 .segmented button {
-	min-height: 36px; padding: 5px var(--s-3); border: 0; border-radius: var(--r-2);
+	min-height: var(--tap); padding: 5px var(--s-3); border: 0; border-radius: var(--r-2);
 	background: transparent; color: var(--muted); font-size: var(--text-sm); font-weight: 600; cursor: pointer;
 	display: inline-flex; align-items: center; gap: 6px;
 	transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
@@ -459,7 +454,7 @@ code { overflow-wrap: anywhere; }
 /* Tabs: views */
 .tablist { display: flex; gap: var(--s-1); border-bottom: var(--bw-hair) solid var(--line-strong); overflow-x: auto; }
 .tablist [role='tab'] {
-	min-height: 42px; padding: 8px var(--s-3); border: 0; background: transparent;
+	min-height: var(--tap); padding: 8px var(--s-3); border: 0; background: transparent;
 	color: var(--muted); font-size: var(--text-base); font-weight: 600; cursor: pointer;
 	border-bottom: var(--bw-marker) solid transparent; margin-bottom: -1px; white-space: nowrap;
 	transition: color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
@@ -960,9 +955,21 @@ table.data tbody tr:hover { background: var(--gold-wash); }
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
 	*, *::before, *::after {
-		animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+		animation: none !important;
+		transition: none !important;
+		scroll-behavior: auto !important;
 	}
+	.home-proof-head .text-link:hover svg, .home-proof-head .text-link:focus-visible svg,
+	.home-sequence-step:hover > svg, .home-sequence-step:focus-visible > svg,
+	.home-sequence-preview:hover, a.card:hover,
+	.header-menu.is-open .header-menu-trigger svg,
+	.header-menu-link:hover .header-menu-link-title svg, .header-menu-link:focus-visible .header-menu-link-title svg,
+	.btn-primary:active, .disc[open] > summary .disc-chevron,
+	.start-path:hover, .company-page-map-card:hover, .company-page-map-card:focus-visible,
+	.commons-preview-thread:hover {
+		transform: none !important;
+	}
+	.header-menu.is-open .header-menu-panel { transform: translate(-50%, 0) !important; }
 }
 @media (prefers-reduced-motion: no-preference) {
 	html { scroll-behavior: smooth; }

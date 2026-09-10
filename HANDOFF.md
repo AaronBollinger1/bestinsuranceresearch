@@ -48,7 +48,7 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | --- | --- |
 | The product | **Birch.** One property: a cited evidence layer (**Birch Research**) and a validated discussion layer (**Birch**). Read `BIRCH.md` before anything else - it is the current direction and it says what the rebrand is not allowed to relax |
 | Branch | `claude/bold-hopper-mqcyen`, 69 commits (19 ahead of `launch/initial-publication`), **never push to `main`** |
-| Suite | `npm run validate` = **155 tests**, 0 failing, in both indexing postures. **CI is green** as of 9 September; it had been red on every run before that | Also `npm run audit:estate`, `npm run audit:onpage` (0 findings across 543 indexable pages) |
+| Suite | `npm run validate` = **156 tests**, 0 failing, in both indexing postures. **CI is green** as of 9 September; it had been red on every run before that | Also `npm run audit:estate`, `npm run audit:onpage` (0 findings across 543 indexable pages) |
 | Built pages | **847 static routes** in the latest build; on-page audit scanned 846 HTML pages (303 noindex), plus JSON companions |
 | Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
@@ -80,9 +80,12 @@ form with what is actually blocked.
    three-band design. Every regulator host is blocked at `CONNECT` in this
    environment, and a pass that cannot reach a regulator must not write a
    carrier record from a search snippet.
-3. **Performance, accessibility, and motion budget** - *unblocked, needs a
-   representative browser audit.* Measure Research, company, contribution,
-   professional, and Commons-specimen surfaces at desktop and mobile widths.
+3. **Performance, accessibility, and motion budget** - *complete on 10
+   September.* `MOTION-AND-A11Y-BUDGET.md` now makes the 44px control target and
+   reduced-motion contract explicit. The shared header, buttons, segmented
+   controls, tabs, and fields use the token; the browser check covered Research,
+   company, contribution, professional, and Commons-specimen surfaces at
+   desktop and mobile widths, including no overflow and Escape dismissal.
 
 The former promotion item is complete in this branch. A moderator can invite an
 author from `/moderate/posts`; the author sees a private, prefilled form at
