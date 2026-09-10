@@ -13,8 +13,8 @@ import {
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StatusChip from '../components/StatusChip.astro';
 import { siteConfig } from '../config/site';
-import { stripMarkers } from '../lib/citations';
-import { isStale, loadCorpus, recentlyReviewed } from '../lib/corpus';
+import { createCiter, stripMarkers } from '../lib/citations';
+import { idsOf, isStale, loadCorpus, recentlyReviewed } from '../lib/corpus';
 import { longDate } from '../lib/cite';
 import { graph, organization, website } from '../lib/schema';
 import { TODAY } from '../lib/today';
@@ -64,6 +64,12 @@ const featured = FEATURED.map((slug) => corpus.questionBySlug.get(slug)).filter(
 const featuredQuestions = featured.length >= 4 ? featured : corpus.questions.slice(0, 6);
 const examples = featuredQuestions.slice(0, 5).map((q) => q.data.question);
 const previewQuestion = featuredQuestions[0];
+const previewSourceIds = previewQuestion ? idsOf(previewQuestion.data.sourceIds) : [];
+const previewSentence = previewQuestion?.data.shortAnswer.match(/^.*?\[S:[a-z0-9][a-z0-9-]*\][.!?]/)?.[0] ?? previewQuestion?.data.shortAnswer ?? '';
+const previewCiter = previewQuestion
+	? createCiter(previewSourceIds, `homepage preview "${previewQuestion.id}"`, { link: 'absolute' })
+	: null;
+const previewAnswerHtml = previewCiter ? previewCiter.inline(previewSentence) : '';
 
 const recent = recentlyReviewed(corpus, 6);
 
@@ -176,6 +182,30 @@ const jsonLd = graph(organization(), website());
 					<a class="btn btn-secondary" href="/insurance">Browse coverage</a>
 					<a class="btn btn-quiet" href="/questions">Read the question library <ArrowRight size={15} aria-hidden="true" /></a>
 				</div>
+
+				{previewQuestion && previewCiter && (
+					<section class="home-answer-preview" aria-labelledby="home-answer-preview-title">
+						<div class="home-answer-preview-top">
+							<div>
+								<span class="eyebrow">See the answer shape</span>
+								<span class="home-answer-preview-kicker">A real Birch question, not a demo</span>
+							</div>
+							<StatusChip kind={previewQuestion.data.reviewState} />
+						</div>
+						<div class="home-answer-preview-grid">
+							<div>
+								<h2 id="home-answer-preview-title">{previewQuestion.data.question}</h2>
+								<p class="home-answer-preview-answer" set:html={previewAnswerHtml}></p>
+							</div>
+							<aside class="home-answer-preview-rail" aria-label="Evidence attached to this answer">
+								<span class="meta">Evidence attached</span>
+								<strong>{previewQuestion.data.sourceIds.length} sources</strong>
+								<span class="meta">Reviewed {longDate(previewQuestion.data.lastReviewed)}</span>
+								<a href={`/questions/${previewQuestion.id}#source-1`}>Open source ledger <ArrowRight size={14} aria-hidden="true" /></a>
+							</aside>
+						</div>
+					</section>
+				)}
 
 				<div class="home-question-prompts" aria-label="Example questions from the Birch library">
 					<div class="home-question-prompts-head">
