@@ -56,7 +56,7 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | Figures | 19 (`/figures`, the amounts and what moves them) |
 | Modules | 10 live, 272 module rules, 15 cross-module rules |
 | Records signed off | **0.** 172 `under-review`, 4 `corrected`. 176 records now carry a review state |
-| Sources ever re-checked | **21 of 299.** All eleven figure-source documents are re-read, plus four high-impact California evidence sources; 278 sources remain first-read only |
+| Sources ever re-checked | **22 of 299.** All eleven figure-source documents are re-read, plus five high-impact evidence sources; 277 sources remain first-read only |
 | Sources no question reaches | 48 |
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
 | Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file |
@@ -398,7 +398,7 @@ give coverage advice, which is the thing that must not happen.
    available. The corpus is already addressable per claim with checksums and a
    JSON companion on every path; a dated release with a stable schema is what
    makes other people's papers and tools cite it.
-2. **A published recheck cadence.** 278 of 299 sources have
+2. **A published recheck cadence.** 277 of 299 sources have
    `lastCheckedBasis: 'access'` — read once, never returned to. An authority
    that never re-reads decays, and the field exists precisely so the site cannot
    overstate itself. The dated-figure source queue is clear; the wider cadence
@@ -659,7 +659,7 @@ copying a fifth into this one is how that happened. The short version:
    figure-source queue is clear. The wider recheck has started with the
    10 September direct recheck of `ca-labor-code-3700`,
    `ca-cdi-commercial-insurance-guide`, `cfp-dwelling-policy`, and
-   `ca-ccr-tit-10-2321`. 278 of 299 sources
+   `ca-ccr-tit-10-2321`, and `fema-nfip-eligibility`. 277 of 299 sources
    still carry only the date somebody read them once.
 4. ~~Give `tools` a `reviewState`~~ **done.** Required on live worksheets by a
    schema refinement and forbidden on unbuilt ones, so the queue counts the 3

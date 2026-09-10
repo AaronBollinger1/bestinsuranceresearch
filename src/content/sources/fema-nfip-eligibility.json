@@ -8,8 +8,8 @@
 	"publishedDate": "unknown",
 	"effectiveDate": "unknown",
 	"accessedDate": "2026-08-31",
-	"lastChecked": "2026-08-31",
-	"lastCheckedBasis": "access",
+	"lastChecked": "2026-09-10",
+	"lastCheckedBasis": "recheck",
 	"primary": true,
 	"claims": [
 		"Most homeowners insurance does not cover flood damage, and it will not fulfill the mortgage or federal disaster assistance requirements for flood insurance.",
@@ -21,5 +21,5 @@
 	"updateCadence": "FEMA updates NFIP program pages periodically",
 	"status": "active",
 	"officialHost": true,
-	"notes": "Effective: not stated on the page"
+	"notes": "A 2026-09-10 recheck matched all five live claims, including the community participation condition, SFHA government-backed mortgage requirement, lender discretion outside high-risk areas, and prior federal disaster assistance condition. The page also clarifies that the prior-assistance requirement follows the property rather than the individual owner; that context is not promoted as a separate claim here. Effective: not stated on the page"
 }
