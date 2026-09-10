@@ -89,13 +89,27 @@ outside funding model, and counsel review.
 - Primary CTA: **Ask Birch**
 - Secondary CTA: **Browse coverage**
 - Quiet proof: `Free to read · no account required`
-- Boundary line: `Research says what a source supports. Community says what a
-  person experienced. Neither publishes a verdict.`
+- Boundary line: `No quotes. No rankings. No sales pitch. Just context you can
+  check.`
 
 The page should earn a second action in this order: ask, browse, open a source,
 then contribute. Signup is not the first conversion. Ask for an account only
 when a person wants to save research, follow a topic/company, post, report, or
 enter Commons.
+
+The front door has three product abilities, stated simply:
+
+1. **Ask** — put an insurance question into plain language and get the closest
+   cited record.
+2. **Check** — open the assumptions, source ledger, dates, and corrections
+   behind the answer.
+3. **Add context** — later, enter Commons to contribute an attributed
+   experience or professional note under moderation.
+
+Coverage pages, state pages, company records, tools, changes, and the question
+library remain important depth. They are supporting routes, not competing hero
+promises. The header therefore stays one bar, with one primary `Ask Birch`
+action and no announcement subheader.
 
 ### Landing sequence
 

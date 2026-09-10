@@ -125,6 +125,37 @@ suggested them:
   `pushState`, so the back button leaves the page instead of walking backwards through tabs.
 - **Printing opens every panel** and then restores the selection.
 
+## Auth reference pass: the Commons sign-in surface
+
+The Research room stays accountless. Sign-in belongs only to Birch Commons, where a person needs
+an account to post, reply, save, report, or request professional verification. This keeps the
+account prompt out of the research path and makes the decision easy to explain.
+
+Direct references:
+
+- [Mobbin login page](https://mobbin.com/login) — email-first entry with one clear continuation
+  action, optional social sign-in, and terms/privacy kept at the point of commitment.
+- [Mobbin login pattern gallery](https://mobbin.com/explore/mobile/screens/login) — a wide sample
+  of login, verification, and account-setup states to use for edge cases rather than for brand
+  styling.
+- [Mobbin login-link guidance](https://help.mobbin.com/en/articles/691072) — passwordless email
+  link behavior and the distinction between a link-based flow and a password flow.
+
+Birch's decision is deliberately narrower than the reference gallery: one email field, one
+`Email me a link` button, no password, no social-provider dependency, and a generic confirmation
+state so the form cannot reveal whether an address already has an account. The sign-in screen
+uses the same Newsreader / Schibsted Grotesk / IBM Plex Mono system, paper surfaces, 8px maximum
+radius, and Birch blue action token as the Research room, while the cooler Commons paper keeps the
+truth model visibly separate.
+
+The design alternatives were considered and rejected as follows:
+
+| Direction | Shape | Decision |
+| --- | --- | --- |
+| Email-first magic link | One field, one action, one generic confirmation | **Selected** for the first Commons release: lowest cognitive load and no password lifecycle. |
+| Social-first sign-in | Google or Apple first, email below | Rejected for now: adds an identity-provider dependency and makes the account boundary less legible. |
+| Two-step email then code | Email field followed by a code entry state | Reserved for a later accessibility and deliverability pass if one-time links prove unreliable; do not add a second step before the first path is measured. |
+
 ## Homepage concepts, scored
 
 Three complete directions were specified against the same identity, tokens, content model,
@@ -170,10 +201,11 @@ would split the decision rather than make it.
 ## First viewport contract
 
 The current homepage first screen contains, in order: the Birch Research identity and a clear
-scope statement; the corpus counts; one labelled question field with a motion-gated rotating
-example; the blue `Ask Birch` action; two deliberate browse paths; a separate Commons handoff;
-a three-step entry rail; and the source-quality strip. Filters remain on the library and Ask
-surfaces where they help; they do not compete with the front-door task.
+scope statement; one labelled question field with the blue `Ask Birch` action; two deliberate
+browse paths; and a three-step entry rail. The source-quality proof and compact corpus record
+follow the hero. Filters remain on the library and Ask surfaces where they help; they do not
+compete with the front-door task. The header is one bar with the Birch wordmark, navigation, and
+one primary `Ask Birch` action; there is no second announcement bar.
 
 It contains no email field, no phone field, no account prompt, and no quote call to action.
 

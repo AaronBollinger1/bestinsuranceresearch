@@ -255,50 +255,6 @@ code { overflow-wrap: anywhere; }
 /* ============================================================
    HEADER
    ============================================================ */
-.site-announcement {
-	background: var(--ink);
-	color: #dce2e9;
-	border-bottom: 1px solid var(--line-ink);
-}
-.site-announcement-inner {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: var(--s-3);
-	min-height: 32px;
-	padding-block: 5px;
-	font-size: var(--text-xs);
-}
-.site-announcement-kicker {
-	color: var(--brand-cyan);
-	font-family: var(--font-mono);
-	font-size: var(--text-2xs);
-	letter-spacing: .04em;
-	text-transform: uppercase;
-}
-.site-announcement a {
-	display: inline-flex;
-	align-items: center;
-	gap: 5px;
-	color: var(--paper);
-	font-weight: 600;
-	text-decoration: none;
-}
-.site-announcement a:hover { color: var(--brand-cyan); }
-.site-announcement-dismiss {
-	display: inline-grid;
-	place-items: center;
-	width: 28px;
-	height: 28px;
-	margin-left: var(--s-1);
-	padding: 0;
-	border: 0;
-	background: transparent;
-	color: #aeb9c5;
-	cursor: pointer;
-	border-radius: var(--r-2);
-}
-.site-announcement-dismiss:hover { background: var(--line-ink); color: var(--paper); }
 .site-header {
 	position: sticky; top: 0; z-index: 60;
 	background: var(--cream);
@@ -920,9 +876,6 @@ table.data tbody tr:hover { background: var(--gold-wash); }
 	.header-ask-cta { padding-inline: 9px; }
 	.home-quick-actions { align-items: stretch; flex-direction: column; }
 	.home-quick-actions .btn { width: 100%; }
-	.site-announcement-inner { justify-content: flex-start; gap: var(--s-2); }
-	.site-announcement-kicker { display: none; }
-	.site-announcement a { flex: 1; }
 	.home-product-sequence { margin-top: var(--s-8); padding-top: var(--s-6); }
 	.home-product-sequence-head h2 { font-size: var(--text-2xl); }
 	.home-sequence-preview { padding: var(--s-4); }

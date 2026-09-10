@@ -62,115 +62,67 @@ if (Astro.request.method === 'POST') {
 
 <BaseLayout
 	title="Sign in"
-	eyebrow="Sign in"
-	lede={sent ? undefined : 'One address, no password. We send a link that works once.'}
-	crumbs={[{ name: 'Home', href: '/' }, { name: 'Sign in' }]}
+	description="Sign in to Birch Commons with a one-time email link. Birch Research remains open without an account."
+	hideIntro
 >
-	<section class="band band-tight">
-		<div class="shell page-grid">
-			<div class="prose">
+	<section class="band band-tight auth-band" aria-labelledby="auth-title">
+		<div class="shell auth-layout">
+			<div class="auth-main">
+				<a class="auth-back" href="/">Read Birch Research <span aria-hidden="true">↗</span></a>
+				<span class="eyebrow">Birch Commons / Account</span>
+				<h1 id="auth-title">Continue to Birch Commons.</h1>
+				<p class="lede">One address, no password. We send a link that works once.</p>
+
 				{
 					sent ? (
-						<>
-							<h2>Check your email</h2>
+						<div class="auth-state" role="status">
+							<span class="auth-state-label">Link requested</span>
+							<h2>Check your email.</h2>
 							<p>
 								If that address can sign in, a link is on its way. It works once and expires in
 								fifteen minutes.
 							</p>
-							<p>
-								Nothing has been created yet if this is your first visit — the account is made when
-								you follow the link, not when you type the address.
-							</p>
-						</>
+							<p>Nothing is created until the link is followed.</p>
+							<a class="btn btn-light" href="/sign-in">Use another address</a>
+						</div>
 					) : (
-						<>
+						<div class="auth-card">
 							{rejected && (
 								<div class="callout" data-tone="stop">
 									<h3>That did not send</h3>
-									<p>
-										Our mail provider refused the message. That is a fault on our side and says
-										nothing about the address you typed. Try again in a minute.
-									</p>
+									<p>Our mail provider refused the message. Try again in a minute.</p>
 								</div>
 							)}
-
-							<form method="post" style="max-width: 32rem">
-								<label for="email" style="display: block; margin-bottom: var(--s-2)">
-									<strong>Your email address</strong>
-								</label>
-								<input
-									type="email"
-									id="email"
-									name="email"
-									required
-									autocomplete="email"
-									inputmode="email"
-									style="width: 100%; padding: var(--s-3); font: inherit; border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); background: var(--white)"
-								/>
+							<form method="post" class="auth-form">
+								<div class="auth-field">
+									<label for="email">Email address</label>
+									<input type="email" id="email" name="email" required autocomplete="email" inputmode="email" />
+								</div>
 
 								{/* Honeypot. Hidden from people, offered to automation. */}
-								<div aria-hidden="true" style="position:absolute; left:-9999px" >
+								<div aria-hidden="true" class="auth-trap">
 									<label for="website">Leave this empty</label>
 									<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
 								</div>
 
-								<button
-									type="submit"
-									style="margin-top: var(--s-4); padding: var(--s-3) var(--s-5); font: inherit; color: var(--white); background: var(--link); border: 0; border-radius: var(--r-2); cursor: pointer"
-								>
-									Email me a link
-								</button>
+								<button class="btn" type="submit">Email me a link <span aria-hidden="true">→</span></button>
 							</form>
-
-							<h2>What signing in does and does not do</h2>
-							<ul>
-								<li>
-									<strong>There is no password.</strong> A password is a second secret to store,
-									leak and reset, and the email round trip verifies the same thing either way.
-								</li>
-								<li>
-									<strong>The link works once</strong> and expires in fifteen minutes. Email gets
-									forwarded and scanned; a link that still works the second time is one anybody
-									downstream of your inbox can use.
-								</li>
-								<li>
-									<strong>An account holds three things:</strong> your address, a display name you
-									choose, and — if you are a licensed practitioner — a licence number we check
-									against the regulator's public register.
-								</li>
-								<li>
-									<strong>We only ever email sign-in links.</strong> No newsletter, no digest, no
-									notification that somebody replied.
-								</li>
-							</ul>
-
-							<p>
-								<a href="/contribute">What is never collected</a>, in full, and why the fields do
-								not exist rather than being switched off.
-							</p>
-						</>
+							<p class="auth-card-note">No password, newsletter, or notification mail.</p>
+						</div>
 					)
 				}
 			</div>
 
-			<aside aria-label="About accounts">
-				<div class="rail-block">
-					<h2>Stored about you</h2>
-					<ul>
-						<li>Your email address</li>
-						<li>A display name</li>
-						<li>A licence number, if you have one</li>
-					</ul>
-				</div>
-				<div class="rail-block">
-					<h2>Never stored</h2>
-					<ul>
-						<li>A password</li>
-						<li>Any document</li>
-						<li>Policy or claim numbers</li>
-						<li>Date of birth or government id</li>
-						<li>A payment method</li>
-					</ul>
+			<aside class="auth-side" aria-label="About Birch Commons accounts">
+				<span class="eyebrow">What this unlocks</span>
+				<ul>
+					<li>Read and reply in discussion threads.</li>
+					<li>Draft a structured experience for moderation.</li>
+					<li>Request professional verification.</li>
+				</ul>
+				<div class="auth-side-note">
+					<strong>Research stays open.</strong>
+					<span>Birch Research does not require an account. Sign-in exists only for the moderated Commons room.</span>
 				</div>
 			</aside>
 		</div>

@@ -49,19 +49,6 @@ const menuGroups = [
 ] as const;
 ---
 
-<div class="site-announcement" data-announcement>
-	<div class="shell site-announcement-inner">
-		<span class="site-announcement-kicker">{isPreview ? 'Birch / Private review preview' : 'Birch / California launch desk'}</span>
-		<a href="/start">
-			{isPreview ? 'Review the current Birch research surface' : 'Start with the questions California makes hard'}
-			<ArrowRight size={14} aria-hidden="true" />
-		</a>
-		<button class="site-announcement-dismiss" type="button" data-announcement-dismiss aria-label="Dismiss launch desk notice">
-			<X size={15} aria-hidden="true" />
-		</button>
-	</div>
-</div>
-
 <header class="site-header">
 	<div class="shell header-bar">
 		<a class="brand" href="/" aria-label="Birch home">
@@ -174,8 +161,6 @@ const menuGroups = [
 	const panel = document.getElementById('nav-panel');
 	const openIcon = toggle?.querySelector<HTMLElement>('[data-icon="open"]');
 	const closeIcon = toggle?.querySelector<HTMLElement>('[data-icon="close"]');
-	const announcement = document.querySelector<HTMLElement>('[data-announcement]');
-	const announcementDismiss = document.querySelector<HTMLButtonElement>('[data-announcement-dismiss]');
 
 	function setOpen(open: boolean) {
 		if (!toggle || !panel) return;
@@ -230,16 +215,6 @@ const menuGroups = [
 	document.addEventListener('click', (event) => {
 		const target = event.target;
 		if (!(target instanceof Node) || !menus.some((menu) => menu.contains(target))) closeMenus();
-	});
-
-	try {
-		if (window.sessionStorage.getItem('birch-launch-desk-dismissed') === 'true' && announcement) announcement.hidden = true;
-	} catch {
-		// Storage may be unavailable; the notice remains visible and dismissible.
-	}
-	announcementDismiss?.addEventListener('click', () => {
-		if (announcement) announcement.hidden = true;
-		try { window.sessionStorage.setItem('birch-launch-desk-dismissed', 'true'); } catch { /* no-op */ }
 	});
 
 	document.addEventListener('keydown', (event) => {
