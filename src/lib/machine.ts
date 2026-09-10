@@ -153,6 +153,22 @@ export function companyRecord(
 		shortName: d.shortName,
 		orgType: d.orgType,
 		...(d.naic ? { naic: d.naic } : {}),
+		...(d.regulatoryIdentity
+			? {
+				regulatoryIdentity: {
+					sourceId: d.regulatoryIdentity.sourceId.id,
+					sourceUrl: abs(`/sources/${d.regulatoryIdentity.sourceId.id}`),
+					regulatorCompanyId: d.regulatoryIdentity.regulatorCompanyId,
+					authorizedDate: d.regulatoryIdentity.authorizedDate,
+					licenseStatus: d.regulatoryIdentity.licenseStatus,
+					companyType: d.regulatoryIdentity.companyType,
+					domicile: d.regulatoryIdentity.domicile,
+					...(d.regulatoryIdentity.agentForService
+						? { agentForService: d.regulatoryIdentity.agentForService }
+						: {}),
+				},
+			}
+			: {}),
 		summary: stripMarkers(d.summary),
 		officialUrls: d.officialUrls,
 		contactChannels: d.contactChannels,

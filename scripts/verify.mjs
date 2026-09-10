@@ -505,6 +505,28 @@ test('filed company forms are source-linked policy-form records', () => {
 	}
 });
 
+test('regulatory company identity snapshots are source-linked regulator records', () => {
+	const sourceById = new Map(sources.map((source) => [source.id, source]));
+	for (const company of companies) {
+		const identity = company.data.regulatoryIdentity;
+		const machine = JSON.parse(read(path.join(DIST, 'companies', `${company.id}.json`)));
+		const html = read(path.join(DIST, 'companies', company.id, 'index.html'));
+		if (!identity) {
+			assert.equal(machine.regulatoryIdentity, undefined, `${company.id} machine identity snapshot drifted`);
+			continue;
+		}
+		const identitySourceId = typeof identity.sourceId === 'string' ? identity.sourceId : identity.sourceId.id;
+		const source = sourceById.get(identitySourceId);
+		assert.ok(source, `${company.id} identity snapshot has no source record`);
+		assert.equal(source.data.sourceType, 'regulator-record', `${company.id} identity snapshot is not a regulator record`);
+		assert.ok(idsOf(company.data.sourceIds).includes(identitySourceId), `${company.id} identity source is not in the entity ledger`);
+		assert.ok(machine.regulatoryIdentity, `${company.id} machine record omitted the identity snapshot`);
+		assert.equal(machine.regulatoryIdentity.sourceId, identitySourceId, `${company.id} machine identity source drifted`);
+		assert.ok(html.includes('Identity fields from the source record'), `${company.id} does not render the identity snapshot`);
+		assert.ok(html.includes(`/sources/${identitySourceId}`), `${company.id} does not link the identity snapshot to its source page`);
+	}
+});
+
 test('machine records leak no private or generated content', () => {
 	const banned = ['bir_session', 'utm_', 'dataLayer', 'sessionStorage', 'localStorage'];
 	for (const file of jsonFiles) {
@@ -1757,7 +1779,12 @@ test('the published phone and address agree across markup and visible text', () 
 	);
 
 	// And the number a reader can read must be the same one again.
-	const shown = home.match(/\(?[0-9]{3}\)?[ .-]?[0-9]{3}[ .-][0-9]{4}/);
+	// The homepage also renders research cards, which may quote a source's
+	// unrelated company telephone. Scope the visible-number check to the
+	// agency's own tel link so adding a sourced company record cannot make this
+	// estate-wide assertion compare two different organizations.
+	const agencyTelLink = home.match(/<a href="tel:[^"]+"[^>]*>[\s\S]*?<\/a>/);
+	const shown = agencyTelLink?.[0]?.match(/\(?[0-9]{3}\)?[ .-]?[0-9]{3}[ .-][0-9]{4}/) ?? null;
 	assert.ok(shown, 'the homepage shows no phone number in visible text');
 	assert.ok(
 		digits(telephone).endsWith(digits(shown[0])),

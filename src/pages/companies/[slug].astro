@@ -178,6 +178,28 @@ const jsonLd = graph(
 					<section aria-labelledby="identity">
 						<h2 id="identity" class="u-visually-hidden">Verified identity</h2>
 						<div class="direct-answer"><p set:html={cite.inline(d.summary)} /></div>
+						{
+							d.regulatoryIdentity && (
+								<section class="company-regulatory-snapshot" aria-labelledby="regulatory-snapshot-title">
+									<div class="company-regulatory-heading">
+										<div>
+											<span class="company-context-label"><Landmark size={15} aria-hidden="true" /> Regulator snapshot</span>
+											<h2 id="regulatory-snapshot-title">Identity fields from the source record</h2>
+										</div>
+										<a href={`/sources/${d.regulatoryIdentity.sourceId.id}`} class="company-regulatory-source">Read source <ArrowRight size={14} aria-hidden="true" /></a>
+									</div>
+									<dl class="company-regulatory-grid">
+										<div><dt>California Company ID</dt><dd class="num">{d.regulatoryIdentity.regulatorCompanyId}</dd></div>
+										<div><dt>Date authorized in California</dt><dd><time datetime={d.regulatoryIdentity.authorizedDate}>{d.regulatoryIdentity.authorizedDate}</time></dd></div>
+										<div><dt>License status in profile</dt><dd>{d.regulatoryIdentity.licenseStatus}</dd></div>
+										<div><dt>Company type</dt><dd>{d.regulatoryIdentity.companyType}</dd></div>
+										<div><dt>State of domicile</dt><dd>{d.regulatoryIdentity.domicile}</dd></div>
+										{d.regulatoryIdentity.agentForService && <div><dt>Agent for service</dt><dd>{d.regulatoryIdentity.agentForService.name}<br /><span class="meta">{d.regulatoryIdentity.agentForService.address}</span></dd></div>}
+									</dl>
+									<p class="mono company-regulatory-boundary">This is the regulator page as read on {d.lastReviewed}; it is not a live license check. Recheck the source before relying on status or authorized-line information.</p>
+								</section>
+							)
+						}
 					</section>
 
 					<EvidenceBoundary
@@ -493,6 +515,15 @@ const jsonLd = graph(
 	.company-page-map-heading { max-width: 62ch; }
 	.company-page-map-heading h2 { margin: var(--s-2) 0 var(--s-1); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; line-height: var(--leading-snug); }
 	.company-page-map-heading p, .company-section-intro { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.company-regulatory-snapshot { margin-top: var(--s-6); padding: var(--s-5); border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); }
+	.company-regulatory-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-4); }
+	.company-regulatory-heading h2 { margin: var(--s-2) 0 0; color: var(--ink); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; line-height: var(--leading-snug); }
+	.company-regulatory-source { display: inline-flex; align-items: center; gap: var(--s-1); min-height: 44px; color: var(--brand-blue-text); font-size: var(--text-sm); font-weight: 600; }
+	.company-regulatory-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); margin: var(--s-5) 0 0; }
+	.company-regulatory-grid > div { padding-top: var(--s-3); border-top: var(--bw-hair) solid var(--line); }
+	.company-regulatory-grid dt { color: var(--muted); font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+	.company-regulatory-grid dd { margin: var(--s-1) 0 0; color: var(--ink); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.company-regulatory-boundary { margin: var(--s-5) 0 0; }
 	.company-page-map-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s-2); margin-top: var(--s-5); }
 	.company-page-map-card {
 		display: grid;
@@ -582,9 +613,14 @@ const jsonLd = graph(
 		.company-empty-state { grid-template-columns: minmax(0, 1fr); }
 		.company-coverage-research-head { flex-direction: column; }
 		.company-coverage-count { align-self: flex-start; }
+		.company-regulatory-heading { flex-direction: column; }
+		.company-regulatory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
+	@media (max-width: 420px) {
+		.company-regulatory-grid { grid-template-columns: minmax(0, 1fr); }
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.company-page-map-card, .company-coverage-link, .company-filed-form { transition: none; }
+		.company-page-map-card, .company-coverage-link, .company-filed-form, .company-regulatory-source { transition: none; }
 		.company-page-map-card:hover, .company-page-map-card:focus-visible, .company-coverage-link:hover, .company-coverage-link:focus-visible, .company-filed-form:hover, .company-filed-form:focus-visible { transform: none; }
 	}
 </style>

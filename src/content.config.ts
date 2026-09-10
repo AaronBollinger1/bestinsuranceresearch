@@ -243,6 +243,19 @@ const sourceLinkedDocument = z.object({
 	note: z.string().min(30),
 });
 
+/** A regulator's point-in-time identity snapshot, never a live license check. */
+const regulatoryIdentity = z.object({
+	sourceId: reference('sources'),
+	regulatorCompanyId: z.string().min(3),
+	authorizedDate: optionalIsoDate,
+	licenseStatus: z.string().min(3),
+	companyType: z.string().min(3),
+	domicile: z.string().min(2),
+	agentForService: z
+		.object({ name: z.string().min(3), address: z.string().min(10) })
+		.optional(),
+});
+
 const companies = defineCollection({
 	loader: glob({ pattern: '**/*.json', base: './src/content/companies' }),
 	schema: z.object({
@@ -260,6 +273,8 @@ const companies = defineCollection({
 		naic: z
 			.object({ companyCode: z.string().optional(), groupCode: z.string().optional() })
 			.optional(),
+		/** A dated regulator snapshot; this is not a runtime license lookup. */
+		regulatoryIdentity: regulatoryIdentity.optional(),
 		summary: z.string().min(80),
 		officialUrls: z.array(linkItem).min(1),
 		contactChannels: z
