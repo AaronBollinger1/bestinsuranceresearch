@@ -612,6 +612,19 @@ test('Coverage Lens redaction preview stays local and states its limits', () => 
 	assert.ok(html.includes('The text remains in this page only'));
 });
 
+test('company directory filtering is local and has an honest empty state', () => {
+	const source = read(path.join(ROOT, 'src', 'pages', 'companies', 'index.astro'));
+	const html = read(path.join(DIST, 'companies', 'index.html'));
+	assert.match(source, /id="company-search"/);
+	assert.match(source, /id="company-type"/);
+	assert.match(source, /data-company-row/);
+	assert.match(source, /id="company-filter-empty"/);
+	assert.match(source, /row\.hidden =/);
+	assert.doesNotMatch(source, /\b(?:fetch|XMLHttpRequest|localStorage|sessionStorage)\b/);
+	assert.ok(html.includes('Find an organization'));
+	assert.ok(html.includes('No organization matches those filters'));
+});
+
 test('no outbound Bollinsure link carries a question or free text', () => {
 	const allowed = new Set([
 		'utm_source', 'utm_medium', 'bir_source_path', 'bir_family', 'bir_line',

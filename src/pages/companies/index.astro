@@ -12,6 +12,7 @@ import { breadcrumbs, collectionPage, graph, organization, website } from '../..
 import { excerpt } from '../../lib/excerpt';
 const corpus = await loadCorpus();
 const companies = [...corpus.companies].sort((a, b) => a.data.legalName.localeCompare(b.data.legalName));
+const companyCount = companies.length;
 
 const ORG_TYPE_LABEL: Record<string, string> = {
 	regulator: 'Insurance regulator',
@@ -65,10 +66,16 @@ const jsonLd = graph(
 				</p>
 			</Callout>
 
-			<div class="rows" style="margin-top: var(--s-6)">
+			<div class="company-filters" aria-label="Filter organizations">
+				<div class="field"><label for="company-search">Find an organization</label><input id="company-search" type="search" placeholder="Search by name or jurisdiction" autocomplete="off" /></div>
+				<div class="field"><label for="company-type">Show</label><select id="company-type"><option value="all">All organizations</option><option value="insurer">Insurers</option><option value="regulator">Regulators</option><option value="public-entity">Public entities</option><option value="standards-organization">Standards organizations</option><option value="residual-market">Residual-market mechanisms</option></select></div>
+			</div>
+			<p class="company-filter-status" id="company-filter-status" role="status" aria-live="polite">Showing {companyCount} organizations.</p>
+
+			<div class="rows" id="company-rows" style="margin-top: var(--s-4)">
 				{
 					companies.map((company) => (
-						<a class="row" href={`/companies/${company.id}`}>
+						<a class="row" href={`/companies/${company.id}`} data-company-row data-company-type={company.data.orgType} data-company-search={`${company.data.legalName} ${company.data.shortName} ${company.data.jurisdictions.join(' ')}`}>
 							<div>
 								<h2 class="row-title">{company.data.legalName}</h2>
 								<p>{excerpt(stripMarkers(company.data.summary), 210)}</p>
@@ -85,6 +92,7 @@ const jsonLd = graph(
 					))
 				}
 			</div>
+			<p class="company-filter-empty" id="company-filter-empty" hidden>No organization matches those filters. Try a broader name or choose all organizations.</p>
 
 			<div class="company-next-step">
 				<div>
@@ -123,9 +131,38 @@ const jsonLd = graph(
 	</section>
 </BaseLayout>
 
+<script>
+	const search = document.getElementById('company-search') as HTMLInputElement | null;
+	const type = document.getElementById('company-type') as HTMLSelectElement | null;
+	const status = document.getElementById('company-filter-status');
+	const empty = document.getElementById('company-filter-empty');
+	const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-company-row]'));
+
+	function applyFilters() {
+		const query = search?.value.trim().toLowerCase() ?? '';
+		const selectedType = type?.value ?? 'all';
+		let visible = 0;
+		for (const row of rows) {
+			const matchesQuery = !query || (row.dataset.companySearch ?? '').toLowerCase().includes(query);
+			const matchesType = selectedType === 'all' || row.dataset.companyType === selectedType;
+			row.hidden = !(matchesQuery && matchesType);
+			if (!row.hidden) visible += 1;
+		}
+		if (status) status.textContent = `Showing ${visible} of ${rows.length} organizations.`;
+		if (empty) empty.hidden = visible !== 0;
+	}
+
+	search?.addEventListener('input', applyFilters);
+	type?.addEventListener('change', applyFilters);
+</script>
+
 <style>
+	.company-filters { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: var(--s-3); margin-top: var(--s-6); padding: var(--s-4); border: 1px solid var(--line); background: var(--paper); border-radius: var(--r-3); }
+	.company-filters .field { margin: 0; }
+	.company-filter-status { margin: var(--s-3) 0 0; color: var(--muted); font: var(--text-xs)/1.5 var(--font-mono); }
+	.company-filter-empty { margin: var(--s-6) 0 0; padding: var(--s-5); border: 1px dashed var(--line-strong); color: var(--muted); background: var(--paper); }
 	.company-next-step { display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); margin-top: var(--s-6); padding: var(--s-5); border: 1px solid var(--line-strong); border-left: 3px solid var(--brand-blue); background: var(--paper); border-radius: var(--r-3); }
 	.company-next-step strong { display: block; color: var(--ink); }
 	.company-next-step p { margin: var(--s-1) 0 0; color: var(--muted); font-size: var(--text-sm); }
-	@media (max-width: 640px) { .company-next-step { align-items: flex-start; flex-direction: column; } .company-next-step .btn { width: 100%; } }
+	@media (max-width: 640px) { .company-filters { grid-template-columns: minmax(0, 1fr); } .company-next-step { align-items: flex-start; flex-direction: column; } .company-next-step .btn { width: 100%; } }
 </style>
