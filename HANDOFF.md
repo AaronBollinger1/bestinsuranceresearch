@@ -56,7 +56,7 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | Figures | 19 (`/figures`, the amounts and what moves them) |
 | Modules | 10 live, 272 module rules, 15 cross-module rules |
 | Records signed off | **0.** 172 `under-review`, 4 `corrected`. 176 records now carry a review state |
-| Sources ever re-checked | **11 of 299.** The 5 new ones are the eligible figure sources, re-read 8 September |
+| Sources ever re-checked | **12 of 299.** Six figure-source documents are now re-read; five of the eleven figure-source documents remain first-read only |
 | Sources no question reaches | 48 |
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
 | Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file |
@@ -177,7 +177,7 @@ sitting rather than a project. `/review-queue` states this on the page.
 reading has to be done by the licensed reviewer. Put the ordered list in front
 of Brian starting at the top of `/review-queue#by-source`, and the first
 outcome to look for is a `lastCheckedBasis` flip from `access` to `recheck`,
-because 293 of 299 sources have never been returned to.
+because 287 of 299 sources have never been returned to.
 
 ---
 
@@ -398,10 +398,10 @@ give coverage advice, which is the thing that must not happen.
    available. The corpus is already addressable per claim with checksums and a
    JSON companion on every path; a dated release with a stable schema is what
    makes other people's papers and tools cite it.
-2. **A published recheck cadence.** 293 of 299 sources have
+2. **A published recheck cadence.** 287 of 299 sources have
    `lastCheckedBasis: 'access'` — read once, never returned to. An authority
    that never re-reads decays, and the field exists precisely so the site cannot
-   overstate itself. Start with the dated-figure sources.
+   overstate itself. Five dated-figure sources remain in the first-read queue.
 3. **Wikidata item plus a consistent `sameAs` graph** across all nine
    properties.
 4. **Search Console and Bing verification.** Blocked only on the user generating
@@ -652,10 +652,10 @@ copying a fifth into this one is how that happened. The short version:
    not exist, and everything else is downstream.
 2. **Licensed sign-off.** Brian reading. The instrument is built; no code left.
 3. **Finish the figure-source recheck.** Needs a session that can reach the
-   documents; see the egress note in section 4. 5 of 11 done on 8 September, and it
-   produced one correction. The other 6 were first read that same day so
-   were ineligible; they are eligible from 9 September and are listed in
-   section 4. Then widen the recheck beyond the figures: 288 of 299 sources
+   documents; see the egress note in section 4. 6 of 11 are now rechecked,
+   including the 10 September direct recheck of `ca-civ-code-1798-82`. The
+   remaining 5 are listed in section 4. Then widen the recheck beyond the
+   figures: 287 of 299 sources
    still carry only the date somebody read them once.
 4. ~~Give `tools` a `reviewState`~~ **done.** Required on live worksheets by a
    schema refinement and forbidden on unbuilt ones, so the queue counts the 3
