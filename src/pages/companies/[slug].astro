@@ -39,6 +39,10 @@ const mentioning = corpus.questions.filter(
 	(q) => q.data.companies.some((c) => c.id === entry.id) && !relatedQuestions.some((r) => r.id === q.id),
 );
 const allRelated = [...relatedQuestions, ...mentioning];
+const relatedCoverageIds = [...new Set(allRelated.flatMap((question) => question.data.coverages.map((coverage) => coverage.id)))];
+const relatedCoverages = relatedCoverageIds
+	.map((id) => corpus.coverageBySlug.get(id))
+	.filter((coverage): coverage is NonNullable<typeof coverage> => Boolean(coverage));
 
 const description = metaDescription(stripMarkers(d.summary));
 
@@ -59,7 +63,7 @@ const ORG_TYPE_LABEL: Record<string, string> = {
 
 const pageMap = [
 	{ number: '01', label: 'Documented identity', detail: 'The sourced organization record', href: '#identity' },
-	{ number: '02', label: 'Coverage context', detail: 'Scope without a personal verdict', href: '#coverage-context' },
+	{ number: '02', label: 'Coverage context', detail: 'Research links without a catalog verdict', href: '#coverage-context' },
 	{ number: '03', label: 'Official website', detail: 'Channels and records to check', href: '#official' },
 	{ number: '04', label: 'Financial context', detail: 'No Birch score or ranking', href: '#financial-context' },
 	{ number: '05', label: 'Community lanes', detail: 'Forums, threads, and experiences', href: '#community' },
@@ -212,9 +216,34 @@ const jsonLd = graph(
 								<div class="company-context-label"><ShieldCheck size={15} aria-hidden="true" /> Boundary</div>
 								<p>Coverage pages explain insurance concepts. They do not determine whether a person, property, policy, limit, deductible, or claim is covered.</p>
 								<p class="mono">Use the official material and the policy actually issued when a decision depends on current terms.</p>
-							</div>
-						</div>
-					</section>
+											</div>
+									</div>
+									<div class="company-coverage-research" data-company-lane="coverage-research" aria-labelledby="company-coverage-research-title">
+										<div class="company-coverage-research-head">
+											<div>
+												<span class="company-context-label"><BookOpen size={15} aria-hidden="true" /> Linked research</span>
+												<h3 id="company-coverage-research-title">Coverage research connected to this record</h3>
+												<p>These links come only from coverage references declared on the published Research questions connected to this organization.</p>
+											</div>
+											<span class="company-coverage-count">{relatedCoverages.length} {relatedCoverages.length === 1 ? 'page' : 'pages'}</span>
+										</div>
+										{
+											relatedCoverages.length > 0 ? (
+												<div class="company-coverage-grid">
+													{relatedCoverages.map((coverage) => (
+														<a class="company-coverage-link" href={`/insurance/${coverage.id}`}>
+															<span><strong>{coverage.data.name}</strong><small>{excerpt(stripMarkers(coverage.data.definition), 180)}</small></span>
+															<ArrowRight size={15} aria-hidden="true" />
+														</a>
+													))}
+												</div>
+										) : (
+											<div class="company-coverage-empty"><p>No coverage Research page is explicitly connected to this organization yet.</p></div>
+										)
+										}
+										<p class="mono company-coverage-boundary">This is not a current product catalog, availability statement, policy comparison, or coverage determination. A missing link means only that Birch has not declared the relationship.</p>
+									</div>
+								</section>
 
 					<section class="answer-section" aria-labelledby="official">
 						<h2 id="official">Official website and contact</h2>
@@ -480,6 +509,21 @@ const jsonLd = graph(
 	.company-jurisdictions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin-top: var(--s-5); }
 	.company-jurisdictions .company-context-label { margin-right: var(--s-1); }
 	.company-jurisdiction { padding: 3px 8px; border: var(--bw-hair) solid var(--line-strong); border-radius: 999px; background: var(--cream); color: var(--ink); font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 600; }
+	.company-coverage-research { margin-top: var(--s-4); padding: var(--s-5); border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); }
+	.company-coverage-research-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-4); }
+	.company-coverage-research-head h3 { margin: var(--s-2) 0 var(--s-1); color: var(--ink); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; line-height: var(--leading-snug); }
+	.company-coverage-research-head p { margin: 0; max-width: 65ch; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.company-coverage-count { flex: 0 0 auto; padding: 4px 8px; border-radius: 999px; background: var(--blue-wash); color: var(--brand-blue-text); font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 600; }
+	.company-coverage-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); margin-top: var(--s-4); }
+	.company-coverage-link { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-3); padding: var(--s-3); border: var(--bw-hair) solid var(--line); border-radius: var(--r-2); color: var(--body); text-decoration: none; transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease), transform var(--dur-2) var(--ease-soft); }
+	.company-coverage-link:hover, .company-coverage-link:focus-visible { border-color: var(--brand-blue); box-shadow: var(--elev-1); transform: translateY(-2px); }
+	.company-coverage-link strong, .company-coverage-link small { display: block; }
+	.company-coverage-link strong { color: var(--ink); font-size: var(--text-sm); line-height: var(--leading-snug); }
+	.company-coverage-link small { margin-top: var(--s-1); color: var(--muted); font-size: var(--text-2xs); line-height: var(--leading-snug); }
+	.company-coverage-link > svg { flex: 0 0 auto; margin-top: 2px; color: var(--brand-blue-text); }
+	.company-coverage-empty { margin-top: var(--s-4); padding: var(--s-4); border: var(--bw-hair) dashed var(--line-strong); border-radius: var(--r-2); background: var(--slate-wash); }
+	.company-coverage-empty p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
+	.company-coverage-boundary { margin: var(--s-4) 0 0; }
 
 	.company-empty-state { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--s-4); padding: var(--s-5); border: var(--bw-hair) dashed var(--line-strong); border-radius: var(--r-3); background: var(--slate-wash); }
 	.company-empty-state-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--paper); color: var(--brand-blue-text); }
@@ -504,12 +548,14 @@ const jsonLd = graph(
 	}
 	@media (max-width: 640px) {
 		.company-page-map { padding: var(--s-4); }
-		.company-page-map-grid, .company-context-grid, .company-community-grid { grid-template-columns: minmax(0, 1fr); }
+		.company-page-map-grid, .company-context-grid, .company-community-grid, .company-coverage-grid { grid-template-columns: minmax(0, 1fr); }
 		.company-page-map-card:last-child { grid-column: auto; }
 		.company-empty-state { grid-template-columns: minmax(0, 1fr); }
+		.company-coverage-research-head { flex-direction: column; }
+		.company-coverage-count { align-self: flex-start; }
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.company-page-map-card { transition: none; }
-		.company-page-map-card:hover, .company-page-map-card:focus-visible { transform: none; }
+		.company-page-map-card, .company-coverage-link { transition: none; }
+		.company-page-map-card:hover, .company-page-map-card:focus-visible, .company-coverage-link:hover, .company-coverage-link:focus-visible { transform: none; }
 	}
 </style>

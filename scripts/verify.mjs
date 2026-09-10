@@ -663,6 +663,7 @@ test('no fabricated authority language on any company page', () => {
 test('every company page keeps sourced, contextual, and community lanes separate', () => {
 	const required = [
 		'data-company-lane="coverage"',
+		'data-company-lane="coverage-research"',
 		'data-company-lane="financial"',
 		'data-company-lane="community"',
 		'id="forums"',
@@ -678,6 +679,8 @@ test('every company page keeps sourced, contextual, and community lanes separate
 		const html = read(file);
 		assert.equal(hasCompanyShell(html), true, `${company.id} is missing a company-page lane`);
 		assert.match(html, /No Birch financial score or conclusion/, `${company.id} exposes an unbounded financial lane`);
+		assert.match(html, /Coverage research connected to this record/, `${company.id} does not expose its linked coverage lane`);
+		assert.match(html, /not a current product catalog/, `${company.id} does not state the coverage-research boundary`);
 		assert.match(html, /Reviews and ratings/, `${company.id} does not state the review boundary`);
 		/* Prove the structural predicate can fail; a global footer or repeated heading
 		   must not be enough to make this check pass. */
