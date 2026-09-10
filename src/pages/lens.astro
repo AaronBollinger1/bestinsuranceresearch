@@ -24,14 +24,14 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 			<div class="shell">
 				<Breadcrumbs trail={trail} />
 				<div class="lens-hero-grid">
-					<div><span class="eyebrow">Coverage Lens / Private preview</span><h1>Understand your policy setup before you ask for advice.</h1><p class="page-lede">Upload a declarations page or policy document only when you are ready. This first interface is a privacy gate: the selected file stays in this browser session and is not sent anywhere.</p><div class="lens-hero-actions"><a class="btn btn-secondary" href="/position">Use a blank review instead <ArrowRight size={15} aria-hidden="true" /></a><a class="btn btn-quiet" href="/privacy">Read the privacy rules</a></div></div>
+					<div><span class="eyebrow">Coverage Lens / Private preview</span><h1>Understand your policy setup before you ask for advice.</h1><p class="page-lede">Prepare a declarations page or policy excerpt for a future professional conversation. This first interface is a privacy gate: the selected file and redaction preview stay in this browser session and are not sent anywhere.</p><div class="lens-hero-actions"><a class="btn btn-secondary" href="/position">Use a blank review instead <ArrowRight size={15} aria-hidden="true" /></a><a class="btn btn-quiet" href="/privacy">Read the privacy rules</a></div></div>
 					<div class="lens-lock-card"><LockKeyhole size={22} aria-hidden="true" /><strong>Private by default</strong><p>No public post. No carrier lookup. No quote request. No model training by default.</p></div>
 				</div>
 			</div>
 		</section>
 
 		<section class="band band-tight" aria-labelledby="lens-steps-title">
-			<div class="shell"><span class="eyebrow">The safe path</span><h2 id="lens-steps-title">Three gates before an observation.</h2><div class="lens-step-grid"><div class="lens-step is-active"><span>01</span><h3>Select</h3><p>Choose a PDF or image. The browser reports the file metadata without uploading it.</p></div><div class="lens-step"><span>02</span><h3>Redact</h3><p>Review names, addresses, policy numbers, vehicle IDs, and other identifiers before extraction.</p></div><div class="lens-step"><span>03</span><h3>Understand</h3><p>Receive source-bound education and questions for a licensed professional—not a coverage verdict.</p></div></div></div>
+			<div class="shell"><span class="eyebrow">The safe path</span><h2 id="lens-steps-title">Three gates before an observation.</h2><div class="lens-step-grid"><div class="lens-step is-active" id="lens-step-select"><span>01</span><h3>Select</h3><p>Choose a PDF or image. The browser reports the file metadata without uploading it.</p></div><div class="lens-step" id="lens-step-redact"><span>02</span><h3>Redact</h3><p>Review names, addresses, policy numbers, vehicle IDs, and other identifiers before extraction.</p></div><div class="lens-step" id="lens-step-understand"><span>03</span><h3>Understand</h3><p>Receive source-bound education and questions for a licensed professional—not a coverage verdict.</p></div></div></div>
 		</section>
 
 		<section class="band band-paper" aria-labelledby="lens-upload-title">
@@ -41,7 +41,17 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 					<div class="lens-dropzone" data-lens-zone><FileKey size={24} aria-hidden="true" /><strong>Choose a declarations page or policy PDF</strong><span>PDF, PNG, or JPG · file stays in this browser session</span><label class="btn btn-secondary btn-sm" for="lens-file">Choose file</label><input id="lens-file" type="file" accept="application/pdf,image/png,image/jpeg" /></div>
 					<div class="lens-file-state" id="lens-file-state" role="status" aria-live="polite"><FileText size={17} aria-hidden="true" /><span>No file selected.</span></div>
 					<div class="lens-controls"><button class="btn btn-primary" id="lens-continue" type="button" disabled>Continue to redaction preview <ArrowRight size={15} aria-hidden="true" /></button><button class="btn btn-secondary" id="lens-reset" type="button"><RotateCcw size={15} aria-hidden="true" /> Reset</button></div>
-					<p class="hint" id="lens-status">The next implementation adds on-device text extraction and a visible redaction review. Until then, do not treat this as a document analyzer.</p>
+					<p class="hint" id="lens-status">The selected file is not opened or uploaded here. The next implementation adds on-device text extraction and a visible redaction review. Until then, do not treat this as a document analyzer.</p>
+					<section class="lens-redaction-panel" id="lens-redaction" aria-labelledby="lens-redaction-title" hidden>
+						<span class="eyebrow">Step 02 / Redact</span>
+						<h3 id="lens-redaction-title">Preview a short excerpt before it can become context.</h3>
+						<p>Paste only a small excerpt you have already chosen to share. This local heuristic masks a few common identifier patterns; it is not a complete privacy filter and must not be treated as proof that a document is safe.</p>
+						<div class="field"><label for="lens-excerpt">Short excerpt for a local redaction preview</label><textarea id="lens-excerpt" rows="7" maxlength="2400" placeholder="Example: Policy number: ABC-123456. The dwelling limit is shown on the declarations page."></textarea><span class="hint">The text remains in this page only. Do not paste a full policy, health information, payment details, or another person's information.</span></div>
+						<label class="check lens-redaction-check"><input id="lens-heuristic-check" type="checkbox" /><span>I understand this preview is incomplete and I will review the result myself before sharing anything.</span></label>
+						<div class="lens-redaction-actions"><button class="btn btn-primary" id="lens-preview-redaction" type="button" disabled>Preview redacted excerpt <ArrowRight size={15} aria-hidden="true" /></button><button class="btn btn-secondary" id="lens-clear-excerpt" type="button">Clear excerpt</button></div>
+						<div class="lens-redaction-result" id="lens-redaction-result" hidden role="status" aria-live="polite"><strong>Local preview only</strong><pre id="lens-redacted-output"></pre><span id="lens-redaction-meta"></span></div>
+						<p class="hint">A future authenticated workflow may turn a reviewed excerpt into a professional handoff. This preview does not create advice, a public post, an account, or a coverage conclusion.</p>
+					</section>
 				</div>
 				<aside class="lens-aside"><Callout tone="limit" label="Do not upload these yet"><p>Do not select a file containing a Social Security number, bank details, medical information, claim number, or another person’s private information in this preview.</p></Callout><div class="lens-aside-card"><ShieldCheck size={18} aria-hidden="true" /><h3>What the finished Lens will show</h3><ul><li>Fields it found.</li><li>What was redacted.</li><li>What evidence supports an observation.</li><li>What remains unknown.</li><li>How to delete the session.</li></ul></div><div class="lens-aside-card"><Trash2 size={18} aria-hidden="true" /><h3>Deletion is a first-class action</h3><p>Close the session or press delete; the experience should make removal as clear as creation.</p></div></aside>
 			</div>
@@ -55,11 +65,44 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 	const continueButton = document.getElementById('lens-continue') as HTMLButtonElement | null;
 	const resetButton = document.getElementById('lens-reset');
 	const status = document.getElementById('lens-status');
+	const redactionPanel = document.getElementById('lens-redaction') as HTMLElement | null;
+	const excerptInput = document.getElementById('lens-excerpt') as HTMLTextAreaElement | null;
+	const heuristicCheck = document.getElementById('lens-heuristic-check') as HTMLInputElement | null;
+	const previewRedaction = document.getElementById('lens-preview-redaction') as HTMLButtonElement | null;
+	const clearExcerpt = document.getElementById('lens-clear-excerpt');
+	const redactionResult = document.getElementById('lens-redaction-result') as HTMLElement | null;
+	const redactedOutput = document.getElementById('lens-redacted-output');
+	const redactionMeta = document.getElementById('lens-redaction-meta');
+	const selectStep = document.getElementById('lens-step-select');
+	const redactStep = document.getElementById('lens-step-redact');
 	let selectedFile: File | null = null;
 
 	function renderState(message: string) {
-		if (state) state.innerHTML = `<span>${message}</span>`;
+		const messageNode = state?.querySelector('span');
+		if (messageNode) messageNode.textContent = message;
 		if (continueButton) continueButton.disabled = !selectedFile;
+	}
+
+	function updateRedactionButton() {
+		if (previewRedaction) previewRedaction.disabled = !excerptInput?.value.trim() || !heuristicCheck?.checked;
+	}
+
+	function redactExcerpt(value: string) {
+		const patterns = [
+			{ expression: /\b\d{3}-\d{2}-\d{4}\b/g, label: '[SOCIAL SECURITY NUMBER REMOVED]' },
+			{ expression: /\b[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}\b/g, label: '[EMAIL REMOVED]' },
+			{ expression: /(?:\+?1[-.\s]?)?(?:\(\d{3}\)|\d{3})[-.\s]\d{3}[-.\s]\d{4}/g, label: '[PHONE NUMBER REMOVED]' },
+			{ expression: /\b(?:policy|claim|account|certificate|member|group)\s*(?:number|no\.?|#|id)?\s*[:#-]?\s*[A-Z0-9][A-Z0-9-]{3,}\b/gi, label: '[IDENTIFIER REMOVED]' },
+		];
+		let replacements = 0;
+		let output = value;
+		for (const pattern of patterns) {
+			output = output.replace(pattern.expression, () => {
+				replacements += 1;
+				return pattern.label;
+			});
+		}
+		return { output, replacements };
 	}
 
 	input?.addEventListener('change', () => {
@@ -75,13 +118,46 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 
 	continueButton?.addEventListener('click', () => {
 		if (!selectedFile || !status) return;
-		status.textContent = 'Redaction preview is the next gated step. No file was sent or analyzed in this preview.';
+		if (redactionPanel) redactionPanel.hidden = false;
+		selectStep?.classList.remove('is-active');
+		redactStep?.classList.add('is-active');
+		status.textContent = 'Redaction preview opened. The selected file was not opened, sent, or analyzed in this preview.';
+		continueButton.disabled = true;
+		excerptInput?.focus();
+	});
+
+	excerptInput?.addEventListener('input', updateRedactionButton);
+	heuristicCheck?.addEventListener('change', updateRedactionButton);
+
+	previewRedaction?.addEventListener('click', () => {
+		if (!excerptInput || !redactedOutput || !redactionResult || !redactionMeta) return;
+		const { output, replacements } = redactExcerpt(excerptInput.value);
+		redactedOutput.textContent = output;
+		redactionMeta.textContent = replacements > 0
+			? `${replacements} common identifier pattern${replacements === 1 ? '' : 's'} masked. Review every word yourself.`
+			: 'No supported identifier pattern was found. That does not mean the excerpt is safe.';
+		redactionResult.hidden = false;
+		if (status) status.textContent = 'Local redaction preview ready. Nothing was sent or saved.';
+	});
+
+	clearExcerpt?.addEventListener('click', () => {
+		if (excerptInput) excerptInput.value = '';
+		if (heuristicCheck) heuristicCheck.checked = false;
+		if (redactionResult) redactionResult.hidden = true;
+		updateRedactionButton();
 	});
 
 	resetButton?.addEventListener('click', () => {
 		selectedFile = null;
 		if (input) input.value = '';
 		renderState('No file selected.');
+		if (redactionPanel) redactionPanel.hidden = true;
+		selectStep?.classList.add('is-active');
+		redactStep?.classList.remove('is-active');
+		if (excerptInput) excerptInput.value = '';
+		if (heuristicCheck) heuristicCheck.checked = false;
+		if (redactionResult) redactionResult.hidden = true;
+		updateRedactionButton();
 		if (status) status.textContent = 'Session reset. No file was retained.';
 	});
 </script>
@@ -107,6 +183,16 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 	.lens-dropzone input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 	.lens-file-state { display: flex; align-items: center; gap: var(--s-2); min-height: 46px; margin-top: var(--s-3); padding: var(--s-3) var(--s-4); border: 1px solid var(--line); color: var(--muted); font-size: var(--text-sm); }
 	.lens-file-state svg { flex: 0 0 auto; color: var(--brand-blue-text); }
+	.lens-redaction-panel { display: grid; gap: var(--s-3); margin-top: var(--s-8); padding: var(--s-6); border: 1px solid var(--line-strong); border-left: 3px solid var(--brand-blue); background: var(--paper); border-radius: var(--r-3); }
+	.lens-redaction-panel h3 { margin-top: var(--s-1); }
+	.lens-redaction-panel > p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
+	.lens-redaction-panel .field { margin-top: var(--s-2); }
+	.lens-redaction-panel textarea { min-height: 150px; resize: vertical; }
+	.lens-redaction-check { margin-top: var(--s-2); }
+	.lens-redaction-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+	.lens-redaction-result { display: grid; gap: var(--s-2); padding: var(--s-4); border: 1px solid var(--line); background: var(--cream); }
+	.lens-redaction-result pre { overflow-x: auto; margin: 0; padding: var(--s-3); white-space: pre-wrap; font: var(--text-sm)/1.6 var(--font-mono); color: var(--ink); }
+	.lens-redaction-result span { color: var(--muted); font-size: var(--text-sm); }
 	.lens-aside { display: grid; gap: var(--s-5); }
 	.lens-aside-card { padding: var(--s-5); border: 1px solid var(--line); background: var(--paper); border-radius: var(--r-3); }
 	.lens-aside-card > svg { color: var(--brand-blue-text); }
@@ -114,5 +200,5 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 	.lens-aside-card p, .lens-aside-card li { color: var(--muted); font-size: var(--text-sm); }
 	.lens-aside-card p { margin-bottom: 0; }
 	@media (max-width: 900px) { .lens-hero-grid, .lens-layout { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); } .lens-step-grid { grid-template-columns: minmax(0, 1fr); } }
-	@media (max-width: 640px) { .lens-hero-actions .btn, .lens-controls .btn { width: 100%; } }
+	@media (max-width: 640px) { .lens-hero-actions .btn, .lens-controls .btn, .lens-redaction-actions .btn { width: 100%; } }
 </style>

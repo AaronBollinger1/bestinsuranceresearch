@@ -599,6 +599,19 @@ test('no analytics attribute on any element carries free text', () => {
 /* Handoff privacy                                                     */
 /* ------------------------------------------------------------------ */
 
+test('Coverage Lens redaction preview stays local and states its limits', () => {
+	const source = read(path.join(ROOT, 'src', 'pages', 'lens.astro'));
+	const html = read(path.join(DIST, 'lens', 'index.html'));
+	assert.match(source, /id="lens-redaction"/);
+	assert.match(source, /not a complete privacy filter/);
+	assert.match(source, /coverage conclusion/);
+	assert.match(source, /redactedOutput\.textContent/);
+	assert.doesNotMatch(source, /\b(?:fetch|XMLHttpRequest|localStorage|sessionStorage)\b/);
+	assert.doesNotMatch(source, /state\.innerHTML/);
+	assert.ok(html.includes('Short excerpt for a local redaction preview'));
+	assert.ok(html.includes('The text remains in this page only'));
+});
+
 test('no outbound Bollinsure link carries a question or free text', () => {
 	const allowed = new Set([
 		'utm_source', 'utm_medium', 'bir_source_path', 'bir_family', 'bir_line',
