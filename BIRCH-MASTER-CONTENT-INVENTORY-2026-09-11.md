@@ -25,6 +25,13 @@ The generated planning artifacts are:
 - `planning/birch-question-catalog.ndjson` — **12,864 deterministic question candidates**.
 - `planning/birch-content-master-manifest.json` — counts, source systems, company-page families, and publication rules.
 - `planning/birch-company-page-universe.json` — the company/entity page universe and the five existing Birch company records.
+- `src/lib/research-automation.ts` — the deterministic research-task contract, bounded source scout prompt, fixed state machine, and publication blockers.
+- `scripts/verify-research-automation.mjs` — direct tests for privacy screening, deterministic deduplication, transition rules, and publication gates.
+
+The automation layer is contract-only in the static preview. It does not call a
+provider, persist a private question, or publish a draft. A server runtime,
+secret management, retention policy, reviewer ownership, and database/queue
+must exist before the contract is connected to a live research worker.
 
 The candidate count is built from:
 
@@ -229,7 +236,8 @@ Preview deployments remain protected and `noindex`. Thin, empty, duplicate, priv
 
 - Keep the generated catalog deterministic and checked into the planning layer.
 - Add catalog validation for unique IDs, duplicate questions, canonical line IDs, jurisdiction codes, grammar, and review gates.
-- Add a source-request record so unanswered queries are visible to editors but never leak into public research.
+- Persist the research-task contract in a server-only queue or database; keep unanswered queries visible to editors but never leak them into public research.
+- Add candidate-source verification and claim-to-source attachment actions; a scout result remains unverified until a human opens and classifies it.
 - Freeze the current 85 questions, 27 coverage pages, 301 sources, 11 examples, 10 modules, and five company records as the baseline snapshot.
 
 ### Wave 1: high-use California research
@@ -294,8 +302,8 @@ The master list is complete as a planning instrument when it can answer “what 
 
 ## Immediate next implementation passes
 
-1. Add `catalog:verify` to CI and the root validation command.
-2. Add a first-class research-gap queue and candidate-to-draft handoff record.
+1. Persist the first-class research-gap task in a server-only queue and add an idempotent worker boundary for source discovery.
+2. Build candidate-source verification, claim-to-source attachment, and reviewer handoff actions around the existing research gate.
 3. Build the company identity import contract for one jurisdiction, beginning with California and preserving the regulator's entity naming.
 4. Select the first 150 to 250 Wave 1 questions and map each to sources before any prose generation.
 5. Prepare the single licensed review packet containing the frozen copy, source mappings, machine records, boundaries, and change log.

@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ProductContextBar from '../../components/ProductContextBar.astro';
 import { researchGate, type ResearchPacket } from '../../lib/research-pipeline';
+import { createResearchTask, taskPublicationBlockers, transitionResearchTask } from '../../lib/research-automation.ts';
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -54,12 +55,31 @@ const packet: ResearchPacket = {
 };
 
 const gate = researchGate(packet);
+const taskSeed = createResearchTask({
+	question: packet.brief.question,
+	topic: packet.brief.topic,
+	jurisdiction: packet.brief.jurisdiction,
+	asOf: packet.brief.asOf,
+	requestedSourceClasses: packet.brief.requestedSourceClasses,
+	kind: 'answer-gap',
+	priority: 'P0',
+	candidateId: packet.brief.id,
+}, '2026-09-11T15:20:00.000Z');
+const taskScouting = transitionResearchTask(taskSeed, 'scouting', 'system', 'Bounded source discovery started.', '2026-09-11T15:21:00.000Z');
+const task = transitionResearchTask({
+	...taskScouting,
+	candidateSourceIds: packet.sources.map((source) => source.id),
+	claimIds: packet.claims.map((claim) => claim.id),
+}, 'source-review', 'system', 'Candidate source packet returned for editor verification.', '2026-09-11T15:22:00.000Z');
+const workflowBlockers = [...new Set([...taskPublicationBlockers(task), ...gate.blockers])];
 const steps = [
 	{ number: '01', label: 'Triage', detail: 'Classify the gap', state: 'complete' },
 	{ number: '02', label: 'Scout', detail: 'Find candidates', state: 'complete' },
 	{ number: '03', label: 'Verify', detail: 'Open and classify', state: 'current' },
-	{ number: '04', label: 'Review', detail: 'Approve claims', state: 'next' },
-	{ number: '05', label: 'Publish', detail: 'Generate one record', state: 'next' },
+	{ number: '04', label: 'Draft', detail: 'Map every claim', state: 'next' },
+	{ number: '05', label: 'License', detail: 'Review scope', state: 'next' },
+	{ number: '06', label: 'Approve', detail: 'Freeze version', state: 'next' },
+	{ number: '07', label: 'Publish', detail: 'Generate one record', state: 'next' },
 ];
 
 const claims = [
@@ -108,6 +128,7 @@ const triagePaths = [
 					<div class="console-topline"><div><span class="eyebrow">Needs a decision</span><h2 id="workspace-title">{packet.brief.topic}</h2></div><span class="status status-changing">{packet.review.state}</span></div>
 					<div class="console-brief-card">
 						<div class="console-card-heading"><div><span class="console-icon console-icon-gold"><FileText size={16} aria-hidden="true" /></span><div><span class="eyebrow">Research brief</span><h3>{packet.brief.question}</h3></div></div><span class="mono console-id">{packet.brief.id}</span></div>
+						<div class="console-task-strip"><span class="eyebrow">Research task</span><span class="mono">{task.id}</span><span class="status status-changing">{task.state}</span></div>
 						<div class="console-facts"><div><span>Jurisdiction</span><strong>{packet.brief.jurisdiction}</strong></div><div><span>As of</span><strong>{packet.brief.asOf}</strong></div><div><span>Requested source classes</span><strong>{packet.brief.requestedSourceClasses.length}</strong></div><div><span>Intended record</span><strong>Question</strong></div></div>
 						<div class="console-tags">{packet.brief.requestedSourceClasses.map((sourceClass) => <span><Check size={12} aria-hidden="true" />{sourceClass.replaceAll('-', ' ')}</span>)}</div>
 					</div>
@@ -128,7 +149,7 @@ const triagePaths = [
 				</main>
 
 				<aside class="console-rail" aria-label="Publication gate">
-					<section class="console-gate-card"><div class="console-gate-icon"><LockKeyhole size={18} aria-hidden="true" /></div><span class="eyebrow">Publish to Birch</span><h2>Blocked</h2><p>A packet can only publish when every blocker is cleared.</p><ol class="console-blockers">{gate.blockers.map((blocker) => <li><span></span><div><strong>{blocker}</strong><small>Required before publication</small></div></li>)}</ol><button class="btn btn-primary" type="button" disabled>Publish approved record</button><p class="mono console-note">No public URL · no sitemap · no blog draft</p></section>
+					<section class="console-gate-card"><div class="console-gate-icon"><LockKeyhole size={18} aria-hidden="true" /></div><span class="eyebrow">Publish to Birch</span><h2>Blocked</h2><p>A packet can only publish when every blocker is cleared.</p><ol class="console-blockers">{workflowBlockers.map((blocker) => <li><span></span><div><strong>{blocker}</strong><small>Required before publication</small></div></li>)}</ol><button class="btn btn-primary" type="button" disabled>Publish approved record</button><p class="mono console-note">No public URL · no sitemap · no blog draft</p></section>
 					<section class="console-safety-card"><span class="eyebrow">Safe automation</span><h2>Scout quickly. Decide slowly.</h2><p>Provider output can save a reviewer time finding the trail. It cannot carry a Birch status, rating, confidence score, or publication decision.</p><a class="text-link" href="/editorial-policy">Read the editorial boundary <ArrowRight size={14} aria-hidden="true" /></a></section>
 				</aside>
 			</div>
@@ -161,7 +182,7 @@ const triagePaths = [
 	.console-ring-one { width: 210px; height: 132px; transform: rotate(-17deg); }
 	.console-ring-two { width: 274px; height: 176px; border-style: dashed; opacity: .7; transform: rotate(27deg); }
 	.console-work-band { background: var(--blue-wash); }
-	.console-stepper { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--line-strong); background: var(--line-strong); }
+	.console-stepper { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--line-strong); background: var(--line-strong); }
 	.console-step { display: grid; gap: 3px; min-height: 88px; padding: var(--s-3); background: var(--paper); }
 	.console-step span, .console-step small { color: var(--faint); font: var(--text-2xs)/1.3 var(--font-mono); }
 	.console-step strong { font-size: var(--text-sm); }
@@ -174,6 +195,9 @@ const triagePaths = [
 	.console-topline { align-items: end; padding-bottom: var(--s-4); border-bottom: 1px solid var(--line-strong); }
 	.console-topline h2 { margin: var(--s-2) 0 0; font-size: clamp(1.8rem, 3.3vw, 3rem); }
 	.console-brief-card, .console-panel, .console-gate-card, .console-safety-card { padding: var(--s-5); border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); box-shadow: var(--elev-1); }
+	.console-task-strip { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin-top: var(--s-4); padding: var(--s-2) var(--s-3); border: 1px solid var(--line); border-radius: 999px; background: var(--blue-wash); }
+	.console-task-strip .eyebrow { margin-right: auto; color: var(--brand-blue-text); }
+	.console-task-strip .status { margin-left: var(--s-1); }
 	.console-card-heading h3, .console-panel-head h3 { margin: var(--s-1) 0 0; font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; }
 	.console-card-heading > div:first-child { display: flex; gap: var(--s-3); align-items: start; }
 	.console-icon, .console-gate-icon, .console-triage-icon { display: grid; place-items: center; width: 34px; height: 34px; flex: 0 0 auto; border-radius: var(--r-2); }

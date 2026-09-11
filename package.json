@@ -11,7 +11,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "verify": "node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs scripts/verify-research-provider.mjs",
+    "verify": "node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs scripts/verify-research-provider.mjs scripts/verify-research-automation.mjs",
     "validate": "npm run catalog:verify && npm run check && npm run build && npm run verify",
     "catalog:build": "node --experimental-strip-types scripts/generate-content-catalog.mjs",
     "catalog:verify": "node --experimental-strip-types scripts/verify-content-catalog.mjs",

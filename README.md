@@ -91,6 +91,14 @@ the 12,864-question candidate catalog and company-page universe under
 that the catalog matches the canonical line vocabulary, and that every candidate
 retains the licensed-review and compliance gates.
 
+The provider-neutral research automation contract lives in
+`src/lib/research-automation.ts`. It creates deterministic, privacy-screened
+research tasks, emits a bounded source-discovery prompt, and enforces the
+queued → scout → source review → draft review → licensed review → approval →
+publication sequence. It is intentionally a contract, not a live Perplexity
+worker: persistence, secrets, retention, and reviewer ownership must be added
+in a server environment before any external research call is enabled.
+
 ## Boundaries
 
 - No rating, ranking, premium, price, appetite, eligibility, or risk-score claims.
