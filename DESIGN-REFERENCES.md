@@ -13,7 +13,7 @@ usable, visibly evidence-led. It may feel AI-capable; it must not look like AI m
 What that ruled out, deliberately:
 
 - gradient orbs, bokeh, glassmorphism, and SVG hero illustrations;
-- oversized marketing headings on a page whose job is to be a working surface;
+- oversized marketing headings that displace the working surface or primary action;
 - decorative cards, cards inside cards, and pill-shaped everything;
 - a looping video or animation anywhere near the LCP element; shell transitions
   are allowed only for navigation, disclosure, onboarding, and non-claim preview
@@ -29,10 +29,11 @@ What it ruled in:
 - corner radii at 8px or less, everywhere, with no exceptions;
 - controls that look like controls, and every one of them wired up.
 
-The final Birch landing direction is intentionally lighter than the first
-working surface: one question field, one primary research action, a small set
-of browse paths, and an optional Commons handoff. Filters remain on the library
-and Ask surfaces where they help; they do not compete with the front-door task.
+The final Birch landing direction is intentionally decisive: one question field,
+one primary research action, and one real answer window in the first viewport.
+The answer window exposes the Research, company-record, and Commons lanes without
+pretending that the last lane is live. Filters remain on the library and Ask
+surfaces where they help; they do not compete with the front-door task.
 
 The current North Star composition is captured in [Birch North Star — Research + Commons](https://www.figma.com/design/i45yrkrvDVS8vfnS7y9v2J): a landing frame, a three-zone Research desk, and a Commons thread with its evidence boundary visible. It is a planning reference; `src/styles/tokens.css` and the Astro components remain authoritative.
 
@@ -184,8 +185,8 @@ Scored 1 to 5. The record is also published, noindex and out of the sitemap, at
 both get what they came for in the same screen. Its weakness was organic-search depth, so it
 does not ship pure.
 
-**B's source-quality strip was grafted in** and sits inside the first viewport: source count,
-primary-source count, stale count, most recent review date, corrected-page count. Every number
+**B's source-quality strip was grafted in** and sits immediately under the working surface: source
+count, primary-source count, published-question count, and stale-source count. Every number
 is counted from the registry at build time rather than asserted, so it cannot drift from the
 truth. B was rejected as a whole because it answers a question the visitor has not asked yet,
 and on mobile the registry consumes the entire first screen before the search field appears.
@@ -202,12 +203,14 @@ would split the decision rather than make it.
 
 ## First viewport contract
 
-The current homepage first screen contains, in order: the Birch Research identity and a clear
-scope statement; one labelled question field with the blue `Ask Birch` action; two deliberate
-browse paths; and a three-step entry rail. The source-quality proof and compact corpus record
-follow the hero. Filters remain on the library and Ask surfaces where they help; they do not
-compete with the front-door task. The header is one bar with the Birch wordmark, navigation, and
-one primary `Ask Birch` action; there is no second announcement bar.
+The current homepage first screen contains, in order: the Birch Research identity and one-sentence
+scope statement; one labelled question field with the blue `Ask Birch` action; real example paths;
+and a source-backed answer window with the evidence visible beside the pitch. The live source,
+primary-source, question, and stale-record counts sit immediately below. Research, company dossiers,
+and Commons are introduced as three explicitly different lanes in the next band. Filters remain on
+the library and Ask surfaces where they help; they do not compete with the front-door task. The
+header is one bar with the Birch wordmark, navigation, and one primary `Ask Birch` action; there is
+no second announcement bar.
 
 It contains no email field, no phone field, no account prompt, and no quote call to action.
 
@@ -256,6 +259,25 @@ attachments, privacy/redaction, report/correction/withdrawal paths, company resp
 audit log before public publishing is enabled. A future Your Coverage workspace is deliberately
 described as a private, consent-based capability; policy upload, Canopy Connect, and personalized
 advice are not enabled by this specimen.
+
+## Product-surface convergence pass
+
+The 2026-09-11 implementation pass fixed one shared composition across the four surfaces that
+define the product:
+
+- **Homepage:** question-first command surface, real cited-answer window, registry-count proof,
+  then the three product lanes.
+- **Company directory:** dossier search first, a three-lane explanation, and structured records
+  instead of a generic list.
+- **Company dossier:** identity and actions share the first viewport with a compact record summary;
+  Research, official material, and community context remain separate below it.
+- **Commons and thread:** the product promise and safety boundary introduce the forum shell; a
+  thread keeps the research bridge persistent and never uses popularity scoring.
+
+This is the aesthetic baseline for the MVP. New screens should reuse its hierarchy and tokens
+rather than introduce a second visual concept. The next design work is state completion—mobile
+navigation, sign-in, empty/loading/error, contribution review, and company-response verification—
+not another homepage direction.
 
 ## Mobbin pass three: discovery and comparison
 

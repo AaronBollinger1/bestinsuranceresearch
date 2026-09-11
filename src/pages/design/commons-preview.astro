@@ -1,8 +1,8 @@
 ---
 import { ArrowRight, BadgeCheck, BookOpen, Building2, Flag, LockKeyhole, Search, ShieldCheck, UserRound } from '@lucide/astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Callout from '../../components/Callout.astro';
-import PageHeader from '../../components/PageHeader.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProductContextBar from '../../components/ProductContextBar.astro';
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -54,29 +54,33 @@ const flow = [
 	noindex
 	pageType="editorial"
 >
-	<PageHeader
-		eyebrow="Internal product specimen / noindex"
-		title="Commons: the conversation around insurance, with context attached."
-		lede="A future social layer for questions, first-person experiences, professional perspectives, and attributed company responses. This page demonstrates the interaction model; it is not live activity and does not create an account."
-		trail={trail}
-	>
-		<div class="commons-preview-actions">
-			<a class="btn btn-primary" href="/ask">Read the cited research <ArrowRight size={15} aria-hidden="true" /></a>
-			<a class="btn btn-secondary" href="/professionals">For professionals</a>
-			<a class="btn btn-quiet" href="/design/thread-preview">Open a thread prototype <ArrowRight size={15} aria-hidden="true" /></a>
+	<section class="band band-first band-paper commons-product-hero" aria-labelledby="commons-product-title">
+		<div class="shell">
+			<Breadcrumbs trail={trail} />
+			<ProductContextBar active="commons" />
+			<div class="commons-product-intro">
+				<div>
+					<div class="commons-product-kicker"><span class="eyebrow">Birch Commons</span><span class="status status-plain">Private product preview</span></div>
+					<h1 id="commons-product-title">Insurance conversations, with context attached.</h1>
+					<p class="lede">Ask what the research does not answer. Share an experience. Add a professional note. Keep every role and source visible.</p>
+					<div class="commons-preview-actions">
+						<a class="btn btn-primary" href="/design/thread-preview">Open a thread <ArrowRight size={15} aria-hidden="true" /></a>
+						<a class="btn btn-secondary" href="/ask">Read the research</a>
+						<a class="btn btn-quiet" href="/professionals">For professionals</a>
+					</div>
+				</div>
+				<div class="commons-product-rules" aria-label="Commons product rules">
+					<div><BookOpen size={17} aria-hidden="true" /><span><strong>Research stays primary</strong><small>A post cannot rewrite a cited answer.</small></span></div>
+					<div><BadgeCheck size={17} aria-hidden="true" /><span><strong>Roles stay visible</strong><small>Professional and company affiliations are disclosed.</small></span></div>
+					<div><ShieldCheck size={17} aria-hidden="true" /><span><strong>Moderation before reach</strong><small>Privacy, evidence, and conflicts are checked first.</small></span></div>
+				</div>
+			</div>
+			<div class="commons-preview-boundary"><LockKeyhole size={16} aria-hidden="true" /><span><strong>No live activity.</strong> These are illustrative interface states, not posts, counts, endorsements, ratings, or company participation.</span></div>
 		</div>
-	</PageHeader>
+	</section>
 
 	<section class="band band-tight band-paper" aria-labelledby="commons-preview-title">
 		<div class="shell">
-			<Callout tone="limit" label="Preview boundary">
-				<p>
-					<strong>Specimen only.</strong> The rows below are illustrative interface states, not current
-					posts, counts, endorsements, ratings, or company activity. The real Commons opens only after
-					identity, moderation, retention, reporting, and response controls are live.
-				</p>
-			</Callout>
-
 			<div class="commons-preview-shell">
 				<aside class="commons-preview-sidebar" aria-label="Commons room navigation">
 					<div class="commons-preview-sidebar-head">
@@ -210,8 +214,25 @@ const flow = [
 </BaseLayout>
 
 <style>
+	.commons-product-hero { padding-block: clamp(var(--s-5), 4vw, var(--s-8)) var(--s-5); }
+	.commons-product-hero .crumbs { margin-bottom: var(--s-4); }
+	.commons-product-hero .product-context-bar { margin-bottom: var(--s-5); }
+	.commons-product-intro { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, .7fr); gap: clamp(var(--s-8), 6vw, var(--s-12)); align-items: center; }
+	.commons-product-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); }
+	.commons-product-kicker .eyebrow { margin: 0; }
+	.commons-product-intro h1 { max-width: 15ch; margin: var(--s-3) 0; font-size: clamp(3rem, 5vw, 4.55rem); letter-spacing: -.05em; line-height: .98; }
+	.commons-product-intro .lede { max-width: 56ch; margin: 0; color: var(--body); }
 	.commons-preview-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-6); }
-	.commons-preview-shell { display: grid; grid-template-columns: 190px minmax(0, 1fr) 260px; gap: 1px; margin-top: var(--s-6); border: 1px solid var(--line-strong); background: var(--line-strong); border-radius: var(--r-3); overflow: hidden; box-shadow: var(--elev-2); }
+	.commons-product-rules { display: grid; gap: 1px; overflow: hidden; border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--line); box-shadow: var(--elev-1); }
+	.commons-product-rules > div { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: var(--s-3); align-items: center; padding: var(--s-3) var(--s-4); background: var(--paper); }
+	.commons-product-rules svg { color: var(--brand-blue-text); }
+	.commons-product-rules strong, .commons-product-rules small { display: block; }
+	.commons-product-rules strong { color: var(--ink); font-size: var(--text-sm); }
+	.commons-product-rules small { margin-top: 2px; color: var(--muted); font-size: var(--text-xs); line-height: var(--leading-snug); }
+	.commons-preview-boundary { display: flex; align-items: center; gap: var(--s-3); margin-top: var(--s-4); padding-top: var(--s-3); border-top: 1px solid var(--line); color: var(--muted); font-size: var(--text-xs); }
+	.commons-preview-boundary svg { flex: 0 0 auto; color: var(--brand-blue-text); }
+	.commons-preview-boundary strong { color: var(--ink); }
+	.commons-preview-shell { display: grid; grid-template-columns: 190px minmax(0, 1fr) 260px; gap: 1px; border: 1px solid var(--line-strong); background: var(--line-strong); border-radius: var(--r-3); overflow: hidden; box-shadow: var(--elev-2); }
 	.commons-preview-sidebar, .commons-preview-main, .commons-preview-context { min-width: 0; background: var(--paper); }
 	.commons-preview-sidebar { padding: var(--s-4); }
 	.commons-preview-sidebar-head { display: grid; gap: 3px; padding-bottom: var(--s-4); border-bottom: 1px solid var(--line); }
@@ -273,7 +294,8 @@ const flow = [
 	.commons-preview-build-list { display: grid; gap: var(--s-3); }
 	.commons-preview-build-list div { display: flex; align-items: center; gap: var(--s-3); padding-bottom: var(--s-3); border-bottom: 1px solid var(--line-ink); color: #dce2e9; font-size: var(--text-sm); }
 	.commons-preview-build-list .status { flex: 0 0 auto; }
-	@media (max-width: 1080px) { .commons-preview-shell { grid-template-columns: 170px minmax(0, 1fr); } .commons-preview-context { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); } .commons-preview-context-card + .commons-preview-context-card { border-left: 1px solid var(--line); } }
+	@media (max-width: 1080px) { .commons-product-intro { grid-template-columns: minmax(0, 1fr) minmax(290px, .6fr); } .commons-preview-shell { grid-template-columns: 170px minmax(0, 1fr); } .commons-preview-context { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); } .commons-preview-context-card + .commons-preview-context-card { border-left: 1px solid var(--line); } }
 	@media (max-width: 760px) { .commons-preview-shell { grid-template-columns: minmax(0, 1fr); } .commons-preview-sidebar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, .85fr); gap: var(--s-4); align-items: start; } .commons-preview-sidebar-head { border-bottom: 0; padding: 0; } .commons-preview-search { margin-top: 0; } .commons-preview-rooms { grid-column: 1 / -1; display: flex; flex-wrap: wrap; margin-top: 0; } .commons-preview-sidebar-note { grid-column: 1 / -1; margin-top: 0; } .commons-preview-context { grid-column: auto; grid-template-columns: minmax(0, 1fr); } .commons-preview-context-card + .commons-preview-context-card { border-left: 0; border-top: 1px solid var(--line); } .commons-preview-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); } .commons-preview-flow-step:nth-child(3) { padding-left: 0; border-left: 0; } .commons-preview-flow-step:nth-child(n+3) { border-top: 1px solid var(--line); padding-top: var(--s-4); } .commons-preview-build { grid-template-columns: minmax(0, 1fr); gap: var(--s-6); } }
-	@media (max-width: 480px) { .commons-preview-actions .btn { width: 100%; } .commons-preview-main, .commons-preview-sidebar, .commons-preview-context-card { padding: var(--s-4); } .commons-preview-main-head { flex-direction: column; } .commons-preview-composer-controls .btn { width: 100%; } .commons-preview-flow { grid-template-columns: minmax(0, 1fr); } .commons-preview-flow-step, .commons-preview-flow-step + .commons-preview-flow-step { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } .commons-preview-flow-step:first-child { border-top: 0; } }
+	@media (max-width: 760px) { .commons-product-intro { grid-template-columns: minmax(0, 1fr); } .commons-product-rules { max-width: 620px; } }
+	@media (max-width: 480px) { .commons-product-intro h1 { font-size: clamp(2.8rem, 14vw, 4rem); } .commons-preview-actions .btn { width: 100%; } .commons-preview-boundary { align-items: flex-start; } .commons-preview-main, .commons-preview-sidebar, .commons-preview-context-card { padding: var(--s-4); } .commons-preview-main-head { flex-direction: column; } .commons-preview-composer-controls .btn { width: 100%; } .commons-preview-flow { grid-template-columns: minmax(0, 1fr); } .commons-preview-flow-step, .commons-preview-flow-step + .commons-preview-flow-step { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } .commons-preview-flow-step:first-child { border-top: 0; } }
 </style>

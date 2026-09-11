@@ -153,39 +153,45 @@ const jsonLd = graph(
 );
 ---
 
-<BaseLayout title={d.legalName} description={description} jsonLd={jsonLd} pageType="company" machinePath={machinePath}>
-	<article>
-		<header class="band band-first band-paper answer-head">
-			<div class="shell">
-				<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
-				<ProductContextBar active="companies" />
-				<div class="answer-flags">
-					<StatusChip kind={d.reviewState} />
-					<span class="meta">{ORG_TYPE_LABEL[d.orgType] ?? d.orgType}</span>
-					<span class="meta">{d.jurisdictions.join(', ')}</span>
-				</div>
-				<div class="company-brand-strip">
-					<div class="company-brand-mark" aria-hidden="true">{companyInitials}</div>
-					<div class="company-brand-name"><span class="eyebrow">Company profile</span><strong>{d.shortName}</strong><span>{officialHost}</span></div>
-					<div class="company-brand-slot"><span class="eyebrow">Brand identity slot</span><span class="status status-plain">Planned enrichment</span><small>Logo, colors, and public statistics will come from verified brand or first-party records—not become a Birch rating.</small></div>
-				</div>
-				<h1>{d.legalName}</h1>
-				<dl class="answer-dates">
-					<div><dt>Last reviewed</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
+	<BaseLayout title={d.legalName} description={description} jsonLd={jsonLd} pageType="company" machinePath={machinePath}>
+		<article>
+			<header class="band band-first band-paper answer-head company-profile-head">
+				<div class="shell">
+					<div class="company-profile-crumbs"><Breadcrumbs trail={trail} /></div>
+					<ProductContextBar active="companies" />
+					<div class="company-profile-hero">
+						<div class="company-profile-main">
+							<div class="company-profile-kicker"><span class="company-profile-mark" aria-hidden="true">{companyInitials}</span><span class="eyebrow">Birch company dossier</span><StatusChip kind={d.reviewState} /></div>
+							<h1>{d.legalName}</h1>
+							<p class="lede">A source-backed record of identity, official channels, connected insurance research, and clearly separated community context.</p>
+							<div class="answer-flags company-profile-flags"><span class="meta">{ORG_TYPE_LABEL[d.orgType] ?? d.orgType}</span><span class="meta">{d.jurisdictions.join(', ')}</span><span class="meta">Reviewed {longDate(d.lastReviewed)}</span></div>
+							<div class="company-profile-actions">
+								<a class="btn btn-primary" href="/ask">Ask Birch <ArrowRight size={15} aria-hidden="true" /></a>
+								{d.officialUrls[0]?.url && <a class="btn btn-secondary" href={d.officialUrls[0].url} rel="noopener nofollow" target="_blank">Official website <ExternalLink size={14} aria-hidden="true" /></a>}
+								<a class="btn btn-quiet" href="#source-ledger">{sources.length} source records</a>
+							</div>
+						</div>
+						<aside class="company-profile-record" aria-label="Company record summary">
+							<div class="company-profile-record-head"><span class="eyebrow">Record at a glance</span><span class="mono">{officialHost}</span></div>
+							<div class="company-profile-stats">
+								<div><span>Sources</span><strong>{sources.length}</strong></div>
+								<div><span>Questions</span><strong>{allRelated.length}</strong></div>
+								<div><span>Coverage</span><strong>{relatedCoverages.length}</strong></div>
+								<div><span>Commons</span><strong>{siteConfig.communityReady ? 'Open' : 'Preview'}</strong></div>
+							</div>
+							<div class="company-profile-enrichment"><span class="status status-plain">Planned enrichment</span><p>Verified logo, brand identity, and first-party statistics can populate here later. They never become a Birch rating.</p></div>
+						</aside>
+					</div>
+					<dl class="answer-dates">
+						<div><dt>Last reviewed</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
 					<div><dt>Author</dt><dd>{d.author}</dd></div>
 					<div><dt>Reviewer</dt><dd>{d.reviewer}</dd></div>
 					{d.naic?.companyCode && <div><dt>NAIC company code</dt><dd class="num">{d.naic.companyCode}</dd></div>}
 					{d.naic?.groupCode && <div><dt>NAIC group code</dt><dd class="num">{d.naic.groupCode}</dd></div>}
-					<div><dt>Sources</dt><dd><a href="#source-ledger">{sources.length} records</a></dd></div>
-				</dl>
-				<div class="company-stat-strip" aria-label="Company record summary">
-					<div><span>Source records</span><strong>{sources.length}</strong></div>
-					<div><span>Research links</span><strong>{allRelated.length}</strong></div>
-					<div><span>Coverage links</span><strong>{relatedCoverages.length}</strong></div>
-					<div><span>Community</span><strong>{siteConfig.communityReady ? 'Open' : 'Preview'}</strong></div>
+						<div><dt>Machine record</dt><dd><a href={machinePath}>Open JSON</a></dd></div>
+					</dl>
 				</div>
-			</div>
-		</header>
+			</header>
 
 		<section class="band band-tight company-dossier-band" aria-labelledby="company-dossier-overview-title">
 			<div class="shell">
@@ -560,8 +566,29 @@ const jsonLd = graph(
 	</article>
 </BaseLayout>
 
-<style>
-	.company-dossier-band { background: var(--cream); }
+	<style>
+		.company-profile-head { padding-block: clamp(var(--s-5), 4vw, var(--s-8)) var(--s-5); }
+		.company-profile-crumbs { margin-bottom: var(--s-4); }
+		.company-profile-hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(330px, .7fr); gap: clamp(var(--s-8), 6vw, var(--s-12)); align-items: center; margin-top: var(--s-8); }
+		.company-profile-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); }
+		.company-profile-kicker .eyebrow { margin: 0; }
+		.company-profile-mark { display: grid; place-items: center; width: 52px; height: 52px; border-radius: var(--r-3); background: var(--brand-blue); color: var(--white); font-family: var(--font-display); font-size: var(--text-xl); box-shadow: inset 0 1px 0 rgba(255,255,255,.32); }
+		.company-profile-main h1 { max-width: 16ch; margin: var(--s-5) 0 var(--s-4); font-size: clamp(3rem, 6vw, 5rem); letter-spacing: -.05em; line-height: .98; }
+		.company-profile-main .lede { max-width: 58ch; margin: 0; color: var(--body); }
+		.company-profile-flags { margin-top: var(--s-4); }
+		.company-profile-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-6); }
+		.company-profile-record { overflow: hidden; border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); box-shadow: var(--elev-2); }
+		.company-profile-record-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--line); background: var(--cream); }
+		.company-profile-record-head .eyebrow { margin: 0; }
+		.company-profile-record-head .mono { max-width: 20ch; overflow: hidden; color: var(--muted); font-size: var(--text-2xs); text-overflow: ellipsis; white-space: nowrap; }
+		.company-profile-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); }
+		.company-profile-stats > div { display: grid; gap: var(--s-2); min-height: 92px; padding: var(--s-4); background: var(--paper); }
+		.company-profile-stats span { color: var(--muted); font: var(--text-2xs)/1.3 var(--font-mono); letter-spacing: .03em; text-transform: uppercase; }
+		.company-profile-stats strong { color: var(--ink); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; line-height: 1; }
+		.company-profile-enrichment { padding: var(--s-4); border-top: 1px solid var(--line); background: var(--slate-wash); }
+		.company-profile-enrichment p { margin: var(--s-2) 0 0; color: var(--muted); font-size: var(--text-xs); line-height: var(--leading-snug); }
+		.company-profile-head .answer-dates { margin-top: var(--s-6); }
+		.company-dossier-band { background: var(--cream); }
 	.company-dossier-overview { display: grid; grid-template-columns: minmax(190px, .72fr) minmax(0, 1.55fr) minmax(220px, .85fr); gap: 1px; border: 1px solid var(--line-strong); background: var(--line-strong); box-shadow: var(--elev-1); }
 	.company-dossier-identity-card, .company-dossier-research-card, .company-dossier-community-card { min-width: 0; padding: clamp(var(--s-4), 3vw, var(--s-6)); background: var(--paper); }
 	.company-dossier-identity-card { display: flex; flex-direction: column; }
@@ -603,18 +630,6 @@ const jsonLd = graph(
 		border-radius: var(--r-3);
 		background: var(--paper);
 	}
-	.company-brand-strip { display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(240px, .8fr); gap: var(--s-4); align-items: center; margin: var(--s-5) 0 var(--s-4); padding: var(--s-4); border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--cream); }
-	.company-brand-mark { display: grid; place-items: center; width: 58px; height: 58px; border: 1px solid color-mix(in srgb, var(--brand-blue) 42%, var(--line-strong)); border-radius: 17px; background: var(--brand-blue); color: var(--white); font-family: var(--font-display); font-size: var(--text-xl); letter-spacing: -.04em; box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 4px 10px rgba(23, 33, 46, .14); }
-	.company-brand-name { display: grid; gap: 2px; min-width: 0; }
-	.company-brand-name .eyebrow, .company-brand-slot .eyebrow { margin: 0; }
-	.company-brand-name strong { color: var(--ink); font-size: var(--text-md); font-weight: 600; }
-	.company-brand-name > span:last-child { color: var(--muted); font: var(--text-2xs)/1.3 var(--font-mono); overflow-wrap: anywhere; }
-	.company-brand-slot { display: grid; justify-items: start; gap: var(--s-2); padding-left: var(--s-4); border-left: 1px solid var(--line); }
-	.company-brand-slot small { max-width: 34ch; color: var(--muted); font-size: var(--text-xs); line-height: var(--leading-snug); }
-	.company-stat-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: var(--s-5); border: 1px solid var(--line-strong); background: var(--line-strong); }
-	.company-stat-strip > div { display: grid; gap: var(--s-1); min-height: 72px; padding: var(--s-3); background: var(--paper); }
-	.company-stat-strip span { color: var(--muted); font: var(--text-2xs)/1.3 var(--font-mono); letter-spacing: .03em; text-transform: uppercase; }
-	.company-stat-strip strong { color: var(--ink); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; line-height: 1; }
 	.company-page-map-heading { max-width: 62ch; }
 	.company-page-map-heading h2 { margin: var(--s-2) 0 var(--s-1); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; line-height: var(--leading-snug); }
 	.company-page-map-heading p, .company-section-intro { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
@@ -705,8 +720,10 @@ const jsonLd = graph(
 	.company-community-card p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
 	.company-community-grid + .callout, .company-community-grid + .btn { margin-top: var(--s-4); }
 
-	@media (max-width: 900px) {
-		.company-dossier-overview { grid-template-columns: minmax(200px, .8fr) minmax(0, 1.2fr); }
+		@media (max-width: 900px) {
+			.company-profile-hero { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); }
+			.company-profile-record { max-width: 680px; }
+			.company-dossier-overview { grid-template-columns: minmax(200px, .8fr) minmax(0, 1.2fr); }
 		.company-dossier-community-card { grid-column: 1 / -1; }
 		.company-page-map-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 		.company-page-map-card:last-child { grid-column: span 2; }
@@ -715,9 +732,8 @@ const jsonLd = graph(
 		.company-dossier-overview { grid-template-columns: minmax(0, 1fr); }
 		.company-dossier-community-card { grid-column: auto; }
 		.company-dossier-actions { padding-top: var(--s-6); }
-		.company-brand-strip { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
-		.company-brand-slot { grid-column: 1 / -1; padding: var(--s-3) 0 0; border-top: 1px solid var(--line); border-left: 0; }
-		.company-stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+			.company-profile-main h1 { font-size: clamp(2.8rem, 14vw, 4rem); }
+			.company-profile-actions .btn { flex: 1 1 180px; }
 		.company-page-map { padding: var(--s-4); }
 		.company-page-map-grid, .company-context-grid, .company-community-grid, .company-coverage-grid { grid-template-columns: minmax(0, 1fr); }
 		.company-page-map-card:last-child { grid-column: auto; }

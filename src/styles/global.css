@@ -524,10 +524,10 @@ code { overflow-wrap: anywhere; }
 .btn:hover > svg, .btn:focus-visible > svg { transform: translateX(2px); }
 @media (prefers-reduced-motion: no-preference) {
 	.brand:hover img, .brand:focus-visible img { transform: translateY(-1px) rotate(-4deg) scale(1.04); filter: drop-shadow(0 5px 8px rgba(13, 42, 82, .14)); }
-	.home-hero-copy { animation: birch-hero-enter 420ms var(--ease-soft) both; }
-	.home-hero-aside { animation: birch-hero-enter 520ms var(--ease-soft) 80ms both; }
+	.home-answer-window { animation: birch-shell-enter 360ms var(--ease-soft) both; }
 }
 @keyframes birch-hero-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes birch-shell-enter { from { transform: translateY(6px); } to { transform: translateY(0); } }
 .brand-name { display: grid; gap: 1px; line-height: 1.05; }
 .brand-name strong { color: var(--ink); font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500; white-space: nowrap; letter-spacing: -0.02em; }
 .brand-name strong em { font-style: italic; color: var(--brand-blue-text); }
@@ -1103,6 +1103,10 @@ table.data tbody tr:hover { background: var(--gold-wash); }
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+@media (max-width: 1180px) {
+	.header-search { display: none; }
+}
+
 @media (max-width: 1080px) {
 	.answer-grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); }
 	.answer-rail { position: static; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
