@@ -1,0 +1,96 @@
+---
+import { Copy, Quote } from '@lucide/astro';
+import { longDate } from '../lib/cite';
+import { siteConfig } from '../config/site';
+
+interface Props {
+	id: string;
+	title: string;
+	sourceUrl: string;
+	publisher: string;
+	jurisdiction: string;
+	lastChecked: string;
+	machinePath: string;
+	recordPath: string;
+}
+
+const { id, title, sourceUrl, publisher, jurisdiction, lastChecked, machinePath, recordPath } = Astro.props;
+const recordUrl = new URL(recordPath, siteConfig.origin).toString();
+const checked = longDate(lastChecked);
+const citeKey = `birch-source-${id}`;
+
+const plain =
+	`${siteConfig.name}. "${title}." Source record for ${publisher} (${jurisdiction}); ` +
+	`last checked ${checked}. ${recordUrl} Original source: ${sourceUrl}`;
+
+const escapeBibtex = (value: string) => value.replace(/[{}]/g, (match) => `\\${match}`);
+const bibtex = [
+	`@misc{${citeKey},`,
+	`  title        = {${escapeBibtex(title)}},`,
+	`  author       = {${siteConfig.name}},`,
+	`  organization = {${siteConfig.name}},`,
+	`  howpublished = {\\url{${recordUrl}}},`,
+	`  note         = {Source record for ${escapeBibtex(publisher)}; jurisdiction ${escapeBibtex(jurisdiction)}; last checked ${checked}; original source: ${sourceUrl}},`,
+	`  urldate      = {${lastChecked}}`,
+	'}',
+].join('\n');
+
+const [year, month, day] = lastChecked.split('-').map(Number);
+const csl = JSON.stringify(
+	[
+		{
+			id: citeKey,
+			type: 'webpage',
+			title,
+			'container-title': siteConfig.name,
+			author: [{ literal: siteConfig.name }],
+			URL: recordUrl,
+			publisher: siteConfig.name,
+			accessed: { 'date-parts': [[year, month, day]] },
+			genre: 'source record',
+			note: `Original source: ${sourceUrl}; publisher: ${publisher}; jurisdiction: ${jurisdiction}; last checked: ${checked}`,
+		},
+	],
+	null,
+	2,
+);
+
+const formats = [
+	{ key: `${id}-plain`, label: 'Plain text', body: plain },
+	{ key: `${id}-bibtex`, label: 'BibTeX', body: bibtex },
+	{ key: `${id}-csl`, label: 'CSL JSON', body: csl },
+];
+---
+
+<details class="disc cite-box" style="margin-top: var(--s-8)">
+	<summary>
+		<Quote size={15} aria-hidden="true" /> Cite this source record
+		<span class="disc-chevron" aria-hidden="true">
+			<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6" /></svg>
+		</span>
+	</summary>
+	<div class="disc-body stack">
+		<p class="mono">
+			Use this citation when you are referencing Birch's structured source record, claim list, or
+			provenance view. For the underlying authority, use the original publisher link above.
+		</p>
+		{
+			formats.map((format) => (
+				<div>
+					<h3 style="font-size: var(--text-sm)">{format.label}</h3>
+					<pre id={`cite-source-${format.key}`}>{format.body}</pre>
+					<div class="cite-copy-row">
+						<button class="btn btn-secondary btn-sm" type="button" data-copy-target={`cite-source-${format.key}`}>
+							<Copy size={14} aria-hidden="true" />
+							<span data-copy-label>Copy {format.label}</span>
+						</button>
+					</div>
+				</div>
+			))
+		}
+		<p class="mono">
+			Original source: <a href={sourceUrl} rel="noopener nofollow" target="_blank">{sourceUrl}</a><br />
+			Machine-readable Birch record: <a href={machinePath}>{machinePath}</a>
+		</p>
+	</div>
+</details>

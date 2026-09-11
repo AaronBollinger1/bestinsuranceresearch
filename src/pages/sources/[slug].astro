@@ -5,6 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
+import SourceCitationKit from '../../components/SourceCitationKit.astro';
 import StateBlock from '../../components/StateBlock.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { siteConfig } from '../../config/site';
@@ -73,8 +74,14 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 	'@type': 'CreativeWork',
 	'@id': `${new URL(path, siteConfig.origin).toString()}#source`,
 	name: d.title,
-	url: d.url,
+	url: new URL(path, siteConfig.origin).toString(),
 	publisher: { '@type': 'Organization', name: d.publisher },
+	citation: [{
+		'@type': 'CreativeWork',
+		name: d.title,
+		url: d.url,
+		publisher: { '@type': 'Organization', name: d.publisher },
+	}],
 	...(d.publishedDate !== 'unknown' && d.publishedDate !== 'n/a' ? { datePublished: d.publishedDate } : {}),
 	spatialCoverage: d.jurisdiction,
 });
@@ -217,6 +224,17 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 							A checksum lets you tell whether a claim you cited still says what it said.
 						</p>
 					</section>
+
+					<SourceCitationKit
+						id={entry.id}
+						title={d.title}
+						sourceUrl={d.url}
+						publisher={d.publisher}
+						jurisdiction={d.jurisdiction}
+						lastChecked={d.lastChecked}
+						machinePath={machinePath}
+						recordPath={path}
+					/>
 
 					<section class="answer-section" aria-labelledby="citing">
 						<h2 id="citing">Pages that cite this source</h2>

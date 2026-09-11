@@ -398,6 +398,18 @@ test('every source record lists at least one claim and a real URL', () => {
 	}
 });
 
+test('source records expose a citation kit and distinguish Birch from the original authority', () => {
+	const template = read(path.join(ROOT, 'src/pages/sources/[slug].astro'));
+	assert.match(template, /<SourceCitationKit/);
+	assert.match(template, /citation:\s*\[\{/);
+
+	const sample = read(path.join(DIST, 'sources', 'cdi-company-profiles', 'index.html'));
+	assert.match(sample, /Cite this source record/);
+	assert.match(sample, /Use this citation when you are referencing Birch's structured source record/);
+	assert.match(sample, /Original source:/);
+	assert.match(sample, /\/sources\/cdi-company-profiles\.json/);
+});
+
 /* ------------------------------------------------------------------ */
 /* Internal links                                                      */
 /* ------------------------------------------------------------------ */
