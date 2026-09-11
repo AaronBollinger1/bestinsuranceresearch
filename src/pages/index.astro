@@ -55,6 +55,10 @@ const featured = FEATURED.map((slug) => corpus.questionBySlug.get(slug)).filter(
 const featuredQuestions = featured.length >= 4 ? featured : corpus.questions.slice(0, 6);
 const examples = featuredQuestions.slice(0, 5).map((q) => q.data.question);
 const previewQuestion = featuredQuestions[0];
+const leadQuestion = featuredQuestions[1] ?? featuredQuestions[0];
+const leadCoverage = corpus.coverages[0];
+const leadCompany = corpus.companies.find((company) => company.data.orgType === 'insurer') ?? corpus.companies[0];
+if (!leadQuestion || !leadCoverage || !leadCompany) throw new Error('Birch product previews require a question, coverage, and company record.');
 
 const recent = recentlyReviewed(corpus, 6);
 
@@ -214,6 +218,44 @@ const jsonLd = graph(organization(), website());
 					<div><strong>Source attached</strong><span>Open the record behind the answer.</span></div>
 					<div><strong>Assumptions visible</strong><span>See what changes the answer.</span></div>
 					<div><strong>Free to read</strong><span>No account or upload required.</span></div>
+				</div>
+			</section>
+
+			<section class="home-network-band" aria-labelledby="network-title">
+				<div class="home-network-heading">
+					<div>
+						<span class="eyebrow">The Birch network</span>
+						<h2 id="network-title">From a question to a source-backed conversation.</h2>
+					</div>
+					<p>Birch is being built as one connected system: Research explains what can be documented, company pages gather the record, and Commons will hold clearly labelled human context when its moderation and account systems are ready.</p>
+				</div>
+
+				<div class="home-network-surface">
+					<div class="home-network-tabs" aria-label="Birch product lanes">
+						<span class="is-active">Research</span>
+						<span>Company context</span>
+						<span>Commons · private preview</span>
+					</div>
+					<div class="home-network-grid">
+						<a class="home-network-card home-network-card-research" href={`/questions/${leadQuestion.id}`}>
+							<span class="home-network-kicker">01 / Question</span>
+							<h3>{leadQuestion.data.question}</h3>
+							<p>{excerpt(stripMarkers(leadQuestion.data.shortAnswer), 150)}</p>
+							<div class="home-network-card-foot"><span class="status status-contextual">{leadQuestion.data.sourceIds.length} sources</span><span>Open answer <ArrowRight size={14} aria-hidden="true" /></span></div>
+						</a>
+						<a class="home-network-card home-network-card-company" href={`/companies/${leadCompany.id}`}>
+							<span class="home-network-kicker">02 / Company record</span>
+							<h3>{leadCompany.data.legalName}</h3>
+							<p>Identity, official channels, and dated regulator context—plus linked coverage such as {leadCoverage.data.name}. No reputation score.</p>
+							<div class="home-network-card-foot"><span class="status status-established">Record published</span><span>Open dossier <ArrowRight size={14} aria-hidden="true" /></span></div>
+						</a>
+						<div class="home-network-card home-network-card-private" aria-label="Commons private preview">
+							<span class="home-network-kicker">03 / Commons</span>
+							<h3>Discuss what happened.</h3>
+							<p>Experiences, replies, and company responses will live in a separate moderated room. They will stay visibly distinct from the research record.</p>
+							<div class="home-network-card-foot"><span class="status status-plain">Private preview</span><span class="home-network-private-note">Sign-in + moderation required</span></div>
+						</div>
+					</div>
 				</div>
 			</section>
 

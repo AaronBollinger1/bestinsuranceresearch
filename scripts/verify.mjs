@@ -3320,11 +3320,11 @@ test('the layout serves the accurate raster favicon package', () => {
 	assert.ok(html.includes('href="/favicon.ico"'), 'the layout does not serve the supplied ICO fallback');
 });
 
-test('the loading state is the supplied mark and rests for a reader who asks', () => {
+test('the loading state uses the supplied mark and rests for a reader who asks', () => {
 	const html = read(path.join(DIST, 'ask', 'index.html'));
-	assert.match(html, /class="birch-loading-mark"[^>]*>\s*<img src="\/birch-bird-transparent\.png"/, '/ask does not render the supplied mark');
-	assert.match(html, /@media\s*\(prefers-reduced-motion:\s*no-preference\)\{[^}]*birch-bird-breathe/, 'the mark animation is not behind prefers-reduced-motion');
-	assert.ok(!html.includes('class="mc-dot"'), 'the retired traced-dot loading mark is still rendered');
+	assert.match(html, /class="mark-converging"[^>]*>[\s\S]*class="mc-dot"/, '/ask does not render the measured converging mark');
+	assert.match(html, /@media\s*\(prefers-reduced-motion:\s*no-preference\)\{[^}]*mc-dot-in/, 'the mark animation is not behind prefers-reduced-motion');
+	assert.ok(!html.includes('class="birch-loading-mark"'), 'the retired pulse-only loading mark is still rendered');
 });
 
 test('no page animates behind a claim', () => {
