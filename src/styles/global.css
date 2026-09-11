@@ -615,7 +615,7 @@ code { overflow-wrap: anywhere; }
 .header-search input:focus { width: 250px; border-color: var(--brand-blue); }
 .header-search .search-glyph { position: absolute; left: 9px; color: var(--faint); pointer-events: none; }
 
-.nav-toggle { display: none; }
+.nav-toggle.icon-btn { display: none; }
 
 /* Mobile navigation panel */
 .nav-panel { border-bottom: var(--bw-hair) solid var(--line); background: var(--paper); }
@@ -1120,7 +1120,7 @@ table.data tbody tr:hover { background: var(--gold-wash); }
 
 @media (max-width: 900px) {
 	.header-nav, .header-search { display: none; }
-	.nav-toggle { display: inline-grid; margin-left: auto; }
+	.nav-toggle.icon-btn { display: inline-grid; margin-left: auto; }
 	.header-tail { margin-left: 0; }
 	.home-hero { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); }
 	.home-hero-aside { max-width: 680px; }
@@ -1135,7 +1135,7 @@ table.data tbody tr:hover { background: var(--gold-wash); }
 @media (max-width: 640px) {
 	.band { padding-block: var(--s-8); }
 	.band-tight { padding-block: var(--s-6); }
-	.header-bar { gap: var(--s-2); }
+	.site-header .header-bar { gap: var(--s-2); }
 	.brand { gap: 6px; }
 	.brand img { width: 30px; height: 30px; }
 	.brand-name span { display: none; }
