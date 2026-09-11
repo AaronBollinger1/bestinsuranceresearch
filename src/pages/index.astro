@@ -14,7 +14,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import StatusChip from '../components/StatusChip.astro';
 import { siteConfig } from '../config/site';
 import { stripMarkers } from '../lib/citations';
-import { isStale, loadCorpus, recentlyReviewed } from '../lib/corpus';
+import { idsOf, isStale, loadCorpus, recentlyReviewed } from '../lib/corpus';
 import { longDate } from '../lib/cite';
 import { graph, organization, website } from '../lib/schema';
 import { TODAY } from '../lib/today';
@@ -59,6 +59,10 @@ const leadQuestion = featuredQuestions[1] ?? featuredQuestions[0];
 const leadCoverage = corpus.coverages[0];
 const leadCompany = corpus.companies.find((company) => company.data.orgType === 'insurer') ?? corpus.companies[0];
 if (!leadQuestion || !leadCoverage || !leadCompany) throw new Error('Birch product previews require a question, coverage, and company record.');
+const leadSources = idsOf(leadQuestion.data.sourceIds)
+	.map((sourceId) => corpus.sourceById.get(sourceId))
+	.filter((source): source is NonNullable<typeof source> => Boolean(source))
+	.slice(0, 2);
 
 const recent = recentlyReviewed(corpus, 6);
 
@@ -133,16 +137,16 @@ const jsonLd = graph(organization(), website());
 						<span class="home-identity-note">Insurance, with the source attached</span>
 					</div>
 					</div>
-					<h1 id="home-title">Insurance answers with the source attached.</h1>
+					<h1 id="home-title">Insurance, with the source attached.</h1>
 					<p class="lede">
-						Birch is free, independent research for the moments when insurance gets hard to read. Ask a question,
-						see the assumptions, and open the source behind the answer.
+						Free, independent research for the moments when insurance gets hard to read. Ask a question,
+						see the assumptions, and open the record behind the answer.
 					</p>
-					<p class="home-hero-boundary">No quotes. No rankings. No sales pitch. Just context you can check.</p>
+					<p class="home-hero-boundary">No quotes. No rankings. No sales pitch.</p>
 
 				<form action="/ask" method="get" role="search" data-question-form class="home-search-form">
 					<div class="field">
-						<label for="home-q">Start with a question</label>
+						<label for="home-q">Ask a question</label>
 						<div class="home-search-row">
 							<input
 								id="home-q"
@@ -164,29 +168,39 @@ const jsonLd = graph(organization(), website());
 				</form>
 
 					<div class="home-quick-actions" aria-label="Explore Birch">
-						<a class="btn btn-secondary" href="/explore">Find your context <ArrowRight size={15} aria-hidden="true" /></a>
-						<a class="btn btn-quiet" href="/insurance">Browse coverage</a>
+						<a class="btn btn-secondary" href="/insurance">Browse coverage <ArrowRight size={15} aria-hidden="true" /></a>
 						<a class="btn btn-quiet" href="/questions">Read the question library <ArrowRight size={15} aria-hidden="true" /></a>
 					</div>
 				</div>
 
-				<aside class="home-compass" aria-label="Choose your Birch direction">
-					<div class="home-compass-mark" aria-hidden="true">
-						<span class="home-compass-node home-compass-node-learn">Learn</span>
-						<span class="home-compass-node home-compass-node-check">Check</span>
-						<span class="home-compass-node home-compass-node-share">Share</span>
-						<div class="home-compass-ring"><img src="/birch-bird-transparent.png" width="54" height="54" alt="" /></div>
+				<aside class="home-hero-aside" aria-label="Cited Birch record preview">
+					<div class="home-hero-orbit" aria-hidden="true">
+						<div class="home-hero-orbit-ring"><span></span><img src="/birch-bird-transparent.png" width="54" height="54" alt="" /></div>
+						<span>FIND · CHECK · SHARE</span>
 					</div>
-					<span class="eyebrow">Choose your direction</span>
-					<h2>One clear next step.</h2>
-					<div class="home-route-grid">
-						<a class="home-route" href="/ask"><span class="home-route-number">01</span><span><strong>Learn</strong><small>Get an answer with sources.</small></span><ArrowRight size={15} aria-hidden="true" /></a>
-						<a class="home-route" href="/position"><span class="home-route-number">02</span><span><strong>Check</strong><small>Organize the setup you have.</small></span><ArrowRight size={15} aria-hidden="true" /></a>
-						<a class="home-route" href="/contribute"><span class="home-route-number">03</span><span><strong>Share</strong><small>Add context when the room opens.</small></span><ArrowRight size={15} aria-hidden="true" /></a>
+					<div class="home-evidence-card">
+						<div class="home-evidence-head"><span class="eyebrow">Source attached</span><StatusChip kind={leadQuestion.data.confidence} /></div>
+						<h2>{leadQuestion.data.question}</h2>
+						<p>{excerpt(stripMarkers(leadQuestion.data.shortAnswer), 170)}</p>
+						<div class="home-evidence-list">
+							{leadSources.map((source) => (
+								<a href={`/sources/${source.id}`}>
+									<FileStack size={16} aria-hidden="true" />
+									<span><strong>{source.data.publisher}</strong><small>{source.data.title}</small></span>
+									<ArrowRight size={14} aria-hidden="true" />
+								</a>
+							))}
+						</div>
+						<a class="home-evidence-link" href={`/questions/${leadQuestion.id}`}>Review the record <ArrowRight size={14} aria-hidden="true" /></a>
+					</div>
+					<div class="home-direction-strip" aria-label="Choose your Birch direction">
+						<a href="/ask"><span>01</span><strong>Learn</strong><small>Ask Birch</small></a>
+						<a href="/position"><span>02</span><strong>Check</strong><small>Organize</small></a>
+						<a href="/contribute"><span>03</span><strong>Share</strong><small>Add context</small></a>
 					</div>
 					<div class="home-boundary">
 						<span class="meta">A note on trust</span>
-						<p>Birch separates research from lived experience so you can tell what is documented, what is reported, and what still needs review.</p>
+						<p>Research, lived experience, and professional context stay in separate lanes.</p>
 					{siteConfig.environment === 'preview' && (
 						<div class="home-preview-note">
 							<span class="status status-plain">Private review</span>
