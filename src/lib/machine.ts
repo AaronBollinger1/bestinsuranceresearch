@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { siteConfig } from '../config/site';
 import { stripMarkers } from './citations';
 import { TODAY } from './today';
+import type { IndustryHub } from './industry-hub';
 
 /**
  * Machine-readable page companions.
@@ -200,6 +201,60 @@ export function companyRecord(
 				url: abs(`/insurance/${coverage.id}`),
 			})),
 		},
+	};
+}
+
+/**
+ * Machine-readable context-hub record.
+ *
+ * An industry hub is an index over existing reviewed records, not a new source
+ * of coverage advice. Keeping that distinction in the record makes it safe for
+ * answer engines to discover the context route while preserving the canonical
+ * question, coverage, company, example, and source URLs underneath it.
+ */
+export function industryRecord(hub: IndustryHub, sources: CollectionEntry<'sources'>[]) {
+	const path = `/industries/${hub.id}`;
+	return {
+		...base('industry-context', hub.id, path),
+		name: hub.name,
+		descriptor: hub.descriptor,
+		lines: hub.lines,
+		lastReviewed: hub.lastReviewed,
+		counts: {
+			coveragePages: hub.coverages.length,
+			answeredQuestions: hub.questions.length,
+			workedExamples: hub.examples.length,
+			organizations: hub.companies.length,
+			sourceRecords: hub.sourceIds.length,
+		},
+		classification: {
+			pageRole: 'context index',
+			claimPolicy: 'This page gathers existing records and is not a coverage determination or ranking.',
+		},
+		resources: {
+			coverages: hub.coverages.map((coverage) => ({
+				id: coverage.id,
+				name: coverage.data.name,
+				url: abs(`/insurance/${coverage.id}`),
+			})),
+			questions: hub.questions.map((question) => ({
+				id: question.id,
+				question: question.data.question,
+				url: abs(`/questions/${question.id}`),
+			})),
+			examples: hub.examples.map((example) => ({
+				id: example.id,
+				title: example.data.title,
+				url: abs(`/examples/${example.id}`),
+			})),
+			companies: hub.companies.map((company) => ({
+				id: company.id,
+				name: company.data.legalName,
+				url: abs(`/companies/${company.id}`),
+			})),
+		},
+		sourceIds: sources.map((source) => source.id),
+		sources: sources.map(sourceRecord),
 	};
 }
 

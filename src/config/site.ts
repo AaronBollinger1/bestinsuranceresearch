@@ -152,6 +152,7 @@ export const footerNav = {
 	 research: [
 		{ label: 'Start here', href: '/start' },
 		{ label: 'Find your context', href: '/explore' },
+		{ label: 'Industries and situations', href: '/industries' },
 		{ label: 'Coverage position', href: '/position' },
 		{ label: 'Insurance guides', href: '/guides' },
 		{ label: 'Ask a question', href: '/ask' },
