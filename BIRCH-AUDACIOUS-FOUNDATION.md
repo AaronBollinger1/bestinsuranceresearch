@@ -148,11 +148,12 @@ Do not change legal entity type as part of the visual pass. Operate Birch as a s
 
 ## Next build sequence
 
-1. Refine the public Research home and `/ask` interaction around the single “Ask Birch” action.
-2. Bring the same product shell to question, coverage, and company dossier pages.
-3. Add claim-level “copy citation” and source freshness states everywhere a claim is rendered.
-4. Turn `/design/commons-preview` into the authoritative Commons UX spec, including thread, reply, report, and moderation states.
-5. Add the authenticated contribution backend only after the state machine and deletion policy are approved.
-6. Implement company response and professional identity paths as moderated roles, never as paid placement.
-7. Add Coverage Lens extraction only after the privacy/data contract and provider model are approved.
-8. Run a citation, accessibility, performance, and security gate before any indexing or production promotion.
+1. Make `/explore` the intent-first front door: one local-safe search, six record paths, and previews that scale as the corpus grows.
+2. Refine the public Research home and `/ask` interaction around the single “Ask Birch” action.
+3. Bring the same product shell to question, coverage, and company dossier pages.
+4. Add claim-level “copy citation” and source freshness states everywhere a claim is rendered.
+5. Turn `/design/commons-preview` into the authoritative Commons UX spec, including thread, reply, report, and moderation states.
+6. Add the authenticated contribution backend only after the state machine and deletion policy are approved.
+7. Implement company response and professional identity paths as moderated roles, never as paid placement.
+8. Add Coverage Lens extraction only after the privacy/data contract and provider model are approved.
+9. Run a citation, accessibility, performance, and security gate before any indexing or production promotion.

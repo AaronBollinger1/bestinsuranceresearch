@@ -105,7 +105,7 @@ test('every content entry generates its route', () => {
 
 test('core routes exist', () => {
 	for (const route of [
-		'/', '/ask', '/questions', '/insurance', '/companies', '/states',
+		'/', '/start', '/explore', '/ask', '/questions', '/insurance', '/companies', '/states',
 		'/examples', '/tools', '/sources', '/about', '/methodology',
 		'/editorial-policy', '/corrections', '/privacy', '/terms', '/404',
 	]) {
