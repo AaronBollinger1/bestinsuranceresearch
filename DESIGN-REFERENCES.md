@@ -3,7 +3,7 @@
 How the interface was decided, what was borrowed and from where, and why the shipped homepage
 is the one it is.
 
-Last updated: 2026-09-10
+Last updated: 2026-09-11
 
 ## Direction
 
@@ -33,6 +33,8 @@ The final Birch landing direction is intentionally lighter than the first
 working surface: one question field, one primary research action, a small set
 of browse paths, and an optional Commons handoff. Filters remain on the library
 and Ask surfaces where they help; they do not compete with the front-door task.
+
+The current North Star composition is captured in [Birch North Star — Research + Commons](https://www.figma.com/design/i45yrkrvDVS8vfnS7y9v2J): a landing frame, a three-zone Research desk, and a Commons thread with its evidence boundary visible. It is a planning reference; `src/styles/tokens.css` and the Astro components remain authoritative.
 
 ## Type and colour
 

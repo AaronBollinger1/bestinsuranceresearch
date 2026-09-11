@@ -11,7 +11,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "verify": "node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs",
+    "verify": "node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs scripts/verify-research-provider.mjs",
     "validate": "npm run check && npm run build && npm run verify",
     "audit:estate": "node --experimental-strip-types scripts/audit-estate.mjs",
     "audit:onpage": "node scripts/audit-onpage.mjs"
