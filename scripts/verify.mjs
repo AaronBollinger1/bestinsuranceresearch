@@ -402,6 +402,8 @@ test('source records expose a citation kit and distinguish Birch from the origin
 	const template = read(path.join(ROOT, 'src/pages/sources/[slug].astro'));
 	assert.match(template, /<SourceCitationKit/);
 	assert.match(template, /citation:\s*\[\{/);
+	assert.match(template, /publisher: \{ '@type': 'Organization', name: siteConfig\.name \}/);
+	assert.match(template, /isBasedOn: \{/);
 
 	const sample = read(path.join(DIST, 'sources', 'cdi-company-profiles', 'index.html'));
 	assert.match(sample, /Cite this source record/);

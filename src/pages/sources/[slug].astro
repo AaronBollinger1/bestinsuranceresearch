@@ -75,7 +75,13 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 	'@id': `${new URL(path, siteConfig.origin).toString()}#source`,
 	name: d.title,
 	url: new URL(path, siteConfig.origin).toString(),
-	publisher: { '@type': 'Organization', name: d.publisher },
+	publisher: { '@type': 'Organization', name: siteConfig.name },
+	isBasedOn: {
+		'@type': 'CreativeWork',
+		name: d.title,
+		url: d.url,
+		publisher: { '@type': 'Organization', name: d.publisher },
+	},
 	citation: [{
 		'@type': 'CreativeWork',
 		name: d.title,
