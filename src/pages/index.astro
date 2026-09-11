@@ -118,6 +118,8 @@ const atlas = [
 ];
 
 const jsonLd = graph(organization(), website());
+const accountHref = siteConfig.communityReady ? `${siteConfig.communityOrigin}/sign-in` : '/design/commons-preview';
+const accountLabel = siteConfig.communityReady ? 'Join Birch Commons' : 'Preview the one-step signup';
 ---
 
 <BaseLayout
@@ -174,9 +176,14 @@ const jsonLd = graph(organization(), website());
 				</div>
 
 				<aside class="home-hero-aside" aria-label="Cited Birch record preview">
-					<div class="home-hero-orbit" aria-hidden="true">
-						<div class="home-hero-orbit-ring"><span></span><img src="/birch-bird-transparent.png" width="54" height="54" alt="" /></div>
-						<span>FIND · CHECK · SHARE</span>
+					<div class="home-flight-field" aria-hidden="true">
+						<span class="home-flight-caption">A clearer path through insurance</span>
+						<span class="home-flight-route"></span>
+						<img class="home-flight-bird home-flight-bird-a" src="/birch-bird-transparent.png" width="34" height="34" alt="" />
+						<img class="home-flight-bird home-flight-bird-b" src="/birch-bird-transparent.png" width="34" height="34" alt="" />
+						<img class="home-flight-bird home-flight-bird-c" src="/birch-bird-transparent.png" width="34" height="34" alt="" />
+						<ArrowRight class="home-flight-arrow" size={22} aria-hidden="true" />
+						<span class="home-flight-label">FIND <i>·</i> CHECK <i>·</i> SHARE</span>
 					</div>
 					<div class="home-evidence-card">
 						<div class="home-evidence-head"><span class="eyebrow">Source attached</span><StatusChip kind={leadQuestion.data.confidence} /></div>
@@ -233,25 +240,26 @@ const jsonLd = graph(organization(), website());
 				</div>
 
 				<div class="home-network-surface">
-					<div class="home-network-tabs" aria-label="Birch product lanes">
-						<span class="is-active">Research</span>
-						<span>Company context</span>
-						<span>Commons · private preview</span>
+					<div class="home-network-tabs" role="tablist" aria-label="Birch product lanes">
+						<button type="button" role="tab" aria-selected="true" data-home-tab="all">All lanes</button>
+						<button type="button" role="tab" aria-selected="false" data-home-tab="research">Research</button>
+						<button type="button" role="tab" aria-selected="false" data-home-tab="company">Company context</button>
+						<button type="button" role="tab" aria-selected="false" data-home-tab="commons">Commons · private preview</button>
 					</div>
 					<div class="home-network-grid">
-						<a class="home-network-card home-network-card-research" href={`/questions/${leadQuestion.id}`}>
+						<a class="home-network-card home-network-card-research" data-home-card="research" href={`/questions/${leadQuestion.id}`}>
 							<span class="home-network-kicker">01 / Question</span>
 							<h3>{leadQuestion.data.question}</h3>
 							<p>{excerpt(stripMarkers(leadQuestion.data.shortAnswer), 150)}</p>
 							<div class="home-network-card-foot"><span class="status status-contextual">{leadQuestion.data.sourceIds.length} sources</span><span>Open answer <ArrowRight size={14} aria-hidden="true" /></span></div>
 						</a>
-						<a class="home-network-card home-network-card-company" href={`/companies/${leadCompany.id}`}>
+						<a class="home-network-card home-network-card-company" data-home-card="company" href={`/companies/${leadCompany.id}`}>
 							<span class="home-network-kicker">02 / Company record</span>
 							<h3>{leadCompany.data.legalName}</h3>
 							<p>Identity, official channels, and dated regulator context—plus linked coverage such as {leadCoverage.data.name}. No reputation score.</p>
 							<div class="home-network-card-foot"><span class="status status-established">Record published</span><span>Open dossier <ArrowRight size={14} aria-hidden="true" /></span></div>
 						</a>
-						<div class="home-network-card home-network-card-private" aria-label="Commons private preview">
+						<div class="home-network-card home-network-card-private" data-home-card="commons" aria-label="Commons private preview">
 							<span class="home-network-kicker">03 / Commons</span>
 							<h3>Discuss what happened.</h3>
 							<p>Experiences, replies, and company responses will live in a separate moderated room. They will stay visibly distinct from the research record.</p>
@@ -274,7 +282,7 @@ const jsonLd = graph(organization(), website());
 					<div><span>02</span><strong>Save a trail</strong><p>Keep questions, companies, and coverage pages together.</p></div>
 					<div><span>03</span><strong>Share by choice</strong><p>Publish a contribution only after identity and privacy review.</p></div>
 				</div>
-				<div class="home-account-foot"><span class="status status-plain">Private preview · no signup enabled</span><a class="btn btn-secondary btn-sm" href="/shelf">Preview the private shelf <ArrowRight size={15} aria-hidden="true" /></a></div>
+				<div class="home-account-foot"><span class="status status-plain">Read without an account · post with one email link</span><a class="btn btn-secondary btn-sm" href={accountHref}>{accountLabel} <ArrowRight size={15} aria-hidden="true" /></a></div>
 			</section>
 
 			<section class="home-corpus" aria-labelledby="corpus-title">
@@ -514,3 +522,27 @@ const jsonLd = graph(organization(), website());
 		</div>
 	</section>
 </BaseLayout>
+
+<script>
+	/*
+	 * The network preview is a small orientation tool, not a fake dashboard.
+	 * Visitors can focus one lane without losing the all-lanes overview. The
+	 * cards remain links, and the default state is fully usable without JS.
+	 */
+	const homeTabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-home-tab]'));
+	const homeCards = Array.from(document.querySelectorAll<HTMLElement>('[data-home-card]'));
+
+	function selectHomeLane(lane: string) {
+		homeTabs.forEach((tab) => {
+			const selected = tab.dataset.homeTab === lane;
+			tab.setAttribute('aria-selected', String(selected));
+		});
+		homeCards.forEach((card) => {
+			card.hidden = lane !== 'all' && card.dataset.homeCard !== lane;
+		});
+	}
+
+	homeTabs.forEach((tab) => {
+		tab.addEventListener('click', () => selectHomeLane(tab.dataset.homeTab || 'all'));
+	});
+</script>

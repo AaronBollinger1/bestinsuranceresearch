@@ -12,7 +12,9 @@ const account = await accountFromSession(store, Astro.cookies.get(SESSION_COOKIE
 
 const filter = Astro.url.searchParams.get('subject') ?? '';
 const active = filter ? subject(filter) : null;
-const threads = await store.listThreads(active ? { subjectId: active.id } : {});
+const rawSearchQuery = (Astro.url.searchParams.get('q') ?? '').trim();
+const searchQuery = rawSearchQuery.slice(0, 100);
+const candidateThreads = await store.listThreads(active ? { subjectId: active.id } : {});
 
 const relative = (iso: string) => {
 	const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86_400_000);
@@ -31,6 +33,13 @@ for (const t of await store.listThreads({})) {
 const busy = SUBJECTS.filter((s) => counts.has(s.id)).sort(
 	(a, b) => (counts.get(b.id) ?? 0) - (counts.get(a.id) ?? 0),
 );
+const normalizedSearch = searchQuery.toLocaleLowerCase();
+const threads = normalizedSearch
+	? candidateThreads.filter((thread) => {
+			const about = subject(thread.subjectId);
+			return `${thread.title} ${about?.name ?? thread.subjectId}`.toLocaleLowerCase().includes(normalizedSearch);
+		})
+	: candidateThreads;
 ---
 
 <BaseLayout
@@ -52,6 +61,28 @@ const busy = SUBJECTS.filter((s) => counts.has(s.id)).sort(
 						has a permanent address.
 					</p>
 				</div>
+
+				<div class="discussion-stage">
+					<div>
+						<span class="eyebrow">Birch Commons / conversation room</span>
+						<h2>Find the question. Add only what you know.</h2>
+						<p>Browse by subject, scan the latest context, or start a focused thread. Research stays in its own cited room.</p>
+					</div>
+					<div class="discussion-stage-action">
+						<span class="status status-plain">{threads.length} {threads.length === 1 ? 'conversation' : 'conversations'}</span>
+						{account ? <a class="btn" href="/threads/new">Start a thread</a> : <a class="btn" href="/sign-in">Join to post</a>}
+					</div>
+				</div>
+
+				<form class="discussion-search" method="get" role="search">
+					<label for="thread-search">Search conversation titles and subjects</label>
+					<div class="discussion-search-row">
+						<input id="thread-search" name="q" type="search" value={searchQuery} placeholder="Try earthquake, claims, or a company name" />
+						{active && <input type="hidden" name="subject" value={active.id} />}
+						<button class="btn btn-light" type="submit">Search</button>
+						{searchQuery && <a class="discussion-clear" href={active ? `/threads?subject=${encodeURIComponent(active.id)}` : '/threads'}>Clear</a>}
+					</div>
+				</form>
 
 				{
 					busy.length > 0 && (

@@ -72,6 +72,11 @@ if (Astro.request.method === 'POST') {
 				<span class="eyebrow">Birch Commons / Account</span>
 				<h1 id="auth-title">Continue to Birch Commons.</h1>
 				<p class="lede">One address, no password. We send a link that works once.</p>
+				<div class:list={["auth-progress", sent && "is-sent"]} aria-label="Sign-in progress">
+					<div class:list={[!sent && "is-current"]}><span>01</span><strong>Enter email</strong></div>
+					<div class:list={[sent && "is-current"]}><span>02</span><strong>Open the link</strong></div>
+					<div><span>03</span><strong>Post with context</strong></div>
+				</div>
 
 				{
 					sent ? (
@@ -105,7 +110,7 @@ if (Astro.request.method === 'POST') {
 									<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
 								</div>
 
-								<button class="btn" type="submit">Email me a link <span aria-hidden="true">→</span></button>
+								<button class="btn" type="submit">Send a secure link <span aria-hidden="true">→</span></button>
 							</form>
 							<p class="auth-card-note">No password, newsletter, or notification mail.</p>
 						</div>

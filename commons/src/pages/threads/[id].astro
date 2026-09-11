@@ -121,12 +121,18 @@ const paragraphs = (body: string) => body.split(/\n{2,}/).map((p) => p.trim()).f
 					)
 				}
 
-				<ol class="posts">
+				<div class="thread-toolbar" aria-label="Conversation details">
+					<span class="status status-plain">{thread.postCount} {thread.postCount === 1 ? 'post' : 'posts'}</span>
+					<span class="thread-toolbar-state">{thread.state === 'open' ? 'Open conversation' : 'Conversation locked'}</span>
+					{about && <a href={`${commons.record.origin}${about.recordPath}`} rel="noopener">Read the cited record <span aria-hidden="true">↗</span></a>}
+				</div>
+
+				<ol class="posts thread-post-list">
 					{
 						posts.map((post) => {
 							const who = shownByline(post);
 							return (
-								<li id={`post-${post.id}`} data-state={post.state}>
+								<li id={`post-${post.id}`} class="thread-post" data-state={post.state}>
 									{post.state === 'withdrawn' ? (
 										/*
 										 * The tombstone is deliberate. Deleting the row would leave a
@@ -207,6 +213,7 @@ const paragraphs = (body: string) => body.split(/\n{2,}/).map((p) => p.trim()).f
 										style="width: 100%; padding: var(--s-3); font: inherit; border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); background: var(--white)"
 										required>{replyBody}</textarea
 									>
+									<div class="reply-meta"><span>Keep it specific and attributable.</span><output id="reply-count">0 / {LIMITS.body.max}</output></div>
 								</div>
 								<p><button class="btn" type="submit">Post the reply</button></p>
 							</form>
@@ -222,9 +229,27 @@ const paragraphs = (body: string) => body.split(/\n{2,}/).map((p) => p.trim()).f
 	</section>
 </BaseLayout>
 
+<script>
+	const replyBody = document.getElementById('body') as HTMLTextAreaElement | null;
+	const replyCount = document.getElementById('reply-count') as HTMLOutputElement | null;
+	const updateReplyCount = () => {
+		if (replyBody && replyCount) replyCount.textContent = `${replyBody.value.length} / ${replyBody.maxLength}`;
+	};
+	replyBody?.addEventListener('input', updateReplyCount);
+	updateReplyCount();
+</script>
+
 <style>
+	.thread-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-4); margin: var(--s-6) 0 var(--s-4); padding: var(--s-3); border: 1px solid var(--line); border-radius: var(--r-2); background: var(--paper); }
+	.thread-toolbar-state { color: var(--muted); font: var(--text-2xs)/1.3 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
+	.thread-toolbar a { margin-left: auto; font-size: var(--text-sm); font-weight: 600; text-decoration: none; }
 	.posts { list-style: none; padding: 0; }
-	.posts > li { padding: var(--s-4) 0; border-top: var(--bw-hair) solid var(--line); }
+	.posts > li { padding: var(--s-5); border-top: var(--bw-hair) solid var(--line); background: var(--paper); }
+	.posts > li:first-child { border-top: 3px solid var(--link); border-radius: var(--r-3) var(--r-3) 0 0; }
+	.posts > li:last-child { border-radius: 0 0 var(--r-3) var(--r-3); }
+	.thread-post-list { overflow: hidden; border: 1px solid var(--line-strong); border-radius: var(--r-3); box-shadow: var(--elev-1); }
+	.thread-post-list .meta { margin-bottom: var(--s-3); }
+	.thread-post-list .inline-form { margin-top: var(--s-3); }
 	.tombstone { color: var(--muted); font-style: italic; }
 	.role { color: var(--muted); }
 	.standing-line {
@@ -235,4 +260,10 @@ const paragraphs = (body: string) => body.split(/\n{2,}/).map((p) => p.trim()).f
 		font-size: var(--text-sm);
 	}
 	.inline-form { display: inline; }
+	.reply-meta { display: flex; justify-content: space-between; gap: var(--s-3); margin-top: var(--s-2); color: var(--faint); font: var(--text-2xs)/1.3 var(--font-mono); }
+	.reply-meta output { color: var(--link-text); }
+	@media (max-width: 640px) {
+		.thread-toolbar a { width: 100%; margin-left: 0; }
+		.posts > li { padding: var(--s-4); }
+	}
 </style>
