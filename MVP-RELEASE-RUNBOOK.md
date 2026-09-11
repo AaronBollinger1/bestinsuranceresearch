@@ -17,7 +17,8 @@ remain closed until its persistence and mail path are real.
 - Root Vercel project id: `prj_8mGgv90dHyxq6Ijz3buguI0qlyd3`
 - Research domains are attached: `birch.insure` and `www.birch.insure`
 - `commons.birch.insure` is not configured as a Vercel domain yet
-- No Vercel environment variables are currently configured in the project
+- Preview Birch variables are configured; Production variables remain
+  intentionally untouched until the editorial gate is cleared
 - Current live production is an older BestInsurance build, not this Birch branch
 - The release candidate is green in GitHub Actions: `suite`,
   `production-posture`, `commons`, and Vercel Preview Comments
@@ -61,7 +62,7 @@ Use the existing `bestinsuranceresearch` project for Research. Keep the
 separate `bestinsuranceresearch-preview` project as a QA/reference project; do
 not promote it by accident.
 
-Set these non-secret variables for Preview in the Research project:
+These non-secret variables are configured for Preview in the Research project:
 
 ```text
 PUBLIC_SITE_ENV=preview

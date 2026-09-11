@@ -48,7 +48,7 @@ candidate, not the retired BestInsurance deployment.
 
 ### G3 — Vercel preview
 
-- [ ] Preview variables are set on the root Research project:
+- [x] Preview variables are set on the root Research project:
 
   ```text
   PUBLIC_SITE_ENV=preview
