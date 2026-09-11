@@ -17,7 +17,7 @@
  * cells (a status chip, a link, a stack of triggers) would make a seven-column
  * table unusable on a narrow viewport.
  */
-import { CircleAlert, ClipboardCheck, TriangleAlert } from '@lucide/astro';
+import { ArrowRight, CircleAlert, ClipboardCheck, TriangleAlert } from '@lucide/astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Callout from '../components/Callout.astro';
@@ -93,6 +93,10 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 				<span class="eyebrow">Standards</span>
 				<h1>Review queue</h1>
 				<p class="page-lede">{description}</p>
+				<div class="queue-actions">
+					<a class="btn btn-primary btn-sm" href="/design/research-pipeline-preview">Preview the AI research gate <ArrowRight size={14} aria-hidden="true" /></a>
+					<a class="btn btn-quiet btn-sm" href="/methodology">Read the publication boundary</a>
+				</div>
 
 				<div class="figures" style="margin-top:var(--s-5)">
 					<div class="figure"><b>{outstanding}</b><span>awaiting sign-off</span></div>
@@ -376,6 +380,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 		gap: var(--s-3);
 		counter-reset: q;
 	}
+	.queue-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-5); }
 	.queue > li {
 		counter-increment: q;
 		position: relative;

@@ -1,0 +1,249 @@
+---
+import { ArrowRight, BookOpen, Check, FileText, LockKeyhole, Search, ShieldCheck, Sparkles } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProductContextBar from '../../components/ProductContextBar.astro';
+import { researchGate, type ResearchPacket } from '../../lib/research-pipeline';
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Design', path: '/design/commons-preview' },
+	{ name: 'Research pipeline preview', path: '/design/research-pipeline-preview' },
+];
+
+const packet: ResearchPacket = {
+	brief: {
+		id: 'specimen-ca-renewal',
+		topic: 'California homeowners renewal and wildfire nonrenewal',
+		jurisdiction: 'California',
+		asOf: 'As-of date required before a live run',
+		requestedSourceClasses: ['statute', 'regulation', 'regulator-guidance', 'legislative-record'],
+		question: 'What changed, where is it written, and what should a reader ask next?',
+	},
+	provider: {
+		name: 'perplexity',
+		outputMode: 'structured-draft',
+		requestedAt: 'Specimen trace · not a live request',
+	},
+	sources: [
+		{
+			id: 'ca-primary-source-candidate',
+			url: 'https://www.insurance.ca.gov/',
+			title: 'Primary-source candidate',
+			publisher: 'Official source to verify',
+			jurisdiction: 'California',
+			sourceClass: 'regulator-guidance',
+			officialHost: true,
+			accessedOn: 'Specimen',
+			status: 'candidate',
+		},
+	],
+	claims: [
+		{
+			id: 'claim-1',
+			text: 'No public claim is ready to publish in this specimen.',
+			sourceIds: [],
+			claimKind: 'descriptive',
+			reviewState: 'needs-review',
+		},
+	],
+	caveats: ['Illustrative interface only. No provider, source URL, or conclusion is being asserted here.'],
+	review: { state: 'needs-review' },
+};
+
+const gate = researchGate(packet);
+const sourceRows = [
+	['Candidate source', 'Official source to verify', 'Candidate', 'No'],
+	['Provider trace', 'Perplexity structured draft', 'Unverified', '—'],
+	['Public record', 'Birch approved packet', 'Blocked', '—'],
+];
+const gateRows = [
+	['Brief', 'Topic, jurisdiction, and source classes', 'Ready to refine'],
+	['Evidence', 'Canonical HTTPS sources and claim links', 'Blocked'],
+	['Review', 'Named human reviewer approval', 'Blocked'],
+	['Distribution', 'Approved canonical page in sitemap', 'Not started'],
+];
+---
+
+<BaseLayout
+	title="AI research gate preview"
+	description="Private Birch product specimen for turning an AI-assisted research brief into a dated, source-backed, human-reviewed record."
+	noindex
+	pageType="editorial"
+>
+	<section class="band band-tight band-first band-paper research-preview-hero">
+		<div class="shell">
+			<Breadcrumbs trail={trail} />
+			<ProductContextBar active="research" />
+			<div class="research-preview-state"><span class="status status-plain">Internal product specimen</span><span class="mono">Static preview · no provider call</span></div>
+			<div class="research-hero-grid">
+				<div>
+					<span class="eyebrow">Birch Research Desk</span>
+					<h1>From a hard question to a checkable record.</h1>
+					<p class="page-lede">Perplexity can help Birch find the trail. Primary sources and a named reviewer decide what becomes public.</p>
+					<div class="research-hero-actions">
+						<a class="btn btn-primary" href="/sources">Open the source registry <ArrowRight size={15} aria-hidden="true" /></a>
+						<a class="btn btn-secondary" href="/review-queue">See the review queue</a>
+					</div>
+				</div>
+				<div class="research-bird-mark" aria-hidden="true">
+					<div class="research-orbit research-orbit-one"></div>
+					<div class="research-orbit research-orbit-two"></div>
+					<img src="/birch-bird-transparent.png" width="72" height="72" alt="" />
+					<span>SCOUT · VERIFY · PUBLISH</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight band-paper research-flow-band" aria-labelledby="flow-title">
+		<div class="shell">
+			<div class="research-section-head">
+				<div><span class="eyebrow">The operating model</span><h2 id="flow-title">AI-assisted. Source-led. Human-approved.</h2></div>
+				<span class="status status-changing">Publication gate: {gate.state}</span>
+			</div>
+			<div class="research-flow" aria-label="Research workflow">
+				<div class="research-flow-step research-flow-scout"><div class="research-step-icon"><Search size={18} aria-hidden="true" /></div><span class="mono">01 / Scout</span><h3>Find the trail.</h3><p>Search returns candidates, citations, and a provider trace. Nothing is authoritative yet.</p></div>
+				<div class="research-flow-line" aria-hidden="true"></div>
+				<div class="research-flow-step research-flow-verify"><div class="research-step-icon"><ShieldCheck size={18} aria-hidden="true" /></div><span class="mono">02 / Verify</span><h3>Check the source.</h3><p>Confirm publisher, jurisdiction, date, status, and the exact claim the source supports.</p></div>
+				<div class="research-flow-line" aria-hidden="true"></div>
+				<div class="research-flow-step research-flow-publish"><div class="research-step-icon"><BookOpen size={18} aria-hidden="true" /></div><span class="mono">03 / Publish</span><h3>Make it citable.</h3><p>Only an approved packet becomes a Birch page, index record, and stable source ledger.</p></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight band-paper" aria-labelledby="brief-title">
+		<div class="shell">
+			<div class="research-workspace">
+				<main class="research-workspace-main">
+					<div class="research-workspace-head"><div><span class="eyebrow">Private research brief / specimen</span><h2 id="brief-title">{packet.brief.topic}</h2><p>{packet.brief.question}</p></div><span class="research-id mono">{packet.brief.id}</span></div>
+					<div class="research-brief-meta">
+						<div><span class="meta">Jurisdiction</span><strong>{packet.brief.jurisdiction}</strong></div>
+						<div><span class="meta">As-of date</span><strong>{packet.brief.asOf}</strong></div>
+						<div><span class="meta">Source classes</span><strong>{packet.brief.requestedSourceClasses.length} requested</strong></div>
+					</div>
+					<div class="research-class-list" aria-label="Requested source classes">
+						{packet.brief.requestedSourceClasses.map((sourceClass) => <span><Check size={13} aria-hidden="true" />{sourceClass.replaceAll('-', ' ')}</span>)}
+					</div>
+					<div class="research-scout-card">
+						<div class="research-card-head"><div><span class="research-card-icon"><Sparkles size={16} aria-hidden="true" /></span><div><span class="eyebrow">Scout output</span><h3>Candidate sources, not conclusions.</h3></div></div><span class="status status-plain">{packet.provider?.outputMode}</span></div>
+						<p>Perplexity is useful here for discovery and structured extraction. Birch still has to open, classify, and verify every source before a sentence can carry a citation.</p>
+						<div class="research-sources-table" role="table" aria-label="Specimen source candidates">
+							<div class="research-table-row research-table-head" role="row"><span>Record</span><span>Publisher</span><span>Status</span><span>Authority</span></div>
+							{sourceRows.map((row) => <div class="research-table-row" role="row">{row.map((cell) => <span>{cell}</span>)}</div>)}
+						</div>
+						<p class="research-table-note mono">No provider response or source URL is asserted by this UI specimen.</p>
+					</div>
+					<div class="research-evidence-card"><div class="research-card-head"><div><span class="research-card-icon research-card-icon-blue"><FileText size={16} aria-hidden="true" /></span><div><span class="eyebrow">Evidence ledger</span><h3>Every sentence needs a home.</h3></div></div><a class="text-link" href="/sources">Registry <ArrowRight size={14} aria-hidden="true" /></a></div><p>Claims, source IDs, dates, and limitations travel together. If a claim changes, the source ledger and “what changed” trail change with it.</p><div class="research-claim-row"><span class="research-claim-state">Needs review</span><span>No public claim is ready in this specimen.</span><span class="mono">0 linked sources</span></div></div>
+				</main>
+				<aside class="research-workspace-rail" aria-label="Publication gate">
+					<div class="research-gate-card"><div class="research-gate-icon"><LockKeyhole size={18} aria-hidden="true" /></div><span class="eyebrow">Publish to Birch</span><h2>Not yet.</h2><p>Before this can become a public record, the packet needs the following:</p><ol class="research-gate-list">{gateRows.map((row) => <li><span class="research-gate-dot"></span><div><strong>{row[0]}</strong><small>{row[1]}</small><em>{row[2]}</em></div></li>)}</ol><button class="btn btn-primary research-publish-button" type="button" disabled>Publish approved record</button><p class="research-gate-note mono">{gate.blockers.length} blockers · no email or document collected</p></div>
+					<div class="research-safety-card"><span class="eyebrow">Boundary</span><h2>The scout never sees a policy by default.</h2><p>Future policy-review uploads need a redaction firewall and explicit consent before any minimized question can leave Birch.</p><a class="text-link" href="/methodology">Read the method <ArrowRight size={14} aria-hidden="true" /></a></div>
+				</aside>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight band-ink" aria-labelledby="research-boundary-title">
+		<div class="shell research-boundary"><div><span class="eyebrow">The promise</span><h2 id="research-boundary-title">Useful because the trail stays attached.</h2></div><div><p>Birch earns authority through stable records, visible limits, and corrections—not through a confident answer box. The future chatbot should always be able to point back to the same reviewed page.</p><a class="btn btn-secondary" href="/methodology">Read the editorial boundary <ArrowRight size={15} aria-hidden="true" /></a></div></div>
+	</section>
+</BaseLayout>
+
+<style>
+	.research-preview-hero { overflow: hidden; }
+	.research-preview-hero .crumbs { margin-bottom: var(--s-4); }
+	.research-preview-state { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); }
+	.research-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: clamp(var(--s-6), 8vw, var(--s-12)); align-items: center; margin-top: var(--s-8); }
+	.research-hero-grid h1 { max-width: 11ch; margin: var(--s-2) 0 var(--s-4); font-size: clamp(3rem, 6.2vw, 6rem); letter-spacing: -.045em; }
+	.research-hero-grid .page-lede { max-width: 48ch; }
+	.research-hero-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-6); }
+	.research-bird-mark { position: relative; display: grid; place-items: center; min-height: 300px; color: var(--gold-text); }
+	.research-bird-mark img { position: relative; z-index: 1; width: 72px; height: 72px; object-fit: contain; filter: drop-shadow(0 12px 22px rgba(13, 42, 82, .18)); animation: research-bird-float 5s var(--ease-soft) infinite; }
+	.research-bird-mark > span { position: absolute; bottom: 12%; color: var(--muted); font: var(--text-2xs)/1.4 var(--font-mono); letter-spacing: .09em; text-align: center; }
+	.research-orbit { position: absolute; border: 1px solid color-mix(in srgb, var(--gold-edge) 60%, transparent); border-radius: 50%; transform: rotate(-18deg); }
+	.research-orbit-one { width: 220px; height: 132px; animation: research-orbit-one 10s linear infinite; }
+	.research-orbit-two { width: 278px; height: 178px; border-style: dashed; opacity: .72; transform: rotate(28deg); animation: research-orbit-two 14s linear infinite reverse; }
+	.research-section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--s-4); }
+	.research-section-head h2 { margin: var(--s-2) 0 0; font-size: clamp(1.9rem, 3.7vw, 3.2rem); }
+	.research-flow { display: grid; grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr) 44px minmax(0, 1fr); align-items: stretch; margin-top: var(--s-8); }
+	.research-flow-step { padding: var(--s-5); border: 1px solid var(--line); border-radius: var(--r-3); background: var(--paper); transition: transform var(--dur-2) var(--ease-soft), border-color var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease); }
+	.research-flow-step:hover, .research-flow-step:focus-within { transform: translateY(-3px); border-color: var(--brand-blue); box-shadow: var(--elev-2); }
+	.research-step-icon, .research-gate-icon { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: var(--s-4); border-radius: 50%; background: var(--gold-wash); color: var(--gold-text); }
+	.research-flow-verify .research-step-icon, .research-card-icon-blue { background: var(--brand-blue-wash); color: var(--brand-blue-text); }
+	.research-flow-publish .research-step-icon { background: var(--green-wash); color: var(--green-text); }
+	.research-flow-step .mono { color: var(--muted); }
+	.research-flow-step h3 { margin: var(--s-2) 0 var(--s-2); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; }
+	.research-flow-step p, .research-scout-card > p, .research-evidence-card > p, .research-gate-card > p, .research-safety-card p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.research-flow-line { align-self: center; height: 1px; background: linear-gradient(90deg, var(--gold-edge), var(--brand-blue)); opacity: .6; }
+	.research-workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .34fr); gap: var(--s-5); align-items: start; }
+	.research-workspace-main, .research-workspace-rail { min-width: 0; }
+	.research-workspace-main { display: grid; gap: var(--s-4); }
+	.research-workspace-head { display: flex; align-items: start; justify-content: space-between; gap: var(--s-4); padding-bottom: var(--s-5); border-bottom: 1px solid var(--line-strong); }
+	.research-workspace-head h2 { max-width: 20ch; margin: var(--s-2) 0 var(--s-2); font-size: clamp(1.8rem, 3.3vw, 3rem); }
+	.research-workspace-head p { max-width: 62ch; margin: 0; color: var(--muted); }
+	.research-id { flex: 0 0 auto; color: var(--faint); }
+	.research-brief-meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
+	.research-brief-meta > div { padding: var(--s-3); border: 1px solid var(--line); border-radius: var(--r-2); background: var(--paper); }
+	.research-brief-meta strong, .research-brief-meta .meta { display: block; }
+	.research-brief-meta strong { margin-top: var(--s-1); color: var(--ink); font-size: var(--text-sm); line-height: var(--leading-snug); }
+	.research-class-list { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+	.research-class-list span { display: inline-flex; align-items: center; gap: 5px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--brand-blue-text); background: var(--brand-blue-wash); font: var(--text-2xs)/1.2 var(--font-mono); text-transform: capitalize; }
+	.research-scout-card, .research-evidence-card { padding: var(--s-5); border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); box-shadow: var(--elev-1); }
+	.research-card-head { display: flex; align-items: start; justify-content: space-between; gap: var(--s-4); margin-bottom: var(--s-4); }
+	.research-card-head > div:first-child { display: flex; gap: var(--s-3); align-items: start; }
+	.research-card-icon { display: grid; place-items: center; width: 34px; height: 34px; flex: 0 0 auto; border-radius: var(--r-2); background: var(--gold-wash); color: var(--gold-text); }
+	.research-card-head h3 { margin: var(--s-1) 0 0; font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; }
+	.research-sources-table { overflow: hidden; margin-top: var(--s-5); border: 1px solid var(--line); border-radius: var(--r-2); }
+	.research-table-row { display: grid; grid-template-columns: minmax(150px, 1.3fr) minmax(130px, 1fr) 100px 80px; gap: var(--s-2); align-items: center; padding: var(--s-3); border-top: 1px solid var(--line); color: var(--body); font-size: var(--text-xs); }
+	.research-table-row:first-child { border-top: 0; }
+	.research-table-head { border-top: 0; background: var(--blue-wash); color: var(--brand-blue-text); font: var(--text-2xs)/1.3 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+	.research-table-note { margin-top: var(--s-3) !important; color: var(--faint) !important; font-size: var(--text-2xs) !important; }
+	.research-evidence-card { background: var(--blue-wash); }
+	.research-claim-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--s-3); align-items: center; padding: var(--s-3); margin-top: var(--s-5); border: 1px solid var(--line); border-radius: var(--r-2); background: var(--paper); color: var(--body); font-size: var(--text-sm); }
+	.research-claim-state { color: var(--gold-text); font: var(--text-2xs)/1.2 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; }
+	.research-gate-card, .research-safety-card { padding: var(--s-5); border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); box-shadow: var(--elev-2); }
+	.research-gate-card { position: sticky; top: var(--s-5); }
+	.research-gate-icon { background: var(--brand-blue); color: #fff; }
+	.research-gate-card h2 { margin: var(--s-2) 0 var(--s-3); font-family: var(--font-display); font-size: var(--text-3xl); font-weight: 400; }
+	.research-gate-list { display: grid; gap: var(--s-4); padding: 0; margin: var(--s-5) 0 0; list-style: none; }
+	.research-gate-list li { display: grid; grid-template-columns: 10px minmax(0, 1fr); gap: var(--s-3); align-items: start; }
+	.research-gate-dot { width: 9px; height: 9px; margin-top: 5px; border: 1px solid var(--gold-edge); border-radius: 50%; background: var(--gold-wash); }
+	.research-gate-list strong, .research-gate-list small, .research-gate-list em { display: block; }
+	.research-gate-list strong { color: var(--ink); font-size: var(--text-sm); }
+	.research-gate-list small { margin-top: 2px; color: var(--muted); font-size: var(--text-xs); line-height: var(--leading-snug); }
+	.research-gate-list em { margin-top: 4px; color: var(--gold-text); font: var(--text-2xs)/1.2 var(--font-mono); font-style: normal; }
+	.research-publish-button { width: 100%; margin-top: var(--s-5); }
+	.research-gate-note { margin-top: var(--s-3) !important; color: var(--faint) !important; font-size: var(--text-2xs) !important; }
+	.research-safety-card { margin-top: var(--s-4); background: var(--gold-wash); box-shadow: none; }
+	.research-safety-card h2 { margin: var(--s-2) 0 var(--s-3); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; line-height: var(--leading-snug); }
+	.research-safety-card .text-link, .research-evidence-card .text-link { display: inline-flex; align-items: center; gap: 5px; margin-top: var(--s-4); color: var(--brand-blue-text); font-size: var(--text-sm); font-weight: 600; text-decoration: none; }
+	.research-boundary { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); gap: var(--s-8); align-items: center; }
+	.research-boundary h2 { max-width: 16ch; margin: var(--s-2) 0 0; color: var(--paper); font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 400; line-height: var(--leading-tight); }
+	.research-boundary p { max-width: 56ch; margin: 0 0 var(--s-5); color: var(--muted-ink); font-size: var(--text-lg); line-height: var(--leading-normal); }
+	@keyframes research-bird-float { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-8px) rotate(1deg); } }
+	@keyframes research-orbit-one { from { transform: rotate(-18deg); } to { transform: rotate(342deg); } }
+	@keyframes research-orbit-two { from { transform: rotate(28deg); } to { transform: rotate(-332deg); } }
+	@media (max-width: 860px) {
+		.research-hero-grid, .research-boundary { grid-template-columns: minmax(0, 1fr); }
+		.research-bird-mark { display: none; }
+		.research-workspace { grid-template-columns: minmax(0, 1fr); }
+		.research-gate-card { position: static; }
+	}
+	@media (max-width: 680px) {
+		.research-flow { grid-template-columns: minmax(0, 1fr); gap: var(--s-3); }
+		.research-flow-line { width: 1px; height: 24px; margin-left: 24px; }
+		.research-brief-meta { grid-template-columns: minmax(0, 1fr); }
+		.research-workspace-head { flex-direction: column; }
+		.research-table-row { grid-template-columns: minmax(130px, 1.2fr) minmax(110px, 1fr); }
+		.research-table-row span:nth-child(3), .research-table-row span:nth-child(4) { color: var(--muted); }
+		.research-table-head span:nth-child(3), .research-table-head span:nth-child(4) { display: none; }
+		.research-table-row:not(.research-table-head) span:nth-child(3)::before { content: 'Status · '; color: var(--faint); }
+		.research-table-row:not(.research-table-head) span:nth-child(4)::before { content: 'Authority · '; color: var(--faint); }
+		.research-table-row:not(.research-table-head) span:nth-child(3), .research-table-row:not(.research-table-head) span:nth-child(4) { grid-column: 1 / -1; }
+		.research-claim-row { grid-template-columns: minmax(0, 1fr); gap: var(--s-2); }
+		.research-hero-actions, .research-hero-actions .btn { width: 100%; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.research-bird-mark img, .research-orbit, .research-flow-step { animation: none; transition: none; }
+	}
+</style>
