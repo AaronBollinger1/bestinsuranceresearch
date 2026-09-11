@@ -19,6 +19,7 @@ import type { GetStaticPaths } from 'astro';
 import { ArrowRight } from '@lucide/astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CiteThisPage from '../../components/CiteThisPage.astro';
 import GuideTabs from '../../components/GuideTabs.astro';
 import type { GuideSection } from '../../components/GuideTabs.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
@@ -217,6 +218,23 @@ const jsonLd = graph(
 					claims it supports, and each claim has its own address.
 				</p>
 				<SourceLedger sources={sources} today={TODAY} />
+			</div>
+		</section>
+
+		<section class="band band-tight no-print" aria-label="Cite this guide">
+			<div class="shell">
+				<CiteThisPage
+					machinePath={`${path}.json`}
+					page={{
+						title: `${d.name}: a guide`,
+						path,
+						published: d.effectiveDate,
+						reviewed: d.lastReviewed,
+						author: d.author,
+						id: entry.id,
+						pageType: 'guide',
+					}}
+				/>
 			</div>
 		</section>
 

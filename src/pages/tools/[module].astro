@@ -5,6 +5,7 @@ import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
+import CiteThisPage from '../../components/CiteThisPage.astro';
 import Handoff from '../../components/Handoff.astro';
 import ModuleForm from '../../components/ModuleForm.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
@@ -28,6 +29,7 @@ export const getStaticPaths = (async () => {
 const { entry, corpus } = Astro.props;
 const d = entry.data;
 const path = `/tools/${entry.id}`;
+const citationAuthor = d.author ?? 'Birch Research';
 
 /* Every source any rule cites becomes part of this page's ledger. */
 const ruleSourceIds = [...new Set(d.rules.flatMap((r) => idsOf(r.sourceIds)))];
@@ -254,6 +256,23 @@ const jsonLd = graph(
 			</section>
 		)
 	}
+
+	<section class="band band-tight no-print" aria-label="Cite this tool">
+		<div class="shell">
+			<CiteThisPage
+				machinePath={`${path}.json`}
+				page={{
+					title: d.name,
+					path,
+					published: d.lastReviewed,
+					reviewed: d.lastReviewed,
+					author: citationAuthor,
+					id: entry.id,
+					pageType: 'tool',
+				}}
+			/>
+		</div>
+	</section>
 
 	{
 		relatedExamples.length > 0 && (

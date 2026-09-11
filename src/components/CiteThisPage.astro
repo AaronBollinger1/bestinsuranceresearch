@@ -27,6 +27,17 @@ const formats = [
 			These records contain public page facts only: title, operator, dates, canonical URL, and
 			content version. They never include a question, an input, or an identifier.
 		</p>
+		<div class="cite-quick">
+			<div>
+				<span class="eyebrow">Ready-to-use citation</span>
+				<p>Copy the page reference with its canonical URL and review date.</p>
+			</div>
+			<button class="btn btn-primary btn-sm" type="button" data-copy-target="cite-plain">
+				<Copy size={14} aria-hidden="true" />
+				<span data-copy-label>Copy citation</span>
+				<span class="u-visually-hidden" data-copy-status role="status" aria-live="polite"></span>
+			</button>
+		</div>
 		{
 			formats.map((format) => (
 				<div>
@@ -36,6 +47,7 @@ const formats = [
 						<button class="btn btn-secondary btn-sm" type="button" data-copy-target={`cite-${format.key}`}>
 							<Copy size={14} aria-hidden="true" />
 							<span data-copy-label>Copy {format.label}</span>
+							<span class="u-visually-hidden" data-copy-status role="status" aria-live="polite"></span>
 						</button>
 					</div>
 				</div>
