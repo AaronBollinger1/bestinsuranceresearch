@@ -10,6 +10,7 @@ import CommonsHandoff from '../../components/CommonsHandoff.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
 import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
 import Handoff from '../../components/Handoff.astro';
+import ProductContextBar from '../../components/ProductContextBar.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { createCiter, escapeHtml, stripMarkers } from '../../lib/citations';
@@ -103,6 +104,7 @@ const jsonLd = graph(
 		<header class="band band-first band-paper answer-head">
 			<div class="shell">
 				<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+				<ProductContextBar active="coverage" />
 				<div class="answer-flags">
 					<StatusChip kind={d.reviewState} />
 					<span class="meta">{d.family} lines</span>

@@ -5,6 +5,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Callout from '../components/Callout.astro';
 import StateBlock from '../components/StateBlock.astro';
 import MarkConverging from '../components/MarkConverging.astro';
+import ProductContextBar from '../components/ProductContextBar.astro';
 import StatusChip from '../components/StatusChip.astro';
 import { siteConfig } from '../config/site';
 import { stripMarkers } from '../lib/citations';
@@ -63,6 +64,7 @@ const FAMILY_LABEL: Record<string, string> = {
 	<section class="band band-tight band-first band-paper">
 		<div class="shell">
 			<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+			<ProductContextBar active="research" />
 			<span class="eyebrow">Ask</span>
 			<h1>Ask an insurance question.</h1>
 			<p class="lede">

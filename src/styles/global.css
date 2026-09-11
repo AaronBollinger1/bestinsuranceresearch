@@ -93,6 +93,74 @@ h4 { font-size: var(--text-base); line-height: var(--leading-snug); margin-botto
 .band-head p { margin: 0; color: var(--muted); font-size: var(--text-sm); max-width: 62ch; }
 
 /* ============================================================
+   PRODUCT CONTEXT BAR
+   ============================================================ */
+.product-context-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--s-4);
+	margin: 0 0 var(--s-6);
+	padding: 6px;
+	border: var(--bw-hair) solid var(--line-strong);
+	border-radius: var(--r-3);
+	background: color-mix(in srgb, var(--cream) 86%, var(--paper));
+}
+.product-context-kicker {
+	padding-inline: var(--s-3);
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: var(--text-2xs);
+	font-weight: 600;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+.product-context-nav {
+	display: flex;
+	align-items: stretch;
+	gap: 3px;
+	min-width: 0;
+}
+.product-context-link {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	min-height: var(--tap);
+	padding: 7px 10px;
+	border: 1px solid transparent;
+	border-radius: var(--r-2);
+	color: var(--muted);
+	text-decoration: none;
+	transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease), transform var(--dur-2) var(--ease-soft);
+}
+.product-context-link svg { flex: 0 0 auto; color: var(--faint); }
+.product-context-link span { display: grid; gap: 1px; min-width: 0; }
+.product-context-link strong { color: inherit; font-size: var(--text-xs); font-weight: 600; line-height: 1.2; white-space: nowrap; }
+.product-context-link small { color: var(--faint); font-size: var(--text-2xs); line-height: 1.2; white-space: nowrap; }
+.product-context-link:hover, .product-context-link:focus-visible { border-color: var(--line-strong); background: var(--paper); color: var(--brand-blue-deep); transform: translateY(-1px); }
+.product-context-link:hover svg, .product-context-link:focus-visible svg { color: var(--brand-blue-text); }
+.product-context-link.is-active { border-color: color-mix(in srgb, var(--brand-blue) 45%, var(--line-strong)); background: var(--brand-blue-wash); color: var(--brand-blue-deep); box-shadow: var(--elev-1); }
+.product-context-link.is-active svg { color: var(--brand-blue-text); }
+.band-ink .product-context-bar { border-color: var(--line-ink); background: color-mix(in srgb, var(--ink-2) 82%, var(--ink)); }
+.band-ink .product-context-kicker { color: var(--muted-ink); }
+.band-ink .product-context-link { color: var(--muted-ink); }
+.band-ink .product-context-link small { color: var(--faint-ink); }
+.band-ink .product-context-link:hover, .band-ink .product-context-link:focus-visible { border-color: var(--line-ink); background: var(--ink-2); color: var(--paper); }
+.band-ink .product-context-link.is-active { border-color: var(--brand-cyan); background: color-mix(in srgb, var(--brand-cyan) 14%, var(--ink-2)); color: var(--paper); }
+@media (max-width: 900px) {
+	.product-context-bar { align-items: flex-start; flex-direction: column; }
+	.product-context-nav { width: 100%; overflow-x: auto; }
+	.product-context-link { flex: 0 0 auto; }
+}
+@media (max-width: 640px) {
+	.product-context-bar { margin-bottom: var(--s-5); }
+	.product-context-kicker { padding-inline: var(--s-2); }
+	.product-context-link { padding-inline: 8px; }
+	.product-context-link small { display: none; }
+}
+
+/* ============================================================
    BIRCH HOME ENTRY SURFACE
    ============================================================ */
 .home-hero {

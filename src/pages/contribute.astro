@@ -3,6 +3,7 @@ import { ArrowRight, Check, FileText, Flag, LockKeyhole, ShieldCheck, UserRound 
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Callout from '../components/Callout.astro';
+import ProductContextBar from '../components/ProductContextBar.astro';
 import { siteConfig } from '../config/site';
 import { breadcrumbs, graph, organization, website } from '../lib/schema';
 
@@ -25,6 +26,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 		<section class="band band-tight band-first band-paper contribution-hero">
 			<div class="shell">
 				<Breadcrumbs trail={trail} />
+				<ProductContextBar active="contribute" />
 				<div class="contribution-hero-grid">
 					<div>
 						<span class="eyebrow">Birch / Contribution desk</span>

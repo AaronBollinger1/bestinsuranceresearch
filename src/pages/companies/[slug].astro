@@ -7,6 +7,7 @@ import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
 import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
+import ProductContextBar from '../../components/ProductContextBar.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { createCiter, stripMarkers } from '../../lib/citations';
@@ -155,6 +156,7 @@ const jsonLd = graph(
 		<header class="band band-first band-paper answer-head">
 			<div class="shell">
 				<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+				<ProductContextBar active="companies" />
 				<div class="answer-flags">
 					<StatusChip kind={d.reviewState} />
 					<span class="meta">{ORG_TYPE_LABEL[d.orgType] ?? d.orgType}</span>
