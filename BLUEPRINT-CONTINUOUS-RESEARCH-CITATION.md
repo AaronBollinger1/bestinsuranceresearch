@@ -16,6 +16,36 @@ question -> bounded research brief -> candidate sources -> source verification
 
 AI accelerates discovery and drafting. It never turns a candidate into a fact, a user story into a verdict, or a draft into a public page.
 
+## What happens when Birch does not have the answer
+
+An unanswered query is a routing event, not a publishing event. The local lookup already
+has the three evidence outcomes needed to make this decision:
+
+| Lookup state | Reader experience | Research-desk action |
+| --- | --- | --- |
+| `ok` | Return the existing canonical records with their source trail. | Record only an aggregate demand signal; do not create a duplicate. |
+| `insufficient` | Show the closest records with an explicit “not an answer” boundary. | Offer a bounded research candidate with the topic, jurisdiction, and missing evidence class. |
+| `no-result` | Say that Birch has a gap, then offer browse and suggest actions. | Create a candidate brief only after privacy screening and deduplication. |
+| private or policy-specific | Keep the question or document in the local/private review path. | Stop before provider submission; require explicit consent and a redaction pass. |
+
+The candidate brief is deduplicated against existing question titles, aliases, open briefs, and
+recently published records. It stores a normalized topic and jurisdiction by default, not a
+visitor's raw question. Raw text is retained only when a person deliberately submits it for
+research and agrees to the stated retention period. A candidate brief has no public URL, no
+sitemap entry, and no claim status.
+
+The research desk then runs a bounded sequence:
+
+```text
+lookup -> classify gap -> privacy screen -> deduplicate -> brief
+-> source scout -> verify -> claim review -> publish one record
+```
+
+This is why Perplexity should not sit directly behind the answer box. If it does, the reader
+cannot tell whether Birch answered from its reviewed corpus or from a fresh, unreviewed web
+search. The answer box should remain deterministic; the research desk can use Perplexity
+asynchronously after a gap is triaged.
+
 ## The daily research desk
 
 ### 1. Intake
@@ -151,6 +181,10 @@ GET /api/research/jobs/:jobId
 output: candidate sources + provider trace + deterministic blockers
 ```
 
+The first request should be a `candidate-brief` job, not an `answer` job. An answer endpoint
+can be considered only after a reviewer has approved the same packet for publication; even
+then, it should resolve to the approved Birch record rather than invent a second response.
+
 The client should never receive the provider key, raw policy document, or an unreviewed “answer.” A future worker can store encrypted raw provider material briefly, but the durable source of truth is the reviewed Birch packet.
 
 ## Operating controls
@@ -178,4 +212,3 @@ The client should never receive the provider key, raw policy document, or an unr
 ## Decision
 
 Birch should optimize for **citation density and editorial reliability**, not maximum automated page count. The product becomes authoritative by being the cleanest place to trace an insurance statement back to a reviewed source, then to a clearly labeled conversation.
-
