@@ -17,6 +17,8 @@ Research property; the Commons deliberately carries no agency branding.
 ```sh
 npm ci
 npm run dev          # local Research development server
+npm run catalog:build # refresh the planning-only question/company inventory
+npm run catalog:verify
 npm run validate     # check + build + verify
 npm run preview      # serve the Research build at http://localhost:4321
 cd commons && npm ci
@@ -81,6 +83,13 @@ Content should be finalized before the licensed review pass. The reviewer should
 receive one stable snapshot of copy, source mappings, labels, boundary language,
 and machine-readable records. No page should be called reviewed until that
 single pass is complete.
+
+The planning-only master inventory is documented in
+`BIRCH-MASTER-CONTENT-INVENTORY-2026-09-11.md`. `npm run catalog:build` creates
+the 12,864-question candidate catalog and company-page universe under
+`planning/`; `npm run catalog:verify` checks that candidates remain unpublished,
+that the catalog matches the canonical line vocabulary, and that every candidate
+retains the licensed-review and compliance gates.
 
 ## Boundaries
 
