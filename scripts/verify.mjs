@@ -683,7 +683,7 @@ test('company directory filtering is local and has an honest empty state', () =>
 	assert.match(source, /id="company-filter-empty"/);
 	assert.match(source, /coverageIdsByCompany/);
 	assert.match(source, /company-row-signals/);
-	assert.match(source, /Commons private preview/);
+	assert.match(source, /Community private preview/);
 	assert.match(source, /row\.hidden =/);
 	assert.doesNotMatch(source, /\b(?:fetch|XMLHttpRequest|localStorage|sessionStorage)\b/);
 	assert.ok(html.includes('Find an organization'));

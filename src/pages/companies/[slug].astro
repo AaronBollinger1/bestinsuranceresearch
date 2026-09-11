@@ -163,7 +163,7 @@ const jsonLd = graph(
 						<div class="company-profile-main">
 							<div class="company-profile-kicker"><span class="company-profile-mark" aria-hidden="true">{companyInitials}</span><span class="eyebrow">Birch company dossier</span><StatusChip kind={d.reviewState} /></div>
 							<h1>{d.legalName}</h1>
-							<p class="lede">A source-backed record of identity, official channels, connected insurance research, and clearly separated community context.</p>
+							<p class="lede">Company facts, coverage context, and the sources behind them.</p>
 							<div class="answer-flags company-profile-flags"><span class="meta">{ORG_TYPE_LABEL[d.orgType] ?? d.orgType}</span><span class="meta">{d.jurisdictions.join(', ')}</span><span class="meta">Reviewed {longDate(d.lastReviewed)}</span></div>
 							<div class="company-profile-actions">
 								<a class="btn btn-primary" href="/ask">Ask Birch <ArrowRight size={15} aria-hidden="true" /></a>
@@ -177,9 +177,9 @@ const jsonLd = graph(
 								<div><span>Sources</span><strong>{sources.length}</strong></div>
 								<div><span>Questions</span><strong>{allRelated.length}</strong></div>
 								<div><span>Coverage</span><strong>{relatedCoverages.length}</strong></div>
-								<div><span>Commons</span><strong>{siteConfig.communityReady ? 'Open' : 'Preview'}</strong></div>
+								<div><span>Community</span><strong>{siteConfig.communityReady ? 'Open' : 'Preview'}</strong></div>
 							</div>
-							<div class="company-profile-enrichment"><span class="status status-plain">Planned enrichment</span><p>Verified logo, brand identity, and first-party statistics can populate here later. They never become a Birch rating.</p></div>
+							<div class="company-profile-enrichment"><a href="#source-ledger">See where these records come from <ArrowRight size={14} aria-hidden="true" /></a></div>
 						</aside>
 					</div>
 					<dl class="answer-dates">
@@ -229,7 +229,7 @@ const jsonLd = graph(
 							<a href="#threads">Threads <ArrowRight size={14} aria-hidden="true" /></a>
 							<a href="#experiences">Experiences <ArrowRight size={14} aria-hidden="true" /></a>
 						</nav>
-						<p class="mono company-dossier-community-note">{siteConfig.communityReady ? 'Discussion is available through Commons.' : 'Discussion will open after the moderation and account gates are ready.'}</p>
+						<p class="mono company-dossier-community-note">{siteConfig.communityReady ? 'Discussion is available through Community.' : 'Discussion will open after the moderation and account gates are ready.'}</p>
 					</aside>
 				</div>
 			</div>
@@ -507,7 +507,7 @@ const jsonLd = graph(
 								<a class="btn btn-secondary btn-sm" href={commonsHref} rel="noopener">Open discussions about this subject <ArrowRight size={15} aria-hidden="true" /></a>
 							) : (
 								<Callout tone="privacy" label="Community availability">
-									<p><strong>Commons is in private preview.</strong> The discussion layer will open after deployment, database, mail delivery, and moderation gates are ready.</p>
+									<p><strong>Community is in private preview.</strong> The discussion layer will open after deployment, database, mail delivery, and moderation gates are ready.</p>
 								</Callout>
 							)
 						}
@@ -573,7 +573,7 @@ const jsonLd = graph(
 		.company-profile-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); }
 		.company-profile-kicker .eyebrow { margin: 0; }
 		.company-profile-mark { display: grid; place-items: center; width: 52px; height: 52px; border-radius: var(--r-3); background: var(--brand-blue); color: var(--white); font-family: var(--font-display); font-size: var(--text-xl); box-shadow: inset 0 1px 0 rgba(255,255,255,.32); }
-		.company-profile-main h1 { max-width: 16ch; margin: var(--s-5) 0 var(--s-4); font-size: clamp(3rem, 6vw, 5rem); letter-spacing: -.05em; line-height: .98; }
+		.company-profile-main h1 { max-width: 24ch; margin: var(--s-5) 0 var(--s-4); font-family: var(--font-sans); font-weight: 600; font-size: clamp(2rem, 3.7vw, 3rem); letter-spacing: -.05em; line-height: 1.1; }
 		.company-profile-main .lede { max-width: 58ch; margin: 0; color: var(--body); }
 		.company-profile-flags { margin-top: var(--s-4); }
 		.company-profile-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-6); }
@@ -582,10 +582,11 @@ const jsonLd = graph(
 		.company-profile-record-head .eyebrow { margin: 0; }
 		.company-profile-record-head .mono { max-width: 20ch; overflow: hidden; color: var(--muted); font-size: var(--text-2xs); text-overflow: ellipsis; white-space: nowrap; }
 		.company-profile-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); }
-		.company-profile-stats > div { display: grid; gap: var(--s-2); min-height: 92px; padding: var(--s-4); background: var(--paper); }
+		.company-profile-stats > div { display: grid; gap: var(--s-2); min-height: 76px; padding: var(--s-4); background: var(--paper); }
 		.company-profile-stats span { color: var(--muted); font: var(--text-2xs)/1.3 var(--font-mono); letter-spacing: .03em; text-transform: uppercase; }
 		.company-profile-stats strong { color: var(--ink); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; line-height: 1; }
-		.company-profile-enrichment { padding: var(--s-4); border-top: 1px solid var(--line); background: var(--slate-wash); }
+		.company-profile-enrichment { padding: var(--s-4); border-top: 1px solid var(--line); background: var(--paper); }
+		.company-profile-enrichment a { display: inline-flex; gap: 8px; align-items: center; color: var(--brand-blue-text); font-size: var(--text-xs); text-decoration: none; min-height: var(--tap); }
 		.company-profile-enrichment p { margin: var(--s-2) 0 0; color: var(--muted); font-size: var(--text-xs); line-height: var(--leading-snug); }
 		.company-profile-head .answer-dates { margin-top: var(--s-6); }
 		.company-dossier-band { background: var(--cream); }

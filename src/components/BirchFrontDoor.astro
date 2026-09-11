@@ -1,0 +1,75 @@
+---
+import { ArrowUpRight, Building2, Home, MapPin, Search, ShieldCheck } from '@lucide/astro';
+interface Props { variant?: 'focus' | 'editorial' | 'explore'; }
+const { variant = 'focus' } = Astro.props;
+const starters = [
+  { icon: Home, label: 'My home', question: 'Does homeowners insurance cover earthquake damage in California?' },
+  { icon: Building2, label: 'My business', question: 'What is a claims-made retroactive date?' },
+  { icon: ShieldCheck, label: 'My coverage', question: 'What is the difference between replacement cost and market value?' },
+];
+---
+<section class:list={['front-door', `front-door-${variant}`]} aria-labelledby="home-title">
+  <div class="front-door-intro">
+    <span class="front-door-kicker">A clearer view of insurance</span>
+    <h1 id="home-title">Understand your<br /><em>insurance.</em></h1>
+    {variant === 'editorial' && <p class="front-door-description">Answers you can trace. Experiences you can learn from.</p>}
+  </div>
+  <div class="front-door-action">
+    <form action="/ask" method="get" role="search" data-question-form class="question-composer">
+      <label class="u-visually-hidden" for="home-q">Ask an insurance question</label>
+      <div class="question-composer-input"><Search size={22} aria-hidden="true" /><input id="home-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="What would you like to understand?" aria-describedby="home-q-hint" /></div>
+      <div class="question-composer-actions">
+        <label class="question-location"><MapPin size={14} aria-hidden="true" /><span class="u-visually-hidden">Question jurisdiction</span><select name="state" aria-label="Question jurisdiction"><option value="CA">California</option><option value="any">All locations</option><option value="TX">Texas</option><option value="FL">Florida</option></select></label>
+        <button class="btn btn-primary" type="submit">Ask Birch <ArrowUpRight size={17} aria-hidden="true" /></button>
+      </div>
+    </form>
+    <div class="question-starters" aria-label="Choose an example question">
+      {starters.map(({icon: Icon, label, question}) => <button type="button" data-starter={question}><Icon size={15} aria-hidden="true" />{label}<ArrowUpRight size={13} aria-hidden="true" /></button>)}
+    </div>
+    <p class="front-door-promise">Free to read. Sources included.</p>
+    <p class="front-door-privacy" id="home-q-hint">Use a general question. Leave out personal and policy details.</p>
+    {variant === 'explore' && <nav class="front-door-topics" aria-label="Explore insurance"><a href="/insurance">Coverage guides <ArrowUpRight size={15} /></a><a href="/companies">Insurance companies <ArrowUpRight size={15} /></a><a href="/tools">Free tools <ArrowUpRight size={15} /></a><a href="/industries">Industries & situations <ArrowUpRight size={15} /></a></nav>}
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('.front-door').forEach((door) => {
+    const input = door.querySelector<HTMLInputElement>('input[name="q"]');
+    door.querySelectorAll<HTMLButtonElement>('[data-starter]').forEach((button) => button.addEventListener('click', () => {
+      if (!input) return;
+      input.value = button.dataset.starter || '';
+      input.focus();
+    }));
+  });
+</script>
+<style>
+  .front-door { max-width: 1100px; margin: auto; padding: 64px 0 48px; text-align: center; }
+  .front-door-kicker { color: var(--brand-blue-text); font-size: var(--text-xs); font-weight: 600; letter-spacing: .02em; }
+  .front-door h1 { margin: 20px 0 32px; color: var(--ink); font-family: var(--font-sans); font-size: clamp(2.8rem, 5.5vw, 4.65rem); font-weight: 600; letter-spacing: -.065em; line-height: 1.04; }
+  .front-door h1 em { font-family: var(--font-display); font-weight: 400; color: var(--brand-blue-deep); letter-spacing: -.045em; }
+  .front-door-action { width: min(100%, 660px); margin-inline: auto; }
+  .question-composer { padding: 12px; border: 1px solid var(--line-strong); border-radius: var(--r-4); background: var(--white); box-shadow: var(--elev-2); text-align: left; transition: border-color var(--dur-2), box-shadow var(--dur-2); }
+  .question-composer:focus-within { border-color: var(--brand-blue); box-shadow: 0 0 0 3px var(--brand-blue-wash), var(--elev-2); }
+  .question-composer-input { display: flex; align-items: center; gap: 12px; padding: 8px 8px 20px; color: var(--faint); }
+  .question-composer-input input { width: 100%; min-width: 0; min-height: var(--tap); padding: 0; border: 0; background: transparent; box-shadow: none; outline: none; color: var(--ink); font-size: var(--text-md); }
+  .question-composer-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .question-location { display: inline-flex; align-items: center; gap: 5px; color: var(--muted); padding-left: 8px; }
+  .question-location select { width: auto; min-height: var(--tap); border: 0; padding: 6px; background: transparent; color: var(--body); font-size: var(--text-xs); }
+  .question-starters { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .question-starters button { display: inline-flex; align-items: center; gap: 8px; min-height: var(--tap); padding: 8px 12px; border: 1px solid var(--line); border-radius: var(--r-3); background: var(--paper); color: var(--body); font: 500 var(--text-xs)/1.2 var(--font-sans); cursor: pointer; transition: background var(--dur-1), border-color var(--dur-1); }
+  .question-starters button:hover { background: var(--brand-blue-wash); border-color: var(--brand-blue); }
+  .question-starters button > svg:last-child { color: var(--faint); }
+  .front-door-promise { margin: 18px 0 0; color: var(--muted); font-size: var(--text-xs); }
+  .front-door-privacy { margin: 5px 0 0; color: var(--muted); font-size: var(--text-2xs); }
+  .front-door-description { max-width: 32ch; color: var(--muted); font-size: var(--text-lg); }
+  .front-door-editorial { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 56px; text-align: left; padding-block: 96px; }
+  .front-door-editorial h1 { font-size: clamp(2.7rem, 4.8vw, 4rem); }
+  .front-door-editorial .question-starters { justify-content: flex-start; }
+  .front-door-explore { padding-top: 40px; }
+  .front-door-explore h1 br { display: none; }
+  .front-door-explore h1 { font-size: clamp(2.8rem, 4.5vw, 3.8rem); }
+  .front-door-topics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 28px; text-align: left; }
+  .front-door-topics a { display: flex; justify-content: space-between; gap: 8px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-3); text-decoration: none; color: var(--body); font-size: var(--text-sm); }
+  @media (max-width: 760px) { .front-door { padding-block: 40px 32px; } .front-door-editorial { display: block; text-align: center; } .front-door-description { margin: 0 auto 24px; } .front-door-editorial .question-starters { justify-content: center; } }
+  @media (max-width: 440px) { .front-door h1 { font-size: 2.85rem; margin-block: 16px 24px; } .question-composer-input { padding-inline: 0; gap: 8px; } .question-composer-input input { font-size: var(--text-sm); } .question-starters { gap: 6px; } .question-starters button { padding-inline: 9px; } .question-starters button > svg:last-child { display: none; } .front-door-topics { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .question-composer, .question-starters button { transition: none; } }
+</style>

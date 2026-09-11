@@ -8,14 +8,15 @@ import {
 	Layers,
 	MapPin,
 	MessageCircle,
-	Search,
 	Wrench,
 } from '@lucide/astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StatusChip from '../components/StatusChip.astro';
+import BirchFrontDoor from '../components/BirchFrontDoor.astro';
+import ProductPreview from '../components/ProductPreview.astro';
 import { siteConfig } from '../config/site';
 import { stripMarkers } from '../lib/citations';
-import { idsOf, isStale, loadCorpus, recentlyReviewed } from '../lib/corpus';
+import { isStale, loadCorpus, recentlyReviewed } from '../lib/corpus';
 import { longDate } from '../lib/cite';
 import { graph, organization, website } from '../lib/schema';
 import { TODAY } from '../lib/today';
@@ -34,8 +35,7 @@ const staleSources = corpus.sources.filter((s) => isStale(s.data.lastChecked, TO
 const rechecked = corpus.sources.filter((s) => s.data.lastCheckedBasis === 'recheck').length;
 
 /*
- * Editorial selection, not a usage count. A reviewer decided these are the most
- * useful starting points. This site does not publish invented popularity data.
+ * Editorial starting points, not a usage count or a claim of licensed review.
  */
 const FEATURED = [
 	'homeowners-earthquake-california',
@@ -49,15 +49,6 @@ const featured = FEATURED.map((slug) => corpus.questionBySlug.get(slug)).filter(
 	(q): q is NonNullable<typeof q> => Boolean(q),
 );
 const featuredQuestions = featured.length >= 4 ? featured : corpus.questions.slice(0, 6);
-const examples = featuredQuestions.slice(0, 5).map((q) => q.data.question);
-const leadQuestion = featuredQuestions[1] ?? featuredQuestions[0];
-const leadCompany = corpus.companies.find((company) => company.data.orgType === 'insurer') ?? corpus.companies[0];
-if (!leadQuestion || !leadCompany) throw new Error('Birch product previews require a question and company record.');
-const leadSources = idsOf(leadQuestion.data.sourceIds)
-	.map((sourceId) => corpus.sourceById.get(sourceId))
-	.filter((source): source is NonNullable<typeof source> => Boolean(source))
-	.slice(0, 2);
-
 const recent = recentlyReviewed(corpus, 6);
 
 const atlas = [
@@ -112,72 +103,18 @@ const atlas = [
 ];
 
 const jsonLd = graph(organization(), website());
-const accountHref = siteConfig.communityReady ? `${siteConfig.communityOrigin}/sign-in` : '/design/commons-preview';
-const accountLabel = siteConfig.communityReady ? 'Join Birch Commons' : 'Preview the one-step signup';
 ---
 
 <BaseLayout
 	description="Free insurance research and community conversation from Birch. Start with a question, open the sources behind the answer, and share what happened without turning a person’s experience into a verdict."
 	jsonLd={jsonLd}
 	pageType="home"
+	bodyClass="birch-home"
 >
-	<!-- First viewport: one clear job, one real record, and the proof behind it. -->
-	<section class="band band-first band-paper home-landing" aria-labelledby="home-title">
+	<section class="band band-paper home-landing">
 		<div class="shell">
-			<div class="home-command">
-				<div class="home-hero-copy">
-					<div class="home-identity">
-						<img src="/birch-bird-transparent.png" width="48" height="48" alt="" />
-						<div><span class="eyebrow">Birch Research</span><span>Free insurance research</span></div>
-					</div>
-					<h1 id="home-title">Insurance, with the source attached.</h1>
-					<p class="lede">Ask a question. Birch shows the answer, the assumptions, and the primary record behind it.</p>
-
-					<form action="/ask" method="get" role="search" data-question-form class="home-search-form">
-						<label for="home-q">Ask an insurance question</label>
-						<div class="home-search-row">
-							<input id="home-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder={examples[0] ?? 'Ask an insurance question'} aria-describedby="home-q-hint" />
-							<button class="btn btn-primary" type="submit"><Search size={17} aria-hidden="true" /> Ask Birch</button>
-						</div>
-						<span class="hint" id="home-q-hint">Leave out names, addresses, policy or claim numbers, and health details.</span>
-					</form>
-
-					<div class="home-query-examples" aria-label="Example insurance questions">
-						<span>Start with</span>
-						{featuredQuestions.slice(0, 3).map((question) => <a href={`/questions/${question.id}`}>{question.data.question}</a>)}
-					</div>
-					<p class="home-hero-boundary">Free to read · no account required · not a quote</p>
-				</div>
-
-				<aside class="home-answer-window" aria-label="Cited Birch answer preview">
-					<div class="home-window-bar">
-						<span class="home-window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-						<span class="home-window-route"><img src="/birch-bird-transparent.png" width="24" height="24" alt="" /> Answer <ArrowRight size={13} aria-hidden="true" /> evidence</span>
-						<StatusChip kind={leadQuestion.data.confidence} />
-					</div>
-					<nav class="home-window-tabs" aria-label="Birch product lanes">
-						<a class="is-active" href={`/questions/${leadQuestion.id}`}>Research</a>
-						<a href={`/companies/${leadCompany.id}`}>Company record</a>
-						<a href="/design/commons-preview">Commons <span>Preview</span></a>
-					</nav>
-					<div class="home-window-body">
-						<span class="eyebrow">Direct answer</span>
-						<h2>{leadQuestion.data.question}</h2>
-						<p>{excerpt(stripMarkers(leadQuestion.data.shortAnswer), 190)}</p>
-						<div class="home-window-sources" aria-label="Sources attached to this answer">
-							{leadSources.map((source, index) => (
-								<a href={`/sources/${source.id}`}>
-									<span class="home-source-number">0{index + 1}</span>
-									<span><strong>{source.data.publisher}</strong><small>{source.data.title}</small></span>
-									<ArrowRight size={14} aria-hidden="true" />
-								</a>
-							))}
-						</div>
-					</div>
-					<div class="home-window-footer"><span>{leadQuestion.data.sourceIds.length} source records attached</span><a href={`/questions/${leadQuestion.id}`}>Open the full answer <ArrowRight size={14} aria-hidden="true" /></a></div>
-				</aside>
-			</div>
-
+			<BirchFrontDoor />
+			<ProductPreview />
 			<div class="home-record-strip" aria-label="Current Birch research record">
 				<a href="/sources"><span>Source records</span><strong>{totalSources}</strong><small>Publisher, date, supported claims</small></a>
 				<a href="/sources"><span>Primary sources</span><strong>{primarySources}</strong><small>Official and original records</small></a>
@@ -185,41 +122,41 @@ const accountLabel = siteConfig.communityReady ? 'Join Birch Commons' : 'Preview
 				<a href="/sources"><span>Stale sources flagged</span><strong>{staleSources}</strong><small>Never hidden from the reader</small></a>
 			</div>
 			<div class="home-record-note"><span>{rechecked} of {totalSources} source records independently rechecked after initial access.</span><a href="/methodology">How review works <ArrowRight size={13} aria-hidden="true" /></a></div>
-			{siteConfig.environment === 'preview' && <div class="home-preview-bar"><span class="status status-plain">Private review</span><span>This build is gated. Public signup and posting remain disabled.</span></div>}
+			{siteConfig.environment === 'preview' && <div class="home-preview-bar"><span class="status status-plain">Design preview</span><span>Public signup and posting remain disabled. Research is awaiting licensed review.</span></div>}
 		</div>
 	</section>
 
 	<section class="band band-tight home-system" aria-labelledby="network-title">
 		<div class="shell">
 			<div class="band-head home-system-head">
-				<div><span class="eyebrow">One system · three clear lanes</span><h2 id="network-title">Research first. Official context beside it. Conversation around it.</h2></div>
-				<p>Birch separates what can be documented from what a person experienced. That distinction makes every page easier to trust, cite, correct, and discuss.</p>
+				<div><span class="eyebrow">Made for the questions that matter</span><h2 id="network-title">Find your way forward.</h2></div>
+				<p>Understand a policy, explore a company, or learn from someone who has been there.</p>
 			</div>
 
 			<div class="home-lane-grid">
-				<a class="home-lane-card home-lane-research" href={`/questions/${leadQuestion.id}`}>
-					<div class="home-lane-top"><span>01 / Research</span><FileStack size={19} aria-hidden="true" /></div>
-					<h3>Read the answer and inspect the evidence.</h3>
-					<p>Plain-language answers show their scope, assumptions, reviewer, dates, and source ledger.</p>
+				<a class="home-lane-card home-lane-research" href={'/ask'}>
+					<div class="home-lane-top"><span>Research</span><FileStack size={19} aria-hidden="true" /></div>
+					<h3>Make sense of the details.</h3>
+					<p>Clear answers to coverage questions, with the documents behind them.</p>
 					<div class="home-lane-foot"><span class="status status-established">Published</span><span>Open an answer <ArrowRight size={14} aria-hidden="true" /></span></div>
 				</a>
-				<a class="home-lane-card" href={`/companies/${leadCompany.id}`}>
-					<div class="home-lane-top"><span>02 / Company dossiers</span><Building2 size={19} aria-hidden="true" /></div>
-					<h3>Know the organization behind the name.</h3>
-					<p>Verified identity, official channels, regulator records, coverage links, and future attributed responses—without a Birch ranking.</p>
+				<a class="home-lane-card" href={'/companies'}>
+					<div class="home-lane-top"><span>Companies</span><Building2 size={19} aria-hidden="true" /></div>
+					<h3>Get to know your insurer.</h3>
+					<p>Company records, coverage context, and official places to get help.</p>
 					<div class="home-lane-foot"><span class="status status-contextual">{corpus.companies.length} records</span><span>Browse companies <ArrowRight size={14} aria-hidden="true" /></span></div>
 				</a>
 				<a class="home-lane-card home-lane-commons" href="/design/commons-preview">
-					<div class="home-lane-top"><span>03 / Commons</span><MessageCircle size={19} aria-hidden="true" /></div>
-					<h3>Ask, contribute, and share what happened.</h3>
-					<p>Structured experiences, professional notes, and company replies stay attributed and visibly separate from Research.</p>
+					<div class="home-lane-top"><span>Community</span><MessageCircle size={19} aria-hidden="true" /></div>
+					<h3>Learn from each other.</h3>
+					<p>A place for experiences, professional perspectives, and company responses.</p>
 					<div class="home-lane-foot"><span class="status status-plain">Private preview</span><span>See the product <ArrowRight size={14} aria-hidden="true" /></span></div>
 				</a>
 			</div>
 
 			<div class="home-access-rail" id="account-preview">
-				<div><span class="eyebrow">Designed for low friction</span><strong>Read freely. Save privately. Publish only by choice.</strong><p>A future account takes one email link. Professional and company attribution require separate verification.</p></div>
-				<a class="btn btn-secondary btn-sm" href={accountHref}>{accountLabel} <ArrowRight size={15} aria-hidden="true" /></a>
+				<div><span class="eyebrow">For insurance and financial professionals</span><strong>Make your experience useful to more people.</strong><p>Contribute research with your name, expertise, and sources attached.</p></div>
+				<a class="btn btn-secondary btn-sm" href="/professionals">Explore contributing <ArrowRight size={15} aria-hidden="true" /></a>
 			</div>
 
 			<div class="home-ca-strip" aria-labelledby="ca-launch-title">
@@ -237,8 +174,7 @@ const accountLabel = siteConfig.communityReady ? 'Join Birch Commons' : 'Preview
 					<span class="eyebrow">Editorial selection</span>
 					<h2 id="featured-title">Useful places to start</h2>
 					<p>
-						Chosen by a reviewer for how often the underlying confusion causes a real problem. These
-						are not usage counts.
+						Start with a question, then follow the sources and related guides.
 					</p>
 				</div>
 				<a class="btn btn-secondary btn-sm" href="/questions">
@@ -255,10 +191,11 @@ const accountLabel = siteConfig.communityReady ? 'Join Birch Commons' : 'Preview
 								<p>{excerpt(stripMarkers(question.data.shortAnswer), 190)}</p>
 								<div class="row-meta">
 									<StatusChip kind={question.data.confidence} />
+									<StatusChip kind={question.data.reviewState} />
 									<span class="meta">{shortList(question.data.lines)}</span>
 									{question.data.states.length > 0 && <span class="meta">{question.data.states.join(', ')}</span>}
 									<span class="meta">{question.data.sourceIds.length} sources</span>
-									<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+									<span class="meta">Record date {longDate(question.data.lastReviewed)}</span>
 								</div>
 							</div>
 							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
@@ -275,7 +212,7 @@ const accountLabel = siteConfig.communityReady ? 'Join Birch Commons' : 'Preview
 			<div class="band-head">
 				<div>
 					<span class="eyebrow">Browse the library</span>
-					<h2 id="atlas-title">Organized around entities, not a blog chronology</h2>
+					<h2 id="atlas-title">Explore insurance from any starting point.</h2>
 					<p>
 						The library is arranged by what a thing is, not when it was written. Every record links
 						to the questions that depend on it.
@@ -309,14 +246,14 @@ const accountLabel = siteConfig.communityReady ? 'Join Birch Commons' : 'Preview
 		</div>
 	</section>
 
-	<!-- Recently reviewed. -->
+	<!-- Record dates do not imply licensed review. -->
 	<section class="band band-tight" aria-labelledby="recent-title">
 		<div class="shell">
 			<div class="band-head">
 				<div>
-					<span class="eyebrow">Review feed</span>
-					<h2 id="recent-title">Recently reviewed</h2>
-					<p>Sorted by the date a person last checked the page against its sources.</p>
+					<span class="eyebrow">From the library</span>
+					<h2 id="recent-title">Recent research records</h2>
+					<p>Explore the latest dated records. Each page shows its review status; a record date is not a licensed signoff.</p>
 				</div>
 				<a class="btn btn-secondary btn-sm" href="/rss.xml">
 					RSS feed <ArrowRight size={15} aria-hidden="true" />
@@ -332,7 +269,7 @@ const accountLabel = siteConfig.communityReady ? 'Join Birch Commons' : 'Preview
 								<p>{excerpt(stripMarkers(item.summary), 170)}</p>
 								<div class="row-meta">
 									<span class="status status-plain">{item.kind}</span>
-									<span class="meta">Reviewed {longDate(item.date)}</span>
+									<span class="meta">Record date {longDate(item.date)}</span>
 								</div>
 							</div>
 							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
@@ -386,56 +323,7 @@ const accountLabel = siteConfig.communityReady ? 'Join Birch Commons' : 'Preview
 </BaseLayout>
 
 <style>
-	.home-landing { padding-block: clamp(var(--s-6), 5vw, var(--s-10)) var(--s-5); overflow: hidden; }
-	.home-command { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(430px, .95fr); gap: clamp(var(--s-8), 6vw, var(--s-12)); align-items: center; }
-	.home-hero-copy { min-width: 0; }
-	.home-identity { display: flex; align-items: center; gap: var(--s-3); margin: 0 0 var(--s-5); }
-	.home-identity img { width: 48px; height: 48px; object-fit: contain; }
-	.home-identity div { display: grid; gap: 2px; }
-	.home-identity .eyebrow { margin: 0; color: var(--brand-blue-text); }
-	.home-identity div > span:last-child { color: var(--muted); font-size: var(--text-xs); }
-	.home-hero-copy h1 { max-width: 11ch; margin: 0; font-size: clamp(3.15rem, 6vw, 5.4rem); letter-spacing: -.055em; line-height: .96; }
-	.home-hero-copy .lede { max-width: 48ch; margin: var(--s-5) 0 0; color: var(--body); font-size: clamp(var(--text-lg), 1.8vw, var(--text-xl)); line-height: 1.45; }
-	.home-search-form { max-width: 680px; margin-top: var(--s-8); }
-	.home-search-form > label { display: block; margin-bottom: var(--s-2); color: var(--ink); font-size: var(--text-sm); font-weight: 650; }
-	.home-search-row { display: flex; gap: var(--s-2); align-items: center; padding: 5px; border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--white); box-shadow: var(--elev-2); transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-2) var(--ease); }
-	.home-search-row:focus-within { border-color: var(--brand-blue); box-shadow: 0 0 0 3px var(--blue-wash), var(--elev-2); }
-	.home-search-row input { flex: 1 1 auto; min-width: 0; min-height: 48px; padding: 10px 12px; border: 0; outline: 0; background: transparent; font-size: var(--text-md); }
-	.home-search-row .btn { min-height: 48px; padding-inline: var(--s-5); }
-	.home-search-form .hint { display: block; margin-top: var(--s-2); }
-	.home-query-examples { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; margin-top: var(--s-4); }
-	.home-query-examples > span { color: var(--faint); font: var(--text-2xs)/1 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
-	.home-query-examples a { max-width: 25ch; overflow: hidden; padding: 6px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: var(--text-xs); text-decoration: none; text-overflow: ellipsis; white-space: nowrap; transition: border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease), background var(--dur-1) var(--ease); }
-	.home-query-examples a:hover, .home-query-examples a:focus-visible { border-color: var(--brand-blue); background: var(--blue-wash); color: var(--brand-blue-deep); }
-	.home-hero-boundary { margin: var(--s-4) 0 0; color: var(--muted); font: var(--text-2xs)/1.4 var(--font-mono); }
-
-	.home-answer-window { min-width: 0; overflow: hidden; border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--white); box-shadow: var(--elev-3); }
-	.home-window-bar { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--s-3); align-items: center; min-height: 46px; padding: 8px var(--s-3); border-bottom: 1px solid var(--line); background: var(--cream); }
-	.home-window-dots { display: flex; gap: 4px; }
-	.home-window-dots i { display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); }
-	.home-window-route { display: inline-flex; align-items: center; justify-content: center; gap: 6px; color: var(--muted); font: var(--text-2xs)/1 var(--font-mono); text-transform: uppercase; }
-	.home-window-route img { width: 24px; height: 24px; object-fit: contain; }
-	.home-window-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
-	.home-window-tabs a { position: relative; display: flex; justify-content: center; gap: 5px; padding: 10px 8px; color: var(--muted); font-size: var(--text-xs); font-weight: 600; text-decoration: none; }
-	.home-window-tabs a + a { border-left: 1px solid var(--line); }
-	.home-window-tabs a:hover, .home-window-tabs a:focus-visible, .home-window-tabs a.is-active { background: var(--blue-wash); color: var(--brand-blue-deep); }
-	.home-window-tabs a.is-active::after { position: absolute; right: 0; bottom: -1px; left: 0; height: 2px; background: var(--brand-blue); content: ''; }
-	.home-window-tabs span { color: var(--faint); font: .55rem/1 var(--font-mono); text-transform: uppercase; }
-	.home-window-body { padding: clamp(var(--s-5), 4vw, var(--s-8)); }
-	.home-window-body .eyebrow { margin-bottom: var(--s-3); }
-	.home-window-body h2 { margin: 0; font-family: var(--font-display); font-size: clamp(1.65rem, 2.6vw, 2.35rem); font-weight: 400; letter-spacing: -.025em; line-height: 1.12; }
-	.home-window-body > p { margin: var(--s-3) 0 0; color: var(--body); font-size: var(--text-sm); line-height: var(--leading-normal); }
-	.home-window-sources { display: grid; gap: 1px; margin-top: var(--s-5); border-top: 1px solid var(--line-strong); background: var(--line); }
-	.home-window-sources a { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: var(--s-2); align-items: center; padding: 10px 0; background: var(--white); color: var(--body); text-decoration: none; }
-	.home-window-sources a:hover strong, .home-window-sources a:focus-visible strong { color: var(--brand-blue-text); }
-	.home-source-number { color: var(--gold-text); font: var(--text-2xs)/1 var(--font-mono); }
-	.home-window-sources strong, .home-window-sources small { display: block; }
-	.home-window-sources strong { color: var(--ink); font-size: var(--text-xs); }
-	.home-window-sources small { margin-top: 2px; overflow: hidden; color: var(--muted); font-size: var(--text-2xs); text-overflow: ellipsis; white-space: nowrap; }
-	.home-window-sources svg { color: var(--brand-blue-text); }
-	.home-window-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); padding: var(--s-3); border-top: 1px solid var(--line); background: var(--cream); color: var(--muted); font: var(--text-2xs)/1.4 var(--font-mono); }
-	.home-window-footer a { display: inline-flex; align-items: center; gap: 5px; color: var(--brand-blue-text); font-family: var(--font-sans); font-weight: 650; text-decoration: none; }
-
+	.home-landing { padding-top: 0; padding-bottom: var(--s-8); }
 	.home-record-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: var(--s-8); border: 1px solid var(--line-strong); background: var(--line-strong); }
 	.home-record-strip a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px var(--s-2); min-width: 0; padding: var(--s-3) var(--s-4); background: var(--paper); color: var(--body); text-decoration: none; transition: background var(--dur-1) var(--ease); }
 	.home-record-strip a:hover, .home-record-strip a:focus-visible { background: var(--blue-wash); }
@@ -451,12 +339,12 @@ const accountLabel = siteConfig.communityReady ? 'Join Birch Commons' : 'Preview
 	.home-system-head h2 { max-width: 20ch; }
 	.home-system-head > p { align-self: end; max-width: 48ch; margin: 0; color: var(--muted); line-height: var(--leading-normal); }
 	.home-lane-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-6); }
-	.home-lane-card { display: flex; min-height: 300px; flex-direction: column; padding: var(--s-5); border: 1px solid var(--line-strong); border-top: 3px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); color: var(--body); text-decoration: none; transition: transform var(--dur-2) var(--ease-soft), border-color var(--dur-1) var(--ease), box-shadow var(--dur-2) var(--ease); }
+	.home-lane-card { display: flex; min-height: 270px; flex-direction: column; padding: var(--s-5); border: 1px solid var(--line-strong); border-top: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); color: var(--body); text-decoration: none; transition: transform var(--dur-2) var(--ease-soft), border-color var(--dur-1) var(--ease), box-shadow var(--dur-2) var(--ease); }
 	.home-lane-card:hover, .home-lane-card:focus-visible { transform: translateY(-3px); border-color: var(--brand-blue); box-shadow: var(--elev-2); }
 	.home-lane-research { border-top-color: var(--brand-blue); }
 	.home-lane-commons { border-top-style: dashed; background: var(--slate-wash); }
 	.home-lane-top { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); color: var(--brand-blue-text); font: var(--text-2xs)/1.3 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
-	.home-lane-card h3 { max-width: 16ch; margin: var(--s-8) 0 var(--s-3); font-family: var(--font-display); font-size: clamp(1.65rem, 2.8vw, 2.35rem); font-weight: 400; letter-spacing: -.025em; line-height: 1.08; }
+	.home-lane-card h3 { max-width: 16ch; margin: var(--s-8) 0 var(--s-3); font-family: var(--font-sans); font-size: clamp(1.4rem, 2.2vw, 1.85rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.08; }
 	.home-lane-card > p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
 	.home-lane-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-3); margin-top: auto; padding-top: var(--s-6); color: var(--brand-blue-text); font-size: var(--text-xs); font-weight: 650; }
 	.home-lane-foot > span:last-child { display: inline-flex; align-items: center; gap: 4px; }

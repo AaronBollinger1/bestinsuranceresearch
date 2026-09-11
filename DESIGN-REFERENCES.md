@@ -1,5 +1,11 @@
 # Design References
 
+Current decision: `BIRCH-PRODUCT-DESIGN-SYSTEM.md`. The 11 September consumer
+design pass replaces the earlier homepage lock with Focus / A, adds working
+Editorial / B and Explore / C alternatives, and renames the social experience
+Birch Community. Review `/design/product-system`; older comparisons below are
+historical rationale, not competing instructions.
+
 How the interface was decided, what was borrowed and from where, and why the shipped homepage
 is the one it is.
 

@@ -16,7 +16,7 @@ const items = [
 	{ id: 'companies' as const, label: 'Companies', href: '/companies', detail: 'Open the record', icon: Building2 },
 	{
 		id: 'commons' as const,
-		label: commonsReady ? 'Commons' : 'Commons / preview',
+		label: commonsReady ? 'Community' : 'Community / preview',
 		href: commonsReady ? `${siteConfig.communityOrigin}/threads` : '/design/commons-preview',
 		detail: commonsReady ? 'Discuss context' : 'See the protocol',
 		icon: MessageCircle,
@@ -27,8 +27,7 @@ const items = [
 ---
 
 <div class="product-context-bar">
-	<span class="product-context-kicker">Birch / product rooms</span>
-	<nav aria-label="Birch product rooms" class="product-context-nav">
+	<nav aria-label="Explore Birch" class="product-context-nav">
 		{
 			items.map((item) => {
 				const Icon = item.icon;
@@ -40,7 +39,7 @@ const items = [
 						rel={'external' in item && item.external ? 'noopener' : undefined}
 					>
 						<Icon size={14} aria-hidden="true" />
-						<span><strong>{item.label}</strong><small>{item.detail}</small></span>
+						<span><strong>{item.label}</strong></span>
 						{'external' in item && item.external && <ArrowUpRight size={12} aria-hidden="true" />}
 					</a>
 				);

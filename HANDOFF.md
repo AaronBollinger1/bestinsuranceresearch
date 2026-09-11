@@ -1,5 +1,24 @@
 # Handoff
 
+Current design pass (11 September): see `BIRCH-PRODUCT-DESIGN-SYSTEM.md` and
+`/design/product-system`. Focus / A is now the consumer homepage; Editorial / B
+and Explore / C are working alternatives. Birch Community replaces the visible
+Commons name. The preview includes an email/inbox/profile design walkthrough.
+This supersedes the older aesthetic lock and design queue in this file.
+Next implementation: shared reading frames, then the existing community auth
+and contribution flows. Do not rebuild auth or the research scout from scratch.
+
+Validation for this pass: root `npm run validate` passes 172 tests; community
+validation passes 80 with one external-service test skipped. Production indexing
+build passes 162 assertions and the on-page audit reports zero findings across
+563 indexable pages. Default preview output restored. Browser verified question
+handoff and matching without query text in the URL, keyboard menus and tabs,
+email/inbox/profile preview, mobile navigation, and 390px layouts for landing,
+account, company, forum, thread, and blueprint. No public signup or publication
+was enabled. Removed misleading human-reviewed/Reviewed wording from the home
+and answer-finder surfaces; a record date is not licensed signoff. New regression
+checks protect the page map, design noindex, source links, and review language.
+
 Written 8 September 2026, last revised 11 September after the GitHub/Vercel
 release audit and MVP runbook pass, on `claude/bold-hopper-mqcyen`.
 

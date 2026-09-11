@@ -1,5 +1,11 @@
 # Birch
 
+Current design and product brief: `BIRCH-PRODUCT-DESIGN-SYSTEM.md` (11 September
+2026). The user-facing social name is now **Birch Community**. Historical Commons
+names, directory names, routes, and environment keys remain compatibility details.
+The consumer interface and design precedence in the new brief supersede older
+aesthetic locks below; the evidence and account boundaries remain in force.
+
 Written 9 September 2026 and refined 10 September 2026, on the owner's
 instruction to rebrand BestInsurance Research as **Birch** - one product family
 carrying both the cited evidence and validated human discussion: forum threads,

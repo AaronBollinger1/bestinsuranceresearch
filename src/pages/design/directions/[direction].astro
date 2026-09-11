@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BirchFrontDoor from '../../../components/BirchFrontDoor.astro';
+import ProductPreview from '../../../components/ProductPreview.astro';
+export function getStaticPaths() {
+  return [
+    {params:{direction:'focus'}, props:{variant:'focus' as const, label:'A / Focus', note:'Recommended. One question and one action; the product explains itself as you explore.'}},
+    {params:{direction:'editorial'}, props:{variant:'editorial' as const, label:'B / Editorial', note:'An asymmetric introduction with more room for the pitch. Best for a campaign landing page.'}},
+    {params:{direction:'explore'}, props:{variant:'explore' as const, label:'C / Explore', note:'A directory entrance for people who want to browse. Best as the returning-reader home.'}},
+  ];
+}
+const {variant, label, note} = Astro.props;
+---
+<BaseLayout title={`${label} - Landing direction`} description="Compare three working Birch landing directions using the same logo, typography, source records, and question flow." noindex bodyClass="birch-home">
+  <div class="direction-controls shell"><nav aria-label="Compare landing directions"><a href="/design/directions/focus" aria-current={variant==='focus'?'page':undefined}>A / Focus <span>Recommended</span></a><a href="/design/directions/editorial" aria-current={variant==='editorial'?'page':undefined}>B / Editorial</a><a href="/design/directions/explore" aria-current={variant==='explore'?'page':undefined}>C / Explore</a></nav><a href="/design/product-system">All page patterns</a></div>
+  <div class="shell"><BirchFrontDoor variant={variant}/><ProductPreview/><p class="direction-note">{note}</p></div>
+</BaseLayout>
+<style>
+ .direction-controls { display:flex; justify-content:space-between; gap:16px; align-items:center; padding-block:16px; border-bottom:1px solid var(--line); }
+ .direction-controls nav { display:flex; gap:8px; flex-wrap:wrap; }
+ .direction-controls a { display:inline-flex; align-items:center; gap:8px; min-height:var(--tap); padding:8px 12px; color:var(--body); text-decoration:none; font-size:var(--text-xs); border-radius:var(--r-2); }
+ .direction-controls a[aria-current] { background:var(--brand-blue-wash); color:var(--brand-blue-text); }
+ .direction-controls span { font-size:var(--text-2xs); }
+ .direction-note { margin:24px 0 48px; color:var(--muted); font-size:var(--text-sm); }
+ @media(max-width:640px) { .direction-controls { align-items:flex-start; flex-direction:column; gap:0; } .direction-controls span { display:none; } }
+</style>

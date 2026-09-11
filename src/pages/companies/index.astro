@@ -100,7 +100,7 @@ const jsonLd = graph(
 								<div class="company-row-signals" aria-label="Record signals">
 									{company.data.regulatoryIdentity && <span class="company-signal company-signal-regulator">Regulator snapshot</span>}
 									<span class="company-signal">{coverageIdsByCompany.get(company.id)?.size ?? 0} linked coverage pages</span>
-									<span class="company-signal company-signal-community">{siteConfig.communityReady ? 'Commons available' : 'Commons private preview'}</span>
+									<span class="company-signal company-signal-community">{siteConfig.communityReady ? 'Community available' : 'Community private preview'}</span>
 								</div>
 								<div class="company-record-card-foot"><span>Reviewed {longDate(company.data.lastReviewed)}</span><span>Open dossier <ArrowRight size={15} aria-hidden="true" /></span></div>
 							</a>
@@ -114,7 +114,7 @@ const jsonLd = graph(
 				<div>
 					<span class="eyebrow">Add context</span>
 					<strong>Have a California experience or a source correction?</strong>
-					<p>Prepare it privately first. Public discussion opens through the separate, moderated Commons.</p>
+					<p>Prepare it privately first. Public discussion opens through the separate, moderated Community.</p>
 				</div>
 				<a class="btn btn-secondary btn-sm" href="/contribute?type=experience">Prepare a contribution <ArrowRight size={15} aria-hidden="true" /></a>
 			</div>

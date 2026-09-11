@@ -12,8 +12,8 @@ const trail = [
 ---
 
 <BaseLayout
-	title="Commons thread preview"
-	description="Internal Birch Commons thread specimen showing the future read-only conversation, research bridge, contribution lanes, and moderation boundary."
+	title="Community thread preview"
+	description="Internal Birch Community thread specimen showing the future read-only conversation, research bridge, contribution lanes, and moderation boundary."
 	noindex
 	pageType="editorial"
 >
@@ -28,9 +28,9 @@ const trail = [
 	<section class="band band-tight band-paper thread-preview-band" aria-labelledby="thread-title">
 		<div class="shell">
 			<div class="thread-preview-shell">
-				<aside class="thread-room-rail" aria-label="Commons room navigation">
+				<aside class="thread-room-rail" aria-label="Community room navigation">
 					<div class="thread-room-brand">
-						<span class="eyebrow">Birch Commons</span>
+						<span class="eyebrow">Birch Community</span>
 						<strong>Real people.<br />Clearer insurance.</strong>
 					</div>
 					<nav class="thread-room-nav" aria-label="Conversation rooms">
@@ -44,8 +44,8 @@ const trail = [
 					<div class="thread-room-footer"><span>A more informed</span><strong>insurance world.</strong></div>
 				</aside>
 
-				<main class="thread-reading-column">
-					<nav class="thread-local-crumbs" aria-label="Thread location"><a href="/design/commons-preview">Commons preview</a><ArrowRight size={12} aria-hidden="true" /><a href="/insurance">Homeowners</a><ArrowRight size={12} aria-hidden="true" /><span aria-current="page">Experience</span></nav>
+				<article class="thread-reading-column">
+					<nav class="thread-local-crumbs" aria-label="Thread location"><a href="/design/commons-preview">Community preview</a><ArrowRight size={12} aria-hidden="true" /><a href="/insurance">Homeowners</a><ArrowRight size={12} aria-hidden="true" /><span aria-current="page">Experience</span></nav>
 					<span class="thread-type-chip">Experience</span>
 					<h1 id="thread-title">The renewal notice arrived before I understood what changed</h1>
 					<div class="thread-author-row">
@@ -81,7 +81,7 @@ const trail = [
 						<div><h2 id="join-title">Sign in to join the conversation.</h2><p>Accounts and moderation are not enabled in this preview.</p></div>
 						<button class="btn btn-primary" type="button" disabled>Sign in <ArrowRight size={15} aria-hidden="true" /></button>
 					</div>
-				</main>
+				</article>
 
 				<aside class="thread-context-rail" aria-label="Thread context and tools">
 					<div class="thread-context-card">
@@ -94,7 +94,7 @@ const trail = [
 					<div class="thread-context-card">
 						<div class="thread-context-icon"><ShieldCheck size={18} aria-hidden="true" /></div>
 						<span class="eyebrow">This thread is not a verdict</span>
-						<p>Commons is for experiences and perspectives. It is not personalized advice and it does not replace professional counsel or policy documents.</p>
+						<p>Community is for experiences and perspectives. It is not personalized advice and it does not replace professional counsel or policy documents.</p>
 						<a class="text-link" href="/methodology">Read the boundary <ArrowRight size={14} aria-hidden="true" /></a>
 					</div>
 					<div class="thread-tools">
@@ -137,7 +137,7 @@ const trail = [
 	.thread-local-crumbs a:hover, .thread-local-crumbs a:focus-visible { text-decoration: underline; }
 	.thread-type-chip, .thread-reply-type { color: var(--brand-blue-text); font: var(--text-2xs)/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
 	.thread-type-chip { display: inline-block; padding: 6px 8px; border-radius: var(--r-2); background: var(--brand-blue-wash); }
-	.thread-reading-column h1 { max-width: 18ch; margin: var(--s-4) 0 var(--s-5); font-size: clamp(2.2rem, 4vw, 3.8rem); letter-spacing: -.03em; }
+	.thread-reading-column h1 { max-width: 27ch; margin: var(--s-4) 0 var(--s-5); font: 600 clamp(1.75rem, 2.6vw, 2.35rem)/1.2 var(--font-sans); letter-spacing: -.035em; }
 	.thread-author-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); padding-bottom: var(--s-5); border-bottom: 1px solid var(--line); }
 	.thread-avatar { display: grid; place-items: center; width: 40px; height: 40px; flex: 0 0 auto; border-radius: 50%; background: var(--blue-wash); color: var(--brand-blue-text); font: var(--text-sm)/1 var(--font-mono); }
 	.thread-author-row strong, .thread-author-row span { display: block; }
@@ -196,7 +196,7 @@ const trail = [
 		.thread-room-nav, .thread-context-rail { grid-template-columns: minmax(0, 1fr); }
 		.thread-room-nav a { padding-block: 11px; }
 		.thread-reading-column { padding: var(--s-4); }
-		.thread-reading-column h1 { font-size: clamp(2rem, 10vw, 3rem); }
+		.thread-reading-column h1 { font-size: 1.75rem; }
 		.thread-author-row .thread-author-meta { width: 100%; margin-left: 52px; }
 		.thread-research-bridge { grid-template-columns: minmax(0, 1fr); }
 		.thread-research-label { place-items: start; text-align: left; }

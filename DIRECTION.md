@@ -79,6 +79,12 @@ It is never a form here.
 
 ## Visual direction
 
+The owner's 11 September consumer SaaS brief supersedes the older visual
+description in this section. `BIRCH-PRODUCT-DESIGN-SYSTEM.md` governs the current
+design: consumer comprehension first, clear product navigation, compact reading
+frames, and source detail available at the point of use. The supplied bird,
+brand tokens, and source integrity rules remain the implementation basis.
+
 The world is **Birch blue on pale paper with evidence accents**. Printed
 research document meets a calm community utility, not a software-product
 dashboard. `src/styles/tokens.css` is the single source of truth: three

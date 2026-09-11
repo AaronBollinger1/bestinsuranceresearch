@@ -1,0 +1,42 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pagePatterns, interactionRules } from '../../lib/product-design';
+---
+<BaseLayout title="Birch product design system" description="The working Birch design blueprint: landing alternatives, reusable page patterns, interaction rules, and the next implementation for each surface." noindex>
+ <section class="system-page shell">
+  <header><span class="eyebrow">Design blueprint · September 11, 2026</span><h1>One Birch.<br/>A familiar experience on every page.</h1><p>Ask, explore, discuss, contribute. The interface stays simple as the information gets deeper.</p><a class="btn btn-primary" href="/design/directions/focus">Compare landing directions <ArrowUpRight size={16} aria-hidden="true" /></a></header>
+  <div class="system-summary"><div><span>Primary action</span><strong>Ask Birch</strong></div><div><span>Community name</span><strong>Birch Community</strong></div><div><span>Design direction</span><strong>Focus / A</strong></div><div><span>Current access</span><strong>Private preview</strong></div></div>
+  <h2>The page patterns</h2><p class="system-note">These links open the actual implementation or a labeled specimen. The status says which.</p>
+  <div class="pattern-grid">{pagePatterns.map((pattern) => <article><div class="pattern-top"><span>{pattern.group}</span><span>{pattern.state}</span></div><h3><a href={pattern.href}>{pattern.title}<ArrowUpRight size={16} aria-hidden="true" /></a></h3><p>{pattern.pattern}</p><dl><dt>Primary action</dt><dd>{pattern.action}</dd><dt>Next implementation</dt><dd>{pattern.next}</dd></dl></article>)}</div>
+  <h2>How it should feel</h2><div class="interaction-list">{interactionRules.map(([title, rule]) => <div><strong>{title}</strong><p>{rule}</p></div>)}</div>
+  <div class="system-decision"><h2>Make expertise discoverable.</h2><p>Professionals earn useful attribution through original work, documented credentials, and clear disclosures. Company representatives can respond in their own name. Policy connections establish a relationship, not the truth of a claim.</p><p>Live web research starts with a question gap, returns openable sources, and can become a reviewed article. Neither a provider response nor a popular thread becomes a published finding automatically.</p></div>
+ </section>
+</BaseLayout>
+<style>
+ .system-page { padding-block:48px 64px; }
+ header { max-width:760px; margin-bottom:40px; }
+ header h1 { font:600 clamp(2.4rem,4vw,3.5rem)/1.1 var(--font-sans); letter-spacing:-.05em; margin:16px 0; }
+ header p, .system-note { color:var(--muted); line-height:1.6; }
+ header .btn { margin-top:16px; }
+ .system-summary { display:grid; grid-template-columns:repeat(4,1fr); border-block:1px solid var(--line); margin-bottom:48px; }
+ .system-summary div { padding:20px 0; display:grid; gap:7px; }
+ .system-summary span, dt { font-size:var(--text-xs); color:var(--muted); }
+ .system-summary strong { font-size:var(--text-sm); }
+ h2 { margin:40px 0 12px; font:500 var(--text-2xl)/1.25 var(--font-sans); letter-spacing:-.03em; }
+ .pattern-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:24px; }
+ .pattern-grid article { padding:24px; background:var(--white); border:1px solid var(--line); border-radius:var(--r-4); }
+ .pattern-top { display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px; color:var(--muted); font-size:var(--text-2xs); }
+ .pattern-top span:last-child { color:var(--brand-blue-text); }
+ h3 { margin:20px 0 12px; font-size:var(--text-lg); }
+ h3 a { display:flex; align-items:center; justify-content:space-between; gap:8px; color:var(--ink); text-decoration:none; min-height:var(--tap); }
+ h3 a:hover { color:var(--brand-blue-text); }
+ article p, dd { font-size:var(--text-sm); line-height:1.65; color:var(--body); }
+ dl { margin:20px 0 0; border-top:1px solid var(--line); padding-top:16px; }
+ dd { margin:4px 0 12px; }
+ .interaction-list > div { display:grid; grid-template-columns:160px 1fr; gap:24px; padding:20px 0; border-bottom:1px solid var(--line); }
+ .interaction-list strong { font-size:var(--text-sm); } .interaction-list p { margin:0; font-size:var(--text-sm); color:var(--body); line-height:1.6; }
+ .system-decision { max-width:760px; } .system-decision p { color:var(--body); line-height:1.7; }
+ @media(max-width:950px) { .pattern-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .system-summary { grid-template-columns:1fr 1fr; } }
+ @media(max-width:600px) { .pattern-grid { grid-template-columns:1fr; } .interaction-list > div { grid-template-columns:1fr; gap:8px; } }
+</style>

@@ -32,7 +32,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 						<span class="eyebrow">Birch / Contribution desk</span>
 						<h1>Bring context to the record without taking it over.</h1>
 						<p class="page-lede">Birch accepts carefully labeled experiences, source corrections, and professional research. A contribution can add context; it cannot turn an anecdote into a fact or buy a better position.</p>
-						<div class="contribution-actions"><a class="btn btn-primary" href="#draft">Prepare a private draft <ArrowRight size={15} aria-hidden="true" /></a><a class="btn btn-secondary" href="/editorial-policy">Read the rules</a><a class="btn btn-quiet" href="/design/commons-preview">Preview the Commons workflow <ArrowRight size={15} aria-hidden="true" /></a></div>
+						<div class="contribution-actions"><a class="btn btn-primary" href="#draft">Prepare a private draft <ArrowRight size={15} aria-hidden="true" /></a><a class="btn btn-secondary" href="/editorial-policy">Read the rules</a><a class="btn btn-quiet" href="/design/commons-preview">Preview the Community workflow <ArrowRight size={15} aria-hidden="true" /></a></div>
 					</div>
 					<div class="contribution-boundary">
 						<div><LockKeyhole size={18} aria-hidden="true" /><strong>Drafts stay in this browser.</strong><span>This preview does not send your text anywhere.</span></div>
@@ -60,7 +60,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 				<div>
 					<span class="eyebrow">Private draft preview</span>
 					<h2 id="draft-title">Prepare the contribution before you create an account.</h2>
-					<p class="lede">This is intentionally local-only. The production submission, login, verification, and moderation queue will be connected after the Commons backend is provisioned.</p>
+					<p class="lede">This is intentionally local-only. The production submission, login, verification, and moderation queue will be connected after the Community backend is provisioned.</p>
 					<form id="contribution-form" class="contribution-form">
 						<div class="field-row">
 							<div class="field"><label for="contribution-type">I am adding</label><select id="contribution-type" name="type"><option value="experience" selected={initialType === 'experience'}>A first-person experience</option><option value="research" selected={initialType === 'research'}>Professional research</option><option value="correction" selected={initialType === 'correction'}>A correction or source note</option></select></div>
@@ -75,9 +75,9 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 				</div>
 				<aside class="contribution-aside">
 					<Callout tone="limit" label="What this preview does not do">
-						<p>It does not create a public post, verify a license, contact a company, or collect an email address. Those actions belong to the authenticated Commons workflow.</p>
+						<p>It does not create a public post, verify a license, contact a company, or collect an email address. Those actions belong to the authenticated Community workflow.</p>
 					</Callout>
-					<div class="contribution-aside-block"><span class="eyebrow">When Commons opens</span><ol class="action-list"><li><p>Sign in with a durable account.</p></li><li><p>Choose a public name and disclosure settings.</p></li><li><p>Attach sources or supporting context.</p></li><li><p>Submit to moderation before publication.</p></li></ol></div>
+					<div class="contribution-aside-block"><span class="eyebrow">When Community opens</span><ol class="action-list"><li><p>Sign in with a durable account.</p></li><li><p>Choose a public name and disclosure settings.</p></li><li><p>Attach sources or supporting context.</p></li><li><p>Submit to moderation before publication.</p></li></ol></div>
 					<a class="text-link" href="/professionals">Are you a financial professional? <ArrowRight size={15} aria-hidden="true" /></a>
 				</aside>
 			</div>

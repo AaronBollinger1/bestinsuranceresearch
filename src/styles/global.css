@@ -529,7 +529,11 @@ code { overflow-wrap: anywhere; }
 @keyframes birch-hero-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes birch-shell-enter { from { transform: translateY(6px); } to { transform: translateY(0); } }
 .brand-name { display: grid; gap: 1px; line-height: 1.05; }
-.brand-name strong { color: var(--ink); font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500; white-space: nowrap; letter-spacing: -0.02em; }
+.brand-name strong { color: var(--ink); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 500; white-space: nowrap; letter-spacing: -0.02em; }
+.site-header .brand-name > span { display: none; }
+.site-header .header-bar { min-height: 72px; gap: var(--s-8); }
+.site-header .header-nav { margin-left: var(--s-8); }
+.birch-home .header-search { display: none; }
 .brand-name strong em { font-style: italic; color: var(--brand-blue-text); }
 .brand-name span { font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); }
 .brand.on-ink .brand-name strong { color: var(--paper); }
@@ -590,7 +594,9 @@ code { overflow-wrap: anywhere; }
 }
 .header-menu-link:hover { border-color: var(--line); background: var(--brand-blue-wash) !important; box-shadow: none !important; }
 .header-menu-link-title { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); color: var(--ink); }
-.header-menu-link-title strong { font-size: var(--text-sm); font-weight: 600; }
+.header-menu-link-title strong { font-size: var(--text-sm); font-weight: 600; flex: 1; }
+.header-item-icon { display: grid; place-items: center; flex: 0 0 28px; width: 28px; height: 28px; border: 1px solid var(--line); border-radius: var(--r-2); background: var(--white); }
+.header-menu-link-title .header-item-icon svg { opacity: 1; transform: none; color: var(--brand-blue-text); }
 .header-menu-link-title svg { flex: 0 0 auto; color: var(--brand-blue-text); opacity: 0; transform: translateX(-4px); transition: opacity var(--dur-1) var(--ease), transform var(--dur-1) var(--ease); }
 .header-menu-link:hover .header-menu-link-title svg, .header-menu-link:focus-visible .header-menu-link-title svg { opacity: 1; transform: translateX(0); }
 .header-menu-link > span:last-child { color: var(--muted); font-size: var(--text-2xs); line-height: 1.35; }
