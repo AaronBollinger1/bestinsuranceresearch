@@ -64,3 +64,20 @@ Birch should feel like a research instrument first and a network second.
 4. **Commons contribution gate:** design identity, professional context, moderation, edit history, and right-of-reply states as a separate workflow.
 5. **Motion QA:** add only small state transitions after the page hierarchy is stable; use the bird orbit for loading/review progress, not decoration everywhere.
 
+## Motion-engine pass
+
+The follow-up Higgsfield board was used as a motion reference, not as production UI. It compared three states:
+
+- **Research engine loading:** the exact bird remains legible while a small source point orbits around it.
+- **Source-attached answer:** content fades in, the evidence rail enters from the right, and the interface moves from Question to Record.
+- **Contribution review:** Draft, Under review, and Published are a status progression, not a rating or outcome guarantee.
+
+The board’s useful timing notes were translated into the real product contract:
+
+- source orbit: 1.6s, calm continuous loop;
+- answer content: 220ms fade, 280ms evidence rail, 200ms state transition;
+- contribution state: one 300ms step;
+- no animation behind readable claims;
+- all motion disabled under `prefers-reduced-motion`.
+
+The production implementation is now `src/components/BirchLoadingMark.astro`, used by `/ask`. The previous traced convergence component remains available as a design alternative, but the reader-facing research lookup uses the exact supplied raster bird so the brand mark is never approximated by a generated or monochrome substitute.

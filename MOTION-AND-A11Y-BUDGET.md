@@ -19,6 +19,14 @@ interface calm while making the important controls easy to use on a touch device
 - The default shell may use short background, color, opacity, and spatial
   transitions for wayfinding: header menus, hover/focus affordances, disclosure
   chevrons, and the loading mark.
+- The Research loading mark uses a 1.6 second orbital point around the exact
+  Birch bird. The bird itself does not rotate or morph. The orbit means “source
+  resolution is active”; it is not a progress percentage and must not imply a
+  confidence score.
+- Research answer transitions may use a 220ms content fade, a 280ms evidence
+  rail slide, and a 200ms Question-to-Record state change. Professional
+  contribution state changes may use one 300ms step. These timings are cues for
+  state changes, not decoration behind readable claims.
 - No research claim, citation, source ledger, or contribution text animates on
   page load. No hero autoplay is part of the Research surface.
 - `prefers-reduced-motion: reduce` disables animation and transitions and removes

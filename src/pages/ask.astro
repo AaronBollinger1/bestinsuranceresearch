@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Callout from '../components/Callout.astro';
 import StateBlock from '../components/StateBlock.astro';
-import MarkConverging from '../components/MarkConverging.astro';
+import BirchLoadingMark from '../components/BirchLoadingMark.astro';
 import ProductContextBar from '../components/ProductContextBar.astro';
 import StatusChip from '../components/StatusChip.astro';
 import { siteConfig } from '../config/site';
@@ -216,8 +216,8 @@ const FAMILY_LABEL: Record<string, string> = {
 
 			<div id="ask-loading" hidden>
 				<div class="ask-resolving">
-					<MarkConverging size={72} label={null} />
-					<p class="mono" aria-hidden="true">Resolving against the library</p>
+					<BirchLoadingMark size={72} label={null} />
+					<p class="mono" aria-hidden="true">Checking sources</p>
 				</div>
 				<div class="skeleton" aria-hidden="true">
 				{
@@ -903,10 +903,15 @@ const FAMILY_LABEL: Record<string, string> = {
 	/* The resolving mark sits above the row skeleton, not instead of it: the
 	   mark says the library is being searched, the bars say what is coming. */
 	.ask-resolving {
-		display: flex;
-		align-items: center;
-		gap: var(--s-4);
-		padding: var(--s-6) 0 var(--s-5);
+		display: grid;
+		justify-items: center;
+		gap: var(--s-3);
+		margin: var(--s-4) 0 var(--s-5);
+		padding: var(--s-8) var(--s-4) var(--s-6);
+		border: 1px solid var(--line);
+		border-radius: var(--r-3);
+		background: var(--paper);
+		text-align: center;
 	}
 
 	/* The thread. Numbered because the order is the point: turn 3 usually only
