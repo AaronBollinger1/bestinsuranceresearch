@@ -180,8 +180,29 @@ h4 { font-size: var(--text-base); line-height: var(--leading-snug); margin-botto
 .home-search-row { display: flex; gap: var(--s-2); align-items: flex-start; flex-wrap: wrap; }
 .home-search-row input { flex: 1 1 320px; min-width: 0; }
 .home-quick-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin-top: var(--s-4); }
-.home-compass { padding: var(--s-5); border: var(--bw-hair) solid var(--line-strong); border-top: 3px solid var(--brand-blue); background: var(--cream); border-radius: var(--r-3); box-shadow: var(--elev-1); }
+.home-compass { position: relative; overflow: hidden; padding: var(--s-5); border: var(--bw-hair) solid var(--line-strong); border-top: 3px solid var(--brand-blue); background: var(--cream); border-radius: var(--r-3); box-shadow: var(--elev-1); }
+.home-compass-mark { position: relative; width: 166px; height: 132px; margin: -4px auto var(--s-2); }
+.home-compass-ring { position: absolute; top: 31px; left: 50%; display: grid; place-items: center; width: 68px; height: 68px; transform: translateX(-50%); border: 1px solid color-mix(in srgb, var(--brand-blue) 62%, var(--line-strong)); border-radius: 50%; background: var(--paper); box-shadow: 0 0 0 8px color-mix(in srgb, var(--brand-blue-wash) 72%, transparent), var(--elev-1); animation: home-compass-breathe 5s var(--ease-soft) infinite; }
+.home-compass-ring::before { content: ''; position: absolute; inset: -14px; border: 1px dashed color-mix(in srgb, var(--brand-blue) 34%, transparent); border-radius: 50%; }
+.home-compass-ring img { width: 54px; height: 54px; object-fit: contain; }
+.home-compass-node { position: absolute; padding: 4px 7px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--paper); color: var(--brand-blue-deep); font: var(--text-2xs)/1 var(--font-mono); letter-spacing: .03em; text-transform: uppercase; box-shadow: 0 2px 6px rgba(23, 33, 46, .08); }
+.home-compass-node::after { content: ''; position: absolute; width: 22px; border-top: 1px solid color-mix(in srgb, var(--brand-blue) 38%, var(--line-strong)); }
+.home-compass-node-learn { top: 0; left: 2px; }
+.home-compass-node-learn::after { top: 50%; left: 100%; transform: rotate(22deg); transform-origin: left center; }
+.home-compass-node-check { top: 0; right: 2px; }
+.home-compass-node-check::after { top: 50%; right: 100%; transform: rotate(-22deg); transform-origin: right center; }
+.home-compass-node-share { bottom: 0; left: 50%; transform: translateX(-50%); }
+.home-compass-node-share::after { right: 50%; bottom: 100%; width: 1px; height: 22px; border-top: 0; border-left: 1px solid color-mix(in srgb, var(--brand-blue) 38%, var(--line-strong)); }
 .home-compass h2 { font-size: var(--text-2xl); margin-bottom: var(--s-4); }
+.home-route-grid { display: grid; gap: 1px; margin-top: var(--s-4); border-top: var(--bw-hair) solid var(--line); }
+.home-route { display: grid; grid-template-columns: 25px minmax(0, 1fr) auto; gap: var(--s-2); align-items: center; padding: 10px 0; border-bottom: var(--bw-hair) solid var(--line); color: var(--brand-blue-deep); text-decoration: none; transition: background var(--dur-1) var(--ease), padding-left var(--dur-2) var(--ease-soft); }
+.home-route:hover, .home-route:focus-visible { padding-left: var(--s-2); background: color-mix(in srgb, var(--brand-blue-wash) 72%, transparent); }
+.home-route-number { color: var(--gold-text); font: var(--text-2xs)/1 var(--font-mono); }
+.home-route span:nth-child(2) { display: grid; gap: 2px; }
+.home-route strong { color: inherit; font-size: var(--text-sm); font-weight: 600; }
+.home-route small { color: var(--muted); font-size: var(--text-xs); line-height: var(--leading-snug); }
+.home-route > svg { color: var(--brand-blue-text); opacity: .55; transition: opacity var(--dur-1) var(--ease), transform var(--dur-2) var(--ease-soft); }
+.home-route:hover > svg, .home-route:focus-visible > svg { opacity: 1; transform: translateX(3px); }
 .home-entry-list { list-style: none; padding: 0; margin: 0; counter-reset: entry; }
 .home-entry-list li { counter-increment: entry; padding: var(--s-3) 0; border-top: var(--bw-hair) solid var(--line); }
 .home-entry-list li::before { content: '0' counter(entry); display: block; margin-bottom: 3px; color: var(--faint); font-family: var(--font-mono); font-size: var(--text-2xs); }
@@ -236,6 +257,18 @@ h4 { font-size: var(--text-base); line-height: var(--leading-snug); margin-botto
 .home-network-card-private .home-network-card-foot { border-top-color: var(--line-ink); color: var(--gold); }
 .home-network-card-foot > span:last-child { display: inline-flex; align-items: center; gap: 4px; }
 .home-network-private-note { color: #b7c0cb; font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 400; }
+.home-account-panel { margin-top: var(--s-8); padding: clamp(var(--s-5), 4vw, var(--s-8)); border: 1px solid var(--line-strong); border-radius: var(--r-4); background: var(--brand-blue-wash); }
+.home-account-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .8fr); gap: var(--s-8); align-items: end; }
+.home-account-heading h2 { max-width: 18ch; margin: 0; font-size: clamp(1.7rem, 3vw, 2.45rem); }
+.home-account-heading p { max-width: 50ch; margin: 0; color: var(--body); font-size: var(--text-sm); line-height: var(--leading-normal); }
+.home-account-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); margin-top: var(--s-8); }
+.home-account-flow > div { display: grid; gap: var(--s-2); padding-top: var(--s-3); border-top: 1px solid color-mix(in srgb, var(--brand-blue) 26%, var(--line-strong)); }
+.home-account-flow span { color: var(--brand-blue-text); font: var(--text-2xs)/1 var(--font-mono); }
+.home-account-flow strong { color: var(--ink); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; }
+.home-account-flow p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-snug); }
+.home-account-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-3); margin-top: var(--s-6); padding-top: var(--s-4); border-top: 1px solid color-mix(in srgb, var(--brand-blue) 26%, var(--line-strong)); }
+.home-account-foot .status { width: fit-content; }
+@keyframes home-compass-breathe { 0%, 100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.035); } }
 .home-corpus { margin-top: var(--s-8); padding-top: var(--s-6); border-top: 1px solid var(--line-strong); }
 .home-corpus-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-4); }
 .home-corpus-head .eyebrow { margin-bottom: var(--s-2); }
@@ -950,6 +983,7 @@ table.data tbody tr:hover { background: var(--gold-wash); }
 	.home-network-grid { grid-template-columns: minmax(0, 1fr); }
 	.home-product-sequence-head, .home-product-sequence-grid { grid-template-columns: minmax(0, 1fr); }
 	.home-product-sequence-head { gap: var(--s-3); }
+	.home-account-heading { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
 }
 
 @media (max-width: 640px) {
@@ -985,6 +1019,9 @@ table.data tbody tr:hover { background: var(--gold-wash); }
 	.home-corpus-grid { gap: 1px; }
 	.home-ca-launch { grid-template-columns: minmax(0, 1fr); gap: var(--s-5); }
 	.home-ca-facts .btn { width: 100%; }
+	.home-account-flow { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); margin-top: var(--s-6); }
+	.home-account-foot { align-items: stretch; flex-direction: column; }
+	.home-account-foot .btn { width: 100%; }
 	.answer-head h1 { font-size: var(--text-3xl); }
 	.direct-answer { padding: var(--s-4); }
 	.direct-answer p { font-size: var(--text-lg); }
@@ -1071,6 +1108,9 @@ table.data tbody tr:hover { background: var(--gold-wash); }
 	.btn-primary:active, .disc[open] > summary .disc-chevron,
 	.start-path:hover, .company-page-map-card:hover, .company-page-map-card:focus-visible,
 	.commons-preview-thread:hover {
+		transform: none !important;
+	}
+	.home-route:hover > svg, .home-route:focus-visible > svg {
 		transform: none !important;
 	}
 	.header-menu.is-open .header-menu-panel { transform: translate(-50%, 0) !important; }

@@ -69,6 +69,10 @@ Every insurer or public organization page should eventually follow the same addr
 
 The page should resist the most tempting but least defensible engagement mechanic: an unexplained star rating. If a future comparison exists, it needs a defined dimension, denominator, date, methodology, and source—not a single “good/bad” number.
 
+### Company enrichment contract
+
+The visual profile can become richer without weakening the record. A future Brandfetch or licensed brand-data integration may supply a logo, brand colors, official domains, and public-facing identity metadata only after the organization match is checked against a first-party or regulator record. Public statistics must retain their publisher, date, denominator, and definition; they are context, not a Birch reputation score. Forum, thread, experience, and company-response counts must be labeled as moderation-state inventory, never presented as popularity or quality.
+
 ## Source and citation contract
 
 The public unit of trust is the claim, not the page view. A source record should carry:
@@ -150,10 +154,11 @@ Do not change legal entity type as part of the visual pass. Operate Birch as a s
 
 1. Make `/explore` the intent-first front door: one local-safe search, six record paths, and previews that scale as the corpus grows.
 2. Refine the public Research home and `/ask` interaction around the single “Ask Birch” action.
-3. Bring the same product shell to question, coverage, and company dossier pages.
-4. Add claim-level “copy citation” and source freshness states everywhere a claim is rendered.
-5. Turn `/design/commons-preview` into the authoritative Commons UX spec, including thread, reply, report, and moderation states.
-6. Add the authenticated contribution backend only after the state machine and deletion policy are approved.
-7. Implement company response and professional identity paths as moderated roles, never as paid placement.
-8. Add Coverage Lens extraction only after the privacy/data contract and provider model are approved.
-9. Run a citation, accessibility, performance, and security gate before any indexing or production promotion.
+3. Add the account/shelf flow as a gated, magic-link-first experience; do not collect identity until auth, deletion, and privacy storage are live.
+4. Bring the same product shell to question, coverage, and company dossier pages.
+5. Add claim-level “copy citation” and source freshness states everywhere a claim is rendered.
+6. Turn `/design/commons-preview` into the authoritative Commons UX spec, including thread, reply, report, and moderation states.
+7. Add the authenticated contribution backend only after the state machine and deletion policy are approved.
+8. Implement company response, brand enrichment, and professional identity paths as moderated roles, never as paid placement.
+9. Add Coverage Lens extraction only after the privacy/data contract and provider model are approved.
+10. Run a citation, accessibility, performance, and security gate before any indexing or production promotion.

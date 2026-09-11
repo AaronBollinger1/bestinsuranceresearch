@@ -164,39 +164,26 @@ const jsonLd = graph(organization(), website());
 				</form>
 
 					<div class="home-quick-actions" aria-label="Explore Birch">
-						<a class="btn btn-primary" href="/explore">Find your context <ArrowRight size={15} aria-hidden="true" /></a>
-						<a class="btn btn-secondary" href="/insurance">Browse coverage</a>
+						<a class="btn btn-secondary" href="/explore">Find your context <ArrowRight size={15} aria-hidden="true" /></a>
+						<a class="btn btn-quiet" href="/insurance">Browse coverage</a>
 						<a class="btn btn-quiet" href="/questions">Read the question library <ArrowRight size={15} aria-hidden="true" /></a>
 					</div>
 				</div>
 
-				<aside class="home-compass" aria-label="How Birch works">
-					<span class="eyebrow">How Birch works</span>
-					<h2>A calmer way to get oriented.</h2>
-					<ol class="home-entry-list">
-						<li>
-							<a href="/ask"><span>Ask a plain-language question</span><ArrowRight size={15} aria-hidden="true" /></a>
-							<p>Start with the situation, not the product label.</p>
-						</li>
-						<li>
-							<a href="/sources"><span>Read the evidence trail</span><ArrowRight size={15} aria-hidden="true" /></a>
-							<p>See what the answer assumes and where it came from.</p>
-						</li>
-						<li>
-							{
-								siteConfig.communityReady ? (
-									<a href={siteConfig.communityOrigin} rel="noopener"><span>Bring context to Commons</span><ArrowRight size={15} aria-hidden="true" /></a>
-								) : (
-									<span class="home-entry-list-status">Bring context to Commons · private preview</span>
-								)
-							}
-							<p>
-								{siteConfig.communityReady
-									? 'Share an experience without turning it into a verdict.'
-									: 'The separate Commons will open after its deployment and moderation systems are ready.'}
-							</p>
-						</li>
-					</ol>
+				<aside class="home-compass" aria-label="Choose your Birch direction">
+					<div class="home-compass-mark" aria-hidden="true">
+						<span class="home-compass-node home-compass-node-learn">Learn</span>
+						<span class="home-compass-node home-compass-node-check">Check</span>
+						<span class="home-compass-node home-compass-node-share">Share</span>
+						<div class="home-compass-ring"><img src="/birch-bird-transparent.png" width="54" height="54" alt="" /></div>
+					</div>
+					<span class="eyebrow">Choose your direction</span>
+					<h2>One clear next step.</h2>
+					<div class="home-route-grid">
+						<a class="home-route" href="/ask"><span class="home-route-number">01</span><span><strong>Learn</strong><small>Get an answer with sources.</small></span><ArrowRight size={15} aria-hidden="true" /></a>
+						<a class="home-route" href="/position"><span class="home-route-number">02</span><span><strong>Check</strong><small>Organize the setup you have.</small></span><ArrowRight size={15} aria-hidden="true" /></a>
+						<a class="home-route" href="/contribute"><span class="home-route-number">03</span><span><strong>Share</strong><small>Add context when the room opens.</small></span><ArrowRight size={15} aria-hidden="true" /></a>
+					</div>
 					<div class="home-boundary">
 						<span class="meta">A note on trust</span>
 						<p>Birch separates research from lived experience so you can tell what is documented, what is reported, and what still needs review.</p>
@@ -258,6 +245,22 @@ const jsonLd = graph(organization(), website());
 						</div>
 					</div>
 				</div>
+			</section>
+
+			<section class="home-account-panel" id="account-preview" aria-labelledby="account-preview-title">
+				<div class="home-account-heading">
+					<div>
+						<span class="eyebrow">Your Birch shelf / future account</span>
+						<h2 id="account-preview-title">Keep the useful parts. Leave the private parts yours.</h2>
+					</div>
+					<p>When accounts are ready, Birch should feel like a one-minute setup: a magic link, a private research shelf, and clear control over anything you choose to share.</p>
+				</div>
+				<div class="home-account-flow">
+					<div><span>01</span><strong>Sign in once</strong><p>Magic-link access; no password to remember.</p></div>
+					<div><span>02</span><strong>Save a trail</strong><p>Keep questions, companies, and coverage pages together.</p></div>
+					<div><span>03</span><strong>Share by choice</strong><p>Publish a contribution only after identity and privacy review.</p></div>
+				</div>
+				<div class="home-account-foot"><span class="status status-plain">Private preview · no signup enabled</span><a class="btn btn-secondary btn-sm" href="/contribute">Preview the contribution flow <ArrowRight size={15} aria-hidden="true" /></a></div>
 			</section>
 
 			<section class="home-corpus" aria-labelledby="corpus-title">

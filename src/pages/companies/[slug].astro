@@ -28,6 +28,8 @@ const d = entry.data;
 const path = `/companies/${entry.id}`;
 const machinePath = `${path}.json`;
 const commonsHref = `${siteConfig.communityOrigin}/threads?subject=${encodeURIComponent(`company:${entry.id}`)}`;
+const companyInitials = d.shortName.replace(/[^A-Za-z0-9]/g, '').slice(0, 2).toUpperCase() || 'CO';
+const officialHost = d.officialUrls[0]?.url ? new URL(d.officialUrls[0].url).hostname.replace(/^www\./, '') : 'Official domain not listed';
 
 const sourceIds = idsOf(d.sourceIds);
 const sources = ledgerFor(sourceIds, corpus.sourceById, `organization "${entry.id}"`);
@@ -162,6 +164,11 @@ const jsonLd = graph(
 					<span class="meta">{ORG_TYPE_LABEL[d.orgType] ?? d.orgType}</span>
 					<span class="meta">{d.jurisdictions.join(', ')}</span>
 				</div>
+				<div class="company-brand-strip">
+					<div class="company-brand-mark" aria-hidden="true">{companyInitials}</div>
+					<div class="company-brand-name"><span class="eyebrow">Company profile</span><strong>{d.shortName}</strong><span>{officialHost}</span></div>
+					<div class="company-brand-slot"><span class="eyebrow">Brand identity slot</span><span class="status status-plain">Planned enrichment</span><small>Logo, colors, and public statistics will come from verified brand or first-party records—not become a Birch rating.</small></div>
+				</div>
 				<h1>{d.legalName}</h1>
 				<dl class="answer-dates">
 					<div><dt>Last reviewed</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
@@ -171,6 +178,12 @@ const jsonLd = graph(
 					{d.naic?.groupCode && <div><dt>NAIC group code</dt><dd class="num">{d.naic.groupCode}</dd></div>}
 					<div><dt>Sources</dt><dd><a href="#source-ledger">{sources.length} records</a></dd></div>
 				</dl>
+				<div class="company-stat-strip" aria-label="Company record summary">
+					<div><span>Source records</span><strong>{sources.length}</strong></div>
+					<div><span>Research links</span><strong>{allRelated.length}</strong></div>
+					<div><span>Coverage links</span><strong>{relatedCoverages.length}</strong></div>
+					<div><span>Community</span><strong>{siteConfig.communityReady ? 'Open' : 'Preview'}</strong></div>
+				</div>
 			</div>
 		</header>
 
@@ -514,6 +527,18 @@ const jsonLd = graph(
 		border-radius: var(--r-3);
 		background: var(--paper);
 	}
+	.company-brand-strip { display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(240px, .8fr); gap: var(--s-4); align-items: center; margin: var(--s-5) 0 var(--s-4); padding: var(--s-4); border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--cream); }
+	.company-brand-mark { display: grid; place-items: center; width: 58px; height: 58px; border: 1px solid color-mix(in srgb, var(--brand-blue) 42%, var(--line-strong)); border-radius: 17px; background: var(--brand-blue); color: var(--white); font-family: var(--font-display); font-size: var(--text-xl); letter-spacing: -.04em; box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 4px 10px rgba(23, 33, 46, .14); }
+	.company-brand-name { display: grid; gap: 2px; min-width: 0; }
+	.company-brand-name .eyebrow, .company-brand-slot .eyebrow { margin: 0; }
+	.company-brand-name strong { color: var(--ink); font-size: var(--text-md); font-weight: 600; }
+	.company-brand-name > span:last-child { color: var(--muted); font: var(--text-2xs)/1.3 var(--font-mono); overflow-wrap: anywhere; }
+	.company-brand-slot { display: grid; justify-items: start; gap: var(--s-2); padding-left: var(--s-4); border-left: 1px solid var(--line); }
+	.company-brand-slot small { max-width: 34ch; color: var(--muted); font-size: var(--text-xs); line-height: var(--leading-snug); }
+	.company-stat-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: var(--s-5); border: 1px solid var(--line-strong); background: var(--line-strong); }
+	.company-stat-strip > div { display: grid; gap: var(--s-1); min-height: 72px; padding: var(--s-3); background: var(--paper); }
+	.company-stat-strip span { color: var(--muted); font: var(--text-2xs)/1.3 var(--font-mono); letter-spacing: .03em; text-transform: uppercase; }
+	.company-stat-strip strong { color: var(--ink); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; line-height: 1; }
 	.company-page-map-heading { max-width: 62ch; }
 	.company-page-map-heading h2 { margin: var(--s-2) 0 var(--s-1); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; line-height: var(--leading-snug); }
 	.company-page-map-heading p, .company-section-intro { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
@@ -609,6 +634,9 @@ const jsonLd = graph(
 		.company-page-map-card:last-child { grid-column: span 2; }
 	}
 	@media (max-width: 640px) {
+		.company-brand-strip { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+		.company-brand-slot { grid-column: 1 / -1; padding: var(--s-3) 0 0; border-top: 1px solid var(--line); border-left: 0; }
+		.company-stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 		.company-page-map { padding: var(--s-4); }
 		.company-page-map-grid, .company-context-grid, .company-community-grid, .company-coverage-grid { grid-template-columns: minmax(0, 1fr); }
 		.company-page-map-card:last-child { grid-column: auto; }
