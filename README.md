@@ -23,9 +23,10 @@ cd commons && npm ci
 npm run validate     # Commons check + build + verification
 ```
 
-The latest preview branch is the integration candidate. Production promotion is
-intentionally separate from validation and should only happen after the content
-review gate is complete.
+The latest preview branch is the integration candidate. The current Vercel
+production project still serves an older BestInsurance build; the Birch branch
+has not been promoted. Production promotion is intentionally separate from
+validation and should only happen after the content review gate is complete.
 
 For the private review boundary and the no-signup policy, see
 `PREVIEW-ACCESS.md`. The preview must be protected at the Vercel project layer;
@@ -33,9 +34,10 @@ the static frontend does not pretend that a browser-only password is security.
 
 ## What is here
 
-**Research** is a static, citable evidence layer with 299 source records, 85
+**Research** is a static, citable evidence layer with 301 source records, 85
 canonical questions, 27 substantive coverage lines, 19 figures, 10 live
-modules, 272 deterministic rules, and a frozen claim dataset. `/ask` is a
+modules, 272 deterministic rules, 15 cross-module rules, and a frozen claim
+dataset. `/ask` is a
 browser-local lexical lookup over the published corpus. It is not a generative
 chatbot and it does not send the question anywhere.
 
@@ -96,3 +98,5 @@ single pass is complete.
 - `DESIGN-REFERENCES.md` — Mobbin/Figma-informed interaction references and rejected patterns.
 - `LAUNCH-GATE.md` — what must be true before production.
 - `HANDOFF.md` — current implementation state and next work sequence.
+- `MVP-RELEASE-RUNBOOK.md` — the exact GitHub, Vercel, DNS, review, and Commons
+  sequence for the first controlled release.

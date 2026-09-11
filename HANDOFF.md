@@ -1,7 +1,7 @@
 # Handoff
 
-Written 8 September 2026, last revised 10 September after the final product
-logic and rendered UX audit, on `claude/bold-hopper-mqcyen`.
+Written 8 September 2026, last revised 11 September after the GitHub/Vercel
+release audit and MVP runbook pass, on `claude/bold-hopper-mqcyen`.
 
 The current product decision and mockup audit are in
 `outputs/BIRCH-FINAL-PRODUCT-AUDIT-2026-09-10.md`. It supersedes the old
@@ -47,9 +47,9 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | | |
 | --- | --- |
 | The product | **Birch.** One property: a cited evidence layer (**Birch Research**) and a validated discussion layer (**Birch**). Read `BIRCH.md` before anything else - it is the current direction and it says what the rebrand is not allowed to relax |
-| Branch | `claude/bold-hopper-mqcyen`, 69 commits (19 ahead of `launch/initial-publication`), **never push to `main`** |
-| Suite | `npm run validate` = **161 tests**, 0 failing, in both indexing postures. **CI is green** as of 10 September; the latest hosted run is green across suite, Commons, and production-posture jobs | Also `npm run audit:estate`, `npm run audit:onpage` |
-| Built pages | **853 static routes** in the latest build; on-page audit scans the generated HTML plus JSON companions |
+| Branch | `claude/bold-hopper-mqcyen`, candidate commit `72013ce`, **never push to `main`** |
+| Suite | `npm run validate` = **165 tests**, 0 failing, in both indexing postures. **CI is green** as of 11 September across suite, Commons, and production-posture jobs | Also `npm run audit:estate`, `npm run audit:onpage` |
+| Built pages | **858 static routes** in the latest build; on-page audit scans the generated HTML plus JSON companions |
 | Sources | 301 (122 primary-law, 71 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
 | Coverage pages | 27 of 51 canonical lines |
@@ -59,7 +59,7 @@ secret. There was no CI for the first 99 commits, and the one thing a
 | Sources ever re-checked | **22 of 301.** All eleven figure-source documents are re-read, plus five high-impact evidence sources; 279 sources remain first-read only |
 | Sources no question reaches | 48 |
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
-| Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file |
+| Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file; the current corpus has 301 sources |
 | Change feed | `/changed`: 20 recorded changes, 7 scheduled amount moves, built from record fields |
 | Birch, the community | `commons/`, intended as its own Vercel project and origin at `commons.birch.insure`. **81 assertions, 80 passing, 1 skipped** for want of a database. Sign-in, case-report intake, thread-to-case-report promotion, the moderation queue, withdrawal, threads, and professional-verification requests all run end to end on an in-memory store; Postgres and Resend are wired but unexercised. The app now targets the official `@astrojs/vercel` SSR adapter; `commons/.env.example`, `commons/README.md`, and `npm run preflight:production` define the external launch gate, including exact production-origin checks. The shared Commons shell now has a touch-safe, contained mobile menu and reduced-motion contract. The request-time `/healthz` liveness route checks store reachability and production mail configuration without exposing details or entering the sitemap. |
 | Threads | Built 9 September. 117 subjects a thread can attach to, generated from the evidence layer. A verdict phrase **blocks** a post where it only flags a submission, because a post publishes on write. A post cannot be edited - only withdrawn by its author or hidden by a moderator, both leaving a tombstone |
@@ -74,8 +74,9 @@ form with what is actually blocked.
 1. **Cross-linking the two layers** - *unblocked once threads have content.* An
    evidence page names how many accounts exist for its subject and links to
    them, without citing them. Note the constraint that already caught this
-   project once: do not advertise a host that does not resolve. `birch.insure`
-   is not live.
+   project once: do not advertise a host that does not resolve. The Birch apex
+   and `www` hosts are attached to the Research Vercel project; they currently
+   serve the older production build and must not be mistaken for the candidate.
 2. **Carrier pages** - *partially complete.* State Farm General Insurance
    Company and Farmers Insurance Exchange now have source-linked California
    regulator identity snapshots and structured pages. Continue one company at a
@@ -110,14 +111,14 @@ marketing claims.
 
 ### The two things blocking everything else
 
-**Production has never been promoted.** Every deployment for at least the last
-fifteen hours is `Preview`; the production deployment is two days old, so 88
-commits of work are not on the live site. The guard hook at
-`~/.claude/hooks/guard-dangerous-bash.mjs` blocks `vercel promote` and any
-`vercel` command carrying `--prod`. **Do not try to reword past the guard** -
-surface the command and let the user run it. Read-only `vercel ls`,
-`vercel project ls` and `vercel inspect` are not blocked and are how you find
-out what is actually deployed.
+**The Birch candidate has not been promoted.** The live production deployment
+is an older BestInsurance build, while the current branch is a green preview
+candidate. The guard hook at `~/.claude/hooks/guard-dangerous-bash.mjs` blocks
+`vercel promote` and any `vercel` command carrying `--prod`. **Do not try to
+reword past the guard** - surface the exact command only after the release
+gates are cleared and let the user run it. Read-only `vercel ls`,
+`vercel project ls` and `vercel inspect` are how you find out what is actually
+deployed.
 
 The command previously recorded here was wrong in two ways and was tried and
 failed on 8 September. Both corrections matter:
@@ -135,8 +136,9 @@ failed on 8 September. Both corrections matter:
 
 The Vercel project is **`bestinsuranceresearch`**, team
 `aaronbollinger1s-projects`. Its current branch deployment is a protected
-preview candidate; `birch.insure` is the intended Research production origin
-but is not attached to this Vercel project yet.
+preview candidate; `birch.insure` and `www.birch.insure` are attached to this
+Research project. The deployment environment and canonical metadata still need
+to be corrected before a Birch production cutover.
 
 Find the newest preview, which is the tip of `claude/bold-hopper-mqcyen`:
 
@@ -153,7 +155,8 @@ npx --no-install vercel promote <deployment-url> --scope aaronbollinger1s-projec
 Confirm afterwards with `vercel ls`: the promoted deployment should read
 `Production` rather than `Preview`.
 
-**Nothing is reviewed.** Every record carries an under-review badge - all 173.
+**Nothing is reviewed.** Every record carries an under-review badge - all 176
+records with a review state.
 Brian Bollinger is named reviewer on all 85 questions and has signed off none.
 `AMBITION.md` puts this ahead of anything public-facing for a reason: an
 unreviewed corpus cannot credibly moderate contributed content, and marketing
