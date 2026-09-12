@@ -2,8 +2,9 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "build": {
     "env": {
-      "PUBLIC_SITE_ENV": "production",
-      "PUBLIC_SITE_ORIGIN": "https://bestinsuranceresearch.com"
+      "PUBLIC_SITE_ENV": "preview",
+      "PUBLIC_SITE_ORIGIN": "https://bestinsuranceresearch.com",
+      "PUBLIC_SITE_GATE": "under-construction"
     }
   },
   "cleanUrls": true,
@@ -66,6 +67,16 @@
       ],
       "destination": "https://bestinsuranceresearch.com/:path*",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!_astro/|favicon\\.ico|favicon\\.svg|apple-touch-icon\\.png|site\\.webmanifest|og\\.jpg|under-construction).*)",
+      "destination": "/under-construction"
+    },
+    {
+      "source": "/",
+      "destination": "/under-construction"
     }
   ]
 }
