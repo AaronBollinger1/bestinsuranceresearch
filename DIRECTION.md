@@ -84,6 +84,9 @@ description in this section. `BIRCH-PRODUCT-DESIGN-SYSTEM.md` governs the curren
 design: consumer comprehension first, clear product navigation, compact reading
 frames, and source detail available at the point of use. The supplied bird,
 brand tokens, and source integrity rules remain the implementation basis.
+The owner selected **A / Focus** on 11 September. It governs the landing and
+task-entry hierarchy: one clear task, concise sans-serif headings, white work
+surfaces on pale paper, and restrained blue controls. B and C are design history.
 
 The world is **Birch blue on pale paper with evidence accents**. Printed
 research document meets a calm community utility, not a software-product

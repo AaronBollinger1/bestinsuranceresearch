@@ -8,11 +8,17 @@ review it at `/design/product-system`.
 
 ## Position and first impression
 
-Implementation update: the signed-in Mobbin pass is documented in
+Owner selection: **A / Focus is approved** (11 September). Its default is configured
+in `src/config/product-design.ts`; it is no longer a recommendation awaiting a
+choice. `BIRCH-DIRECTION-A-IMPLEMENTATION-2026-09-11.md` records the implementation.
+Professional entry, local contribution preview, and the account specimen now carry
+the same focused hierarchy. Next: apply these patterns to the existing invited
+Community flow without enabling public signup.
+
+Prior implementation update: the signed-in Mobbin pass is documented in
 `BIRCH-MOBBIN-READING-AUDIT-2026-09-11.md`. Shared question/company reading
 frames, source inspection, and interactive community filtering are now built.
-The next coherent item is the existing moderated contribution journey, not another
-homepage redesign. The live blueprint links to the private Mobbin collection.
+The live blueprint links to the private Mobbin collection.
 
 Birch helps people understand insurance through sourced answers, useful tools,
 and clearly attributed professional and policyholder contributions.
@@ -37,21 +43,21 @@ research, or a suitable professional handoff.
 
 ## Aesthetic decision and alternatives
 
-**A / Focus** is implemented on the homepage. A centered two-line headline,
+**A / Focus** is selected by the owner and implemented on the homepage. A centered two-line headline,
 question composer, three short starting points, and a working product preview.
 This leaves room to understand the task on mobile. `/design/directions/focus`.
 
-**B / Editorial** puts the introduction beside the composer. It provides more
-space for positioning, but reads more like marketing. Keep for targeted campaigns.
+**B / Editorial** is retained as an earlier exploration, not an active alternative.
+It puts the introduction beside the composer and provides more space for positioning.
 `/design/directions/editorial`.
 
-**C / Explore** adds coverage, company, industry, and tool entrances around the
+**C / Explore** is retained as an earlier exploration. It adds coverage, company, industry, and tool entrances around the
 same question flow. It supports browsing but asks a new reader to make more
 choices. Use its pattern for a future returning-reader home.
 `/design/directions/explore`.
 
-All three use the actual bird and the same two reusable components. These are
-working alternatives, not screenshots with invented activity or signups.
+All three use the actual bird and the same two reusable components. B and C remain
+in the noindex design archive; the normal homepage always uses A.
 
 Typography: Schibsted Grotesk handles navigation, product headings, and forms;
 Newsreader supplies a small expressive accent in the hero and remains available

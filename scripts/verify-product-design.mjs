@@ -3,6 +3,48 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { pagePatterns } from '../src/lib/product-design.ts';
+import { productDesign } from '../src/config/product-design.ts';
+
+test('the selected Direction A is the homepage, not an undecided alternative', () => {
+  assert.equal(productDesign.direction, 'focus');
+  const home = html('/');
+  assert.match(home, /data-design-direction="focus"/);
+  assert.doesNotMatch(home, /data-design-direction="(?:editorial|explore)"/);
+  assert.match(html('/design/product-system'), /A \/ Focus[^<]*Selected/);
+  assert.doesNotMatch(html('/design/product-system'), /Compare landing directions/);
+  assert.equal(pagePatterns.find(pattern => pattern.title === 'Landing').href, '/');
+});
+
+function assertLocalDraftBoundary(page) {
+  const draft = page.match(/<form\b[^>]*id="contribution-form"[^>]*>[\s\S]*?<\/form>/)?.[0];
+  assert.ok(draft, 'local contribution form exists');
+  assert.match(draft, /<fieldset\b[^>]*id="draft-fields"[^>]*\sdisabled(?:\s|>)/, 'draft fields fail closed without JavaScript');
+  assert.doesNotMatch(draft, /<(?:input|button)\b[^>]*type="submit"/, 'preview is not a network submit');
+  for (const tag of draft.matchAll(/<(?:input|textarea|select)\b[^>]*>/g)) {
+    assert.doesNotMatch(tag[0], /type="(?:email|file)"/, 'no contact or document intake');
+    assert.ok(!/\sname=/.test(tag[0]) || /type="radio"/.test(tag[0]), 'draft prose cannot become successful form fields');
+  }
+}
+
+test('contribution preview fails closed and provides write, preview, and clear states', () => {
+  const page = html('/contribute');
+  assertLocalDraftBoundary(page);
+  // Prove the check rejects the safety regression, rather than passing vacuously.
+  assert.throws(() => assertLocalDraftBoundary(page.replace(/(<fieldset\b[^>]*id="draft-fields"[^>]*?)\sdisabled/, '$1')));
+  assert.match(page, /<section\b[^>]*id="draft-preview"[^>]*\shidden/);
+  for (const target of ['preview-draft','edit-draft','confirm-clear','cancel-clear','draft-private-check']) assert.match(page, new RegExp(`id="${target}"`));
+  assert.match(page, /Text is lost when you leave or reload/);
+  assert.match(page, /does not detect or redact sensitive information/);
+  assert.match(page, /<noscript>/);
+});
+
+test('professional entry does not turn an illustrative profile into verification', () => {
+  const page = html('/professionals');
+  assert.match(page, /Illustrative contributor profile/);
+  assert.match(page, /Not yet verified/);
+  assert.doesNotMatch(page, /Credential verified/);
+  for (const type of ['research','correction']) assert.match(page, new RegExp(`href="/contribute\\?type=${type}"`));
+});
 
 test('reading pages retain one source inspector and permanent source targets', () => {
   for (const family of ['companies','questions']) {

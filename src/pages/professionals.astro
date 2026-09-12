@@ -1,81 +1,73 @@
 ---
-import { ArrowRight, BadgeCheck, BookOpen, FileText, GitPullRequest, ShieldCheck } from '@lucide/astro';
+import { ArrowRight, BookOpen, FileText, GitPullRequest, ShieldCheck, UserRound } from '@lucide/astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
-import Callout from '../components/Callout.astro';
-import ProductContextBar from '../components/ProductContextBar.astro';
-import { siteConfig } from '../config/site';
+import FocusPageHeader from '../components/FocusPageHeader.astro';
 import { breadcrumbs, graph, organization, website } from '../lib/schema';
 
-const trail = [
-	{ name: 'Home', path: '/' },
-	{ name: 'For professionals', path: '/professionals' },
+const contributions = [
+  { icon: FileText, title: 'Explain something well.', description: 'Write original research with the sources, context, and limitations attached.', action: 'Prepare research', href: '/contribute?type=research' },
+  { icon: GitPullRequest, title: 'Make the record better.', description: 'Point to a specific claim and the original document that needs checking.', action: 'Suggest a correction', href: '/contribute?type=correction' },
+  { icon: BookOpen, title: 'Add your perspective.', description: 'Share useful professional context, clearly separate from published findings.', action: 'Explore the Community preview', href: '/design/commons-preview' },
 ];
-const jsonLd = graph(organization(), website(), breadcrumbs(trail));
+const jsonLd = graph(organization(), website(), breadcrumbs([{ name: 'Home', path: '/' }, { name: 'For professionals', path: '/professionals' }]));
 ---
-
-<BaseLayout
-	title="For insurance and financial professionals"
-	description="A transparent contribution path for California insurance and financial professionals who want to publish research, suggest corrections, and add context to Birch."
-	jsonLd={jsonLd}
-	pageType="editorial"
->
-	<article>
-		<section class="band band-tight band-first band-paper professional-hero">
-			<div class="shell">
-				<Breadcrumbs trail={trail} />
-				<ProductContextBar active="contribute" />
-				<div class="professional-hero-grid">
-					<div><span class="eyebrow">Birch / Professional desk</span><h1>Make your expertise checkable.</h1><p class="page-lede">Birch gives licensed and credentialed professionals a place to publish useful insurance context without turning the research record into a marketing channel.</p><div class="professional-actions"><a class="btn btn-primary" href="/contribute?type=research">Prepare research <ArrowRight size={15} aria-hidden="true" /></a><a class="btn btn-secondary" href="/methodology">Read the method</a><a class="btn btn-quiet" href="/design/commons-preview">Preview the Community workflow <ArrowRight size={15} aria-hidden="true" /></a></div></div>
-					<div class="professional-profile-preview"><div class="professional-avatar">BB</div><div><span class="eyebrow">Profile preview</span><h2>Brian Bollinger</h2><p>Principal broker · California</p></div><div class="professional-profile-meta"><span><BadgeCheck size={15} aria-hidden="true" /> Credential verified</span><span><BookOpen size={15} aria-hidden="true" /> Research contributions</span><span><ShieldCheck size={15} aria-hidden="true" /> Conflicts disclosed</span></div></div>
-				</div>
-			</div>
-		</section>
-
-		<section class="band band-tight" aria-labelledby="professional-benefits-title">
-			<div class="shell">
-				<span class="eyebrow">What a professional can do</span><h2 id="professional-benefits-title">Contribute signal without controlling the answer.</h2>
-				<div class="professional-card-grid">
-					<div class="professional-card"><FileText size={19} aria-hidden="true" /><h3>Publish research</h3><p>Write a sourced explanation with your name, role, jurisdiction, affiliation, and conflict disclosure attached.</p></div>
-					<div class="professional-card"><GitPullRequest size={19} aria-hidden="true" /><h3>Suggest a correction</h3><p>Point to a claim, a source, and a date. The editorial record retains what changed and why.</p></div>
-					<div class="professional-card"><ShieldCheck size={19} aria-hidden="true" /><h3>Respond with context</h3><p>Answer a question or respond to an experience. A response is labeled as a response, never merged into research.</p></div>
-				</div>
-			</div>
-		</section>
-
-		<section class="band band-paper" aria-labelledby="professional-rules-title">
-			<div class="shell professional-rules-grid">
-				<div><span class="eyebrow">The professional standard</span><h2 id="professional-rules-title">Verification earns context, not editorial control.</h2><p class="lede">Credentials help readers understand who is speaking. They do not turn a professional’s opinion into a universal answer.</p></div>
-				<Callout tone="limit" label="Required before publishing"><ul><li>Credential and jurisdiction.</li><li>Current role and affiliation.</li><li>Compensation and conflict disclosure.</li><li>Sources for material claims.</li><li>No individualized recommendation or claim outcome promise.</li></ul></Callout>
-			</div>
-		</section>
-
-		<section class="band band-ink" aria-labelledby="professional-operator-title">
-			<div class="shell professional-operator"><div><span class="eyebrow">California first</span><h2 id="professional-operator-title">Birch is operated by {siteConfig.operator.dba}, and says so.</h2><p class="lede">The operator’s insurance experience is part of the context. It is never a substitute for a source, and licensed help remains optional.</p></div><a class="btn btn-secondary" href={siteConfig.bollinsureOrigin + '/about'} rel="noopener">Read about the operator <ArrowRight size={15} aria-hidden="true" /></a></div>
-		</section>
-	</article>
+<BaseLayout title="For insurance and financial professionals" description="Make your expertise useful through attributed research, source corrections, and professional context. Contribution and credential verification remain in private preview." jsonLd={jsonLd} pageType="editorial">
+  <section class="professional-page shell">
+    <FocusPageHeader eyebrow="For insurance and financial professionals" title="Make your expertise useful." description="Help people understand insurance. Put your name, perspective, and sources behind work worth reading.">
+      <a class="btn btn-primary" href="/contribute?type=research">Prepare research <ArrowRight size={16} aria-hidden="true" /></a>
+      <a class="btn btn-quiet" href="/editorial-policy">How publishing works</a>
+    </FocusPageHeader>
+    <p class="professional-preview-note">Private preview. Prepare a local draft now; accounts and publishing are not open.</p>
+    <div class="professional-work">
+      <div class="professional-opportunities">
+        <h2>Good work, with your name attached.</h2>
+        <p>A useful explanation can outlast the conversation that started it.</p>
+        {contributions.map(({icon: Icon,title,description,action,href}) => <a class="professional-opportunity" href={href}><Icon size={20} aria-hidden="true" /><div><h3>{title}</h3><p>{description}</p><span>{action} <ArrowRight size={14} aria-hidden="true" /></span></div></a>)}
+      </div>
+      <aside class="professional-profile" aria-label="Illustrative contributor profile">
+        <div class="profile-status"><span>Contributor profile</span><span>Design example</span></div>
+        <div class="profile-identity"><UserRound size={28} aria-hidden="true" /><div><h2>Your name</h2><p>Your specialty · Your jurisdiction</p></div></div>
+        <dl><div><dt>Professional credential</dt><dd>Not yet verified</dd></div><div><dt>Affiliation and conflicts</dt><dd>Declared before publication</dd></div><div><dt>Published work</dt><dd>Only after editorial approval</dd></div></dl>
+        <div class="profile-credit"><BookOpen size={18} aria-hidden="true" /><p>Your author page connects your original work, relevant expertise, and correction history.</p></div>
+        <p class="profile-caption">Planned profile pattern, not a verified person or live publication record. No promised rankings or citations.</p>
+      </aside>
+    </div>
+    <section class="professional-standards" aria-labelledby="professional-standard-title">
+      <div><ShieldCheck size={22} aria-hidden="true" /><h2 id="professional-standard-title">Expertise adds context.<br/>Sources support the answer.</h2></div>
+      <div><p>Declare your credential, jurisdiction, role, affiliation, and conflicts. Write within your specialty. A checked credential does not establish the accuracy of every statement or give anyone control over the editorial result.</p><details><summary>What is checked before publishing?</summary><ul><li>Credential scope and current status where applicable.</li><li>Original sources supporting material claims.</li><li>Privacy, affiliations, and conflicts.</li><li>Clear limits: no individualized coverage determination or claim outcome promise.</li></ul><a class="text-link" href="/methodology">Read the methodology <ArrowRight size={14} aria-hidden="true" /></a></details></div>
+    </section>
+  </section>
 </BaseLayout>
-
 <style>
-	.professional-hero { padding-bottom: var(--s-10); }
-	.professional-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); gap: var(--s-12); align-items: end; margin-top: var(--s-8); }
-	.professional-hero h1 { max-width: 14ch; font-size: clamp(2.7rem, 6vw, 5rem); letter-spacing: -.045em; }
-	.professional-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-6); }
-	.professional-profile-preview { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: var(--s-3); padding: var(--s-5); border: 1px solid var(--line-strong); border-top: 3px solid var(--brand-blue); background: var(--cream); border-radius: var(--r-3); }
-	.professional-avatar { display: grid; place-items: center; width: 52px; height: 52px; color: var(--paper); background: var(--brand-blue-deep); border-radius: 50%; font-family: var(--font-mono); font-size: var(--text-sm); }
-	.professional-profile-preview h2 { margin-bottom: 0; font-size: var(--text-xl); }
-	.professional-profile-preview p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
-	.professional-profile-meta { grid-column: 1 / -1; display: grid; gap: var(--s-2); padding-top: var(--s-4); border-top: 1px solid var(--line); color: var(--body); font-size: var(--text-sm); }
-	.professional-profile-meta span { display: flex; gap: var(--s-2); align-items: center; }
-	.professional-profile-meta svg { color: var(--brand-blue-text); }
-	.professional-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-5); }
-	.professional-card { padding: var(--s-5); border: 1px solid var(--line); background: var(--paper); border-radius: var(--r-3); }
-	.professional-card > svg { color: var(--brand-blue-text); }
-	.professional-card h3 { margin-top: var(--s-4); }
-	.professional-card p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
-	.professional-rules-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: var(--s-12); align-items: start; }
-	.professional-operator { display: flex; justify-content: space-between; gap: var(--s-8); align-items: center; }
-	.professional-operator h2 { max-width: 20ch; }
-	@media (max-width: 900px) { .professional-hero-grid, .professional-rules-grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); } .professional-card-grid { grid-template-columns: minmax(0, 1fr); } .professional-operator { align-items: flex-start; flex-direction: column; } }
-	@media (max-width: 640px) { .professional-actions .btn { width: 100%; } }
+  .professional-page { padding-bottom: 64px; }
+  .professional-preview-note { text-align: center; font-size: var(--text-xs); color: var(--muted); margin: -12px auto 48px; line-height: 1.6; }
+  .professional-work { max-width: 1040px; margin: auto; display: grid; grid-template-columns: minmax(0,1fr) 360px; gap: 64px; align-items: start; }
+  h2 { font: 500 var(--text-2xl)/1.3 var(--font-sans); letter-spacing: -.03em; }
+  .professional-opportunities > p { color: var(--muted); font-size: var(--text-sm); }
+  .professional-opportunity { display: grid; grid-template-columns: 24px 1fr; gap: 16px; padding: 24px 0; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; }
+  .professional-opportunity > svg { color: var(--brand-blue-text); margin-top: 3px; }
+  h3 { font: 500 var(--text-md)/1.4 var(--font-sans); margin: 0 0 8px; }
+  .professional-opportunity p { margin: 0 0 12px; color: var(--muted); font-size: var(--text-sm); line-height: 1.7; }
+  .professional-opportunity span { display: flex; align-items: center; gap: 8px; font-size: var(--text-xs); color: var(--brand-blue-text); }
+  .professional-opportunity:hover h3 { color: var(--brand-blue-text); }
+  .professional-opportunity span svg { transition: transform var(--dur-2) var(--ease); }
+  .professional-opportunity:is(:hover,:focus-visible) span svg { transform: translateX(3px); }
+  .professional-profile { padding: 24px; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-4); box-shadow: var(--elev-2); }
+  .profile-status { display: flex; justify-content: space-between; gap: 8px; font-size: var(--text-2xs); color: var(--muted); }
+  .profile-status span:last-child { color: var(--brand-blue-text); }
+  .profile-identity { display: flex; align-items: center; gap: 16px; margin: 32px 0 24px; }
+  .profile-identity > svg { color: var(--brand-blue-text); }
+  .profile-identity h2 { font-size: var(--text-xl); margin: 0 0 4px; }
+  .profile-identity p { font-size: var(--text-xs); margin: 0; color: var(--muted); }
+  dl { margin: 0; } dl > div { padding: 16px 0; border-top: 1px solid var(--line); }
+  dt { color: var(--muted); font-size: var(--text-xs); } dd { margin: 5px 0 0; font-size: var(--text-sm); }
+  .profile-credit { display: flex; align-items: flex-start; gap: 12px; background: var(--paper); padding: 16px; margin-top: 8px; border-radius: var(--r-3); }
+  .profile-credit svg { flex-shrink: 0; color: var(--brand-blue-text); } .profile-credit p { margin: 0; font-size: var(--text-xs); line-height: 1.6; }
+  .profile-caption { margin: 16px 0 0; color: var(--muted); font-size: var(--text-2xs); line-height: 1.6; }
+  .professional-standards { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; max-width: 1040px; margin: 64px auto 0; padding-top: 40px; border-top: 1px solid var(--line); }
+  .professional-standards svg { color: var(--brand-blue-text); } .professional-standards h2 { margin-top: 16px; }
+  .professional-standards p, .professional-standards li { font-size: var(--text-sm); color: var(--muted); line-height: 1.7; }
+  summary { min-height: var(--tap); padding-block: 12px; font-size: var(--text-sm); cursor: pointer; }
+  @media (max-width: 850px) { .professional-work, .professional-standards { grid-template-columns: minmax(0,1fr); gap: 32px; } .professional-profile { max-width: 480px; width: 100%; } .professional-preview-note { margin-bottom: 32px; } .professional-standards { margin-top: 40px; } }
+  @media (prefers-reduced-motion: reduce) { .professional-opportunity span svg { transition: none; transform: none !important; } }
 </style>

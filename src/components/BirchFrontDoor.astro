@@ -1,14 +1,15 @@
 ---
 import { ArrowUpRight, Building2, Home, MapPin, Search, ShieldCheck } from '@lucide/astro';
+import { productDesign } from '../config/product-design';
 interface Props { variant?: 'focus' | 'editorial' | 'explore'; }
-const { variant = 'focus' } = Astro.props;
+const { variant = productDesign.direction } = Astro.props;
 const starters = [
   { icon: Home, label: 'My home', question: 'Does homeowners insurance cover earthquake damage in California?' },
   { icon: Building2, label: 'My business', question: 'What is a claims-made retroactive date?' },
   { icon: ShieldCheck, label: 'My coverage', question: 'What is the difference between replacement cost and market value?' },
 ];
 ---
-<section class:list={['front-door', `front-door-${variant}`]} aria-labelledby="home-title">
+<section class:list={['front-door', `front-door-${variant}`]} data-design-direction={variant} aria-labelledby="home-title">
   <div class="front-door-intro">
     <span class="front-door-kicker">A clearer view of insurance</span>
     <h1 id="home-title">Understand your<br /><em>insurance.</em></h1>

@@ -2,14 +2,16 @@
 import { ArrowUpRight } from '@lucide/astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { pagePatterns, interactionRules } from '../../lib/product-design';
+import { productDesign } from '../../config/product-design';
 ---
 <BaseLayout title="Birch product design system" description="The working Birch design blueprint: landing alternatives, reusable page patterns, interaction rules, and the next implementation for each surface." noindex>
  <section class="system-page shell">
-  <header><span class="eyebrow">Design blueprint · September 11, 2026</span><h1>One Birch.<br/>A familiar experience on every page.</h1><p>Ask, explore, discuss, contribute. The interface stays simple as the information gets deeper.</p><a class="btn btn-primary" href="/design/directions/focus">Compare landing directions <ArrowUpRight size={16} aria-hidden="true" /></a></header>
-  <div class="system-summary"><div><span>Primary action</span><strong>Ask Birch</strong></div><div><span>Community name</span><strong>Birch Community</strong></div><div><span>Design direction</span><strong>Focus / A</strong></div><div><span>Current access</span><strong>Private preview</strong></div></div>
+  <header><span class="eyebrow">{productDesign.label} · Selected direction</span><h1>One Birch.<br/>A clear next step.</h1><p>Question-first landing. Compact reading pages. Focused contribution screens. The same blue, bird, and familiar controls throughout.</p><a class="btn btn-primary" href="/">Open the selected landing <ArrowUpRight size={16} aria-hidden="true" /></a><a class="system-secondary" href="/contribute">Try the contribution flow <ArrowUpRight size={14} aria-hidden="true" /></a></header>
+  <div class="system-summary"><div><span>Primary action</span><strong>{productDesign.primaryAction}</strong></div><div><span>Community name</span><strong>Birch Community</strong></div><div><span>Design direction</span><strong>{productDesign.label} · Selected</strong></div><div><span>Current access</span><strong>Private preview</strong></div></div>
   <h2>The page patterns</h2><p class="system-note">These links open the actual implementation or a labeled specimen. The status says which. <a href="https://mobbin.com/collections/38f9a642-ecc6-4e00-b9da-74c9ac44bced/web/screens" target="_blank" rel="noopener">Open the private Mobbin reference board <ArrowUpRight size={13} aria-hidden="true" /></a></p>
   <div class="pattern-grid">{pagePatterns.map((pattern) => <article><div class="pattern-top"><span>{pattern.group}</span><span>{pattern.state}</span></div><h3><a href={pattern.href}>{pattern.title}<ArrowUpRight size={16} aria-hidden="true" /></a></h3><p>{pattern.pattern}</p><dl><dt>Primary action</dt><dd>{pattern.action}</dd><dt>Next implementation</dt><dd>{pattern.next}</dd></dl></article>)}</div>
   <h2>How it should feel</h2><div class="interaction-list">{interactionRules.map(([title, rule]) => <div><strong>{title}</strong><p>{rule}</p></div>)}</div>
+  <details class="system-alternatives"><summary>Earlier landing explorations</summary><p>A is selected. B and C remain as design history, not alternate live homepages.</p><a href="/design/directions/editorial">B / Editorial</a><a href="/design/directions/explore">C / Explore</a></details>
   <div class="system-decision"><h2>Make expertise discoverable.</h2><p>Professionals earn useful attribution through original work, documented credentials, and clear disclosures. Company representatives can respond in their own name. Policy connections establish a relationship, not the truth of a claim.</p><p>Live web research starts with a question gap, returns openable sources, and can become a reviewed article. Neither a provider response nor a popular thread becomes a published finding automatically.</p></div>
  </section>
 </BaseLayout>
@@ -19,6 +21,10 @@ import { pagePatterns, interactionRules } from '../../lib/product-design';
  header h1 { font:600 clamp(2.4rem,4vw,3.5rem)/1.1 var(--font-sans); letter-spacing:-.05em; margin:16px 0; }
  header p, .system-note { color:var(--muted); line-height:1.6; }
  header .btn { margin-top:16px; }
+ .system-secondary { display:inline-flex; align-items:center; gap:8px; min-height:var(--tap); margin:16px 0 0 20px; font-size:var(--text-sm); }
+ .system-alternatives { margin-top:32px; border-bottom:1px solid var(--line); padding-bottom:16px; color:var(--muted); font-size:var(--text-sm); }
+ .system-alternatives summary { min-height:var(--tap); padding-block:12px; cursor:pointer; }
+ .system-alternatives a { display:inline-flex; min-height:var(--tap); align-items:center; margin-right:24px; }
  .system-summary { display:grid; grid-template-columns:repeat(4,1fr); border-block:1px solid var(--line); margin-bottom:48px; }
  .system-summary div { padding:20px 0; display:grid; gap:7px; }
  .system-summary span, dt { font-size:var(--text-xs); color:var(--muted); }

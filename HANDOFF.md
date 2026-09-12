@@ -1,5 +1,31 @@
 # Handoff
 
+Latest pass (11 September, owner selects A): **Direction A / Focus is selected**,
+configured in `src/config/product-design.ts`. The homepage retains its approved
+composition. Professional entry, contribution draft, and account specimen now
+share `FocusPageHeader.astro`; the blueprint foregrounds the selected direction
+and moves B/C into earlier explorations. See
+`BIRCH-DIRECTION-A-IMPLEMENTATION-2026-09-11.md` for scope and verification.
+
+The local contribution journey is now choose type -> write -> preview -> edit,
+with native validation, source notes as text, privacy confirmation, and deliberate
+clearing. It is not a saved draft or backend submission. Fields fail closed before
+JavaScript; prose has no successful form names; no fetch/storage/account operation
+is present. Client-side type selection fixes `/contribute?type=research` on static
+pages. Removed the unsupported verified-credential example from `/professionals`.
+
+Checks: root validation **177 passed**; production posture **162 passed**; on-page
+audit **0 findings / 563 indexable pages**; Community **80 passed / 1 external-DB
+skip**. Default preview build restored. Desktop and 390px browser checks cover
+draft validation, text-only rendering, unchanged URL, preview/edit, clear cancel
+and confirm, type selection, and account email/inbox/profile specimen states.
+No source records, publication gates, account gates, or production aliases changed.
+
+Next: carry this selected pattern into the existing invited Community sign-in and
+moderated submission implementation, then test real mail/durable storage. Do not
+start another competing homepage direction or turn this local draft into intake
+on the Research origin.
+
 Latest pass (11 September, signed-in Mobbin): `BIRCH-MOBBIN-READING-AUDIT-2026-09-11.md`.
 Question/company reading frames and a native source drawer are implemented; duplicate
 company overview blocks are removed. Community specimens now have working search,
