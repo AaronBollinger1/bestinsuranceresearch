@@ -6,6 +6,12 @@ locks and competing design queues. Existing publication, privacy, and release
 gates continue to apply. The executable page map is `src/lib/product-design.ts`;
 review it at `/design/product-system`.
 
+Template pass (11 September): fourteen remaining Direction A page families are
+now interactive specimens at `/design/templates/*`, linked from the blueprint.
+See `BIRCH-DIRECTION-A-TEMPLATES-2026-09-11.md` for the complete state inventory,
+reference lineage, and migration order. Design completeness does not imply that
+accounts, provider calls, intake, or publication have been enabled.
+
 ## Position and first impression
 
 Owner selection: **A / Focus is approved** (11 September). Its default is configured

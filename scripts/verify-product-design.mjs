@@ -4,6 +4,51 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { pagePatterns } from '../src/lib/product-design.ts';
 import { productDesign } from '../src/config/product-design.ts';
+import { designTemplates } from '../src/lib/design-templates.ts';
+
+test('all fourteen Direction A specimens are linked, private, and structurally sound', () => {
+  assert.equal(designTemplates.length,14);
+  assert.equal(new Set(designTemplates.map(template=>template.id)).size,14);
+  const directory=html('/design/product-system');
+  for(const template of designTemplates){
+    const path=`/design/templates/${template.id}`;
+    assert.ok(directory.includes(`href="${path}"`),`${path}: directory link`);
+    const page=html(path);
+    assert.match(page,/<meta\s+name="robots"\s+content="[^"]*noindex/,path);
+    assert.equal((page.match(/<main\b/g)||[]).length,1,path);
+    assert.equal((page.match(/<h1\b/g)||[]).length,1,path);
+    assert.match(page,/Design specimen\. Local interactions only/);
+    const ids=[...page.matchAll(/\sid="([^"]+)"/g)].map(match=>match[1]);
+    assert.equal(new Set(ids).size,ids.length,`${path}: IDs must be unique`);
+    for(const match of page.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(match[1]),`${path}: missing anchor ${match[1]}`);
+    const main=page.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1]||'';
+    assert.doesNotMatch(main,/<form\b|type="(?:email|file|password|submit)"/,`${path}: no actual intake`);
+  }
+});
+
+test('reading specimens retain source targets and point back to existing canonical records',()=>{
+  for(const [id,record] of [['coverage','/insurance/homeowners'],['case-study','/examples/virus-presence-direct-physical-loss'],['source','/sources/cdi-residential-insurance-guide']]){
+    const page=html(`/design/templates/${id}`);
+    assert.ok(page.includes(`href="${record}"`));
+    assert.equal((page.match(/id="source-inspector"/g)||[]).length,1);
+    assert.match(page,/id="source-1"/);
+  }
+  const source=html('/sources/cdi-residential-insurance-guide');
+  for(const [,claim] of html('/design/templates/source').matchAll(/href="\/sources\/cdi-residential-insurance-guide#(c\d+)"/g)) assert.ok(source.includes(`id="${claim}"`),`permanent ${claim} exists`);
+  assert.match(html('/design/templates/case-study'),/What this case does not establish/);
+});
+
+test('account and workflow specimens explicitly expose recovery and no-side-effect states',()=>{
+  for(const state of ['email','inbox','profile','expired','failure']) assert.ok(html('/design/account-preview').includes(`data-account-panel="${state}"`));
+  for(const state of ['start','consent','review','cancelled']) assert.ok(html('/design/templates/your-coverage').includes(`data-coverage-panel="${state}"`));
+  for(const id of ['contributor','company-partner','research-desk','moderation']){
+    const page=html(`/design/templates/${id}`);
+    assert.doesNotMatch(page,/Credential verified|Company verified|Verified policyholder/);
+  }
+  for(const id of ['research-desk','moderation']) assert.match(html(`/design/templates/${id}`),/No approval, removal, notice, or publication occurred/);
+  const saved=html('/design/templates/saved');
+  for(const attr of ['data-library-empty','data-undo-save','data-preference-status']) assert.ok(saved.includes(attr));
+});
 
 test('the selected Direction A is the homepage, not an undecided alternative', () => {
   assert.equal(productDesign.direction, 'focus');

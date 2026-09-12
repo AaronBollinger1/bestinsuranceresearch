@@ -39,12 +39,6 @@ const threads = [
 ];
 
 const rooms = [['All conversations',''], ['Homeowners','homeowners'], ['Auto','auto'], ['Business insurance','professional'], ['Life and health','health']];
-const flow = [
-	['01', 'Read', 'Open the cited research first.'],
-	['02', 'Discuss', 'Ask what the record does not answer.'],
-	['03', 'Verify', 'Attach role, company, or policy context only when needed.'],
-	['04', 'Review', 'Moderation checks provenance, privacy, and conflicts.'],
-];
 ---
 
 <BaseLayout
@@ -151,49 +145,15 @@ const flow = [
 					<div class="commons-preview-context-card commons-preview-coverage-card">
 						<span class="eyebrow">Future / Your Coverage</span>
 						<h3>Ask about your setup privately.</h3>
-						<p>When enabled, a private workspace can redact policy pages locally before a person chooses whether to request professional context.</p>
-						<span class="meta">Canopy Connect or document verification · not enabled</span>
+							<p>Preview how a private connection could separate policy understanding from public participation. No connection, upload, or automatic redaction is enabled.</p>
+							<a class="text-link" href="/design/templates/your-coverage">Preview the consent flow <ArrowRight size={14} aria-hidden="true" /></a>
 					</div>
 				</aside>
 			</div>
 		</div>
 	</section>
 
-	<section class="band band-tight" aria-labelledby="commons-flow-title">
-		<div class="shell">
-			<div class="band-head">
-				<div>
-					<span class="eyebrow">The conversation protocol</span>
-					<h2 id="commons-flow-title">The path from a question to useful context.</h2>
-					<p>Progressive disclosure keeps the social layer approachable while the backend enforces the hard parts: provenance, privacy, moderation, and attribution.</p>
-				</div>
-				<a class="btn btn-secondary btn-sm" href="/contribute">Contribution rules <ArrowRight size={14} aria-hidden="true" /></a>
-			</div>
-			<div class="commons-preview-flow">
-				{flow.map(([number, title, detail]) => (
-					<div class="commons-preview-flow-step">
-						<span class="commons-preview-flow-number">{number}</span>
-						<div><strong>{title}</strong><p>{detail}</p></div>
-					</div>
-				))}
-			</div>
-		</div>
-	</section>
-
-	<section class="band band-ink" aria-labelledby="commons-build-title">
-		<div class="shell commons-preview-build">
-			<div>
-				<span class="eyebrow">Build gate</span>
-				<h2 id="commons-build-title">The interface is ready before the community is.</h2>
-				<p class="lede">This order lets Birch earn trust with the citable research core first, then add durable conversation only when the product can protect contributors and preserve the record.</p>
-			</div>
-			<div class="commons-preview-build-list">
-				<div><span class="status status-established">Built</span><span>Research, citations, source ledger, tools</span></div>
-				<div><span class="status status-plain">Next</span><span>Account, identity, moderation, notifications</span></div>
-				<div><span class="status status-plain">Later</span><span>Policy verification, company response, reputation context</span></div>
-			</div>
-		</div>
-	</section>
+	<div class="shell community-handoff"><details><summary>Design and implementation boundary</summary><p>This forum is an illustrative reading and filtering experience. Posting, account verification, moderation decisions, and notifications remain gated.</p><a href="/design/product-system">All page templates</a> · <a href="/design/templates/moderation">Moderation template</a> · <a href="/design/templates/company-partner">Company participation</a></details></div>
 </BaseLayout>
 
 <script>
@@ -222,6 +182,7 @@ const flow = [
 </script>
 
 <style>
+ .community-handoff { padding-block:16px 48px;color:var(--muted);font-size:var(--text-xs);line-height:1.7; }.community-handoff summary { min-height:var(--tap);padding-block:12px;cursor:pointer; }
 	.community-feed-filters { display:flex; flex-wrap:wrap; gap:4px; margin-top:24px; border-bottom:1px solid var(--line); }
 	.community-feed-filters[hidden], .commons-preview-thread[hidden] { display:none; }
 	.community-feed-filters button { min-height:44px; border:0; border-bottom:2px solid transparent; background:transparent; padding:8px; color:var(--muted); font:500 var(--text-xs)/1.3 var(--font-sans); cursor:pointer; }
@@ -317,6 +278,22 @@ const flow = [
 
   .commons-preview-composer { display:flex; flex-wrap:wrap; align-items:center; gap:12px; border-style:solid; background:var(--paper); }
   .commons-preview-composer strong { font-size:var(--text-sm); }
+  .commons-preview-shell { gap:24px;border:0;background:transparent;box-shadow:none;overflow:visible;grid-template-columns:170px minmax(0,1fr) 240px; }
+  .commons-preview-main { border:1px solid var(--line);border-radius:var(--r-4);background:var(--white); }
+  .commons-preview-sidebar,.commons-preview-context,.commons-preview-context-card { background:transparent; }
+  .commons-preview-context-card { padding:20px 0;border-bottom:1px solid var(--line); }
+  .commons-preview-context-card:first-child { padding-top:4px; }
+  .commons-preview-context-card h3 { font:500 var(--text-sm)/1.5 var(--font-sans); }
+  .commons-preview-context-card p { font-size:var(--text-xs);line-height:1.7; }
+  .commons-preview-thread { border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;padding:20px 0; }
+  .commons-preview-thread:hover { background:transparent;border-color:var(--line); }
+  .commons-preview-thread:hover h3 { color:var(--brand-blue-text); }
+  .commons-preview-thread-list { gap:0;margin-top:8px; }
+  .commons-preview-type.experience,.commons-preview-type.company { color:var(--brand-blue-text); }
+  .commons-preview-thread-foot { border:0;padding-top:0;line-height:1.6; }
+  .commons-preview-coverage-card { border-top:0; }
+  @media(max-width:1080px){.commons-preview-shell { grid-template-columns:170px minmax(0,1fr); }.commons-preview-context { gap:24px; }.commons-preview-context-card + .commons-preview-context-card { border-left:0; }}
+  @media(max-width:760px){.commons-preview-shell { grid-template-columns:minmax(0,1fr);gap:16px; }}
   .commons-preview-composer .mono { width:100%; margin:0; }
   .commons-preview-main-head h2 { font:600 var(--text-xl)/1.3 var(--font-sans); letter-spacing:-.025em; }
   @media(max-width:760px) {

@@ -1,5 +1,34 @@
 # Handoff
 
+Latest pass (11 September, remaining page templates): **fourteen Direction A
+specimens are implemented** at `/design/templates/*` and linked from
+`/design/product-system`. See `BIRCH-DIRECTION-A-TEMPLATES-2026-09-11.md` for the
+full inventory, reference lineage and migration order. Browse, reading, personal,
+company participation, tools, research operations and moderation use shared
+frames and keyboard-accessible tabs. Existing corpus data supplies research and
+counts; no new insurance assertions, fake credentials or activity were added.
+
+The community and thread specimens have quieter rows, wider reading space and
+less design-plan copy in the main experience. Account preview adds expired-link
+and delivery-failure recovery. Private coverage is only a consent walkthrough:
+no file, credential, policy, provider or contact-data intake. Saved/preferences
+controls are DOM-local and are not persisted. Operations decisions are previews.
+
+Verification: root suite **180 passed**; production posture **162 passed**;
+on-page audit **0 findings / 563 indexable pages**; Community **80 passed / 1
+external-DB skip**. All 14 new routes checked at 1280px and 390px: no horizontal
+overflow. Browser exercises cover search/type filtering/no results/clear,
+source drawer/Escape/focus return, tabs with End key, saved remove-all/undo,
+coverage choose/review/edit/cancel, operations selection/decision/provider failure,
+account expired-link/delivery-failure and community type filtering. Screenshots
+are in workspace `outputs/direction-a-templates-2026-09-11/`. No production alias
+or signup/publication gate changed.
+
+Next: migrate the approved browse/reading templates into the existing canonical
+routes without changing their content, then carry account/contribution designs
+into the invited Community application and verify real mail/durable storage.
+Do not open public signup or policy intake as part of a visual migration.
+
 Latest pass (11 September, owner selects A): **Direction A / Focus is selected**,
 configured in `src/config/product-design.ts`. The homepage retains its approved
 composition. Professional entry, contribution draft, and account specimen now

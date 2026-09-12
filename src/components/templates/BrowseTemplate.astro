@@ -1,0 +1,44 @@
+---
+import { ArrowRight, BookOpen, Search, MapPin, FileText } from '@lucide/astro';
+import type { Corpus } from '../../lib/corpus';
+import { allIndustryHubs } from '../../lib/industry-hub';
+interface Props { kind: string; corpus: Corpus; }
+const { kind, corpus } = Astro.props;
+const industry = allIndustryHubs(corpus).find(item => item.id === (kind === 'industry' ? 'small-business' : 'homeowners-and-residential-property'))!;
+const questions = kind === 'state' ? corpus.questions.filter(q => q.data.states.includes('CA')) : industry.questions;
+const coverages = kind === 'state' ? corpus.coverages : industry.coverages;
+const sources = kind === 'state' ? corpus.sources.filter(s => s.data.jurisdiction === 'CA' && s.data.primary) : industry.sourceIds.map(id => corpus.sourceById.get(id)!);
+const title = kind === 'industry' ? 'Small business' : kind === 'state' ? 'California' : 'Homeowners & residential property';
+const contextHref = kind === 'state' ? '/states/california' : `/industries/${industry.id}`;
+const records = [
+ ...questions.map(q => ({ title: q.data.question, href: `/questions/${q.id}`, kind: 'Question', meta: `${q.data.sourceIds.length} sources · Research record` })),
+ ...coverages.map(c => ({ title: c.data.name, href: `/insurance/${c.id}`, kind: 'Coverage', meta: `${c.data.sourceIds.length} sources · Coverage guide` })),
+];
+---
+<div class="template-columns">
+ <div>
+  <div class="template-stat-grid" aria-label="Existing record counts"><div><strong>{questions.length}</strong><span>Questions in this view</span></div><div><strong>{coverages.length}</strong><span>Coverage records</span></div><div><strong>{sources.length}</strong><span>Source records</span></div></div>
+  <section class="template-surface" data-browse-template>
+   <div class="template-filter"><label for="browse-search"><span class="u-visually-hidden">Filter this research</span><input id="browse-search" type="search" placeholder="Find a question or coverage…" data-browse-search /></label><label for="browse-kind"><span class="u-visually-hidden">Record type</span><select id="browse-kind" data-browse-kind><option value="all">All research</option><option>Question</option><option>Coverage</option></select></label></div>
+   <div class="template-pad"><div class="template-section-head"><h2>{title}</h2><span class="template-pill">Research</span></div><p class="template-status" data-browse-status role="status">{records.length} existing records. Editorial review status is shown on each record.</p>
+    <div class="template-list">{records.map(record => <a class="template-row" href={record.href} data-browse-record data-title={record.title.toLowerCase()} data-kind={record.kind}><BookOpen size={18} aria-hidden="true"/><div><h3>{record.title}</h3><div class="template-meta"><span>{record.kind}</span><span>{record.meta}</span></div></div><ArrowRight class="row-arrow" size={16} aria-hidden="true"/></a>)}</div>
+    <div class="template-empty" data-browse-empty hidden><Search size={28} aria-hidden="true"/><h2>No matching records.</h2><p>Try a broader phrase or show all research. A missing result does not mean a coverage does not exist.</p><button class="btn btn-quiet" type="button" data-browse-reset>Clear filters</button></div>
+   </div>
+  </section>
+ </div>
+ <aside class="template-context" aria-label="Research context">
+  <section><h2>{kind === 'state' ? 'Place matters.' : 'Start with context.'}</h2><p>{kind === 'state' ? 'This view gathers records tagged California. Federal and multistate questions may still matter; the filter is not a completeness claim.' : 'These are starting points for research, not a recommendation that every coverage applies to your home or business.'}</p><a class="template-context-link" href={contextHref}><MapPin size={15} aria-hidden="true"/>Open the full context hub</a></section>
+  <section><h2>Go to the source</h2>{sources.slice(0,3).map(source => <a class="template-context-link" href={`/sources/${source.id}`}><FileText size={15} aria-hidden="true"/>{source.data.publisher}</a>)}<p>Source reading and licensed editorial review are different steps.</p></section>
+  <section><h2>Bring a question.</h2><p>Read the research first. Use the community to add context and first-person experience.</p><a class="template-context-link" href="/design/commons-preview">Explore the community <ArrowRight size={15} aria-hidden="true"/></a><a class="template-context-link" href="/ask">Ask Birch <ArrowRight size={15} aria-hidden="true"/></a></section>
+ </aside>
+</div>
+<script>
+ document.querySelectorAll<HTMLElement>('[data-browse-template]').forEach(root => {
+  const input=root.querySelector<HTMLInputElement>('[data-browse-search]')!;
+  const select=root.querySelector<HTMLSelectElement>('[data-browse-kind]')!;
+  const rows=[...root.querySelectorAll<HTMLElement>('[data-browse-record]')];
+  const filter=()=>{const query=input.value.trim().toLowerCase(); let count=0; rows.forEach(row=>{row.hidden=!(row.dataset.title?.includes(query)&&(select.value==='all'||row.dataset.kind===select.value)); if(!row.hidden)count++;}); root.querySelector<HTMLElement>('[data-browse-empty]')!.hidden=count>0; root.querySelector('[data-browse-status]')!.textContent=`${count} of ${rows.length} existing records shown.`;};
+  input.addEventListener('input',filter);select.addEventListener('change',filter);
+  root.querySelector('[data-browse-reset]')?.addEventListener('click',()=>{input.value='';select.value='all';filter();input.focus();});
+ });
+</script>
