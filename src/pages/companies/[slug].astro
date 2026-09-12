@@ -7,7 +7,9 @@ import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
 import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
-import ProductContextBar from '../../components/ProductContextBar.astro';
+import RecordNavigation from '../../components/RecordNavigation.astro';
+import SourceInspector from '../../components/SourceInspector.astro';
+import '../../styles/reading.css';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { createCiter, stripMarkers } from '../../lib/citations';
@@ -29,7 +31,6 @@ const path = `/companies/${entry.id}`;
 const machinePath = `${path}.json`;
 const commonsHref = `${siteConfig.communityOrigin}/threads?subject=${encodeURIComponent(`company:${entry.id}`)}`;
 const companyInitials = d.shortName.replace(/[^A-Za-z0-9]/g, '').slice(0, 2).toUpperCase() || 'CO';
-const officialHost = d.officialUrls[0]?.url ? new URL(d.officialUrls[0].url).hostname.replace(/^www\./, '') : 'Official domain not listed';
 
 const sourceIds = idsOf(d.sourceIds);
 const sources = ledgerFor(sourceIds, corpus.sourceById, `organization "${entry.id}"`);
@@ -63,15 +64,6 @@ const ORG_TYPE_LABEL: Record<string, string> = {
 	'insurance-group': 'Insurance group',
 	'residual-market': 'Residual market mechanism',
 };
-
-const pageMap = [
-	{ number: '01', label: 'Documented identity', detail: 'The sourced organization record', href: '#identity' },
-	{ number: '02', label: 'Coverage context', detail: 'Research links without a catalog verdict', href: '#coverage-context' },
-	{ number: '03', label: 'Official website', detail: 'Channels and records to check', href: '#official' },
-	{ number: '04', label: 'Financial context', detail: 'No Birch score or ranking', href: '#financial-context' },
-	{ number: '05', label: 'Community lanes', detail: 'Forums, threads, and experiences', href: '#community' },
-	...(d.filedForms.length ? [{ number: '06', label: 'Filed forms', detail: 'Source-linked documents only', href: '#filed-forms' }] : []),
-];
 
 const communityLanes = [
 	{
@@ -146,6 +138,7 @@ const jsonLd = graph(
 		dateModified: d.lastReviewed,
 		author: d.author,
 		reviewer: d.reviewer,
+		reviewState: d.reviewState,
 		sections: sections.map((s) => s.label),
 		about: [d.orgType, ...d.jurisdictions],
 		citations: sources.map((s) => ({ name: s.data.title, url: s.data.url, publisher: s.data.publisher })),
@@ -153,39 +146,27 @@ const jsonLd = graph(
 );
 ---
 
-	<BaseLayout title={d.legalName} description={description} jsonLd={jsonLd} pageType="company" machinePath={machinePath}>
+	<BaseLayout title={d.legalName} description={description} jsonLd={jsonLd} pageType="company" machinePath={machinePath} bodyClass="birch-reading">
 		<article>
 			<header class="band band-first band-paper answer-head company-profile-head">
 				<div class="shell">
 					<div class="company-profile-crumbs"><Breadcrumbs trail={trail} /></div>
-					<ProductContextBar active="companies" />
 					<div class="company-profile-hero">
 						<div class="company-profile-main">
 							<div class="company-profile-kicker"><span class="company-profile-mark" aria-hidden="true">{companyInitials}</span><span class="eyebrow">Birch company dossier</span><StatusChip kind={d.reviewState} /></div>
 							<h1>{d.legalName}</h1>
-							<p class="lede">Company facts, coverage context, and the sources behind them.</p>
-							<div class="answer-flags company-profile-flags"><span class="meta">{ORG_TYPE_LABEL[d.orgType] ?? d.orgType}</span><span class="meta">{d.jurisdictions.join(', ')}</span><span class="meta">Reviewed {longDate(d.lastReviewed)}</span></div>
+							<div class="answer-flags company-profile-flags"><span class="meta">{ORG_TYPE_LABEL[d.orgType] ?? d.orgType}</span><span class="meta">{d.jurisdictions.join(', ')}</span></div>
 							<div class="company-profile-actions">
 								<a class="btn btn-primary" href="/ask">Ask Birch <ArrowRight size={15} aria-hidden="true" /></a>
-								{d.officialUrls[0]?.url && <a class="btn btn-secondary" href={d.officialUrls[0].url} rel="noopener nofollow" target="_blank">Official website <ExternalLink size={14} aria-hidden="true" /></a>}
+								{d.officialUrls[0]?.url && <a class="btn btn-secondary" href={d.officialUrls[0].url} rel="noopener nofollow" target="_blank">Official record <ExternalLink size={14} aria-hidden="true" /></a>}
 								<a class="btn btn-quiet" href="#source-ledger">{sources.length} source records</a>
 							</div>
 						</div>
-						<aside class="company-profile-record" aria-label="Company record summary">
-							<div class="company-profile-record-head"><span class="eyebrow">Record at a glance</span><span class="mono">{officialHost}</span></div>
-							<div class="company-profile-stats">
-								<div><span>Sources</span><strong>{sources.length}</strong></div>
-								<div><span>Questions</span><strong>{allRelated.length}</strong></div>
-								<div><span>Coverage</span><strong>{relatedCoverages.length}</strong></div>
-								<div><span>Community</span><strong>{siteConfig.communityReady ? 'Open' : 'Preview'}</strong></div>
-							</div>
-							<div class="company-profile-enrichment"><a href="#source-ledger">See where these records come from <ArrowRight size={14} aria-hidden="true" /></a></div>
-						</aside>
 					</div>
 					<dl class="answer-dates">
-						<div><dt>Last reviewed</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
+						<div><dt>{d.reviewState === 'under-review' ? 'Record date' : 'Last reviewed'}</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
 					<div><dt>Author</dt><dd>{d.author}</dd></div>
-					<div><dt>Reviewer</dt><dd>{d.reviewer}</dd></div>
+					<div><dt>{d.reviewState === 'under-review' ? 'Reviewer (assigned)' : 'Reviewer'}</dt><dd>{d.reviewer}</dd></div>
 					{d.naic?.companyCode && <div><dt>NAIC company code</dt><dd class="num">{d.naic.companyCode}</dd></div>}
 					{d.naic?.groupCode && <div><dt>NAIC group code</dt><dd class="num">{d.naic.groupCode}</dd></div>}
 						<div><dt>Machine record</dt><dd><a href={machinePath}>Open JSON</a></dd></div>
@@ -193,53 +174,14 @@ const jsonLd = graph(
 				</div>
 			</header>
 
-		<section class="band band-tight company-dossier-band" aria-labelledby="company-dossier-overview-title">
-			<div class="shell">
-				<div class="company-dossier-overview">
-					<aside class="company-dossier-identity-card" aria-labelledby="company-dossier-overview-title">
-						<div class="company-dossier-card-kicker"><span class="company-dossier-neutral-mark" aria-hidden="true">{companyInitials}</span><span class="eyebrow">Company dossier</span></div>
-						<h2 id="company-dossier-overview-title">{d.shortName}</h2>
-						<p class="company-dossier-identity-type">{ORG_TYPE_LABEL[d.orgType] ?? d.orgType}</p>
-						<a class="company-dossier-official" href={d.officialUrls[0]?.url ?? '#official'} rel="noopener nofollow" target={d.officialUrls[0]?.url ? '_blank' : undefined}>
-							<ExternalLink size={14} aria-hidden="true" /> {officialHost}
-						</a>
-						<div class="company-dossier-actions">
-							<a class="btn btn-primary btn-sm" href="/ask">Ask Birch <ArrowRight size={15} aria-hidden="true" /></a>
-							<a class="company-dossier-source-link" href="#source-ledger">Read {sources.length} sources</a>
-						</div>
-					</aside>
-
-					<section class="company-dossier-research-card" aria-labelledby="company-dossier-research-title">
-						<div class="company-dossier-card-kicker"><span class="company-context-label"><BookOpen size={15} aria-hidden="true" /> Research lane</span><span class="company-dossier-state">Source-backed</span></div>
-						<h2 id="company-dossier-research-title">What Birch can document</h2>
-						<div class="company-dossier-summary"><p set:html={cite.inline(d.summary)} /></div>
-						<div class="company-dossier-links" aria-label="Research shortcuts">
-							<a href="#identity"><span><strong>Identity</strong><small>Regulator and organization record</small></span><ArrowRight size={15} aria-hidden="true" /></a>
-							<a href="#coverage-context"><span><strong>Coverage context</strong><small>Declared Research relationships</small></span><ArrowRight size={15} aria-hidden="true" /></a>
-							<a href="#official"><span><strong>Official channels</strong><small>Where to verify for yourself</small></span><ArrowRight size={15} aria-hidden="true" /></a>
-						</div>
-					</section>
-
-					<aside class="company-dossier-community-card" aria-labelledby="company-dossier-community-title">
-						<div class="company-dossier-card-kicker"><span class="company-context-label"><MessageCircle size={15} aria-hidden="true" /> Community context</span><span class="company-dossier-state">{siteConfig.communityReady ? 'Open' : 'Private preview'}</span></div>
-						<h2 id="company-dossier-community-title">Find the conversation</h2>
-						<p>Experiences and responses stay separate from the sourced record, with authorship and moderation visible.</p>
-						<nav class="company-dossier-community-links" aria-label="Community lanes">
-							<a href="#forums">Forums <ArrowRight size={14} aria-hidden="true" /></a>
-							<a href="#threads">Threads <ArrowRight size={14} aria-hidden="true" /></a>
-							<a href="#experiences">Experiences <ArrowRight size={14} aria-hidden="true" /></a>
-						</nav>
-						<p class="mono company-dossier-community-note">{siteConfig.communityReady ? 'Discussion is available through Community.' : 'Discussion will open after the moderation and account gates are ready.'}</p>
-					</aside>
-				</div>
-			</div>
-		</section>
+		<RecordNavigation sections={[{ id: 'identity', label: 'Overview' }, { id: 'coverage-context', label: 'Coverage' }, { id: 'official', label: 'Official channels' }, { id: 'community', label: 'Community' }, { id: 'source-ledger', label: 'Sources' }]} sourceCount={sources.length} />
 
 		<div class="band band-tight">
 			<div class="shell answer-grid">
 				<div>
-					<section aria-labelledby="identity">
-						<h2 id="identity" class="u-visually-hidden">Verified identity</h2>
+					<section class="record-lead" aria-labelledby="identity">
+						<h2 id="identity">Overview</h2>
+						<p set:html={cite.inline(d.summary)} />
 						{
 							d.regulatoryIdentity && (
 								<section class="company-regulatory-snapshot" aria-labelledby="regulatory-snapshot-title">
@@ -269,23 +211,6 @@ const jsonLd = graph(
 						assumes="Official material, regulator records, and third-party experience remain separate, with dates and jurisdiction attached."
 						cannotDecide="It cannot rate the organization or predict an outcome in a specific claim, policy, or interaction."
 					/>
-
-					<section class="company-page-map" aria-labelledby="company-page-map-title">
-						<div class="company-page-map-heading">
-							<span class="eyebrow">Company page map</span>
-							<h2 id="company-page-map-title">One record, separate contexts</h2>
-							<p>Use the lane that matches the question. Sourced facts, official material, and community conversation never share a status badge.</p>
-						</div>
-						<div class="company-page-map-grid">
-							{pageMap.map((item) => (
-								<a class="company-page-map-card" href={item.href}>
-									<span class="company-page-map-number">{item.number}</span>
-									<span><strong>{item.label}</strong><small>{item.detail}</small></span>
-									<ArrowRight size={15} aria-hidden="true" />
-								</a>
-							))}
-						</div>
-					</section>
 
 					<section class="answer-section company-context-section" aria-labelledby="coverage-context" data-company-lane="coverage">
 						<h2 id="coverage-context">Coverage context</h2>
@@ -481,6 +406,7 @@ const jsonLd = graph(
 							path,
 							published: d.lastReviewed,
 							reviewed: d.lastReviewed,
+							reviewState: d.reviewState,
 							author: d.author,
 							id: entry.id,
 							pageType: 'organization',
@@ -508,6 +434,7 @@ const jsonLd = graph(
 							) : (
 								<Callout tone="privacy" label="Community availability">
 									<p><strong>Community is in private preview.</strong> The discussion layer will open after deployment, database, mail delivery, and moderation gates are ready.</p>
+									{siteConfig.environment !== 'production' && <p><a href="/design/commons-preview">Try the community interface preview <ArrowRight size={14} aria-hidden="true" /></a> — illustrative examples, not activity for this company.</p>}
 								</Callout>
 							)
 						}
@@ -564,12 +491,13 @@ const jsonLd = graph(
 			</div>
 		</div>
 	</article>
+	<SourceInspector sources={sources} />
 </BaseLayout>
 
 	<style>
 		.company-profile-head { padding-block: clamp(var(--s-5), 4vw, var(--s-8)) var(--s-5); }
 		.company-profile-crumbs { margin-bottom: var(--s-4); }
-		.company-profile-hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(330px, .7fr); gap: clamp(var(--s-8), 6vw, var(--s-12)); align-items: center; margin-top: var(--s-8); }
+		.company-profile-hero { margin-top: 20px; }
 		.company-profile-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); }
 		.company-profile-kicker .eyebrow { margin: 0; }
 		.company-profile-mark { display: grid; place-items: center; width: 52px; height: 52px; border-radius: var(--r-3); background: var(--brand-blue); color: var(--white); font-family: var(--font-display); font-size: var(--text-xl); box-shadow: inset 0 1px 0 rgba(255,255,255,.32); }

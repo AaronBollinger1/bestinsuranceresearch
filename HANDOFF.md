@@ -1,5 +1,27 @@
 # Handoff
 
+Latest pass (11 September, signed-in Mobbin): `BIRCH-MOBBIN-READING-AUDIT-2026-09-11.md`.
+Question/company reading frames and a native source drawer are implemented; duplicate
+company overview blocks are removed. Community specimens now have working search,
+room/type filters, empty states, and a thread-to-account preview path. Mobile thread
+content is no longer preceded by the full desktop room rail. Focus / A and the actual
+bird/logo/colors remain unchanged. Four references are saved in the private Mobbin
+collection linked from the audit and `/design/product-system`.
+
+Latest checks: root `npm run validate` passes 174 tests; production-posture build
+passes 162 assertions; on-page audit has zero findings across 563 indexable pages;
+community validation passes 80 with one database-dependent test skipped. Preview
+build restored. Browser checked desktop/390px source selection, Escape/focus return,
+copyable pending-review citations, company filtering, community filtering/empty
+states, and thread-to-account preview. No signup/posting gates or production aliases
+were changed. `TechArticle.reviewedBy` now requires an explicit reviewed state;
+pending question/company citation exports say review is pending.
+
+Next: the single moderated contribution journey using existing `commons/` code,
+then real account failure states and durable mail/database smoke tests. Extend the
+shared reading layout and explicit citation-review state to the other record families.
+The older pass notes below remain history, not a competing next-step queue.
+
 Current design pass (11 September): see `BIRCH-PRODUCT-DESIGN-SYSTEM.md` and
 `/design/product-system`. Focus / A is now the consumer homepage; Editorial / B
 and Explore / C are working alternatives. Birch Community replaces the visible

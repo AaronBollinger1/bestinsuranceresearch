@@ -1,7 +1,7 @@
 /** Design contracts, not promises that the service behind a specimen is live. */
 export const pagePatterns = [
   { group: 'Discover', title: 'Landing', href: '/design/directions/focus', action: 'Ask Birch', pattern: 'One question composer; short starting points; a working product preview.', state: 'Implemented', next: 'Test comprehension and successful question starts.' },
-  { group: 'Discover', title: 'Answer', href: '/questions/replacement-cost-vs-market-value', action: 'Ask a follow-up', pattern: 'Short answer, scope, claim citations, source drawer, related questions.', state: 'Existing research', next: 'Reuse the new compact product header and source treatment.' },
+  { group: 'Discover', title: 'Answer', href: '/questions/replacement-cost-vs-market-value', action: 'Read and check sources', pattern: 'Short answer, scope, inline citations, source drawer, section navigation, citation export.', state: 'Implemented', next: 'Extend the reading pattern to coverage, state, and case-study pages.' },
   { group: 'Discover', title: 'Coverage / industry / state', href: '/industries', action: 'Explore this topic', pattern: 'A shared topic header, useful questions, guides, cases, and tools.', state: 'Existing research', next: 'One topic template with jurisdiction and audience filters.' },
   { group: 'Discover', title: 'Company directory', href: '/companies', action: 'Find a company', pattern: 'Search first; distinguish a group, brand, legal insurer, regulator, and program.', state: 'Implemented', next: 'Add sourced insurer entities and brand-to-entity mapping.' },
   { group: 'Discover', title: 'Company profile', href: '/companies/farmers-insurance-exchange', action: 'Ask about this company', pattern: 'Identity, coverage, community, sources. A facts rail and contextual actions.', state: 'Implemented', next: 'Connect coverage forms, dated figures, and community subjects.' },
@@ -21,8 +21,8 @@ export const pagePatterns = [
 export const interactionRules = [
   ['Navigation', 'Icons plus labels; pointer hover and keyboard open; Escape restores focus; tap toggles.'],
   ['Buttons', '44px minimum target; 120-180ms color/press feedback; one primary action in each section.'],
-  ['Sources', 'Inline citation opens the source record. A disclosure reveals provenance without hiding the answer.'],
-  ['Tabs', 'Arrow keys, Home, End, visible selection, and meaningful deep links for record sections.'],
+  ['Sources', 'Inline citations open a source drawer on answer and company pages. Escape returns focus; permanent source anchors remain the no-JavaScript fallback.'],
+  ['Tabs and sections', 'View tabs use arrow keys and visible selection. Record sections use ordinary keyboard-focusable links with meaningful deep links.'],
   ['Reading', '65-75 characters per line; sources at right on desktop and below on mobile; steady text.'],
   ['Motion', 'Only navigation and state changes move. Respect reduced motion. Never delay an answer for an effect.'],
   ['Engagement', 'Saved research, followed topics, useful replies, and corrections. No fabricated activity or posting streaks.'],

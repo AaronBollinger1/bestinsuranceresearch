@@ -185,6 +185,7 @@ export function techArticle(input: {
 	dateModified: string;
 	author: string;
 	reviewer: string;
+	reviewState?: 'reviewed' | 'under-review' | 'corrected';
 	sections: string[];
 	citations: Array<{ name: string; url: string; publisher: string }>;
 	about?: string[];
@@ -201,7 +202,8 @@ export function techArticle(input: {
 		isPartOf: { '@id': websiteId },
 		publisher: { '@id': organizationId },
 		author: { '@type': 'Person', name: input.author },
-		reviewedBy: { '@type': 'Person', name: input.reviewer },
+		/* An assigned reviewer is not an endorsement. Require explicit signoff state. */
+		...(input.reviewState === 'reviewed' ? { reviewedBy: { '@type': 'Person', name: input.reviewer } } : {}),
 		articleSection: input.sections,
 		about: input.about?.map((term) => ({ '@type': 'Thing', name: term })),
 		citation: input.citations.map((source) => ({

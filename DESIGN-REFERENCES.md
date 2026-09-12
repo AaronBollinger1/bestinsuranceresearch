@@ -1,5 +1,10 @@
 # Design References
 
+Latest signed-in Mobbin pass: `BIRCH-MOBBIN-READING-AUDIT-2026-09-11.md`.
+The private [Birch — Product UX collection](https://mobbin.com/collections/38f9a642-ecc6-4e00-b9da-74c9ac44bced/web/screens)
+contains the inspected source-panel, record-detail, posting, and setup references.
+Question/company reading layouts now use the shared source drawer and section navigation.
+
 Current decision: `BIRCH-PRODUCT-DESIGN-SYSTEM.md`. The 11 September consumer
 design pass replaces the earlier homepage lock with Focus / A, adds working
 Editorial / B and Explore / C alternatives, and renames the social experience

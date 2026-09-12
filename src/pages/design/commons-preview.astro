@@ -2,7 +2,6 @@
 import { ArrowRight, BadgeCheck, BookOpen, Building2, Flag, LockKeyhole, Search, ShieldCheck, UserRound } from '@lucide/astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import ProductContextBar from '../../components/ProductContextBar.astro';
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -39,7 +38,7 @@ const threads = [
 	},
 ];
 
-const rooms = ['All conversations', 'Homeowners', 'Auto', 'Business insurance', 'Life and health'];
+const rooms = [['All conversations',''], ['Homeowners','homeowners'], ['Auto','auto'], ['Business insurance','professional'], ['Life and health','health']];
 const flow = [
 	['01', 'Read', 'Open the cited research first.'],
 	['02', 'Discuss', 'Ask what the record does not answer.'],
@@ -57,7 +56,6 @@ const flow = [
 	<section class="band band-first band-paper commons-product-hero" aria-labelledby="commons-product-title">
 		<div class="shell">
 			<Breadcrumbs trail={trail} />
-			<ProductContextBar active="commons" />
 			<div class="commons-product-intro">
 				<div>
 					<div class="commons-product-kicker"><span class="eyebrow">Birch Community</span><span class="status status-plain">Private product preview</span></div>
@@ -69,11 +67,7 @@ const flow = [
 						<a class="btn btn-quiet" href="/professionals">For professionals</a>
 					</div>
 				</div>
-				<div class="commons-product-rules" aria-label="Community product rules">
-					<div><BookOpen size={17} aria-hidden="true" /><span><strong>Research stays primary</strong><small>A post cannot rewrite a cited answer.</small></span></div>
-					<div><BadgeCheck size={17} aria-hidden="true" /><span><strong>Roles stay visible</strong><small>Professional and company affiliations are disclosed.</small></span></div>
-					<div><ShieldCheck size={17} aria-hidden="true" /><span><strong>Moderation before reach</strong><small>Privacy, evidence, and conflicts are checked first.</small></span></div>
-				</div>
+
 			</div>
 			<div class="commons-preview-boundary"><LockKeyhole size={16} aria-hidden="true" /><span><strong>No live activity.</strong> These are illustrative interface states, not posts, counts, endorsements, ratings, or company participation.</span></div>
 		</div>
@@ -90,10 +84,10 @@ const flow = [
 					<label class="commons-preview-search">
 						<Search size={15} aria-hidden="true" />
 						<span class="u-visually-hidden">Search Community specimen</span>
-						<input type="search" aria-label="Search Community specimen" placeholder="Search a room or thread" disabled />
+						<input id="community-specimen-search" type="search" aria-label="Search Community specimen" placeholder="Search example threads" disabled />
 					</label>
 					<nav class="commons-preview-rooms" aria-label="Conversation rooms">
-						{rooms.map((room, index) => <a href="#threads" class={index === 0 ? 'is-active' : undefined}>{room}</a>)}
+						{rooms.map(([label,query],index) => <button type="button" data-community-room={query} aria-pressed={index === 0} disabled>{label}</button>)}
 					</nav>
 					<div class="commons-preview-sidebar-note">
 						<span class="meta">No popularity ranking</span>
@@ -111,33 +105,22 @@ const flow = [
 						<span class="status status-plain">Future / gated</span>
 					</div>
 
-					<div class="commons-preview-composer" aria-label="Future thread composer">
-						<div class="commons-preview-composer-top">
-							<div class="commons-preview-avatar" aria-hidden="true">B</div>
-							<div>
-								<strong>Start a useful thread.</strong>
-								<span>Choose the kind of context before you write.</span>
-							</div>
-						</div>
-						<div class="commons-preview-composer-controls" role="group" aria-label="Future composer controls">
-							<button type="button" class="btn btn-secondary btn-sm" disabled>Experience</button>
-							<button type="button" class="btn btn-secondary btn-sm" disabled>Professional note</button>
-							<button type="button" class="btn btn-secondary btn-sm" disabled>Source request</button>
-							<button type="button" class="btn btn-primary btn-sm" disabled><LockKeyhole size={14} aria-hidden="true" /> Sign in to continue</button>
-						</div>
-						<p class="mono">Authentication, privacy review, and moderation are required before anything can publish.</p>
-					</div>
+					<div class="commons-preview-composer"><strong>Have a question or experience?</strong><a class="btn btn-secondary btn-sm" href="/contribute">Prepare a contribution <ArrowRight size={14} aria-hidden="true" /></a><p class="mono">Private draft only. No public posting is enabled.</p></div>
 
+					<div class="community-feed-filters" role="group" aria-label="Filter example conversations" hidden>
+						{[['all','All'],['experience','Experiences'],['professional','Professional notes'],['company','Company replies']].map(([value,label]) => <button type="button" data-community-filter={value} aria-pressed={value === 'all'}>{label}</button>)}
+					</div>
+					<p id="community-specimen-status" class="community-feed-status" role="status" aria-live="polite">Illustrative examples · not live posts</p>
 					<div class="commons-preview-thread-list" aria-label="Illustrative conversation threads">
 						{threads.map((thread) => {
 							const Icon = thread.icon;
 							return (
-								<article class={`commons-preview-thread commons-preview-thread-${thread.tone}`}>
+								<article class={`commons-preview-thread commons-preview-thread-${thread.tone}`} data-specimen-thread={thread.tone} data-specimen-search={`${thread.title} ${thread.body} ${thread.context}`}>
 									<div class="commons-preview-thread-top">
 										<span class={`commons-preview-type ${thread.tone}`}><Icon size={14} aria-hidden="true" /> {thread.type}</span>
 										<span class="meta">Specimen state</span>
 									</div>
-									<h3><a href="/design/thread-preview">{thread.title}</a></h3>
+									<h3><a href={`/design/thread-preview${thread.tone === 'professional' ? '#professional-reply' : thread.tone === 'company' ? '#company-response' : ''}`}>{thread.title}</a></h3>
 									<p>{thread.body}</p>
 									<div class="commons-preview-thread-foot">
 										<span>{thread.byline}</span>
@@ -213,11 +196,42 @@ const flow = [
 	</section>
 </BaseLayout>
 
+<script>
+	const feedSearch = document.querySelector<HTMLInputElement>('#community-specimen-search');
+	const feedRows = [...document.querySelectorAll<HTMLElement>('[data-specimen-thread]')];
+	const feedFilters = [...document.querySelectorAll<HTMLButtonElement>('[data-community-filter]')];
+	const feedStatus = document.querySelector('#community-specimen-status');
+	const roomButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-community-room]')];
+	let feedType = 'all';
+	function filterFeed() {
+		const query = feedSearch?.value.trim().toLowerCase() || '';
+		let count = 0;
+		roomButtons.forEach(button => button.setAttribute('aria-pressed',String(button.dataset.communityRoom === query)));
+		feedRows.forEach(row => {
+			row.hidden = (feedType !== 'all' && row.dataset.specimenThread !== feedType) || !row.dataset.specimenSearch?.toLowerCase().includes(query);
+			if (!row.hidden) count++;
+		});
+		feedFilters.forEach(button => button.setAttribute('aria-pressed',String(button.dataset.communityFilter === feedType)));
+		if(feedStatus) feedStatus.textContent = count ? `${count} illustrative ${count === 1 ? 'example' : 'examples'} · not live posts` : 'No example matches. Clear the search or choose All.';
+	}
+	roomButtons.forEach(button => { button.disabled = false; button.addEventListener('click',() => { if(feedSearch) feedSearch.value = button.dataset.communityRoom || ''; feedType = 'all'; filterFeed(); }); });
+	if(feedSearch) { feedSearch.disabled = false; feedSearch.addEventListener('input',filterFeed); }
+	const filterGroup = document.querySelector<HTMLElement>('.community-feed-filters');
+	if(filterGroup) filterGroup.hidden = false;
+	feedFilters.forEach(button => button.addEventListener('click',() => { feedType = button.dataset.communityFilter || 'all'; filterFeed(); }));
+</script>
+
 <style>
+	.community-feed-filters { display:flex; flex-wrap:wrap; gap:4px; margin-top:24px; border-bottom:1px solid var(--line); }
+	.community-feed-filters[hidden], .commons-preview-thread[hidden] { display:none; }
+	.community-feed-filters button { min-height:44px; border:0; border-bottom:2px solid transparent; background:transparent; padding:8px; color:var(--muted); font:500 var(--text-xs)/1.3 var(--font-sans); cursor:pointer; }
+	.community-feed-filters button[aria-pressed="true"] { color:var(--brand-blue-text); border-bottom-color:var(--brand-blue); }
+	.community-feed-status { color:var(--muted); font-size:var(--text-xs); margin:12px 0; }
+	.commons-preview-search:focus-within { outline:2px solid var(--brand-blue); outline-offset:2px; }
 	.commons-product-hero { padding-block: clamp(var(--s-5), 4vw, var(--s-8)) var(--s-5); }
 	.commons-product-hero .crumbs { margin-bottom: var(--s-4); }
 	.commons-product-hero .product-context-bar { margin-bottom: var(--s-5); }
-	.commons-product-intro { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, .7fr); gap: clamp(var(--s-8), 6vw, var(--s-12)); align-items: center; }
+	.commons-product-intro { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(var(--s-8), 6vw, var(--s-12)); align-items: center; }
 	.commons-product-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); }
 	.commons-product-kicker .eyebrow { margin: 0; }
 	.commons-product-intro h1 { max-width: 24ch; margin: var(--s-3) 0; font: 600 clamp(2.1rem, 3.8vw, 3.2rem)/1.1 var(--font-sans); letter-spacing: -.045em; }
@@ -241,8 +255,8 @@ const flow = [
 	.commons-preview-search { display: flex; align-items: center; gap: 7px; margin-top: var(--s-4); padding: 7px 8px; border: 1px solid var(--line); border-radius: var(--r-2); color: var(--faint); background: var(--cream); }
 	.commons-preview-search input { width: 100%; min-width: 0; padding: 0; border: 0; outline: 0; background: transparent; color: var(--muted); font-size: var(--text-xs); }
 	.commons-preview-rooms { display: grid; gap: 3px; margin-top: var(--s-4); }
-	.commons-preview-rooms a { padding: 8px; border-radius: var(--r-2); color: var(--muted); font-size: var(--text-sm); text-decoration: none; }
-	.commons-preview-rooms a:hover, .commons-preview-rooms a:focus-visible, .commons-preview-rooms a.is-active { background: var(--brand-blue-wash); color: var(--brand-blue-deep); }
+	.commons-preview-rooms button { min-height:44px; border:0; background:transparent; text-align:left; cursor:pointer; padding:8px; border-radius: var(--r-2); color: var(--muted); font-size: var(--text-sm); text-decoration: none; }
+	.commons-preview-rooms button:hover, .commons-preview-rooms button:focus-visible, .commons-preview-rooms button[aria-pressed="true"] { background: var(--brand-blue-wash); color: var(--brand-blue-deep); }
 	.commons-preview-sidebar-note { margin-top: var(--s-8); padding-top: var(--s-3); border-top: 1px solid var(--line); }
 	.commons-preview-sidebar-note p { margin: var(--s-2) 0 0; color: var(--muted); font-size: var(--text-xs); line-height: var(--leading-snug); }
 	.commons-preview-main { padding: var(--s-5); }
@@ -259,7 +273,7 @@ const flow = [
 	.commons-preview-composer .mono { margin: var(--s-3) 0 0; font-size: var(--text-2xs); }
 	.commons-preview-thread-list { display: grid; gap: var(--s-3); margin-top: var(--s-5); }
 	.commons-preview-thread { padding: var(--s-4); border: 1px solid var(--line); border-left: 3px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); transition: transform var(--dur-2) var(--ease-soft), box-shadow var(--dur-2) var(--ease), border-color var(--dur-1) var(--ease); }
-	.commons-preview-thread:hover { transform: translateY(-2px); border-color: var(--brand-blue); box-shadow: var(--elev-2); }
+	.commons-preview-thread:hover { border-color: var(--brand-blue); background:var(--brand-blue-wash); }
 	.commons-preview-thread-experience { border-left-color: var(--gold-edge); }
 	.commons-preview-thread-professional { border-left-color: var(--brand-blue); }
 	.commons-preview-thread-company { border-left-color: var(--green); }
@@ -296,8 +310,21 @@ const flow = [
 	.commons-preview-build-list { display: grid; gap: var(--s-3); }
 	.commons-preview-build-list div { display: flex; align-items: center; gap: var(--s-3); padding-bottom: var(--s-3); border-bottom: 1px solid var(--line-ink); color: #dce2e9; font-size: var(--text-sm); }
 	.commons-preview-build-list .status { flex: 0 0 auto; }
-	@media (max-width: 1080px) { .commons-product-intro { grid-template-columns: minmax(0, 1fr) minmax(290px, .6fr); } .commons-preview-shell { grid-template-columns: 170px minmax(0, 1fr); } .commons-preview-context { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); } .commons-preview-context-card + .commons-preview-context-card { border-left: 1px solid var(--line); } }
+	@media (max-width: 1080px) { .commons-product-intro { grid-template-columns: minmax(0, 1fr); } .commons-preview-shell { grid-template-columns: 170px minmax(0, 1fr); } .commons-preview-context { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); } .commons-preview-context-card + .commons-preview-context-card { border-left: 1px solid var(--line); } }
 	@media (max-width: 760px) { .commons-preview-shell { grid-template-columns: minmax(0, 1fr); } .commons-preview-sidebar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, .85fr); gap: var(--s-4); align-items: start; } .commons-preview-sidebar-head { border-bottom: 0; padding: 0; } .commons-preview-search { margin-top: 0; } .commons-preview-rooms { grid-column: 1 / -1; display: flex; flex-wrap: wrap; margin-top: 0; } .commons-preview-sidebar-note { grid-column: 1 / -1; margin-top: 0; } .commons-preview-context { grid-column: auto; grid-template-columns: minmax(0, 1fr); } .commons-preview-context-card + .commons-preview-context-card { border-left: 0; border-top: 1px solid var(--line); } .commons-preview-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); } .commons-preview-flow-step:nth-child(3) { padding-left: 0; border-left: 0; } .commons-preview-flow-step:nth-child(n+3) { border-top: 1px solid var(--line); padding-top: var(--s-4); } .commons-preview-build { grid-template-columns: minmax(0, 1fr); gap: var(--s-6); } }
 	@media (max-width: 760px) { .commons-product-intro { grid-template-columns: minmax(0, 1fr); } .commons-product-rules { max-width: 620px; } }
 	@media (max-width: 480px) { .commons-product-intro h1 { font-size: 2.1rem; } .commons-preview-actions .btn { width: 100%; } .commons-preview-boundary { align-items: flex-start; } .commons-preview-main, .commons-preview-sidebar, .commons-preview-context-card { padding: var(--s-4); } .commons-preview-main-head { flex-direction: column; } .commons-preview-composer-controls .btn { width: 100%; } .commons-preview-flow { grid-template-columns: minmax(0, 1fr); } .commons-preview-flow-step, .commons-preview-flow-step + .commons-preview-flow-step { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } .commons-preview-flow-step:first-child { border-top: 0; } }
+
+  .commons-preview-composer { display:flex; flex-wrap:wrap; align-items:center; gap:12px; border-style:solid; background:var(--paper); }
+  .commons-preview-composer strong { font-size:var(--text-sm); }
+  .commons-preview-composer .mono { width:100%; margin:0; }
+  .commons-preview-main-head h2 { font:600 var(--text-xl)/1.3 var(--font-sans); letter-spacing:-.025em; }
+  @media(max-width:760px) {
+    .commons-preview-sidebar { display:block; }
+    .commons-preview-sidebar-head,.commons-preview-sidebar-note { display:none; }
+    .commons-preview-rooms { flex-wrap:nowrap; overflow-x:auto; margin-top:12px; }
+    .commons-preview-rooms button { flex-shrink:0; font-size:var(--text-xs); }
+    .commons-preview-search input { min-height:32px; }
+    .commons-preview-actions .btn { width:auto; }
+  }
 </style>

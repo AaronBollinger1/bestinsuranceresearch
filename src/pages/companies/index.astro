@@ -61,8 +61,8 @@ const jsonLd = graph(
 			<div class="company-directory-intro">
 				<div>
 					<span class="eyebrow">Birch company dossiers</span>
-					<h1 id="company-directory-title">Know the company. Open the record.</h1>
-					<p class="lede">Verified identity, official channels, regulator records, linked research, and clearly separated human context.</p>
+					<h1 id="company-directory-title">Find a company.</h1>
+					<p class="lede">Company facts, coverage research, and the sources behind them.</p>
 				</div>
 				<div class="company-directory-model" aria-label="How a Birch company page is organized">
 					<div><BookOpen size={17} aria-hidden="true" /><span><strong>Research</strong><small>Sourced facts and connected coverage</small></span></div>
@@ -81,7 +81,7 @@ const jsonLd = graph(
 
 	<section class="band band-tight" aria-labelledby="company-results-title">
 		<div class="shell">
-			<div class="company-results-head"><div><span class="eyebrow">Published records</span><h2 id="company-results-title">Companies, regulators, and public entities</h2></div><a class="text-link" href="/sources">Open the source registry <ArrowRight size={14} aria-hidden="true" /></a></div>
+			<div class="company-results-head"><h2 id="company-results-title">Explore organizations</h2><div class="company-result-actions"><button class="btn btn-quiet btn-sm" id="company-filter-reset" type="button" hidden>Clear filters</button><a class="text-link" href="/sources">Source registry <ArrowRight size={14} aria-hidden="true" /></a></div></div>
 			<div class="company-record-grid" id="company-rows">
 				{
 					companies.map((company) => {
@@ -99,10 +99,9 @@ const jsonLd = graph(
 								</div>
 								<div class="company-row-signals" aria-label="Record signals">
 									{company.data.regulatoryIdentity && <span class="company-signal company-signal-regulator">Regulator snapshot</span>}
-									<span class="company-signal">{coverageIdsByCompany.get(company.id)?.size ?? 0} linked coverage pages</span>
 									<span class="company-signal company-signal-community">{siteConfig.communityReady ? 'Community available' : 'Community private preview'}</span>
 								</div>
-								<div class="company-record-card-foot"><span>Reviewed {longDate(company.data.lastReviewed)}</span><span>Open dossier <ArrowRight size={15} aria-hidden="true" /></span></div>
+									<div class="company-record-card-foot"><span>Record dated {longDate(company.data.lastReviewed)}</span><span>View company <ArrowRight size={15} aria-hidden="true" /></span></div>
 							</a>
 						);
 					})
@@ -152,6 +151,7 @@ const jsonLd = graph(
 	const type = document.getElementById('company-type') as HTMLSelectElement | null;
 	const status = document.getElementById('company-filter-status');
 	const empty = document.getElementById('company-filter-empty');
+	const reset = document.getElementById('company-filter-reset');
 	const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-company-row]'));
 
 	function applyFilters() {
@@ -166,17 +166,25 @@ const jsonLd = graph(
 		}
 		if (status) status.textContent = `Showing ${visible} of ${rows.length} organizations.`;
 		if (empty) empty.hidden = visible !== 0;
+		if (reset) reset.hidden = !query && selectedType === 'all';
 	}
 
 	search?.addEventListener('input', applyFilters);
 	type?.addEventListener('change', applyFilters);
+	reset?.addEventListener('click', () => {
+		if (search) search.value = '';
+		if (type) type.value = 'all';
+		applyFilters(); search?.focus();
+	});
 </script>
 
 <style>
+	.company-result-actions { display: flex; align-items: center; gap: 16px; }
+	.company-result-actions [hidden] { display: none; }
 	.company-directory-hero { padding-block: clamp(var(--s-6), 5vw, var(--s-10)) var(--s-6); }
 	.company-directory-hero .crumbs { margin-bottom: var(--s-6); }
 	.company-directory-intro { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, .7fr); gap: clamp(var(--s-8), 6vw, var(--s-12)); align-items: end; }
-	.company-directory-intro h1 { max-width: 13ch; margin: var(--s-3) 0 var(--s-4); font-size: clamp(3rem, 6vw, 5.2rem); letter-spacing: -.05em; line-height: .98; }
+	.company-directory-intro h1 { max-width: 20ch; margin: var(--s-3) 0 var(--s-4); font: 600 clamp(2.2rem, 4vw, 3.4rem)/1.08 var(--font-sans); letter-spacing: -.05em; }
 	.company-directory-intro .lede { max-width: 58ch; margin: 0; color: var(--body); }
 	.company-directory-model { display: grid; gap: 1px; border: 1px solid var(--line-strong); border-radius: var(--r-3); overflow: hidden; background: var(--line); box-shadow: var(--elev-1); }
 	.company-directory-model > div { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: var(--s-3); align-items: center; padding: var(--s-3) var(--s-4); background: var(--paper); }
@@ -196,7 +204,7 @@ const jsonLd = graph(
 	.company-filter-status { margin: 0; white-space: nowrap; color: var(--muted); font: var(--text-xs)/1.5 var(--font-mono); }
 	.company-filter-empty { margin: var(--s-6) 0 0; padding: var(--s-5); border: 1px dashed var(--line-strong); color: var(--muted); background: var(--paper); }
 	.company-results-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--s-5); }
-	.company-results-head h2 { margin: var(--s-2) 0 0; font-size: clamp(2rem, 4vw, 3.3rem); }
+	.company-results-head h2 { margin: 0; font: 600 var(--text-xl)/1.25 var(--font-sans); letter-spacing: -.025em; }
 	.company-results-head .text-link { display: inline-flex; align-items: center; gap: 5px; color: var(--brand-blue-text); font-size: var(--text-sm); font-weight: 650; text-decoration: none; }
 	.company-record-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-6); }
 	.company-record-card { display: flex; min-height: 370px; flex-direction: column; padding: var(--s-5); border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); color: var(--body); text-decoration: none; transition: transform var(--dur-2) var(--ease-soft), border-color var(--dur-1) var(--ease), box-shadow var(--dur-2) var(--ease); }
@@ -204,7 +212,7 @@ const jsonLd = graph(
 	.company-record-card-top { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
 	.company-record-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: var(--r-3); background: var(--brand-blue); color: var(--white); font-family: var(--font-display); font-size: var(--text-md); }
 	.company-record-type { margin-top: var(--s-5); color: var(--brand-blue-text); font: var(--text-2xs)/1.3 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
-	.company-record-card h3 { max-width: 22ch; margin: var(--s-2) 0 var(--s-3); font-family: var(--font-display); font-size: clamp(1.55rem, 2.8vw, 2.25rem); font-weight: 400; letter-spacing: -.025em; line-height: 1.08; }
+	.company-record-card h3 { max-width: 28ch; margin: var(--s-2) 0 var(--s-3); font: 600 clamp(1.2rem, 2vw, 1.5rem)/1.3 var(--font-sans); letter-spacing: -.025em; }
 	.company-record-card > p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
 	.company-record-facts { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); margin-top: var(--s-5); color: var(--muted); font-size: var(--text-xs); }
 	.company-record-facts strong { color: var(--ink); font-weight: 650; }

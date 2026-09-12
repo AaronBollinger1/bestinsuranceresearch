@@ -8,6 +8,12 @@ review it at `/design/product-system`.
 
 ## Position and first impression
 
+Implementation update: the signed-in Mobbin pass is documented in
+`BIRCH-MOBBIN-READING-AUDIT-2026-09-11.md`. Shared question/company reading
+frames, source inspection, and interactive community filtering are now built.
+The next coherent item is the existing moderated contribution journey, not another
+homepage redesign. The live blueprint links to the private Mobbin collection.
+
 Birch helps people understand insurance through sourced answers, useful tools,
 and clearly attributed professional and policyholder contributions.
 

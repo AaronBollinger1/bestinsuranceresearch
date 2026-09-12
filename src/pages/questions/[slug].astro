@@ -9,7 +9,9 @@ import CommonsHandoff from '../../components/CommonsHandoff.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
 import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
 import Handoff from '../../components/Handoff.astro';
-import ProductContextBar from '../../components/ProductContextBar.astro';
+import RecordNavigation from '../../components/RecordNavigation.astro';
+import SourceInspector from '../../components/SourceInspector.astro';
+import '../../styles/reading.css';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { siteConfig } from '../../config/site';
@@ -80,6 +82,7 @@ const jsonLd = graph(
 		dateModified: d.lastReviewed,
 		author: d.author,
 		reviewer: d.reviewer,
+		reviewState: d.reviewState,
 		sections: sections.map((s) => s.label),
 		about: [...d.lines, ...d.topics],
 		citations: sources.map((s) => ({ name: s.data.title, url: s.data.url, publisher: s.data.publisher })),
@@ -95,13 +98,13 @@ const reviewer = corpus.personByName.get(d.reviewer);
 	description={description}
 	jsonLd={jsonLd}
 	pageType="question"
+	bodyClass="birch-reading"
 	machinePath={machinePath}
 >
 	<article>
 		<header class="band band-first band-paper answer-head">
 			<div class="shell">
 				<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
-				<ProductContextBar active="research" />
 
 				<div class="answer-flags">
 					<StatusChip kind={d.confidence} />
@@ -123,7 +126,7 @@ const reviewer = corpus.personByName.get(d.reviewer);
 						<dd><time datetime={d.effectiveDate}>{longDate(d.effectiveDate)}</time></dd>
 					</div>
 					<div>
-						<dt>Last reviewed</dt>
+						<dt>{d.reviewState === 'under-review' ? 'Record date' : 'Last reviewed'}</dt>
 						<dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd>
 					</div>
 					<div>
@@ -131,7 +134,7 @@ const reviewer = corpus.personByName.get(d.reviewer);
 						<dd>{author ? <a href={`/authors/${author.id}`}>{d.author}</a> : d.author}</dd>
 					</div>
 					<div>
-						<dt>Reviewer</dt>
+						<dt>{d.reviewState === 'under-review' ? 'Reviewer (assigned)' : 'Reviewer'}</dt>
 						<dd>{reviewer ? <a href={`/authors/${reviewer.id}`}>{d.reviewer}</a> : d.reviewer}</dd>
 					</div>
 					<div>
@@ -141,12 +144,13 @@ const reviewer = corpus.personByName.get(d.reviewer);
 				</dl>
 			</div>
 		</header>
+		<RecordNavigation sections={[{ id: 'direct-answer-title', label: 'Answer' }, { id: 'assumes', label: 'Context' }, { id: 'actions', label: 'Next steps' }, { id: 'source-ledger', label: 'Sources' }, { id: 'commons', label: 'Discuss' }]} sourceCount={sources.length} />
 
 		<div class="band band-tight">
 			<div class="shell answer-grid">
 				<div>
-					<section aria-labelledby="direct-answer-title">
-						<h2 id="direct-answer-title" class="u-visually-hidden">Direct answer</h2>
+					<section class="record-lead" aria-labelledby="direct-answer-title">
+						<h2 id="direct-answer-title" >The short answer</h2>
 						<div class="direct-answer">
 							<p set:html={cite.inline(d.shortAnswer)} />
 						</div>
@@ -257,6 +261,7 @@ const reviewer = corpus.personByName.get(d.reviewer);
 							path,
 							published: d.effectiveDate,
 							reviewed: d.lastReviewed,
+							reviewState: d.reviewState,
 							author: d.author,
 							id: entry.id,
 							pageType: 'question',
@@ -362,5 +367,6 @@ const reviewer = corpus.personByName.get(d.reviewer);
 				</aside>
 			</div>
 		</div>
+		<SourceInspector sources={sources} />
 	</article>
 </BaseLayout>
