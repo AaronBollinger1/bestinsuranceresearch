@@ -5,16 +5,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
+import CommonsHandoff from '../../components/CommonsHandoff.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
+import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
 import Handoff from '../../components/Handoff.astro';
+import RecordNavigation from '../../components/RecordNavigation.astro';
+import SourceInspector from '../../components/SourceInspector.astro';
+import '../../styles/reading.css';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
+import { siteConfig } from '../../config/site';
 import { createCiter, stripMarkers } from '../../lib/citations';
 import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, graph, organization, techArticle, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
+import { excerpt, metaDescription } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
 	const corpus = await loadCorpus();
 	return corpus.questions.map((entry) => ({
@@ -27,6 +34,7 @@ const { entry, corpus } = Astro.props;
 const d = entry.data;
 const path = `/questions/${entry.id}`;
 const machinePath = `${path}.json`;
+const commonsHref = `${siteConfig.communityOrigin}/threads?subject=${encodeURIComponent(`question:${entry.id}`)}`;
 
 const sourceIds = idsOf(d.sourceIds);
 const sources = ledgerFor(sourceIds, corpus.sourceById, `question "${entry.id}"`);
@@ -43,7 +51,7 @@ const relatedCompanies = d.companies
 	.filter((c): c is NonNullable<typeof c> => Boolean(c));
 const relatedStates = corpus.states.filter((s) => d.states.includes(s.data.code));
 
-const description = stripMarkers(d.shortAnswer).slice(0, 300);
+const description = metaDescription(stripMarkers(d.shortAnswer));
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -58,6 +66,7 @@ const sections = [
 	{ id: 'variability', label: 'Where it varies' },
 	{ id: 'actions', label: 'Next actions' },
 	{ id: 'source-ledger', label: 'Source ledger' },
+	{ id: 'commons', label: 'Community discussion' },
 	...(related.length ? [{ id: 'related', label: 'Related questions' }] : []),
 ];
 
@@ -73,6 +82,7 @@ const jsonLd = graph(
 		dateModified: d.lastReviewed,
 		author: d.author,
 		reviewer: d.reviewer,
+		reviewState: d.reviewState,
 		sections: sections.map((s) => s.label),
 		about: [...d.lines, ...d.topics],
 		citations: sources.map((s) => ({ name: s.data.title, url: s.data.url, publisher: s.data.publisher })),
@@ -88,6 +98,7 @@ const reviewer = corpus.personByName.get(d.reviewer);
 	description={description}
 	jsonLd={jsonLd}
 	pageType="question"
+	bodyClass="birch-reading"
 	machinePath={machinePath}
 >
 	<article>
@@ -115,7 +126,7 @@ const reviewer = corpus.personByName.get(d.reviewer);
 						<dd><time datetime={d.effectiveDate}>{longDate(d.effectiveDate)}</time></dd>
 					</div>
 					<div>
-						<dt>Last reviewed</dt>
+						<dt>{d.reviewState === 'under-review' ? 'Record date' : 'Last reviewed'}</dt>
 						<dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd>
 					</div>
 					<div>
@@ -123,7 +134,7 @@ const reviewer = corpus.personByName.get(d.reviewer);
 						<dd>{author ? <a href={`/authors/${author.id}`}>{d.author}</a> : d.author}</dd>
 					</div>
 					<div>
-						<dt>Reviewer</dt>
+						<dt>{d.reviewState === 'under-review' ? 'Reviewer (assigned)' : 'Reviewer'}</dt>
 						<dd>{reviewer ? <a href={`/authors/${reviewer.id}`}>{d.reviewer}</a> : d.reviewer}</dd>
 					</div>
 					<div>
@@ -133,16 +144,23 @@ const reviewer = corpus.personByName.get(d.reviewer);
 				</dl>
 			</div>
 		</header>
+		<RecordNavigation sections={[{ id: 'direct-answer-title', label: 'Answer' }, { id: 'assumes', label: 'Context' }, { id: 'actions', label: 'Next steps' }, { id: 'source-ledger', label: 'Sources' }, { id: 'commons', label: 'Discuss' }]} sourceCount={sources.length} />
 
 		<div class="band band-tight">
 			<div class="shell answer-grid">
 				<div>
-					<section aria-labelledby="direct-answer-title">
-						<h2 id="direct-answer-title" class="u-visually-hidden">Direct answer</h2>
+					<section class="record-lead" aria-labelledby="direct-answer-title">
+						<h2 id="direct-answer-title" >The short answer</h2>
 						<div class="direct-answer">
 							<p set:html={cite.inline(d.shortAnswer)} />
 						</div>
 					</section>
+
+					<EvidenceBoundary
+						says="The cited records support the answer above, with their publishers, dates, and claim addresses visible in the source ledger."
+						assumes={`This answer uses the stated audience, ${d.family} line, jurisdiction, and facts; a different form or situation can change it.`}
+						cannotDecide="It cannot determine how a specific policy, claim, price, or eligibility decision will turn out."
+					/>
 
 					{
 						d.reviewState === 'corrected' && d.correction && (
@@ -243,11 +261,14 @@ const reviewer = corpus.personByName.get(d.reviewer);
 							path,
 							published: d.effectiveDate,
 							reviewed: d.lastReviewed,
+							reviewState: d.reviewState,
 							author: d.author,
 							id: entry.id,
 							pageType: 'question',
 						}}
 					/>
+
+					<CommonsHandoff href={commonsHref} />
 
 					{
 						related.length > 0 && (
@@ -261,7 +282,7 @@ const reviewer = corpus.personByName.get(d.reviewer);
 											data-page-type="question">
 											<div>
 												<h3 class="row-title">{question.data.question}</h3>
-												<p>{stripMarkers(question.data.shortAnswer).slice(0, 180)}</p>
+												<p>{excerpt(stripMarkers(question.data.shortAnswer), 180)}</p>
 												<div class="row-meta">
 													<StatusChip kind={question.data.confidence} />
 													<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
@@ -346,5 +367,6 @@ const reviewer = corpus.personByName.get(d.reviewer);
 				</aside>
 			</div>
 		</div>
+		<SourceInspector sources={sources} />
 	</article>
 </BaseLayout>

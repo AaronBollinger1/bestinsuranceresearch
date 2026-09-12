@@ -6,17 +6,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
+import CommonsHandoff from '../../components/CommonsHandoff.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
+import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
 import Handoff from '../../components/Handoff.astro';
+import ProductContextBar from '../../components/ProductContextBar.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { createCiter, escapeHtml, stripMarkers } from '../../lib/citations';
 import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
 import { shareImageForFamily } from '../../lib/share-image';
 import { longDate } from '../../lib/cite';
+import { siteConfig } from '../../config/site';
 import { breadcrumbs, definedTerm, graph, organization, techArticle, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
+import { excerpt, metaDescription } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
 	const corpus = await loadCorpus();
 	return corpus.coverages.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
@@ -26,6 +31,7 @@ const { entry, corpus } = Astro.props;
 const d = entry.data;
 const path = `/insurance/${entry.id}`;
 const machinePath = `${path}.json`;
+const commonsHref = `${siteConfig.communityOrigin}/threads?subject=${encodeURIComponent(`coverage:${entry.id}`)}`;
 
 const sourceIds = idsOf(d.sourceIds);
 const sources = ledgerFor(sourceIds, corpus.sourceById, `coverage "${entry.id}"`);
@@ -45,7 +51,7 @@ const relatedStates = corpus.states.filter((s) => d.stateVariations.some((v) => 
    in different vocabularies. */
 const relatedModules = corpus.liveModules.filter((m) => sharesLine(m.data.lines, [d.line]));
 
-const description = stripMarkers(d.definition).slice(0, 300);
+const description = metaDescription(stripMarkers(d.definition));
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -64,6 +70,7 @@ const sections = [
 	...(d.stateVariations.length ? [{ id: 'states', label: 'State variations' }] : []),
 	...(relatedModules.length ? [{ id: 'tools', label: 'Tools on this line' }] : []),
 	{ id: 'source-ledger', label: 'Source ledger' },
+	{ id: 'commons', label: 'Community discussion' },
 ];
 
 const jsonLd = graph(
@@ -74,7 +81,7 @@ const jsonLd = graph(
 		name: d.name,
 		path,
 		description,
-		setName: 'BestInsurance Research coverage library',
+		setName: 'Birch Research coverage library',
 		setPath: '/insurance',
 	}),
 	techArticle({
@@ -97,6 +104,7 @@ const jsonLd = graph(
 		<header class="band band-first band-paper answer-head">
 			<div class="shell">
 				<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+				<ProductContextBar active="coverage" />
 				<div class="answer-flags">
 					<StatusChip kind={d.reviewState} />
 					<span class="meta">{d.family} lines</span>
@@ -129,6 +137,12 @@ const jsonLd = graph(
 							<p set:html={cite.inline(d.definition)} />
 						</div>
 					</section>
+
+					<EvidenceBoundary
+						says="The cited records explain what this line is designed to do, its common limits, and the form or jurisdiction caveats attached to it."
+						assumes="“Commonly” describes a source-backed pattern, not a promise across every carrier, policy form, or endorsement."
+						cannotDecide="It cannot determine what a specific policy covers, its price, or whether an insurer will accept a risk."
+					/>
 
 					<Callout tone="warn">
 						<p>
@@ -294,6 +308,8 @@ const jsonLd = graph(
 						}}
 					/>
 
+					<CommonsHandoff href={commonsHref} />
+
 					{
 						(relatedQuestions.length > 0 || alsoAsked.length > 0) && (
 							<section class="answer-section" aria-labelledby="related">
@@ -306,7 +322,7 @@ const jsonLd = graph(
 											data-page-type="coverage">
 											<div>
 												<h3 class="row-title">{question.data.question}</h3>
-												<p>{stripMarkers(question.data.shortAnswer).slice(0, 170)}</p>
+												<p>{excerpt(stripMarkers(question.data.shortAnswer), 170)}</p>
 												<div class="row-meta">
 													<StatusChip kind={question.data.confidence} />
 													<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>

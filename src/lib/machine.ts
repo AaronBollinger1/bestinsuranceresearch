@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { siteConfig } from '../config/site';
 import { stripMarkers } from './citations';
 import { TODAY } from './today';
+import type { IndustryHub } from './industry-hub';
 
 /**
  * Machine-readable page companions.
@@ -138,19 +139,47 @@ export function coverageRecord(
 export function companyRecord(
 	entry: CollectionEntry<'companies'>,
 	sources: CollectionEntry<'sources'>[],
+	relatedResearch: {
+		questions?: CollectionEntry<'questions'>[];
+		coverages?: CollectionEntry<'coverages'>[];
+	} = {},
 ) {
 	const path = `/companies/${entry.id}`;
 	const d = entry.data;
+	const relatedQuestions = relatedResearch.questions ?? [];
+	const relatedCoverages = relatedResearch.coverages ?? [];
 	return {
 		...base('organization', entry.id, path),
 		legalName: d.legalName,
 		shortName: d.shortName,
 		orgType: d.orgType,
 		...(d.naic ? { naic: d.naic } : {}),
+		...(d.regulatoryIdentity
+			? {
+				regulatoryIdentity: {
+					sourceId: d.regulatoryIdentity.sourceId.id,
+					sourceUrl: abs(`/sources/${d.regulatoryIdentity.sourceId.id}`),
+					regulatorCompanyId: d.regulatoryIdentity.regulatorCompanyId,
+					authorizedDate: d.regulatoryIdentity.authorizedDate,
+					licenseStatus: d.regulatoryIdentity.licenseStatus,
+					companyType: d.regulatoryIdentity.companyType,
+					domicile: d.regulatoryIdentity.domicile,
+					...(d.regulatoryIdentity.agentForService
+						? { agentForService: d.regulatoryIdentity.agentForService }
+						: {}),
+				},
+			}
+			: {}),
 		summary: stripMarkers(d.summary),
 		officialUrls: d.officialUrls,
 		contactChannels: d.contactChannels,
 		regulatorRecords: d.regulatorRecords,
+		filedForms: d.filedForms.map((form) => ({
+			label: form.label,
+			sourceId: form.sourceId.id,
+			sourceUrl: abs(`/sources/${form.sourceId.id}`),
+			note: form.note,
+		})),
 		publications: d.publications,
 		statutoryBasis: d.statutoryBasis,
 		jurisdictions: d.jurisdictions,
@@ -159,6 +188,72 @@ export function companyRecord(
 		author: d.author,
 		reviewer: d.reviewer,
 		sourceIds: sources.map((s) => s.id),
+		sources: sources.map(sourceRecord),
+		relatedResearch: {
+			questions: relatedQuestions.map((question) => ({
+				id: question.id,
+				question: question.data.question,
+				url: abs(`/questions/${question.id}`),
+			})),
+			coverages: relatedCoverages.map((coverage) => ({
+				id: coverage.id,
+				name: coverage.data.name,
+				url: abs(`/insurance/${coverage.id}`),
+			})),
+		},
+	};
+}
+
+/**
+ * Machine-readable context-hub record.
+ *
+ * An industry hub is an index over existing reviewed records, not a new source
+ * of coverage advice. Keeping that distinction in the record makes it safe for
+ * answer engines to discover the context route while preserving the canonical
+ * question, coverage, company, example, and source URLs underneath it.
+ */
+export function industryRecord(hub: IndustryHub, sources: CollectionEntry<'sources'>[]) {
+	const path = `/industries/${hub.id}`;
+	return {
+		...base('industry-context', hub.id, path),
+		name: hub.name,
+		descriptor: hub.descriptor,
+		lines: hub.lines,
+		lastReviewed: hub.lastReviewed,
+		counts: {
+			coveragePages: hub.coverages.length,
+			answeredQuestions: hub.questions.length,
+			workedExamples: hub.examples.length,
+			organizations: hub.companies.length,
+			sourceRecords: hub.sourceIds.length,
+		},
+		classification: {
+			pageRole: 'context index',
+			claimPolicy: 'This page gathers existing records and is not a coverage determination or ranking.',
+		},
+		resources: {
+			coverages: hub.coverages.map((coverage) => ({
+				id: coverage.id,
+				name: coverage.data.name,
+				url: abs(`/insurance/${coverage.id}`),
+			})),
+			questions: hub.questions.map((question) => ({
+				id: question.id,
+				question: question.data.question,
+				url: abs(`/questions/${question.id}`),
+			})),
+			examples: hub.examples.map((example) => ({
+				id: example.id,
+				title: example.data.title,
+				url: abs(`/examples/${example.id}`),
+			})),
+			companies: hub.companies.map((company) => ({
+				id: company.id,
+				name: company.data.legalName,
+				url: abs(`/companies/${company.id}`),
+			})),
+		},
+		sourceIds: sources.map((source) => source.id),
 		sources: sources.map(sourceRecord),
 	};
 }
@@ -297,7 +392,7 @@ export function sourceEntityRecord(
 		reliedOnByCount: citing.length,
 		citation: {
 			text: `${d.publisher}. "${d.title}." ${d.publishedDate}. ${d.url} (retrieved ${d.accessedDate}).`,
-			viaThisSite: `BestInsurance Research source record ${source.id}, content version ${siteConfig.contentVersion}. ${abs(path)}`,
+			viaThisSite: `Birch Research source record ${source.id}, content version ${siteConfig.contentVersion}. ${abs(path)}`,
 			note: 'Cite the underlying source when you can. Cite this record when you are describing our synthesis or our claim list.',
 		},
 	};
@@ -398,6 +493,191 @@ export function claimIndex(
 			}),
 		),
 		claims,
+	};
+}
+
+
+/**
+ * A guide, which is the same evidence as its coverage page in another reading.
+ *
+ * `sameEvidenceAs` is the load-bearing field and the reason this is not just
+ * `coverageRecord` with a different path. A guide is generated one-for-one from
+ * a coverage record - same sources, same claims, same ledger - so a system that
+ * read both and counted them as two would be double-counting a single reading
+ * of a single set of documents. That is exactly the corroboration error a
+ * corpus like this one most easily invites, and the only defence is to say so
+ * in the record rather than hope it is inferred from the identical source list.
+ */
+export function guideRecord(
+	entry: CollectionEntry<'coverages'>,
+	sources: CollectionEntry<'sources'>[],
+) {
+	const path = `/guides/${entry.id}`;
+	const d = entry.data;
+	return {
+		...base('guide', entry.id, path),
+		name: d.name,
+		line: d.line,
+		family: d.family,
+		about:
+			'A plain reading of one line of business, arranged for a reader meeting it for the first ' +
+			'time. Every section is deep-linkable and none of it paraphrases the coverage page: they ' +
+			'are two presentations of one evidence base.',
+		sameEvidenceAs: abs(`/insurance/${entry.id}`),
+		doNotDoubleCount:
+			`This guide and ${abs(`/insurance/${entry.id}`)} rest on the same source records and the ` +
+			'same claims. Treating them as two independent sources would count one reading twice.',
+		definition: stripMarkers(d.definition),
+		sections: [
+			{ id: 'covers', name: 'What it commonly covers', url: abs(`${path}#covers`) },
+			{ id: 'excludes', name: 'What it commonly excludes', url: abs(`${path}#excludes`) },
+			{ id: 'limits', name: 'Limits and deductibles', url: abs(`${path}#limits`) },
+			{ id: 'endorsements', name: 'Endorsements', url: abs(`${path}#endorsements`) },
+			{ id: 'variations', name: 'State variations', url: abs(`${path}#variations`) },
+		],
+		effectiveDate: d.effectiveDate,
+		lastReviewed: d.lastReviewed,
+		reviewState: d.reviewState,
+		author: d.author,
+		reviewer: d.reviewer,
+		sourceIds: sources.map((s) => s.id),
+		sources: sources.map(sourceRecord),
+	};
+}
+
+/**
+ * A line hub: what this library holds on one canonical line of business.
+ *
+ * The honest content of this record is mostly what is missing. A line with an
+ * index and no written coverage page is a line we hold sources on and have not
+ * explained, and `written` says which. Publishing the distinction is what stops
+ * an empty line reading as a line with nothing to say about it.
+ */
+export function lineRecord(hub: {
+	line: string;
+	label: string;
+	family: string;
+	coverageId?: string;
+	guideId?: string;
+	checks: unknown[];
+	moduleIds: Array<{ id: string; name: string; ruleCount: number }>;
+	questionIds: Array<{ id: string; question: string }>;
+	exampleIds: Array<{ id: string; title: string }>;
+	sourceIds: string[];
+	claimCount: number;
+	adjacent: string[];
+}) {
+	const path = `/lines/${hub.line}`;
+	return {
+		...base('line', hub.line, path),
+		name: hub.label,
+		family: hub.family,
+		written: Boolean(hub.coverageId),
+		about: hub.coverageId
+			? 'A line with a written coverage page. The page explains it; this record indexes everything that depends on it.'
+			: 'A line this library holds cited material on but has not written up. The sources and checks below are real; there is no explanation of the line itself yet, and that absence is the point of saying so here.',
+		...(hub.coverageId ? { coverage: abs(`/insurance/${hub.coverageId}`) } : {}),
+		...(hub.guideId ? { guide: abs(`/guides/${hub.guideId}`) } : {}),
+		counts: {
+			sources: hub.sourceIds.length,
+			claims: hub.claimCount,
+			citedChecks: hub.checks.length,
+			questions: hub.questionIds.length,
+			examples: hub.exampleIds.length,
+		},
+		modules: hub.moduleIds.map((m) => ({ id: m.id, name: m.name, rules: m.ruleCount, url: abs(`/tools/${m.id}`) })),
+		questions: hub.questionIds.map((q) => ({ id: q.id, question: q.question, url: abs(`/questions/${q.id}`) })),
+		examples: hub.exampleIds.map((e) => ({ id: e.id, title: e.title, url: abs(`/examples/${e.id}`) })),
+		adjacentLines: hub.adjacent.map((line) => abs(`/lines/${line}`)),
+		sourceIds: hub.sourceIds,
+	};
+}
+
+/**
+ * The figures table: every amount this library publishes and what moves it.
+ *
+ * `amount` is echoed exactly as the figure record states it, and no operative
+ * value is computed here. Several of these are stepped schedules whose value
+ * today is arithmetic from the instrument rather than a printed number, and
+ * `DIRECTION.md` forbids publishing a figure the source did not state. The
+ * `note` on each row carries that hedge and travels with the amount.
+ */
+export function figuresRecord(figures: CollectionEntry<'figures'>[]) {
+	return {
+		...base('figure-index', 'figures', '/figures'),
+		about:
+			'Every amount this library publishes, with the instrument that sets it and what moves it. ' +
+			'Amounts are quoted as their source states them; where an operative value would have to be ' +
+			'calculated, the note says so and no calculation is published.',
+		mayNotBeInferred: [
+			'That an amount is the operative one today. Read movesWhen and nextMove.',
+			'That a scheduled increase produces the figure you calculate from it. We publish no figure the source did not state.',
+			'That an amount applies outside the jurisdiction named in states.',
+		],
+		count: figures.length,
+		figures: figures.map((f) => ({
+			id: f.id,
+			url: abs(`/figures#${f.id}`),
+			label: f.data.label,
+			amount: f.data.amount,
+			applies: f.data.applies,
+			basis: f.data.basis,
+			movesWhen: f.data.movesWhen,
+			nextMove: f.data.nextMove,
+			lastMoved: f.data.lastMoved,
+			instrument: f.data.instrument,
+			note: f.data.note,
+			family: f.data.family,
+			lines: f.data.lines,
+			states: f.data.states,
+			effectiveDate: f.data.effectiveDate,
+			lastReviewed: f.data.lastReviewed,
+			reviewState: f.data.reviewState,
+			sourceIds: (f.data.sourceIds ?? []).map((r: { id: string } | string) =>
+				typeof r === 'string' ? r : r.id,
+			),
+		})),
+	};
+}
+
+/**
+ * An advisory module: the rule set it runs, published as a rule set.
+ *
+ * Modules are the one place on this site where a page is a program. Publishing
+ * the checks as data rather than only as a rendered form is what lets somebody
+ * read what the module actually decides without filling it in - and every rule
+ * cites a source, so the rule set is as citable as the prose.
+ */
+export function moduleRecord(
+	entry: CollectionEntry<'modules'>,
+	sources: CollectionEntry<'sources'>[],
+) {
+	const path = `/tools/${entry.id}`;
+	const d = entry.data;
+	return {
+		...base('module', entry.id, path),
+		name: d.name,
+		family: d.family,
+		lines: d.lines,
+		summary: d.summary,
+		about:
+			'A deterministic rule set. Every check cites a source, answers are held in the reader browser ' +
+			'and nothing is submitted, so this is readable as a published rule set rather than as a form.',
+		privacy: 'No answer to this module is transmitted, stored, or logged. There is no server copy of anything a reader enters.',
+		fieldCount: (d.fields ?? []).length,
+		ruleCount: (d.rules ?? []).length,
+		rules: (d.rules ?? []).map((rule: Record<string, unknown>) => ({
+			...rule,
+			title: typeof rule.title === 'string' ? stripMarkers(rule.title) : rule.title,
+			detail: typeof rule.detail === 'string' ? stripMarkers(rule.detail) : rule.detail,
+			action: typeof rule.action === 'string' ? stripMarkers(rule.action) : rule.action,
+		})),
+		lastReviewed: d.lastReviewed,
+		reviewState: d.reviewState,
+		author: d.author,
+		reviewer: d.reviewer,
+		sourceIds: sources.map((s) => s.id),
+		sources: sources.map(sourceRecord),
 	};
 }
 

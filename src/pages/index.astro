@@ -7,43 +7,35 @@ import {
 	Landmark,
 	Layers,
 	MapPin,
-	Search,
+	MessageCircle,
 	Wrench,
 } from '@lucide/astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StatusChip from '../components/StatusChip.astro';
+import BirchFrontDoor from '../components/BirchFrontDoor.astro';
+import ProductPreview from '../components/ProductPreview.astro';
 import { siteConfig } from '../config/site';
 import { stripMarkers } from '../lib/citations';
 import { isStale, loadCorpus, recentlyReviewed } from '../lib/corpus';
 import { longDate } from '../lib/cite';
 import { graph, organization, website } from '../lib/schema';
 import { TODAY } from '../lib/today';
-import { allLineHubs } from '../lib/line-hub';
 
+import { excerpt, shortList } from '../lib/excerpt';
 const corpus = await loadCorpus();
+const california = corpus.states.find((state) => state.id === 'california');
+if (!california) throw new Error('California state record is missing.');
+const caQuestions = corpus.questions.filter((question) => question.data.states.includes('CA'));
+const caCoverages = corpus.coverages.filter((coverage) => coverage.data.stateVariations.some((variation) => variation.state === 'CA'));
 
 /* Source-quality strip: counted from the registry, never asserted. */
 const totalSources = corpus.sources.length;
 const primarySources = corpus.sources.filter((s) => s.data.primary).length;
 const staleSources = corpus.sources.filter((s) => isStale(s.data.lastChecked, TODAY)).length;
-/* Of the source records, how many have been confirmed after the day they
-   were added. accessedDate and lastChecked were identical on 260 of 263,
-   so publishing a per-source freshness date without this ratio overstated
-   what the date establishes. */
 const rechecked = corpus.sources.filter((s) => s.data.lastCheckedBasis === 'recheck').length;
-/* The count the front door leads with, so it is computed rather than
-   written down where it would drift. */
-const indexedLines = allLineHubs(corpus).filter((h) => h.hasSubstance).length;
-const lastReview = corpus.questions
-	.map((q) => q.data.lastReviewed)
-	.concat(corpus.coverages.map((c) => c.data.lastReviewed))
-	.sort()
-	.at(-1);
-const correctedPages = corpus.questions.filter((q) => q.data.reviewState === 'corrected').length;
 
 /*
- * Editorial selection, not a usage count. A reviewer decided these are the most
- * useful starting points. This site does not publish invented popularity data.
+ * Editorial starting points, not a usage count or a claim of licensed review.
  */
 const FEATURED = [
 	'homeowners-earthquake-california',
@@ -57,12 +49,6 @@ const featured = FEATURED.map((slug) => corpus.questionBySlug.get(slug)).filter(
 	(q): q is NonNullable<typeof q> => Boolean(q),
 );
 const featuredQuestions = featured.length >= 4 ? featured : corpus.questions.slice(0, 6);
-const examples = featuredQuestions.slice(0, 5).map((q) => q.data.question);
-
-const families = [...new Set(corpus.questions.map((q) => q.data.family))].sort();
-const lines = [...new Set(corpus.questions.flatMap((q) => q.data.lines))].sort();
-const states = [...new Set(corpus.states.map((s) => s.data.code))].sort();
-
 const recent = recentlyReviewed(corpus, 6);
 
 const atlas = [
@@ -116,172 +102,66 @@ const atlas = [
 	},
 ];
 
-const FAMILY_LABEL: Record<string, string> = {
-	personal: 'Personal lines',
-	commercial: 'Commercial lines',
-	life: 'Life',
-	health: 'Health and benefits',
-};
-
 const jsonLd = graph(organization(), website());
 ---
 
 <BaseLayout
-	description="Free insurance research across 39 lines. Every answer shows the sources behind it, its assumptions, what would change it, and when a licensed reviewer last looked. No account, no email, nothing to fill in, and nothing for sale."
+	description="Free insurance research and community conversation from Birch. Start with a question, open the sources behind the answer, and share what happened without turning a person’s experience into a verdict."
 	jsonLd={jsonLd}
 	pageType="home"
+	bodyClass="birch-home"
 >
-	<!-- First viewport: the working surface, not a marketing hero. -->
-	<section class="band band-tight band-first band-paper" aria-labelledby="home-title">
+	<section class="band band-paper home-landing">
 		<div class="shell">
-			<span class="eyebrow">Free insurance research</span>
-			<h1 id="home-title" style="font-size: var(--text-3xl); max-width: 34ch">
-				Insurance answers with the evidence attached. Free to read, and nothing to fill in.
-			</h1>
-			<p class="lede" style="font-size: var(--text-base)">
-				{indexedLines} lines of insurance indexed, {corpus.coverages.length} written up in full,{' '}
-				{corpus.questions.length} questions answered, {totalSources} source records behind them.{' '}
-				Operated by {siteConfig.operator.legalName} dba {siteConfig.operator.dba}. No account, no
-				email, and no quote is required to read any of it.
-			</p>
+			<BirchFrontDoor />
+			<ProductPreview />
+			<div class="home-record-strip" aria-label="Current Birch research record">
+				<a href="/sources"><span>Source records</span><strong>{totalSources}</strong><small>Publisher, date, supported claims</small></a>
+				<a href="/sources"><span>Primary sources</span><strong>{primarySources}</strong><small>Official and original records</small></a>
+				<a href="/questions"><span>Published questions</span><strong>{corpus.questions.length}</strong><small>Answer, assumptions, citations</small></a>
+				<a href="/sources"><span>Stale sources flagged</span><strong>{staleSources}</strong><small>Never hidden from the reader</small></a>
+			</div>
+			<div class="home-record-note"><span>{rechecked} of {totalSources} source records independently rechecked after initial access.</span><a href="/methodology">How review works <ArrowRight size={13} aria-hidden="true" /></a></div>
+			{siteConfig.environment === 'preview' && <div class="home-preview-bar"><span class="status status-plain">Design preview</span><span>Public signup and posting remain disabled. Research is awaiting licensed review.</span></div>}
+		</div>
+	</section>
 
-			<form
-				action="/ask"
-				method="get"
-				role="search"
-				data-question-form
-				class="stack"
-				style="max-width: 800px; margin-top: var(--s-6)"
-			>
-				<div class="field">
-					<label for="home-q">Your insurance question</label>
-					<div style="display:flex;gap:var(--s-2);align-items:flex-start;flex-wrap:wrap">
-						<input
-							id="home-q"
-							name="q"
-							type="search"
-							autocomplete="off"
-							enterkeyhint="search"
-							placeholder={examples[0] ?? 'Ask an insurance question'}
-							aria-describedby="home-q-hint"
-							style="flex:1 1 320px"
-						/>
-						<button class="btn btn-primary" type="submit">
-							<Search size={16} aria-hidden="true" /> Find the answer
-						</button>
-					</div>
-					<span class="hint" id="home-q-hint">
-						General facts only. Leave out names, addresses, policy or claim numbers, and health
-						details. The lookup runs on your device.
-					</span>
-				</div>
-
-				<div class="field-row" style="max-width: 780px">
-					<div class="field">
-						<label for="home-family">Insurance type</label>
-						<select id="home-family" name="family">
-							<option value="any">Any</option>
-							{families.map((family) => <option value={family}>{FAMILY_LABEL[family] ?? family}</option>)}
-						</select>
-					</div>
-					<div class="field">
-						<label for="home-line">Line</label>
-						<select id="home-line" name="line">
-							<option value="any">Any</option>
-							{lines.map((line) => <option value={line}>{line.replace(/-/g, ' ')}</option>)}
-						</select>
-					</div>
-					<div class="field">
-						<label for="home-state">State</label>
-						<select id="home-state" name="state">
-							<option value="any">Any</option>
-							{states.map((state) => <option value={state}>{state}</option>)}
-						</select>
-					</div>
-					<div class="field">
-						<label for="home-audience">Audience</label>
-						<select id="home-audience" name="audience">
-							<option value="any">Any</option>
-							<option value="individual">Individual or household</option>
-							<option value="business-owner">Business owner</option>
-							<option value="professional">Professional adviser</option>
-						</select>
-					</div>
-				</div>
-
-				<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center">
-					<span class="meta">Or browse</span>
-					<a class="btn btn-secondary btn-sm" href="/questions">Questions</a>
-					<a class="btn btn-secondary btn-sm" href="/insurance">Coverage</a>
-					<a class="btn btn-secondary btn-sm" href="/states">States</a>
-					<a class="btn btn-secondary btn-sm" href="/tools">Tools</a>
-					<a class="btn btn-secondary btn-sm" href="/sources">Sources</a>
-				</div>
-			</form>
-
-			<!-- Source-quality strip, still inside the first viewport. -->
-			<div class="table-scroll" style="margin-top: var(--s-6); max-width: 920px">
-				<table class="data">
-					<caption>Current state of the published corpus, counted from the source registry.</caption>
-					<thead>
-						<tr>
-							<th scope="col">Measure</th>
-							<th scope="col">Value</th>
-							<th scope="col">What it means</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">Source records</th>
-							<td class="num">{totalSources}</td>
-							<td>Each carries a publisher, dates, and the exact claims it supports.</td>
-						</tr>
-						<tr>
-							<th scope="row">Primary sources</th>
-							<td class="num">{primarySources} of {totalSources}</td>
-							<td>Statutes, regulations, regulator guidance, and official records.</td>
-						</tr>
-						<tr>
-							<th scope="row">Stale sources</th>
-							<td class="num">{staleSources}</td>
-							<td>Past the review window. Flagged on every page that cites them.</td>
-						</tr>
-						<tr>
-							<th scope="row">Independently rechecked</th>
-							<td class="num">{rechecked} of {totalSources}</td>
-							<td>
-								Confirmed again after the day it was added. The rest carry the date they were
-								read on, and say so.
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">Most recent review</th>
-							<td class="num">{lastReview ? longDate(lastReview) : 'n/a'}</td>
-							<td>A named person signed off on that page before it published.</td>
-						</tr>
-						<tr>
-							<th scope="row">Pages corrected</th>
-							<td class="num">{correctedPages}</td>
-							<td>Every material correction is logged in public.</td>
-						</tr>
-					</tbody>
-				</table>
+	<section class="band band-tight home-system" aria-labelledby="network-title">
+		<div class="shell">
+			<div class="band-head home-system-head">
+				<div><span class="eyebrow">Made for the questions that matter</span><h2 id="network-title">Find your way forward.</h2></div>
+				<p>Understand a policy, explore a company, or learn from someone who has been there.</p>
 			</div>
 
-			<div class="table-stack">
-				<p class="mono">Current state of the published corpus, counted from the source registry.</p>
-				<div class="table-stack-item">
-					<dl>
-						<dt>Sources</dt>
-						<dd>{totalSources} records, {primarySources} primary</dd>
-						<dt>Stale</dt>
-						<dd>{staleSources} past the review window</dd>
-						<dt>Reviewed</dt>
-						<dd>{lastReview ? longDate(lastReview) : 'n/a'}</dd>
-						<dt>Corrected</dt>
-						<dd>{correctedPages} pages</dd>
-					</dl>
-				</div>
+			<div class="home-lane-grid">
+				<a class="home-lane-card home-lane-research" href={'/ask'}>
+					<div class="home-lane-top"><span>Research</span><FileStack size={19} aria-hidden="true" /></div>
+					<h3>Make sense of the details.</h3>
+					<p>Clear answers to coverage questions, with the documents behind them.</p>
+					<div class="home-lane-foot"><span class="status status-established">Published</span><span>Open an answer <ArrowRight size={14} aria-hidden="true" /></span></div>
+				</a>
+				<a class="home-lane-card" href={'/companies'}>
+					<div class="home-lane-top"><span>Companies</span><Building2 size={19} aria-hidden="true" /></div>
+					<h3>Get to know your insurer.</h3>
+					<p>Company records, coverage context, and official places to get help.</p>
+					<div class="home-lane-foot"><span class="status status-contextual">{corpus.companies.length} records</span><span>Browse companies <ArrowRight size={14} aria-hidden="true" /></span></div>
+				</a>
+				<a class="home-lane-card home-lane-commons" href="/design/commons-preview">
+					<div class="home-lane-top"><span>Community</span><MessageCircle size={19} aria-hidden="true" /></div>
+					<h3>Learn from each other.</h3>
+					<p>A place for experiences, professional perspectives, and company responses.</p>
+					<div class="home-lane-foot"><span class="status status-plain">Private preview</span><span>See the product <ArrowRight size={14} aria-hidden="true" /></span></div>
+				</a>
+			</div>
+
+			<div class="home-access-rail" id="account-preview">
+				<div><span class="eyebrow">For insurance and financial professionals</span><strong>Make your experience useful to more people.</strong><p>Contribute research with your name, expertise, and sources attached.</p></div>
+				<a class="btn btn-secondary btn-sm" href="/professionals">Explore contributing <ArrowRight size={15} aria-hidden="true" /></a>
+			</div>
+
+			<div class="home-ca-strip" aria-labelledby="ca-launch-title">
+				<div><span class="eyebrow">California launch desk</span><h2 id="ca-launch-title">Start where insurance gets unusually local.</h2><p>Wildfire, earthquake, FAIR Plan, auto limits, rate review, and workers’ compensation—with the Bollinger family named as the California operator.</p></div>
+				<div class="home-ca-counts"><span><strong>{caQuestions.length}</strong> questions</span><span><strong>{caCoverages.length}</strong> coverage pages</span><a class="btn btn-secondary btn-sm" href="/start">Open the desk <ArrowRight size={15} aria-hidden="true" /></a></div>
 			</div>
 		</div>
 	</section>
@@ -294,8 +174,7 @@ const jsonLd = graph(organization(), website());
 					<span class="eyebrow">Editorial selection</span>
 					<h2 id="featured-title">Useful places to start</h2>
 					<p>
-						Chosen by a reviewer for how often the underlying confusion causes a real problem. These
-						are not usage counts.
+						Start with a question, then follow the sources and related guides.
 					</p>
 				</div>
 				<a class="btn btn-secondary btn-sm" href="/questions">
@@ -309,13 +188,14 @@ const jsonLd = graph(organization(), website());
 						<a class="row" href={`/questions/${question.id}`}>
 							<div>
 								<h3 class="row-title">{question.data.question}</h3>
-								<p>{stripMarkers(question.data.shortAnswer).slice(0, 190)}</p>
+								<p>{excerpt(stripMarkers(question.data.shortAnswer), 190)}</p>
 								<div class="row-meta">
 									<StatusChip kind={question.data.confidence} />
-									<span class="meta">{question.data.lines.join(', ')}</span>
+									<StatusChip kind={question.data.reviewState} />
+									<span class="meta">{shortList(question.data.lines)}</span>
 									{question.data.states.length > 0 && <span class="meta">{question.data.states.join(', ')}</span>}
 									<span class="meta">{question.data.sourceIds.length} sources</span>
-									<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+									<span class="meta">Record date {longDate(question.data.lastReviewed)}</span>
 								</div>
 							</div>
 							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
@@ -332,7 +212,7 @@ const jsonLd = graph(organization(), website());
 			<div class="band-head">
 				<div>
 					<span class="eyebrow">Browse the library</span>
-					<h2 id="atlas-title">Organized around entities, not a blog chronology</h2>
+					<h2 id="atlas-title">Explore insurance from any starting point.</h2>
 					<p>
 						The library is arranged by what a thing is, not when it was written. Every record links
 						to the questions that depend on it.
@@ -366,14 +246,14 @@ const jsonLd = graph(organization(), website());
 		</div>
 	</section>
 
-	<!-- Recently reviewed. -->
+	<!-- Record dates do not imply licensed review. -->
 	<section class="band band-tight" aria-labelledby="recent-title">
 		<div class="shell">
 			<div class="band-head">
 				<div>
-					<span class="eyebrow">Review feed</span>
-					<h2 id="recent-title">Recently reviewed</h2>
-					<p>Sorted by the date a person last checked the page against its sources.</p>
+					<span class="eyebrow">From the library</span>
+					<h2 id="recent-title">Recent research records</h2>
+					<p>Explore the latest dated records. Each page shows its review status; a record date is not a licensed signoff.</p>
 				</div>
 				<a class="btn btn-secondary btn-sm" href="/rss.xml">
 					RSS feed <ArrowRight size={15} aria-hidden="true" />
@@ -386,10 +266,10 @@ const jsonLd = graph(organization(), website());
 						<a class="row" href={item.path}>
 							<div>
 								<h3 class="row-title">{item.title}</h3>
-								<p>{stripMarkers(item.summary).slice(0, 170)}</p>
+								<p>{excerpt(stripMarkers(item.summary), 170)}</p>
 								<div class="row-meta">
 									<span class="status status-plain">{item.kind}</span>
-									<span class="meta">Reviewed {longDate(item.date)}</span>
+									<span class="meta">Record date {longDate(item.date)}</span>
 								</div>
 							</div>
 							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
@@ -441,3 +321,76 @@ const jsonLd = graph(organization(), website());
 		</div>
 	</section>
 </BaseLayout>
+
+<style>
+	.home-landing { padding-top: 0; padding-bottom: var(--s-8); }
+	.home-record-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: var(--s-8); border: 1px solid var(--line-strong); background: var(--line-strong); }
+	.home-record-strip a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px var(--s-2); min-width: 0; padding: var(--s-3) var(--s-4); background: var(--paper); color: var(--body); text-decoration: none; transition: background var(--dur-1) var(--ease); }
+	.home-record-strip a:hover, .home-record-strip a:focus-visible { background: var(--blue-wash); }
+	.home-record-strip span { color: var(--muted); font: var(--text-2xs)/1.3 var(--font-mono); text-transform: uppercase; }
+	.home-record-strip strong { grid-row: span 2; color: var(--ink); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; line-height: 1; }
+	.home-record-strip small { overflow: hidden; color: var(--faint); font-size: var(--text-2xs); text-overflow: ellipsis; white-space: nowrap; }
+	.home-record-note { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-2); padding-top: var(--s-2); color: var(--muted); font: var(--text-2xs)/1.4 var(--font-mono); }
+	.home-record-note a { display: inline-flex; align-items: center; gap: 4px; color: var(--brand-blue-text); font-family: var(--font-sans); font-weight: 650; text-decoration: none; }
+	.home-preview-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--s-2); padding-top: var(--s-3); color: var(--muted); font-size: var(--text-xs); }
+
+	.home-system { background: var(--cream); }
+	.home-system-head { grid-template-columns: minmax(0, 1.1fr) minmax(260px, .7fr); }
+	.home-system-head h2 { max-width: 20ch; }
+	.home-system-head > p { align-self: end; max-width: 48ch; margin: 0; color: var(--muted); line-height: var(--leading-normal); }
+	.home-lane-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-6); }
+	.home-lane-card { display: flex; min-height: 270px; flex-direction: column; padding: var(--s-5); border: 1px solid var(--line-strong); border-top: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); color: var(--body); text-decoration: none; transition: transform var(--dur-2) var(--ease-soft), border-color var(--dur-1) var(--ease), box-shadow var(--dur-2) var(--ease); }
+	.home-lane-card:hover, .home-lane-card:focus-visible { transform: translateY(-3px); border-color: var(--brand-blue); box-shadow: var(--elev-2); }
+	.home-lane-research { border-top-color: var(--brand-blue); }
+	.home-lane-commons { border-top-style: dashed; background: var(--slate-wash); }
+	.home-lane-top { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); color: var(--brand-blue-text); font: var(--text-2xs)/1.3 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
+	.home-lane-card h3 { max-width: 16ch; margin: var(--s-8) 0 var(--s-3); font-family: var(--font-sans); font-size: clamp(1.4rem, 2.2vw, 1.85rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.08; }
+	.home-lane-card > p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.home-lane-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-3); margin-top: auto; padding-top: var(--s-6); color: var(--brand-blue-text); font-size: var(--text-xs); font-weight: 650; }
+	.home-lane-foot > span:last-child { display: inline-flex; align-items: center; gap: 4px; }
+	.home-access-rail { display: flex; align-items: center; justify-content: space-between; gap: var(--s-6); margin-top: var(--s-4); padding: var(--s-4) var(--s-5); border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); }
+	.home-access-rail .eyebrow { margin-bottom: var(--s-1); }
+	.home-access-rail strong { display: block; color: var(--ink); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; }
+	.home-access-rail p { margin: var(--s-1) 0 0; color: var(--muted); font-size: var(--text-sm); }
+	.home-ca-strip { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr); gap: var(--s-8); align-items: center; margin-top: var(--s-8); padding-top: var(--s-8); border-top: 1px solid var(--line-strong); }
+	.home-ca-strip h2 { margin: var(--s-2) 0; font-size: var(--text-2xl); }
+	.home-ca-strip p { max-width: 66ch; margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.home-ca-counts { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: var(--s-3); }
+	.home-ca-counts > span { display: grid; gap: 2px; min-width: 76px; color: var(--muted); font-size: var(--text-2xs); }
+	.home-ca-counts strong { color: var(--ink); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; }
+
+	@media (max-width: 1040px) {
+		.home-command { grid-template-columns: minmax(0, 1fr) minmax(370px, .86fr); gap: var(--s-8); }
+		.home-hero-copy h1 { font-size: clamp(3rem, 6.8vw, 4.8rem); }
+		.home-query-examples a:nth-of-type(n+3) { display: none; }
+	}
+	@media (max-width: 820px) {
+		.home-command { grid-template-columns: minmax(0, 1fr); }
+		.home-hero-copy h1 { max-width: 12ch; }
+		.home-answer-window { max-width: 680px; }
+		.home-record-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		.home-system-head, .home-ca-strip { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
+		.home-lane-grid { grid-template-columns: minmax(0, 1fr); }
+		.home-lane-card { min-height: 240px; }
+		.home-ca-counts { justify-content: flex-start; }
+	}
+	@media (max-width: 560px) {
+		.home-landing { padding-top: var(--s-6); }
+		.home-identity { margin-bottom: var(--s-4); }
+		.home-hero-copy h1 { font-size: clamp(2.8rem, 14vw, 4rem); }
+		.home-search-row { align-items: stretch; flex-direction: column; padding: var(--s-2); }
+		.home-search-row .btn { width: 100%; }
+		.home-query-examples { align-items: stretch; flex-direction: column; }
+		.home-query-examples > span, .home-query-examples a { width: 100%; max-width: none; }
+		.home-window-tabs a { font-size: var(--text-2xs); }
+		.home-window-tabs span { display: none; }
+		.home-window-footer { align-items: flex-start; flex-direction: column; }
+		.home-record-strip { grid-template-columns: minmax(0, 1fr); }
+		.home-access-rail { align-items: flex-start; flex-direction: column; }
+		.home-access-rail .btn { width: 100%; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.home-lane-card, .home-query-examples a, .home-search-row { transition: none; }
+		.home-lane-card:hover, .home-lane-card:focus-visible { transform: none; }
+	}
+</style>

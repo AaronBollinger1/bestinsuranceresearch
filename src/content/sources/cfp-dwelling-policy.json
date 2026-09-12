@@ -8,8 +8,8 @@
 	"publishedDate": "unknown",
 	"effectiveDate": "unknown",
 	"accessedDate": "2026-08-31",
-	"lastChecked": "2026-08-31",
-	"lastCheckedBasis": "access",
+	"lastChecked": "2026-09-10",
+	"lastCheckedBasis": "recheck",
 	"primary": true,
 	"claims": [
 		"The California FAIR Plan Dwelling Fire Policy is a named peril policy, which provides coverage only for damage caused by the specific causes of loss listed in the policy.",
@@ -30,7 +30,7 @@
 		"The California FAIR Plan Dwelling page states that optional coverages are available at an additional cost, such as coverage for vandalism and malicious mischief.",
 		"The California FAIR Plan Dwelling page states that for more complete property coverage the reader should consider purchasing Difference in Conditions, Flood, or Earthquake policies to supplement a California FAIR Plan policy.",
 		"The California FAIR Plan Dwelling page states that if you are unable to purchase coverage with a traditional insurance company, the California FAIR Plan offers a temporary solution for the occupancy types it lists.",
-		"The California FAIR Plan Dwelling page does not list liability, theft, or water damage among the covered perils, and states no maximum dwelling limit."
+		"The California FAIR Plan Dwelling page does not list liability, theft, or water damage among the covered perils shown and does not state a maximum dwelling limit on this page."
 	],
 	"updateCadence": "changes with FAIR Plan form and program filings",
 	"status": "active",

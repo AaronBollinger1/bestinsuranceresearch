@@ -1,0 +1,175 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { commons } from '../config/commons';
+
+const reports = (await getCollection('reports')).filter((r) => r.data.moderation === 'published');
+const annotations = (await getCollection('annotations')).filter((a) => a.data.moderation === 'published');
+
+/*
+ * A count of published reports would read as a count of real accounts, and
+ * right now every one of them is a constructed illustration published to prove
+ * the format renders. Saying "1 published report" while that is true would be
+ * the first misleading sentence on a site whose entire proposition is that it
+ * is not misleading. So the two are counted separately until real ones exist.
+ */
+const constructed = reports.filter((r) => r.data.label === 'hypothetical' || r.data.label === 'composite');
+const lived = reports.filter((r) => !constructed.includes(r));
+---
+
+<BaseLayout
+	eyebrow="The Commons"
+	title="What actually happened, checked before it publishes"
+	lede="The other half of the estate. Where the Record says what the rule is and cites a document for every sentence, this holds what happened to people - attributed, labelled for what kind of evidence it is, and read by a moderator before anyone else reads it."
+	hideIntro
+>
+	<section class="band band-first band-tight">
+		<div class="shell commons-hero">
+			<div>
+				<div class="commons-hero-mark">
+					<img src="/birch-bird-transparent.png" width="50" height="50" alt="" />
+					<div>
+						<span class="eyebrow">Birch / Commons</span>
+						<p>Community, carefully moderated</p>
+					</div>
+				</div>
+				<h1>Talk about what insurance was like.</h1>
+				<p class="lede">
+					A place for real accounts, practitioner notes, and questions attached to the research they are
+					about. The conversation stays human; the cited answer stays checkable.
+				</p>
+				<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-5)">
+					<a class="btn" href="/threads">Browse discussion <ArrowRight size={16} aria-hidden="true" /></a>
+					<a class="btn btn-light" href="/contribute">See how to contribute</a>
+				</div>
+			</div>
+
+			<aside class="commons-entry-panel" aria-label="Start here">
+				<span class="eyebrow">Start here</span>
+				<h2>Choose your way in</h2>
+				<ol class="commons-entry-list">
+					<li>
+						<a href="/threads"><span>Read or start a thread</span><ArrowRight size={15} aria-hidden="true" /></a>
+						<p>Questions and observations attached to a research subject.</p>
+					</li>
+					<li>
+						<a href="/reports"><span>Read a case report</span><ArrowRight size={15} aria-hidden="true" /></a>
+						<p>Structured accounts with a label, context, and moderation history.</p>
+					</li>
+					<li>
+						<a href="/sign-in"><span>Sign in without a password</span><ArrowRight size={15} aria-hidden="true" /></a>
+						<p>A one-time link is all an account needs to get started.</p>
+					</li>
+				</ol>
+				<div class="commons-boundary">
+					<span class="mono">The boundary</span>
+					<p>No one here decides whether a claim should have been paid.</p>
+				</div>
+			</aside>
+		</div>
+	</section>
+
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				<h2>Two properties, and this is the other one</h2>
+				<p>
+					<a href={commons.record.origin} rel="noopener">{commons.record.name}</a> holds what the
+					rule is: every sentence on it cites a published document, and the build refuses to
+					publish one that does not. That is a good way to say what a statute requires. It is no
+					way at all to say what it is like to have a claim denied on a Tuesday.
+				</p>
+				<p>
+					This is where that goes. Accounts of real situations, and notes from people whose
+					professional licence has been checked against a public register. Moderated before
+					publication, labelled for what kind of evidence they are, and attributed.
+				</p>
+
+				<h2>The one rule that holds on both sides</h2>
+				<div class="callout" data-tone="stop">
+					<h3>No verdicts</h3>
+					<p>{commons.verdictProhibition}</p>
+				</div>
+				<p>
+					That is not squeamishness. A forum full of strangers declaring what should have been
+					covered is worth nothing to anybody. A record of accounts saying <em>this happened, here
+					is what turned on it, here is who decided</em> is worth a great deal, and the second one
+					is only possible if the first is not allowed.
+				</p>
+
+				<h2>What makes an account worth citing</h2>
+				<p>
+					An anonymous thread is not citable — not by a researcher, not by a lawyer, not by us.
+					"My claim got denied and it was unfair" carries no date, no state, no line of business,
+					no document, and no way to tell whether it happened. Volume of that does not add up to
+					authority.
+				</p>
+				<p>
+					So every report here carries six things, and{' '}
+					<a href="/standards">Standards</a> explains why each one is required: what kind of
+					evidence it is, why it carries that label, where it came from, what happened, who
+					decided, and at least three reasons it does not transfer to anyone else's situation.
+				</p>
+
+				<h2>Where this is up to</h2>
+				{
+					lived.length === 0 ? (
+						<div class="empty">
+							<h2>No real account has been published yet.</h2>
+							<p>
+								That is the honest state rather than an outage, and it will be true for a while.
+								Accounts are open, but nothing appears here until a submitted account has been read by a
+								moderator before publication.
+							</p>
+							{constructed.length > 0 && (
+								<p>
+									What is published is {constructed.length} constructed{' '}
+									{constructed.length === 1 ? 'illustration' : 'illustrations'}, labelled{' '}
+									<code>hypothetical</code> and saying plainly that it did not happen. It exists so
+									a contributor can see what a finished report looks like before writing one, and
+									so the pages and machine records around it are real rather than mocked.{' '}
+									<a href="/reports">Read it</a>.
+								</p>
+							)}
+							<p>
+								<a href="/contribute">What contributing will involve</a> is written up already,
+								including the things this site will never ask you for.
+							</p>
+						</div>
+					) : (
+						<p>
+							{lived.length} published {lived.length === 1 ? 'account' : 'accounts'}
+							{constructed.length > 0 && `, ${constructed.length} constructed illustrations`}
+							{annotations.length > 0 && `, and ${annotations.length} practitioner notes`}.{' '}
+							<a href="/reports">Read them</a>.
+						</p>
+					)
+				}
+			</div>
+
+			<aside aria-label="About this site">
+				<div class="rail-block">
+					<h2>Status</h2>
+					<dl>
+						<div><dt>Real accounts</dt><dd>{lived.length}</dd></div>
+						<div><dt>Constructed illustrations</dt><dd>{constructed.length}</dd></div>
+						<div><dt>Practitioner notes</dt><dd>{annotations.length}</dd></div>
+						<div><dt>Moderation</dt><dd>Before publication</dd></div>
+						<div><dt>Accounts</dt><dd>Open</dd></div>
+					</dl>
+				</div>
+				<div class="rail-block">
+					<h2>Never collected</h2>
+					<ul>
+						<li>Any document upload</li>
+						<li>A policy or claim number</li>
+						<li>A date of birth or government id</li>
+						<li>Health information</li>
+						<li>A payment method</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

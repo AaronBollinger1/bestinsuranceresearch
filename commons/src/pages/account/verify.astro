@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SESSION_COOKIE, accountFromSession, sameOrigin } from '../../lib/auth';
+import { getStore, selfOrigin } from '../../lib/runtime';
+import { PROFESSIONAL_ROLES, validateVerificationRequest, verificationRecord } from '../../lib/verification';
+
+export const prerender = false;
+
+const store = getStore();
+const account = await accountFromSession(store, Astro.cookies.get(SESSION_COOKIE)?.value);
+if (!account) return Astro.redirect('/sign-in', 303);
+
+let errors: Array<{ field: string; message: string }> = [];
+let values: Record<string, string> = {};
+let sent = Astro.url.searchParams.get('sent') === '1';
+const requests = await store.verificationRequestsBy(account.email);
+const pending = requests.find((request) => request.state === 'pending');
+
+if (Astro.request.method === 'POST' && !account.license && !pending) {
+	if (!sameOrigin(Astro.request, selfOrigin(Astro.request))) {
+		return new Response('Bad request', { status: 400 });
+	}
+
+	const form = await Astro.request.formData();
+	values = Object.fromEntries([...form.entries()].map(([key, value]) => [key, String(value)]));
+	const result = validateVerificationRequest(values);
+	errors = result.errors;
+
+	if (result.draft) {
+		await store.createVerificationRequest(
+			verificationRecord(account.email, result.draft, new Date().toISOString()),
+		);
+		return Astro.redirect('/account/verify?sent=1', 303);
+	}
+}
+
+const value = (field: string) => values[field] ?? '';
+const errorFor = (field: string) => errors.filter((error) => error.field === field);
+const roleLabel = (kind: keyof typeof PROFESSIONAL_ROLES) => PROFESSIONAL_ROLES[kind];
+const verifiedRole = account.kind in PROFESSIONAL_ROLES
+	? roleLabel(account.kind as keyof typeof PROFESSIONAL_ROLES)
+	: 'professional role';
+---
+
+<BaseLayout
+	title="Request professional verification"
+	eyebrow="Account"
+	lede="Request a role badge using a public licence register. Your account stays a reader account until a moderator checks it."
+	crumbs={[{ name: 'Home', href: '/' }, { name: 'Account', href: '/account' }, { name: 'Professional verification' }]}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				{sent && (
+					<div class="callout" data-tone="note">
+						<h2>Request sent</h2>
+						<p>
+							A moderator will check the named public register. Until then, your account remains a reader
+							account and no role badge appears on anything you write.
+						</p>
+					</div>
+				)}
+
+				{errors.length > 0 && (
+					<div class="callout" data-tone="stop">
+						<h2>This request has not been sent.</h2>
+						<ul>{errors.map((error) => <li>{error.message}</li>)}</ul>
+						<p>Nothing was saved. The form still contains what you entered.</p>
+					</div>
+				)}
+
+				{account.license ? (
+					<>
+						<h2>Professional role verified</h2>
+						<p>
+							Your account is shown as a verified {verifiedRole}.
+							The badge names the authority, register, and date so a reader can check what was verified.
+						</p>
+						<p><a class="btn btn-secondary" href="/account">Return to your account</a></p>
+					</>
+				) : pending ? (
+					<>
+						<h2>Verification is pending</h2>
+						<p>
+							You requested <strong>{roleLabel(pending.kind)}</strong> verification against{' '}
+							<strong>{pending.authority}</strong> on {pending.submittedAt.slice(0, 10)}.
+						</p>
+						<p>
+							The public register supplied was{' '}
+							<a href={pending.registerUrl} rel="noopener">{pending.registerUrl}</a>. A moderator must check it
+							before your account changes.
+						</p>
+						<p><a class="btn btn-secondary" href="/account">Return to your account</a></p>
+					</>
+				) : (
+					<>
+						<h2>Tell us what a reader can check</h2>
+						<p>
+							Use a public insurance licence or register entry. This request does not verify an opinion,
+							endorse an employer, or change the Research corpus. It only gives a moderator enough context
+							to decide whether a role badge is accurate.
+						</p>
+
+						<form method="post" class="stack" style="max-width: 42rem">
+							<div class="field">
+								<label for="kind">Professional role</label>
+								<select id="kind" name="kind" required>
+									<option value="">Choose a role</option>
+									{Object.entries(PROFESSIONAL_ROLES).map(([kind, label]) => (
+										<option value={kind} selected={value('kind') === kind}>{label}</option>
+									))}
+								</select>
+								{errorFor('kind').map((error) => <span class="hint" style="color: var(--rust)">{error.message}</span>)}
+							</div>
+
+							<div class="field">
+								<label for="licenseNumber">Public licence number</label>
+								<input id="licenseNumber" name="licenseNumber" value={value('licenseNumber')} autocomplete="off" required />
+								<span class="hint">Only a number that a reader can verify in the named public register.</span>
+								{errorFor('licenseNumber').map((error) => <span class="hint" style="color: var(--rust)">{error.message}</span>)}
+							</div>
+
+							<div class="field">
+								<label for="authority">Licensing authority</label>
+								<input id="authority" name="authority" value={value('authority')} autocomplete="organization" placeholder="California Department of Insurance" required />
+								{errorFor('authority').map((error) => <span class="hint" style="color: var(--rust)">{error.message}</span>)}
+							</div>
+
+							<div class="field">
+								<label for="registerUrl">Direct public register or lookup URL</label>
+								<input id="registerUrl" name="registerUrl" type="url" inputmode="url" value={value('registerUrl')} placeholder="https://..." required />
+								<span class="hint">Use the authority's own HTTPS site. Do not send a document or private account information.</span>
+								{errorFor('registerUrl').map((error) => <span class="hint" style="color: var(--rust)">{error.message}</span>)}
+							</div>
+
+							<div>
+								<button class="btn btn-primary" type="submit">Send for moderator review</button>
+								<p class="meta" style="margin-top: var(--s-3)">Self-described until approved · no identity document required</p>
+							</div>
+						</form>
+					</>
+				)}
+			</div>
+
+			<aside aria-label="Verification boundary">
+				<div class="rail-block">
+					<h2>What approval means</h2>
+					<ul>
+						<li>The role was checked against the named public register.</li>
+						<li>The register URL and check date appear with the badge.</li>
+						<li>Your words are still your own, not an endorsement.</li>
+					</ul>
+				</div>
+				<div class="rail-block">
+					<h2>Never requested</h2>
+					<ul>
+						<li>An identity document</li>
+						<li>A policy or claim number</li>
+						<li>A document or upload</li>
+						<li>Health or payment information</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

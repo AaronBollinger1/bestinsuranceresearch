@@ -1,0 +1,287 @@
+---
+import { ArrowRight, Building2, CircleDot, ShieldCheck } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Callout from '../../components/Callout.astro';
+import CiteThisPage from '../../components/CiteThisPage.astro';
+import SourceLedger from '../../components/SourceLedger.astro';
+import StatusChip from '../../components/StatusChip.astro';
+import { stripMarkers } from '../../lib/citations';
+import { ledgerFor, loadCorpus } from '../../lib/corpus';
+import { allIndustryHubs } from '../../lib/industry-hub';
+import { excerpt } from '../../lib/excerpt';
+import { longDate } from '../../lib/cite';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
+
+export async function getStaticPaths() {
+	const corpus = await loadCorpus();
+	return allIndustryHubs(corpus)
+		.filter((hub) => hub.hasSubstance)
+		.map((hub) => ({ params: { slug: hub.id }, props: { hub, corpus } }));
+}
+
+const { hub, corpus } = Astro.props;
+const path = `/industries/${hub.id}`;
+const TODAY = import.meta.env.PUBLIC_BUILD_DATE || new Date().toISOString().slice(0, 10);
+const sources = ledgerFor(hub.sourceIds, corpus.sourceById, `industry hub "${hub.id}"`);
+const sourcePreview = sources.slice(0, 16);
+const sourceOverflow = sources.length - sourcePreview.length;
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Industries and situations', path: '/industries' },
+	{ name: hub.name, path },
+];
+
+const description = `${hub.name} insurance research from Birch, with linked coverage, questions, examples, organizations, and source records.`;
+
+const nuanceItems = [...new Map(
+	hub.coverages.flatMap((coverage) =>
+		coverage.data.underwritingInputs.slice(0, 3).map((input) => [
+			`${coverage.id}:${input}`,
+			{ coverage: coverage.data.name, text: input },
+		]),
+	),
+).values()].slice(0, 12);
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: `${hub.name} insurance research`,
+		path,
+		description,
+		items: [
+			...hub.coverages.map((entry) => ({ name: entry.data.name, path: `/insurance/${entry.id}` })),
+			...hub.questions.map((entry) => ({ name: entry.data.question, path: `/questions/${entry.id}` })),
+			...hub.examples.map((entry) => ({ name: entry.data.title, path: `/examples/${entry.id}` })),
+			...hub.companies.map((entry) => ({ name: entry.data.legalName, path: `/companies/${entry.id}` })),
+		],
+	}),
+);
+---
+
+<BaseLayout
+	title={`${hub.name} insurance research`}
+	description={description}
+	jsonLd={jsonLd}
+	machinePath={`${path}.json`}
+	pageType="editorial"
+>
+	<article>
+		<header class="band band-tight band-first band-paper">
+			<div class="shell">
+				<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+				<span class="eyebrow">Context hub · {hub.sourceIds.length} source records</span>
+				<h1>{hub.name}</h1>
+				<p class="page-lede">{hub.descriptor}</p>
+				<p class="hub-role">A navigational index over published Birch records. Follow the exact page for the assumptions, jurisdiction, last-checked date, and source ledger behind a statement.</p>
+
+				<div class="figures" style="margin-top:var(--s-5)">
+					<div class="figure"><b>{hub.coverages.length}</b><span>coverage pages</span></div>
+					<div class="figure"><b>{hub.questions.length}</b><span>answered questions</span></div>
+					<div class="figure"><b>{hub.examples.length}</b><span>worked examples</span></div>
+					<div class="figure"><b>{hub.companies.length}</b><span>organizations</span></div>
+				</div>
+			</div>
+		</header>
+
+		<section class="band band-tight band-first">
+			<div class="shell">
+				<Callout tone="limit" label="What this hub does not claim">
+					<p>
+						This page does not say which policy you need, what a carrier will write, whether a claim is
+						covered, or which company is best. It only makes the relevant research easier to find.
+					</p>
+					<p>
+						The discussion layer is separate. Human experiences can add context later, but they do not
+						become evidence or a verdict about an organization.
+					</p>
+				</Callout>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="coverage-start">
+			<div class="shell">
+				<div class="band-head">
+					<div>
+						<span class="eyebrow">Start with the line</span>
+						<h2 id="coverage-start">Coverage pages in this context</h2>
+					</div>
+					<span class="meta">{hub.coverages.length} published</span>
+				</div>
+				{
+					hub.coverages.length > 0 ? (
+						<div class="hub-card-grid">
+							{hub.coverages.map((coverage) => (
+								<a class="hub-card" href={`/insurance/${coverage.id}`}>
+									<div class="hub-card-top"><ShieldCheck size={18} aria-hidden="true" /><StatusChip kind={coverage.data.reviewState} /></div>
+									<h3>{coverage.data.name}</h3>
+									<p>{excerpt(stripMarkers(coverage.data.definition), 240)}</p>
+									<div class="hub-card-meta"><span>{coverage.data.sourceIds.length} sources</span><span>Last checked {longDate(coverage.data.lastReviewed)}</span></div>
+									<div class="hub-card-foot"><span>Read coverage page</span><ArrowRight size={15} aria-hidden="true" /></div>
+								</a>
+							))}
+						</div>
+					) : (
+						<div class="hub-empty">No written coverage page is published for this context yet. Start with the questions and line indexes below.</div>
+					)
+				}
+			</div>
+		</section>
+
+		<section class="band band-paper" aria-labelledby="questions">
+			<div class="shell">
+				<div class="band-head">
+					<div>
+						<span class="eyebrow">Questions</span>
+						<h2 id="questions">What people ask in this context</h2>
+					</div>
+					<span class="meta">{hub.questions.length} answered</span>
+				</div>
+				<div class="rows hub-rows">
+					{hub.questions.map((question) => (
+						<a class="row" href={`/questions/${question.id}`}>
+							<div>
+								<h3 class="row-title">{question.data.question}</h3>
+								<p>{excerpt(stripMarkers(question.data.shortAnswer), 250)}</p>
+								<div class="row-meta"><StatusChip kind={question.data.reviewState} /><span class="meta">{question.data.sourceIds.length} sources</span><span class="meta">{question.data.states.length ? question.data.states.join(', ') : 'General context'}</span></div>
+							</div>
+							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
+		{
+			nuanceItems.length > 0 && (
+				<section class="band band-tight" aria-labelledby="nuances">
+					<div class="shell">
+						<span class="eyebrow">Nuances to inspect</span>
+						<h2 id="nuances">The details that change the next question</h2>
+						<p class="lede">These are the inputs named on the linked coverage records. They are prompts for reading, not a checklist that decides your situation.</p>
+						<div class="nuance-grid">
+							{nuanceItems.map((item) => (
+								<a class="nuance-item" href={`/insurance/${hub.coverages.find((coverage) => coverage.data.name === item.coverage)?.id ?? ''}`}>
+									<CircleDot size={16} aria-hidden="true" />
+									<span><strong>{stripMarkers(item.text)}</strong><small>{item.coverage}</small></span>
+								</a>
+							))}
+						</div>
+					</div>
+				</section>
+			)
+		}
+
+		{
+			hub.examples.length > 0 && (
+			<section class="band band-paper" aria-labelledby="examples">
+				<div class="shell">
+					<span class="eyebrow">Worked readings</span>
+					<h2 id="examples">Examples and edge cases</h2>
+					<div class="card-grid" style="margin-top:var(--s-4)">
+						{hub.examples.map((example) => (
+							<a class="card" href={`/examples/${example.id}`}>
+								<h3 class="card-title">{example.data.title}</h3>
+								<p>{excerpt(stripMarkers(example.data.whatHappened), 230)}</p>
+								<div class="card-foot"><span class="meta">{example.data.label}</span><ArrowRight size={15} aria-hidden="true" /></div>
+							</a>
+						))}
+					</div>
+				</div>
+			</section>
+			)
+		}
+
+		{
+			hub.companies.length > 0 && (
+			<section class="band band-tight" aria-labelledby="organizations">
+				<div class="shell">
+					<span class="eyebrow">Organizations</span>
+					<h2 id="organizations">Companies, regulators, and public entities in this record</h2>
+					<div class="rows hub-rows">
+						{hub.companies.map((company) => (
+							<a class="row" href={`/companies/${company.id}`}>
+								<div>
+									<h3 class="row-title">{company.data.legalName}</h3>
+									<p>{excerpt(stripMarkers(company.data.summary), 220)}</p>
+									<div class="row-meta"><Building2 size={14} aria-hidden="true" /><span class="meta">{company.data.orgType.replace(/-/g, ' ')}</span><span class="meta">{company.data.sourceIds.length} sources</span></div>
+								</div>
+								<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+							</a>
+						))}
+					</div>
+				</div>
+			</section>
+			)
+		}
+
+		<section class="band band-tight band-paper" aria-labelledby="source-trail">
+			<div class="shell">
+				<div class="band-head">
+					<div>
+						<span class="eyebrow">Provenance</span>
+						<h2 id="source-trail">Source trail for this context</h2>
+					</div>
+					<span class="meta">Updated from the corpus {longDate(hub.lastReviewed)}</span>
+				</div>
+				<p class="lede">This hub is assembled from existing Birch records. The linked coverage, question, example, and organization pages remain the citable units for individual statements.</p>
+				<SourceLedger sources={sourcePreview} today={TODAY} />
+				{sourceOverflow > 0 && <p class="mono" style="margin-top:var(--s-4)">{sourceOverflow} additional source records are carried by the linked pages above. Open those pages for their complete ledger.</p>}
+
+				<CiteThisPage
+					page={{
+						title: `${hub.name} insurance research`,
+						path,
+						published: '2026-09-11',
+						reviewed: hub.lastReviewed,
+						author: 'Birch Research',
+						id: `industry-${hub.id}`,
+						pageType: 'industry context index',
+					}}
+					machinePath={`${path}.json`}
+				/>
+			</div>
+		</section>
+
+		<section class="band band-tight">
+			<div class="shell">
+				<div class="industry-next-step">
+					<div>
+						<span class="eyebrow">Next step</span>
+						<strong>Ask the question in your own words.</strong>
+						<p>Birch searches the published library locally and tells you when it does not have enough evidence.</p>
+					</div>
+					<a class="btn btn-primary" href="/ask">Ask Birch <ArrowRight size={15} aria-hidden="true" /></a>
+				</div>
+			</div>
+		</section>
+	</article>
+</BaseLayout>
+
+<style>
+	.hub-role { max-width: 70ch; margin: var(--s-3) 0 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.hub-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: var(--s-4); border: 1px solid var(--line-strong); background: var(--line-strong); }
+	.hub-card { display: grid; gap: var(--s-3); min-height: 230px; padding: var(--s-5); background: var(--paper); color: var(--ink); text-decoration: none; transition: background var(--dur-2) var(--ease), color var(--dur-2) var(--ease), transform var(--dur-2) var(--ease-soft), box-shadow var(--dur-2) var(--ease); }
+	.hub-card:hover, .hub-card:focus-visible { position: relative; z-index: 1; background: var(--brand-blue-wash); color: var(--brand-blue-deep); box-shadow: var(--elev-2); transform: translateY(-2px); }
+	.hub-card-top { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); color: var(--brand-blue-text); }
+	.hub-card h3 { margin: 0; color: inherit; font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; line-height: var(--leading-snug); }
+	.hub-card p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.hub-card-meta { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-3); color: var(--muted); font: var(--text-2xs)/1.3 var(--font-mono); }
+	.hub-card-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); margin-top: auto; padding-top: var(--s-3); border-top: 1px solid var(--line); color: var(--brand-blue-text); font-size: var(--text-xs); font-weight: 600; }
+	.hub-rows { margin-top: var(--s-4); }
+	.hub-empty { margin-top: var(--s-4); padding: var(--s-5); border: 1px dashed var(--line-strong); color: var(--muted); background: var(--paper); }
+	.nuance-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin-top: var(--s-5); border: 1px solid var(--line); background: var(--line); }
+	.nuance-item { display: flex; align-items: flex-start; gap: var(--s-2); min-height: 92px; padding: var(--s-4); background: var(--paper); color: var(--ink); text-decoration: none; }
+	.nuance-item:hover, .nuance-item:focus-visible { background: var(--brand-blue-wash); color: var(--brand-blue-deep); }
+	.nuance-item svg { flex: none; margin-top: 2px; color: var(--gold-text); }
+	.nuance-item span { display: grid; gap: 4px; }
+	.nuance-item strong { font-size: var(--text-sm); font-weight: 600; line-height: var(--leading-snug); }
+	.nuance-item small { color: var(--muted); font-size: var(--text-2xs); line-height: 1.35; }
+	.industry-next-step { display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); padding: var(--s-5); border: 1px solid var(--line-strong); border-left: 3px solid var(--brand-blue); background: var(--brand-blue-wash); border-radius: var(--r-3); }
+	.industry-next-step strong { display: block; color: var(--ink); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; }
+	.industry-next-step p { margin: var(--s-1) 0 0; color: var(--muted); font-size: var(--text-sm); }
+	@media (max-width: 720px) { .hub-card-grid, .nuance-grid { grid-template-columns: minmax(0, 1fr); } .industry-next-step { align-items: flex-start; flex-direction: column; } .industry-next-step .btn { width: 100%; justify-content: center; } }
+</style>

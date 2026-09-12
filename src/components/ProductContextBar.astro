@@ -1,0 +1,49 @@
+---
+import { ArrowUpRight, BookOpen, Building2, MessageCircle, PenLine, Search } from '@lucide/astro';
+import { siteConfig } from '../config/site';
+
+type Context = 'research' | 'coverage' | 'companies' | 'commons' | 'contribute';
+
+interface Props {
+	active: Context;
+}
+
+const { active } = Astro.props;
+const commonsReady = siteConfig.communityReady;
+const items = [
+	{ id: 'research' as const, label: 'Research', href: '/ask', detail: 'Ask and trace', icon: Search },
+	{ id: 'coverage' as const, label: 'Coverage', href: '/insurance', detail: 'Learn the lines', icon: BookOpen },
+	{ id: 'companies' as const, label: 'Companies', href: '/companies', detail: 'Open the record', icon: Building2 },
+	{
+		id: 'commons' as const,
+		label: commonsReady ? 'Community' : 'Community / preview',
+		href: commonsReady ? `${siteConfig.communityOrigin}/threads` : '/design/commons-preview',
+		detail: commonsReady ? 'Discuss context' : 'See the protocol',
+		icon: MessageCircle,
+		external: commonsReady,
+	},
+	{ id: 'contribute' as const, label: 'Contribute', href: '/contribute', detail: 'Add context', icon: PenLine },
+] as const;
+---
+
+<div class="product-context-bar">
+	<nav aria-label="Explore Birch" class="product-context-nav">
+		{
+			items.map((item) => {
+				const Icon = item.icon;
+				return (
+					<a
+						class:list={["product-context-link", item.id === active && "is-active"]}
+						href={item.href}
+						aria-current={item.id === active ? 'page' : undefined}
+						rel={'external' in item && item.external ? 'noopener' : undefined}
+					>
+						<Icon size={14} aria-hidden="true" />
+						<span><strong>{item.label}</strong></span>
+						{'external' in item && item.external && <ArrowUpRight size={12} aria-hidden="true" />}
+					</a>
+				);
+			})
+		}
+	</nav>
+</div>

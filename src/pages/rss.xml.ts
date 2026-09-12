@@ -3,6 +3,7 @@ import { siteConfig } from '../config/site';
 import { stripMarkers } from '../lib/citations';
 import { loadCorpus, recentlyReviewed } from '../lib/corpus';
 
+import { excerpt } from '../lib/excerpt';
 export const prerender = true;
 
 const abs = (path: string) => new URL(path, siteConfig.origin).toString();
@@ -48,7 +49,7 @@ export const GET: APIRoute = async () => {
 			`      <pubDate>${rfc822(item.date)}</pubDate>`,
 			`      <dc:creator>${escape(siteConfig.name)}</dc:creator>`,
 			`      <category>${escape(item.kind)}</category>`,
-			`      <description>${escape(`${stripMarkers(item.summary).slice(0, 400)} (Reviewed ${item.date}. General information only, not advice and not a coverage determination.)`)}</description>`,
+			`      <description>${escape(`${excerpt(stripMarkers(item.summary), 400)} (Reviewed ${item.date}. General information only, not advice and not a coverage determination.)`)}</description>`,
 			'    </item>',
 		]),
 		'  </channel>',

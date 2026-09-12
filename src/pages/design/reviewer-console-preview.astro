@@ -1,0 +1,278 @@
+---
+import { ArrowRight, Check, CircleAlert, Clock, FileText, LockKeyhole, Search, ShieldCheck, XCircle } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProductContextBar from '../../components/ProductContextBar.astro';
+import { researchGate, type ResearchPacket } from '../../lib/research-pipeline';
+import { createResearchTask, taskPublicationBlockers, transitionResearchTask } from '../../lib/research-automation.ts';
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Design', path: '/design/research-pipeline-preview' },
+	{ name: 'Reviewer console preview', path: '/design/reviewer-console-preview' },
+];
+
+const packet: ResearchPacket = {
+	brief: {
+		id: 'brief-ca-renewal-001',
+		topic: 'California homeowners renewal and wildfire nonrenewal',
+		jurisdiction: 'California',
+		asOf: '2026-09-11',
+		requestedSourceClasses: ['statute', 'regulation', 'regulator-guidance', 'legislative-record'],
+		question: 'What changed, where is it written, and what should a reader ask next?',
+	},
+	provider: {
+		name: 'perplexity',
+		outputMode: 'structured-draft',
+		requestedAt: '2026-09-11T15:20:00Z',
+		modelId: 'server configuration',
+		requestId: 'provider trace shown for design only',
+	},
+	sources: [
+		{
+			id: 'source-ca-doi-candidate',
+			url: 'https://www.insurance.ca.gov/',
+			title: 'California Department of Insurance home',
+			publisher: 'California Department of Insurance',
+			jurisdiction: 'California',
+			sourceClass: 'regulator-guidance',
+			officialHost: true,
+			accessedOn: '2026-09-11',
+			status: 'candidate',
+		},
+	],
+	claims: [
+		{
+			id: 'claim-candidate-1',
+			text: 'Candidate language extracted from a source. A reviewer must confirm the exact document, date, and scope before this becomes a public sentence.',
+			sourceIds: ['source-ca-doi-candidate'],
+			claimKind: 'descriptive',
+			reviewState: 'needs-review',
+		},
+	],
+	caveats: ['This is a private UI specimen. It contains no live provider response and makes no insurance conclusion.'],
+	review: { state: 'needs-review' },
+};
+
+const gate = researchGate(packet);
+const taskSeed = createResearchTask({
+	question: packet.brief.question,
+	topic: packet.brief.topic,
+	jurisdiction: packet.brief.jurisdiction,
+	asOf: packet.brief.asOf,
+	requestedSourceClasses: packet.brief.requestedSourceClasses,
+	kind: 'answer-gap',
+	priority: 'P0',
+	candidateId: packet.brief.id,
+}, '2026-09-11T15:20:00.000Z');
+const taskScouting = transitionResearchTask(taskSeed, 'scouting', 'system', 'Bounded source discovery started.', '2026-09-11T15:21:00.000Z');
+const task = transitionResearchTask({
+	...taskScouting,
+	candidateSourceIds: packet.sources.map((source) => source.id),
+	claimIds: packet.claims.map((claim) => claim.id),
+}, 'source-review', 'system', 'Candidate source packet returned for editor verification.', '2026-09-11T15:22:00.000Z');
+const workflowBlockers = [...new Set([...taskPublicationBlockers(task), ...gate.blockers])];
+const steps = [
+	{ number: '01', label: 'Triage', detail: 'Classify the gap', state: 'complete' },
+	{ number: '02', label: 'Scout', detail: 'Find candidates', state: 'complete' },
+	{ number: '03', label: 'Verify', detail: 'Open and classify', state: 'current' },
+	{ number: '04', label: 'Draft', detail: 'Map every claim', state: 'next' },
+	{ number: '05', label: 'License', detail: 'Review scope', state: 'next' },
+	{ number: '06', label: 'Approve', detail: 'Freeze version', state: 'next' },
+	{ number: '07', label: 'Publish', detail: 'Generate one record', state: 'next' },
+];
+
+const claims = [
+	{ id: 'claim-candidate-1', label: 'Candidate claim', text: packet.claims[0].text, status: 'Needs review', source: 'source-ca-doi-candidate' },
+	{ id: 'claim-candidate-2', label: 'Scope boundary', text: 'This packet does not decide whether a particular policy will renew or whether a claim is covered.', status: 'Needs review', source: 'Add source before approval' },
+];
+
+const triagePaths = [
+	{ state: 'ok', icon: Check, title: 'Answer from Birch', detail: 'Return the existing canonical record. Log only an aggregate demand signal and never create a duplicate.' },
+	{ state: 'insufficient', icon: CircleAlert, title: 'Show related, queue a brief', detail: 'Show the closest records with a clear boundary, then offer a bounded research candidate.' },
+	{ state: 'no-result', icon: Search, title: 'Create a candidate brief', detail: 'Normalize topic and jurisdiction, privacy-screen it, deduplicate it, and keep it private.' },
+	{ state: 'private', icon: LockKeyhole, title: 'Stop at the privacy gate', detail: 'Policy-specific or personal questions stay local until consent, redaction, and professional review exist.' },
+];
+---
+
+<BaseLayout
+	title="Reviewer console preview"
+	description="Private Birch design specimen for triaging an unanswered question, checking source candidates, and blocking publication until a named reviewer approves the packet."
+	noindex
+	pageType="editorial"
+>
+	<section class="band band-tight band-first band-paper console-hero">
+		<div class="shell">
+			<Breadcrumbs trail={trail} />
+			<ProductContextBar active="research" />
+			<div class="console-hero-state"><span class="status status-plain">Internal product specimen</span><span class="mono">No provider call · no public record</span></div>
+			<div class="console-hero-grid">
+				<div>
+					<span class="eyebrow">Birch Research Desk / reviewer console</span>
+					<h1>One question. One evidence packet. One decision.</h1>
+					<p class="page-lede">The reviewer never approves a polished answer box. They approve a dated brief, its sources, its claims, its limits, and the record those pieces will generate.</p>
+				</div>
+				<div class="console-lockup" aria-hidden="true"><div class="console-ring console-ring-one"></div><div class="console-ring console-ring-two"></div><img src="/birch-bird-transparent.png" width="74" height="74" alt="" /><span>REVIEW GATE</span></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight console-work-band" aria-labelledby="workspace-title">
+		<div class="shell">
+			<div class="console-stepper" aria-label="Research packet workflow">
+				{steps.map((step) => <div class:list={["console-step", `console-step-${step.state}`]}><span>{step.number}</span><strong>{step.label}</strong><small>{step.detail}</small></div>)}
+			</div>
+
+			<div class="console-workspace">
+				<main class="console-main">
+					<div class="console-topline"><div><span class="eyebrow">Needs a decision</span><h2 id="workspace-title">{packet.brief.topic}</h2></div><span class="status status-changing">{packet.review.state}</span></div>
+					<div class="console-brief-card">
+						<div class="console-card-heading"><div><span class="console-icon console-icon-gold"><FileText size={16} aria-hidden="true" /></span><div><span class="eyebrow">Research brief</span><h3>{packet.brief.question}</h3></div></div><span class="mono console-id">{packet.brief.id}</span></div>
+						<div class="console-task-strip"><span class="eyebrow">Research task</span><span class="mono">{task.id}</span><span class="status status-changing">{task.state}</span></div>
+						<div class="console-facts"><div><span>Jurisdiction</span><strong>{packet.brief.jurisdiction}</strong></div><div><span>As of</span><strong>{packet.brief.asOf}</strong></div><div><span>Requested source classes</span><strong>{packet.brief.requestedSourceClasses.length}</strong></div><div><span>Intended record</span><strong>Question</strong></div></div>
+						<div class="console-tags">{packet.brief.requestedSourceClasses.map((sourceClass) => <span><Check size={12} aria-hidden="true" />{sourceClass.replaceAll('-', ' ')}</span>)}</div>
+					</div>
+
+					<section class="console-panel" aria-labelledby="sources-title">
+						<div class="console-panel-head"><div><span class="eyebrow">Scout output</span><h3 id="sources-title">Candidate sources, not conclusions</h3></div><span class="status status-plain">{packet.provider?.outputMode}</span></div>
+						<p class="console-muted">Perplexity found a possible official trail. The reviewer still has to open it, identify the controlling document, and decide whether it supports a specific claim.</p>
+						<div class="console-source-row" id="source-1"><div class="console-source-status console-source-candidate"><Search size={14} aria-hidden="true" /></div><div><strong>{packet.sources[0].title}</strong><span>{packet.sources[0].publisher} · {packet.sources[0].jurisdiction}</span><code>{packet.sources[0].url}</code></div><span class="status status-changing">Candidate</span><button class="btn btn-quiet btn-sm" type="button" disabled>Mark verified</button></div>
+						<p class="mono console-note">Provider trace: {packet.provider?.requestId} · accessed {packet.sources[0].accessedOn} · official host candidate</p>
+					</section>
+
+					<section class="console-panel" aria-labelledby="claims-title">
+						<div class="console-panel-head"><div><span class="eyebrow">Claim ledger</span><h3 id="claims-title">Review the sentence, not the vibe</h3></div><span class="mono">{claims.length} proposed claims</span></div>
+						<div class="console-claims">{claims.map((claim, index) => <article class="console-claim"><div class="console-claim-number">0{index + 1}</div><div><span class="console-claim-label">{claim.label}</span><p>{claim.text}</p><div class="console-claim-meta"><span class="status status-changing">{claim.status}</span><span class="mono">Source: {claim.source}</span></div></div><div class="console-claim-actions"><button class="btn btn-quiet btn-sm" type="button" disabled><XCircle size={13} aria-hidden="true" /> Reject</button><button class="btn btn-secondary btn-sm" type="button" disabled><Check size={13} aria-hidden="true" /> Approve</button></div></article>)}</div>
+					</section>
+
+					<div class="console-caveat"><ShieldCheck size={17} aria-hidden="true" /><p><strong>Boundary travels with the packet.</strong> {packet.caveats[0]}</p></div>
+				</main>
+
+				<aside class="console-rail" aria-label="Publication gate">
+					<section class="console-gate-card"><div class="console-gate-icon"><LockKeyhole size={18} aria-hidden="true" /></div><span class="eyebrow">Publish to Birch</span><h2>Blocked</h2><p>A packet can only publish when every blocker is cleared.</p><ol class="console-blockers">{workflowBlockers.map((blocker) => <li><span></span><div><strong>{blocker}</strong><small>Required before publication</small></div></li>)}</ol><button class="btn btn-primary" type="button" disabled>Publish approved record</button><p class="mono console-note">No public URL · no sitemap · no blog draft</p></section>
+					<section class="console-safety-card"><span class="eyebrow">Safe automation</span><h2>Scout quickly. Decide slowly.</h2><p>Provider output can save a reviewer time finding the trail. It cannot carry a Birch status, rating, confidence score, or publication decision.</p><a class="text-link" href="/editorial-policy">Read the editorial boundary <ArrowRight size={14} aria-hidden="true" /></a></section>
+				</aside>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-paper" id="query-triage" aria-labelledby="triage-title">
+		<div class="shell">
+			<div class="console-section-head"><div><span class="eyebrow">Query triage</span><h2 id="triage-title">An unanswered question becomes a queue item, not a post.</h2></div><span class="status status-plain">Deterministic first</span></div>
+			<div class="console-triage-grid">{triagePaths.map((path) => { const Icon = path.icon; return <article class="console-triage-card"><div class="console-triage-icon"><Icon size={16} aria-hidden="true" /></div><span class="mono">{path.state}</span><h3>{path.title}</h3><p>{path.detail}</p></article>; })}</div>
+			<div class="console-rule"><Clock size={16} aria-hidden="true" /><p><strong>The sequence is fixed:</strong> local lookup, gap classification, privacy screen, deduplication, bounded brief, source scout, verification, claim review, then one public record. A fresh search never silently changes what the reader sees as an answer.</p></div>
+		</div>
+	</section>
+
+	<section class="band band-ink" aria-labelledby="next-title">
+		<div class="shell console-next"><div><span class="eyebrow">Next build slice</span><h2 id="next-title">Turn this specimen into one server-only job.</h2></div><div><p>When a server runtime, provider key, retention policy, and reviewer owner exist, this screen can become a real queue without changing the reader-facing contract.</p><a class="btn btn-secondary" href="/design/research-pipeline-preview">Review the full research pipeline <ArrowRight size={15} aria-hidden="true" /></a></div></div>
+	</section>
+</BaseLayout>
+
+<style>
+	.console-hero { overflow: hidden; }
+	.console-hero .crumbs { margin-bottom: var(--s-4); }
+	.console-hero-state { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); }
+	.console-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: clamp(var(--s-6), 8vw, var(--s-12)); align-items: center; margin-top: var(--s-8); }
+	.console-hero-grid h1 { max-width: 14ch; margin: var(--s-2) 0 var(--s-4); font-size: clamp(2.9rem, 6vw, 5.8rem); letter-spacing: -.045em; }
+	.console-lockup { position: relative; display: grid; place-items: center; min-height: 260px; color: var(--gold-text); }
+	.console-lockup img { position: relative; z-index: 1; width: 74px; height: 74px; object-fit: contain; filter: drop-shadow(0 12px 22px rgba(13, 42, 82, .17)); }
+	.console-lockup > span { position: absolute; bottom: 9%; color: var(--muted); font: var(--text-2xs)/1.4 var(--font-mono); letter-spacing: .12em; }
+	.console-ring { position: absolute; border: 1px solid color-mix(in srgb, var(--gold-edge) 60%, transparent); border-radius: 50%; }
+	.console-ring-one { width: 210px; height: 132px; transform: rotate(-17deg); }
+	.console-ring-two { width: 274px; height: 176px; border-style: dashed; opacity: .7; transform: rotate(27deg); }
+	.console-work-band { background: var(--blue-wash); }
+	.console-stepper { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--line-strong); background: var(--line-strong); }
+	.console-step { display: grid; gap: 3px; min-height: 88px; padding: var(--s-3); background: var(--paper); }
+	.console-step span, .console-step small { color: var(--faint); font: var(--text-2xs)/1.3 var(--font-mono); }
+	.console-step strong { font-size: var(--text-sm); }
+	.console-step-current { background: var(--ink); color: var(--paper); }
+	.console-step-current span, .console-step-current small { color: var(--muted-ink); }
+	.console-step-complete span { color: var(--green-text); }
+	.console-workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .35fr); gap: var(--s-5); align-items: start; margin-top: var(--s-5); }
+	.console-main { display: grid; gap: var(--s-4); min-width: 0; }
+	.console-topline, .console-panel-head, .console-card-heading, .console-section-head { display: flex; align-items: start; justify-content: space-between; gap: var(--s-4); }
+	.console-topline { align-items: end; padding-bottom: var(--s-4); border-bottom: 1px solid var(--line-strong); }
+	.console-topline h2 { margin: var(--s-2) 0 0; font-size: clamp(1.8rem, 3.3vw, 3rem); }
+	.console-brief-card, .console-panel, .console-gate-card, .console-safety-card { padding: var(--s-5); border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); box-shadow: var(--elev-1); }
+	.console-task-strip { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin-top: var(--s-4); padding: var(--s-2) var(--s-3); border: 1px solid var(--line); border-radius: 999px; background: var(--blue-wash); }
+	.console-task-strip .eyebrow { margin-right: auto; color: var(--brand-blue-text); }
+	.console-task-strip .status { margin-left: var(--s-1); }
+	.console-card-heading h3, .console-panel-head h3 { margin: var(--s-1) 0 0; font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; }
+	.console-card-heading > div:first-child { display: flex; gap: var(--s-3); align-items: start; }
+	.console-icon, .console-gate-icon, .console-triage-icon { display: grid; place-items: center; width: 34px; height: 34px; flex: 0 0 auto; border-radius: var(--r-2); }
+	.console-icon-gold, .console-triage-icon { background: var(--gold-wash); color: var(--gold-text); }
+	.console-gate-icon { margin-bottom: var(--s-4); border-radius: 50%; background: var(--brand-blue); color: #fff; }
+	.console-id { color: var(--faint); }
+	.console-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-2); margin-top: var(--s-5); }
+	.console-facts > div { padding: var(--s-3); border: 1px solid var(--line); border-radius: var(--r-2); }
+	.console-facts span, .console-facts strong { display: block; }
+	.console-facts span { color: var(--faint); font: var(--text-2xs)/1.3 var(--font-mono); text-transform: uppercase; }
+	.console-facts strong { margin-top: var(--s-1); color: var(--ink); font-size: var(--text-sm); }
+	.console-tags { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-4); }
+	.console-tags span { display: inline-flex; align-items: center; gap: 5px; padding: 6px 8px; border-radius: 999px; background: var(--brand-blue-wash); color: var(--brand-blue-text); font: var(--text-2xs)/1.2 var(--font-mono); text-transform: capitalize; }
+	.console-muted { margin: var(--s-4) 0 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.console-source-row { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto auto; gap: var(--s-3); align-items: center; margin-top: var(--s-5); padding: var(--s-3); border: 1px solid var(--line); border-radius: var(--r-2); }
+	.console-source-status { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; }
+	.console-source-candidate { background: var(--gold-wash); color: var(--gold-text); }
+	.console-source-row strong, .console-source-row span, .console-source-row code { display: block; }
+	.console-source-row span { margin-top: 3px; color: var(--muted); font-size: var(--text-xs); }
+	.console-source-row code { overflow-wrap: anywhere; margin-top: 6px; color: var(--brand-blue-text); font: var(--text-2xs)/1.3 var(--font-mono); }
+	.console-note { margin: var(--s-3) 0 0; color: var(--faint); font-size: var(--text-2xs); }
+	.console-claims { display: grid; gap: var(--s-3); margin-top: var(--s-5); }
+	.console-claim { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: var(--s-3); align-items: start; padding-top: var(--s-3); border-top: 1px solid var(--line); }
+	.console-claim-number { color: var(--faint); font: var(--text-2xs)/1.3 var(--font-mono); }
+	.console-claim-label { color: var(--gold-text); font: var(--text-2xs)/1.2 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+	.console-claim p { margin: var(--s-2) 0 0; color: var(--body); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.console-claim-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin-top: var(--s-3); }
+	.console-claim-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); justify-content: end; }
+	.console-claim-actions .btn { white-space: nowrap; }
+	.console-caveat { display: flex; gap: var(--s-3); align-items: start; padding: var(--s-4); border: 1px solid color-mix(in srgb, var(--green-text) 28%, var(--line)); border-radius: var(--r-2); background: var(--green-wash); color: var(--green-text); }
+	.console-caveat p { margin: 0; color: var(--body); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.console-rail { display: grid; gap: var(--s-4); min-width: 0; }
+	.console-gate-card { position: sticky; top: var(--s-5); }
+	.console-gate-card h2 { margin: var(--s-2) 0 var(--s-3); font-family: var(--font-display); font-size: var(--text-3xl); font-weight: 400; }
+	.console-gate-card p, .console-safety-card p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.console-blockers { display: grid; gap: var(--s-4); margin: var(--s-5) 0; padding: 0; list-style: none; }
+	.console-blockers li { display: grid; grid-template-columns: 9px minmax(0, 1fr); gap: var(--s-3); align-items: start; }
+	.console-blockers li > span { width: 9px; height: 9px; margin-top: 5px; border: 1px solid var(--gold-edge); border-radius: 50%; background: var(--gold-wash); }
+	.console-blockers strong, .console-blockers small { display: block; }
+	.console-blockers strong { font-size: var(--text-sm); }
+	.console-blockers small { margin-top: 2px; color: var(--muted); font-size: var(--text-xs); }
+	.console-gate-card > .btn { width: 100%; }
+	.console-safety-card { background: var(--gold-wash); box-shadow: none; }
+	.console-safety-card h2 { margin: var(--s-2) 0 var(--s-3); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; }
+	.text-link { display: inline-flex; align-items: center; gap: 5px; margin-top: var(--s-4); color: var(--brand-blue-text); font-size: var(--text-sm); font-weight: 600; text-decoration: none; }
+	.console-section-head { align-items: end; }
+	.console-section-head h2 { max-width: 18ch; margin: var(--s-2) 0 0; font-size: clamp(2rem, 4.2vw, 3.8rem); }
+	.console-triage-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-8); }
+	.console-triage-card { padding: var(--s-4); border: 1px solid var(--line); border-radius: var(--r-3); background: var(--paper); transition: transform var(--dur-2) var(--ease-soft), border-color var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease); }
+	.console-triage-card:hover { transform: translateY(-3px); border-color: var(--brand-blue); box-shadow: var(--elev-2); }
+	.console-triage-card .mono { display: block; margin-top: var(--s-3); color: var(--faint); }
+	.console-triage-card h3 { margin: var(--s-2) 0; font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; }
+	.console-triage-card p { margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.console-rule { display: flex; gap: var(--s-3); align-items: start; margin-top: var(--s-6); padding: var(--s-4); border: 1px solid var(--line-strong); background: var(--blue-wash); color: var(--brand-blue-text); }
+	.console-rule p { margin: 0; color: var(--body); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.console-next { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); gap: var(--s-8); align-items: center; }
+	.console-next h2 { max-width: 14ch; margin: var(--s-2) 0 0; color: var(--paper); font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 400; }
+	.console-next p { max-width: 56ch; margin: 0 0 var(--s-5); color: var(--muted-ink); font-size: var(--text-lg); line-height: var(--leading-normal); }
+	@media (max-width: 900px) {
+		.console-workspace { grid-template-columns: minmax(0, 1fr); }
+		.console-gate-card { position: static; }
+		.console-triage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
+	@media (max-width: 700px) {
+		.console-hero-grid, .console-next { grid-template-columns: minmax(0, 1fr); }
+		.console-lockup { display: none; }
+		.console-stepper { grid-template-columns: minmax(0, 1fr); }
+		.console-step { min-height: auto; }
+		.console-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		.console-source-row, .console-claim { grid-template-columns: 34px minmax(0, 1fr); }
+		.console-source-row .status, .console-source-row .btn, .console-claim-actions { grid-column: 2; justify-content: start; }
+		.console-triage-grid { grid-template-columns: minmax(0, 1fr); }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.console-triage-card { transition: none; }
+		.console-triage-card:hover { transform: none; }
+	}
+</style>

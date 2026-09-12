@@ -1,0 +1,43 @@
+---
+import { ArrowUpRight, BookOpen, FileText } from '@lucide/astro';
+import type { Corpus } from '../../lib/corpus';
+import { idsOf, ledgerFor } from '../../lib/corpus';
+import { createCiter } from '../../lib/citations';
+import PreviewTabs from '../PreviewTabs.astro';
+import SourceInspector from '../SourceInspector.astro';
+import SourceLedger from '../SourceLedger.astro';
+interface Props { kind: string; corpus: Corpus; }
+const { kind, corpus } = Astro.props;
+const coverage=corpus.coverageBySlug.get('homeowners')!;
+const example=corpus.examples.find(e=>e.id==='virus-presence-direct-physical-loss')!;
+const source=corpus.sourceById.get('cdi-residential-insurance-guide')!;
+const record=kind==='coverage'?coverage:example;
+const sources=kind==='source'?[source]:ledgerFor(record.data.sourceIds,corpus.sourceById,'Direction A template');
+const cite=createCiter(sources.map(s=>s.id),'Direction A template');
+const canonical=kind==='source'?`/sources/${source.id}`:kind==='coverage'?`/insurance/${coverage.id}`:`/examples/${example.id}`;
+const sourceUses=corpus.questions.filter(q=>idsOf(q.data.sourceIds).includes(source.id));
+---
+<div class="template-columns">
+ <article class="template-surface">
+  <div class="template-pad reading-template-top"><div class="template-meta"><span class="template-pill template-pill-blue">{kind==='source'?'Source record':kind==='coverage'?'Coverage guide':'Public-record example'}</span><span>{kind==='source'?source.data.status.replaceAll('-',' '):record.data.reviewState==='reviewed'?'Editorially reviewed':'Editorial review pending'}</span></div>{kind!=='coverage'&&<h2 class="reading-template-title">{kind==='source'?source.data.title:example.data.title}</h2>}<div class="template-actions"><a class="btn btn-quiet btn-sm" href={canonical}>Open original Birch record <ArrowUpRight size={14} aria-hidden="true"/></a><button class="btn btn-quiet btn-sm" type="button" data-open-sources="1" hidden><FileText size={15} aria-hidden="true"/>Inspect sources</button></div></div>
+  {kind==='coverage'&&<PreviewTabs id="guide" label="Coverage sections" tabs={[{id:'overview',label:'Overview'},{id:'parts',label:'Coverage parts'},{id:'limits',label:'Limits & exclusions'}]}>
+   <section id="guide-overview" data-preview-panel class="template-pad template-prose"><h2>What it is</h2><Fragment set:html={cite.paragraphs(coverage.data.definition)}/><h2>What it protects</h2><ul>{coverage.data.protects.map(text=><li set:html={cite.inline(text)}/>)}</ul></section>
+   <section id="guide-parts" data-preview-panel class="template-pad"><h2>Read the parts, not just the name.</h2>{coverage.data.commonlyCovers.map(part=><details class="template-disclosure"><summary>{part.item}</summary><p set:html={cite.inline(part.note)}/></details>)}</section>
+   <section id="guide-limits" data-preview-panel class="template-pad"><h2>What changes the answer</h2>{coverage.data.commonlyExcludes.map(part=><details class="template-disclosure"><summary>{part.item}</summary><p set:html={cite.inline(part.note)}/></details>)}<div class="template-prose"><h2>Limits and deductibles</h2><ul>{coverage.data.limitsAndDeductibles.map(text=><li set:html={cite.inline(text)}/>)}</ul></div></section>
+  </PreviewTabs>}
+  {kind==='case-study'&&<PreviewTabs id="case" label="Case sections" tabs={[{id:'record',label:'The record'},{id:'reasoning',label:'The reasoning'},{id:'limits',label:'Do not generalize'}]}>
+   <section id="case-record" data-preview-panel class="template-pad template-prose"><p class="template-notice" set:html={cite.inline(example.data.labelNote)}/><h2>What happened</h2><Fragment set:html={cite.paragraphs(example.data.whatHappened)}/><h2>The insurance question</h2><p set:html={cite.inline(example.data.insuranceQuestion)}/><h2>Information that mattered</h2><ul>{example.data.informationThatMattered.map(text=><li set:html={cite.inline(text)}/>)}</ul></section>
+   <section id="case-reasoning" data-preview-panel class="template-pad template-prose"><h2>Follow the decision</h2><Fragment set:html={cite.paragraphs(example.data.reasoningPath)}/><h2>Decided by</h2><p set:html={cite.inline(example.data.decidedBy)}/></section>
+   <section id="case-limits" data-preview-panel class="template-pad template-prose"><h2>What this case does not establish</h2><ul>{example.data.cannotGeneralize.map(text=><li set:html={cite.inline(text)}/>)}</ul><h2>Provenance</h2><p set:html={cite.inline(example.data.provenance)}/></section>
+  </PreviewTabs>}
+  {kind==='source'&&<PreviewTabs id="document" label="Source record sections" tabs={[{id:'identity',label:'Document'},{id:'claims',label:'Claim addresses'},{id:'usage',label:'Used in research'}]}>
+   <section id="document-identity" data-preview-panel class="template-pad"><dl class="template-facts"><div><dt>Publisher</dt><dd>{source.data.publisher}</dd></div><div><dt>Jurisdiction</dt><dd>{source.data.jurisdiction}</dd></div><div><dt>Last checked in the existing record</dt><dd>{source.data.lastChecked} · {source.data.lastCheckedBasis==='recheck'?'Returned to the source':'Initial source reading'}</dd></div><div><dt>Source status</dt><dd>{source.data.status.replaceAll('-',' ')} · {source.data.primary?'Primary source':'Secondary source'}</dd></div></dl><p class="template-muted">{source.data.notes}</p><a class="btn btn-primary" href={source.data.url} target="_blank" rel="noopener nofollow">Read original document <ArrowUpRight size={16} aria-hidden="true"/></a></section>
+   <section id="document-claims" data-preview-panel class="template-pad"><h2>Addressable evidence</h2><p class="template-muted">Showing the first {Math.min(4,source.data.claims.length)} of {source.data.claims.length} recorded claims. Links use the original record’s stable claim addresses.</p>{source.data.claims.slice(0,4).map((claim,i)=><div class="template-row"><FileText size={17} aria-hidden="true"/><div><a href={`${canonical}#c${i+1}`}>Claim {i+1} <ArrowUpRight size={12} aria-hidden="true"/></a><p>{claim}</p></div></div>)}<a class="template-context-link" href={canonical}>View all recorded claims</a></section>
+   <section id="document-usage" data-preview-panel class="template-pad"><h2>Research using this document</h2><p class="template-muted">{sourceUses.length} question records cite this source. Showing up to six starting points.</p>{sourceUses.slice(0,6).map(q=><a class="template-row" href={`/questions/${q.id}`}><BookOpen size={17} aria-hidden="true"/><div><h3>{q.data.question}</h3></div><ArrowUpRight size={16} aria-hidden="true"/></a>)}</section>
+  </PreviewTabs>}
+  <div class="template-pad"><details class="template-disclosure"><summary>Full source ledger · {sources.length} records</summary><SourceLedger sources={sources} today={new Date().toISOString().slice(0,10)}/></details></div>
+ </article>
+ <aside class="template-context" aria-label="Reading context"><section><h2>The original stays addressable.</h2><p>This design reuses an existing Birch record. Citation links, original sources, and limits stay attached to the explanation.</p><a class="template-context-link" href={canonical}>Open the original Birch record <ArrowUpRight size={15} aria-hidden="true"/></a></section><section><h2>Check before relying.</h2><p>A source supports particular statements. Its date, jurisdiction, policy language, and scope matter. A design specimen is not a new review or an individual coverage decision.</p><a class="template-context-link" href="/methodology">How Birch researches</a></section><section><h2>Something missing?</h2><p>A correction should point to the statement and the evidence that changes it.</p><a class="template-context-link" href="/contribute?type=correction">Prepare a correction</a></section></aside>
+</div>
+<SourceInspector sources={sources}/>
+<style>.reading-template-title { margin-top:20px!important; font-size:clamp(1.35rem,2.3vw,1.9rem)!important; line-height:1.3!important; max-width:38ch; }.reading-template-top { padding-bottom:12px; }.reading-template-top .template-actions { margin-top:12px; }</style>

@@ -2,7 +2,7 @@ import { defineCollection, reference, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 /**
- * Typed content collections for BestInsurance Research.
+ * Typed content collections for Birch Research.
  *
  * Every collection is a JSON data collection under src/content/<name>/.
  * The file basename is the collection entry id. Prose fields may contain
@@ -237,6 +237,25 @@ const linkItem = z.object({
 	note: z.string().min(10).optional(),
 });
 
+const sourceLinkedDocument = z.object({
+	label: z.string().min(8),
+	sourceId: reference('sources'),
+	note: z.string().min(30),
+});
+
+/** A regulator's point-in-time identity snapshot, never a live license check. */
+const regulatoryIdentity = z.object({
+	sourceId: reference('sources'),
+	regulatorCompanyId: z.string().min(3),
+	authorizedDate: optionalIsoDate,
+	licenseStatus: z.string().min(3),
+	companyType: z.string().min(3),
+	domicile: z.string().min(2),
+	agentForService: z
+		.object({ name: z.string().min(3), address: z.string().min(10) })
+		.optional(),
+});
+
 const companies = defineCollection({
 	loader: glob({ pattern: '**/*.json', base: './src/content/companies' }),
 	schema: z.object({
@@ -254,12 +273,16 @@ const companies = defineCollection({
 		naic: z
 			.object({ companyCode: z.string().optional(), groupCode: z.string().optional() })
 			.optional(),
+		/** A dated regulator snapshot; this is not a runtime license lookup. */
+		regulatoryIdentity: regulatoryIdentity.optional(),
 		summary: z.string().min(80),
 		officialUrls: z.array(linkItem).min(1),
 		contactChannels: z
 			.array(z.object({ label: z.string().min(3), value: z.string().min(3), note: z.string().optional() }))
 			.default([]),
 		regulatorRecords: z.array(linkItem).default([]),
+		/** Filed forms are visible only when the source is in this entity's ledger. */
+		filedForms: z.array(sourceLinkedDocument).default([]),
 		publications: z.array(linkItem).default([]),
 		statutoryBasis: z.array(linkItem).default([]),
 		jurisdictions: z.array(z.string()).min(1),

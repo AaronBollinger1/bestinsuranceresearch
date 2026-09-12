@@ -1,5 +1,5 @@
 /*
- * BestInsurance Research design tokens.
+ * Birch Research design tokens.
  * Single source of truth for color, type, spacing, radius, border, elevation, motion.
  * Mirrored into Figma variables; see DESIGN-REFERENCES.md.
  */
@@ -16,8 +16,17 @@
 	--line: #e6dfd0;
 	--line-strong: #d3c8b3;
 	--line-ink: #3a4655;
+	--muted-ink: #b7c2cf;
+	--faint-ink: #8997a8;
 
-	/* --- Accent: gold is the single primary action color --- */
+	/* --- Birch brand: blue is the action and navigation family --- */
+	--brand-blue: #2f6fe6;
+	--brand-blue-deep: #173f86;
+	--brand-blue-text: #214f9f;
+	--brand-blue-wash: #eaf2ff;
+	--brand-cyan: #8bd1f7;
+
+	/* --- Evidence accent: gold means a resolved answer, never the brand --- */
 	--gold: #d9b44a;
 	--gold-edge: #a8871f;
 	--gold-text: #7c641d;
@@ -100,13 +109,15 @@
 	--dur-1: 120ms;
 	--dur-2: 180ms;
 	--dur-3: 240ms;
+	--dur-4: 360ms;
 	--ease: cubic-bezier(0.2, 0, 0.2, 1);
+	--ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 
 	/* --- Layout --- */
 	--shell-w: 1200px;
 	--prose-w: 720px;
 	--gutter: 24px;
-	--header-h: 60px;
+	--header-h: 72px;
 	--tap: 44px;
 }
 

@@ -18,5 +18,16 @@ export const GET: APIRoute = async ({ params }) => {
 		corpus.sourceById,
 		`organization "${entry.id}"`,
 	);
-	return jsonResponse(companyRecord(entry, sources));
+	const relatedQuestions = entry.data.relatedQuestions
+		.map((ref) => corpus.questionBySlug.get(ref.id))
+		.filter((question): question is NonNullable<typeof question> => Boolean(question));
+	const mentioning = corpus.questions.filter(
+		(question) => question.data.companies.some((company) => company.id === entry.id) && !relatedQuestions.some((related) => related.id === question.id),
+	);
+	const allRelated = [...relatedQuestions, ...mentioning];
+	const relatedCoverageIds = [...new Set(allRelated.flatMap((question) => question.data.coverages.map((coverage) => coverage.id)))];
+	const relatedCoverages = relatedCoverageIds
+		.map((id) => corpus.coverageBySlug.get(id))
+		.filter((coverage): coverage is NonNullable<typeof coverage> => Boolean(coverage));
+	return jsonResponse(companyRecord(entry, sources, { questions: allRelated, coverages: relatedCoverages }));
 };

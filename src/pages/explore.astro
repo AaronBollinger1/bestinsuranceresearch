@@ -1,0 +1,306 @@
+---
+import { ArrowRight, BookOpen, Building2, FileCheck, FileText, Landmark, MapPin, MessageCircle, Search, ShieldCheck, Sparkles } from '@lucide/astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ProductContextBar from '../components/ProductContextBar.astro';
+import StatusChip from '../components/StatusChip.astro';
+import { stripMarkers } from '../lib/citations';
+import { loadCorpus } from '../lib/corpus';
+import { excerpt } from '../lib/excerpt';
+import { longDate } from '../lib/cite';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../lib/schema';
+
+const corpus = await loadCorpus();
+const questions = [...corpus.questions].sort((a, b) => a.data.question.localeCompare(b.data.question));
+const coverages = [...corpus.coverages].sort((a, b) => a.data.name.localeCompare(b.data.name));
+const companies = [...corpus.companies].sort((a, b) => a.data.legalName.localeCompare(b.data.legalName));
+
+const FAMILY_LABEL: Record<string, string> = {
+	personal: 'Personal lines',
+	commercial: 'Commercial lines',
+	life: 'Life',
+	health: 'Health and benefits',
+	general: 'General insurance',
+};
+
+const familyNames = [...new Set([...questions.map((q) => q.data.family), ...coverages.map((c) => c.data.family)])].sort();
+const familyGroups = familyNames.map((family) => ({
+	family,
+	label: FAMILY_LABEL[family] ?? family,
+	coverages: coverages.filter((coverage) => coverage.data.family === family),
+	questions: questions.filter((question) => question.data.family === family),
+}));
+
+const directory = [
+	{ label: 'Questions', count: questions.length, note: 'Plain-language answers with assumptions and source trails.', path: '/questions', icon: Sparkles },
+	{ label: 'Coverage', count: coverages.length, note: 'What a line is designed to protect, with caveats attached.', path: '/insurance', icon: BookOpen },
+	{ label: 'Companies', count: companies.length, note: 'Identity, official channels, and records you can check.', path: '/companies', icon: Building2 },
+	{ label: 'States', count: corpus.states.length, note: 'Jurisdiction context that changes how a line works.', path: '/states', icon: MapPin },
+	{ label: 'Tools', count: corpus.liveTools.length + corpus.liveModules.length, note: 'Free worksheets for organizing a decision or policy question.', path: '/tools', icon: FileCheck },
+	{ label: 'Sources', count: corpus.sources.length, note: 'The registry behind published research claims.', path: '/sources', icon: FileText },
+];
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Explore', path: '/explore' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'Explore Birch insurance research',
+		path: '/explore',
+		description: 'Find insurance context by question, coverage, company, state, tool, or source.',
+		items: [
+			...directory.map((item) => ({ name: item.label, path: item.path })),
+			...coverages.map((coverage) => ({ name: coverage.data.name, path: `/insurance/${coverage.id}` })),
+			...companies.map((company) => ({ name: company.data.legalName, path: `/companies/${company.id}` })),
+		],
+	}),
+);
+---
+
+<BaseLayout
+	title="Explore Birch"
+	description="Find your insurance context by question, coverage, company, state, tool, or source."
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
+	<article>
+		<section class="band band-tight band-first band-paper explore-hero">
+			<div class="shell">
+				<Breadcrumbs trail={trail} />
+				<ProductContextBar active="research" />
+				<div class="explore-hero-grid">
+					<div>
+						<div class="explore-identity">
+							<img src="/birch-bird-transparent.png" width="46" height="46" alt="" />
+							<div>
+								<span class="eyebrow">Birch / Find your context</span>
+								<span class="explore-identity-note">A front door for a library that can keep growing.</span>
+							</div>
+						</div>
+						<h1>Start with the situation, not the label.</h1>
+						<p class="page-lede">
+							Search in plain language, choose a path, or open the record around a company or coverage.
+							Birch connects the answer to its assumptions, its jurisdiction, and the sources behind it.
+						</p>
+						<form action="/ask" method="get" role="search" data-question-form class="explore-search-form">
+							<div class="field">
+								<label for="explore-q">What are you trying to figure out?</label>
+								<div class="explore-search-row">
+									<input id="explore-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="What does replacement cost mean?" aria-describedby="explore-q-hint" />
+									<button class="btn btn-primary" type="submit"><Search size={16} aria-hidden="true" /> Ask Birch</button>
+								</div>
+								<span class="hint" id="explore-q-hint">Search stays in this browser tab. Leave out names, addresses, policy numbers, claim numbers, and health details.</span>
+							</div>
+						</form>
+						<div class="explore-hero-actions">
+							<a class="btn btn-secondary btn-sm" href="/start">I am not sure where to begin <ArrowRight size={15} aria-hidden="true" /></a>
+							<span class="meta">{questions.length} questions · {coverages.length} coverage pages · {companies.length} company records</span>
+						</div>
+					</div>
+					<aside class="explore-hero-signal" aria-label="Birch research promise">
+						<span class="eyebrow">The Birch promise</span>
+						<h2>Every useful answer should show you what to check next.</h2>
+						<div class="explore-signal-list">
+							<div><ShieldCheck size={17} aria-hidden="true" /><span><b>Direct answer</b><small>Plain language before jargon.</small></span></div>
+							<div><Landmark size={17} aria-hidden="true" /><span><b>Context</b><small>State, line, and company boundaries.</small></span></div>
+							<div><FileText size={17} aria-hidden="true" /><span><b>Source trail</b><small>Open the record behind the claim.</small></span></div>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="path-title">
+			<div class="shell">
+				<div class="band-head">
+					<div>
+						<span class="eyebrow">Choose a useful next step</span>
+						<h2 id="path-title">Six ways into the same evidence system.</h2>
+						<p>You do not need to know the name of the policy or the company before you begin.</p>
+					</div>
+				</div>
+				<div class="explore-directory-grid">
+					{directory.map((item) => {
+						const Icon = item.icon;
+						return (
+							<a class="explore-directory-card" href={item.path}>
+								<span class="explore-directory-icon"><Icon size={19} aria-hidden="true" /></span>
+								<span class="eyebrow">{item.label}</span>
+								<strong>{item.count}</strong>
+								<p>{item.note}</p>
+								<span class="explore-card-link">Open {item.label.toLowerCase()} <ArrowRight size={14} aria-hidden="true" /></span>
+							</a>
+						);
+					})}
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-paper" aria-labelledby="topic-title">
+			<div class="shell">
+				<div class="band-head explore-section-head">
+					<div>
+						<span class="eyebrow">Browse the live library</span>
+						<h2 id="topic-title">Find a line by the world around it.</h2>
+						<p>These are the coverage families and written pages currently published. Future topics use this same record shape, review state, and source ledger.</p>
+					</div>
+					<a class="btn btn-secondary btn-sm" href="/insurance">Open all coverage pages <ArrowRight size={15} aria-hidden="true" /></a>
+				</div>
+				<div class="explore-topic-grid">
+					{familyGroups.map((group) => (
+						<section class="explore-topic-card" data-explore-card data-explore-search={`${group.label} ${group.family} ${group.coverages.map((coverage) => coverage.data.name).join(' ')} ${group.questions.map((question) => question.data.question).join(' ')}`} aria-labelledby={`explore-${group.family}`}>
+							<div class="explore-topic-top">
+								<div><span class="eyebrow">{group.family}</span><h3 id={`explore-${group.family}`}>{group.label}</h3></div>
+								<span class="explore-topic-count">{group.coverages.length} lines · {group.questions.length} questions</span>
+							</div>
+							<div class="explore-topic-links">
+								{group.coverages.slice(0, 6).map((coverage) => <a href={`/insurance/${coverage.id}`}>{coverage.data.name}<ArrowRight size={13} aria-hidden="true" /></a>)}
+							</div>
+							<div class="explore-topic-foot"><a href={`/insurance#family-${group.family}`}>See the {group.label.toLowerCase()} library <ArrowRight size={14} aria-hidden="true" /></a><span>{group.coverages.length > 6 ? `+ ${group.coverages.length - 6} more` : 'Published pages only'}</span></div>
+						</section>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-tight" aria-labelledby="company-title">
+			<div class="shell">
+				<div class="band-head explore-section-head">
+					<div>
+						<span class="eyebrow">Company context</span>
+						<h2 id="company-title">Research the organization, then the experience.</h2>
+						<p>Birch keeps identity and public records distinct from first-person experience. The separate Community room stays private until its account and moderation systems are ready.</p>
+					</div>
+					<a class="btn btn-secondary btn-sm" href="/companies">Open company directory <ArrowRight size={15} aria-hidden="true" /></a>
+				</div>
+				<div class="explore-company-list" id="explore-company-list">
+					{companies.map((company) => (
+						<a class="explore-company-row" data-explore-card data-explore-search={`${company.data.legalName} ${company.data.shortName} ${company.data.orgType} ${company.data.jurisdictions.join(' ')}`} href={`/companies/${company.id}`}>
+							<div class="explore-company-mark"><Building2 size={18} aria-hidden="true" /></div>
+							<div class="explore-company-copy"><h3>{company.data.legalName}</h3><p>{excerpt(stripMarkers(company.data.summary), 170)}</p><div class="row-meta"><StatusChip kind={company.data.reviewState} /><span class="meta">{company.data.jurisdictions.join(', ')}</span><span class="meta">{company.data.sourceIds.length} sources</span><span class="meta">Reviewed {longDate(company.data.lastReviewed)}</span></div></div>
+							<div class="explore-company-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-ink" aria-labelledby="filter-title">
+			<div class="shell">
+				<div class="explore-filter-layout">
+					<div>
+						<span class="eyebrow">Local library filter</span>
+						<h2 id="filter-title">Looking for a phrase?</h2>
+						<p class="lede">Filter the topic and company previews on this page. The text stays in your browser; use Ask Birch when you want the full research search.</p>
+					</div>
+					<div class="explore-filter-box">
+						<label for="explore-filter">Filter this page</label>
+						<div class="explore-filter-input"><Search size={16} aria-hidden="true" /><input id="explore-filter" type="search" placeholder="Try wildfire, auto, Farmers…" autocomplete="off" /></div>
+						<p id="explore-filter-status" role="status" aria-live="polite">Showing {familyGroups.length + companies.length} previews.</p>
+						<p id="explore-filter-empty" hidden>No preview matches that phrase. <a href="/ask">Ask Birch instead <ArrowRight size={14} aria-hidden="true" /></a></p>
+					</div>
+				</div>
+				<div class="explore-trust-grid">
+					<div><ShieldCheck size={18} aria-hidden="true" /><span><b>Research</b> is source-backed and dated.</span></div>
+					<div><MessageCircle size={18} aria-hidden="true" /><span><b>Experience</b> is labelled as experience, not proof.</span></div>
+					<div><FileCheck size={18} aria-hidden="true" /><span><b>Contributions</b> stay private until review systems are live.</span></div>
+				</div>
+			</div>
+		</section>
+	</article>
+</BaseLayout>
+
+<script>
+	const filter = document.getElementById('explore-filter') as HTMLInputElement | null;
+	const status = document.getElementById('explore-filter-status');
+	const empty = document.getElementById('explore-filter-empty');
+	const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-explore-card]'));
+
+	function applyExploreFilter() {
+		const query = filter?.value.trim().toLowerCase() ?? '';
+		let visible = 0;
+		for (const card of cards) {
+			const matches = !query || (card.dataset.exploreSearch ?? '').toLowerCase().includes(query);
+			card.hidden = !matches;
+			if (matches) visible += 1;
+		}
+		if (status) status.textContent = `Showing ${visible} of ${cards.length} previews.`;
+		if (empty) empty.hidden = visible !== 0;
+	}
+
+	filter?.addEventListener('input', applyExploreFilter);
+</script>
+
+<style>
+	.explore-hero { padding-bottom: var(--s-10); }
+	.explore-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); gap: var(--s-12); align-items: end; margin-top: var(--s-8); }
+	.explore-identity { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-5); }
+	.explore-identity img { width: 46px; height: 46px; object-fit: contain; }
+	.explore-identity-note { display: block; color: var(--muted); font-size: var(--text-sm); }
+	.explore-hero h1 { max-width: 13ch; font-size: clamp(2.7rem, 6vw, 5rem); letter-spacing: -0.045em; }
+	.explore-search-form { max-width: 720px; margin-top: var(--s-6); }
+	.explore-search-form .field { margin: 0; }
+	.explore-search-row { display: flex; align-items: stretch; gap: var(--s-2); }
+	.explore-search-row input { min-width: 0; flex: 1; }
+	.explore-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); margin-top: var(--s-3); }
+	.explore-hero-signal { padding: var(--s-5); border: 1px solid var(--line-strong); border-top: 3px solid var(--brand-blue); background: var(--cream); border-radius: var(--r-3); }
+	.explore-hero-signal h2 { font-size: var(--text-2xl); }
+	.explore-signal-list { display: grid; gap: var(--s-3); margin-top: var(--s-5); }
+	.explore-signal-list > div { display: flex; gap: var(--s-2); align-items: flex-start; padding-top: var(--s-3); border-top: 1px solid var(--line); }
+	.explore-signal-list svg { flex: 0 0 auto; margin-top: 2px; color: var(--brand-blue-text); }
+	.explore-signal-list span { display: grid; gap: 2px; }
+	.explore-signal-list b { font-size: var(--text-sm); }
+	.explore-signal-list small { color: var(--muted); font-size: var(--text-xs); }
+	.explore-directory-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
+	.explore-directory-card { display: flex; flex-direction: column; gap: var(--s-2); min-height: 220px; padding: var(--s-5); border: 1px solid var(--line); background: var(--paper); border-radius: var(--r-3); text-decoration: none; transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease), transform var(--dur-1) var(--ease); }
+	.explore-directory-card:hover, .explore-directory-card:focus-visible { border-color: var(--brand-blue); box-shadow: var(--elev-2); transform: translateY(-2px); }
+	.explore-directory-icon { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: var(--s-3); color: var(--brand-blue-deep); background: var(--brand-blue-wash); border-radius: 50%; }
+	.explore-directory-card .eyebrow { margin: 0; }
+	.explore-directory-card strong { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1; letter-spacing: -.04em; }
+	.explore-directory-card p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
+	.explore-card-link { display: inline-flex; align-items: center; gap: 5px; margin-top: auto; color: var(--brand-blue-text); font-size: var(--text-sm); font-weight: 600; }
+	.explore-section-head { align-items: end; }
+	.explore-topic-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); }
+	.explore-topic-card { min-width: 0; padding: var(--s-5); border: 1px solid var(--line); background: var(--paper); border-radius: var(--r-3); transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease), transform var(--dur-1) var(--ease); }
+	.explore-topic-card:hover { border-color: var(--line-strong); box-shadow: var(--elev-1); transform: translateY(-1px); }
+	.explore-topic-top { display: flex; justify-content: space-between; gap: var(--s-4); align-items: start; }
+	.explore-topic-top h3 { margin: 2px 0 0; font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 400; }
+	.explore-topic-count { flex: 0 0 auto; color: var(--faint); font: var(--text-2xs)/1.35 var(--font-mono); text-align: right; text-transform: uppercase; }
+	.explore-topic-links { display: grid; gap: 1px; margin-top: var(--s-4); border-top: 1px solid var(--line); }
+	.explore-topic-links a { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); padding: 9px 0; border-bottom: 1px solid var(--line); color: var(--body); font-size: var(--text-sm); text-decoration: none; }
+	.explore-topic-links a:hover { color: var(--brand-blue-text); }
+	.explore-topic-links svg { flex: 0 0 auto; color: var(--brand-blue-text); opacity: .75; }
+	.explore-topic-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-2); margin-top: var(--s-4); font-size: var(--text-xs); }
+	.explore-topic-foot a { display: inline-flex; align-items: center; gap: 5px; color: var(--brand-blue-text); font-weight: 600; text-decoration: none; }
+	.explore-topic-foot span { color: var(--faint); font-family: var(--font-mono); font-size: var(--text-2xs); }
+	.explore-company-list { border-top: 1px solid var(--line-strong); }
+	.explore-company-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--s-3); align-items: start; padding: var(--s-4) 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+	.explore-company-row:hover h3 { color: var(--brand-blue-text); }
+	.explore-company-mark { display: grid; place-items: center; width: 38px; height: 38px; color: var(--brand-blue-deep); background: var(--brand-blue-wash); border-radius: 50%; }
+	.explore-company-copy h3 { margin: 0 0 var(--s-1); color: var(--ink); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; }
+	.explore-company-copy p { max-width: 72ch; margin: 0; color: var(--muted); font-size: var(--text-sm); }
+	.explore-company-tail { display: flex; align-items: center; padding-top: 10px; color: var(--brand-blue-text); }
+	.explore-filter-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 420px); gap: var(--s-12); align-items: center; }
+	.band-ink .explore-filter-layout h2 { max-width: 13ch; color: var(--paper); }
+	.explore-filter-layout .lede { max-width: 58ch; color: #b7c0cb; }
+	.explore-filter-box { padding: var(--s-4); border: 1px solid var(--line-ink); background: var(--ink-2); border-radius: var(--r-3); }
+	.explore-filter-box label { display: block; margin-bottom: var(--s-2); color: var(--paper); font-size: var(--text-sm); font-weight: 600; }
+	.explore-filter-input { display: flex; align-items: center; gap: 8px; padding: 0 10px; border: 1px solid #596879; background: #1b2837; border-radius: var(--r-2); }
+	.explore-filter-input svg { flex: 0 0 auto; color: var(--brand-cyan); }
+	.explore-filter-input input { width: 100%; min-height: var(--tap); border: 0; outline: 0; background: transparent; color: var(--paper); font-size: var(--text-sm); }
+	.explore-filter-input input::placeholder { color: #9eabb8; }
+	.explore-filter-box p { margin: var(--s-2) 0 0; color: #b7c0cb; font-size: var(--text-xs); }
+	.explore-filter-box a { display: inline-flex; align-items: center; gap: 4px; color: var(--gold); text-decoration: none; }
+	.explore-trust-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); margin-top: var(--s-10); }
+	.explore-trust-grid > div { display: flex; gap: var(--s-2); align-items: flex-start; padding-top: var(--s-3); border-top: 1px solid var(--line-ink); color: #cbd3dc; font-size: var(--text-sm); }
+	.explore-trust-grid svg { flex: 0 0 auto; margin-top: 2px; color: var(--brand-cyan); }
+	.explore-trust-grid b { color: var(--paper); }
+	@media (max-width: 900px) { .explore-hero-grid, .explore-filter-layout { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); } .explore-directory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .explore-topic-grid { grid-template-columns: minmax(0, 1fr); } }
+	@media (max-width: 640px) { .explore-search-row { flex-direction: column; } .explore-search-row .btn { width: 100%; } .explore-directory-grid, .explore-trust-grid { grid-template-columns: minmax(0, 1fr); } .explore-topic-top { flex-direction: column; gap: var(--s-2); } .explore-topic-count { text-align: left; } .explore-company-row { grid-template-columns: auto minmax(0, 1fr); } .explore-company-tail { grid-column: 2; padding-top: 0; } }
+	@media (prefers-reduced-motion: reduce) { .explore-directory-card, .explore-topic-card { transition: none; } .explore-directory-card:hover, .explore-topic-card:hover { transform: none; } }
+</style>

@@ -1,10 +1,84 @@
-# Positioning
+# Birch positioning
 
-The decision, and the reasoning. Written before the build so the build can be checked against it.
+Final product decision · 10 September 2026
 
-Last updated: 2026-09-01
+This file resolves the old tool-first positioning. Birch is a research-first
+public reference with an optional, privacy-preserving coverage position for
+people who want to do more than read. The historical tool-first draft is kept
+below for audit context; it is not the current product authority.
 
-## The statement
+## Final position
+
+> **Birch makes insurance easier to reason about.**
+>
+> Read the rule, see the source, understand what can change it, and arrive at a
+> better question for the right professional. Birch Research is free and
+> citable. Birch Commons is a separate, moderated place for people and
+> professionals to share what happened.
+
+Birch is not an insurer, brokerage storefront, regulator, claims adjudicator,
+comparison marketplace, lead-selling directory, rating site, or reputation
+service. It does not publish a “best carrier,” star score, premium, quote,
+eligibility decision, appetite claim, risk score, or coverage determination.
+
+## Final product hierarchy
+
+| Layer | Job | Truth model | Account | Primary action |
+| --- | --- | --- | --- | --- |
+| **Birch Research** | Explain coverage, rules, public records, figures, company facts, and current developments. | Named source, claim-level citation, jurisdiction, date, reviewer, correction trail. | Never required to read. | **Ask Birch** |
+| **Coverage Position** | Organize a reader’s own facts and surface sourced questions, gaps, inconsistencies, deadlines, and documentation items. | Deterministic checks against entered facts and cited rules; never a verdict. | Local-first. | **Review my coverage setup** |
+| **Birch Commons** | Hold threads, structured experiences, practitioner notes, and official responses. | Attributed conversation and moderated records; an account is not law. | Required to post, reply, save, or request verification. | **Share what happened** |
+| **Coverage Lens** | Future private document-assisted question organizer. | User-approved redacted digest plus cited Birch context. | Required only for a private expiring workspace. | **Review my policy with care** |
+
+The research layer is the front door. Tools are the activation and retention
+layer. Commons is the context layer. Coverage Lens is not a launch dependency.
+
+## Final conversion logic
+
+1. A visitor asks a question or browses a coverage line without an account.
+2. Birch shows the direct answer, assumptions, variability, review state, and
+   claim-level sources.
+3. The visitor opens a source, related question, company dossier, or tool.
+4. Signup appears only when the visitor wants to post, reply, save, follow,
+   request professional verification, or use a private workspace.
+5. Contributions enter the correct moderation and verification path: thread,
+   case report, practitioner note, or official response.
+6. Only moderated material receives a durable public record, with a visible
+   truth-model label and provenance.
+
+The first conversion is a useful answer, not a lead. The strongest recurring
+metric is a source opened behind an open item, followed by a return with a
+better question or a properly labeled contribution.
+
+## Final claim to “source of truth”
+
+Birch should earn that position instead of asserting it. Every durable record
+must carry a stable URL, inline source links, publisher and document dates,
+jurisdiction, last-reviewed date, named authorship, correction history, truth
+model, and a clear “what this does not establish” boundary. Static HTML, JSON
+companions, dataset releases, RSS, and citation blocks make the record useful
+to people and answer engines. “Insufficient evidence” is a valid outcome.
+
+## Final build order
+
+1. Complete the single licensed review of the frozen Research corpus.
+2. Bring Commons live separately with Postgres, mail, DNS, moderator access,
+   and the full smoke test.
+3. Enable Research ↔ Commons subject links only after real public posts exist.
+4. Add neutral company dossiers and verified organization responses.
+5. Add role-specific professional verification and practitioner notes.
+6. Add Coverage Lens only after local-first redaction, retention, vendor, and
+   security review.
+7. Add source-bound AI retrieval only after refusal, citation, privacy, and
+   cost controls are tested.
+
+## Historical tool-first draft (superseded)
+
+The following sections document the prior Coverage Position decision. They
+remain useful for module and rule boundaries, but they no longer define the
+homepage or the product’s primary positioning.
+
+### Original statement
 
 > **BestInsurance Research is a public insurance advisory instrument.**
 >
@@ -14,7 +88,7 @@ Last updated: 2026-09-01
 >
 > It never prices. It never decides eligibility. It never asks who you are.
 
-## What changed, and why
+### What changed, and why (historical)
 
 The previous positioning was a research library with tools appended. That is a publisher's
 shape: the library is the product and the tools are a marketing surface hanging off it.
@@ -29,7 +103,7 @@ things structurally.
 | What the research is for | The thing being consumed | The evidence layer under every conclusion |
 | Value over time | Flat. Each visit is a fresh read. | Compounds. Each module adds to the same position. |
 
-## The central object: the Coverage Position
+### The central object: the Coverage Position
 
 Borrowed deliberately from finance. A *position* is what you hold, valued against what is
 knowable, updated as facts change. That is the correct mental model for insurance, and nobody
@@ -49,7 +123,7 @@ Because it is one object rather than nine disconnected forms, a fact entered in 
 raise an open item in another. That cross-module inference is the actual product, and it is why
 the modules must not be separate microsites.
 
-## Why the subdomains become modules rather than sites
+### Why the subdomains become modules rather than sites
 
 Each specialty domain gets **its own module with its own route, its own front door, and its own
 independent advertisability**. `bestepli.com` lands on the EPLI module, which stands alone and
@@ -64,7 +138,7 @@ Nine separate microsites cannot do this. They would also split the search author
 and each would need its own review cadence. The routing table is in
 `DOMAIN-ROUTING-MANIFEST.md`.
 
-## What "infinite value" means honestly
+### What "infinite value" means honestly
 
 The phrase needs a definition that survives contact with a regulator, so here it is. The value
 compounds along four axes, none of which requires overclaiming:
@@ -79,7 +153,7 @@ compounds along four axes, none of which requires overclaiming:
    trusted. That is the only kind of advisory output that gets more valuable as the reader gets
    more sophisticated.
 
-## The line that does not move
+### The line that does not move
 
 The product is an **advisory instrument**, not an underwriting engine. Five rules define the
 boundary, and they are enforced in code and in tests rather than in policy:
@@ -101,7 +175,7 @@ Every rule is deterministic: exact comparison or arithmetic on recorded fields. 
 weighting, no probability. A rule that would need judgement is not a rule; it becomes a question
 the module asks.
 
-## The number we show, and the number we refuse
+### The number we show, and the number we refuse
 
 **Shown: information completeness.** The share of a module's fields the person has actually
 recorded. It is honest because it measures their own input, not their risk, and it is useful
@@ -111,7 +185,7 @@ because incomplete information is the single most common reason a submission goe
 to summarise someone's insurance risk would be the most valuable-looking and least defensible
 thing on the site. There is no version of it we can source.
 
-## Design consequence: fintech, specifically
+### Design consequence: fintech, specifically
 
 "Fintech" is not a texture. It is a set of decisions that follow from showing someone their own
 position:
@@ -132,7 +206,7 @@ position:
 The editorial voice stays on research pages. A person reading about earthquake statutes wants
 prose; a person looking at their position wants a ledger. Two registers, one token set.
 
-## Route structure
+### Route structure
 
 | Route | What it is |
 | --- | --- |
@@ -144,7 +218,7 @@ prose; a person looking at their position wants a ledger. Two registers, one tok
 
 `/position` is the product. The research routes are what make it worth trusting.
 
-## What this positioning rejects
+### What this positioning rejects
 
 - **A chat interface.** It would promise a generative answer that does not exist here, and it
   would make the position invisible.
@@ -155,7 +229,7 @@ prose; a person looking at their position wants a ledger. Two registers, one tok
 - **Nine microsites.** Covered above.
 - **A risk score.** Covered above.
 
-## How to tell if this worked
+### How to tell if this worked
 
 Not by traffic. By whether a person who completes two modules leaves with an open item they
 would not have thought of, and can check the citation behind it in one click.

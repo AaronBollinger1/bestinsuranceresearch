@@ -4,7 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Callout from '../components/Callout.astro';
 import StateBlock from '../components/StateBlock.astro';
-import MarkConverging from '../components/MarkConverging.astro';
+import BirchLoadingMark from '../components/BirchLoadingMark.astro';
+import ProductContextBar from '../components/ProductContextBar.astro';
 import StatusChip from '../components/StatusChip.astro';
 import { siteConfig } from '../config/site';
 import { stripMarkers } from '../lib/citations';
@@ -12,6 +13,7 @@ import { loadCorpus } from '../lib/corpus';
 import { longDate } from '../lib/cite';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../lib/schema';
 
+import { excerpt, shortList } from '../lib/excerpt';
 const corpus = await loadCorpus();
 
 const lines = [...new Set(corpus.questions.flatMap((q) => q.data.lines))].sort();
@@ -40,7 +42,7 @@ const jsonLd = graph(
 		name: 'Ask an insurance question',
 		path: '/ask',
 		description:
-			'Look up a canonical, sourced answer in the BestInsurance Research library. The lookup runs locally in your browser.',
+			'Look up a canonical, sourced answer in the Birch Research library. The lookup runs locally in your browser.',
 		items: corpus.questions.map((q) => ({ name: q.data.question, path: `/questions/${q.id}` })),
 	}),
 );
@@ -55,19 +57,20 @@ const FAMILY_LABEL: Record<string, string> = {
 
 <BaseLayout
 	title="Ask an insurance question"
-	description="Look up a canonical, sourced answer in the BestInsurance Research library. The lookup runs entirely in your browser, so your question is never sent anywhere."
+	description="Look up a canonical, sourced answer in the Birch Research library. The lookup runs entirely in your browser, so your question is never sent anywhere."
 	jsonLd={jsonLd}
 	pageType="ask"
 >
 	<section class="band band-tight band-first band-paper">
 		<div class="shell">
 			<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
+			<ProductContextBar active="research" />
 			<span class="eyebrow">Ask</span>
 			<h1>Ask an insurance question.</h1>
 			<p class="lede">
-				This is a library lookup, not a chatbot. It matches your wording against published,
-				human-reviewed answers and returns the ones the evidence actually supports. When nothing in
-				the library supports an answer, it says so instead of guessing.
+				Find sourced answers in the Birch library. This searches existing records; it does not
+				generate advice or search the live web. Each answer shows its review status and sources.
+				When no match is found, we say so.
 			</p>
 		</div>
 	</section>
@@ -213,8 +216,8 @@ const FAMILY_LABEL: Record<string, string> = {
 
 			<div id="ask-loading" hidden>
 				<div class="ask-resolving">
-					<MarkConverging size={72} label={null} />
-					<p class="mono" aria-hidden="true">Resolving against the library</p>
+					<BirchLoadingMark size={72} label={null} />
+					<p class="mono" aria-hidden="true">Checking sources</p>
 				</div>
 				<div class="skeleton" aria-hidden="true">
 				{
@@ -332,10 +335,10 @@ const FAMILY_LABEL: Record<string, string> = {
 								<a class="row" href={`/questions/${question.id}`}>
 									<div>
 										<h4 class="row-title">{question.data.question}</h4>
-										<p>{stripMarkers(question.data.shortAnswer).slice(0, 170)}</p>
+										<p>{excerpt(stripMarkers(question.data.shortAnswer), 170)}</p>
 										<div class="row-meta">
 											<StatusChip kind={question.data.confidence} />
-											<span class="meta">{question.data.lines.join(', ')}</span>
+											<span class="meta">{shortList(question.data.lines)}</span>
 											<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
 											<span class="meta">{question.data.sourceIds.length} sources</span>
 										</div>
@@ -363,6 +366,7 @@ const FAMILY_LABEL: Record<string, string> = {
 </BaseLayout>
 
 <script>
+	import { excerpt as shorten } from '../lib/excerpt';
 	import { search, type SearchIndex, type SearchOutcome } from '../lib/retrieval';
 
 	const form = document.getElementById('ask-form') as HTMLFormElement | null;
@@ -652,7 +656,10 @@ const FAMILY_LABEL: Record<string, string> = {
 	function renderHits(outcome: Extract<SearchOutcome, { hits: unknown }>) {
 		hits!.innerHTML = sortHits(outcome)
 			.map((hit) => {
-				const excerpt = hit.bestChunk.text.replace(/\[S:[a-z0-9-]+\]/g, '').slice(0, 230);
+				/* The same sentence-aware shortening the server-rendered cards use,
+				   imported rather than reimplemented: a search result cut mid-word is
+				   the most visible text on the site and was the worst offender. */
+				const excerpt = shorten(hit.bestChunk.text.replace(/\[S:[a-z0-9-]+\]/g, ''), 230);
 				return [
 					`<a class="row" href="${escape(hit.path)}" data-event="research_answer_viewed" data-answer-status="${escape(hit.confidence)}" data-page-type="ask">`,
 					'<div>',
@@ -896,10 +903,15 @@ const FAMILY_LABEL: Record<string, string> = {
 	/* The resolving mark sits above the row skeleton, not instead of it: the
 	   mark says the library is being searched, the bars say what is coming. */
 	.ask-resolving {
-		display: flex;
-		align-items: center;
-		gap: var(--s-4);
-		padding: var(--s-6) 0 var(--s-5);
+		display: grid;
+		justify-items: center;
+		gap: var(--s-3);
+		margin: var(--s-4) 0 var(--s-5);
+		padding: var(--s-8) var(--s-4) var(--s-6);
+		border: 1px solid var(--line);
+		border-radius: var(--r-3);
+		background: var(--paper);
+		text-align: center;
 	}
 
 	/* The thread. Numbered because the order is the point: turn 3 usually only

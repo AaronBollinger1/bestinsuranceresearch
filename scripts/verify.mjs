@@ -11,7 +11,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+/* The excerpt helpers are plain TypeScript with no Astro imports, so the suite
+   exercises the real implementation rather than a copy of its rules. */
+import { excerpt, sentences } from '../src/lib/excerpt.ts';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -101,12 +105,71 @@ test('every content entry generates its route', () => {
 
 test('core routes exist', () => {
 	for (const route of [
-		'/', '/ask', '/questions', '/insurance', '/companies', '/states',
+		'/', '/start', '/explore', '/ask', '/questions', '/insurance', '/companies', '/states',
 		'/examples', '/tools', '/sources', '/about', '/methodology',
 		'/editorial-policy', '/corrections', '/privacy', '/terms', '/404',
 	]) {
 		assert.ok(routes.has(route), `missing route ${route}`);
 	}
+});
+
+test('no line the coverage index calls planned has already been published', async () => {
+	/*
+	 * /insurance tells the reader, in a callout, that the planned lines "have no
+	 * route, no sitemap entry, and no navigation link until a reviewed page
+	 * exists". That is a claim about this build, made from a hand-maintained
+	 * literal that nothing pruned as pages were written. Twelve of its lines had
+	 * all three - renters, personal auto, flood, cyber, EPL, D&O, inland marine,
+	 * surety bonds among them - so the index of a library with a renters page
+	 * told a reader looking for renters insurance that it was planned.
+	 *
+	 * The list now carries the slug each line would be published under, which is
+	 * what makes this measurable rather than a fuzzy match between "Scheduled
+	 * valuables" and "Scheduled personal property (California)".
+	 */
+	const { ROADMAP, roadmapLines } = await import('../src/lib/roadmap.ts');
+	const published = new Set(coverages.map((c) => c.id));
+	const sitemap = walk(DIST, (f) => /sitemap.*\.xml$/.test(f)).map(read).join('\n');
+
+	const alreadyThere = roadmapLines()
+		.filter((line) => published.has(line.id) || routes.has(`/insurance/${line.id}`))
+		.map((line) => `${line.name} (/insurance/${line.id})`);
+	assert.deepEqual(
+		alreadyThere,
+		[],
+		'the coverage index calls these lines planned, and says they have no route, ' +
+			`but they are published: ${alreadyThere.join(', ')}`,
+	);
+
+	/* And the other direction: a planned line must really be absent, not merely
+	   unlisted in the coverages collection. */
+	for (const line of roadmapLines()) {
+		assert.ok(
+			!sitemap.includes(`/insurance/${line.id}`),
+			`${line.name} is called planned but is in the sitemap`,
+		);
+	}
+
+	/*
+	 * The list and the page cannot drift either. A line dropped from the render
+	 * would leave the id checked above enforcing nothing, which is the vacuous
+	 * check this suite keeps having to unlearn.
+	 */
+	const html = read(path.join(DIST, 'insurance', 'index.html'));
+	assert.ok(roadmapLines().length >= 10, 'the roadmap is too short for this check to mean much');
+	for (const line of roadmapLines()) {
+		assert.ok(html.includes(`<li>${line.name}</li>`), `${line.name} is on the roadmap but not on the page`);
+	}
+	for (const group of ROADMAP) {
+		assert.ok(html.includes(group.family), `the roadmap family "${group.family}" is not on the page`);
+	}
+
+	/* The callout is the claim the rest of this test enforces. If somebody
+	   softens it, this check should stop pretending to hold them to it. */
+	assert.ok(
+		html.includes('They have no route, no sitemap entry, and no navigation link'),
+		'/insurance no longer makes the claim this test exists to hold',
+	);
 });
 
 test('a tool without a published route never appears in navigation or the sitemap', () => {
@@ -134,7 +197,7 @@ test('every page has exactly one self-referential canonical', () => {
 		assert.ok(href, `${routeOf(file)} has no canonical href`);
 		const url = new URL(href);
 		assert.equal(url.pathname, routeOf(file) === '/' ? '/' : routeOf(file), `${routeOf(file)} canonical points elsewhere: ${href}`);
-		assert.ok(!href.endsWith('/') || href.endsWith('.com/'), `${routeOf(file)} canonical has a trailing slash`);
+		assert.ok(!href.endsWith('/') || url.pathname === '/', `${routeOf(file)} canonical has a trailing slash`);
 	}
 });
 
@@ -157,6 +220,18 @@ test('every page has exactly one self-referential canonical', () => {
  * build that forgets to drop noindex fails instead of shipping.
  */
 const SITE_ENV = process.env.PUBLIC_SITE_ENV === 'production' ? 'production' : 'preview';
+const SITE_ORIGIN = (process.env.PUBLIC_SITE_ORIGIN || 'https://birch.insure').replace(/\/+$/, '');
+const COMMONS_READY = process.env.PUBLIC_COMMONS_READY === 'true';
+const COMMUNITY_ORIGIN = (process.env.PUBLIC_COMMONS_ORIGIN || 'https://commons.birch.insure').replace(/\/+$/, '');
+
+test('research never advertises an unready Commons origin', () => {
+	const advertised = htmlFiles.filter((file) => read(file).includes(`href="${COMMUNITY_ORIGIN}`));
+	if (COMMONS_READY) {
+		assert.ok(advertised.length > 0, 'Commons is marked ready but no Research CTA advertises it');
+		return;
+	}
+	assert.equal(advertised.length, 0, 'Commons links are present before PUBLIC_COMMONS_READY=true');
+});
 
 test(`the ${SITE_ENV} build emits the correct indexing directive on every page`, () => {
 	for (const file of htmlFiles) {
@@ -177,7 +252,7 @@ test(`the ${SITE_ENV} build emits the correct indexing directive on every page`,
 		   deliberately out of the index because they reproduce prose whose
 		   canonical home is elsewhere on this origin. /review-queue itself is
 		   indexed, so the pattern requires a segment after it. */
-		const deliberatelyHidden = /^\/(design|404)/.test(route) || /^\/review-queue\/./.test(route);
+		const deliberatelyHidden = /^\/(design|404|lens|shelf)(?:\/|$)/.test(route) || /^\/review-queue\/./.test(route);
 		if (deliberatelyHidden) continue;
 		assert.ok(
 			!/<meta name="robots" content="noindex, nofollow">/.test(html),
@@ -209,6 +284,21 @@ test(`the ${SITE_ENV} robots.txt matches the environment`, () => {
 		robots,
 		/Sitemap:\s*https:\/\/[^\s]+\/sitemap-index\.xml/,
 		'production robots.txt must advertise the sitemap index by absolute URL',
+	);
+});
+
+test('the checked-in Vercel config cannot turn review previews indexable', () => {
+	const config = JSON.parse(fs.readFileSync(path.join(ROOT, 'vercel.json'), 'utf8'));
+	const buildEnv = config.build?.env ?? {};
+	assert.notEqual(
+		buildEnv.PUBLIC_SITE_ENV,
+		'production',
+		'vercel.json must not force production indexing on every preview deployment',
+	);
+	assert.notEqual(
+		buildEnv.PUBLIC_SITE_ORIGIN,
+		'https://bestinsuranceresearch.com',
+		'vercel.json still points builds at the retired Research origin',
 	);
 });
 
@@ -308,6 +398,20 @@ test('every source record lists at least one claim and a real URL', () => {
 	}
 });
 
+test('source records expose a citation kit and distinguish Birch from the original authority', () => {
+	const template = read(path.join(ROOT, 'src/pages/sources/[slug].astro'));
+	assert.match(template, /<SourceCitationKit/);
+	assert.match(template, /citation:\s*\[\{/);
+	assert.match(template, /publisher: \{ '@type': 'Organization', name: siteConfig\.name \}/);
+	assert.match(template, /isBasedOn: \{/);
+
+	const sample = read(path.join(DIST, 'sources', 'cdi-company-profiles', 'index.html'));
+	assert.match(sample, /Cite this source record/);
+	assert.match(sample, /Use this citation when you are referencing Birch's structured source record/);
+	assert.match(sample, /Original source:/);
+	assert.match(sample, /\/sources\/cdi-company-profiles\.json/);
+});
+
 /* ------------------------------------------------------------------ */
 /* Internal links                                                      */
 /* ------------------------------------------------------------------ */
@@ -359,6 +463,81 @@ test('every substantive page has a JSON companion that parses', () => {
 		assert.ok(record.canonicalUrl, `${rel} has no canonicalUrl`);
 		assert.ok(record.contentVersion, `${rel} has no contentVersion`);
 		assert.ok(Array.isArray(record.sources), `${rel} has no sources array`);
+	}
+});
+
+test('company machine records expose only declared research relationships', () => {
+	for (const company of companies) {
+		const record = JSON.parse(read(path.join(DIST, 'companies', `${company.id}.json`)));
+		assert.ok(record.relatedResearch, `${company.id} has no relatedResearch object`);
+		assert.ok(Array.isArray(record.relatedResearch.questions), `${company.id} has no related question list`);
+		assert.ok(Array.isArray(record.relatedResearch.coverages), `${company.id} has no related coverage list`);
+
+		const explicit = idsOf(company.data.relatedQuestions);
+		const mentioning = questions
+			.filter((question) => idsOf(question.data.companies).includes(company.id))
+			.filter((question) => !explicit.includes(question.id));
+		const expectedQuestions = [...explicit, ...mentioning.map((question) => question.id)];
+		assert.deepEqual(
+			record.relatedResearch.questions.map((question) => question.id),
+			expectedQuestions,
+			`${company.id} machine question links drifted from the visible relationship set`,
+		);
+
+		const expectedCoverages = [...new Set(
+			[...explicit.map((id) => questions.find((question) => question.id === id)).filter(Boolean), ...mentioning]
+				.flatMap((question) => idsOf(question.data.coverages)),
+		)];
+		assert.deepEqual(
+			record.relatedResearch.coverages.map((coverage) => coverage.id),
+			expectedCoverages,
+			`${company.id} machine coverage links are not derived from declared Research relationships`,
+		);
+		for (const link of [...record.relatedResearch.questions, ...record.relatedResearch.coverages]) {
+			assert.ok(routes.has(new URL(link.url).pathname), `${company.id} has an unbuilt research relationship URL`);
+		}
+	}
+});
+
+test('filed company forms are source-linked policy-form records', () => {
+	const sourceById = new Map(sources.map((source) => [source.id, source]));
+	for (const company of companies) {
+		const companySourceIds = idsOf(company.data.sourceIds);
+		const forms = company.data.filedForms ?? [];
+		const html = read(path.join(DIST, 'companies', company.id, 'index.html'));
+		const machine = JSON.parse(read(path.join(DIST, 'companies', `${company.id}.json`)));
+		assert.equal(machine.filedForms.length, forms.length, `${company.id} machine filed-form count drifted`);
+		for (const form of forms) {
+			const source = sourceById.get(form.sourceId.id);
+			assert.ok(source, `${company.id} filed form ${form.label} has no source record`);
+			assert.equal(source.data.sourceType, 'policy-form', `${company.id} filed form ${form.label} is not a policy-form source`);
+			assert.ok(companySourceIds.includes(form.sourceId.id), `${company.id} filed form ${form.label} is not in the entity source ledger`);
+			assert.ok(html.includes(form.label), `${company.id} does not render filed form ${form.label}`);
+			assert.ok(html.includes(`/sources/${form.sourceId.id}`), `${company.id} does not link filed form ${form.label} to its source page`);
+		}
+		if (forms.length > 0) assert.match(html, /Filed forms in the source registry/);
+	}
+});
+
+test('regulatory company identity snapshots are source-linked regulator records', () => {
+	const sourceById = new Map(sources.map((source) => [source.id, source]));
+	for (const company of companies) {
+		const identity = company.data.regulatoryIdentity;
+		const machine = JSON.parse(read(path.join(DIST, 'companies', `${company.id}.json`)));
+		const html = read(path.join(DIST, 'companies', company.id, 'index.html'));
+		if (!identity) {
+			assert.equal(machine.regulatoryIdentity, undefined, `${company.id} machine identity snapshot drifted`);
+			continue;
+		}
+		const identitySourceId = typeof identity.sourceId === 'string' ? identity.sourceId : identity.sourceId.id;
+		const source = sourceById.get(identitySourceId);
+		assert.ok(source, `${company.id} identity snapshot has no source record`);
+		assert.equal(source.data.sourceType, 'regulator-record', `${company.id} identity snapshot is not a regulator record`);
+		assert.ok(idsOf(company.data.sourceIds).includes(identitySourceId), `${company.id} identity source is not in the entity ledger`);
+		assert.ok(machine.regulatoryIdentity, `${company.id} machine record omitted the identity snapshot`);
+		assert.equal(machine.regulatoryIdentity.sourceId, identitySourceId, `${company.id} machine identity source drifted`);
+		assert.ok(html.includes('Identity fields from the source record'), `${company.id} does not render the identity snapshot`);
+		assert.ok(html.includes(`/sources/${identitySourceId}`), `${company.id} does not link the identity snapshot to its source page`);
 	}
 });
 
@@ -415,6 +594,54 @@ test('the analytics contract published to the page uses controlled vocabularies 
 	}
 });
 
+/* ------------------------------------------------------------------ */
+/* Motion and interaction budget                                      */
+/* ------------------------------------------------------------------ */
+
+test('the shared shell enforces Birch interaction and reduced-motion budgets', () => {
+	const css = read(path.join(ROOT, 'src/styles/global.css'));
+	const tokens = read(path.join(ROOT, 'src/styles/tokens.css'));
+	const loadingMark = read(path.join(ROOT, 'src/components/BirchLoadingMark.astro'));
+	const convergingMark = read(path.join(ROOT, 'src/components/MarkConverging.astro'));
+	const budget = read(path.join(ROOT, 'MOTION-AND-A11Y-BUDGET.md'));
+
+	assert.match(tokens, /--tap:\s*44px/, 'the shared tap target token moved below 44px');
+	for (const token of ['--dur-1: 120ms', '--dur-2: 180ms', '--dur-3: 240ms', '--dur-4: 360ms']) {
+		assert.ok(tokens.includes(token), `motion token is missing or changed: ${token}`);
+	}
+
+	/* These are the controls that were previously below the declared target on
+	   desktop. Keep the assertion close to the source of truth instead of
+	   relying on a single browser viewport to catch a CSS regression. */
+	for (const [selector, pattern] of [
+		['header navigation', /\.header-nav a, \.header-menu-trigger \{[\s\S]*?min-height:\s*var\(--tap\)/],
+		['header search', /\.header-search input \{[\s\S]*?min-height:\s*var\(--tap\)/],
+		['compact buttons', /\.btn-sm \{\s*min-height:\s*var\(--tap\)/],
+		['segmented controls', /\.segmented button \{\s*\n?\s*min-height:\s*var\(--tap\)/],
+		['tabs', /\.tablist \[role='tab'\] \{\s*\n?\s*min-height:\s*var\(--tap\)/],
+	]) {
+		assert.match(css, pattern, `${selector} no longer uses the shared tap target`);
+	}
+
+	const reduceStart = css.lastIndexOf('@media (prefers-reduced-motion: reduce)');
+	assert.ok(reduceStart >= 0, 'global reduced-motion contract is missing');
+	const reduced = css.slice(reduceStart);
+	assert.match(reduced, /animation:\s*none\s*!important/, 'reduced motion only shortens animation instead of disabling it');
+	assert.match(reduced, /transition:\s*none\s*!important/, 'reduced motion only shortens transitions instead of disabling them');
+	assert.match(reduced, /\.header-menu\.is-open \.header-menu-panel \{\s*transform:\s*translate\(-50%, 0\) !important;/, 'reduced-motion menus do not preserve their open state');
+
+	/* The loading marks may animate only inside an explicit no-preference media
+	   query. The final mark remains available to readers who request less motion. */
+	for (const [name, source] of [['BirchLoadingMark', loadingMark], ['MarkConverging', convergingMark]]) {
+		const media = source.indexOf('@media (prefers-reduced-motion: no-preference)');
+		const animation = source.indexOf('animation:');
+		assert.ok(media >= 0 && animation > media, `${name} animation is not gated by no-preference`);
+	}
+
+	assert.match(budget, /minimum height for header navigation/, 'the interaction budget no longer documents the tap rule');
+	assert.match(budget, /disables animation and transitions/, 'the motion budget no longer documents the reduced-motion rule');
+});
+
 test('no analytics attribute on any element carries free text', () => {
 	for (const file of htmlFiles) {
 		const html = read(file);
@@ -427,6 +654,43 @@ test('no analytics attribute on any element carries free text', () => {
 /* ------------------------------------------------------------------ */
 /* Handoff privacy                                                     */
 /* ------------------------------------------------------------------ */
+
+test('Coverage Lens redaction preview stays local and states its limits', () => {
+	const source = read(path.join(ROOT, 'src', 'pages', 'lens.astro'));
+	const html = read(path.join(DIST, 'lens', 'index.html'));
+	const privacySource = read(path.join(ROOT, 'src', 'pages', 'privacy.astro'));
+	const privacyHtml = read(path.join(DIST, 'privacy', 'index.html'));
+	assert.match(source, /id="lens-redaction"/);
+	assert.match(source, /not a complete privacy filter/);
+	assert.match(source, /coverage conclusion/);
+	assert.match(source, /No upload before consent/);
+	assert.match(source, /OCR, server storage, AI analysis/);
+	assert.match(source, /redactedOutput\.textContent/);
+	assert.doesNotMatch(source, /\b(?:fetch|XMLHttpRequest|localStorage|sessionStorage)\b/);
+	assert.doesNotMatch(source, /state\.innerHTML/);
+	assert.ok(html.includes('Short excerpt for a local redaction preview'));
+	assert.ok(html.includes('The text remains in this page only'));
+	assert.ok(privacySource.includes('Coverage Lens is not document storage'));
+	assert.ok(privacyHtml.includes('Lens selection stays local'));
+});
+
+test('company directory filtering is local and has an honest empty state', () => {
+	const source = read(path.join(ROOT, 'src', 'pages', 'companies', 'index.astro'));
+	const html = read(path.join(DIST, 'companies', 'index.html'));
+	assert.match(source, /id="company-search"/);
+	assert.match(source, /id="company-type"/);
+	assert.match(source, /data-company-row/);
+	assert.match(source, /id="company-filter-empty"/);
+	assert.match(source, /coverageIdsByCompany/);
+	assert.match(source, /company-row-signals/);
+	assert.match(source, /Community private preview/);
+	assert.match(source, /row\.hidden =/);
+	assert.doesNotMatch(source, /\b(?:fetch|XMLHttpRequest|localStorage|sessionStorage)\b/);
+	assert.ok(html.includes('Find an organization'));
+	assert.ok(html.includes('No organization matches those filters'));
+	assert.equal((html.match(/class="company-row-signals"/g) ?? []).length, companies.length, 'every organization row should expose record signals');
+	assert.equal((html.match(/<span class="company-signal company-signal-community/g) ?? []).length, companies.length, 'every organization row should state community availability');
+});
 
 test('no outbound Bollinsure link carries a question or free text', () => {
 	const allowed = new Set([
@@ -446,6 +710,43 @@ test('no outbound Bollinsure link carries a question or free text', () => {
 			}
 		}
 	}
+});
+
+test('the about page keeps its accountless boundary true', () => {
+	const about = read(path.join(DIST, 'about', 'index.html'));
+	const formTags = [...about.matchAll(/<form\b[^>]*>/g)].map((match) => match[0]);
+
+	/*
+	 * /about says Birch Research collects nothing. The global header and the
+	 * closed mobile panel both contain a search form, so "no form" would be the
+	 * wrong check. What the page may contain is an explicit GET into /ask; no
+	 * form may post, upload, or point at a third party.
+	 */
+	const accountless = (html) => {
+		const forms = [...html.matchAll(/<form\b[^>]*>/g)].map((match) => match[0]);
+		return (
+			forms.length > 0 &&
+			forms.every((tag) => /method="get"/i.test(tag) && /action="\/ask"/i.test(tag)) &&
+			!/<form\b[^>]*method="post"/i.test(html) &&
+			!/<input\b[^>]*type="file"/i.test(html)
+		);
+	};
+
+	assert.equal(formTags.length, 2, `about changed its two accountless search controls: found ${formTags.length}`);
+	assert.equal(accountless(about), true, 'about has a non-search submission or upload control');
+	/* Prove the predicate is not vacuous by breaking a known-good tag. */
+	assert.equal(accountless(about.replace('method="get"', 'method="post"')), false, 'boundary check would not catch a POST form');
+
+	assert.match(about, /It collects nothing\./, 'about no longer states the collection boundary');
+	assert.match(
+		about,
+		/Nothing on this site[\s\S]+reads from it, writes to it, or is trained on it\./,
+		'about no longer states the BestAMS boundary',
+	);
+	assert.match(about, /research journey never requires a handoff\./, 'about no longer states the optional handoff boundary');
+	assert.match(about, /does not mirror the feed/, 'about no longer states that the podcast feed is not mirrored');
+	assert.match(about, /does not import transcripts as research pages/, 'about no longer states that transcripts are not imported');
+	assert.ok(!about.includes('https://feeds.transistor.fm/'), 'about exposes the podcast feed as a fetched or embedded resource');
 });
 
 /* ------------------------------------------------------------------ */
@@ -482,6 +783,35 @@ test('no fabricated authority language on any company page', () => {
 		const text = JSON.stringify(company.data);
 		assert.ok(!banned.test(text), `company ${company.id} contains a ranking claim`);
 		assert.ok(company.data.whatWeDoNotClaim.length >= 2, `company ${company.id} states too few non-claims`);
+	}
+});
+
+test('every company page keeps sourced, contextual, and community lanes separate', () => {
+	const required = [
+		'data-company-lane="coverage"',
+		'data-company-lane="coverage-research"',
+		'data-company-lane="financial"',
+		'data-company-lane="community"',
+		'id="forums"',
+		'id="threads"',
+		'id="experiences"',
+		'id="official-responses"',
+		'id="reviews"',
+	];
+	const hasCompanyShell = (html) => required.every((marker) => html.includes(marker));
+	for (const company of companies) {
+		const file = path.join(DIST, 'companies', company.id, 'index.html');
+		assert.ok(fs.existsSync(file), `missing company page ${company.id}`);
+		const html = read(file);
+		assert.equal(hasCompanyShell(html), true, `${company.id} is missing a company-page lane`);
+		assert.match(html, /No Birch financial score or conclusion/, `${company.id} exposes an unbounded financial lane`);
+		assert.match(html, /Coverage research connected to this record/, `${company.id} does not expose its linked coverage lane`);
+		assert.match(html, /not a current product catalog/, `${company.id} does not state the coverage-research boundary`);
+		assert.match(html, /Reviews and ratings/, `${company.id} does not state the review boundary`);
+		/* Prove the structural predicate can fail; a global footer or repeated heading
+		   must not be enough to make this check pass. */
+		assert.equal(hasCompanyShell(html.replace('id="forums"', 'id="forum"')), false, `${company.id} lane check is vacuous`);
+		if (!COMMONS_READY) assert.ok(!html.includes(`href="${COMMUNITY_ORIGIN}`), `${company.id} links to closed Commons`);
 	}
 });
 
@@ -972,6 +1302,7 @@ test('every required document exists and is substantive', () => {
 		'TOOL-REGISTRY-AND-ROADMAP.md', 'ANALYTICS-EVENT-SPEC.md', 'LAUNCH-GATE.md',
 		'BRAND-SYSTEM.md',
 		'COMMONS.md',
+		'COVERAGE-LENS-DATA-CONTRACT.md',
 	];
 	for (const doc of required) {
 		const full = path.join(ROOT, doc);
@@ -1111,11 +1442,24 @@ test('no source claims to have been checked in the future', () => {
 	}
 });
 
-const LD_BLOCK = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
-
 function ldNodes(html) {
+	/*
+	 * The pattern is built per call, and both reasons are real.
+	 *
+	 * It was a module-level `const` declared at this point in the file, which
+	 * put it in the temporal dead zone for the tests above that call this
+	 * helper: Node's runner starts a test body before module evaluation
+	 * finishes, so "Cannot access 'LD_BLOCK' before initialization" was a race
+	 * this machine won and CI lost. Every run on this branch failed on it and
+	 * every local run passed.
+	 *
+	 * It also removes the footgun HANDOFF.md already records - a shared /g
+	 * regex carries lastIndex between calls - so there is nothing to reuse and
+	 * nothing to reset.
+	 */
+	const block = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
 	const out = [];
-	for (const match of html.matchAll(LD_BLOCK)) {
+	for (const match of html.matchAll(block)) {
 		const parsed = JSON.parse(match[1]);
 		out.push(...(parsed['@graph'] ?? [parsed]));
 	}
@@ -1461,7 +1805,12 @@ test('the published phone and address agree across markup and visible text', () 
 	);
 
 	// And the number a reader can read must be the same one again.
-	const shown = home.match(/\(?[0-9]{3}\)?[ .-]?[0-9]{3}[ .-][0-9]{4}/);
+	// The homepage also renders research cards, which may quote a source's
+	// unrelated company telephone. Scope the visible-number check to the
+	// agency's own tel link so adding a sourced company record cannot make this
+	// estate-wide assertion compare two different organizations.
+	const agencyTelLink = home.match(/<a href="tel:[^"]+"[^>]*>[\s\S]*?<\/a>/);
+	const shown = agencyTelLink?.[0]?.match(/\(?[0-9]{3}\)?[ .-]?[0-9]{3}[ .-][0-9]{4}/) ?? null;
 	assert.ok(shown, 'the homepage shows no phone number in visible text');
 	assert.ok(
 		digits(telephone).endsWith(digits(shown[0])),
@@ -2477,6 +2826,101 @@ test('a cross-module rule stays silent until every module it reads is touched', 
 	}
 });
 
+test('every boundary the position page promises is a boundary the build enforces', async () => {
+	/*
+	 * /position prints what this instrument will not do and then says:
+	 * "Enforced in code and in tests, not only in policy: every rule is
+	 * validated at build time against this boundary."
+	 *
+	 * That sentence was two-thirds true. The promises were prose on the page and
+	 * the guard was a flat phrase list in src/lib/position.ts, with nothing
+	 * joining them, so two of the six promises were enforced by no phrase at all
+	 * - "Assign a class code or any rating-bureau classification" and "Give you a
+	 * risk score", the two DIRECTION.md treats as absolute. A seventh phrase
+	 * group, refusing to tell somebody what to buy, was enforced with no promise
+	 * printed anywhere: the same drift running the other way.
+	 *
+	 * This is the join. It fails if a promise appears on the page with no phrases
+	 * behind it, or a phrase group exists with no promise in front of it.
+	 */
+	const { BOUNDARY } = await import('../src/lib/position.ts');
+	const html = read(path.join(DIST, 'position', 'index.html'));
+
+	const card = html.match(/It will not<\/h3>([\s\S]*?)<\/ul>/);
+	assert.ok(card, '/position no longer prints an "It will not" card, so this check cannot run');
+	const printed = [...card[1].matchAll(/<li>([\s\S]*?)<\/li>/g)].map((m) =>
+		m[1].replace(/<[^>]+>/g, '').replace(/&#39;/g, "'").replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim(),
+	);
+	assert.ok(printed.length >= 6, `the boundary card lists ${printed.length} promises, which is fewer than it had`);
+
+	const unenforced = printed.filter(
+		(line) => !BOUNDARY.some((entry) => line.startsWith(entry.promise)),
+	);
+	assert.deepEqual(
+		unenforced,
+		[],
+		'/position promises these and no phrase in the guard enforces them, so a rule ' +
+			`could say it and build: ${unenforced.join(' | ')}`,
+	);
+
+	const unpromised = BOUNDARY.filter(
+		(entry) => !printed.some((line) => line.startsWith(entry.promise)),
+	).map((entry) => entry.promise);
+	assert.deepEqual(
+		unpromised,
+		[],
+		`the build enforces these and /position never tells the reader: ${unpromised.join(' | ')}`,
+	);
+
+	for (const entry of BOUNDARY) {
+		assert.ok(entry.phrases.length > 0, `"${entry.promise}" is promised and enforced by nothing`);
+	}
+});
+
+test('every rule that reaches a reader is measured against the boundary, cross rules included', async () => {
+	/*
+	 * The fifteen cross-module rules render in the same open-item list as the 272
+	 * module rules, through the same component and the same engine, and went
+	 * through a validator that checked field resolution and module spanning and
+	 * nothing else. None of them was over the line - this is a hole in the guard
+	 * rather than a fault in the corpus - but the page's claim covers "every
+	 * rule", so the check has to.
+	 */
+	const { boundaryBreaches, validateCrossRule } = await import('../src/lib/position.ts');
+
+	const everyRule = [
+		...modules.flatMap((m) => (m.data.rules ?? []).map((r) => [`${m.id}/${r.id}`, r])),
+		...collection('cross-rules').map((r) => [`cross-rules/${r.id}`, r.data]),
+	];
+	assert.ok(everyRule.length > 250, `only ${everyRule.length} rules found, so this check covers too little`);
+
+	const over = [];
+	for (const [where, rule] of everyRule) {
+		for (const phrase of boundaryBreaches(`${rule.title} ${rule.detail} ${rule.action}`)) {
+			over.push(`${where}: "${phrase}"`);
+		}
+	}
+	assert.deepEqual(over, [], `rules that state a verdict this instrument may not state:\n  ${over.join('\n  ')}`);
+
+	/* And the cross-rule validator itself has to be the thing that catches it,
+	   not this test standing in for it. */
+	const breach = {
+		id: 'probe',
+		kind: 'gap',
+		severity: 'high',
+		modules: ['a', 'b'],
+		title: 'Probe',
+		detail: 'This is covered under the form you recorded.',
+		action: 'Nothing.',
+		when: { all: [] },
+		sourceIds: [],
+	};
+	assert.ok(
+		validateCrossRule(breach, []).some((x) => x.includes('crosses the boundary')),
+		'validateCrossRule accepted a cross rule stating that a loss is covered',
+	);
+});
+
 test('the position page ships every cross-module rule, cited', () => {
 	/*
 	 * The rules are validated and proven to fire elsewhere. This is the other
@@ -2857,107 +3301,30 @@ test('every class the ask script renders at runtime has CSS that can actually re
 /* The mark, and the assets that carry it                              */
 /* ------------------------------------------------------------------ */
 
-/*
- * A foreign logo sat at public/favicon.svg for ninety commits - the Astro
- * starter's own mark, one filled path in a 128 viewBox - and nothing noticed,
- * because no assertion had ever looked at what the brand assets contain. These
- * do. The mark is 37 circles and one arrowhead, measured by
- * scripts/trace-mark.mjs and recorded in BRAND-SYSTEM.md, so any asset
- * claiming to be the mark can be checked against that rather than by eye.
- */
-const MARK_DOTS = 37;
-
-test('every asset that claims to be the mark is the mark', () => {
-	for (const rel of ['mark.svg', 'favicon.svg']) {
+test('the supplied Birch assets are present and shared by both surfaces', () => {
+	for (const rel of ['birch-bird-logo-transparent.png', 'birch-bird-transparent.png', 'birch-bird-32x32.png', 'favicon.ico']) {
 		const file = path.join(DIST, rel);
 		assert.ok(fs.existsSync(file), `${rel} is missing from the build`);
-		const svg = read(file);
-		const circles = (svg.match(/<circle/g) || []).length;
-		assert.equal(circles, MARK_DOTS, `${rel} has ${circles} dots; the mark has ${MARK_DOTS}`);
-		assert.equal((svg.match(/<path/g) || []).length, 1, `${rel} does not have exactly one arrowhead`);
-		assert.ok(svg.includes('BestInsurance Research'), `${rel} does not identify itself as this mark`);
-		// A raster wrapped in an <svg> element is not a vector, whatever the
-		// extension says. Both shipped favicon "vectors" were exactly that.
-		assert.ok(!/<image|base64/.test(svg), `${rel} wraps a raster rather than being vector artwork`);
+		assert.ok(fs.statSync(file).size > 64, `${rel} is unexpectedly empty`);
 	}
+	const home = read(path.join(DIST, 'index.html'));
+	assert.ok(home.includes('src="/birch-bird-transparent.png"'), 'the home page does not use the supplied Birch mark');
 });
 
-test('the served favicon is the vector, and colours itself', () => {
-	/*
-	 * A favicon is not in the page, so it cannot inherit currentColor and has to
-	 * carry its own rule. That rule is what collapses favicon-light.svg and
-	 * favicon-dark.svg into one asset.
-	 */
-	const svg = read(path.join(DIST, 'favicon.svg'));
-	assert.match(svg, /prefers-color-scheme: dark/, 'favicon.svg has no dark-scheme rule');
-	assert.ok(svg.includes('#17212e'), 'favicon.svg does not use --ink for light browsers');
-
+test('the layout serves the accurate raster favicon package', () => {
 	const html = read(path.join(DIST, 'ask', 'index.html'));
 	assert.ok(
-		html.includes('href="/favicon.svg" type="image/svg+xml"'),
-		'the layout does not serve the vector favicon',
+		html.includes('href="/birch-bird-32x32.png" type="image/png" sizes="32x32"'),
+		'the layout does not serve the supplied 32px Birch favicon',
 	);
-	for (const stale of ['favicon-light.svg', 'favicon-dark.svg']) {
-		assert.ok(!html.includes(stale), `the layout still references ${stale}, which is a raster`);
-	}
+	assert.ok(html.includes('href="/favicon.ico"'), 'the layout does not serve the supplied ICO fallback');
 });
 
-test('the loading animation is the traced mark, and rests for a reader who asks', () => {
+test('the loading state uses the supplied bird and rests for a reader who asks', () => {
 	const html = read(path.join(DIST, 'ask', 'index.html'));
-
-	const dots = (html.match(/class="mc-dot"/g) || []).length;
-	assert.equal(dots, MARK_DOTS, `/ask renders ${dots} animated dots; the mark has ${MARK_DOTS}`);
-	assert.equal((html.match(/class="mc-head"/g) || []).length, 1, '/ask renders no arrowhead');
-
-	/*
-	 * DIRECTION.md: muted, behind prefers-reduced-motion, with the static mark as
-	 * the resting state. The guard has to be on the animation rather than the
-	 * artwork, so a reader who asked for less motion gets the mark and not a
-	 * blank space. Matched without a space after the colon because the build
-	 * minifies it out.
-	 */
-	assert.match(
-		html,
-		/@media \(prefers-reduced-motion:\s*no-preference\)\{[^}]*\.mc-dot/,
-		'the mark animation is not behind prefers-reduced-motion',
-	);
-	/*
-	 * Checked by removing the guarded blocks and looking at what is left, not
-	 * by pattern. A regex cannot see brace nesting, so matching
-	 * `.mc-dot{...animation:` finds the rule INSIDE the media query and the
-	 * assertion passes or fails for the wrong reason - which is what the first
-	 * version of this check did.
-	 */
-	const withoutMotionGuards = (css) => {
-		const open = '@media (prefers-reduced-motion:no-preference){';
-		let out = css;
-		for (;;) {
-			const at = out.indexOf(open);
-			if (at === -1) return out;
-			let depth = 1;
-			let i = at + open.length;
-			while (i < out.length && depth > 0) {
-				if (out[i] === '{') depth++;
-				else if (out[i] === '}') depth--;
-				i++;
-			}
-			out = out.slice(0, at) + out.slice(i);
-		}
-	};
-
-	const unguarded = withoutMotionGuards(html);
-	assert.ok(
-		!/\.mc-dot\[data-astro-cid-[a-z0-9]+\][^{]*\{[^}]*animation:/.test(unguarded),
-		'the mark animates outside the reduced-motion guard',
-	);
-	assert.ok(
-		unguarded.length < html.length,
-		'no reduced-motion guard was found to strip, so the check above is vacuous',
-	);
-
-	// Every dot must carry the one number the whole motion is derived from.
-	const withT = (html.match(/class="mc-dot"[^>]*--t:/g) || []).length;
-	assert.equal(withT, MARK_DOTS, `${MARK_DOTS - withT} animated dots carry no --t, so their timing is undefined`);
+	assert.match(html, /class="birch-loading-mark"[^>]*>[\s\S]*src="\/birch-bird-transparent\.png"/, '/ask does not render the supplied Birch bird');
+	assert.match(html, /@media\s*\(prefers-reduced-motion:\s*no-preference\)\{[^}]*birch-source-orbit/, 'the source orbit is not behind prefers-reduced-motion');
+	assert.ok(!html.includes('class="mark-converging"'), 'the retired traced redraw is still rendered in the reader-facing lookup');
 });
 
 test('no page animates behind a claim', () => {
@@ -3100,4 +3467,879 @@ test('nothing publishes citations without being reviewable', () => {
 			`${name} publishes citations but is not a collection the review queue enumerates`,
 		);
 	}
+});
+
+/* ------------------------------------------------------------------ */
+/* Dataset releases                                                    */
+/* ------------------------------------------------------------------ */
+
+/*
+ * A release is frozen bytes committed to public/dataset, and the only thing
+ * that makes it worth citing is that it stays that way. "Frozen" asserted in a
+ * comment is a wish, so it is asserted here instead: the manifest must describe
+ * the bytes actually on disk, and every checksum in the release must be
+ * reproducible from the release's own claim text.
+ *
+ * The second assertion is the load-bearing one. cut-release.mjs computes claim
+ * checksums with its own copy of the algorithm, because it runs outside Astro
+ * and cannot import claimChecksum() from src/lib/machine.ts. Two copies of a
+ * hash function is exactly the arrangement that drifts silently, and a drifted
+ * checksum would invalidate every citation carrying one without failing
+ * anything. This holds them to the same answer without requiring a frozen
+ * release to track a corpus that has moved on.
+ */
+const DATASET = path.join(ROOT, 'public/dataset');
+const releaseIds = fs.existsSync(DATASET)
+	? fs
+			.readdirSync(DATASET, { withFileTypes: true })
+			.filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name))
+			.map((e) => e.name)
+			.sort()
+	: [];
+
+const releaseClaimChecksum = (text) =>
+	createHash('sha256').update(text, 'utf8').digest('hex').slice(0, 12);
+
+test('a dataset release has been cut, and the index describes releases that exist', () => {
+	assert.ok(releaseIds.length > 0, 'no dataset release exists in public/dataset');
+
+	const indexFile = path.join(DATASET, 'releases.json');
+	assert.ok(fs.existsSync(indexFile), 'public/dataset/releases.json is missing');
+	const index = JSON.parse(read(indexFile));
+
+	assert.equal(
+		index.releases.length,
+		releaseIds.length,
+		'the release index and the release directories disagree on how many releases exist',
+	);
+	for (const entry of index.releases) {
+		assert.ok(
+			releaseIds.includes(entry.release),
+			`the index lists release ${entry.release}, which has no directory`,
+		);
+	}
+	assert.equal(
+		index.latest,
+		releaseIds[releaseIds.length - 1],
+		'the index names a latest release that is not the newest one on disk',
+	);
+});
+
+test('every dataset release is frozen: the manifest describes the bytes on disk', () => {
+	for (const id of releaseIds) {
+		const dir = path.join(DATASET, id);
+		const manifest = JSON.parse(read(path.join(dir, 'manifest.json')));
+
+		assert.equal(manifest.release, id, `manifest in ${id} names a different release`);
+		assert.ok(manifest.schemaVersion >= 1, `release ${id} states no schema version`);
+		assert.ok(manifest.files.length > 0, `release ${id} lists no files`);
+
+		for (const entry of manifest.files) {
+			const file = path.join(dir, entry.name);
+			assert.ok(fs.existsSync(file), `release ${id} lists ${entry.name}, which is not there`);
+			const bytes = fs.readFileSync(file);
+			assert.equal(
+				bytes.length,
+				entry.bytes,
+				`release ${id} file ${entry.name} is ${bytes.length} bytes, manifest says ${entry.bytes}`,
+			);
+			assert.equal(
+				createHash('sha256').update(bytes).digest('hex'),
+				entry.sha256,
+				`release ${id} file ${entry.name} does not match its recorded digest, so the release has been edited after publication`,
+			);
+		}
+	}
+});
+
+test('every claim checksum in a release is reproducible from that release', () => {
+	for (const id of releaseIds) {
+		const lines = read(path.join(DATASET, id, 'claims.jsonl'))
+			.split('\n')
+			.filter((l) => l.trim());
+		assert.ok(lines.length > 0, `release ${id} publishes no claims`);
+
+		const seen = new Set();
+		for (const line of lines) {
+			const row = JSON.parse(line);
+			assert.equal(
+				releaseClaimChecksum(row.text),
+				row.checksum,
+				`claim ${row.claimId} in release ${id} carries a checksum that does not match its own text`,
+			);
+			assert.ok(!seen.has(row.claimId), `claim ${row.claimId} appears twice in release ${id}`);
+			seen.add(row.claimId);
+			assert.match(
+				row.claimId,
+				/^[a-z0-9-]+#c\d+$/,
+				`claim id ${row.claimId} in release ${id} is not a claim address`,
+			);
+		}
+	}
+});
+
+test('the release checksum algorithm still agrees with the one the site publishes', () => {
+	/*
+	 * The site's own claim index is the reference. Only claims whose text is
+	 * byte-identical in both are compared: a claim corrected since the release
+	 * is supposed to differ, and asserting otherwise would forbid corrections.
+	 */
+	const live = JSON.parse(read(path.join(DIST, 'claims.json')));
+	const liveById = new Map(live.claims.map((c) => [c.claimId, c]));
+
+	let compared = 0;
+	for (const id of releaseIds) {
+		const lines = read(path.join(DATASET, id, 'claims.jsonl'))
+			.split('\n')
+			.filter((l) => l.trim());
+		for (const line of lines) {
+			const row = JSON.parse(line);
+			const current = liveById.get(row.claimId);
+			if (!current || current.text !== row.text) continue;
+			compared += 1;
+			assert.equal(
+				current.checksum,
+				row.checksum,
+				`claim ${row.claimId} has identical text in release ${id} and on the site but a different checksum, so cut-release.mjs and claimChecksum() have drifted apart`,
+			);
+		}
+	}
+	assert.ok(compared > 0, 'no claim could be compared between a release and the live index');
+});
+
+test('a release states its review posture rather than reading as verified', () => {
+	for (const id of releaseIds) {
+		const manifest = JSON.parse(read(path.join(DATASET, id, 'manifest.json')));
+
+		/* The counts a consumer needs to not over-trust the file. */
+		assert.ok(manifest.reviewStatus, `release ${id} states no review posture`);
+		assert.equal(
+			typeof manifest.verification.sourcesRechecked,
+			'number',
+			`release ${id} does not say how many of its sources were re-read`,
+		);
+		assert.equal(
+			manifest.verification.sourcesRechecked + manifest.verification.sourcesReadOnce,
+			manifest.counts.sources,
+			`release ${id} verification counts do not add up to its source count`,
+		);
+		assert.ok(
+			manifest.mayNotBeInferred.length >= 5,
+			`release ${id} carries fewer inference warnings than the live claim index does`,
+		);
+		assert.ok(
+			manifest.immutability,
+			`release ${id} does not tell a consumer that it is frozen`,
+		);
+
+		/* And the prohibited vocabulary never appears in a release header. */
+		for (const word of ['rating', 'ranking', 'risk score']) {
+			assert.ok(
+				!manifest.description.toLowerCase().includes(`${word} of`),
+				`release ${id} description reads as though it publishes a ${word}`,
+			);
+		}
+	}
+});
+
+test('the old name survives only in the release that was frozen under it', () => {
+	/*
+	 * The property is Birch. The evidence layer is Birch Research, the community
+	 * is Birch, and "BestInsurance Research" is what it was called before
+	 * 9 September 2026.
+	 *
+	 * Exactly one thing keeps the old name, and it is not an oversight: the
+	 * frozen dataset release. Its manifest promises immutability and its files
+	 * are checksummed, so rewriting it to tidy a brand is precisely the thing
+	 * that promise exists to prevent. A release is a historical artifact and
+	 * reads as one - the suggested citation on /dataset names the publisher the
+	 * release was actually published under, which is what a citation is for.
+	 *
+	 * Everything else carrying the old name is a leak, and there were 44 of them
+	 * across 26 files at the rename, so the next one is likely to be missed the
+	 * same way.
+	 */
+	const OLD = 'BestInsurance Research';
+
+	/* Whatever the releases say is allowed to reach the reader through them. */
+	const releaseText = walk(path.join(DIST, 'dataset'), (f) => f.endsWith('.json'))
+		.map(read)
+		.join('\n');
+	assert.ok(
+		releaseText.includes(OLD),
+		'no frozen release carries the old name any more, so either a release was rewritten - ' +
+			'which its own immutability promise forbids - or this check has stopped meaning anything',
+	);
+
+	let checked = 0;
+	const leaks = [];
+	for (const file of htmlFiles) {
+		checked += 1;
+		const html = read(file);
+		if (!html.includes(OLD)) continue;
+		/* On /dataset the old name is quoted from a release. Anywhere else, or in
+		   any wording the releases do not contain, it is the rename leaking. */
+		const route = routeOf(file);
+		const quoted = route === '/dataset' || route.startsWith('/dataset/');
+		if (!quoted) leaks.push(route);
+	}
+	assert.ok(checked > 800, `only ${checked} pages read, so this check covers less than the site`);
+	assert.deepEqual(
+		leaks,
+		[],
+		`these pages still carry the old name, which now belongs only to the frozen release: ${leaks.join(', ')}`,
+	);
+
+	/* And the new name is actually rendered, rather than the old one merely
+	   deleted. A wordmark reading nothing would pass everything above. */
+	const home = read(path.join(DIST, 'index.html'));
+	assert.ok(home.includes('<strong>Birch</strong>'), 'the wordmark does not render the new name');
+	assert.ok(
+		/<title>[^<]*Birch Research/.test(home),
+		'the home page title never names the property',
+	);
+});
+
+test('the dataset page and the release files are in the build', () => {
+	const page = path.join(DIST, 'dataset/index.html');
+	assert.ok(fs.existsSync(page), '/dataset did not build');
+	const html = read(page);
+
+	const latest = releaseIds[releaseIds.length - 1];
+	assert.ok(
+		html.includes(`/dataset/${latest}/claims.jsonl`),
+		'/dataset does not link the newest release claim file',
+	);
+	assert.ok(
+		html.includes('"@type":"Dataset"') || html.includes('"@type": "Dataset"'),
+		'/dataset publishes no Dataset node',
+	);
+
+	/* The frozen files have to survive the build, or the page links nothing. */
+	for (const id of releaseIds) {
+		for (const name of ['claims.jsonl', 'sources.json', 'manifest.json']) {
+			assert.ok(
+				fs.existsSync(path.join(DIST, 'dataset', id, name)),
+				`release file ${id}/${name} is not in the build output`,
+			);
+		}
+	}
+	assert.ok(
+		fs.existsSync(path.join(DIST, 'dataset/releases.json')),
+		'the release index is not in the build output',
+	);
+});
+
+test('the Dataset node points at frozen distributions, not at the live index', () => {
+	/*
+	 * /sources also carries a Dataset node, and its distributions are the live
+	 * endpoints - which is correct there, because that node describes the corpus
+	 * as it stands. The one on /dataset describes a release, so pointing it at a
+	 * file that changes under the reader would be the exact failure this page was
+	 * built to fix.
+	 */
+	const html = read(path.join(DIST, 'dataset/index.html'));
+	const match = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+	assert.ok(match, '/dataset emits no JSON-LD');
+	const parsed = JSON.parse(match[1]);
+	const nodes = parsed['@graph'] || [parsed];
+	const node = nodes.find((n) => n['@type'] === 'Dataset');
+	assert.ok(node, '/dataset emits no Dataset node');
+
+	const latest = releaseIds[releaseIds.length - 1];
+	assert.equal(node.version, latest, 'the Dataset node names a version that is not the newest release');
+	assert.ok(node.distribution.length > 0, 'the Dataset node offers no distribution');
+	for (const dist of node.distribution) {
+		assert.ok(
+			dist.contentUrl.includes(`/dataset/${latest}/`),
+			`the Dataset node offers ${dist.contentUrl}, which is not a frozen release file`,
+		);
+	}
+});
+
+test('a release is immutable at the HTTP layer too, not only in prose', () => {
+	/*
+	 * /dataset says a release is frozen and never changes. That is a promise
+	 * about bytes, and the response headers are where a consumer or a CDN
+	 * actually learns it. An immutable cache directive would be a lie on the
+	 * live endpoints and is simply true here, which is the whole difference
+	 * between the two surfaces.
+	 */
+	const vercel = JSON.parse(read(path.join(ROOT, 'vercel.json')));
+	const rules = vercel.headers.filter((h) => h.source.startsWith('/dataset/'));
+	assert.ok(rules.length >= 2, 'vercel.json carries no header rules for dataset releases');
+
+	const values = rules.flatMap((r) => r.headers.map((h) => `${h.key}: ${h.value}`));
+	assert.ok(
+		values.some((v) => v.startsWith('Cache-Control') && v.includes('immutable')),
+		'release files are not served immutable, so the freeze is only a claim on the page',
+	);
+	assert.ok(
+		values.some((v) => v === 'Content-Type: application/x-ndjson; charset=utf-8'),
+		'claims.jsonl is not served as ndjson, and nosniff means a consumer gets a download of unknown type',
+	);
+
+	/* The index is not frozen - it gains a row every time a release is cut. */
+	for (const rule of rules) {
+		assert.ok(
+			!'/dataset/releases.json'.startsWith(rule.source.split(':')[0]) ||
+				rule.source.includes(':version'),
+			'the release index is covered by an immutable rule, but it changes with every release',
+		);
+	}
+});
+
+/* ------------------------------------------------------------------ */
+/* The change feed                                                     */
+/* ------------------------------------------------------------------ */
+
+/*
+ * /changed is assembled from fields on records rather than written, which is
+ * the property worth protecting: there is no prose to fall out of date, but
+ * there is a filter, and a filter is how a change silently stops appearing.
+ * Every source that is not active, every source returned to, and every
+ * published correction must reach the feed. A feed that quietly drops one is
+ * worse than no feed, because it reads as an assertion that nothing moved.
+ */
+const changeFeed = JSON.parse(read(path.join(DIST, 'changed.json')));
+
+test('every recorded change reaches the feed, and nothing else does', () => {
+	const inFeed = new Set(changeFeed.recorded.map((c) => `${c.kind}:${c.url}`));
+
+	for (const source of sources) {
+		const url = `${SITE_ORIGIN}/sources/${source.id}`;
+		if (source.data.status !== 'active') {
+			const kind = source.data.status === 'not-adopted' ? 'not-adopted' : source.data.status;
+			assert.ok(
+				inFeed.has(`${kind}:${url}`),
+				`${source.id} is ${source.data.status} but does not appear in the change feed`,
+			);
+		}
+		if (source.data.lastCheckedBasis === 'recheck') {
+			assert.ok(
+				inFeed.has(`rechecked:${url}`),
+				`${source.id} was rechecked but does not appear in the change feed`,
+			);
+		}
+	}
+
+	/* And the feed invents nothing: every entry resolves to a page in the build. */
+	for (const entry of changeFeed.recorded) {
+		const route = entry.url.replace(SITE_ORIGIN, '').split('#')[0];
+		assert.ok(
+			fs.existsSync(path.join(DIST, route.slice(1), 'index.html')) ||
+				fs.existsSync(path.join(DIST, `${route.slice(1)}.html`)),
+			`the change feed points at ${route}, which is not in the build`,
+		);
+	}
+});
+
+test('every published correction is in the change feed as well as the log', () => {
+	/*
+	 * /corrections and /changed read the same records through different
+	 * functions, and the corrections page has already been wrong once by
+	 * enumerating a subset. Two readers of one truth is fine; two readers that
+	 * disagree is the bug.
+	 */
+	const corrected = [];
+	for (const name of Object.keys(REVIEWABLE)) {
+		for (const entry of collection(name)) {
+			if (entry.data.reviewState === 'corrected' && entry.data.correction) corrected.push(entry);
+		}
+	}
+	const feedCorrections = changeFeed.recorded.filter((c) => c.kind === 'corrected');
+	assert.equal(
+		feedCorrections.length,
+		corrected.length,
+		`${corrected.length} records are corrected but the change feed carries ${feedCorrections.length}`,
+	);
+});
+
+test('the change feed keeps its two date bases apart', () => {
+	/*
+	 * The misreading this endpoint invites is treating our filing date as the
+	 * date an event occurred. Every entry therefore carries dateBasis, and the
+	 * two vocabularies are disjoint by construction.
+	 */
+	for (const entry of changeFeed.recorded) {
+		assert.equal(entry.dateBasis, 'recorded', `recorded change ${entry.url} claims a different date basis`);
+		assert.match(entry.date, /^\d{4}-\d{2}-\d{2}$/, `recorded change ${entry.url} has no ISO date`);
+	}
+	for (const entry of changeFeed.scheduled) {
+		assert.equal(entry.dateBasis, 'instrument', `scheduled change ${entry.label} claims a different date basis`);
+		assert.ok(
+			entry.date > TODAY,
+			`${entry.label} is listed as scheduled but its date ${entry.date} has passed; it belongs in scheduledMovesAlreadyPassed`,
+		);
+	}
+	assert.ok(
+		changeFeed.mayNotBeInferred.some((line) => /dateBasis/.test(line)),
+		'the feed does not warn against reading the recorded date as the event date',
+	);
+});
+
+test('the change feed publishes no amount its figure record does not state', () => {
+	/*
+	 * A scheduled increase is the most tempting place on this site to compute a
+	 * number: the instrument gives a start, a step and a count, so the operative
+	 * amount is one multiplication away. DIRECTION.md forbids publishing a figure
+	 * the source did not state, and several of these are exactly that case - the
+	 * figure records carry the arithmetic in a hedged note precisely because the
+	 * statute does not print it. So the feed may only echo `amount` verbatim.
+	 */
+	const amountById = new Map(figures.map((f) => [f.id, f.data.amount]));
+	for (const entry of changeFeed.scheduled) {
+		const id = entry.url.split('#')[1];
+		assert.ok(amountById.has(id), `scheduled change points at figure ${id}, which does not exist`);
+		assert.equal(
+			entry.amountToday,
+			amountById.get(id),
+			`the feed states ${entry.amountToday} for ${id} but the figure record says ${amountById.get(id)}`,
+		);
+	}
+
+	/* Nothing on the page may present a computed future amount as published. */
+	const html = read(path.join(DIST, 'changed/index.html'));
+	assert.ok(
+		html.includes('We do not compute what the new amount will be'),
+		'/changed does not state that it declines to compute a scheduled amount',
+	);
+});
+
+test('every figure with a scheduled move is either ahead of us or flagged overdue', () => {
+	/* The filter that keeps a past date out of the scheduled list is the same
+	   filter that could hide a stale figure entirely. Each one lands in exactly
+	   one of the two buckets, and the page shows the second. */
+	const scheduled = new Set(changeFeed.scheduled.map((s) => s.url.split('#')[1]));
+	const overdue = new Set(changeFeed.scheduledMovesAlreadyPassed.map((s) => s.url.split('#')[1]));
+	for (const figure of figures) {
+		if (!/^\d{4}-\d{2}-\d{2}$/.test(figure.data.nextMove || '')) continue;
+		const inOne = scheduled.has(figure.id) !== overdue.has(figure.id);
+		assert.ok(
+			inOne,
+			`figure ${figure.id} names a move date and is in ${scheduled.has(figure.id) ? 1 : 0} + ${overdue.has(figure.id) ? 1 : 0} buckets, not exactly one`,
+		);
+	}
+});
+
+test('/changed says it is a record of what we recorded, not of what happened', () => {
+	const html = read(path.join(DIST, 'changed/index.html'));
+	assert.ok(
+		html.includes('This is what we have recorded, not what has happened'),
+		'/changed does not disclaim the completeness a change feed implies',
+	);
+	assert.ok(
+		/A recorded change is dated by when we recorded it/.test(html),
+		'/changed does not explain that its recorded dates are filing dates',
+	);
+	/* The page is a feed of movement, not a verdict on any of it. */
+	for (const banned of ['should have been paid', 'we recommend', 'best carrier']) {
+		assert.ok(!html.toLowerCase().includes(banned), `/changed contains prohibited language: ${banned}`);
+	}
+});
+
+/* ------------------------------------------------------------------ */
+/* Machine companions                                                  */
+/* ------------------------------------------------------------------ */
+
+/*
+ * llms.txt tells every AI system reading this site: "Every substantive page has
+ * a machine-readable JSON companion at the same path plus .json. Prefer it over
+ * scraping the HTML."
+ *
+ * That sentence has now been false twice. It was false for 244 source pages
+ * until source companions were built, and it was false again for 88 pages -
+ * every guide, every line hub, every module, every worksheet and the figures
+ * table - because those page types were added afterwards and the promise was
+ * never re-read against them. `toolRecord()` sat in machine.ts the whole time,
+ * written and never routed.
+ *
+ * Twice is a pattern, and the fix for a pattern is not a third careful pass. It
+ * is this: enumerate the record pages in the build and require a companion for
+ * each. A new page type now fails here on the day it is added, which is the
+ * only moment the omission is cheap.
+ */
+
+/**
+ * Route segments whose child pages are RECORD pages - one page, one record,
+ * citing sources. Their index pages are hubs and are correctly companion-less;
+ * llms.txt lists those separately as entry points rather than as citable units.
+ */
+const RECORD_SECTIONS = [
+	'questions',
+	'insurance',
+	'guides',
+	'lines',
+	'companies',
+	'states',
+	'examples',
+	'sources',
+	'tools',
+];
+
+/** Single pages that are records in their own right. */
+const RECORD_PAGES = ['figures'];
+
+test('every record page has the JSON companion llms.txt promises', () => {
+	const missing = [];
+
+	for (const section of RECORD_SECTIONS) {
+		const dir = path.join(DIST, section);
+		if (!fs.existsSync(dir)) continue;
+		for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+			/* dist/<section>/<slug>/index.html is a record page; the section's own
+			   index.html is the hub and is excluded by being a file, not a dir. */
+			if (!entry.isDirectory()) continue;
+			if (!fs.existsSync(path.join(dir, entry.name, 'index.html'))) continue;
+			if (!fs.existsSync(path.join(dir, `${entry.name}.json`))) {
+				missing.push(`/${section}/${entry.name}`);
+			}
+		}
+	}
+
+	for (const page of RECORD_PAGES) {
+		if (fs.existsSync(path.join(DIST, page, 'index.html')) && !fs.existsSync(path.join(DIST, `${page}.json`))) {
+			missing.push(`/${page}`);
+		}
+	}
+
+	assert.deepEqual(
+		missing,
+		[],
+		`${missing.length} record pages have no JSON companion, so llms.txt overstates what this site offers: ${missing.slice(0, 12).join(', ')}${missing.length > 12 ? ', …' : ''}`,
+	);
+});
+
+test('every companion is valid JSON and says what kind of record it is', () => {
+	const companions = [];
+	for (const section of [...RECORD_SECTIONS]) {
+		const dir = path.join(DIST, section);
+		if (!fs.existsSync(dir)) continue;
+		for (const file of fs.readdirSync(dir)) {
+			if (file.endsWith('.json')) companions.push(path.join(dir, file));
+		}
+	}
+	companions.push(path.join(DIST, 'figures.json'));
+
+	assert.ok(companions.length > 300, `only ${companions.length} companions found, which is fewer than the corpus has record pages`);
+
+	for (const file of companions) {
+		const body = JSON.parse(read(file));
+		const where = path.relative(DIST, file);
+		assert.ok(body.recordType, `${where} does not say what kind of record it is`);
+		assert.ok(body.canonicalUrl, `${where} carries no canonical URL`);
+		assert.ok(body.contentVersion, `${where} carries no content version`);
+
+		/* A companion must point at the page it belongs to, not at a neighbour.
+		   A copy-pasted route that keeps the wrong path is the failure this
+		   catches, and nothing else would. */
+		const expected = `/${where.replace(/\.json$/, '')}`;
+		if (body.recordType !== 'claim-index' && body.recordType !== 'change-feed') {
+			assert.ok(
+				body.canonicalUrl.endsWith(expected),
+				`${where} claims to be ${body.canonicalUrl}, which is not the page it sits beside`,
+			);
+		}
+	}
+});
+
+test('a guide says it is the same evidence as its coverage page', () => {
+	/*
+	 * A guide is generated one-for-one from a coverage record: same sources, same
+	 * claims. A system that read both and counted them as two would be
+	 * double-counting one reading of one set of documents, which is the
+	 * corroboration error this corpus most invites. Saying so in the record is
+	 * the only defence; it cannot be inferred from an identical source list.
+	 */
+	const dir = path.join(DIST, 'guides');
+	const guides = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
+	assert.ok(guides.length > 0, 'no guide companions were built');
+
+	for (const file of guides) {
+		const body = JSON.parse(read(path.join(dir, file)));
+		const slug = file.replace(/\.json$/, '');
+		assert.ok(
+			body.sameEvidenceAs?.endsWith(`/insurance/${slug}`),
+			`${file} does not name the coverage page it duplicates`,
+		);
+		assert.match(body.doNotDoubleCount, /count one reading twice/i, `${file} does not warn against double counting`);
+	}
+});
+
+test('a module companion publishes its rules and states that nothing is submitted', () => {
+	const dir = path.join(DIST, 'tools');
+	const modules = fs
+		.readdirSync(dir)
+		.filter((f) => f.endsWith('.json'))
+		.map((f) => JSON.parse(read(path.join(dir, f))))
+		.filter((body) => body.recordType === 'module');
+
+	assert.ok(modules.length > 0, 'no module companions were built');
+	for (const body of modules) {
+		assert.ok(body.ruleCount > 0, `${body.id} publishes no rules`);
+		assert.equal(body.rules.length, body.ruleCount, `${body.id} states a rule count it does not publish`);
+		assert.match(
+			body.privacy,
+			/no server copy/i,
+			`${body.id} does not state that nothing a reader enters is transmitted`,
+		);
+		/* Citation markers are stripped from prose in a companion, as everywhere. */
+		assert.ok(
+			!JSON.stringify(body.rules).includes('[S:'),
+			`${body.id} leaks raw citation markers into its machine record`,
+		);
+	}
+});
+
+test('the figures companion quotes amounts and computes none', () => {
+	const body = JSON.parse(read(path.join(DIST, 'figures.json')));
+	const source = collection('figures');
+	assert.equal(body.count, source.length);
+
+	const byId = new Map(source.map((f) => [f.id, f.data]));
+	for (const row of body.figures) {
+		assert.equal(
+			row.amount,
+			byId.get(row.id)?.amount,
+			`${row.id} publishes an amount its figure record does not state`,
+		);
+		/* The hedge travels with the number. Several of these are stepped
+		   schedules whose operative value is arithmetic rather than printed. */
+		assert.ok(row.note, `${row.id} publishes an amount with no note`);
+	}
+	assert.ok(
+		body.mayNotBeInferred.some((line) => /did not state/.test(line)),
+		'the figures companion does not warn against calculating an amount from a schedule',
+	);
+});
+
+/* ------------------------------------------------------------------ */
+/* Excerpts                                                            */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Prose severed mid-word is the single most recognisable tell of a page
+ * assembled by a program that never read it, and this site shipped six of them
+ * above the fold on the homepage plus one in every meta description. On a
+ * property whose whole argument is that a person checked this, that texture
+ * costs more than it looks like it should.
+ *
+ * It is also an editorial fault rather than a cosmetic one. DIRECTION.md holds
+ * that a hedge is the finding - often, may, commonly, depends on the policy
+ * form - and a cut at an arbitrary character strips hedges silently and at
+ * scale. "Generally covered, unless the form excludes earth movement" cut at
+ * the comma is not a shorter version of that sentence.
+ */
+
+test('no page cuts prose at an arbitrary character', () => {
+	/*
+	 * The rule, not the instance. Twenty-one call sites did this and fixing them
+	 * one by one fixes nothing durable, because the next card added does it
+	 * again - it is the obvious thing to write. `excerpt()` and
+	 * `metaDescription()` are the only sanctioned way to shorten a passage.
+	 */
+	const pages = walk(path.join(ROOT, 'src'), (f) => /\.(astro|ts)$/.test(f));
+	const offenders = [];
+
+	for (const file of pages) {
+		if (file.endsWith('lib/excerpt.ts')) continue;
+		const body = read(file)
+			.replace(/\/\*[\s\S]*?\*\//g, '')
+			.replace(/^\s*\/\/.*$/gm, '');
+
+		for (const match of body.matchAll(/\.slice\(0,\s*(\d+)\)(\s*\.\w+\()?/g)) {
+			const budget = Number(match[1]);
+			/* Short slices are dates (10), checksums (12) and years (4). A slice of
+			   40 or more is being applied to a sentence - unless what follows is an
+			   array method, in which case it is taking the first N of a list, which
+			   is fine and common. Strings have none of these. */
+			const follows = match[2] ?? '';
+			if (/\.(map|filter|forEach|join|reverse|sort|flatMap|some|every|reduce)\($/.test(follows)) continue;
+			if (budget >= 40) offenders.push(`${path.relative(ROOT, file)} slice(0, ${budget})`);
+		}
+	}
+
+	assert.deepEqual(
+		offenders,
+		[],
+		`prose is being cut at a character count, which severs words and can strip a hedge. Use excerpt() or metaDescription(): ${offenders.join(', ')}`,
+	);
+});
+
+test('an excerpt never ends mid-word', () => {
+	const corpus = [
+		...questions.map((q) => q.data.shortAnswer),
+		...collection('coverages').map((c) => c.data.definition),
+		...collection('states').map((s) => s.data.summary),
+		...collection('examples').map((e) => e.data.whatHappened),
+	].filter(Boolean);
+
+	assert.ok(corpus.length > 50, 'not enough real prose to test against');
+
+	for (const budget of [155, 170, 190, 210, 230]) {
+		for (const raw of corpus) {
+			const text = raw.replace(/\[S:[a-z0-9-]+\]/g, '').replace(/\s+/g, ' ').trim();
+			const short = excerpt(text, budget);
+			if (short === text) continue;
+
+			/* Either it ends a sentence, or it ends with an ellipsis after a whole
+			   word. Nothing else is allowed. */
+			const endsCleanly = /[.!?][")\]”]?$/.test(short) || short.endsWith('…');
+			assert.ok(endsCleanly, `excerpt at ${budget} ended badly: "…${short.slice(-60)}"`);
+
+			if (short.endsWith('…')) {
+				const stem = short.slice(0, -1);
+				/*
+				 * A whole word was taken if the next character in the original is not
+				 * itself a word character. Whitespace is the usual case; punctuation
+				 * is the other, because a trailing comma is deliberately stripped -
+				 * "the policy,…" reads as a transcription error rather than an
+				 * abridgement, and the word before it is still whole.
+				 */
+				const next = text[stem.length] ?? ' ';
+				assert.ok(
+					!text.startsWith(stem) || !/[A-Za-z0-9]/.test(next),
+					`excerpt at ${budget} cut inside a word: "…${short.slice(-40)}"`,
+				);
+			}
+		}
+	}
+});
+
+test('an excerpt is a prefix of what it shortens, so it invents nothing', () => {
+	for (const q of questions.slice(0, 40)) {
+		const text = q.data.shortAnswer.replace(/\[S:[a-z0-9-]+\]/g, '').replace(/\s+/g, ' ').trim();
+		const short = excerpt(text, 170).replace(/…$/, '');
+		assert.ok(
+			text.startsWith(short),
+			`the excerpt for ${q.id} is not a prefix of the answer, so it has changed the words`,
+		);
+	}
+});
+
+test('a legal citation is not mistaken for the end of a sentence', () => {
+	const cases = [
+		['For flood, 42 U.S.C. 4012a requires it.', 1],
+		['Amended by Stats. 2022, Ch. 17, Sec. 3 (AB 35).', 1],
+		['See 26 C.F.R. 54.4980H-5(e)(2) for the denominator.', 1],
+		['Civil Code section 1798.82 is the section. It was amended.', 2],
+		['It took effect January 1, 2023. That replaced the flat limit.', 2],
+	];
+	for (const [text, expected] of cases) {
+		assert.equal(
+			sentences(text).length,
+			expected,
+			`"${text}" split into ${sentences(text).length} sentences, expected ${expected}`,
+		);
+	}
+});
+
+test('every meta description is whole and within what a search engine shows', () => {
+	/*
+	 * The description is the first thing anybody sees of this site, often before
+	 * they see the site at all. One that stops mid-clause reads as a broken page
+	 * from the search results.
+	 */
+	let checked = 0;
+	for (const file of htmlFiles) {
+		const html = read(file);
+		const match = html.match(/<meta name="description" content="([^"]*)"/);
+		if (!match) continue;
+		const description = match[1]
+			.replace(/&quot;/g, '"')
+			.replace(/&#39;/g, "'")
+			.replace(/&amp;/g, '&');
+		if (!description) continue;
+
+		const where = routeOf(file);
+		/*
+		 * By route, not by the robots meta. A preview build stamps noindex on
+		 * every page, so skipping noindex pages would make this assert nothing at
+		 * all in the preview job - the vacuous-test failure this codebase keeps
+		 * finding. These three are never search results in either posture: /404,
+		 * the noindex verification sheets, and the internal design references.
+		 */
+		if (where === '/404' || where.startsWith('/review-queue/') || where.startsWith('/design/')) continue;
+		checked += 1;
+
+		assert.ok(
+			/[.!?][")\]”]?$/.test(description) || description.endsWith('…'),
+			`${where} has a description that stops mid-sentence: "…${description.slice(-70)}"`,
+		);
+		assert.ok(
+			description.length <= 320,
+			`${where} has a ${description.length}-character description, which is well past what any engine shows`,
+		);
+		/*
+		 * And a floor. The sentence rule returns the first sentence, and several
+		 * answers here open with the whole answer in two words - "Very little.",
+		 * "Generally no." That is exactly right on a card and useless as a search
+		 * result, and twelve pages shipped one before audit:onpage caught it. The
+		 * suite should not have needed the audit to find that.
+		 */
+		assert.ok(
+			description.length >= 50,
+			`${where} has a ${description.length}-character description: "${description}". Too short to tell anybody anything in a search result.`,
+		);
+	}
+
+	assert.ok(checked > 400, `only ${checked} descriptions were checked, so this test has quietly stopped covering the site`);
+});
+
+test('a written page names both its author and its reviewer, and an assembled one says it has neither', () => {
+	/*
+	 * /methodology claims drafting and review are separate functions and both are
+	 * named. That was false in two different ways at once, which is why it needed
+	 * measuring rather than reading: guides named a reviewer and no author,
+	 * although the coverage record they are generated from carries both; and
+	 * /changed, /figures, /dataset and the line indexes named neither.
+	 *
+	 * The two are not the same fault. The guides were a gap with the answer in
+	 * hand. The assembled pages are correct to name nobody - attributing a feed
+	 * built from record fields to a person would be the opposite lie - so the
+	 * sentence was made precise instead, and this holds both halves of it.
+	 */
+	const ASSEMBLED = ['/changed', '/figures', '/dataset'];
+	const visible = (html) =>
+		html
+			.replace(/<script[\s\S]*?<\/script>/g, '')
+			.replace(/<style[\s\S]*?<\/style>/g, '')
+			.replace(/<[^>]+>/g, ' ')
+			.replace(/\s+/g, ' ');
+
+	/* Every written record page names both roles. */
+	for (const section of ['insurance', 'questions', 'guides', 'examples', 'states', 'companies']) {
+		const dir = path.join(DIST, section);
+		if (!fs.existsSync(dir)) continue;
+		for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+			if (!entry.isDirectory()) continue;
+			const file = path.join(dir, entry.name, 'index.html');
+			if (!fs.existsSync(file)) continue;
+			const text = visible(read(file));
+			/* \b on both sides: a loose /Author/ matches "California Earthquake
+			   Authority" and reported a byline that was not there. */
+			assert.match(text, /\bAuthor\b/, `/${section}/${entry.name} names no author`);
+			assert.match(text, /\bReviewer\b/, `/${section}/${entry.name} names no reviewer`);
+		}
+	}
+
+	/* And an assembled page names none, so the claim stays true by being narrow
+	   rather than by being unchecked. */
+	for (const route of ASSEMBLED) {
+		const file = path.join(DIST, route.slice(1), 'index.html');
+		if (!fs.existsSync(file)) continue;
+		const text = visible(read(file));
+		assert.ok(
+			!/\bAuthor\b/.test(text),
+			`${route} names an author, but it is assembled from records rather than written by anybody`,
+		);
+	}
+
+	/* The page making the claim says which kind is which. */
+	const methodology = visible(read(path.join(DIST, 'methodology/index.html')));
+	assert.match(
+		methodology,
+		/assembled rather than written/,
+		'/methodology claims both are named on every page without excepting the pages nobody wrote',
+	);
 });

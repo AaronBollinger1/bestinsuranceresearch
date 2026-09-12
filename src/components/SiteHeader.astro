@@ -1,34 +1,116 @@
 ---
-import { Menu, Search, X } from '@lucide/astro';
-import { primaryNav, siteConfig } from '../config/site';
+import { ArrowRight, BookOpen, Building2, ChevronDown, FileText, Menu, MessageCircle, PenLine, Search, ShieldCheck, Wrench, X } from '@lucide/astro';
+import { siteConfig, isPreview } from '../config/site';
 
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+const startLink = { href: '/ask', label: 'Ask' };
+
+const menuGroups = [
+	{
+		label: 'Explore',
+		kicker: 'Understand your insurance',
+		description: 'Find a clear starting point for your coverage, company, or business.',
+		items: [
+			{ label: 'Insurance companies', href: '/companies', description: 'Company records and coverage context.' },
+			{ label: 'Coverage library', href: '/insurance', description: 'Understand what each line is designed to do.' },
+			{ label: 'Industries and situations', href: '/industries', description: 'Research for the work and life you lead.' },
+			{ label: 'Free tools', href: '/tools', description: 'Compare a policy or prepare for renewal.' },
+			{ label: 'Source registry', href: '/sources', description: 'Open the records behind every published claim.' },
+		],
+	},
+	{
+		label: 'Community',
+		kicker: 'Learn from each other',
+		description: 'Questions, experiences, and professional perspectives. Currently in private preview.',
+		items: [
+			{ label: 'Conversations', href: siteConfig.communityReady ? `${siteConfig.communityOrigin}/threads` : '/design/commons-preview', description: 'Explore questions and discussion topics.' },
+			{ label: 'Company experiences', href: '/companies', description: 'Start with the company you know.' },
+			{ label: 'Case studies', href: '/examples', description: 'Understand what happened and why.' },
+			{ label: 'Community standards', href: '/methodology', description: 'How sources, roles, and context are labeled.' },
+		],
+	},
+	{
+		label: 'Contribute',
+		kicker: 'Make the library better',
+		description: 'Contribute a source, a correction, or a clearly labelled experience when the path is ready.',
+		items: [
+			{ label: 'Contribute', href: '/contribute', description: 'Draft an experience, research note, or correction.' },
+			{ label: 'For professionals', href: '/professionals', description: 'See the rules for credentialed contributions.' },
+			{ label: 'Methodology', href: '/methodology', description: 'Learn how Birch separates evidence from experience.' },
+			{ label: 'Editorial policy', href: '/editorial-policy', description: 'Read the publication and correction standards.' },
+			...(isPreview
+				? [{ label: 'Review queue', href: '/review-queue', description: 'See what still needs one source-first review pass.' }]
+				: []),
+			...(siteConfig.communityReady
+				? [{ label: 'Birch Community', href: siteConfig.communityOrigin, description: 'Continue to the separately moderated discussion room.', external: true }]
+				: []),
+		],
+	},
+] as const;
 ---
 
 <header class="site-header">
 	<div class="shell header-bar">
-		<a class="brand" href="/">
-			<img src="/icon-master-black-transparent.png" width="26" height="26" alt="" />
+		<a class="brand" href="/" aria-label="Birch home">
+			<img src="/birch-bird-transparent.png" width="34" height="34" alt="" />
 			<span class="brand-name">
-				<strong>BestInsurance <em>Research</em></strong>
-				<span>Operated by Bollinsure</span>
+				<strong>{siteConfig.brandName}</strong>
+				<span>{siteConfig.brandDescriptor}</span>
 			</span>
 			<span class="u-visually-hidden">{siteConfig.name} home</span>
 		</a>
 
 		<nav class="header-nav" aria-label="Primary">
+			<a
+				class="header-nav-start"
+				href={startLink.href}
+				aria-current={isCurrent(startLink.href) ? 'page' : undefined}
+			>
+				{startLink.label}
+			</a>
 			{
-				primaryNav.map((item) => (
-					<a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
-						{item.label}
-					</a>
+				menuGroups.map((group, index) => (
+					<div class="header-menu" data-header-menu>
+						<button
+							class="header-menu-trigger"
+							type="button"
+							aria-expanded="false"
+							aria-controls={`header-menu-${index}`}
+						>
+							{group.label}
+							<ChevronDown size={14} stroke-width={1.8} aria-hidden="true" />
+						</button>
+						<div class="header-menu-panel" id={`header-menu-${index}`} hidden>
+							<div class="header-menu-intro">
+								<span class="eyebrow">{group.kicker}</span>
+								<p>{group.description}</p>
+							</div>
+							<div class="header-menu-grid">
+								{
+									group.items.map((item) => (
+										<a
+											class="header-menu-link"
+											href={item.href}
+											rel={'external' in item && item.external ? 'noopener' : undefined}
+										>
+											<span class="header-menu-link-title">
+												<span class="header-item-icon" aria-hidden="true">{item.href.includes('compan') ? <Building2 size={17} /> : item.href.includes('tool') ? <Wrench size={17} /> : item.href.includes('profession') ? <ShieldCheck size={17} /> : item.href.includes('contribut') ? <PenLine size={17} /> : item.href.includes('thread') || item.href.includes('commons') ? <MessageCircle size={17} /> : item.href.includes('source') ? <FileText size={17} /> : <BookOpen size={17} />}</span><strong>{item.label}</strong>
+												<ArrowRight size={14} aria-hidden="true" />
+											</span>
+											<span>{item.description}</span>
+										</a>
+									))
+								}
+							</div>
+						</div>
+					</div>
 				))
 			}
 		</nav>
 
 		<div class="header-tail">
-			<form class="header-search" role="search" action="/ask" method="get">
+		<form class="header-search" role="search" action="/ask" method="get" data-question-form>
 				<Search class="search-glyph" size={15} stroke-width={2} aria-hidden="true" />
 				<label class="u-visually-hidden" for="header-q">Search the research corpus</label>
 				<input
@@ -40,6 +122,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 					enterkeyhint="search"
 				/>
 			</form>
+			<a class="btn btn-primary btn-sm header-ask-cta" href="/ask">Ask Birch <ArrowRight size={14} aria-hidden="true" /></a>
 			<button class="icon-btn nav-toggle" type="button" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel">
 				<span data-icon="open"><Menu size={20} aria-hidden="true" /></span>
 				<span data-icon="close" hidden><X size={20} aria-hidden="true" /></span>
@@ -51,21 +134,25 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 
 <div class="nav-panel" id="nav-panel" hidden>
 	<div class="shell nav-panel-inner">
-		<form role="search" action="/ask" method="get" class="field">
+		<form role="search" action="/ask" method="get" class="field" data-question-form>
 			<label class="u-visually-hidden" for="panel-q">Search the research corpus</label>
 			<input id="panel-q" name="q" type="search" placeholder="Search questions and coverage" autocomplete="off" />
 		</form>
 		<nav aria-label="Site sections">
+			<a href={startLink.href} aria-current={isCurrent(startLink.href) ? 'page' : undefined}>{startLink.label}</a>
 			{
-				primaryNav.map((item) => (
-					<a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
-						{item.label}
-					</a>
+				menuGroups.map((group) => (
+					<div class="nav-panel-group">
+						<span class="nav-panel-label">{group.label}</span>
+						{
+							group.items.map((item) => (
+								<a href={item.href} rel={'external' in item && item.external ? 'noopener' : undefined}>{item.label}</a>
+							))
+						}
+					</div>
 				))
 			}
-			<a href="/examples">Examples</a>
-			<a href="/methodology">Methodology</a>
-			<a href="/about">About</a>
+			<a href="/about">About Birch</a>
 		</nav>
 	</div>
 </div>
@@ -88,10 +175,63 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 		setOpen(toggle.getAttribute('aria-expanded') !== 'true');
 	});
 
+	const menus = Array.from(document.querySelectorAll<HTMLElement>('[data-header-menu]'));
+	let closeTimer: number | undefined;
+	function closeMenus(except?: HTMLElement) {
+		menus.forEach((menu) => {
+			if (menu === except) return;
+			const button = menu.querySelector<HTMLButtonElement>('.header-menu-trigger');
+			const menuPanel = menu.querySelector<HTMLElement>('.header-menu-panel');
+			menu.classList.remove('is-open');
+			button?.setAttribute('aria-expanded', 'false');
+			if (menuPanel) menuPanel.hidden = true;
+		});
+	}
+	function openMenu(menu: HTMLElement) {
+		if (closeTimer) window.clearTimeout(closeTimer);
+		closeMenus(menu);
+		const button = menu.querySelector<HTMLButtonElement>('.header-menu-trigger');
+		const menuPanel = menu.querySelector<HTMLElement>('.header-menu-panel');
+		menu.classList.add('is-open');
+		button?.setAttribute('aria-expanded', 'true');
+		if (menuPanel) menuPanel.hidden = false;
+	}
+	function scheduleClose(menu: HTMLElement) {
+		closeTimer = window.setTimeout(() => {
+			const focusInside = menu.contains(document.activeElement);
+			if (!focusInside) closeMenus();
+		}, 110);
+	}
+	menus.forEach((menu) => {
+		menu.addEventListener('mouseenter', () => openMenu(menu));
+		menu.addEventListener('mouseleave', () => scheduleClose(menu));
+		menu.querySelector('.header-menu-trigger')?.addEventListener('click', () => {
+			const button = menu.querySelector<HTMLButtonElement>('.header-menu-trigger');
+			if (button?.getAttribute('aria-expanded') === 'true') closeMenus();
+			else openMenu(menu);
+		});
+		menu.querySelector<HTMLButtonElement>('.header-menu-trigger')?.addEventListener('keydown', (event) => {
+			if (event.key !== 'ArrowDown') return;
+			event.preventDefault();
+			openMenu(menu);
+			menu.querySelector<HTMLAnchorElement>('.header-menu-link')?.focus();
+		});
+		menu.addEventListener('focusout', () => scheduleClose(menu));
+	});
+	document.addEventListener('click', (event) => {
+		const target = event.target;
+		if (!(target instanceof Node) || !menus.some((menu) => menu.contains(target))) closeMenus();
+	});
+
 	document.addEventListener('keydown', (event) => {
-		if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
-			setOpen(false);
-			toggle.focus();
+		if (event.key === 'Escape') {
+			const activeMenu = menus.find((menu) => menu.contains(document.activeElement));
+			if (toggle?.getAttribute('aria-expanded') === 'true') {
+				setOpen(false);
+				toggle.focus();
+			}
+			closeMenus();
+			activeMenu?.querySelector<HTMLButtonElement>('.header-menu-trigger')?.focus();
 		}
 	});
 </script>

@@ -19,6 +19,7 @@ import type { GetStaticPaths } from 'astro';
 import { ArrowRight } from '@lucide/astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CiteThisPage from '../../components/CiteThisPage.astro';
 import GuideTabs from '../../components/GuideTabs.astro';
 import type { GuideSection } from '../../components/GuideTabs.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
@@ -185,6 +186,11 @@ const jsonLd = graph(
 					<StatusChip kind={d.reviewState === 'reviewed' ? 'reviewed' : 'under-review'} />
 					<span class="meta">Reviewed {longDate(d.lastReviewed)}</span>
 					<span class="meta">{sources.length} sources</span>
+					{/* Both roles, because /methodology says both are named on every page
+					    and this page named only one. A guide is written from a coverage
+					    record that carries an author; omitting it made the claim false
+					    on twenty-seven pages that had the answer in hand. */}
+					<span class="meta">Author: {d.author}</span>
 					<span class="meta">Reviewer: {d.reviewer}</span>
 				</div>
 			</div>
@@ -212,6 +218,23 @@ const jsonLd = graph(
 					claims it supports, and each claim has its own address.
 				</p>
 				<SourceLedger sources={sources} today={TODAY} />
+			</div>
+		</section>
+
+		<section class="band band-tight no-print" aria-label="Cite this guide">
+			<div class="shell">
+				<CiteThisPage
+					machinePath={`${path}.json`}
+					page={{
+						title: `${d.name}: a guide`,
+						path,
+						published: d.effectiveDate,
+						reviewed: d.lastReviewed,
+						author: d.author,
+						id: entry.id,
+						pageType: 'guide',
+					}}
+				/>
 			</div>
 		</section>
 

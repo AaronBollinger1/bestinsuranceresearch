@@ -1,0 +1,30 @@
+{
+  "name": "BestInsurance Research claim corpus",
+  "documentation": "https://bestinsuranceresearch.com/dataset",
+  "about": "Dated, frozen releases of the claim corpus. Each release is immutable: cite one by its date and your citation stays checkable. The live, always-current index is at https://bestinsuranceresearch.com/claims.json, which is deliberately not versioned and should not be cited as a dataset.",
+  "latest": "2026-09-09",
+  "releases": [
+    {
+      "release": "2026-09-09",
+      "url": "https://bestinsuranceresearch.com/dataset/2026-09-09/manifest.json",
+      "schemaVersion": 1,
+      "datePublished": "2026-09-09",
+      "claims": 1905,
+      "sources": 299,
+      "files": [
+        {
+          "name": "claims.jsonl",
+          "url": "https://bestinsuranceresearch.com/dataset/2026-09-09/claims.jsonl",
+          "bytes": 822167,
+          "sha256": "a01bab4d0e81f5518cc9c7639157ea1197fa258ee17ee5b19f945a51a36cda7d"
+        },
+        {
+          "name": "sources.json",
+          "url": "https://bestinsuranceresearch.com/dataset/2026-09-09/sources.json",
+          "bytes": 268510,
+          "sha256": "fcbeb7d18cb101585bec32c55bb00c6968dbfd642d24ba360f73c066437bb19d"
+        }
+      ]
+    }
+  ]
+}

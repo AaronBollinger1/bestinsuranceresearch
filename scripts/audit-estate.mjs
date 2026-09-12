@@ -40,7 +40,7 @@
  */
 import { LIVE_SITE_DOMAINS } from '../src/config/domain-redirects.ts';
 
-const HUB = 'bestinsuranceresearch.com';
+const HUB = 'birch.insure';
 const TIMEOUT_MS = 25_000;
 
 const args = process.argv.slice(2);

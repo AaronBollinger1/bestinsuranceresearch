@@ -6,6 +6,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
+import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { createCiter, stripMarkers } from '../../lib/citations';
@@ -14,6 +15,7 @@ import { longDate } from '../../lib/cite';
 import { breadcrumbs, graph, organization, techArticle, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
+import { excerpt, metaDescription } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
 	const corpus = await loadCorpus();
 	return corpus.states.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
@@ -37,7 +39,7 @@ const stateQuestions = corpus.questions.filter(
 const allRelated = [...relatedQuestions, ...stateQuestions];
 const relatedCoverages = corpus.coverages.filter((c) => c.data.stateVariations.some((v) => v.state === d.code));
 
-const description = stripMarkers(d.summary).slice(0, 300);
+const description = metaDescription(stripMarkers(d.summary));
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -93,6 +95,11 @@ const jsonLd = graph(
 				<dl class="answer-dates">
 					<div><dt>Effective</dt><dd><time datetime={d.effectiveDate}>{longDate(d.effectiveDate)}</time></dd></div>
 					<div><dt>Last reviewed</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
+					{/* A written page names who wrote it and who checked it. These three
+					    were the only record pages on the site that named neither, while
+					    /methodology said every page names both. */}
+					<div><dt>Author</dt><dd>{d.author}</dd></div>
+					<div><dt>Reviewer</dt><dd>{d.reviewer}</dd></div>
 					<div><dt>Regulator</dt><dd><a href={d.regulator.url} rel="noopener nofollow" target="_blank">{d.regulator.name}</a></dd></div>
 					{d.regulator.consumerPhone && <div><dt>Consumer line</dt><dd class="num">{d.regulator.consumerPhone}</dd></div>}
 					<div><dt>Sources</dt><dd><a href="#source-ledger">{sources.length} records</a></dd></div>
@@ -107,6 +114,12 @@ const jsonLd = graph(
 						<h2 id="overview" class="u-visually-hidden">Overview</h2>
 						<div class="direct-answer"><p set:html={cite.inline(d.summary)} /></div>
 					</section>
+
+					<EvidenceBoundary
+						says="The cited records describe this jurisdiction’s insurance mechanisms, regulator guidance, and effective-date context."
+						assumes={`The page is read in ${d.name} and against the dates shown; rules can change and programs can have their own eligibility conditions.`}
+						cannotDecide="It cannot determine a person’s eligibility, placement, coverage, claim result, or current legal position."
+					/>
 
 					<Callout tone="warn">
 						<p>
@@ -236,7 +249,7 @@ const jsonLd = graph(
 											data-page-type="state">
 											<div>
 												<h3 class="row-title">{question.data.question}</h3>
-												<p>{stripMarkers(question.data.shortAnswer).slice(0, 170)}</p>
+												<p>{excerpt(stripMarkers(question.data.shortAnswer), 170)}</p>
 												<div class="row-meta">
 													<StatusChip kind={question.data.confidence} />
 													<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>

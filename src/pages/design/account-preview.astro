@@ -1,0 +1,50 @@
+---
+import { ArrowLeft, ArrowRight, Mail, ShieldCheck } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FocusPageHeader from '../../components/FocusPageHeader.astro';
+---
+<BaseLayout title="Account experience preview" description="A working design preview of Birch email sign-in, inbox confirmation, and optional professional verification. No email is sent and no account is created." noindex>
+ <section class="account-design shell">
+  <div class="account-preview-note"><a href="/design/product-system"><ArrowLeft size={14} aria-hidden="true"/> Design blueprint</a><span>Interactive preview · no email sent or account created</span></div>
+  <FocusPageHeader eyebrow="Birch Community" title="A place for your perspective." />
+  <div class="account-layout">
+   <div class="account-frame">
+    <nav class="account-steps" aria-label="Preview account states"><button type="button" data-account-step="email" aria-pressed="true">1. Email</button><button type="button" data-account-step="inbox" aria-pressed="false">2. Inbox</button><button type="button" data-account-step="profile" aria-pressed="false">3. Profile</button></nav>
+    <section data-account-panel="email"><img src="/birch-bird-transparent.png" width="44" height="44" alt="Birch"/><h2>Welcome to Birch.</h2><p>Sign in or create your account with an email link.</p><label for="preview-email">Email address</label><input id="preview-email" type="email" value="reader@example.com" readonly aria-describedby="account-demo-note"/><button class="btn btn-primary account-continue" type="button" data-account-step="inbox">Email me a link <ArrowRight size={16} aria-hidden="true"/></button><small id="account-demo-note">This address is an example. The button previews the next screen.</small><p class="account-terms">The live flow will include <a href="/terms">Terms</a> and <a href="/privacy">Privacy</a> at account creation.</p></section>
+    <section data-account-panel="inbox" hidden><Mail size={36} aria-hidden="true"/><h2>Check your inbox.</h2><p>A sign-in link would be sent to <strong>reader@example.com</strong>.</p><p>Open it on this device to return to your conversation.</p><button class="btn btn-primary account-continue" type="button" data-account-step="profile">Preview your profile <ArrowRight size={16} aria-hidden="true"/></button><button class="btn btn-quiet" type="button" data-account-step="email">Use a different email</button><details class="account-error-examples"><summary>Preview sign-in recovery</summary><button class="btn btn-quiet" type="button" data-account-step="expired">Expired link</button><button class="btn btn-quiet" type="button" data-account-step="failure">Delivery failure</button></details><small>No message has been sent. The real service still needs rate limits, resend cooldown, and an allowlisted return path.</small></section>
+    <section data-account-panel="expired" hidden><Mail size={36} aria-hidden="true"/><h2>That link has expired.</h2><p>Start again with a fresh link. Your place in the conversation should be preserved by the live sign-in flow.</p><button class="btn btn-primary account-continue" type="button" data-account-step="inbox">Preview a new link <ArrowRight size={16} aria-hidden="true"/></button><button class="btn btn-quiet" type="button" data-account-step="email">Change email</button><small>Design state only. No token was checked and no email is sent.</small></section>
+    <section data-account-panel="failure" hidden><Mail size={36} aria-hidden="true"/><h2>We couldn’t send the link.</h2><p>Your request did not finish. Try again or check the email address before continuing.</p><button class="btn btn-primary account-continue" type="button" data-account-step="inbox">Preview retry <ArrowRight size={16} aria-hidden="true"/></button><button class="btn btn-quiet" type="button" data-account-step="email">Check the email address</button><small>Illustrative delivery failure. The preview has not contacted a mail provider.</small></section>
+    <section data-account-panel="profile" hidden><ShieldCheck size={36} aria-hidden="true"/><h2>How would you like to contribute?</h2><p>Start as a reader. Add credentials when you want to publish with your professional role.</p><a class="account-role" href="/design/thread-preview"><strong>Reader or policyholder</strong><span>Ask questions and share an experience.</span><ArrowRight size={16} aria-hidden="true"/></a><a class="account-role" href="/professionals"><strong>Industry professional</strong><span>Add your specialty and request credential verification.</span><ArrowRight size={16} aria-hidden="true"/></a><a class="account-role" href="/design/templates/company-partner"><strong>Company representative</strong><span>Understand the permission to respond for your organization.</span><ArrowRight size={16} aria-hidden="true"/></a><small>An email link alone does not verify a license, employment, or policy ownership.</small></section>
+   </div>
+  </div>
+ </section>
+</BaseLayout>
+<script>
+ const controls=[...document.querySelectorAll<HTMLButtonElement>('[data-account-step]')];
+ const panels=[...document.querySelectorAll<HTMLElement>('[data-account-panel]')];
+ controls.forEach(button=>button.addEventListener('click',()=>{
+   panels.forEach(panel=>{panel.hidden=panel.dataset.accountPanel!==button.dataset.accountStep;});
+   controls.filter(control=>control.closest('nav')).forEach(control=>control.setAttribute('aria-pressed',String(control.dataset.accountStep===button.dataset.accountStep)));
+   const heading=panels.find(panel=>!panel.hidden)?.querySelector<HTMLElement>('h2');
+   heading?.setAttribute('tabindex','-1');heading?.focus();
+ }));
+</script>
+<style>
+ .account-design { padding-block:24px 80px; } .account-preview-note { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:var(--text-xs); color:var(--muted); } .account-preview-note a { display:flex; align-items:center; gap:8px; min-height:var(--tap); }
+ .account-error-examples { border-block:1px solid var(--line);margin:16px 0;padding-block:4px; } .account-error-examples summary { font-size:var(--text-xs);min-height:var(--tap);padding-block:14px;cursor:pointer; }
+ .account-layout { max-width:460px; margin:0 auto; }
+ .account-frame { border:1px solid var(--line); border-radius:var(--r-4); background:var(--white); box-shadow:var(--elev-2); min-width:0; }
+ .account-steps { display:flex; gap:4px; padding:12px; background:var(--paper); border-bottom:1px solid var(--line); }
+ .account-steps button { flex:1; min-height:var(--tap); border:0; border-radius:var(--r-2); background:transparent; color:var(--muted); cursor:pointer; font-size:var(--text-xs); }
+ .account-steps button[aria-pressed='true'] { background:var(--brand-blue-wash); color:var(--brand-blue-text); }
+ .account-frame section { padding:32px; min-height:430px; }
+ .account-frame h2 { font:600 var(--text-2xl)/1.25 var(--font-sans); letter-spacing:-.03em; margin:20px 0 12px; }
+ .account-frame p { font-size:var(--text-sm); color:var(--muted); line-height:1.65; }
+ .account-frame label { display:block; margin:24px 0 8px; font-size:var(--text-xs); font-weight:600; }
+ .account-frame input { width:100%; min-height:48px; border:1px solid var(--line-strong); border-radius:var(--r-2); padding:12px; color:var(--body); background:var(--paper); }
+ .account-continue { width:100%; margin:16px 0; } .account-frame small { display:block; color:var(--muted); font-size:var(--text-2xs); line-height:1.6; }
+ .account-frame .account-terms { font-size:var(--text-2xs); margin-top:24px; }
+ .account-role { position:relative; display:grid; gap:5px; padding:16px 24px 16px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink); }
+ .account-role strong { font-size:var(--text-sm); font-weight:500; } .account-role span { font-size:var(--text-xs); color:var(--muted); line-height:1.5; } .account-role svg { position:absolute; right:0; top:24px; } .account-role:hover strong { color:var(--brand-blue-text); } .account-role + small { margin-top:20px; }
+ @media(max-width:760px) { .account-frame section { padding:24px; } }
+</style>

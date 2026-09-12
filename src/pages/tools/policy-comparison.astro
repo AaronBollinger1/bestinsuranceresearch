@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Callout from '../../components/Callout.astro';
+import CiteThisPage from '../../components/CiteThisPage.astro';
 import Handoff from '../../components/Handoff.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StateBlock from '../../components/StateBlock.astro';
@@ -10,9 +11,11 @@ import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
 import { breadcrumbs, graph, organization, webApplication, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
+import { metaDescription } from '../../lib/excerpt';
 const corpus = await loadCorpus();
 const tool = corpus.tools.find((t) => t.id === 'policy-comparison');
 if (!tool) throw new Error('Tool registry entry "policy-comparison" is missing.');
+const citationAuthor = tool.data.author ?? 'Birch Research';
 
 const sourceIds = idsOf(tool.data.sourceIds);
 const sources = ledgerFor(sourceIds, corpus.sourceById, 'tool "policy-comparison"');
@@ -71,7 +74,7 @@ const COLUMNS = ['A', 'B', 'C'];
 
 <BaseLayout
 	title={tool.data.name}
-	description={tool.data.summary}
+	description={metaDescription(tool.data.summary)}
 	jsonLd={jsonLd}
 	pageType="tool"
 	bodyClass="tool-page"
@@ -238,6 +241,23 @@ const COLUMNS = ['A', 'B', 'C'];
 			</section>
 		)
 	}
+
+	<section class="band band-tight no-print" aria-label="Cite this tool">
+		<div class="shell">
+			<CiteThisPage
+				machinePath="/tools/policy-comparison.json"
+				page={{
+					title: tool.data.name,
+					path: '/tools/policy-comparison',
+					published: tool.data.lastReviewed,
+					reviewed: tool.data.lastReviewed,
+					author: citationAuthor,
+					id: tool.id,
+					pageType: 'tool',
+				}}
+			/>
+		</div>
+	</section>
 
 	<section class="band band-tight no-print">
 		<div class="shell">
@@ -414,4 +434,3 @@ const COLUMNS = ['A', 'B', 'C'];
 	applyColumns();
 	recompute();
 </script>
-

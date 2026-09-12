@@ -6,6 +6,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
 import CiteThisPage from '../../components/CiteThisPage.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
+import EvidenceBoundary from '../../components/EvidenceBoundary.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { createCiter, stripMarkers } from '../../lib/citations';
@@ -14,6 +15,7 @@ import { longDate } from '../../lib/cite';
 import { breadcrumbs, graph, organization, techArticle, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
+import { excerpt, metaDescription, shortList } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
 	const corpus = await loadCorpus();
 	return corpus.examples.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
@@ -32,7 +34,7 @@ const relatedQuestions = d.relatedQuestions
 	.map((ref) => corpus.questionBySlug.get(ref.id))
 	.filter((q): q is NonNullable<typeof q> => Boolean(q));
 
-const description = stripMarkers(d.whatHappened).slice(0, 300);
+const description = metaDescription(stripMarkers(d.whatHappened));
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -92,7 +94,7 @@ const jsonLd = graph(
 					</span>
 					<StatusChip kind={d.reviewState} />
 					<span class="meta">{d.family} lines</span>
-					<span class="meta">{d.lines.join(', ')}</span>
+					<span class="meta">{shortList(d.lines)}</span>
 				</div>
 				<h1>{d.title}</h1>
 				<dl class="answer-dates">
@@ -115,6 +117,12 @@ const jsonLd = graph(
 							{d.consentRecord && <p><strong>Consent record:</strong> {d.consentRecord}</p>}
 						</Callout>
 					</section>
+
+					<EvidenceBoundary
+						says="The example shows only what its labelled record, composite, or hypothetical makes visible, with provenance attached."
+						assumes="The reader keeps the example’s label, jurisdiction, dates, and stated facts attached to the reasoning path."
+						cannotDecide="It cannot predict a different policy, claim, price, or outcome, even when the facts look similar."
+					/>
 
 					<section class="answer-section" aria-labelledby="happened">
 						<h2 id="happened">What happened</h2>
@@ -191,7 +199,7 @@ const jsonLd = graph(
 											data-page-type="example">
 											<div>
 												<h3 class="row-title">{question.data.question}</h3>
-												<p>{stripMarkers(question.data.shortAnswer).slice(0, 170)}</p>
+												<p>{excerpt(stripMarkers(question.data.shortAnswer), 170)}</p>
 												<div class="row-meta">
 													<StatusChip kind={question.data.confidence} />
 													<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>

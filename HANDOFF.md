@@ -1,11 +1,126 @@
 # Handoff
 
-Written 8 September 2026, last revised at the verification-sheet pass, on
-`launch/initial-publication`.
+Latest pass (11 September, remaining page templates): **fourteen Direction A
+specimens are implemented** at `/design/templates/*` and linked from
+`/design/product-system`. See `BIRCH-DIRECTION-A-TEMPLATES-2026-09-11.md` for the
+full inventory, reference lineage and migration order. Browse, reading, personal,
+company participation, tools, research operations and moderation use shared
+frames and keyboard-accessible tabs. Existing corpus data supplies research and
+counts; no new insurance assertions, fake credentials or activity were added.
 
-Read `DIRECTION.md` (what this is, and the rules that do not bend) and
-`AMBITION.md` (what it is becoming, and the architecture) before changing
-anything. This file is the state of play plus the things that will cost you a
+The community and thread specimens have quieter rows, wider reading space and
+less design-plan copy in the main experience. Account preview adds expired-link
+and delivery-failure recovery. Private coverage is only a consent walkthrough:
+no file, credential, policy, provider or contact-data intake. Saved/preferences
+controls are DOM-local and are not persisted. Operations decisions are previews.
+
+Verification: root suite **180 passed**; production posture **162 passed**;
+on-page audit **0 findings / 563 indexable pages**; Community **80 passed / 1
+external-DB skip**. All 14 new routes checked at 1280px and 390px: no horizontal
+overflow. Browser exercises cover search/type filtering/no results/clear,
+source drawer/Escape/focus return, tabs with End key, saved remove-all/undo,
+coverage choose/review/edit/cancel, operations selection/decision/provider failure,
+account expired-link/delivery-failure and community type filtering. Screenshots
+are in workspace `outputs/direction-a-templates-2026-09-11/`. No production alias
+or signup/publication gate changed.
+
+Next: migrate the approved browse/reading templates into the existing canonical
+routes without changing their content, then carry account/contribution designs
+into the invited Community application and verify real mail/durable storage.
+Do not open public signup or policy intake as part of a visual migration.
+
+Latest pass (11 September, owner selects A): **Direction A / Focus is selected**,
+configured in `src/config/product-design.ts`. The homepage retains its approved
+composition. Professional entry, contribution draft, and account specimen now
+share `FocusPageHeader.astro`; the blueprint foregrounds the selected direction
+and moves B/C into earlier explorations. See
+`BIRCH-DIRECTION-A-IMPLEMENTATION-2026-09-11.md` for scope and verification.
+
+The local contribution journey is now choose type -> write -> preview -> edit,
+with native validation, source notes as text, privacy confirmation, and deliberate
+clearing. It is not a saved draft or backend submission. Fields fail closed before
+JavaScript; prose has no successful form names; no fetch/storage/account operation
+is present. Client-side type selection fixes `/contribute?type=research` on static
+pages. Removed the unsupported verified-credential example from `/professionals`.
+
+Checks: root validation **177 passed**; production posture **162 passed**; on-page
+audit **0 findings / 563 indexable pages**; Community **80 passed / 1 external-DB
+skip**. Default preview build restored. Desktop and 390px browser checks cover
+draft validation, text-only rendering, unchanged URL, preview/edit, clear cancel
+and confirm, type selection, and account email/inbox/profile specimen states.
+No source records, publication gates, account gates, or production aliases changed.
+
+Next: carry this selected pattern into the existing invited Community sign-in and
+moderated submission implementation, then test real mail/durable storage. Do not
+start another competing homepage direction or turn this local draft into intake
+on the Research origin.
+
+Latest pass (11 September, signed-in Mobbin): `BIRCH-MOBBIN-READING-AUDIT-2026-09-11.md`.
+Question/company reading frames and a native source drawer are implemented; duplicate
+company overview blocks are removed. Community specimens now have working search,
+room/type filters, empty states, and a thread-to-account preview path. Mobile thread
+content is no longer preceded by the full desktop room rail. Focus / A and the actual
+bird/logo/colors remain unchanged. Four references are saved in the private Mobbin
+collection linked from the audit and `/design/product-system`.
+
+Latest checks: root `npm run validate` passes 174 tests; production-posture build
+passes 162 assertions; on-page audit has zero findings across 563 indexable pages;
+community validation passes 80 with one database-dependent test skipped. Preview
+build restored. Browser checked desktop/390px source selection, Escape/focus return,
+copyable pending-review citations, company filtering, community filtering/empty
+states, and thread-to-account preview. No signup/posting gates or production aliases
+were changed. `TechArticle.reviewedBy` now requires an explicit reviewed state;
+pending question/company citation exports say review is pending.
+
+Next: the single moderated contribution journey using existing `commons/` code,
+then real account failure states and durable mail/database smoke tests. Extend the
+shared reading layout and explicit citation-review state to the other record families.
+The older pass notes below remain history, not a competing next-step queue.
+
+Current design pass (11 September): see `BIRCH-PRODUCT-DESIGN-SYSTEM.md` and
+`/design/product-system`. Focus / A is now the consumer homepage; Editorial / B
+and Explore / C are working alternatives. Birch Community replaces the visible
+Commons name. The preview includes an email/inbox/profile design walkthrough.
+This supersedes the older aesthetic lock and design queue in this file.
+Next implementation: shared reading frames, then the existing community auth
+and contribution flows. Do not rebuild auth or the research scout from scratch.
+
+Validation for this pass: root `npm run validate` passes 172 tests; community
+validation passes 80 with one external-service test skipped. Production indexing
+build passes 162 assertions and the on-page audit reports zero findings across
+563 indexable pages. Default preview output restored. Browser verified question
+handoff and matching without query text in the URL, keyboard menus and tabs,
+email/inbox/profile preview, mobile navigation, and 390px layouts for landing,
+account, company, forum, thread, and blueprint. No public signup or publication
+was enabled. Removed misleading human-reviewed/Reviewed wording from the home
+and answer-finder surfaces; a record date is not licensed signoff. New regression
+checks protect the page map, design noindex, source links, and review language.
+
+Written 8 September 2026, last revised 11 September after the GitHub/Vercel
+release audit and MVP runbook pass, on `claude/bold-hopper-mqcyen`.
+
+The current product decision and mockup audit are in
+`outputs/BIRCH-FINAL-PRODUCT-AUDIT-2026-09-10.md`. It supersedes the old
+tool-first wording in `POSITIONING.md`: Research is the front door, Coverage
+Position is the optional activation layer, Commons is the attributed context
+layer, and Coverage Lens is a later private service.
+
+The next 20 improvements are sequenced in
+`BIRCH-20-PASS-READINESS-ROADMAP.md`. Pass 01 is the current protected
+review-snapshot pass; do not reopen the settled aesthetic or activate live
+Commons behavior while using this roadmap.
+
+The company-page surface contract is in `COMPANY-PAGE-QUEUE.md`. It is now
+implemented as a sourced trust shell across five organization records: documented
+identity, coverage context, official channels, financial empty state, Research
+links, and separately gated forums, threads, experiences, official responses,
+and reviews policy.
+
+Read `DIRECTION.md` (what this is, and the rules that do not bend),
+`AMBITION.md` (what it is becoming, and the architecture) and **`BIRCH.md`**
+(the 9 September rebrand: one property called Birch, carrying both the cited
+evidence and validated discussion, and what that is not allowed to change)
+before changing anything. This file is the state of play plus the things that will cost you a
 pass if you learn them the hard way.
 
 **To run a pass, invoke the `continue-bir` skill** in
@@ -27,30 +142,79 @@ secret. There was no CI for the first 99 commits, and the one thing a
 
 | | |
 | --- | --- |
-| Branch | `launch/initial-publication`, 88 commits, **never push to `main`** |
-| Suite | `npm run validate` = 122 tests, 0 failing. Also `npm run audit:estate`, `npm run audit:onpage` |
-| Built pages | 840 (299 are noindex verification sheets) |
-| Sources | 299 (122 primary-law, 69 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
+| The product | **Birch.** One property: a cited evidence layer (**Birch Research**) and a validated discussion layer (**Birch**). Read `BIRCH.md` before anything else - it is the current direction and it says what the rebrand is not allowed to relax |
+| Branch | `claude/bold-hopper-mqcyen`, candidate commit `72013ce`, **never push to `main`** |
+| Suite | `npm run validate` = **165 tests**, 0 failing, in both indexing postures. **CI is green** as of 11 September across suite, Commons, and production-posture jobs | Also `npm run audit:estate`, `npm run audit:onpage` |
+| Built pages | **858 static routes** in the latest build; on-page audit scans the generated HTML plus JSON companions |
+| Sources | 301 (122 primary-law, 71 regulator, 45 standards-body, 35 secondary, 28 carrier-official) |
 | Questions | 85 (21 national, CA 56, TX 6, FL 5, GA 1) |
 | Coverage pages | 27 of 51 canonical lines |
 | Figures | 19 (`/figures`, the amounts and what moves them) |
-| Modules | 10 live, 15 cross-module rules |
+| Modules | 10 live, 272 module rules, 15 cross-module rules |
 | Records signed off | **0.** 172 `under-review`, 4 `corrected`. 176 records now carry a review state |
-| Sources ever re-checked | **11 of 299.** The 5 new ones are the eligible figure sources, re-read 8 September |
+| Sources ever re-checked | **22 of 301.** All eleven figure-source documents are re-read, plus five high-impact evidence sources; 279 sources remain first-read only |
 | Sources no question reaches | 48 |
 | Cited sentences | 4,948, across 5,696 sentence-to-source edges. Median 13 per source |
+| Dataset releases | **1.** `2026-09-09`, frozen at `/dataset`: 1,905 claims, 299 sources, SHA-256 per file; the current corpus has 301 sources |
+| Change feed | `/changed`: 20 recorded changes, 7 scheduled amount moves, built from record fields |
+| Birch, the community | `commons/`, intended as its own Vercel project and origin at `commons.birch.insure`. **81 assertions, 80 passing, 1 skipped** for want of a database. Sign-in, case-report intake, thread-to-case-report promotion, the moderation queue, withdrawal, threads, and professional-verification requests all run end to end on an in-memory store; Postgres and Resend are wired but unexercised. The app now targets the official `@astrojs/vercel` SSR adapter; `commons/.env.example`, `commons/README.md`, and `npm run preflight:production` define the external launch gate, including exact production-origin checks. The shared Commons shell now has a touch-safe, contained mobile menu and reduced-motion contract. The request-time `/healthz` liveness route checks store reachability and production mail configuration without exposing details or entering the sitemap. |
+| Threads | Built 9 September. 117 subjects a thread can attach to, generated from the evidence layer. A verdict phrase **blocks** a post where it only flags a submission, because a post publishes on write. A post cannot be edited - only withdrawn by its author or hidden by a moderator, both leaving a tombstone |
 | Published records with no review state | **0.** Was 3; the tools schema now carries review fields, required on live worksheets and forbidden on unbuilt ones |
+
+### What to pick up next, in order
+
+Written for a session arriving cold, including one that is not this model.
+`BIRCH.md` section 7 is the same sequence with the reasoning; this is the short
+form with what is actually blocked.
+
+1. **Cross-linking the two layers** - *unblocked once threads have content.* An
+   evidence page names how many accounts exist for its subject and links to
+   them, without citing them. Note the constraint that already caught this
+   project once: do not advertise a host that does not resolve. The Birch apex
+   and `www` hosts are attached to the Research Vercel project; they currently
+   serve the older production build and must not be mistaken for the candidate.
+2. **Carrier pages** - *partially complete.* State Farm General Insurance
+   Company and Farmers Insurance Exchange now have source-linked California
+   regulator identity snapshots and structured pages. Continue one company at a
+   time only when the official regulator profile can be opened and read; do not
+   fill the directory from search snippets or marketing copy.
+3. **Performance, accessibility, and motion budget** - *complete on 10
+   September.* `MOTION-AND-A11Y-BUDGET.md` now makes the 44px control target and
+   reduced-motion contract explicit. The shared header, buttons, segmented
+   controls, tabs, and fields use the token; the browser check covered Research,
+   company, contribution, professional, and Commons-specimen surfaces at
+   desktop and mobile widths, including no overflow and Escape dismissal.
+
+The former promotion item is complete in this branch. A moderator can invite an
+author from `/moderate/posts`; the author sees a private, prefilled form at
+`/contribute/from-post/[id]`, confirms or declines it, and a confirmed report is
+submitted atomically with a private provenance link back to the thread. The report
+surface explicitly says that the originating conversation is context, not a citation.
+
+The Research build now has a launch-safe `PUBLIC_COMMONS_READY` gate. It is
+`false` by default, so preview builds describe Commons as private preview and
+do not emit dead external discussion links. Set it to `true` only after the
+separate Commons deployment, Postgres database, Resend mailer, moderator list,
+and sign-in/thread/moderation/withdrawal smoke test are all complete. The full
+surface map, design decision, direct Mobbin references, and continuation
+sequence are in `outputs/BIRCH-END-TO-END-SETUP-AUDIT-2026-09-09.md`.
+
+The company-directory trust-cue pass is now complete. The next product feature
+is public subject cross-linking, but it must remain gated until Commons content
+and the `birch.insure` origin are genuinely live. Continue adding carrier pages
+only through the source-read gate described above; do not bulk-import names or
+marketing claims.
 
 ### The two things blocking everything else
 
-**Production has never been promoted.** Every deployment for at least the last
-fifteen hours is `Preview`; the production deployment is two days old, so 88
-commits of work are not on the live site. The guard hook at
-`~/.claude/hooks/guard-dangerous-bash.mjs` blocks `vercel promote` and any
-`vercel` command carrying `--prod`. **Do not try to reword past the guard** -
-surface the command and let the user run it. Read-only `vercel ls`,
-`vercel project ls` and `vercel inspect` are not blocked and are how you find
-out what is actually deployed.
+**The Birch candidate has not been promoted.** The live production deployment
+is an older BestInsurance build, while the current branch is a green preview
+candidate. The guard hook at `~/.claude/hooks/guard-dangerous-bash.mjs` blocks
+`vercel promote` and any `vercel` command carrying `--prod`. **Do not try to
+reword past the guard** - surface the exact command only after the release
+gates are cleared and let the user run it. Read-only `vercel ls`,
+`vercel project ls` and `vercel inspect` are how you find out what is actually
+deployed.
 
 The command previously recorded here was wrong in two ways and was tried and
 failed on 8 September. Both corrections matter:
@@ -67,9 +231,12 @@ failed on 8 September. Both corrections matter:
   deployment explicitly rather than relying on the working directory.
 
 The Vercel project is **`bestinsuranceresearch`**, team
-`aaronbollinger1s-projects`, serving `https://bestinsuranceresearch.com`.
+`aaronbollinger1s-projects`. Its current branch deployment is a protected
+preview candidate; `birch.insure` and `www.birch.insure` are attached to this
+Research project. The deployment environment and canonical metadata still need
+to be corrected before a Birch production cutover.
 
-Find the newest preview, which is the tip of `launch/initial-publication`:
+Find the newest preview, which is the tip of `claude/bold-hopper-mqcyen`:
 
 ```
 npx --no-install vercel ls bestinsuranceresearch --scope aaronbollinger1s-projects
@@ -84,7 +251,8 @@ npx --no-install vercel promote <deployment-url> --scope aaronbollinger1s-projec
 Confirm afterwards with `vercel ls`: the promoted deployment should read
 `Production` rather than `Preview`.
 
-**Nothing is reviewed.** Every record carries an under-review badge - all 173.
+**Nothing is reviewed.** Every record carries an under-review badge - all 176
+records with a review state.
 Brian Bollinger is named reviewer on all 85 questions and has signed off none.
 `AMBITION.md` puts this ahead of anything public-facing for a reason: an
 unreviewed corpus cannot credibly moderate contributed content, and marketing
@@ -111,7 +279,128 @@ sitting rather than a project. `/review-queue` states this on the page.
 reading has to be done by the licensed reviewer. Put the ordered list in front
 of Brian starting at the top of `/review-queue#by-source`, and the first
 outcome to look for is a `lastCheckedBasis` flip from `access` to `recheck`,
-because 293 of 299 sources have never been returned to.
+because 286 of 299 sources have never been returned to.
+
+---
+
+## 1a. Picking this up on another machine
+
+Everything in this repository is the record. There is no state in a chat log
+that matters: the rules are in `DIRECTION.md`, the order of work is in
+`AMBITION.md`, the continuation prompt is in
+`.claude/skills/continue-bir/SKILL.md`, and every finding is argued in its own
+commit message rather than summarised here. `git log` is the audit trail -
+the messages are long on purpose, and they say what was measured, what the
+measurement returned, and what was proved before the fix was believed.
+
+```
+git clone <repo> && cd bestinsuranceresearch
+git checkout claude/bold-hopper-mqcyen
+npm ci
+npm run validate          # check + build + 150 tests, PREVIEW posture
+```
+
+**Run the suite in both postures or you have only run half of it.** `verify.mjs`
+reads `PUBLIC_SITE_ENV` and asserts whichever indexing posture it finds, so the
+same 150 tests mean different things in each:
+
+```
+# production posture: no blanket noindex, robots.txt advertises the sitemap
+PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://birch.insure npx astro build
+PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://birch.insure \
+  node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs
+npm run audit:onpage      # refuses to run against a preview build, by design
+```
+
+Birch, the community, is a separate project with a separate suite:
+
+```
+cd commons && npm ci
+npm run validate            # check + build + 69 assertions
+node scripts/sync-subjects.mjs   # after adding a company, coverage or question
+```
+
+`sync-subjects.mjs` regenerates the list of things a thread can be about from
+the evidence layer's collections. The suite fails when the generated file is
+stale, so a new carrier record needs one command before the Commons build is
+correct again.
+
+`.github/workflows/verify.yml` runs all three jobs on every push and is the
+only thing that proves a pass was actually run. It needs no secret.
+
+### Traps that have each cost a pass
+
+- **The commons job needs root dependencies installed too.** Astro parses every
+  `tsconfig.json` on the way up from the project it builds, so building
+  `commons/` reads the repository-root tsconfig, whose bare
+  `astro/tsconfigs/strict` resolves against the root `node_modules`. The
+  workflow comment says this; do not "simplify" it away.
+- **Node's test runner starts a test body before module evaluation finishes.**
+  A function reading a module-level `const` declared below the first test that
+  calls it is a race - won locally, lost on CI. Declare it above, or inside.
+- **The adapter splits `commons/dist` into `client/` and `server/`.** A scan
+  that only walks the static half silently covers less than it claims; the
+  operator's name was once found in a *comment* that survived into the server
+  bundle.
+- **A test that cannot fail is worth less than no test.** Two measurements this
+  week were wrong in the direction of good news: checking for an `/authors/`
+  link that is in the global footer, and matching `/Author/` against
+  "California Earthquake **Author**ity". Run every new check against a page you
+  know is broken before believing it.
+- **Root `astro check` must exclude `commons/`** or it reports 64 false errors.
+
+---
+
+## 1b. The audit lens, and what it has found
+
+One method has produced every finding since the excerpt pass, and it is worth
+stating because it is repeatable by somebody who has never seen this codebase:
+
+> **Find a global assertion the site makes, and measure it against the build.**
+
+The site is unusually full of them - it is a property whose argument is its own
+discipline, so it says "every page", "always", "never", "no route", "enforced in
+code" constantly. Each of those is a testable proposition, and several had
+quietly stopped being true. Measure first, fix second, and make the third thing
+a test that holds the assertion in *both* directions, because a one-way check
+goes vacuous the moment the page changes.
+
+Findings so far, newest first, each with the commit that argues it:
+
+| Assertion | Where | What was actually true |
+| --- | --- | --- |
+| Planned routes are advertised to crawlers | `commons` sitemap | `/threads/new` was in the sitemap, a page nobody signed out can use. Caught by widening a check that already existed |
+| "every rule is validated at build time against this boundary" | `/position` | Two of six promises had no phrase behind them (class code, risk score); 15 cross-module rules went through a validator that checked no boundary at all |
+| "They have no route, no sitemap entry, and no navigation link" | `/insurance` | Twelve of the lines listed as planned were published, routed and sitemapped |
+| "both are named on every page" (author and reviewer) | `/methodology` | 27 guides named only a reviewer; 3 state pages named neither |
+| `llms.txt` promises a JSON companion for every page | site-wide | 88 pages had none - the second recurrence |
+| "you may withdraw a contribution" | 4 Commons pages | No mechanism existed |
+| Card and description text is a faithful shortening | site-wide | 21 call sites cut at a character, which can strip a hedge and invert a claim |
+| `/about` says the Research room collects nothing and keeps the handoff optional | `/about` and built controls | Exactly two explicit GET search forms point to `/ask`; no POST, file input, or embedded podcast feed is present |
+
+### Remaining surfaces of this kind
+
+The `/about` audit is now measured in `scripts/verify.mjs`. Its two search forms
+are both explicit GET requests to `/ask`; the negative fixture proves the check
+would fail on a POST, and the output contains no file input or Transistor feed
+resource. The page still offers the optional Bollinsure handoff in its contact
+section while stating that the research answer and source ledger are complete
+without it. No podcast episode is currently in the corpus, so the rule that a
+cited episode must link to the canonical Bollinsure archive remains a future
+source-ingestion gate rather than a claim about a current record.
+
+The next unexamined surface is not yet a reason to add product code. Continue
+the same measure-first method against any new global assertion before changing
+the public feature surface. The live company directory now exposes five
+organizations, with source-backed regulator snapshots for State Farm General
+Insurance Company and Farmers Insurance Exchange; the generated Commons subject
+registry is synchronized to those Research records.
+
+`AUTHORITY-AND-DISTRIBUTION-PLAN.md`, `LAUNCH-GATE.md` and `ESTATE-PLAN.md`
+carry stale counts (8 modules where there are 10, 231 rules where there are
+272, 251 sources where there are 299). **Do not spend a pass syncing numbers
+across five files: that is how they came to disagree in the first place.**
+Published surfaces are worth more than planning files.
 
 ---
 
@@ -148,7 +437,7 @@ has the three-layer design; this is how the new asks map onto it.
 ### Allowed on the Record (this origin), now
 
 **Company pages as entity records, not review pages.** The `companies`
-collection exists with 3 records and is the most under-built high-value surface
+collection exists with 5 records and is the most under-built high-value surface
 in the corpus. Regulator-published fact is abundant: CDI company profiles carry
 licence status, company type, state of domicile, former names, agent for service
 of process, and the lines the company is authorised to transact; NAIC carries
@@ -214,10 +503,12 @@ give coverage advice, which is the thing that must not happen.
    available. The corpus is already addressable per claim with checksums and a
    JSON companion on every path; a dated release with a stable schema is what
    makes other people's papers and tools cite it.
-2. **A published recheck cadence.** 293 of 299 sources have
+2. **A published recheck cadence.** 277 of 299 sources have
    `lastCheckedBasis: 'access'` — read once, never returned to. An authority
    that never re-reads decays, and the field exists precisely so the site cannot
-   overstate itself. Start with the dated-figure sources.
+   overstate itself. The dated-figure source queue is clear; the wider cadence
+   has begun with high-impact California primary, regulator, and carrier-official
+   sources.
 3. **Wikidata item plus a consistent `sameAs` graph** across all nine
    properties.
 4. **Search Console and Bing verification.** Blocked only on the user generating
@@ -230,6 +521,91 @@ give coverage advice, which is the thing that must not happen.
 ---
 
 ## 4. Working practices that will save you a pass
+
+**This repository now builds two properties.** The Record is the root project;
+the Commons is `commons/`, a second Astro project with its own `package.json`,
+`node_modules`, build and suite. Run its checks from inside that directory -
+`cd commons && npm run validate` - and note that the root `npm run validate`
+does not cover it. CI runs both, in one workflow, as separate jobs.
+
+The Commons suite mostly asserts **absences**: no agency name, no licence
+number, no gold, no file input, no field for anything section 6 of
+`COMMONS.md` promises never to collect. Those absences are the entire reason
+the Commons is a separate origin, so they are checked on every build rather
+than remembered. If you copy a component across from the Record, expect the
+suite to catch the footer.
+
+The Commons name and origin live in `commons/src/config/commons.ts`, once, and
+a test fails if any other file hardcodes the placeholder. Naming the property
+is two lines plus a wordmark, and it also lifts the `noindex` and the
+`Disallow: /`, which are keyed off the placeholder origin rather than set by
+hand.
+
+**Never shorten prose with `.slice()`.** Use `excerpt()`, `clip()` or
+`metaDescription()` from `src/lib/excerpt.ts`; the suite fails the build
+otherwise. Twenty-one call sites cut at a character count, so the homepage
+shipped "in at least 10-point boldface ty" and "NASBP describes a su" above the
+fold and every meta description could stop mid-clause. It is an editorial fault
+rather than a cosmetic one - `DIRECTION.md` holds that a hedge is the finding,
+and an arbitrary cut strips hedges silently and at scale. `BRAND-SYSTEM.md`
+section 10a has the rule.
+
+**Read the CI result. It was red on every run for a day and nobody looked.**
+The workflow exists because "the one thing a 122-assertion suite cannot assert
+is that somebody ran it", and then eleven consecutive failures went unread while
+every local run passed. Two causes, both the same shape - something that
+resolved on a developer machine and not on a clean one: a temporal dead zone in
+`verify.mjs` that is a race Node's test runner wins locally and loses on CI, and
+`astro check` in `commons/` needing the ROOT `node_modules` because Astro reads
+the root tsconfig on the way up. Neither is reproducible without a clean clone.
+`git clone` to /tmp and build there before believing a green local run.
+
+**`llms.txt` makes claims about the whole site, and they go stale silently.**
+It told every AI system that "every substantive page has a machine-readable
+JSON companion" and that was false twice: once for 244 source pages, and again
+for 88 - every guide, line hub, module, worksheet and the figures table -
+because those page types were added afterwards and nobody re-read the promise
+against them. `toolRecord()` sat in `machine.ts` written and never routed for
+the whole period.
+
+Both are fixed and, more usefully, a test now enumerates record pages in the
+build and requires a companion for each, so a new page type fails on the day it
+is added. **When you add a page type, the question to ask is not "does it
+work" but "which existing sentence about this site did it just make false".**
+`llms.txt`, `/methodology` and `/editorial-policy` all describe the corpus as a
+whole and none of them is regenerated from it.
+
+**Check whether you can reach a source before planning a pass around one.**
+Claude Code on the web runs behind an egress proxy, and on 9 September every
+primary-law and regulator host this corpus rests on was blocked by it:
+`leginfo.legislature.ca.gov`, `law.cornell.edu`, `ecfr.gov`,
+`uscode.house.gov`, `govinfo.gov`, `insurance.ca.gov`, `content.naic.org`,
+`dfs.ny.gov`, `tdi.texas.gov`, `floir.com` and `filingaccess.serff.com` all
+returned `403` on `CONNECT`. Web *search* worked; fetching the documents did
+not, and a search snippet is exactly what
+`EDITORIAL-AND-CITATION-STANDARD.md` prohibits citing.
+
+That single fact decides what a web pass can attempt. It blocks the recheck
+(item 3) and every content item on the reconciled order - carrier records,
+hazard geography, risk-score explainers, New York and Texas depth - because all
+of them are "read the document and record what it says". Those need a session
+that can reach the internet, which in practice means a local run. What a web
+pass *can* do is engineering over the corpus that already exists, which is what
+item 9 turned out to be. Probe the hosts first with `curl -o /dev/null -w
+"%{http_code}"` and pick accordingly rather than discovering it three documents
+in.
+
+**A dataset release is frozen and is cut deliberately.**
+`node scripts/cut-release.mjs [YYYY-MM-DD]` writes
+`public/dataset/<date>/{claims.jsonl,sources.json,manifest.json}` and rebuilds
+`public/dataset/releases.json`. It refuses to overwrite an existing release
+without `--force`, and `--force` is only ever right on a release that has not
+been committed. Do not hand-edit a release: four assertions compare the
+manifest digests against the bytes, compare every claim checksum against the
+claim's own text, and compare the release against the site's live claim index
+wherever the text is identical. Cut a new release after a correction rather
+than repairing an old one - the `changesSince` block exists to make that
+legible, and it is the honest record of a claim having moved.
 
 **One item per pass.** The standing instruction is to pick one, do it properly,
 run `npm run validate` until green, commit and push, and not start a second.
@@ -317,7 +693,7 @@ corrected record does not reach the page. The same page was hand-summing
 
 **Local `npm run build` is a preview build** — it stamps `noindex` on every
 page. `npm run audit:onpage` refuses to run against one. For production output:
-`PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://bestinsuranceresearch.com npx astro build`.
+`PUBLIC_SITE_ENV=production PUBLIC_SITE_ORIGIN=https://birch.insure npx astro build`.
 
 **Shell gotchas on this machine.** Heredocs break on apostrophes and backticks —
 use the Write tool for any script or content with either. Backticks inside a
@@ -382,10 +758,13 @@ copying a fifth into this one is how that happened. The short version:
 1. **Promote to production.** The user, one command. Nothing is cited that does
    not exist, and everything else is downstream.
 2. **Licensed sign-off.** Brian reading. The instrument is built; no code left.
-3. **Finish the figure-source recheck.** 5 of 11 done on 8 September, and it
-   produced one correction. The other 6 were first read that same day so
-   were ineligible; they are eligible from 9 September and are listed in
-   section 4. Then widen the recheck beyond the figures: 288 of 299 sources
+3. **Finish the figure-source recheck.** Needs a session that can reach the
+   documents; see the egress note in section 4. All 11 of 11 are now rechecked,
+   including the 10 September direct recheck of `ca-civ-code-3333-2`. The
+   figure-source queue is clear. The wider recheck has started with the
+   10 September direct recheck of `ca-labor-code-3700`,
+   `ca-cdi-commercial-insurance-guide`, `cfp-dwelling-policy`, and
+   `ca-ccr-tit-10-2321`, and `fema-nfip-eligibility`. 277 of 299 sources
    still carry only the date somebody read them once.
 4. ~~Give `tools` a `reviewState`~~ **done.** Required on live worksheets by a
    schema refinement and forbidden on unbuilt ones, so the queue counts the 3

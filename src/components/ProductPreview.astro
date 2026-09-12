@@ -1,0 +1,111 @@
+---
+import { ArrowRight, ArrowUpRight, BookOpen, Building2, ChevronDown, FileText, MessageCircle, PenLine } from '@lucide/astro';
+import { loadCorpus, idsOf } from '../lib/corpus';
+import { createCiter } from '../lib/citations';
+import { sentences } from '../lib/excerpt';
+interface Props { id?: string; }
+const { id = 'product-preview' } = Astro.props;
+const corpus = await loadCorpus();
+const question = corpus.questionBySlug.get('replacement-cost-vs-market-value');
+const company = corpus.companies.find((record) => record.id === 'farmers-insurance-exchange');
+if (!question || !company) throw new Error('The Birch preview requires its cited example records.');
+const cite = createCiter(idsOf(question.data.sourceIds), 'Birch product preview', {link: 'absolute'});
+const companyCite = createCiter(idsOf(company.data.sourceIds), 'Birch company preview', {link: 'absolute'});
+const modes = [{id:'answer', label:'Find an answer', icon: BookOpen}, {id:'company', label:'Know a company', icon: Building2}, {id:'community', label:'Join a conversation', icon: MessageCircle}];
+---
+<section class="product-preview" data-product-preview aria-label="Explore the Birch experience">
+  <div class="preview-toolbar"><span><img src="/birch-bird-transparent.png" width="25" height="25" alt="" /> Inside Birch</span><span class="preview-caption">Try the experience</span></div>
+  <nav class="preview-tabs" aria-label="Product preview views">
+    {modes.map(({id: mode, label, icon: Icon}) => <a href={`#${id}-${mode}`} id={`${id}-tab-${mode}`} data-preview-tab={mode}><Icon size={16} aria-hidden="true" />{label}</a>)}
+  </nav>
+  <div id={`${id}-answer`} data-preview-panel="answer" class="preview-panel">
+    <article class="preview-main">
+      <div class="preview-meta"><span>Home insurance</span><span>California</span><span>Under review</span></div>
+      <h2>{question.data.question}</h2>
+      <div class="preview-answer" set:html={cite.paragraphs(sentences(question.data.shortAnswer).slice(0, 2).join(' '))} />
+      <p class="preview-caption">Answer excerpt. Open the full answer for conditions and policy-specific limitations.</p>
+      <a class="preview-forward" href={`/questions/${question.id}`}>Read the full answer <ArrowRight size={15} aria-hidden="true" /></a>
+    </article>
+    <aside class="preview-context" aria-label="Answer sources">
+      <span class="preview-overline"><FileText size={14} aria-hidden="true" /> Sources you can open</span>
+      {idsOf(question.data.sourceIds).slice(0, 2).map((sourceId) => { const source = corpus.sourceById.get(sourceId); return source && <a class="preview-source" href={`/sources/${source.id}`}><span>{source.data.publisher}</span><strong>{source.data.title}</strong><ArrowUpRight size={15} aria-hidden="true" /></a>; })}
+      <a class="preview-forward" href={`/questions/${question.id}#source-ledger`}>All {question.data.sourceIds.length} sources <ArrowRight size={14} aria-hidden="true" /></a>
+    </aside>
+  </div>
+  <div id={`${id}-company`} data-preview-panel="company" class="preview-panel">
+    <article class="preview-main">
+      <div class="preview-meta"><span>Company profile</span><span>California</span><span>Under review</span></div>
+      <h2>{company.data.legalName}</h2>
+      <p class="preview-company-summary" set:html={companyCite.inline(sentences(company.data.summary)[0])} />
+      <p class="preview-caption">Dated regulator-record excerpt, not a product catalog or availability statement.</p>
+      <div class="preview-company-links"><a href={`/companies/${company.id}#identity`}>Overview</a><a href={`/companies/${company.id}#coverage-context`}>Coverage</a><a href={`/companies/${company.id}#community`}>Community</a><a href={`/companies/${company.id}#source-ledger`}>Sources</a></div>
+      <a class="preview-forward" href={`/companies/${company.id}`}>Explore the company <ArrowRight size={15} aria-hidden="true" /></a>
+    </article>
+    <aside class="preview-context"><span class="preview-overline"><Building2 size={14} aria-hidden="true" /> Around this company</span><p>Official records, coverage questions, and a place for attributed experiences.</p><details><summary>How company replies will work <ChevronDown size={14} aria-hidden="true" /></summary><p>Representatives will show their affiliation. A reply can add context; only the author can mark their experience resolved.</p></details><a class="preview-forward" href="/design/thread-preview">Preview a conversation <ArrowRight size={14} aria-hidden="true" /></a></aside>
+  </div>
+  <div id={`${id}-community`} data-preview-panel="community" class="preview-panel">
+    <article class="preview-main"><div class="preview-meta"><span>Birch Community</span><span>Private preview</span></div><h2>A useful conversation starts with a good question.</h2><p class="preview-description">Ask about a coverage detail, share an experience, or add a professional perspective.</p><span class="preview-overline">Discussion starters · illustrative, not live posts</span><a class="preview-discussion" href="/design/thread-preview"><MessageCircle size={17} aria-hidden="true" /><span><strong>What changed in my renewal?</strong><small>Home insurance · Question</small></span><ArrowRight size={15} aria-hidden="true" /></a><a class="preview-discussion" href="/contribute"><PenLine size={17} aria-hidden="true" /><span><strong>Share something others can learn from.</strong><small>Experience · Professional note · Correction</small></span><ArrowRight size={15} aria-hidden="true" /></a></article>
+    <aside class="preview-context"><span class="preview-overline">Your perspective belongs here</span><h3>Build a body of useful work.</h3><p>Professional contributions can carry your name, credentials, sources, and a stable page people can reference.</p><a class="preview-forward" href="/professionals">For professionals <ArrowRight size={14} aria-hidden="true" /></a><p class="preview-caption">Accounts and posting are closed during this preview.</p></aside>
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-product-preview]').forEach((preview) => {
+    const tabs = [...preview.querySelectorAll<HTMLAnchorElement>('[data-preview-tab]')];
+    const panels = [...preview.querySelectorAll<HTMLElement>('[data-preview-panel]')];
+    preview.querySelector('nav')?.setAttribute('role', 'tablist');
+    function activate(tab: HTMLAnchorElement) {
+      tabs.forEach((item) => { const selected = item === tab; item.setAttribute('aria-selected', String(selected)); item.tabIndex = selected ? 0 : -1; });
+      panels.forEach((panel) => { panel.hidden = panel.dataset.previewPanel !== tab.dataset.previewTab; });
+    }
+    tabs.forEach((tab, index) => {
+      tab.setAttribute('role','tab'); tab.setAttribute('aria-controls', panels[index].id);
+      panels[index].setAttribute('role','tabpanel'); panels[index].setAttribute('aria-labelledby', tab.id);
+      tab.addEventListener('click', (event) => { event.preventDefault(); activate(tab); });
+      tab.addEventListener('keydown', (event) => {
+        const next = event.key === 'ArrowRight' ? (index + 1) % tabs.length : event.key === 'ArrowLeft' ? (index + tabs.length - 1) % tabs.length : event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : -1;
+        if (next < 0) return; event.preventDefault(); activate(tabs[next]); tabs[next].focus();
+      });
+    });
+    activate(tabs[0]);
+  });
+</script>
+<style>
+  .product-preview { overflow: hidden; border: 1px solid var(--line-strong); border-radius: var(--r-4); background: var(--white); box-shadow: var(--elev-2); }
+  .preview-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 24px; border-bottom: 1px solid var(--line); }
+  .preview-toolbar > span:first-child { display: inline-flex; align-items: center; gap: 9px; font-size: var(--text-sm); font-weight: 600; }
+  .preview-caption { color: var(--muted); font-size: var(--text-xs); }
+  .preview-tabs { display: flex; padding-inline: 24px; border-bottom: 1px solid var(--line); overflow-x: auto; }
+  .preview-tabs a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 54px; padding: 12px 18px; border-bottom: 2px solid transparent; color: var(--muted); font-size: var(--text-sm); text-decoration: none; white-space: nowrap; transition: color var(--dur-1), background var(--dur-1); }
+  .preview-tabs a[aria-selected='true'] { border-color: var(--brand-blue); color: var(--brand-blue-text); background: var(--brand-blue-wash); }
+  .preview-tabs a:hover { color: var(--ink); background: var(--cream); }
+  .preview-panel { display: grid; grid-template-columns: minmax(0, 1fr) 290px; min-height: 350px; }
+  .preview-panel[hidden] { display: none; }
+  .preview-main { min-width: 0; padding: 32px; }
+  .preview-meta { display: flex; flex-wrap: wrap; gap: 8px 14px; color: var(--muted); font-size: var(--text-2xs); }
+  .preview-meta > span:last-child { color: var(--amber); }
+  .preview-main h2 { max-width: 31ch; margin: 18px 0; font: 500 clamp(1.4rem, 2.2vw, 1.85rem)/1.25 var(--font-sans); letter-spacing: -.04em; }
+  .preview-answer { color: var(--body); font-size: var(--text-base); line-height: 1.7; }
+  .preview-answer :global(p) { margin: 0 0 12px; }
+  .preview-context { min-width: 0; padding: 32px 24px; border-left: 1px solid var(--line); background: var(--paper); }
+  .preview-context > p, .preview-context details p { font-size: var(--text-sm); color: var(--muted); line-height: 1.6; }
+  .preview-context h3 { font-size: var(--text-xl); line-height: 1.3; margin: 18px 0 10px; }
+  .preview-overline { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: var(--text-xs); }
+  .preview-source { display: grid; gap: 6px; position: relative; padding: 20px 14px 20px 0; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; }
+  .preview-source > span { font-size: var(--text-2xs); color: var(--muted); }
+  .preview-source strong { font-size: var(--text-xs); line-height: 1.5; font-weight: 500; }
+  .preview-source svg { position: absolute; right: -8px; top: 22px; color: var(--brand-blue-text); }
+  .preview-forward { display: inline-flex; align-items: center; gap: 8px; min-height: var(--tap); margin-top: 12px; color: var(--brand-blue-text); font-size: var(--text-sm); font-weight: 600; text-decoration: none; }
+  .preview-forward:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .preview-company-summary, .preview-description { color: var(--body); font-size: var(--text-base); line-height: 1.65; }
+  .preview-company-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+  .preview-company-links a { padding: 10px 12px; min-height: var(--tap); background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-2); color: var(--body); text-decoration: none; font-size: var(--text-xs); }
+  .preview-context summary { display: flex; gap: 8px; align-items: center; justify-content: space-between; min-height: var(--tap); font-size: var(--text-xs); color: var(--ink); cursor: pointer; }
+  .preview-discussion { display: flex; align-items: center; gap: 12px; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--body); }
+  .preview-discussion > span { flex: 1; min-width: 0; }
+  .preview-discussion strong, .preview-discussion small { display: block; }
+  .preview-discussion strong { font-size: var(--text-sm); font-weight: 500; }
+  .preview-discussion small { color: var(--muted); margin-top: 5px; font-size: var(--text-2xs); }
+  @media (max-width: 760px) { .preview-panel { grid-template-columns: 1fr; } .preview-context { border-left: 0; border-top: 1px solid var(--line); padding: 24px; } .preview-main { padding: 24px; } .preview-tabs { padding-inline: 8px; } .preview-tabs a { font-size: var(--text-xs); padding-inline: 12px; } .preview-toolbar { padding-inline: 20px; } }
+  @media (max-width: 440px) { .preview-tabs a { flex-direction: column; gap: 6px; flex: 1; font-size: var(--text-2xs); padding-inline: 7px; } .preview-main { padding: 20px; } .preview-main h2 { font-size: 1.5rem; } }
+  @media (prefers-reduced-motion: reduce) { .preview-tabs a { transition: none; } }
+</style>

@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SESSION_COOKIE, accountFromSession } from '../../lib/auth';
+import { getStore } from '../../lib/runtime';
+import { SUBJECTS, subject } from '../../lib/threads';
+import { commons } from '../../config/commons';
+
+export const prerender = false;
+
+const store = getStore();
+const account = await accountFromSession(store, Astro.cookies.get(SESSION_COOKIE)?.value);
+
+const filter = Astro.url.searchParams.get('subject') ?? '';
+const active = filter ? subject(filter) : null;
+const rawSearchQuery = (Astro.url.searchParams.get('q') ?? '').trim();
+const searchQuery = rawSearchQuery.slice(0, 100);
+const candidateThreads = await store.listThreads(active ? { subjectId: active.id } : {});
+
+const relative = (iso: string) => {
+	const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86_400_000);
+	if (days <= 0) return 'today';
+	if (days === 1) return 'yesterday';
+	if (days < 30) return `${days} days ago`;
+	return new Date(iso).toISOString().slice(0, 10);
+};
+
+/* Subjects that have a thread, then the rest. A picker listing 115 subjects in
+   alphabetical order buries the three people are actually talking about. */
+const counts = new Map<string, number>();
+for (const t of await store.listThreads({})) {
+	counts.set(t.subjectId, (counts.get(t.subjectId) ?? 0) + 1);
+}
+const busy = SUBJECTS.filter((s) => counts.has(s.id)).sort(
+	(a, b) => (counts.get(b.id) ?? 0) - (counts.get(a.id) ?? 0),
+);
+const normalizedSearch = searchQuery.toLocaleLowerCase();
+const threads = normalizedSearch
+	? candidateThreads.filter((thread) => {
+			const about = subject(thread.subjectId);
+			return `${thread.title} ${about?.name ?? thread.subjectId}`.toLocaleLowerCase().includes(normalizedSearch);
+		})
+	: candidateThreads;
+---
+
+<BaseLayout
+	title="Discussion"
+	eyebrow="Discussion"
+	lede="Threads about carriers, coverage and the questions this site answers. Posts appear as they are written, from signed-in accounts, and are read by a moderator afterwards."
+	crumbs={[{ name: 'Home', href: '/' }, { name: 'Discussion' }]}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				<div class="callout" data-tone="note">
+					<p><strong>{commons.verdictProhibition}</strong></p>
+					<p>
+						A post here is somebody's account or somebody's question. It is not a finding, it is
+						never cited by the research library, and it never appears in a dataset release. Where a
+						post turns out to be an account worth keeping, a moderator will ask its author to write
+						it up as <a href="/standards">a case report</a>, which is read before it publishes and
+						has a permanent address.
+					</p>
+				</div>
+
+				<div class="discussion-stage">
+					<div>
+						<span class="eyebrow">Birch Commons / conversation room</span>
+						<h2>Find the question. Add only what you know.</h2>
+						<p>Browse by subject, scan the latest context, or start a focused thread. Research stays in its own cited room.</p>
+					</div>
+					<div class="discussion-stage-action">
+						<span class="status status-plain">{threads.length} {threads.length === 1 ? 'conversation' : 'conversations'}</span>
+						{account ? <a class="btn" href="/threads/new">Start a thread</a> : <a class="btn" href="/sign-in">Join to post</a>}
+					</div>
+				</div>
+
+				<form class="discussion-search" method="get" role="search">
+					<label for="thread-search">Search conversation titles and subjects</label>
+					<div class="discussion-search-row">
+						<input id="thread-search" name="q" type="search" value={searchQuery} placeholder="Try earthquake, claims, or a company name" />
+						{active && <input type="hidden" name="subject" value={active.id} />}
+						<button class="btn btn-light" type="submit">Search</button>
+						{searchQuery && <a class="discussion-clear" href={active ? `/threads?subject=${encodeURIComponent(active.id)}` : '/threads'}>Clear</a>}
+					</div>
+				</form>
+
+				{
+					busy.length > 0 && (
+						<nav aria-label="Filter by subject" style="margin: var(--s-5) 0">
+							<h2 style="font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.06em">
+								Subjects being discussed
+							</h2>
+							<ul class="chips">
+								<li>
+									<a href="/threads" aria-current={active ? undefined : 'page'}>
+										Everything ({counts.size === 0 ? 0 : threads.length})
+									</a>
+								</li>
+								{busy.map((s) => (
+									<li>
+										<a
+											href={`/threads?subject=${encodeURIComponent(s.id)}`}
+											aria-current={active?.id === s.id ? 'page' : undefined}
+										>
+											{s.name} ({counts.get(s.id)})
+										</a>
+									</li>
+								))}
+							</ul>
+						</nav>
+					)
+				}
+
+				{
+					active && (
+						<p class="meta">
+							Threads about <strong>{active.name}</strong>. The research library's page on it is at{' '}
+							<a href={`${commons.record.origin}${active.recordPath}`} rel="noopener">
+								{commons.record.name}
+							</a>
+							, and that is where the cited answer lives.
+						</p>
+					)
+				}
+
+				{
+					threads.length === 0 ? (
+						<div class="empty">
+							<h2>No thread has been started yet.</h2>
+							<p>
+								Accounts are open and nothing has been written. This page is here now so the shape
+								of it is visible before anything appears, which is the same reason{' '}
+								<a href="/reports">Reports</a> was built empty.
+							</p>
+							{account ? (
+								<p>
+									<a class="btn" href="/threads/new">
+										Start the first thread
+									</a>
+								</p>
+							) : (
+								<p>
+									<a href="/sign-in">Sign in</a> to start one. There is no password; a link
+									arrives by email.
+								</p>
+							)}
+						</div>
+					) : (
+						<ol class="thread-list">
+							{threads.map((thread) => {
+								const about = subject(thread.subjectId);
+								return (
+									<li>
+										<h2>
+											<a href={`/threads/${thread.id}`}>{thread.title}</a>
+										</h2>
+										<p class="meta">
+											{about ? about.name : thread.subjectId} &middot; {thread.postCount}{' '}
+											{thread.postCount === 1 ? 'post' : 'posts'} &middot; last activity{' '}
+											{relative(thread.lastPostAt)}
+											{thread.state === 'locked' && ' · locked'}
+										</p>
+									</li>
+								);
+							})}
+						</ol>
+					)
+				}
+
+				{
+					threads.length > 0 && account && (
+						<p style="margin-top: var(--s-6)">
+							<a class="btn" href="/threads/new">
+								Start a thread
+							</a>
+						</p>
+					)
+				}
+			</div>
+		</div>
+	</section>
+</BaseLayout>
