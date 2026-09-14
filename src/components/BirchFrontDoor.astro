@@ -19,6 +19,10 @@ const starters = [
     <span class="front-door-kicker">Choose your starting point</span>
     <p>Follow a question to its sources, or see how professional knowledge can become attributable work.</p>
   </div>
+  <nav class="front-door-switcher" aria-label="Choose a starting point">
+    <a href="#question-path"><span class="front-door-switcher-copy"><strong>I have a question</strong><small>Start with sourced answers.</small></span><ArrowRight size={15} aria-hidden="true" /></a>
+    <a href="#expertise-path"><span class="front-door-switcher-copy"><strong>I share financial expertise</strong><small>See the contribution path.</small></span><ArrowRight size={15} aria-hidden="true" /></a>
+  </nav>
   <div class="front-door-branches">
     <article class="front-door-branch front-door-branch-question" id="question-path">
       <div class="front-door-branch-head">
@@ -56,6 +60,11 @@ const starters = [
         <h2>I share financial expertise.</h2>
         <p>See the path from a private contribution draft to source-linked work and a discoverable author profile.</p>
       </div>
+      <div class="front-door-scope-note">
+        <span class="front-door-scope-label">Evidence-first financial guidance</span>
+        <p>Education first: insurance and asset protection lead the launch. Future scopes may include financial planning, tax, retirement and investing, employee benefits, estate planning, and business finance.</p>
+        <small>Qualified professionals can prepare work within a documented specialty. Scope labels, sources, and editorial review stay visible; this preview does not provide individualized advice.</small>
+      </div>
       <div class="front-door-expert-actions">
         <a class="btn btn-primary" href="/professionals">Explore publishing <ArrowRight size={16} aria-hidden="true" /></a>
         <a class="btn btn-quiet" href="/contribute?type=research">Prepare a private draft <PenLine size={15} aria-hidden="true" /></a>
@@ -87,6 +96,15 @@ const starters = [
   .front-door h1 em { font-family: var(--font-display); font-weight: 400; color: var(--brand-blue-deep); letter-spacing: -.045em; }
   .front-door-branch-intro { max-width: 52ch; margin: 0 auto 24px; }
   .front-door-branch-intro p { margin: 8px 0 0; color: var(--muted); font-size: var(--text-sm); line-height: 1.6; }
+  .front-door-switcher { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; max-width: 760px; margin: 18px auto 0; text-align: left; }
+  .front-door-switcher a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 10px; min-width: 0; min-height: var(--tap); padding: 12px 14px; border: 1px solid var(--line-strong); border-radius: var(--r-2); background: var(--white); color: var(--body); text-decoration: none; }
+  .front-door-switcher a:hover, .front-door-switcher a:focus-visible { border-color: var(--brand-blue); color: var(--brand-blue-text); }
+  .front-door-switcher-copy { min-width: 0; }
+  .front-door-switcher-copy strong, .front-door-switcher-copy small { display: block; overflow-wrap: anywhere; }
+  .front-door-switcher-copy strong { color: inherit; font-size: var(--text-xs); font-weight: 650; }
+  .front-door-switcher-copy small { margin-top: 3px; color: var(--muted); font-size: var(--text-2xs); line-height: 1.4; }
+  .front-door-switcher a > svg { flex-shrink: 0; color: var(--brand-blue-text); transition: transform var(--dur-2) var(--ease-soft); }
+  .front-door-switcher a:hover > svg, .front-door-switcher a:focus-visible > svg { transform: translateX(3px); }
   .front-door-branches { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr); gap: 16px; margin-top: 24px; text-align: left; }
   .front-door-branch { min-width: 0; padding: 24px; border: 1px solid var(--line-strong); border-radius: var(--r-4); background: var(--white); box-shadow: var(--elev-2); box-sizing: border-box; }
   .front-door-branch-question { border-top: 3px solid var(--brand-blue); }
@@ -94,6 +112,10 @@ const starters = [
   .front-door-branch-head .eyebrow { margin-bottom: 10px; }
   .front-door-branch-head h2 { margin: 0 0 10px; color: var(--ink); font: 500 clamp(1.5rem, 2.8vw, 2rem)/1.12 var(--font-sans); letter-spacing: -.04em; }
   .front-door-branch-head p { max-width: 52ch; margin: 0; color: var(--muted); font-size: var(--text-sm); line-height: 1.65; }
+  .front-door-scope-note { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .front-door-scope-label { display: block; color: var(--brand-blue-text); font: var(--text-2xs)/1.3 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
+  .front-door-scope-note p, .front-door-scope-note small { display: block; max-width: 54ch; margin: 8px 0 0; color: var(--muted); font-size: var(--text-2xs); line-height: 1.55; }
+  .front-door-scope-note small { margin-top: 6px; color: var(--body); }
   .front-door-action { width: 100%; max-width: 660px; margin: 24px auto 0; }
   .question-composer { width: 100%; max-width: 100%; padding: 12px; border: 1px solid var(--line-strong); border-radius: var(--r-4); background: var(--white); box-shadow: var(--elev-2); text-align: left; transition: border-color var(--dur-2), box-shadow var(--dur-2); box-sizing: border-box; }
   .question-composer:focus-within { border-color: var(--brand-blue); box-shadow: 0 0 0 3px var(--brand-blue-wash), var(--elev-2); }
@@ -135,6 +157,6 @@ const starters = [
   .front-door-topics a { display: flex; justify-content: space-between; gap: 8px; padding: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-3); text-decoration: none; color: var(--body); font-size: var(--text-sm); }
   @media (max-width: 900px) { .front-door-branches { grid-template-columns: minmax(0, 1fr); } }
   @media (max-width: 760px) { .front-door { padding-block: 40px 32px; } .front-door-editorial { display: block; text-align: center; } .front-door-description { margin: 0 auto 24px; } .front-door-editorial .question-starters { justify-content: center; } }
-  @media (max-width: 440px) { .front-door h1 { font-size: 2.85rem; margin-block: 16px 24px; } .front-door-branch { padding: 20px; } .question-composer-input { padding-inline: 0; gap: 8px; } .question-composer-input input { font-size: var(--text-sm); } .question-starters { gap: 6px; } .question-starters button { padding-inline: 9px; } .question-starters button > svg:last-child { display: none; } .front-door-topics { grid-template-columns: 1fr; } .front-door-flow { grid-template-columns: minmax(0, 1fr); gap: 0; } .front-door-expert-actions { align-items: stretch; flex-direction: column; } .front-door-expert-actions .btn { width: 100%; } }
-  @media (prefers-reduced-motion: reduce) { .question-composer, .question-starters button, .front-door-flow a > svg { transition: none; } .front-door-flow a:hover > svg, .front-door-flow a:focus-visible > svg { transform: none; } }
+  @media (max-width: 440px) { .front-door h1 { font-size: 2.85rem; margin-block: 16px 24px; } .front-door-switcher { gap: 6px; } .front-door-switcher a { padding-inline: 10px; } .front-door-branch { padding: 20px; } .question-composer-input { padding-inline: 0; gap: 8px; } .question-composer-input input { font-size: var(--text-sm); } .question-starters { gap: 6px; } .question-starters button { padding-inline: 9px; } .question-starters button > svg:last-child { display: none; } .front-door-topics { grid-template-columns: 1fr; } .front-door-flow { grid-template-columns: minmax(0, 1fr); gap: 0; } .front-door-expert-actions { align-items: stretch; flex-direction: column; } .front-door-expert-actions .btn { width: 100%; } }
+  @media (prefers-reduced-motion: reduce) { .question-composer, .question-starters button, .front-door-switcher a > svg, .front-door-flow a > svg { transition: none; } .front-door-switcher a:hover > svg, .front-door-switcher a:focus-visible > svg, .front-door-flow a:hover > svg, .front-door-flow a:focus-visible > svg { transform: none; } }
 </style>

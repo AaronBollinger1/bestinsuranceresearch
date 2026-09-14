@@ -162,6 +162,9 @@ test('the front door branches into existing consumer and professional workflows'
   const frontDoor = home.match(/<section[^>]+class="[^"]*front-door[^"]*"[\s\S]*?<\/section>/)?.[0];
   assert.ok(frontDoor, 'front door exists');
   for (const id of ['question-path', 'expertise-path']) assert.match(frontDoor, new RegExp(`id="${id}"`));
+  assert.match(frontDoor, /class="front-door-switcher"[\s\S]*href="#question-path"[\s\S]*I have a question[\s\S]*href="#expertise-path"[\s\S]*I share financial expertise/);
+  assert.match(frontDoor, /Evidence-first financial guidance[\s\S]*Education first:[\s\S]*insurance and asset protection[\s\S]*financial planning[\s\S]*business finance/);
+  assert.match(frontDoor, /documented specialty[\s\S]*Scope labels, sources, and editorial review[\s\S]*not provide individualized advice/);
   assert.match(frontDoor, /Question[\s\S]*Sources[\s\S]*Answer[\s\S]*Discussion/);
   assert.match(frontDoor, /Contribution[\s\S]*Review[\s\S]*Byline[\s\S]*Author profile/);
   for (const path of ['/ask', '/sources', '/questions/replacement-cost-vs-market-value', '/design/commons-preview', '/professionals', '/contribute?type=research', '/authors/aaron-bollinger']) {
@@ -169,5 +172,5 @@ test('the front door branches into existing consumer and professional workflows'
   }
   assert.match(frontDoor, /Moderated discussion or commenting is a separate Community surface/);
   assert.match(frontDoor, /not open in this preview/);
-  assert.doesNotMatch(frontDoor, /backlinks?|guarantee|live comments|credential verified/i);
+  assert.doesNotMatch(frontDoor, /backlinks?|guarantee|live comments|credential verified|personalized advice|fiduciary/i);
 });
