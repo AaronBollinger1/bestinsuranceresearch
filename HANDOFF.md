@@ -1,5 +1,26 @@
 # Handoff
 
+Latest pass (14 September, sticky-header-safe landing reveals): at the exact
+starting head `e470bd1f6c10ca2f9a5c627dac70d6b3e5c88c52`, fresh 1280px and
+emulated 390px screenshots showed the existing `#question-path` and
+`#expertise-path` switcher anchors landing beneath the sticky header and
+clipping their headings. Added only a header-aware `scroll-margin-top` to the
+two front-door branch targets in `src/components/BirchFrontDoor.astro`.
+Question and professional flows, equal-weight entry points, asset-protection
+wedge, copy/claims, source and moderation gates, routes, no-JS behavior, and
+reduced-motion rules are unchanged. See
+`BIRCH-LANDING-SCROLL-REVEAL-HANDOFF-2026-09-14.md` and the before/after
+receipts in `outputs/birch-landing-critic-2026-09-14/` and
+`outputs/birch-landing-critic-2026-09-14-after/`.
+
+Proof: branch target top is now about 88px at both widths; both widths have no
+horizontal overflow and one main landmark. Focused design verifier **14
+passed**; root validation **183 passed**, preview build **892 pages**;
+production posture **162 passed**; on-page audit **0 findings / 563 indexable
+pages**; Community **80 passed / 1 external-DB skip**. The protected untracked
+asset browser notes remain byte-identical and unstaged. Request one Grok
+exact-SHA audit after the bounded commit; do not open new routes or gates.
+
 Latest pass (14 September, professional CTA truthfulness): at the exact audit
 head `880f56ffd3b4581e62f4950256a92c23bcd3ab0a`, changed only the front-door
 professional primary label from **Explore publishing** to **Explore contributing**.
