@@ -172,5 +172,37 @@ test('the front door branches into existing consumer and professional workflows'
   }
   assert.match(frontDoor, /Moderated discussion or commenting is a separate Community surface/);
   assert.match(frontDoor, /not open in this preview/);
-  assert.doesNotMatch(frontDoor, /backlinks?|guarantee|live comments|credential verified|personalized advice|fiduciary/i);
+  assert.doesNotMatch(frontDoor, /backlinks?|guarantee|live comments|credential verified|personalized advice/i);
+});
+
+test('the asset-protection manifesto is semantic, existing-route-only, and honest about gated features', () => {
+  const home = html('/');
+  const manifesto = home.match(/<section[^>]+id="asset-protection"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(manifesto, 'manifesto unit exists');
+  assert.match(manifesto, /id="manifesto-title"/);
+  assert.match(manifesto, /Ensure your assets are[\s\S]*protected/);
+  assert.match(manifesto, /class="asset-manifesto-from"[^>]*>Insure your assets\./);
+  assert.match(manifesto, /data-manifesto-stage[^>]*\shidden|hidden[^>]*data-manifesto-stage/);
+  assert.match(manifesto, /aria-hidden="true"/);
+  assert.doesNotMatch(manifesto, /<script/);
+  assert.match(manifesto, /Insure your assets/);
+  for (const layer of ['Coverage', 'Prevention', 'Documentation', 'Contracts', 'Planning', 'Mitigation', 'Recovery']) {
+    assert.match(manifesto, new RegExp(layer));
+  }
+  for (const scope of ['Insurance and carriers', 'Claims and adjusting', 'Financial planning', 'Tax', 'Legal', 'Real estate and mortgage', 'Employee benefits', 'Business finance']) {
+    assert.match(manifesto, new RegExp(scope));
+  }
+  assert.match(manifesto, /href="\/ask"/);
+  assert.match(manifesto, /href="\/professionals"/);
+  assert.match(manifesto, /not individualized advice/);
+  assert.match(manifesto, /fiduciary or attorney-client relationship/);
+  assert.match(manifesto, /Moderated discussion remains a separate Community preview/);
+  assert.match(manifesto, /does not collect or deliver leads/);
+  assert.doesNotMatch(manifesto, /href="\/(?:lens|position|network|shelf)"/);
+  assert.doesNotMatch(manifesto, /backlinks?|guarantee|live comments|credential verified|personalized advice|get a quote/i);
+  const hrefs = [...manifesto.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
+  for (const href of hrefs) {
+    assert.ok(href.startsWith('/') || href.startsWith('#'), href);
+    assert.doesNotMatch(href, /^\/(?:lens|position|network|shelf)(?:[/?#]|$)/);
+  }
 });

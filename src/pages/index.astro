@@ -13,6 +13,7 @@ import {
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StatusChip from '../components/StatusChip.astro';
 import BirchFrontDoor from '../components/BirchFrontDoor.astro';
+import BirchAssetManifesto from '../components/BirchAssetManifesto.astro';
 import ProductPreview from '../components/ProductPreview.astro';
 import { siteConfig } from '../config/site';
 import { stripMarkers } from '../lib/citations';
@@ -114,6 +115,7 @@ const jsonLd = graph(organization(), website());
 	<section class="band band-paper home-landing">
 		<div class="shell">
 			<BirchFrontDoor />
+			<BirchAssetManifesto />
 			<ProductPreview />
 			<div class="home-record-strip" aria-label="Current Birch research record">
 				<a href="/sources"><span>Source records</span><strong>{totalSources}</strong><small>Publisher, date, supported claims</small></a>

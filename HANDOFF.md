@@ -1,5 +1,13 @@
 # Handoff
 
+Latest pass (13 September, asset-protection manifesto): **one homepage unit** positions Birch as evidence-first asset protection, risk/loss mitigation, and financial-decision education, with insurance as the launch wedge. Coverage is named as one layer beside prevention, documentation, contracts, planning, mitigation, and recovery. Reviewed contribution scopes (insurance/carriers, claims/adjusting, financial planning, tax, legal, real estate/mortgage, benefits, business finance) all reuse `/professionals`. See `BIRCH-ASSET-MANIFESTO-HANDOFF-2026-09-13.md`.
+
+A one-shot Insure→Ensure scroll morph was measured and rejected: the mid-crossfade superimposed the two sentences. The shipped unit is the static pair, with the semantic heading `Ensure your assets are protected.` Reduced-motion and no-JS show the same message. Community remains a future/private preview; this page does not collect leads.
+
+Verification: root suite **183 passed**; production posture **162 passed**; on-page audit **0 findings / 563 indexable pages**; Community **80 passed / 1 external-DB skip**. 1280px and 390px layouts have no horizontal overflow. Screenshots, including rejected motion states, are in `outputs/birch-asset-manifesto-2026-09-13/`. No production alias, signup, or publication gate changed.
+
+Next: keep the two-audience front door and this manifesto band stable. Do not add a second morph, a specialty directory, or live discussion on the Research origin.
+
 Latest pass (11 September, remaining page templates): **fourteen Direction A
 specimens are implemented** at `/design/templates/*` and linked from
 `/design/product-system`. See `BIRCH-DIRECTION-A-TEMPLATES-2026-09-11.md` for the
