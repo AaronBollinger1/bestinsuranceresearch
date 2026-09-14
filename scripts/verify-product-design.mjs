@@ -167,6 +167,9 @@ test('the front door branches into existing consumer and professional workflows'
   assert.match(frontDoor, /documented specialty[\s\S]*Scope labels, sources, and editorial review[\s\S]*not provide individualized advice/);
   assert.match(frontDoor, /Question[\s\S]*Sources[\s\S]*Answer[\s\S]*Discussion/);
   assert.match(frontDoor, /Contribution[\s\S]*Review[\s\S]*Byline[\s\S]*Author profile/);
+  assert.match(frontDoor, /href="\/professionals"[^>]*>Explore contributing/);
+  assert.match(frontDoor, /href="\/contribute\?type=research"[^>]*>Prepare a private draft/);
+  assert.doesNotMatch(frontDoor, /Explore publishing/);
   for (const path of ['/ask', '/sources', '/questions/replacement-cost-vs-market-value', '/design/commons-preview', '/professionals', '/contribute?type=research', '/authors/aaron-bollinger']) {
     assert.match(frontDoor, new RegExp(`href="${path.replace(/[?]/g, '\\?')}"`), path);
   }

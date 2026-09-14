@@ -1,5 +1,24 @@
 # Handoff
 
+Latest pass (14 September, professional CTA truthfulness): at the exact audit
+head `880f56ffd3b4581e62f4950256a92c23bcd3ab0a`, changed only the front-door
+professional primary label from **Explore publishing** to **Explore contributing**.
+The action still targets `/professionals`; **Prepare a private draft** still
+targets `/contribute?type=research`. This matches the destination’s existing
+private-preview gate without opening publishing or changing `/professionals`
+editorial-policy copy. See `BIRCH-PROFESSIONAL-CTA-HANDOFF-2026-09-14.md` and
+the staged read-only `BIRCH-POSITIONING-AUDIT-2026-09-14.md`.
+
+Verification: root suite **183 passed**; production posture **162 passed**;
+on-page audit **0 findings / 563 indexable pages**; Community **80 passed / 1
+external-DB skip**. Focused product-design verifier **14 passed**; preview build
+restored at 892 pages. New before/after 1280px and emulated 390px receipts show
+no overflow and the unchanged draft route. The pre-existing untracked asset
+browser notes remain byte-identical and unstaged.
+
+Next: keep the truthful contributing label paired with the existing private
+draft action and destination gate. Do not open publishing or add specialty routes.
+
 Latest pass (14 September, asset-scope semantics): at the exact current head
 `6e59a283a6b3745f876bce88f36684cc474f6d54`, the eight homepage contribution
 scope chips were corrected from repeated `/professionals` links to non-link
