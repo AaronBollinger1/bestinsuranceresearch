@@ -92,7 +92,7 @@ test('professional entry does not turn an illustrative profile into verification
 });
 
 test('reading pages retain one source inspector and permanent source targets', () => {
-  for (const family of ['companies','questions']) {
+  for (const family of ['companies','questions','insurance']) {
     const directory = fileURLToPath(new URL(`../dist/${family}/`, import.meta.url));
     for (const entry of readdirSync(directory,{withFileTypes:true}).filter(entry=>entry.isDirectory())) {
       const page = readFileSync(`${directory}${entry.name}/index.html`,'utf8');
@@ -104,6 +104,18 @@ test('reading pages retain one source inspector and permanent source targets', (
       assert.doesNotMatch(page,/<section[^>]+class="[^"]*company-dossier-band/);
     }
   }
+});
+
+test('canonical coverage reading frame stays preview-only and navigation-safe', () => {
+  const page = html('/insurance/homeowners');
+  assert.match(page, /<body[^>]+class="birch-reading"/);
+  assert.match(page, /<meta\s+name="robots"\s+content="[^"]*noindex/);
+  assert.doesNotMatch(page, /product-context-bar/);
+  assert.match(page, /aria-label="Record sections"/);
+  assert.match(page, /href="#definition"/);
+  assert.match(page, /href="#source-ledger"/);
+  assert.match(page, /href="\/insurance\/homeowners\.json"/);
+  assert.equal((page.match(/id="source-inspector"/g) || []).length, 1);
 });
 
 test('citation exports distinguish assigned review from completed review', () => {
