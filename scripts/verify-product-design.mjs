@@ -193,7 +193,8 @@ test('the asset-protection manifesto is semantic, existing-route-only, and hones
     assert.match(manifesto, new RegExp(scope));
   }
   assert.match(manifesto, /href="\/ask"/);
-  assert.match(manifesto, /href="\/professionals"/);
+  assert.equal((manifesto.match(/href="\/professionals"/g) ?? []).length, 1, 'Explore contributing is the single professional action');
+  assert.equal((manifesto.match(/class="asset-manifesto-scope-label"/g) ?? []).length, 8, 'all eight scopes are semantic labels');
   assert.match(manifesto, /not individualized advice/);
   assert.match(manifesto, /fiduciary or attorney-client relationship/);
   assert.match(manifesto, /Moderated discussion remains a separate Community preview/);
@@ -201,6 +202,7 @@ test('the asset-protection manifesto is semantic, existing-route-only, and hones
   assert.doesNotMatch(manifesto, /href="\/(?:lens|position|network|shelf)"/);
   assert.doesNotMatch(manifesto, /backlinks?|guarantee|live comments|credential verified|personalized advice|get a quote/i);
   const hrefs = [...manifesto.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
+  assert.doesNotMatch(manifesto, /<a[^>]+>(?:Insurance and carriers|Claims and adjusting|Financial planning|Tax|Legal|Real estate and mortgage|Employee benefits|Business finance)<\/a>/);
   for (const href of hrefs) {
     assert.ok(href.startsWith('/') || href.startsWith('#'), href);
     assert.doesNotMatch(href, /^\/(?:lens|position|network|shelf)(?:[/?#]|$)/);

@@ -1,5 +1,22 @@
 # Handoff
 
+Latest pass (14 September, asset-scope semantics): at the exact current head
+`6e59a283a6b3745f876bce88f36684cc474f6d54`, the eight homepage contribution
+scope chips were corrected from repeated `/professionals` links to non-link
+labels. The single `Explore contributing` action remains the only professional
+destination; no specialty routes, copy, claims, denials, gates, or motion
+contract changed. Browser proof at 1280px and emulated 390px shows eight spans,
+zero scope links, one professional action, no overflow, and only the two real
+actions in the unit's keyboard surface. See `BIRCH-ASSET-SCOPE-LABEL-HANDOFF-2026-09-14.md`.
+
+Verification: root suite **183 passed**; production posture **162 passed**;
+on-page audit **0 findings / 563 indexable pages**; Community **80 passed / 1
+external-DB skip**. Preview build restored at 892 pages. The pre-existing
+untracked asset-manifesto browser notes remain byte-identical and unstaged.
+
+Next: keep the scope labels and single professional action stable. Do not add
+specialty routes, per-scope CTAs, or a second professional destination.
+
 Latest pass (13 September, asset-protection manifesto): **one homepage unit** positions Birch as evidence-first asset protection, risk/loss mitigation, and financial-decision education, with insurance as the launch wedge. Coverage is named as one layer beside prevention, documentation, contracts, planning, mitigation, and recovery. Reviewed contribution scopes (insurance/carriers, claims/adjusting, financial planning, tax, legal, real estate/mortgage, benefits, business finance) all reuse `/professionals`. See `BIRCH-ASSET-MANIFESTO-HANDOFF-2026-09-13.md`.
 
 A one-shot Insure→Ensure scroll morph was measured and rejected: the mid-crossfade superimposed the two sentences. The shipped unit is the static pair, with the semantic heading `Ensure your assets are protected.` Reduced-motion and no-JS show the same message. Community remains a future/private preview; this page does not collect leads.
