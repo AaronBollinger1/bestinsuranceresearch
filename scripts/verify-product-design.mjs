@@ -157,25 +157,23 @@ test('the front door preserves review uncertainty and working source-ledger link
   for (const [, path] of links) assert.match(html(path), /id="source-ledger"/);
 });
 
-test('the front door branches into existing consumer and professional workflows', () => {
+test('the front door makes the consumer action primary and the professional path quiet', () => {
   const home = html('/');
   const frontDoor = home.match(/<section[^>]+class="[^"]*front-door[^"]*"[\s\S]*?<\/section>/)?.[0];
   assert.ok(frontDoor, 'front door exists');
   for (const id of ['question-path', 'expertise-path']) assert.match(frontDoor, new RegExp(`id="${id}"`));
-  assert.match(frontDoor, /class="front-door-switcher"[\s\S]*href="#question-path"[\s\S]*I have a question[\s\S]*href="#expertise-path"[\s\S]*I share financial expertise/);
-  assert.match(frontDoor, /Evidence-first financial guidance[\s\S]*Education first:[\s\S]*insurance and asset protection[\s\S]*financial planning[\s\S]*business finance/);
-  assert.match(frontDoor, /documented specialty[\s\S]*Scope labels, sources, and editorial review[\s\S]*not provide individualized advice/);
-  assert.match(frontDoor, /Question[\s\S]*Sources[\s\S]*Answer[\s\S]*Discussion/);
-  assert.match(frontDoor, /Contribution[\s\S]*Review[\s\S]*Byline[\s\S]*Author profile/);
-  assert.match(frontDoor, /href="\/professionals"[^>]*>Explore contributing/);
+  assert.match(frontDoor, /<form action="\/ask"[^>]*method="get"[\s\S]*<button class="btn btn-primary"[^>]*>Ask a question/);
+  assert.equal((frontDoor.match(/class="btn btn-primary"/g) ?? []).length, 1, 'Ask a question is the only front-door primary action');
+  assert.match(frontDoor, /id="expertise-path"[\s\S]*For insurance and financial professionals[\s\S]*Editorial review is required\.[\s\S]*Accepted contributions can earn attribution[\s\S]*publication is not guaranteed/);
+  assert.match(frontDoor, /class="btn btn-quiet"[^>]*href="\/professionals"[^>]*>Get cited/);
   assert.match(frontDoor, /href="\/contribute\?type=research"[^>]*>Prepare a private draft/);
+  assert.match(frontDoor, /Question[\s\S]*Sources[\s\S]*Answer[\s\S]*Discussion/);
+  assert.doesNotMatch(frontDoor, /front-door-switcher|Choose your starting point|front-door-branch-expertise|I share financial expertise\./);
   assert.doesNotMatch(frontDoor, /Explore publishing/);
-  for (const path of ['/ask', '/sources', '/questions/replacement-cost-vs-market-value', '/design/commons-preview', '/professionals', '/contribute?type=research', '/authors/aaron-bollinger']) {
+  for (const path of ['/ask', '/sources', '/questions/replacement-cost-vs-market-value', '/design/commons-preview', '/professionals', '/contribute?type=research']) {
     assert.match(frontDoor, new RegExp(`href="${path.replace(/[?]/g, '\\?')}"`), path);
   }
-  assert.match(frontDoor, /Moderated discussion or commenting is a separate Community surface/);
-  assert.match(frontDoor, /not open in this preview/);
-  assert.doesNotMatch(frontDoor, /backlinks?|guarantee|live comments|credential verified|personalized advice/i);
+  assert.doesNotMatch(frontDoor, /backlinks?|live comments|credential verified|personalized advice/i);
 });
 
 test('the asset-protection manifesto is semantic, existing-route-only, and honest about gated features', () => {
@@ -196,7 +194,8 @@ test('the asset-protection manifesto is semantic, existing-route-only, and hones
     assert.match(manifesto, new RegExp(scope));
   }
   assert.match(manifesto, /href="\/ask"/);
-  assert.equal((manifesto.match(/href="\/professionals"/g) ?? []).length, 1, 'Explore contributing is the single professional action');
+  assert.equal((manifesto.match(/href="\/professionals"/g) ?? []).length, 1, 'Get cited is the single professional action');
+  assert.match(manifesto, /href="\/professionals"[^>]*>Get cited/);
   assert.equal((manifesto.match(/class="asset-manifesto-scope-label"/g) ?? []).length, 8, 'all eight scopes are semantic labels');
   assert.match(manifesto, /not individualized advice/);
   assert.match(manifesto, /fiduciary or attorney-client relationship/);
