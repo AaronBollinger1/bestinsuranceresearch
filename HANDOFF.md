@@ -1,5 +1,20 @@
 # Handoff
 
+Latest pass (15 September, release recovery onto launch): recovered product
+chain PR #1 `ad67133` plus PR #3 `3b46cd4` onto exact current
+`launch/initial-publication` `f9608b6` on isolated branch
+`grok/recover-pr1-pr3-onto-launch-20260915`. PR #2
+`gate/under-construction-20260912` was not folded. Ask a question remains the
+sole front-door primary; Get cited stays quiet; asset-protection manifesto,
+citations, reduced-motion, canonical/schema, and Commons-closed gates are
+unchanged. See `BIRCH-RELEASE-RECOVERY-HANDOFF-2026-09-15.md` and
+`outputs/birch-release-recovery-2026-09-15/`. Draft replacement PR only; do not
+merge, deploy, or promote.
+
+Proof: preview **183 passed**, 892 pages; production-posture **162 passed**;
+on-page **0 / 563**; Commons **80 passed / 1 skip**; focused design verifier
+**14 passed**. 1280px and 390px overflow-false; `#expertise-path` ~88px.
+
 Latest pass (14 September, sticky-header-safe landing reveals): at the exact
 starting head `e470bd1f6c10ca2f9a5c627dac70d6b3e5c88c52`, fresh 1280px and
 emulated 390px screenshots showed the existing `#question-path` and
