@@ -182,11 +182,10 @@ test('the asset-protection manifesto is semantic, existing-route-only, and hones
   assert.ok(manifesto, 'manifesto unit exists');
   assert.match(manifesto, /id="manifesto-title"/);
   assert.match(manifesto, /Ensure your assets are[\s\S]*protected/);
-  assert.match(manifesto, /class="asset-manifesto-from"[^>]*>Insure your assets\./);
-  assert.match(manifesto, /data-manifesto-stage[^>]*\shidden|hidden[^>]*data-manifesto-stage/);
-  assert.match(manifesto, /aria-hidden="true"/);
+  assert.equal((manifesto.match(/<h2\b/g) ?? []).length, 1, 'one heading');
+  assert.doesNotMatch(manifesto, /Insure your assets/);
+  assert.doesNotMatch(manifesto, /asset-manifesto-from|data-manifesto-stage/);
   assert.doesNotMatch(manifesto, /<script/);
-  assert.match(manifesto, /Insure your assets/);
   for (const layer of ['Coverage', 'Prevention', 'Documentation', 'Contracts', 'Planning', 'Mitigation', 'Recovery']) {
     assert.match(manifesto, new RegExp(layer));
   }
