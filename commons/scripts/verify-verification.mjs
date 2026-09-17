@@ -32,6 +32,20 @@ test('only the supported professional roles can be requested', () => {
 		registerUrl: 'https://example.com/register',
 	});
 	assert.ok(unsupported.errors.some((error) => error.field === 'kind'));
+
+	for (const inherited of ['constructor', 'toString', '__proto__']) {
+		const forged = validateVerificationRequest({
+			kind: inherited,
+			licenseNumber: '123456',
+			authority: 'California Department of Insurance',
+			registerUrl: 'https://interactive.web.insurance.ca.gov/producer-search/',
+		});
+		assert.ok(
+			forged.errors.some((error) => error.field === 'kind'),
+			`${inherited} must not pass as a professional role`,
+		);
+		assert.equal(forged.draft, null);
+	}
 });
 
 test('a request needs a direct HTTPS register URL and public fields', () => {

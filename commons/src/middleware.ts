@@ -1,4 +1,6 @@
 import { defineMiddleware } from 'astro:middleware';
+import { closedCommonsRequest } from './lib/access';
+import { commons } from './config/commons';
 
 /**
  * Response headers, on every route.
@@ -19,6 +21,22 @@ import { defineMiddleware } from 'astro:middleware';
  * thing that will notice.
  */
 export const onRequest = defineMiddleware(async (context, next) => {
+	if (
+		!context.isPrerendered &&
+		closedCommonsRequest(context.url.pathname, context.request.method, commons.publicReady)
+	) {
+		return new Response(
+			'Birch Community is a private preview. Accounts, sign-in, contribution, and moderation are not open.',
+			{
+				status: 403,
+				headers: {
+					'Content-Type': 'text/plain; charset=utf-8',
+					'Cache-Control': 'private, no-store',
+				},
+			},
+		);
+	}
+
 	const response = await next();
 
 	response.headers.set(

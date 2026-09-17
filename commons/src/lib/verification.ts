@@ -45,7 +45,7 @@ export function validateVerificationRequest(input: Record<string, string>): {
 	const authority = trimmed(input, 'authority');
 	const registerUrl = trimmed(input, 'registerUrl');
 
-	if (!(kind in PROFESSIONAL_ROLES)) {
+	if (!Object.hasOwn(PROFESSIONAL_ROLES, kind)) {
 		errors.push({ field: 'kind', message: 'Choose one of the available professional roles.' });
 	}
 	if (licenseNumber.length < 4 || licenseNumber.length > 40) {
