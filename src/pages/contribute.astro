@@ -19,8 +19,8 @@ const jsonLd = graph(organization(), website(), breadcrumbs([{ name: 'Home', pat
       <div class="contribution-surface">
         <div class="contribution-progress" aria-label="Contribution preview progress"><span id="write-step" aria-current="step">1. Write</span><ArrowRight size={13} aria-hidden="true" /><span id="preview-step">2. Preview</span><span class="contribution-local">This page only</span></div>
         <div id="draft-editor">
-          <form id="contribution-form">
-            <fieldset id="draft-fields" disabled>
+          <form id="contribution-form" method="get" action="/contribute">
+            <fieldset id="draft-fields">
               <legend class="u-visually-hidden">Prepare a private contribution</legend>
               <fieldset class="contribution-kind">
                 <legend>What would you like to add?</legend>
@@ -37,7 +37,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs([{ name: 'Home', pat
               <div class="draft-actions"><button class="btn btn-primary" type="button" id="preview-draft">Preview contribution <ArrowRight size={16} aria-hidden="true" /></button><button class="btn btn-quiet" type="button" id="contribution-reset">Clear</button></div>
             </fieldset>
           </form>
-          <noscript><p class="draft-privacy">JavaScript is required for this local-only draft preview. The fields are disabled so your draft cannot be submitted. You can still <a href="/editorial-policy">read the contribution rules</a>.</p></noscript>
+          <noscript><p class="draft-privacy">You can write a draft without JavaScript. Title and body are not named form fields, so this page cannot send them. Preview of a formatted draft needs JavaScript. You can still <a href="/editorial-policy">read the contribution rules</a>.</p></noscript>
         </div>
         <section id="draft-preview" hidden aria-labelledby="draft-preview-heading">
           <div class="preview-label"><span id="preview-kind">Experience</span><span id="preview-coverage"></span><span>Not submitted</span></div>
@@ -52,7 +52,14 @@ const jsonLd = graph(organization(), website(), breadcrumbs([{ name: 'Home', pat
       </div>
       <aside class="contribution-context">
         <span class="eyebrow">A useful contribution</span><h2 id="context-title">Start with what happened.</h2><p id="context-description">A first-person account helps another reader ask better questions. It stays labeled as an experience, separate from sourced research.</p>
-        <div class="contribution-context-process"><h3>Before anything is public</h3><ol><li><strong>A real account</strong><span>Sign in and choose what is public.</span></li><li><strong>The right context</strong><span>Declare your role, affiliation, and sources.</span></li><li><strong>Human review</strong><span>Check privacy, scope, and any revisions.</span></li></ol></div>
+        <dl class="contribution-engagement">
+          <div><dt>Citations</dt><dd>0</dd></div>
+          <div><dt>Responses</dt><dd>0</dd></div>
+          <div><dt>Queue</dt><dd>Not live</dd></div>
+        </dl>
+        <p class="contribution-engagement-note">Engagement is not public yet. There is no moderation queue on this origin. Accounts and posting stay closed.</p>
+        <p class="contribution-profile-stub"><strong>Contributor profile</strong> — not public. An illustrative account specimen remains labeled as a preview.</p>
+        <div class="contribution-context-process"><h3>Before anything is public</h3><ol><li><strong>A real account</strong><span>Sign in and choose what is public. Signup is not open here.</span></li><li><strong>The right context</strong><span>Declare your role, affiliation, and sources.</span></li><li><strong>Human review</strong><span>Check privacy, scope, and any revisions. Nothing is published from this page.</span></li></ol></div>
         <a class="text-link" href="/editorial-policy">Contribution standards <ArrowRight size={14} aria-hidden="true" /></a>
         <a class="text-link" href="/professionals">For professionals <ArrowRight size={14} aria-hidden="true" /></a>
       </aside>
@@ -62,7 +69,6 @@ const jsonLd = graph(organization(), website(), breadcrumbs([{ name: 'Home', pat
 
 <script>
   const form = document.querySelector<HTMLFormElement>('#contribution-form');
-  const fields = document.querySelector<HTMLFieldSetElement>('#draft-fields');
   const editor = document.querySelector<HTMLElement>('#draft-editor');
   const preview = document.querySelector<HTMLElement>('#draft-preview');
   const title = document.querySelector<HTMLInputElement>('#contribution-title');
@@ -135,7 +141,6 @@ const jsonLd = graph(organization(), website(), breadcrumbs([{ name: 'Home', pat
     ['#draft-preview-heading','#preview-body','#preview-sources'].forEach(selector => write(selector,''));
     showPreview(false); title?.focus(); if (status) status.textContent = 'Draft cleared.';
   });
-  if (fields) fields.disabled = false;
 </script>
 
 <style>
@@ -180,6 +185,11 @@ const jsonLd = graph(organization(), website(), breadcrumbs([{ name: 'Home', pat
   .contribution-context li strong, .contribution-context li span { display: block; line-height: 1.6; }
   .contribution-context li strong { color: var(--body); font-weight: 500; }
   .contribution-context > a { display: flex; min-height: var(--tap); font-size: var(--text-xs); }
+  .contribution-engagement { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 20px 0 8px; }
+  .contribution-engagement div { padding: 10px 0; border-top: 1px solid var(--line); }
+  .contribution-engagement dt { color: var(--muted); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: .04em; }
+  .contribution-engagement dd { margin: 4px 0 0; color: var(--ink); font: 500 var(--text-lg)/1.2 var(--font-sans); }
+  .contribution-engagement-note, .contribution-profile-stub { margin: 0 0 12px; color: var(--muted); font-size: var(--text-2xs); line-height: 1.55; }
   .preview-label { display: flex; flex-wrap: wrap; gap: 12px; font-size: var(--text-xs); color: var(--muted); }
   .preview-label span:first-child { color: var(--brand-blue-text); }
   #draft-preview h2 { margin: 24px 0; font: 600 var(--text-2xl)/1.3 var(--font-sans); letter-spacing: -.03em; overflow-wrap: anywhere; }
