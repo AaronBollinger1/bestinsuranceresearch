@@ -157,7 +157,7 @@ const jsonLd = graph(
 							<h1>{d.legalName}</h1>
 							<div class="answer-flags company-profile-flags"><span class="meta">{ORG_TYPE_LABEL[d.orgType] ?? d.orgType}</span><span class="meta">{d.jurisdictions.join(', ')}</span></div>
 							<div class="company-profile-actions">
-								<a class="btn btn-primary" href="/ask">Ask Birch <ArrowRight size={15} aria-hidden="true" /></a>
+								<a class="btn btn-primary" href="/ask">Ask a question <ArrowRight size={15} aria-hidden="true" /></a>
 								{d.officialUrls[0]?.url && <a class="btn btn-secondary" href={d.officialUrls[0].url} rel="noopener nofollow" target="_blank">Official record <ExternalLink size={14} aria-hidden="true" /></a>}
 								<a class="btn btn-quiet" href="#source-ledger">{sources.length} source records</a>
 							</div>

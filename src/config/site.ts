@@ -141,7 +141,7 @@ const communityNavItem = {
 
 export const primaryNav = [
 	{ label: 'Start here', href: '/start', description: 'Choose the right Birch path' },
-	{ label: 'Ask Birch', href: '/ask', description: 'Search the question library' },
+	{ label: 'Ask a question', href: '/ask', description: 'Search the question library' },
 	{ label: 'Coverage', href: '/insurance', description: 'Explore coverage, questions and guides' },
 	{ label: 'Tools', href: '/tools', description: 'Free decision support' },
 	{ label: 'Sources', href: '/sources', description: 'Open the source registry' },
