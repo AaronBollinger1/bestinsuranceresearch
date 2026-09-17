@@ -3,5 +3,5 @@ export const productDesign = {
   direction: 'focus',
   label: 'A / Focus',
   selectedOn: '2026-09-11',
-  primaryAction: 'Ask Birch',
+  primaryAction: 'Ask a question',
 } as const;

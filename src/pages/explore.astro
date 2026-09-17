@@ -92,7 +92,7 @@ const jsonLd = graph(
 								<label for="explore-q">What are you trying to figure out?</label>
 								<div class="explore-search-row">
 									<input id="explore-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="What does replacement cost mean?" aria-describedby="explore-q-hint" />
-									<button class="btn btn-primary" type="submit"><Search size={16} aria-hidden="true" /> Ask Birch</button>
+									<button class="btn btn-primary" type="submit"><Search size={16} aria-hidden="true" /> Ask a question</button>
 								</div>
 								<span class="hint" id="explore-q-hint">Search stays in this browser tab. Leave out names, addresses, policy numbers, claim numbers, and health details.</span>
 							</div>
@@ -196,13 +196,13 @@ const jsonLd = graph(
 					<div>
 						<span class="eyebrow">Local library filter</span>
 						<h2 id="filter-title">Looking for a phrase?</h2>
-						<p class="lede">Filter the topic and company previews on this page. The text stays in your browser; use Ask Birch when you want the full research search.</p>
+						<p class="lede">Filter the topic and company previews on this page. The text stays in your browser; use Ask a question when you want the full research search.</p>
 					</div>
 					<div class="explore-filter-box">
 						<label for="explore-filter">Filter this page</label>
 						<div class="explore-filter-input"><Search size={16} aria-hidden="true" /><input id="explore-filter" type="search" placeholder="Try wildfire, auto, Farmers…" autocomplete="off" /></div>
 						<p id="explore-filter-status" role="status" aria-live="polite">Showing {familyGroups.length + companies.length} previews.</p>
-						<p id="explore-filter-empty" hidden>No preview matches that phrase. <a href="/ask">Ask Birch instead <ArrowRight size={14} aria-hidden="true" /></a></p>
+						<p id="explore-filter-empty" hidden>No preview matches that phrase. <a href="/ask">Ask a question instead <ArrowRight size={14} aria-hidden="true" /></a></p>
 					</div>
 				</div>
 				<div class="explore-trust-grid">

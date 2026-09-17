@@ -165,6 +165,15 @@ test('the front door preserves review uncertainty and working source-ledger link
   for (const [, path] of links) assert.match(html(path), /id="source-ledger"/);
 });
 
+test('live Ask chrome uses Ask a question, not Ask Birch', () => {
+  const home = html('/');
+  assert.match(home, /class="[^"]*header-ask-cta[^"]*"[^>]*>Ask a question/);
+  assert.doesNotMatch(home, /class="[^"]*header-ask-cta[^"]*"[^>]*>Ask Birch/);
+  const industries = html('/industries');
+  assert.match(industries, /class="btn btn-primary"[^>]*>Ask a question/);
+  assert.doesNotMatch(industries, /class="btn btn-primary"[^>]*>Ask Birch/);
+});
+
 test('the front door makes the consumer action primary and the professional path quiet', () => {
   const home = html('/');
   const frontDoor = home.match(/<section[^>]+class="[^"]*front-door[^"]*"[\s\S]*?<\/section>/)?.[0];
