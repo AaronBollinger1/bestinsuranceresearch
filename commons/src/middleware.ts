@@ -1,5 +1,5 @@
 import { defineMiddleware } from 'astro:middleware';
-import { closedCommonsRequest } from './lib/access';
+import { applyCommonsSecurityHeaders, closedCommonsRequest } from './lib/access';
 import { commons } from './config/commons';
 
 /**
@@ -25,38 +25,22 @@ export const onRequest = defineMiddleware(async (context, next) => {
 		!context.isPrerendered &&
 		closedCommonsRequest(context.url.pathname, context.request.method, commons.publicReady)
 	) {
-		return new Response(
-			'Birch Community is a private preview. Accounts, sign-in, contribution, and moderation are not open.',
-			{
-				status: 403,
-				headers: {
-					'Content-Type': 'text/plain; charset=utf-8',
-					'Cache-Control': 'private, no-store',
+		return applyCommonsSecurityHeaders(
+			new Response(
+				'Birch Community is a private preview. Accounts, sign-in, contribution, and moderation are not open.',
+				{
+					status: 403,
+					headers: {
+						'Content-Type': 'text/plain; charset=utf-8',
+						'Cache-Control': 'private, no-store',
+					},
 				},
-			},
+			),
 		);
 	}
 
 	const response = await next();
-
-	response.headers.set(
-		'Content-Security-Policy',
-		[
-			"default-src 'self'",
-			"base-uri 'self'",
-			"object-src 'none'",
-			"frame-ancestors 'none'",
-			"form-action 'self'",
-			"img-src 'self' data:",
-			"style-src 'self' 'unsafe-inline'",
-			"font-src 'self'",
-			"connect-src 'self'",
-		].join('; '),
-	);
-	response.headers.set('X-Content-Type-Options', 'nosniff');
-	response.headers.set('X-Frame-Options', 'DENY');
-	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-	response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()');
+	applyCommonsSecurityHeaders(response);
 
 	/* Nothing that depends on a session may be cached by anything in between. */
 	if (!context.isPrerendered) {

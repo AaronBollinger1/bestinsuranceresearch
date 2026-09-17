@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { closedCommonsRequest } from '../src/lib/access.ts';
+import { applyCommonsSecurityHeaders, closedCommonsRequest } from '../src/lib/access.ts';
 
 test('a closed Commons rejects sign-in, account, contribution, and moderation traffic', () => {
 	for (const [path, method] of [
@@ -37,4 +37,22 @@ test('a closed Commons still serves health, robots, and read-only GET pages', ()
 test('an open Commons does not use the closed-preview gate', () => {
 	assert.equal(closedCommonsRequest('/sign-in', 'POST', true), false);
 	assert.equal(closedCommonsRequest('/contribute/new', 'POST', true), false);
+});
+
+test('a gated 403 carries the same security headers as every other Commons response', () => {
+	const denied = applyCommonsSecurityHeaders(
+		new Response('closed', {
+			status: 403,
+			headers: {
+				'Content-Type': 'text/plain; charset=utf-8',
+				'Cache-Control': 'private, no-store',
+			},
+		}),
+	);
+	assert.equal(denied.status, 403);
+	assert.match(denied.headers.get('Content-Security-Policy') ?? '', /form-action 'self'/);
+	assert.equal(denied.headers.get('X-Content-Type-Options'), 'nosniff');
+	assert.equal(denied.headers.get('X-Frame-Options'), 'DENY');
+	assert.equal(denied.headers.get('Referrer-Policy'), 'strict-origin-when-cross-origin');
+	assert.match(denied.headers.get('Permissions-Policy') ?? '', /camera=\(\)/);
 });

@@ -16,3 +16,25 @@ export function closedCommonsRequest(pathname: string, method: string, publicRea
 	const verb = method.toUpperCase();
 	return verb !== 'GET' && verb !== 'HEAD' && verb !== 'OPTIONS';
 }
+
+const COMMONS_CSP = [
+	"default-src 'self'",
+	"base-uri 'self'",
+	"object-src 'none'",
+	"frame-ancestors 'none'",
+	"form-action 'self'",
+	"img-src 'self' data:",
+	"style-src 'self' 'unsafe-inline'",
+	"font-src 'self'",
+	"connect-src 'self'",
+].join('; ');
+
+/** Security headers that belong on every Commons response, including gated 403s. */
+export function applyCommonsSecurityHeaders(response: Response): Response {
+	response.headers.set('Content-Security-Policy', COMMONS_CSP);
+	response.headers.set('X-Content-Type-Options', 'nosniff');
+	response.headers.set('X-Frame-Options', 'DENY');
+	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+	response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()');
+	return response;
+}
