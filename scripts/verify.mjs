@@ -77,6 +77,38 @@ const { canonicalLine, sharesLine } = await import(
 	new URL('../src/lib/lines.ts', import.meta.url).href,
 );
 
+test('the frozen dataset index locators stay on the Birch canonical host', () => {
+	const index = JSON.parse(read(path.join(ROOT, 'public/dataset/releases.json')));
+	const blob = JSON.stringify(index);
+	assert.equal(index.documentation, 'https://birch.insure/dataset');
+	assert.doesNotMatch(blob, /bestinsuranceresearch\.com/);
+	for (const release of index.releases) {
+		assert.match(release.url, /^https:\/\/birch\.insure\/dataset\//);
+		for (const file of release.files) {
+			assert.match(file.url, /^https:\/\/birch\.insure\/dataset\//);
+			assert.match(file.sha256, /^[a-f0-9]{64}$/);
+		}
+	}
+});
+
+test('guide citation and machine-record links share the coverage companion', () => {
+	const sample = coverages[0];
+	assert.ok(sample, 'no coverage records');
+	const html = read(path.join(DIST, 'guides', sample.id, 'index.html'));
+	assert.match(html, new RegExp(`/insurance/${sample.id}\\.json`));
+	assert.doesNotMatch(html, new RegExp(`/guides/${sample.id}\\.json`));
+});
+
+test('under-review coverage citations export editorial-review pending, not last reviewed', () => {
+	const pending = coverages.find((entry) => entry.data.reviewState === 'under-review');
+	assert.ok(pending, 'no under-review coverage record');
+	const html = read(path.join(DIST, 'insurance', pending.id, 'index.html'));
+	const plain = html.match(/<pre id="cite-plain">([\s\S]*?)<\/pre>/)?.[1] ?? '';
+	assert.match(plain, /Editorial review pending/);
+	assert.match(plain, /Record dated/);
+	assert.doesNotMatch(plain, /Last reviewed/);
+});
+
 const sourceIds = new Set(sources.map((s) => s.id));
 const routes = new Set(htmlFiles.map(routeOf));
 

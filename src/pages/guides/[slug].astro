@@ -157,6 +157,7 @@ const jsonLd = graph(
 		dateModified: d.lastReviewed,
 		author: d.author,
 		reviewer: d.reviewer,
+		reviewState: d.reviewState,
 		sections: sections.map((x) => x.label),
 		citations: sources.map((x) => ({
 			name: x.data.title,
@@ -224,12 +225,13 @@ const jsonLd = graph(
 		<section class="band band-tight no-print" aria-label="Cite this guide">
 			<div class="shell">
 				<CiteThisPage
-					machinePath={`${path}.json`}
+					machinePath={`/insurance/${entry.id}.json`}
 					page={{
 						title: `${d.name}: a guide`,
 						path,
 						published: d.effectiveDate,
 						reviewed: d.lastReviewed,
+						reviewState: d.reviewState,
 						author: d.author,
 						id: entry.id,
 						pageType: 'guide',
