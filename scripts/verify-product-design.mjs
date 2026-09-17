@@ -63,7 +63,9 @@ test('the selected Direction A is the homepage, not an undecided alternative', (
 function assertLocalDraftBoundary(page) {
   const draft = page.match(/<form\b[^>]*id="contribution-form"[^>]*>[\s\S]*?<\/form>/)?.[0];
   assert.ok(draft, 'local contribution form exists');
-  assert.match(draft, /<fieldset\b[^>]*id="draft-fields"[^>]*\sdisabled(?:\s|>)/, 'draft fields fail closed without JavaScript');
+  assert.match(draft, /method="get"/, 'type selection is GET-first');
+  assert.match(draft, /action="\/contribute"/);
+  assert.doesNotMatch(draft, /<fieldset\b[^>]*id="draft-fields"[^>]*\sdisabled(?:\s|>)/, 'draft fields work without JavaScript');
   assert.doesNotMatch(draft, /<(?:input|button)\b[^>]*type="submit"/, 'preview is not a network submit');
   for (const tag of draft.matchAll(/<(?:input|textarea|select)\b[^>]*>/g)) {
     assert.doesNotMatch(tag[0], /type="(?:email|file)"/, 'no contact or document intake');
@@ -74,13 +76,19 @@ function assertLocalDraftBoundary(page) {
 test('contribution preview fails closed and provides write, preview, and clear states', () => {
   const page = html('/contribute');
   assertLocalDraftBoundary(page);
-  // Prove the check rejects the safety regression, rather than passing vacuously.
-  assert.throws(() => assertLocalDraftBoundary(page.replace(/(<fieldset\b[^>]*id="draft-fields"[^>]*?)\sdisabled/, '$1')));
+  assert.throws(() => assertLocalDraftBoundary(page.replace('id="contribution-title"', 'name="title" id="contribution-title"')));
   assert.match(page, /<section\b[^>]*id="draft-preview"[^>]*\shidden/);
   for (const target of ['preview-draft','edit-draft','confirm-clear','cancel-clear','draft-private-check']) assert.match(page, new RegExp(`id="${target}"`));
   assert.match(page, /Text is lost when you leave or reload/);
   assert.match(page, /does not detect or redact sensitive information/);
   assert.match(page, /<noscript>/);
+  assert.match(page, /cannot send them/);
+  assert.match(page, /Citations/);
+  assert.match(page, />0</);
+  assert.match(page, /Not live/);
+  assert.match(page, /Contributor profile/);
+  assert.match(page, /There is no moderation queue on this origin/);
+  assert.match(page, /Accounts and posting stay closed/);
 });
 
 test('professional entry does not turn an illustrative profile into verification', () => {
