@@ -176,6 +176,21 @@ test('the front door makes the consumer action primary and the professional path
   assert.doesNotMatch(frontDoor, /backlinks?|live comments|credential verified|personalized advice/i);
 });
 
+test('the homepage second act offers policy paths and private contribution without a second filled primary', () => {
+  const home = html('/');
+  const second = home.match(/<section[^>]+id="understand-policy"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(second, 'understand-policy unit exists');
+  assert.match(second, /Understand your policy/);
+  assert.match(second, /href="\/questions\/homeowners-earthquake-california"/);
+  assert.match(second, /href="\/contribute\?type=experience"[^>]*>Share an experience/);
+  assert.match(second, /href="\/professionals"[^>]*>Get cited/);
+  assert.doesNotMatch(second, /class="btn btn-primary"/);
+  assert.match(home, /href="\/contribute\?type=experience"/);
+  assert.doesNotMatch(home, /Explore contributing/);
+  assert.match(home, /Signup and posting stay closed/);
+  assert.doesNotMatch(second, /get a quote|personalized advice|live comments/i);
+});
+
 test('the asset-protection manifesto is semantic, existing-route-only, and honest about gated features', () => {
   const home = html('/');
   const manifesto = home.match(/<section[^>]+id="asset-protection"[\s\S]*?<\/section>/)?.[0];
