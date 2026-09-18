@@ -3,9 +3,10 @@
  *
  * A reader may begin with a role or situation ("I run a construction
  * business") rather than a coverage name. These hubs make that route
- * discoverable by gathering existing, reviewed coverage, question, example,
- * company, and source records. They do not create a new insurance claim of
- * their own, rank carriers, or imply that every item applies to every reader.
+ * discoverable by gathering existing coverage, question, example, company, and
+ * source records at whatever review state those records actually carry. They do
+ * not create a new insurance claim of their own, rank carriers, or imply that
+ * every item applies to every reader.
  *
  * The definitions below are taxonomy. The substance on each page comes from
  * the records returned by `loadCorpus`, and a hub is only published when it has
@@ -122,7 +123,35 @@ export interface IndustryHub {
 	companies: Corpus['companies'];
 	sourceIds: string[];
 	lastReviewed: string;
+	/**
+	 * The weakest review state among the records this hub gathers.
+	 *
+	 * A hub authors no claim of its own, so it has no review of its own to
+	 * report. What it can report is whether everything underneath it has been
+	 * reviewed. An index that gathers one open record and exports "Last
+	 * reviewed" would launder that open record into a completed review, which
+	 * is the one thing `CitablePage.reviewState` exists to prevent.
+	 *
+	 * `lastReviewed` is the newest member date, so it is the most flattering
+	 * date in the set. That is defensible as a "record dated" stamp and not as
+	 * a review completion, which is exactly the distinction this field carries
+	 * into the citation exports and the machine record.
+	 */
+	reviewState: ReviewState;
 	hasSubstance: boolean;
+}
+
+type ReviewState = 'reviewed' | 'under-review' | 'corrected';
+
+/**
+ * Review states ordered weakest first. An index inherits the weakest state it
+ * gathers: one open record keeps the whole index open.
+ */
+function weakestReviewState(states: Array<string | undefined>): ReviewState {
+	if (states.length === 0) return 'under-review';
+	if (states.some((state) => state !== 'reviewed' && state !== 'corrected')) return 'under-review';
+	if (states.some((state) => state === 'corrected')) return 'corrected';
+	return 'reviewed';
 }
 
 const ids = (refs: Array<string | { id: string }> = []): string[] =>
@@ -168,6 +197,12 @@ export function industryHub(
 		...examples.map((entry) => entry.data.lastReviewed),
 		...companies.map((entry) => entry.data.lastReviewed),
 	];
+	const reviewStates = [
+		...questions.map((entry) => entry.data.reviewState),
+		...coverages.map((entry) => entry.data.reviewState),
+		...examples.map((entry) => entry.data.reviewState),
+		...companies.map((entry) => entry.data.reviewState),
+	];
 	const resourceCount = questions.length + coverages.length + examples.length + companies.length;
 
 	return {
@@ -182,6 +217,7 @@ export function industryHub(
 		companies,
 		sourceIds: [...sourceIds],
 		lastReviewed: latestDate(reviewDates),
+		reviewState: weakestReviewState(reviewStates),
 		hasSubstance: resourceCount >= minResources && sourceIds.size >= 2,
 	};
 }
