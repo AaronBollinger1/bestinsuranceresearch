@@ -165,6 +165,13 @@ test('the front door preserves review uncertainty and working source-ledger link
   for (const [, path] of links) assert.match(html(path), /id="source-ledger"/);
 });
 
+test('ask examples are GET links to sourced answers', () => {
+  const page = html('/ask');
+  assert.match(page, /Try one of these/);
+  assert.match(page, /href="\/questions\/[^"]+"[^>]*data-example=/);
+  assert.doesNotMatch(page, /<button[^>]*data-example=/);
+});
+
 test('live Ask chrome uses Ask a question, not Ask Birch', () => {
   const home = html('/');
   assert.match(home, /class="[^"]*header-ask-cta[^"]*"[^>]*>Ask a question/);
