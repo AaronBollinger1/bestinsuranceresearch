@@ -207,10 +207,14 @@ export function companyRecord(
 /**
  * Machine-readable context-hub record.
  *
- * An industry hub is an index over existing reviewed records, not a new source
- * of coverage advice. Keeping that distinction in the record makes it safe for
+ * An industry hub is an index over existing records, not a new source of
+ * coverage advice. Keeping that distinction in the record makes it safe for
  * answer engines to discover the context route while preserving the canonical
  * question, coverage, company, example, and source URLs underneath it.
+ *
+ * `reviewState` is the weakest state among the gathered records, so a consumer
+ * of this record reads the same review truth the page's citation exports. An
+ * index must not report a completed review its members have not had.
  */
 export function industryRecord(hub: IndustryHub, sources: CollectionEntry<'sources'>[]) {
 	const path = `/industries/${hub.id}`;
@@ -220,6 +224,7 @@ export function industryRecord(hub: IndustryHub, sources: CollectionEntry<'sourc
 		descriptor: hub.descriptor,
 		lines: hub.lines,
 		lastReviewed: hub.lastReviewed,
+		reviewState: hub.reviewState,
 		counts: {
 			coveragePages: hub.coverages.length,
 			answeredQuestions: hub.questions.length,

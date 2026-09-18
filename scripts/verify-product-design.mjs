@@ -150,6 +150,36 @@ test('citation exports distinguish assigned review from completed review', () =>
   }
 });
 
+test('a context index inherits the weakest review state of the records it gathers', () => {
+  const hubs = readdirSync(fileURLToPath(new URL('../dist/industries', import.meta.url)), { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
+  assert.ok(hubs.length >= 14, 'published context hubs exist');
+  for(const id of hubs) {
+    const recordPath = fileURLToPath(new URL(`../dist/industries/${id}.json`, import.meta.url));
+    assert.ok(existsSync(recordPath), `/industries/${id}: machine record exists`);
+    const record = JSON.parse(readFileSync(recordPath, 'utf8'));
+    assert.ok(['reviewed','under-review','corrected'].includes(record.reviewState), `${id}: record states a review state`);
+    const page = html(`/industries/${id}`);
+    assert.doesNotMatch(page,/"reviewedBy"/,`${id}: pending review must not become a structured-data endorsement`);
+    // The page's own citation must not out-claim the machine record it links to.
+    if(record.reviewState !== 'reviewed') {
+      for(const format of ['plain','bibtex','csl']) {
+        const text = page.match(new RegExp(`<pre[^>]*id="cite-${format}"[^>]*>([\\s\\S]*?)</pre>`))?.[1];
+        assert.ok(text,`${id}: ${format} export exists`);
+        assert.doesNotMatch(text,/Last reviewed/,`${id}: ${format} must not export an unfinished review as completed`);
+      }
+    }
+    if(record.reviewState === 'under-review') {
+      for(const format of ['plain','bibtex','csl']) {
+        const text = page.match(new RegExp(`<pre[^>]*id="cite-${format}"[^>]*>([\\s\\S]*?)</pre>`))?.[1];
+        assert.match(text,/Editorial review pending/,`${id}: ${format} states the open review`);
+      }
+      assert.match(page,/Under review/,`${id}: the visible band agrees with the export`);
+    }
+  }
+});
+
 const pageFile = (path) => fileURLToPath(new URL(`../dist${path === '/' ? '' : path}/index.html`, import.meta.url));
 const html = (path) => readFileSync(pageFile(path), 'utf8');
 

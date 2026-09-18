@@ -225,7 +225,10 @@ const jsonLd = graph(
 						<span class="eyebrow">Provenance</span>
 						<h2 id="source-trail">Source trail for this context</h2>
 					</div>
-					<span class="meta">Updated from the corpus {longDate(hub.lastReviewed)}</span>
+					<span class="hub-provenance">
+						<StatusChip kind={hub.reviewState} title="This index inherits the weakest review state of the records it gathers." />
+						<span class="meta">Updated from the corpus {longDate(hub.lastReviewed)}</span>
+					</span>
 				</div>
 				<p class="lede">This hub is assembled from existing Birch records. The linked coverage, question, example, and organization pages remain the citable units for individual statements.</p>
 				<SourceLedger sources={sourcePreview} today={TODAY} />
@@ -237,6 +240,7 @@ const jsonLd = graph(
 						path,
 						published: '2026-09-11',
 						reviewed: hub.lastReviewed,
+						reviewState: hub.reviewState,
 						author: 'Birch Research',
 						id: `industry-${hub.id}`,
 						pageType: 'industry context index',
@@ -263,6 +267,8 @@ const jsonLd = graph(
 
 <style>
 	.hub-role { max-width: 70ch; margin: var(--s-3) 0 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	/* Chip and date wrap as whole units, so a narrow viewport never breaks the date mid-phrase. */
+	.hub-provenance { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-3); }
 	.hub-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: var(--s-4); border: 1px solid var(--line-strong); background: var(--line-strong); }
 	.hub-card { display: grid; gap: var(--s-3); min-height: 230px; padding: var(--s-5); background: var(--paper); color: var(--ink); text-decoration: none; transition: background var(--dur-2) var(--ease), color var(--dur-2) var(--ease), transform var(--dur-2) var(--ease-soft), box-shadow var(--dur-2) var(--ease); }
 	.hub-card:hover, .hub-card:focus-visible { position: relative; z-index: 1; background: var(--brand-blue-wash); color: var(--brand-blue-deep); box-shadow: var(--elev-2); transform: translateY(-2px); }
