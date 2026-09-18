@@ -216,6 +216,53 @@ export function techArticle(input: {
 	};
 }
 
+/**
+ * A question record is a QAPage. One visible question, one visible answer.
+ * No hidden FAQ blocks. reviewedBy only when reviewState is reviewed.
+ */
+export function qaPage(input: {
+	question: string;
+	path: string;
+	answer: string;
+	datePublished: string;
+	dateModified: string;
+	author: string;
+	reviewer: string;
+	reviewState?: 'reviewed' | 'under-review' | 'corrected';
+	citations: Array<{ name: string; url: string; publisher: string }>;
+}): Json {
+	return {
+		'@type': 'QAPage',
+		'@id': `${abs(input.path)}#page`,
+		url: abs(input.path),
+		inLanguage: 'en-US',
+		isPartOf: { '@id': websiteId },
+		publisher: { '@id': organizationId },
+		isAccessibleForFree: true,
+		...(input.reviewState === 'reviewed' ? { reviewedBy: { '@type': 'Person', name: input.reviewer } } : {}),
+		mainEntity: {
+			'@type': 'Question',
+			name: input.question,
+			text: input.question,
+			answerCount: 1,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: input.answer,
+				inLanguage: 'en-US',
+				author: { '@type': 'Person', name: input.author },
+				dateCreated: input.datePublished,
+				dateModified: input.dateModified,
+				citation: input.citations.map((source) => ({
+					'@type': 'CreativeWork',
+					name: source.name,
+					url: source.url,
+					publisher: { '@type': 'Organization', name: source.publisher },
+				})),
+			},
+		},
+	};
+}
+
 /** A coverage line is a defined term inside the coverage library term set. */
 export function definedTerm(input: {
 	name: string;

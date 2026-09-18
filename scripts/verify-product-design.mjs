@@ -126,6 +126,17 @@ test('canonical coverage reading frame stays preview-only and navigation-safe', 
   assert.equal((page.match(/id="source-inspector"/g) || []).length, 1);
 });
 
+test('question pages emit QAPage JSON-LD that respects reviewState', () => {
+  const page = html('/questions/replacement-cost-vs-market-value');
+  assert.match(page, /"@type":"QAPage"/);
+  assert.match(page, /"@type":"Question"/);
+  assert.match(page, /"@type":"Answer"/);
+  assert.match(page, /What is the difference between replacement cost and market value\?/);
+  assert.doesNotMatch(page, /"reviewedBy"/);
+  assert.doesNotMatch(page, /"@type":"FAQPage"/);
+  assert.doesNotMatch(page, /"@type":"(?:AggregateRating|Review|Offer)"/);
+});
+
 test('citation exports distinguish assigned review from completed review', () => {
   for(const path of ['/companies/farmers-insurance-exchange','/questions/am-i-an-applicable-large-employer']) {
     const page = html(path);
