@@ -228,6 +228,37 @@ test('every in-page link lands on a section that exists', () => {
   assert.deepEqual(duplicated, [], `duplicate ids:\n  ${duplicated.slice(0, 12).join('\n  ')}`);
 });
 
+test('every page has one main landmark, one h1, and an outline with no gaps', () => {
+  // Whole-site, because the hand-listed landmark check above covers seven design
+  // routes and the two specimens that nested a second <main> were not among them.
+  // A reader navigating by landmark or by heading level is the one who pays.
+  let checked = 0;
+  const twoMains = [];
+  const badH1 = [];
+  const skips = [];
+  for(const route of builtPages()) {
+    // An svg can carry its own <title>; script bodies and comment text are not
+    // markup, and a tag named inside either is not an element on the page.
+    const markup = html(route)
+      .replace(/<svg[\s\S]*?<\/svg>/g, '')
+      .replace(/<script[\s\S]*?<\/script>/g, '')
+      .replace(/<!--[\s\S]*?-->/g, '');
+    checked++;
+    const mains = (markup.match(/<main\b/g) || []).length;
+    if(mains !== 1) twoMains.push(`${route} (${mains})`);
+    const h1s = (markup.match(/<h1\b/g) || []).length;
+    if(h1s !== 1) badH1.push(`${route} (${h1s})`);
+    const levels = [...markup.matchAll(/<h([1-6])\b/g)].map((match) => Number(match[1]));
+    for(let i = 1; i < levels.length; i++) {
+      if(levels[i] - levels[i - 1] > 1) { skips.push(`${route} (h${levels[i - 1]} -> h${levels[i]})`); break; }
+    }
+  }
+  assert.ok(checked >= 800, `every built route is covered (found ${checked})`);
+  assert.deepEqual(twoMains, [], `pages without exactly one main landmark:\n  ${twoMains.join('\n  ')}`);
+  assert.deepEqual(badH1, [], `pages without exactly one h1:\n  ${badH1.join('\n  ')}`);
+  assert.deepEqual(skips, [], `headings that skip a level:\n  ${skips.slice(0, 12).join('\n  ')}`);
+});
+
 const pageFile = (path) => fileURLToPath(new URL(`../dist${path === '/' ? '' : path}/index.html`, import.meta.url));
 const html = (path) => readFileSync(pageFile(path), 'utf8');
 

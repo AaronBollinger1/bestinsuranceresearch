@@ -124,7 +124,11 @@ const triagePaths = [
 			</div>
 
 			<div class="console-workspace">
-				<main class="console-main">
+				{/* A div, not a main element: this is a drawing of a console's work area
+				    inside a specimen page that already owns the document landmark. Two
+				    such landmarks leave a screen reader with two "main" regions and no
+				    way to tell which one is the page. */}
+				<div class="console-main">
 					<div class="console-topline"><div><span class="eyebrow">Needs a decision</span><h2 id="workspace-title">{packet.brief.topic}</h2></div><span class="status status-changing">{packet.review.state}</span></div>
 					<div class="console-brief-card">
 						<div class="console-card-heading"><div><span class="console-icon console-icon-gold"><FileText size={16} aria-hidden="true" /></span><div><span class="eyebrow">Research brief</span><h3>{packet.brief.question}</h3></div></div><span class="mono console-id">{packet.brief.id}</span></div>
@@ -146,7 +150,7 @@ const triagePaths = [
 					</section>
 
 					<div class="console-caveat"><ShieldCheck size={17} aria-hidden="true" /><p><strong>Boundary travels with the packet.</strong> {packet.caveats[0]}</p></div>
-				</main>
+				</div>
 
 				<aside class="console-rail" aria-label="Publication gate">
 					<section class="console-gate-card"><div class="console-gate-icon"><LockKeyhole size={18} aria-hidden="true" /></div><span class="eyebrow">Publish to Birch</span><h2>Blocked</h2><p>A packet can only publish when every blocker is cleared.</p><ol class="console-blockers">{workflowBlockers.map((blocker) => <li><span></span><div><strong>{blocker}</strong><small>Required before publication</small></div></li>)}</ol><button class="btn btn-primary" type="button" disabled>Publish approved record</button><p class="mono console-note">No public URL · no sitemap · no blog draft</p></section>

@@ -335,7 +335,10 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 							{sheet.declared.map((dep) => (
 								<li>
 									<div class="rec-head">
-										<h4><a href={dep.path}>{dep.recordTitle}</a></h4>
+										{/* h3, not h4: this section groups records directly under its own
+										    h2, with no intervening level. The assertions section above has
+										    an h3 per kind, so its record titles are h4 there. */}
+										<h3><a href={dep.path}>{dep.recordTitle}</a></h3>
 										<StatusChip kind={dep.reviewState} />
 										<span class="rec-n">{dep.kind}</span>
 									</div>
@@ -555,7 +558,9 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 		gap: var(--s-2) var(--s-3);
 		margin-bottom: var(--s-3);
 	}
-	.rec-head h4 {
+	/* A record title reads the same whether its section nests it under an h3 or
+	   directly under the h2, so the style follows the row, not the level. */
+	.rec-head :is(h3, h4) {
 		margin: 0;
 		font-family: var(--font-display);
 		font-size: var(--text-base);
