@@ -1106,10 +1106,13 @@ test('every line has a guide, and every guide panel is in the HTML', () => {
 		assert.ok(new Set(panels).size === panels.length, `${coverage.id} guide has duplicate panel ids`);
 
 		// Every panel has a matching tab, and the ids line up so deep links work.
+		// The panel owns the bare section id, so the tab still controls it and
+		// `#covers` also resolves to a real element rather than to nothing.
 		for (const id of panels) {
 			assert.ok(html.includes(`data-tab="${id}"`), `${coverage.id} guide panel ${id} has no tab`);
 			assert.ok(html.includes(`id="tab-${id}"`), `${coverage.id} guide tab ${id} has no id`);
-			assert.ok(html.includes(`aria-controls="panel-${id}"`), `${coverage.id} guide tab ${id} controls nothing`);
+			assert.ok(html.includes(`aria-controls="${id}"`), `${coverage.id} guide tab ${id} controls nothing`);
+			assert.match(html, new RegExp(`\\sid="${id}"`), `${coverage.id} guide panel ${id} is not a link target`);
 		}
 
 		// Exactly one tab selected on arrival, and exactly one panel open.

@@ -10,7 +10,13 @@ interface Props {
 const { href } = Astro.props;
 ---
 
-<section class="answer-section commons-handoff" aria-labelledby="commons-handoff-title">
+<!--
+	`id="commons"` is the target the record navigation and the on-page contents
+	both link to. Without it those two entries were links to nowhere, and the
+	scroll-spy in RecordNavigation dropped the section entirely, because it
+	resolves each nav item with getElementById and filters out the misses.
+-->
+<section id="commons" class="answer-section commons-handoff" aria-labelledby="commons-handoff-title">
 	<h2 id="commons-handoff-title">Continue the conversation in Community</h2>
 	<Callout tone="note">
 		<p>
