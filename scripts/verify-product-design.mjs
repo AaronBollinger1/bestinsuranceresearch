@@ -203,6 +203,31 @@ test('a context index inherits the weakest review state of the records it gather
   }
 });
 
+test('every in-page link lands on a section that exists', () => {
+  // A dead fragment is invisible in review: the link renders, the cursor
+  // changes, the click does nothing. It also silently disables the record
+  // scroll-spy, which resolves each nav item with getElementById.
+  let checked = 0;
+  const dangling = [];
+  const duplicated = [];
+  for(const route of builtPages()) {
+    // Fragments inside svg use xlink targets, and script bodies are not markup.
+    const markup = html(route).replace(/<svg[\s\S]*?<\/svg>/g, '').replace(/<script[\s\S]*?<\/script>/g, '');
+    const ids = [...html(route).matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
+    const unique = new Set(ids);
+    for(const id of unique) if(ids.filter((value) => value === id).length > 1) duplicated.push(`${route} #${id}`);
+    for(const match of markup.matchAll(/href="#([^"]*)"/g)) {
+      if(match[1] === '') continue;
+      checked++;
+      if(!unique.has(decodeURIComponent(match[1]))) dangling.push(`${route} -> #${match[1]}`);
+    }
+  }
+  assert.ok(checked >= 400, `in-page links are actually being checked (found ${checked})`);
+  assert.deepEqual(dangling, [], `in-page links with no target:\n  ${dangling.slice(0, 12).join('\n  ')}`);
+  // An anchor can only resolve to one element, so uniqueness is part of the same promise.
+  assert.deepEqual(duplicated, [], `duplicate ids:\n  ${duplicated.slice(0, 12).join('\n  ')}`);
+});
+
 const pageFile = (path) => fileURLToPath(new URL(`../dist${path === '/' ? '' : path}/index.html`, import.meta.url));
 const html = (path) => readFileSync(pageFile(path), 'utf8');
 
