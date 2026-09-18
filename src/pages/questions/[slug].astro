@@ -18,7 +18,7 @@ import { siteConfig } from '../../config/site';
 import { createCiter, stripMarkers } from '../../lib/citations';
 import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
-import { breadcrumbs, graph, organization, techArticle, website } from '../../lib/schema';
+import { breadcrumbs, graph, organization, qaPage, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
 import { excerpt, metaDescription } from '../../lib/excerpt';
@@ -74,17 +74,15 @@ const jsonLd = graph(
 	organization(),
 	website(),
 	breadcrumbs(trail),
-	techArticle({
-		headline: d.question,
+	qaPage({
+		question: d.question,
 		path,
-		description,
+		answer: description,
 		datePublished: d.effectiveDate,
 		dateModified: d.lastReviewed,
 		author: d.author,
 		reviewer: d.reviewer,
 		reviewState: d.reviewState,
-		sections: sections.map((s) => s.label),
-		about: [...d.lines, ...d.topics],
 		citations: sources.map((s) => ({ name: s.data.title, url: s.data.url, publisher: s.data.publisher })),
 	}),
 );
