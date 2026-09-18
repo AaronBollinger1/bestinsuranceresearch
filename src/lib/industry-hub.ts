@@ -122,6 +122,20 @@ export interface IndustryHub {
 	examples: Corpus['examples'];
 	companies: Corpus['companies'];
 	sourceIds: string[];
+	/**
+	 * The date the oldest record in this hub took effect.
+	 *
+	 * A hub has no publication event of its own: it appears when its members
+	 * exist and changes whenever they do. The honest issue date for the index
+	 * is therefore the oldest content it carries, not the day the taxonomy
+	 * shipped. A fixed date would also drift, since a hub gathers records
+	 * written long after it.
+	 *
+	 * Every record's effective date is on or before its own review date, so
+	 * this is always on or before `lastReviewed` and a citation can never
+	 * report access before issue.
+	 */
+	firstPublished: string;
 	lastReviewed: string;
 	/**
 	 * The weakest review state among the records this hub gathers.
@@ -160,10 +174,12 @@ const ids = (refs: Array<string | { id: string }> = []): string[] =>
 const matchesLine = (values: string[], lines: Set<CanonicalLine>): boolean =>
 	canonicalLines(values).some((line) => lines.has(line));
 
-const latestDate = (values: string[]): string => {
-	const dates = values.filter((value) => /^\d{4}-\d{2}-\d{2}$/.test(value)).sort();
-	return dates.at(-1) ?? 'unknown';
-};
+const fullDates = (values: string[]): string[] =>
+	values.filter((value) => /^\d{4}-\d{2}-\d{2}$/.test(value)).sort();
+
+const latestDate = (values: string[]): string => fullDates(values).at(-1) ?? 'unknown';
+
+const earliestDate = (values: string[]): string => fullDates(values).at(0) ?? 'unknown';
 
 export function industryHub(
 	corpus: Corpus,
@@ -197,6 +213,18 @@ export function industryHub(
 		...examples.map((entry) => entry.data.lastReviewed),
 		...companies.map((entry) => entry.data.lastReviewed),
 	];
+	/*
+	 * A record's own page cites its effective date where the collection keeps
+	 * one, and falls back to the review date where it does not. The hub reads
+	 * the same field its members' pages do, so the index cannot claim an
+	 * earlier issue date than the records it is built from.
+	 */
+	const publishedDates = [
+		...questions.map((entry) => entry.data.effectiveDate),
+		...coverages.map((entry) => entry.data.effectiveDate),
+		...examples.map((entry) => entry.data.lastReviewed),
+		...companies.map((entry) => entry.data.lastReviewed),
+	];
 	const reviewStates = [
 		...questions.map((entry) => entry.data.reviewState),
 		...coverages.map((entry) => entry.data.reviewState),
@@ -216,6 +244,7 @@ export function industryHub(
 		examples,
 		companies,
 		sourceIds: [...sourceIds],
+		firstPublished: earliestDate(publishedDates),
 		lastReviewed: latestDate(reviewDates),
 		reviewState: weakestReviewState(reviewStates),
 		hasSubstance: resourceCount >= minResources && sourceIds.size >= 2,

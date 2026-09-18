@@ -150,6 +150,29 @@ test('citation exports distinguish assigned review from completed review', () =>
   }
 });
 
+test('no citation reports that a page was read before it was issued', () => {
+  // Every citable page, not a sample: a malformed date pair is invisible on the
+  // page and only breaks later, inside whatever reference manager imports it.
+  const citations = [...builtPages()].flatMap((route) => {
+    const csl = html(route).match(/<pre[^>]*id="cite-csl"[^>]*>([\s\S]*?)<\/pre>/)?.[1];
+    if(!csl) return [];
+    let record;
+    assert.doesNotThrow(() => { record = JSON.parse(decodeEntities(csl))[0]; }, `${route}: CSL export is valid JSON`);
+    return [{ route, record }];
+  });
+  assert.ok(citations.length >= 185, `every citable page is covered (found ${citations.length})`);
+  const stamp = (parts) => parts[0] * 10000 + (parts[1] ?? 0) * 100 + (parts[2] ?? 0);
+  for(const { route, record } of citations) {
+    const issued = record.issued?.['date-parts']?.[0];
+    const accessed = record.accessed?.['date-parts']?.[0];
+    assert.ok(issued && accessed, `${route}: citation carries both dates`);
+    assert.ok(
+      stamp(accessed) >= stamp(issued),
+      `${route}: issued ${issued.join('-')} is after accessed ${accessed.join('-')}`,
+    );
+  }
+});
+
 test('a context index inherits the weakest review state of the records it gathers', () => {
   const hubs = readdirSync(fileURLToPath(new URL('../dist/industries', import.meta.url)), { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
@@ -182,6 +205,17 @@ test('a context index inherits the weakest review state of the records it gather
 
 const pageFile = (path) => fileURLToPath(new URL(`../dist${path === '/' ? '' : path}/index.html`, import.meta.url));
 const html = (path) => readFileSync(pageFile(path), 'utf8');
+
+/** Every built route, so a whole-site invariant cannot be satisfied by a sample. */
+function* builtPages(dir = fileURLToPath(new URL('../dist', import.meta.url)), route = '') {
+  for(const entry of readdirSync(dir, { withFileTypes: true })) {
+    if(entry.isDirectory()) yield* builtPages(`${dir}/${entry.name}`, `${route}/${entry.name}`);
+    else if(entry.name === 'index.html') yield route || '/';
+  }
+}
+
+const decodeEntities = (text) =>
+  text.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
 test('every product pattern leads to a built page, not a dead-end blueprint', () => {
   for (const pattern of pagePatterns) assert.ok(existsSync(pageFile(pattern.href)), `${pattern.title}: ${pattern.href}`);

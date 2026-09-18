@@ -223,6 +223,7 @@ export function industryRecord(hub: IndustryHub, sources: CollectionEntry<'sourc
 		name: hub.name,
 		descriptor: hub.descriptor,
 		lines: hub.lines,
+		firstPublished: hub.firstPublished,
 		lastReviewed: hub.lastReviewed,
 		reviewState: hub.reviewState,
 		counts: {
