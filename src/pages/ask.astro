@@ -27,7 +27,7 @@ const byFamily = families.map((family) => ({
 		.sort((a, b) => a.data.question.localeCompare(b.data.question)),
 }));
 
-const examples = corpus.questions.slice(0, 6).map((q) => q.data.question);
+const examples = corpus.questions.slice(0, 6);
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -112,9 +112,9 @@ const FAMILY_LABEL: Record<string, string> = {
 					<div style="display:flex;flex-wrap:wrap;gap:var(--s-2)">
 						{
 							examples.map((example) => (
-								<button class="btn btn-secondary btn-sm btn-wrap" type="button" data-example={example}>
-									{example}
-								</button>
+								<a class="btn btn-secondary btn-sm btn-wrap" href={`/questions/${example.id}`} data-example={example.data.question}>
+									{example.data.question}
+								</a>
 							))
 						}
 					</div>
@@ -762,9 +762,11 @@ const FAMILY_LABEL: Record<string, string> = {
 		say('Editing your question.');
 	});
 
-	document.querySelectorAll<HTMLButtonElement>('[data-example]').forEach((button) => {
-		button.addEventListener('click', () => {
-			field!.value = button.dataset.example || '';
+	document.querySelectorAll<HTMLAnchorElement>('[data-example]').forEach((link) => {
+		link.addEventListener('click', (event) => {
+			if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+			event.preventDefault();
+			field!.value = link.dataset.example || '';
 			void run(field!.value);
 		});
 	});
@@ -886,8 +888,8 @@ const FAMILY_LABEL: Record<string, string> = {
 
 	/* Rotating example, only when the visitor has not asked for reduced motion. */
 	const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-	const rotation = [...document.querySelectorAll<HTMLButtonElement>('[data-example]')].map(
-		(button) => button.dataset.example || '',
+	const rotation = [...document.querySelectorAll<HTMLElement>('[data-example]')].map(
+		(node) => node.dataset.example || '',
 	);
 	if (!reduce.matches && rotation.length > 1) {
 		let i = 0;
