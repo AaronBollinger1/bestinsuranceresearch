@@ -259,6 +259,39 @@ test('every page has one main landmark, one h1, and an outline with no gaps', ()
   assert.deepEqual(skips, [], `headings that skip a level:\n  ${skips.slice(0, 12).join('\n  ')}`);
 });
 
+test('the landmark list names the page\'s own regions, not its notes and mock panels', () => {
+  // A landmark list is a table of contents for regions. An inline caveat and a
+  // side panel drawn inside a product mock are neither, and two landmarks with
+  // the same name — or an unnamed one beside others — cannot be told apart.
+  let checked = 0;
+  const ambiguous = [];
+  const calloutLandmarks = [];
+  for(const route of builtPages()) {
+    const markup = html(route)
+      .replace(/<svg[\s\S]*?<\/svg>/g, '')
+      .replace(/<script[\s\S]*?<\/script>/g, '')
+      .replace(/<!--[\s\S]*?-->/g, '');
+    checked++;
+    for(const tag of ['nav', 'aside']) {
+      const elements = [...markup.matchAll(new RegExp(`<${tag}\\b[^>]*>`, 'g'))].map((match) => match[0]);
+      if(elements.length < 2) continue;
+      const names = elements.map((element) => (element.match(/aria-label(?:ledby)?="([^"]*)"/) || [])[1]);
+      if(names.some((name) => !name)) ambiguous.push(`${route}: an unnamed <${tag}> beside ${elements.length - 1} more`);
+      const repeated = names.filter(Boolean).filter((name, i, all) => all.indexOf(name) !== i);
+      if(repeated.length) ambiguous.push(`${route}: two <${tag}> landmarks both named "${repeated[0]}"`);
+    }
+    for(const match of markup.matchAll(/<aside\b[^>]*>/g)) {
+      if(/class="[^"]*\bcallout\b/.test(match[0])) calloutLandmarks.push(route);
+    }
+  }
+  assert.ok(checked >= 800, `every built route is covered (found ${checked})`);
+  assert.deepEqual(ambiguous, [], `landmarks a reader cannot tell apart:\n  ${ambiguous.slice(0, 12).join('\n  ')}`);
+  assert.deepEqual(calloutLandmarks, [], `inline caveats published as landmarks on:\n  ${[...new Set(calloutLandmarks)].slice(0, 6).join('\n  ')}`);
+  // The note keeps its name; it just stops claiming to be a region.
+  const withCallout = html('/methodology');
+  assert.match(withCallout, /<div class="callout callout-[a-z]+" role="note" aria-label="[^"]+"/, 'a callout is a named note');
+});
+
 const pageFile = (path) => fileURLToPath(new URL(`../dist${path === '/' ? '' : path}/index.html`, import.meta.url));
 const html = (path) => readFileSync(pageFile(path), 'utf8');
 

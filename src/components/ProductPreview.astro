@@ -26,11 +26,17 @@ const modes = [{id:'answer', label:'Find an answer', icon: BookOpen}, {id:'compa
       <p class="preview-caption">Answer excerpt. Open the full answer for conditions and policy-specific limitations.</p>
       <a class="preview-forward" href={`/questions/${question.id}`}>Read the full answer <ArrowRight size={15} aria-hidden="true" /></a>
     </article>
-    <aside class="preview-context" aria-label="Answer sources">
+    {/*
+      Divs, not asides. These are the side panels of a drawing of the product,
+      not complementary regions of the page they sit on. As landmarks they put
+      three unnamed (or mock-named) entries into the landmark list of the front
+      door, which should list the front door's own regions.
+    */}
+    <div class="preview-context">
       <span class="preview-overline"><FileText size={14} aria-hidden="true" /> Sources you can open</span>
       {idsOf(question.data.sourceIds).slice(0, 2).map((sourceId) => { const source = corpus.sourceById.get(sourceId); return source && <a class="preview-source" href={`/sources/${source.id}`}><span>{source.data.publisher}</span><strong>{source.data.title}</strong><ArrowUpRight size={15} aria-hidden="true" /></a>; })}
       <a class="preview-forward" href={`/questions/${question.id}#source-ledger`}>All {question.data.sourceIds.length} sources <ArrowRight size={14} aria-hidden="true" /></a>
-    </aside>
+    </div>
   </div>
   <div id={`${id}-company`} data-preview-panel="company" class="preview-panel">
     <article class="preview-main">
@@ -41,11 +47,11 @@ const modes = [{id:'answer', label:'Find an answer', icon: BookOpen}, {id:'compa
       <div class="preview-company-links"><a href={`/companies/${company.id}#identity`}>Overview</a><a href={`/companies/${company.id}#coverage-context`}>Coverage</a><a href={`/companies/${company.id}#community`}>Community</a><a href={`/companies/${company.id}#source-ledger`}>Sources</a></div>
       <a class="preview-forward" href={`/companies/${company.id}`}>Explore the company <ArrowRight size={15} aria-hidden="true" /></a>
     </article>
-    <aside class="preview-context"><span class="preview-overline"><Building2 size={14} aria-hidden="true" /> Around this company</span><p>Official records, coverage questions, and a place for attributed experiences.</p><details><summary>How company replies will work <ChevronDown size={14} aria-hidden="true" /></summary><p>Representatives will show their affiliation. A reply can add context; only the author can mark their experience resolved.</p></details><a class="preview-forward" href="/design/thread-preview">Preview a conversation <ArrowRight size={14} aria-hidden="true" /></a></aside>
+    <div class="preview-context"><span class="preview-overline"><Building2 size={14} aria-hidden="true" /> Around this company</span><p>Official records, coverage questions, and a place for attributed experiences.</p><details><summary>How company replies will work <ChevronDown size={14} aria-hidden="true" /></summary><p>Representatives will show their affiliation. A reply can add context; only the author can mark their experience resolved.</p></details><a class="preview-forward" href="/design/thread-preview">Preview a conversation <ArrowRight size={14} aria-hidden="true" /></a></div>
   </div>
   <div id={`${id}-community`} data-preview-panel="community" class="preview-panel">
     <article class="preview-main"><div class="preview-meta"><span>Birch Community</span><span>Private preview</span></div><h2>A useful conversation starts with a good question.</h2><p class="preview-description">Ask about a coverage detail, share an experience, or add a professional perspective.</p><span class="preview-overline">Discussion starters · illustrative, not live posts</span><a class="preview-discussion" href="/design/thread-preview"><MessageCircle size={17} aria-hidden="true" /><span><strong>What changed in my renewal?</strong><small>Home insurance · Question</small></span><ArrowRight size={15} aria-hidden="true" /></a><a class="preview-discussion" href="/contribute"><PenLine size={17} aria-hidden="true" /><span><strong>Share something others can learn from.</strong><small>Experience · Professional note · Correction</small></span><ArrowRight size={15} aria-hidden="true" /></a></article>
-    <aside class="preview-context"><span class="preview-overline">Your perspective belongs here</span><h3>Build a body of useful work.</h3><p>Professional contributions can carry your name, credentials, sources, and a stable page people can reference.</p><a class="preview-forward" href="/professionals">For professionals <ArrowRight size={14} aria-hidden="true" /></a><p class="preview-caption">Accounts and posting are closed during this preview.</p></aside>
+    <div class="preview-context"><span class="preview-overline">Your perspective belongs here</span><h3>Build a body of useful work.</h3><p>Professional contributions can carry your name, credentials, sources, and a stable page people can reference.</p><a class="preview-forward" href="/professionals">For professionals <ArrowRight size={14} aria-hidden="true" /></a><p class="preview-caption">Accounts and posting are closed during this preview.</p></div>
   </div>
 </section>
 <script>
