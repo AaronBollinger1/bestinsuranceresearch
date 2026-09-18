@@ -180,6 +180,10 @@ test('the front door makes the consumer action primary and the professional path
   assert.ok(frontDoor, 'front door exists');
   for (const id of ['question-path', 'expertise-path']) assert.match(frontDoor, new RegExp(`id="${id}"`));
   assert.match(frontDoor, /<form action="\/ask"[^>]*method="get"[\s\S]*<button class="btn btn-primary"[^>]*>Ask a question/);
+  assert.match(frontDoor, /class="question-starters"/);
+  assert.match(frontDoor, /href="\/ask\?q=/);
+  assert.doesNotMatch(frontDoor, /data-starter/);
+  assert.doesNotMatch(frontDoor, /<script/);
   assert.equal((frontDoor.match(/class="btn btn-primary"/g) ?? []).length, 1, 'Ask a question is the only front-door primary action');
   assert.match(frontDoor, /id="expertise-path"[\s\S]*For insurance and financial professionals[\s\S]*Editorial review is required\.[\s\S]*Accepted contributions can earn attribution[\s\S]*publication is not guaranteed/);
   assert.match(frontDoor, /class="btn btn-quiet"[^>]*href="\/professionals"[^>]*>Get cited/);
