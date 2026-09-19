@@ -42,11 +42,16 @@ jobs:
         run: npm run validate
 
   production-posture:
-    # The build nobody had ever run until the suite was taught to check both.
-    # A production build must drop the blanket noindex and must not advertise a
-    # sitemap from a robots.txt that still says Disallow. Getting that wrong is
-    # the single most expensive one-line mistake available on this property, so
-    # it is checked on every push rather than discovered at the promote.
+    # Keep the production-posture check on release boundaries instead of
+    # repeating a second install/build on every PR and feature-branch push.
+    # The preview posture remains covered by `suite` on every push/PR; this
+    # lane is still available for main, release branches, and manual runs so a
+    # production indexing regression is caught before promotion.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'push' &&
+        (github.ref == 'refs/heads/main' ||
+         startsWith(github.ref, 'refs/heads/release/')))
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
