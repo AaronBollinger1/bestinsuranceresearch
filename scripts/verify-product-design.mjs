@@ -272,13 +272,34 @@ test('the landmark list names the page\'s own regions, not its notes and mock pa
       .replace(/<script[\s\S]*?<\/script>/g, '')
       .replace(/<!--[\s\S]*?-->/g, '');
     checked++;
-    for(const tag of ['nav', 'aside']) {
-      const elements = [...markup.matchAll(new RegExp(`<${tag}\\b[^>]*>`, 'g'))].map((match) => match[0]);
+    // A landmark is an element *or* a role attribute. Reading only the elements
+    // missed every role="search" form on the site, which is how 1,787 unnamed
+    // search landmarks survived this check.
+    const groups = {
+      nav: [...markup.matchAll(/<nav\b[^>]*>/g)].map((match) => match[0]),
+      aside: [...markup.matchAll(/<aside\b[^>]*>/g)].map((match) => match[0]),
+    };
+    for(const match of markup.matchAll(/<[a-z]+\b[^>]*\srole="([a-z]+)"[^>]*>/g)) {
+      if(!['search', 'navigation', 'complementary', 'region', 'form', 'banner', 'contentinfo'].includes(match[1])) continue;
+      (groups[match[1]] ??= []).push(match[0]);
+    }
+    for(const [kind, elements] of Object.entries(groups)) {
       if(elements.length < 2) continue;
-      const names = elements.map((element) => (element.match(/aria-label(?:ledby)?="([^"]*)"/) || [])[1]);
-      if(names.some((name) => !name)) ambiguous.push(`${route}: an unnamed <${tag}> beside ${elements.length - 1} more`);
+      // Resolve aria-labelledby to the text it points at: two landmarks whose
+      // different ids resolve to the same words are still indistinguishable.
+      const names = elements.map((element) => {
+        const label = (element.match(/aria-label="([^"]*)"/) || [])[1];
+        if(label) return label.trim();
+        const ref = (element.match(/aria-labelledby="([^"]*)"/) || [])[1];
+        if(!ref) return undefined;
+        return ref.split(/\s+/).map((id) => {
+          const target = markup.match(new RegExp(`\\sid="${id}"[^>]*>([\\s\\S]*?)<\\/`));
+          return target ? target[1].replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim() : `#${id}`;
+        }).join(' ').trim() || `#${ref}`;
+      });
+      if(names.some((name) => !name)) ambiguous.push(`${route}: an unnamed ${kind} landmark beside ${elements.length - 1} more`);
       const repeated = names.filter(Boolean).filter((name, i, all) => all.indexOf(name) !== i);
-      if(repeated.length) ambiguous.push(`${route}: two <${tag}> landmarks both named "${repeated[0]}"`);
+      if(repeated.length) ambiguous.push(`${route}: two ${kind} landmarks both named "${repeated[0]}"`);
     }
     for(const match of markup.matchAll(/<aside\b[^>]*>/g)) {
       if(/class="[^"]*\bcallout\b/.test(match[0])) calloutLandmarks.push(route);
