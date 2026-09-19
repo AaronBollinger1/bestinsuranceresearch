@@ -18,6 +18,15 @@ Last updated: 2026-09-02
 | The 8 specialty sites | All live, all serving their own content, 608 pages between them. Unchanged. |
 | Bollinsure / BestAMS / CovWell | Untouched. BestAMS not read. |
 
+
+## Public gate (2026-09-12)
+
+Owner ordered the live domain closed: unfinished research must not be publicly
+findable. `vercel.json` now builds as **preview** (`noindex` + `Disallow: /`) and
+**rewrites every public route** to `/under-construction`. Do not flip
+`PUBLIC_SITE_ENV=production` or remove the rewrites until the licensed review and
+launch checklist below are complete and the owner explicitly authorizes opening.
+
 ## Build verification
 
 Both environments are green. This matters more than it sounds: until 2026-09-02 the two indexing
