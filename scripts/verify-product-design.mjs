@@ -292,6 +292,31 @@ test('the landmark list names the page\'s own regions, not its notes and mock pa
   assert.match(withCallout, /<div class="callout callout-[a-z]+" role="note" aria-label="[^"]+"/, 'a callout is a named note');
 });
 
+test('the Kind tag pill is never worn by a container', () => {
+  // `.kind` in instrument.css is an inline-flex chip that sets white-space:
+  // nowrap. A verification sheet used the same class for the section grouping
+  // its records, so the chip's nowrap inherited into every sentence and the
+  // page ran thousands of pixels wide at every viewport. The pill belongs on a
+  // span with a kind-<modifier>; a container must not borrow the name.
+  const sheets = [...builtPages()].filter((route) => /^\/review-queue\/./.test(route));
+  assert.ok(sheets.length >= 300, `verification sheets are covered (found ${sheets.length})`);
+  let grouped = 0;
+  const containers = [];
+  for(const route of builtPages()) {
+    const markup = html(route).replace(/<!--[\s\S]*?-->/g, '');
+    for(const match of markup.matchAll(/<([a-z]+)\b[^>]*\sclass="([^"]*)"/g)) {
+      const classes = match[2].split(/\s+/);
+      if(!classes.includes('kind')) continue;
+      const modifier = classes.some((name) => /^kind-./.test(name));
+      if(match[1] !== 'span' || !modifier) containers.push(`${route}: <${match[1]} class="${match[2]}">`);
+    }
+  }
+  for(const route of sheets) if(html(route).includes('class="kind-group"')) grouped++;
+  // Sheets with no grouped records render no section at all, so require most, not all.
+  assert.ok(grouped >= sheets.length * 0.9, `verification sheets group records under kind-group (${grouped}/${sheets.length})`);
+  assert.deepEqual(containers, [], `the Kind tag pill applied to a non-pill element:\n  ${containers.slice(0, 8).join('\n  ')}`);
+});
+
 const pageFile = (path) => fileURLToPath(new URL(`../dist${path === '/' ? '' : path}/index.html`, import.meta.url));
 const html = (path) => readFileSync(pageFile(path), 'utf8');
 

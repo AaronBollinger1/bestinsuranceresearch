@@ -285,7 +285,14 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 
 				{
 					byKind.map((bucket) => (
-						<div class="kind">
+						/*
+						 * `kind-group`, not `kind`: `.kind` is the Kind tag pill in
+						 * instrument.css, an inline-flex chip that sets white-space:
+						 * nowrap. This is a section wrapping many records, and the
+						 * pill's nowrap inherited into every sentence inside it, so
+						 * nothing wrapped and the page ran thousands of pixels wide.
+						 */
+						<div class="kind-group">
 							<h3>{bucket.kind}{bucket.groups.length === 1 ? '' : 's'} <span class="n">{bucket.groups.length}</span></h3>
 							{bucket.groups.map((group) => (
 								<div class="rec">
@@ -530,8 +537,8 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 	}
 	.claims .sum { color: var(--faint); }
 
-	.kind { margin-top: var(--s-5); }
-	.kind > h3 {
+	.kind-group { margin-top: var(--s-5); }
+	.kind-group > h3 {
 		font-family: var(--font-sans);
 		font-size: 0.5625rem;
 		letter-spacing: 0.09em;
@@ -542,7 +549,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 		margin: 0 0 var(--s-3);
 		font-weight: 600;
 	}
-	.kind > h3 .n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+	.kind-group > h3 .n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
 	.rec,
 	.declared > li {
