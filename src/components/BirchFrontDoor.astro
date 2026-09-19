@@ -23,7 +23,10 @@ const starters = [
         <p>Start with a general question. Birch leads you to a sourced answer you can check for yourself.</p>
       </div>
       <div class="front-door-action">
-        <form action="/ask" method="get" role="search" data-question-form class="question-composer">
+        {/* Named in full rather than with a bare qualifier: this is the single
+            primary CTA, so a reader scanning the landmark list should find the
+            words the page leads with. */}
+        <form action="/ask" method="get" role="search" aria-label="Ask a question" data-question-form class="question-composer">
           <label class="u-visually-hidden" for="home-q">Ask an insurance question</label>
           <div class="question-composer-input"><Search size={22} aria-hidden="true" /><input id="home-q" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="What would you like to understand?" aria-describedby="home-q-hint" /></div>
           <div class="question-composer-actions">

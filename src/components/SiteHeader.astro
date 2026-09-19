@@ -110,7 +110,12 @@ const menuGroups = [
 		</nav>
 
 		<div class="header-tail">
-		<form class="header-search" role="search" action="/ask" method="get" data-question-form>
+		{/* Named, because a page carries several search landmarks and a reader
+		    listing them otherwise hears "search" three times with no way to tell
+		    the header box from the menu box from the question composer. The name
+		    is the qualifier only: a screen reader appends the role, so "Site"
+		    is announced as "Site search". */}
+		<form class="header-search" role="search" aria-label="Site" action="/ask" method="get" data-question-form>
 				<Search class="search-glyph" size={15} stroke-width={2} aria-hidden="true" />
 				<label class="u-visually-hidden" for="header-q">Search the research corpus</label>
 				<input
@@ -134,7 +139,7 @@ const menuGroups = [
 
 <div class="nav-panel" id="nav-panel" hidden>
 	<div class="shell nav-panel-inner">
-		<form role="search" action="/ask" method="get" class="field" data-question-form>
+		<form role="search" aria-label="Menu" action="/ask" method="get" class="field" data-question-form>
 			<label class="u-visually-hidden" for="panel-q">Search the research corpus</label>
 			<input id="panel-q" name="q" type="search" placeholder="Search questions and coverage" autocomplete="off" />
 		</form>
