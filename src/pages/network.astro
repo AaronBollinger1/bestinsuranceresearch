@@ -1,6 +1,6 @@
 ---
 /**
- * The Best network.
+ * The Birch network.
  *
  * Eight specialty properties keep their own brands and their own authority.
  * That decision only works if the relationship between them is stated
@@ -65,7 +65,7 @@ const jsonLd = graph(
 	website(),
 	breadcrumbs(trail),
 	collectionPage({
-		name: 'The Best network',
+		name: 'The Birch network',
 		path: '/network',
 		description,
 		items: properties.map((p) => ({ name: p.domain, path: p.target })),
@@ -73,13 +73,13 @@ const jsonLd = graph(
 );
 ---
 
-<BaseLayout title="The Best network" description={description} jsonLd={jsonLd} pageType="editorial">
+<BaseLayout title="The Birch network" description={description} jsonLd={jsonLd} pageType="editorial">
 	<article>
 		<section class="band band-tight">
 			<div class="shell">
 				<Breadcrumbs trail={trail} />
 				<span class="eyebrow">One operator, {properties.length} properties</span>
-				<h1>The Best network</h1>
+				<h1>The Birch network</h1>
 				<p class="page-lede">{description}</p>
 			</div>
 		</section>

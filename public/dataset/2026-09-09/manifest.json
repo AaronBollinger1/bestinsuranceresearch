@@ -1,0 +1,106 @@
+{
+  "release": "2026-09-09",
+  "schemaVersion": 1,
+  "name": "BestInsurance Research claim corpus, release 2026-09-09",
+  "description": "1905 individually recorded claims across 299 source records. Each claim is one sentence stating exactly what one source supports and nothing beyond it, with a stable address and a checksum over its exact text. Contains no ratings, rankings, prices, premiums, quotes, carrier appetite claims, coverage determinations, eligibility verdicts, risk scores, or personal data.",
+  "datePublished": "2026-09-09",
+  "documentation": "https://bestinsuranceresearch.com/dataset",
+  "publisher": {
+    "name": "BestInsurance Research",
+    "operator": "WJB Services, Inc. dba Bollinsure Insurance Services",
+    "license": "6013787",
+    "licenseAuthority": "California Department of Insurance"
+  },
+  "license": "Records may be quoted and redistributed with attribution and a link to the canonical URL. Cite the underlying source in preference to us wherever the underlying source will do.",
+  "isAccessibleForFree": true,
+  "immutability": "This release is frozen. Its bytes will not change. A correction to the corpus appears in the next release rather than in this one, so a citation to this release stays checkable.",
+  "counts": {
+    "claims": 1905,
+    "sources": 299,
+    "primarySources": 258,
+    "onOfficialHost": 259,
+    "byAuthorityLevel": {
+      "primary-law": 122,
+      "regulator": 69,
+      "standards-body": 45,
+      "secondary": 35,
+      "carrier-official": 28
+    },
+    "bySourceType": {
+      "statute": 109,
+      "regulator-guidance": 57,
+      "official-documentation": 54,
+      "regulation": 34,
+      "policy-form": 26,
+      "government-data": 7,
+      "secondary-analysis": 6,
+      "regulator-record": 3,
+      "legislative-record": 2,
+      "court-decision": 1
+    },
+    "byJurisdiction": {
+      "CA": 141,
+      "US": 92,
+      "FL": 19,
+      "TX": 16,
+      "NY": 11,
+      "n/a": 6,
+      "OR": 3,
+      "VA": 3,
+      "MN": 2,
+      "WI": 2,
+      "CO": 1,
+      "GA": 1,
+      "WA": 1,
+      "NJ": 1
+    },
+    "byStatus": {
+      "active": 294,
+      "superseded": 2,
+      "not-adopted": 2,
+      "rescinded": 1
+    }
+  },
+  "reviewStatus": {
+    "under-review": 172,
+    "corrected": 4,
+    "recordsWithReviewState": 176,
+    "note": "reviewState is the record-level sign-off position. \"reviewed\" means a licensed reviewer has signed the record off; \"under-review\" means it is written and cited but not yet signed off; \"corrected\" means a published error was fixed and the change is logged at https://bestinsuranceresearch.com/corrections."
+  },
+  "verification": {
+    "sourcesRechecked": 11,
+    "sourcesReadOnce": 288,
+    "note": "lastCheckedBasis on each source row is the field to read. \"access\" means the document was read once on accessedDate. \"recheck\" means somebody returned to it and compared the operative language against the recorded claim."
+  },
+  "files": [
+    {
+      "name": "claims.jsonl",
+      "url": "https://bestinsuranceresearch.com/dataset/2026-09-09/claims.jsonl",
+      "encodingFormat": "application/x-ndjson",
+      "bytes": 822167,
+      "sha256": "a01bab4d0e81f5518cc9c7639157ea1197fa258ee17ee5b19f945a51a36cda7d",
+      "description": "Every recorded claim, one JSON object per line: its stable address, the checksum over its exact text, the source that supports it, and the sentence itself."
+    },
+    {
+      "name": "sources.json",
+      "url": "https://bestinsuranceresearch.com/dataset/2026-09-09/sources.json",
+      "encodingFormat": "application/json",
+      "bytes": 268510,
+      "sha256": "fcbeb7d18cb101585bec32c55bb00c6968dbfd642d24ba360f73c066437bb19d",
+      "description": "The source registry as it stood at this release, including the dates each document was read and whether it has been returned to since."
+    }
+  ],
+  "citation": {
+    "text": "BestInsurance Research. \"Claim corpus, release 2026-09-09.\" https://bestinsuranceresearch.com/dataset/2026-09-09/. 1905 claims across 299 sources.",
+    "note": "Cite an individual claim by its own address and checksum from claims.jsonl. Cite the release when you are describing the corpus as a whole, or when your result depends on which version of it you read."
+  },
+  "mayNotBeInferred": [
+    "That a claim describes the policy the reader holds. It describes the source named.",
+    "That we have determined coverage or eligibility. We publish no such determination.",
+    "That we endorse, rate, rank, or price any insurer, or state the appetite of any carrier.",
+    "That a claim is current merely because it appears here. Read status and lastChecked.",
+    "That a line works the same way in the reader's jurisdiction. Read byJurisdiction: this corpus is concentrated, and a jurisdiction missing from it is one we hold no source for rather than one where the rule matches.",
+    "That the corpus has been through licensed review. Read reviewStatus."
+  ],
+  "changesSince": null
+}

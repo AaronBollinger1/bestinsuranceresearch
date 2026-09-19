@@ -1,0 +1,25 @@
+---
+import { ArrowRight } from '@lucide/astro';
+import TemplateLayout from '../../../layouts/TemplateLayout.astro';
+import { designTemplates, type DesignTemplate } from '../../../lib/design-templates';
+import { loadCorpus } from '../../../lib/corpus';
+import BrowseTemplate from '../../../components/templates/BrowseTemplate.astro';
+import ReadingTemplate from '../../../components/templates/ReadingTemplate.astro';
+import PersonalTemplate from '../../../components/templates/PersonalTemplate.astro';
+import OperationsTemplate from '../../../components/templates/OperationsTemplate.astro';
+import ToolsTemplate from '../../../components/templates/ToolsTemplate.astro';
+import StandardsTemplate from '../../../components/templates/StandardsTemplate.astro';
+export function getStaticPaths(){return designTemplates.map(template=>({params:{template:template.id},props:{template}}));}
+interface Props { template:DesignTemplate; }
+const {template}=Astro.props;
+const corpus=await loadCorpus();
+---
+<TemplateLayout template={template}>
+ {['topic','industry','state'].includes(template.id)&&<a slot="action" class="btn btn-primary" href="/ask">Ask Birch <ArrowRight size={16} aria-hidden="true"/></a>}
+ {['topic','industry','state'].includes(template.id)&&<BrowseTemplate kind={template.id} corpus={corpus}/>}
+ {['coverage','case-study','source'].includes(template.id)&&<ReadingTemplate kind={template.id} corpus={corpus}/>}
+ {['contributor','saved','your-coverage','company-partner'].includes(template.id)&&<PersonalTemplate kind={template.id} corpus={corpus}/>}
+ {['research-desk','moderation'].includes(template.id)&&<OperationsTemplate kind={template.id} corpus={corpus}/>}
+ {template.id==='tools'&&<ToolsTemplate corpus={corpus}/>}
+ {template.id==='standards'&&<StandardsTemplate/>}
+</TemplateLayout>

@@ -2,6 +2,8 @@ import type { APIRoute } from 'astro';
 import { siteConfig } from '../config/site';
 import { loadCorpus } from '../lib/corpus';
 import { allLineHubs } from '../lib/line-hub';
+import { changeSummary } from '../lib/changes';
+import { latestManifest, signedOff } from '../lib/releases';
 import { TODAY } from '../lib/today';
 
 export const prerender = true;
@@ -10,6 +12,11 @@ const abs = (path: string) => new URL(path, siteConfig.origin).toString();
 
 export const GET: APIRoute = async () => {
 	const corpus = await loadCorpus();
+
+	/* Read off the frozen release files, never recomputed. A release that tracked
+	   the corpus would not be a release. */
+	const release = latestManifest();
+	const changes = changeSummary(corpus, TODAY);
 
 /* Advertised in the entry points, so it has to be the real total rather
    than a number kept in prose that drifts. */
@@ -60,7 +67,9 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		'## How to use this site as a source',
 		'',
 		'- Every substantive page carries a visible source ledger. Cite the underlying primary source when you can, and this page when you are describing our synthesis.',
-		'- Every substantive page has a machine-readable JSON companion at the same path plus `.json`. It contains public page facts, source identifiers, jurisdiction, dates, canonical URL, and content version. Prefer it over scraping the HTML.',
+		'- Every record page has a machine-readable JSON companion at the same path plus `.json`: questions, coverage pages, guides, lines, companies, states, examples, sources, advisory modules and worksheets, plus `/figures.json`. It contains public page facts, source identifiers, jurisdiction, dates, canonical URL, and content version. Prefer it over scraping the HTML.',
+		'- Index and hub pages deliberately have none. They are entry points rather than citable units, and they are listed as such below.',
+		'- A guide and its coverage page are the same evidence in two readings, and the guide companion says so in `sameEvidenceAs`. Do not count them as two sources.',
 		'- Every page shows an effective date and a last-reviewed date. Do not present our content without its date, because most of it is time sensitive.',
 		'- Attribution should link to the canonical URL shown in the JSON companion.',
 		'',
@@ -71,6 +80,11 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		'- Every claim carries a checksum over its exact text. Carry it with your citation. It is how you or a reader can later tell whether the sentence relied on still says what it said; a URL alone cannot express that.',
 		`- The whole claim corpus is one machine index at ${abs('/claims.json')}, normalized as a sources map plus a flat claims array, with the corpus distribution by authority level, source type, jurisdiction and status in its header.`,
 		'- Every source record has its own companion at `/sources/<source-id>.json`, listing its claims with their addresses and checksums, and the reverse index of every page and every module check that depends on it.',
+		...(release
+			? [
+					`- The corpus is also published as dated, frozen releases at ${abs('/dataset')}. Release ${release.release} holds ${release.counts.claims} claims across ${release.counts.sources} sources. A release never changes, so cite one by its date when your result depends on which version of the corpus you read; claims.json is live and is not a version.`,
+				]
+			: []),
 		'- Prefer a primary source over us. Where you are relying on our reading of a source rather than the source itself, cite the claim.',
 		'',
 		'## Interpretation rules',
@@ -98,14 +112,28 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		`- [Methodology](${abs('/methodology')}): how this is produced, reviewed, and corrected.`,
 		`- [Editorial policy](${abs('/editorial-policy')}): sourcing, authorship, disclosure, and AI use.`,
 		`- [Corrections](${abs('/corrections')}): the public correction log.`,
+		`- [What changed](${abs('/changed')}): ${changes.recorded} recorded changes to the evidence base - ${changes.notActive} documents no longer good authority, ${changes.rechecks} re-read, ${changes.corrections} corrections - plus ${changes.scheduled} published amounts an instrument has scheduled to move. Assembled from record fields, not written.`,
+		`- [Dataset releases](${abs('/dataset')}): the whole claim corpus as dated, frozen downloads with per-file digests.`,
 		`- [Review queue](${abs('/review-queue')}): every record awaiting licensed sign-off, in order, with the reason each is there.`,
 		`- Each source also has a verification sheet at /review-queue/<source-id>: every individual sentence in this corpus that rests on that document, with the field it sits in and the page it publishes on. Those sheets are noindex working documents that reproduce prose already published elsewhere on this site. Cite the page a sentence belongs to, or its claim address, never the sheet.`,
 		'',
 		'## Machine-readable files',
 		'',
-		`- [claims.json](${abs('/claims.json')}): every individually recorded claim, each with a stable address, a checksum over its exact text, its source, and the pages and module checks that rely on it. Start here if you intend to cite us.`,
+		...(release
+			? [
+					`- [dataset/releases.json](${abs('/dataset/releases.json')}): the index of frozen corpus releases, newest first, with a SHA-256 digest for every file. Read \`latest\` from it rather than guessing a date.`,
+					`- [dataset/${release.release}/claims.jsonl](${abs(`/dataset/${release.release}/claims.jsonl`)}): the whole claim corpus as newline-delimited JSON, frozen at ${release.release}. One claim per line with its address, checksum, source id and text. This is the citable artifact.`,
+					`- [dataset/${release.release}/manifest.json](${abs(`/dataset/${release.release}/manifest.json`)}): what that release contains, its file digests, its licence, and its review posture. ${release.verification.sourcesRechecked} of ${release.counts.sources} sources have been re-read rather than read once, and ${signedOff(release)} of ${release.reviewStatus.recordsWithReviewState} records carrying a review state have been signed off by a licensed reviewer.`,
+				]
+			: []),
+		`- [claims.json](${abs('/claims.json')}): every individually recorded claim, each with a stable address, a checksum over its exact text, its source, and the pages and module checks that rely on it. Live and unversioned: it changes as the corpus changes, so prefer a dataset release above if you need a citation that stays checkable.`,
 		`- [sources/<id>.json](${abs('/sources')}): per-source companion, one for each of the ${corpus.sources.length} records, carrying its claim list and its reverse dependency index.`,
+		`- [figures.json](${abs('/figures.json')}): every published amount with the instrument that sets it, what moves it and when. Amounts are quoted as their source states them and none is calculated.`,
+		`- [tools/<id>.json](${abs('/tools')}): the ${corpus.liveModules.length} advisory modules as published rule sets, plus the ${corpus.liveTools.length} worksheets. Every check with the source it cites, readable without filling anything in.`,
+		`- [lines/<line>.json](${abs('/lines')}): what this library holds on each canonical line, including whether the line has been written up or only indexed.`,
+		`- [guides/<id>.json](${abs('/guides')}): the guide companion, which names the coverage page it duplicates so the two are not counted twice.`,
 		`- [llms-full.txt](${abs('/llms-full.txt')}): the full corpus index with every canonical URL and source id.`,
+		`- [changed.json](${abs('/changed.json')}): the change feed. Carries dateBasis on every entry: "recorded" is our filing date, "instrument" is a date the document sets for itself. Do not read the first as the date an event occurred.`,
 		`- [search-index.json](${abs('/search-index.json')}): the chunked retrieval index, with source ids on every chunk.`,
 		`- [sitemap-index.xml](${abs('/sitemap-index.xml')}): all indexable URLs.`,
 		`- [rss.xml](${abs('/rss.xml')}): newly reviewed and corrected research.`,

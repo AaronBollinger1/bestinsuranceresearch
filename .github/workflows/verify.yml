@@ -11,6 +11,13 @@
 # preview one here and the production one in the release job below.
 name: verify
 
+# A pull request and the branch push that feeds it can arrive together. Keep
+# one current run per branch so an older red result cannot remain the thing a
+# reviewer sees while a newer commit is already being checked.
+concurrency:
+  group: verify-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
 on:
   push:
     branches: ['**']
@@ -25,9 +32,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22.12'
           cache: npm
@@ -50,8 +57,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: '22.12'
           cache: npm
@@ -60,7 +67,7 @@ jobs:
       - name: Build and verify, production posture
         env:
           PUBLIC_SITE_ENV: production
-          PUBLIC_SITE_ORIGIN: https://bestinsuranceresearch.com
+          PUBLIC_SITE_ORIGIN: https://birch.insure
         run: |
           npx astro build
           node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs
@@ -70,5 +77,50 @@ jobs:
       - name: On-page audit
         env:
           PUBLIC_SITE_ENV: production
-          PUBLIC_SITE_ORIGIN: https://bestinsuranceresearch.com
+          PUBLIC_SITE_ORIGIN: https://birch.insure
         run: npm run audit:onpage
+
+  commons:
+    # The second property, on its own origin and with its own suite. It is
+    # checked here rather than in a separate workflow because the two build
+    # from one repository and a change to the estate's rules should fail both
+    # in one place.
+    #
+    # Its suite mostly asserts ABSENCES - no agency branding, no licence
+    # number, no gold, no upload mechanism - because those absences are the
+    # entire reason COMMONS.md puts the Commons on a separate origin. A footer
+    # copied over from the Record in a hurry is exactly how one would arrive,
+    # and nothing but a check on every build would catch it.
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.12'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            commons/package-lock.json
+
+      # The ROOT dependencies, in the job that builds the other project.
+      #
+      # This looks wrong and is required. Astro reads every tsconfig.json on the
+      # way up from the project it is building, so building commons/ also parses
+      # the repository root's tsconfig - and that file extends the bare specifier
+      # `astro/tsconfigs/strict`, which resolves against the root node_modules.
+      # With only commons/ installed, `astro check` dies with "Tsconfig not found
+      # astro/tsconfigs/strict" before it compiles a line.
+      #
+      # It passed on a developer machine for one reason: the root node_modules
+      # was already there from working on the Record. Every CI run failed. That
+      # asymmetry is the whole bug, and it is why this step is not optional.
+      - name: Root dependencies, which the root tsconfig resolves against
+        run: npm ci
+
+      - run: npm ci
+        working-directory: commons
+
+      - name: Build and verify the Commons
+        run: npm run validate
+        working-directory: commons

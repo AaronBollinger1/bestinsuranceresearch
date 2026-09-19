@@ -1,0 +1,28 @@
+---
+interface Props {
+	/** The short, plain-language limits that stay attached to every published record. */
+	says: string;
+	assumes: string;
+	cannotDecide: string;
+}
+
+const { says, assumes, cannotDecide } = Astro.props;
+---
+
+<section class="evidence-boundary" aria-labelledby="evidence-boundary-title">
+	<h2 id="evidence-boundary-title" class="u-visually-hidden">How to read this record</h2>
+	<div class="evidence-boundary-grid">
+		<div class="evidence-boundary-item">
+			<span class="evidence-boundary-label">What the record says</span>
+			<p>{says}</p>
+		</div>
+		<div class="evidence-boundary-item">
+			<span class="evidence-boundary-label">What it assumes</span>
+			<p>{assumes}</p>
+		</div>
+		<div class="evidence-boundary-item">
+			<span class="evidence-boundary-label">What it cannot decide</span>
+			<p>{cannotDecide}</p>
+		</div>
+	</div>
+</section>

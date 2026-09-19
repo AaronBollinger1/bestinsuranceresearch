@@ -1,0 +1,26 @@
+/* Shared product-reading frame. The cited content stays in its original DOM. */
+.birch-reading .answer-head { padding-block: 28px 30px; }
+.birch-reading .answer-head h1 { max-width: 34ch; margin: 20px 0; font: 600 clamp(1.9rem,3.2vw,2.8rem)/1.18 var(--font-sans); letter-spacing: -.045em; }
+.birch-reading .answer-head .crumbs { font-size: var(--text-xs); }
+.birch-reading .answer-dates { margin-top: 24px; gap: 16px 28px; padding-block: 18px 0; border-bottom: 0; }
+.birch-reading .answer-dates dt { font-family: var(--font-sans); text-transform: none; letter-spacing: 0; font-size: var(--text-xs); }
+.birch-reading .answer-dates dd { font-size: var(--text-xs); }
+.birch-reading .answer-grid { grid-template-columns: minmax(0,760px) minmax(210px,260px); justify-content: space-between; gap: 56px; }
+.birch-reading .answer-rail { top: calc(var(--header-h) + 82px); gap: 24px; max-height: calc(100dvh - 170px); overflow-y: auto; scrollbar-width: thin; padding-bottom: 16px; }
+.birch-reading .rail-block { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; padding: 0 0 24px; box-shadow: none; }
+.birch-reading .rail-block h2 { font: 600 var(--text-xs)/1.5 var(--font-sans); color: var(--muted); letter-spacing: .02em; text-transform: none; }
+.birch-reading .rail-block a { font-size: var(--text-xs); }
+.birch-reading .direct-answer { padding: 0; border: 0; background: transparent; font-size: var(--text-md); line-height: 1.8; }
+.birch-reading .answer-section { margin-top: 44px; }
+.birch-reading .answer-section > h2 { font: 600 var(--text-xl)/1.3 var(--font-sans); letter-spacing: -.025em; }
+.birch-reading [id] { scroll-margin-top: calc(var(--header-h) + 90px); }
+.birch-reading .fact-list > li { padding-block: 14px; }
+.birch-reading .fact-list p,.birch-reading .prose p { line-height: 1.8; }
+.birch-reading .evidence-boundary { margin-block: 28px; box-shadow: none; }
+.birch-reading .record-lead { padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.birch-reading .record-lead h2 { margin: 0 0 18px; font: 600 var(--text-xl)/1.3 var(--font-sans); letter-spacing: -.03em; }
+.birch-reading .record-lead p { font-size: var(--text-base); line-height: 1.8; }
+.birch-reading .record-lead > p,.birch-reading .direct-answer p,.birch-reading .prose p { max-width: 72ch; }
+@media(max-width:1080px){.birch-reading .answer-grid { grid-template-columns:minmax(0,1fr); gap:32px; }.birch-reading .answer-rail { position:static; max-height:none; overflow:visible; }}
+@media(max-width:640px){.birch-reading .answer-head { padding-block:20px; }.birch-reading .answer-head h1 { font-size:1.85rem; }.birch-reading .answer-dates { gap:16px 24px; }.birch-reading .answer-section { margin-top:32px; }.birch-reading .direct-answer { font-size:var(--text-base); }}
+@media print{.birch-reading .answer-rail { position:static; max-height:none; overflow:visible; }}

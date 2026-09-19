@@ -1,0 +1,139 @@
+{
+  "manifestType": "birch-content-master-inventory",
+  "generatedOn": "2026-09-11",
+  "status": "planning-only",
+  "operator": "Birch Research",
+  "product": "birch.insure",
+  "questionCandidateCount": 12864,
+  "questionCandidateFamilies": {
+    "audience": 84,
+    "coverage-line": 1020,
+    "jurisdiction": 11424,
+    "use-case": 336
+  },
+  "canonicalLineCount": 51,
+  "jurisdictionCount": 56,
+  "useCaseCount": 42,
+  "audienceCount": 14,
+  "companyPageFamilyCount": 12,
+  "companyPageUniverse": [
+    {
+      "id": "licensed-p-and-c-insurers",
+      "name": "Licensed property and casualty insurers",
+      "priority": "P0",
+      "inclusion": "Every source-verified risk-bearing insurer authorized in a launch jurisdiction, including distinct subsidiaries when the regulator treats them as distinct entities.",
+      "pageRole": "Identity, official channels, public regulatory records, filed forms, and sourced coverage relationships. Never a reputation verdict."
+    },
+    {
+      "id": "licensed-life-annuity-insurers",
+      "name": "Licensed life and annuity insurers",
+      "priority": "P0",
+      "inclusion": "Every source-verified life or annuity risk-bearing entity in the selected jurisdiction.",
+      "pageRole": "Identity, official channels, public regulatory records, product-form sources, and jurisdiction context."
+    },
+    {
+      "id": "licensed-health-and-hmo-entities",
+      "name": "Licensed health insurers and HMOs",
+      "priority": "P0",
+      "inclusion": "Every source-verified health insurer or HMO listed by the relevant regulator.",
+      "pageRole": "Identity and official consumer/regulatory information; do not summarize individualized benefits or medical coverage."
+    },
+    {
+      "id": "surplus-lines-insurers",
+      "name": "Surplus lines and nonadmitted insurers",
+      "priority": "P0",
+      "inclusion": "Entities in an official eligible or approved surplus-lines list for the selected jurisdiction.",
+      "pageRole": "Identity, market role, official list status, and public source records. Never imply availability for a risk."
+    },
+    {
+      "id": "residual-markets-and-facilities",
+      "name": "Residual markets, pools, and facilities",
+      "priority": "P0",
+      "inclusion": "State-created or state-recognized facilities such as FAIR plans, wind pools, earthquake authorities, and assigned-risk plans.",
+      "pageRole": "Program identity, eligibility-source links, forms, public notices, and limits of the program record."
+    },
+    {
+      "id": "guaranty-associations",
+      "name": "Insurance guaranty associations",
+      "priority": "P1",
+      "inclusion": "Official state guaranty associations and their public coverage or receivership materials.",
+      "pageRole": "Public program reference only; do not present a guaranty association as an insurer or financial-strength score."
+    },
+    {
+      "id": "managing-general-agents-and-programs",
+      "name": "MGAs, program administrators, and wholesalers",
+      "priority": "P1",
+      "inclusion": "Organizations with a source-verified role in placing, administering, or distributing insurance, separated from the risk-bearing carrier.",
+      "pageRole": "Role and identity record; show the actual insurer when the source names it."
+    },
+    {
+      "id": "claims-administrators-and-tpas",
+      "name": "Claims administrators and TPAs",
+      "priority": "P1",
+      "inclusion": "Source-verified administrators that consumers may encounter in a claim or benefit process.",
+      "pageRole": "Identity and role context; never confuse an administrator with the insurer or promise a claims outcome."
+    },
+    {
+      "id": "reinsurers-and-industry-entities",
+      "name": "Reinsurers and industry entities",
+      "priority": "P2",
+      "inclusion": "Publicly sourceable entities relevant to industry research, clearly labeled as consumer-facing or industry-facing.",
+      "pageRole": "Industry reference pages, not consumer recommendations."
+    },
+    {
+      "id": "regulators-and-public-entities",
+      "name": "Regulators and public insurance entities",
+      "priority": "P0",
+      "inclusion": "NAIC, state insurance departments, public authorities, residual programs, and official complaint or filing portals.",
+      "pageRole": "Authority/source pages that help readers verify licensing, filings, notices, and public programs."
+    },
+    {
+      "id": "brokers-agents-and-professionals",
+      "name": "Brokers, agents, and financial professionals",
+      "priority": "P1",
+      "inclusion": "Only opted-in profiles with identity, role, jurisdiction, and credential verification appropriate to the proposed contribution.",
+      "pageRole": "Contributor profile, not an insurer dossier and not an endorsement."
+    },
+    {
+      "id": "insurtech-and-distribution-companies",
+      "name": "InsurTech and distribution companies",
+      "priority": "P2",
+      "inclusion": "Publicly sourceable companies that distribute, administer, or provide technology around insurance, with the role explicitly named.",
+      "pageRole": "Technology or distribution context; preserve the distinction from a risk-bearing insurer."
+    }
+  ],
+  "sourceSystems": [
+    {
+      "id": "naic-cis",
+      "name": "NAIC Consumer Insurance Search",
+      "url": "https://content.naic.org/cis_consumer_information.htm",
+      "role": "company identity and consumer-facing regulator search"
+    },
+    {
+      "id": "naic-fdr",
+      "name": "NAIC Financial Data Repository",
+      "url": "https://content.naic.org/industry_financial_filing.htm",
+      "role": "publicly appropriate financial/regulatory source intake when access and licensing permit"
+    },
+    {
+      "id": "state-doi-company",
+      "name": "State insurance department company records",
+      "url": "https://www.insurance.ca.gov/01-consumers/120-company/",
+      "role": "license status, company lists, complaints, enforcement, rate/form filings, and market conduct records"
+    },
+    {
+      "id": "official-company",
+      "name": "Official company sources",
+      "url": null,
+      "role": "legal name, official domain, public forms, notices, and consumer channels; always captured with retrieval date"
+    }
+  ],
+  "existingCompanyRecords": [
+    "california-department-of-insurance",
+    "california-earthquake-authority",
+    "farmers-insurance-exchange",
+    "naic",
+    "state-farm-general-insurance-company"
+  ],
+  "publicationRule": "No candidate becomes a public page until it has source records, a drafted answer, resolved citations, appropriate jurisdiction scope, and licensed review."
+}

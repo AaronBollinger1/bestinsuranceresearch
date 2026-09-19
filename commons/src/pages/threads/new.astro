@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SESSION_COOKIE, accountFromSession, sameOrigin } from '../../lib/auth';
+import { getStore, selfOrigin } from '../../lib/runtime';
+import {
+	LIMITS,
+	REPHRASE_GUIDANCE,
+	SUBJECTS,
+	newPostId,
+	newThreadId,
+	subject,
+	validateNewThread,
+} from '../../lib/threads';
+import type { FieldError } from '../../lib/threads';
+
+export const prerender = false;
+
+const store = getStore();
+const account = await accountFromSession(store, Astro.cookies.get(SESSION_COOKIE)?.value);
+if (!account) return Astro.redirect('/sign-in', 303);
+/* Same rule as a case report: an account is not a byline. */
+if (!account.displayName) return Astro.redirect('/account?welcome=1', 303);
+
+let errors: FieldError[] = [];
+let values: Record<string, string> = {
+	subjectId: Astro.url.searchParams.get('subject') ?? '',
+};
+
+if (Astro.request.method === 'POST') {
+	if (!sameOrigin(Astro.request, selfOrigin(Astro.request))) {
+		return new Response('Bad request', { status: 400 });
+	}
+	const form = await Astro.request.formData();
+	values = Object.fromEntries([...form.entries()].map(([k, v]) => [k, String(v)]));
+
+	const { errors: found, draft } = validateNewThread(values);
+	errors = found;
+
+	if (draft) {
+		const thread = await store.createThread(
+			{ ...draft, startedBy: account.email },
+			{ threadId: newThreadId(), postId: newPostId() },
+			new Date().toISOString(),
+		);
+		return Astro.redirect(`/threads/${thread.id}`, 303);
+	}
+}
+
+const errorFor = (field: string) => errors.filter((e) => e.field === field);
+const value = (field: string) => values[field] ?? '';
+const preselected = value('subjectId') ? subject(value('subjectId')) : null;
+
+const KIND_LABEL: Record<string, string> = {
+	company: 'Companies and public bodies',
+	coverage: 'Coverage lines',
+	question: 'Questions the library answers',
+};
+const grouped = ['company', 'coverage', 'question'].map((kind) => ({
+	kind,
+	label: KIND_LABEL[kind],
+	options: SUBJECTS.filter((s) => s.kind === kind),
+}));
+
+const box =
+	'width: 100%; padding: var(--s-3); font: inherit; border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); background: var(--white)';
+---
+
+<BaseLayout
+	title="Start a thread"
+	eyebrow="Discussion"
+	lede="A question or an account, about something this library has a page for. It publishes as you write it, so read it back before you send it."
+	crumbs={[{ name: 'Home', href: '/' }, { name: 'Discussion', href: '/threads' }, { name: 'Start a thread' }]}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				{
+					errors.length > 0 && (
+						<div class="callout" data-tone="stop">
+							<h2>This has not been posted.</h2>
+							<ul>
+								{errors.map((e) => (
+									<li>{e.message}</li>
+								))}
+							</ul>
+						</div>
+					)
+				}
+
+				<div class="callout" data-tone="note">
+					<p>
+						<strong>A post here publishes the moment you send it.</strong> Nobody reads it first, so
+						the one rule this site has is enforced at the door rather than afterwards: it cannot say
+						whether a claim should have been paid. {REPHRASE_GUIDANCE}
+					</p>
+					<p>
+						You can withdraw anything you write, at any time, in one step. It is a row rather than a
+						published file, so nothing has to be edited and committed for that to happen.
+					</p>
+				</div>
+
+				<div class="post-composer-intro">
+					<div>
+						<span class="eyebrow">New conversation</span>
+						<h2>Give the room a useful starting point.</h2>
+						<p>Attach your post to one research subject, then keep the title and body specific enough for another reader to follow.</p>
+					</div>
+					<div class="post-lanes" aria-label="Post formats">
+						<div class="post-lane is-active"><span>01</span><strong>Question</strong><small>Ask what you need to know.</small></div>
+						<div class="post-lane"><span>02</span><strong>Experience</strong><small>Describe what happened.</small></div>
+						<div class="post-lane"><span>03</span><strong>Source note</strong><small>Point to something checkable.</small></div>
+					</div>
+				</div>
+
+				<form method="post" class="stack post-composer-form">
+					<div class="field">
+						<label for="subjectId">What is this about?</label>
+						<p class="meta">
+							Threads attach to a page this library already has, so everything said about one
+							carrier or one line is in one place.
+						</p>
+						<select id="subjectId" name="subjectId" style={box} required>
+							<option value="">Choose a subject</option>
+							{
+								grouped.map((group) => (
+									<optgroup label={group.label}>
+										{group.options.map((s) => (
+											<option value={s.id} selected={value('subjectId') === s.id}>
+												{s.name}
+											</option>
+										))}
+									</optgroup>
+								))
+							}
+						</select>
+						{errorFor('subjectId').map((e) => <p class="field-error">{e.message}</p>)}
+					</div>
+
+					<div class="field">
+						<label for="title">Title</label>
+						<p class="meta">
+							What somebody scanning the index needs to know it is about. {LIMITS.title.min} to{' '}
+							{LIMITS.title.max} characters.
+						</p>
+						<input
+							id="title"
+							name="title"
+							type="text"
+							style={box}
+							maxlength={LIMITS.title.max}
+							value={value('title')}
+							required
+						/>
+						{errorFor('title').map((e) => <p class="field-error">{e.message}</p>)}
+					</div>
+
+					<div class="field">
+						<label for="body">What happened, or what you want to know</label>
+						<p class="meta">
+							Say what happened, what turned on it, and who decided. Up to {LIMITS.body.max}{' '}
+							characters - past that it is a case report rather than a post, and{' '}
+							<a href="/contribute">Contribute</a> is the better route.
+						</p>
+						<textarea id="body" name="body" rows="12" style={box} maxlength={LIMITS.body.max} required
+							>{value('body')}</textarea
+						>
+						{errorFor('body').map((e) => <p class="field-error">{e.message}</p>)}
+					</div>
+
+					<p><button class="btn" type="submit">Post it</button></p>
+				</form>
+
+				{
+					preselected && (
+						<p class="meta">
+							This will appear on the thread index under <strong>{preselected.name}</strong>.
+						</p>
+					)
+				}
+			</div>
+		</div>
+	</section>
+</BaseLayout>

@@ -6,9 +6,12 @@ import PageHeader from '../../components/PageHeader.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { stripMarkers } from '../../lib/citations';
 import { loadCorpus } from '../../lib/corpus';
+import { ROADMAP } from '../../lib/roadmap';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
+import { siteConfig } from '../../config/site';
 
+import { excerpt } from '../../lib/excerpt';
 const corpus = await loadCorpus();
 const coverages = [...corpus.coverages].sort((a, b) => a.data.name.localeCompare(b.data.name));
 
@@ -20,23 +23,6 @@ const FAMILY_LABEL: Record<string, string> = {
 	health: 'Health and benefits',
 };
 
-/*
- * The published taxonomy and the roadmap are separate on purpose. A family with
- * no substantive page is named here as a gap, not published as an empty route,
- * and it stays out of the sitemap and out of navigation until it has content.
- */
-const ROADMAP: Array<{ family: string; lines: string[] }> = [
-	{
-		family: 'Personal lines',
-		lines: ['Renters', 'Condominium unit owners', 'Personal auto', 'Personal umbrella', 'Scheduled valuables', 'Flood', 'High-net-worth programs'],
-	},
-	{
-		family: 'Commercial lines',
-		lines: ['Business owners package', 'Commercial auto', 'Commercial umbrella and excess', 'Cyber', 'Employment practices liability', 'Professional liability', 'Directors and officers', 'Crime', 'Inland marine', 'Builders risk', 'Surety bonds', 'Equipment'],
-	},
-	{ family: 'Life', lines: ['Term life', 'Permanent life', 'Key person', 'Buy-sell funding'] },
-	{ family: 'Health and benefits', lines: ['Group health concepts', 'Employee benefits', 'COBRA', 'Public program explanations'] },
-];
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -55,12 +41,12 @@ const jsonLd = graph(
 	}),
 	{
 		'@type': 'DefinedTermSet',
-		'@id': `${new URL('/insurance', Astro.site ?? 'https://bestinsuranceresearch.com').toString()}#termset`,
-		name: 'BestInsurance Research coverage library',
+			'@id': `${new URL('/insurance', siteConfig.origin).toString()}#termset`,
+		name: 'Birch Research coverage library',
 		hasDefinedTerm: coverages.map((c) => ({
 			'@type': 'DefinedTerm',
 			name: c.data.name,
-			url: new URL(`/insurance/${c.id}`, Astro.site ?? 'https://bestinsuranceresearch.com').toString(),
+				url: new URL(`/insurance/${c.id}`, siteConfig.origin).toString(),
 		})),
 	},
 );
@@ -98,7 +84,7 @@ const jsonLd = graph(
 								<a class="row" href={`/insurance/${coverage.id}`}>
 									<div>
 										<h3 class="row-title">{coverage.data.name}</h3>
-										<p>{stripMarkers(coverage.data.definition).slice(0, 210)}</p>
+										<p>{excerpt(stripMarkers(coverage.data.definition), 210)}</p>
 										<div class="row-meta">
 											<StatusChip kind={coverage.data.reviewState} />
 											<span class="meta">{coverage.data.sourceIds.length} sources</span>
@@ -136,7 +122,7 @@ const jsonLd = graph(
 						<div class="card">
 							<h3 class="card-title">{group.family}</h3>
 							<ul style="margin: var(--s-2) 0 0; font-size: var(--text-sm); color: var(--muted)">
-								{group.lines.map((line) => <li>{line}</li>)}
+								{group.lines.map((line) => <li>{line.name}</li>)}
 							</ul>
 						</div>
 					))

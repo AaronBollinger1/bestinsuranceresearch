@@ -62,7 +62,7 @@ function lastmodFor(/** @type {string} */ url) {
 }
 
 
-const site = process.env.PUBLIC_SITE_ORIGIN || 'https://bestinsuranceresearch.com';
+const site = process.env.PUBLIC_SITE_ORIGIN || 'https://birch.insure';
 
 /**
  * Routes that must never enter the sitemap:

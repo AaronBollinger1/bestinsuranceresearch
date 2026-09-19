@@ -1,0 +1,3 @@
+# Empty by design. Practitioner annotation is gated on the Record clearing
+# licensed review - COMMONS.md section 13. The schema exists so the mechanism
+# can be built and tested; the collection stays empty until that gate clears.

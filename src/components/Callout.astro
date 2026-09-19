@@ -16,7 +16,16 @@ const defaultLabel = {
 }[tone];
 ---
 
-<aside class={`callout callout-${tone}`} aria-label={label ?? defaultLabel}>
+{/*
+	role="note", not <aside>. A named <aside> is a complementary landmark, so
+	every inline caveat was being announced as a region of the page: a reader
+	pulling up the landmark list got "Privacy", "Read this before you rely on
+	it", "Privacy" again, rather than the handful of regions the page actually
+	has. These are parenthetical notes sitting in the prose, which is what
+	role="note" describes. The name still carries, so the note announces what
+	kind of note it is; it just no longer claims to be a landmark.
+*/}
+<div class={`callout callout-${tone}`} role="note" aria-label={label ?? defaultLabel}>
 	{tone === 'note' && <Info {...icon} />}
 	{tone === 'limit' && <ScrollText {...icon} />}
 	{tone === 'warn' && <TriangleAlert {...icon} />}
@@ -24,4 +33,4 @@ const defaultLabel = {
 	<div>
 		<slot />
 	</div>
-</aside>
+</div>

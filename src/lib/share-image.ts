@@ -1,8 +1,8 @@
 /**
  * Which share card a page uses.
  *
- * Every one of the 383 pages currently points at one `og.jpg`, so a link to the
- * commercial auto guide previews identically to a link to the review queue.
+ * A page without a family-specific card falls back to the Birch house card, so
+ * a rebranded link never inherits the retired BestInsurance wordmark.
  * Per-family cards fix that, and the cards are the one generation job with a
  * measurable payoff: a link with no distinctive preview is a link people scroll
  * past in Slack, LinkedIn and chat surfaces.
@@ -10,7 +10,7 @@
  * THE POINT OF THE EXISTS CHECK
  *
  * This resolves against the files actually present in `public/`, and falls back
- * to `og.jpg` for anything missing. That means the wiring can ship before a
+ * to `og-birch.svg` for anything missing. That means the wiring can ship before a
  * single card has been generated: nothing breaks, every page keeps a working
  * preview, and each new file that lands in `public/` starts being used on the
  * next build with no code change. Pointing markup at an image that does not
@@ -21,7 +21,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const PUBLIC_DIR = path.resolve(process.cwd(), 'public');
-const FALLBACK = '/og.jpg';
+const FALLBACK = '/og-birch.svg';
 
 /** Cached because this is called once per page and the answer cannot change mid-build. */
 const present = new Map<string, boolean>();

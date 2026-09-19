@@ -6,9 +6,11 @@ import PageHeader from '../../components/PageHeader.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { stripMarkers } from '../../lib/citations';
 import { loadCorpus } from '../../lib/corpus';
+import { siteConfig } from '../../config/site';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, graph, organization, organizationId, website } from '../../lib/schema';
 
+import { excerpt } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
 	const corpus = await loadCorpus();
 	return corpus.people.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
@@ -41,7 +43,7 @@ const trail = [
 
 const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 	'@type': 'Person',
-	'@id': `${new URL(path, 'https://bestinsuranceresearch.com').toString()}#person`,
+	'@id': `${new URL(path, siteConfig.origin).toString()}#person`,
 	name: d.name,
 	jobTitle: d.role,
 	description: d.bio,
@@ -64,7 +66,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 
 <BaseLayout
 	title={d.name}
-	description={`${d.name}, ${d.role} at BestInsurance Research. ${d.bio.slice(0, 160)}`}
+	description={`${d.name}, ${d.role} at Birch Research. ${excerpt(d.bio, 160)}`}
 	jsonLd={jsonLd}
 	pageType="editorial"
 >
@@ -89,7 +91,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 									<a class="row" href={item.path}>
 										<div>
 											<h3 class="row-title">{item.title}</h3>
-											<p>{stripMarkers(item.summary).slice(0, 170)}</p>
+											<p>{excerpt(stripMarkers(item.summary), 170)}</p>
 											<div class="row-meta">
 												<span class="status status-plain">{item.kind}</span>
 												<span class="meta">Reviewed {longDate(item.date)}</span>
