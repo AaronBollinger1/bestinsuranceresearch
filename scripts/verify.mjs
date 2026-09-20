@@ -529,6 +529,24 @@ test('every substantive page has a JSON companion that parses', () => {
 	}
 });
 
+test('machine citation records preserve review state across every citable family', () => {
+	const families = [
+		['questions', questions],
+		['insurance', coverages],
+		['guides', coverages],
+		['companies', companies],
+		['states', states],
+		['examples', examples],
+	];
+	for (const [directory, entries] of families) {
+		for (const entry of entries) {
+			const file = path.join(DIST, directory, `${entry.id}.json`);
+			const record = JSON.parse(read(file));
+			assert.equal(record.reviewState, entry.data.reviewState, `${directory}/${entry.id} review state drifted from the visible record`);
+		}
+	}
+});
+
 test('company machine records expose only declared research relationships', () => {
 	for (const company of companies) {
 		const record = JSON.parse(read(path.join(DIST, 'companies', `${company.id}.json`)));
@@ -956,6 +974,25 @@ test('llms.txt and llms-full.txt exist and name the operator and the limits', ()
 	const full = read(path.join(DIST, 'llms-full.txt'));
 	for (const source of sources.slice(0, 25)) {
 		assert.ok(full.includes(source.id), `llms-full.txt omits source ${source.id}`);
+	}
+});
+
+test('citation indexes distinguish a record date from completed review', () => {
+	const manifest = read(path.join(DIST, 'llms.txt'));
+	const full = read(path.join(DIST, 'llms-full.txt'));
+	const pendingQuestion = questions.find((entry) => entry.data.reviewState === 'under-review');
+	const pendingCoverage = coverages.find((entry) => entry.data.reviewState === 'under-review');
+	assert.ok(pendingQuestion && pendingCoverage, 'fixtures must include pending question and coverage records');
+	const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+	assert.match(manifest, new RegExp(`${escapeRegex(pendingQuestion.data.question)}[^\\n]*record date: ${pendingQuestion.data.lastReviewed} \\| review state: under-review`));
+	assert.match(manifest, new RegExp(`${escapeRegex(pendingCoverage.data.name)}[^\\n]*record date: ${pendingCoverage.data.lastReviewed} \\| review state: under-review`));
+	for (const entry of [pendingQuestion, pendingCoverage]) {
+		const start = full.indexOf(`### ${entry.data.question ?? entry.data.name}`);
+		assert.ok(start >= 0, `llms-full.txt omits ${entry.id}`);
+		const end = full.indexOf('\n### ', start + 5);
+		const block = full.slice(start, end < 0 ? full.length : end);
+		assert.match(block, new RegExp(`record date: ${entry.data.lastReviewed} \\| review state: under-review`), `${entry.id} has no pending record date`);
+		assert.doesNotMatch(block, /last reviewed:/, `${entry.id} exports a completed-review label while under review`);
 	}
 });
 
