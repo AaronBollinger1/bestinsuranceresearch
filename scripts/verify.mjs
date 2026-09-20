@@ -91,12 +91,23 @@ test('the frozen dataset index locators stay on the Birch canonical host', () =>
 	}
 });
 
-test('guide citation and machine-record links share the coverage companion', () => {
-	const sample = coverages[0];
-	assert.ok(sample, 'no coverage records');
-	const html = read(path.join(DIST, 'guides', sample.id, 'index.html'));
-	assert.match(html, new RegExp(`/insurance/${sample.id}\\.json`));
-	assert.doesNotMatch(html, new RegExp(`/guides/${sample.id}\\.json`));
+test('every guide advertises and links its own machine companion', () => {
+	assert.ok(coverages.length > 0, 'no coverage records');
+	for (const entry of coverages) {
+		const machinePath = `/guides/${entry.id}.json`;
+		const html = read(path.join(DIST, 'guides', entry.id, 'index.html'));
+		const hrefCount = html.split(`href="${machinePath}"`).length - 1;
+		assert.ok(hrefCount >= 3, `${entry.id} does not consistently link ${machinePath}`);
+
+		const machineFile = path.join(DIST, 'guides', `${entry.id}.json`);
+		assert.ok(fs.existsSync(machineFile), `${entry.id} has no guide machine companion`);
+		const machine = JSON.parse(read(machineFile));
+		assert.equal(machine.recordType, 'guide', `${entry.id} machine companion is not a guide`);
+		assert.ok(
+			machine.sameEvidenceAs?.endsWith(`/insurance/${entry.id}`),
+			`${entry.id} does not name its coverage counterpart`,
+		);
+	}
 });
 
 test('under-review coverage citations export editorial-review pending, not last reviewed', () => {
@@ -484,6 +495,7 @@ test('every substantive page has a JSON companion that parses', () => {
 	const expected = [
 		...questions.map((q) => `questions/${q.id}.json`),
 		...coverages.map((c) => `insurance/${c.id}.json`),
+		...coverages.map((c) => `guides/${c.id}.json`),
 		...companies.map((c) => `companies/${c.id}.json`),
 		...states.map((s) => `states/${s.id}.json`),
 		...examples.map((e) => `examples/${e.id}.json`),
