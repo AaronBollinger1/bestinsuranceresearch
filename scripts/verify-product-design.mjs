@@ -338,6 +338,50 @@ test('the Kind tag pill is never worn by a container', () => {
   assert.deepEqual(containers, [], `the Kind tag pill applied to a non-pill element:\n  ${containers.slice(0, 8).join('\n  ')}`);
 });
 
+test('an unlaunched route says so above the fold, not only in its footer', () => {
+  // The indexing posture was already truthful, but a reader who lands on a
+  // preview URL never sees a robots directive. Before this, the only visible
+  // status was the footer's "Preview build" paragraph, ~97% of the way down a
+  // question page: somebody reading a sourced answer about their own insurance
+  // had no way to tell, from what was on screen, that this is unlaunched.
+  //
+  // The status and the noindex tag are driven by the same flag, so this asserts
+  // they agree on every route rather than trusting that they were wired up once.
+  let previewPages = 0;
+  const missing = [];
+  const buried = [];
+  const mismatched = [];
+  for(const route of builtPages()) {
+    const page = html(route);
+    const isPreviewBuild = /<body[^>]*data-site-env="preview"/.test(page);
+    const hasStatus = page.includes('data-development-status');
+    const isNoindex = /<meta name="robots" content="[^"]*noindex/.test(page);
+    if(!isPreviewBuild) {
+      // Production posture is governed by the launch gate, not by this banner.
+      if(hasStatus) mismatched.push(`${route}: development status on a production build`);
+      continue;
+    }
+    previewPages++;
+    if(!isNoindex) mismatched.push(`${route}: preview build without noindex`);
+    if(!hasStatus) { missing.push(route); continue; }
+    // Above the fold means before the header and the main landmark, not merely
+    // present somewhere in the document.
+    const statusAt = page.indexOf('data-development-status');
+    const mainAt = page.indexOf('<main');
+    const headerAt = page.indexOf('<header');
+    if(statusAt > mainAt || (headerAt !== -1 && statusAt > headerAt)) buried.push(route);
+  }
+  assert.ok(previewPages >= 800, `every preview route is covered (found ${previewPages})`);
+  assert.deepEqual(missing, [], `unlaunched routes with no visible status:\n  ${missing.slice(0, 8).join('\n  ')}`);
+  assert.deepEqual(buried, [], `status rendered below the header or main:\n  ${buried.slice(0, 8).join('\n  ')}`);
+  assert.deepEqual(mismatched, [], `visible status and indexing posture disagree:\n  ${mismatched.slice(0, 8).join('\n  ')}`);
+  // It has to say the three things that make it truthful rather than decorative.
+  const home = html('/');
+  assert.match(home, /In development\./, 'the status names the state');
+  assert.match(home, /not launched/, 'the status says the site is not launched');
+  assert.match(home, /nothing here is insurance advice or an offer of coverage/, 'the status refuses solicitation');
+});
+
 const pageFile = (path) => fileURLToPath(new URL(`../dist${path === '/' ? '' : path}/index.html`, import.meta.url));
 const html = (path) => readFileSync(pageFile(path), 'utf8');
 
