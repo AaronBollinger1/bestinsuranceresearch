@@ -14,13 +14,35 @@ name: verify
 # A pull request and the branch push that feeds it can arrive together. Keep
 # one current run per branch so an older red result cannot remain the thing a
 # reviewer sees while a newer commit is already being checked.
+#
+# `head_ref` on a pull_request and `ref_name` on a push are both the branch
+# name, so the two events for one commit land in the same group and the newer
+# one cancels the older. That is why every feature-branch push run in this
+# repository's history reads `cancelled`: it was started, billed until it was
+# killed, and never reported anything a reviewer read.
 concurrency:
   group: verify-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
 on:
+  # Feature work is covered by `pull_request`, so `push` does not also fire for
+  # it. Before this narrowing every feature-branch commit opened two runs - a
+  # push run that was always cancelled by the concurrency rule above, and the
+  # pull_request run that actually reported - which spent hosted minutes on a
+  # result nobody could see.
+  #
+  # The branches kept here are the ones where a push is the only event there
+  # is: `main`, the launch/gate/release branches, and the preview integration
+  # branch that units merge into. A commit reaching any of those still runs the
+  # full suite. Nothing is exempted from checking; only the duplicate copy of a
+  # check is removed.
   push:
-    branches: ['**']
+    branches:
+      - main
+      - 'launch/**'
+      - 'gate/**'
+      - 'release/**'
+      - grok/recover-pr1-pr3-onto-launch-20260915
   pull_request:
   workflow_dispatch:
 
