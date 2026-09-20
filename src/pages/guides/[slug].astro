@@ -41,6 +41,7 @@ export const getStaticPaths = (async () => {
 const { entry, corpus } = Astro.props;
 const d = entry.data;
 const path = `/guides/${entry.id}`;
+const machinePath = `${path}.json`;
 
 const sourceIds = idsOf(d.sourceIds);
 const sources = ledgerFor(sourceIds, corpus.sourceById, `guide "${entry.id}"`);
@@ -134,7 +135,7 @@ const facts = [
 const links = [
 	{ label: 'Full reference page', href: `/insurance/${entry.id}` },
 	...relatedModules.map((m) => ({ label: `${m.data.name} tool`, href: `/tools/${m.id}` })),
-	{ label: 'Machine record', href: `/insurance/${entry.id}.json` },
+	{ label: 'Machine record', href: machinePath },
 ];
 
 const description = `A guide to ${d.name.toLowerCase()}: what it covers, what it excludes, what actually goes wrong, what reduces it, and what an underwriter asks. Every statement cites a published source.`;
@@ -174,7 +175,7 @@ const jsonLd = graph(
 	description={description} image={shareImageForFamily(entry.data.family)}
 	jsonLd={jsonLd}
 	pageType="coverage"
-	machinePath={`/insurance/${entry.id}.json`}
+	machinePath={machinePath}
 >
 	<article>
 		<section class="band band-tight">
@@ -225,7 +226,7 @@ const jsonLd = graph(
 		<section class="band band-tight no-print" aria-label="Cite this guide">
 			<div class="shell">
 				<CiteThisPage
-					machinePath={`/insurance/${entry.id}.json`}
+					machinePath={machinePath}
 					page={{
 						title: `${d.name}: a guide`,
 						path,
