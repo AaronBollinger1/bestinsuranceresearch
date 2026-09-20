@@ -363,7 +363,7 @@ const FAMILY_LABEL: Record<string, string> = {
 										<div class="row-meta">
 											<StatusChip kind={question.data.confidence} />
 											<span class="meta">{shortList(question.data.lines)}</span>
-											<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+							<span class="meta">{question.data.reviewState === 'under-review' ? 'Record date' : 'Reviewed'} {longDate(question.data.lastReviewed)}</span>
 											<span class="meta">{question.data.sourceIds.length} sources</span>
 										</div>
 									</div>
@@ -693,7 +693,7 @@ const FAMILY_LABEL: Record<string, string> = {
 					`<span class="status status-plain">${escape(TYPE_LABEL[hit.entryType] || hit.entryType)}</span>`,
 					`<span class="meta">Matched in: ${escape(KIND_LABEL[hit.bestChunk.kind] || hit.bestChunk.kind)}</span>`,
 					`<span class="meta">${hit.bestChunk.sourceIds.length} supporting source${hit.bestChunk.sourceIds.length === 1 ? '' : 's'}</span>`,
-					`<span class="meta">Reviewed ${escape(hit.lastReviewed)}</span>`,
+					`<span class="meta">${hit.reviewState === 'under-review' ? 'Record date' : 'Reviewed'} ${escape(hit.lastReviewed)}</span>`,
 					'</div>',
 					'</div>',
 					'<div class="row-tail"><span class="meta">Open</span></div>',

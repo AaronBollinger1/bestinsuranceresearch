@@ -146,7 +146,7 @@ const FAMILY_LABEL: Record<string, string> = {
 									<span class="meta">{shortList(question.data.lines)}</span>
 									{question.data.states.length > 0 && <span class="meta">{question.data.states.join(', ')}</span>}
 									<span class="meta">{question.data.sourceIds.length} sources</span>
-									<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+									<span class="meta">{question.data.reviewState === 'under-review' ? 'Record date' : 'Reviewed'} {longDate(question.data.lastReviewed)}</span>
 								</div>
 							</div>
 							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>

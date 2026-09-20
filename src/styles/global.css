@@ -916,6 +916,7 @@ a.card:hover .card-title { color: var(--brand-blue-text); }
 	padding: 1px 3px; border-radius: var(--r-1); background: var(--gold-wash);
 	transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
 }
+.cite-with-punctuation { white-space: nowrap; }
 .cite:hover, .cite:focus-visible { background: var(--gold-edge); color: var(--white); }
 .cite-target { scroll-margin-top: calc(var(--header-h) + var(--s-6)); }
 .cite-target:target { background: var(--gold-wash); }

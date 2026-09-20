@@ -283,7 +283,7 @@ const reviewer = corpus.personByName.get(d.reviewer);
 												<p>{excerpt(stripMarkers(question.data.shortAnswer), 180)}</p>
 												<div class="row-meta">
 													<StatusChip kind={question.data.confidence} />
-													<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+									<span class="meta">{question.data.reviewState === 'under-review' ? 'Record date' : 'Reviewed'} {longDate(question.data.lastReviewed)}</span>
 												</div>
 											</div>
 											<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
