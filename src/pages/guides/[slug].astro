@@ -186,7 +186,7 @@ const jsonLd = graph(
 				<p class="page-lede">{description}</p>
 				<div class="answer-dates">
 					<StatusChip kind={d.reviewState === 'reviewed' ? 'reviewed' : 'under-review'} />
-					<span class="meta">Reviewed {longDate(d.lastReviewed)}</span>
+					<span class="meta">{d.reviewState === 'under-review' ? 'Record date' : 'Reviewed'} {longDate(d.lastReviewed)}</span>
 					<span class="meta">{sources.length} sources</span>
 					{/* Both roles, because /methodology says both are named on every page
 					    and this page named only one. A guide is written from a coverage

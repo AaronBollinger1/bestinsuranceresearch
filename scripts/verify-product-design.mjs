@@ -38,6 +38,14 @@ test('reading specimens retain source targets and point back to existing canonic
   assert.match(html('/design/templates/case-study'),/What this case does not establish/);
 });
 
+test('interior search and citation chrome preserve truthful, reachable metadata', () => {
+  const page = html('/questions/replacement-cost-vs-market-value');
+  assert.match(page, /id="header-q"[^>]+placeholder="Search research"/);
+  assert.match(page, /id="panel-q"[^>]+placeholder="Search research"/);
+  assert.doesNotMatch(page, /Search questions and coverage/);
+  assert.match(page, /class="cite-with-punctuation"><a class="cite"[\s\S]*?<\/a>[.,;:!?)]<\/span>/, 'citation punctuation stays with its marker');
+});
+
 test('account and workflow specimens explicitly expose recovery and no-side-effect states',()=>{
   for(const state of ['email','inbox','profile','expired','failure']) assert.ok(html('/design/account-preview').includes(`data-account-panel="${state}"`));
   for(const state of ['start','consent','review','cancelled']) assert.ok(html('/design/templates/your-coverage').includes(`data-coverage-panel="${state}"`));

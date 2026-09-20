@@ -120,6 +120,25 @@ test('under-review coverage citations export editorial-review pending, not last 
 	assert.doesNotMatch(plain, /Last reviewed/);
 });
 
+test('under-review list and guide metadata say record date, not completed review', () => {
+	const pendingQuestion = questions.find((entry) => entry.data.reviewState === 'under-review');
+	assert.ok(pendingQuestion, 'no under-review question record');
+	const questionHref = `/questions/${pendingQuestion.id}`;
+	for (const route of ['/ask', '/questions']) {
+		const page = read(path.join(DIST, route.slice(1), 'index.html'));
+		const row = page.match(new RegExp(`<a[^>]+href="${questionHref}"[\\s\\S]*?<\\/a>`))?.[0] ?? '';
+		assert.ok(row, `${route}: missing pending question row`);
+		assert.match(row, /<span class="meta"[^>]*>Record date /, `${route}: pending row must say Record date`);
+		assert.doesNotMatch(row, /<span class="meta"[^>]*>Reviewed /, `${route}: pending row must not say Reviewed`);
+	}
+
+	const pendingGuide = coverages.find((entry) => entry.data.reviewState === 'under-review');
+	assert.ok(pendingGuide, 'no under-review guide record');
+	const guide = read(path.join(DIST, 'guides', pendingGuide.id, 'index.html'));
+	assert.match(guide, /<span class="meta"[^>]*>Record date /, 'pending guide must say Record date');
+	assert.doesNotMatch(guide, /<span class="meta"[^>]*>Reviewed /, 'pending guide must not say Reviewed');
+});
+
 const sourceIds = new Set(sources.map((s) => s.id));
 const routes = new Set(htmlFiles.map(routeOf));
 
@@ -955,6 +974,7 @@ test('the search index is chunked by claim and carries source ids', () => {
 	assert.ok(index.chunks.length > 100, `index has only ${index.chunks.length} chunks`);
 	for (const chunk of index.chunks) {
 		assert.ok(chunk.sourceIds.length > 0, `chunk ${chunk.id} carries no source id`);
+		assert.ok(chunk.reviewState === undefined || ['reviewed', 'under-review', 'corrected'].includes(chunk.reviewState), `chunk ${chunk.id} carries an invalid review state`);
 		for (const id of chunk.sourceIds) {
 			assert.ok(sourceIds.has(id), `chunk ${chunk.id} cites unknown source ${id}`);
 		}

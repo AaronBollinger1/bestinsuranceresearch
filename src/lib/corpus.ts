@@ -126,6 +126,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			topics: d.topics,
 			effectiveDate: d.effectiveDate,
 			lastReviewed: d.lastReviewed,
+			reviewState: d.reviewState,
 			confidence: d.confidence,
 		};
 		pushChunk(chunks, base, 'answer', [d.shortAnswer], entrySources);
@@ -151,6 +152,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			topics: [d.line],
 			effectiveDate: d.effectiveDate,
 			lastReviewed: d.lastReviewed,
+			reviewState: d.reviewState,
 			confidence: 'established',
 		};
 		pushChunk(chunks, base, 'definition', [d.definition], entrySources);
@@ -177,6 +179,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			topics: [d.orgType],
 			effectiveDate: d.lastReviewed,
 			lastReviewed: d.lastReviewed,
+			reviewState: d.reviewState,
 			confidence: 'established',
 		};
 		pushChunk(chunks, base, 'entity', [d.summary], entrySources);
@@ -198,6 +201,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			topics: ['regulation', 'availability'],
 			effectiveDate: d.effectiveDate,
 			lastReviewed: d.lastReviewed,
+			reviewState: d.reviewState,
 			confidence: 'contextual',
 		};
 		pushChunk(chunks, base, 'jurisdiction', [d.summary], entrySources);
@@ -220,6 +224,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			topics: d.lines,
 			effectiveDate: d.lastReviewed,
 			lastReviewed: d.lastReviewed,
+			reviewState: d.reviewState,
 			confidence: d.label === 'public-record' ? 'established' : 'contextual',
 		};
 		pushChunk(chunks, base, 'example', [d.whatHappened], entrySources);
@@ -240,6 +245,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			topics: d.lines,
 			effectiveDate: d.lastReviewed,
 			lastReviewed: d.lastReviewed,
+			reviewState: d.reviewState,
 			confidence: 'contextual',
 		};
 		pushChunk(chunks, base, 'tool', [d.summary, d.spec.output], idsOf(d.sourceIds));
@@ -267,6 +273,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			topics: d.lines,
 			effectiveDate: d.lastReviewed,
 			lastReviewed: d.lastReviewed,
+			reviewState: d.reviewState,
 			confidence: 'contextual',
 		};
 		const groups = [...new Set(d.fields.map((f) => f.group))].join(', ');
