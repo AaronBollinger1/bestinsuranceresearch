@@ -1369,6 +1369,11 @@ const ANSWERABLE = [
 	'when can a contract require additional insured status',
 	'what is inland marine insurance used for',
 	'replacement cost vs market value',
+	'what auto insurance does california require',
+	'what is the california fair plan',
+	'my insurance company was placed in liquidation',
+	'debris flow after a wildfire',
+	'california data breach what my business must do',
 ];
 
 const OFF_TOPIC = ['pet insurance for a parrot', 'travel insurance for a cruise', 'insurance'];

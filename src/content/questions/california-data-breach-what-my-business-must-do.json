@@ -1,0 +1,78 @@
+{
+	"question": "My California business had a data breach. What am I required to do, and how long do I have?",
+	"aliases": [
+		"How long does a California business have to notify a data breach?",
+		"What must a California breach notice say?",
+		"Do I have to tell the California Attorney General about a breach?",
+		"Can customers sue my business over a data breach in California?"
+	],
+	"shortAnswer": "California fixes a deadline rather than a standard. Civil Code section 1798.82(a) obliges a business that conducts business in California and owns or licenses computerized data including personal information to disclose a breach of the security of the system to any California resident whose unencrypted personal information was, or is reasonably believed to have been, acquired by an unauthorized person, and that disclosure shall be made within 30 calendar days of discovery or notification of the breach [S:ca-civ-code-1798-82]. The older standard, 'in the most expedient time possible and without unreasonable delay', is no longer in subdivision (a) [S:ca-civ-code-1798-82]. If you notify more than 500 California residents from a single breach, subdivision (f) requires a single sample copy of that notice to go to the Attorney General electronically within 15 calendar days of notifying consumers [S:ca-civ-code-1798-82]. The notice has a prescribed title, type size and contents [S:ca-civ-code-1798-82], and a separate statute gives affected consumers their own civil action [S:ca-civ-code-1798-150].",
+	"assumes": [
+		"You are asking what the California statutes require of the business, not whether any particular incident is a breach. Whether unauthorized acquisition occurred is a factual determination, usually made with forensic and legal advice.",
+		"The data at issue is computerized. Section 1798.82(a) is written about an individual or business that owns or licenses computerized data that includes personal information.",
+		"Your business is not within one of the exemptions. Section 1798.81.5(e) exempts certain entities, including providers of health care subject to the Confidentiality of Medical Information Act, financial institutions subject to the California Financial Information Privacy Act, and entities subject to HIPAA."
+	],
+	"why": "Start with what triggers the duty, because it is narrower than 'we had an incident'. Section 1798.82(g) defines breach of the security of the system as unauthorized acquisition of computerized data that compromises the security, confidentiality, or integrity of personal information maintained by the individual or business [S:ca-civ-code-1798-82]. Acquisition is the operative word: access alone is not the definition the section uses. Subdivision (a) then ties the duty to a resident of California whose unencrypted personal information was, or is reasonably believed to have been, acquired by an unauthorized person [S:ca-civ-code-1798-82].\n\nWhat counts as personal information is enumerated, not left to judgement. Subdivision (h)(1) lists the data elements which, in combination with an individual's name, make information personal information for this section: social security number; driver's license number, California identification card number, tax identification number, passport number, military identification number, or other unique identification number issued on a government document; account number or credit or debit card number, in combination with any required security code, access code, or password; medical information; health insurance information; unique biometric data generated from measurements or technical analysis; information or data collected through an automated license plate recognition system; and genetic data [S:ca-civ-code-1798-82]. Subdivision (h) also treats a username or email address, in combination with a password or security question and answer that would permit access to an online account, as personal information, and that combination needs no name element at all [S:ca-civ-code-1798-82]. A business that screens only for names plus social security numbers will miss the credential case entirely.\n\nThe timing is now a hard number. Subdivision (a) states that the disclosure shall be made within 30 calendar days of discovery or notification of the data breach [S:ca-civ-code-1798-82]. That is a change worth noticing if you are working from older guidance: the phrase 'in the most expedient time possible and without unreasonable delay', which was the operative timing standard in earlier versions, is no longer present in subdivision (a) [S:ca-civ-code-1798-82]. The version on the official host is stated as amended by Stats. 2025, Ch. 319, Sec. 1 (SB 446), effective January 1, 2026 [S:ca-civ-code-1798-82]. There is one express stop on the clock: subdivision (c) permits the notification to be delayed if a law enforcement agency determines that the notification will impede a criminal investigation [S:ca-civ-code-1798-82].\n\nThe notice itself is a prescribed document. Subdivision (d)(1) requires it to be written in plain language, to be titled 'Notice of Data Breach', and to be presented in at least 10-point type [S:ca-civ-code-1798-82]. Subdivision (d)(2) requires it to state the name and contact information of the reporting entity, the types of personal information involved, the date or estimated date of the breach and the date of the notice, whether notification was delayed by a law enforcement investigation, a general description of the incident, the toll-free numbers and addresses of the major credit reporting agencies where social security numbers or driver's license numbers were involved, and any offer of identity theft prevention and mitigation services [S:ca-civ-code-1798-82]. Where such an offer is made, the section describes it as provided at no cost for not less than 12 months [S:ca-civ-code-1798-82].\n\nTwo thresholds change what else you owe. Subdivision (f) requires an individual or business issuing a breach notification to more than 500 California residents as a result of a single breach to submit a single sample copy of that notification electronically to the Attorney General within 15 calendar days of notifying affected consumers [S:ca-civ-code-1798-82]. Separately, subdivision (j)(3) permits substitute notice where the business demonstrates that the cost of providing notice would exceed two hundred fifty thousand dollars, or that the affected class to be notified exceeds 500,000 [S:ca-civ-code-1798-82]. Substitute notice is not a lighter option: it consists of email notice, conspicuous posting on the business's internet website for a minimum of 30 days, and notification to major statewide media [S:ca-civ-code-1798-82].\n\nNotification is the back end. The front end is a security duty that exists before anything goes wrong. Section 1798.81.5(b) requires a business that owns, licenses, or maintains personal information about a California resident to implement and maintain reasonable security procedures and practices appropriate to the nature of the information, to protect the personal information from unauthorized access, destruction, use, modification, or disclosure [S:ca-civ-code-1798-81-5]. Subdivision (c) reaches your vendors: where a business discloses personal information about a California resident to a nonaffiliated third party under a contract, the contract must include a provision requiring the third party to implement and maintain reasonable security procedures and practices [S:ca-civ-code-1798-81-5]. The version on the official host is stated as amended by Stats. 2021, Ch. 527, Sec. 2 (AB 825), effective January 1, 2022 [S:ca-civ-code-1798-81-5].\n\nThe exposure that usually drives the insurance question is the private action. Civil Code section 1798.150(a)(1) gives a civil action to a consumer whose nonencrypted and nonredacted personal information, or whose email address in combination with a password or security question and answer that would permit access to the account, is subject to unauthorized access and exfiltration, theft, or disclosure as a result of a business's violation of the duty to implement and maintain reasonable security procedures and practices [S:ca-civ-code-1798-150]. Subdivision (a)(1)(A) allows recovery of damages in an amount not less than one hundred dollars and not greater than seven hundred and fifty dollars per consumer per incident, or actual damages, whichever is greater [S:ca-civ-code-1798-150]. Per consumer per incident is what makes the arithmetic move: the same breach that produces one notice obligation can produce a statutory damages claim for each affected consumer. Subdivision (b) requires a consumer, before initiating an action for statutory damages, to provide the business 30 days' written notice identifying the specific provisions alleged to have been violated, and provides that no action for statutory damages may be initiated if the business cures as that subdivision describes [S:ca-civ-code-1798-150]. Subdivision (a)(2) requires a court assessing statutory damages to consider the nature and seriousness of the misconduct, the number of violations, the persistence of the misconduct, the length of time over which it occurred, and the willfulness of the defendant's misconduct [S:ca-civ-code-1798-150].",
+	"whatChanges": [
+		"Whether the data was encrypted. Section 1798.82(a) is written about unencrypted personal information, and section 1798.150(a)(1) about nonencrypted and nonredacted personal information [S:ca-civ-code-1798-82][S:ca-civ-code-1798-150].",
+		"Which data elements were involved. Subdivision (h)(1) enumerates them, and the username-or-email-plus-credential case in subdivision (h) needs no name element [S:ca-civ-code-1798-82].",
+		"How many California residents are notified. More than 500 from a single breach triggers the Attorney General sample copy within 15 calendar days [S:ca-civ-code-1798-82].",
+		"Whether law enforcement has determined that notification would impede a criminal investigation, which subdivision (c) treats as a permitted delay [S:ca-civ-code-1798-82].",
+		"Whether the business is within one of the exemptions in section 1798.81.5(e), such as a HIPAA-covered entity or a financial institution under the California Financial Information Privacy Act [S:ca-civ-code-1798-81-5]."
+	],
+	"variability": [
+		"These are California statutes and describe California obligations. A breach touching residents of several states usually engages several notification laws at once, each with its own clock.",
+		"The 30-calendar-day deadline is stated in the version on the official host as amended by SB 446, effective January 1, 2026. Guidance written before that amendment describes a different standard [S:ca-civ-code-1798-82].",
+		"Whether an incident is a breach of the security of the system under subdivision (g) is a factual determination about unauthorized acquisition, not a conclusion this page can reach for you [S:ca-civ-code-1798-82].",
+		"Section 1798.150(c) provides that nothing in the title shall be interpreted to serve as the basis for a private right of action under any other law, so the action it creates should not be read as a general one [S:ca-civ-code-1798-150]."
+	],
+	"nextActions": [
+		"Get legal advice before you conclude an incident is not a breach. Subdivision (g) turns on unauthorized acquisition of computerized data, and that characterisation drives every deadline that follows [S:ca-civ-code-1798-82].",
+		"Diary the 30 calendar days from discovery or notification, and the separate 15 calendar days for the Attorney General sample copy if more than 500 California residents are notified [S:ca-civ-code-1798-82].",
+		"Draft the notice against subdivision (d) rather than from a template: the title, the 10-point type, and each required content item are specified [S:ca-civ-code-1798-82].",
+		"Review your vendor contracts for the provision section 1798.81.5(c) requires when personal information is disclosed to a nonaffiliated third party [S:ca-civ-code-1798-81-5].",
+		"Take the statutory damages range and the 30-day cure notice in section 1798.150 to your broker when you discuss cyber liability limits, because per consumer per incident is what scales the exposure [S:ca-civ-code-1798-150]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "commercial",
+	"lines": [
+		"cyber-liability"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "business-owner",
+	"topics": [
+		"data breach notification",
+		"reasonable security",
+		"cyber liability",
+		"california",
+		"customer records"
+	],
+	"companies": [],
+	"coverages": [
+		"cyber-liability"
+	],
+	"effectiveDate": "2026-09-19",
+	"lastReviewed": "2026-09-19",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"customer-harasses-my-employee-liability-california",
+		"how-long-to-file-employment-claim-california"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether an incident is a breach of the security of the system, and what a compliant notice must say about it, are legal determinations with statutory deadlines attached, and getting them wrong creates its own exposure. A lawyer should make the breach determination and review the notice; a licensed broker can place or review cyber liability coverage against the statutory damages exposure. Nothing here is a determination about any particular incident."
+	},
+	"sourceIds": [
+		"ca-civ-code-1798-82",
+		"ca-civ-code-1798-81-5",
+		"ca-civ-code-1798-150"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

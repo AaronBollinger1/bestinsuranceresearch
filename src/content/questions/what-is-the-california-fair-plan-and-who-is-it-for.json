@@ -1,0 +1,75 @@
+{
+	"question": "What is the California FAIR Plan, and who is it actually for?",
+	"aliases": [
+		"Is the California FAIR Plan a state insurance company?",
+		"When would I end up on the California FAIR Plan?",
+		"What does the FAIR Plan exist to do?",
+		"Is the FAIR Plan the same as regular home insurance?"
+	],
+	"shortAnswer": "The California FAIR Plan is a statutory joint arrangement among licensed insurers, not a state agency and not a private carrier competing for business. Insurance Code section 10091(a) defines the Association, or industry placement facility, to mean a joint reinsurance association, the California FAIR Plan Association, formed by insurers licensed to write and engaged in writing basic property insurance within the state, to assist persons in securing basic property insurance and to formulate and administer a program for the equitable apportionment among insurers of basic property insurance [S:ca-ins-code-10091]. The FAIR Plan describes itself as an insurer of last resort, established by statute to provide basic property insurance to Californians statewide when no other option is reasonably available [S:ca-fair-plan-home]. It states it was established so that all California property owners have access to basic fire insurance when access to coverage in the traditional market is not available through no fault of the property owner [S:ca-fair-plan-home]. The operative words are basic and last resort: it is a floor, not an equivalent of a full homeowners policy.",
+	"assumes": [
+		"You are asking what the FAIR Plan is and what role it plays, not whether a particular property qualifies or what a particular application would be charged. Eligibility and pricing are determined by the Plan on the facts of the property.",
+		"You are asking about the California FAIR Plan Association specifically. Other states have their own residual market arrangements with different statutes, different names, and different coverage.",
+		"This answer describes the Plan's statutory character and its own published description of its purpose. What a given FAIR Plan policy does and does not cover is a separate question answered from the policy form."
+	],
+	"why": "Start with what the statute makes it. Insurance Code section 10091(a) defines 'Association,' 'industry placement facility,' or 'facility' to mean a joint reinsurance association, the California FAIR Plan Association, formed by insurers licensed to write and engaged in writing basic property insurance within the state to assist persons in securing basic property insurance and to formulate and administer a program for the equitable apportionment among insurers of basic property insurance [S:ca-ins-code-10091]. Three things follow from that sentence. It is formed by the licensed insurers themselves rather than by the state as a department. Its purpose is stated as assisting persons in securing basic property insurance, which is narrower than providing whatever coverage a property owner would prefer. And it carries an apportionment function among insurers, which is why it is described as a joint arrangement rather than as a company with its own shareholders [S:ca-ins-code-10091].\n\nThe Plan's own description of its role matches the statutory framing and adds the condition that gets people there. It describes itself as an insurer of last resort, established by statute to provide basic property insurance to Californians statewide when no other option is reasonably available [S:ca-fair-plan-home]. It states that it was established so that all California property owners have access to basic fire insurance when access to coverage in the traditional market is not available through no fault of the property owner [S:ca-fair-plan-home]. 'Through no fault of the property owner' is doing real work in that sentence: the Plan presents itself as the answer to unavailability in the ordinary market, not as a penalty box and not as a cheaper alternative to it [S:ca-fair-plan-home].\n\nBecause the coverage is basic by design, the Plan itself points outward for the rest. Its home page states that a broker can help the applicant find a Difference in Conditions policy which offers additional coverages, and invites the reader to ask a broker about Flood and Earthquake insurance [S:ca-fair-plan-home]. A Difference in Conditions policy is a separate contract bought alongside the FAIR Plan policy, and flood and earthquake are separate products again. Someone who ends up on the Plan and stops there has usually bought less protection than a standard homeowners policy would have provided, which is why the Plan's own page routes the reader to a broker rather than treating the basic policy as the finished answer [S:ca-fair-plan-home].\n\nWhat that means practically is that the FAIR Plan answers an availability problem rather than a coverage-preference one. The statute frames it as assisting persons in securing basic property insurance and apportioning that business among licensed insurers [S:ca-ins-code-10091]; the Plan frames its own trigger as the traditional market not being available through no fault of the owner [S:ca-fair-plan-home]. Neither framing says anything about price, about whether a particular property will be accepted, or about what any individual policy covers. Those are determined by the Plan's own underwriting and by the policy form it issues.",
+	"whatChanges": [
+		"Whether coverage is actually unavailable in the traditional market. The Plan describes itself as the option when no other option is reasonably available [S:ca-fair-plan-home].",
+		"Whether you buy anything alongside the basic policy. The Plan's own page points to a Difference in Conditions policy for additional coverages and to separate Flood and Earthquake insurance [S:ca-fair-plan-home].",
+		"Which policy form the Plan issues for the property, because 'basic property insurance' in section 10091(a) is a category rather than a single named product [S:ca-ins-code-10091].",
+		"Whether you are asking about the Association's statutory role or about a specific application. Section 10091(a) defines the facility; it does not decide any individual placement [S:ca-ins-code-10091]."
+	],
+	"variability": [
+		"This is California's arrangement. Section 10091(a) defines the California FAIR Plan Association specifically, and other states' residual market mechanisms are created by their own statutes [S:ca-ins-code-10091].",
+		"The Plan's self-description is the publisher's own account of its purpose rather than statutory text, and the two are quoted separately here for that reason [S:ca-fair-plan-home][S:ca-ins-code-10091].",
+		"What a FAIR Plan policy covers is set by the form it issues, not by the definition in section 10091(a). The phrase 'basic property insurance' in the statute is not a description of any particular policy's terms [S:ca-ins-code-10091].",
+		"The Plan revises its published pages, and the statute can be amended. Re-read both before relying on a quoted sentence [S:ca-fair-plan-home][S:ca-ins-code-10091]."
+	],
+	"nextActions": [
+		"Before treating the FAIR Plan as your answer, ask a licensed broker to confirm in writing what the traditional market will and will not do for the property. The Plan presents itself as the option when no other option is reasonably available [S:ca-fair-plan-home].",
+		"If you do go to the Plan, ask the same broker about a Difference in Conditions policy, which the Plan's own page names as the route to additional coverages [S:ca-fair-plan-home].",
+		"Ask separately about Flood and Earthquake insurance, which the Plan lists as separate products rather than as part of the basic policy [S:ca-fair-plan-home].",
+		"Read the policy form you are offered before binding, and compare it against what your previous policy covered rather than against what you assume basic property insurance includes."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"homeowners",
+		"dwelling-fire"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"fair plan",
+		"residual market",
+		"basic property insurance",
+		"california",
+		"insurer of last resort"
+	],
+	"companies": [],
+	"coverages": [],
+	"effectiveDate": "2026-09-19",
+	"lastReviewed": "2026-09-19",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"what-fair-plan-does-not-cover-california",
+		"nonrenewal-after-wildfire-moratorium-california",
+		"how-to-check-a-california-insurer-and-agent-before-you-buy"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether the traditional market is genuinely unavailable for a particular property, and what combination of a FAIR Plan policy and a Difference in Conditions policy would actually cover it, are placement questions that depend on the property and on current carrier appetite. A licensed broker can test the market, read the offered form, and price the alternatives; a general description of the Association's statutory role cannot."
+	},
+	"sourceIds": [
+		"ca-ins-code-10091",
+		"ca-fair-plan-home"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

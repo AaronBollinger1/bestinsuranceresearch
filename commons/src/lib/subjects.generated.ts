@@ -236,6 +236,18 @@ export const GENERATED_SUBJECTS: Subject[] = [
 		"recordPath": "/questions/business-closed-but-nothing-damaged-does-it-pay"
 	},
 	{
+		"id": "question:california-data-breach-what-my-business-must-do",
+		"kind": "question",
+		"name": "My California business had a data breach. What am I required to do, and how long do I have?",
+		"recordPath": "/questions/california-data-breach-what-my-business-must-do"
+	},
+	{
+		"id": "question:california-minimum-auto-insurance-and-proof",
+		"kind": "question",
+		"name": "What auto insurance does California require, and what do I have to carry in the car?",
+		"recordPath": "/questions/california-minimum-auto-insurance-and-proof"
+	},
+	{
 		"id": "question:claiming-on-a-contractor-license-bond-california",
 		"kind": "question",
 		"name": "How do I make a claim against a contractor's licence bond, and what else should I file at the same time?",
@@ -282,6 +294,12 @@ export const GENERATED_SUBJECTS: Subject[] = [
 		"kind": "question",
 		"name": "Can my business be liable if a customer harasses one of my employees?",
 		"recordPath": "/questions/customer-harasses-my-employee-liability-california"
+	},
+	{
+		"id": "question:debris-flow-after-a-wildfire-which-peril-california",
+		"kind": "question",
+		"name": "A debris flow after a nearby wildfire damaged my home. Which peril does the claim turn on?",
+		"recordPath": "/questions/debris-flow-after-a-wildfire-which-peril-california"
 	},
 	{
 		"id": "question:did-florida-repeal-no-fault",
@@ -450,6 +468,12 @@ export const GENERATED_SUBJECTS: Subject[] = [
 		"kind": "question",
 		"name": "Can my insurer make me use their repair shop after a California car accident?",
 		"recordPath": "/questions/insurer-choose-repair-shop-california"
+	},
+	{
+		"id": "question:insurer-in-liquidation-who-pays-california",
+		"kind": "question",
+		"name": "My insurance company was placed in liquidation. Does a California fund pay my claim, and up to how much?",
+		"recordPath": "/questions/insurer-in-liquidation-who-pays-california"
 	},
 	{
 		"id": "question:is-the-california-malpractice-cap-still-250000",
@@ -624,6 +648,12 @@ export const GENERATED_SUBJECTS: Subject[] = [
 		"kind": "question",
 		"name": "Is the preliminary report a search of my title, and are its exceptions problems being fixed?",
 		"recordPath": "/questions/what-is-a-preliminary-report-california"
+	},
+	{
+		"id": "question:what-is-the-california-fair-plan-and-who-is-it-for",
+		"kind": "question",
+		"name": "What is the California FAIR Plan, and who is it actually for?",
+		"recordPath": "/questions/what-is-the-california-fair-plan-and-who-is-it-for"
 	},
 	{
 		"id": "question:what-makes-a-harassment-complaint-process-adequate",
