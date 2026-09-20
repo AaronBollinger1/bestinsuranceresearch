@@ -27,7 +27,31 @@ const byFamily = families.map((family) => ({
 		.sort((a, b) => a.data.question.localeCompare(b.data.question)),
 }));
 
-const examples = corpus.questions.slice(0, 6);
+/*
+ * A deliberate shortlist, not `slice(0, 6)`. The first six records in corpus
+ * order are whatever sorts first by id, which is an accident of filenames
+ * rather than a statement about what a person arriving at Ask is likely to
+ * want. These are the California questions the landing is built around, and
+ * the newly published ones lead so they are reachable in one hop from the
+ * primary CTA rather than only through search. Ids that do not resolve are
+ * dropped, so a renamed record degrades to a shorter list instead of a build
+ * failure, and the list is topped up from corpus order if it ever runs short.
+ */
+const FEATURED_QUESTIONS = [
+	'california-minimum-auto-insurance-and-proof',
+	'what-is-the-california-fair-plan-and-who-is-it-for',
+	'california-data-breach-what-my-business-must-do',
+	'insurer-in-liquidation-who-pays-california',
+	'debris-flow-after-a-wildfire-which-peril-california',
+	'replacement-cost-vs-market-value',
+];
+const featured = FEATURED_QUESTIONS.map((id) => corpus.questions.find((entry) => entry.id === id)).filter(
+	(entry) => entry !== undefined,
+);
+const examples = [
+	...featured,
+	...corpus.questions.filter((entry) => !featured.includes(entry)),
+].slice(0, 6);
 
 const trail = [
 	{ name: 'Home', path: '/' },
