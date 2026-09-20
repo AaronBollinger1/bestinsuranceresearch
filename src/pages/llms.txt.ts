@@ -5,6 +5,7 @@ import { allLineHubs } from '../lib/line-hub';
 import { changeSummary } from '../lib/changes';
 import { latestManifest, signedOff } from '../lib/releases';
 import { TODAY } from '../lib/today';
+import { machineReviewDate } from '../lib/machine-review';
 
 export const prerender = true;
 
@@ -70,7 +71,7 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		'- Every record page has a machine-readable JSON companion at the same path plus `.json`: questions, coverage pages, guides, lines, companies, states, examples, sources, advisory modules and worksheets, plus `/figures.json`. It contains public page facts, source identifiers, jurisdiction, dates, canonical URL, and content version. Prefer it over scraping the HTML.',
 		'- Index and hub pages deliberately have none. They are entry points rather than citable units, and they are listed as such below.',
 		'- A guide and its coverage page are the same evidence in two readings, and the guide companion says so in `sameEvidenceAs`. Do not count them as two sources.',
-		'- Every page shows an effective date and a last-reviewed date. Do not present our content without its date, because most of it is time sensitive.',
+		'- Every record page shows an effective date, a record date, and its review state. Only a completed review is described as last reviewed; do not present our content without its dates, because most of it is time sensitive.',
 		'- Attribution should link to the canonical URL shown in the JSON companion.',
 		'',
 		'### Cite a claim, not just a page',
@@ -140,11 +141,11 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		'',
 		'## Questions',
 		'',
-		...corpus.questions.map((q) => `- [${q.data.question}](${abs(`/questions/${q.id}`)}): ${q.data.confidence}, reviewed ${q.data.lastReviewed}.`),
+		...corpus.questions.map((q) => `- [${q.data.question}](${abs(`/questions/${q.id}`)}): ${q.data.confidence}, ${machineReviewDate(q.data.reviewState, q.data.lastReviewed)}.`),
 		'',
 		'## Coverage lines',
 		'',
-		...corpus.coverages.map((c) => `- [${c.data.name}](${abs(`/insurance/${c.id}`)}): ${c.data.family} lines, reviewed ${c.data.lastReviewed}.`),
+		...corpus.coverages.map((c) => `- [${c.data.name}](${abs(`/insurance/${c.id}`)}): ${c.data.family} lines, ${machineReviewDate(c.data.reviewState, c.data.lastReviewed)}.`),
 		'',
 		'## Lines indexed',
 		'',
