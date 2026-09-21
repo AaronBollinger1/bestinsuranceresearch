@@ -8,6 +8,7 @@ import { stripMarkers } from '../lib/citations';
 import { loadCorpus } from '../lib/corpus';
 import { excerpt } from '../lib/excerpt';
 import { longDate } from '../lib/cite';
+import { reviewDateLabel } from '../lib/review-label';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../lib/schema';
 
 const corpus = await loadCorpus();
@@ -182,7 +183,7 @@ const jsonLd = graph(
 					{companies.map((company) => (
 						<a class="explore-company-row" data-explore-card data-explore-search={`${company.data.legalName} ${company.data.shortName} ${company.data.orgType} ${company.data.jurisdictions.join(' ')}`} href={`/companies/${company.id}`}>
 							<div class="explore-company-mark"><Building2 size={18} aria-hidden="true" /></div>
-							<div class="explore-company-copy"><h3>{company.data.legalName}</h3><p>{excerpt(stripMarkers(company.data.summary), 170)}</p><div class="row-meta"><StatusChip kind={company.data.reviewState} /><span class="meta">{company.data.jurisdictions.join(', ')}</span><span class="meta">{company.data.sourceIds.length} sources</span><span class="meta">Reviewed {longDate(company.data.lastReviewed)}</span></div></div>
+							<div class="explore-company-copy"><h3>{company.data.legalName}</h3><p>{excerpt(stripMarkers(company.data.summary), 170)}</p><div class="row-meta"><StatusChip kind={company.data.reviewState} /><span class="meta">{company.data.jurisdictions.join(', ')}</span><span class="meta">{company.data.sourceIds.length} sources</span><span class="meta">{reviewDateLabel(company.data.reviewState)} {longDate(company.data.lastReviewed)}</span></div></div>
 							<div class="explore-company-tail"><ArrowRight size={16} aria-hidden="true" /></div>
 						</a>
 					))}

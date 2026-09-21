@@ -169,7 +169,16 @@ test('under-review discovery surfaces keep review wording truthful', () => {
 	assert.match(shelf, /Record date /, 'shelf must label pending coverage as Record date');
 	const state = read(path.join(DIST, 'states', pendingState.id, 'index.html'));
 	assert.match(state, /<dt>Record date<\/dt>/, 'state page must label its pending date neutrally');
-	assert.match(state, /Record date /, 'state page related question must label pending work neutrally');
+	const pendingStateQuestion = questions.find(
+		(entry) => entry.data.reviewState === 'under-review' && (entry.data.states ?? []).includes(pendingState.data.code),
+	);
+	assert.ok(pendingStateQuestion, 'state fixture must include a pending related question');
+	const pendingStateQuestionRow = state.match(
+		new RegExp(`<a[^>]+href="/questions/${escapeRegexForRoute(pendingStateQuestion.id)}"[^>]*>([\\s\\S]*?)</a>`),
+	);
+	assert.ok(pendingStateQuestionRow, 'state page must render the pending related question row');
+	assert.match(pendingStateQuestionRow[1], /Record date /, 'state page related question must label pending work neutrally');
+	assert.doesNotMatch(pendingStateQuestionRow[1], /<span class="meta">Reviewed /, 'state page related question must not claim completed review');
 	const tool = read(path.join(DIST, 'tools', pendingModule.id, 'index.html'));
 	assert.match(tool, /<dt>Record date<\/dt>/, 'tool page must label its pending date neutrally');
 	const feed = read(path.join(DIST, 'rss.xml'));

@@ -8,6 +8,7 @@ import StatusChip from '../../components/StatusChip.astro';
 import { stripMarkers } from '../../lib/citations';
 import { loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
+import { reviewDateLabel } from '../../lib/review-label';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
 
 import { excerpt, shortList } from '../../lib/excerpt';
@@ -93,7 +94,7 @@ const labelRules = [
 										<StatusChip kind={example.data.reviewState} />
 										<span class="meta">{shortList(example.data.lines)}</span>
 										<span class="meta">{example.data.sourceIds.length} sources</span>
-										<span class="meta">Reviewed {longDate(example.data.lastReviewed)}</span>
+										<span class="meta">{reviewDateLabel(example.data.reviewState)} {longDate(example.data.lastReviewed)}</span>
 									</div>
 								</div>
 								<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>

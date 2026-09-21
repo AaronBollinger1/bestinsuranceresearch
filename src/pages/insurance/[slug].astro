@@ -18,6 +18,7 @@ import { createCiter, escapeHtml, stripMarkers } from '../../lib/citations';
 import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
 import { shareImageForFamily } from '../../lib/share-image';
 import { longDate } from '../../lib/cite';
+import { reviewDateLabel } from '../../lib/review-label';
 import { siteConfig } from '../../config/site';
 import { breadcrumbs, definedTerm, graph, organization, techArticle, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
@@ -114,7 +115,7 @@ const jsonLd = graph(
 				<h1>{d.name}</h1>
 				<dl class="answer-dates">
 					<div><dt>Effective</dt><dd><time datetime={d.effectiveDate}>{longDate(d.effectiveDate)}</time></dd></div>
-					<div><dt>Last reviewed</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
+					<div><dt>{reviewDateLabel(d.reviewState, 'Last reviewed')}</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
 					<div><dt>Author</dt><dd>{d.author}</dd></div>
 					<div><dt>Reviewer</dt><dd>{d.reviewer}</dd></div>
 					<div><dt>Sources</dt><dd><a href="#source-ledger">{sources.length} records</a></dd></div>
@@ -328,7 +329,7 @@ const jsonLd = graph(
 												<p>{excerpt(stripMarkers(question.data.shortAnswer), 170)}</p>
 												<div class="row-meta">
 													<StatusChip kind={question.data.confidence} />
-													<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+													<span class="meta">{reviewDateLabel(question.data.reviewState)} {longDate(question.data.lastReviewed)}</span>
 												</div>
 											</div>
 											<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
