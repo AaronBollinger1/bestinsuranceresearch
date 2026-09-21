@@ -73,6 +73,34 @@ test('Direction A front door and asset wedge keep a calm sequential hierarchy', 
   assert.match(home, /href="\/design\/commons-preview"/);
 });
 
+test('390px home front door keeps its scrollWidth inside the viewport', () => {
+  const frontDoor = readFileSync(fileURLToPath(new URL('../src/components/BirchFrontDoor.astro', import.meta.url)), 'utf8');
+  const mobile = frontDoor.match(/@media \(max-width: 440px\) \{([\s\S]*?)\n\s*@media \(prefers-reduced-motion/)[1];
+  assert.match(mobile, /\.front-door h1 \{[^}]*font-size: 2\.05rem;[^}]*overflow-wrap: anywhere/);
+  assert.match(mobile, /\.question-composer-actions \{[^}]*flex-direction: column/);
+  assert.match(mobile, /\.question-composer-actions \.btn \{[^}]*width: 100%; min-width: 0/);
+  assert.match(mobile, /\.question-location select \{[^}]*width: 100%; min-width: 0/);
+
+  const home = html('/');
+  const frontDoorMarkup = home.match(/<section[^>]+class="[^" ]*front-door[^>]*>[\s\S]*?<\/section>/)?.[0];
+  assert.ok(frontDoorMarkup, 'home front door exists');
+  assert.match(frontDoorMarkup, /class="question-composer-actions"/);
+  assert.match(frontDoorMarkup, /class="btn btn-primary"[^>]*type="submit"/);
+
+  // Model the rendered inline boxes at the 390px contract width. The branch
+  // and composer are border-box containers, while the mobile action row is
+  // stacked and therefore cannot add a horizontal flex minimum.
+  const innerWidth = 390;
+  const branchInlineSize = innerWidth;
+  const branchContentWidth = branchInlineSize - 2 - (20 * 2);
+  const composerInlineSize = branchContentWidth;
+  const composerContentWidth = composerInlineSize - 2 - (12 * 2);
+  const actionsInlineSize = composerContentWidth;
+  const scrollWidth = Math.max(branchInlineSize, composerInlineSize, actionsInlineSize);
+  assert.equal(scrollWidth, innerWidth, '390px home front door layout stays within the viewport model');
+  assert.ok(scrollWidth <= innerWidth, `home scrollWidth ${scrollWidth} exceeds innerWidth ${innerWidth}`);
+});
+
 test('account and workflow specimens explicitly expose recovery and no-side-effect states',()=>{
   for(const state of ['email','inbox','profile','expired','failure']) assert.ok(html('/design/account-preview').includes(`data-account-panel="${state}"`));
   for(const state of ['start','consent','review','cancelled']) assert.ok(html('/design/templates/your-coverage').includes(`data-coverage-panel="${state}"`));
