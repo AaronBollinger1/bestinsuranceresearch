@@ -59,6 +59,20 @@ test('answer titles use the research display face without changing the short ans
   assert.match(home, /data-design-direction="focus"/, 'landing direction remains unchanged');
 });
 
+test('Direction A front door and asset wedge keep a calm sequential hierarchy', () => {
+  const frontDoor = readFileSync(fileURLToPath(new URL('../src/components/BirchFrontDoor.astro', import.meta.url)), 'utf8');
+  const assetManifesto = readFileSync(fileURLToPath(new URL('../src/components/BirchAssetManifesto.astro', import.meta.url)), 'utf8');
+  assert.match(frontDoor, /@media \(width >= 900px\)\s*\{[\s\S]*\.front-door-flow\s*\{\s*grid-template-columns: repeat\(4/);
+  assert.match(frontDoor, /front-door-professional-strip[^\n]*padding: 18px 0 2px/);
+  assert.match(assetManifesto, /padding: clamp\(24px, 4vw, 40px\)/);
+  assert.match(assetManifesto, /grid-template-columns: repeat\(4, minmax\(0, 1fr\)\)/);
+  assert.match(assetManifesto, /prefers-reduced-motion: reduce/);
+  const home = html('/');
+  assert.equal((home.match(/href="\/ask"/g) || []).length >= 2, true);
+  assert.match(home, /href="\/professionals"[^>]*>Get cited/);
+  assert.match(home, /href="\/design\/commons-preview"/);
+});
+
 test('account and workflow specimens explicitly expose recovery and no-side-effect states',()=>{
   for(const state of ['email','inbox','profile','expired','failure']) assert.ok(html('/design/account-preview').includes(`data-account-panel="${state}"`));
   for(const state of ['start','consent','review','cancelled']) assert.ok(html('/design/templates/your-coverage').includes(`data-coverage-panel="${state}"`));
