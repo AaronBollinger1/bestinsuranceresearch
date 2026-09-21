@@ -46,6 +46,19 @@ test('interior search and citation chrome preserve truthful, reachable metadata'
   assert.match(page, /class="cite-with-punctuation"><a class="cite"[\s\S]*?<\/a>[.,;:!?)]<\/span>/, 'citation punctuation stays with its marker');
 });
 
+test('answer titles use the research display face without changing the short answer', () => {
+  const readingCss = readFileSync(fileURLToPath(new URL('../src/styles/reading.css', import.meta.url)), 'utf8');
+  const answerRule = readingCss.match(/\.birch-reading \.answer-head h1\s*\{([^}]*)\}/)?.[1] ?? '';
+  assert.match(answerRule, /font:[^;]*var\(--font-display\)/, 'answer title uses Newsreader display token');
+  assert.doesNotMatch(answerRule, /var\(--font-sans\)/, 'answer title does not inherit UI sans');
+  assert.match(answerRule, /font-weight|font:/, 'answer title keeps an explicit editorial weight');
+  const page = html('/questions/replacement-cost-vs-market-value');
+  assert.match(page, /class="[^\"]*\banswer-head\b[^\"]*"[\s\S]*?<h1>/, 'answer title remains the page heading');
+  assert.match(page, /class="direct-answer"/, 'short answer remains present');
+  const home = html('/');
+  assert.match(home, /data-design-direction="focus"/, 'landing direction remains unchanged');
+});
+
 test('account and workflow specimens explicitly expose recovery and no-side-effect states',()=>{
   for(const state of ['email','inbox','profile','expired','failure']) assert.ok(html('/design/account-preview').includes(`data-account-panel="${state}"`));
   for(const state of ['start','consent','review','cancelled']) assert.ok(html('/design/templates/your-coverage').includes(`data-coverage-panel="${state}"`));
