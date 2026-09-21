@@ -1,9 +1,10 @@
 # Birch review-state discovery surfaces — preview handoff
 
-Status: preview-only, draft PR against `grok/recover-pr1-pr3-onto-launch-20260915`.
+Status: preview-only, local implementation complete; push and draft-PR creation are pending a valid authenticated GitHub write path. No PR was opened by this lane.
 
 Base: `99c8108c8021dbb3725322b4af55b1c061049c8d`
 Branch: `birch/mvp-99c8108-20260921`
+Implementation commit: `f3fa8bed05fdd7631df01a98449fba777316ce48`
 
 ## Unit
 
@@ -30,6 +31,10 @@ Public discovery surfaces now derive their date label from the record review sta
 - `cd commons && npm run validate` — pass; 84 checks, 1 pre-existing Postgres integration skip.
 - Focused check: `node --experimental-strip-types --test --test-name-pattern='under-review discovery surfaces' scripts/verify.mjs` — pass.
 - Responsive receipt: `outputs/birch-review-state-surfaces-2026-09-21/README.md`, reusing the exact-base 390/768/1280 Birch screenshot pack and recording a fresh local browser pass on `/authors/aaron-bollinger`.
+
+## Publication blocker
+
+The final base guard passed (`origin/grok/recover-pr1-pr3-onto-launch-20260915` remained `99c8108c8021dbb3725322b4af55b1c061049c8d`) and the target branch was absent. A normal push was attempted without force and failed closed: standard DNS could not resolve `github.com`, while the direct-IP transport reached GitHub but had no valid credential; `gh auth status` reports the configured token invalid. No remote branch, PR, auth configuration, or production state was changed. Coordinator can push this exact local branch normally once GitHub authentication is restored, then open one draft PR against the stated preview integration branch.
 
 ## Safety and rollback
 
