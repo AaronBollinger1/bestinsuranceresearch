@@ -7,6 +7,7 @@ import { siteConfig } from '../config/site';
 import { stripMarkers } from '../lib/citations';
 import { loadCorpus } from '../lib/corpus';
 import { excerpt } from '../lib/excerpt';
+import { reviewDateLabel } from '../lib/review-label';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../lib/schema';
 
 const corpus = await loadCorpus();
@@ -177,7 +178,7 @@ const jsonLd = graph(
 							<div>
 								<h3 class="row-title">{question.data.question}</h3>
 								<p>{excerpt(stripMarkers(question.data.shortAnswer), 190)}</p>
-								<div class="row-meta"><StatusChip kind={question.data.confidence} /><span class="meta">{question.data.sourceIds.length} sources</span><span class="meta">Reviewed {question.data.lastReviewed}</span></div>
+								<div class="row-meta"><StatusChip kind={question.data.confidence} /><span class="meta">{question.data.sourceIds.length} sources</span><span class="meta">{reviewDateLabel(question.data.reviewState)} {question.data.lastReviewed}</span></div>
 							</div>
 							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
 						</a>

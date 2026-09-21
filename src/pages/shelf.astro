@@ -6,6 +6,7 @@ import ProductContextBar from '../components/ProductContextBar.astro';
 import { stripMarkers } from '../lib/citations';
 import { loadCorpus } from '../lib/corpus';
 import { longDate } from '../lib/cite';
+import { reviewDateLabel } from '../lib/review-label';
 import { excerpt } from '../lib/excerpt';
 import { breadcrumbs, graph, organization, website } from '../lib/schema';
 
@@ -44,7 +45,7 @@ const shelfItems = [
 		type: 'Coverage',
 		title: savedCoverage.data.name,
 		detail: 'A plain-language overview of what this line is designed to address and where the form matters.',
-		meta: `Reviewed ${longDate(savedCoverage.data.lastReviewed)}`,
+		meta: `${reviewDateLabel(savedCoverage.data.reviewState)} ${longDate(savedCoverage.data.lastReviewed)}`,
 		href: `/insurance/${savedCoverage.id}`,
 		icon: BookOpen,
 		className: 'coverage',
@@ -124,7 +125,7 @@ const shelfItems = [
 					</div>
 					<div class="shelf-note" id="saved-questions">
 						<span class="shelf-note-icon"><ShieldCheck size={16} aria-hidden="true" /></span>
-						<p><strong>What makes a saved item useful?</strong> A stable link back to the public record, the source ledger, and the date Birch last reviewed it.</p>
+						<p><strong>What makes a saved item useful?</strong> A stable link back to the public record, the source ledger, and the {savedCoverage.data.reviewState === 'under-review' ? 'record date' : 'date Birch last reviewed it'}.</p>
 					</div>
 					<div class="shelf-anchor" id="saved-companies" aria-hidden="true"></div>
 					<div class="shelf-anchor" id="saved-coverage" aria-hidden="true"></div>

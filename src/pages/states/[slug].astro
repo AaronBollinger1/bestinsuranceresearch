@@ -14,6 +14,7 @@ import { idsOf, ledgerFor, loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, graph, organization, techArticle, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
+import { reviewDateLabel } from '../../lib/review-label';
 
 import { excerpt, metaDescription } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
@@ -95,7 +96,7 @@ const jsonLd = graph(
 				<h1>{d.name}: insurance regulation and availability context</h1>
 				<dl class="answer-dates">
 					<div><dt>Effective</dt><dd><time datetime={d.effectiveDate}>{longDate(d.effectiveDate)}</time></dd></div>
-					<div><dt>Last reviewed</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
+					<div><dt>{reviewDateLabel(d.reviewState, 'Last reviewed')}</dt><dd><time datetime={d.lastReviewed}>{longDate(d.lastReviewed)}</time></dd></div>
 					{/* A written page names who wrote it and who checked it. These three
 					    were the only record pages on the site that named neither, while
 					    /methodology said every page names both. */}
@@ -254,7 +255,7 @@ const jsonLd = graph(
 												<p>{excerpt(stripMarkers(question.data.shortAnswer), 170)}</p>
 												<div class="row-meta">
 													<StatusChip kind={question.data.confidence} />
-													<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+													<span class="meta">{reviewDateLabel(question.data.reviewState)} {longDate(question.data.lastReviewed)}</span>
 												</div>
 											</div>
 											<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>

@@ -42,6 +42,7 @@ function walk(dir, filter, out = []) {
 const htmlFiles = walk(DIST, (f) => f.endsWith('.html'));
 const jsonFiles = walk(DIST, (f) => f.endsWith('.json') && !f.includes('_astro'));
 const read = (f) => fs.readFileSync(f, 'utf8');
+const escapeRegexForRoute = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 /** dist/questions/foo/index.html -> /questions/foo */
 function routeOf(file) {
@@ -137,6 +138,52 @@ test('under-review list and guide metadata say record date, not completed review
 	const guide = read(path.join(DIST, 'guides', pendingGuide.id, 'index.html'));
 	assert.match(guide, /<span class="meta"[^>]*>Record date /, 'pending guide must say Record date');
 	assert.doesNotMatch(guide, /<span class="meta"[^>]*>Reviewed /, 'pending guide must not say Reviewed');
+});
+
+test('under-review discovery surfaces keep review wording truthful', () => {
+	const pendingQuestion = questions.find((entry) => entry.data.reviewState === 'under-review');
+	const pendingCoverage = coverages.find((entry) => entry.data.reviewState === 'under-review');
+	const pendingState = states.find((entry) => entry.data.reviewState === 'under-review');
+	const pendingModule = modules.find((entry) => entry.data.reviewState === 'under-review');
+	assert.ok(pendingQuestion && pendingCoverage && pendingState && pendingModule, 'fixtures must include pending discovery records');
+
+	const author = read(path.join(DIST, 'authors', 'aaron-bollinger', 'index.html'));
+	const pendingAuthored = [questions, coverages, companies, states, examples]
+		.flat()
+		.find((entry) => entry.data.author === 'Aaron Bollinger' && entry.data.reviewState === 'under-review');
+	assert.ok(pendingAuthored, 'author fixture must include pending authored work');
+	const pendingAuthorPath = pendingAuthored.data.question
+		? `/questions/${pendingAuthored.id}`
+		: pendingAuthored.data.name
+			? `/insurance/${pendingAuthored.id}`
+			: pendingAuthored.data.legalName
+				? `/companies/${pendingAuthored.id}`
+				: pendingAuthored.data.code
+					? `/states/${pendingAuthored.id}`
+					: `/examples/${pendingAuthored.id}`;
+	const pendingAuthorRow = author.match(new RegExp(`<a class="row" href="${escapeRegexForRoute(pendingAuthorPath)}">([\\s\\S]*?)</a>`));
+	assert.ok(pendingAuthorRow, 'author profile must render the pending authored record');
+	assert.match(pendingAuthorRow[1], /Record date /, 'author profile must label pending work as Record date');
+	assert.doesNotMatch(pendingAuthorRow[1], /<span class="meta">Reviewed /, 'author profile must not claim completed review for pending work');
+	const shelf = read(path.join(DIST, 'shelf', 'index.html'));
+	assert.match(shelf, /Record date /, 'shelf must label pending coverage as Record date');
+	const state = read(path.join(DIST, 'states', pendingState.id, 'index.html'));
+	assert.match(state, /<dt>Record date<\/dt>/, 'state page must label its pending date neutrally');
+	const pendingStateQuestion = questions.find(
+		(entry) => entry.data.reviewState === 'under-review' && (entry.data.states ?? []).includes(pendingState.data.code),
+	);
+	assert.ok(pendingStateQuestion, 'state fixture must include a pending related question');
+	const pendingStateQuestionRow = state.match(
+		new RegExp(`<a[^>]+href="/questions/${escapeRegexForRoute(pendingStateQuestion.id)}"[^>]*>([\\s\\S]*?)</a>`),
+	);
+	assert.ok(pendingStateQuestionRow, 'state page must render the pending related question row');
+	assert.match(pendingStateQuestionRow[1], /Record date /, 'state page related question must label pending work neutrally');
+	assert.doesNotMatch(pendingStateQuestionRow[1], /<span class="meta">Reviewed /, 'state page related question must not claim completed review');
+	const tool = read(path.join(DIST, 'tools', pendingModule.id, 'index.html'));
+	assert.match(tool, /<dt>Record date<\/dt>/, 'tool page must label its pending date neutrally');
+	const feed = read(path.join(DIST, 'rss.xml'));
+	assert.match(feed, /Record date /, 'RSS must not present a pending record as reviewed');
+	assert.doesNotMatch(feed, /<description>[^<]*under-review[^<]*Reviewed /, 'RSS must not claim completed review for pending records');
 });
 
 const sourceIds = new Set(sources.map((s) => s.id));

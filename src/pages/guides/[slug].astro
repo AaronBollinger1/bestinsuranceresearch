@@ -30,6 +30,7 @@ import { shareImageForFamily } from '../../lib/share-image';
 import { iconFor } from '../../lib/guide-icons';
 import { sharesLine } from '../../lib/lines';
 import { longDate } from '../../lib/cite';
+import { reviewDateLabel } from '../../lib/review-label';
 import { TODAY } from '../../lib/today';
 import { breadcrumbs, graph, organization, techArticle, website } from '../../lib/schema';
 
@@ -128,7 +129,7 @@ const relatedQuestions = corpus.questions.filter((q) => sharesLine([d.line], q.d
 
 const facts = [
 	{ label: 'Sources', value: String(sources.length) },
-	{ label: 'Last reviewed', value: longDate(d.lastReviewed) },
+	{ label: reviewDateLabel(d.reviewState, 'Last reviewed'), value: longDate(d.lastReviewed) },
 	{ label: 'Family', value: d.family },
 ];
 

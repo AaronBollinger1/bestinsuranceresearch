@@ -3,6 +3,7 @@ import { markersIn } from './citations';
 import { validateModule, type ModuleDef } from './position';
 import { buildIndex, type Chunk, type SearchIndex } from './retrieval';
 import { siteConfig } from '../config/site';
+import type { PublicReviewState } from './review-label';
 
 /**
  * The normalized content store.
@@ -332,24 +333,24 @@ export function isStale(lastChecked: string, today: string): boolean {
 
 /** Entries whose review date is most recent first. Used by RSS and the home band. */
 export function recentlyReviewed(corpus: Corpus, limit = 12) {
-	const items: Array<{ title: string; path: string; date: string; kind: string; summary: string }> = [];
+	const items: Array<{ title: string; path: string; date: string; kind: string; summary: string; reviewState: PublicReviewState }> = [];
 	for (const q of corpus.questions) {
-		items.push({ title: q.data.question, path: `/questions/${q.id}`, date: q.data.lastReviewed, kind: 'Question', summary: q.data.shortAnswer });
+		items.push({ title: q.data.question, path: `/questions/${q.id}`, date: q.data.lastReviewed, kind: 'Question', summary: q.data.shortAnswer, reviewState: q.data.reviewState });
 	}
 	for (const c of corpus.coverages) {
-		items.push({ title: c.data.name, path: `/insurance/${c.id}`, date: c.data.lastReviewed, kind: 'Coverage', summary: c.data.definition });
+		items.push({ title: c.data.name, path: `/insurance/${c.id}`, date: c.data.lastReviewed, kind: 'Coverage', summary: c.data.definition, reviewState: c.data.reviewState });
 	}
 	for (const c of corpus.companies) {
-		items.push({ title: c.data.legalName, path: `/companies/${c.id}`, date: c.data.lastReviewed, kind: 'Organization', summary: c.data.summary });
+		items.push({ title: c.data.legalName, path: `/companies/${c.id}`, date: c.data.lastReviewed, kind: 'Organization', summary: c.data.summary, reviewState: c.data.reviewState });
 	}
 	for (const s of corpus.states) {
-		items.push({ title: `${s.data.name} insurance context`, path: `/states/${s.id}`, date: s.data.lastReviewed, kind: 'State', summary: s.data.summary });
+		items.push({ title: `${s.data.name} insurance context`, path: `/states/${s.id}`, date: s.data.lastReviewed, kind: 'State', summary: s.data.summary, reviewState: s.data.reviewState });
 	}
 	for (const e of corpus.examples) {
-		items.push({ title: e.data.title, path: `/examples/${e.id}`, date: e.data.lastReviewed, kind: 'Example', summary: e.data.whatHappened });
+		items.push({ title: e.data.title, path: `/examples/${e.id}`, date: e.data.lastReviewed, kind: 'Example', summary: e.data.whatHappened, reviewState: e.data.reviewState });
 	}
 	for (const t of corpus.liveTools) {
-		items.push({ title: t.data.name, path: t.data.route || `/tools/${t.id}`, date: t.data.lastReviewed, kind: 'Tool', summary: t.data.summary });
+		items.push({ title: t.data.name, path: t.data.route || `/tools/${t.id}`, date: t.data.lastReviewed, kind: 'Tool', summary: t.data.summary, reviewState: t.data.reviewState ?? 'under-review' });
 	}
 	return items.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.title.localeCompare(b.title))).slice(0, limit);
 }
