@@ -1,6 +1,6 @@
 /* Shared product-reading frame. The cited content stays in its original DOM. */
 .birch-reading .answer-head { padding-block: 28px 30px; }
-.birch-reading .answer-head h1 { max-width: 34ch; margin: 20px 0; font: 600 clamp(1.9rem,3.2vw,2.8rem)/1.18 var(--font-sans); letter-spacing: -.045em; }
+.birch-reading .answer-head h1 { max-width: 34ch; margin: 20px 0; font: 500 clamp(1.9rem,3.2vw,2.8rem)/1.18 var(--font-display); letter-spacing: -.025em; }
 .birch-reading .answer-head .crumbs { font-size: var(--text-xs); }
 .birch-reading .answer-dates { margin-top: 24px; gap: 16px 28px; padding-block: 18px 0; border-bottom: 0; }
 .birch-reading .answer-dates dt { font-family: var(--font-sans); text-transform: none; letter-spacing: 0; font-size: var(--text-xs); }
