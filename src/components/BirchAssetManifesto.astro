@@ -53,7 +53,10 @@ const scopes = [
     width: 100%;
     max-width: 1100px;
     margin: 24px auto 0;
-    padding: 8px 0 4px;
+    padding: clamp(24px, 4vw, 40px);
+    border: 1px solid var(--line);
+    border-radius: var(--r-4);
+    background: color-mix(in srgb, var(--white) 72%, var(--paper));
     box-sizing: border-box;
     text-align: left;
     scroll-margin-top: calc(var(--header-h) + 16px);
@@ -80,7 +83,7 @@ const scopes = [
   .asset-manifesto-layers {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 10px;
+    gap: 12px;
     margin: 22px 0 0;
     padding: 0;
     list-style: none;
@@ -92,7 +95,8 @@ const scopes = [
     align-items: flex-start;
     justify-content: center;
     gap: 6px;
-    padding: 10px 0;
+    padding: 12px 0 10px;
+    border-top: 1px solid var(--line);
     color: var(--body);
     font-size: var(--text-2xs);
     font-weight: 650;
@@ -119,8 +123,8 @@ const scopes = [
   }
   .asset-manifesto-scopes ul {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 6px 24px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px 20px;
     margin: 12px 0 0;
     padding: 0;
     list-style: none;
@@ -171,8 +175,10 @@ const scopes = [
   }
   @media (max-width: 900px) {
     .asset-manifesto-layers { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .asset-manifesto-scopes ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 560px) {
+    .asset-manifesto { padding: 24px 20px; }
     .asset-manifesto-layers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; }
     .asset-manifesto-scopes ul { grid-template-columns: 1fr; }
     .asset-manifesto-actions { align-items: stretch; flex-direction: column; }
