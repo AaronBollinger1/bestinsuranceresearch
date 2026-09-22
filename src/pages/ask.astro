@@ -232,3 +232,817 @@ const FAMILY_LABEL: Record<string, string> = {
 			</noscript>
 		</div>
 	</section>
+
+	<section class="band band-tight" id="ask-results-band" hidden aria-labelledby="ask-results-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Lookup result</span>
+					<h2 id="ask-results-title">Matches in the library</h2>
+					<p id="ask-interpreted" class="mono"></p>
+				</div>
+			</div>
+
+			<div id="ask-loading" hidden>
+				<div class="ask-resolving">
+					<BirchLoadingMark size={72} label={null} />
+					<p class="mono" aria-hidden="true">Checking sources</p>
+				</div>
+				<div class="skeleton" aria-hidden="true">
+				{
+					[0, 1, 2].map(() => (
+						<div class="skeleton-row">
+							<div class="skeleton-bar tall w-55"></div>
+							<div class="skeleton-bar w-85"></div>
+							<div class="skeleton-bar w-30"></div>
+						</div>
+						))
+					}
+				</div>
+			</div>
+
+			<div id="ask-hits" class="rows"></div>
+
+			<div id="ask-empty" hidden>
+				<StateBlock kind="no-result" heading="Nothing in the library matches that yet.">
+					<p>
+						The lookup found no published question, coverage page, or entity record for those terms
+						under the filters in effect. That means the library has a gap, not that the answer is
+						unknowable.
+					</p>
+					<div class="state-actions">
+						<button class="btn btn-secondary btn-sm" type="button" data-clear-filters>Clear the filters and try again</button>
+						<a class="btn btn-secondary btn-sm" href="/questions">Browse every question</a>
+						<a class="btn btn-secondary btn-sm" href={`mailto:${siteConfig.contact.email}?subject=${encodeURIComponent('Question the library does not answer')}`}>
+							Suggest this question
+						</a>
+					</div>
+				</StateBlock>
+			</div>
+
+			<div id="ask-insufficient" hidden>
+				<StateBlock kind="insufficient" heading="Related material, but not enough to answer this directly.">
+					<p>
+						The library holds pages that touch this topic, but none of them answers this question
+						with sources strong enough to publish as an answer. The closest records are listed
+						below. Read them as background, not as an answer.
+					</p>
+				</StateBlock>
+			</div>
+
+			<div id="ask-offline" hidden>
+				<StateBlock kind="offline" heading="The lookup index did not load.">
+					<p>
+						The static index could not be fetched, so local lookup is unavailable right now. Every
+						answer is still reachable by browsing.
+					</p>
+					<div class="state-actions">
+						<button class="btn btn-secondary btn-sm" type="button" data-retry-index>Try loading the index again</button>
+						<a class="btn btn-secondary btn-sm" href="/questions">Browse every question</a>
+					</div>
+				</StateBlock>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight" id="ask-thread-band" hidden aria-labelledby="ask-thread-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">This conversation</span>
+					<h2 id="ask-thread-title">What you have asked, in order</h2>
+					<p>
+						An insurance question is rarely one question. This keeps the thread so you can go
+						back a step, re-run a turn against different filters, or refine the wording without
+						losing what you already found.
+					</p>
+				</div>
+				<button class="btn btn-secondary btn-sm" type="button" id="ask-thread-clear">
+					Clear this conversation
+				</button>
+			</div>
+
+			<ol class="thread" id="ask-thread"></ol>
+
+			<Callout tone="privacy" label="Where this conversation is kept">
+				<p>
+					In this browser tab, and nowhere else. It is held in <code>sessionStorage</code>, which
+					means it survives a reload and is <strong>gone when you close the tab</strong>. It is
+					never sent to a server, never written to a durable store, and never attached to an
+					analytics event - the lookup itself already runs entirely in your browser against a
+					static index.
+				</p>
+				<p>
+					That is deliberate rather than a limitation. Somebody reading this in the middle of a
+					denied claim should not find a permanent record of what they were worried about sitting
+					on a shared computer afterwards.
+				</p>
+			</Callout>
+		</div>
+	</section>
+
+	<section class="band band-paper" aria-labelledby="browse-title">
+		<div class="shell">
+			<div class="band-head">
+				<div>
+					<span class="eyebrow">Browse by topic</span>
+					<h2 id="browse-title">Every published question</h2>
+					<p>
+						This list is the deterministic fallback. It is server-rendered, needs no JavaScript, and
+						is complete: {corpus.questions.length} canonical questions.
+					</p>
+				</div>
+				<a class="btn btn-secondary btn-sm" href="/questions">Open the question library <ArrowRight size={15} aria-hidden="true" /></a>
+			</div>
+
+			{
+				byFamily.map((group) => (
+					<div style="margin-bottom: var(--s-8)">
+						<h3 style="margin-bottom: var(--s-3)">{FAMILY_LABEL[group.family] ?? group.family}</h3>
+						<div class="rows">
+							{group.questions.map((question) => (
+								<a class="row ask-hit" href={`/questions/${question.id}`}>
+									<div>
+										<p class="ask-hit-beat">Question</p>
+										<h4 class="row-title">{question.data.question}</h4>
+										<p>{excerpt(stripMarkers(question.data.shortAnswer), 170)}</p>
+										<div class="row-meta">
+											<StatusChip kind={question.data.confidence} />
+											<span class="meta">{shortList(question.data.lines)}</span>
+							<span class="meta">{question.data.reviewState === 'under-review' ? 'Record date' : 'Reviewed'} {longDate(question.data.lastReviewed)}</span>
+											<span class="meta">{question.data.sourceIds.length} sources</span>
+										</div>
+										<p class="ask-hit-next"><span>Read the answer</span> · Open sources on the record</p>
+									</div>
+									<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
+								</a>
+							))}
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="band band-tight">
+		<div class="shell" style="display:flex;flex-wrap:wrap;gap:var(--s-4);align-items:center">
+			<ShieldCheck size={20} aria-hidden="true" style="color: var(--green-text)" />
+			<p style="margin:0;max-width:76ch;font-size:var(--text-sm);color:var(--muted)">
+				No model wrote any of these answers on demand. Each one was drafted against primary sources,
+				mapped claim by claim, and reviewed by a named person before publication. Read{' '}
+				<a href="/methodology">the methodology</a> for exactly where automation is and is not used.
+			</p>
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	import { excerpt as shorten } from '../lib/excerpt';
+	import { search, type SearchIndex, type SearchOutcome } from '../lib/retrieval';
+
+	const form = document.getElementById('ask-form') as HTMLFormElement | null;
+	const field = document.getElementById('ask-q') as HTMLTextAreaElement | null;
+	const status = document.getElementById('ask-status');
+	const band = document.getElementById('ask-results-band');
+	const loading = document.getElementById('ask-loading');
+	const hits = document.getElementById('ask-hits');
+	const emptyState = document.getElementById('ask-empty');
+	const insufficientState = document.getElementById('ask-insufficient');
+	const offlineState = document.getElementById('ask-offline');
+	const interpreted = document.getElementById('ask-interpreted');
+	const editButton = document.getElementById('ask-edit');
+	const rankGroup = document.getElementById('ask-rank');
+	const filters = document.getElementById('ask-filters') as HTMLDetailsElement | null;
+
+	if (!form || !field || !band || !hits) throw new Error('ask: composer markup missing');
+
+	let index: SearchIndex | null = null;
+	let indexPromise: Promise<SearchIndex> | null = null;
+	let rank: 'match' | 'reviewed' | 'primary' = 'match';
+
+	const KIND_LABEL: Record<string, string> = {
+		answer: 'Direct answer',
+		assumption: 'Assumption',
+		reasoning: 'Reasoning',
+		change: 'What changes it',
+		variability: 'Variability',
+		action: 'Next action',
+		definition: 'Definition',
+		'coverage-detail': 'Coverage detail',
+		entity: 'Organization record',
+		jurisdiction: 'Jurisdiction context',
+		example: 'Example',
+		tool: 'Tool',
+	};
+
+	const TYPE_LABEL: Record<string, string> = {
+		question: 'Question',
+		coverage: 'Coverage',
+		company: 'Organization',
+		state: 'State',
+		example: 'Example',
+		tool: 'Tool',
+	};
+
+	function say(message: string) {
+		if (status) status.textContent = message;
+	}
+
+	function show(el: HTMLElement | null, visible: boolean) {
+		if (el) el.hidden = !visible;
+	}
+
+	async function getIndex(): Promise<SearchIndex> {
+		if (index) return index;
+		if (!indexPromise) {
+			indexPromise = fetch('/search-index.json', { headers: { accept: 'application/json' } })
+				.then((response) => {
+					if (!response.ok) throw new Error(`index ${response.status}`);
+					return response.json();
+				})
+				.then((data: SearchIndex) => {
+					index = data;
+					return data;
+				})
+				.catch((error) => {
+					indexPromise = null;
+					throw error;
+				});
+		}
+		return indexPromise;
+	}
+
+	function currentFilters() {
+		const data = new FormData(form!);
+		const asOf = String(data.get('asof') || '');
+		return {
+			family: String(data.get('family') || 'any'),
+			line: String(data.get('line') || 'any'),
+			state: String(data.get('state') || 'any'),
+			audience: String(data.get('audience') || 'any'),
+			asOf: /^\d{4}-\d{2}-\d{2}$/.test(asOf) ? asOf : undefined,
+		};
+	}
+
+	function escape(value: string) {
+		const div = document.createElement('div');
+		div.textContent = value;
+		return div.innerHTML;
+	}
+
+	/* ------------------------------------------------------------------ */
+	/* The conversation thread                                             */
+	/* ------------------------------------------------------------------ */
+
+	/*
+	 * An insurance question is rarely one question, and the lookup was
+	 * single-shot: asking the next one erased the last answer. This keeps the
+	 * turns so a reader can go back, re-run one against different filters, or
+	 * refine the wording without losing what they found.
+	 *
+	 * WHY sessionStorage AND NOT localStorage
+	 *
+	 * AI-RETRIEVAL-ARCHITECTURE.md states the privacy properties of this page,
+	 * and one of them is that localStorage holds a controlled vocabulary and
+	 * never text. A durable thread would break that, and it would do real harm
+	 * rather than notional harm: DIRECTION.md's second reader is a person whose
+	 * claim was just denied, and a permanent local record of what they were
+	 * worried about, on what may be a shared computer, is worse than the
+	 * convenience is worth. sessionStorage survives a reload and dies with the
+	 * tab, which is the actual life of a conversation.
+	 *
+	 * The question still never reaches a server, never enters a URL, and cannot
+	 * reach an analytics event: the contract drops any parameter outside a fixed
+	 * vocabulary and no vocabulary accepts free text.
+	 */
+
+	interface ThreadHit {
+		title: string;
+		path: string;
+		entryType: string;
+	}
+
+	interface Turn {
+		q: string;
+		/** The lookup outcome, so a refusal stays a refusal in the history. */
+		status: 'ok' | 'insufficient' | 'no-result';
+		count: number;
+		hits: ThreadHit[];
+	}
+
+	const THREAD_KEY = 'bir_ask_thread';
+	const THREAD_VERSION = 1;
+	/** Enough to hold a real line of enquiry, bounded so storage cannot grow without limit. */
+	const THREAD_MAX = 20;
+	/** Per turn. The full result set is one click away on the record's own page. */
+	const THREAD_HITS = 5;
+
+	const threadBand = document.getElementById('ask-thread-band');
+	const threadList = document.getElementById('ask-thread');
+	const threadClear = document.getElementById('ask-thread-clear');
+
+	let turns: Turn[] = [];
+
+	const STATUS_LINE: Record<Turn['status'], string> = {
+		ok: 'answered from the library',
+		insufficient: 'related material only, not an answer',
+		'no-result': 'nothing in the library matched',
+	};
+
+	function readThread(): Turn[] {
+		try {
+			const raw = sessionStorage.getItem(THREAD_KEY);
+			if (!raw) return [];
+			const parsed = JSON.parse(raw) as { version?: number; turns?: Turn[] };
+			if (parsed.version !== THREAD_VERSION || !Array.isArray(parsed.turns)) return [];
+			return parsed.turns;
+		} catch {
+			return [];
+		}
+	}
+
+	function writeThread() {
+		try {
+			sessionStorage.setItem(
+				THREAD_KEY,
+				JSON.stringify({ version: THREAD_VERSION, turns: turns.slice(-THREAD_MAX) }),
+			);
+		} catch {
+			/* Private mode, or storage disabled. The thread stays in memory for this
+			   page view and the page keeps working, which is the whole requirement. */
+		}
+	}
+
+	function renderThread() {
+		if (!threadList || !threadBand) return;
+		show(threadBand, turns.length > 0);
+		if (turns.length === 0) {
+			threadList.innerHTML = '';
+			return;
+		}
+
+		/* Newest first. The composer is at the top of the page, so the turn a
+		   reader just made should be the one nearest it. */
+		threadList.innerHTML = [...turns]
+			.reverse()
+			.map((turn, i) => {
+				const n = turns.length - i;
+				const rows = turn.hits
+					.map(
+						(hit) =>
+							`<li><a href="${escape(hit.path)}">${escape(hit.title)}</a>` +
+							`<span class="meta">${escape(TYPE_LABEL[hit.entryType] || hit.entryType)}</span></li>`,
+					)
+					.join('');
+				const more =
+					turn.count > turn.hits.length
+						? `<li class="t-more">and ${turn.count - turn.hits.length} more</li>`
+						: '';
+				return [
+					`<li class="turn turn-${escape(turn.status)}">`,
+					'<div class="t-head">',
+					`<span class="t-n">Turn ${n}</span>`,
+					`<p class="t-q">${escape(turn.q)}</p>`,
+					'</div>',
+					`<p class="t-status">${escape(STATUS_LINE[turn.status])}`,
+					turn.status === 'ok' || turn.status === 'insufficient'
+						? ` - ${turn.count} record${turn.count === 1 ? '' : 's'}`
+						: '',
+					'</p>',
+					rows || more ? `<ul class="t-hits">${rows}${more}</ul>` : '',
+					'<div class="t-actions">',
+					`<button class="btn btn-quiet btn-sm" type="button" data-thread-refine="${escape(turn.q)}">Refine this</button>`,
+					`<button class="btn btn-quiet btn-sm" type="button" data-thread-rerun="${escape(turn.q)}">Run it again</button>`,
+					'</div>',
+					'</li>',
+				].join('');
+			})
+			.join('');
+	}
+
+	/** Record a completed turn. Called by run() once the outcome is known. */
+	function addTurn(turn: Turn) {
+		/* Asking the identical question twice in a row is a re-run, not a new
+		   turn, so it replaces rather than repeats. */
+		const last = turns[turns.length - 1];
+		if (last && last.q === turn.q) turns[turns.length - 1] = turn;
+		else turns.push(turn);
+		if (turns.length > THREAD_MAX) turns = turns.slice(-THREAD_MAX);
+		writeThread();
+		renderThread();
+	}
+
+	threadList?.addEventListener('click', (event) => {
+		const target = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>(
+			'[data-thread-refine], [data-thread-rerun]',
+		);
+		if (!target) return;
+		const refine = target.dataset.threadRefine;
+		const rerun = target.dataset.threadRerun;
+		if (refine !== undefined) {
+			field!.value = refine;
+			field!.focus();
+			field!.setSelectionRange(refine.length, refine.length);
+			say('Loaded that turn back into the question. Edit it and ask again.');
+			field!.scrollIntoView({ block: 'center' });
+			return;
+		}
+		if (rerun !== undefined) {
+			field!.value = rerun;
+			void run(rerun);
+		}
+	});
+
+	threadClear?.addEventListener('click', () => {
+		turns = [];
+		try {
+			sessionStorage.removeItem(THREAD_KEY);
+		} catch {
+			/* Nothing to remove, and nothing to report. */
+		}
+		renderThread();
+		say('Conversation cleared. Nothing was stored anywhere else.');
+	});
+
+	turns = readThread();
+	if (turns.length > 0) {
+		renderThread();
+		say(`Restored ${turns.length} earlier turn${turns.length === 1 ? '' : 's'} from this tab.`);
+	}
+
+	/** What a turn keeps of its results: enough to return to, and no more. */
+	function threadHits(outcome: Extract<SearchOutcome, { hits: unknown }>): ThreadHit[] {
+		return sortHits(outcome)
+			.slice(0, THREAD_HITS)
+			.map((hit) => ({ title: hit.title, path: hit.path, entryType: hit.entryType }));
+	}
+
+	function sortHits(outcome: Extract<SearchOutcome, { hits: unknown }>) {
+		const list = [...outcome.hits];
+		if (rank === 'reviewed') list.sort((a, b) => (a.lastReviewed < b.lastReviewed ? 1 : -1));
+		if (rank === 'primary') list.sort((a, b) => b.bestChunk.sourceIds.length - a.bestChunk.sourceIds.length);
+		return list;
+	}
+
+	function renderHits(outcome: Extract<SearchOutcome, { hits: unknown }>) {
+		hits!.innerHTML = sortHits(outcome)
+			.map((hit) => {
+				/* The same sentence-aware shortening the server-rendered cards use,
+				   imported rather than reimplemented: a search result cut mid-word is
+				   the most visible text on the site and was the worst offender. */
+				const excerpt = shorten(hit.bestChunk.text.replace(/\[S:[a-z0-9-]+\]/g, ''), 230);
+				const sourceCount = hit.bestChunk.sourceIds.length;
+				const reviewLabel = hit.reviewState === 'under-review' ? 'Record date' : 'Reviewed';
+				return [
+					`<a class="row ask-hit" href="${escape(hit.path)}" data-event="research_answer_viewed" data-answer-status="${escape(hit.confidence)}" data-page-type="ask">`,
+					'<div>',
+					'<p class="ask-hit-beat">Question</p>',
+					`<h3 class="row-title">${escape(hit.title)}</h3>`,
+					`<p>${escape(excerpt)}${hit.bestChunk.text.length > 230 ? '...' : ''}</p>`,
+					'<div class="row-meta">',
+					`<span class="status status-plain">${escape(TYPE_LABEL[hit.entryType] || hit.entryType)}</span>`,
+					`<span class="meta">Matched in: ${escape(KIND_LABEL[hit.bestChunk.kind] || hit.bestChunk.kind)}</span>`,
+					`<span class="meta">${sourceCount} supporting source${sourceCount === 1 ? '' : 's'}</span>`,
+					`<span class="meta">${reviewLabel} ${escape(hit.lastReviewed)}</span>`,
+					'</div>',
+					'<p class="ask-hit-next"><span>Read the answer</span> · Open sources on the record</p>',
+					'</div>',
+					'<div class="row-tail"><span class="meta">Read</span></div>',
+					'</a>',
+				].join('');
+			})
+			.join('');
+	}
+
+	async function run(query: string) {
+		show(band, true);
+		show(emptyState, false);
+		show(insufficientState, false);
+		show(offlineState, false);
+		hits!.innerHTML = '';
+		show(loading, true);
+		say('Searching the published library.');
+
+		let loaded: SearchIndex;
+		try {
+			loaded = await getIndex();
+		} catch {
+			show(loading, false);
+			show(offlineState, true);
+			say('The lookup index did not load. Browsing still works.');
+			return;
+		}
+
+		const outcome = search(loaded, query, currentFilters(), 10);
+		show(loading, false);
+		show(editButton, true);
+
+		if (interpreted) {
+			interpreted.textContent =
+				outcome.status === 'empty'
+					? ''
+					: `Interpreted as: ${outcome.interpretedAs.join(', ')} - index version ${loaded.version}`;
+		}
+
+		if (outcome.status === 'empty') {
+			show(band, false);
+			say('Enter a question first.');
+			return;
+		}
+		if (outcome.status === 'no-result') {
+			show(emptyState, true);
+			say('No match in the library.');
+			addTurn({ q: query, status: 'no-result', count: 0, hits: [] });
+			return;
+		}
+		if (outcome.status === 'insufficient') {
+			show(insufficientState, true);
+			renderHits(outcome);
+			say('Related material only. Not enough evidence for a direct answer.');
+			addTurn({
+				q: query,
+				status: 'insufficient',
+				count: outcome.hits.length,
+				hits: threadHits(outcome),
+			});
+			return;
+		}
+		renderHits(outcome);
+		say(`${outcome.hits.length} match${outcome.hits.length === 1 ? '' : 'es'} in the library.`);
+		addTurn({ q: query, status: 'ok', count: outcome.hits.length, hits: threadHits(outcome) });
+	}
+
+	form.addEventListener('submit', (event) => {
+		event.preventDefault();
+		const query = field!.value.trim();
+		if (!query) {
+			say('Enter a question first.');
+			field!.focus();
+			return;
+		}
+		void run(query);
+	});
+
+	form.addEventListener('reset', () => {
+		window.setTimeout(() => {
+			show(band, false);
+			show(editButton, false);
+			say('Cleared.');
+		}, 0);
+	});
+
+	editButton?.addEventListener('click', () => {
+		field!.focus();
+		field!.setSelectionRange(field!.value.length, field!.value.length);
+		say('Editing your question.');
+	});
+
+	document.querySelectorAll<HTMLAnchorElement>('[data-example]').forEach((link) => {
+		link.addEventListener('click', (event) => {
+			if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+			event.preventDefault();
+			field!.value = link.dataset.example || '';
+			void run(field!.value);
+		});
+	});
+
+	rankGroup?.querySelectorAll<HTMLButtonElement>('[data-rank]').forEach((button) => {
+		button.addEventListener('click', () => {
+			rank = (button.dataset.rank as typeof rank) || 'match';
+			rankGroup.querySelectorAll('[data-rank]').forEach((other) => {
+				other.setAttribute('aria-pressed', String(other === button));
+			});
+			if (field!.value.trim()) void run(field!.value.trim());
+		});
+	});
+
+	document.querySelectorAll<HTMLButtonElement>('[data-clear-filters]').forEach((button) => {
+		button.addEventListener('click', () => {
+			form!.querySelectorAll<HTMLSelectElement>('select').forEach((select) => {
+				select.value = 'any';
+			});
+			const asOf = document.getElementById('f-asof') as HTMLInputElement | null;
+			if (asOf) asOf.value = '';
+			if (filters) filters.open = false;
+			if (field!.value.trim()) void run(field!.value.trim());
+		});
+	});
+
+	document.querySelectorAll<HTMLButtonElement>('[data-retry-index]').forEach((button) => {
+		button.addEventListener('click', () => {
+			if (field!.value.trim()) void run(field!.value.trim());
+		});
+	});
+
+	/*
+	 * Context selections are a controlled vocabulary, so keeping them locally is
+	 * safe. The question itself is never persisted beyond the hop from another page.
+	 */
+	const CONTEXT_KEY = 'bir_context';
+	const PENDING_KEY = 'bir_pending_question';
+	const CONTEXT_FIELDS = ['family', 'line', 'state', 'audience'] as const;
+
+	function restoreContext(raw: string | null) {
+		if (!raw) return;
+		let parsed: Record<string, string>;
+		try {
+			parsed = JSON.parse(raw);
+		} catch {
+			return;
+		}
+		for (const key of CONTEXT_FIELDS) {
+			const select = form!.elements.namedItem(key) as HTMLSelectElement | null;
+			const value = parsed[key];
+			if (!select || !value) continue;
+			if ([...select.options].some((option) => option.value === value)) select.value = value;
+		}
+	}
+
+	function persistContext() {
+		const data = new FormData(form!);
+		const context: Record<string, string> = {};
+		for (const key of CONTEXT_FIELDS) {
+			const value = String(data.get(key) || 'any');
+			if (value !== 'any') context[key] = value;
+		}
+		try {
+			localStorage.setItem(CONTEXT_KEY, JSON.stringify(context));
+		} catch {
+			/* Storage unavailable: filters simply do not persist. */
+		}
+	}
+
+	try {
+		restoreContext(localStorage.getItem(CONTEXT_KEY));
+	} catch {
+		/* ignore */
+	}
+	CONTEXT_FIELDS.forEach((key) => {
+		const select = form!.elements.namedItem(key) as HTMLSelectElement | null;
+		select?.addEventListener('change', persistContext);
+	});
+
+	/*
+	 * A question reaches this page one of three ways: handed over in sessionStorage
+	 * by another page's form (the private path), typed here, or present in the
+	 * query string after a no-JavaScript submit or an inbound search link. In the
+	 * last case we honour it once and then strip it from the address bar, so it does
+	 * not sit in history, in a bookmark, or in a Referer header on the next click.
+	 */
+	let handed: string | null = null;
+	try {
+		handed = sessionStorage.getItem(PENDING_KEY);
+		if (handed) {
+			sessionStorage.removeItem(PENDING_KEY);
+			restoreContext(sessionStorage.getItem(CONTEXT_KEY));
+			sessionStorage.removeItem(CONTEXT_KEY);
+		}
+	} catch {
+		/* ignore */
+	}
+
+	const incoming = new URL(window.location.href);
+	const fromUrl = incoming.searchParams.get('q');
+
+	if (handed && handed.trim()) {
+		field.value = handed.trim();
+		void run(field.value);
+	} else if (fromUrl && fromUrl.trim()) {
+		field.value = fromUrl.trim();
+		CONTEXT_FIELDS.forEach((key) => {
+			const value = incoming.searchParams.get(key);
+			const select = form!.elements.namedItem(key) as HTMLSelectElement | null;
+			if (select && value && [...select.options].some((option) => option.value === value)) {
+				select.value = value;
+			}
+		});
+		window.history.replaceState({}, '', incoming.pathname + incoming.hash);
+		say('Your question was removed from the address bar. The lookup runs on this device only.');
+		void run(field.value);
+	}
+
+	/* Rotating example, only when the visitor has not asked for reduced motion. */
+	const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+	const rotation = [...document.querySelectorAll<HTMLElement>('[data-example]')].map(
+		(node) => node.dataset.example || '',
+	);
+	if (!reduce.matches && rotation.length > 1) {
+		let i = 0;
+		window.setInterval(() => {
+			if (document.activeElement === field || field.value) return;
+			i = (i + 1) % rotation.length;
+			field.placeholder = rotation[i];
+		}, 6000);
+	}
+</script>
+
+<style>
+	/* The resolving mark sits above the row skeleton, not instead of it: the
+	   mark says the library is being searched, the bars say what is coming. */
+	.ask-resolving {
+		display: grid;
+		justify-items: center;
+		gap: var(--s-3);
+		margin: var(--s-4) 0 var(--s-5);
+		padding: var(--s-8) var(--s-4) var(--s-6);
+		border: 1px solid var(--line);
+		border-radius: var(--r-3);
+		background: var(--paper);
+		text-align: center;
+	}
+
+	/* The thread. Numbered because the order is the point: turn 3 usually only
+	   makes sense as a narrowing of turn 2. Gold on an answered turn because in
+	   this token system gold means the thing that resolved, and an answered
+	   lookup is exactly that; amber where the library could only offer
+	   background, and a plain rule where it found nothing.
+
+	   Every selector inside the list is :global() and every one of them has to
+	   be. Astro scopes this block to elements carrying its data-astro-cid, and
+	   the turns are built by the client script, so they never carry it - the
+	   first version of these rules was entirely inert and only running the page
+	   showed it. They stay nested under .thread, which IS in the template, so
+	   going global here cannot leak beyond this list. The existing result rows
+	   did not hit this because .row and .meta are global classes in
+	   global.css. */
+	.thread {
+		list-style: none;
+		margin: var(--s-4) 0 var(--s-6);
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--s-3);
+	}
+	.thread :global(.turn) {
+		border: 1px solid var(--line);
+		border-left: 3px solid var(--line-strong);
+		background: var(--paper);
+		padding: var(--s-4);
+	}
+	.thread :global(.turn-ok) { border-left-color: var(--gold-edge); }
+	.thread :global(.turn-insufficient) { border-left-color: var(--amber); }
+
+	.thread :global(.t-head) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2) var(--s-3);
+		align-items: baseline;
+	}
+	.thread :global(.t-n) {
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+		color: var(--faint);
+		white-space: nowrap;
+	}
+	.thread :global(.t-q) {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: var(--text-base);
+		line-height: 1.35;
+		max-width: 72ch;
+	}
+	.thread :global(.t-status) {
+		margin: var(--s-2) 0 0;
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+		color: var(--muted);
+	}
+
+	.thread :global(.t-hits) {
+		list-style: none;
+		margin: var(--s-3) 0 0;
+		padding: var(--s-3) 0 0;
+		border-top: 1px solid var(--line);
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+	}
+	.thread :global(.t-hits li) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2) var(--s-3);
+		align-items: baseline;
+		font-size: var(--text-sm);
+	}
+	.thread :global(.t-hits li a) { max-width: 68ch; }
+	.thread :global(.t-hits .meta) { margin-left: auto; }
+	.thread :global(.t-more) {
+		color: var(--faint);
+		font-family: var(--font-mono);
+		font-size: var(--text-2xs);
+	}
+
+	.thread :global(.t-actions) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2);
+		margin-top: var(--s-3);
+	}
+
+	.ask-resolving p {
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.8125rem;
+		letter-spacing: 0.02em;
+	}
+</style>
