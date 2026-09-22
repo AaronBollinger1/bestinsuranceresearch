@@ -341,10 +341,10 @@ test('every page has one main landmark, one h1, and an outline with no gaps', ()
   assert.deepEqual(skips, [], `headings that skip a level:\n  ${skips.slice(0, 12).join('\n  ')}`);
 });
 
-test('the landmark list names the page\\'s own regions, not its notes and mock panels', () => {
+test("the landmark list names the page's own regions, not its notes and mock panels", () => {
   // A landmark list is a table of contents for regions. An inline caveat and a
   // side panel drawn inside a product mock are neither, and two landmarks with
-  // the same name \u2014 or an unnamed one beside others \u2014 cannot be told apart.
+  // the same name — or an unnamed one beside others — cannot be told apart.
   let checked = 0;
   const ambiguous = [];
   const calloutLandmarks = [];
