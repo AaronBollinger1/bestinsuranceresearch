@@ -476,7 +476,7 @@ function* builtPages(dir = fileURLToPath(new URL('../dist', import.meta.url)), r
 }
 
 const decodeEntities = (text) =>
-  text.replace(/"/g, '"').replace(/&#39;/g, "'").replace(/</g, '<').replace(/>/g, '>').replace(/&/g, '&');
+  text.replace(/"/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
 test('every product pattern leads to a built page, not a dead-end blueprint', () => {
   for (const pattern of pagePatterns) assert.ok(existsSync(pageFile(pattern.href)), `${pattern.title}: ${pattern.href}`);
