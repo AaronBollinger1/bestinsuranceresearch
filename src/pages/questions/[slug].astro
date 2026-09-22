@@ -60,6 +60,8 @@ const trail = [
 ];
 
 const sections = [
+	{ id: 'direct-answer-title', label: 'Answer' },
+	{ id: 'limitations', label: 'Limitations' },
 	{ id: 'assumes', label: 'What this assumes' },
 	{ id: 'why', label: 'Why this is the answer' },
 	{ id: 'changes', label: 'What changes the answer' },
@@ -67,7 +69,7 @@ const sections = [
 	{ id: 'actions', label: 'Next actions' },
 	{ id: 'source-ledger', label: 'Source ledger' },
 	{ id: 'commons', label: 'Community discussion' },
-	...(related.length ? [{ id: 'related', label: 'Related questions' }] : []),
+	...(related.length ? [{ id: 'related', label: 'Related reading' }] : []),
 ];
 
 const jsonLd = graph(
@@ -118,6 +120,13 @@ const reviewer = corpus.personByName.get(d.reviewer);
 
 				<h1>{d.question}</h1>
 
+				<ol class="reading-journey" aria-label="How to read this answer">
+					<li><a href="#direct-answer-title">Answer</a></li>
+					<li><a href="#limitations">Limitations</a></li>
+					<li><a href="#source-ledger">Sources</a></li>
+					{related.length > 0 && <li><a href="#related">Related reading</a></li>}
+				</ol>
+
 				<dl class="answer-dates">
 					<div>
 						<dt>Effective</dt>
@@ -142,7 +151,7 @@ const reviewer = corpus.personByName.get(d.reviewer);
 				</dl>
 			</div>
 		</header>
-		<RecordNavigation sections={[{ id: 'direct-answer-title', label: 'Answer' }, { id: 'assumes', label: 'Context' }, { id: 'actions', label: 'Next steps' }, { id: 'source-ledger', label: 'Sources' }, { id: 'commons', label: 'Discuss' }]} sourceCount={sources.length} />
+		<RecordNavigation sections={[{ id: 'direct-answer-title', label: 'Answer' }, { id: 'limitations', label: 'Limitations' }, { id: 'source-ledger', label: 'Sources' }, ...(related.length ? [{ id: 'related', label: 'Related reading' }] : [])]} sourceCount={sources.length} />
 
 		<div class="band band-tight">
 			<div class="shell answer-grid">
@@ -152,9 +161,15 @@ const reviewer = corpus.personByName.get(d.reviewer);
 						<div class="direct-answer">
 							<p set:html={cite.inline(d.shortAnswer)} />
 						</div>
+						<p class="reading-source-open">
+							<a class="btn btn-quiet btn-sm" href="#source-ledger" data-open-sources="1">Open sources</a>
+							<span class="meta">{sources.length} records in the ledger. Without JavaScript this jumps to the source list.</span>
+						</p>
 					</section>
 
 					<EvidenceBoundary
+						id="limitations"
+						heading="Limitations"
 						says="The cited records support the answer above, with their publishers, dates, and claim addresses visible in the source ledger."
 						assumes={`This answer uses the stated audience, ${d.family} line, jurisdiction, and facts; a different form or situation can change it.`}
 						cannotDecide="It cannot determine how a specific policy, claim, price, or eligibility decision will turn out."
@@ -271,7 +286,7 @@ const reviewer = corpus.personByName.get(d.reviewer);
 					{
 						related.length > 0 && (
 							<section class="answer-section" aria-labelledby="related">
-								<h2 id="related">Related questions</h2>
+								<h2 id="related">Related reading</h2>
 								<div class="rows">
 									{related.map((question) => (
 										<a class="row" href={`/questions/${question.id}`}
