@@ -101,6 +101,25 @@ test('390px home front door keeps its scrollWidth inside the viewport', () => {
   assert.ok(scrollWidth <= innerWidth, `home scrollWidth ${scrollWidth} exceeds innerWidth ${innerWidth}`);
 });
 
+test('ask to cited-answer journey carries the Focus reading frame', () => {
+  const ask = html('/ask');
+  assert.match(ask, /class="focus-page-header ask-focus-header"/);
+  assert.match(ask, /<button class="btn btn-primary"[^>]*>[\s\S]*Ask a question/);
+  assert.match(ask, /href="\/professionals"[^>]*>Get cited/);
+  assert.doesNotMatch(ask, />Find the answer</);
+  assert.match(ask, /href="\/questions\/california-minimum-auto-insurance-and-proof"/);
+  assert.match(ask, /Read the answer/);
+  const page = html('/questions/california-minimum-auto-insurance-and-proof');
+  assert.match(page, /class="reading-journey"/);
+  assert.match(page, /href="#limitations">Limitations/);
+  assert.match(page, /id="limitations"/);
+  assert.match(page, />Limitations</);
+  assert.match(page, /href="#source-ledger"[^>]*data-open-sources="1"/);
+  assert.match(page, /id="source-inspector"/);
+  assert.match(page, /Related reading/);
+  assert.match(page, /<meta\s+name="robots"\s+content="[^"]*noindex/);
+});
+
 test('account and workflow specimens explicitly expose recovery and no-side-effect states',()=>{
   for(const state of ['email','inbox','profile','expired','failure']) assert.ok(html('/design/account-preview').includes(`data-account-panel="${state}"`));
   for(const state of ['start','consent','review','cancelled']) assert.ok(html('/design/templates/your-coverage').includes(`data-coverage-panel="${state}"`));
@@ -322,7 +341,7 @@ test('every page has one main landmark, one h1, and an outline with no gaps', ()
   assert.deepEqual(skips, [], `headings that skip a level:\n  ${skips.slice(0, 12).join('\n  ')}`);
 });
 
-test('the landmark list names the page\'s own regions, not its notes and mock panels', () => {
+test("the landmark list names the page's own regions, not its notes and mock panels", () => {
   // A landmark list is a table of contents for regions. An inline caveat and a
   // side panel drawn inside a product mock are neither, and two landmarks with
   // the same name — or an unnamed one beside others — cannot be told apart.
@@ -457,7 +476,7 @@ function* builtPages(dir = fileURLToPath(new URL('../dist', import.meta.url)), r
 }
 
 const decodeEntities = (text) =>
-  text.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  text.replace(/\u0026quot;/g, '"').replace(/\u0026#39;/g, "'").replace(/\u0026lt;/g, '<').replace(/\u0026gt;/g, '>').replace(/\u0026amp;/g, '&');
 
 test('every product pattern leads to a built page, not a dead-end blueprint', () => {
   for (const pattern of pagePatterns) assert.ok(existsSync(pageFile(pattern.href)), `${pattern.title}: ${pattern.href}`);

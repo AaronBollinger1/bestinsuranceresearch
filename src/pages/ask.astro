@@ -89,13 +89,18 @@ const FAMILY_LABEL: Record<string, string> = {
 		<div class="shell">
 			<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
 			<ProductContextBar active="research" />
-			<span class="eyebrow">Ask</span>
-			<h1>Ask an insurance question.</h1>
-			<p class="lede">
-				Find sourced answers in the Birch library. This searches existing records; it does not
-				generate advice or search the live web. Each answer shows its review status and sources.
-				When no match is found, we say so.
-			</p>
+			<header class="focus-page-header ask-focus-header">
+				<span class="focus-page-eyebrow">Ask</span>
+				<h1>Ask an insurance question.</h1>
+				<p>
+					Search published records only. Each match shows the question, a sourced excerpt, its
+					limits, and a next step to the full answer. Nothing is generated, and no question leaves
+					this browser.
+				</p>
+				<div class="focus-page-actions">
+					<a class="btn btn-quiet" href="/professionals">Get cited</a>
+				</div>
+			</header>
 		</div>
 	</section>
 
@@ -203,7 +208,7 @@ const FAMILY_LABEL: Record<string, string> = {
 
 				<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center">
 					<button class="btn btn-primary" type="submit">
-						<Search size={16} aria-hidden="true" /> Find the answer
+						<Search size={16} aria-hidden="true" /> Ask a question
 					</button>
 					<button class="btn btn-secondary" type="button" id="ask-edit" hidden>
 						<Pencil size={16} aria-hidden="true" /> Edit question
@@ -356,8 +361,9 @@ const FAMILY_LABEL: Record<string, string> = {
 						<h3 style="margin-bottom: var(--s-3)">{FAMILY_LABEL[group.family] ?? group.family}</h3>
 						<div class="rows">
 							{group.questions.map((question) => (
-								<a class="row" href={`/questions/${question.id}`}>
+								<a class="row ask-hit" href={`/questions/${question.id}`}>
 									<div>
+										<p class="ask-hit-beat">Question</p>
 										<h4 class="row-title">{question.data.question}</h4>
 										<p>{excerpt(stripMarkers(question.data.shortAnswer), 170)}</p>
 										<div class="row-meta">
@@ -366,6 +372,7 @@ const FAMILY_LABEL: Record<string, string> = {
 							<span class="meta">{question.data.reviewState === 'under-review' ? 'Record date' : 'Reviewed'} {longDate(question.data.lastReviewed)}</span>
 											<span class="meta">{question.data.sourceIds.length} sources</span>
 										</div>
+										<p class="ask-hit-next"><span>Read the answer</span> · Open sources on the record</p>
 									</div>
 									<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
 								</a>
@@ -684,19 +691,23 @@ const FAMILY_LABEL: Record<string, string> = {
 				   imported rather than reimplemented: a search result cut mid-word is
 				   the most visible text on the site and was the worst offender. */
 				const excerpt = shorten(hit.bestChunk.text.replace(/\[S:[a-z0-9-]+\]/g, ''), 230);
+				const sourceCount = hit.bestChunk.sourceIds.length;
+				const reviewLabel = hit.reviewState === 'under-review' ? 'Record date' : 'Reviewed';
 				return [
-					`<a class="row" href="${escape(hit.path)}" data-event="research_answer_viewed" data-answer-status="${escape(hit.confidence)}" data-page-type="ask">`,
+					`<a class="row ask-hit" href="${escape(hit.path)}" data-event="research_answer_viewed" data-answer-status="${escape(hit.confidence)}" data-page-type="ask">`,
 					'<div>',
+					'<p class="ask-hit-beat">Question</p>',
 					`<h3 class="row-title">${escape(hit.title)}</h3>`,
 					`<p>${escape(excerpt)}${hit.bestChunk.text.length > 230 ? '...' : ''}</p>`,
 					'<div class="row-meta">',
 					`<span class="status status-plain">${escape(TYPE_LABEL[hit.entryType] || hit.entryType)}</span>`,
 					`<span class="meta">Matched in: ${escape(KIND_LABEL[hit.bestChunk.kind] || hit.bestChunk.kind)}</span>`,
-					`<span class="meta">${hit.bestChunk.sourceIds.length} supporting source${hit.bestChunk.sourceIds.length === 1 ? '' : 's'}</span>`,
-					`<span class="meta">${hit.reviewState === 'under-review' ? 'Record date' : 'Reviewed'} ${escape(hit.lastReviewed)}</span>`,
+					`<span class="meta">${sourceCount} supporting source${sourceCount === 1 ? '' : 's'}</span>`,
+					`<span class="meta">${reviewLabel} ${escape(hit.lastReviewed)}</span>`,
 					'</div>',
+					'<p class="ask-hit-next"><span>Read the answer</span> · Open sources on the record</p>',
 					'</div>',
-					'<div class="row-tail"><span class="meta">Open</span></div>',
+					'<div class="row-tail"><span class="meta">Read</span></div>',
 					'</a>',
 				].join('');
 			})
