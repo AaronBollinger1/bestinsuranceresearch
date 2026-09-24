@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Birch — Insurance, with the source attached</title>
+  <desc id="desc">Free insurance research and community conversation from Birch.</desc>
+  <rect width="1200" height="630" fill="#f7fbff"/>
+  <rect width="1200" height="18" fill="#2f6fe6"/>
+  <path d="M72 112H1128" stroke="#d7e3f4"/>
+  <image href="/birch-bird-transparent.png" x="72" y="164" width="176" height="206" preserveAspectRatio="xMidYMid meet"/>
+  <text x="292" y="252" fill="#102d55" font-family="Georgia, 'Times New Roman', serif" font-size="86" letter-spacing="-2">Birch</text>
+  <text x="296" y="302" fill="#214f9f" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">INSURANCE, WITH THE SOURCE ATTACHED</text>
+  <path d="M296 340H866" stroke="#2f6fe6" stroke-width="4"/>
+  <text x="72" y="460" fill="#173f86" font-family="Arial, Helvetica, sans-serif" font-size="38">Understand the policy.</text>
+  <text x="72" y="510" fill="#173f86" font-family="Arial, Helvetica, sans-serif" font-size="38">Check the source.</text>
+  <text x="72" y="560" fill="#173f86" font-family="Arial, Helvetica, sans-serif" font-size="38">Share what happened.</text>
+  <text x="1128" y="560" fill="#64748b" font-family="monospace" font-size="18" text-anchor="end">BIRCH.INSURE</text>
+</svg>

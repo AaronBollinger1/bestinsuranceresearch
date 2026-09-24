@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+export const prerender = false;
+---
+
+<BaseLayout
+	title="That link did not work"
+	eyebrow="Sign in"
+	crumbs={[{ name: 'Home', href: '/' }, { name: 'Sign in', href: '/sign-in' }, { name: 'Link expired' }]}
+>
+	<section class="band band-tight">
+		<div class="shell">
+			<div class="prose">
+				<h2>That link did not work</h2>
+				<p>
+					Sign-in links work once and expire after fifteen minutes, so this is usually one of two
+					things: it has already been used, or it sat in the inbox too long. Some mail scanners
+					also follow links before you do, which spends them.
+				</p>
+				<p>
+					Nothing is wrong with your account and nothing has been logged against it.
+					<a href="/sign-in">Ask for a new link</a>.
+				</p>
+				<p style="font-size: var(--text-sm); color: var(--muted)">
+					We deliberately do not say which of those happened. Telling whoever is holding a link
+					whether it is merely expired or belongs to a real account is the one thing that page
+					could give away.
+				</p>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

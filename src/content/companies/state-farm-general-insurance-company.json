@@ -1,0 +1,84 @@
+{
+	"legalName": "State Farm General Insurance Company",
+	"shortName": "State Farm General",
+	"orgType": "insurer",
+	"naic": {
+		"companyCode": "25151",
+		"groupCode": "0176"
+	},
+	"regulatoryIdentity": {
+		"sourceId": "cdi-state-farm-general-profile",
+		"regulatorCompanyId": "1714-5",
+		"authorizedDate": "1962-12-24",
+		"licenseStatus": "UNLIMITED-NORMAL",
+		"companyType": "Property & Casualty",
+		"domicile": "Illinois",
+		"agentForService": {
+			"name": "Melissa DeKoven",
+			"address": "2710 Gateway Oaks Drive, Suite 150N, Sacramento, CA 95833-3505"
+		}
+	},
+	"summary": "The California Department of Insurance company profile identifies State Farm General Insurance Company at One State Farm Plaza, Bloomington, Illinois 61710-0001, and lists 800-782-8332 [S:cdi-state-farm-general-profile]. The profile lists NAIC number 25151, California Company ID 1714-5, date authorized in California December 24, 1962, license status UNLIMITED-NORMAL, company type Property & Casualty, state of domicile Illinois, and NAIC group 0176 State Farm GRP [S:cdi-state-farm-general-profile]. Its lines-of-business section lists Automobile, Boiler and Machinery, Burglary, Common Carrier Liability, Disability, Fire, Liability, Marine, Miscellaneous, Plate Glass, Sprinkler, Surety, Team and Vehicle, and Workers' Compensation [S:cdi-state-farm-general-profile]. This is a dated California regulator snapshot, not a current product catalog, rating, recommendation, availability statement, or coverage determination.",
+	"officialUrls": [
+		{
+			"label": "California Department of Insurance company profile",
+			"url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?doFunction=getCompanyProfile&eid=3629&event=companyProfile",
+			"note": "The source is a point-in-time regulator profile. Recheck the page before relying on status or authorized-line information [S:cdi-state-farm-general-profile]."
+		},
+		{
+			"label": "State Farm official website",
+			"url": "https://www.statefarm.com/"
+		}
+	],
+	"contactChannels": [
+		{
+			"label": "Company profile telephone",
+			"value": "800-782-8332",
+			"note": "Telephone number shown on the CDI company profile [S:cdi-state-farm-general-profile]."
+		},
+		{
+			"label": "Principal address shown by CDI",
+			"value": "One State Farm Plaza, Bloomington, IL 61710-0001",
+			"note": "Address shown on the CDI company profile [S:cdi-state-farm-general-profile]."
+		},
+		{
+			"label": "Agent for service",
+			"value": "Melissa DeKoven - 2710 Gateway Oaks Drive, Suite 150N, Sacramento, CA 95833-3505",
+			"note": "Agent and address shown on the CDI company profile [S:cdi-state-farm-general-profile]."
+		}
+	],
+	"regulatorRecords": [
+		{
+			"label": "CDI company profile snapshot",
+			"url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?doFunction=getCompanyProfile&eid=3629&event=companyProfile",
+			"note": "Use the regulator page to check the profile at the moment of use; Birch does not turn this snapshot into a live license lookup [S:cdi-state-farm-general-profile]."
+		},
+		{
+			"label": "CDI insurance company profile search",
+			"url": "https://www.insurance.ca.gov/01-consumers/120-company/01-coprof/",
+			"note": "CDI describes this as the search route for insurance company profiles, including license status, company type, domicile, authorized lines, and complaint history [S:cdi-company-profiles]."
+		}
+	],
+	"publications": [],
+	"statutoryBasis": [],
+	"jurisdictions": [
+		"CA"
+	],
+	"whatWeDoNotClaim": [
+		"We do not turn this regulator snapshot into a live statement that the company is currently licensed or in good standing; check CDI's own page at the moment you need that information [S:cdi-state-farm-general-profile][S:cdi-license-status].",
+		"We publish no financial-strength rating, complaint score, ranking, recommendation, or reputation conclusion about State Farm General Insurance Company.",
+		"The authorized-line list is not a current product catalog, an availability statement, an underwriting appetite statement, or a promise that a particular policy, risk, property, or applicant can obtain coverage.",
+		"We make no coverage determination and do not state whether any reader's policy, loss, claim, limit, deductible, exclusion, or application is covered or eligible.",
+		"We do not treat the company profile as evidence about the terms of a policy issued to a particular person, and nothing on this page is legal, tax, or individualized insurance advice."
+	],
+	"lastReviewed": "2026-09-10",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"cdi-state-farm-general-profile",
+		"cdi-company-profiles",
+		"cdi-license-status"
+	],
+	"relatedQuestions": []
+}

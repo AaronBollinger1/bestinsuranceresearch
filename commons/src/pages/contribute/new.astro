@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SESSION_COOKIE, accountFromSession, sameOrigin } from '../../lib/auth';
+import { getStore, selfOrigin } from '../../lib/runtime';
+import { MIN_CANNOT_GENERALIZE, MIN_INFORMATION, newSubmissionId, validateSubmission } from '../../lib/submissions';
+import type { FieldError } from '../../lib/submissions';
+
+export const prerender = false;
+
+const store = getStore();
+const account = await accountFromSession(store, Astro.cookies.get(SESSION_COOKIE)?.value);
+if (!account) return Astro.redirect('/sign-in', 303);
+
+/* A submission is published under a name. Without one there is nothing to
+   attribute it to, and an unattributed account is not citable by anybody. */
+if (!account.displayName) return Astro.redirect('/account?welcome=1', 303);
+
+let errors: FieldError[] = [];
+let values: Record<string, string> = {};
+
+if (Astro.request.method === 'POST') {
+	if (!sameOrigin(Astro.request, selfOrigin(Astro.request))) {
+		return new Response('Bad request', { status: 400 });
+	}
+
+	const form = await Astro.request.formData();
+	values = Object.fromEntries([...form.entries()].map(([k, v]) => [k, String(v)]));
+
+	const { errors: found, draft } = validateSubmission(values);
+	errors = found;
+
+	if (draft) {
+		const submission = await store.createSubmission(
+			{ ...draft, email: account.email },
+			newSubmissionId(),
+			new Date().toISOString(),
+		);
+		return Astro.redirect(`/contribute/sent?flags=${submission.verdictFlags.length}`, 303);
+	}
+}
+
+const errorFor = (field: string) => errors.filter((e) => e.field === field);
+const value = (field: string) => values[field] ?? '';
+
+const box =
+	'width: 100%; padding: var(--s-3); font: inherit; border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); background: var(--white)';
+---
+
+<BaseLayout
+	title="Write a case report"
+	eyebrow="Contribute"
+	lede="Your own account of a real insurance situation. It is read by a moderator before it publishes, and you can have it withdrawn at any time."
+	crumbs={[{ name: 'Home', href: '/' }, { name: 'Contribute', href: '/contribute' }, { name: 'Write a report' }]}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				{
+					errors.length > 0 && (
+						<div class="callout" data-tone="stop">
+							<h3>{errors.length} {errors.length === 1 ? 'thing needs' : 'things need'} fixing</h3>
+							<ul>{errors.map((e) => <li>{e.message}</li>)}</ul>
+							<p>Nothing has been sent. What you wrote is still in the form below.</p>
+						</div>
+					)
+				}
+
+				<div class="callout" data-tone="stop">
+					<h3>Two things before you start</h3>
+					<p>
+						<strong>Do not tell us whether the claim should have been paid.</strong> Nobody here
+						publishes that — not readers, not licensed brokers, not us. Say what happened and who
+						decided. That is the rule the whole site rests on.
+					</p>
+					<p>
+						<strong>Do not send documents, and do not type numbers off them.</strong> There is no
+						upload here and never will be. Leave out your policy number, your claim number, your
+						address, anybody's name, and anything about your health. If you paste one in, the
+						moderator will take it out — but it is better if it never arrives.
+					</p>
+				</div>
+
+				<form method="post">
+					<h2>What happened</h2>
+
+					<p>
+						<label for="title"><strong>One line summarising it</strong></label><br />
+						<span class="meta">
+							What the situation turned on, not how it felt. "A water loss where everything turned
+							on how long the leak had been running."
+						</span><br />
+						<input type="text" id="title" name="title" value={value('title')} required style={box} />
+						{errorFor('title').map((e) => <span class="meta" style="color: var(--stop)">{e.message}</span>)}
+					</p>
+
+					<p>
+						<label for="whatHappened"><strong>The facts, dated and placed</strong></label><br />
+						<span class="meta">
+							What happened, in order. Include dates and what was said to you. Leave out names.
+						</span><br />
+						<textarea id="whatHappened" name="whatHappened" rows="10" required style={box}>{value('whatHappened')}</textarea>
+						{errorFor('whatHappened').map((e) => <span class="meta" style="color: var(--stop)">{e.message}</span>)}
+					</p>
+
+					<p>
+						<label for="occurredOn"><strong>When</strong></label><br />
+						<span class="meta">A month and year is enough. "March 2025", or "over the winter of 2024".</span><br />
+						<input type="text" id="occurredOn" name="occurredOn" value={value('occurredOn')} required style={box} />
+						{errorFor('occurredOn').map((e) => <span class="meta" style="color: var(--stop)">{e.message}</span>)}
+					</p>
+
+					<p>
+						<label for="states"><strong>Which state</strong></label><br />
+						<span class="meta">
+							Two-letter codes, one per line. Insurance rules differ by state, so an account
+							without one is much harder to use. Leave it blank if it genuinely does not apply.
+						</span><br />
+						<textarea id="states" name="states" rows="2" style={box}>{value('states')}</textarea>
+						{errorFor('states').map((e) => <span class="meta" style="color: var(--stop)">{e.message}</span>)}
+					</p>
+
+					<p>
+						<label for="lines"><strong>What kind of policy</strong></label><br />
+						<span class="meta">One per line. "homeowners", "commercial auto", "workers compensation".</span><br />
+						<textarea id="lines" name="lines" rows="2" required style={box}>{value('lines')}</textarea>
+						{errorFor('lines').map((e) => <span class="meta" style="color: var(--stop)">{e.message}</span>)}
+					</p>
+
+					<h2>What it turned on</h2>
+
+					<p>
+						<label for="insuranceQuestion"><strong>The insurance question underneath it</strong></label><br />
+						<span class="meta">
+							The thing a broker would actually have to look up. "Whether a gradual-seepage
+							exclusion applies when the leak was found within a week."
+						</span><br />
+						<input type="text" id="insuranceQuestion" name="insuranceQuestion" value={value('insuranceQuestion')} required style={box} />
+						{errorFor('insuranceQuestion').map((e) => <span class="meta" style="color: var(--stop)">{e.message}</span>)}
+					</p>
+
+					<p>
+						<label for="informationThatMattered">
+							<strong>What mattered — at least {MIN_INFORMATION}, one per line</strong>
+						</label><br />
+						<span class="meta">
+							The facts that changed the outcome. Often small: a date on an invoice, a word on a
+							form, who you happened to speak to.
+						</span><br />
+						<textarea id="informationThatMattered" name="informationThatMattered" rows="5" required style={box}>{value('informationThatMattered')}</textarea>
+						{errorFor('informationThatMattered').map((e) => <span class="meta" style="color: var(--stop)">{e.message}</span>)}
+					</p>
+
+					<p>
+						<label for="decidedBy"><strong>Who decided</strong></label><br />
+						<span class="meta">
+							The adjuster, the department, a court, an appraisal panel — or nobody, if it never
+							got that far. Say which, not whether they were right. If no authority decided, say
+							so plainly: that is a complete answer and a common one.
+						</span><br />
+						<textarea id="decidedBy" name="decidedBy" rows="3" required style={box}>{value('decidedBy')}</textarea>
+						{errorFor('decidedBy').map((e) => <span class="meta" style="color: var(--stop)">{e.message}</span>)}
+					</p>
+
+					<h2>Why it would not apply to somebody else</h2>
+					<p>
+						This is the hardest field and it is the one that makes the account safe to publish.
+						The likeliest harm from a site like this is a reader treating your outcome as their
+						rule. At least {MIN_CANNOT_GENERALIZE} reasons, one per line — different form
+						wording, a different state, a different date, a fact particular to you.
+					</p>
+					<p>
+						<textarea id="cannotGeneralize" name="cannotGeneralize" rows="6" required style={box}>{value('cannotGeneralize')}</textarea>
+						{errorFor('cannotGeneralize').map((e) => <span class="meta" style="color: var(--stop)">{e.message}</span>)}
+					</p>
+
+					<button
+						type="submit"
+						style="margin-top: var(--s-4); padding: var(--s-3) var(--s-5); font: inherit; color: var(--white); background: var(--link); border: 0; border-radius: var(--r-2); cursor: pointer"
+					>
+						Send it to the moderator
+					</button>
+					<p class="meta" style="margin-top: var(--s-3)">
+						Nothing publishes until a moderator has read it. You will be able to see where it got
+						to on your account page.
+					</p>
+				</form>
+			</div>
+
+			<aside aria-label="About this form">
+				<div class="rail-block">
+					<h2>Publishing as</h2>
+					<dl>
+						<div><dt>Name</dt><dd>{account.displayName}</dd></div>
+						<div><dt>Role</dt><dd>{account.kind}</dd></div>
+					</dl>
+					<p class="meta"><a href="/account">Change it</a></p>
+				</div>
+				<div class="rail-block">
+					<h2>Set by the moderator</h2>
+					<ul>
+						<li>What kind of evidence this is</li>
+						<li>Why it carries that label</li>
+						<li>What was checked before publishing</li>
+					</ul>
+					<p class="meta">
+						Not yours to set, because a label is what a reader trusts most and the person it
+						happened to is not the best judge of it.
+					</p>
+				</div>
+				<div class="rail-block">
+					<h2>Never asked for</h2>
+					<ul>
+						<li>Any document</li>
+						<li>Policy or claim numbers</li>
+						<li>Anybody's name</li>
+						<li>Health information</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

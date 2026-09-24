@@ -7,8 +7,10 @@ import StatusChip from '../../components/StatusChip.astro';
 import { stripMarkers } from '../../lib/citations';
 import { loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
+import { reviewDateLabel } from '../../lib/review-label';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../../lib/schema';
 
+import { excerpt } from '../../lib/excerpt';
 const corpus = await loadCorpus();
 const states = [...corpus.states].sort((a, b) => a.data.name.localeCompare(b.data.name));
 
@@ -60,13 +62,13 @@ const jsonLd = graph(
 						<a class="row" href={`/states/${state.id}`}>
 							<div>
 								<h2 class="row-title">{state.data.name}</h2>
-								<p>{stripMarkers(state.data.summary).slice(0, 220)}</p>
+								<p>{excerpt(stripMarkers(state.data.summary), 220)}</p>
 								<div class="row-meta">
 									<StatusChip kind={state.data.reviewState} />
 									<span class="meta">{state.data.regulator.name}</span>
 									{state.data.residualMarket && <span class="meta">Residual market: {state.data.residualMarket.name}</span>}
 									<span class="meta">{state.data.sourceIds.length} sources</span>
-									<span class="meta">Reviewed {longDate(state.data.lastReviewed)}</span>
+									<span class="meta">{reviewDateLabel(state.data.reviewState)} {longDate(state.data.lastReviewed)}</span>
 								</div>
 							</div>
 							<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>

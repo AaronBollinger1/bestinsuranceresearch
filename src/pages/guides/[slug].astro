@@ -19,6 +19,7 @@ import type { GetStaticPaths } from 'astro';
 import { ArrowRight } from '@lucide/astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CiteThisPage from '../../components/CiteThisPage.astro';
 import GuideTabs from '../../components/GuideTabs.astro';
 import type { GuideSection } from '../../components/GuideTabs.astro';
 import SourceLedger from '../../components/SourceLedger.astro';
@@ -29,6 +30,7 @@ import { shareImageForFamily } from '../../lib/share-image';
 import { iconFor } from '../../lib/guide-icons';
 import { sharesLine } from '../../lib/lines';
 import { longDate } from '../../lib/cite';
+import { reviewDateLabel } from '../../lib/review-label';
 import { TODAY } from '../../lib/today';
 import { breadcrumbs, graph, organization, techArticle, website } from '../../lib/schema';
 
@@ -40,6 +42,7 @@ export const getStaticPaths = (async () => {
 const { entry, corpus } = Astro.props;
 const d = entry.data;
 const path = `/guides/${entry.id}`;
+const machinePath = `${path}.json`;
 
 const sourceIds = idsOf(d.sourceIds);
 const sources = ledgerFor(sourceIds, corpus.sourceById, `guide "${entry.id}"`);
@@ -126,14 +129,14 @@ const relatedQuestions = corpus.questions.filter((q) => sharesLine([d.line], q.d
 
 const facts = [
 	{ label: 'Sources', value: String(sources.length) },
-	{ label: 'Last reviewed', value: longDate(d.lastReviewed) },
+	{ label: reviewDateLabel(d.reviewState, 'Last reviewed'), value: longDate(d.lastReviewed) },
 	{ label: 'Family', value: d.family },
 ];
 
 const links = [
 	{ label: 'Full reference page', href: `/insurance/${entry.id}` },
 	...relatedModules.map((m) => ({ label: `${m.data.name} tool`, href: `/tools/${m.id}` })),
-	{ label: 'Machine record', href: `/insurance/${entry.id}.json` },
+	{ label: 'Machine record', href: machinePath },
 ];
 
 const description = `A guide to ${d.name.toLowerCase()}: what it covers, what it excludes, what actually goes wrong, what reduces it, and what an underwriter asks. Every statement cites a published source.`;
@@ -156,6 +159,7 @@ const jsonLd = graph(
 		dateModified: d.lastReviewed,
 		author: d.author,
 		reviewer: d.reviewer,
+		reviewState: d.reviewState,
 		sections: sections.map((x) => x.label),
 		citations: sources.map((x) => ({
 			name: x.data.title,
@@ -172,7 +176,7 @@ const jsonLd = graph(
 	description={description} image={shareImageForFamily(entry.data.family)}
 	jsonLd={jsonLd}
 	pageType="coverage"
-	machinePath={`/insurance/${entry.id}.json`}
+	machinePath={machinePath}
 >
 	<article>
 		<section class="band band-tight">
@@ -183,8 +187,13 @@ const jsonLd = graph(
 				<p class="page-lede">{description}</p>
 				<div class="answer-dates">
 					<StatusChip kind={d.reviewState === 'reviewed' ? 'reviewed' : 'under-review'} />
-					<span class="meta">Reviewed {longDate(d.lastReviewed)}</span>
+					<span class="meta">{d.reviewState === 'under-review' ? 'Record date' : 'Reviewed'} {longDate(d.lastReviewed)}</span>
 					<span class="meta">{sources.length} sources</span>
+					{/* Both roles, because /methodology says both are named on every page
+					    and this page named only one. A guide is written from a coverage
+					    record that carries an author; omitting it made the claim false
+					    on twenty-seven pages that had the answer in hand. */}
+					<span class="meta">Author: {d.author}</span>
 					<span class="meta">Reviewer: {d.reviewer}</span>
 				</div>
 			</div>
@@ -212,6 +221,24 @@ const jsonLd = graph(
 					claims it supports, and each claim has its own address.
 				</p>
 				<SourceLedger sources={sources} today={TODAY} />
+			</div>
+		</section>
+
+		<section class="band band-tight no-print" aria-label="Cite this guide">
+			<div class="shell">
+				<CiteThisPage
+					machinePath={machinePath}
+					page={{
+						title: `${d.name}: a guide`,
+						path,
+						published: d.effectiveDate,
+						reviewed: d.lastReviewed,
+						reviewState: d.reviewState,
+						author: d.author,
+						id: entry.id,
+						pageType: 'guide',
+					}}
+				/>
 			</div>
 		</section>
 

@@ -1,0 +1,50 @@
+---
+import { ArrowUpRight, FileSearch, Flag, LockKeyhole, TriangleAlert, CircleDashed } from '@lucide/astro';
+import PreviewTabs from '../PreviewTabs.astro';
+import type { Corpus } from '../../lib/corpus';
+interface Props { kind: string; corpus: Corpus; }
+const { kind,corpus }=Astro.props;
+const research=kind==='research-desk';
+const source=corpus.sourceById.get('cdi-residential-insurance-guide')!;
+const items=research?[
+ {id:'candidate',label:'Source candidate',title:'Residential insurance guide',state:'Needs source reading',description:'An existing source record demonstrates the candidate layout. This is not a new fetch or a completed check.'},
+ {id:'conflict',label:'Conflicting evidence',title:'Scope needs a closer look',state:'Blocked on context',description:'Illustrative conflict: two documents appear to describe different jurisdictions or policy terms. No real source conflict is asserted.'},
+ {id:'failure',label:'Provider unavailable',title:'Research did not finish',state:'No answer generated',description:'Illustrative failure: the live-search provider did not return a usable evidence packet. No provider has been called.'},
+ ]:[
+ {id:'privacy',label:'Privacy report',title:'Possible personal details in a post',state:'Needs human review',description:'Illustrative report only. No real member, policy, claim, or personal information is displayed.'},
+ {id:'response',label:'Response dispute',title:'A company response is disputed',state:'Context required',description:'Illustrative dispute: a member disagrees with a representative’s account. Neither party’s perspective is treated as a finding.'},
+ {id:'correction',label:'Research correction',title:'A statement may need an update',state:'Evidence requested',description:'Illustrative correction request. A reviewer must locate the exact statement and examine supporting evidence before making a change.'},
+ ];
+---
+<div class="operations-layout" data-operations-template>
+ <aside class="template-surface operations-queue" aria-label="Example work queue"><div class="template-pad"><span class="template-kicker">Illustrative work queue</span><h2>{research?'Evidence before answers.':'People before decisions.'}</h2><p class="template-muted">Select a scenario to inspect its designed state.</p></div>{items.map((item,i)=><button class="operations-item" type="button" data-operation-select={item.id} aria-pressed={i===0}><span class="template-meta">{item.label}</span><strong>{item.title}</strong><span>{item.state}</span></button>)}</aside>
+ <div class="template-surface operations-detail">
+  {items.map((item,i)=><section data-operation-panel={item.id} hidden={i!==0}><div class="template-pad"><div class="template-meta"><span class="template-pill">Example · not a live case</span><span>{item.state}</span></div><h2 class="operation-title">{item.title}</h2><p class="template-muted">{item.description}</p></div>
+   <PreviewTabs id={`operation-${item.id}`} label={`${item.label} sections`} tabs={[{id:'context',label:research?'Evidence':'Context'},{id:'checks',label:'Review checklist'},{id:'decision',label:'Decision boundary'}]}>
+    <section id={`operation-${item.id}-context`} data-preview-panel class="template-pad">
+     {item.id==='candidate'&&<><div class="template-row"><FileSearch size={20} aria-hidden="true"/><div><h3>{source.data.title}</h3><p>{source.data.publisher}</p><div class="template-meta"><span>{source.data.jurisdiction}</span><span>Existing check date: {source.data.lastChecked}</span></div></div></div><a class="btn btn-quiet" href={`/sources/${source.id}`}>Inspect the existing source <ArrowUpRight size={15} aria-hidden="true"/></a><div class="template-notice"><CircleDashed size={18} aria-hidden="true"/><p>A search result is a candidate. The original must be opened, scope checked, claims supported, and review completed before publication.</p></div></>}
+     {item.id==='conflict'&&<><div class="template-mini-grid"><div class="template-mini-card"><span class="template-kicker">Document A · placeholder</span><h3>What does it actually say?</h3><p>Check entity, jurisdiction, effective date, and the precise statement.</p></div><div class="template-mini-card"><span class="template-kicker">Document B · placeholder</span><h3>Are we comparing like with like?</h3><p>A different policy edition or exception may explain the difference.</p></div></div><div class="template-notice"><TriangleAlert size={18} aria-hidden="true"/><p>Do not combine incompatible sources into a confident answer. Preserve both references and say what is unresolved.</p></div></>}
+     {item.id==='failure'&&<div class="template-empty"><TriangleAlert size={30} aria-hidden="true"/><h2>No new evidence yet.</h2><p>Keep the original question. Show the interruption. Offer existing research without pretending it answers the gap.</p><a class="btn btn-quiet" href="/questions">Browse existing research</a><p class="template-status">Retry is unavailable in this specimen; no provider is connected.</p></div>}
+     {!research&&<><div class="template-notice"><Flag size={18} aria-hidden="true"/><p>{item.id==='privacy'?'Real private evidence belongs in an access-controlled reviewer view, not a public discussion or a design screenshot.':item.id==='response'?'Read the original post and complete response. Verify the representative’s authority. A disagreement is not by itself a policy violation.':'A correction needs a statement address and an openable source. Preserve the original wording and revision history.'}</p></div><dl class="template-facts"><div><dt>Original context</dt><dd>Not supplied · illustrative scenario</dd></div><div><dt>Evidence and affected people</dt><dd>Not loaded</dd></div><div><dt>Review history</dt><dd>No moderation actions have occurred</dd></div></dl></>}
+    </section>
+    <section id={`operation-${item.id}-checks`} data-preview-panel class="template-pad"><h2>Before a decision</h2>{(research?['Open the original source and record what was checked.','Match entity, jurisdiction, time period, and question scope.','Attach each supported statement to its evidence.','Keep unsupported conclusions out of the answer.']:['Read the full context, including edits and replies.','Separate private evidence from public explanation.','Check role, conflicts of interest, and the relevant rule.','Preserve notice, appeal, and an auditable history.']).map(text=><label class="template-choice"><input type="checkbox" data-review-check/><span>{text}<small>Local checklist only; not a completed review record.</small></span></label>)}</section>
+    <section id={`operation-${item.id}-decision`} data-preview-panel class="template-pad"><h2>{research?'Ready for human review?':'Make the action accountable.'}</h2><p class="template-muted">{research?'A completed checklist is not publication approval. Review authority, supporting sources, and a durable decision record are still required.':'A moderation action needs an authorized reviewer, a reason, a scope, a notice, and an appeal route. No real decision can be made from this specimen.'}</p><button class="btn btn-quiet" type="button" data-decision-preview>Preview the decision requirements</button><div class="template-notice" data-decision-note hidden><LockKeyhole size={18} aria-hidden="true"/><p role="status">Preview only. No approval, removal, notice, or publication occurred. The connected workflow must verify permissions and record the decision before changing anything.</p></div></section>
+   </PreviewTabs>
+  </section>)}
+ </div>
+</div>
+<script>
+ const workspace=document.querySelector<HTMLElement>('[data-operations-template]');
+ if(workspace){const controls=[...workspace.querySelectorAll<HTMLButtonElement>('[data-operation-select]')];const panels=[...workspace.querySelectorAll<HTMLElement>('[data-operation-panel]')];controls.forEach(button=>button.addEventListener('click',()=>{controls.forEach(control=>control.setAttribute('aria-pressed',String(control===button)));panels.forEach(panel=>panel.hidden=panel.dataset.operationPanel!==button.dataset.operationSelect);const heading=panels.find(panel=>!panel.hidden)?.querySelector<HTMLElement>('.operation-title');heading?.setAttribute('tabindex','-1');heading?.focus();}));workspace.querySelectorAll<HTMLButtonElement>('[data-decision-preview]').forEach(button=>button.addEventListener('click',()=>{const note=button.nextElementSibling as HTMLElement;note.hidden=false;}));}
+</script>
+<style>
+ .operations-layout { display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;align-items:start; }
+ .operations-layout > * { min-width:0; }
+ .operations-queue h2 { margin-top:12px; } .operations-queue .template-pad { padding-bottom:12px; }
+ .operations-item { display:grid;gap:10px;text-align:left;width:100%;padding:24px;border:0;border-top:1px solid var(--line);background:transparent;cursor:pointer;color:var(--ink);border-left:2px solid transparent; }
+ .operations-item strong { font-size:var(--text-sm);line-height:1.5;font-weight:500; }.operations-item > span:last-child { font-size:var(--text-2xs);color:var(--muted); }
+ .operations-item[aria-pressed='true'] { background:var(--brand-blue-wash);border-left-color:var(--brand-blue); }.operations-item:hover { background:var(--paper); }
+ .operation-title { margin-top:20px!important;font-size:var(--text-2xl)!important; }
+ @media(max-width:950px){.operations-layout { grid-template-columns:1fr; }.operations-queue { display:grid;grid-template-columns:repeat(3,minmax(0,1fr)); }.operations-queue .template-pad { grid-column:1/-1; }.operations-item { padding:16px; }}
+ @media(max-width:640px){.operations-queue { grid-template-columns:1fr; }.operations-item { gap:5px; }.operations-queue .template-pad { padding:20px; }}
+</style>

@@ -1,0 +1,187 @@
+---
+import { ArrowRight, BookOpen, FileText, PenLine, RotateCcw, Shield, ShieldCheck, Umbrella } from '@lucide/astro';
+
+const layers = [
+  { name: 'Coverage', icon: ShieldCheck },
+  { name: 'Prevention', icon: Shield },
+  { name: 'Documentation', icon: FileText },
+  { name: 'Contracts', icon: PenLine },
+  { name: 'Planning', icon: BookOpen },
+  { name: 'Mitigation', icon: Umbrella },
+  { name: 'Recovery', icon: RotateCcw },
+];
+const scopes = [
+  'Insurance and carriers',
+  'Claims and adjusting',
+  'Financial planning',
+  'Tax',
+  'Legal',
+  'Real estate and mortgage',
+  'Employee benefits',
+  'Business finance',
+];
+---
+<section class="asset-manifesto" id="asset-protection" aria-labelledby="manifesto-title" data-asset-manifesto>
+  <h2 id="manifesto-title" class="asset-manifesto-reveal">Ensure your assets are <em>protected.</em></h2>
+  <p class="asset-manifesto-lead asset-manifesto-reveal">Birch publishes sourced evidence so asset-protection, risk, and loss-mitigation decisions can be checked; insurance is the launch wedge.</p>
+  <ul class="asset-manifesto-layers">
+    {layers.map(({ name, icon: Icon }, index) => (
+      <li class="asset-manifesto-reveal" style={`--asset-manifesto-delay: ${index * 60}ms`}>
+        <Icon size={16} aria-hidden="true" />
+        <span>{name}</span>
+      </li>
+    ))}
+  </ul>
+  <div class="asset-manifesto-scopes asset-manifesto-reveal">
+    <h3>Reviewed contribution scopes</h3>
+    <p>Qualified professionals can prepare work within a documented specialty. Editorial review is required before anything publishes. Scope labels stay visible. This is not individualized advice, a fiduciary or attorney-client relationship, a credential badge, or a live directory.</p>
+    <ul>
+      {scopes.map((scope) => <li><span class="asset-manifesto-scope-label">{scope}</span></li>)}
+    </ul>
+  </div>
+  <div class="asset-manifesto-future asset-manifesto-reveal">
+    <span class="status status-plain">Future discussion</span>
+    <p>Moderated discussion remains a separate Community preview. It is not open here, and this page does not collect or deliver leads.</p>
+  </div>
+  <div class="asset-manifesto-actions asset-manifesto-reveal">
+    <a class="btn btn-primary" href="/ask">Ask a question <ArrowRight size={16} aria-hidden="true" /></a>
+    <a class="btn btn-quiet" href="/professionals">Get cited <ArrowRight size={16} aria-hidden="true" /></a>
+  </div>
+</section>
+<style>
+  .asset-manifesto {
+    width: 100%;
+    max-width: 1100px;
+    margin: 24px auto 0;
+    padding: clamp(24px, 4vw, 40px);
+    border: 1px solid var(--line);
+    border-radius: var(--r-4);
+    background: color-mix(in srgb, var(--white) 72%, var(--paper));
+    box-sizing: border-box;
+    text-align: left;
+    scroll-margin-top: calc(var(--header-h) + 16px);
+  }
+  .asset-manifesto h2 {
+    margin: 0;
+    color: var(--ink);
+    font: 600 clamp(1.7rem, 3.4vw, 2.45rem)/1.12 var(--font-sans);
+    letter-spacing: -.04em;
+  }
+  .asset-manifesto h2 em {
+    font-family: var(--font-display);
+    font-weight: 400;
+    color: var(--brand-blue-deep);
+    letter-spacing: -.03em;
+  }
+  .asset-manifesto-lead {
+    max-width: 62ch;
+    margin: 14px 0 0;
+    color: var(--muted);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+  .asset-manifesto-layers {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 12px;
+    margin: 22px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .asset-manifesto-layers li {
+    min-height: var(--tap);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0 10px;
+    border-top: 1px solid var(--line);
+    color: var(--body);
+    font-size: var(--text-2xs);
+    font-weight: 650;
+    letter-spacing: .01em;
+  }
+  .asset-manifesto-layers svg { color: var(--brand-blue-text); }
+  .asset-manifesto-scopes {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .asset-manifesto-scopes h3 {
+    margin: 0;
+    color: var(--ink);
+    font: 650 var(--text-xs)/1.3 var(--font-sans);
+    letter-spacing: .01em;
+  }
+  .asset-manifesto-scopes p {
+    max-width: 68ch;
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: var(--text-2xs);
+    line-height: 1.55;
+  }
+  .asset-manifesto-scopes ul {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px 20px;
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .asset-manifesto-scope-label {
+    display: block;
+    color: var(--body);
+    font-size: var(--text-2xs);
+    line-height: 1.45;
+  }
+  .asset-manifesto-future {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin-top: 16px;
+  }
+  .asset-manifesto-future .status { flex-shrink: 0; margin-top: 1px; }
+  .asset-manifesto-future p {
+    margin: 0;
+    color: var(--muted);
+    font-size: var(--text-2xs);
+    line-height: 1.55;
+  }
+  .asset-manifesto-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    margin-top: 20px;
+  }
+  .asset-manifesto-actions .btn { min-height: var(--tap); }
+  @media (prefers-reduced-motion: no-preference) {
+    .asset-manifesto-reveal {
+      animation: asset-manifesto-in 400ms cubic-bezier(.2, .7, .2, 1) both;
+      animation-delay: var(--asset-manifesto-delay, 0ms);
+    }
+    .asset-manifesto-lead { --asset-manifesto-delay: 60ms; }
+    .asset-manifesto-scopes { --asset-manifesto-delay: 120ms; }
+    .asset-manifesto-future { --asset-manifesto-delay: 180ms; }
+    .asset-manifesto-actions { --asset-manifesto-delay: 240ms; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .asset-manifesto-reveal { animation: none; }
+  }
+  @keyframes asset-manifesto-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (max-width: 900px) {
+    .asset-manifesto-layers { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .asset-manifesto-scopes ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .asset-manifesto { padding: 24px 20px; }
+    .asset-manifesto-layers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; }
+    .asset-manifesto-scopes ul { grid-template-columns: 1fr; }
+    .asset-manifesto-actions { align-items: stretch; flex-direction: column; }
+    .asset-manifesto-actions .btn { width: 100%; }
+  }
+</style>

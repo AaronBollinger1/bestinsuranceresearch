@@ -1,0 +1,161 @@
+---
+import '@fontsource/newsreader/400.css';
+import '@fontsource/newsreader/400-italic.css';
+import '@fontsource/schibsted-grotesk/400.css';
+import '@fontsource/schibsted-grotesk/500.css';
+import '@fontsource/schibsted-grotesk/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '../styles/global.css';
+import { commons, nav } from '../config/commons';
+
+interface Props {
+	title?: string;
+	description?: string;
+	eyebrow?: string;
+	lede?: string;
+	crumbs?: Array<{ name: string; href?: string }>;
+	jsonLd?: Record<string, unknown>;
+	machinePath?: string;
+	hideIntro?: boolean;
+}
+
+const { title, description = commons.description, eyebrow, lede, crumbs = [], jsonLd, machinePath, hideIntro = false } = Astro.props;
+
+const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '');
+const canonical = new URL(canonicalPath, commons.origin).toString();
+const fullTitle = title ? `${title} | ${commons.name}` : `${commons.name} | ${commons.tagline}`;
+const isCurrent = (href: string) => {
+	const path = href.startsWith('http') ? '' : href.replace(/\/+$/, '') || '/';
+	return path !== '' && (canonicalPath === path || (path !== '/' && canonicalPath.startsWith(`${path}/`)));
+};
+
+/*
+ * A named Preview is still closed to crawlers. Naming the origin and opening
+ * the public index are separate release decisions; the latter happens only
+ * after the database, mail, moderation and smoke-test gates are complete.
+ */
+const unlaunched = !commons.publicReady;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{fullTitle}</title>
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#f2f7ff" />
+		{unlaunched && <meta name="robots" content="noindex, nofollow" />}
+		<link rel="canonical" href={canonical} />
+		<link rel="icon" href="/birch-bird-32x32.png" type="image/png" sizes="32x32" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		{machinePath && <link rel="alternate" type="application/json" href={machinePath} />}
+		{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+	</head>
+	<body>
+		<a class="skip" href="#main">Skip to content</a>
+
+		<header class="masthead">
+			<div class="shell masthead-bar">
+				<a class="wordmark" href="/" aria-label="Birch Community home">
+					<img src="/birch-bird-transparent.png" width="34" height="34" alt="" />
+					<span class="wordmark-copy">
+						<strong>{commons.name}</strong>
+						<span>{commons.brandDescriptor}</span>
+					</span>
+				</a>
+				<nav class="desktop-nav" aria-label="Primary">
+					{nav.filter((item) => item.label !== 'Sign in').map((item) => (
+						<a
+							href={item.href}
+							rel={'external' in item && item.external ? 'noopener' : undefined}
+							aria-current={isCurrent(item.href) ? 'page' : undefined}
+						>
+							{item.label}
+						</a>
+					))}
+				</nav>
+				<details class="mobile-nav">
+					<summary>Menu</summary>
+					<div class="mobile-nav-panel">
+						<nav aria-label="Mobile primary">
+							{nav.filter((item) => item.label !== 'Sign in').map((item) => (
+								<a
+									href={item.href}
+									rel={'external' in item && item.external ? 'noopener' : undefined}
+									aria-current={isCurrent(item.href) ? 'page' : undefined}
+								>
+									{item.label}
+								</a>
+							))}
+						</nav>
+					</div>
+				</details>
+				<a class="btn btn-sm masthead-signin" href="/sign-in">Sign in</a>
+			</div>
+		</header>
+
+		{
+			!hideIntro && (eyebrow || title) && (
+				<div class="page-head">
+					<div class="shell">
+						{crumbs.length > 0 && (
+							<nav class="crumbs" aria-label="Breadcrumb">
+								{crumbs.map((c, i) => (
+									<>
+										{i > 0 && <span aria-hidden="true"> / </span>}
+										{c.href ? <a href={c.href}>{c.name}</a> : <span>{c.name}</span>}
+									</>
+								))}
+							</nav>
+						)}
+						{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+						{title && <h1>{title}</h1>}
+						{lede && <p class="lede">{lede}</p>}
+					</div>
+				</div>
+			)
+		}
+
+		<main id="main">
+			<slot />
+		</main>
+
+		<footer class="site-footer">
+			<div class="shell footer-grid">
+				<div>
+					<h2>{commons.name}</h2>
+					<p>{commons.description}</p>
+					{/*
+					  No agency name, no licence number, no phone, no address, and no
+					  handoff to a brokerage. COMMONS.md section 2 calls that the
+					  load-bearing reason this is a separate origin, and
+					  scripts/verify-commons.mjs fails the build if any of it appears.
+					*/}
+					<p class="mono" style="font-size: var(--text-2xs); color: #8b98a4">
+						An independent community record. Not an insurer, not an agency, not a regulator, and
+						not a source of insurance advice.
+					</p>
+				</div>
+				<div>
+					<h2>This site</h2>
+					<ul>
+						{nav.map((item) => <li><a href={item.href} rel={'external' in item && item.external ? 'noopener' : undefined}>{item.label}</a></li>)}
+						<li><a href="/llms.txt">llms.txt</a></li>
+					</ul>
+				</div>
+				<div>
+					<h2>The evidence</h2>
+					<ul>
+						<li><a href={commons.record.origin} rel="noopener">{commons.record.name}</a></li>
+						<li><a href={`${commons.record.origin}/sources`} rel="noopener">Source registry</a></li>
+						<li><a href={`${commons.record.origin}/changed`} rel="noopener">What changed</a></li>
+						<li><a href={`${commons.record.origin}/dataset`} rel="noopener">Dataset releases</a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

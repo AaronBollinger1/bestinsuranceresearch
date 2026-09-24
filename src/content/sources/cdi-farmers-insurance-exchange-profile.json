@@ -1,0 +1,25 @@
+{
+	"title": "Farmers Insurance Exchange - California company profile",
+	"publisher": "California Department of Insurance",
+	"url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?doFunction=getCompanyProfile&eid=3062&event=companyProfile",
+	"sourceType": "regulator-record",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-10",
+	"lastChecked": "2026-09-10",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The California Department of Insurance company profile identifies the company as FARMERS INSURANCE EXCHANGE and lists its address as 6301 Owensmouth Avenue, Woodland Hills, California 91367 and its telephone number as 800-422-4272.",
+		"The profile lists NAIC number 21652, California Company ID 0937-3, a date authorized in California of April 6, 1928, license status UNLIMITED-NORMAL, company type Property & Casualty, and state of domicile California.",
+		"The profile lists NAIC group number 0069 and the group name FARMERS INS GRP.",
+		"The profile lists Aircraft, Automobile, Boiler and Machinery, Burglary, Common Carrier Liability, Credit, Disability, Fire, Liability, Marine, Miscellaneous, Plate Glass, Sprinkler, Surety, Team and Vehicle, and Workers' Compensation under lines of business the company is authorized to transact.",
+		"The profile lists Jennifer Pryor as agent for service at 6301 Owensmouth Avenue, 3rd Floor, Woodland Hills, California 91367."
+	],
+	"updateCadence": "The profile states no publication date or update cadence. Recheck the regulator page before relying on a status or line list.",
+	"status": "active",
+	"notes": "The source was fetched and read on 2026-09-10. It is a California Department of Insurance company-profile snapshot, not a rating, recommendation, current product catalog, or individualized license determination.",
+	"officialHost": true
+}

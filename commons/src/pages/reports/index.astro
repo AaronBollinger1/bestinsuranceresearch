@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { LABELS } from '../../config/commons';
+
+const reports = (await getCollection('reports'))
+	.filter((r) => r.data.moderation === 'published')
+	.sort((a, b) => b.data.publishedOn.localeCompare(a.data.publishedOn));
+
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'Reports' }];
+
+/** Which colour family a label belongs to. Kind of evidence, never quality. */
+const GROUP: Record<string, string> = {
+	'public-record': 'record',
+	'published-industry': 'record',
+	'carrier-authored': 'record',
+	'contributed-account': 'account',
+	'practitioner-note': 'note',
+	composite: 'constructed',
+	hypothetical: 'constructed',
+};
+---
+
+<BaseLayout
+	title="Reports"
+	eyebrow="Reports"
+	lede="Moderated accounts of real insurance situations. Every one says what kind of evidence it is, where it came from, who decided, and why it does not transfer to anybody else."
+	crumbs={crumbs}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				{
+					reports.length === 0 ? (
+						<div class="empty">
+							<h2>No report has been published yet.</h2>
+							<p>
+								Moderation happens before publication rather than after, and accounts are not open,
+								so there is nothing in the queue to have come through it. This page is here now so
+								that the shape of what will appear is visible before anything does.
+							</p>
+							<p>
+								<a href="/standards">What a published report will contain</a>, and{' '}
+								<a href="/contribute">what contributing will involve</a>.
+							</p>
+						</div>
+					) : (
+						<div class="rows">
+							{reports.map((report) => (
+								<article class="row">
+									<h2 class="row-title">
+										<a href={`/reports/${report.id}`}>{report.data.title}</a>
+									</h2>
+									<div class="row-meta">
+										<span class="label" data-group={GROUP[report.data.label] ?? 'note'}>
+											{report.data.label}
+										</span>
+										<span>{report.data.occurredOn}</span>
+										{report.data.states.length > 0 && <span>{report.data.states.join(', ')}</span>}
+										<span>{report.data.contributor.displayName}</span>
+									</div>
+									<p style="margin-top: var(--s-3); color: var(--muted)">
+										{report.data.labelNote}
+									</p>
+								</article>
+							))}
+						</div>
+					)
+				}
+			</div>
+
+			<aside aria-label="About these labels">
+				<div class="rail-block">
+					<h2>The labels</h2>
+					<dl>
+						{
+							Object.entries(LABELS).map(([key, meaning]) => (
+								<div>
+									<dt>{key}</dt>
+									<dd style="font-size: var(--text-xs); color: var(--muted)">{meaning}</dd>
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

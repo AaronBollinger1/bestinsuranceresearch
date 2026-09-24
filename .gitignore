@@ -1,5 +1,6 @@
 # build output
 dist/
+.vercel/
 # generated types
 .astro/
 
@@ -33,3 +34,6 @@ pnpm-debug.log*
 # and this repo is public. Nothing unread gets published. Re-add deliberately
 # once its contents are confirmed to be placeholders.
 .env.example
+
+# This checked-in file contains placeholders only and documents Commons setup.
+!commons/.env.example

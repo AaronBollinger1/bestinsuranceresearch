@@ -16,7 +16,7 @@ export const organizationId = `${siteConfig.origin}/#organization`;
 export const websiteId = `${siteConfig.origin}/#website`;
 
 /**
- * The publisher is the operator. BestInsurance Research does not present itself
+ * The publisher is the operator. Birch Research does not present itself
  * as a regulator, rating agency, carrier, or independent consumer organization.
  */
 export function organization(): Json {
@@ -185,6 +185,7 @@ export function techArticle(input: {
 	dateModified: string;
 	author: string;
 	reviewer: string;
+	reviewState?: 'reviewed' | 'under-review' | 'corrected';
 	sections: string[];
 	citations: Array<{ name: string; url: string; publisher: string }>;
 	about?: string[];
@@ -201,7 +202,8 @@ export function techArticle(input: {
 		isPartOf: { '@id': websiteId },
 		publisher: { '@id': organizationId },
 		author: { '@type': 'Person', name: input.author },
-		reviewedBy: { '@type': 'Person', name: input.reviewer },
+		/* An assigned reviewer is not an endorsement. Require explicit signoff state. */
+		...(input.reviewState === 'reviewed' ? { reviewedBy: { '@type': 'Person', name: input.reviewer } } : {}),
 		articleSection: input.sections,
 		about: input.about?.map((term) => ({ '@type': 'Thing', name: term })),
 		citation: input.citations.map((source) => ({
@@ -211,6 +213,53 @@ export function techArticle(input: {
 			publisher: { '@type': 'Organization', name: source.publisher },
 		})),
 		isAccessibleForFree: true,
+	};
+}
+
+/**
+ * A question record is a QAPage. One visible question, one visible answer.
+ * No hidden FAQ blocks. reviewedBy only when reviewState is reviewed.
+ */
+export function qaPage(input: {
+	question: string;
+	path: string;
+	answer: string;
+	datePublished: string;
+	dateModified: string;
+	author: string;
+	reviewer: string;
+	reviewState?: 'reviewed' | 'under-review' | 'corrected';
+	citations: Array<{ name: string; url: string; publisher: string }>;
+}): Json {
+	return {
+		'@type': 'QAPage',
+		'@id': `${abs(input.path)}#page`,
+		url: abs(input.path),
+		inLanguage: 'en-US',
+		isPartOf: { '@id': websiteId },
+		publisher: { '@id': organizationId },
+		isAccessibleForFree: true,
+		...(input.reviewState === 'reviewed' ? { reviewedBy: { '@type': 'Person', name: input.reviewer } } : {}),
+		mainEntity: {
+			'@type': 'Question',
+			name: input.question,
+			text: input.question,
+			answerCount: 1,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: input.answer,
+				inLanguage: 'en-US',
+				author: { '@type': 'Person', name: input.author },
+				dateCreated: input.datePublished,
+				dateModified: input.dateModified,
+				citation: input.citations.map((source) => ({
+					'@type': 'CreativeWork',
+					name: source.name,
+					url: source.url,
+					publisher: { '@type': 'Organization', name: source.publisher },
+				})),
+			},
+		},
 	};
 }
 

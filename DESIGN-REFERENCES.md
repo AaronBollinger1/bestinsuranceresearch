@@ -1,21 +1,34 @@
 # Design References
 
+Latest signed-in Mobbin pass: `BIRCH-MOBBIN-READING-AUDIT-2026-09-11.md`.
+The private [Birch — Product UX collection](https://mobbin.com/collections/38f9a642-ecc6-4e00-b9da-74c9ac44bced/web/screens)
+contains the inspected source-panel, record-detail, posting, and setup references.
+Question/company reading layouts now use the shared source drawer and section navigation.
+
+Current decision: `BIRCH-PRODUCT-DESIGN-SYSTEM.md`. The 11 September consumer
+design pass replaces the earlier homepage lock with Focus / A, adds working
+Editorial / B and Explore / C alternatives, and renames the social experience
+Birch Community. Review `/design/product-system`; older comparisons below are
+historical rationale, not competing instructions.
+
 How the interface was decided, what was borrowed and from where, and why the shipped homepage
 is the one it is.
 
-Last updated: 2026-09-02
+Last updated: 2026-09-11
 
 ## Direction
 
-A premium editorial-fintech utility. Precise, calm, unusually usable, visibly evidence-led. It
-may feel AI-capable; it must not look like AI marketing.
+A premium editorial insurance utility with a moderated community room. Precise, calm, unusually
+usable, visibly evidence-led. It may feel AI-capable; it must not look like AI marketing.
 
 What that ruled out, deliberately:
 
 - gradient orbs, bokeh, glassmorphism, and SVG hero illustrations;
-- oversized marketing headings on a page whose job is to be a working surface;
+- oversized marketing headings that displace the working surface or primary action;
 - decorative cards, cards inside cards, and pill-shaped everything;
-- a looping video or animation anywhere near the LCP element;
+- a looping video or animation anywhere near the LCP element; shell transitions
+  are allowed only for navigation, disclosure, onboarding, and non-claim preview
+  states;
 - a single-hue theme in beige, purple, blue-purple, dark slate, or orange-brown.
 
 What it ruled in:
@@ -26,6 +39,14 @@ What it ruled in:
   and genuinely framed tools;
 - corner radii at 8px or less, everywhere, with no exceptions;
 - controls that look like controls, and every one of them wired up.
+
+The final Birch landing direction is intentionally decisive: one question field,
+one primary research action, and one real answer window in the first viewport.
+The answer window exposes the Research, company-record, and Commons lanes without
+pretending that the last lane is live. Filters remain on the library and Ask
+surfaces where they help; they do not compete with the front-door task.
+
+The current North Star composition is captured in [Birch North Star — Research + Commons](https://www.figma.com/design/i45yrkrvDVS8vfnS7y9v2J): a landing frame, a three-zone Research desk, and a Commons thread with its evidence boundary visible. It is a planning reference; `src/styles/tokens.css` and the Astro components remain authoritative.
 
 ## Type and colour
 
@@ -41,11 +62,13 @@ All three are self-hosted through `@fontsource`. No font CDN, so no third party 
 visit.
 
 The palette is a restrained multi-colour system, not a one-hue theme: ink, paper, cream, white,
-gold, green, blue, amber, rust, slate. Gold is the single primary action colour and is never
-used for status. The semantic colours carry meaning only in combination with an icon and a text
-label, so status survives greyscale printing and colour-blind viewing. The full token list is
-in `src/styles/tokens.css`, which is the single source of truth and is mirrored into the Figma
-variable set.
+Birch blue, gold, green, blue, amber, rust, slate. Birch blue is the primary action colour;
+gold is reserved for resolved evidence and is never used as general navigation. The semantic
+colours carry meaning only in combination with an icon and a text label, so status survives
+greyscale printing and colour-blind viewing. The full token list is
+in `src/styles/tokens.css`, which is the single source of truth. The current Figma exploration
+file uses the same verified values directly; it is a planning artifact rather than a second token
+authority.
 
 Contrast was checked against `--paper` (#fffdf9) for every text colour in the system. The
 lowest ratio in use is 4.6:1 on `--faint`, which is reserved for metadata labels and is never
@@ -116,6 +139,37 @@ suggested them:
   `pushState`, so the back button leaves the page instead of walking backwards through tabs.
 - **Printing opens every panel** and then restores the selection.
 
+## Auth reference pass: the Commons sign-in surface
+
+The Research room stays accountless. Sign-in belongs only to Birch Commons, where a person needs
+an account to post, reply, save, report, or request professional verification. This keeps the
+account prompt out of the research path and makes the decision easy to explain.
+
+Direct references:
+
+- [Mobbin login page](https://mobbin.com/login) — email-first entry with one clear continuation
+  action, optional social sign-in, and terms/privacy kept at the point of commitment.
+- [Mobbin login pattern gallery](https://mobbin.com/explore/mobile/screens/login) — a wide sample
+  of login, verification, and account-setup states to use for edge cases rather than for brand
+  styling.
+- [Mobbin login-link guidance](https://help.mobbin.com/en/articles/691072) — passwordless email
+  link behavior and the distinction between a link-based flow and a password flow.
+
+Birch's decision is deliberately narrower than the reference gallery: one email field, one
+`Email me a link` button, no password, no social-provider dependency, and a generic confirmation
+state so the form cannot reveal whether an address already has an account. The sign-in screen
+uses the same Newsreader / Schibsted Grotesk / IBM Plex Mono system, paper surfaces, 8px maximum
+radius, and Birch blue action token as the Research room, while the cooler Commons paper keeps the
+truth model visibly separate.
+
+The design alternatives were considered and rejected as follows:
+
+| Direction | Shape | Decision |
+| --- | --- | --- |
+| Email-first magic link | One field, one action, one generic confirmation | **Selected** for the first Commons release: lowest cognitive load and no password lifecycle. |
+| Social-first sign-in | Google or Apple first, email below | Rejected for now: adds an identity-provider dependency and makes the account boundary less legible. |
+| Two-step email then code | Email field followed by a code entry state | Reserved for a later accessibility and deliverability pass if one-time links prove unreliable; do not add a second step before the first path is measured. |
+
 ## Homepage concepts, scored
 
 Three complete directions were specified against the same identity, tokens, content model,
@@ -142,8 +196,8 @@ Scored 1 to 5. The record is also published, noindex and out of the sitemap, at
 both get what they came for in the same screen. Its weakness was organic-search depth, so it
 does not ship pure.
 
-**B's source-quality strip was grafted in** and sits inside the first viewport: source count,
-primary-source count, stale count, most recent review date, corrected-page count. Every number
+**B's source-quality strip was grafted in** and sits immediately under the working surface: source
+count, primary-source count, published-question count, and stale-source count. Every number
 is counted from the registry at build time rather than asserted, so it cannot drift from the
 truth. B was rejected as a whole because it answers a question the visitor has not asked yet,
 and on mobile the registry consumes the entire first screen before the search field appears.
@@ -160,17 +214,22 @@ would split the decision rather than make it.
 
 ## First viewport contract
 
-The shipped homepage first screen contains, in order: identity and a one-sentence scope
-statement; the corpus counts; a labelled question field with a motion-gated rotating example;
-four context selects (insurance type, line, state, audience); a browse-by-topic row; and the
-source-quality strip.
+The current homepage first screen contains, in order: the Birch Research identity and one-sentence
+scope statement; one labelled question field with the blue `Ask Birch` action; real example paths;
+and a source-backed answer window with the evidence visible beside the pitch. The live source,
+primary-source, question, and stale-record counts sit immediately below. Research, company dossiers,
+and Commons are introduced as three explicitly different lanes in the next band. Filters remain on
+the library and Ask surfaces where they help; they do not compete with the front-door task. The
+header is one bar with the Birch wordmark, navigation, and one primary `Ask Birch` action; there is
+no second announcement bar.
 
 It contains no email field, no phone field, no account prompt, and no quote call to action.
 
 ## Motion
 
-Subtle CSS only, on four things: focus, disclosure, state change, and continuity. Durations are
-120ms, 180ms, and 240ms on one shared easing curve.
+Subtle CSS only, on navigation, focus, disclosure, state change, and continuity. Durations are
+120ms, 180ms, 240ms, and one 360ms menu/preview reveal on two shared easing curves. The answer,
+claim, source, and review layers remain still.
 
 `prefers-reduced-motion: reduce` collapses every animation and transition to 0.01ms and
 disables smooth scrolling. The rotating example on the question field checks
@@ -181,19 +240,55 @@ Nothing animated is the LCP element on any page.
 
 ## Figma
 
-`src/styles/tokens.css` is the source of truth. The Figma variable set mirrors it exactly:
-colour, spacing, type, radius, border, elevation, and motion. Frames at 1440, 1024, 768, and
-390. Component variants cover hover, focus, active, selected, disabled, stale, loading, cited,
-disputed, and reviewed.
+The current planning file is [Birch Research + Commons — product surface explorations](https://www.figma.com/design/okHFaikGZGx1MJmvUgTWHj).
+It records the chosen editorial research-first front door, two retained landing alternatives, and
+the first answer/source-ledger, Commons thread, and professional contribution/review states. The
+supplied bird mark is placed as the exact uploaded PNG asset, and Newsreader, Schibsted Grotesk,
+and IBM Plex Mono were verified before building the frames.
 
-The implementation is the source of truth in both directions. Figma reflects working code; it
-does not describe an unbuildable parallel concept.
+`src/styles/tokens.css` remains the implementation source of truth. Figma reflects the working
+visual language and product decisions; it does not describe an unbuildable parallel concept.
 
 `/design/component-states` is the live specimen gallery of every required state, rendered from
 the real components. It is noindex and out of the sitemap. It exists so a reviewer can compare
 states side by side without inventing content to trigger them: showing a "corrected" badge
 there is a specimen, whereas faking a correction on a real answer to demonstrate the badge
 would be exactly the kind of thing this site exists not to do.
+
+## Commons product specimen
+
+`/design/commons-preview` is the internal, noindex specimen for the future conversation layer.
+It is intentionally visible only through a protected preview and labels every thread, identity,
+state, and control as illustrative. It must never imply live activity, popularity, ratings,
+endorsements, company responses, or a working account system before those systems exist.
+
+The chosen interaction order is: room navigation → gated composer → typed thread cards → persistent
+context rail → conversation protocol. The protocol is `Read → Discuss → Verify → Review`: Research
+remains the citable record, Commons adds attributed context around it, and moderation protects the
+boundary between the two. The eventual durable model needs account and role verification, source
+attachments, privacy/redaction, report/correction/withdrawal paths, company response lanes, and an
+audit log before public publishing is enabled. A future Your Coverage workspace is deliberately
+described as a private, consent-based capability; policy upload, Canopy Connect, and personalized
+advice are not enabled by this specimen.
+
+## Product-surface convergence pass
+
+The 2026-09-11 implementation pass fixed one shared composition across the four surfaces that
+define the product:
+
+- **Homepage:** question-first command surface, real cited-answer window, registry-count proof,
+  then the three product lanes.
+- **Company directory:** dossier search first, a three-lane explanation, and structured records
+  instead of a generic list.
+- **Company dossier:** identity and actions share the first viewport with a compact record summary;
+  Research, official material, and community context remain separate below it.
+- **Commons and thread:** the product promise and safety boundary introduce the forum shell; a
+  thread keeps the research bridge persistent and never uses popularity scoring.
+
+This is the aesthetic baseline for the MVP. New screens should reuse its hierarchy and tokens
+rather than introduce a second visual concept. The next design work is state completion—mobile
+navigation, sign-in, empty/loading/error, contribution review, and company-response verification—
+not another homepage direction.
 
 ## Mobbin pass three: discovery and comparison
 
@@ -235,3 +330,72 @@ Nothing was rejected outright, which is itself worth recording: the three-pass t
 27 references with one rejection (Ghost's segmented control, ref 18). A pass with no rejections is
 a sign the queries were too close to the answer already chosen, so the next pass should deliberately
 search shapes this site does not currently use.
+
+## Mobbin pass four: Birch product system
+
+Run 2026-09-09 against the public Mobbin MCP and selected public screen/flow pages. This pass
+was for the next product surface set rather than the existing research-only site: signup,
+forums, company dossiers, professional contributions, and evidence-led feedback. The references
+were reviewed read-only in the browser and translated into Figma annotations. No Mobbin image or
+brand asset was imported.
+
+| # | Reference | Pattern taken | Birch application |
+| --- | --- | --- | --- |
+| 28 | [ChatGPT Web / research answer](https://mobbin.com/screens/73833b79-1dd5-4354-8fc4-a2e99c33a75e) | Source activity can stay beside the answer without interrupting reading. | A persistent source rail shows claim links, source posture, freshness, and related records. |
+| 29 | [HoneyBook / setup guide](https://mobbin.com/flows/1922e5d2-1f9c-43c7-82ba-6bbc28fba7d9) | Progressive disclosure and completion states reduce setup anxiety. | Read without an account; ask for a magic-link account only when a visitor saves, follows, posts, or shares. |
+| 30 | [Slite / type filter](https://mobbin.com/screens/1593defe-aec1-49d2-abc2-37fc84dbd8ad) | Verification should be a visible filter, not an unexplained trust badge. | Filter documented sources, verified professional perspectives, and community accounts independently. |
+| 31 | [Mintlify / documentation rail](https://mobbin.com/screens/22382df2-2420-4b63-b02f-5c309c95dc85) | A long-form information product needs persistent orientation. | Coverage pages keep an on-page rail for contents, definitions, sources, dates, and next questions. |
+| 32 | [Stripe / detail timeline](https://mobbin.com/screens/464dcf70-a0d4-4ba9-b23d-ca6ba18e60f5) | Freshness and change history belong in the record view. | Company and research records show last reviewed, source dates, revisions, and response history. |
+| 33 | [Confluence / related searches](https://mobbin.com/screens/8cf8c9fd-cf5c-473f-b21f-2327ce2c8f02) | A useful next path can be suggested without taking over the current task. | Every answer and thread offers adjacent coverage questions, comparable companies, and source trails. |
+
+## Mobbin pass five: final conversion and truth-surface audit
+
+Run 2026-09-10. The direct Mobbin pages now resolve under `/explore/`; those
+canonical links are recorded below so the interaction references remain
+openable. This pass did not change the Birch mark, type, palette, or Research /
+Commons boundary. It resolved how the product should convert a reader into a
+returning contributor without turning the evidence layer into a social feed.
+
+| # | Direct reference | Observed pattern | Final Birch decision |
+| --- | --- | --- | --- |
+| 34 | [ChatGPT Web research answer](https://mobbin.com/explore/screens/73833b79-1dd5-4354-8fc4-a2e99c33a75e) | Research answer with adjacent source activity. | Keep the answer and evidence rail on one page; do not make Birch look like an unsourced chat transcript. |
+| 35 | [HoneyBook completing setup guide](https://mobbin.com/explore/flows/1922e5d2-1f9c-43c7-82ba-6bbc28fba7d9) | Setup is a visible sequence with completion states. | Explain the account benefit before the magic-link field; show contribution state as pending, needs more, published, declined, or withdrawn. |
+| 36 | [Slite type filter](https://mobbin.com/explore/screens/1593defe-aec1-49d2-abc2-37fc84dbd8ad) | Search results can be segmented by type and filtered explicitly. | Separate research records, source records, accounts, and verified professional perspectives; never collapse them into one “trust” filter. |
+| 37 | [Mintlify documentation screen](https://mobbin.com/explore/screens/22382df2-2420-4b63-b02f-5c309c95dc85) | Persistent page orientation supports long-form reading. | Coverage and company pages keep a local contents rail, dates, truth model, and source path visible. |
+| 38 | [Stripe detail screen](https://mobbin.com/explore/screens/464dcf70-a0d4-4ba9-b23d-ca6ba18e60f5) | Detail views make history, freshness, and metadata first-class. | Company pages and research records expose last reviewed, source dates, revision history, and response state near the record. |
+| 39 | [Confluence similar-items screen](https://mobbin.com/explore/screens/8cf8c9fd-cf5c-473f-b21f-2327ce2c8f02) | A related-items path helps a user continue without losing the current item. | Every answer and thread offers related questions, companies, lines, or sources based on stable subject ids, not popularity. |
+
+### Pass-five lock
+
+The strongest product shape is now fixed: Research-first landing → cited answer
+with source rail → optional Coverage Position → optional Commons context →
+moderated durable account. Signup is action-triggered, not a first-visit gate.
+The generated product mockup is a composition reference only; its browser URL,
+source names, counts, and dates are not production content.
+
+No Mobbin screenshot, logo, copy, or component library is copied into Birch.
+
+### Figma translation
+
+The existing planning file now has a dedicated page, [Birch / Mobbin references + product
+blueprint](https://www.figma.com/design/okHFaikGZGx1MJmvUgTWHj), with the root frame
+`07 / Reference patterns + product blueprint` (`30:3`). It contains six linked reference cards,
+six buildable Birch surface cards, and a non-negotiables strip. The surface cards lock the
+following product model:
+
+- **Landing + signup:** `Ask Birch` is the primary action; `Explore the research` is secondary;
+  `Browse Commons` is tertiary. Signup is delayed until an account is useful.
+- **Research answer:** direct explanation first, source rail second, with claim-level evidence and
+  a reviewed date. An AI draft is never a published fact without the research gate.
+- **Commons thread:** attributable, revision-visible, reportable, and never silently rewritten.
+  Withdrawal produces a tombstone rather than a disappearing citation target.
+- **Company dossier:** documented record, community accounts, and official responses are separate
+  bands. There is no composite star score or paid ranking.
+- **Professional/partner contribution:** role, jurisdiction, license or credential, employer,
+  compensation, and conflicts are explicit. A professional perspective is a perspective, not a
+  verdict.
+- **Feedback:** structured experience reports carry product, date, state, claim, evidence, outcome,
+  and resolution. Ratings may be summarized as evidence-backed signals, never as a single oracle.
+
+The Figma board is a planning artifact and follows the implementation tokens in
+`src/styles/tokens.css`; it is not a second token authority.

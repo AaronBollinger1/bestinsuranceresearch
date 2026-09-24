@@ -4,7 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Callout from '../components/Callout.astro';
 import StateBlock from '../components/StateBlock.astro';
-import MarkConverging from '../components/MarkConverging.astro';
+import BirchLoadingMark from '../components/BirchLoadingMark.astro';
+import ProductContextBar from '../components/ProductContextBar.astro';
 import StatusChip from '../components/StatusChip.astro';
 import { siteConfig } from '../config/site';
 import { stripMarkers } from '../lib/citations';
@@ -12,6 +13,7 @@ import { loadCorpus } from '../lib/corpus';
 import { longDate } from '../lib/cite';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../lib/schema';
 
+import { excerpt, shortList } from '../lib/excerpt';
 const corpus = await loadCorpus();
 
 const lines = [...new Set(corpus.questions.flatMap((q) => q.data.lines))].sort();
@@ -25,7 +27,31 @@ const byFamily = families.map((family) => ({
 		.sort((a, b) => a.data.question.localeCompare(b.data.question)),
 }));
 
-const examples = corpus.questions.slice(0, 6).map((q) => q.data.question);
+/*
+ * A deliberate shortlist, not `slice(0, 6)`. The first six records in corpus
+ * order are whatever sorts first by id, which is an accident of filenames
+ * rather than a statement about what a person arriving at Ask is likely to
+ * want. These are the California questions the landing is built around, and
+ * the newly published ones lead so they are reachable in one hop from the
+ * primary CTA rather than only through search. Ids that do not resolve are
+ * dropped, so a renamed record degrades to a shorter list instead of a build
+ * failure, and the list is topped up from corpus order if it ever runs short.
+ */
+const FEATURED_QUESTIONS = [
+	'california-minimum-auto-insurance-and-proof',
+	'what-is-the-california-fair-plan-and-who-is-it-for',
+	'california-data-breach-what-my-business-must-do',
+	'insurer-in-liquidation-who-pays-california',
+	'debris-flow-after-a-wildfire-which-peril-california',
+	'replacement-cost-vs-market-value',
+];
+const featured = FEATURED_QUESTIONS.map((id) => corpus.questions.find((entry) => entry.id === id)).filter(
+	(entry) => entry !== undefined,
+);
+const examples = [
+	...featured,
+	...corpus.questions.filter((entry) => !featured.includes(entry)),
+].slice(0, 6);
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -40,7 +66,7 @@ const jsonLd = graph(
 		name: 'Ask an insurance question',
 		path: '/ask',
 		description:
-			'Look up a canonical, sourced answer in the BestInsurance Research library. The lookup runs locally in your browser.',
+			'Look up a canonical, sourced answer in the Birch Research library. The lookup runs locally in your browser.',
 		items: corpus.questions.map((q) => ({ name: q.data.question, path: `/questions/${q.id}` })),
 	}),
 );
@@ -55,20 +81,26 @@ const FAMILY_LABEL: Record<string, string> = {
 
 <BaseLayout
 	title="Ask an insurance question"
-	description="Look up a canonical, sourced answer in the BestInsurance Research library. The lookup runs entirely in your browser, so your question is never sent anywhere."
+	description="Look up a canonical, sourced answer in the Birch Research library. The lookup runs entirely in your browser, so your question is never sent anywhere."
 	jsonLd={jsonLd}
 	pageType="ask"
 >
 	<section class="band band-tight band-first band-paper">
 		<div class="shell">
 			<div style="margin-bottom: var(--s-4)"><Breadcrumbs trail={trail} /></div>
-			<span class="eyebrow">Ask</span>
-			<h1>Ask an insurance question.</h1>
-			<p class="lede">
-				This is a library lookup, not a chatbot. It matches your wording against published,
-				human-reviewed answers and returns the ones the evidence actually supports. When nothing in
-				the library supports an answer, it says so instead of guessing.
-			</p>
+			<ProductContextBar active="research" />
+			<header class="focus-page-header ask-focus-header">
+				<span class="focus-page-eyebrow">Ask</span>
+				<h1>Ask an insurance question.</h1>
+				<p>
+					Search published records only. Each match shows the question, a sourced excerpt, its
+					limits, and a next step to the full answer. Nothing is generated, and no question leaves
+					this browser.
+				</p>
+				<div class="focus-page-actions">
+					<a class="btn btn-quiet" href="/professionals">Get cited</a>
+				</div>
+			</header>
 		</div>
 	</section>
 
@@ -109,9 +141,9 @@ const FAMILY_LABEL: Record<string, string> = {
 					<div style="display:flex;flex-wrap:wrap;gap:var(--s-2)">
 						{
 							examples.map((example) => (
-								<button class="btn btn-secondary btn-sm btn-wrap" type="button" data-example={example}>
-									{example}
-								</button>
+								<a class="btn btn-secondary btn-sm btn-wrap" href={`/questions/${example.id}`} data-example={example.data.question}>
+									{example.data.question}
+								</a>
 							))
 						}
 					</div>
@@ -176,7 +208,7 @@ const FAMILY_LABEL: Record<string, string> = {
 
 				<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center">
 					<button class="btn btn-primary" type="submit">
-						<Search size={16} aria-hidden="true" /> Find the answer
+						<Search size={16} aria-hidden="true" /> Ask a question
 					</button>
 					<button class="btn btn-secondary" type="button" id="ask-edit" hidden>
 						<Pencil size={16} aria-hidden="true" /> Edit question
@@ -213,8 +245,8 @@ const FAMILY_LABEL: Record<string, string> = {
 
 			<div id="ask-loading" hidden>
 				<div class="ask-resolving">
-					<MarkConverging size={72} label={null} />
-					<p class="mono" aria-hidden="true">Resolving against the library</p>
+					<BirchLoadingMark size={72} label={null} />
+					<p class="mono" aria-hidden="true">Checking sources</p>
 				</div>
 				<div class="skeleton" aria-hidden="true">
 				{
@@ -329,16 +361,18 @@ const FAMILY_LABEL: Record<string, string> = {
 						<h3 style="margin-bottom: var(--s-3)">{FAMILY_LABEL[group.family] ?? group.family}</h3>
 						<div class="rows">
 							{group.questions.map((question) => (
-								<a class="row" href={`/questions/${question.id}`}>
+								<a class="row ask-hit" href={`/questions/${question.id}`}>
 									<div>
+										<p class="ask-hit-beat">Question</p>
 										<h4 class="row-title">{question.data.question}</h4>
-										<p>{stripMarkers(question.data.shortAnswer).slice(0, 170)}</p>
+										<p>{excerpt(stripMarkers(question.data.shortAnswer), 170)}</p>
 										<div class="row-meta">
 											<StatusChip kind={question.data.confidence} />
-											<span class="meta">{question.data.lines.join(', ')}</span>
-											<span class="meta">Reviewed {longDate(question.data.lastReviewed)}</span>
+											<span class="meta">{shortList(question.data.lines)}</span>
+							<span class="meta">{question.data.reviewState === 'under-review' ? 'Record date' : 'Reviewed'} {longDate(question.data.lastReviewed)}</span>
 											<span class="meta">{question.data.sourceIds.length} sources</span>
 										</div>
+										<p class="ask-hit-next"><span>Read the answer</span> · Open sources on the record</p>
 									</div>
 									<div class="row-tail"><ArrowRight size={16} aria-hidden="true" /></div>
 								</a>
@@ -363,6 +397,7 @@ const FAMILY_LABEL: Record<string, string> = {
 </BaseLayout>
 
 <script>
+	import { excerpt as shorten } from '../lib/excerpt';
 	import { search, type SearchIndex, type SearchOutcome } from '../lib/retrieval';
 
 	const form = document.getElementById('ask-form') as HTMLFormElement | null;
@@ -652,20 +687,27 @@ const FAMILY_LABEL: Record<string, string> = {
 	function renderHits(outcome: Extract<SearchOutcome, { hits: unknown }>) {
 		hits!.innerHTML = sortHits(outcome)
 			.map((hit) => {
-				const excerpt = hit.bestChunk.text.replace(/\[S:[a-z0-9-]+\]/g, '').slice(0, 230);
+				/* The same sentence-aware shortening the server-rendered cards use,
+				   imported rather than reimplemented: a search result cut mid-word is
+				   the most visible text on the site and was the worst offender. */
+				const excerpt = shorten(hit.bestChunk.text.replace(/\[S:[a-z0-9-]+\]/g, ''), 230);
+				const sourceCount = hit.bestChunk.sourceIds.length;
+				const reviewLabel = hit.reviewState === 'under-review' ? 'Record date' : 'Reviewed';
 				return [
-					`<a class="row" href="${escape(hit.path)}" data-event="research_answer_viewed" data-answer-status="${escape(hit.confidence)}" data-page-type="ask">`,
+					`<a class="row ask-hit" href="${escape(hit.path)}" data-event="research_answer_viewed" data-answer-status="${escape(hit.confidence)}" data-page-type="ask">`,
 					'<div>',
+					'<p class="ask-hit-beat">Question</p>',
 					`<h3 class="row-title">${escape(hit.title)}</h3>`,
 					`<p>${escape(excerpt)}${hit.bestChunk.text.length > 230 ? '...' : ''}</p>`,
 					'<div class="row-meta">',
 					`<span class="status status-plain">${escape(TYPE_LABEL[hit.entryType] || hit.entryType)}</span>`,
 					`<span class="meta">Matched in: ${escape(KIND_LABEL[hit.bestChunk.kind] || hit.bestChunk.kind)}</span>`,
-					`<span class="meta">${hit.bestChunk.sourceIds.length} supporting source${hit.bestChunk.sourceIds.length === 1 ? '' : 's'}</span>`,
-					`<span class="meta">Reviewed ${escape(hit.lastReviewed)}</span>`,
+					`<span class="meta">${sourceCount} supporting source${sourceCount === 1 ? '' : 's'}</span>`,
+					`<span class="meta">${reviewLabel} ${escape(hit.lastReviewed)}</span>`,
 					'</div>',
+					'<p class="ask-hit-next"><span>Read the answer</span> · Open sources on the record</p>',
 					'</div>',
-					'<div class="row-tail"><span class="meta">Open</span></div>',
+					'<div class="row-tail"><span class="meta">Read</span></div>',
 					'</a>',
 				].join('');
 			})
@@ -755,9 +797,11 @@ const FAMILY_LABEL: Record<string, string> = {
 		say('Editing your question.');
 	});
 
-	document.querySelectorAll<HTMLButtonElement>('[data-example]').forEach((button) => {
-		button.addEventListener('click', () => {
-			field!.value = button.dataset.example || '';
+	document.querySelectorAll<HTMLAnchorElement>('[data-example]').forEach((link) => {
+		link.addEventListener('click', (event) => {
+			if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+			event.preventDefault();
+			field!.value = link.dataset.example || '';
 			void run(field!.value);
 		});
 	});
@@ -879,8 +923,8 @@ const FAMILY_LABEL: Record<string, string> = {
 
 	/* Rotating example, only when the visitor has not asked for reduced motion. */
 	const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-	const rotation = [...document.querySelectorAll<HTMLButtonElement>('[data-example]')].map(
-		(button) => button.dataset.example || '',
+	const rotation = [...document.querySelectorAll<HTMLElement>('[data-example]')].map(
+		(node) => node.dataset.example || '',
 	);
 	if (!reduce.matches && rotation.length > 1) {
 		let i = 0;
@@ -896,10 +940,15 @@ const FAMILY_LABEL: Record<string, string> = {
 	/* The resolving mark sits above the row skeleton, not instead of it: the
 	   mark says the library is being searched, the bars say what is coming. */
 	.ask-resolving {
-		display: flex;
-		align-items: center;
-		gap: var(--s-4);
-		padding: var(--s-6) 0 var(--s-5);
+		display: grid;
+		justify-items: center;
+		gap: var(--s-3);
+		margin: var(--s-4) 0 var(--s-5);
+		padding: var(--s-8) var(--s-4) var(--s-6);
+		border: 1px solid var(--line);
+		border-radius: var(--r-3);
+		background: var(--paper);
+		text-align: center;
 	}
 
 	/* The thread. Numbered because the order is the point: turn 3 usually only

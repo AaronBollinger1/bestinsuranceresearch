@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'Moderation' }];
+
+const REJECTED = [
+	'Any statement of whether a claim should have been paid, however it is phrased and whoever writes it.',
+	'Any naming of an individual adjuster, agent or employee. Name the carrier or the department; never the person.',
+	'Any personal information about a third party, including anyone on the other side of the situation.',
+	'Any document upload. There is no mechanism to accept one, which is the only reliable way to enforce this.',
+	'Any premium, quote or rate claim, including what somebody was charged.',
+	'Any ranking of carriers, or any statement of which is best, cheapest or most reliable.',
+	'Anything presented as a client result of any brokerage.',
+];
+---
+
+<BaseLayout
+	title="Moderated before publication, not after"
+	eyebrow="Moderation"
+	lede="A queue, not a report button. It is slower than the alternative and it is the entire product: unmoderated volume is exactly what makes a forum uncitable."
+	crumbs={crumbs}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				<h2>Why before rather than after</h2>
+				<p>
+					Almost every discussion site moderates after the fact: anyone may post, and problems are
+					removed once somebody flags them. That model optimises for volume, and volume is not what
+					this site is for. If a reader cannot trust that what they are reading was checked, the
+					archive is worth no more than any other forum, and the effort of structuring it was
+					wasted.
+				</p>
+				<p>
+					So nothing appears here until it has been read. The consequence is honest and worth
+					stating plainly: <strong>this will be slow, and it will stay small for a long time.</strong>{' '}
+					That is the trade being made deliberately.
+				</p>
+
+				<h2>What is rejected outright</h2>
+				<ul>
+					{REJECTED.map((r) => <li>{r}</li>)}
+				</ul>
+
+				<h2>What happens to an account that is nearly publishable</h2>
+				<p>
+					Most submissions will not be rejected; they will be incomplete. An account with no date,
+					no state, or no record of who decided cannot be published as it stands, and the fix is
+					usually two questions back to the person who wrote it.
+				</p>
+				<ol>
+					<li>
+						<strong>Identifying detail is removed before publication, not after.</strong> Names,
+						addresses, policy numbers, employer names where they are not the point, and anything
+						that identifies a third party.
+					</li>
+					<li>
+						<strong>The label is set by the moderator, not by the contributor.</strong> A person
+						describing their own situation is not always the best judge of what kind of evidence it
+						is, and the label is the field a reader relies on most.
+					</li>
+					<li>
+						<strong>The reasons it does not generalise are written or expanded.</strong> Three is
+						the floor. Most real accounts have more.
+					</li>
+					<li>
+						<strong>Anything reading as a verdict is removed</strong> — not softened. Making a
+						prohibited statement vaguer leaves it in place while hiding it, which is worse than
+						either publishing or cutting it.
+					</li>
+				</ol>
+
+				<h2>Who moderates</h2>
+				<p>
+					At launch, the same licensed reviewer who signs off the Record. That is a real constraint
+					on throughput and it is why the sequence matters: reports first, practitioner notes
+					second, open discussion last. Each stage is only worth opening once the one before it is
+					worth reading.
+				</p>
+
+				<h2>Withdrawal</h2>
+				<p>
+					<strong>A contributor may withdraw a report at any time, for any reason or none.</strong>{' '}
+					Nothing asks them to justify taking their own account back, and there is no step that
+					argues with them about it. Anything not yet published goes on the spot; a published
+					report is a file, so it is removed the same day by the moderator who committed it.
+				</p>
+				<p>
+					A withdrawn report keeps its address and says that it was withdrawn. It is not deleted,
+					because a citation that silently 404s is worse for the person who relied on it than one
+					that explains itself.
+				</p>
+				<p class="meta">
+					Withdrawing a report does not close the account it was submitted from, and closing an
+					account is a separate thing we will build when somebody asks for it.
+				</p>
+
+				<h2>Corrections</h2>
+				<p>
+					If a published report is wrong, it is corrected with the prior wording kept visible, the
+					same way the Record handles it. A record of having been wrong is worth more than an
+					unblemished one, because only the first is checkable.
+				</p>
+			</div>
+
+			<aside aria-label="Related">
+				<div class="rail-block">
+					<h2>The rule</h2>
+					<p style="font-size: var(--text-sm)">
+						Nobody publishes a view on whether a claim should have been paid. It is the only rule
+						that crosses from the Record, and it is enforced here by reading rather than by a
+						build step.
+					</p>
+				</div>
+				<div class="rail-block">
+					<h2>Related</h2>
+					<ul>
+						<li><a href="/standards">Standards</a></li>
+						<li><a href="/contribute">Contribute</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>
