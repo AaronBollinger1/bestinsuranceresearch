@@ -508,6 +508,22 @@ test('ask examples are GET links to sourced answers', () => {
   assert.doesNotMatch(page, /<button[^>]*data-example=/);
 });
 
+test('question discovery searches canonical answers and preserves the Ask fallback', () => {
+  const page = html('/questions');
+  assert.match(page, /<input[^>]+id="filter-query"[^>]+type="search"[^>]+name="q"/);
+  assert.match(page, /aria-describedby="filter-query-hint"/);
+  assert.match(page, /id="q-count"[^>]+role="status"[^>]+aria-live="polite"/);
+  assert.match(page, /data-search="[^"]+"/);
+  assert.match(page, /href="\/ask"[^>]*>Ask in your own words/);
+  const source = readFileSync(fileURLToPath(new URL('../src/pages/questions/index.astro', import.meta.url)), 'utf8');
+  assert.match(source, /new URLSearchParams\(window\.location\.search\)\.get\('q'\)/);
+  assert.match(source, /queryTerms\.every\(\(term\) => searchable\.includes\(term\)\)/);
+  assert.match(source, /queryInput\?\.addEventListener\('input', apply\)/);
+  assert.match(source, /if \(queryInput\) queryInput\.value = ''/);
+  assert.match(source, /container!\.dataset\.ready = 'true'/);
+  assert.match(source, /<noscript><style is:global>#q-rows \{ visibility: visible !important; \}<\/style><\/noscript>/);
+});
+
 test('live Ask chrome uses Ask a question, not Ask Birch', () => {
   const home = html('/');
   assert.match(home, /class="[^"]*header-ask-cta[^"]*"[^>]*>Ask a question/);

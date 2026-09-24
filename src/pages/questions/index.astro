@@ -64,6 +64,18 @@ const FAMILY_LABEL: Record<string, string> = {
 				id="q-filters"
 				style="display:grid;gap:var(--s-5);padding:var(--s-5);border:1px solid var(--line-strong);border-radius:var(--r-4);background:var(--paper)"
 			>
+				<div class="field question-search">
+					<label for="filter-query">Search questions</label>
+					<input
+						id="filter-query"
+						type="search"
+						name="q"
+						placeholder="Try “earthquake deductible” or “claim denied”"
+						aria-describedby="filter-query-hint"
+					/>
+					<p class="hint" id="filter-query-hint">Matches words in the question and short answer.</p>
+				</div>
+
 				<div class="field-row">
 					<div class="field">
 						<label for="filter-line">Line</label>
@@ -135,6 +147,7 @@ const FAMILY_LABEL: Record<string, string> = {
 							data-reviewed={question.data.lastReviewed}
 							data-sources={question.data.sourceIds.length}
 							data-title={question.data.question}
+							data-search={`${question.data.question} ${stripMarkers(question.data.shortAnswer)}`}
 						>
 							<div>
 								<h3 class="row-title">{question.data.question}</h3>
@@ -179,8 +192,11 @@ const FAMILY_LABEL: Record<string, string> = {
 	const selects = [...document.querySelectorAll<HTMLSelectElement>('[data-filter]')];
 	const familyBoxes = [...document.querySelectorAll<HTMLInputElement>('[data-filter-family]')];
 	const sortSelect = document.querySelector<HTMLSelectElement>('[data-sort]');
+	const queryInput = document.querySelector<HTMLInputElement>('#filter-query');
 
 	function apply() {
+		const query = queryInput?.value.trim().toLocaleLowerCase() || '';
+		const queryTerms = query.split(/\s+/).filter(Boolean);
 		const line = document.querySelector<HTMLSelectElement>('[data-filter="line"]')?.value || 'any';
 		const state = document.querySelector<HTMLSelectElement>('[data-filter="state"]')?.value || 'any';
 		const confidence = document.querySelector<HTMLSelectElement>('[data-filter="confidence"]')?.value || 'any';
@@ -190,7 +206,9 @@ const FAMILY_LABEL: Record<string, string> = {
 		for (const row of rows) {
 			const lines = (row.dataset.lines || '').split(' ');
 			const states = (row.dataset.states || '').split(' ').filter(Boolean);
+			const searchable = (row.dataset.search || '').toLocaleLowerCase();
 			const ok =
+				queryTerms.every((term) => searchable.includes(term)) &&
 				allowedFamilies.includes(row.dataset.family || '') &&
 				(line === 'any' || lines.includes(line)) &&
 				(state === 'any' || states.includes(state)) &&
@@ -206,6 +224,12 @@ const FAMILY_LABEL: Record<string, string> = {
 					? `Showing all ${rows.length} questions.`
 					: `Showing ${visible} of ${rows.length} questions.`;
 		}
+		container!.dataset.ready = 'true';
+
+		const url = new URL(window.location.href);
+		if (queryInput?.value.trim()) url.searchParams.set('q', queryInput.value.trim());
+		else url.searchParams.delete('q');
+		window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
 	}
 
 	function sort() {
@@ -220,12 +244,14 @@ const FAMILY_LABEL: Record<string, string> = {
 
 	selects.forEach((select) => select.addEventListener('change', apply));
 	familyBoxes.forEach((box) => box.addEventListener('change', apply));
+	queryInput?.addEventListener('input', apply);
 	sortSelect?.addEventListener('change', () => {
 		sort();
 		apply();
 	});
 
 	function reset() {
+		if (queryInput) queryInput.value = '';
 		selects.forEach((select) => {
 			select.value = 'any';
 		});
@@ -242,5 +268,15 @@ const FAMILY_LABEL: Record<string, string> = {
 		button.addEventListener('click', reset);
 	});
 
+	const initialQuery = new URLSearchParams(window.location.search).get('q');
+	if (queryInput && initialQuery) queryInput.value = initialQuery;
 	apply();
 </script>
+
+<style>
+	.question-search { max-width: 44rem; }
+	#q-filters .check { min-height: var(--tap); align-items: center; }
+	#q-rows:not([data-ready='true']) { visibility: hidden; }
+</style>
+
+<noscript><style is:global>#q-rows { visibility: visible !important; }</style></noscript>
