@@ -361,7 +361,17 @@ test(`the ${SITE_ENV} build emits the correct indexing directive on every page`,
 		   deliberately out of the index because they reproduce prose whose
 		   canonical home is elsewhere on this origin. /review-queue itself is
 		   indexed, so the pattern requires a segment after it. */
-		const deliberatelyHidden = /^\/(design|404|lens|shelf)(?:\/|$)/.test(route) || /^\/review-queue\/./.test(route);
+		/* /contribute is deliberately out of the index while Commons is closed:
+		   contribution is not open, no account can be created and nothing can be
+		   submitted, so a page ranking for "contribute to Birch" would advertise
+		   a capability the property does not have. It becomes indexable on the
+		   same flag that opens Commons, which is asserted below rather than left
+		   to be remembered. */
+		const hiddenWhileCommonsClosed = !COMMONS_READY && /^\/contribute(?:\/|$)/.test(route);
+		const deliberatelyHidden =
+			/^\/(design|404|lens|shelf)(?:\/|$)/.test(route) ||
+			/^\/review-queue\/./.test(route) ||
+			hiddenWhileCommonsClosed;
 		if (deliberatelyHidden) continue;
 		assert.ok(
 			!/<meta name="robots" content="noindex, nofollow">/.test(html),
@@ -4497,5 +4507,196 @@ test('a written page names both its author and its reviewer, and an assembled on
 		methodology,
 		/assembled rather than written/,
 		'/methodology claims both are named on every page without excepting the pages nobody wrote',
+	);
+});
+
+/* ------------------------------------------------------------------ */
+/* Review state is a licensed act                                      */
+/* ------------------------------------------------------------------ */
+
+/** Collections whose records can carry a review state. */
+const REVIEW_BEARING = ['questions', 'coverages', 'companies', 'states', 'examples', 'modules', 'cross-rules', 'figures'];
+
+test('a record cannot reach reviewed by omission: every review-bearing record states its own review state', () => {
+	/*
+	 * Measured 2026-09-24 at 69c2c5f. `questions`, `coverages`, `companies`,
+	 * `states` and `examples` defaulted reviewState to `reviewed`. Nothing was
+	 * falsely published - all 183 records carried an explicit state and none of
+	 * them was `reviewed` - but the schema would have let the next file claim
+	 * licensed sign-off by leaving a line out.
+	 *
+	 * DIRECTION.md: marking a record reviewed is a licensed act belonging to
+	 * Brian Bollinger. An act nobody performed is not one a default may assert.
+	 * The schema now requires the field in those five collections; this holds
+	 * the same line from the content side, so removing the requirement in
+	 * content.config.ts fails here rather than silently re-arming the default.
+	 */
+	let checked = 0;
+	for (const name of REVIEW_BEARING) {
+		for (const { id, data } of collection(name)) {
+			assert.ok(
+				typeof data.reviewState === 'string' && data.reviewState.length > 0,
+				`${name}/${id} does not state a review state. It must say so rather than inherit one.`,
+			);
+			assert.ok(
+				['reviewed', 'under-review', 'corrected'].includes(data.reviewState),
+				`${name}/${id} has an unknown review state "${data.reviewState}"`,
+			);
+			checked += 1;
+		}
+	}
+	assert.ok(checked > 150, `only ${checked} records were checked, so this test has quietly stopped covering the corpus`);
+});
+
+test('no record is reviewed without a named licensed reviewer on file', () => {
+	/*
+	 * `reviewer` is the assigned reviewer, not evidence of sign-off: all 183
+	 * records name Brian Bollinger and 179 of them are still `under-review`. So
+	 * "has a reviewer field" proves nothing and a test asserting only that would
+	 * pass while meaning nothing.
+	 *
+	 * What this holds instead: if a record ever says `reviewed`, the name it
+	 * carries must resolve to a person in the people collection who is actually
+	 * licensed and whose licence number is published. That ties sign-off to a
+	 * real licensed human on record rather than to a string, and it is the
+	 * assertion that would have to be defeated deliberately - by inventing a
+	 * licensed person - rather than by forgetting a line.
+	 *
+	 * It is vacuous today by design: zero records are reviewed, which is the
+	 * correct state, and the count below is asserted so that staying at zero is
+	 * visible rather than assumed.
+	 */
+	const licensed = new Map();
+	for (const { id, data } of collection('people')) {
+		if (data.licensed === true && data.license?.number) licensed.set(data.name, { id, number: data.license.number });
+	}
+	assert.ok(licensed.size > 0, 'no licensed person is on file at all, so no record could ever be legitimately reviewed');
+
+	let reviewed = 0;
+	for (const name of REVIEW_BEARING) {
+		for (const { id, data } of collection(name)) {
+			if (data.reviewState !== 'reviewed') continue;
+			reviewed += 1;
+			const signer = licensed.get(data.reviewer);
+			assert.ok(
+				signer,
+				`${name}/${id} claims reviewState "reviewed" but its reviewer "${data.reviewer}" is not a licensed person in the people collection. ` +
+					'Marking a record reviewed is a licensed act; it cannot be asserted on behalf of someone who is not on file as licensed.',
+			);
+		}
+	}
+
+	/*
+	 * Not an assertion that the corpus must stay unreviewed - licensed review is
+	 * the point of the property and this number is meant to rise. It records
+	 * what the build actually contains, so a change in it is deliberate and
+	 * visible in a diff rather than discovered later.
+	 */
+	assert.equal(
+		reviewed,
+		0,
+		`${reviewed} record(s) claim licensed review. If a licensed reviewer has genuinely signed off, update this count in the same commit that records the sign-off.`,
+	);
+});
+
+/* ------------------------------------------------------------------ */
+/* Sitemap and noindex must agree                                      */
+/* ------------------------------------------------------------------ */
+
+test('the sitemap never advertises a page that tells crawlers not to index it', () => {
+	/*
+	 * Measured 2026-09-24 against a production-posture build: 570 sitemap
+	 * entries, and two of them - /lens and /shelf - carried
+	 * `noindex, nofollow` in their own head. /lens is titled "Coverage Lens
+	 * private preview". The sitemap exists to ask crawlers to come and look, so
+	 * listing a page that then refuses them is at best a contradiction and at
+	 * worst an invitation to a surface labelled private.
+	 *
+	 * /contribute joined the same class when contribution was made noindex while
+	 * Commons is closed. Excluding a route in astro.config.mjs and setting
+	 * noindex on the page are two separate edits in two separate files, which is
+	 * exactly the kind of pair that drifts. This holds them together.
+	 */
+	const sitemaps = fs.readdirSync(DIST).filter((f) => /^sitemap-\d+\.xml$/.test(f));
+	assert.ok(sitemaps.length > 0, 'no sitemap was built at all');
+
+	const locs = [];
+	for (const file of sitemaps) {
+		for (const match of read(path.join(DIST, file)).matchAll(/<loc>([^<]+)<\/loc>/g)) locs.push(match[1]);
+	}
+	assert.ok(locs.length > 400, `the sitemap lists only ${locs.length} URLs, so this test would pass on an empty sitemap`);
+
+	/* Routes that are noindex by construction, whatever the posture. */
+	for (const route of ['/lens', '/shelf']) {
+		assert.ok(
+			!locs.some((loc) => new URL(loc).pathname.replace(/\/$/, '') === route),
+			`${route} sets noindex on itself and is still listed in the sitemap`,
+		);
+	}
+
+	/*
+	 * A preview build is noindex everywhere, so the general agreement below can
+	 * only be measured in production posture. The two explicit routes above are
+	 * checked in both, because their exclusion does not depend on posture.
+	 */
+	const robots = fs.existsSync(path.join(DIST, 'robots.txt')) ? read(path.join(DIST, 'robots.txt')) : '';
+	if (/^\s*Disallow:\s*\/\s*$/m.test(robots)) return;
+
+	const offenders = [];
+	for (const loc of locs) {
+		const pathname = new URL(loc).pathname.replace(/\/$/, '');
+		const file = path.join(DIST, pathname === '' ? 'index.html' : `${pathname.slice(1)}/index.html`);
+		if (!fs.existsSync(file)) continue;
+		if (/<meta[^>]+name="robots"[^>]*content="[^"]*noindex/i.test(read(file))) offenders.push(pathname || '/');
+	}
+	assert.deepEqual(
+		offenders,
+		[],
+		`the production sitemap lists ${offenders.length} page(s) that carry noindex: ${offenders.join(', ')}`,
+	);
+});
+
+test('contribution is not advertised as open while Commons is closed', () => {
+	/*
+	 * The page invites someone to write. If it does not say plainly, above the
+	 * form, that nothing can be submitted, a reader can spend real effort on a
+	 * draft that has nowhere to go. "Private preview" was true but read as a
+	 * feature label rather than as a closed door.
+	 */
+	const file = path.join(DIST, 'contribute/index.html');
+	if (!fs.existsSync(file)) return;
+	const html = read(file);
+	const text = html
+		.replace(/<script[\s\S]*?<\/script>/g, '')
+		.replace(/<style[\s\S]*?<\/style>/g, '')
+		.replace(/<[^>]+>/g, ' ')
+		.replace(/\s+/g, ' ');
+
+	/* When Commons opens, the closed-door language is wrong and must go. Asserting
+	   only the closed case would leave a stale "not open" notice passing on the
+	   day contribution actually opens, so both directions are held. */
+	if (COMMONS_READY) {
+		assert.doesNotMatch(
+			text,
+			/Contribution is not open/i,
+			'/contribute still says contribution is closed after Commons was opened',
+		);
+		return;
+	}
+
+	assert.match(
+		text,
+		/Contribution is not open/i,
+		'/contribute does not say plainly that contribution is not open',
+	);
+	assert.match(
+		text,
+		/cannot create an account/i,
+		'/contribute does not say that no account can be created',
+	);
+	assert.match(
+		html,
+		/<meta[^>]+name="robots"[^>]*content="[^"]*noindex/i,
+		'/contribute is indexable while contribution is closed',
 	);
 });

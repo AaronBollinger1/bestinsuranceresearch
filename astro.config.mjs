@@ -65,6 +65,14 @@ function lastmodFor(/** @type {string} */ url) {
 const site = process.env.PUBLIC_SITE_ORIGIN || 'https://birch.insure';
 
 /**
+ * Commons is closed unless a deployment opens it deliberately. The sitemap has
+ * to read the environment directly: this file runs in the Vite config context,
+ * not in the Astro component context, so `siteConfig.communityReady` is not
+ * reachable here. Both derive from the same variable and must agree.
+ */
+const commonsReady = process.env.PUBLIC_COMMONS_READY === 'true';
+
+/**
  * Routes that must never enter the sitemap:
  *  - /design/*  labeled design alternatives and the component state gallery. They
  *               are noindex and are not part of the public library.
@@ -77,8 +85,33 @@ const site = process.env.PUBLIC_SITE_ORIGIN || 'https://birch.insure';
  *               on the origin, competing with the pages they quote. Public, and
  *               noindex, for the same reason /design is. The index page
  *               /review-queue itself stays in the sitemap.
+ *  - /lens      the Coverage Lens private preview. It sets noindex on itself and
+ *               its own title calls it a private preview, and yet a production
+ *               build listed it in the sitemap: the file said "private" and the
+ *               sitemap invited every crawler to come and look. Measured
+ *               2026-09-24 against a production-posture build.
+ *  - /shelf     same contradiction, same build. noindex in the head, advertised
+ *               in the sitemap.
+ *  - /contribute while Commons is closed. Contribution is not open, no account
+ *               can be created and nothing can be submitted, so the page is
+ *               noindex until PUBLIC_COMMONS_READY is opened deliberately - and
+ *               a noindex page must not be advertised, which is the whole point
+ *               of the two entries above it.
+ *
+ * The rule these three share: a route that tells crawlers not to index it must
+ * not also be listed in the document whose only purpose is to ask them to. The
+ * sitemap-vs-noindex agreement is held by a test in scripts/verify.mjs so this
+ * list cannot drift out of step with the pages again.
  */
-const EXCLUDED = [/\/design\//, /\.json$/, /\/404\/?$/, /\/review-queue\/[^/]/];
+const EXCLUDED = [
+	/\/design\//,
+	/\.json$/,
+	/\/404\/?$/,
+	/\/review-queue\/[^/]/,
+	/\/lens\/?$/,
+	/\/shelf\/?$/,
+	...(commonsReady ? [] : [/\/contribute\/?$/]),
+];
 
 export default defineConfig({
 	site,

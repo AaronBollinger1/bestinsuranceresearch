@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Check, FileText, LockKeyhole, UserRound } from '
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FocusPageHeader from '../components/FocusPageHeader.astro';
 import { breadcrumbs, graph, organization, website } from '../lib/schema';
+import { siteConfig } from '../config/site';
 
 const kinds = [
   { value: 'experience', title: 'An experience', detail: 'What happened, in your own words.', icon: UserRound },
@@ -10,11 +11,30 @@ const kinds = [
   { value: 'correction', title: 'A correction', detail: 'Something that needs checking.', icon: Check },
 ];
 const jsonLd = graph(organization(), website(), breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Contribute', path: '/contribute' }]));
+
+/*
+ * Contribution is not open. Accounts, posting, moderation and publishing all
+ * live in Commons, which is closed until a deployment sets PUBLIC_COMMONS_READY
+ * deliberately and its database, mailer and moderation owner are real.
+ *
+ * Until then this page is a private writing surface with no submit path, and it
+ * must not be indexed: a page ranking for "contribute to Birch" that cannot
+ * accept a contribution wastes a reader's time and advertises a capability the
+ * property does not have. astro.config.mjs keeps it out of the sitemap on the
+ * same condition, so the two never disagree.
+ */
+const contributionOpen = siteConfig.communityReady;
 ---
-<BaseLayout title="Contribute to Birch" description="Prepare a private insurance experience, research note, or source correction. Preview your words before any future submission." jsonLd={jsonLd} pageType="editorial">
+<BaseLayout
+  title="Contribute to Birch"
+  description="Contribution is not open yet. Draft an insurance experience, research note, or source correction privately - nothing is sent, saved, or published from this page."
+  jsonLd={jsonLd}
+  pageType="editorial"
+  noindex={!contributionOpen}
+>
   <section class="contribution-page shell">
     <FocusPageHeader eyebrow="Contribute to Birch" title="Share what you know." description="An experience, a sourced explanation, or a useful correction." />
-    <div class="draft-notice"><LockKeyhole size={15} aria-hidden="true" /><p><strong>Private preview.</strong> Nothing is sent or saved. Text is lost when you leave or reload. Signup and posting stay closed.</p></div>
+    <div class="draft-notice"><LockKeyhole size={15} aria-hidden="true" /><p><strong>Contribution is not open.</strong> You cannot create an account, submit this draft, or publish anything from this page. It is a private writing preview: nothing is sent or saved. Text is lost when you leave or reload.</p></div>
     <div class="contribution-workspace">
       <div class="contribution-surface">
         <div class="contribution-progress" aria-label="Contribution preview progress"><span id="write-step" aria-current="step">1. Write</span><ArrowRight size={13} aria-hidden="true" /><span id="preview-step">2. Preview</span><span class="contribution-local">This page only</span></div>
