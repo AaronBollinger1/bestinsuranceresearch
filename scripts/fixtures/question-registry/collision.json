@@ -1,0 +1,20 @@
+{
+	"_fixture": "Deliberately defective registry inputs.",
+	"_why": "A collision detector that has only ever seen clean input has not been tested. Each record pair below carries exactly one defect and the verifier asserts the specific problem code it must trigger.",
+	"_expects": "intent-collision (same wording twice), alias-collision (alias repeats another record's wording), unresolvable-line (a declared line the canonical registry cannot resolve).",
+	"intentCollision": [
+		{ "id": "fixture-dup-a", "data": { "question": "Which office keeps the widget filing calendar?", "aliases": [], "lines": ["homeowners"], "states": [], "reviewState": "under-review", "family": "personal", "audience": "consumer", "topics": ["fixture"], "effectiveDate": "2026-01-01", "lastReviewed": "2026-09-01" } },
+		{ "id": "fixture-dup-b", "data": { "question": "Which office keeps the widget filing calendar?", "aliases": [], "lines": ["homeowners"], "states": [], "reviewState": "under-review", "family": "personal", "audience": "consumer", "topics": ["fixture"], "effectiveDate": "2026-01-01", "lastReviewed": "2026-09-01" } }
+	],
+	"aliasCollision": [
+		{ "id": "fixture-alias-a", "data": { "question": "How long does the widget appeal window stay open?", "aliases": [], "lines": ["homeowners"], "states": [], "reviewState": "under-review", "family": "personal", "audience": "consumer", "topics": ["fixture"], "effectiveDate": "2026-01-01", "lastReviewed": "2026-09-01" } },
+		{ "id": "fixture-alias-b", "data": { "question": "Where does a widget appeal get filed?", "aliases": ["How long does the widget appeal window stay open?"], "lines": ["homeowners"], "states": [], "reviewState": "under-review", "family": "personal", "audience": "consumer", "topics": ["fixture"], "effectiveDate": "2026-01-01", "lastReviewed": "2026-09-01" } }
+	],
+	"unresolvableLine": [
+		{ "id": "fixture-bad-line", "data": { "question": "Does the gadget rider extend to seasonal storage?", "aliases": [], "lines": ["not-a-real-line-xyz"], "states": [], "reviewState": "under-review", "family": "personal", "audience": "consumer", "topics": ["fixture"], "effectiveDate": "2026-01-01", "lastReviewed": "2026-09-01" } }
+	],
+	"_jurisdictionCollisionNote": "Distinct wording (no state name), so it is not an intent collision - but it claims the same intent-and-jurisdiction address as fixture-widget-rule-ca once jurisdiction terms are stripped, which is the answer collision BR-2 must detect.",
+	"jurisdictionCollision": [
+		{ "id": "fixture-widget-rule-ca-second", "data": { "question": "Who enforces the widget labeling rule?", "aliases": [], "lines": ["homeowners"], "states": ["CA"], "reviewState": "under-review", "family": "personal", "audience": "consumer", "topics": ["fixture"], "effectiveDate": "2026-01-01", "lastReviewed": "2026-09-01" } }
+	]
+}

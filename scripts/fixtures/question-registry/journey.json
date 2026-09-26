@@ -1,0 +1,31 @@
+{
+	"_fixture": "The BR-2 end-to-end journey: create, map and decline a merge, request research, link a reviewed answer, and keep a versioned thread history.",
+	"_why": "BR-2's exit is that deterministic fixtures prove create -> map/merge -> research request -> reviewed answer -> versioned thread history. Every timestamp is fixed so the whole chain is replayable byte for byte.",
+	"_expects": "Duplicate suggested and declined; a draft thread; a deterministic research task that cannot publish before a licensed-review event exists; an answer link that must state its review state; a monotonic version history.",
+	"submission": {
+		"question": "Is the widget labeling rule in California enforced by anyone?",
+		"topic": "California widget labeling enforcement",
+		"jurisdiction": "California",
+		"asOf": "2026-09-26",
+		"candidateId": "fixture-candidate-widget-labeling-ca"
+	},
+	"draftId": "fixture-draft-widget-labeling-enforced-ca",
+	"timeline": {
+		"created": "2026-09-26T09:00:00.000Z",
+		"submitted": "2026-09-26T09:01:00.000Z",
+		"duplicateSuggested": "2026-09-26T09:01:05.000Z",
+		"mergeDeclined": "2026-09-26T09:02:00.000Z",
+		"screening": "2026-09-26T09:05:00.000Z",
+		"researchRequested": "2026-09-26T09:06:00.000Z",
+		"answerLinked": "2026-09-26T10:00:00.000Z",
+		"correction": "2026-09-26T11:00:00.000Z",
+		"archived": "2026-09-26T12:00:00.000Z"
+	},
+	"answer": {
+		"questionId": "fixture-widget-rule-ca",
+		"jurisdiction": "CA",
+		"route": "/questions/fixture-widget-rule-ca",
+		"reviewState": "under-review",
+		"_note": "The fixture answer stays under-review on purpose: the corpus holds zero licensed sign-offs and this fixture must not model one as normal. The licensed-review event in the research task below is synthetic and exists only to prove the blocker clears when a real one is recorded."
+	}
+}

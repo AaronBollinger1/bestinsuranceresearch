@@ -1,0 +1,14 @@
+{
+	"_fixture": "Submissions with dispositions known by construction, mapped against synthetic-registry.json.",
+	"_why": "The mapper's four outcomes and its thresholds need inputs on both sides of every boundary. A mapper only ever shown duplicates would pass while suggesting everything.",
+	"cases": [
+		{ "text": "Who enforces the widget labeling rule in California?", "expect": "exact-duplicate", "canonicalId": "fixture-widget-rule-ca", "why": "the canonical wording itself" },
+		{ "text": "  who ENFORCES the widget labeling rule in california ", "expect": "exact-duplicate", "canonicalId": "fixture-widget-rule-ca", "why": "case and whitespace never change identity" },
+		{ "text": "California widget labeling rule enforcement", "expect": "exact-duplicate", "canonicalId": "fixture-widget-rule-ca", "why": "a declared alias is an exact key" },
+		{ "text": "Is the widget labeling rule in California enforced by anyone?", "expect": "duplicate-suggested", "canonicalId": "fixture-widget-rule-ca", "why": "a paraphrase sharing most informative tokens" },
+		{ "text": "widget rule", "expect": "new-intent", "why": "two shared tokens sit below the three-token floor; suggesting on this would be noise" },
+		{ "text": "sourdough starter hydration schedule", "expect": "new-intent", "why": "nothing in the registry is about this" },
+		{ "text": "", "expect": "empty", "why": "nothing was asked" },
+		{ "text": "the of and to", "expect": "empty", "why": "stopwords only; there is no intent to map" }
+	]
+}
