@@ -1,0 +1,330 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import {
+	reduceRun,
+	honestStatus,
+	runIdFor,
+	RUN_STATE_MEANINGS,
+	type RunEvent,
+	type RunSnapshot,
+} from '../../../lib/research-run';
+
+/*
+ * A run page renders a recorded event log and nothing else. Every timestamp
+ * and every count on this page is read from the fixture's events; the page
+ * computes no percentage, runs no timer, and invents no step. The fixtures
+ * are synthetic by declaration and the page says so above the fold, because
+ * a research animation that looked live would be a lie about what happened.
+ *
+ * These previews are noindex in every posture and excluded from the sitemap
+ * (astro.config.mjs), for the same reason /lens and /shelf are: a preview
+ * surface must not be advertised to crawlers as part of the public library.
+ */
+/* Resolved from the project root, the same way astro.config.mjs reads content:
+   a bundled page's import.meta.url points at the build output, not this file. */
+const FIXTURES = path.resolve('scripts/fixtures/research-runs');
+
+interface RunFixture {
+	_fixture: string;
+	_why: string;
+	context: { questionId: string; note: string };
+	artifacts: Record<string, unknown[]>;
+	events: RunEvent[];
+}
+
+export function getStaticPaths() {
+	const dir = path.resolve('scripts/fixtures/research-runs');
+	return fs
+		.readdirSync(dir)
+		.filter((file) => file.endsWith('.json'))
+		.sort()
+		.map((file) => ({ params: { id: runIdFor(file) }, props: { file } }));
+}
+
+interface Props {
+	file: string;
+}
+
+const { file } = Astro.props;
+const fixture: RunFixture = JSON.parse(fs.readFileSync(path.join(FIXTURES, file), 'utf8'));
+const runId = runIdFor(file);
+
+const question = JSON.parse(
+	fs.readFileSync(path.resolve('src/content/questions', `${fixture.context.questionId}.json`), 'utf8'),
+);
+
+/* The fold, and one prefix fold per step so each rendered step carries the
+   truthful control state (resume, cancel, retry) the run had at that moment. */
+const snapshot: RunSnapshot = reduceRun(fixture.events);
+if (snapshot.problems.length > 0) {
+	throw new Error(`fixture ${file} does not fold cleanly: ${snapshot.problems.map((p) => p.problem).join('; ')}`);
+}
+const prefixes: RunSnapshot[] = fixture.events.map((_, index) => reduceRun(fixture.events.slice(0, index + 1)));
+
+const statusLine = honestStatus(snapshot);
+const finalMeaning = RUN_STATE_MEANINGS[snapshot.state];
+const runUrl = new URL(`/research/runs/${runId}`, Astro.site ?? 'https://birch.insure').toString();
+
+const countLabels: Array<[keyof typeof snapshot.counts, string]> = [
+	['birchEvidence', 'Birch evidence passages'],
+	['gaps', 'named evidence gaps'],
+	['candidates', 'source candidates'],
+	['claims', 'claims mapped'],
+	['conflicts', 'conflicts preserved'],
+];
+const realCounts = countLabels.filter(([key]) => snapshot.counts[key] !== undefined);
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'Research run preview', path: `/research/runs/${runId}` },
+];
+---
+
+<BaseLayout
+	title={`Research run preview ${runId}`}
+	description="A synthetic, fixture-driven preview of a resumable Birch research run. Every step shown is a recorded event with its recorded timestamp and counts."
+	noindex
+	pageType="editorial"
+	machinePath={`/research/runs/${runId}.json`}
+>
+	<section class="band band-tight band-first band-paper">
+		<div class="shell run-shell">
+			<Breadcrumbs trail={trail} />
+			<span class="eyebrow">Research run preview</span>
+			<h1>Every step below actually happened in this recording.</h1>
+			<p class="run-disclaimer">
+				<strong>Synthetic research-run preview.</strong> This page replays a recorded fixture.
+				No provider was called, no source was fetched, no review occurred, and nothing was published.
+				The timestamps and counts are the recording's own; the page adds none.
+			</p>
+
+			<dl class="run-facts">
+				<div>
+					<dt>Run address</dt>
+					<dd class="mono">{runId}</dd>
+				</div>
+				<div>
+					<dt>Question context</dt>
+					<dd><a href={`/questions/${fixture.context.questionId}`}>{question.question}</a></dd>
+				</div>
+				<div>
+					<dt>Recorded outcome</dt>
+					<dd><span class="status status-plain">{finalMeaning.label}</span></dd>
+				</div>
+			</dl>
+
+			<p class="run-status" role="status" data-run-status>{statusLine}</p>
+			<p class="run-meaning">{finalMeaning.meaning}</p>
+
+			{realCounts.length > 0 && (
+				<ul class="run-counts" aria-label="Recorded counts">
+					{realCounts.map(([key, label]) => (
+						<li><span class="mono">{snapshot.counts[key]}</span> {label}</li>
+					))}
+				</ul>
+			)}
+		</div>
+	</section>
+
+	<section class="band band-tight" aria-labelledby="run-steps-title">
+		<div class="shell run-shell">
+			<h2 id="run-steps-title">The recorded steps</h2>
+			<p class="run-steps-lede">
+				Newest last. A reader who asks for reduced motion, or reads without JavaScript, sees this
+				same complete list; the controls below only step through what was already recorded.
+			</p>
+
+			<ol class="run-steps" data-run-steps>
+				{fixture.events.map((event, index) => {
+					const at = prefixes[index];
+					const meaning = RUN_STATE_MEANINGS[event.state];
+					return (
+						<li
+							class="run-step"
+							data-run-step={event.state}
+							data-seq={index + 1}
+							data-can-resume={at.canResume ? 'true' : 'false'}
+							data-can-cancel={at.canCancel ? 'true' : 'false'}
+							data-can-retry={at.canRetry ? 'true' : 'false'}
+							data-label={meaning.label}
+							data-at={event.at}
+						>
+							<div class="run-step-head">
+								<span class="run-step-label">{meaning.label}</span>
+								<time class="mono" datetime={event.at}>{event.at}</time>
+							</div>
+							<p class="run-step-note">{event.note}</p>
+							{event.counts && (
+								<p class="run-step-counts mono">
+									{countLabels
+										.filter(([key]) => event.counts?.[key] !== undefined)
+										.map(([key, label]) => `${event.counts?.[key]} ${label}`)
+										.join(' - ')}
+								</p>
+							)}
+						</li>
+					);
+				})}
+			</ol>
+
+			<div class="run-controls" data-run-controls>
+				<h3>Step through the recording</h3>
+				<noscript>
+					<p class="run-control-note">These controls need JavaScript. The complete recorded history is already shown above, so nothing is missing without them.</p>
+				</noscript>
+				<div class="run-control-row">
+					<button class="btn btn-secondary" type="button" data-run-replay disabled>Replay from the first event</button>
+					<button class="btn btn-primary" type="button" data-run-next disabled>Next recorded event</button>
+					<button class="btn btn-secondary" type="button" data-run-latest disabled>Show the complete recording</button>
+				</div>
+				<div class="run-control-row">
+					<button class="btn btn-secondary" type="button" data-run-cancel disabled>Cancel</button>
+					<button class="btn btn-secondary" type="button" data-run-retry disabled>Retry</button>
+					<button class="btn btn-secondary" type="button" data-copy-value={runUrl}>
+						<span data-copy-label>Copy run address to return later</span>
+						<span class="visually-hidden" role="status" data-copy-status></span>
+					</button>
+				</div>
+				<p class="run-control-note" data-run-action-note>
+					Cancel and retry explain what a real action would do at the step you are viewing. This
+					preview is read-only, so neither changes the recording.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-tight band-ink" aria-labelledby="run-boundary-title">
+		<div class="shell run-shell run-boundary">
+			<div>
+				<span class="eyebrow">The boundary</span>
+				<h2 id="run-boundary-title">What this animation refuses to do.</h2>
+			</div>
+			<div class="run-boundary-copy">
+				<p>
+					It never shows a percentage, an estimated time, or a step no event recorded. It never
+					implies an answer is verified, licensed-reviewed, or publishable before those exact events
+					exist. Where a run waits on a licensed human, it says so and waits.
+				</p>
+				<a class="text-link-ink" href="/methodology">Read the research method</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	/*
+	 * Event-driven replay. Advancing is a reader action, never a timer: the
+	 * page has no clock, so it cannot pretend the recording is happening now.
+	 * Reduced-motion parity is structural - the only change is which recorded
+	 * list items are shown, and the full list is the no-JS default.
+	 */
+	const stepsRoot = document.querySelector<HTMLOListElement>('[data-run-steps]');
+	const steps = [...document.querySelectorAll<HTMLLIElement>('[data-run-step]')];
+	const status = document.querySelector<HTMLParagraphElement>('[data-run-status]');
+	const actionNote = document.querySelector<HTMLParagraphElement>('[data-run-action-note]');
+	const replayButton = document.querySelector<HTMLButtonElement>('[data-run-replay]');
+	const nextButton = document.querySelector<HTMLButtonElement>('[data-run-next]');
+	const latestButton = document.querySelector<HTMLButtonElement>('[data-run-latest]');
+	const cancelButton = document.querySelector<HTMLButtonElement>('[data-run-cancel]');
+	const retryButton = document.querySelector<HTMLButtonElement>('[data-run-retry]');
+
+	if (stepsRoot && steps.length > 0 && status && replayButton && nextButton && latestButton && cancelButton && retryButton) {
+		const total = steps.length;
+		let position = total;
+		const initialStatus = status.textContent ?? '';
+
+		const current = () => steps[position - 1];
+
+		const announce = () => {
+			const step = current();
+			if (position === total) {
+				status.textContent = initialStatus;
+			} else {
+				const counts = step.querySelector('.run-step-counts')?.textContent?.trim();
+				status.textContent = `Step ${position} of ${total}: ${step.dataset.label}. Recorded ${step.dataset.at}.${counts ? ` ${counts}.` : ''}`;
+			}
+			steps.forEach((item, index) => {
+				item.hidden = index + 1 > position;
+				item.classList.toggle('is-current', index + 1 === position);
+			});
+			replayButton.disabled = false;
+			nextButton.disabled = position >= total;
+			latestButton.disabled = position >= total;
+			cancelButton.disabled = step.dataset.canCancel !== 'true';
+			retryButton.disabled = step.dataset.canRetry !== 'true';
+		};
+
+		replayButton.addEventListener('click', () => {
+			position = 1;
+			announce();
+		});
+		nextButton.addEventListener('click', () => {
+			if (position < total) position += 1;
+			announce();
+		});
+		latestButton.addEventListener('click', () => {
+			position = total;
+			announce();
+		});
+		cancelButton.addEventListener('click', () => {
+			if (actionNote) {
+				actionNote.textContent = `A real cancel at "${current().dataset.label}" would stop the run here and keep every step above readable. This preview is read-only, so nothing was cancelled.`;
+			}
+		});
+		retryButton.addEventListener('click', () => {
+			if (actionNote) {
+				actionNote.textContent = `A real retry at "${current().dataset.label}" would requeue the run with its history kept - never rerun it in secret. This preview is read-only, so nothing was retried.`;
+			}
+		});
+
+		announce();
+	}
+</script>
+
+<style>
+	.run-shell { max-width: var(--prose-w); }
+	.run-shell h1 { max-width: 22ch; margin: var(--s-2) 0 var(--s-4); font-size: clamp(1.9rem, 4.5vw, 2.9rem); }
+	.run-disclaimer { max-width: 62ch; padding: var(--s-4); margin: 0 0 var(--s-6); border: 1px solid var(--line-strong); border-left: var(--bw-marker) solid var(--amber); border-radius: var(--r-3); background: var(--amber-wash); color: var(--body); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.run-facts { display: grid; gap: var(--s-4); margin: 0 0 var(--s-5); }
+	.run-facts div { display: grid; gap: var(--s-1); }
+	.run-facts dt { color: var(--muted); font: var(--text-2xs)/1.3 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+	.run-facts dd { margin: 0; font-size: var(--text-base); overflow-wrap: anywhere; }
+	.run-status { max-width: 62ch; margin: 0 0 var(--s-2); color: var(--ink); font-size: var(--text-base); font-weight: 600; overflow-wrap: anywhere; }
+	.run-meaning { max-width: 62ch; margin: 0 0 var(--s-4); color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.run-counts { display: flex; flex-wrap: wrap; gap: var(--s-2); padding: 0; margin: 0; list-style: none; }
+	.run-counts li { padding: var(--s-1) var(--s-3); border: 1px solid var(--line); border-radius: var(--r-4); background: var(--paper); color: var(--muted); font-size: var(--text-xs); }
+	.run-counts .mono { color: var(--ink); }
+	.run-steps-lede { max-width: 62ch; margin: var(--s-2) 0 var(--s-6); color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.run-steps { display: grid; gap: var(--s-3); padding: 0; margin: 0 0 var(--s-8); list-style: none; }
+	.run-step { padding: var(--s-4); border: 1px solid var(--line); border-left: var(--bw-marker) solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); transition: border-color var(--dur-2) var(--ease); }
+	.run-step.is-current { border-left-color: var(--brand-blue); }
+	.run-step-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--s-2); }
+	.run-step-label { color: var(--ink); font-size: var(--text-sm); font-weight: 600; }
+	.run-step-head time { color: var(--muted); font-size: var(--text-2xs); overflow-wrap: anywhere; }
+	.run-step-note { margin: var(--s-2) 0 0; color: var(--body); font-size: var(--text-sm); line-height: var(--leading-normal); }
+	.run-step-counts { margin: var(--s-2) 0 0; color: var(--gold-text); font-size: var(--text-2xs); }
+	.run-controls { padding: var(--s-5); border: 1px solid var(--line-strong); border-radius: var(--r-4); background: var(--paper); box-shadow: var(--elev-1); }
+	.run-controls h3 { margin: 0 0 var(--s-4); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 400; }
+	.run-control-row { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-3); }
+	.run-control-row .btn { min-height: var(--tap); }
+	.run-control-note { margin: var(--s-2) 0 0; color: var(--muted); font-size: var(--text-xs); line-height: var(--leading-normal); }
+	.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+	.run-boundary { display: grid; gap: var(--s-5); }
+	.run-boundary h2 { max-width: 18ch; margin: var(--s-2) 0 0; color: var(--paper); font-family: var(--font-display); font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 400; line-height: var(--leading-tight); }
+	.run-boundary-copy p { max-width: 56ch; margin: 0 0 var(--s-4); color: var(--muted-ink); font-size: var(--text-base); line-height: var(--leading-normal); }
+	.text-link-ink { color: var(--paper); font-size: var(--text-sm); font-weight: 600; }
+	@media (min-width: 768px) {
+		.run-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+		.run-boundary { grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); align-items: start; }
+	}
+	@media (max-width: 560px) {
+		.run-control-row { flex-direction: column; }
+		.run-control-row .btn { width: 100%; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.run-step { transition: none; }
+	}
+</style>

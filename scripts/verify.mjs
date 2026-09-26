@@ -368,8 +368,13 @@ test(`the ${SITE_ENV} build emits the correct indexing directive on every page`,
 		   same flag that opens Commons, which is asserted below rather than left
 		   to be remembered. */
 		const hiddenWhileCommonsClosed = !COMMONS_READY && /^\/contribute(?:\/|$)/.test(route);
+		/* /research/* are the fixture-driven research-run previews: synthetic
+		   recordings, disclosed as such on the page, noindex in every posture
+		   and excluded from the sitemap in astro.config.mjs. Advertising a
+		   preview of runs that never ran would be the indexing counterpart of
+		   a fake progress bar. */
 		const deliberatelyHidden =
-			/^\/(design|404|lens|shelf)(?:\/|$)/.test(route) ||
+			/^\/(design|404|lens|shelf|research)(?:\/|$)/.test(route) ||
 			/^\/review-queue\/./.test(route) ||
 			hiddenWhileCommonsClosed;
 		if (deliberatelyHidden) continue;
@@ -1088,6 +1093,7 @@ test('the sitemap excludes design pages, JSON companions, and 404', () => {
 	assert.ok(!xml.includes('/design/'), 'sitemap includes a design page');
 	assert.ok(!/\.json</.test(xml), 'sitemap includes a JSON companion');
 	assert.ok(!xml.includes('/404'), 'sitemap includes the 404 page');
+	assert.ok(!xml.includes('/research/'), 'sitemap includes a research-run preview');
 });
 
 /* ------------------------------------------------------------------ */

@@ -97,6 +97,10 @@ const commonsReady = process.env.PUBLIC_COMMONS_READY === 'true';
  *               noindex until PUBLIC_COMMONS_READY is opened deliberately - and
  *               a noindex page must not be advertised, which is the whole point
  *               of the two entries above it.
+ *  - /research/* the fixture-driven research-run previews. They replay
+ *               synthetic recordings, set noindex on themselves in every
+ *               posture, and say so on the page; advertising them would invite
+ *               crawlers to a surface that is by construction not the library.
  *
  * The rule these three share: a route that tells crawlers not to index it must
  * not also be listed in the document whose only purpose is to ask them to. The
@@ -110,6 +114,7 @@ const EXCLUDED = [
 	/\/review-queue\/[^/]/,
 	/\/lens\/?$/,
 	/\/shelf\/?$/,
+	/\/research\//,
 	...(commonsReady ? [] : [/\/contribute\/?$/]),
 ];
 

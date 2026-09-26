@@ -155,8 +155,20 @@ test('nothing under src/ or astro.config.mjs reads the skip-safe directories or 
 	 * The rule being protected: skip-safe paths feed nothing. Route strings like
 	 * "/design/account-preview" are fine - only relative traversal out of src/
 	 * into a skip-safe location is a violation.
+	 *
+	 * The third pattern closes the COST review's P2-1: the idiomatic way an
+	 * Astro content collection reaches outside src/ is a ROOT-relative base -
+	 * glob({ base: './docs' }) or base: 'outputs' - which the two traversal
+	 * patterns cannot see. It matches a quoted docs/outputs/design token with
+	 * an optional leading ./ and no leading slash, so route strings like
+	 * "/design/..." stay fine while "./docs", "docs/x" and "outputs" are
+	 * caught. Verified against the whole tree before adding: zero matches.
 	 */
-	const suspicious = [/\.\.\/(\.\.\/)*(docs|outputs|design)\//, /\.\.\/(\.\.\/)*[^'"\s/]+\.md\b/];
+	const suspicious = [
+		/\.\.\/(\.\.\/)*(docs|outputs|design)\//,
+		/\.\.\/(\.\.\/)*[^'"\s/]+\.md\b/,
+		/['"](\.\/)?(docs|outputs|design)(\/|['"])/,
+	];
 	const files = [];
 	const walk = (dir) => {
 		for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {

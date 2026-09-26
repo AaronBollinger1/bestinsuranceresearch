@@ -1,0 +1,27 @@
+{
+	"_fixture": "A run paused by the reader, resumed, and then cancelled by the reader.",
+	"_why": "Cancel and pause are reader rights. The machine must honor both, resume exactly where it paused, and keep a cancelled run's history readable while refusing further events.",
+	"_expects": { "finalState": "cancelled", "terminal": true },
+	"context": {
+		"questionId": "what-fair-plan-does-not-cover-california",
+		"note": "Real published question used as reading context only."
+	},
+	"artifacts": {
+		"birchEvidence": ["fixture-passage-e1", "fixture-passage-e2"],
+		"gaps": ["No approved passage states the fixture endorsement rule."],
+		"candidates": [
+			{ "url": "https://fixture.invalid/statute/endorsement-rule", "publisher": "Fixture Legislature", "sourceClass": "statute" }
+		],
+		"claims": [],
+		"conflicts": []
+	},
+	"events": [
+		{ "id": "x1", "state": "queued", "at": "2026-09-26T15:00:00.000Z", "actor": "system", "note": "Run recorded from a screening decision on the linked question.", "synthetic": true },
+		{ "id": "x2", "state": "birch-retrieval", "at": "2026-09-26T15:00:05.000Z", "actor": "system", "note": "Retrieved the approved Birch evidence passages for this intent.", "counts": { "birchEvidence": 2 }, "synthetic": true },
+		{ "id": "x3", "state": "paused", "at": "2026-09-26T15:01:00.000Z", "actor": "reader", "note": "Paused by the reader. The run can resume exactly here; nothing is lost by waiting.", "synthetic": true },
+		{ "id": "x4", "state": "resumed", "at": "2026-09-26T15:30:00.000Z", "actor": "reader", "note": "Resumed by the reader at the paused step.", "resumeTo": "birch-retrieval", "synthetic": true },
+		{ "id": "x5", "state": "evidence-gap", "at": "2026-09-26T15:30:20.000Z", "actor": "system", "note": "One gap named: no approved passage states the fixture endorsement rule.", "counts": { "gaps": 1 }, "synthetic": true },
+		{ "id": "x6", "state": "source-candidates", "at": "2026-09-26T15:31:00.000Z", "actor": "system", "note": "One candidate source recorded from the fixture catalog.", "counts": { "candidates": 1 }, "synthetic": true },
+		{ "id": "x7", "state": "cancelled", "at": "2026-09-26T15:32:00.000Z", "actor": "reader", "note": "Cancelled by the reader. The history above stays readable; nothing further will happen on this run.", "synthetic": true }
+	]
+}

@@ -1,0 +1,34 @@
+{
+	"_fixture": "A research run that completes: Birch retrieval, a named gap, candidate checks, claim mapping, human review, approval, publication, and a scheduled refresh.",
+	"_why": "The happy path must be event-driven end to end, with every count tied to a declared artifact, so the run page can only ever render what was recorded.",
+	"_expects": { "finalState": "refresh-due", "terminal": false },
+	"context": {
+		"questionId": "what-is-the-california-fair-plan-and-who-is-it-for",
+		"note": "The linked question is a real published record used only as reading context. Nothing in this fixture changes it, reviews it, or publishes anything."
+	},
+	"artifacts": {
+		"birchEvidence": ["fixture-passage-a1", "fixture-passage-a2", "fixture-passage-a3", "fixture-passage-a4"],
+		"gaps": ["No approved passage states the current fixture filing deadline."],
+		"candidates": [
+			{ "url": "https://fixture.invalid/regulator/deadline-notice", "publisher": "Fixture State Regulator", "sourceClass": "regulator-guidance" },
+			{ "url": "https://fixture.invalid/statute/filing-deadline", "publisher": "Fixture Legislature", "sourceClass": "statute" }
+		],
+		"claims": ["fixture-claim-1", "fixture-claim-2", "fixture-claim-3"],
+		"conflicts": []
+	},
+	"events": [
+		{ "id": "s1", "state": "queued", "at": "2026-09-26T09:00:00.000Z", "actor": "system", "note": "Run recorded from a screening decision on the linked question.", "synthetic": true },
+		{ "id": "s2", "state": "birch-retrieval", "at": "2026-09-26T09:00:05.000Z", "actor": "system", "note": "Retrieved the approved Birch evidence passages for this intent before considering anything external.", "counts": { "birchEvidence": 4 }, "synthetic": true },
+		{ "id": "s3", "state": "evidence-gap", "at": "2026-09-26T09:00:20.000Z", "actor": "system", "note": "One gap named: no approved passage states the current fixture filing deadline.", "counts": { "gaps": 1 }, "synthetic": true },
+		{ "id": "s4", "state": "source-candidates", "at": "2026-09-26T09:01:10.000Z", "actor": "system", "note": "Two candidate public sources recorded from the fixture catalog. No provider was called and no page was fetched.", "counts": { "candidates": 2 }, "synthetic": true },
+		{ "id": "s5", "state": "authority-check", "at": "2026-09-26T09:02:00.000Z", "actor": "system", "note": "Both candidates classified: one regulator guidance page, one statute.", "synthetic": true },
+		{ "id": "s6", "state": "date-check", "at": "2026-09-26T09:02:30.000Z", "actor": "system", "note": "Publication and effective dates recorded for both candidates; neither is older than the fixture freshness policy.", "synthetic": true },
+		{ "id": "s7", "state": "jurisdiction-check", "at": "2026-09-26T09:02:45.000Z", "actor": "system", "note": "Both candidates govern the jurisdiction this question is about.", "synthetic": true },
+		{ "id": "s8", "state": "claim-mapping", "at": "2026-09-26T09:04:00.000Z", "actor": "system", "note": "Three atomic claims mapped to exact passages. None was left unsupported.", "counts": { "claims": 3 }, "synthetic": true },
+		{ "id": "s9", "state": "human-review", "at": "2026-09-26T09:30:00.000Z", "actor": "editor", "note": "A fixture editor read every mapped claim against its passage.", "synthetic": true },
+		{ "id": "s10", "state": "ready", "at": "2026-09-26T09:45:00.000Z", "actor": "editor", "note": "Accepted at factual review. This fixture carries no high-stakes language, so licensed review was not required for it.", "synthetic": true },
+		{ "id": "s11", "state": "approved", "at": "2026-09-26T09:50:00.000Z", "actor": "editor", "note": "Approved by the named fixture editor. Synthetic event; no real approval occurred.", "synthetic": true },
+		{ "id": "s12", "state": "published", "at": "2026-09-26T10:00:00.000Z", "actor": "system", "note": "An immutable fixture version recorded with its full history. Nothing reached the public corpus.", "synthetic": true },
+		{ "id": "s13", "state": "refresh-due", "at": "2026-09-26T10:30:00.000Z", "actor": "system", "note": "The cited fixture source cadence schedules a re-read. The recorded version stands until a review changes it.", "synthetic": true }
+	]
+}

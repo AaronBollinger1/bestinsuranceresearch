@@ -1,0 +1,23 @@
+{
+	"_fixture": "A run that finds no supporting source and records the absence instead of publishing without one.",
+	"_why": "The most damaging failure of a research pipeline is filling a gap with something. This fixture proves the machine ends a no-source run as failed, with zero candidates recorded and no claims mapped, and that retry is offered honestly.",
+	"_expects": { "finalState": "failed", "terminal": true, "canRetry": true },
+	"context": {
+		"questionId": "homeowners-earthquake-california",
+		"note": "Real published question used as reading context only."
+	},
+	"artifacts": {
+		"birchEvidence": [],
+		"gaps": ["No approved passage addresses the fixture intent at all."],
+		"candidates": [],
+		"claims": [],
+		"conflicts": []
+	},
+	"events": [
+		{ "id": "n1", "state": "queued", "at": "2026-09-26T12:00:00.000Z", "actor": "system", "note": "Run recorded from a screening decision on the linked question.", "synthetic": true },
+		{ "id": "n2", "state": "birch-retrieval", "at": "2026-09-26T12:00:05.000Z", "actor": "system", "note": "No approved Birch evidence passage addresses this intent.", "counts": { "birchEvidence": 0 }, "synthetic": true },
+		{ "id": "n3", "state": "evidence-gap", "at": "2026-09-26T12:00:20.000Z", "actor": "system", "note": "The gap is the whole question: nothing approved answers any part of it.", "counts": { "gaps": 1 }, "synthetic": true },
+		{ "id": "n4", "state": "source-candidates", "at": "2026-09-26T12:01:00.000Z", "actor": "system", "note": "The fixture catalog holds no candidate for this question. Nothing was invented to fill the gap.", "counts": { "candidates": 0 }, "synthetic": true },
+		{ "id": "n5", "state": "failed", "at": "2026-09-26T12:02:00.000Z", "actor": "system", "note": "No supporting source was found. The run records that absence; an answer without a source cannot exist here.", "synthetic": true }
+	]
+}
