@@ -1,0 +1,26 @@
+{
+  "_fixture": "Contribution-shaped input arriving while Commons is closed. Synthetic contract example: invented ids, no insurance assertion, never loaded by the site.",
+  "_why": "The shape B5 and B6 will produce. A professional contribution or a customer experience must not enter the graph before Commons has its database, mailer and moderation owner, and the refusal has to come from the layer rules rather than from whoever is writing the importer that day.",
+  "_expects": "layer-violation, or no nodes at all - a closed gate may refuse the input outright",
+  "commonsOpen": false,
+  "sources": [
+    {
+      "id": "fixture-doc-present",
+      "data": {
+        "title": "Fixture document that exists",
+        "jurisdiction": "Fixture jurisdiction",
+        "claims": ["A fixture sentence standing in for a quoted passage."]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "fixture-question-awaiting-contribution",
+      "data": {
+        "question": "A fixture question a contributor would attach to?",
+        "reviewState": "under-review",
+        "sourceIds": ["fixture-doc-present"]
+      }
+    }
+  ]
+}

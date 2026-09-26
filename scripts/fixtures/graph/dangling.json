@@ -1,0 +1,25 @@
+{
+  "_fixture": "A record citing a source that is not present. Synthetic contract example: invented ids, no insurance assertion, never loaded by the site.",
+  "_why": "The shape of a citation surviving a source being withdrawn or renamed. The citation still resolves to a number on the page while pointing at nothing.",
+  "_expects": "dangling-edge",
+  "sources": [
+    {
+      "id": "fixture-doc-present",
+      "data": {
+        "title": "Fixture document that exists",
+        "jurisdiction": "Fixture jurisdiction",
+        "claims": ["A fixture sentence standing in for a quoted passage."]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "fixture-question-citing-a-ghost",
+      "data": {
+        "question": "A fixture question citing a source that was removed?",
+        "reviewState": "under-review",
+        "sourceIds": ["fixture-doc-present", "fixture-doc-that-was-removed"]
+      }
+    }
+  ]
+}

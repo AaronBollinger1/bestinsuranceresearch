@@ -1,0 +1,25 @@
+{
+  "_fixture": "A record connected to nothing. Synthetic contract example: invented ids, no insurance assertion, never loaded by the site.",
+  "_why": "The shape B7 has to gate against when it generates candidates in bulk: a page that exists, cites nothing, and is cited by nothing. It looks like content and carries no evidence.",
+  "_expects": "orphan-node",
+  "sources": [
+    {
+      "id": "fixture-doc-present",
+      "data": {
+        "title": "Fixture document that exists",
+        "jurisdiction": "Fixture jurisdiction",
+        "claims": ["A fixture sentence standing in for a quoted passage."]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "fixture-question-with-no-evidence",
+      "data": {
+        "question": "A fixture question citing nothing at all?",
+        "reviewState": "under-review",
+        "sourceIds": []
+      }
+    }
+  ]
+}
