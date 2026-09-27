@@ -1,0 +1,44 @@
+{
+	"_fixture": "A claim declared standard stakes, assembled into a coverage-determination answer: the topic floor forces the licensed gate, and the assembly honestly ends review-required.",
+	"_why": "This is the resolved who-may-declare-stakes decision made testable: stakes ratchet upward only, and the declared HIGH_STAKES_ANSWER_TOPICS floor holds a claim to the licensed gate regardless of how its study declared itself. No licensed review exists, so the answer cannot compose.",
+	"_expects": { "status": "review-required", "failingGate": "licensed-review" },
+	"assembly": {
+		"questionId": "fixture-widget-rule-ca",
+		"jurisdiction": "CA",
+		"audience": "consumer",
+		"topics": ["coverage-determination"],
+		"asOf": "2026-09-27",
+		"freshnessPolicy": { "staleAfterDays": 365 },
+		"editor": { "name": "Fixture Editor", "at": "2026-09-27T09:00:00.000Z", "note": "Assembly over a coverage-determination topic; the floor applies." },
+		"verbatimExcerpts": []
+	},
+	"sources": [
+		{
+			"id": "fixture-src-widget-statute",
+			"data": {
+				"title": "Fixture Widget Filing Statute",
+				"publisher": "Fixture Legislature",
+				"url": "https://fixture.invalid/statute/widget-filing",
+				"sourceType": "statute",
+				"jurisdiction": "CA",
+				"authorityLevel": "primary-law",
+				"officialHost": true,
+				"publishedDate": "2025-01-01",
+				"effectiveDate": "2025-07-01",
+				"accessedDate": "2026-09-01",
+				"lastChecked": "2026-09-01",
+				"lastCheckedBasis": "access",
+				"updateCadence": "Recheck each legislative session.",
+				"status": "active",
+				"claims": ["The fixture widget filing must be renewed each year."]
+			}
+		}
+	],
+	"claimEventLogs": [
+		[
+			{ "id": "f1", "kind": "opened", "at": "2026-09-26T19:00:00.000Z", "actor": "editor", "note": "Opened as STANDARD stakes; the answer topic will force the floor.", "claimRef": "fixture-src-widget-statute#c1", "text": "The fixture widget filing must be renewed each year.", "stakes": "standard", "synthetic": true },
+			{ "id": "f2", "kind": "support-added", "at": "2026-09-26T19:01:00.000Z", "actor": "editor", "note": "The statute passage supports the proposition.", "sourceId": "fixture-src-widget-statute", "synthetic": true },
+			{ "id": "f3", "kind": "confirmed", "at": "2026-09-26T19:05:00.000Z", "actor": "editor", "note": "Editorially confirmed against the passage.", "synthetic": true }
+		]
+	]
+}

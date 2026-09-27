@@ -271,6 +271,14 @@ export interface ClaimStudySnapshot {
 	/** True only when a licensed-reviewer actor recorded a review event. */
 	licensedReviewRecorded: boolean;
 	/**
+	 * The exact wording that was current when the licensed review was
+	 * recorded. A review approves sentences, not a slot: if the claim is
+	 * later narrowed or reworded, eligibility must refuse until a licensed
+	 * human reviews the NEW wording (BR-C1 review P3, resolved in BR-C2 -
+	 * the review pins its text). Never cleared; a later review re-pins.
+	 */
+	licensedReviewedText: string | null;
+	/**
 	 * True from `stale-marked` until `refreshed`, and cleared by NOTHING else -
 	 * not narrowing, not conflict events, not a dispute. Staleness, like high
 	 * stakes, is a fact about the claim's supporting reading rather than about
@@ -283,6 +291,8 @@ export interface ClaimStudySnapshot {
 	staleSinceRefresh: boolean;
 	supporting: string[];
 	conflicts: ClaimConflict[];
+	/** Every narrowing, kept so a wording correction is visible, never silent. */
+	wordingHistory: Array<{ at: string; note: string; was: string }>;
 	superseded: boolean;
 	startedAt: string | null;
 	updatedAt: string | null;
@@ -299,9 +309,11 @@ export function emptyClaimStudy(): ClaimStudySnapshot {
 		state: 'review-required',
 		highStakes: false,
 		licensedReviewRecorded: false,
+		licensedReviewedText: null,
 		staleSinceRefresh: false,
 		supporting: [],
 		conflicts: [],
+		wordingHistory: [],
 		superseded: false,
 		startedAt: null,
 		updatedAt: null,
@@ -352,6 +364,7 @@ export function applyClaimEvent(snapshot: ClaimStudySnapshot, event: ClaimEvent)
 		...snapshot,
 		supporting: [...snapshot.supporting],
 		conflicts: snapshot.conflicts.map((c) => ({ ...c })),
+		wordingHistory: [...(snapshot.wordingHistory ?? [])],
 		problems: snapshot.problems,
 		appliedEventIds: [...snapshot.appliedEventIds, event.id],
 		startedAt: snapshot.startedAt ?? event.at,
@@ -417,6 +430,7 @@ export function applyClaimEvent(snapshot: ClaimStudySnapshot, event: ClaimEvent)
 		}
 		case 'narrowed': {
 			if (!event.text?.trim()) return refuse(snapshot, event, 'narrowing needs the narrowed wording');
+			next.wordingHistory = [...(snapshot.wordingHistory ?? []), { at: event.at, note: event.note, was: snapshot.text ?? '' }];
 			next.text = event.text;
 			next.state = 'review-required';
 			break;
@@ -439,6 +453,10 @@ export function applyClaimEvent(snapshot: ClaimStudySnapshot, event: ClaimEvent)
 				return refuse(snapshot, event, `only a licensed reviewer may record a licensed review; got actor ${event.actor}`);
 			}
 			next.licensedReviewRecorded = true;
+			/* The review pins the wording current at this moment. A later
+			   narrowing leaves this pin standing and eligibility refuses on the
+			   mismatch until the new wording is reviewed. */
+			next.licensedReviewedText = next.text;
 			break;
 		}
 		case 'superseded': {
@@ -474,7 +492,19 @@ export function reduceClaimStudy(events: readonly ClaimEvent[], from: ClaimStudy
  */
 export function publicationEligibility(
 	snapshot: ClaimStudySnapshot,
-	options: { knownSourceIds?: ReadonlySet<string> } = {},
+	options: {
+		knownSourceIds?: ReadonlySet<string>;
+		/**
+		 * A caller (the BR-C2 answer workflow) may RAISE stakes - a claim used
+		 * in a high-risk answer is held to the licensed gate even if it was
+		 * declared standard at opening. There is deliberately no way to lower:
+		 * stakes ratchet upward only. This is half of the resolved P3 pair -
+		 * anyone may raise, nobody may lower, and the topic floor that decides
+		 * when to raise is a declared registry in the answer workflow, never
+		 * an inference.
+		 */
+		treatAsHighStakes?: boolean;
+	} = {},
 ): { eligible: boolean; blockers: string[] } {
 	const blockers: string[] = [];
 	if (snapshot.claimRef === null) blockers.push('the study was never opened');
@@ -492,8 +522,14 @@ export function publicationEligibility(
 	   stale-marked without a refresh is exactly what this must catch. */
 	if (snapshot.staleSinceRefresh) blockers.push('the supporting reading is stale and must be refreshed and re-confirmed');
 	if (snapshot.state !== 'confirmed') blockers.push(`the claim is ${snapshot.state}, not confirmed`);
-	if (snapshot.highStakes && !snapshot.licensedReviewRecorded) {
+	const effectiveHighStakes = snapshot.highStakes || options.treatAsHighStakes === true;
+	if (effectiveHighStakes && !snapshot.licensedReviewRecorded) {
 		blockers.push('high-stakes claims require a recorded licensed review, and none exists');
+	}
+	/* The review pins its wording: a claim reworded after its licensed review
+	   is not a reviewed claim, whatever the boolean says. */
+	if (effectiveHighStakes && snapshot.licensedReviewRecorded && snapshot.licensedReviewedText !== snapshot.text) {
+		blockers.push('the recorded licensed review covered different wording; the current wording must be re-reviewed');
 	}
 	return { eligible: blockers.length === 0, blockers };
 }
