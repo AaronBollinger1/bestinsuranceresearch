@@ -95,6 +95,16 @@ test('evidence clarity measures the summary element, not a long body', () => {
 	const unread = citationReadiness(negative, ORIGIN);
 	assert.equal(unread.checks.find((check) => check.id === 'evidence-clarity').ok, false);
 	assert.equal(unread.ready, false);
+	const lookalike = {
+		...positive,
+		html: positive.html.replace(
+			`<p data-evidence-summary>${summary}</p>`,
+			`<p class="data-evidence-summary">${summary}</p>`,
+		),
+	};
+	const disguised = citationReadiness(lookalike, ORIGIN);
+	assert.equal(disguised.checks.find((check) => check.id === 'evidence-clarity').ok, false);
+	assert.equal(disguised.ready, false);
 });
 
 test('host, redirect, robots, sitemap, schema, accessibility, mobile, and performance pass on the fixture', () => {

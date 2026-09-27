@@ -173,7 +173,7 @@ function canonicalCount(html: string): number {
 /** The only evidence summary this audit measures. A long body is not a summary. */
 function evidenceSummary(html: string): string {
 	const rendered = html.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<style[\s\S]*?<\/style>/gi, '');
-	const match = rendered.match(/<([a-z0-9]+)[^>]*\bdata-evidence-summary\b[^>]*>([\s\S]*?)<\/\1>/i);
+	const match = rendered.match(/<([a-z0-9]+)[^>]*\sdata-evidence-summary(?=[\s=/>])[^>]*>([\s\S]*?)<\/\1>/i);
 	if (!match) return '';
 	return match[2].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
