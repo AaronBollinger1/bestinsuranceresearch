@@ -18,6 +18,7 @@ import {
 	deleteCapture,
 	exportBoard,
 	grantConsent,
+	withdrawConsent,
 	imageryOutage,
 	markReview,
 	presentBoard,
@@ -45,16 +46,31 @@ test('consent, match, quality, upload, deletion, retention, and the 2D fallback'
 	assert.equal(IMAGERY_PROVIDER_SIGNED, false);
 	let board = createBoard('prop-1', ADDRESS);
 	assert.equal(shot(board, 'north').board.state, 'consent-required');
-	board = grantConsent(board, 'Record the exterior for the owner.');
+	board = grantConsent(board, { actor: 'Fixture Owner', purpose: 'Record the exterior for the owner.', scope: 'Four exterior faces of 14 Fixture Way', recordedAt: '2026-09-27T12:00:00.000Z' });
+	assert.equal(board.consent.actor, 'Fixture Owner');
+	assert.equal(board.consent.withdrawnAt, null);
 	assert.equal(shot(board, 'north', { statedAddress: '99 Other Street' }).board.state, 'property-mismatch');
 	assert.equal(shot(board, 'north', { quality: 'insufficient' }).board.state, 'quality-insufficient');
 	assert.equal(shot(board, 'north', { mime: 'image/svg+xml' }).board.state, 'upload-failed');
 	board = shot(board, 'north').board;
 	assert.equal(board.captures.length, 1);
-	board = deleteCapture(board, 'cap-1', '2027-09-27');
-	assert.equal(board.state, 'retained');
-	assert.equal(board.retainedUntil, '2027-09-27');
-	assert.equal(board.captures.length, 0);
+	const refused = deleteCapture(board, 'cap-1', '2026-09-27T12:00:00.000Z', '2026-09-27');
+	assert.equal(refused.state, 'ready');
+	assert.equal(refused.captures.length, 1);
+	const purged = deleteCapture(board, 'cap-1', '2026-09-27T12:00:00.000Z', null);
+	assert.equal(purged.state, 'deleted');
+	assert.equal(purged.retained.length, 0);
+	assert.equal(purged.captures.length, 0);
+	const kept = deleteCapture(board, 'cap-1', '2026-09-27T12:00:00.000Z', '2027-09-27');
+	assert.equal(kept.state, 'retained');
+	assert.equal(kept.retained[0].bytes, 0);
+	assert.equal(kept.retainedUntil, '2027-09-27');
+	assert.equal(kept.captures.length, 0);
+	board = kept;
+	board = withdrawConsent({ ...board, consented: true, consent: { actor: 'Fixture Owner', purpose: 'Record the exterior for the owner.', scope: 'Four exterior faces of 14 Fixture Way', recordedAt: '2026-09-27T12:00:00.000Z', withdrawnAt: null } }, '2026-09-27T13:00:00.000Z');
+	assert.equal(board.consented, false);
+	assert.equal(board.consent.withdrawnAt, '2026-09-27T13:00:00.000Z');
+	assert.equal(shot(board, 'east').ok, false);
 	assert.equal(board.model, null);
 	const view = presentBoard(board, 'property');
 	assert.equal(view.fallback, '2d');
@@ -63,11 +79,11 @@ test('consent, match, quality, upload, deletion, retention, and the 2D fallback'
 	const source = fs.readFileSync(path.join(ROOT, 'src/lib/property-visual.ts'), 'utf8');
 	assert.ok(!/\bfetch\s*\(/.test(source));
 	assert.ok(!/process\.env/.test(source));
-	assert.equal(fs.existsSync(path.join(ROOT, 'src/pages/property-capture')), false);
+	assert.equal(fs.existsSync(path.join(ROOT, 'src/pages/design/property-board.astro')), true);
 });
 
 test('four angles can show an approximate non-measuring sketch; outage and cost do not call a provider', () => {
-	let board = grantConsent(createBoard('prop-1', ADDRESS), 'Record the exterior.');
+	let board = grantConsent(createBoard('prop-1', ADDRESS), { actor: 'Fixture Owner', purpose: 'Record the exterior.', scope: ADDRESS, recordedAt: '2026-09-27T12:00:00.000Z' });
 	for (const angle of ['north', 'east', 'south', 'west']) board = shot(board, angle).board;
 	assert.equal(board.model.shown, true);
 	assert.equal(board.model.approximate, true);
@@ -88,7 +104,7 @@ test('four angles can show an approximate non-measuring sketch; outage and cost 
 });
 
 test('conflict, correction, review, share, export, and rollback honor BR-E1 permissions', () => {
-	let board = grantConsent(createBoard('prop-1', ADDRESS), 'Record the exterior.');
+	let board = grantConsent(createBoard('prop-1', ADDRESS), { actor: 'Fixture Owner', purpose: 'Record the exterior.', scope: ADDRESS, recordedAt: '2026-09-27T12:00:00.000Z' });
 	board = shot(board, 'north').board;
 	const before = board;
 	board = recordConflict(board, 'north', 'Earlier note.', '<script>secret</script>');

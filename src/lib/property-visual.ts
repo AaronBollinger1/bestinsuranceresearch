@@ -20,11 +20,30 @@ export interface Capture {
 	bytes: number;
 }
 
+export interface ConsentRecord {
+	actor: string;
+	purpose: string;
+	scope: string;
+	recordedAt: string;
+	withdrawnAt: string | null;
+}
+
+export interface RetainedCapture {
+	captureId: string;
+	angle: CaptureAngle;
+	note: string;
+	deletedAt: string;
+	retainedUntil: string;
+	bytes: 0;
+}
+
 export interface VisualBoard {
 	propertyId: string;
 	address: string;
 	consented: boolean;
+	consent: ConsentRecord | null;
 	captures: Capture[];
+	retained: RetainedCapture[];
 	conflicts: Array<{ angle: CaptureAngle; left: string; right: string }>;
 	corrections: Array<{ at: string; note: string; was: string }>;
 	state: 'consent-required' | 'ready' | 'property-mismatch' | 'quality-insufficient' | 'upload-failed' | 'deleted' | 'retained' | 'conflict' | 'corrected' | 'in-review' | 'permission' | 'shared' | 'exported' | 'cost-blocked' | 'provider-outage' | 'rolled-back';
@@ -42,7 +61,9 @@ export function createBoard(propertyId: string, address: string): VisualBoard {
 		propertyId,
 		address,
 		consented: false,
+		consent: null,
 		captures: [],
+		retained: [],
 		conflicts: [],
 		corrections: [],
 		state: 'consent-required',
@@ -54,9 +75,34 @@ export function createBoard(propertyId: string, address: string): VisualBoard {
 	};
 }
 
-export function grantConsent(board: VisualBoard, purpose: string): VisualBoard {
-	if (!purpose.trim()) return { ...board, state: 'consent-required' };
-	return { ...board, consented: true, state: 'ready' };
+export function grantConsent(board: VisualBoard, input: { actor: string; purpose: string; scope: string; recordedAt: string }): VisualBoard {
+	if (!input.actor.trim() || !input.purpose.trim() || !input.scope.trim() || !/^\d{4}-\d{2}-\d{2}T/.test(input.recordedAt)) {
+		return { ...board, state: 'consent-required' };
+	}
+	return {
+		...board,
+		consented: true,
+		consent: {
+			actor: input.actor.trim(),
+			purpose: input.purpose.trim(),
+			scope: input.scope.trim(),
+			recordedAt: input.recordedAt,
+			withdrawnAt: null,
+		},
+		state: 'ready',
+	};
+}
+
+export function withdrawConsent(board: VisualBoard, at: string): VisualBoard {
+	if (!board.consent) return { ...board, consented: false, state: 'consent-required' };
+	return {
+		...board,
+		consented: false,
+		consent: { ...board.consent, withdrawnAt: at },
+		captures: [],
+		model: null,
+		state: 'consent-required',
+	};
 }
 
 export function addCapture(board: VisualBoard, input: {
@@ -67,7 +113,7 @@ export function addCapture(board: VisualBoard, input: {
 	statedAddress: string;
 	mime: string;
 }): { board: VisualBoard; ok: boolean } {
-	if (!board.consented) return { ok: false, board: { ...board, state: 'consent-required' } };
+	if (!board.consented || !board.consent || board.consent.withdrawnAt) return { ok: false, board: { ...board, consented: false, state: 'consent-required' } };
 	if (input.statedAddress.trim() !== board.address) return { ok: false, board: { ...board, state: 'property-mismatch' } };
 	if (input.quality !== 'sufficient' || !(ANGLES as readonly string[]).includes(input.angle)) {
 		return { ok: false, board: { ...board, state: 'quality-insufficient' } };
@@ -79,13 +125,21 @@ export function addCapture(board: VisualBoard, input: {
 	return { ok: true, board: { ...board, captures, state: 'ready', model: modelFor(captures) } };
 }
 
-export function deleteCapture(board: VisualBoard, id: string, retainUntil: string): VisualBoard {
+export function deleteCapture(board: VisualBoard, id: string, at: string, retainUntil: string | null): VisualBoard {
+	const capture = board.captures.find((item) => item.id === id);
+	if (!capture) return board;
+	const rest = board.captures.filter((item) => item.id !== id);
+	if (retainUntil == null) {
+		return { ...board, captures: rest, state: 'deleted', retainedUntil: null, model: modelFor(rest) };
+	}
+	if (!/^\d{4}-\d{2}-\d{2}$/.test(retainUntil) || retainUntil <= at.slice(0, 10)) return board;
 	return {
 		...board,
-		captures: board.captures.filter((capture) => capture.id !== id),
+		captures: rest,
+		retained: [...board.retained, { captureId: capture.id, angle: capture.angle, note: capture.note, deletedAt: at, retainedUntil: retainUntil, bytes: 0 }],
 		state: 'retained',
 		retainedUntil: retainUntil,
-		model: null,
+		model: modelFor(rest),
 	};
 }
 
@@ -163,8 +217,14 @@ function modelFor(captures: Capture[]): VisualBoard['model'] {
 export function presentBoard(board: VisualBoard, role: ViewRole): { html: string; indexable: false; fallback: '2d' } {
 	const gate = can(role, 'view-property');
 	const title = gate.allowed ? escapeHtml(`${board.address} evidence board`) : 'Permission required';
+	const consent = gate.allowed && board.consent
+		? `<p data-consent="record">Consent by ${escapeHtml(board.consent.actor)} for ${escapeHtml(board.consent.scope)}. ${escapeHtml(board.consent.purpose)} Recorded ${escapeHtml(board.consent.recordedAt)}.${board.consent.withdrawnAt ? ` Withdrawn ${escapeHtml(board.consent.withdrawnAt)}.` : ''}</p>`
+		: '';
 	const shots = gate.allowed
 		? board.captures.map((capture) => `<li>${escapeHtml(capture.angle)}: ${escapeHtml(capture.note)}</li>`).join('')
+		: '';
+	const kept = gate.allowed
+		? board.retained.map((item) => `<li data-retained="metadata">${escapeHtml(item.captureId)} metadata until ${escapeHtml(item.retainedUntil)}. Image bytes ${item.bytes}.</li>`).join('')
 		: '';
 	const model = gate.allowed && board.model?.shown
 		? `<p data-approximate="true">${escapeHtml(board.model.label)}</p>`
@@ -179,8 +239,10 @@ export function presentBoard(board: VisualBoard, role: ViewRole): { html: string
 <title>${title}</title>
 </head><body><main>
 <h1>${title}</h1>
-<p role="status">${escapeHtml(board.state)}</p>
+<p role="status">${escapeHtml(gate.allowed ? board.state : 'permission')}</p>
+${consent}
 <ul>${shots}</ul>
+<ul>${kept}</ul>
 ${conflicts}
 ${fallback}
 ${model}
