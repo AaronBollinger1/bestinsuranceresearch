@@ -6,6 +6,7 @@
  * recorded, and the caller passes commonsReady. Intake proposals stay
  * noindex and cannot rewrite a historical successor.
  */
+import { escapeHtml } from './citations.ts';
 import {
 	buildNationalLibrary,
 	type LibraryFixture,
@@ -42,6 +43,7 @@ export interface CorpusPage {
 	corrections: Array<{ at: string; note: string }>;
 	schema: { '@type': 'WebPage'; name: string; dateModified: string } | null;
 	draft: boolean;
+	withdrawn: boolean;
 }
 
 const PAGE_KINDS = new Set<LibraryKind>(['company', 'type', 'coverage', 'state', 'regulator', 'relationship']);
@@ -75,8 +77,53 @@ export function generateCorpusPages(
 			corrections: review?.corrections ?? [],
 			schema: reviewed ? { '@type': 'WebPage', name: record.name, dateModified: record.effectiveDate } : null,
 			draft: !reviewed,
+			withdrawn: review?.withdrawn === true,
 		};
 	});
+}
+
+export function publishedCorpusPages(
+	fixture: LibraryFixture,
+	expansion: LibraryRecord[],
+	reviews: Record<string, RecordReview>,
+	origin: string,
+): CorpusPage[] {
+	const expanded = expandLibrary(fixture, expansion);
+	if (!expanded.ok) throw new Error(expanded.problem ?? 'The fixture expansion was refused.');
+	return generateCorpusPages(expanded.fixture, reviews, { origin, commonsReady: false });
+}
+
+export function presentCorpusPage(page: CorpusPage): { html: string; jsonLd: { '@context': 'https://schema.org'; '@type': 'WebPage'; name: string; dateModified: string } | null } {
+	const status = page.withdrawn
+		? '<p class="status" data-research-state="withdrawn"><strong>Withdrawn.</strong> This record is not published.</p>'
+		: page.draft
+			? '<p class="status" data-research-state="draft"><strong>Research draft.</strong> This record is not reviewed for publication.</p>'
+			: '<p class="status" data-research-state="fixture-review"><strong>Fixture review recorded.</strong> Publication remains closed.</p>';
+	const redirect = page.redirectTo
+		? `<p class="status" data-redirect="${escapeHtml(page.redirectTo)}">This record redirects to <a href="${escapeHtml(page.redirectTo)}">${escapeHtml(page.redirectTo)}</a>.</p>`
+		: '';
+	const sources = page.sources.map((source) => (
+		`<li id="source-${escapeHtml(source.id)}"><a href="${escapeHtml(source.url)}">${escapeHtml(source.title)}</a> (${escapeHtml(source.publisher)}) <a class="cite" href="#source-${escapeHtml(source.id)}">${escapeHtml(source.id)}</a></li>`
+	)).join('');
+	const corrections = page.corrections.length > 0
+		? page.corrections.map((correction) => `<li><time datetime="${escapeHtml(correction.at)}">${escapeHtml(correction.at)}</time> ${escapeHtml(correction.note)}</li>`).join('')
+		: '<li>No correction is recorded.</li>';
+	const html = `<article class="shell" data-corpus-page="${escapeHtml(page.id)}">
+		<p class="eyebrow">Fixture library</p>
+		<h1>${escapeHtml(page.title)}</h1>
+		${status}
+		${redirect}
+		<p>${escapeHtml(page.summary)}</p>
+		<p>Effective date <time datetime="${escapeHtml(page.effectiveDate)}">${escapeHtml(page.effectiveDate)}</time>. Refresh owner ${escapeHtml(page.refreshOwner)}.</p>
+		<h2>Sources</h2>
+		<ul>${sources}</ul>
+		<h2>Corrections</h2>
+		<ul>${corrections}</ul>
+	</article>`;
+	const jsonLd = page.schema
+		? { '@context': 'https://schema.org' as const, '@type': page.schema['@type'], name: page.schema.name, dateModified: page.schema.dateModified }
+		: null;
+	return { html, jsonLd };
 }
 
 export function expandLibrary(fixture: LibraryFixture, batch: LibraryRecord[], options?: { credential?: string }): { ok: boolean; fixture: LibraryFixture; problem?: string } {
@@ -113,6 +160,7 @@ export function proposeIntakeAddition(fixture: LibraryFixture, proposal: { super
 			corrections: [],
 			schema: null,
 			draft: true,
+			withdrawn: false,
 		},
 	};
 }

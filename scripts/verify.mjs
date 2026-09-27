@@ -374,7 +374,7 @@ test(`the ${SITE_ENV} build emits the correct indexing directive on every page`,
 		   preview of runs that never ran would be the indexing counterpart of
 		   a fake progress bar. */
 		const deliberatelyHidden =
-			/^\/(design|404|lens|shelf|research)(?:\/|$)/.test(route) ||
+			/^\/(design|404|lens|shelf|research|library)(?:\/|$)/.test(route) ||
 			/^\/review-queue\/./.test(route) ||
 			hiddenWhileCommonsClosed;
 		if (deliberatelyHidden) continue;
@@ -1094,6 +1094,7 @@ test('the sitemap excludes design pages, JSON companions, and 404', () => {
 	assert.ok(!/\.json</.test(xml), 'sitemap includes a JSON companion');
 	assert.ok(!xml.includes('/404'), 'sitemap includes the 404 page');
 	assert.ok(!xml.includes('/research/'), 'sitemap includes a research-run preview');
+	assert.ok(!xml.includes('/library/'), 'sitemap includes a fixture library page');
 });
 
 /* ------------------------------------------------------------------ */

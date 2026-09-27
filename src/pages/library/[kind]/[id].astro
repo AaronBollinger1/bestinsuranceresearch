@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { siteConfig } from '../../../config/site';
+import fixtureJson from '../../../../scripts/fixtures/national-library/candidates.json';
+import expansionJson from '../../../../scripts/fixtures/national-library/expansion.json';
+import reviewsJson from '../../../../scripts/fixtures/national-library/reviews.json';
+import type { LibraryFixture, LibraryRecord } from '../../../lib/national-library';
+import { presentCorpusPage, publishedCorpusPages, type CorpusPage, type RecordReview } from '../../../lib/corpus-pages';
+
+export function getStaticPaths() {
+	const pages = publishedCorpusPages(
+		fixtureJson as LibraryFixture,
+		expansionJson.records as LibraryRecord[],
+		reviewsJson as Record<string, RecordReview>,
+		siteConfig.origin,
+	);
+	return pages.map((page) => ({ params: { kind: page.kind, id: page.id }, props: { page } }));
+}
+
+interface Props {
+	page: CorpusPage;
+}
+
+const { page } = Astro.props;
+const presented = presentCorpusPage(page);
+---
+
+<BaseLayout
+	title={page.title}
+	description={page.summary}
+	pageType="editorial"
+	noindex
+	jsonLd={presented.jsonLd ?? undefined}
+>
+	<Fragment set:html={presented.html} />
+</BaseLayout>

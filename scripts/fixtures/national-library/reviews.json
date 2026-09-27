@@ -1,0 +1,74 @@
+{
+	"fixture-personal": {
+		"editorial": true,
+		"licensed": true,
+		"rights": "recorded",
+		"corrections": [],
+		"withdrawn": false,
+		"aliasOf": null
+	},
+	"auto": {
+		"editorial": true,
+		"licensed": true,
+		"rights": "recorded",
+		"corrections": [],
+		"withdrawn": false,
+		"aliasOf": null
+	},
+	"fixture-state-ca": {
+		"editorial": true,
+		"licensed": true,
+		"rights": "recorded",
+		"corrections": [{ "at": "2026-09-27", "note": "Named the fixture state page." }],
+		"withdrawn": false,
+		"aliasOf": null
+	},
+	"fixture-regulator-ca": {
+		"editorial": true,
+		"licensed": true,
+		"rights": "recorded",
+		"corrections": [],
+		"withdrawn": false,
+		"aliasOf": null
+	},
+	"rel-regulates-ca": {
+		"editorial": true,
+		"licensed": true,
+		"rights": "recorded",
+		"corrections": [],
+		"withdrawn": false,
+		"aliasOf": null
+	},
+	"fixture-mutual-pc": {
+		"editorial": true,
+		"licensed": true,
+		"rights": "recorded",
+		"corrections": [],
+		"withdrawn": false,
+		"aliasOf": null
+	},
+	"fixture-mutual-group": {
+		"editorial": true,
+		"licensed": true,
+		"rights": "recorded",
+		"corrections": [],
+		"withdrawn": false,
+		"aliasOf": "fixture-mutual-pc"
+	},
+	"fixture-local-county-mutual": {
+		"editorial": true,
+		"licensed": true,
+		"rights": "recorded",
+		"corrections": [{ "at": "2026-09-27", "note": "Withdrawn after review." }],
+		"withdrawn": true,
+		"aliasOf": null
+	},
+	"fixture-harbor-fire": {
+		"editorial": true,
+		"licensed": true,
+		"rights": "recorded",
+		"corrections": [],
+		"withdrawn": true,
+		"aliasOf": null
+	}
+}

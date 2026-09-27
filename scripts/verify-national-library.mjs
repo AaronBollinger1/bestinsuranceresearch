@@ -1,6 +1,6 @@
 /**
  * BR-D1: fixture national library. The matrix names its gaps and does not
- * call itself complete. No route is mounted.
+ * call itself complete. This module still does not mount a route.
  *
  *   node --experimental-strip-types --test scripts/verify-national-library.mjs
  */
@@ -33,7 +33,8 @@ test('registries, templates, and the state-plus-DC matrix are measurable', () =>
 	const source = fs.readFileSync(path.join(ROOT, 'src/lib/national-library.ts'), 'utf8');
 	assert.ok(!/\bfetch\s*\(/.test(source));
 	assert.ok(!/process\.env/.test(source));
-	assert.equal(fs.existsSync(path.join(ROOT, 'src/pages/library')), false);
+	assert.equal(fs.existsSync(path.join(ROOT, 'src/pages/library/[kind]/[id].astro')), true);
+	assert.ok(!source.includes('src/pages'), 'the library module mounts its own route');
 
 	const library = buildNationalLibrary(fixture);
 	assert.equal(library.criterionCurrent, true);

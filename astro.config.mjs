@@ -101,6 +101,9 @@ const commonsReady = process.env.PUBLIC_COMMONS_READY === 'true';
  *               synthetic recordings, set noindex on themselves in every
  *               posture, and say so on the page; advertising them would invite
  *               crawlers to a surface that is by construction not the library.
+ *  - /library/* fixture corpus pages. CORPUS_PUBLICATION_OPEN is false, so
+ *               every page is noindex even when a fixture review is recorded.
+ *               A noindex page stays out of the sitemap.
  *
  * The rule these three share: a route that tells crawlers not to index it must
  * not also be listed in the document whose only purpose is to ask them to. The
@@ -115,6 +118,7 @@ const EXCLUDED = [
 	/\/lens\/?$/,
 	/\/shelf\/?$/,
 	/\/research\//,
+	/\/library\//,
 	...(commonsReady ? [] : [/\/contribute\/?$/]),
 ];
 

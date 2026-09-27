@@ -10,7 +10,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { buildNationalLibrary } from '../src/lib/national-library.ts';
-import { CORPUS_PUBLICATION_OPEN, expandLibrary, generateCorpusPages, proposeIntakeAddition } from '../src/lib/corpus-pages.ts';
+import { CORPUS_PUBLICATION_OPEN, expandLibrary, generateCorpusPages, presentCorpusPage, proposeIntakeAddition, publishedCorpusPages } from '../src/lib/corpus-pages.ts';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (name) => JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/fixtures/national-library', name), 'utf8'));
@@ -129,4 +129,61 @@ test('only a reviewed record can carry schema, and intake cannot overwrite histo
 	}, origin);
 	assert.equal(stale.ok, false);
 	assert.equal(stored.effectiveDate, storedDate);
+});
+
+test('fixture library routes render drafts, redirects, schema, and stay out of the sitemap', () => {
+	const reviews = read('reviews.json');
+	const pages = publishedCorpusPages(base, expansion.records, reviews, origin);
+	assert.equal(pages.length, 70);
+	assert.equal(buildNationalLibrary(expandLibrary(base, expansion.records).fixture).matrix.gapCount, 436);
+	const kinds = new Set(pages.map((page) => page.kind));
+	for (const kind of ['company', 'type', 'coverage', 'state', 'regulator', 'relationship']) assert.equal(kinds.has(kind), true);
+	for (const page of pages) {
+		assert.equal(page.robots, 'noindex, nofollow');
+		assert.equal(page.sitemap, false);
+		assert.equal(page.indexable, false);
+		assert.equal(page.canonical, `${origin}${page.path}`);
+		assert.equal(page.path, `/library/${page.kind}/${page.id}`);
+	}
+	const routes = new Set(pages.map((page) => `${page.kind}/${page.id}`));
+	assert.equal(routes.size, pages.length);
+	const reviewed = pages.find((page) => page.id === 'fixture-state-ca');
+	const presented = presentCorpusPage(reviewed);
+	assert.equal(presented.jsonLd['@context'], 'https://schema.org');
+	assert.equal(presented.jsonLd['@type'], 'WebPage');
+	assert.equal(presented.jsonLd.name, reviewed.title);
+	assert.equal(presented.jsonLd.dateModified, reviewed.effectiveDate);
+	assert.match(presented.html, /data-research-state="fixture-review"/);
+	assert.match(presented.html, /https:\/\/fixture\.invalid\/library\/fixture-state-ca/);
+	assert.match(presented.html, /datetime="2026-01-01"/);
+	assert.match(presented.html, /fixture-library-editor/);
+	assert.match(presented.html, /Named the fixture state page\./);
+	assert.match(presented.html, /class="cite" href="#source-src-fixture-state-ca"/);
+	assert.match(presented.html, /id="source-src-fixture-state-ca"/);
+	assert.equal((presented.html.match(/<h1[\s>]/g) || []).length, 1);
+	const draft = presentCorpusPage(pages.find((page) => page.id === 'homeowners'));
+	assert.equal(draft.jsonLd, null);
+	assert.match(draft.html, /data-research-state="draft"/);
+	assert.match(draft.html, /Research draft\./);
+	const withdrawn = presentCorpusPage(pages.find((page) => page.id === 'fixture-local-county-mutual'));
+	assert.equal(withdrawn.jsonLd, null);
+	assert.match(withdrawn.html, /data-research-state="withdrawn"/);
+	assert.match(withdrawn.html, /Withdrawn\./);
+	assert.doesNotMatch(withdrawn.html, /data-redirect=/);
+	const historical = presentCorpusPage(pages.find((page) => page.id === 'fixture-harbor-fire'));
+	assert.match(historical.html, /data-redirect="\/library\/company\/fixture-harbor-exchange"/);
+	assert.match(historical.html, /href="\/library\/company\/fixture-harbor-exchange"/);
+	assert.equal(routes.has('company/fixture-harbor-exchange'), true);
+	const alias = presentCorpusPage(pages.find((page) => page.id === 'fixture-mutual-group'));
+	assert.match(alias.html, /data-redirect="\/library\/company\/fixture-mutual-pc"/);
+	const hostile = presentCorpusPage({ ...reviewed, title: '<script>', summary: '"quoted"' });
+	assert.match(hostile.html, /&lt;script&gt;/);
+	assert.match(hostile.html, /&quot;quoted&quot;/);
+	const config = fs.readFileSync(path.join(ROOT, 'astro.config.mjs'), 'utf8');
+	assert.match(config, /\\\/library\\\//);
+	const route = fs.readFileSync(path.join(ROOT, 'src/pages/library/[kind]/[id].astro'), 'utf8');
+	assert.match(route, /publishedCorpusPages/);
+	assert.match(route, /presentCorpusPage/);
+	assert.match(route, /\bnoindex\b/);
+	assert.equal(route.includes('index, follow'), false);
 });
