@@ -305,6 +305,13 @@ test('every page has exactly one self-referential canonical', () => {
 		const href = attr(html, 'canonical');
 		assert.ok(href, `${routeOf(file)} has no canonical href`);
 		const url = new URL(href);
+		const refresh = html.match(/<meta http-equiv="refresh" content="0;url=([^"]+)">/);
+		if (/<title>Redirecting to:/.test(html) && refresh) {
+			assert.equal(url.pathname, refresh[1], `${routeOf(file)} redirect canonical is not its target`);
+			assert.ok(routes.has(refresh[1]), `${routeOf(file)} redirects to unbuilt ${refresh[1]}`);
+			assert.ok(!href.endsWith('/'), `${routeOf(file)} redirect canonical has a trailing slash`);
+			continue;
+		}
 		assert.equal(url.pathname, routeOf(file) === '/' ? '/' : routeOf(file), `${routeOf(file)} canonical points elsewhere: ${href}`);
 		assert.ok(!href.endsWith('/') || url.pathname === '/', `${routeOf(file)} canonical has a trailing slash`);
 	}
@@ -346,6 +353,10 @@ test(`the ${SITE_ENV} build emits the correct indexing directive on every page`,
 	for (const file of htmlFiles) {
 		const html = read(file);
 		if (SITE_ENV === 'preview') {
+			if (/<title>Redirecting to:/.test(html) && /<meta http-equiv="refresh" content="\d+;url=/.test(html)) {
+				assert.match(html, /<meta name="robots" content="noindex">/, `${routeOf(file)} redirect artifact is indexable`);
+				continue;
+			}
 			assert.match(
 				html,
 				/<meta name="robots" content="noindex, nofollow">/,
@@ -976,6 +987,7 @@ test('every page has a skip link, one h1, a main landmark, and a language', () =
 	for (const file of htmlFiles) {
 		const html = read(file);
 		const route = routeOf(file);
+		if (/<title>Redirecting to:/.test(html) && /<meta http-equiv="refresh" content="\d+;url=/.test(html)) continue;
 		assert.match(html, /<html lang="en">/, `${route} has no lang attribute`);
 		assert.ok(html.includes('class="skip-link"'), `${route} has no skip link`);
 		assert.ok(html.includes('id="main"'), `${route} has no main landmark target`);

@@ -22,6 +22,7 @@ interface Props {
 }
 
 const { page } = Astro.props;
+if (page.redirectTo) return Astro.redirect(page.redirectTo, 301);
 const presented = presentCorpusPage(page);
 ---
 

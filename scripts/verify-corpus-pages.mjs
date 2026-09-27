@@ -184,6 +184,30 @@ test('fixture library routes render drafts, redirects, schema, and stay out of t
 	const route = fs.readFileSync(path.join(ROOT, 'src/pages/library/[kind]/[id].astro'), 'utf8');
 	assert.match(route, /publishedCorpusPages/);
 	assert.match(route, /presentCorpusPage/);
+	assert.match(route, /Astro\.redirect\(page\.redirectTo, 301\)/);
 	assert.match(route, /\bnoindex\b/);
 	assert.equal(route.includes('index, follow'), false);
+	const dist = path.join(ROOT, 'dist');
+	assert.ok(fs.existsSync(dist), 'the redirect artifact check reads the build in dist');
+	const built = (page) => fs.readFileSync(path.join(dist, 'library', page.kind, page.id, 'index.html'), 'utf8');
+	const redirects = pages.filter((page) => page.redirectTo);
+	assert.ok(redirects.length >= 2);
+	for (const page of redirects) {
+		assert.equal(routes.has(page.redirectTo.slice('/library/'.length)), true, `${page.id} redirects to an unbuilt ${page.redirectTo}`);
+		const html = built(page);
+		assert.match(html, new RegExp(`<meta http-equiv="refresh" content="0;url=${page.redirectTo}">`));
+		assert.match(html, /<meta name="robots" content="noindex">/);
+		assert.match(html, new RegExp(`<link rel="canonical" href="${origin}${page.redirectTo}">`));
+		assert.match(html, new RegExp(`<a href="${page.redirectTo}">`));
+		assert.equal(html.includes('data-corpus-page'), false);
+		assert.equal(html.includes('data-research-state'), false);
+	}
+	const withdrawnPage = built(pages.find((page) => page.id === 'fixture-local-county-mutual'));
+	assert.match(withdrawnPage, /data-research-state="withdrawn"/);
+	assert.match(withdrawnPage, /<meta name="robots" content="noindex, nofollow">/);
+	assert.equal(withdrawnPage.includes('http-equiv="refresh"'), false);
+	assert.match(withdrawnPage, /<link rel="canonical" href="https:\/\/birch\.insure\/library\/company\/fixture-local-county-mutual">/);
+	const visible = built(pages.find((page) => page.id === 'fixture-state-ca'));
+	assert.match(visible, /data-research-state="fixture-review"/);
+	assert.equal(visible.includes('http-equiv="refresh"'), false);
 });

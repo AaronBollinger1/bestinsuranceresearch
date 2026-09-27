@@ -314,6 +314,7 @@ test('every page has one main landmark, one h1, and an outline with no gaps', ()
   // Whole-site, because the hand-listed landmark check above covers seven design
   // routes and the two specimens that nested a second <main> were not among them.
   // A reader navigating by landmark or by heading level is the one who pays.
+  // Astro's static redirect artifact is a refresh document, not a landmark page.
   let checked = 0;
   const twoMains = [];
   const badH1 = [];
@@ -325,6 +326,7 @@ test('every page has one main landmark, one h1, and an outline with no gaps', ()
       .replace(/<svg[\s\S]*?<\/svg>/g, '')
       .replace(/<script[\s\S]*?<\/script>/g, '')
       .replace(/<!--[\s\S]*?-->/g, '');
+    if (/<title>Redirecting to:/.test(markup) && /<meta http-equiv="refresh" content="0;url=/.test(markup)) continue;
     checked++;
     const mains = (markup.match(/<main\b/g) || []).length;
     if(mains !== 1) twoMains.push(`${route} (${mains})`);
