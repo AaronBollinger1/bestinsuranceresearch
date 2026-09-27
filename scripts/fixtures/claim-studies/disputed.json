@@ -1,0 +1,52 @@
+{
+	"_fixture": "Two sources disagree about one claim; the disagreement is resolved by supersession and the claim is re-confirmed - with the conflict kept visible forever.",
+	"_why": "Conflict preservation is the rule: a resolution names how, never deletes a side, and resolving does not confirm. The fold must pass through disputed, refuse confirmation over the open conflict, and retain the conflict record after resolution.",
+	"_expects": { "finalState": "confirmed", "eligible": true, "conflictsRetained": 1 },
+	"sources": [
+		{
+			"id": "fixture-src-notice-2024",
+			"data": {
+				"title": "Fixture Notice Rule Bulletin 2024",
+				"publisher": "Fixture State Regulator",
+				"url": "https://fixture.invalid/bulletin/notice-2024",
+				"sourceType": "regulator-guidance",
+				"jurisdiction": "CA",
+				"authorityLevel": "regulator",
+				"officialHost": true,
+				"publishedDate": "2024-03-01",
+				"accessedDate": "2026-09-01",
+				"lastChecked": "2026-09-01",
+				"lastCheckedBasis": "access",
+				"updateCadence": "Recheck when the regulator revises notice guidance.",
+				"status": "active",
+				"claims": ["The fixture notice period is thirty days."]
+			}
+		},
+		{
+			"id": "fixture-src-notice-2026",
+			"data": {
+				"title": "Fixture Notice Rule Bulletin 2026",
+				"publisher": "Fixture State Regulator",
+				"url": "https://fixture.invalid/bulletin/notice-2026",
+				"sourceType": "regulator-guidance",
+				"jurisdiction": "CA",
+				"authorityLevel": "regulator",
+				"officialHost": true,
+				"publishedDate": "2026-02-01",
+				"accessedDate": "2026-09-01",
+				"lastChecked": "2026-09-01",
+				"lastCheckedBasis": "access",
+				"updateCadence": "Recheck when the regulator revises notice guidance.",
+				"status": "active",
+				"claims": ["The fixture notice period is sixty days."]
+			}
+		}
+	],
+	"events": [
+		{ "id": "dp1", "kind": "opened", "at": "2026-09-26T20:00:00.000Z", "actor": "editor", "note": "Study opened for the fixture notice-period proposition.", "claimRef": "fixture-src-notice-2026#c1", "text": "The fixture notice period is sixty days.", "stakes": "standard", "synthetic": true },
+		{ "id": "dp2", "kind": "support-added", "at": "2026-09-26T20:01:00.000Z", "actor": "editor", "note": "The 2026 bulletin states sixty days.", "sourceId": "fixture-src-notice-2026", "synthetic": true },
+		{ "id": "dp3", "kind": "conflict-recorded", "at": "2026-09-26T20:02:00.000Z", "actor": "editor", "note": "The 2024 bulletin states thirty days and has not been withdrawn on its face.", "between": ["fixture-src-notice-2026", "fixture-src-notice-2024"], "synthetic": true },
+		{ "id": "dp4", "kind": "conflict-resolved", "at": "2026-09-26T20:30:00.000Z", "actor": "editor", "note": "The 2026 bulletin supersedes the 2024 bulletin by its own transmittal language. The 2024 side stays visible in this record.", "between": ["fixture-src-notice-2024", "fixture-src-notice-2026"], "resolutionHow": "superseded", "synthetic": true },
+		{ "id": "dp5", "kind": "confirmed", "at": "2026-09-26T20:35:00.000Z", "actor": "editor", "note": "Re-read against the superseding bulletin and confirmed.", "synthetic": true }
+	]
+}
