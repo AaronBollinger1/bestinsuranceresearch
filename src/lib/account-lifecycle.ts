@@ -31,6 +31,8 @@ export interface AccountRecord {
 	deletedAt: string | null;
 	session: { id: string; expiresAt: string } | null;
 	verificationToken: { id: string; expiresAt: string; used: boolean } | null;
+	/** Short-lived one-time fixture credential. The verification secret is not reused. */
+	signInToken: { id: string; expiresAt: string; used: boolean } | null;
 	recoveryToken: { id: string; expiresAt: string; used: boolean } | null;
 	avatar: AvatarMedia | null;
 	failures: number;
@@ -92,6 +94,7 @@ export function requestSignup(book: AccountBook, input: { email: string; role: A
 		deletedAt: null,
 		session: null,
 		verificationToken: { id: `fixture-verify-${id}`, expiresAt: new Date(Date.parse(input.now) + TOKEN_MS).toISOString(), used: false },
+		signInToken: null,
 		recoveryToken: null,
 		avatar: null,
 		failures: 0,
@@ -109,16 +112,22 @@ export function confirmVerification(book: AccountBook, input: { accountId: strin
 	}
 	account.verificationToken.used = true;
 	account.verifiedAt = input.now;
+	account.signInToken = { id: `fixture-signin-${account.id}`, expiresAt: new Date(Date.parse(input.now) + TOKEN_MS).toISOString(), used: false };
 	account.failures = 0;
 	return { ok: true, state: 'verified', accountId: account.id, publicMessage: 'The fixture account is verified. No licence was checked.' };
 }
 
 export function signIn(book: AccountBook, input: { email: string; token: string; now: string }): AccountResult {
 	const account = findEmail(book, input.email);
-	if (!account || !account.verifiedAt || account.verificationToken?.id !== input.token || !account.verificationToken.used) {
+	const token = account?.signInToken;
+	const expired = !!token && !token.used && token.id === input.token && token.expiresAt <= input.now;
+	const replayed = !!token && token.used && token.id === input.token;
+	if (!account || !account.verifiedAt || !token || token.id !== input.token || token.used || token.expiresAt <= input.now) {
 		if (account) account.failures += 1;
-		return fail(account && account.failures >= ABUSE_LIMIT ? 'rate-limited' : 'sign-in-failed', 'Sign-in did not succeed.');
+		const state = account && account.failures >= ABUSE_LIMIT ? 'rate-limited' : replayed ? 'sign-in-reused' : expired ? 'sign-in-expired' : 'sign-in-failed';
+		return fail(state, 'Sign-in did not succeed.');
 	}
+	token.used = true;
 	account.session = { id: `fixture-session-${account.id}`, expiresAt: new Date(Date.parse(input.now) + SESSION_MS).toISOString() };
 	account.failures = 0;
 	return { ok: true, state: 'signed-in', accountId: account.id, publicMessage: 'Signed in on this fixture. No provider was contacted.' };
@@ -180,6 +189,7 @@ export function deleteAccount(book: AccountBook, input: { accountId: string; act
 	account.session = null;
 	account.avatar = null;
 	account.verificationToken = null;
+	account.signInToken = null;
 	account.recoveryToken = null;
 	return { ok: true, state: 'deleted', accountId: account.id, publicMessage: 'The fixture account is deleted.' };
 }

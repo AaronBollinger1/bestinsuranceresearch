@@ -69,7 +69,7 @@ function openBook() {
 	assert.equal(signup.state, 'pending-verification');
 	const account = book.accounts[0];
 	assert.equal(confirmVerification(book, { accountId: account.id, token: account.verificationToken.id, now: NOW }).state, 'verified');
-	assert.equal(signIn(book, { email: account.email, token: account.verificationToken.id, now: NOW }).state, 'signed-in');
+	assert.equal(signIn(book, { email: account.email, token: account.signInToken.id, now: NOW }).state, 'signed-in');
 	return { book, account };
 }
 
@@ -104,7 +104,8 @@ test('verification, sign-in, recovery, expiry, export, deletion, and abuse fail 
 	account.verificationToken.expiresAt = '2026-09-27T12:30:00.000Z';
 	assert.equal(confirmVerification(book, { accountId: account.id, token: account.verificationToken.id, now: NOW }).state, 'verified');
 	assert.equal(confirmVerification(book, { accountId: account.id, token: account.verificationToken.id, now: NOW }).state, 'verification-reused');
-	assert.equal(signIn(book, { email: account.email, token: account.verificationToken.id, now: NOW }).state, 'signed-in');
+	assert.equal(signIn(book, { email: account.email, token: account.verificationToken.id, now: NOW }).state, 'sign-in-failed');
+	assert.equal(signIn(book, { email: account.email, token: account.signInToken.id, now: NOW }).state, 'signed-in');
 	assert.equal(readSession(book, { accountId: account.id, now: LATER }).state, 'session-expired');
 
 	const unknown = requestRecovery(book, { email: 'missing@example.com', now: NOW });
@@ -132,6 +133,18 @@ test('verification, sign-in, recovery, expiry, export, deletion, and abuse fail 
 	}
 	assert.equal(signIn(abuse, { email: target.email, token: 'wrong', now: NOW }).state, 'rate-limited');
 	assert.equal(signup.ok, true);
+});
+
+test('a verification secret cannot sign in once it is expired or replayed', () => {
+	const book = createAccountBook();
+	requestSignup(book, { email: 'reader@example.com', role: 'consumer', now: NOW, publicSignupOpen: true });
+	const account = book.accounts[0];
+	assert.equal(confirmVerification(book, { accountId: account.id, token: account.verificationToken.id, now: NOW }).state, 'verified');
+	assert.equal(signIn(book, { email: account.email, token: account.verificationToken.id, now: LATER }).state, 'sign-in-failed');
+	assert.equal(signIn(book, { email: account.email, token: account.signInToken.id, now: LATER }).state, 'sign-in-expired');
+	assert.equal(account.session, null);
+	assert.equal(signIn(book, { email: account.email, token: account.signInToken.id, now: NOW }).state, 'signed-in');
+	assert.equal(signIn(book, { email: account.email, token: account.signInToken.id, now: NOW }).state, 'sign-in-reused');
 });
 
 test('professional roles do not imply a licence until a reviewer verifies one', () => {
