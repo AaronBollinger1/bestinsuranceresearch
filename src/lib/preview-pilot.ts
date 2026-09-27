@@ -17,6 +17,8 @@ export const PILOT_GATES = ['citation', 'rights', 'freshness', 'moderation', 'pr
 export type PilotGate = (typeof PILOT_GATES)[number];
 export const PILOT_ROLES = ['consumer', 'verified-professional', 'company-representative'] as const;
 export type PilotRole = (typeof PILOT_ROLES)[number];
+export const PILOT_CAPABILITIES = ['moderate', 'appeal', 'remove-source', 'editorial', 'licensed-review', 'correct', 'rollback', 'refresh', 'withdraw', 'owner'] as const;
+export type PilotCapability = (typeof PILOT_CAPABILITIES)[number];
 
 export interface PilotToken {
 	id: string;
@@ -40,6 +42,8 @@ export interface PilotAccount {
 	recoveryToken: PilotToken | null;
 	failures: number;
 	media: { id: string; byteLength: number; publicUrl: null } | null;
+	/** Adapter-owned. A role never grants these. */
+	capabilities: PilotCapability[];
 }
 
 export interface PilotSource {
@@ -74,6 +78,7 @@ export interface PilotDraft {
 	moderation: 'clear' | 'held';
 	appeal: string | null;
 	dispute: string | null;
+	confirmation: { receipt: string; actorId: string; at: string } | null;
 	editorial: boolean;
 	licensed: boolean;
 	withdrawn: boolean;
@@ -150,6 +155,22 @@ function observe(state: PilotState, id: string, at: string, kind: string, result
 
 function account(state: PilotState, id: string): PilotAccount | undefined {
 	return state.accounts.find((item) => item.id === id && !item.deletedAt);
+}
+
+function actorGate(state: PilotState, actorId: string, capability: PilotCapability, now: string): { ok: true; actor: PilotAccount } | { ok: false; state: 'permission-denied' | 'session-missing' | 'session-expired' } {
+	const found = account(state, actorId);
+	if (!found || !found.capabilities.includes(capability)) return { ok: false, state: 'permission-denied' };
+	if (!found.session) return { ok: false, state: 'session-missing' };
+	if (found.session.expiresAt <= now) return { ok: false, state: 'session-expired' };
+	return { ok: true, actor: found };
+}
+
+function consumerGate(state: PilotState, actorId: string, now: string): { ok: true; actor: PilotAccount } | { ok: false; state: 'permission-denied' | 'session-missing' | 'session-expired' } {
+	const found = account(state, actorId);
+	if (!found || found.role !== 'consumer') return { ok: false, state: 'permission-denied' };
+	if (!found.session) return { ok: false, state: 'session-missing' };
+	if (found.session.expiresAt <= now) return { ok: false, state: 'session-expired' };
+	return { ok: true, actor: found };
 }
 
 function replaceAccount(state: PilotState, next: PilotAccount): PilotState {
@@ -263,6 +284,7 @@ export function setRole(store: PilotStore, input: { accountId: string; actorId: 
 		authorityVerified: false,
 		employmentVerified: false,
 		policyVerified: false,
+		capabilities: [],
 	});
 	store.save(observe(next, `role-${found.id}`, '2026-09-27T12:00:00.000Z', 'role', 'role-set'));
 	return { ok: true, state: 'role-set' };
@@ -310,6 +332,7 @@ function draftOf(state: PilotState): PilotDraft {
 		moderation: 'clear',
 		appeal: null,
 		dispute: null,
+		confirmation: null,
 		editorial: false,
 		licensed: false,
 		withdrawn: false,
@@ -357,32 +380,56 @@ export function requestSourceCandidate(store: PilotStore, input: { now: string; 
 
 export function disputeDraft(store: PilotStore, input: { accountId: string; now: string; note: string }): { ok: boolean; state: string } {
 	const current = store.load();
-	const actor = account(current, input.accountId);
-	if (!pilotPermissions(actor, input.now).confirmOrDispute || !current.draft) return { ok: false, state: 'permission-denied' };
+	if (!current.draft) return { ok: false, state: 'missing-draft' };
+	const actor = consumerGate(current, input.accountId, input.now);
+	if (!actor.ok) return { ok: false, state: actor.state };
 	store.save(withDraft(current, { ...current.draft, dispute: input.note }, 'dispute', input.now, 'dispute', 'disputed'));
 	return { ok: true, state: 'disputed' };
 }
 
-export function holdAndAppeal(store: PilotStore, input: { now: string; note: string }): { ok: boolean; state: string } {
+export function confirmDraft(store: PilotStore, input: { accountId: string; now: string }): { ok: boolean; state: string; receipt?: string } {
 	const current = store.load();
 	if (!current.draft) return { ok: false, state: 'missing-draft' };
-	const held = { ...current.draft, moderation: 'held' as const, appeal: input.note };
-	store.save(withDraft(current, held, 'appeal', input.now, 'appeal', 'appeal-open'));
+	const actor = consumerGate(current, input.accountId, input.now);
+	if (!actor.ok) return { ok: false, state: actor.state };
+	const receipt = `pilot-confirm-${actor.actor.id}-${input.now}`;
+	store.save(withDraft(current, { ...current.draft, confirmation: { receipt, actorId: actor.actor.id, at: input.now } }, receipt, input.now, 'confirm', 'confirmed'));
+	return { ok: true, state: 'confirmed', receipt };
+}
+
+export function holdDraft(store: PilotStore, input: { actorId: string; now: string }): { ok: boolean; state: string } {
+	const current = store.load();
+	if (!current.draft) return { ok: false, state: 'missing-draft' };
+	const actor = actorGate(current, input.actorId, 'moderate', input.now);
+	if (!actor.ok) return { ok: false, state: actor.state };
+	store.save(withDraft(current, { ...current.draft, moderation: 'held' }, 'hold', input.now, 'moderation', 'held'));
+	return { ok: true, state: 'held' };
+}
+
+export function appealDraft(store: PilotStore, input: { actorId: string; now: string; note: string }): { ok: boolean; state: string } {
+	const current = store.load();
+	if (!current.draft) return { ok: false, state: 'missing-draft' };
+	const actor = actorGate(current, input.actorId, 'appeal', input.now);
+	if (!actor.ok) return { ok: false, state: actor.state };
+	store.save(withDraft(current, { ...current.draft, appeal: input.note }, 'appeal', input.now, 'appeal', 'appeal-open'));
 	return { ok: true, state: 'appeal-open' };
 }
 
-export function removeSource(store: PilotStore, input: { sourceId: string; now: string }): { ok: boolean; state: string } {
+export function removeSource(store: PilotStore, input: { actorId: string; sourceId: string; now: string }): { ok: boolean; state: string } {
 	const current = store.load();
 	if (!current.draft) return { ok: false, state: 'missing-draft' };
+	const actor = actorGate(current, input.actorId, 'remove-source', input.now);
+	if (!actor.ok) return { ok: false, state: actor.state };
 	const sources = current.draft.sources.map((source) => source.id === input.sourceId ? { ...source, removed: true } : source);
 	store.save(withDraft(current, { ...current.draft, sources }, 'remove-source', input.now, 'source-removal', 'removed'));
 	return { ok: true, state: 'removed' };
 }
 
-export function reviewDraft(store: PilotStore, input: { now: string; reviewerId: string; kind: 'editorial' | 'licensed-review' }): { ok: boolean; state: string } {
+export function reviewDraft(store: PilotStore, input: { now: string; actorId: string; kind: 'editorial' | 'licensed-review' }): { ok: boolean; state: string } {
 	const current = store.load();
 	if (!current.draft) return { ok: false, state: 'missing-draft' };
-	if (!input.reviewerId.startsWith('fixture-reviewer-')) return { ok: false, state: 'permission-denied' };
+	const actor = actorGate(current, input.actorId, input.kind, input.now);
+	if (!actor.ok) return { ok: false, state: actor.state };
 	const draft = input.kind === 'editorial'
 		? { ...current.draft, editorial: true }
 		: { ...current.draft, licensed: true };
@@ -390,9 +437,11 @@ export function reviewDraft(store: PilotStore, input: { now: string; reviewerId:
 	return { ok: true, state: 'recorded' };
 }
 
-export function correctDraft(store: PilotStore, input: { now: string; summary: string }): { ok: boolean; state: string } {
+export function correctDraft(store: PilotStore, input: { actorId: string; now: string; summary: string }): { ok: boolean; state: string } {
 	const current = store.load();
 	if (!current.draft) return { ok: false, state: 'missing-draft' };
+	const actor = actorGate(current, input.actorId, 'correct', input.now);
+	if (!actor.ok) return { ok: false, state: actor.state };
 	const version = current.draft.version + 1;
 	const next: PilotDraft = {
 		...current.draft,
@@ -404,25 +453,33 @@ export function correctDraft(store: PilotStore, input: { now: string; summary: s
 	return { ok: true, state: 'corrected' };
 }
 
-export function rollbackDraft(store: PilotStore, input: { now: string; version: number }): { ok: boolean; state: string } {
+export function rollbackDraft(store: PilotStore, input: { actorId: string; now: string; version: number }): { ok: boolean; state: string } {
 	const current = store.load();
-	const prior = current.draft?.versions.find((item) => item.version === input.version);
-	if (!current.draft || !prior) return { ok: false, state: 'rollback-refused' };
+	if (!current.draft) return { ok: false, state: 'missing-draft' };
+	const actor = actorGate(current, input.actorId, 'rollback', input.now);
+	if (!actor.ok) return { ok: false, state: actor.state };
+	const prior = current.draft.versions.find((item) => item.version === input.version);
+	if (!prior) return { ok: false, state: 'rollback-refused' };
 	const next: PilotDraft = { ...current.draft, version: prior.version, summary: prior.summary };
 	store.save(withDraft(current, next, `rollback-${prior.version}`, input.now, 'rollback', 'restored'));
 	return { ok: true, state: 'restored' };
 }
 
-export function withdrawDraft(store: PilotStore, now: string): { ok: boolean; state: string } {
+export function withdrawDraft(store: PilotStore, input: { actorId: string; now: string }): { ok: boolean; state: string } {
 	const current = store.load();
 	if (!current.draft) return { ok: false, state: 'missing-draft' };
-	store.save(withDraft(current, { ...current.draft, withdrawn: true }, 'withdraw', now, 'withdrawal', 'withdrawn'));
+	const actor = actorGate(current, input.actorId, 'withdraw', input.now);
+	if (!actor.ok) return { ok: false, state: actor.state };
+	store.save(withDraft(current, { ...current.draft, withdrawn: true }, 'withdraw', input.now, 'withdrawal', 'withdrawn'));
 	return { ok: true, state: 'withdrawn' };
 }
 
-export function refreshDraft(store: PilotStore, input: { now: string; effectiveDate: string }): { ok: boolean; state: string } {
+export function refreshDraft(store: PilotStore, input: { actorId: string; now: string; effectiveDate: string }): { ok: boolean; state: string } {
 	const current = store.load();
-	if (!current.draft || input.effectiveDate <= current.draft.effectiveDate) return { ok: false, state: 'refresh-refused' };
+	if (!current.draft) return { ok: false, state: 'missing-draft' };
+	const actor = actorGate(current, input.actorId, 'refresh', input.now);
+	if (!actor.ok) return { ok: false, state: actor.state };
+	if (input.effectiveDate <= current.draft.effectiveDate) return { ok: false, state: 'refresh-refused' };
 	const version = current.draft.version + 1;
 	const summary = `${current.draft.summary} Refreshed ${input.effectiveDate}.`;
 	const next: PilotDraft = {
@@ -437,7 +494,11 @@ export function refreshDraft(store: PilotStore, input: { now: string; effectiveD
 	return { ok: true, state: 'refreshed' };
 }
 
-export function recordOwnerGate(): { ok: false; state: 'owner-withheld' } {
+export function recordOwnerGate(store: PilotStore, input: { actorId: string; now: string }): { ok: false; state: 'permission-denied' | 'session-missing' | 'session-expired' | 'owner-withheld' } {
+	const current = store.load();
+	const actor = actorGate(current, input.actorId, 'owner', input.now);
+	if (!actor.ok) return { ok: false, state: actor.state };
+	store.save(observe(current, 'owner-gate', input.now, 'owner', 'owner-withheld'));
 	return { ok: false, state: 'owner-withheld' };
 }
 
@@ -471,6 +532,7 @@ export function presentPilot(state: PilotState, now: string): string {
 	}).join('');
 	const gates = publication.gates.map((gate) => `<li data-gate="${gate.gate}" data-ok="${gate.ok ? 'yes' : 'no'}">${escapeHtml(gate.gate)} ${gate.ok ? 'open' : 'closed'}</li>`).join('');
 	const draft = state.draft;
+	const confirmation = draft?.confirmation ? `<p data-confirm="confirmed" data-receipt="${escapeHtml(draft.confirmation.receipt)}">Confirmed by ${escapeHtml(draft.confirmation.actorId)}.</p>` : '';
 	const dispute = draft?.dispute ? `<p data-dispute="open">${escapeHtml(draft.dispute)}</p>` : '';
 	const appeal = draft?.appeal ? `<p data-appeal="open">${escapeHtml(draft.appeal)}</p>` : '';
 	const removed = draft?.sources.filter((source) => source.removed).map((source) => `<p data-source-removed="${escapeHtml(source.id)}">Source removed.</p>`).join('') ?? '';
@@ -480,12 +542,33 @@ export function presentPilot(state: PilotState, now: string): string {
 		<p data-question="${escapeHtml(draft?.questionId ?? 'fixture-unanswered-wind-deductible')}">Unanswered question.</p>
 		<p data-research-draft="true">Research draft. This record is not published.</p>
 		${draft ? `<p>${escapeHtml(draft.summary)}</p><p>Effective date ${escapeHtml(draft.effectiveDate)}. Version ${draft.version}.</p>` : ''}
-		${dispute}${appeal}${removed}
+		${confirmation}${dispute}${appeal}${removed}
 		<ul>${gates}</ul>
 		<p data-publication="closed">Publication is closed. Eligible no. Indexable no.</p>
 		<p data-provider-calls="${draft?.providerCalls ?? 0}" data-spend="${draft?.spend ?? 0}">Provider calls ${draft?.providerCalls ?? 0}. Spend ${draft?.spend ?? 0}.</p>
 		<p data-observations="${state.observations.length}">Observations ${state.observations.length}.</p>
 	</article>`;
+}
+
+function staff(id: string, email: string, capabilities: PilotCapability[], session: { id: string; expiresAt: string }): PilotAccount {
+	return {
+		id,
+		email,
+		role: 'verified-professional',
+		licenceVerified: false,
+		authorityVerified: false,
+		employmentVerified: false,
+		policyVerified: false,
+		organizationId: null,
+		verifiedAt: '2026-09-27T12:00:00.000Z',
+		deletedAt: null,
+		session,
+		signInToken: null,
+		recoveryToken: null,
+		failures: 0,
+		media: null,
+		capabilities,
+	};
 }
 
 export function seedPilot(): PilotState {
@@ -508,6 +591,7 @@ export function seedPilot(): PilotState {
 				recoveryToken: null,
 				failures: 0,
 				media: null,
+				capabilities: ['appeal'],
 			},
 			{
 				id: 'pilot-professional',
@@ -525,6 +609,7 @@ export function seedPilot(): PilotState {
 				recoveryToken: null,
 				failures: 0,
 				media: null,
+				capabilities: [],
 			},
 			{
 				id: 'pilot-company',
@@ -542,7 +627,11 @@ export function seedPilot(): PilotState {
 				recoveryToken: null,
 				failures: 0,
 				media: null,
+				capabilities: [],
 			},
+			staff('pilot-editor', 'editor@fixture.invalid', ['moderate', 'remove-source', 'editorial', 'correct', 'rollback', 'refresh', 'withdraw'], session),
+			staff('pilot-licensed', 'licensed@fixture.invalid', ['licensed-review'], session),
+			staff('pilot-owner', 'owner@fixture.invalid', ['owner'], session),
 		],
 		draft: null,
 		observations: [],
@@ -554,13 +643,16 @@ export function fixturePilotBoard(): string {
 	const main = fixturePilotWalk();
 	const appeal = memoryPilotStore(seedPilot());
 	retrieveEvidence(appeal, now);
-	holdAndAppeal(appeal, { now, note: 'Fixture appeal of a held contribution.' });
+	holdDraft(appeal, { actorId: 'pilot-editor', now });
+	requestRecovery(appeal, { accountId: 'pilot-consumer', now });
+	completeRecovery(appeal, { accountId: 'pilot-consumer', token: 'pilot-recovery-pilot-consumer', now });
+	appealDraft(appeal, { actorId: 'pilot-consumer', now, note: 'Fixture appeal of a held contribution.' });
 	const removed = memoryPilotStore(seedPilot());
 	retrieveEvidence(removed, now);
-	removeSource(removed, { sourceId: 'src-fixture-wind', now });
+	removeSource(removed, { actorId: 'pilot-editor', sourceId: 'src-fixture-wind', now });
 	const withdrawn = memoryPilotStore(seedPilot());
 	retrieveEvidence(withdrawn, now);
-	withdrawDraft(withdrawn, now);
+	withdrawDraft(withdrawn, { actorId: 'pilot-editor', now });
 	const failure = main.state.observations.some((item) => item.result === 'rate-limited');
 	return `${main.html}
 		<section data-account-failure="${failure ? 'rate-limited' : 'missing'}"><h2>Account failure and recovery</h2><p>Rate limit recorded. Recovery restored the consumer session.</p></section>
@@ -579,12 +671,13 @@ export function fixturePilotWalk(): { state: PilotState; html: string } {
 	storePrivateMedia(store, { accountId: 'pilot-consumer', actorId: 'pilot-consumer', byteLength: 32 });
 	retrieveEvidence(store, now);
 	requestSourceCandidate(store, { now, outage: true });
+	confirmDraft(store, { accountId: 'pilot-consumer', now });
 	disputeDraft(store, { accountId: 'pilot-consumer', now, note: 'The fixture deductible wording is disputed.' });
-	reviewDraft(store, { now, reviewerId: 'fixture-reviewer-editor', kind: 'editorial' });
-	reviewDraft(store, { now, reviewerId: 'fixture-reviewer-licensed', kind: 'licensed-review' });
-	correctDraft(store, { now, summary: 'Corrected fixture summary. Citation src-fixture-wind. It is not a real policy.' });
-	rollbackDraft(store, { now, version: 1 });
-	refreshDraft(store, { now, effectiveDate: '2026-09-28' });
+	reviewDraft(store, { now, actorId: 'pilot-editor', kind: 'editorial' });
+	reviewDraft(store, { now, actorId: 'pilot-licensed', kind: 'licensed-review' });
+	correctDraft(store, { actorId: 'pilot-editor', now, summary: 'Corrected fixture summary. Citation src-fixture-wind. It is not a real policy.' });
+	rollbackDraft(store, { actorId: 'pilot-editor', now, version: 1 });
+	refreshDraft(store, { actorId: 'pilot-editor', now, effectiveDate: '2026-09-28' });
 	const state = store.load();
 	return { state, html: presentPilot(state, now) };
 }

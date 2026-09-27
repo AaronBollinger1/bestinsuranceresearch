@@ -23,6 +23,17 @@ import {
 	memoryPilotStore,
 	pilotPermissions,
 	pilotPublication,
+	appealDraft,
+	confirmDraft,
+	correctDraft,
+	holdDraft,
+	recordOwnerGate,
+	refreshDraft,
+	removeSource,
+	retrieveEvidence,
+	reviewDraft,
+	rollbackDraft,
+	withdrawDraft,
 	requestSignup,
 	seedPilot,
 	setRole,
@@ -111,4 +122,40 @@ test('one unanswered question stays noindex through dispute, appeal, removal, an
 	assert.match(source, /fixturePilotBoard/);
 	assert.match(source, /\bnoindex\b/);
 	assert.equal(PILOT_PUBLICATION_OPEN, false);
+	assert.match(walked.html, /data-confirm="confirmed"/);
+	assert.match(walked.state.draft.confirmation.receipt, /^pilot-confirm-pilot-consumer-/);
+	assert.equal(walked.state.observations.some((item) => item.kind === 'confirm' && item.result === 'confirmed'), true);
+});
+
+test('unknown and wrong actors fail closed, and confirm needs a live session', () => {
+	const store = memoryPilotStore(seedPilot());
+	retrieveEvidence(store, now);
+	const before = store.load().draft;
+	assert.equal(reviewDraft(store, { now, actorId: 'fixture-reviewer-editor', kind: 'editorial' }).state, 'permission-denied');
+	assert.equal(reviewDraft(store, { now, actorId: 'pilot-licensed', kind: 'editorial' }).state, 'permission-denied');
+	assert.equal(reviewDraft(store, { now, actorId: 'pilot-editor', kind: 'licensed-review' }).state, 'permission-denied');
+	assert.equal(holdDraft(store, { actorId: 'pilot-consumer', now }).state, 'permission-denied');
+	assert.equal(removeSource(store, { actorId: 'pilot-consumer', sourceId: 'src-fixture-wind', now }).state, 'permission-denied');
+	assert.equal(correctDraft(store, { actorId: 'pilot-owner', now, summary: 'Unwanted rewrite.' }).state, 'permission-denied');
+	assert.equal(rollbackDraft(store, { actorId: 'nobody', now, version: 1 }).state, 'permission-denied');
+	assert.equal(refreshDraft(store, { actorId: 'pilot-consumer', now, effectiveDate: '2026-09-28' }).state, 'permission-denied');
+	assert.equal(withdrawDraft(store, { actorId: 'pilot-licensed', now }).state, 'permission-denied');
+	assert.equal(appealDraft(store, { actorId: 'pilot-editor', now, note: 'Staff cannot appeal.' }).state, 'permission-denied');
+	assert.equal(recordOwnerGate(store, { actorId: 'pilot-editor', now }).state, 'permission-denied');
+	assert.equal(confirmDraft(store, { accountId: 'pilot-consumer', now }).state, 'session-missing');
+	const expired = memoryPilotStore(seedPilot());
+	retrieveEvidence(expired, now);
+	const current = expired.load();
+	current.accounts = current.accounts.map((item) => item.id === 'pilot-consumer' ? { ...item, session: { id: 'old', expiresAt: '2026-09-27T12:00:00.000Z' } } : item);
+	expired.save(current);
+	assert.equal(confirmDraft(expired, { accountId: 'pilot-consumer', now }).state, 'session-expired');
+	assert.equal(expired.load().draft.confirmation, null);
+	assert.equal(store.load().draft.editorial, before.editorial);
+	assert.equal(store.load().draft.sources[0].removed, false);
+	assert.equal(store.load().draft.withdrawn, false);
+	const owner = recordOwnerGate(store, { actorId: 'pilot-owner', now });
+	assert.equal(owner.ok, false);
+	assert.equal(owner.state, 'owner-withheld');
+	assert.equal(pilotPublication(store.load().draft).gates.find((gate) => gate.gate === 'owner').ok, false);
+	assert.equal(store.load().observations.some((item) => item.result === 'owner-withheld'), true);
 });
