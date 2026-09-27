@@ -110,13 +110,27 @@ export function submitExperience(book: ExperienceBook, input: {
 	return { ok: true, state: record.state, record };
 }
 
+function evidenceUrl(raw: string): string | null {
+	let url: URL;
+	try {
+		url = new URL(raw);
+	} catch {
+		return null;
+	}
+	if (url.protocol !== 'https:' || url.username || url.password || url.search || url.hash) return null;
+	return url.toString();
+}
+
 export function attachEvidence(record: ExperienceRecord, input: { id: string; title: string; url: string; at: string }): ExperienceRecord & { problem?: string } {
-	if (!input.url.startsWith('https://') || !input.title.trim()) return { ...record, problem: 'Evidence needs an https source.' };
+	const url = evidenceUrl(input.url);
+	if (!url) return { ...record, problem: 'Evidence needs a public https URL without credentials, a query, or a fragment.' };
+	const title = redact(input.title).text.trim();
+	if (!title || SENSITIVE.test(title)) return { ...record, problem: 'Evidence title cannot keep a sensitive identifier.' };
 	return {
 		...record,
 		state: 'in-moderation',
-		evidence: [...record.evidence, { id: input.id, title: input.title, url: input.url }],
-		events: [...record.events, { at: input.at, action: 'evidence-attached', note: input.title }],
+		evidence: [...record.evidence, { id: input.id, title, url }],
+		events: [...record.events, { at: input.at, action: 'evidence-attached', note: title }],
 		indexable: false,
 	};
 }

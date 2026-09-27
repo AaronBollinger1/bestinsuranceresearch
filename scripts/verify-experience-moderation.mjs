@@ -77,6 +77,28 @@ test('submission, redaction, response, moderation, appeal, correction, and reten
 	assert.equal(fs.existsSync(path.join(ROOT, 'src/pages/experiences')), false);
 });
 
+test('evidence metadata drops sensitive titles and refuses identifier-bearing URLs', () => {
+	const book = createExperienceBook();
+	const opened = submit(book);
+	const titled = attachEvidence(opened.record, { id: 'ev-title', title: 'Policy number ABC-123', url: 'https://fixture.invalid/notice', at: AT });
+	assert.equal(titled.problem, undefined);
+	assert.equal(titled.evidence[0].title, '[redacted]');
+	assert.ok(!JSON.stringify(titled).includes('ABC-123'));
+	const ordinary = attachEvidence(opened.record, { id: 'ev-ok', title: 'Fixture notice', url: 'https://fixture.invalid/notice', at: AT });
+	assert.equal(ordinary.evidence[0].url, 'https://fixture.invalid/notice');
+	assert.equal(ordinary.evidence[0].title, 'Fixture notice');
+	for (const url of [
+		'https://user:secret@fixture.invalid/notice',
+		'https://fixture.invalid/notice?claim=ABC-123',
+		'https://fixture.invalid/notice#policy-ABC-123',
+	]) {
+		const refused = attachEvidence(opened.record, { id: 'ev-bad', title: 'Fixture notice', url, at: AT });
+		assert.equal(refused.evidence.length, opened.record.evidence.length);
+		assert.ok(!JSON.stringify(refused).includes('ABC-123'));
+		assert.ok(!JSON.stringify(refused).includes('secret'));
+	}
+});
+
 test('facts, opinions, and unresolved disputes stay in separate presented fields', () => {
 	const book = createExperienceBook();
 	const opened = submit(book);
