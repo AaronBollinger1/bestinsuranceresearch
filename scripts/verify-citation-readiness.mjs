@@ -27,7 +27,7 @@ function page({ path: pagePath, indexable, summary, canonical, robots, schema = 
 <title>Fixture notice</title>
 </head><body><main>
 <h1 id="fixture-notice">Fixture notice</h1>
-<p id="summary">${summary}</p>
+<p data-evidence-summary>${summary}</p>
 ${source ? '<p>Source: <a href="https://fixture.invalid/notice">Fixture notice</a></p>' : ''}
 <script type="application/ld+json">{"@type":"${schema}"}</script>
 ${extra}
@@ -74,6 +74,27 @@ test('the audit is local, publishes nothing, and does not promise a rank', () =>
 	assert.deepEqual(readiness.checks.map((check) => check.id), [
 		'retrievability', 'evidence-clarity', 'freshness', 'canonical-consistency', 'source-visibility',
 	]);
+});
+
+test('evidence clarity measures the summary element, not a long body', () => {
+	const summary = 'The fixture notice is delivered before the named work begins, and this summary is long enough to cite.';
+	const positive = page({
+		path: '/guides/fixture-notice',
+		indexable: true,
+		robots: 'index, follow',
+		canonical: `${ORIGIN}/guides/fixture-notice`,
+		summary,
+	});
+	const ready = citationReadiness(positive, ORIGIN);
+	assert.equal(ready.checks.find((check) => check.id === 'evidence-clarity').ok, true);
+	assert.equal(ready.ready, true);
+	const negative = {
+		...positive,
+		html: positive.html.replace(`<p data-evidence-summary>${summary}</p>`, `<p>${summary} This body is longer than forty characters and is still not an evidence summary.</p>`),
+	};
+	const unread = citationReadiness(negative, ORIGIN);
+	assert.equal(unread.checks.find((check) => check.id === 'evidence-clarity').ok, false);
+	assert.equal(unread.ready, false);
 });
 
 test('host, redirect, robots, sitemap, schema, accessibility, mobile, and performance pass on the fixture', () => {

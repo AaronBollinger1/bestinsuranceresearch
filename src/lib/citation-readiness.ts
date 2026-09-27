@@ -43,7 +43,7 @@ export function citationReadiness(page: FixturePage, origin: string): {
 } {
 	const canonical = linkHref(page.html, 'canonical');
 	const expected = `${origin}${page.path}`;
-	const summary = visibleText(page.html);
+	const summary = evidenceSummary(page.html);
 	const refresh = metaContent(page.html, 'revised') || timeDatetime(page.html);
 	const sources = visibleSources(page.html);
 	const checks: CitationCheck[] = [
@@ -55,7 +55,7 @@ export function citationReadiness(page: FixturePage, origin: string): {
 		{
 			id: 'evidence-clarity',
 			ok: summary.length >= 40,
-			detail: 'The evidence summary is in the server-rendered HTML.',
+			detail: 'The data-evidence-summary element is server-rendered and long enough to cite.',
 		},
 		{
 			id: 'freshness',
@@ -170,13 +170,12 @@ function canonicalCount(html: string): number {
 	return (html.match(/rel="canonical"/g) || []).length;
 }
 
-function visibleText(html: string): string {
-	return html
-		.replace(/<script[\s\S]*?<\/script>/gi, ' ')
-		.replace(/<style[\s\S]*?<\/style>/gi, ' ')
-		.replace(/<[^>]+>/g, ' ')
-		.replace(/\s+/g, ' ')
-		.trim();
+/** The only evidence summary this audit measures. A long body is not a summary. */
+function evidenceSummary(html: string): string {
+	const rendered = html.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<style[\s\S]*?<\/style>/gi, '');
+	const match = rendered.match(/<([a-z0-9]+)[^>]*\bdata-evidence-summary\b[^>]*>([\s\S]*?)<\/\1>/i);
+	if (!match) return '';
+	return match[2].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
 function visibleSources(html: string): Array<{ title: string; url: string }> {
