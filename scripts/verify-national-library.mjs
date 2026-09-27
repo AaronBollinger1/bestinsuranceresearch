@@ -17,6 +17,7 @@ import {
 	US_JURISDICTIONS,
 	buildNationalLibrary,
 	isMajorCompany,
+	qualityGate,
 	pageContract,
 	schemaIsAllowed,
 } from '../src/lib/national-library.ts';
@@ -51,6 +52,23 @@ test('registries, templates, and the state-plus-DC matrix are measurable', () =>
 	assert.ok(!library.matrix.gaps.some((gap) => gap.code === 'availability' && gap.jurisdiction === 'CA' && gap.coverage === 'homeowners'));
 	assert.ok(library.matrix.gaps.some((gap) => gap.code === 'regulator' && gap.jurisdiction === 'NY'));
 	assert.ok(!library.matrix.gaps.some((gap) => gap.code === 'regulator' && gap.jurisdiction === 'DC'));
+});
+
+test('a candidate with a name and no summary is rejected without throwing', () => {
+	const malformed = {
+		id: 'fixture-missing-summary',
+		kind: 'company',
+		name: 'Fixture Missing Summary',
+		effectiveDate: '2026-01-01',
+		refreshOwner: 'fixture-library-editor',
+		sources: [{ id: 'src-missing-summary', title: 'Fixture source', publisher: 'Fixture Library', url: 'https://fixture.invalid/library/missing-summary' }],
+		status: 'current',
+	};
+	const problems = qualityGate(malformed, new Set());
+	assert.ok(problems.some((problem) => problem.id === 'fixture-missing-summary' && /summary/.test(problem.problem)));
+	const library = buildNationalLibrary({ ...fixture, records: [...fixture.records, malformed] });
+	assert.ok(library.rejected.some((problem) => problem.id === 'fixture-missing-summary'));
+	assert.ok(!library.accepted.some((record) => record.id === 'fixture-missing-summary'));
 });
 
 test('major-company scope is the current criterion, and history stays linked', () => {

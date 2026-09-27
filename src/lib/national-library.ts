@@ -133,7 +133,8 @@ export function qualityGate(record: LibraryRecord, seen: ReadonlySet<string>): G
 	if (!SLUG.test(record.id)) problems.push('id is not a slug');
 	if (seen.has(record.id)) problems.push('duplicate id');
 	if (!(LIBRARY_KINDS as readonly string[]).includes(record.kind)) problems.push(`unknown kind ${record.kind}`);
-	if (!record.name?.trim() || record.summary.trim().length < 40) problems.push('name or summary is missing');
+	const summary = typeof record.summary === 'string' ? record.summary.trim() : '';
+	if (!record.name?.trim() || summary.length < 40) problems.push('name or summary is missing');
 	if (!ISO_DATE.test(record.effectiveDate)) problems.push('effective date is missing');
 	if (!record.refreshOwner?.trim()) problems.push('refresh owner is missing');
 	problems.push(...sourceProblems(record));
