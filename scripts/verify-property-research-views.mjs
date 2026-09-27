@@ -93,6 +93,32 @@ test('every view state is accessible, noindex, and the layout follows the viewpo
 	assert.equal(layoutAt(1279), 'split');
 	assert.equal(layoutAt(1280), 'wide');
 	assert.equal(layoutAt(1920), 'wide');
+	const payload = '<img src=x onerror="alert(1)"><script>secret-record</script>';
+	const marked = presentResearchView({
+		role: 'property',
+		action: 'view-property',
+		state: 'conflict',
+		title: payload,
+		conflict: { left: payload, right: 'Later deadline.' },
+	});
+	assert.equal(/<img\b/i.test(marked.html), false);
+	assert.equal(marked.html.includes('<script'), false);
+	assert.match(marked.html, /&lt;img/);
+	assert.match(marked.html, /&lt;script&gt;/);
+	const hidden = presentResearchView({
+		role: 'location',
+		action: 'view-evidence',
+		state: 'conflict',
+		title: 'Policy number ABC-123 for Fixture Mutual',
+		conflict: { left: 'Policy number ABC-123 stays on the first reading.', right: payload },
+	});
+	assert.equal(hidden.state, 'permission');
+	assert.match(hidden.html, /<title>Permission required<\/title>/);
+	assert.match(hidden.html, /<h1>Permission required<\/h1>/);
+	assert.ok(!hidden.html.includes('ABC-123'));
+	assert.ok(!hidden.html.includes('Fixture Mutual'));
+	assert.ok(!hidden.html.includes('<script>'));
+	assert.ok(!hidden.html.includes('onerror'));
 	const ready = presentResearchView({ role: 'organization', action: 'view-organization', state: 'ready', title: 'Fixture organization' });
 	assert.match(ready.html, /min-width: 768px/);
 	assert.match(ready.html, /min-width: 1280px/);

@@ -58,6 +58,15 @@ export function layoutAt(width: number): 'stack' | 'split' | 'wide' {
 	return 'wide';
 }
 
+function escapeHtml(value: string): string {
+	return value
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#39;');
+}
+
 export function presentResearchView(input: {
 	role: ViewRole;
 	action: ViewAction;
@@ -67,6 +76,9 @@ export function presentResearchView(input: {
 }): { html: string; indexable: false; state: ResearchViewState } {
 	const gate = can(input.role, input.action);
 	const state = gate.allowed ? input.state : 'permission';
+	const title = state === 'permission' ? 'Permission required' : escapeHtml(input.title);
+	const left = escapeHtml(input.conflict?.left ?? '');
+	const right = escapeHtml(input.conflict?.right ?? '');
 	const body = state === 'loading'
 		? '<p role="status">Loading the fixture portfolio.</p>'
 		: state === 'error'
@@ -78,21 +90,21 @@ export function presentResearchView(input: {
 					: state === 'review'
 						? '<p role="status">This view is in review and is not published.</p>'
 						: state === 'permission'
-							? `<p role="status">${gate.reason}</p>`
+							? `<p role="status">${escapeHtml(gate.reason)}</p>`
 							: state === 'conflict'
-								? `<section aria-label="First reading"><p>${input.conflict?.left ?? ''}</p></section><section aria-label="Second reading"><p>${input.conflict?.right ?? ''}</p></section>`
+								? `<section aria-label="First reading"><p>${left}</p></section><section aria-label="Second reading"><p>${right}</p></section>`
 								: '<p>Commercial property and liability are the lines in this fixture view.</p>';
 	const html = `<!doctype html><html lang="en"><head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>${input.title}</title>
+<title>${title}</title>
 <style>
 .view { display: block; }
 @media (min-width: 768px) { .view { display: grid; grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1280px) { .view { grid-template-columns: 16rem 1fr 20rem; } }
 </style>
 </head><body><main class="view" data-state="${state}">
-<h1>${input.title}</h1>
+<h1>${title}</h1>
 ${body}
 </main></body></html>`;
 	return { html, indexable: false, state };
