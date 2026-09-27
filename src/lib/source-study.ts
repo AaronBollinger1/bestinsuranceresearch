@@ -270,6 +270,17 @@ export interface ClaimStudySnapshot {
 	highStakes: boolean;
 	/** True only when a licensed-reviewer actor recorded a review event. */
 	licensedReviewRecorded: boolean;
+	/**
+	 * True from `stale-marked` until `refreshed`, and cleared by NOTHING else -
+	 * not narrowing, not conflict events, not a dispute. Staleness, like high
+	 * stakes, is a fact about the claim's supporting reading rather than about
+	 * where the fold happens to be standing: the first version kept it only in
+	 * `state`, which `narrowed` and `conflict-resolved` overwrite, so a stale
+	 * claim could be confirmed and made eligible without the re-read the rule
+	 * requires (independent Claude review, 2026-09-26, P2 - the same
+	 * laundering shape as the BR-B P1).
+	 */
+	staleSinceRefresh: boolean;
 	supporting: string[];
 	conflicts: ClaimConflict[];
 	superseded: boolean;
@@ -288,6 +299,7 @@ export function emptyClaimStudy(): ClaimStudySnapshot {
 		state: 'review-required',
 		highStakes: false,
 		licensedReviewRecorded: false,
+		staleSinceRefresh: false,
 		supporting: [],
 		conflicts: [],
 		superseded: false,
@@ -392,7 +404,9 @@ export function applyClaimEvent(snapshot: ClaimStudySnapshot, event: ClaimEvent)
 			if (next.conflicts.some((c) => !c.resolution)) {
 				return refuse(snapshot, event, 'unresolved conflicts stand; confirming over them would average a disagreement away');
 			}
-			if (next.state === 'stale') return refuse(snapshot, event, 'a stale claim must be refreshed and re-read before re-confirmation');
+			/* Held against the persistent fact, not against `state`: narrowing or
+			   resolving a conflict overwrites the state, and neither is a re-read. */
+			if (next.staleSinceRefresh) return refuse(snapshot, event, 'a stale claim must be refreshed and re-read before re-confirmation');
 			next.state = 'confirmed';
 			break;
 		}
@@ -409,11 +423,14 @@ export function applyClaimEvent(snapshot: ClaimStudySnapshot, event: ClaimEvent)
 		}
 		case 'stale-marked': {
 			next.state = 'stale';
+			next.staleSinceRefresh = true;
 			break;
 		}
 		case 'refreshed': {
-			if (next.state !== 'stale') return refuse(snapshot, event, 'only a stale claim is refreshed');
-			/* Re-reading reopens review; it never restores confirmed. */
+			if (!next.staleSinceRefresh) return refuse(snapshot, event, 'only a stale claim is refreshed');
+			/* Re-reading reopens review; it never restores confirmed. This is the
+			   ONLY event that clears the staleness fact. */
+			next.staleSinceRefresh = false;
 			next.state = 'review-required';
 			break;
 		}
@@ -471,7 +488,9 @@ export function publicationEligibility(
 	for (const conflict of snapshot.conflicts) {
 		if (!conflict.resolution) blockers.push(`unresolved conflict between ${conflict.between[0]} and ${conflict.between[1]}`);
 	}
-	if (snapshot.state === 'stale') blockers.push('the supporting reading is stale and must be refreshed and re-confirmed');
+	/* The persistent fact, not the state: a walk that overwrote `state` after
+	   stale-marked without a refresh is exactly what this must catch. */
+	if (snapshot.staleSinceRefresh) blockers.push('the supporting reading is stale and must be refreshed and re-confirmed');
 	if (snapshot.state !== 'confirmed') blockers.push(`the claim is ${snapshot.state}, not confirmed`);
 	if (snapshot.highStakes && !snapshot.licensedReviewRecorded) {
 		blockers.push('high-stakes claims require a recorded licensed review, and none exists');

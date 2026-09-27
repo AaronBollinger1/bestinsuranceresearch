@@ -261,6 +261,80 @@ test('NEGATIVE: a conflict cannot be resolved by deletion, twice, or without say
 	assert.ok(again.problems.some((p) => /already resolved/.test(p.problem)), 'a recorded resolution was overwritten');
 });
 
+test('staleness is a fact cleared only by a refresh - neither reproduced laundering walk can confirm', () => {
+	/*
+	 * The two walks the independent Claude review reproduced on 2026-09-26
+	 * (P2): both overwrite `state` after stale-marked without any re-read, and
+	 * before the correction both reached confirmed and full eligibility. The
+	 * fact `staleSinceRefresh` now survives them, the confirm is refused by
+	 * name, and eligibility blocks on the fact - while the ordinary
+	 * stale -> refreshed -> re-confirmed path still succeeds (the stale.json
+	 * fixture, re-asserted here at its stale point).
+	 */
+	const base = [
+		{ id: 'sl1', kind: 'opened', at: at(0), actor: 'editor', note: 'Opened for the staleness-laundering controls.', claimRef: 'fixture-src-x#c1', text: 'A fixture proposition for the staleness controls.', stakes: 'standard', synthetic: true },
+		{ id: 'sl2', kind: 'support-added', at: at(1), actor: 'editor', note: 'One supporting source attached.', sourceId: 'fixture-src-x', synthetic: true },
+		{ id: 'sl3', kind: 'stale-marked', at: at(2), actor: 'system', note: 'The fixture policy says the supporting reading is too old to rely on.', synthetic: true },
+	];
+	const known = new Set(['fixture-src-x', 'fixture-src-y']);
+
+	/* Walk A: stale-marked -> narrowed -> confirmed. */
+	const walkA = reduceClaimStudy([
+		...base,
+		{ id: 'sla4', kind: 'narrowed', at: at(3), actor: 'editor', note: 'Narrowed to the renewal case only.', text: 'A narrowed fixture proposition.', synthetic: true },
+		{ id: 'sla5', kind: 'confirmed', at: at(4), actor: 'editor', note: 'Confirming after narrowing, without any re-read.', synthetic: true },
+	]);
+	assert.notEqual(walkA.state, 'confirmed', 'walk A (narrowed) still launders staleness into confirmed');
+	assert.ok(walkA.problems.some((p) => p.eventId === 'sla5' && /refreshed and re-read/.test(p.problem)), 'walk A confirm was not refused by name');
+	assert.equal(walkA.staleSinceRefresh, true, 'walk A cleared the staleness fact without a refresh');
+	const verdictA = publicationEligibility(walkA, { knownSourceIds: known });
+	assert.equal(verdictA.eligible, false);
+	assert.ok(verdictA.blockers.some((b) => /stale and must be refreshed/.test(b)), 'walk A eligibility lost the staleness blocker');
+
+	/* Walk B: stale-marked -> conflict-recorded -> conflict-resolved -> confirmed. */
+	const walkB = reduceClaimStudy([
+		...base,
+		{ id: 'slb4', kind: 'conflict-recorded', at: at(3), actor: 'editor', note: 'A second source disagrees about the proposition.', between: ['fixture-src-x', 'fixture-src-y'], synthetic: true },
+		{ id: 'slb5', kind: 'conflict-resolved', at: at(4), actor: 'editor', note: 'The first source supersedes the second by its own terms.', between: ['fixture-src-x', 'fixture-src-y'], resolutionHow: 'superseded', synthetic: true },
+		{ id: 'slb6', kind: 'confirmed', at: at(5), actor: 'editor', note: 'Confirming after the resolution, without any re-read.', synthetic: true },
+	]);
+	assert.notEqual(walkB.state, 'confirmed', 'walk B (conflict-resolved) still launders staleness into confirmed');
+	assert.ok(walkB.problems.some((p) => p.eventId === 'slb6' && /refreshed and re-read/.test(p.problem)), 'walk B confirm was not refused by name');
+	assert.equal(walkB.staleSinceRefresh, true, 'walk B cleared the staleness fact without a refresh');
+	const verdictB = publicationEligibility(walkB, { knownSourceIds: known });
+	assert.equal(verdictB.eligible, false);
+	assert.ok(verdictB.blockers.some((b) => /stale and must be refreshed/.test(b)), 'walk B eligibility lost the staleness blocker');
+
+	/* The fact holds at every fold point from stale-marked until refreshed,
+	   through both laundering shapes, and is false before the marking. */
+	const throughBoth = [
+		...base,
+		{ id: 'slc4', kind: 'narrowed', at: at(3), actor: 'editor', note: 'Narrowed while stale.', text: 'A narrowed fixture proposition.', synthetic: true },
+		{ id: 'slc5', kind: 'conflict-recorded', at: at(4), actor: 'editor', note: 'A disagreement recorded while stale.', between: ['fixture-src-x', 'fixture-src-y'], synthetic: true },
+		{ id: 'slc6', kind: 'conflict-resolved', at: at(5), actor: 'editor', note: 'Resolved by supersession while stale.', between: ['fixture-src-x', 'fixture-src-y'], resolutionHow: 'superseded', synthetic: true },
+		{ id: 'slc7', kind: 'refreshed', at: at(6), actor: 'editor', note: 'The source was re-read at last.', synthetic: true },
+	];
+	assert.equal(reduceClaimStudy(throughBoth.slice(0, 2)).staleSinceRefresh, false, 'the fact pre-dates the marking, so it asserts nothing');
+	for (let upTo = 3; upTo < throughBoth.length; upTo += 1) {
+		assert.equal(reduceClaimStudy(throughBoth.slice(0, upTo)).staleSinceRefresh, true, `the staleness fact vanished after event ${upTo}`);
+	}
+	const refreshedAtLast = reduceClaimStudy(throughBoth);
+	assert.deepEqual(refreshedAtLast.problems, []);
+	assert.equal(refreshedAtLast.staleSinceRefresh, false, 'a genuine refresh must clear the fact');
+	assert.equal(refreshedAtLast.state, 'review-required', 'a refresh reopens review; it never restores confirmed');
+
+	/* And the ordinary path still works: stale -> refreshed -> re-confirmed. */
+	const ordinary = reduceClaimStudy([
+		...base,
+		{ id: 'sld4', kind: 'refreshed', at: at(3), actor: 'editor', note: 'The source was re-read.', synthetic: true },
+		{ id: 'sld5', kind: 'confirmed', at: at(4), actor: 'editor', note: 'Re-confirmed against the re-read source.', synthetic: true },
+	]);
+	assert.deepEqual(ordinary.problems, []);
+	assert.equal(ordinary.state, 'confirmed');
+	assert.equal(publicationEligibility(ordinary, { knownSourceIds: known }).eligible, true, 'the honest refresh path regressed');
+	assert.ok(reduceClaimStudy(base.slice(0, 2)).problems.length === 0 && applyClaimEvent(reduceClaimStudy(base.slice(0, 2)), { id: 'sld6', kind: 'refreshed', at: at(2), actor: 'editor', note: 'Refreshing a claim that was never stale.', synthetic: true }).problems.some((p) => /only a stale claim is refreshed/.test(p.problem)), 'a never-stale claim accepted a refresh');
+});
+
 test('high stakes is declared at opening, never inferred, and never laundered away', () => {
 	/* The BR-B-P1-shaped walk, restated for claims: a high-stakes claim runs
 	   through dispute, resolution, staleness, refresh, narrowing, and
