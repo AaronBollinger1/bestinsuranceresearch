@@ -202,6 +202,15 @@ export interface RunSnapshot {
 	awaitingHuman: boolean;
 	/** True while the run waits on a real licensed reviewer specifically. */
 	awaitingLicensedReview: boolean;
+	/**
+	 * True once the run has EVER entered licensed-review-required, and never
+	 * cleared afterwards - not by blocked, not by failure, not by a requeue.
+	 * The requirement is a fact about the run's content, not about where the
+	 * run happens to be standing, so leaving the waiting state through an
+	 * interruption cannot launder it away. Every later approval is held
+	 * against this flag (independent Grok 4.7 review, 2026-09-26, P1).
+	 */
+	licensedReviewEverRequired: boolean;
 	canResume: boolean;
 	canCancel: boolean;
 	canRetry: boolean;
@@ -222,6 +231,7 @@ export function emptyRun(): RunSnapshot {
 		terminal: false,
 		awaitingHuman: false,
 		awaitingLicensedReview: false,
+		licensedReviewEverRequired: false,
 		canResume: false,
 		canCancel: false,
 		canRetry: false,
@@ -277,12 +287,18 @@ export function applyEvent(snapshot: RunSnapshot, event: RunEvent): RunSnapshot 
 	}
 
 	/*
-	 * The licensed gate. Once a run has required licensed review, only a
-	 * licensed reviewer's own event may approve it. No system, editor, or
-	 * reader actor can stand in - which is the same rule the layer model
-	 * enforces on records, restated for runs.
+	 * The licensed gate. Once a run has EVER required licensed review, only a
+	 * licensed reviewer's own event may approve it - on any later path, not
+	 * only the direct one. The first version of this guard checked the
+	 * immediate predecessor state, so a run could leave the waiting state
+	 * through `blocked`, requeue, and be approved by an editor; the
+	 * independent review reproduced exactly that walk (P1, 2026-09-26). The
+	 * requirement is therefore carried as a never-cleared fact on the
+	 * snapshot, which the fold recomputes from the whole log on every replay
+	 * and reset - the same rule the layer model enforces on records, restated
+	 * for runs.
 	 */
-	if (event.state === 'approved' && from === 'licensed-review-required' && event.actor !== 'licensed-reviewer') {
+	if (event.state === 'approved' && snapshot.licensedReviewEverRequired && event.actor !== 'licensed-reviewer') {
 		return refuse(snapshot, event, `only a licensed reviewer may approve a run that required licensed review; got actor ${event.actor}`);
 	}
 
@@ -307,6 +323,8 @@ export function applyEvent(snapshot: RunSnapshot, event: RunEvent): RunSnapshot 
 		terminal: TERMINAL_STATES.has(event.state),
 		awaitingHuman: state === 'human-review' || state === 'licensed-review-required' || state === 'conflict-found',
 		awaitingLicensedReview: state === 'licensed-review-required',
+		/* Set once, never cleared: blocked, failed and requeued paths all keep it. */
+		licensedReviewEverRequired: snapshot.licensedReviewEverRequired || event.state === 'licensed-review-required',
 		canResume: RESUMABLE_STATES.has(event.state),
 		canCancel: CANCELLABLE_STATES.has(state) && !TERMINAL_STATES.has(event.state),
 		canRetry: RETRYABLE_STATES.has(event.state),

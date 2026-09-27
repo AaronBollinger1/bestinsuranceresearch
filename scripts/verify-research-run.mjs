@@ -255,6 +255,64 @@ test('only a licensed reviewer can approve a run that required licensed review',
 	assert.equal(licensed.state, 'approved');
 });
 
+test('the licensed requirement survives blocked, requeue, and reset - the reproduced P1 walk cannot approve', () => {
+	/*
+	 * The exact twelve-event sequence the independent Grok 4.7 review
+	 * reproduced on 2026-09-26: a run enters licensed-review-required, leaves
+	 * it through blocked, requeues, walks the pipeline again to ready, and an
+	 * EDITOR approves. Before the correction this folded to state "approved"
+	 * with zero problems. It must never do so again: the requirement is a
+	 * fact about the run, and no path out of the waiting state clears it.
+	 */
+	const at = (m) => `2026-09-26T18:${String(m).padStart(2, '0')}:00.000Z`;
+	const walk = (i, state, actor, note) => ({ id: `p1-${i}`, state, at: at(i), actor, note, synthetic: true });
+	const events = [
+		walk(1, 'queued', 'system', 'Run recorded for the reproduced P1 sequence.'),
+		walk(2, 'birch-retrieval', 'system', 'Approved Birch evidence retrieved first.'),
+		walk(3, 'claim-mapping', 'system', 'Claims mapped from sufficient Birch evidence.'),
+		walk(4, 'human-review', 'editor', 'A fixture editor read the mapped claims.'),
+		walk(5, 'licensed-review-required', 'editor', 'High-stakes language; only a licensed human may approve.'),
+		walk(6, 'blocked', 'editor', 'Blocked while waiting; the requirement does not go away.'),
+		walk(7, 'queued', 'system', 'Requeued with history kept.'),
+		walk(8, 'birch-retrieval', 'system', 'Evidence retrieved again on the requeued pass.'),
+		walk(9, 'claim-mapping', 'system', 'Claims mapped again.'),
+		walk(10, 'human-review', 'editor', 'Editorial review on the requeued pass.'),
+		walk(11, 'ready', 'editor', 'Staged as ready on the requeued pass.'),
+		walk(12, 'approved', 'editor', 'An editor attempting to approve after the requeue laundered the waiting state.'),
+	];
+	const snapshot = reduceRun(events);
+	assert.notEqual(snapshot.state, 'approved', 'the reproduced P1 walk still reaches approved');
+	assert.equal(snapshot.state, 'ready', 'the refused approval moved the run somewhere unexpected');
+	assert.equal(snapshot.licensedReviewEverRequired, true, 'the requirement was cleared by the blocked/requeue path');
+	assert.ok(
+		snapshot.problems.some((p) => p.eventId === 'p1-12' && /only a licensed reviewer/.test(p.problem)),
+		'the editor approval after requeue was not refused by name',
+	);
+
+	/* The flag persists at every point after event 5, including through
+	   blocked and the requeue, and a reset (re-folding from empty) recomputes
+	   it from the log rather than trusting anything stored. */
+	for (let upTo = 5; upTo <= events.length; upTo += 1) {
+		const prefix = reduceRun(events.slice(0, upTo));
+		assert.equal(prefix.licensedReviewEverRequired, true, `the requirement vanished after event ${upTo}`);
+	}
+	assert.equal(reduceRun(events.slice(0, 4)).licensedReviewEverRequired, false, 'the flag pre-dates the requirement, so it asserts nothing');
+
+	/* The gate still opens for the right actor on the same walk - in-test
+	   only, never in a rendered fixture. */
+	const licensed = applyEvent(reduceRun(events.slice(0, 11)), {
+		id: 'p1-12-licensed', state: 'approved', at: at(12), actor: 'licensed-reviewer',
+		note: 'Synthetic licensed-reviewer event, in-test only, proving the persistent gate opens for the right actor.', synthetic: true,
+	});
+	assert.equal(licensed.state, 'approved');
+	assert.deepEqual(licensed.problems, [], 'the licensed reviewer was refused on the requeued path');
+
+	/* A run that never required licensed review is untouched by this guard. */
+	const ordinary = reduceRun(fixtures.find((f) => f.name === 'success.json').events);
+	assert.equal(ordinary.licensedReviewEverRequired, false);
+	assert.equal(ordinary.state, 'refresh-due', 'the success path regressed');
+});
+
 test('no rendered fixture carries an approval past the licensed gate', () => {
 	/* The in-test control above is the only place a licensed approval may
 	   exist. A fixture is rendered on a page, so a licensed-reviewer approval
