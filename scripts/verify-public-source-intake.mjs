@@ -128,14 +128,39 @@ test('contradictions stay visible, review does not publish, and withdrawal keeps
 	const book = createIntakeBook([source()]);
 	poll(book);
 	const first = book.drafts[0];
-	poll(book, { now: LATER }, [item({
+	const later = poll(book, { now: LATER }, [item({
+		retrievedAt: LATER,
+		effectiveDate: '2026-09-15',
+		uncertainty: 'The later bulletin does not say whether the old deadline still applies.',
+		text: 'A later fixture bulletin uses different wording about the same deadline.',
+		reportedFact: 'The later bulletin moves the deadline.',
+		analysis: 'Birch treats the later date as a successor, not as a replacement of the first report.',
+		canonicalUrl: first.canonicalUrl,
+	})]);
+	assert.equal(later.drafts.length, 1);
+	const second = later.drafts[0];
+	assert.equal(first.status, 'superseded');
+	assert.equal(first.supersededBy, second.id);
+	assert.equal(first.reportedFact, 'The fixture bulletin sets a delivery deadline.');
+	assert.equal(first.indexable, false);
+	assert.equal(second.indexable, false);
+	assert.equal(second.status, 'noindex-draft');
+	assert.equal(second.reportedFact, 'The later bulletin moves the deadline.');
+	assert.equal(second.analysis, 'Birch treats the later date as a successor, not as a replacement of the first report.');
+	assert.equal(second.effectiveDate, '2026-09-15');
+	assert.equal(second.retrievedAt, LATER);
+	assert.equal(second.uncertainty, 'The later bulletin does not say whether the old deadline still applies.');
+	assert.equal(second.provenance.retrievedAt, LATER);
+	assert.equal(second.provenance.url, first.canonicalUrl);
+	assert.ok(second.conflicts.includes(first.id));
+	assert.equal(book.snapshots.at(-1).bytesRetained, 0);
+	assert.ok(!JSON.stringify(book).includes('different wording about the same deadline'));
+	assert.equal(poll(book, { now: LATER }, [item({
 		retrievedAt: LATER,
 		text: 'A later fixture bulletin uses different wording about the same deadline.',
 		reportedFact: 'The later bulletin moves the deadline.',
 		canonicalUrl: first.canonicalUrl,
-	})]);
-	assert.ok(first.conflicts.length > 0);
-	assert.equal(first.reportedFact, 'The fixture bulletin sets a delivery deadline.');
+	})]).drafts.length, 0);
 	assert.equal(reviewDraft(book, { draftId: first.id, at: LATER, action: 'dispute', name: 'Fixture Contributor', note: 'The deadline reading is contested.' }).ok, true);
 	assert.equal(reviewDraft(book, { draftId: first.id, at: LATER, action: 'validate', name: 'Fixture Contributor', note: 'Validated with the dispute still attached.' }).ok, true);
 	assert.equal(first.reviews.length, 2);

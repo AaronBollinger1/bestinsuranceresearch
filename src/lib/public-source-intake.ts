@@ -179,24 +179,19 @@ export function pollIntake(book: IntakeBook, input: {
 			continue;
 		}
 		const hash = contentHash(item.text);
-		const duplicate = book.snapshots.some((snapshot) => snapshot.hash === hash || snapshot.canonicalUrl === item.canonicalUrl);
+		const exact = book.snapshots.some((snapshot) => snapshot.hash === hash);
+		const changedAtSameUrl = !exact && book.snapshots.some((snapshot) => snapshot.canonicalUrl === item.canonicalUrl);
 		book.snapshots.push({
 			sourceId: source.id,
 			canonicalUrl: item.canonicalUrl,
 			hash,
 			retrievedAt: item.retrievedAt,
 			title: item.title,
-			bytesRetained: duplicate ? 0 : Math.min(item.text.length, 180),
+			bytesRetained: exact || changedAtSameUrl ? 0 : Math.min(item.text.length, 180),
 			removed: false,
 		});
-		if (duplicate) {
-			const prior = book.drafts.find((draft) => draft.canonicalUrl === item.canonicalUrl && draft.status !== 'withdrawn');
-			if (prior && prior.reportedFact !== item.reportedFact.trim()) {
-				prior.conflicts.push(`again:${hash}`);
-				book.events.push({ at: input.now, action: 'conflict', detail: `${prior.id} stays visible. The later report was not copied over it.` });
-			} else {
-				book.events.push({ at: input.now, action: 'duplicate', detail: `${item.canonicalUrl} remains visible and was not overwritten.` });
-			}
+		if (exact) {
+			book.events.push({ at: input.now, action: 'duplicate', detail: `${item.canonicalUrl} remains visible and was not overwritten.` });
 			continue;
 		}
 		if (copiesSource(item.reportedFact, item.text) || copiesSource(item.analysis, item.text)) {
