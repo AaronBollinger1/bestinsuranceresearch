@@ -87,10 +87,15 @@ test('evidence metadata drops sensitive titles and refuses identifier-bearing UR
 	const ordinary = attachEvidence(opened.record, { id: 'ev-ok', title: 'Fixture notice', url: 'https://fixture.invalid/notice', at: AT });
 	assert.equal(ordinary.evidence[0].url, 'https://fixture.invalid/notice');
 	assert.equal(ordinary.evidence[0].title, 'Fixture notice');
+	const handbook = attachEvidence(opened.record, { id: 'ev-handbook', title: 'Fixture claims overview', url: 'https://fixture.invalid/claims/overview', at: AT });
+	assert.equal(handbook.evidence[0].url, 'https://fixture.invalid/claims/overview');
 	for (const url of [
 		'https://user:secret@fixture.invalid/notice',
 		'https://fixture.invalid/notice?claim=ABC-123',
 		'https://fixture.invalid/notice#policy-ABC-123',
+		'https://fixture.invalid/claim/ABC-123',
+		'https://fixture.invalid/policy-number/ABC-123',
+		'https://fixture.invalid/claim/ABC%2D123',
 	]) {
 		const refused = attachEvidence(opened.record, { id: 'ev-bad', title: 'Fixture notice', url, at: AT });
 		assert.equal(refused.evidence.length, opened.record.evidence.length);

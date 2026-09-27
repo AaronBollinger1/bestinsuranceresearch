@@ -110,6 +110,17 @@ export function submitExperience(book: ExperienceBook, input: {
 	return { ok: true, state: record.state, record };
 }
 
+function pathHasIdentifier(pathname: string): boolean {
+	let decoded: string;
+	try {
+		decoded = decodeURIComponent(pathname);
+	} catch {
+		return true;
+	}
+	if (/\b\d{3}-\d{2}-\d{4}\b/.test(decoded)) return true;
+	return /(?:^|\/)(?:claim|policy)(?:[-_]?(?:number|no|id))?(?:\/|[-_])(?=[^/]*\d)[^/]+/i.test(decoded);
+}
+
 function evidenceUrl(raw: string): string | null {
 	let url: URL;
 	try {
@@ -117,13 +128,13 @@ function evidenceUrl(raw: string): string | null {
 	} catch {
 		return null;
 	}
-	if (url.protocol !== 'https:' || url.username || url.password || url.search || url.hash) return null;
+	if (url.protocol !== 'https:' || url.username || url.password || url.search || url.hash || pathHasIdentifier(url.pathname)) return null;
 	return url.toString();
 }
 
 export function attachEvidence(record: ExperienceRecord, input: { id: string; title: string; url: string; at: string }): ExperienceRecord & { problem?: string } {
 	const url = evidenceUrl(input.url);
-	if (!url) return { ...record, problem: 'Evidence needs a public https URL without credentials, a query, or a fragment.' };
+	if (!url) return { ...record, problem: 'Evidence needs a public https URL without credentials, a query, a fragment, or a claim or policy identifier in the path.' };
 	const title = redact(input.title).text.trim();
 	if (!title || SENSITIVE.test(title)) return { ...record, problem: 'Evidence title cannot keep a sensitive identifier.' };
 	return {
