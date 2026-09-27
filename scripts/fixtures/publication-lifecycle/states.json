@@ -1,0 +1,7 @@
+{
+	"_fixture": "The BR-C3 publication states and the indexing rule the contract must keep. Evidence lives in the BR-C2 fixtures; this file does not contain answer prose.",
+	"_why": "The state list is the lifecycle. Unreviewed and non-current states stay noindex and out of the sitemap. published and corrected are the only states that can be indexed, and only when the contract is explicitly opened.",
+	"states": ["draft", "under-review", "approved", "published", "corrected", "superseded", "stale", "withdrawn"],
+	"indexableStates": ["published", "corrected"],
+	"publicPathPrefix": "/answers/"
+}
