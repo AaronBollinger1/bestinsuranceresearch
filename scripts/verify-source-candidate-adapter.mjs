@@ -67,6 +67,7 @@ test('the adapter is off unless a caller opts in, and it has no network path', (
 	assert.equal(SOURCE_CANDIDATE_ADAPTER_ENABLED, false);
 	assert.deepEqual([...RESEARCH_DRAFT_GATES], ['citation', 'rights', 'freshness', 'editorial', 'licensed-review', 'conflict']);
 	assert.equal(research.status, 'research-required');
+	assert.equal(research.questionId, 'fixture-gadget-notice');
 	const dormant = run({ enabled: undefined, credential: 'super-secret-key' });
 	assert.equal(dormant.status, 'disabled');
 	assert.equal(dormant.draft, null);
@@ -104,12 +105,19 @@ test('privacy, security, cost, rate, outage, and malformed fixtures invent nothi
 });
 
 test('an unanswered question becomes a noindex candidate draft, and an answered one does not', () => {
-	assert.equal(run({ birchOutcome: answered }).status, 'answered');
-	assert.equal(run({ birchOutcome: review }).status, 'review-required');
+	assert.equal(run({ birchOutcome: answered, questionId: answered.questionId }).status, 'answered');
+	assert.equal(run({ birchOutcome: review, questionId: review.questionId }).status, 'review-required');
 	assert.equal(run({ questionId: 'missing-question' }).status, 'not-canonical');
 
 	const result = run();
 	assert.equal(result.status, 'draft');
+	assert.equal(result.draft.questionId, research.questionId);
+	const mismatch = run({ questionId: 'fixture-widget-rule-ca' });
+	assert.equal(mismatch.status, 'question-mismatch');
+	assert.equal(mismatch.draft, null);
+	assert.equal(mismatch.candidates.length, 0);
+	assert.ok(!JSON.stringify(mismatch).includes('$50'));
+	assert.ok(!JSON.stringify(mismatch).includes('fixture.invalid'));
 	assert.equal(result.candidates.length, 2, 'duplicate and off-allowlist URLs were not both dropped');
 	assert.deepEqual(result.candidates.map((candidate) => candidate.url).sort(), [
 		'https://fixture.invalid/bulletin',

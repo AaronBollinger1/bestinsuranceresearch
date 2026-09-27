@@ -126,7 +126,7 @@ export interface GateResult {
 }
 
 export type AdapterResult =
-	| { status: 'disabled' | 'security' | 'privacy' | 'not-canonical' | 'answered' | 'review-required' | 'rate-limited' | 'over-budget' | 'outage' | 'malformed' | 'no-candidates'; candidates: []; draft: null; reasons: string[] }
+	| { status: 'disabled' | 'security' | 'privacy' | 'not-canonical' | 'question-mismatch' | 'answered' | 'review-required' | 'rate-limited' | 'over-budget' | 'outage' | 'malformed' | 'no-candidates'; candidates: []; draft: null; reasons: string[] }
 	| { status: 'draft'; candidates: SourceCandidate[]; draft: ResearchDraft; reasons: string[] };
 
 const UNRECORDED_RIGHTS = {
@@ -175,6 +175,13 @@ export function considerSourceCandidates(input: {
 
 	const entry = input.registry.byId.get(input.questionId);
 	if (!entry) return closed('not-canonical', `${input.questionId} is not a canonical question.`);
+	/* Before any fixture is read or normalized. A research-required outcome
+	   names the question Birch actually evaluated. */
+	const outcomeQuestion = input.birchOutcome.questionId;
+	const composedQuestion = input.birchOutcome.status === 'composed' ? input.birchOutcome.answer.questionId : outcomeQuestion;
+	if (outcomeQuestion !== input.questionId || composedQuestion !== input.questionId) {
+		return closed('question-mismatch', `${outcomeQuestion} is the question Birch evaluated. It is not ${input.questionId}.`);
+	}
 	if (input.birchOutcome.status === 'composed') return closed('answered', 'Birch already has a composed answer. A provider candidate cannot replace it.');
 	if (input.birchOutcome.status === 'review-required') return closed('review-required', 'Birch has evidence that still needs review. The adapter does not fill that gap.');
 

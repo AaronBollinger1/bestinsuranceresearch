@@ -339,12 +339,15 @@ export interface ComposedAnswer {
 }
 
 export type CompositionOutcome =
-	| { status: 'composed'; answer: ComposedAnswer; gates: GateResult[] }
+	| { status: 'composed'; questionId: string; answer: ComposedAnswer; gates: GateResult[] }
 	| {
 			/** Honest states, never invented facts: research-required means no
 			 * evidence supports an answer yet; review-required means evidence
-			 * exists and a person or gate must act before anything composes. */
+			 * exists and a person or gate must act before anything composes.
+			 * questionId is the canonical question this outcome was composed
+			 * for. A later adapter must not attach it to a different question. */
 			status: 'research-required' | 'review-required';
+			questionId: string;
 			gates: GateResult[];
 			reasons: string[];
 			/** Why nothing was composed. Distinct from an answer's residual uncertainty. */
@@ -403,6 +406,7 @@ export function composeAnswer(assembly: AnswerAssembly, registry: QuestionRegist
 		const status = noEvidence ? 'research-required' : 'review-required';
 		return {
 			status,
+			questionId: assembly.questionId,
 			gates,
 			reasons: failed.flatMap((g) => g.reasons.map((r) => `${g.gate}: ${r}`)),
 			uncertainty: [
@@ -445,6 +449,7 @@ export function composeAnswer(assembly: AnswerAssembly, registry: QuestionRegist
 
 	return {
 		status: 'composed',
+		questionId: assembly.questionId,
 		gates,
 		answer: {
 			questionId: assembly.questionId,
