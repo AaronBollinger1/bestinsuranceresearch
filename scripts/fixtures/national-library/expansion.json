@@ -1,0 +1,582 @@
+{
+	"_fixture": "Quality-gated BR-R1 expansion. Synthetic. Gaps remain.",
+	"refreshOwner": "fixture-library-editor",
+	"records": [
+		{
+			"id": "fixture-state-ny",
+			"kind": "state",
+			"name": "New York",
+			"summary": "Fixture state record for New York. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-state-ny",
+					"title": "Fixture source for fixture-state-ny",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-state-ny"
+				}
+			],
+			"jurisdiction": "NY"
+		},
+		{
+			"id": "fixture-regulator-ny",
+			"kind": "regulator",
+			"name": "Fixture regulator for New York",
+			"summary": "Fixture regulator record for Fixture regulator for New York. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-regulator-ny",
+					"title": "Fixture source for fixture-regulator-ny",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-regulator-ny"
+				}
+			],
+			"jurisdiction": "NY"
+		},
+		{
+			"id": "rel-regulates-ny",
+			"kind": "relationship",
+			"name": "New York regulator relationship",
+			"summary": "Fixture relationship record for New York regulator relationship. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-regulates-ny",
+					"title": "Fixture source for rel-regulates-ny",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-regulates-ny"
+				}
+			],
+			"relation": "regulates",
+			"from": "fixture-regulator-ny",
+			"to": "NY"
+		},
+		{
+			"id": "rel-avail-ho-ny",
+			"kind": "relationship",
+			"name": "Homeowners availability candidate in New York",
+			"summary": "Fixture relationship record for Homeowners availability candidate in New York. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-avail-ho-ny",
+					"title": "Fixture source for rel-avail-ho-ny",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-avail-ho-ny"
+				}
+			],
+			"relation": "available-in",
+			"from": "homeowners",
+			"to": "NY"
+		},
+		{
+			"id": "fixture-state-il",
+			"kind": "state",
+			"name": "Illinois",
+			"summary": "Fixture state record for Illinois. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-state-il",
+					"title": "Fixture source for fixture-state-il",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-state-il"
+				}
+			],
+			"jurisdiction": "IL"
+		},
+		{
+			"id": "fixture-regulator-il",
+			"kind": "regulator",
+			"name": "Fixture regulator for Illinois",
+			"summary": "Fixture regulator record for Fixture regulator for Illinois. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-regulator-il",
+					"title": "Fixture source for fixture-regulator-il",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-regulator-il"
+				}
+			],
+			"jurisdiction": "IL"
+		},
+		{
+			"id": "rel-regulates-il",
+			"kind": "relationship",
+			"name": "Illinois regulator relationship",
+			"summary": "Fixture relationship record for Illinois regulator relationship. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-regulates-il",
+					"title": "Fixture source for rel-regulates-il",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-regulates-il"
+				}
+			],
+			"relation": "regulates",
+			"from": "fixture-regulator-il",
+			"to": "IL"
+		},
+		{
+			"id": "rel-avail-ho-il",
+			"kind": "relationship",
+			"name": "Homeowners availability candidate in Illinois",
+			"summary": "Fixture relationship record for Homeowners availability candidate in Illinois. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-avail-ho-il",
+					"title": "Fixture source for rel-avail-ho-il",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-avail-ho-il"
+				}
+			],
+			"relation": "available-in",
+			"from": "homeowners",
+			"to": "IL"
+		},
+		{
+			"id": "fixture-state-wa",
+			"kind": "state",
+			"name": "Washington",
+			"summary": "Fixture state record for Washington. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-state-wa",
+					"title": "Fixture source for fixture-state-wa",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-state-wa"
+				}
+			],
+			"jurisdiction": "WA"
+		},
+		{
+			"id": "fixture-regulator-wa",
+			"kind": "regulator",
+			"name": "Fixture regulator for Washington",
+			"summary": "Fixture regulator record for Fixture regulator for Washington. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-regulator-wa",
+					"title": "Fixture source for fixture-regulator-wa",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-regulator-wa"
+				}
+			],
+			"jurisdiction": "WA"
+		},
+		{
+			"id": "rel-regulates-wa",
+			"kind": "relationship",
+			"name": "Washington regulator relationship",
+			"summary": "Fixture relationship record for Washington regulator relationship. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-regulates-wa",
+					"title": "Fixture source for rel-regulates-wa",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-regulates-wa"
+				}
+			],
+			"relation": "regulates",
+			"from": "fixture-regulator-wa",
+			"to": "WA"
+		},
+		{
+			"id": "rel-avail-ho-wa",
+			"kind": "relationship",
+			"name": "Homeowners availability candidate in Washington",
+			"summary": "Fixture relationship record for Homeowners availability candidate in Washington. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-avail-ho-wa",
+					"title": "Fixture source for rel-avail-ho-wa",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-avail-ho-wa"
+				}
+			],
+			"relation": "available-in",
+			"from": "homeowners",
+			"to": "WA"
+		},
+		{
+			"id": "fixture-state-or",
+			"kind": "state",
+			"name": "Oregon",
+			"summary": "Fixture state record for Oregon. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-state-or",
+					"title": "Fixture source for fixture-state-or",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-state-or"
+				}
+			],
+			"jurisdiction": "OR"
+		},
+		{
+			"id": "fixture-regulator-or",
+			"kind": "regulator",
+			"name": "Fixture regulator for Oregon",
+			"summary": "Fixture regulator record for Fixture regulator for Oregon. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-regulator-or",
+					"title": "Fixture source for fixture-regulator-or",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-regulator-or"
+				}
+			],
+			"jurisdiction": "OR"
+		},
+		{
+			"id": "rel-regulates-or",
+			"kind": "relationship",
+			"name": "Oregon regulator relationship",
+			"summary": "Fixture relationship record for Oregon regulator relationship. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-regulates-or",
+					"title": "Fixture source for rel-regulates-or",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-regulates-or"
+				}
+			],
+			"relation": "regulates",
+			"from": "fixture-regulator-or",
+			"to": "OR"
+		},
+		{
+			"id": "rel-avail-ho-or",
+			"kind": "relationship",
+			"name": "Homeowners availability candidate in Oregon",
+			"summary": "Fixture relationship record for Homeowners availability candidate in Oregon. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-avail-ho-or",
+					"title": "Fixture source for rel-avail-ho-or",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-avail-ho-or"
+				}
+			],
+			"relation": "available-in",
+			"from": "homeowners",
+			"to": "OR"
+		},
+		{
+			"id": "fixture-state-az",
+			"kind": "state",
+			"name": "Arizona",
+			"summary": "Fixture state record for Arizona. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-state-az",
+					"title": "Fixture source for fixture-state-az",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-state-az"
+				}
+			],
+			"jurisdiction": "AZ"
+		},
+		{
+			"id": "fixture-regulator-az",
+			"kind": "regulator",
+			"name": "Fixture regulator for Arizona",
+			"summary": "Fixture regulator record for Fixture regulator for Arizona. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-regulator-az",
+					"title": "Fixture source for fixture-regulator-az",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-regulator-az"
+				}
+			],
+			"jurisdiction": "AZ"
+		},
+		{
+			"id": "rel-regulates-az",
+			"kind": "relationship",
+			"name": "Arizona regulator relationship",
+			"summary": "Fixture relationship record for Arizona regulator relationship. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-regulates-az",
+					"title": "Fixture source for rel-regulates-az",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-regulates-az"
+				}
+			],
+			"relation": "regulates",
+			"from": "fixture-regulator-az",
+			"to": "AZ"
+		},
+		{
+			"id": "rel-avail-ho-az",
+			"kind": "relationship",
+			"name": "Homeowners availability candidate in Arizona",
+			"summary": "Fixture relationship record for Homeowners availability candidate in Arizona. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-avail-ho-az",
+					"title": "Fixture source for rel-avail-ho-az",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-avail-ho-az"
+				}
+			],
+			"relation": "available-in",
+			"from": "homeowners",
+			"to": "AZ"
+		},
+		{
+			"id": "fixture-state-nv",
+			"kind": "state",
+			"name": "Nevada",
+			"summary": "Fixture state record for Nevada. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-state-nv",
+					"title": "Fixture source for fixture-state-nv",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-state-nv"
+				}
+			],
+			"jurisdiction": "NV"
+		},
+		{
+			"id": "fixture-regulator-nv",
+			"kind": "regulator",
+			"name": "Fixture regulator for Nevada",
+			"summary": "Fixture regulator record for Fixture regulator for Nevada. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-regulator-nv",
+					"title": "Fixture source for fixture-regulator-nv",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-regulator-nv"
+				}
+			],
+			"jurisdiction": "NV"
+		},
+		{
+			"id": "rel-regulates-nv",
+			"kind": "relationship",
+			"name": "Nevada regulator relationship",
+			"summary": "Fixture relationship record for Nevada regulator relationship. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-regulates-nv",
+					"title": "Fixture source for rel-regulates-nv",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-regulates-nv"
+				}
+			],
+			"relation": "regulates",
+			"from": "fixture-regulator-nv",
+			"to": "NV"
+		},
+		{
+			"id": "rel-avail-ho-nv",
+			"kind": "relationship",
+			"name": "Homeowners availability candidate in Nevada",
+			"summary": "Fixture relationship record for Homeowners availability candidate in Nevada. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-avail-ho-nv",
+					"title": "Fixture source for rel-avail-ho-nv",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-avail-ho-nv"
+				}
+			],
+			"relation": "available-in",
+			"from": "homeowners",
+			"to": "NV"
+		},
+		{
+			"id": "fixture-state-co",
+			"kind": "state",
+			"name": "Colorado",
+			"summary": "Fixture state record for Colorado. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-state-co",
+					"title": "Fixture source for fixture-state-co",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-state-co"
+				}
+			],
+			"jurisdiction": "CO"
+		},
+		{
+			"id": "fixture-regulator-co",
+			"kind": "regulator",
+			"name": "Fixture regulator for Colorado",
+			"summary": "Fixture regulator record for Fixture regulator for Colorado. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-regulator-co",
+					"title": "Fixture source for fixture-regulator-co",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-regulator-co"
+				}
+			],
+			"jurisdiction": "CO"
+		},
+		{
+			"id": "rel-regulates-co",
+			"kind": "relationship",
+			"name": "Colorado regulator relationship",
+			"summary": "Fixture relationship record for Colorado regulator relationship. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-regulates-co",
+					"title": "Fixture source for rel-regulates-co",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-regulates-co"
+				}
+			],
+			"relation": "regulates",
+			"from": "fixture-regulator-co",
+			"to": "CO"
+		},
+		{
+			"id": "rel-avail-ho-co",
+			"kind": "relationship",
+			"name": "Homeowners availability candidate in Colorado",
+			"summary": "Fixture relationship record for Homeowners availability candidate in Colorado. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-avail-ho-co",
+					"title": "Fixture source for rel-avail-ho-co",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-avail-ho-co"
+				}
+			],
+			"relation": "available-in",
+			"from": "homeowners",
+			"to": "CO"
+		},
+		{
+			"id": "fixture-state-ga",
+			"kind": "state",
+			"name": "Georgia",
+			"summary": "Fixture state record for Georgia. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-state-ga",
+					"title": "Fixture source for fixture-state-ga",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-state-ga"
+				}
+			],
+			"jurisdiction": "GA"
+		},
+		{
+			"id": "fixture-regulator-ga",
+			"kind": "regulator",
+			"name": "Fixture regulator for Georgia",
+			"summary": "Fixture regulator record for Fixture regulator for Georgia. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-regulator-ga",
+					"title": "Fixture source for fixture-regulator-ga",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-regulator-ga"
+				}
+			],
+			"jurisdiction": "GA"
+		},
+		{
+			"id": "rel-regulates-ga",
+			"kind": "relationship",
+			"name": "Georgia regulator relationship",
+			"summary": "Fixture relationship record for Georgia regulator relationship. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-regulates-ga",
+					"title": "Fixture source for rel-regulates-ga",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-regulates-ga"
+				}
+			],
+			"relation": "regulates",
+			"from": "fixture-regulator-ga",
+			"to": "GA"
+		},
+		{
+			"id": "rel-avail-ho-ga",
+			"kind": "relationship",
+			"name": "Homeowners availability candidate in Georgia",
+			"summary": "Fixture relationship record for Homeowners availability candidate in Georgia. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-09-27",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-avail-ho-ga",
+					"title": "Fixture source for rel-avail-ho-ga",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-avail-ho-ga"
+				}
+			],
+			"relation": "available-in",
+			"from": "homeowners",
+			"to": "GA"
+		}
+	]
+}

@@ -201,8 +201,23 @@ export function buildNationalLibrary(fixture: LibraryFixture) {
 	}
 	if (!fixture.criterion.refreshOwner.trim()) gaps.push({ code: 'refresh-owner', detail: 'the major-company criterion has no refresh owner' });
 
+	const jurisdictionDenominator = US_JURISDICTIONS.length;
+	const stateFilled = US_JURISDICTIONS.filter((jurisdiction) => stillAccepted.some((record) => record.kind === 'state' && record.jurisdiction === jurisdiction)).length;
+	const regulatorGaps = gaps.filter((gap) => gap.code === 'regulator').length;
+	const availabilityDenominator = jurisdictionDenominator * CORE_COVERAGE_FAMILIES.length;
+	const availabilityGaps = gaps.filter((gap) => gap.code === 'availability').length;
+	const historicalFilled = historical.filter((company) => company.supersededBy || relationships.some((record) => (record.relation === 'merged-into' || record.relation === 'succeeded-by') && record.from === company.id)).length;
+	const completion = {
+		states: { filled: stateFilled, denominator: jurisdictionDenominator },
+		regulators: { filled: jurisdictionDenominator - regulatorGaps, denominator: jurisdictionDenominator },
+		coverageCells: { filled: availabilityDenominator - availabilityGaps, denominator: availabilityDenominator },
+		currentCompanies: { filled: major.length, denominator: companies.filter((company) => company.status === 'current').length },
+		historicalRelationships: { filled: historicalFilled, denominator: historical.length },
+	};
+	const percent = (filled: number, denominator: number) => denominator === 0 ? 0 : Math.round((1000 * filled) / denominator) / 10;
+
 	const matrix = {
-		jurisdictions: US_JURISDICTIONS.length,
+		jurisdictions: jurisdictionDenominator,
 		includesDc: US_JURISDICTIONS.includes('DC'),
 		coverageFamilies: CORE_COVERAGE_FAMILIES.map((coverage) => coverage.id),
 		majorCompanyIds: major.map((company) => company.id),
@@ -210,6 +225,13 @@ export function buildNationalLibrary(fixture: LibraryFixture) {
 		gaps,
 		gapCount: gaps.length,
 		complete: gaps.length === 0,
+		completion: {
+			states: { ...completion.states, percent: percent(completion.states.filled, completion.states.denominator) },
+			regulators: { ...completion.regulators, percent: percent(completion.regulators.filled, completion.regulators.denominator) },
+			coverageCells: { ...completion.coverageCells, percent: percent(completion.coverageCells.filled, completion.coverageCells.denominator) },
+			currentCompanies: { ...completion.currentCompanies, percent: percent(completion.currentCompanies.filled, completion.currentCompanies.denominator) },
+			historicalRelationships: { ...completion.historicalRelationships, percent: percent(completion.historicalRelationships.filled, completion.historicalRelationships.denominator) },
+		},
 		statement: gaps.length === 0 ? 'No tracked gap remains.' : 'Gaps remain. Completeness is not claimed.',
 		refreshOwner: fixture.criterion.refreshOwner,
 		scope: 'States and the District of Columbia. Territories are outside this matrix, which is a scope limit and not a completeness claim.',

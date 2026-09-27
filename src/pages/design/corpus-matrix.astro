@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import fixtureJson from '../../../scripts/fixtures/national-library/candidates.json';
+import expansionJson from '../../../scripts/fixtures/national-library/expansion.json';
+import { buildNationalLibrary, type LibraryFixture, type LibraryRecord } from '../../lib/national-library';
+import { expandLibrary } from '../../lib/corpus-pages';
+
+const fixture = fixtureJson as LibraryFixture;
+const batch = expansionJson.records as LibraryRecord[];
+const before = buildNationalLibrary(fixture);
+const expanded = expandLibrary(fixture, batch);
+const after = buildNationalLibrary(expanded.fixture);
+type CompletionCell = { filled: number; denominator: number; percent: number };
+const rows: Array<[string, CompletionCell]> = [
+	['States and DC', after.matrix.completion.states],
+	['Regulators', after.matrix.completion.regulators],
+	['Coverage cells', after.matrix.completion.coverageCells],
+	['Current major companies', after.matrix.completion.currentCompanies],
+	['Historical relationships', after.matrix.completion.historicalRelationships],
+];
+---
+
+<BaseLayout
+	title="Fixture corpus matrix"
+	description="Local noindex counts for the fixture national library. Gaps remain, and completeness is not claimed."
+	pageType="editorial"
+	noindex
+>
+	<article class="shell">
+		<p class="eyebrow">Fixture only</p>
+		<h1>Fixture corpus matrix</h1>
+		<p>{after.matrix.statement}</p>
+		<p>Refresh owner: {after.matrix.refreshOwner}. Gap count {before.matrix.gapCount} to {after.matrix.gapCount}.</p>
+		<table>
+			<thead><tr><th>Measure</th><th>Filled</th><th>Denominator</th><th>Percent</th></tr></thead>
+			<tbody>
+				{rows.map(([label, row]) => <tr><td>{label}</td><td>{row.filled}</td><td>{row.denominator}</td><td>{row.percent}</td></tr>)}
+			</tbody>
+		</table>
+	</article>
+</BaseLayout>

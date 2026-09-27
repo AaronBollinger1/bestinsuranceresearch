@@ -108,7 +108,7 @@ jobs:
           PUBLIC_SITE_ORIGIN: https://birch.insure
         run: |
           npx astro build
-          node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs scripts/verify-graph.mjs scripts/verify-question-registry.mjs scripts/verify-research-run.mjs scripts/verify-source-study.mjs scripts/verify-answer-workflow.mjs scripts/verify-publication-lifecycle.mjs scripts/verify-source-candidate-adapter.mjs scripts/verify-national-library.mjs scripts/verify-account-lifecycle.mjs scripts/verify-professional-contribution.mjs scripts/verify-experience-moderation.mjs scripts/verify-citation-readiness.mjs scripts/verify-public-source-intake.mjs scripts/verify-property-research-views.mjs scripts/verify-property-visual.mjs scripts/verify-build-impact.mjs
+          node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs scripts/verify-graph.mjs scripts/verify-question-registry.mjs scripts/verify-research-run.mjs scripts/verify-source-study.mjs scripts/verify-answer-workflow.mjs scripts/verify-publication-lifecycle.mjs scripts/verify-source-candidate-adapter.mjs scripts/verify-national-library.mjs scripts/verify-account-lifecycle.mjs scripts/verify-professional-contribution.mjs scripts/verify-experience-moderation.mjs scripts/verify-citation-readiness.mjs scripts/verify-public-source-intake.mjs scripts/verify-property-research-views.mjs scripts/verify-property-visual.mjs scripts/verify-corpus-pages.mjs scripts/verify-build-impact.mjs
 
       # audit:onpage refuses to run against a preview build, so it runs here,
       # against the production build the previous step just produced.
