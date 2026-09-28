@@ -1,0 +1,71 @@
+{
+	"_fixture": "A complete evidence-first consumer answer: two confirmed claims, one wording correction, one resolved conflict carried into the output, claim-level citations with effective dates or an explicit missing date, rights notes, residual uncertainty, and scope limits.",
+	"_why": "The happy path must prove all seven gates can pass at once and that a composed answer is nothing but its inputs: every sentence byte-identical to a claim wording, every conflict copied in total, every correction visible, every citation read from a source study, and a missing effective date labeled rather than invented.",
+	"_expects": { "status": "composed", "sentences": 2, "conflictsCarried": 1, "corrections": 1 },
+	"assembly": {
+		"questionId": "fixture-widget-rule-ca",
+		"jurisdiction": "CA",
+		"audience": "consumer",
+		"topics": ["general-explanation"],
+		"asOf": "2026-09-27",
+		"freshnessPolicy": { "staleAfterDays": 365 },
+		"editor": { "name": "Fixture Editor", "at": "2026-09-27T09:00:00.000Z", "note": "Assembled from the two confirmed fixture claims in reading order." },
+		"verbatimExcerpts": []
+	},
+	"sources": [
+		{
+			"id": "fixture-src-widget-statute",
+			"data": {
+				"title": "Fixture Widget Filing Statute",
+				"publisher": "Fixture Legislature",
+				"url": "https://fixture.invalid/statute/widget-filing",
+				"sourceType": "statute",
+				"jurisdiction": "CA",
+				"authorityLevel": "primary-law",
+				"officialHost": true,
+				"publishedDate": "2025-01-01",
+				"effectiveDate": "2025-07-01",
+				"accessedDate": "2026-09-01",
+				"lastChecked": "2026-09-01",
+				"lastCheckedBasis": "access",
+				"updateCadence": "Recheck each legislative session.",
+				"status": "active",
+				"claims": ["The fixture widget filing must be renewed each year."]
+			}
+		},
+		{
+			"id": "fixture-src-widget-bulletin",
+			"data": {
+				"title": "Fixture Widget Enforcement Bulletin",
+				"publisher": "Fixture State Regulator",
+				"url": "https://fixture.invalid/bulletin/widget-enforcement",
+				"sourceType": "regulator-guidance",
+				"jurisdiction": "CA",
+				"authorityLevel": "regulator",
+				"officialHost": true,
+				"publishedDate": "2026-02-01",
+				"accessedDate": "2026-09-01",
+				"lastChecked": "2026-09-01",
+				"lastCheckedBasis": "access",
+				"updateCadence": "Recheck when the regulator revises enforcement guidance.",
+				"status": "active",
+				"claims": ["The fixture regulator enforces the widget labeling rule.", "Late fixture filings incur a review before renewal."]
+			}
+		}
+	],
+	"claimEventLogs": [
+		[
+			{ "id": "a1", "kind": "opened", "at": "2026-09-26T19:00:00.000Z", "actor": "editor", "note": "Study opened for the renewal proposition.", "claimRef": "fixture-src-widget-statute#c1", "text": "The fixture widget filing must be renewed each year.", "stakes": "standard", "synthetic": true },
+			{ "id": "a2", "kind": "support-added", "at": "2026-09-26T19:01:00.000Z", "actor": "editor", "note": "The statute passage supports the proposition verbatim.", "sourceId": "fixture-src-widget-statute", "synthetic": true },
+			{ "id": "a3", "kind": "confirmed", "at": "2026-09-26T19:05:00.000Z", "actor": "editor", "note": "Read against the passage and confirmed.", "synthetic": true }
+		],
+		[
+			{ "id": "b1", "kind": "opened", "at": "2026-09-26T20:00:00.000Z", "actor": "editor", "note": "Study opened for the enforcement proposition.", "claimRef": "fixture-src-widget-bulletin#c1", "text": "The fixture regulator enforces the widget labeling rule.", "stakes": "standard", "synthetic": true },
+			{ "id": "b1n", "kind": "narrowed", "at": "2026-09-26T20:00:30.000Z", "actor": "editor", "note": "Narrowed the enforcement proposition to filings the regulator actually receives. The broader wording stays visible as a correction.", "text": "The fixture regulator enforces the widget labeling rule for filings it receives.", "synthetic": true },
+			{ "id": "b2", "kind": "support-added", "at": "2026-09-26T20:01:00.000Z", "actor": "editor", "note": "The bulletin states the enforcement role.", "sourceId": "fixture-src-widget-bulletin", "synthetic": true },
+			{ "id": "b3", "kind": "conflict-recorded", "at": "2026-09-26T20:02:00.000Z", "actor": "editor", "note": "The statute and the bulletin describe the enforcing office differently.", "between": ["fixture-src-widget-bulletin", "fixture-src-widget-statute"], "synthetic": true },
+			{ "id": "b4", "kind": "conflict-resolved", "at": "2026-09-26T20:30:00.000Z", "actor": "editor", "note": "The bulletin narrows the statute by its own delegation language; both stay visible.", "between": ["fixture-src-widget-statute", "fixture-src-widget-bulletin"], "resolutionHow": "narrowed", "synthetic": true },
+			{ "id": "b5", "kind": "confirmed", "at": "2026-09-26T20:35:00.000Z", "actor": "editor", "note": "Re-read against both documents and confirmed.", "synthetic": true }
+		]
+	]
+}

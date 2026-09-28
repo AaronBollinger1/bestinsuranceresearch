@@ -23,7 +23,12 @@
  *     that a machine will not perform would be self-defeating.
  *  2. Each tab is deep-linkable. `#covers` opens that panel on load, and
  *     selecting a tab replaces the hash without adding history entries, so the
- *     back button still leaves the page rather than walking the tabs.
+ *     back button still leaves the page rather than walking the tabs. The panel
+ *     carries the section id itself rather than a `panel-` prefix, so that hash
+ *     resolves to a real element. The "Link to this section" anchor is only
+ *     reachable while its own panel is open, so it now scrolls to that panel
+ *     instead of pointing at nothing. Selection is unaffected either way: the
+ *     script keys off `data-tab`/`data-panel`, never the ids.
  *  3. Citations inside panels are pre-resolved by the caller, so a numbered
  *     marker in a hidden panel still points at the ledger entry on the same
  *     page.
@@ -135,7 +140,7 @@ const Mark = ICONS[icon] ?? ShieldCheck;
 						type="button"
 						role="tab"
 						id={`tab-${s.id}`}
-						aria-controls={`panel-${s.id}`}
+						aria-controls={s.id}
 						aria-selected={i === 0 ? 'true' : 'false'}
 						tabindex={i === 0 ? 0 : -1}
 						data-tab={s.id}
@@ -151,7 +156,7 @@ const Mark = ICONS[icon] ?? ShieldCheck;
 			sections.map((s, i) => (
 				<section
 					role="tabpanel"
-					id={`panel-${s.id}`}
+					id={s.id}
 					aria-labelledby={`tab-${s.id}`}
 					data-panel={s.id}
 					hidden={i !== 0}

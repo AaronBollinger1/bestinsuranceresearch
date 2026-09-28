@@ -1,0 +1,262 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Callout from '../components/Callout.astro';
+import DataTable from '../components/DataTable.astro';
+import PageHeader from '../components/PageHeader.astro';
+import StateBlock from '../components/StateBlock.astro';
+import StatusChip from '../components/StatusChip.astro';
+import { loadCorpus } from '../lib/corpus';
+import { longDate } from '../lib/cite';
+import { CHANGE_LABEL, byYear, changeSummary, overdueFigures, recordedChanges, scheduledChanges } from '../lib/changes';
+import { TODAY } from '../lib/today';
+import { breadcrumbs, collectionPage, graph, organization, website } from '../lib/schema';
+
+const corpus = await loadCorpus();
+const recorded = recordedChanges(corpus);
+const years = byYear(recorded);
+const scheduled = scheduledChanges(corpus, TODAY);
+const overdue = overdueFigures(corpus, TODAY);
+const summary = changeSummary(corpus, TODAY);
+
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'What changed', path: '/changed' },
+];
+
+const jsonLd = graph(
+	organization(),
+	website(),
+	breadcrumbs(trail),
+	collectionPage({
+		name: 'What changed',
+		path: '/changed',
+		description:
+			'Every recorded change to the evidence base, dated, with the record that carries it, and every amount an instrument has scheduled to move.',
+		items: recorded.slice(0, 40).map((c) => ({ name: c.title, path: c.path })),
+	}),
+);
+---
+
+<BaseLayout
+	title="What changed"
+	description="Every documented change to the sources behind this library: guidance rescinded, bills that never passed, forms superseded, documents re-read, corrections published, and the amounts their instruments have scheduled to move."
+	jsonLd={jsonLd}
+	pageType="editorial"
+	machinePath="/changed.json"
+>
+	<PageHeader
+		eyebrow="What changed"
+		title="The evidence base moves, and this is the record of it moving"
+		lede="Built from the source registry rather than written. A bill that failed, a guidance rescinded, a form edition superseded, a document returned to and re-read: each is already a field on a record, and this is those fields as one dated feed."
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell answer-grid">
+			<div class="prose">
+				<Callout tone="limit">
+					<p>
+						<strong>This is what we have recorded, not what has happened.</strong> A change absent
+						from this page is one this library has not recorded, which is a different statement
+						from it not having occurred. The corpus is concentrated in California and holds{' '}
+						{corpus.sources.length} documents in total, so read this as the movement of one
+						evidence base rather than as the movement of insurance law.
+					</p>
+				</Callout>
+
+				<h2 id="dates">Two kinds of date, and they are not the same</h2>
+				<p>
+					<strong>A recorded change is dated by when we recorded it.</strong> We know a guidance was
+					rescinded because we read the notice saying so; the field does not tell us the date the
+					decision was taken. Publishing our filing date as the event date would be a small
+					inaccuracy repeated across every row, so it is labelled instead. Where the document states
+					its own date, that date is in the note, in the document's words.
+				</p>
+				<p>
+					<strong>A scheduled change is dated by the instrument.</strong> Those are the dates a
+					statute or rule sets for itself, and they are the only forward-looking dates here.
+				</p>
+
+				<h2 id="scheduled">Scheduled to change</h2>
+				<p>
+					{scheduled.length} published {scheduled.length === 1 ? 'amount is' : 'amounts are'} moved
+					by their own instrument on a date it names. This is the part nobody else publishes: a
+					reserve, a limit selection or an internal guideline written against one of these is
+					written against a number with an expiry date on it.
+				</p>
+				{
+					scheduled.length > 0 ? (
+						<DataTable
+							caption="Amounts an instrument has scheduled to move, soonest first"
+							columns={['Moves on', 'Amount today', 'What it is', 'What moves it']}
+							rows={scheduled.map((s) => [
+								longDate(s.date),
+								s.amount,
+								`${s.label}${s.states.length ? ` (${s.states.join(', ')})` : ''}`,
+								s.movesWhen,
+							])}
+						/>
+					) : (
+						<StateBlock kind="empty" heading="No published amount has a scheduled move ahead of it.">
+							<p>
+								Every figure in the library either moves by amendment, which cannot be dated in
+								advance, or has no scheduled move recorded.
+							</p>
+						</StateBlock>
+					)
+				}
+				<p>
+					<strong>We do not compute what the new amount will be.</strong> Several of these are
+					stepped schedules whose operative value is arithmetic from the instrument rather than a
+					figure it prints, and this library does not publish a number its source did not state.
+					Each figure record carries that hedge in its own note; follow the row to{' '}
+					<a href="/figures">the figure</a> for it.
+				</p>
+
+				<h2 id="recorded">Recorded changes</h2>
+				<p>
+					{summary.recorded} in total: {summary.notActive} documents that are no longer good
+					authority, {summary.rechecks} documents returned to and re-read, and{' '}
+					{summary.corrections} published {summary.corrections === 1 ? 'correction' : 'corrections'}{' '}
+					to what this library said.
+				</p>
+				<p>
+					<strong>A re-read is a comparison, not an outcome.</strong> It means somebody opened the
+					document again and checked the operative language against what we had recorded from it.
+					Where one found a discrepancy, the correction it produced is its own entry below — joined
+					by having been made, not inferred from two nearby dates.
+				</p>
+				{
+					recorded.length === 0 ? (
+						<StateBlock kind="empty" heading="Nothing has been recorded as changed yet.">
+							<p>
+								The registry carries the fields this feed is built from. It is empty because
+								nothing has moved since the library was written, not because nothing is watched.
+							</p>
+						</StateBlock>
+					) : (
+						years.map((group) => (
+							<>
+								<h3 id={`y${group.year}`}>{group.year}</h3>
+								<div class="rows">
+									{group.changes.map((change) => (
+										<div class="row" style="grid-template-columns: minmax(0, 1fr)">
+											<div>
+												<h4 class="row-title">
+													<a href={change.path} style="text-decoration: none">{change.title}</a>
+												</h4>
+												<div class="row-meta">
+													{change.kind === 'corrected' ? (
+														<StatusChip kind="corrected" />
+													) : (
+														<span class="status status-plain">{CHANGE_LABEL[change.kind]}</span>
+													)}
+													<span class="meta">Recorded {longDate(change.date)}</span>
+												</div>
+												{change.detail && (
+													<p style="margin-top: var(--s-2); font-size: var(--text-sm); color: var(--muted)">
+														{change.detail}
+													</p>
+												)}
+												{change.was && change.now && (
+													<dl style="margin-top: var(--s-3); display: grid; gap: var(--s-2)">
+														<dt class="meta">Previously said</dt>
+														<dd style="margin: 0; font-size: var(--text-sm); color: var(--muted)">
+															{change.was}
+														</dd>
+														<dt class="meta">Now says</dt>
+														<dd style="margin: 0; font-size: var(--text-sm); color: var(--ink)">
+															{change.now}
+														</dd>
+													</dl>
+												)}
+												{change.supersededBy && (
+													<p style="margin-top: var(--s-2); font-size: var(--text-sm)">
+														Replaced by{' '}
+														<a href={change.supersededBy.path}>{change.supersededBy.title}</a>.
+													</p>
+												)}
+											</div>
+										</div>
+									))}
+								</div>
+							</>
+						))
+					)
+				}
+
+				{
+					overdue.length > 0 && (
+						<>
+							<h2 id="overdue">Scheduled moves already behind us</h2>
+							<Callout tone="warn">
+								<p>
+									{overdue.length}{' '}
+									{overdue.length === 1 ? 'figure names a move date' : 'figures name move dates'}{' '}
+									that {overdue.length === 1 ? 'has' : 'have'} passed, so the published amount may
+									no longer be the operative one. This is the registry reporting on itself rather
+									than a change we are asserting, and it is a review trigger:{' '}
+									{overdue.map((f) => `${f.label} (${f.nextMove})`).join('; ')}.
+								</p>
+							</Callout>
+						</>
+					)
+				}
+
+				<h2 id="how">How this is produced</h2>
+				<p>
+					Nobody writes it. Every source record carries <code>status</code>,{' '}
+					<code>statusNote</code>, <code>lastChecked</code>, <code>lastCheckedBasis</code> and{' '}
+					<code>supersededBy</code>; every published record can carry a correction; every figure
+					records what moves it and when. This page is those fields assembled and sorted. That is
+					why it cannot drift from the library: there is no prose here to fall out of date
+					separately.
+				</p>
+				<p>
+					It follows that the feed grows when the library is maintained, not when someone decides to
+					publish news. A quarter with no entries is a quarter in which nothing was recorded as
+					having moved, and that is worth knowing too.
+				</p>
+				<p>
+					The same feed is machine-readable at <a href="/changed.json">/changed.json</a>, and the
+					underlying records are in the{' '}
+					<a href="/dataset">frozen dataset releases</a> with a checksum on every claim.
+				</p>
+			</div>
+
+			<aside class="answer-rail" aria-label="Page contents">
+				<nav class="rail-block" aria-labelledby="on-this-page">
+					<h2 id="on-this-page">On this page</h2>
+					<ol>
+						<li><a href="#dates">Two kinds of date</a></li>
+						<li><a href="#scheduled">Scheduled to change</a></li>
+						<li><a href="#recorded">Recorded changes</a></li>
+						{overdue.length > 0 && <li><a href="#overdue">Moves already behind us</a></li>}
+						<li><a href="#how">How this is produced</a></li>
+					</ol>
+				</nav>
+				<div class="rail-block">
+					<h2>The feed</h2>
+					<dl>
+						<div><dt>Recorded changes</dt><dd>{summary.recorded}</dd></div>
+						<div><dt>No longer authority</dt><dd>{summary.notActive}</dd></div>
+						<div><dt>Documents re-read</dt><dd>{summary.rechecks}</dd></div>
+						<div><dt>Corrections</dt><dd>{summary.corrections}</dd></div>
+						<div><dt>Scheduled ahead</dt><dd>{summary.scheduled}</dd></div>
+						<div><dt>Newest entry</dt><dd>{longDate(summary.newest)}</dd></div>
+					</dl>
+				</div>
+				<div class="rail-block no-print">
+					<h2>Related</h2>
+					<ul>
+						<li><a href="/sources">Source registry</a></li>
+						<li><a href="/figures">Figures</a></li>
+						<li><a href="/corrections">Corrections log</a></li>
+						<li><a href="/dataset">Dataset releases</a></li>
+						<li><a href="/methodology">Methodology</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

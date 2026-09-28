@@ -5,6 +5,7 @@ import StateBlock from '../components/StateBlock.astro';
 import { siteConfig } from '../config/site';
 import { loadCorpus } from '../lib/corpus';
 
+import { shortList } from '../lib/excerpt';
 const corpus = await loadCorpus();
 const suggestions = corpus.questions.slice(0, 5);
 ---
@@ -35,7 +36,7 @@ const suggestions = corpus.questions.slice(0, 5);
 								<div>
 									<h3 class="row-title">{question.data.question}</h3>
 									<div class="row-meta">
-										<span class="meta">{question.data.lines.join(', ')}</span>
+										<span class="meta">{shortList(question.data.lines)}</span>
 										<span class="meta">{question.data.sourceIds.length} sources</span>
 									</div>
 								</div>

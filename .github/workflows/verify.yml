@@ -4,16 +4,54 @@
 # every pass, which worked only because every pass happened to run it - and the
 # one thing a 122-assertion suite cannot do is assert that somebody ran it.
 #
-# Nothing here needs a secret. The build is a preview build (no
-# PUBLIC_SITE_ENV), which is the environment the suite is calibrated against:
-# `verify.mjs` reads PUBLIC_SITE_ENV itself and asserts the correct indexing
-# posture for whichever environment it finds, so both postures are checked - the
-# preview one here and the production one in the release job below.
+# Nothing here needs a secret. Both indexing postures are checked in one job:
+# `verify.mjs` reads PUBLIC_SITE_ENV itself and asserts the correct posture for
+# whichever environment it finds - the preview one in `npm run validate`, the
+# production one in the explicit production-posture steps after it.
+#
+# ONE JOB, DELIBERATELY (COST-1)
+#
+# This used to be three jobs - suite, production-posture, commons - each doing
+# its own checkout, Node setup, and root `npm ci` for one shared repository.
+# Per head that was three runners spending three installs to test one tree,
+# and the measured baseline showed duplicate copies of exactly that work being
+# started and cancelled. One job runs the same checks against one checkout and
+# one root install, in an order where the cheap failures come first. Every
+# check the three jobs ran is still below; consolidation reorganized the
+# spending, not the coverage. The trade is wall-clock: the three stages no
+# longer overlap, and that is accepted in exchange for two fewer
+# checkout/setup/install copies per head.
 name: verify
 
+# A pull request and the branch push that feeds it can arrive together. Keep
+# one current run per branch so an older red result cannot remain the thing a
+# reviewer sees while a newer commit is already being checked.
+#
+# `head_ref` on a pull_request and `ref_name` on a push are both the branch
+# name, so the two events for one commit land in the same group and the newer
+# one cancels the older.
+concurrency:
+  group: verify-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
 on:
+  # Feature work is covered by `pull_request`, so `push` does not also fire for
+  # it. The branches kept here are the ones where a push is the only event
+  # there is: `main` and the launch/gate/release authorities. A commit reaching
+  # any of those still runs the full suite. Nothing is exempted from checking;
+  # only the duplicate copy of a check is removed.
+  #
+  # The PR #4 head branch (grok/recover-pr1-pr3-onto-launch-20260915) used to
+  # be listed here too, which meant every push to it opened two runs - the
+  # push copy, always cancelled after its jobs had already been billed, and
+  # the pull_request copy that actually reported. The open pull request is the
+  # check for that branch; the duplicate trigger is removed (COST-1).
   push:
-    branches: ['**']
+    branches:
+      - main
+      - 'launch/**'
+      - 'gate/**'
+      - 'release/**'
   pull_request:
   workflow_dispatch:
 
@@ -23,52 +61,73 @@ permissions:
 jobs:
   suite:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # The former three jobs had 15 minutes each; their work now runs serially
+    # in one job, so the ceiling is their sum rather than a guess. A normal
+    # green run is expected well under half of this.
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22.12'
           cache: npm
+          # Both lockfiles key the cache, because this one job installs both
+          # the root and the Commons dependency trees.
+          cache-dependency-path: |
+            package-lock.json
+            commons/package-lock.json
 
       # `npm ci` rather than `npm install`, so the lockfile is what is tested.
+      # Once, for the whole run: every step below shares this install.
       - run: npm ci
 
-      - name: Types
-        run: npm run check
-
+      # `npm run validate` is catalog:verify, `astro check`, the preview build,
+      # and the full preview-posture verify suite. It is NOT preceded by a
+      # separate `npm run check` step: validate already contains the type
+      # check, and running it twice per head bought a second copy of the same
+      # answer (COST-1).
       - name: Build and verify, preview posture
         run: npm run validate
 
-  production-posture:
-    # The build nobody had ever run until the suite was taught to check both.
-    # A production build must drop the blanket noindex and must not advertise a
-    # sitemap from a robots.txt that still says Disallow. Getting that wrong is
-    # the single most expensive one-line mistake available on this property, so
-    # it is checked on every push rather than discovered at the promote.
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22.12'
-          cache: npm
-      - run: npm ci
-
+      # Production serves the read-only estate. Public indexing stays closed
+      # unless PUBLIC_INDEXING_OPEN is exactly true. The same value is given
+      # to the build and to the indexable-page audit. Closed-posture
+      # verification still runs when the gate is absent.
       - name: Build and verify, production posture
         env:
           PUBLIC_SITE_ENV: production
-          PUBLIC_SITE_ORIGIN: https://bestinsuranceresearch.com
+          PUBLIC_SITE_ORIGIN: https://birch.insure
+          PUBLIC_INDEXING_OPEN: ${{ vars.PUBLIC_INDEXING_OPEN }}
         run: |
           npx astro build
-          node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs
+          node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs scripts/verify-graph.mjs scripts/verify-question-registry.mjs scripts/verify-research-run.mjs scripts/verify-source-study.mjs scripts/verify-answer-workflow.mjs scripts/verify-publication-lifecycle.mjs scripts/verify-source-candidate-adapter.mjs scripts/verify-national-library.mjs scripts/verify-account-lifecycle.mjs scripts/verify-professional-contribution.mjs scripts/verify-experience-moderation.mjs scripts/verify-citation-readiness.mjs scripts/verify-public-source-intake.mjs scripts/verify-property-research-views.mjs scripts/verify-property-visual.mjs scripts/verify-corpus-pages.mjs scripts/verify-preview-pilot.mjs scripts/verify-release-candidate.mjs scripts/verify-build-impact.mjs scripts/verify-regulatory-impact.mjs scripts/verify-ask-handoff.mjs
 
-      # audit:onpage refuses to run against a preview build, so this is the only
-      # job it can run in.
+      # Skipped in the Actions log while the owner gate is absent or not true.
+      # The production verify step above still checks closed robots, meta, and sitemap.
       - name: On-page audit
+        if: vars.PUBLIC_INDEXING_OPEN == 'true'
         env:
           PUBLIC_SITE_ENV: production
-          PUBLIC_SITE_ORIGIN: https://bestinsuranceresearch.com
+          PUBLIC_SITE_ORIGIN: https://birch.insure
+          PUBLIC_INDEXING_OPEN: ${{ vars.PUBLIC_INDEXING_OPEN }}
         run: npm run audit:onpage
+
+      # The second property, on its own origin and with its own suite. Its
+      # suite mostly asserts ABSENCES - no agency branding, no licence number,
+      # no gold, no upload mechanism - because those absences are the entire
+      # reason COMMONS.md puts the Commons on a separate origin.
+      #
+      # The root dependencies this project needs are already installed above:
+      # Astro reads every tsconfig.json on the way up from the project it is
+      # building, and the root tsconfig extends `astro/tsconfigs/strict`, which
+      # resolves against the root node_modules. In the three-job layout the
+      # commons job had to install the root tree a second time for exactly this
+      # reason; sharing the job removes that second install instead of
+      # re-documenting it.
+      - run: npm ci
+        working-directory: commons
+
+      - name: Build and verify the Commons
+        run: npm run validate
+        working-directory: commons

@@ -1,0 +1,93 @@
+---
+import { ArrowUpRight, Copy, FileText, X } from '@lucide/astro';
+import type { CollectionEntry } from 'astro:content';
+import { longDate } from '../lib/cite';
+import { clip } from '../lib/excerpt';
+import { siteConfig } from '../config/site';
+interface Props { sources: CollectionEntry<'sources'>[]; }
+const { sources } = Astro.props;
+---
+<dialog class="source-inspector" id="source-inspector" aria-labelledby="source-inspector-title">
+  <div class="inspector-head"><div><span class="inspector-eyebrow">Behind the answer</span><h2 id="source-inspector-title">Sources</h2></div><button class="icon-btn" type="button" data-inspector-close aria-label="Close sources" autofocus><X size={19} aria-hidden="true" /></button></div>
+  <div class="inspector-picker"><label for="inspector-source">Choose a source</label><select id="inspector-source">{sources.map((source,index)=><option value={index+1}>{index+1}. {clip(source.data.title,76)}</option>)}</select></div>
+  {sources.map((source,index)=><section data-inspector-source={index+1} hidden>
+    <div class="inspector-body">
+      <div class="inspector-source-kind"><FileText size={15} aria-hidden="true" /><span>{source.data.primary?'Primary source':'Secondary source'} · {source.data.status.replaceAll('-',' ')}</span></div>
+      <h3>{source.data.title}</h3><p class="inspector-publisher">{source.data.publisher}</p>
+      <a class="btn btn-primary" href={source.data.url} target="_blank" rel="noopener nofollow">Open original <ArrowUpRight size={16} aria-hidden="true" /></a>
+      <dl class="inspector-facts"><div><dt>Jurisdiction</dt><dd>{source.data.jurisdiction}</dd></div><div><dt>Last checked</dt><dd>{longDate(source.data.lastChecked)}</dd></div><div><dt>Check basis</dt><dd>{source.data.lastCheckedBasis==='recheck'?'Returned to the source':'Initial source reading'}</dd></div>{source.data.officialHost===false&&<div><dt>Hosting</dt><dd>Third-party reproduction</dd></div>}</dl>
+      <details class="inspector-claims"><summary>What this source supports <span>{source.data.claims.length} recorded claims</span></summary><ol>{source.data.claims.map(claim=><li>{claim}</li>)}</ol></details>
+      {source.data.notes&&<p class="inspector-note">{source.data.notes}</p>}
+    </div>
+    <div class="inspector-foot"><a href={`/sources/${source.id}`}>Full Birch source record <ArrowUpRight size={14} aria-hidden="true" /></a><button type="button" class="btn btn-quiet btn-sm" data-copy-value={new URL(`/sources/${source.id}`,siteConfig.origin).toString()}><Copy size={14} aria-hidden="true" /><span data-copy-label>Copy source link</span><span class="u-visually-hidden" data-copy-status role="status" aria-live="polite"></span></button></div>
+  </section>)}
+  <p class="inspector-disclaimer">A source supports specific statements, not every conclusion. Check its date, scope, and original wording.</p>
+</dialog>
+<script>
+  const inspector = document.querySelector<HTMLDialogElement>('#source-inspector');
+  if (inspector && typeof inspector.showModal === 'function') {
+    const picker = inspector.querySelector<HTMLSelectElement>('#inspector-source');
+    const panels = [...inspector.querySelectorAll<HTMLElement>('[data-inspector-source]')];
+    let opener: HTMLElement | null = null;
+    const selectSource = (number: string) => {
+      if (!panels.some(panel=>panel.dataset.inspectorSource===number)) return false;
+      panels.forEach(panel=>{ panel.hidden=panel.dataset.inspectorSource!==number; });
+      if (picker) picker.value=number;
+      inspector.scrollTop=0;
+      return true;
+    };
+    document.querySelectorAll<HTMLButtonElement>('[data-open-sources]').forEach(button=>{button.hidden=false;});
+    document.querySelectorAll<HTMLAnchorElement>('a.cite[href^="#source-"]').forEach(link=>{
+      link.setAttribute('aria-haspopup','dialog');
+      link.setAttribute('aria-controls','source-inspector');
+      link.setAttribute('aria-label',(link.getAttribute('aria-label')||'Source').replace('jump to the source record','open source details'));
+    });
+    document.addEventListener('click',event=>{
+      if (event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const trigger=(event.target as Element | null)?.closest<HTMLElement>('a.cite[href^="#source-"], [data-open-sources]');
+      if (!trigger || inspector.contains(trigger)) return;
+      const number=trigger.getAttribute('href')?.match(/^#source-(\d+)$/)?.[1] || trigger.dataset.openSources || '1';
+      if (!selectSource(number)) return;
+      opener=trigger;
+      try { inspector.showModal(); event.preventDefault(); } catch { /* Original anchor still works. */ }
+    });
+    picker?.addEventListener('change',()=>selectSource(picker.value));
+    inspector.querySelector('[data-inspector-close]')?.addEventListener('click',()=>inspector.close());
+    inspector.addEventListener('click',event=>{
+      if(event.target!==inspector) return;
+      const rect=inspector.getBoundingClientRect();
+      if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom) inspector.close();
+    });
+    inspector.addEventListener('close',()=>{opener?.focus({preventScroll:true});});
+  }
+</script>
+<style>
+  .source-inspector { inset: 0 0 0 auto; width: min(460px,100%); height: 100dvh; max-width: 100%; max-height: 100dvh; margin: 0; padding: 0; border: 0; border-left: 1px solid var(--line); background: var(--paper); color: var(--body); box-shadow: var(--elev-3); overscroll-behavior: contain; }
+  .source-inspector::backdrop { background: rgba(23,33,46,.25); }
+  .inspector-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px; background: var(--paper); border-bottom: 1px solid var(--line); }
+  .inspector-eyebrow { font-size: var(--text-xs); color: var(--muted); }
+  .inspector-head h2 { margin: 5px 0 0; font: 600 var(--text-xl)/1.2 var(--font-sans); letter-spacing: -.03em; }
+  .inspector-picker { display: grid; gap: 8px; padding: 20px 24px; border-bottom: 1px solid var(--line); }
+  .inspector-picker label { font-size: var(--text-xs); color: var(--muted); }
+  .inspector-picker select { width: 100%; min-width: 0; min-height: var(--tap); font-size: var(--text-xs); }
+  .inspector-body { padding: 28px 24px 0; }
+  .inspector-source-kind { display: flex; gap: 8px; font-size: var(--text-xs); color: var(--brand-blue-text); }
+  .inspector-body h3 { margin: 16px 0 10px; font: 600 var(--text-xl)/1.35 var(--font-sans); letter-spacing: -.03em; overflow-wrap: anywhere; }
+  .inspector-publisher { margin: 0 0 22px; color: var(--muted); font-size: var(--text-sm); }
+  .inspector-facts { margin: 28px 0; display: grid; gap: 14px; }
+  .inspector-facts > div { display: grid; grid-template-columns: 105px minmax(0,1fr); gap: 12px; font-size: var(--text-xs); }
+  .inspector-facts dt { color: var(--muted); }
+  .inspector-facts dd { margin: 0; overflow-wrap: anywhere; }
+  .inspector-claims { border-block: 1px solid var(--line); }
+  .inspector-claims summary { min-height: var(--tap); padding: 16px 0; font-size: var(--text-sm); cursor: pointer; }
+  .inspector-claims summary span { display: block; margin-top: 5px; color: var(--muted); font-size: var(--text-xs); }
+  .inspector-claims ol { padding-left: 20px; font-size: var(--text-sm); line-height: 1.7; }
+  .inspector-claims li { margin-bottom: 14px; }
+  .inspector-note,.inspector-disclaimer { color: var(--muted); font-size: var(--text-xs); line-height: 1.65; }
+  .inspector-foot { display: grid; gap: 8px; padding: 24px; border-bottom: 1px solid var(--line); }
+  .inspector-foot > a { display: inline-flex; align-items: center; gap: 8px; min-height: var(--tap); color: var(--brand-blue-text); font-size: var(--text-sm); font-weight: 600; }
+  .inspector-foot .btn { justify-self: start; }
+  .inspector-disclaimer { margin: 0; padding: 24px; }
+  @media (prefers-reduced-motion: no-preference) { .source-inspector[open] { animation: source-panel-enter var(--dur-2) var(--ease-soft); } @keyframes source-panel-enter { from { transform: translateX(16px); opacity: 0; } to { transform: none; opacity: 1; } } }
+  @media print { .source-inspector { display: none !important; } }
+</style>

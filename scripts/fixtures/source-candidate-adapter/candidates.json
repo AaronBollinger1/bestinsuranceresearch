@@ -1,0 +1,43 @@
+{
+	"_fixture": "A public-source search fixture. The snippet states a price on purpose: the adapter must not copy it into a draft.",
+	"fixtureId": "fixture-gadget-candidates",
+	"kind": "candidates",
+	"costUnits": 1,
+	"allowedDomains": ["fixture.invalid"],
+	"conflicts": [
+		{
+			"between": ["https://fixture.invalid/notice", "https://fixture.invalid/bulletin"],
+			"note": "The notice and the bulletin name different delivery deadlines."
+		}
+	],
+	"results": {
+		"id": "fixture-request-1",
+		"results": [
+			{
+				"title": "Fixture notice",
+				"url": "https://fixture.invalid/notice#top",
+				"snippet": "The premium is $50 and this snippet must not become a fact.",
+				"proposition": "The fixture notice is delivered before the work begins.",
+				"effectiveDate": "2026-01-01"
+			},
+			{
+				"title": "Duplicate notice",
+				"url": "https://fixture.invalid/notice",
+				"snippet": "Same document.",
+				"proposition": "A second wording that must lose to the first URL."
+			},
+			{
+				"title": "Fixture bulletin",
+				"url": "https://fixture.invalid/bulletin",
+				"snippet": "Also not a fact.",
+				"proposition": "The fixture bulletin counts delivery from the mailing date.",
+				"effectiveDate": "not-a-date"
+			},
+			{
+				"title": "Off allowlist",
+				"url": "https://example.com/notice",
+				"proposition": "This host is not eligible."
+			}
+		]
+	}
+}

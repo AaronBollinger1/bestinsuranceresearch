@@ -3,7 +3,7 @@
 	"role": "Author and editorial systems owner",
 	"licensed": true,
 	"license": { "authority": "California Department of Insurance", "number": "4345268" },
-	"bio": "Aaron builds and maintains the research systems behind BestInsurance Research: the source registry, the content model, the retrieval layer, and the checks that stop an unsupported claim from publishing. He drafts questions and coverage pages against primary sources and maps every material claim to the record that carries it.",
+	"bio": "Aaron builds and maintains the research systems behind Birch Research: the source registry, the content model, the retrieval layer, and the checks that stop an unsupported claim from publishing. He drafts questions and coverage pages against primary sources and maps every material claim to the record that carries it.",
 	"scope": [
 		"Drafts questions, coverage pages, entity records, and state pages.",
 		"Maintains the source registry and the claim-to-source mapping.",

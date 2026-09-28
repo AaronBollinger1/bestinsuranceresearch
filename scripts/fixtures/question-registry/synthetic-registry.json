@@ -1,0 +1,52 @@
+{
+	"_fixture": "Synthetic canonical question records for the BR-2 registry checks.",
+	"_why": "The duplicate-mapping and jurisdiction-variant checks need inputs whose right answers are known by construction. These records use invented ids, assert nothing about insurance, are never loaded by the site, and exist only for scripts/verify-question-registry.mjs.",
+	"_expects": "A clean registry: no collisions. Two records are jurisdiction variants of one intent; one is a distinct intent; one carries an alias.",
+	"questions": [
+		{
+			"id": "fixture-widget-rule-ca",
+			"data": {
+				"question": "Who enforces the widget labeling rule in California?",
+				"aliases": ["California widget labeling rule enforcement"],
+				"family": "personal",
+				"lines": ["homeowners"],
+				"states": ["CA"],
+				"audience": "consumer",
+				"topics": ["fixture"],
+				"reviewState": "under-review",
+				"effectiveDate": "2026-01-01",
+				"lastReviewed": "2026-09-01"
+			}
+		},
+		{
+			"id": "fixture-widget-rule-tx",
+			"data": {
+				"question": "Who enforces the widget labeling rule in Texas?",
+				"aliases": [],
+				"family": "personal",
+				"lines": ["homeowners"],
+				"states": ["TX"],
+				"audience": "consumer",
+				"topics": ["fixture"],
+				"reviewState": "under-review",
+				"effectiveDate": "2026-01-01",
+				"lastReviewed": "2026-09-01"
+			}
+		},
+		{
+			"id": "fixture-gadget-notice",
+			"data": {
+				"question": "When must a gadget maintenance notice be delivered to the tenant?",
+				"aliases": [],
+				"family": "commercial",
+				"lines": ["general-liability"],
+				"states": [],
+				"audience": "business",
+				"topics": ["fixture"],
+				"reviewState": "corrected",
+				"effectiveDate": "2026-02-01",
+				"lastReviewed": "2026-09-02"
+			}
+		}
+	]
+}

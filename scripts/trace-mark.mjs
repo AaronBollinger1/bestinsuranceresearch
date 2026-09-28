@@ -361,8 +361,8 @@ const circles = dots
 	.join('\n');
 
 const svg = [
-	`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" fill="currentColor" role="img" aria-label="BestInsurance Research" data-head-x="${tipX.toFixed(1)}" data-head-y="${tipY.toFixed(1)}">`,
-	`  <title>BestInsurance Research</title>`,
+	`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" fill="currentColor" role="img" aria-label="Birch Research" data-head-x="${tipX.toFixed(1)}" data-head-y="${tipY.toFixed(1)}">`,
+	`  <title>Birch Research</title>`,
 	arrowPath ? `  <path class="mk-head" d="${arrowPath}" />` : '',
 	circles,
 	'</svg>',
@@ -442,8 +442,8 @@ if (iou < 0.9) {
  */
 const FAVICON = 'public/favicon.svg';
 const faviconSvg = [
-	`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="BestInsurance Research">`,
-	'  <title>BestInsurance Research</title>',
+	`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Birch Research">`,
+	'  <title>Birch Research</title>',
 	'  <style>',
 	'    :root { --mk: #17212e }',
 	'    @media (prefers-color-scheme: dark) { :root { --mk: #ffffff } }',
@@ -473,7 +473,7 @@ if (process.argv.includes('--write')) {
 	 * careful.
 	 */
 	const stray = fs.existsSync(FAVICON) ? fs.readFileSync(FAVICON, 'utf8') : '';
-	if (stray && !stray.includes('BestInsurance Research')) {
+	if (stray && !stray.includes('Birch Research')) {
 		console.log(`  replacing a foreign ${stray.length}-byte favicon.svg that is not this mark`);
 	}
 	fs.writeFileSync(FAVICON, faviconSvg);

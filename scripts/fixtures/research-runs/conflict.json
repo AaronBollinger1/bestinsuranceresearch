@@ -1,0 +1,32 @@
+{
+	"_fixture": "A run that finds two live sources disagreeing and stops on a human decision instead of averaging them.",
+	"_why": "Conflict preservation is the rule the graph enforces structurally (conflicts-with edges survive round trips); this fixture proves the run machine honors the same rule: a conflict routes to a person and can only end blocked, never silently resolved.",
+	"_expects": { "finalState": "blocked", "terminal": false, "canRetry": true },
+	"context": {
+		"questionId": "what-fair-plan-does-not-cover-california",
+		"note": "Real published question used as reading context only."
+	},
+	"artifacts": {
+		"birchEvidence": ["fixture-passage-b1", "fixture-passage-b2"],
+		"gaps": ["No approved passage states the fixture waiting period."],
+		"candidates": [
+			{ "url": "https://fixture.invalid/regulator/waiting-period", "publisher": "Fixture State Regulator", "sourceClass": "regulator-guidance" },
+			{ "url": "https://fixture.invalid/bulletin/waiting-period-update", "publisher": "Fixture State Regulator", "sourceClass": "regulator-record" }
+		],
+		"claims": ["fixture-claim-4", "fixture-claim-5"],
+		"conflicts": ["The two candidates state different fixture waiting periods and neither supersedes the other."]
+	},
+	"events": [
+		{ "id": "c1", "state": "queued", "at": "2026-09-26T11:00:00.000Z", "actor": "system", "note": "Run recorded from a screening decision on the linked question.", "synthetic": true },
+		{ "id": "c2", "state": "birch-retrieval", "at": "2026-09-26T11:00:05.000Z", "actor": "system", "note": "Retrieved the approved Birch evidence passages for this intent.", "counts": { "birchEvidence": 2 }, "synthetic": true },
+		{ "id": "c3", "state": "evidence-gap", "at": "2026-09-26T11:00:20.000Z", "actor": "system", "note": "One gap named: no approved passage states the fixture waiting period.", "counts": { "gaps": 1 }, "synthetic": true },
+		{ "id": "c4", "state": "source-candidates", "at": "2026-09-26T11:01:00.000Z", "actor": "system", "note": "Two candidate sources recorded from the fixture catalog. No provider was called.", "counts": { "candidates": 2 }, "synthetic": true },
+		{ "id": "c5", "state": "authority-check", "at": "2026-09-26T11:02:00.000Z", "actor": "system", "note": "Both candidates classified as regulator material.", "synthetic": true },
+		{ "id": "c6", "state": "date-check", "at": "2026-09-26T11:02:20.000Z", "actor": "system", "note": "Both candidates carry current dates; neither is superseded by the other.", "synthetic": true },
+		{ "id": "c7", "state": "jurisdiction-check", "at": "2026-09-26T11:02:40.000Z", "actor": "system", "note": "Both candidates govern the jurisdiction this question is about.", "synthetic": true },
+		{ "id": "c8", "state": "claim-mapping", "at": "2026-09-26T11:04:00.000Z", "actor": "system", "note": "Two atomic claims mapped to exact passages.", "counts": { "claims": 2 }, "synthetic": true },
+		{ "id": "c9", "state": "conflict-found", "at": "2026-09-26T11:04:30.000Z", "actor": "system", "note": "The two candidates state different fixture waiting periods. Both are preserved and shown; the run cannot pick a winner or average them.", "counts": { "conflicts": 1 }, "synthetic": true },
+		{ "id": "c10", "state": "human-review", "at": "2026-09-26T11:30:00.000Z", "actor": "editor", "note": "A fixture editor read both sides of the disagreement.", "synthetic": true },
+		{ "id": "c11", "state": "blocked", "at": "2026-09-26T11:45:00.000Z", "actor": "editor", "note": "Blocked pending an editorial decision. Neither source is dropped, and the disagreement stays visible in the record.", "synthetic": true }
+	]
+}

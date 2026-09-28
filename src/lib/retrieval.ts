@@ -34,6 +34,7 @@ export interface Chunk {
 	topics: string[];
 	effectiveDate: string;
 	lastReviewed: string;
+	reviewState?: string;
 	confidence: string;
 }
 
@@ -65,6 +66,7 @@ export interface SearchHit {
 	score: number;
 	confidence: string;
 	lastReviewed: string;
+	reviewState?: string;
 	/** The strongest matching chunk, and the source ids behind it. */
 	bestChunk: { id: string; kind: ChunkKind; text: string; sourceIds: string[] };
 	matchedTerms: string[];
@@ -281,6 +283,7 @@ export function search(
 				support: 0,
 				confidence: chunk.confidence,
 				lastReviewed: chunk.lastReviewed,
+				reviewState: chunk.reviewState,
 				bestChunk: { id: chunk.id, kind: chunk.kind, text: chunk.text, sourceIds: chunk.sourceIds },
 				matchedTerms: matched,
 			});

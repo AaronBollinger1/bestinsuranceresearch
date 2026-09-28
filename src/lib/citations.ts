@@ -96,12 +96,16 @@ export function createCiter(
 			out += escapeHtml(text.slice(cursor, at));
 			const id = match[1];
 			const n = resolve(id);
-			out += absolute
+			const cite = absolute
 				? `<a class="cite" href="/sources/${encodeURIComponent(id)}" ` +
 					`aria-label="Source ${n}: open the source record">[${n}]</a>`
 				: `<a class="cite" href="#source-${n}" ` +
 					`aria-label="Source ${n}: jump to the source record">[${n}]</a>`;
-			cursor = at + match[0].length;
+			const punctuation = text.slice(at + match[0].length).match(/^[.,;:!?)]/)?.[0] ?? '';
+			out += punctuation
+				? `<span class="cite-with-punctuation">${cite}${escapeHtml(punctuation)}</span>`
+				: cite;
+			cursor = at + match[0].length + punctuation.length;
 		}
 		out += escapeHtml(text.slice(cursor));
 		return out;

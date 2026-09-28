@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { fixtureRegulatoryImpact, presentRegulatoryImpact } from '../lib/regulatory-impact';
+
+const fixture = fixtureRegulatoryImpact();
+const record = presentRegulatoryImpact(fixture.graph);
+const description = 'Noindex review queue for fixture regulator bulletins. It lists affected records and the next human action. It does not decide coverage or publish.';
+---
+
+<BaseLayout title="Regulatory impact queue" description={description} pageType="editorial" noindex machinePath="/regulatory-impact.json">
+	<style>
+		.impact-banner { margin: 0 0 1.25rem; padding: 0.85rem 1rem; border: 1px solid var(--line); background: var(--paper-2, transparent); }
+		.impact-banner p { margin: 0.35rem 0 0; }
+		.impact-wrap { min-width: 0; max-width: 100%; overflow-x: auto; }
+		.impact-wrap table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+		.impact-wrap th, .impact-wrap td { padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; word-break: break-word; }
+		.impact-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; margin: 0 0 1.5rem; }
+		.impact-meta div { min-width: 8rem; }
+		.impact-meta b { display: block; }
+	</style>
+	<article class="shell">
+		<p class="eyebrow">Fixture review queue</p>
+		<h1>Regulatory impact queue</h1>
+		<div class="impact-banner" role="note">
+			<p><strong>Draft. Not indexed. Not coverage advice.</strong></p>
+			<p>{record.disclaimer} A company row stays unverified until a person reviews it. Provider calls on this page: {record.providerCalls}. Spend: {record.spend}.</p>
+		</div>
+		<div class="impact-meta">
+			<div><b>Publication</b> Closed</div>
+			<div><b>Licensed review</b> Closed</div>
+			<div><b>Commons</b> Closed</div>
+			<div><b>Open queue items</b> {record.queue.length}</div>
+		</div>
+
+		<h2>Official-source intake</h2>
+		<div class="impact-wrap">
+			<table>
+				<caption>Fixture bulletins held for review. Each row keeps its URL, authority, dates, rights, robots state, checksum, and refresh owner.</caption>
+				<thead>
+					<tr>
+						<th scope="col">Source</th>
+						<th scope="col">Authority and jurisdiction</th>
+						<th scope="col">Dates</th>
+						<th scope="col">Rights and checksum</th>
+					</tr>
+				</thead>
+				<tbody>
+					{record.sources.map((source) => (
+						<tr>
+							<td><code>{source.id}</code><br />{source.canonicalUrl}</td>
+							<td>{source.authority}. {source.jurisdiction}. Topic {source.topic}.</td>
+							<td>Effective {source.effectiveDate}. Retrieved {source.retrievedAt.slice(0, 10)}.</td>
+							<td>{source.rights}. Robots {source.robots}. Checksum {source.checksum}. Owner {source.refreshOwner}.</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+
+		<h2>Review queue</h2>
+		<p>Duplicate filing returned <code>{fixture.duplicate}</code>. The second bulletin returned <code>{fixture.conflict}</code> and stayed a conflict, not a replacement.</p>
+		<div class="impact-wrap">
+			<table>
+				<caption>Open impact edges. Each one names the affected record, the evidence, what is uncertain, and the next human action.</caption>
+				<thead>
+					<tr>
+						<th scope="col">Affected record</th>
+						<th scope="col">Evidence</th>
+						<th scope="col">Uncertainty</th>
+						<th scope="col">Next action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{record.queue.map((item) => (
+						<tr>
+							<td>{item.kind}. {item.entityKind} {item.entityId}. Since {item.since}. {item.verifiedCompanyEffect ? 'Verified company effect.' : 'No verified company effect.'}</td>
+							<td>{item.evidence}</td>
+							<td>{item.uncertainty}</td>
+							<td>{item.nextAction}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+		<p><a href="/regulatory-impact.json">Machine-readable queue</a>. <a href="/review-queue">Return to the review queue</a>.</p>
+	</article>
+</BaseLayout>

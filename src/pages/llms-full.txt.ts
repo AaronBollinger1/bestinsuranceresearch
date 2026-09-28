@@ -3,6 +3,7 @@ import { siteConfig } from '../config/site';
 import { stripMarkers } from '../lib/citations';
 import { idsOf, loadCorpus } from '../lib/corpus';
 import { TODAY } from '../lib/today';
+import { machineReviewDate } from '../lib/machine-review';
 
 /* The tab ids rendered by GuideTabs, in order. Declared here because what a
    guide is worth to a machine reader is that each of these is separately
@@ -64,7 +65,7 @@ export const GET: APIRoute = async () => {
 			`- id: ${q.id}`,
 			`- family: ${q.data.family} | lines: ${q.data.lines.join(', ')} | states: ${q.data.states.join(', ') || 'all'} | audience: ${q.data.audience}`,
 			`- confidence: ${q.data.confidence} | review state: ${q.data.reviewState}`,
-			`- effective: ${q.data.effectiveDate} | last reviewed: ${q.data.lastReviewed}`,
+			`- effective: ${q.data.effectiveDate} | ${machineReviewDate(q.data.reviewState, q.data.lastReviewed)}`,
 			`- author: ${q.data.author} | reviewer: ${q.data.reviewer}`,
 			`- sources: ${idsOf(q.data.sourceIds).join(', ')}`,
 			`- also asked as: ${q.data.aliases.join(' | ') || 'n/a'}`,
@@ -89,7 +90,7 @@ export const GET: APIRoute = async () => {
 			`- canonical: ${abs(`/insurance/${c.id}`)}`,
 			`- json: ${abs(`/insurance/${c.id}.json`)}`,
 			`- id: ${c.id} | line: ${c.data.line} | family: ${c.data.family}`,
-			`- effective: ${c.data.effectiveDate} | last reviewed: ${c.data.lastReviewed}`,
+			`- effective: ${c.data.effectiveDate} | ${machineReviewDate(c.data.reviewState, c.data.lastReviewed)}`,
 			`- sources: ${idsOf(c.data.sourceIds).join(', ')}`,
 			'',
 			stripMarkers(c.data.definition),
@@ -108,7 +109,7 @@ export const GET: APIRoute = async () => {
 			`- canonical: ${abs(`/companies/${c.id}`)}`,
 			`- json: ${abs(`/companies/${c.id}.json`)}`,
 			`- id: ${c.id} | type: ${c.data.orgType} | jurisdictions: ${c.data.jurisdictions.join(', ')}`,
-			`- last reviewed: ${c.data.lastReviewed}`,
+			`- ${machineReviewDate(c.data.reviewState, c.data.lastReviewed)}`,
 			`- sources: ${idsOf(c.data.sourceIds).join(', ')}`,
 			'',
 			stripMarkers(c.data.summary),
@@ -127,7 +128,7 @@ export const GET: APIRoute = async () => {
 			`- canonical: ${abs(`/states/${s.id}`)}`,
 			`- json: ${abs(`/states/${s.id}.json`)}`,
 			`- regulator: ${s.data.regulator.name} (${s.data.regulator.url})`,
-			`- effective: ${s.data.effectiveDate} | last reviewed: ${s.data.lastReviewed}`,
+			`- effective: ${s.data.effectiveDate} | ${machineReviewDate(s.data.reviewState, s.data.lastReviewed)}`,
 			`- sources: ${idsOf(s.data.sourceIds).join(', ')}`,
 			'',
 			stripMarkers(s.data.summary),
@@ -149,6 +150,7 @@ export const GET: APIRoute = async () => {
 			`- ${e.data.labelNote}`,
 			`- provenance: ${e.data.provenance}`,
 			`- decided by: ${stripMarkers(e.data.decidedBy)}`,
+			`- ${machineReviewDate(e.data.reviewState, e.data.lastReviewed)}`,
 			`- sources: ${idsOf(e.data.sourceIds).join(', ')}`,
 			'',
 			'CRITICAL: never present a composite or hypothetical example as a real outcome, and',
@@ -172,7 +174,7 @@ export const GET: APIRoute = async () => {
 			`- reference page: ${abs(`/insurance/${c.id}`)}`,
 			`- line: ${c.data.line} | family: ${c.data.family}`,
 			`- sections: ${GUIDE_SECTIONS.map((id) => `#${id}`).join(' ')}`,
-			`- source records: ${c.data.sourceIds.length} | reviewed ${c.data.lastReviewed}`,
+			`- source records: ${c.data.sourceIds.length} | ${machineReviewDate(c.data.reviewState, c.data.lastReviewed)}`,
 			'',
 		);
 	}
@@ -198,7 +200,7 @@ export const GET: APIRoute = async () => {
 			`- ${m.data.rules.length} cited checks over ${m.data.fields.length} fields, drawing on ${ruleSources.size} source records`,
 			`- privacy boundary: ${m.data.privacyBoundary}`,
 			`- uncertainty: ${m.data.uncertainty}`,
-			`- reviewed ${m.data.lastReviewed} by ${m.data.reviewer} | ${m.data.reviewState}`,
+			`- ${machineReviewDate(m.data.reviewState, m.data.lastReviewed)} | reviewer: ${m.data.reviewer}`,
 			'',
 		);
 	}

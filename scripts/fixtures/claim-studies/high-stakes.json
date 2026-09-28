@@ -1,0 +1,32 @@
+{
+	"_fixture": "A high-stakes claim, editorially confirmed, that honestly ENDS ineligible: no licensed review exists to record.",
+	"_why": "High stakes is declared at opening and never inferred or laundered. Editorial confirmation is a factual reading; publication eligibility still refuses until a real licensed reviewer records a review - and the corpus holds zero, so this fixture must end waiting. The clearing event is proven in-test only and appears in no fixture file.",
+	"_expects": { "finalState": "confirmed", "eligible": false, "highStakes": true, "licensedBlocker": true },
+	"sources": [
+		{
+			"id": "fixture-src-coverage-order",
+			"data": {
+				"title": "Fixture Coverage Order",
+				"publisher": "Fixture State Regulator",
+				"url": "https://fixture.invalid/order/coverage",
+				"sourceType": "regulator-record",
+				"jurisdiction": "CA",
+				"authorityLevel": "regulator",
+				"officialHost": true,
+				"publishedDate": "2026-01-15",
+				"effectiveDate": "2026-03-01",
+				"accessedDate": "2026-09-01",
+				"lastChecked": "2026-09-01",
+				"lastCheckedBasis": "access",
+				"updateCadence": "Recheck when the regulator amends the order.",
+				"status": "active",
+				"claims": ["The fixture order requires the fixture coverage to be offered on renewal."]
+			}
+		}
+	],
+	"events": [
+		{ "id": "hs1", "kind": "opened", "at": "2026-09-26T23:00:00.000Z", "actor": "editor", "note": "Study opened. The proposition concerns what a coverage must include, which only a licensed human may approve for publication.", "claimRef": "fixture-src-coverage-order#c1", "text": "The fixture order requires the fixture coverage to be offered on renewal.", "stakes": "high", "synthetic": true },
+		{ "id": "hs2", "kind": "support-added", "at": "2026-09-26T23:01:00.000Z", "actor": "editor", "note": "The order states the requirement.", "sourceId": "fixture-src-coverage-order", "synthetic": true },
+		{ "id": "hs3", "kind": "confirmed", "at": "2026-09-26T23:05:00.000Z", "actor": "editor", "note": "Editorially confirmed against the passage. This is a factual reading, not a licensed review, and the study says so.", "synthetic": true }
+	]
+}

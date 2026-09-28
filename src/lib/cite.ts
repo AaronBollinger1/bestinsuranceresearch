@@ -14,6 +14,8 @@ export interface CitablePage {
 	published: string;
 	/** ISO date of the most recent editorial review. */
 	reviewed: string;
+	/** Pending editorial work must never be exported as a completed review. */
+	reviewState?: string;
 	author: string;
 	/** Stable id used as the BibTeX key and CSL id. */
 	id: string;
@@ -61,7 +63,8 @@ export function plainCitation(page: CitablePage): string {
 	return (
 		`${siteConfig.name}. "${page.title}." ` +
 		`${siteConfig.operator.legalName} dba ${siteConfig.operator.dba}. ` +
-		`Published ${longDate(page.published)}. Last reviewed ${longDate(page.reviewed)}. ` +
+		`Published ${longDate(page.published)}. ${page.reviewState === 'under-review' ? 'Record dated' : 'Last reviewed'} ${longDate(page.reviewed)}. ` +
+		(page.reviewState === 'under-review' ? 'Editorial review pending. ' : '') +
 		`Content version ${siteConfig.contentVersion}. ${canonical(page.path)}`
 	);
 }
@@ -75,7 +78,7 @@ export function bibtexCitation(page: CitablePage): string {
 		`  institution  = {${siteConfig.operator.legalName} dba ${siteConfig.operator.dba}},`,
 		`  year         = {${page.reviewed.slice(0, 4)}},`,
 		`  month        = {${page.reviewed.slice(5, 7)}},`,
-		`  note         = {Last reviewed ${longDate(page.reviewed)}; content version ${siteConfig.contentVersion}},`,
+		`  note         = {${page.reviewState === 'under-review' ? 'Editorial review pending; record dated' : 'Last reviewed'} ${longDate(page.reviewed)}; content version ${siteConfig.contentVersion}},`,
 		`  howpublished = {\\url{${canonical(page.path)}}},`,
 		`  urldate      = {${page.reviewed}}`,
 		'}',
@@ -99,6 +102,7 @@ export function cslCitation(page: CitablePage): string {
 				accessed: { 'date-parts': [[ry, rm, rd]] },
 				version: siteConfig.contentVersion,
 				genre: page.pageType,
+				...(page.reviewState === 'under-review' ? { note: 'Editorial review pending; dates identify the current record, not completed review.' } : {}),
 			},
 		],
 		null,

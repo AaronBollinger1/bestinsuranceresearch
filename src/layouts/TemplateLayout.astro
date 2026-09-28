@@ -1,0 +1,19 @@
+---
+import { ArrowLeft, ArrowRight, LockKeyhole } from '@lucide/astro';
+import BaseLayout from './BaseLayout.astro';
+import { designTemplates, type DesignTemplate } from '../lib/design-templates';
+import '../styles/templates.css';
+interface Props { template: DesignTemplate; }
+const { template } = Astro.props;
+const index = designTemplates.findIndex(item => item.id === template.id);
+const next = designTemplates[(index + 1) % designTemplates.length];
+---
+<BaseLayout title={`${template.name} - Direction A template`} description={`Birch Direction A ${template.name.toLowerCase()} design: ${template.description} Interactive specimen; no live account or publication action.`} noindex bodyClass="birch-template">
+  <div class="template-wrap shell" data-template-id={template.id}>
+    <nav class="template-review-bar" aria-label="Template review"><a href="/design/product-system"><ArrowLeft size={14} aria-hidden="true" /> All page templates</a><span>A / Focus <span aria-hidden="true">·</span> {template.family}</span><a href={`/design/templates/${next.id}`}>Next template <ArrowRight size={14} aria-hidden="true" /></a></nav>
+    <header class="template-heading"><div><span class="template-kicker">{template.name}</span><h1>{template.title}</h1><p>{template.description}</p></div><div class="template-heading-action"><slot name="action" /></div></header>
+    <div class="template-preview-note"><LockKeyhole size={14} aria-hidden="true" /><span>Design specimen. Local interactions only; no account, provider call, or publication.</span></div>
+    <slot />
+    <details class="template-handoff"><summary>Template states and implementation boundary</summary><div><p><strong>Designed states:</strong> {template.states.join(' · ')}.</p><p><strong>Next wiring:</strong> {template.next}</p><p>Existing research links open real Birch records with their own review state. Example people, activity, and workflow decisions are clearly labeled and do not create real records.</p></div></details>
+  </div>
+</BaseLayout>

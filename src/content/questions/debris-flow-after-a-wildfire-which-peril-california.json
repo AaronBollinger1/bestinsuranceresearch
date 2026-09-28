@@ -1,0 +1,76 @@
+{
+	"question": "A debris flow after a nearby wildfire damaged my home. Which peril does the claim turn on?",
+	"aliases": [
+		"Does my policy cover a mudslide after a wildfire in California?",
+		"Is a post-fire debris flow covered by homeowners insurance?",
+		"My hillside burned and then the mud came down. Who decides if that is covered?",
+		"Does the fire that caused the slide make the slide covered?"
+	],
+	"shortAnswer": "It turns on causation, and California law addresses causation in a single sentence that does not decide any particular claim. Insurance Code section 530 states that an insurer is liable for a loss of which a peril insured against was the proximate cause, although a peril not contemplated by the contract may have been a remote cause of the loss, but is not liable for a loss of which the peril insured against was only a remote cause [S:ca-ins-code-530]. That is the frame; the policy supplies the exclusions the frame is applied to. The California FAIR Plan's dwelling property form, for example, excludes 'Earth Movement, meaning earthquake, including land shock waves or tremors before, during or after a volcanic eruption; landslide; mine subsidence; mudflow; earth sinking, rising or shifting' with an ensuing-loss carve-out only for fire and explosion [S:cfp-dwelling-property-policy-form]. Whether fire was the proximate cause of a particular debris flow, or only a remote one, is a determination the insurer makes on the facts, and a dispute about it is a legal question rather than something a general page can settle.",
+	"assumes": [
+		"You are asking how the question is framed in California and where the deciding language sits, not whether your specific claim will be paid. Coverage on a real claim is decided by the insurer under the actual policy, and disagreements about it are legal questions.",
+		"The damage is from earth or debris moving onto or against the property after a fire, rather than from the fire itself reaching the property. Direct fire damage is a different and much simpler question.",
+		"The only policy form quoted here is the California FAIR Plan dwelling property form. It is one published form and not a private carrier's filed homeowners form, so the exclusion wording that governs your claim is the wording in your own policy."
+	],
+	"why": "Two different documents decide this, and they do different jobs. The first is the statute on causation. Insurance Code section 530 states that an insurer is liable for a loss of which a peril insured against was the proximate cause, although a peril not contemplated by the contract may have been a remote cause of the loss, but is not liable for a loss of which the peril insured against was only a remote cause [S:ca-ins-code-530]. Notice what that sentence does and does not do. It tells you that the question is which peril was proximate rather than which peril appeared first in time, and it tells you that a remote cause being uninsured does not by itself defeat a claim. It does not tell you how to classify a debris flow that followed a burn, and it does not override the words of the policy.\n\nThe second document is the policy, and the relevant clauses in a property form are usually the earth movement and water damage exclusions. The California FAIR Plan's published dwelling property form states General Exclusion 2 as 'Earth Movement, meaning earthquake, including land shock waves or tremors before, during or after a volcanic eruption; landslide; mine subsidence; mudflow; earth sinking, rising or shifting; unless direct loss by: a. fire; or b. explosion; ensues and then we will pay only for the ensuing loss' [S:cfp-dwelling-property-policy-form]. Two features of that clause matter here. Landslide and mudflow are named inside the exclusion, so a loss the insurer classifies as either of those starts outside coverage on that form. And the carve-out runs the other way from the sequence in a post-fire debris flow: it restores coverage where fire or explosion ensues from the earth movement, not where earth movement follows a fire [S:cfp-dwelling-property-policy-form].\n\nThe same form's water damage exclusion can also be in play, depending on how the event is characterised. General Exclusion 3 reads 'Water Damage, meaning: a. flood, surface water, waves, tidal water, overflow of a body of water, or spray from any of these, whether or not driven by wind; b. water which backs up through sewers or drains or which overflows from a sump; or c. water below the surface of the ground, including water which exerts pressure on or seeps or leaks through a building, sidewalk, driveway, foundation, swimming pool or other structure', and it then states that direct loss by fire or explosion resulting from water damage is covered [S:cfp-dwelling-property-policy-form]. A post-fire debris flow is water and earth moving together, so which of the two exclusions an insurer applies, and whether either applies at all, is part of what is being determined rather than a given.\n\nPut the two documents together and the shape of the question is clear even though the answer is not. Section 530 makes proximate cause the test [S:ca-ins-code-530]. The policy names landslide, mudflow and earth movement as excluded and defines an ensuing-loss carve-out that runs from earth movement to fire rather than from fire to earth movement [S:cfp-dwelling-property-policy-form]. So the live issue in a post-fire debris flow claim is whether the fire, which is ordinarily an insured peril, was the proximate cause of the earth and water that arrived afterwards, or whether the earth movement was. That is a fact-specific determination about a specific hillside, a specific burn and a specific storm. The insurer makes it in the first instance under the policy, and a policyholder who disagrees can take it up with the California Department of Insurance or with a lawyer. This page does not predict that determination, and a page that did would be guessing.",
+	"whatChanges": [
+		"Which peril the insurer determines was the proximate cause, as opposed to a remote cause, which is the test section 530 states [S:ca-ins-code-530].",
+		"Whether the insurer characterises the event as earth movement, as water damage, or as something else. The FAIR Plan form has separate exclusions with separate carve-outs for the first two [S:cfp-dwelling-property-policy-form].",
+		"The exact wording of your own policy's earth movement and water damage exclusions. Only one published form is quoted here and forms differ [S:cfp-dwelling-property-policy-form].",
+		"Whether any ensuing loss occurred that the form's carve-out actually reaches. On the FAIR Plan form the carve-out is for fire or explosion ensuing from the excluded cause [S:cfp-dwelling-property-policy-form].",
+		"Whether the damage is direct fire damage rather than post-fire earth movement, which changes the question entirely."
+	],
+	"variability": [
+		"Section 530 states a rule of causation; it does not classify any event. Two claims on the same street can be determined differently on their facts [S:ca-ins-code-530].",
+		"The only form quoted here is the California FAIR Plan dwelling property form, which is a dwelling fire form and not a private carrier's homeowners form. Its exclusions should not be read as universal [S:cfp-dwelling-property-policy-form].",
+		"Publishers revise forms. Re-pull the earth movement and water damage clauses from the edition that applies to your policy period before relying on the wording [S:cfp-dwelling-property-policy-form].",
+		"This answer is about California's statutory causation rule. Other states frame the same dispute differently."
+	],
+	"nextActions": [
+		"Report the loss to your insurer promptly and let it make a coverage determination under the actual policy, rather than deciding in advance that it is excluded.",
+		"Get the full text of your own earth movement and water damage exclusions from your policy, including any ensuing-loss language, and read them against what happened [S:cfp-dwelling-property-policy-form].",
+		"Document the sequence: the burn area, the date of the fire, the date and nature of the storm, and the path the material took. Section 530 makes causation the issue, so the record of what happened in what order is the evidence that matters [S:ca-ins-code-530].",
+		"If the claim is denied and you disagree with the causation determination, take it to the California Department of Insurance or to a lawyer. That determination is a legal question, not a research one."
+	],
+	"confidence": "contextual",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"homeowners",
+		"dwelling-fire"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"proximate cause",
+		"earth movement exclusion",
+		"debris flow",
+		"wildfire",
+		"california"
+	],
+	"companies": [],
+	"coverages": [],
+	"effectiveDate": "2026-09-19",
+	"lastReviewed": "2026-09-19",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"nonrenewal-after-wildfire-moratorium-california",
+		"complaint-about-a-california-insurer-where-it-goes",
+		"homeowners-earthquake-california"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether fire was the proximate cause of a particular debris flow is a determination the insurer makes on the facts of the claim, and a dispute about it is a legal question about causation and policy wording. A licensed agent or broker can read the specific form; a lawyer is the right destination if the determination is contested. Nothing on this page predicts the outcome of any individual claim."
+	},
+	"sourceIds": [
+		"ca-ins-code-530",
+		"cfp-dwelling-property-policy-form"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

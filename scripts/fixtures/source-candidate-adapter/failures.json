@@ -1,0 +1,7 @@
+{
+	"_fixture": "Provider-shaped failures. None of them is a live response.",
+	"outage": { "fixtureId": "fixture-outage", "kind": "outage", "costUnits": 1 },
+	"malformed": { "fixtureId": "fixture-malformed", "kind": "malformed", "results": "not-json" },
+	"rateLimited": { "fixtureId": "fixture-rate", "kind": "rate-limited", "costUnits": 1 },
+	"overBudget": { "fixtureId": "fixture-budget", "kind": "over-budget", "costUnits": 9 }
+}

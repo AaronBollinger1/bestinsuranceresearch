@@ -1,0 +1,80 @@
+{
+	"question": "What auto insurance does California require, and what do I have to carry in the car?",
+	"aliases": [
+		"What are the minimum car insurance limits in California?",
+		"How much liability insurance do I need to drive in California?",
+		"Did California raise its minimum auto insurance limits?",
+		"What counts as proof of insurance in California?"
+	],
+	"shortAnswer": "Since January 1, 2025 the liability limits that satisfy California's financial responsibility requirement are $30,000 for bodily injury to or death of one person, $60,000 for bodily injury to or death of all persons in one accident, and $15,000 for property damage [S:ca-veh-code-16056][S:ca-sb-1107]. The California DMV states the same three figures as the current minimum amounts [S:ca-dmv-insurance-requirements]. Insurance is not the only way to satisfy the requirement: the DMV states it may also be met by a $75,000 cash deposit with the DMV, by a DMV-issued self-insurance certificate, or by a $75,000 surety bond from a company licensed to do business in California [S:ca-dmv-insurance-requirements]. Separately from having coverage, Vehicle Code section 16020(a) requires all drivers and all owners to be able to establish financial responsibility at all times and to carry evidence of it in the vehicle at all times [S:ca-veh-code-16020]. These are floors, not recommendations: a limit that satisfies the statute can still be smaller than the harm one accident causes.",
+	"assumes": [
+		"You are asking what California law requires of a private passenger vehicle on public roads, not what limits are appropriate for your own exposure. What is adequate is a different question from what is required, and this answer only addresses the second.",
+		"You are asking about the liability minimums and the proof requirement, not about collision, comprehensive, medical payments, or uninsured motorist coverage, each of which is governed by its own rules.",
+		"The figures here are the amounts operative from January 1, 2025 as stated in Vehicle Code section 16056 and in SB 1107. Statutes change, and both publishers revise their pages."
+	],
+	"why": "The requirement lives in the Vehicle Code, not in your policy. Vehicle Code section 16056 states the liability limits a policy must carry to satisfy California's financial responsibility requirement, and it states them in tiers. For the period through December 31, 2024 the limits were $15,000 for bodily injury to or death of one person, $30,000 for bodily injury to or death of all persons in one accident, and $5,000 for property damage [S:ca-veh-code-16056]. On and after January 1, 2025 the limits are $30,000, $60,000, and $15,000 [S:ca-veh-code-16056]. That change came from SB 1107, which raised the minimums effective January 1, 2025 and was chaptered as Chapter 717, Statutes of 2022 [S:ca-sb-1107]. If you have seen 15/30/5 quoted as the California minimum, that figure was correct for policies in the earlier period and is no longer the operative number [S:ca-veh-code-16056].\n\nThere is a further step-up already written into the statute, and it needs reading carefully. Section 16056 provides for an increase effective January 1, 2035 expressed as an increase BY $20,000 for bodily injury to or death of one person, BY $40,000 for bodily injury to or death of all persons in one accident, and BY $10,000 for property damage [S:ca-veh-code-16056]. Those are increments, not the resulting limits. Applied to the amounts operative from January 1, 2025 they produce limits of $50,000, $100,000 and $25,000 from January 1, 2035, which is how SB 1107 states the result [S:ca-veh-code-16056][S:ca-sb-1107]. The statute states the increments rather than the resulting figures, so the increments must not be read as the 2035 limits themselves [S:ca-veh-code-16056].\n\nInsurance is the usual route but not the only one. The California DMV lists the current minimum liability amounts as $30,000 for injury or death to one person, $60,000 for injury or death to more than one person, and $15,000 for damage to property, and states that the financial responsibility requirement may also be met by a $75,000 cash deposit with the DMV, by a DMV-issued self-insurance certificate, or by a $75,000 surety bond from a company licensed to do business in California [S:ca-dmv-insurance-requirements]. SB 1107 set that cash deposit alternative at $75,000 effective January 1, 2025, and provides that the deposit alternative increases by $50,000 effective January 1, 2035 [S:ca-sb-1107].\n\nCarrying the coverage and carrying the proof are two separate duties. Vehicle Code section 16020(a) requires all drivers and all owners of a motor vehicle to be able to establish financial responsibility pursuant to section 16021 at all times, and to carry in the vehicle at all times evidence of the form of financial responsibility in effect for the vehicle [S:ca-veh-code-16020]. What counts as that evidence is listed in subdivision (b): a form issued by an insurance company or charitable risk pool as specified by the DMV pursuant to Vehicle Code section 4000.37 [S:ca-veh-code-16020]; where the owner is a self-insurer under section 16052 or a depositor under section 16054.2, the certificate of self-insurance or the assignment of deposit letter issued by the department [S:ca-veh-code-16020]; an insurance covering note or binder pursuant to Insurance Code section 382 or 382.5 [S:ca-veh-code-16020]; and a showing that the vehicle is owned or leased by, or under the direction of, the United States or a public entity as defined in Government Code section 811.2 [S:ca-veh-code-16020]. Section 16020(c) provides that evidence may also be obtained by a law enforcement officer and court personnel from an electronic reporting system when that system becomes available for use by law enforcement officers [S:ca-veh-code-16020].\n\nThe Insurance Code then requires the policy itself to be built a particular way. Section 11580.1(a) provides that no policy of automobile liability insurance described in Vehicle Code section 16054 covering liability arising out of the ownership, maintenance or use of a motor vehicle may be issued or delivered in California unless it contains the provisions set out in subdivision (b) [S:ca-ins-code-11580-1]. Section 11580.1(b)(1) requires the policy to contain coverage limits not less than the limits specified in subdivision (a) of Vehicle Code section 16056, which is the link that ties the policy back to the figures above [S:ca-ins-code-11580-1]. Section 11580.1(b)(4) requires the policy to afford insurance to the named insured with respect to any owned or leased motor vehicle covered by the policy and, to the same extent, to any other person using the vehicle with the named insured's permission, express or implied, and within the scope of that permission [S:ca-ins-code-11580-1].",
+	"whatChanges": [
+		"When the policy was issued or last renewed. The $15,000 / $30,000 / $5,000 figures applied through December 31, 2024 and the $30,000 / $60,000 / $15,000 figures apply on and after January 1, 2025 [S:ca-veh-code-16056].",
+		"Whether you are relying on insurance or on one of the alternatives. A $75,000 cash deposit, a DMV self-insurance certificate, and a $75,000 surety bond are each listed by the DMV as ways to meet the requirement [S:ca-dmv-insurance-requirements].",
+		"Whether the evidence in the vehicle is one of the forms section 16020(b) lists. A binder or covering note under Insurance Code section 382 or 382.5 counts; an expired card is not evidence of a form in effect [S:ca-veh-code-16020].",
+		"Whether the vehicle is owned or leased by, or under the direction of, the United States or a public entity as defined in Government Code section 811.2, which section 16020(b)(4) treats as its own form of evidence [S:ca-veh-code-16020].",
+		"The date. The statutory step-up takes effect January 1, 2035 and is written as increments to the 2025 amounts [S:ca-veh-code-16056][S:ca-sb-1107]."
+	],
+	"variability": [
+		"This answer is California-specific. The limits, the deposit and bond amounts, and the duty to carry evidence in the vehicle come from the California Vehicle Code and do not describe any other state [S:ca-veh-code-16056][S:ca-veh-code-16020].",
+		"A minimum is a floor set for licensing, not a measure of exposure. Nothing in section 16056 or in the DMV's page says these amounts are sufficient for any particular accident [S:ca-veh-code-16056][S:ca-dmv-insurance-requirements].",
+		"SB 1107 amended several statutes at once, including Vehicle Code sections 16056, 16430, 16435, 16451 and 16500, and added Insurance Code section 12960, so a figure quoted from one of those sections may have its own operative date [S:ca-sb-1107].",
+		"Section 11580.1 governs what a California automobile liability policy must contain and what it may exclude. It is a longer list than this answer covers, and the exclusions it permits can change what a policy pays in a given accident [S:ca-ins-code-11580-1]."
+	],
+	"nextActions": [
+		"Read the declarations page of your own policy and compare its liability limits against $30,000 / $60,000 / $15,000. A policy written before 2025 and never re-rated may still show the older figures [S:ca-veh-code-16056].",
+		"Check what is actually in the vehicle. Section 16020(a) requires evidence of the form of financial responsibility in effect to be carried in the vehicle at all times, and subdivision (b) lists what qualifies [S:ca-veh-code-16020].",
+		"If you are considering a deposit, a self-insurance certificate, or a surety bond instead of a policy, take the amounts and the procedure from the DMV rather than from a summary, because each alternative has its own filing [S:ca-dmv-insurance-requirements].",
+		"If you want limits above the minimum, ask your agent or broker to quote higher liability limits and to explain what uninsured and underinsured motorist coverage would add. That is a coverage-selection decision, not a statutory one."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"auto"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"financial responsibility",
+		"minimum limits",
+		"proof of insurance",
+		"california",
+		"auto"
+	],
+	"companies": [],
+	"coverages": [
+		"personal-auto-california"
+	],
+	"effectiveDate": "2026-09-19",
+	"lastReviewed": "2026-09-19",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"texas-minimum-auto-and-what-you-carry-by-default",
+		"what-can-my-auto-policy-exclude-california",
+		"underinsured-motorist-paid-nothing-california"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a particular policy meets the current statutory limits is a document question about that policy, and choosing limits above the minimum is an advice question about your own exposure. A licensed agent or broker can read the declarations page, quote higher limits, and explain uninsured and underinsured motorist coverage. Whether a specific accident is covered is a determination for the insurer under the actual policy."
+	},
+	"sourceIds": [
+		"ca-veh-code-16056",
+		"ca-veh-code-16020",
+		"ca-sb-1107",
+		"ca-dmv-insurance-requirements",
+		"ca-ins-code-11580-1"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

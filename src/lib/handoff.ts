@@ -1,4 +1,4 @@
-import { siteConfig } from '../config/site';
+import { siteConfig } from '../config/site.ts';
 
 /**
  * Bollinsure handoff attribution.
@@ -33,7 +33,7 @@ function safeSlug(value: string | undefined): string | undefined {
  */
 export function bollinsureUrl(path: string, attribution: HandoffAttribution): string {
 	const url = new URL(path, siteConfig.bollinsureOrigin);
-	url.searchParams.set('utm_source', 'bestinsuranceresearch');
+	url.searchParams.set('utm_source', 'birch');
 	url.searchParams.set('utm_medium', 'referral');
 
 	if (PATH.test(attribution.sourcePath)) {

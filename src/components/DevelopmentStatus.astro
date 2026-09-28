@@ -1,0 +1,76 @@
+---
+/**
+ * The in-development status, above the fold on every route.
+ *
+ * The indexing posture was already truthful - `noindex, nofollow` on every
+ * page and `Disallow: /` in robots.txt - but a person who reaches a preview URL
+ * directly never sees a robots directive. The only thing they could read was
+ * the footer's "Preview build" paragraph, which sits at roughly 97% of the way
+ * down the body on a question page. Somebody landing on a sourced answer about
+ * their own insurance had no way to know, from the part of the page they
+ * actually saw, that this is unlaunched.
+ *
+ * So this renders first in the body, before the header, and says three things
+ * a reader needs before they act on anything here: the site is not launched,
+ * the pages are drafts under editorial review, and nothing on it is advice or
+ * an offer. It carries no call to action and links nowhere, because a
+ * solicitation is exactly what an unlaunched route must not carry.
+ *
+ * It is gated on `isPreview`, the same flag that emits the noindex meta tag, so
+ * the visible status and the machine-readable posture cannot disagree. It is
+ * not a landmark, not a live region, and has no heading: it must not add a
+ * region to the landmark list, interrupt the heading outline, or announce
+ * itself as a change when the page has not changed.
+ *
+ * This is a launch gate, not decoration. It comes off when a launch review
+ * clears it, not when it is in the way of a screenshot.
+ */
+import { isPreview } from '../config/site';
+---
+
+{
+	isPreview && (
+		<div class="development-status" data-development-status>
+			<div class="shell development-status-inner">
+				<strong>In development.</strong>
+				<span>
+					Birch is not launched. These pages are drafts under editorial review, the site is not
+					indexed, and nothing here is insurance advice or an offer of coverage.
+				</span>
+			</div>
+		</div>
+	)
+}
+
+<style>
+	.development-status {
+		border-bottom: 1px solid var(--line-strong);
+		background: var(--gold-wash);
+		color: var(--ink);
+	}
+	.development-status-inner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 4px var(--s-2);
+		padding-block: 10px;
+		font-size: var(--text-xs);
+		line-height: var(--leading-normal);
+	}
+	.development-status strong {
+		color: var(--gold-text);
+		font-weight: 600;
+		white-space: nowrap;
+	}
+	.development-status span {
+		color: var(--ink-2);
+		min-width: 0;
+	}
+	@media print {
+		/* The status is a property of this deployment, not of the document a
+		   reader printed, and a printed page cannot be re-checked against it. */
+		.development-status {
+			display: none;
+		}
+	}
+</style>

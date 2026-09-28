@@ -1,0 +1,33 @@
+{
+  "_fixture": "Two records of the same kind claiming one address. Synthetic contract example: the ids are invented, the text asserts nothing about insurance, and nothing here is loaded by the site.",
+  "_why": "This is the realistic shape of the failure. Two files in one directory cannot share a name, so a collision does not arise from the filesystem - it arises when something merges record sets, which is exactly what a future provider adapter or a candidate-import step will do.",
+  "_expects": "id-collision",
+  "sources": [
+    {
+      "id": "fixture-doc-one",
+      "data": {
+        "title": "Fixture document one",
+        "jurisdiction": "Fixture jurisdiction",
+        "claims": ["A fixture sentence standing in for a quoted passage."]
+      }
+    },
+    {
+      "id": "fixture-doc-one",
+      "data": {
+        "title": "A second record merged in under the same address",
+        "jurisdiction": "Fixture jurisdiction",
+        "claims": ["A different fixture sentence under a colliding address."]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "fixture-question",
+      "data": {
+        "question": "A fixture question?",
+        "reviewState": "under-review",
+        "sourceIds": ["fixture-doc-one"]
+      }
+    }
+  ]
+}

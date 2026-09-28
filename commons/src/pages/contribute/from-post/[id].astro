@@ -1,0 +1,266 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { SESSION_COOKIE, accountFromSession, sameOrigin } from '../../../lib/auth';
+import { getStore, selfOrigin } from '../../../lib/runtime';
+import { MIN_CANNOT_GENERALIZE, MIN_INFORMATION, newSubmissionId, validateSubmission } from '../../../lib/submissions';
+import type { FieldError } from '../../../lib/submissions';
+import { subject } from '../../../lib/threads';
+
+export const prerender = false;
+
+const store = getStore();
+const account = await accountFromSession(store, Astro.cookies.get(SESSION_COOKIE)?.value);
+if (!account) return Astro.redirect('/sign-in', 303);
+if (!account.displayName) return Astro.redirect('/account?welcome=1', 303);
+
+const requestId = String(Astro.params.id ?? '');
+const request = await store.getPromotionRequest(requestId);
+/* An invitation is private account state. A stranger who guesses its id gets
+   the same response as a missing id, not confirmation that it exists. */
+if (!request || request.email !== account.email) return new Response('Not found', { status: 404 });
+
+const post = await store.getPost(request.postId);
+const thread = await store.getThread(request.threadId);
+const about = thread ? subject(thread.subjectId) : null;
+const sourceAvailable = Boolean(post && thread && post.state === 'visible' && thread.state !== 'hidden');
+
+let errors: FieldError[] = [];
+let problem = '';
+let values: Record<string, string> = {
+	title: thread?.title ?? '',
+	whatHappened: post?.body ?? '',
+	insuranceQuestion: '',
+	informationThatMattered: '',
+	decidedBy: '',
+	cannotGeneralize: '',
+	lines: '',
+	states: '',
+	occurredOn: post ? new Date(post.postedAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' }) : '',
+};
+
+if (Astro.request.method === 'POST') {
+	if (!sameOrigin(Astro.request, selfOrigin(Astro.request))) {
+		return new Response('Bad request', { status: 400 });
+	}
+	if (!sourceAvailable) {
+		problem = 'The original conversation is no longer available, so this invitation cannot be submitted.';
+	} else {
+		const form = await Astro.request.formData();
+		const intent = String(form.get('intent') ?? '');
+		if (intent === 'decline') {
+			await store.declinePromotionRequest(request.id, account.email, new Date().toISOString());
+			return Astro.redirect('/account?promotion-declined=1', 303);
+		}
+
+		values = Object.fromEntries([...form.entries()].map(([key, value]) => [key, String(value)]));
+		const result = validateSubmission(values);
+		errors = result.errors;
+		if (form.get('confirm') !== 'on') {
+			errors = [
+				...errors,
+				{
+					field: 'confirm',
+					message: 'Confirm that you want to turn your own post into a separate case-report submission.',
+				},
+			];
+		}
+		if (errors.length === 0 && result.draft) {
+			try {
+				await store.submitPromotion(request.id, account.email, result.draft, newSubmissionId(), new Date().toISOString());
+				return Astro.redirect(`/contribute/sent?flags=${result.draft.verdictFlags.length}&promoted=1`, 303);
+			} catch (error) {
+				problem = error instanceof Error ? error.message : 'That invitation could not be submitted.';
+			}
+		}
+	}
+}
+
+const errorFor = (field: string) => errors.filter((error) => error.field === field);
+const value = (field: string) => values[field] ?? '';
+const box =
+	'width: 100%; padding: var(--s-3); font: inherit; border: var(--bw-hair) solid var(--line-strong); border-radius: var(--r-2); background: var(--white)';
+---
+
+<BaseLayout
+	title="Write the invited case report"
+	eyebrow="Contribute"
+	lede="A moderator found a thread that may become more useful as a structured account. You decide whether to submit it."
+	crumbs={[{ name: 'Home', href: '/' }, { name: 'Account', href: '/account' }, { name: 'Invited case report' }]}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+				<div class="callout" data-tone="note">
+					<h3>What this invitation means</h3>
+					<p>
+						A moderator is asking whether you want to expand something you wrote into a case report. This
+						is not an endorsement of the post, a coverage decision, or a promise to publish. Your report
+						will be separate from the thread and will be read before it can become a permanent page.
+					</p>
+				</div>
+
+				<div class="callout">
+					<h3>Conversation origin</h3>
+					<p>
+						<strong>{thread?.title ?? 'Conversation unavailable'}</strong>{about ? ` · ${about.name}` : ''}
+					</p>
+					{post && <blockquote>{post.body}</blockquote>}
+					<p class="meta">
+						This post is the starting context only. It is not copied into the report as a research citation,
+						and the thread remains editable only by withdrawal or moderation — never by silent edits.
+					</p>
+				</div>
+
+				{!sourceAvailable && (
+					<div class="callout" data-tone="warn">
+						<p>{problem || 'The original conversation is no longer available. This invitation cannot be submitted.'}</p>
+						<p><a href="/account">Return to your account</a>.</p>
+					</div>
+				)}
+
+				{sourceAvailable && request.state !== 'pending' && (
+					<div class="callout" data-tone="note">
+						<p>
+							This invitation is already <strong>{request.state}</strong>. The source post and any separate
+							report remain distinct.
+						</p>
+						<p><a href="/account">Return to your account</a>.</p>
+					</div>
+				)}
+
+				{sourceAvailable && request.state === 'pending' && (
+					<>
+						{(errors.length > 0 || problem) && (
+							<div class="callout" data-tone="stop">
+								{problem && <p>{problem}</p>}
+								{errors.length > 0 && (
+									<>
+										<h3>{errors.length} {errors.length === 1 ? 'thing needs' : 'things need'} fixing</h3>
+										<ul>{errors.map((error) => <li>{error.message}</li>)}</ul>
+										<p>Nothing has been sent. What you wrote is still in the form below.</p>
+									</>
+								)}
+							</div>
+						)}
+
+						<div class="callout" data-tone="stop">
+							<h3>Keep the same boundaries</h3>
+							<p>
+								Do not tell us whether a claim should have been paid. Say what happened and who decided.
+								Do not send documents or type policy, claim, address, identity, or health details. This
+								form has no upload and never will.
+							</p>
+						</div>
+
+						<form method="post">
+							<h2>Complete the account</h2>
+							<p>
+								<label for="title"><strong>One line summarising it</strong></label><br />
+								<span class="meta">Describe what the situation turned on, not how it felt.</span><br />
+								<input type="text" id="title" name="title" value={value('title')} required style={box} />
+								{errorFor('title').map((error) => <span class="meta" style="color: var(--stop)">{error.message}</span>)}
+							</p>
+
+							<p>
+								<label for="whatHappened"><strong>The facts, dated and placed</strong></label><br />
+								<span class="meta">What happened, in order. Include dates and what was said, without names.</span><br />
+								<textarea id="whatHappened" name="whatHappened" rows="10" required style={box}>{value('whatHappened')}</textarea>
+								{errorFor('whatHappened').map((error) => <span class="meta" style="color: var(--stop)">{error.message}</span>)}
+							</p>
+
+							<p>
+								<label for="occurredOn"><strong>When</strong></label><br />
+								<span class="meta">A month and year is enough.</span><br />
+								<input type="text" id="occurredOn" name="occurredOn" value={value('occurredOn')} required style={box} />
+								{errorFor('occurredOn').map((error) => <span class="meta" style="color: var(--stop)">{error.message}</span>)}
+							</p>
+
+							<p>
+								<label for="states"><strong>Which state</strong></label><br />
+								<span class="meta">Two-letter codes, one per line. Leave blank if it does not apply.</span><br />
+								<textarea id="states" name="states" rows="2" style={box}>{value('states')}</textarea>
+								{errorFor('states').map((error) => <span class="meta" style="color: var(--stop)">{error.message}</span>)}
+							</p>
+
+							<p>
+								<label for="lines"><strong>What kind of policy</strong></label><br />
+								<span class="meta">One per line: homeowners, commercial auto, workers compensation.</span><br />
+								<textarea id="lines" name="lines" rows="2" required style={box}>{value('lines')}</textarea>
+								{errorFor('lines').map((error) => <span class="meta" style="color: var(--stop)">{error.message}</span>)}
+							</p>
+
+							<h2>What it turned on</h2>
+							<p>
+								<label for="insuranceQuestion"><strong>The insurance question underneath it</strong></label><br />
+								<span class="meta">The thing a broker would actually have to look up.</span><br />
+								<input type="text" id="insuranceQuestion" name="insuranceQuestion" value={value('insuranceQuestion')} required style={box} />
+								{errorFor('insuranceQuestion').map((error) => <span class="meta" style="color: var(--stop)">{error.message}</span>)}
+							</p>
+
+							<p>
+								<label for="informationThatMattered"><strong>What mattered — at least {MIN_INFORMATION}, one per line</strong></label><br />
+								<span class="meta">The facts that changed the outcome, often small and specific.</span><br />
+								<textarea id="informationThatMattered" name="informationThatMattered" rows="5" required style={box}>{value('informationThatMattered')}</textarea>
+								{errorFor('informationThatMattered').map((error) => <span class="meta" style="color: var(--stop)">{error.message}</span>)}
+							</p>
+
+							<p>
+								<label for="decidedBy"><strong>Who decided</strong></label><br />
+								<span class="meta">Say who decided, or that nobody did. Do not say whether they were right.</span><br />
+								<textarea id="decidedBy" name="decidedBy" rows="3" required style={box}>{value('decidedBy')}</textarea>
+								{errorFor('decidedBy').map((error) => <span class="meta" style="color: var(--stop)">{error.message}</span>)}
+							</p>
+
+							<h2>Why it would not apply to somebody else</h2>
+							<p>
+								Name at least {MIN_CANNOT_GENERALIZE} reasons this account is particular: different wording,
+								different state, different date, or a fact specific to this situation.
+							</p>
+							<p>
+								<textarea id="cannotGeneralize" name="cannotGeneralize" rows="6" required style={box}>{value('cannotGeneralize')}</textarea>
+								{errorFor('cannotGeneralize').map((error) => <span class="meta" style="color: var(--stop)">{error.message}</span>)}
+							</p>
+
+							<p>
+								<label>
+									<input type="checkbox" name="confirm" value="on" required checked={values.confirm === 'on'} />{' '}
+									I wrote this account and want to submit this separate case report for moderator review.
+								</label>
+								{errorFor('confirm').map((error) => <span class="meta" style="color: var(--stop)">{error.message}</span>)}
+							</p>
+
+							<p>
+								<button class="btn btn-primary" type="submit">Send the report to the moderator</button>{' '}
+								<button class="btn btn-secondary" type="submit" name="intent" value="decline" formnovalidate>
+									Decline invitation
+								</button>
+							</p>
+							<p class="meta">
+								Nothing publishes until a moderator reads it. The thread remains a conversation and is never
+								used as a research citation.
+							</p>
+						</form>
+					</>
+				)}
+			</div>
+
+			<aside aria-label="About this invitation">
+				<div class="rail-block">
+					<h2>Publishing as</h2>
+					<dl>
+						<div><dt>Name</dt><dd>{account.displayName}</dd></div>
+						<div><dt>Role</dt><dd>{account.kind}</dd></div>
+					</dl>
+				</div>
+				<div class="rail-block">
+					<h2>Set by the moderator</h2>
+					<ul>
+						<li>Evidence label</li>
+						<li>Label reasoning</li>
+						<li>What was checked</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

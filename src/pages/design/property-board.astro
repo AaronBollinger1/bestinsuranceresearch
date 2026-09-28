@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { can } from '../../lib/property-research-views';
+import {
+	addCapture,
+	createBoard,
+	deleteCapture,
+	grantConsent,
+	presentBoard,
+	recordConflict,
+	type VisualBoard,
+} from '../../lib/property-visual';
+
+const address = '14 Fixture Way';
+const consent = {
+	actor: 'Fixture Owner',
+	purpose: 'Record the exterior for the owner.',
+	scope: 'Four exterior faces of 14 Fixture Way',
+	recordedAt: '2026-09-27T12:00:00.000Z',
+};
+let ready = grantConsent(createBoard('prop-fixture', address), consent);
+for (const angle of ['north', 'east', 'south', 'west'] as const) {
+	ready = addCapture(ready, {
+		angle,
+		quality: 'sufficient',
+		note: `${angle} wall of the fixture building.`,
+		bytes: 1200,
+		statedAddress: address,
+		mime: 'image/jpeg',
+	}).board;
+}
+const conflict = recordConflict(ready, 'north', 'Earlier north note.', 'Later north note.');
+const retained = deleteCapture(ready, 'cap-1', '2026-09-27T12:00:00.000Z', '2027-09-27');
+const deleted = deleteCapture(ready, 'cap-1', '2026-09-27T12:00:00.000Z', null);
+const deniedRole = can('contributor', 'view-property');
+
+function fragment(board: VisualBoard, role: 'property' | 'contributor'): string {
+	const html = presentBoard(board, role).html;
+	return html.replace(/^[\s\S]*?<h1>[^<]*<\/h1>/, '').replace(/<\/main>[\s\S]*$/, '');
+}
+---
+
+<BaseLayout
+	title="Fixture property evidence board"
+	description="A local noindex fixture of the consented property evidence board. It is not a measurement and it is not published."
+	pageType="editorial"
+	noindex
+>
+	<style>
+		.board-grid { display: block; }
+		@media (min-width: 768px) {
+			.board-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+		}
+		@media (min-width: 1280px) {
+			.board-grid { grid-template-columns: 16rem 1fr 20rem; }
+		}
+	</style>
+	<article class="shell board-grid" data-property-board="fixture">
+		<div>
+			<p class="eyebrow">Fixture only</p>
+			<h1>Fixture property evidence board</h1>
+			<p>This page is a local specimen. It does not call an imagery provider and it is not an underwriting measurement.</p>
+			<p data-permission={String(deniedRole.allowed)}>{deniedRole.reason}</p>
+		</div>
+		<section aria-labelledby="board-ready">
+			<h2 id="board-ready">2D board</h2>
+			<div set:html={fragment(ready, 'property')} />
+		</section>
+		<section aria-labelledby="board-conflict">
+			<h2 id="board-conflict">Conflict</h2>
+			<div set:html={fragment(conflict, 'property')} />
+		</section>
+		<section aria-labelledby="board-retained">
+			<h2 id="board-retained">Retained metadata</h2>
+			<div set:html={fragment(retained, 'property')} />
+		</section>
+		<section aria-labelledby="board-deleted">
+			<h2 id="board-deleted">Deleted image</h2>
+			<div set:html={fragment(deleted, 'property')} />
+		</section>
+		<section aria-labelledby="board-denied">
+			<h2 id="board-denied">Permission</h2>
+			<div set:html={fragment(ready, 'contributor')} />
+		</section>
+	</article>
+</BaseLayout>

@@ -285,7 +285,14 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 
 				{
 					byKind.map((bucket) => (
-						<div class="kind">
+						/*
+						 * `kind-group`, not `kind`: `.kind` is the Kind tag pill in
+						 * instrument.css, an inline-flex chip that sets white-space:
+						 * nowrap. This is a section wrapping many records, and the
+						 * pill's nowrap inherited into every sentence inside it, so
+						 * nothing wrapped and the page ran thousands of pixels wide.
+						 */
+						<div class="kind-group">
 							<h3>{bucket.kind}{bucket.groups.length === 1 ? '' : 's'} <span class="n">{bucket.groups.length}</span></h3>
 							{bucket.groups.map((group) => (
 								<div class="rec">
@@ -335,7 +342,10 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 							{sheet.declared.map((dep) => (
 								<li>
 									<div class="rec-head">
-										<h4><a href={dep.path}>{dep.recordTitle}</a></h4>
+										{/* h3, not h4: this section groups records directly under its own
+										    h2, with no intervening level. The assertions section above has
+										    an h3 per kind, so its record titles are h4 there. */}
+										<h3><a href={dep.path}>{dep.recordTitle}</a></h3>
 										<StatusChip kind={dep.reviewState} />
 										<span class="rec-n">{dep.kind}</span>
 									</div>
@@ -527,8 +537,8 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 	}
 	.claims .sum { color: var(--faint); }
 
-	.kind { margin-top: var(--s-5); }
-	.kind > h3 {
+	.kind-group { margin-top: var(--s-5); }
+	.kind-group > h3 {
 		font-family: var(--font-sans);
 		font-size: 0.5625rem;
 		letter-spacing: 0.09em;
@@ -539,7 +549,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 		margin: 0 0 var(--s-3);
 		font-weight: 600;
 	}
-	.kind > h3 .n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+	.kind-group > h3 .n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
 	.rec,
 	.declared > li {
@@ -555,7 +565,9 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail));
 		gap: var(--s-2) var(--s-3);
 		margin-bottom: var(--s-3);
 	}
-	.rec-head h4 {
+	/* A record title reads the same whether its section nests it under an h3 or
+	   directly under the h2, so the style follows the row, not the level. */
+	.rec-head :is(h3, h4) {
 		margin: 0;
 		font-family: var(--font-display);
 		font-size: var(--text-base);

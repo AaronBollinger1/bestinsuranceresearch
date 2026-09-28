@@ -1,13 +1,15 @@
 # Module Registry and Roadmap
 
-The advisory instrument is six **modules** that assemble into one coverage position, three
-**worksheets** that do one job each, and eighteen more tools specified but not built.
+Birch Research has six **modules** that assemble into one optional Coverage Position, three
+**worksheets** that do one job each, and eighteen more tools specified but not built. The
+Research layer remains the front door; these tools are the activation and retention surface for
+readers who want to organize their own facts after reading the evidence.
 
 Machine-readable: `src/content/modules/` and `src/content/tools/`. This file explains the
 decisions behind them, in particular how eligibility, carrier appetite, and pricing are
 handled.
 
-Last updated: 2026-09-02
+Last updated: 2026-09-10
 
 ## Modules versus worksheets
 

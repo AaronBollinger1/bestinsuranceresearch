@@ -1,0 +1,34 @@
+{
+	"_fixture": "A confirmed claim goes stale under an explicit freshness policy, is refreshed, and must be re-confirmed by a person.",
+	"_why": "Refresh never restores confirmed: a re-read reopens review. The fold must refuse confirmation while stale, accept it only after the refresh, and eligibility must block at the stale point.",
+	"_expects": { "finalState": "confirmed", "eligible": true, "stalePointBlocks": true },
+	"sources": [
+		{
+			"id": "fixture-src-fee-schedule",
+			"data": {
+				"title": "Fixture Fee Schedule",
+				"publisher": "Fixture State Regulator",
+				"url": "https://fixture.invalid/schedule/fees",
+				"sourceType": "regulator-record",
+				"jurisdiction": "CA",
+				"authorityLevel": "regulator",
+				"officialHost": true,
+				"publishedDate": "2025-06-01",
+				"accessedDate": "2025-06-15",
+				"lastChecked": "2025-06-15",
+				"lastCheckedBasis": "access",
+				"updateCadence": "Recheck each fee cycle.",
+				"status": "active",
+				"claims": ["The fixture filing fee is two hundred dollars."]
+			}
+		}
+	],
+	"events": [
+		{ "id": "st1", "kind": "opened", "at": "2026-09-26T21:00:00.000Z", "actor": "editor", "note": "Study opened for the fixture fee proposition.", "claimRef": "fixture-src-fee-schedule#c1", "text": "The fixture filing fee is two hundred dollars.", "stakes": "standard", "synthetic": true },
+		{ "id": "st2", "kind": "support-added", "at": "2026-09-26T21:01:00.000Z", "actor": "editor", "note": "The fee schedule states the amount.", "sourceId": "fixture-src-fee-schedule", "synthetic": true },
+		{ "id": "st3", "kind": "confirmed", "at": "2026-09-26T21:05:00.000Z", "actor": "editor", "note": "Read against the schedule and confirmed.", "synthetic": true },
+		{ "id": "st4", "kind": "stale-marked", "at": "2026-09-26T21:30:00.000Z", "actor": "system", "note": "The fixture freshness policy (365 days) says the 2025-06-15 reading is too old to rely on.", "synthetic": true },
+		{ "id": "st5", "kind": "refreshed", "at": "2026-09-26T22:00:00.000Z", "actor": "editor", "note": "The schedule was re-read; review reopens rather than restoring confirmation.", "synthetic": true },
+		{ "id": "st6", "kind": "confirmed", "at": "2026-09-26T22:05:00.000Z", "actor": "editor", "note": "Re-confirmed against the re-read schedule.", "synthetic": true }
+	]
+}

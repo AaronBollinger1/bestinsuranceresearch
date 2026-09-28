@@ -1,0 +1,578 @@
+[
+  {
+    "label": "desktop",
+    "width": 1280,
+    "hash": "",
+    "filename": "landing-desktop.png",
+    "metrics": {
+      "innerWidth": 1280,
+      "innerHeight": 844,
+      "scrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow": false,
+      "hash": "",
+      "mainCount": 1,
+      "h1": "Understand yourinsurance.",
+      "audienceChoices": [],
+      "question": {
+        "top": 368.6875,
+        "text": "For a person with a questionI have a question.Start with a general question. Birch leads you to a sourced answer you can check for yourself.Ask an insurance questionQuestion jurisdictionCaliforniaAll locationsTexasFloridaAsk a question My homeMy businessMy coverageFree to read. Sources included.Use a general question. Leave out personal and policy details.For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft 01QuestionAsk in your own words.02SourcesOpen the documents behind the record.03AnswerRead the conditions and limitations.04DiscussionCommunity context is a separate private preview.",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          },
+          {
+            "text": "01QuestionAsk in your own words.",
+            "href": "/ask"
+          },
+          {
+            "text": "02SourcesOpen the documents behind the record.",
+            "href": "/sources"
+          },
+          {
+            "text": "03AnswerRead the conditions and limitations.",
+            "href": "/questions/replacement-cost-vs-market-value"
+          },
+          {
+            "text": "04DiscussionCommunity context is a separate private preview.",
+            "href": "/design/commons-preview"
+          }
+        ]
+      },
+      "expertise": {
+        "top": 819.671875,
+        "text": "For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          }
+        ]
+      },
+      "manifesto": {
+        "top": 1170.453125,
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "actions": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "label": "mobile",
+    "width": 390,
+    "hash": "",
+    "filename": "landing-mobile.png",
+    "metrics": {
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "scrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow": false,
+      "hash": "",
+      "mainCount": 1,
+      "h1": "Understand yourinsurance.",
+      "audienceChoices": [],
+      "question": {
+        "top": 302.0625,
+        "text": "For a person with a questionI have a question.Start with a general question. Birch leads you to a sourced answer you can check for yourself.Ask an insurance questionQuestion jurisdictionCaliforniaAll locationsTexasFloridaAsk a question My homeMy businessMy coverageFree to read. Sources included.Use a general question. Leave out personal and policy details.For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft 01QuestionAsk in your own words.02SourcesOpen the documents behind the record.03AnswerRead the conditions and limitations.04DiscussionCommunity context is a separate private preview.",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          },
+          {
+            "text": "01QuestionAsk in your own words.",
+            "href": "/ask"
+          },
+          {
+            "text": "02SourcesOpen the documents behind the record.",
+            "href": "/sources"
+          },
+          {
+            "text": "03AnswerRead the conditions and limitations.",
+            "href": "/questions/replacement-cost-vs-market-value"
+          },
+          {
+            "text": "04DiscussionCommunity context is a separate private preview.",
+            "href": "/design/commons-preview"
+          }
+        ]
+      },
+      "expertise": {
+        "top": 790.09375,
+        "text": "For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          }
+        ]
+      },
+      "manifesto": {
+        "top": 1368.234375,
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "actions": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "label": "desktop-question",
+    "width": 1280,
+    "hash": "#question-path",
+    "filename": "question-desktop.png",
+    "metrics": {
+      "innerWidth": 1280,
+      "innerHeight": 844,
+      "scrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow": false,
+      "hash": "#question-path",
+      "mainCount": 1,
+      "h1": "Understand yourinsurance.",
+      "audienceChoices": [],
+      "question": {
+        "top": 87.6875,
+        "text": "For a person with a questionI have a question.Start with a general question. Birch leads you to a sourced answer you can check for yourself.Ask an insurance questionQuestion jurisdictionCaliforniaAll locationsTexasFloridaAsk a question My homeMy businessMy coverageFree to read. Sources included.Use a general question. Leave out personal and policy details.For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft 01QuestionAsk in your own words.02SourcesOpen the documents behind the record.03AnswerRead the conditions and limitations.04DiscussionCommunity context is a separate private preview.",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          },
+          {
+            "text": "01QuestionAsk in your own words.",
+            "href": "/ask"
+          },
+          {
+            "text": "02SourcesOpen the documents behind the record.",
+            "href": "/sources"
+          },
+          {
+            "text": "03AnswerRead the conditions and limitations.",
+            "href": "/questions/replacement-cost-vs-market-value"
+          },
+          {
+            "text": "04DiscussionCommunity context is a separate private preview.",
+            "href": "/design/commons-preview"
+          }
+        ]
+      },
+      "expertise": {
+        "top": 538.671875,
+        "text": "For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          }
+        ]
+      },
+      "manifesto": {
+        "top": 889.453125,
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "actions": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "label": "mobile-question",
+    "width": 390,
+    "hash": "#question-path",
+    "filename": "question-mobile.png",
+    "metrics": {
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "scrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow": false,
+      "hash": "#question-path",
+      "mainCount": 1,
+      "h1": "Understand yourinsurance.",
+      "audienceChoices": [],
+      "question": {
+        "top": 88.0625,
+        "text": "For a person with a questionI have a question.Start with a general question. Birch leads you to a sourced answer you can check for yourself.Ask an insurance questionQuestion jurisdictionCaliforniaAll locationsTexasFloridaAsk a question My homeMy businessMy coverageFree to read. Sources included.Use a general question. Leave out personal and policy details.For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft 01QuestionAsk in your own words.02SourcesOpen the documents behind the record.03AnswerRead the conditions and limitations.04DiscussionCommunity context is a separate private preview.",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          },
+          {
+            "text": "01QuestionAsk in your own words.",
+            "href": "/ask"
+          },
+          {
+            "text": "02SourcesOpen the documents behind the record.",
+            "href": "/sources"
+          },
+          {
+            "text": "03AnswerRead the conditions and limitations.",
+            "href": "/questions/replacement-cost-vs-market-value"
+          },
+          {
+            "text": "04DiscussionCommunity context is a separate private preview.",
+            "href": "/design/commons-preview"
+          }
+        ]
+      },
+      "expertise": {
+        "top": 576.09375,
+        "text": "For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          }
+        ]
+      },
+      "manifesto": {
+        "top": 1154.234375,
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "actions": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "label": "desktop-expertise",
+    "width": 1280,
+    "hash": "#expertise-path",
+    "filename": "expertise-desktop.png",
+    "metrics": {
+      "innerWidth": 1280,
+      "innerHeight": 844,
+      "scrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow": false,
+      "hash": "#expertise-path",
+      "mainCount": 1,
+      "h1": "Understand yourinsurance.",
+      "audienceChoices": [],
+      "question": {
+        "top": -363.3125,
+        "text": "For a person with a questionI have a question.Start with a general question. Birch leads you to a sourced answer you can check for yourself.Ask an insurance questionQuestion jurisdictionCaliforniaAll locationsTexasFloridaAsk a question My homeMy businessMy coverageFree to read. Sources included.Use a general question. Leave out personal and policy details.For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft 01QuestionAsk in your own words.02SourcesOpen the documents behind the record.03AnswerRead the conditions and limitations.04DiscussionCommunity context is a separate private preview.",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          },
+          {
+            "text": "01QuestionAsk in your own words.",
+            "href": "/ask"
+          },
+          {
+            "text": "02SourcesOpen the documents behind the record.",
+            "href": "/sources"
+          },
+          {
+            "text": "03AnswerRead the conditions and limitations.",
+            "href": "/questions/replacement-cost-vs-market-value"
+          },
+          {
+            "text": "04DiscussionCommunity context is a separate private preview.",
+            "href": "/design/commons-preview"
+          }
+        ]
+      },
+      "expertise": {
+        "top": 87.671875,
+        "text": "For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          }
+        ]
+      },
+      "manifesto": {
+        "top": 438.453125,
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "actions": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "label": "mobile-expertise",
+    "width": 390,
+    "hash": "#expertise-path",
+    "filename": "expertise-mobile.png",
+    "metrics": {
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "scrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow": false,
+      "hash": "#expertise-path",
+      "mainCount": 1,
+      "h1": "Understand yourinsurance.",
+      "audienceChoices": [],
+      "question": {
+        "top": -399.9375,
+        "text": "For a person with a questionI have a question.Start with a general question. Birch leads you to a sourced answer you can check for yourself.Ask an insurance questionQuestion jurisdictionCaliforniaAll locationsTexasFloridaAsk a question My homeMy businessMy coverageFree to read. Sources included.Use a general question. Leave out personal and policy details.For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft 01QuestionAsk in your own words.02SourcesOpen the documents behind the record.03AnswerRead the conditions and limitations.04DiscussionCommunity context is a separate private preview.",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          },
+          {
+            "text": "01QuestionAsk in your own words.",
+            "href": "/ask"
+          },
+          {
+            "text": "02SourcesOpen the documents behind the record.",
+            "href": "/sources"
+          },
+          {
+            "text": "03AnswerRead the conditions and limitations.",
+            "href": "/questions/replacement-cost-vs-market-value"
+          },
+          {
+            "text": "04DiscussionCommunity context is a separate private preview.",
+            "href": "/design/commons-preview"
+          }
+        ]
+      },
+      "expertise": {
+        "top": 88.09375,
+        "text": "For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          }
+        ]
+      },
+      "manifesto": {
+        "top": 666.234375,
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "actions": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "label": "desktop-manifesto",
+    "width": 1280,
+    "hash": "#asset-protection",
+    "filename": "manifesto-desktop.png",
+    "metrics": {
+      "innerWidth": 1280,
+      "innerHeight": 844,
+      "scrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow": false,
+      "hash": "#asset-protection",
+      "mainCount": 1,
+      "h1": "Understand yourinsurance.",
+      "audienceChoices": [],
+      "question": {
+        "top": -713.3125,
+        "text": "For a person with a questionI have a question.Start with a general question. Birch leads you to a sourced answer you can check for yourself.Ask an insurance questionQuestion jurisdictionCaliforniaAll locationsTexasFloridaAsk a question My homeMy businessMy coverageFree to read. Sources included.Use a general question. Leave out personal and policy details.For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft 01QuestionAsk in your own words.02SourcesOpen the documents behind the record.03AnswerRead the conditions and limitations.04DiscussionCommunity context is a separate private preview.",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          },
+          {
+            "text": "01QuestionAsk in your own words.",
+            "href": "/ask"
+          },
+          {
+            "text": "02SourcesOpen the documents behind the record.",
+            "href": "/sources"
+          },
+          {
+            "text": "03AnswerRead the conditions and limitations.",
+            "href": "/questions/replacement-cost-vs-market-value"
+          },
+          {
+            "text": "04DiscussionCommunity context is a separate private preview.",
+            "href": "/design/commons-preview"
+          }
+        ]
+      },
+      "expertise": {
+        "top": -262.328125,
+        "text": "For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          }
+        ]
+      },
+      "manifesto": {
+        "top": 88.453125,
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "actions": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "label": "mobile-manifesto",
+    "width": 390,
+    "hash": "#asset-protection",
+    "filename": "manifesto-mobile.png",
+    "metrics": {
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "scrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow": false,
+      "hash": "#asset-protection",
+      "mainCount": 1,
+      "h1": "Understand yourinsurance.",
+      "audienceChoices": [],
+      "question": {
+        "top": -977.9375,
+        "text": "For a person with a questionI have a question.Start with a general question. Birch leads you to a sourced answer you can check for yourself.Ask an insurance questionQuestion jurisdictionCaliforniaAll locationsTexasFloridaAsk a question My homeMy businessMy coverageFree to read. Sources included.Use a general question. Leave out personal and policy details.For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft 01QuestionAsk in your own words.02SourcesOpen the documents behind the record.03AnswerRead the conditions and limitations.04DiscussionCommunity context is a separate private preview.",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          },
+          {
+            "text": "01QuestionAsk in your own words.",
+            "href": "/ask"
+          },
+          {
+            "text": "02SourcesOpen the documents behind the record.",
+            "href": "/sources"
+          },
+          {
+            "text": "03AnswerRead the conditions and limitations.",
+            "href": "/questions/replacement-cost-vs-market-value"
+          },
+          {
+            "text": "04DiscussionCommunity context is a separate private preview.",
+            "href": "/design/commons-preview"
+          }
+        ]
+      },
+      "expertise": {
+        "top": -489.90625,
+        "text": "For insurance and financial professionalsFor professionals.Editorial review is required. Accepted contributions can earn attribution; publication is not guaranteed.This preview does not provide individualized advice or a live credential.Get cited Prepare a private draft",
+        "links": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          },
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research"
+          }
+        ]
+      },
+      "manifesto": {
+        "top": 88.234375,
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "actions": [
+          {
+            "text": "Get cited",
+            "href": "/professionals"
+          }
+        ]
+      }
+    }
+  }
+]

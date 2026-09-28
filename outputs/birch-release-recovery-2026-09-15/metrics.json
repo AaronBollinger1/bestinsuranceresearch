@@ -1,0 +1,1098 @@
+{
+  "sha": "3b46cd4680581f7e8e8c6c9d0b71d700d774347c",
+  "origin": "http://127.0.0.1:4377",
+  "capturedAt": "2026-09-16T00:32:31.000Z",
+  "receipts": [
+    {
+      "width": 1280,
+      "hash": "",
+      "name": "landing-desktop.png",
+      "sha256": "152a3d3a805cca133586d9925f7c2391974c0ae92ff6b6f7088507ca67daa21c",
+      "metrics": {
+        "innerWidth": 1280,
+        "innerHeight": 844,
+        "scrollWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "overflow": false,
+        "mainCount": 1,
+        "h1": "Understand your\ninsurance.",
+        "hash": "",
+        "questionTop": 368.6875,
+        "expertiseTop": 819.671875,
+        "manifestoTop": 1170.453125,
+        "switcher": false,
+        "chooseStart": false,
+        "shareExpertise": false,
+        "explorePublishing": false,
+        "exploreContributingVisible": false,
+        "exploreContributingCount": 1,
+        "frontDoorPrimaryCount": 1,
+        "frontDoorQuietCount": 1,
+        "primaries": [
+          {
+            "tag": "BUTTON",
+            "text": "Ask a question",
+            "href": null,
+            "type": "submit",
+            "formAction": "/ask",
+            "formMethod": "get",
+            "className": "btn btn-primary",
+            "minHeight": 45
+          }
+        ],
+        "quiet": [
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          },
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          }
+        ],
+        "draft": [
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research",
+            "minHeight": 44
+          }
+        ],
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "trust": {
+          "editorial": true,
+          "attribution": true,
+          "noGuarantee": true,
+          "noAdvice": true,
+          "noCredential": true,
+          "privacy": true,
+          "discussion": true
+        },
+        "reducedMotion": false,
+        "composerTransition": "border-color 0.18s, box-shadow 0.18s",
+        "flowSvgTransition": "transform 0.18s cubic-bezier(0.22, 1, 0.36, 1)",
+        "flowSvgTransform": "none"
+      }
+    },
+    {
+      "width": 390,
+      "hash": "",
+      "name": "landing-mobile.png",
+      "sha256": "e930edb3fb7fec419f5cbe86bdcae270fd0f2a2072264f3d12a0de4aed37b184",
+      "metrics": {
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "overflow": false,
+        "mainCount": 1,
+        "h1": "Understand your\ninsurance.",
+        "hash": "",
+        "questionTop": 302.0625,
+        "expertiseTop": 790.09375,
+        "manifestoTop": 1368.234375,
+        "switcher": false,
+        "chooseStart": false,
+        "shareExpertise": false,
+        "explorePublishing": false,
+        "exploreContributingVisible": false,
+        "exploreContributingCount": 1,
+        "frontDoorPrimaryCount": 1,
+        "frontDoorQuietCount": 1,
+        "primaries": [
+          {
+            "tag": "BUTTON",
+            "text": "Ask a question",
+            "href": null,
+            "type": "submit",
+            "formAction": "/ask",
+            "formMethod": "get",
+            "className": "btn btn-primary",
+            "minHeight": 45
+          }
+        ],
+        "quiet": [
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          },
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          }
+        ],
+        "draft": [
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research",
+            "minHeight": 44
+          }
+        ],
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "trust": {
+          "editorial": true,
+          "attribution": true,
+          "noGuarantee": true,
+          "noAdvice": true,
+          "noCredential": true,
+          "privacy": true,
+          "discussion": true
+        },
+        "reducedMotion": false,
+        "composerTransition": "border-color 0.18s, box-shadow 0.18s",
+        "flowSvgTransition": "transform 0.18s cubic-bezier(0.22, 1, 0.36, 1)",
+        "flowSvgTransform": "none"
+      }
+    },
+    {
+      "width": 1280,
+      "hash": "#question-path",
+      "name": "question-desktop.png",
+      "sha256": "5b769ebe34fe46533796466c91482e584cba82beac032a60f5aabccc25bb40ad",
+      "metrics": {
+        "innerWidth": 1280,
+        "innerHeight": 844,
+        "scrollWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "overflow": false,
+        "mainCount": 1,
+        "h1": "Understand your\ninsurance.",
+        "hash": "#question-path",
+        "questionTop": 87.6875,
+        "expertiseTop": 538.671875,
+        "manifestoTop": 889.453125,
+        "switcher": false,
+        "chooseStart": false,
+        "shareExpertise": false,
+        "explorePublishing": false,
+        "exploreContributingVisible": false,
+        "exploreContributingCount": 1,
+        "frontDoorPrimaryCount": 1,
+        "frontDoorQuietCount": 1,
+        "primaries": [
+          {
+            "tag": "BUTTON",
+            "text": "Ask a question",
+            "href": null,
+            "type": "submit",
+            "formAction": "/ask",
+            "formMethod": "get",
+            "className": "btn btn-primary",
+            "minHeight": 45
+          }
+        ],
+        "quiet": [
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          },
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          }
+        ],
+        "draft": [
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research",
+            "minHeight": 44
+          }
+        ],
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "trust": {
+          "editorial": true,
+          "attribution": true,
+          "noGuarantee": true,
+          "noAdvice": true,
+          "noCredential": true,
+          "privacy": true,
+          "discussion": true
+        },
+        "reducedMotion": false,
+        "composerTransition": "border-color 0.18s, box-shadow 0.18s",
+        "flowSvgTransition": "transform 0.18s cubic-bezier(0.22, 1, 0.36, 1)",
+        "flowSvgTransform": "none"
+      }
+    },
+    {
+      "width": 390,
+      "hash": "#question-path",
+      "name": "question-mobile.png",
+      "sha256": "f721501611ca070e305b1eaf359f1eef6233845c22a348adfffd9e6c413bad91",
+      "metrics": {
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "overflow": false,
+        "mainCount": 1,
+        "h1": "Understand your\ninsurance.",
+        "hash": "#question-path",
+        "questionTop": 88.0625,
+        "expertiseTop": 576.09375,
+        "manifestoTop": 1154.234375,
+        "switcher": false,
+        "chooseStart": false,
+        "shareExpertise": false,
+        "explorePublishing": false,
+        "exploreContributingVisible": false,
+        "exploreContributingCount": 1,
+        "frontDoorPrimaryCount": 1,
+        "frontDoorQuietCount": 1,
+        "primaries": [
+          {
+            "tag": "BUTTON",
+            "text": "Ask a question",
+            "href": null,
+            "type": "submit",
+            "formAction": "/ask",
+            "formMethod": "get",
+            "className": "btn btn-primary",
+            "minHeight": 45
+          }
+        ],
+        "quiet": [
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          },
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          }
+        ],
+        "draft": [
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research",
+            "minHeight": 44
+          }
+        ],
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "trust": {
+          "editorial": true,
+          "attribution": true,
+          "noGuarantee": true,
+          "noAdvice": true,
+          "noCredential": true,
+          "privacy": true,
+          "discussion": true
+        },
+        "reducedMotion": false,
+        "composerTransition": "border-color 0.18s, box-shadow 0.18s",
+        "flowSvgTransition": "transform 0.18s cubic-bezier(0.22, 1, 0.36, 1)",
+        "flowSvgTransform": "none"
+      }
+    },
+    {
+      "width": 1280,
+      "hash": "#expertise-path",
+      "name": "expertise-desktop.png",
+      "sha256": "f67a58f4db3d7b989c133f527cb4fbb94aaef7e0b8e9181aa71b48fa015cea0d",
+      "metrics": {
+        "innerWidth": 1280,
+        "innerHeight": 844,
+        "scrollWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "overflow": false,
+        "mainCount": 1,
+        "h1": "Understand your\ninsurance.",
+        "hash": "#expertise-path",
+        "questionTop": -363.3125,
+        "expertiseTop": 87.671875,
+        "manifestoTop": 438.453125,
+        "switcher": false,
+        "chooseStart": false,
+        "shareExpertise": false,
+        "explorePublishing": false,
+        "exploreContributingVisible": false,
+        "exploreContributingCount": 1,
+        "frontDoorPrimaryCount": 1,
+        "frontDoorQuietCount": 1,
+        "primaries": [
+          {
+            "tag": "BUTTON",
+            "text": "Ask a question",
+            "href": null,
+            "type": "submit",
+            "formAction": "/ask",
+            "formMethod": "get",
+            "className": "btn btn-primary",
+            "minHeight": 45
+          }
+        ],
+        "quiet": [
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          },
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          }
+        ],
+        "draft": [
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research",
+            "minHeight": 44
+          }
+        ],
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "trust": {
+          "editorial": true,
+          "attribution": true,
+          "noGuarantee": true,
+          "noAdvice": true,
+          "noCredential": true,
+          "privacy": true,
+          "discussion": true
+        },
+        "reducedMotion": false,
+        "composerTransition": "border-color 0.18s, box-shadow 0.18s",
+        "flowSvgTransition": "transform 0.18s cubic-bezier(0.22, 1, 0.36, 1)",
+        "flowSvgTransform": "none"
+      }
+    },
+    {
+      "width": 390,
+      "hash": "#expertise-path",
+      "name": "expertise-mobile.png",
+      "sha256": "bf58943a95fc12928a9ec60ba1795bfe0b29e0d1041d3d9f12c89a247f719541",
+      "metrics": {
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "overflow": false,
+        "mainCount": 1,
+        "h1": "Understand your\ninsurance.",
+        "hash": "#expertise-path",
+        "questionTop": -399.9375,
+        "expertiseTop": 88.09375,
+        "manifestoTop": 666.234375,
+        "switcher": false,
+        "chooseStart": false,
+        "shareExpertise": false,
+        "explorePublishing": false,
+        "exploreContributingVisible": false,
+        "exploreContributingCount": 1,
+        "frontDoorPrimaryCount": 1,
+        "frontDoorQuietCount": 1,
+        "primaries": [
+          {
+            "tag": "BUTTON",
+            "text": "Ask a question",
+            "href": null,
+            "type": "submit",
+            "formAction": "/ask",
+            "formMethod": "get",
+            "className": "btn btn-primary",
+            "minHeight": 45
+          }
+        ],
+        "quiet": [
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          },
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          }
+        ],
+        "draft": [
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research",
+            "minHeight": 44
+          }
+        ],
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "trust": {
+          "editorial": true,
+          "attribution": true,
+          "noGuarantee": true,
+          "noAdvice": true,
+          "noCredential": true,
+          "privacy": true,
+          "discussion": true
+        },
+        "reducedMotion": false,
+        "composerTransition": "border-color 0.18s, box-shadow 0.18s",
+        "flowSvgTransition": "transform 0.18s cubic-bezier(0.22, 1, 0.36, 1)",
+        "flowSvgTransform": "none"
+      }
+    },
+    {
+      "width": 1280,
+      "hash": "#asset-protection",
+      "name": "manifesto-desktop.png",
+      "sha256": "491547f44b4f8a79cb8ba29b78844290a51568cd3bd44e5bf07ed46804667ea4",
+      "metrics": {
+        "innerWidth": 1280,
+        "innerHeight": 844,
+        "scrollWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "overflow": false,
+        "mainCount": 1,
+        "h1": "Understand your\ninsurance.",
+        "hash": "#asset-protection",
+        "questionTop": -713.3125,
+        "expertiseTop": -262.328125,
+        "manifestoTop": 88.453125,
+        "switcher": false,
+        "chooseStart": false,
+        "shareExpertise": false,
+        "explorePublishing": false,
+        "exploreContributingVisible": false,
+        "exploreContributingCount": 1,
+        "frontDoorPrimaryCount": 1,
+        "frontDoorQuietCount": 1,
+        "primaries": [
+          {
+            "tag": "BUTTON",
+            "text": "Ask a question",
+            "href": null,
+            "type": "submit",
+            "formAction": "/ask",
+            "formMethod": "get",
+            "className": "btn btn-primary",
+            "minHeight": 45
+          }
+        ],
+        "quiet": [
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          },
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          }
+        ],
+        "draft": [
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research",
+            "minHeight": 44
+          }
+        ],
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "trust": {
+          "editorial": true,
+          "attribution": true,
+          "noGuarantee": true,
+          "noAdvice": true,
+          "noCredential": true,
+          "privacy": true,
+          "discussion": true
+        },
+        "reducedMotion": false,
+        "composerTransition": "border-color 0.18s, box-shadow 0.18s",
+        "flowSvgTransition": "transform 0.18s cubic-bezier(0.22, 1, 0.36, 1)",
+        "flowSvgTransform": "none"
+      }
+    },
+    {
+      "width": 390,
+      "hash": "#asset-protection",
+      "name": "manifesto-mobile.png",
+      "sha256": "e7e23a10952f5b48ba736507405462213a9d2f55c1c2162c2ed138c1e98cd430",
+      "metrics": {
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "overflow": false,
+        "mainCount": 1,
+        "h1": "Understand your\ninsurance.",
+        "hash": "#asset-protection",
+        "questionTop": -977.9375,
+        "expertiseTop": -489.90625,
+        "manifestoTop": 88.234375,
+        "switcher": false,
+        "chooseStart": false,
+        "shareExpertise": false,
+        "explorePublishing": false,
+        "exploreContributingVisible": false,
+        "exploreContributingCount": 1,
+        "frontDoorPrimaryCount": 1,
+        "frontDoorQuietCount": 1,
+        "primaries": [
+          {
+            "tag": "BUTTON",
+            "text": "Ask a question",
+            "href": null,
+            "type": "submit",
+            "formAction": "/ask",
+            "formMethod": "get",
+            "className": "btn btn-primary",
+            "minHeight": 45
+          }
+        ],
+        "quiet": [
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          },
+          {
+            "text": "Get cited",
+            "href": "/professionals",
+            "className": "btn btn-quiet",
+            "minHeight": 45
+          }
+        ],
+        "draft": [
+          {
+            "text": "Prepare a private draft",
+            "href": "/contribute?type=research",
+            "minHeight": 44
+          }
+        ],
+        "scopeLabels": 8,
+        "scopeLinks": 0,
+        "trust": {
+          "editorial": true,
+          "attribution": true,
+          "noGuarantee": true,
+          "noAdvice": true,
+          "noCredential": true,
+          "privacy": true,
+          "discussion": true
+        },
+        "reducedMotion": false,
+        "composerTransition": "border-color 0.18s, box-shadow 0.18s",
+        "flowSvgTransition": "transform 0.18s cubic-bezier(0.22, 1, 0.36, 1)",
+        "flowSvgTransform": "none"
+      }
+    }
+  ],
+  "keyboard": {
+    "chain": [
+      {
+        "tag": "A",
+        "id": "",
+        "className": "skip-link",
+        "text": "Skip to content",
+        "href": "#main",
+        "type": null
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "brand",
+        "text": "Birch Birch Research home",
+        "href": "/",
+        "type": null
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "header-nav-start",
+        "text": "Ask",
+        "href": "/ask",
+        "type": null
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "className": "header-menu-trigger",
+        "text": "Explore",
+        "href": null,
+        "type": "button"
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "className": "header-menu-trigger",
+        "text": "Community",
+        "href": null,
+        "type": "button"
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "className": "header-menu-trigger",
+        "text": "Contribute",
+        "href": null,
+        "type": "button"
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "btn btn-primary btn-sm header-ask-cta",
+        "text": "Ask Birch",
+        "href": "/ask",
+        "type": null
+      },
+      {
+        "tag": "INPUT",
+        "id": "home-q",
+        "className": "",
+        "text": "What would you like to understand?",
+        "href": null,
+        "type": "search"
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "className": "",
+        "text": "California All locations Texas Florida",
+        "href": null,
+        "type": null
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "className": "btn btn-primary",
+        "text": "Ask a question",
+        "href": null,
+        "type": "submit"
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "className": "",
+        "text": "My home",
+        "href": null,
+        "type": "button"
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "className": "",
+        "text": "My business",
+        "href": null,
+        "type": "button"
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "className": "",
+        "text": "My coverage",
+        "href": null,
+        "type": "button"
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "btn btn-quiet",
+        "text": "Get cited",
+        "href": "/professionals",
+        "type": null
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "front-door-draft-link",
+        "text": "Prepare a private draft",
+        "href": "/contribute?type=research",
+        "type": null
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "",
+        "text": "01 Question Ask in your own words.",
+        "href": "/ask",
+        "type": null
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "",
+        "text": "02 Sources Open the documents behind the record.",
+        "href": "/sources",
+        "type": null
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "",
+        "text": "03 Answer Read the conditions and limitations.",
+        "href": "/questions/replacement-cost-vs-market-value",
+        "type": null
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "",
+        "text": "04 Discussion Community context is a separate private preview.",
+        "href": "/design/commons-preview",
+        "type": null
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "btn btn-primary",
+        "text": "Ask a question",
+        "href": "/ask",
+        "type": null
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "btn btn-quiet",
+        "text": "Get cited",
+        "href": "/professionals",
+        "type": null
+      },
+      {
+        "tag": "A",
+        "id": "product-preview-tab-answer",
+        "className": "",
+        "text": "Find an answer",
+        "href": "#product-preview-answer",
+        "type": null
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "cite",
+        "text": "[3]",
+        "href": "/sources/naic-acv-vs-rcv",
+        "type": null
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "className": "cite",
+        "text": "[1]",
+        "href": "/sources/cdi-residential-insurance-guide",
+        "type": null
+      }
+    ],
+    "askIndex": 9,
+    "citedIndex": 13,
+    "draftIndex": 14,
+    "askBeforeCited": true,
+    "askFocusSha": "a988ffafbcf2067a95afa546b94fea0e19428a61d6184847e4694bdcfe68cf76",
+    "citedFocusSha": "f102db5eec484291827487058a05f071a6dab395cf513508eb61028628c76ceb",
+    "focusedAfterCitedTabs": {
+      "tag": "A",
+      "text": "Get cited",
+      "className": "btn btn-quiet"
+    }
+  },
+  "reducedMotion": {
+    "landing": {
+      "innerWidth": 1280,
+      "innerHeight": 844,
+      "scrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow": false,
+      "mainCount": 1,
+      "h1": "Understand your\ninsurance.",
+      "hash": "",
+      "questionTop": 368.6875,
+      "expertiseTop": 819.671875,
+      "manifestoTop": 1170.453125,
+      "switcher": false,
+      "chooseStart": false,
+      "shareExpertise": false,
+      "explorePublishing": false,
+      "exploreContributingVisible": false,
+      "exploreContributingCount": 1,
+      "frontDoorPrimaryCount": 1,
+      "frontDoorQuietCount": 1,
+      "primaries": [
+        {
+          "tag": "BUTTON",
+          "text": "Ask a question",
+          "href": null,
+          "type": "submit",
+          "formAction": "/ask",
+          "formMethod": "get",
+          "className": "btn btn-primary",
+          "minHeight": 45
+        }
+      ],
+      "quiet": [
+        {
+          "text": "Get cited",
+          "href": "/professionals",
+          "className": "btn btn-quiet",
+          "minHeight": 45
+        },
+        {
+          "text": "Get cited",
+          "href": "/professionals",
+          "className": "btn btn-quiet",
+          "minHeight": 45
+        }
+      ],
+      "draft": [
+        {
+          "text": "Prepare a private draft",
+          "href": "/contribute?type=research",
+          "minHeight": 44
+        }
+      ],
+      "scopeLabels": 8,
+      "scopeLinks": 0,
+      "trust": {
+        "editorial": true,
+        "attribution": true,
+        "noGuarantee": true,
+        "noAdvice": true,
+        "noCredential": true,
+        "privacy": true,
+        "discussion": true
+      },
+      "reducedMotion": true,
+      "composerTransition": "none",
+      "flowSvgTransition": "none",
+      "flowSvgTransform": "none"
+    },
+    "expertise": {
+      "innerWidth": 1280,
+      "innerHeight": 844,
+      "scrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow": false,
+      "mainCount": 1,
+      "h1": "Understand your\ninsurance.",
+      "hash": "#expertise-path",
+      "questionTop": -363.3125,
+      "expertiseTop": 87.671875,
+      "manifestoTop": 438.453125,
+      "switcher": false,
+      "chooseStart": false,
+      "shareExpertise": false,
+      "explorePublishing": false,
+      "exploreContributingVisible": false,
+      "exploreContributingCount": 1,
+      "frontDoorPrimaryCount": 1,
+      "frontDoorQuietCount": 1,
+      "primaries": [
+        {
+          "tag": "BUTTON",
+          "text": "Ask a question",
+          "href": null,
+          "type": "submit",
+          "formAction": "/ask",
+          "formMethod": "get",
+          "className": "btn btn-primary",
+          "minHeight": 45
+        }
+      ],
+      "quiet": [
+        {
+          "text": "Get cited",
+          "href": "/professionals",
+          "className": "btn btn-quiet",
+          "minHeight": 45
+        },
+        {
+          "text": "Get cited",
+          "href": "/professionals",
+          "className": "btn btn-quiet",
+          "minHeight": 45
+        }
+      ],
+      "draft": [
+        {
+          "text": "Prepare a private draft",
+          "href": "/contribute?type=research",
+          "minHeight": 44
+        }
+      ],
+      "scopeLabels": 8,
+      "scopeLinks": 0,
+      "trust": {
+        "editorial": true,
+        "attribution": true,
+        "noGuarantee": true,
+        "noAdvice": true,
+        "noCredential": true,
+        "privacy": true,
+        "discussion": true
+      },
+      "reducedMotion": true,
+      "composerTransition": "none",
+      "flowSvgTransition": "none",
+      "flowSvgTransform": "none"
+    },
+    "mobile": {
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "scrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow": false,
+      "mainCount": 1,
+      "h1": "Understand your\ninsurance.",
+      "hash": "",
+      "questionTop": 302.0625,
+      "expertiseTop": 790.09375,
+      "manifestoTop": 1368.234375,
+      "switcher": false,
+      "chooseStart": false,
+      "shareExpertise": false,
+      "explorePublishing": false,
+      "exploreContributingVisible": false,
+      "exploreContributingCount": 1,
+      "frontDoorPrimaryCount": 1,
+      "frontDoorQuietCount": 1,
+      "primaries": [
+        {
+          "tag": "BUTTON",
+          "text": "Ask a question",
+          "href": null,
+          "type": "submit",
+          "formAction": "/ask",
+          "formMethod": "get",
+          "className": "btn btn-primary",
+          "minHeight": 45
+        }
+      ],
+      "quiet": [
+        {
+          "text": "Get cited",
+          "href": "/professionals",
+          "className": "btn btn-quiet",
+          "minHeight": 45
+        },
+        {
+          "text": "Get cited",
+          "href": "/professionals",
+          "className": "btn btn-quiet",
+          "minHeight": 45
+        }
+      ],
+      "draft": [
+        {
+          "text": "Prepare a private draft",
+          "href": "/contribute?type=research",
+          "minHeight": 44
+        }
+      ],
+      "scopeLabels": 8,
+      "scopeLinks": 0,
+      "trust": {
+        "editorial": true,
+        "attribution": true,
+        "noGuarantee": true,
+        "noAdvice": true,
+        "noCredential": true,
+        "privacy": true,
+        "discussion": true
+      },
+      "reducedMotion": true,
+      "composerTransition": "none",
+      "flowSvgTransition": "none",
+      "flowSvgTransform": "none"
+    },
+    "landingSha": "152a3d3a805cca133586d9925f7c2391974c0ae92ff6b6f7088507ca67daa21c",
+    "expertiseSha": "f67a58f4db3d7b989c133f527cb4fbb94aaef7e0b8e9181aa71b48fa015cea0d",
+    "mobileSha": "e930edb3fb7fec419f5cbe86bdcae270fd0f2a2072264f3d12a0de4aed37b184"
+  },
+  "nojs": {
+    "metrics": {
+      "innerWidth": 1280,
+      "innerHeight": 844,
+      "scrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflow": false,
+      "mainCount": 1,
+      "h1": "Understand your\ninsurance.",
+      "hash": "",
+      "questionTop": 368.6875,
+      "expertiseTop": 819.671875,
+      "manifestoTop": 1170.453125,
+      "switcher": false,
+      "chooseStart": false,
+      "shareExpertise": false,
+      "explorePublishing": false,
+      "exploreContributingVisible": false,
+      "exploreContributingCount": 1,
+      "frontDoorPrimaryCount": 1,
+      "frontDoorQuietCount": 1,
+      "primaries": [
+        {
+          "tag": "BUTTON",
+          "text": "Ask a question",
+          "href": null,
+          "type": "submit",
+          "formAction": "/ask",
+          "formMethod": "get",
+          "className": "btn btn-primary",
+          "minHeight": 45
+        }
+      ],
+      "quiet": [
+        {
+          "text": "Get cited",
+          "href": "/professionals",
+          "className": "btn btn-quiet",
+          "minHeight": 45
+        },
+        {
+          "text": "Get cited",
+          "href": "/professionals",
+          "className": "btn btn-quiet",
+          "minHeight": 45
+        }
+      ],
+      "draft": [
+        {
+          "text": "Prepare a private draft",
+          "href": "/contribute?type=research",
+          "minHeight": 44
+        }
+      ],
+      "scopeLabels": 8,
+      "scopeLinks": 0,
+      "trust": {
+        "editorial": true,
+        "attribution": true,
+        "noGuarantee": true,
+        "noAdvice": true,
+        "noCredential": true,
+        "privacy": true,
+        "discussion": true
+      },
+      "reducedMotion": false,
+      "composerTransition": "border-color 0.18s, box-shadow 0.18s",
+      "flowSvgTransition": "transform 0.18s cubic-bezier(0.22, 1, 0.36, 1)",
+      "flowSvgTransform": "none"
+    },
+    "sha256": "152a3d3a805cca133586d9925f7c2391974c0ae92ff6b6f7088507ca67daa21c"
+  }
+}

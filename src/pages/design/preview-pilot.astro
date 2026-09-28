@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { fixturePilotBoard } from '../../lib/preview-pilot';
+
+const board = fixturePilotBoard();
+---
+
+<BaseLayout
+	title="Fixture preview pilot"
+	description="Local noindex fixture of a persistent preview account and one unpublished question draft. Public signup and publication stay closed."
+	pageType="editorial"
+	noindex
+>
+	<style>
+		.pilot-board { display: block; min-width: 0; max-width: 100%; overflow-x: auto; }
+		.pilot-board :global(table) { width: 100%; table-layout: fixed; }
+		.pilot-board :global(td), .pilot-board :global(th) { word-break: break-word; }
+		@media (min-width: 768px) {
+			.pilot-board { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+		}
+	</style>
+	<article class="shell pilot-board">
+		<div>
+			<p class="eyebrow">Fixture only</p>
+			<h1>Fixture preview pilot</h1>
+			<p>This page is a local specimen. It does not open signup, call a provider, or publish.</p>
+		</div>
+		<div set:html={board} />
+	</article>
+</BaseLayout>

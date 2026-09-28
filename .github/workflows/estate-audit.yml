@@ -11,19 +11,24 @@
 # host that starts answering 200 on both apex and www, or a robots.txt whose
 # Sitemap line stops resolving, is invisible to a build and visible here.
 #
-# Weekly rather than per-push, because it measures the live estate rather than
-# the commit, and nothing in a commit changes it.
+# Not per-push, because it measures the live estate rather than the commit, and
+# nothing in a commit changes it.
 #
 # No secrets. The audit reads public responses only; it holds no credentials and
 # needs none.
 name: estate-audit
 
 on:
-  schedule:
-    # Mondays, 13:00 UTC. Early enough in the week that a finding can be acted
-    # on, and after the weekend so a Friday deploy that broke something is not
-    # sitting unreported for three days.
-    - cron: '0 13 * * 1'
+  # Manual only. This audit reads the same nine-site estate that Bollinsure's
+  # daily estate audit already reads, so running it on its own weekly schedule
+  # bought a second look at the same public responses rather than a second
+  # subject. Bollinsure's daily run stays the single scheduled source of truth
+  # and is not touched by this repository.
+  #
+  # `workflow_dispatch` is kept deliberately: when something in the estate looks
+  # wrong, this is still the fastest way to get Birch's own reading of it, and
+  # the artifact below still keeps the report for 90 days. Removing the cron
+  # removes a duplicate, not the capability.
   workflow_dispatch:
 
 permissions:
@@ -34,8 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: '22.12'
           cache: npm

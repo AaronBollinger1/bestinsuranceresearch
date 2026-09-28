@@ -1,0 +1,51 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pagePatterns, interactionRules } from '../../lib/product-design';
+import { productDesign } from '../../config/product-design';
+import { designTemplates } from '../../lib/design-templates';
+---
+<BaseLayout title="Birch product design system" description="The working Birch design blueprint: landing alternatives, reusable page patterns, interaction rules, and the next implementation for each surface." noindex>
+ <section class="system-page shell">
+  <header><span class="eyebrow">{productDesign.label} · Selected direction</span><h1>One Birch.<br/>A clear next step.</h1><p>Question-first landing. Compact reading pages. Focused contribution screens. The same blue, bird, and familiar controls throughout.</p><a class="btn btn-primary" href="/">Open the selected landing <ArrowUpRight size={16} aria-hidden="true" /></a><a class="system-secondary" href="/contribute">Try the contribution flow <ArrowUpRight size={14} aria-hidden="true" /></a></header>
+  <div class="system-summary"><div><span>Primary action</span><strong>{productDesign.primaryAction}</strong></div><div><span>Community name</span><strong>Birch Community</strong></div><div><span>Design direction</span><strong>{productDesign.label} · Selected</strong></div><div><span>Current access</span><strong>Private preview</strong></div></div>
+  <section class="template-directory" aria-labelledby="templates-title"><h2 id="templates-title">The remaining templates, designed.</h2><p class="system-note">Fourteen working specimens extend A / Focus. Browse the layouts, try the states, and follow the real research links. Account, provider, and publication actions remain disconnected.</p>{['Discover','Read','Personal','Contribute','Operations'].map(family=><div class="template-family"><h3>{family}</h3><div>{designTemplates.filter(template=>template.family===family).map(template=><a href={`/design/templates/${template.id}`}><span><strong>{template.name}</strong><small>{template.states.join(' · ')}</small></span><ArrowUpRight size={16} aria-hidden="true"/></a>)}</div></div>)}</section>
+  <h2>The product map</h2><p class="system-note">These links open the actual implementation or a labeled specimen. The status says which. <a href="https://mobbin.com/collections/38f9a642-ecc6-4e00-b9da-74c9ac44bced/web/screens" target="_blank" rel="noopener">Open the private Mobbin reference board <ArrowUpRight size={13} aria-hidden="true" /></a></p>
+  <div class="pattern-grid">{pagePatterns.map((pattern) => <article><div class="pattern-top"><span>{pattern.group}</span><span>{pattern.state}</span></div><h3><a href={pattern.href}>{pattern.title}<ArrowUpRight size={16} aria-hidden="true" /></a></h3><p>{pattern.pattern}</p><dl><dt>Primary action</dt><dd>{pattern.action}</dd><dt>Next implementation</dt><dd>{pattern.next}</dd></dl></article>)}</div>
+  <h2>How it should feel</h2><div class="interaction-list">{interactionRules.map(([title, rule]) => <div><strong>{title}</strong><p>{rule}</p></div>)}</div>
+  <details class="system-alternatives"><summary>Earlier landing explorations</summary><p>A is selected. B and C remain as design history, not alternate live homepages.</p><a href="/design/directions/editorial">B / Editorial</a><a href="/design/directions/explore">C / Explore</a></details>
+  <div class="system-decision"><h2>Make expertise discoverable.</h2><p>Professionals earn useful attribution through original work, documented credentials, and clear disclosures. Company representatives can respond in their own name. Policy connections establish a relationship, not the truth of a claim.</p><p>Live web research starts with a question gap, returns openable sources, and can become a reviewed article. Neither a provider response nor a popular thread becomes a published finding automatically.</p></div>
+ </section>
+</BaseLayout>
+<style>
+ .system-page { padding-block:48px 64px; }
+ .template-directory { margin-block:40px; } .template-family { display:grid;grid-template-columns:140px minmax(0,1fr);gap:24px;border-top:1px solid var(--line);padding-block:12px; } .template-family h3 { font-size:var(--text-xs);color:var(--muted);font-weight:500; } .template-family > div { display:grid;grid-template-columns:1fr 1fr;gap:4px 24px; } .template-family a { display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 8px;text-decoration:none;color:var(--ink);border-radius:var(--r-2); } .template-family a:hover { background:var(--brand-blue-wash);color:var(--brand-blue-text); } .template-family a span { display:grid;gap:6px; } .template-family strong { font-size:var(--text-sm);font-weight:500; } .template-family small { font-size:var(--text-2xs);line-height:1.6;color:var(--muted); } .template-family svg { flex-shrink:0; } @media(max-width:760px){.template-family { grid-template-columns:1fr;gap:0; }.template-family > div { grid-template-columns:1fr; }}
+ header { max-width:760px; margin-bottom:40px; }
+ header h1 { font:600 clamp(2.4rem,4vw,3.5rem)/1.1 var(--font-sans); letter-spacing:-.05em; margin:16px 0; }
+ header p, .system-note { color:var(--muted); line-height:1.6; }
+ header .btn { margin-top:16px; }
+ .system-secondary { display:inline-flex; align-items:center; gap:8px; min-height:var(--tap); margin:16px 0 0 20px; font-size:var(--text-sm); }
+ .system-alternatives { margin-top:32px; border-bottom:1px solid var(--line); padding-bottom:16px; color:var(--muted); font-size:var(--text-sm); }
+ .system-alternatives summary { min-height:var(--tap); padding-block:12px; cursor:pointer; }
+ .system-alternatives a { display:inline-flex; min-height:var(--tap); align-items:center; margin-right:24px; }
+ .system-summary { display:grid; grid-template-columns:repeat(4,1fr); border-block:1px solid var(--line); margin-bottom:48px; }
+ .system-summary div { padding:20px 0; display:grid; gap:7px; }
+ .system-summary span, dt { font-size:var(--text-xs); color:var(--muted); }
+ .system-summary strong { font-size:var(--text-sm); }
+ h2 { margin:40px 0 12px; font:500 var(--text-2xl)/1.25 var(--font-sans); letter-spacing:-.03em; }
+ .pattern-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:24px; }
+ .pattern-grid article { padding:24px; background:var(--white); border:1px solid var(--line); border-radius:var(--r-4); }
+ .pattern-top { display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px; color:var(--muted); font-size:var(--text-2xs); }
+ .pattern-top span:last-child { color:var(--brand-blue-text); }
+ h3 { margin:20px 0 12px; font-size:var(--text-lg); }
+ h3 a { display:flex; align-items:center; justify-content:space-between; gap:8px; color:var(--ink); text-decoration:none; min-height:var(--tap); }
+ h3 a:hover { color:var(--brand-blue-text); }
+ article p, dd { font-size:var(--text-sm); line-height:1.65; color:var(--body); }
+ dl { margin:20px 0 0; border-top:1px solid var(--line); padding-top:16px; }
+ dd { margin:4px 0 12px; }
+ .interaction-list > div { display:grid; grid-template-columns:160px 1fr; gap:24px; padding:20px 0; border-bottom:1px solid var(--line); }
+ .interaction-list strong { font-size:var(--text-sm); } .interaction-list p { margin:0; font-size:var(--text-sm); color:var(--body); line-height:1.6; }
+ .system-decision { max-width:760px; } .system-decision p { color:var(--body); line-height:1.7; }
+ @media(max-width:950px) { .pattern-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .system-summary { grid-template-columns:1fr 1fr; } }
+ @media(max-width:600px) { .pattern-grid { grid-template-columns:1fr; } .interaction-list > div { grid-template-columns:1fr; gap:8px; } }
+</style>

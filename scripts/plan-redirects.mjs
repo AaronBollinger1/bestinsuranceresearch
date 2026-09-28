@@ -18,7 +18,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DESTINATION_HOST = 'bestinsuranceresearch.com';
+const DESTINATION_HOST = 'birch.insure';
 
 const { DOMAIN_ROUTES, OUT_OF_SCOPE } = await import(
 	new URL('../src/config/domain-redirects.ts', import.meta.url).href
@@ -47,7 +47,7 @@ const { DOMAIN_ROUTES, OUT_OF_SCOPE } = await import(
 const CONTROL_HOST = 'www.bestepli.com';
 const MARKERS = [
 	{ path: '/position', needle: 'Coverage position' },
-	{ path: '/', needle: 'BestInsurance Research' },
+	{ path: '/', needle: 'Birch Research' },
 ];
 
 async function probe(url) {

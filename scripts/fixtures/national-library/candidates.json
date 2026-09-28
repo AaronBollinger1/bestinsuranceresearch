@@ -1,0 +1,719 @@
+{
+	"_fixture": "BR-D1 candidate library. Synthetic records only. The matrix is not complete.",
+	"criterion": {
+		"id": "named-group-with-refresh-owner-v1",
+		"text": "A company is inside major-company scope only when its record cites this criterion id, names a refresh owner, and gives the date the criterion was applied. Meeting the criterion does not mean the list of such companies is complete.",
+		"effectiveDate": "2026-09-27",
+		"refreshOwner": "fixture-library-editor",
+		"supersededBy": null
+	},
+	"priorCriterion": {
+		"id": "named-group-with-refresh-owner-v0",
+		"text": "Superseded major-company criterion. A company that still cites this id is outside current major scope.",
+		"effectiveDate": "2024-01-01",
+		"refreshOwner": "fixture-library-editor",
+		"supersededBy": "named-group-with-refresh-owner-v1"
+	},
+	"records": [
+		{
+			"id": "fixture-personal",
+			"kind": "type",
+			"name": "Fixture personal insurance",
+			"summary": "Fixture type record for Fixture personal insurance. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-personal",
+					"title": "Fixture source for fixture-personal",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-personal"
+				}
+			],
+			"family": "personal"
+		},
+		{
+			"id": "fixture-commercial",
+			"kind": "type",
+			"name": "Fixture commercial insurance",
+			"summary": "Fixture type record for Fixture commercial insurance. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-commercial",
+					"title": "Fixture source for fixture-commercial",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-commercial"
+				}
+			],
+			"family": "commercial"
+		},
+		{
+			"id": "auto",
+			"kind": "coverage",
+			"name": "Fixture personal auto",
+			"summary": "Fixture coverage record for Fixture personal auto. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-auto",
+					"title": "Fixture source for auto",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/auto"
+				}
+			],
+			"line": "auto",
+			"family": "personal"
+		},
+		{
+			"id": "homeowners",
+			"kind": "coverage",
+			"name": "Fixture homeowners",
+			"summary": "Fixture coverage record for Fixture homeowners. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-homeowners",
+					"title": "Fixture source for homeowners",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/homeowners"
+				}
+			],
+			"line": "homeowners",
+			"family": "personal"
+		},
+		{
+			"id": "renters",
+			"kind": "coverage",
+			"name": "Fixture renters",
+			"summary": "Fixture coverage record for Fixture renters. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-renters",
+					"title": "Fixture source for renters",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/renters"
+				}
+			],
+			"line": "renters",
+			"family": "personal"
+		},
+		{
+			"id": "commercial-auto",
+			"kind": "coverage",
+			"name": "Fixture commercial auto",
+			"summary": "Fixture coverage record for Fixture commercial auto. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-commercial-auto",
+					"title": "Fixture source for commercial-auto",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/commercial-auto"
+				}
+			],
+			"line": "commercial-auto",
+			"family": "commercial"
+		},
+		{
+			"id": "commercial-general-liability",
+			"kind": "coverage",
+			"name": "Fixture general liability",
+			"summary": "Fixture coverage record for Fixture general liability. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-commercial-general-liability",
+					"title": "Fixture source for commercial-general-liability",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/commercial-general-liability"
+				}
+			],
+			"line": "commercial-general-liability",
+			"family": "commercial"
+		},
+		{
+			"id": "commercial-property",
+			"kind": "coverage",
+			"name": "Fixture commercial property",
+			"summary": "Fixture coverage record for Fixture commercial property. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-commercial-property",
+					"title": "Fixture source for commercial-property",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/commercial-property"
+				}
+			],
+			"line": "commercial-property",
+			"family": "commercial"
+		},
+		{
+			"id": "workers-compensation",
+			"kind": "coverage",
+			"name": "Fixture workers compensation",
+			"summary": "Fixture coverage record for Fixture workers compensation. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-workers-compensation",
+					"title": "Fixture source for workers-compensation",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/workers-compensation"
+				}
+			],
+			"line": "workers-compensation",
+			"family": "commercial"
+		},
+		{
+			"id": "professional-liability",
+			"kind": "coverage",
+			"name": "Fixture professional liability",
+			"summary": "Fixture coverage record for Fixture professional liability. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-professional-liability",
+					"title": "Fixture source for professional-liability",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/professional-liability"
+				}
+			],
+			"line": "professional-liability",
+			"family": "commercial"
+		},
+		{
+			"id": "fixture-state-ca",
+			"kind": "state",
+			"name": "California",
+			"summary": "Fixture state record for California. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-state-ca",
+					"title": "Fixture source for fixture-state-ca",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-state-ca"
+				}
+			],
+			"jurisdiction": "CA"
+		},
+		{
+			"id": "fixture-regulator-ca",
+			"kind": "regulator",
+			"name": "Fixture regulator for California",
+			"summary": "Fixture regulator record for Fixture regulator for California. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-regulator-ca",
+					"title": "Fixture source for fixture-regulator-ca",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-regulator-ca"
+				}
+			],
+			"jurisdiction": "CA"
+		},
+		{
+			"id": "rel-regulates-ca",
+			"kind": "relationship",
+			"name": "California regulator relationship",
+			"summary": "Fixture relationship record for California regulator relationship. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-regulates-ca",
+					"title": "Fixture source for rel-regulates-ca",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-regulates-ca"
+				}
+			],
+			"relation": "regulates",
+			"from": "fixture-regulator-ca",
+			"to": "CA"
+		},
+		{
+			"id": "fixture-state-tx",
+			"kind": "state",
+			"name": "Texas",
+			"summary": "Fixture state record for Texas. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-state-tx",
+					"title": "Fixture source for fixture-state-tx",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-state-tx"
+				}
+			],
+			"jurisdiction": "TX"
+		},
+		{
+			"id": "fixture-regulator-tx",
+			"kind": "regulator",
+			"name": "Fixture regulator for Texas",
+			"summary": "Fixture regulator record for Fixture regulator for Texas. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-regulator-tx",
+					"title": "Fixture source for fixture-regulator-tx",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-regulator-tx"
+				}
+			],
+			"jurisdiction": "TX"
+		},
+		{
+			"id": "rel-regulates-tx",
+			"kind": "relationship",
+			"name": "Texas regulator relationship",
+			"summary": "Fixture relationship record for Texas regulator relationship. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-regulates-tx",
+					"title": "Fixture source for rel-regulates-tx",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-regulates-tx"
+				}
+			],
+			"relation": "regulates",
+			"from": "fixture-regulator-tx",
+			"to": "TX"
+		},
+		{
+			"id": "fixture-state-fl",
+			"kind": "state",
+			"name": "Florida",
+			"summary": "Fixture state record for Florida. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-state-fl",
+					"title": "Fixture source for fixture-state-fl",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-state-fl"
+				}
+			],
+			"jurisdiction": "FL"
+		},
+		{
+			"id": "fixture-regulator-fl",
+			"kind": "regulator",
+			"name": "Fixture regulator for Florida",
+			"summary": "Fixture regulator record for Fixture regulator for Florida. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-regulator-fl",
+					"title": "Fixture source for fixture-regulator-fl",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-regulator-fl"
+				}
+			],
+			"jurisdiction": "FL"
+		},
+		{
+			"id": "rel-regulates-fl",
+			"kind": "relationship",
+			"name": "Florida regulator relationship",
+			"summary": "Fixture relationship record for Florida regulator relationship. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-regulates-fl",
+					"title": "Fixture source for rel-regulates-fl",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-regulates-fl"
+				}
+			],
+			"relation": "regulates",
+			"from": "fixture-regulator-fl",
+			"to": "FL"
+		},
+		{
+			"id": "fixture-state-dc",
+			"kind": "state",
+			"name": "District of Columbia",
+			"summary": "Fixture state record for District of Columbia. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-state-dc",
+					"title": "Fixture source for fixture-state-dc",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-state-dc"
+				}
+			],
+			"jurisdiction": "DC"
+		},
+		{
+			"id": "fixture-regulator-dc",
+			"kind": "regulator",
+			"name": "Fixture regulator for District of Columbia",
+			"summary": "Fixture regulator record for Fixture regulator for District of Columbia. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-regulator-dc",
+					"title": "Fixture source for fixture-regulator-dc",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-regulator-dc"
+				}
+			],
+			"jurisdiction": "DC"
+		},
+		{
+			"id": "rel-regulates-dc",
+			"kind": "relationship",
+			"name": "District of Columbia regulator relationship",
+			"summary": "Fixture relationship record for District of Columbia regulator relationship. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-regulates-dc",
+					"title": "Fixture source for rel-regulates-dc",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-regulates-dc"
+				}
+			],
+			"relation": "regulates",
+			"from": "fixture-regulator-dc",
+			"to": "DC"
+		},
+		{
+			"id": "fixture-mutual-group",
+			"kind": "company",
+			"name": "Fixture Mutual Group",
+			"summary": "Fixture company record for Fixture Mutual Group. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-mutual-group",
+					"title": "Fixture source for fixture-mutual-group",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-mutual-group"
+				}
+			],
+			"status": "current",
+			"criterionId": "named-group-with-refresh-owner-v1"
+		},
+		{
+			"id": "fixture-mutual-pc",
+			"kind": "company",
+			"name": "Fixture Mutual Property and Casualty",
+			"summary": "Fixture company record for Fixture Mutual Property and Casualty. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-mutual-pc",
+					"title": "Fixture source for fixture-mutual-pc",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-mutual-pc"
+				}
+			],
+			"status": "current",
+			"criterionId": "named-group-with-refresh-owner-v1"
+		},
+		{
+			"id": "fixture-harbor-exchange",
+			"kind": "company",
+			"name": "Fixture Harbor Exchange",
+			"summary": "Fixture company record for Fixture Harbor Exchange. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-harbor-exchange",
+					"title": "Fixture source for fixture-harbor-exchange",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-harbor-exchange"
+				}
+			],
+			"status": "current",
+			"criterionId": "named-group-with-refresh-owner-v1"
+		},
+		{
+			"id": "fixture-harbor-fire",
+			"kind": "company",
+			"name": "Fixture Harbor Fire",
+			"summary": "Fixture company record for Fixture Harbor Fire. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "1998-06-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-harbor-fire",
+					"title": "Fixture source for fixture-harbor-fire",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-harbor-fire"
+				}
+			],
+			"status": "historical",
+			"criterionId": "named-group-with-refresh-owner-v1",
+			"supersededBy": "fixture-harbor-exchange"
+		},
+		{
+			"id": "fixture-harbor-fire-oldname",
+			"kind": "company",
+			"name": "Fixture Harbor Fire Insurance Company",
+			"summary": "Fixture company record for Fixture Harbor Fire Insurance Company. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "1972-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-harbor-fire-oldname",
+					"title": "Fixture source for fixture-harbor-fire-oldname",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-harbor-fire-oldname"
+				}
+			],
+			"status": "historical",
+			"supersededBy": "fixture-harbor-fire"
+		},
+		{
+			"id": "fixture-local-county-mutual",
+			"kind": "company",
+			"name": "Fixture Local County Mutual",
+			"summary": "Fixture company record for Fixture Local County Mutual. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-local-county-mutual",
+					"title": "Fixture source for fixture-local-county-mutual",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-local-county-mutual"
+				}
+			],
+			"status": "current"
+		},
+		{
+			"id": "fixture-prior-criterion-carrier",
+			"kind": "company",
+			"name": "Fixture Prior Criterion Carrier",
+			"summary": "Fixture company record for Fixture Prior Criterion Carrier. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-fixture-prior-criterion-carrier",
+					"title": "Fixture source for fixture-prior-criterion-carrier",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/fixture-prior-criterion-carrier"
+				}
+			],
+			"status": "current",
+			"criterionId": "named-group-with-refresh-owner-v0"
+		},
+		{
+			"id": "rel-parent-mutual",
+			"kind": "relationship",
+			"name": "Fixture Mutual Group owns Fixture Mutual P&C",
+			"summary": "Fixture relationship record for Fixture Mutual Group owns Fixture Mutual P&C. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-parent-mutual",
+					"title": "Fixture source for rel-parent-mutual",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-parent-mutual"
+				}
+			],
+			"relation": "parent-of",
+			"from": "fixture-mutual-group",
+			"to": "fixture-mutual-pc"
+		},
+		{
+			"id": "rel-merged-harbor",
+			"kind": "relationship",
+			"name": "Fixture Harbor Fire merged into Fixture Harbor Exchange",
+			"summary": "Fixture relationship record for Fixture Harbor Fire merged into Fixture Harbor Exchange. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "1998-06-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-merged-harbor",
+					"title": "Fixture source for rel-merged-harbor",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-merged-harbor"
+				}
+			],
+			"relation": "merged-into",
+			"from": "fixture-harbor-fire",
+			"to": "fixture-harbor-exchange"
+		},
+		{
+			"id": "rel-succeeded-oldname",
+			"kind": "relationship",
+			"name": "The old Harbor Fire name succeeded by Fixture Harbor Fire",
+			"summary": "Fixture relationship record for The old Harbor Fire name succeeded by Fixture Harbor Fire. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "1972-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-succeeded-oldname",
+					"title": "Fixture source for rel-succeeded-oldname",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-succeeded-oldname"
+				}
+			],
+			"relation": "succeeded-by",
+			"from": "fixture-harbor-fire-oldname",
+			"to": "fixture-harbor-fire"
+		},
+		{
+			"id": "rel-writes-ho-ca",
+			"kind": "relationship",
+			"name": "Fixture Mutual P&C writes homeowners in California",
+			"summary": "Fixture relationship record for Fixture Mutual P&C writes homeowners in California. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-writes-ho-ca",
+					"title": "Fixture source for rel-writes-ho-ca",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-writes-ho-ca"
+				}
+			],
+			"relation": "writes",
+			"from": "fixture-mutual-pc",
+			"to": "homeowners",
+			"jurisdiction": "CA"
+		},
+		{
+			"id": "rel-writes-auto-ca",
+			"kind": "relationship",
+			"name": "Fixture Mutual P&C writes personal auto in California",
+			"summary": "Fixture relationship record for Fixture Mutual P&C writes personal auto in California. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-writes-auto-ca",
+					"title": "Fixture source for rel-writes-auto-ca",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-writes-auto-ca"
+				}
+			],
+			"relation": "writes",
+			"from": "fixture-mutual-pc",
+			"to": "auto",
+			"jurisdiction": "CA"
+		},
+		{
+			"id": "rel-avail-ho-ca",
+			"kind": "relationship",
+			"name": "Homeowners availability candidate in California",
+			"summary": "Fixture relationship record for Homeowners availability candidate in California. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-avail-ho-ca",
+					"title": "Fixture source for rel-avail-ho-ca",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-avail-ho-ca"
+				}
+			],
+			"relation": "available-in",
+			"from": "homeowners",
+			"to": "CA"
+		},
+		{
+			"id": "rel-avail-auto-ca",
+			"kind": "relationship",
+			"name": "Personal auto availability candidate in California",
+			"summary": "Fixture relationship record for Personal auto availability candidate in California. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-avail-auto-ca",
+					"title": "Fixture source for rel-avail-auto-ca",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-avail-auto-ca"
+				}
+			],
+			"relation": "available-in",
+			"from": "auto",
+			"to": "CA"
+		},
+		{
+			"id": "rel-avail-cgl-tx",
+			"kind": "relationship",
+			"name": "General liability availability candidate in Texas",
+			"summary": "Fixture relationship record for General liability availability candidate in Texas. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-avail-cgl-tx",
+					"title": "Fixture source for rel-avail-cgl-tx",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-avail-cgl-tx"
+				}
+			],
+			"relation": "available-in",
+			"from": "commercial-general-liability",
+			"to": "TX"
+		},
+		{
+			"id": "rel-writes-cgl-tx",
+			"kind": "relationship",
+			"name": "Fixture Harbor Exchange writes general liability in Texas",
+			"summary": "Fixture relationship record for Fixture Harbor Exchange writes general liability in Texas. It is not a statement about a real insurer or a real regulator.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "fixture-library-editor",
+			"sources": [
+				{
+					"id": "src-rel-writes-cgl-tx",
+					"title": "Fixture source for rel-writes-cgl-tx",
+					"publisher": "Fixture Library",
+					"url": "https://fixture.invalid/library/rel-writes-cgl-tx"
+				}
+			],
+			"relation": "writes",
+			"from": "fixture-harbor-exchange",
+			"to": "commercial-general-liability",
+			"jurisdiction": "TX"
+		},
+		{
+			"id": "fixture-ungated-company",
+			"kind": "company",
+			"name": "Fixture Ungated Company",
+			"summary": "Too short to pass.",
+			"effectiveDate": "2026-01-01",
+			"refreshOwner": "",
+			"sources": [],
+			"status": "current"
+		}
+	]
+}

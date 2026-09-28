@@ -8,8 +8,8 @@
 	"publishedDate": "unknown",
 	"effectiveDate": "unknown",
 	"accessedDate": "2026-08-31",
-	"lastChecked": "2026-08-31",
-	"lastCheckedBasis": "access",
+	"lastChecked": "2026-09-10",
+	"lastCheckedBasis": "recheck",
 	"primary": true,
 	"claims": [
 		"The guide's glossary entry headed 'Claims Made' reads: a liability insurance policy where coverage applies to claims filed during the policy period no matter when the loss occurred subject to a retroactive inception date.",
@@ -48,6 +48,6 @@
 	],
 	"updateCadence": "revised by the California Department of Insurance without a fixed schedule; the page carries the marker Form 700 Revised June 14, 2024",
 	"status": "active",
-	"notes": "Fetched 2026-08-31 and both glossary entries read off the page. The '?page=3' query parameter used in the earlier draft is inert and has been dropped from the URL. publishedDate is taken from the page's own 'Form 700 Revised June 14, 2024' marker. This is a consumer guide glossary and the weakest authority in the bundle; it is cited only for the two trigger definitions. It does not address retroactive dates, extended reporting periods, or which lines are written on which trigger. Published: 2024-06-14 Effective: 2024-06-14",
+	"notes": "Re-read 2026-09-10; the page still carries its own 'Form 700 Revised June 14, 2024' marker. The '?page=3' query parameter used in the earlier draft is inert and has been dropped from the URL. publishedDate is taken from the page's revision marker. This is a regulator-produced consumer guide rather than primary law or policy wording: it supports the guide-level definitions and descriptions recorded here, but should not by itself resolve a coverage or legal outcome. It does not address retroactive dates, extended reporting periods, or which lines are written on which trigger. Published: 2024-06-14 Effective: 2024-06-14",
 	"officialHost": true
 }

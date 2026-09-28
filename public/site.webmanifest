@@ -1,6 +1,6 @@
 {
-  "name": "BestInsurance Research",
-  "short_name": "BestInsurance",
+  "name": "Birch — Insurance, with the source attached",
+  "short_name": "Birch",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#f7fbff",
+  "background_color": "#f7fbff",
   "display": "standalone"
 }

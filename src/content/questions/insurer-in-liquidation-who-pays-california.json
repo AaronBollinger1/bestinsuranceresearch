@@ -1,0 +1,78 @@
+{
+	"question": "My insurance company was placed in liquidation. Does a California fund pay my claim, and up to how much?",
+	"aliases": [
+		"What happens to my claim if my California insurer goes insolvent?",
+		"Does CIGA pay my claim if my insurer fails?",
+		"Is there a limit on what the California guarantee fund pays?",
+		"My insurer is insolvent. Who handles my claim now?"
+	],
+	"shortAnswer": "For most property and casualty policies written by an admitted California insurer, the California Insurance Guarantee Association steps in after the insurer is placed in liquidation. CIGA states it is there for liability, auto and workers' compensation claims after an insurance company is placed in liquidation [S:ciga-home]. It is not a full substitute for the policy. Insurance Code section 1063.1 provides that covered claims do not include the portion of a claim, other than a claim for workers' compensation benefits, that is in excess of $500,000 [S:ca-ins-code-1063-1], and CIGA states that all other claims, including automobile and personal injury claims, are paid at full value up to $500,000 or the policy limit, whichever is less [S:ciga-claims]. A separate ceiling applies to homes: a claim for damage to, or loss of, a dwelling structure under a policy of residential property insurance shall not exceed $1,000,000 or the amount recoverable under the policy, whichever is less [S:ca-ins-code-1063-1]. Small claims are excluded at the bottom as well as capped at the top [S:ca-ins-code-1063-1].",
+	"assumes": [
+		"Your insurer has actually been placed in liquidation. CIGA describes its role as arising after an insurance company is placed in liquidation, which is a court step and not the same as an insurer being downgraded, in run-off, or merely slow to pay [S:ciga-home].",
+		"The policy was issued by an insurer admitted to transact insurance in California. Section 1063.1 excludes obligations arising from a policy issued or renewed before the insolvent insurer's admission to transact insurance in California [S:ca-ins-code-1063-1].",
+		"You are asking about property and casualty coverage. CIGA describes the California Life and Health Insurance Guarantee Association as its sister organization and as California's guaranty fund for life and health insurance and annuities [S:ciga-home]."
+	],
+	"why": "The definitions that decide this sit in one section, and that section is written for one article only. Insurance Code section 1063.1 opens with the phrase 'As used in this article', so the definitions in it are stated for purposes of the California Insurance Guarantee Association article of the Insurance Code and not as general definitions [S:ca-ins-code-1063-1]. Read it as the boundary of a specific fund rather than as a general statement about what insurance covers.\n\nThe headline ceiling is $500,000, with workers' compensation carved out. Section 1063.1 provides that covered claims do not include that portion of a claim, other than a claim for workers' compensation benefits, that is in excess of five hundred thousand dollars [S:ca-ins-code-1063-1]. CIGA states the same ceiling operationally: all other claims, including automobile and personal injury claims, are paid at full value up to $500,000 or the policy limit, whichever is less [S:ciga-claims]. The phrase 'or the policy limit, whichever is less' matters as much as the number. The fund does not enlarge your policy; where the policy limit is lower than $500,000, the policy limit governs [S:ciga-claims].\n\nA dwelling has its own, higher ceiling. Section 1063.1 provides that a claim for damage to, or loss of, a dwelling structure under a policy of residential property insurance shall not exceed one million dollars or the amount recoverable under the policy, whichever is less [S:ca-ins-code-1063-1]. That is a separate figure from the $500,000 general ceiling, and it is tied to the dwelling structure under a residential property policy rather than to every loss a homeowner might present. Loss of use is handled on the general terms: CIGA states that Loss of Use, or Additional Living Expense, Coverage D, is paid at actual cash value up to $500,000 or the policy limits, whichever is less [S:ciga-claims].\n\nThere is a floor as well as a ceiling, and the exception clause in it is easy to misread. Section 1063.1 provides that 'Covered claims,' except in cases involving a claim for workers' compensation benefits or for unearned premiums, does not include a claim in an amount of one hundred dollars or less, or the portion of a claim that is in excess of the applicable limits provided in the insurance policy issued by the insolvent insurer [S:ca-ins-code-1063-1]. The workers' compensation and unearned premium exception governs that whole paragraph, so the $100 floor and the policy-limits cut-off both run subject to it [S:ca-ins-code-1063-1].\n\nWhen the policy was written can defeat the claim entirely. Section 1063.1 provides that covered claims do not include an obligation of the insolvent insurer arising from a policy or contract of insurance issued or renewed before the insolvent insurer's admission to transact insurance in the State of California [S:ca-ins-code-1063-1]. That is a question about the insurer's admission date and the policy's issue or renewal date, not about the merits of your loss.\n\nExpect the handover itself to take time. CIGA states that because it must first obtain the claim files from the liquidator of the insolvent insurer, some delays may occur [S:ciga-home]. CIGA also states that since 1969 it has helped consumers navigate insolvency, and that it is there for liability, auto and workers' compensation claims after an insurance company is placed in liquidation [S:ciga-home]. Life, health and annuity products are not in that list; CIGA points to the California Life and Health Insurance Guarantee Association as its sister organization and as California's guaranty fund for those lines [S:ciga-home].",
+	"whatChanges": [
+		"Whether the line of business is property and casualty or life, health and annuity. CIGA names the California Life and Health Insurance Guarantee Association as the fund for the latter [S:ciga-home].",
+		"Whether the claim is for workers' compensation benefits. The $500,000 ceiling in section 1063.1 is stated 'other than a claim for workers' compensation benefits', and the $100 floor paragraph carries an express workers' compensation and unearned premium exception [S:ca-ins-code-1063-1].",
+		"Whether the loss is damage to a dwelling structure under a residential property policy, which section 1063.1 caps at $1,000,000 or the amount recoverable under the policy, whichever is less, rather than at $500,000 [S:ca-ins-code-1063-1].",
+		"What your own policy limit is. CIGA pays up to $500,000 or the policy limit, whichever is less, so a lower policy limit governs [S:ciga-claims].",
+		"When the policy was issued or renewed relative to the insurer's admission to transact insurance in California [S:ca-ins-code-1063-1]."
+	],
+	"variability": [
+		"This answer describes the California fund only. A policy written by a non-admitted or surplus lines insurer is a different question, and section 1063.1's definitions are stated for the CIGA article rather than as general law [S:ca-ins-code-1063-1].",
+		"Statutory ceilings are stated in the section and can be amended. The figures here are $500,000 generally and $1,000,000 for a dwelling structure under a residential property policy as section 1063.1 states them [S:ca-ins-code-1063-1].",
+		"CIGA's own pages describe how it operates and are the publisher's own account rather than statute. Where the two are quoted together here, the statute is the one that sets the limit [S:ciga-home][S:ciga-claims].",
+		"How quickly anything moves depends on the liquidation. CIGA attributes delay to having to obtain the claim files from the liquidator first [S:ciga-home]."
+	],
+	"nextActions": [
+		"Find out whether your insurer has actually been placed in liquidation, and by which court, before assuming CIGA is involved. CIGA describes its role as beginning after that step [S:ciga-home].",
+		"Pull your declarations page and note the policy limit for the coverage you are claiming under, because CIGA pays the lesser of the statutory ceiling and that limit [S:ciga-claims].",
+		"If the loss is to a dwelling structure, identify it as such when you present the claim: section 1063.1 gives that category its own ceiling [S:ca-ins-code-1063-1].",
+		"If the policy is life, health, or an annuity, take the question to the California Life and Health Insurance Guarantee Association instead, which CIGA names as the fund for those lines [S:ciga-home].",
+		"Keep your own copies of the claim file. CIGA says it must obtain the files from the liquidator before it can act, so your records may be ahead of its [S:ciga-home]."
+	],
+	"confidence": "established",
+	"reviewState": "under-review",
+	"family": "personal",
+	"lines": [
+		"homeowners",
+		"auto"
+	],
+	"states": [
+		"CA"
+	],
+	"audience": "individual",
+	"topics": [
+		"insurer insolvency",
+		"guarantee fund",
+		"covered claims",
+		"california",
+		"liquidation"
+	],
+	"companies": [],
+	"coverages": [],
+	"effectiveDate": "2026-09-19",
+	"lastReviewed": "2026-09-19",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"related": [
+		"surplus-lines-guarantee-fund-california",
+		"complaint-about-a-california-insurer-where-it-goes",
+		"how-to-check-a-california-insurer-and-agent-before-you-buy"
+	],
+	"handoff": {
+		"recommended": true,
+		"reason": "Whether a particular claim is a covered claim under the guarantee association article turns on the policy, the insurer's admission date, the liquidation order, and which statutory ceiling applies, none of which a general research page can determine for a specific loss. A licensed agent or broker can read the policy, and a dispute about whether the fund owes anything is a legal question rather than something to settle from a description of the statute."
+	},
+	"sourceIds": [
+		"ca-ins-code-1063-1",
+		"ciga-home",
+		"ciga-claims"
+	],
+	"schemaEligible": {
+		"faqPage": false,
+		"techArticle": true
+	}
+}

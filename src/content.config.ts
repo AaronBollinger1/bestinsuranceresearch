@@ -2,7 +2,7 @@ import { defineCollection, reference, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 /**
- * Typed content collections for BestInsurance Research.
+ * Typed content collections for Birch Research.
  *
  * Every collection is a JSON data collection under src/content/<name>/.
  * The file basename is the collection entry id. Prose fields may contain
@@ -35,6 +35,27 @@ const optionalIsoDate = partialDate;
 const INSURANCE_FAMILY = ['personal', 'commercial', 'life', 'health'] as const;
 const AUDIENCE = ['individual', 'business-owner', 'professional'] as const;
 const CONFIDENCE = ['established', 'contextual', 'disputed', 'changing', 'insufficient'] as const;
+/**
+ * `reviewed` is a licensed act, and a default is not a way to perform one.
+ *
+ * Five collections - questions, coverages, companies, states, examples - used
+ * to default this field to `reviewed`. Every record in all five happened to
+ * carry an explicit state, so nothing was ever falsely published; the fault was
+ * that nothing stopped it. A new question file authored without the field would
+ * have claimed licensed sign-off by omission, silently, and the only rule in
+ * DIRECTION.md that names a person would have been enforced by whether an
+ * author remembered a line.
+ *
+ * So the field is required wherever a record can be reviewed. Omitting it is
+ * now a build failure rather than an assertion of sign-off, which is the right
+ * direction for a mistake to fall. The three collections that default to
+ * `under-review` keep that default: defaulting to the unreviewed state claims
+ * nothing, and is safe for the same reason the other default was not.
+ *
+ * scripts/verify.mjs holds the other half - that a record reaching `reviewed`
+ * names a licensed reviewer from the people collection - and it runs in both
+ * indexing postures.
+ */
 const REVIEW_STATE = ['reviewed', 'under-review', 'corrected'] as const;
 
 /**
@@ -155,7 +176,7 @@ const questions = defineCollection({
 		variability: z.array(z.string().min(10)).min(1),
 		nextActions: z.array(z.string().min(10)).min(2),
 		confidence: z.enum(CONFIDENCE),
-		reviewState: z.enum(REVIEW_STATE).default('reviewed'),
+		reviewState: z.enum(REVIEW_STATE),
 		correction: correctionRecord,
 		family: z.enum(INSURANCE_FAMILY),
 		lines: z.array(z.string()).min(1),
@@ -221,7 +242,7 @@ const coverages = defineCollection({
 		effectiveDate: isoDate,
 		author: z.string().min(3),
 		reviewer: z.string().min(3),
-		reviewState: z.enum(REVIEW_STATE).default('reviewed'),
+		reviewState: z.enum(REVIEW_STATE),
 		correction: correctionRecord,
 		sourceIds: z.array(reference('sources')).min(1),
 		relatedQuestions: z.array(reference('questions')).default([]),
@@ -235,6 +256,25 @@ const linkItem = z.object({
 	label: z.string().min(3),
 	url: z.string().url(),
 	note: z.string().min(10).optional(),
+});
+
+const sourceLinkedDocument = z.object({
+	label: z.string().min(8),
+	sourceId: reference('sources'),
+	note: z.string().min(30),
+});
+
+/** A regulator's point-in-time identity snapshot, never a live license check. */
+const regulatoryIdentity = z.object({
+	sourceId: reference('sources'),
+	regulatorCompanyId: z.string().min(3),
+	authorizedDate: optionalIsoDate,
+	licenseStatus: z.string().min(3),
+	companyType: z.string().min(3),
+	domicile: z.string().min(2),
+	agentForService: z
+		.object({ name: z.string().min(3), address: z.string().min(10) })
+		.optional(),
 });
 
 const companies = defineCollection({
@@ -254,12 +294,16 @@ const companies = defineCollection({
 		naic: z
 			.object({ companyCode: z.string().optional(), groupCode: z.string().optional() })
 			.optional(),
+		/** A dated regulator snapshot; this is not a runtime license lookup. */
+		regulatoryIdentity: regulatoryIdentity.optional(),
 		summary: z.string().min(80),
 		officialUrls: z.array(linkItem).min(1),
 		contactChannels: z
 			.array(z.object({ label: z.string().min(3), value: z.string().min(3), note: z.string().optional() }))
 			.default([]),
 		regulatorRecords: z.array(linkItem).default([]),
+		/** Filed forms are visible only when the source is in this entity's ledger. */
+		filedForms: z.array(sourceLinkedDocument).default([]),
 		publications: z.array(linkItem).default([]),
 		statutoryBasis: z.array(linkItem).default([]),
 		jurisdictions: z.array(z.string()).min(1),
@@ -268,7 +312,7 @@ const companies = defineCollection({
 		lastReviewed: isoDate,
 		author: z.string().min(3),
 		reviewer: z.string().min(3),
-		reviewState: z.enum(REVIEW_STATE).default('reviewed'),
+		reviewState: z.enum(REVIEW_STATE),
 		correction: correctionRecord,
 		sourceIds: z.array(reference('sources')).min(1),
 		relatedQuestions: z.array(reference('questions')).default([]),
@@ -302,7 +346,7 @@ const states = defineCollection({
 		effectiveDate: isoDate,
 		author: z.string().min(3),
 		reviewer: z.string().min(3),
-		reviewState: z.enum(REVIEW_STATE).default('reviewed'),
+		reviewState: z.enum(REVIEW_STATE),
 		correction: correctionRecord,
 		sourceIds: z.array(reference('sources')).min(1),
 		relatedQuestions: z.array(reference('questions')).default([]),
@@ -337,7 +381,7 @@ const examples = defineCollection({
 		lastReviewed: isoDate,
 		author: z.string().min(3),
 		reviewer: z.string().min(3),
-		reviewState: z.enum(REVIEW_STATE).default('reviewed'),
+		reviewState: z.enum(REVIEW_STATE),
 		correction: correctionRecord,
 		sourceIds: z.array(reference('sources')).min(1),
 		relatedQuestions: z.array(reference('questions')).default([]),

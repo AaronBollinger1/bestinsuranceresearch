@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { accountFromSession, requestSignIn, sameOrigin, SESSION_COOKIE } from '../../lib/auth';
+import { getMailer, getStore, selfOrigin } from '../../lib/runtime';
+
+/* Sign-in touches a database and sets a cookie, so it cannot be prerendered. */
+export const prerender = false;
+
+const store = getStore();
+const origin = selfOrigin(Astro.request);
+const existing = await accountFromSession(store, Astro.cookies.get(SESSION_COOKIE)?.value);
+if (existing) return Astro.redirect('/account');
+
+let sent = false;
+let rejected = false;
+
+if (Astro.request.method === 'POST') {
+	/*
+	 * Origin check first. SameSite=Lax already stops a cross-site POST in any
+	 * browser that honours it; this is the defence that does not depend on the
+	 * browser getting it right, and it costs one header read.
+	 */
+	if (!sameOrigin(Astro.request, origin)) {
+		return new Response('Bad request', { status: 400 });
+	}
+
+	const form = await Astro.request.formData();
+	const email = String(form.get('email') ?? '');
+
+	/*
+	 * A honeypot, not a captcha. A captcha is a third-party script that watches
+	 * the reader, on a site whose proposition is that it collects nothing. This
+	 * catches the automation that actually turns up to a form like this one, and
+	 * costs a reader nothing.
+	 */
+	const trap = String(form.get('website') ?? '');
+
+	if (!trap) {
+		const request = await requestSignIn(store, email, origin);
+		if (request) {
+			try {
+				await getMailer().sendSignInLink(request.email, request.url);
+			} catch (error) {
+				/* Never log the address or the link. */
+				console.error('sign-in mail failed', error instanceof Error ? error.message : error);
+				rejected = true;
+			}
+		}
+	}
+
+	/*
+	 * The same page whether the address exists, is rate limited, is malformed,
+	 * or tripped the honeypot. Anything else turns this form into an oracle for
+	 * "does this person contribute here", which on a site about people's
+	 * insurance problems is a real disclosure rather than a theoretical one.
+	 * `rejected` is set only when our own mail provider failed, which is our
+	 * fault and says nothing about the address.
+	 */
+	sent = !rejected;
+}
+---
+
+<BaseLayout
+	title="Sign in"
+	description="Sign in to Birch Commons with a one-time email link. Birch Research remains open without an account."
+	hideIntro
+>
+	<section class="band band-tight auth-band" aria-labelledby="auth-title">
+		<div class="shell auth-layout">
+			<div class="auth-main">
+				<a class="auth-back" href="/">Read Birch Research <span aria-hidden="true">↗</span></a>
+				<span class="eyebrow">Birch Commons / Account</span>
+				<h1 id="auth-title">Continue to Birch Commons.</h1>
+				<p class="lede">One address, no password. We send a link that works once.</p>
+				<div class:list={["auth-progress", sent && "is-sent"]} aria-label="Sign-in progress">
+					<div class:list={[!sent && "is-current"]}><span>01</span><strong>Enter email</strong></div>
+					<div class:list={[sent && "is-current"]}><span>02</span><strong>Open the link</strong></div>
+					<div><span>03</span><strong>Post with context</strong></div>
+				</div>
+
+				{
+					sent ? (
+						<div class="auth-state" role="status">
+							<span class="auth-state-label">Link requested</span>
+							<h2>Check your email.</h2>
+							<p>
+								If that address can sign in, a link is on its way. It works once and expires in
+								fifteen minutes.
+							</p>
+							<p>Nothing is created until the link is followed.</p>
+							<a class="btn btn-light" href="/sign-in">Use another address</a>
+						</div>
+					) : (
+						<div class="auth-card">
+							{rejected && (
+								<div class="callout" data-tone="stop">
+									<h3>That did not send</h3>
+									<p>Our mail provider refused the message. Try again in a minute.</p>
+								</div>
+							)}
+							<form method="post" class="auth-form">
+								<div class="auth-field">
+									<label for="email">Email address</label>
+									<input type="email" id="email" name="email" required autocomplete="email" inputmode="email" />
+								</div>
+
+								{/* Honeypot. Hidden from people, offered to automation. */}
+								<div aria-hidden="true" class="auth-trap">
+									<label for="website">Leave this empty</label>
+									<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+								</div>
+
+								<button class="btn" type="submit">Send a secure link <span aria-hidden="true">→</span></button>
+							</form>
+							<p class="auth-card-note">No password, newsletter, or notification mail.</p>
+						</div>
+					)
+				}
+			</div>
+
+			<aside class="auth-side" aria-label="About Birch Commons accounts">
+				<span class="eyebrow">What this unlocks</span>
+				<ul>
+					<li>Read and reply in discussion threads.</li>
+					<li>Draft a structured experience for moderation.</li>
+					<li>Request professional verification.</li>
+				</ul>
+				<div class="auth-side-note">
+					<strong>Research stays open.</strong>
+					<span>Birch Research does not require an account. Sign-in exists only for the moderated Commons room.</span>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

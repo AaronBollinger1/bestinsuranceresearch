@@ -4,13 +4,14 @@ import { isPreview, siteConfig } from '../config/site';
 export const prerender = true;
 
 /**
- * Preview blocks everything. Production allows general crawling and named AI
- * crawlers, because the whole point of the library is to be quotable with
- * attribution, and points them at the machine-readable entry files.
+ * Preview blocks everything. Production serves the read-only estate and still
+ * blocks crawlers unless PUBLIC_INDEXING_OPEN is exactly true and
+ * PUBLIC_SITE_ENV is production. Commons does not open indexing.
  */
 export const GET: APIRoute = () => {
-	const body = isPreview
-		? ['User-agent: *', 'Disallow: /', '', '# Preview environment. Nothing here is indexable.', ''].join('\n')
+	const indexingClosed = isPreview || siteConfig.indexingOpen !== true;
+	const body = indexingClosed
+		? ['User-agent: *', 'Disallow: /', '', '# Indexing is closed. Nothing here is offered to crawlers.', ''].join('\n')
 		: [
 				'User-agent: *',
 				'Allow: /',

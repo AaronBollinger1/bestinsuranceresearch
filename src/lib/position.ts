@@ -397,59 +397,6 @@ export function crossOpenItems(
 	return items.sort((a, b) => SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity]);
 }
 
-/**
- * A cross rule is only meaningful if it actually spans modules and every
- * field it names resolves. Implicit resolution is what this refuses: a
- * qualified id that does not resolve is an error, never a silent miss.
- */
-export function validateCrossRule(rule: CrossRuleDef, modules: ModuleDef[]): string[] {
-	const problems: string[] = [];
-	const byModule = new Map(modules.map((m) => [m.moduleId, m]));
-
-	const named = new Set<string>();
-	for (const condition of rule.when.all) {
-		const refs = [condition.field];
-		if (condition.value && typeof condition.value === 'object' && 'field' in condition.value) {
-			refs.push((condition.value as { field: string }).field);
-		}
-		for (const ref of refs) {
-			const dot = ref.indexOf('.');
-			if (dot < 0) {
-				problems.push(`${rule.id}: "${ref}" is not qualified as <module>.<field>`);
-				continue;
-			}
-			const moduleId = ref.slice(0, dot);
-			const fieldId = ref.slice(dot + 1);
-			const module = byModule.get(moduleId);
-			if (!module) {
-				problems.push(`${rule.id}: names module "${moduleId}", which does not exist`);
-				continue;
-			}
-			if (!module.fields.some((f) => f.id === fieldId)) {
-				problems.push(`${rule.id}: "${moduleId}" has no field "${fieldId}"`);
-				continue;
-			}
-			named.add(moduleId);
-		}
-	}
-
-	if (named.size < 2) {
-		problems.push(
-			`${rule.id}: reads ${named.size} module(s); a rule that does not span modules belongs in the module it reads`,
-		);
-	}
-	for (const declared of rule.modules) {
-		if (!named.has(declared)) {
-			problems.push(`${rule.id}: declares module "${declared}" but reads no field from it`);
-		}
-	}
-	for (const actual of named) {
-		if (!rule.modules.includes(actual)) {
-			problems.push(`${rule.id}: reads "${actual}" without declaring it`);
-		}
-	}
-	return problems;
-}
 
 export function evaluateRule(
 	rule: RuleDef,
@@ -586,15 +533,89 @@ export interface RuleProblem {
 	problem: string;
 }
 
-/** Words that would mean the rule had crossed into underwriting or pricing. */
-const FORBIDDEN_PHRASES = [
-	'you qualify', 'you are eligible', 'not eligible', 'ineligible',
-	'is insurable', 'uninsurable', 'will be bound', 'is bound',
-	'standard market', 'non-admitted market',
-	'your premium will', 'estimated premium', 'your rate',
-	'this is covered', 'is not covered', 'will be covered',
-	'we recommend you buy', 'you should buy',
+/**
+ * The boundary, as the reader is promised it and as the build enforces it.
+ *
+ * /position prints a card headed "It will not" and lists what this instrument
+ * refuses to tell anybody, then says underneath: "Enforced in code and in tests,
+ * not only in policy: every rule is validated at build time against this
+ * boundary." That sentence was two-thirds true.
+ *
+ * TWO OF THE PROMISES HAD NOTHING BEHIND THEM. The guard was a flat array of
+ * phrases in this file and the promises were prose in a different one, with
+ * nothing joining them, so "Assign a class code or any rating-bureau
+ * classification" and "Give you a risk score" - the two DIRECTION.md treats as
+ * absolute - were enforced by no phrase at all. A seventh phrase group, the one
+ * refusing to tell somebody what to buy, was enforced with no promise printed
+ * anywhere, which is the same drift running the other way.
+ *
+ * So the two are stored together. Each entry carries the sentence the reader is
+ * shown and the phrasings that would breach it, and the suite reads the built
+ * page and fails if a promise has no group or a group has no promise. The page
+ * still writes its own prose rather than rendering this array: a page computed
+ * from the guard would lose a promise silently when a phrase list was deleted,
+ * and the whole point is that neither half can move alone.
+ *
+ * The phrases are verdicts, not topics, and that distinction is the difference
+ * between a guard and a gag. This corpus contains a whole workers compensation
+ * classification module whose subject IS class codes - it exists to help an
+ * employer ask which classification applies and who decided it, and one of its
+ * own rules says "a classification question this instrument will not answer for
+ * you". Banning the words would have deleted the module. Banning "your class
+ * code is" bans the verdict.
+ */
+export const BOUNDARY: ReadonlyArray<{ promise: string; phrases: readonly string[] }> = [
+	{
+		promise: 'Say whether a risk is eligible, insurable, or acceptable to anyone.',
+		phrases: [
+			'you qualify', 'you are eligible', 'not eligible', 'ineligible',
+			'is insurable', 'uninsurable',
+		],
+	},
+	{
+		promise: 'Produce a premium, a price, or a rate estimate.',
+		phrases: ['your premium will', 'estimated premium', 'your rate'],
+	},
+	{
+		promise: 'Say what any carrier will or will not write.',
+		phrases: ['will be bound', 'is bound', 'standard market', 'non-admitted market'],
+	},
+	{
+		promise: 'Say whether a loss is covered.',
+		phrases: ['this is covered', 'is not covered', 'will be covered'],
+	},
+	{
+		promise: 'Assign a class code or any rating-bureau classification.',
+		phrases: [
+			'your class code', 'your governing class', 'your classification is',
+			'the correct class code', 'the correct classification',
+			'class code should be', 'should be classified as', 'we classify',
+		],
+	},
+	{
+		promise: 'Give you a risk score.',
+		phrases: ['risk score', 'your score', 'we score', 'score you'],
+	},
+	{
+		promise: 'Tell you which policy or product to buy.',
+		phrases: ['we recommend you buy', 'you should buy'],
+	},
 ];
+
+const FORBIDDEN_PHRASES = BOUNDARY.flatMap((line) => line.phrases);
+
+/**
+ * The phrases in a passage that cross the boundary, empty where it stays inside.
+ *
+ * Shared so that a rule reaching a reader is measured the same way wherever it
+ * came from. It did not used to be: the fifteen cross-module rules render in the
+ * same open-item list, evaluated by the same engine, and went through a
+ * validator that checked none of this.
+ */
+export function boundaryBreaches(prose: string): string[] {
+	const text = prose.toLowerCase();
+	return FORBIDDEN_PHRASES.filter((phrase) => text.includes(phrase));
+}
 
 const NUMERIC_OPS: Operator[] = ['gt', 'gte', 'lt', 'lte'];
 
@@ -613,9 +634,8 @@ export function validateModule(module: ModuleDef, knownSourceIds: Set<string>, k
 		if (seen.has(rule.id)) p(rule.id, 'duplicate rule id');
 		seen.add(rule.id);
 
-		const prose = `${rule.title} ${rule.detail} ${rule.action}`.toLowerCase();
-		for (const phrase of FORBIDDEN_PHRASES) {
-			if (prose.includes(phrase)) p(rule.id, `crosses the boundary: contains "${phrase}"`);
+		for (const phrase of boundaryBreaches(`${rule.title} ${rule.detail} ${rule.action}`)) {
+			p(rule.id, `crosses the boundary: contains "${phrase}"`);
 		}
 
 		if (rule.when.all.length === 0) p(rule.id, 'has no condition, so it would always fire');
@@ -739,5 +759,71 @@ export function validateModule(module: ModuleDef, knownSourceIds: Set<string>, k
 		}
 	}
 
+	return problems;
+}
+
+/**
+ * A cross rule is only meaningful if it actually spans modules and every
+ * field it names resolves. Implicit resolution is what this refuses: a
+ * qualified id that does not resolve is an error, never a silent miss.
+ *
+ * It also has to stay inside the boundary, which it did not used to be asked.
+ * This function lived four hundred lines above `validateModule`, checked field
+ * resolution and module spanning, and stopped - so the fifteen cross-module
+ * rules reached readers in the same open-item list, rendered by the same
+ * component and evaluated by the same engine, having passed a guard that
+ * checked none of the boundary. Nothing was over the line when this was found;
+ * nothing would have stopped the next one. The two validators sit together now
+ * for the same reason, because being in different places is how they drifted.
+ */
+export function validateCrossRule(rule: CrossRuleDef, modules: ModuleDef[]): string[] {
+	const problems: string[] = [];
+	for (const phrase of boundaryBreaches(`${rule.title} ${rule.detail} ${rule.action}`)) {
+		problems.push(`${rule.id}: crosses the boundary: contains "${phrase}"`);
+	}
+	const byModule = new Map(modules.map((m) => [m.moduleId, m]));
+
+	const named = new Set<string>();
+	for (const condition of rule.when.all) {
+		const refs = [condition.field];
+		if (condition.value && typeof condition.value === 'object' && 'field' in condition.value) {
+			refs.push((condition.value as { field: string }).field);
+		}
+		for (const ref of refs) {
+			const dot = ref.indexOf('.');
+			if (dot < 0) {
+				problems.push(`${rule.id}: "${ref}" is not qualified as <module>.<field>`);
+				continue;
+			}
+			const moduleId = ref.slice(0, dot);
+			const fieldId = ref.slice(dot + 1);
+			const module = byModule.get(moduleId);
+			if (!module) {
+				problems.push(`${rule.id}: names module "${moduleId}", which does not exist`);
+				continue;
+			}
+			if (!module.fields.some((f) => f.id === fieldId)) {
+				problems.push(`${rule.id}: "${moduleId}" has no field "${fieldId}"`);
+				continue;
+			}
+			named.add(moduleId);
+		}
+	}
+
+	if (named.size < 2) {
+		problems.push(
+			`${rule.id}: reads ${named.size} module(s); a rule that does not span modules belongs in the module it reads`,
+		);
+	}
+	for (const declared of rule.modules) {
+		if (!named.has(declared)) {
+			problems.push(`${rule.id}: declares module "${declared}" but reads no field from it`);
+		}
+	}
+	for (const actual of named) {
+		if (!rule.modules.includes(actual)) {
+			problems.push(`${rule.id}: reads "${actual}" without declaring it`);
+		}
+	}
 	return problems;
 }

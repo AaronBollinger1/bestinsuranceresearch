@@ -1,0 +1,25 @@
+{
+	"title": "State Farm General Insurance Company - California company profile",
+	"publisher": "California Department of Insurance",
+	"url": "https://interactive.web.insurance.ca.gov/companyprofile/companyprofile?doFunction=getCompanyProfile&eid=3629&event=companyProfile",
+	"sourceType": "regulator-record",
+	"jurisdiction": "CA",
+	"authorityLevel": "regulator",
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-10",
+	"lastChecked": "2026-09-10",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"The California Department of Insurance company profile identifies the company as STATE FARM GENERAL INSURANCE COMPANY and lists its address as One State Farm Plaza, Bloomington, Illinois 61710-0001 and its telephone number as 800-782-8332.",
+		"The profile lists NAIC number 25151, California Company ID 1714-5, a date authorized in California of December 24, 1962, license status UNLIMITED-NORMAL, company type Property & Casualty, and state of domicile Illinois.",
+		"The profile lists NAIC group number 0176 and the group name STATE FARM GRP.",
+		"The profile lists Automobile, Boiler and Machinery, Burglary, Common Carrier Liability, Disability, Fire, Liability, Marine, Miscellaneous, Plate Glass, Sprinkler, Surety, Team and Vehicle, and Workers' Compensation under lines of business the company is authorized to transact.",
+		"The profile lists Melissa DeKoven as agent for service at 2710 Gateway Oaks Drive, Suite 150N, Sacramento, California 95833-3505."
+	],
+	"updateCadence": "The profile states no publication date or update cadence. Recheck the regulator page before relying on a status or line list.",
+	"status": "active",
+	"notes": "The source was fetched and read on 2026-09-10. It is a California Department of Insurance company-profile snapshot, not a rating, recommendation, current product catalog, or individualized license determination.",
+	"officialHost": true
+}

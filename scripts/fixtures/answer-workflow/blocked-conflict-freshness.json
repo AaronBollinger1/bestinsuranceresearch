@@ -1,0 +1,62 @@
+{
+	"_fixture": "One claim with an unresolved conflict, cited alongside a source whose reading is stale under the declared policy: two gates fail independently and the assembly ends review-required.",
+	"_why": "The conflict and freshness gates must each name their own reasons from the same assembly, proving the gates are separable rather than one lump verdict - and an unresolved disagreement plus an old reading must both be visible next steps, never averaged or ignored.",
+	"_expects": { "status": "review-required", "failingGates": ["conflict", "freshness"] },
+	"assembly": {
+		"questionId": "fixture-widget-rule-ca",
+		"jurisdiction": "CA",
+		"audience": "consumer",
+		"topics": ["general-explanation"],
+		"asOf": "2026-09-27",
+		"freshnessPolicy": { "staleAfterDays": 365 },
+		"editor": { "name": "Fixture Editor", "at": "2026-09-27T09:00:00.000Z", "note": "Assembly attempted over a disputed claim and an old reading." },
+		"verbatimExcerpts": []
+	},
+	"sources": [
+		{
+			"id": "fixture-src-old-manual",
+			"data": {
+				"title": "Fixture Procedures Manual",
+				"publisher": "Fixture State Regulator",
+				"url": "https://fixture.invalid/manual/procedures",
+				"sourceType": "regulator-record",
+				"jurisdiction": "CA",
+				"authorityLevel": "regulator",
+				"officialHost": true,
+				"publishedDate": "2024-01-01",
+				"accessedDate": "2024-06-01",
+				"lastChecked": "2024-06-01",
+				"lastCheckedBasis": "access",
+				"updateCadence": "Recheck each edition.",
+				"status": "active",
+				"claims": ["The fixture procedure requires a written request."]
+			}
+		},
+		{
+			"id": "fixture-src-new-faq",
+			"data": {
+				"title": "Fixture Procedures FAQ",
+				"publisher": "Fixture State Regulator",
+				"url": "https://fixture.invalid/faq/procedures",
+				"sourceType": "regulator-guidance",
+				"jurisdiction": "CA",
+				"authorityLevel": "regulator",
+				"officialHost": true,
+				"publishedDate": "2026-01-01",
+				"accessedDate": "2026-09-01",
+				"lastChecked": "2026-09-01",
+				"lastCheckedBasis": "access",
+				"updateCadence": "Recheck each edition.",
+				"status": "active",
+				"claims": ["The fixture procedure accepts an online request."]
+			}
+		}
+	],
+	"claimEventLogs": [
+		[
+			{ "id": "g1", "kind": "opened", "at": "2026-09-26T19:00:00.000Z", "actor": "editor", "note": "Opened for the written-request proposition.", "claimRef": "fixture-src-old-manual#c1", "text": "The fixture procedure requires a written request.", "stakes": "standard", "synthetic": true },
+			{ "id": "g2", "kind": "support-added", "at": "2026-09-26T19:01:00.000Z", "actor": "editor", "note": "The manual states the requirement.", "sourceId": "fixture-src-old-manual", "synthetic": true },
+			{ "id": "g3", "kind": "conflict-recorded", "at": "2026-09-26T19:02:00.000Z", "actor": "editor", "note": "The FAQ says an online request is accepted; the manual says written. Neither withdraws the other.", "between": ["fixture-src-old-manual", "fixture-src-new-faq"], "synthetic": true }
+		]
+	]
+}

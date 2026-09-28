@@ -1,0 +1,32 @@
+{
+	"_fixture": "A standard-stakes claim confirmed against one supporting source.",
+	"_why": "The happy path must fold to confirmed and be publication-eligible with zero blockers, so the eligibility list is proven capable of being empty - a gate that always blocks is as untestable as one that never does.",
+	"_expects": { "finalState": "confirmed", "eligible": true, "highStakes": false },
+	"sources": [
+		{
+			"id": "fixture-src-widget-statute",
+			"data": {
+				"title": "Fixture Widget Filing Statute",
+				"publisher": "Fixture Legislature",
+				"url": "https://fixture.invalid/statute/widget-filing",
+				"sourceType": "statute",
+				"jurisdiction": "CA",
+				"authorityLevel": "primary-law",
+				"officialHost": true,
+				"publishedDate": "2025-01-01",
+				"effectiveDate": "2025-07-01",
+				"accessedDate": "2026-09-01",
+				"lastChecked": "2026-09-01",
+				"lastCheckedBasis": "access",
+				"updateCadence": "Recheck each legislative session.",
+				"status": "active",
+				"claims": ["The fixture widget filing must be renewed each year."]
+			}
+		}
+	],
+	"events": [
+		{ "id": "cf1", "kind": "opened", "at": "2026-09-26T19:00:00.000Z", "actor": "editor", "note": "Study opened for the fixture renewal proposition.", "claimRef": "fixture-src-widget-statute#c1", "text": "The fixture widget filing must be renewed each year.", "stakes": "standard", "synthetic": true },
+		{ "id": "cf2", "kind": "support-added", "at": "2026-09-26T19:01:00.000Z", "actor": "editor", "note": "The statute passage supports the proposition verbatim.", "sourceId": "fixture-src-widget-statute", "synthetic": true },
+		{ "id": "cf3", "kind": "confirmed", "at": "2026-09-26T19:05:00.000Z", "actor": "editor", "note": "Read against the passage and confirmed as stated.", "synthetic": true }
+	]
+}

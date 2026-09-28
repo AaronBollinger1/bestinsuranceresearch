@@ -5,6 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Callout from '../../components/Callout.astro';
 import CorrectionControl from '../../components/CorrectionControl.astro';
+import SourceCitationKit from '../../components/SourceCitationKit.astro';
 import StateBlock from '../../components/StateBlock.astro';
 import StatusChip from '../../components/StatusChip.astro';
 import { siteConfig } from '../../config/site';
@@ -13,6 +14,7 @@ import { longDate } from '../../lib/cite';
 import { breadcrumbs, graph, organization, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
 
+import { clip, endSentence } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
 	const corpus = await loadCorpus();
 	return corpus.sources.map((entry) => ({ params: { slug: entry.id }, props: { entry, corpus } }));
@@ -70,10 +72,22 @@ const trail = [
 
 const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 	'@type': 'CreativeWork',
-	'@id': `${new URL(path, 'https://bestinsuranceresearch.com').toString()}#source`,
+	'@id': `${new URL(path, siteConfig.origin).toString()}#source`,
 	name: d.title,
-	url: d.url,
-	publisher: { '@type': 'Organization', name: d.publisher },
+	url: new URL(path, siteConfig.origin).toString(),
+	publisher: { '@type': 'Organization', name: siteConfig.name },
+	isBasedOn: {
+		'@type': 'CreativeWork',
+		name: d.title,
+		url: d.url,
+		publisher: { '@type': 'Organization', name: d.publisher },
+	},
+	citation: [{
+		'@type': 'CreativeWork',
+		name: d.title,
+		url: d.url,
+		publisher: { '@type': 'Organization', name: d.publisher },
+	}],
 	...(d.publishedDate !== 'unknown' && d.publishedDate !== 'n/a' ? { datePublished: d.publishedDate } : {}),
 	spatialCoverage: d.jurisdiction,
 });
@@ -81,7 +95,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 
 <BaseLayout
 	title={d.title}
-	description={`Source record: ${d.title}, published by ${d.publisher}. ${d.claims.length} claims in the library depend on it.`}
+	description={`Source record: ${endSentence(clip(d.title, 140))} Published by ${endSentence(clip(d.publisher, 60))} ${d.claims.length} claims in the library depend on it.`}
 	jsonLd={jsonLd}
 	pageType="source"
 	machinePath={machinePath}
@@ -216,6 +230,17 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 							A checksum lets you tell whether a claim you cited still says what it said.
 						</p>
 					</section>
+
+					<SourceCitationKit
+						id={entry.id}
+						title={d.title}
+						sourceUrl={d.url}
+						publisher={d.publisher}
+						jurisdiction={d.jurisdiction}
+						lastChecked={d.lastChecked}
+						machinePath={machinePath}
+						recordPath={path}
+					/>
 
 					<section class="answer-section" aria-labelledby="citing">
 						<h2 id="citing">Pages that cite this source</h2>

@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { commons } from '../config/commons';
+
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'Contribute' }];
+
+const NEVER = [
+	'A document of any kind. There is no upload button and there will not be one — a declarations page is the densest packet of personal information a person owns, and asking for one would turn a research property into a data-breach liability.',
+	'A policy number or a claim number.',
+	'A date of birth, a social security number, or any government identifier.',
+	'Health information.',
+	'A payment method. Nothing here is for sale.',
+	'Your address, beyond the state the situation happened in.',
+];
+
+const COLLECTED = [
+	'An email address, used to sign in and to ask you questions about your account before it publishes. Nothing else.',
+	'A display name, which is what appears on anything you contribute.',
+	'For practitioners only: a professional licence number, checked against the regulator’s own public register.',
+];
+---
+
+<BaseLayout
+	title="What contributing will involve"
+	eyebrow="Contribute"
+	lede="Accounts are open. Sign in first, then choose whether you want to write a case report or wait for the practitioner verification route."
+	crumbs={crumbs}
+>
+	<section class="band band-tight">
+		<div class="shell page-grid">
+			<div class="prose">
+					<div class="callout" data-tone="note">
+						<h3>How it works today</h3>
+						<p>
+							Passwordless sign-in, case-report intake, and the public-register verification request are
+							live. A submission stays private until a moderator has read it, and a published report can be
+							withdrawn by its author.
+						</p>
+					</div>
+
+				<h2>Two ways to contribute, in this order</h2>
+				<h3>1. A case report</h3>
+				<p>
+					Your own account of a real insurance situation: what happened, when, in which state, on
+					which kind of policy, and who decided. It is moderated, labelled and edited for
+					identifying detail before it publishes, and you can have it withdrawn at any time.
+				</p>
+				<p>
+					What it is not is a place to ask whether your claim should have been paid. Nobody here
+					answers that — <a href="/standards">and nobody is permitted to</a>.
+				</p>
+
+					<h3>2. A verified practitioner note</h3>
+					<p>
+						If you hold a professional licence — broker, adjuster, attorney — the next contributor route
+						will let you attach a signed, named note to a specific subject on{' '}
+						<a href={commons.record.origin} rel="noopener">{commons.record.name}</a>: a sentence of
+						law, with your reading of how it plays out in practice beside it.
+					</p>
+					<p>
+						<a href="/account/verify">Request professional verification</a> first. A moderator checks the
+						number against the regulator's own public register, with <strong>no identity documents and
+						no sensitive uploads</strong>. A role remains self-described until it is approved.
+					</p>
+
+				<h2>What is collected</h2>
+				<ul>{COLLECTED.map((c) => <li>{c}</li>)}</ul>
+
+				<h2>What is never collected</h2>
+				<ul>{NEVER.map((n) => <li>{n}</li>)}</ul>
+				<p>
+					These are not settings. The fields do not exist in the data model, which is the only
+					version of this promise worth making: a field that was never built cannot be quietly
+					filled in by a later form.
+				</p>
+
+				<h2>Standing, and how it is earned</h2>
+				<p>
+					There are no points, no streaks, no upvotes and no reply counts. A system that rewards
+					answering questions creates an incentive to give coverage advice, which is the one thing
+					that must not happen here. Nothing on this site rewards being first to reply.
+				</p>
+				<p>Standing comes from four things:</p>
+				<ul>
+					<li>A verified professional licence, shown with its number and the register it was checked against.</li>
+					<li>Reports published after moderation.</li>
+					<li>Annotations that a Record page links to.</li>
+					<li>Corrections accepted — worth more than anything else on this list.</li>
+				</ul>
+
+					<h2>Open discussion</h2>
+					<p>
+						Threads are open now for questions and observations attached to published subjects. They are
+						conversation, not evidence: posts are not cited by the Record and a verdict-shaped post is
+						blocked before it publishes.
+				</p>
+			</div>
+
+			<aside aria-label="Summary">
+				<div class="rail-block">
+					<h2>Collected</h2>
+					<ul>
+						<li>Email, to sign in</li>
+						<li>A display name</li>
+						<li>A licence number, if you have one</li>
+					</ul>
+				</div>
+				<div class="rail-block">
+					<h2>Never collected</h2>
+					<ul>
+						<li>Any document upload</li>
+						<li>Policy or claim numbers</li>
+						<li>Date of birth or government id</li>
+						<li>Health information</li>
+						<li>A payment method</li>
+					</ul>
+				</div>
+				<div class="rail-block">
+					<h2>Related</h2>
+					<ul>
+						<li><a href="/standards">Standards</a></li>
+						<li><a href="/moderation">Moderation</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

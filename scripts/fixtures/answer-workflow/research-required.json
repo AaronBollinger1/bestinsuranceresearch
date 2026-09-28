@@ -1,0 +1,17 @@
+{
+	"_fixture": "An assembly with no claims at all: the honest outcome is research-required, and nothing composes.",
+	"_why": "Missing evidence must produce a named next step, never invented facts. The claim-source gate fails, the outcome routes to research (not review), and there is no answer object anywhere in the result.",
+	"_expects": { "status": "research-required" },
+	"assembly": {
+		"questionId": "fixture-gadget-notice",
+		"jurisdiction": "national",
+		"audience": "professional",
+		"topics": ["general-explanation"],
+		"asOf": "2026-09-27",
+		"freshnessPolicy": { "staleAfterDays": 365 },
+		"editor": { "name": "Fixture Editor", "at": "2026-09-27T09:00:00.000Z", "note": "Attempted assembly; no confirmed claim exists for this intent yet." },
+		"verbatimExcerpts": []
+	},
+	"sources": [],
+	"claimEventLogs": []
+}

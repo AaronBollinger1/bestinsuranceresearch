@@ -1,0 +1,18 @@
+/* Ask → cited-answer Focus frame. Global so JS-rendered hit rows can use the
+   same classes without an Astro cid pinned to the runtime class names. */
+.ask-focus-header { max-width: 760px; margin: auto; padding: 12px 0 28px; text-align: center; }
+.ask-focus-header .focus-page-eyebrow { color: var(--brand-blue-text); font-size: var(--text-xs); font-weight: 600; }
+.ask-focus-header h1 { margin: 16px 0; font: 600 clamp(2.3rem, 4.6vw, 3.5rem)/1.09 var(--font-sans); letter-spacing: -.055em; text-wrap: balance; }
+.ask-focus-header p { max-width: 52ch; margin: 0 auto; color: var(--muted); font-size: var(--text-md); line-height: var(--leading-prose); }
+.ask-focus-header .focus-page-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.ask-hit-beat { margin: 0 0 6px; color: var(--brand-blue-text); font-size: var(--text-2xs); font-weight: 650; letter-spacing: .02em; text-transform: uppercase; }
+.ask-hit-next { margin: 10px 0 0; color: var(--muted); font-size: var(--text-xs); }
+.ask-hit-next span { color: var(--brand-blue-text); font-weight: 650; }
+@media (max-width: 640px) {
+	.ask-focus-header { padding-block: 8px 20px; }
+	.ask-focus-header h1 { font-size: 2.05rem; overflow-wrap: anywhere; }
+}
+@media (max-width: 440px) {
+	.ask-hit .row-title { overflow-wrap: anywhere; }
+	#ask-form { max-width: 100%; }
+}
