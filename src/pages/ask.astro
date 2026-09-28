@@ -14,6 +14,7 @@ import { longDate } from '../lib/cite';
 import { breadcrumbs, collectionPage, graph, organization, website } from '../lib/schema';
 
 import { excerpt, shortList } from '../lib/excerpt';
+import { ASK_RESEARCH_ROUTE } from '../lib/ask-research-handoff';
 const corpus = await loadCorpus();
 
 const lines = [...new Set(corpus.questions.flatMap((q) => q.data.lines))].sort();
@@ -207,7 +208,7 @@ const FAMILY_LABEL: Record<string, string> = {
 				</div>
 
 				<div style="display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center">
-					<button class="btn btn-primary" type="submit">
+					<button class="btn btn-primary ask-motion" type="submit">
 						<Search size={16} aria-hidden="true" /> Ask a question
 					</button>
 					<button class="btn btn-secondary" type="button" id="ask-edit" hidden>
@@ -246,7 +247,7 @@ const FAMILY_LABEL: Record<string, string> = {
 			<div id="ask-loading" hidden>
 				<div class="ask-resolving">
 					<BirchLoadingMark size={72} label={null} />
-					<p class="mono" aria-hidden="true">Checking sources</p>
+					<p class="mono">Checking the reviewed library</p>
 				</div>
 				<div class="skeleton" aria-hidden="true">
 				{
@@ -277,6 +278,11 @@ const FAMILY_LABEL: Record<string, string> = {
 							Suggest this question
 						</a>
 					</div>
+					<h3>What happens to an unanswered question</h3>
+					<ol class="ask-route">
+						{ASK_RESEARCH_ROUTE.map((step) => <li>{step.text}</li>)}
+					</ol>
+					<p>Provider search is off. This page does not open a live research endpoint, and it does not publish a draft.</p>
 				</StateBlock>
 			</div>
 
@@ -751,7 +757,7 @@ const FAMILY_LABEL: Record<string, string> = {
 		}
 		if (outcome.status === 'no-result') {
 			show(emptyState, true);
-			say('No match in the library.');
+			say('No cited match in the reviewed library. The question stays on this page. Nothing was sent to a provider.');
 			addTurn({ q: query, status: 'no-result', count: 0, hits: [] });
 			return;
 		}

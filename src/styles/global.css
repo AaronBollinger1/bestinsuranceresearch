@@ -607,6 +607,18 @@ code { overflow-wrap: anywhere; }
 
 .header-tail { margin-left: auto; display: flex; align-items: center; gap: var(--s-2); }
 .header-ask-cta { white-space: nowrap; }
+.ask-route { margin: 1rem 0 0; padding-left: 1.2rem; display: grid; gap: 0.45rem; max-width: 42rem; }
+.ask-route li { min-width: 0; }
+@media (prefers-reduced-motion: no-preference) {
+	.ask-motion svg { transition: transform 0.22s var(--ease); }
+	.ask-motion:hover svg, .ask-motion:focus-visible svg { transform: translateX(4px); }
+	.ask-resolving { animation: ask-resolve-fade 1.4s ease-in-out infinite; }
+	@keyframes ask-resolve-fade {
+		from { opacity: 1; }
+		50% { opacity: 0.72; }
+		to { opacity: 1; }
+	}
+}
 
 .header-search { position: relative; display: flex; align-items: center; }
 .header-search input {

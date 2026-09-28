@@ -104,7 +104,7 @@ test('390px home front door keeps its scrollWidth inside the viewport', () => {
 test('ask to cited-answer journey carries the Focus reading frame', () => {
   const ask = html('/ask');
   assert.match(ask, /class="focus-page-header ask-focus-header"/);
-  assert.match(ask, /<button class="btn btn-primary"[^>]*>[\s\S]*Ask a question/);
+  assert.match(ask, /<button class="btn btn-primary[^"]*"[^>]*>[\s\S]*Ask a question/);
   assert.match(ask, /href="\/professionals"[^>]*>Get cited/);
   assert.doesNotMatch(ask, />Find the answer</);
   assert.match(ask, /href="\/questions\/california-minimum-auto-insurance-and-proof"/);
