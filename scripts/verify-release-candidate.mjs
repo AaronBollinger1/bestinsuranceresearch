@@ -184,3 +184,17 @@ test('built production output follows the indexing gate and keeps route exclusio
 	assert.equal(locs().length, 0);
 	buildProduction(false);
 }, { timeout: 240000 });
+
+test('CI skips only the indexable-page audit while indexing is closed', () => {
+	const workflow = fs.readFileSync(path.join(ROOT, '.github/workflows/verify.yml'), 'utf8');
+	const production = workflow.slice(workflow.indexOf('- name: Build and verify, production posture'), workflow.indexOf('- name: On-page audit'));
+	const audit = workflow.slice(workflow.indexOf('- name: On-page audit'), workflow.indexOf('working-directory: commons'));
+	assert.match(production, /PUBLIC_SITE_ENV: production/);
+	assert.match(production, /PUBLIC_INDEXING_OPEN: \$\{\{ vars\.PUBLIC_INDEXING_OPEN \}\}/);
+	assert.match(production, /scripts\/verify-release-candidate\.mjs/);
+	assert.equal(production.includes('\n        if:'), false);
+	assert.match(audit, /if: vars\.PUBLIC_INDEXING_OPEN == 'true'/);
+	assert.match(audit, /PUBLIC_INDEXING_OPEN: \$\{\{ vars\.PUBLIC_INDEXING_OPEN \}\}/);
+	assert.match(audit, /npm run audit:onpage/);
+	assert.equal(/PUBLIC_INDEXING_OPEN:\s*['"]?true['"]?/.test(workflow), false);
+});

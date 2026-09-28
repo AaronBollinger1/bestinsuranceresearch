@@ -90,32 +90,27 @@ jobs:
       - name: Build and verify, preview posture
         run: npm run validate
 
-      # The build nobody had ever run until the suite was taught to check both.
-      # A production build must drop the blanket noindex and must not advertise
-      # a sitemap from a robots.txt that still says Disallow. Getting that wrong
-      # is the single most expensive one-line mistake available on this
-      # property, so it is checked on every run rather than discovered at the
-      # promote. The graph, question-registry, research-run and build-impact
-      # suites run here too, so both postures see them - the research-run suite
-      # in particular asserts the fixture run previews stay noindex in the one
-      # posture where an indexable preview would actually be crawled.
-      # verify-product-design.mjs stays preview-only by design: it asserts the
-      # preview noindex directive on a published question page, which is
-      # deliberately false in production posture.
+      # Production serves the read-only estate. Public indexing stays closed
+      # unless PUBLIC_INDEXING_OPEN is exactly true. The same value is given
+      # to the build and to the indexable-page audit. Closed-posture
+      # verification still runs when the gate is absent.
       - name: Build and verify, production posture
         env:
           PUBLIC_SITE_ENV: production
           PUBLIC_SITE_ORIGIN: https://birch.insure
+          PUBLIC_INDEXING_OPEN: ${{ vars.PUBLIC_INDEXING_OPEN }}
         run: |
           npx astro build
           node --experimental-strip-types --test scripts/verify.mjs scripts/verify-instrument.mjs scripts/verify-graph.mjs scripts/verify-question-registry.mjs scripts/verify-research-run.mjs scripts/verify-source-study.mjs scripts/verify-answer-workflow.mjs scripts/verify-publication-lifecycle.mjs scripts/verify-source-candidate-adapter.mjs scripts/verify-national-library.mjs scripts/verify-account-lifecycle.mjs scripts/verify-professional-contribution.mjs scripts/verify-experience-moderation.mjs scripts/verify-citation-readiness.mjs scripts/verify-public-source-intake.mjs scripts/verify-property-research-views.mjs scripts/verify-property-visual.mjs scripts/verify-corpus-pages.mjs scripts/verify-preview-pilot.mjs scripts/verify-release-candidate.mjs scripts/verify-build-impact.mjs
 
-      # audit:onpage refuses to run against a preview build, so it runs here,
-      # against the production build the previous step just produced.
+      # Skipped in the Actions log while the owner gate is absent or not true.
+      # The production verify step above still checks closed robots, meta, and sitemap.
       - name: On-page audit
+        if: vars.PUBLIC_INDEXING_OPEN == 'true'
         env:
           PUBLIC_SITE_ENV: production
           PUBLIC_SITE_ORIGIN: https://birch.insure
+          PUBLIC_INDEXING_OPEN: ${{ vars.PUBLIC_INDEXING_OPEN }}
         run: npm run audit:onpage
 
       # The second property, on its own origin and with its own suite. Its
