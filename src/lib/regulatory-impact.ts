@@ -171,6 +171,9 @@ export function ingestDevelopment(graph: ImpactGraph, input: ImpactIngestInput):
 	if (graph.seen.some((item) => item.canonicalUrl === input.canonicalUrl && item.checksum === checksum)) {
 		return note(graph, input.now, 'duplicate', `${input.canonicalUrl} was already filed and was not overwritten.`, 'duplicate');
 	}
+	if (graph.sources.some((source) => source.id === input.id)) {
+		return { graph, state: 'duplicate-source-id', created: [] };
+	}
 	if (input.supersedes && !graph.sources.some((source) => source.id === input.supersedes && !source.removedAt)) {
 		return note(graph, input.now, 'missing-predecessor', `${input.supersedes} is not a live source.`, 'missing-predecessor');
 	}

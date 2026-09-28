@@ -153,6 +153,27 @@ test('removal, correction, provider refusal, and publication stay deterministic'
 	assert.equal(opened.sitemap, false);
 });
 
+test('a reused source id is rejected before the graph changes', () => {
+	const graph = createImpactGraph();
+	assert.equal(ingestDevelopment(graph, bulletin).state, 'ingested');
+	const before = JSON.stringify(graph);
+	const reused = ingestDevelopment(graph, {
+		...bulletin,
+		now: '2026-09-21T00:00:00.000Z',
+		canonicalUrl: 'https://www.insurance.ca.gov/fixture/bulletin-ca-reused-id',
+		text: 'Different fixture text that reuses the same source id.',
+		retrievedAt: '2026-09-21T00:00:00.000Z',
+	});
+	assert.equal(reused.state, 'duplicate-source-id');
+	assert.equal(reused.created.length, 0);
+	assert.equal(JSON.stringify(graph), before);
+	const sourceIds = graph.sources.map((source) => source.id);
+	const edgeIds = graph.edges.map((edge) => edge.id);
+	assert.equal(new Set(sourceIds).size, sourceIds.length);
+	assert.equal(new Set(edgeIds).size, edgeIds.length);
+	assert.equal(graph.edges.some((edge) => edge.kind === 'conflicts-with' && edge.entityId === edge.sourceId), false);
+});
+
 test('the review route and json companion stay noindex drafts', () => {
 	const fixture = fixtureRegulatoryImpact();
 	assert.equal(fixture.duplicate, 'duplicate');
