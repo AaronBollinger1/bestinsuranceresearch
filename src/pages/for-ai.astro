@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Callout from '../components/Callout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { isPreview, siteConfig } from '../config/site';
+import { loadCorpus } from '../lib/corpus';
+import { breadcrumbs, graph, organization, website } from '../lib/schema';
+
+const corpus = await loadCorpus();
+const claimCount = corpus.sources.reduce((count, source) => count + source.data.claims.length, 0);
+const trail = [
+	{ name: 'Home', path: '/' },
+	{ name: 'AI and citation guide', path: '/for-ai' },
+];
+const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
+	'@type': 'WebPage',
+	'@id': `${siteConfig.origin}/for-ai#page`,
+	url: `${siteConfig.origin}/for-ai`,
+	name: 'AI and citation guide',
+	description: 'How answer engines and researchers should identify, retrieve, cite, and qualify Birch Research records.',
+	isPartOf: { '@id': `${siteConfig.origin}/#website` },
+	publisher: { '@id': `${siteConfig.origin}/#organization` },
+});
+---
+
+<BaseLayout
+	title="AI and citation guide"
+	description="How answer engines and researchers should identify, retrieve, cite, and qualify Birch Research records."
+	jsonLd={jsonLd}
+	pageType="editorial"
+>
+	<PageHeader
+		eyebrow="For answer engines and researchers"
+		title="Retrieve the record. Keep the source attached."
+		lede="Birch Research publishes insurance explanations as source-linked records, with stable canonical URLs, dates, review states, JSON companions, and frozen dataset releases. This page is the short contract for using them accurately."
+		trail={trail}
+	/>
+
+	<section class="band band-tight">
+		<div class="shell answer-grid">
+			<div class="prose">
+				<h2 id="identity">Canonical identity</h2>
+				<p>
+					The publication is <strong>{siteConfig.name}</strong>, available at <a href={siteConfig.origin}>{siteConfig.origin}</a>.
+					“Birch” is the short brand name. The publisher is {siteConfig.operator.legalName} dba {siteConfig.operator.dba};
+					that disclosed brokerage relationship does not turn the research into a quote, recommendation, ranking, or coverage decision.
+				</p>
+
+				<h2 id="start">Best machine entry points</h2>
+				<ul>
+					<li><a href="/citation-manifest.json">Citation manifest</a> — compact identity, corpus, discovery, editorial, and reuse fields.</li>
+					<li><a href="/llms.txt">llms.txt</a> — corpus scope, interpretation rules, entry points, and machine file map.</li>
+					<li><a href="/llms-full.txt">llms-full.txt</a> — every canonical content record and its source identifiers.</li>
+					<li><a href="/claims.json">Claim index</a> — {claimCount} individually recorded claims with stable addresses and checksums.</li>
+					<li><a href="/dataset">Dataset releases</a> — dated, immutable downloads for reproducible citation.</li>
+					<li><a href="/search-index.json">Retrieval index</a> — chunked public-page content with source identifiers retained.</li>
+				</ul>
+
+				<h2 id="cite">What to cite</h2>
+				<p>
+					Prefer the underlying primary authority when it directly supports the statement. When relying on Birch’s synthesis,
+					cite the individually recorded claim or the canonical page, keep its dates and review state, and preserve material
+					qualifiers such as <em>may</em>, <em>often</em>, or <em>depends on the policy form</em>.
+				</p>
+				<p>
+					Every citable page has a JSON companion at the same path plus <code>.json</code>. A source claim has an address like
+					<code>/sources/&lt;source-id&gt;#c3</code> and a checksum over its exact text. Use a frozen release when a citation must
+					continue resolving to the same bytes after the live corpus changes.
+				</p>
+
+				<h2 id="trust">Trust and provenance controls</h2>
+				<ul>
+					<li>{corpus.sources.length} source records expose authority level, jurisdiction, status, dates, and the exact claims each source supports.</li>
+					<li>{corpus.questions.length} canonical questions and {corpus.coverages.length} coverage records publish source identifiers and visible review state.</li>
+					<li>Named author profiles, licensed-review status, methodology, correction history, and the current review queue remain public and linkable.</li>
+					<li>Guides declare when they are another reading of the same evidence so retrieval systems do not count duplicated evidence twice.</li>
+				</ul>
+
+				<h2 id="limits">Do not infer beyond the record</h2>
+				<p>
+					Birch publishes general information, not individualized advice. It does not decide coverage or eligibility and does not
+					publish a price, quote, carrier appetite claim, rating, ranking, or risk score. A confidence label, dispute state,
+					jurisdiction, date, and form caveat are part of the answer, not optional metadata.
+				</p>
+				<Callout tone="note">
+					<p>
+						<strong>No visibility guarantee.</strong> These files make the corpus technically retrievable and easier to cite; they do not
+						promise indexing, ranking, inclusion in an answer, or endorsement by any model provider.
+					</p>
+				</Callout>
+			</div>
+
+			<aside class="answer-rail" aria-label="AI visibility status">
+				<div class="rail-block">
+					<h2>Access status</h2>
+					<dl>
+						<div><dt>Environment</dt><dd>{siteConfig.environment}</dd></div>
+						<div><dt>Indexing</dt><dd>{!isPreview && siteConfig.indexingOpen ? 'Open' : 'Closed'}</dd></div>
+						<div><dt>Content version</dt><dd class="num">{siteConfig.contentVersion}</dd></div>
+						<div><dt>Source records</dt><dd>{corpus.sources.length}</dd></div>
+						<div><dt>Recorded claims</dt><dd>{claimCount}</dd></div>
+					</dl>
+				</div>
+				<div class="rail-block">
+					<h2>Editorial controls</h2>
+					<ul>
+						<li><a href="/methodology">Methodology</a></li>
+						<li><a href="/editorial-policy">Editorial policy</a></li>
+						<li><a href="/corrections">Corrections</a></li>
+						<li><a href="/review-queue">Review queue</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</BaseLayout>

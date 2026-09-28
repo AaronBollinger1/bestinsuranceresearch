@@ -12,12 +12,18 @@ const producers = siteConfig.operator.producers.map((p) => `${p.name} (${p.licen
 	<div class="shell">
 		<div class="footer-grid">
 			<div class="footer-about">
-				<a class="brand on-ink" href="/" aria-label="Birch home">
-					<img src="/birch-bird-transparent.png" width="38" height="38" alt="" />
-					<span class="brand-name">
-						<strong>{siteConfig.brandName}</strong>
-						<span>{siteConfig.brandDescriptor}</span>
+				<a class="brand on-ink" href="/" aria-label="Birch Research home">
+					<span class="brand-mark" aria-hidden="true">
+						<img src="/birch-bird-transparent.png" width="38" height="38" alt="" />
 					</span>
+					<span class="brand-name">
+						<span class="brand-wordmark" aria-hidden="true">
+							<strong>{siteConfig.brandName}</strong>
+							<span class="brand-edition">Research</span>
+						</span>
+						<span class="brand-descriptor">{siteConfig.brandDescriptor}</span>
+					</span>
+					<span class="u-visually-hidden">{siteConfig.name} home</span>
 				</a>
 				<p>
 					A free place to understand insurance: sourced answers, browser-based tools, and a separate

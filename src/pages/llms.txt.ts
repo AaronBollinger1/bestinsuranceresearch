@@ -99,6 +99,8 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		'',
 		'## Entry points',
 		'',
+		`- [AI and citation guide](${abs('/for-ai')}): the concise identity, retrieval, provenance, and reuse contract for answer engines and researchers.`,
+		`- [Citation manifest](${abs('/citation-manifest.json')}): a compact JSON map of the canonical entity, corpus counts, discovery files, editorial controls, and citation rules.`,
 		`- [Coverage position](${abs('/position')}): the advisory instrument. ${corpus.liveModules.length} modules assembling into one position held locally, with every open item cited.`,
 		`- [Ask a question](${abs('/ask')}): deterministic lookup over the corpus, run locally in the browser.`,
 		`- [Question library](${abs('/questions')}): ${corpus.questions.length} canonical questions.`,
@@ -120,6 +122,7 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		'',
 		'## Machine-readable files',
 		'',
+		`- [citation-manifest.json](${abs('/citation-manifest.json')}): the compact discovery manifest. It is a Birch-specific JSON contract, not an external standard.`,
 		...(release
 			? [
 					`- [dataset/releases.json](${abs('/dataset/releases.json')}): the index of frozen corpus releases, newest first, with a SHA-256 digest for every file. Read \`latest\` from it rather than guessing a date.`,

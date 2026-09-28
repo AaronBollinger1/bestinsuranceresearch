@@ -52,11 +52,16 @@ const menuGroups = [
 
 <header class="site-header">
 	<div class="shell header-bar">
-		<a class="brand" href="/" aria-label="Birch home">
-			<img src="/birch-bird-transparent.png" width="34" height="34" alt="" />
+		<a class="brand" href="/" aria-label="Birch Research home">
+			<span class="brand-mark" aria-hidden="true">
+				<img src="/birch-bird-transparent.png" width="34" height="34" alt="" />
+			</span>
 			<span class="brand-name">
-				<strong>{siteConfig.brandName}</strong>
-				<span>{siteConfig.brandDescriptor}</span>
+				<span class="brand-wordmark" aria-hidden="true">
+					<strong>{siteConfig.brandName}</strong>
+					<span class="brand-edition">Research</span>
+				</span>
+				<span class="brand-descriptor">{siteConfig.brandDescriptor}</span>
 			</span>
 			<span class="u-visually-hidden">{siteConfig.name} home</span>
 		</a>

@@ -187,6 +187,8 @@ export const footerNav = {
 		{ label: 'Birch network', href: '/network' },
 	],
 	machine: [
+		{ label: 'AI and citation guide', href: '/for-ai' },
+		{ label: 'Citation manifest', href: '/citation-manifest.json' },
 		{ label: 'Dataset releases', href: '/dataset' },
 		{ label: 'RSS feed', href: '/rss.xml' },
 		{ label: 'llms.txt', href: '/llms.txt' },
