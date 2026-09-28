@@ -1,7 +1,6 @@
 ---
 import { ArrowRight, BookOpen, Building2, ChevronDown, FileText, Menu, MessageCircle, PenLine, Search, ShieldCheck, Wrench, X } from '@lucide/astro';
 import { siteConfig, isPreview } from '../config/site';
-import LicensedIntake from './LicensedIntake.astro';
 
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
@@ -135,10 +134,6 @@ const menuGroups = [
 				<span class="u-visually-hidden">Menu</span>
 			</button>
 		</div>
-	</div>
-	<div class="shell licensed-intake-bar">
-		<p class="licensed-intake-note">Research stays on this page. Licensed help is optional.</p>
-		<LicensedIntake landmark="Licensed help" />
 	</div>
 </header>
 
