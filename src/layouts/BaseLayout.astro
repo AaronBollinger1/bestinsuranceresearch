@@ -39,7 +39,7 @@ const {
 	bodyClass,
 } = Astro.props;
 
-const blockIndexing = isPreview || noindex;
+const blockIndexing = isPreview || siteConfig.indexingOpen !== true || noindex;
 const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '');
 const canonical = new URL(canonicalPath, siteConfig.origin).toString();
 	const fullTitle = title ? `${title} | ${siteConfig.name}` : `${siteConfig.name} | Insurance, with the source attached`;

@@ -12,6 +12,7 @@ const trail = [
 const gates = gatesFromEnv({
 	PUBLIC_SITE_ENV: import.meta.env.PUBLIC_SITE_ENV,
 	PUBLIC_COMMONS_READY: import.meta.env.PUBLIC_COMMONS_READY,
+	PUBLIC_INDEXING_OPEN: import.meta.env.PUBLIC_INDEXING_OPEN,
 });
 const adapter = validateAdapter(closedAdapter());
 const board = presentStatus(gates, adapter.ok);

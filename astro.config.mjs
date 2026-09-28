@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { publicIndexingOpen } from './src/config/public-indexing.mjs';
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -71,6 +72,7 @@ const site = process.env.PUBLIC_SITE_ORIGIN || 'https://birch.insure';
  * reachable here. Both derive from the same variable and must agree.
  */
 const commonsReady = process.env.PUBLIC_COMMONS_READY === 'true';
+const indexingOpen = publicIndexingOpen();
 
 /**
  * Routes that must never enter the sitemap:
@@ -128,7 +130,7 @@ export default defineConfig({
 	build: { format: 'directory' },
 	integrations: [
 		sitemap({
-			filter: (page) => !EXCLUDED.some((pattern) => pattern.test(page)),
+			filter: (page) => indexingOpen && !EXCLUDED.some((pattern) => pattern.test(page)),
 			changefreq: 'monthly',
 			serialize(item) {
 				const lastmod = lastmodFor(item.url);

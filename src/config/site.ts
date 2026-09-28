@@ -1,8 +1,11 @@
+import { publicIndexingOpen } from './public-indexing.mjs';
+
 export type SiteEnvironment = 'preview' | 'production';
 
 const rawEnv = import.meta.env.PUBLIC_SITE_ENV;
 const environment: SiteEnvironment = rawEnv === 'production' ? 'production' : 'preview';
 const communityReady = import.meta.env.PUBLIC_COMMONS_READY === 'true';
+const indexingOpen = publicIndexingOpen({ PUBLIC_INDEXING_OPEN: import.meta.env.PUBLIC_INDEXING_OPEN });
 
 export const siteConfig = {
 	name: 'Birch Research',
@@ -28,6 +31,8 @@ export const siteConfig = {
 	communityReady,
 	bollinsureOrigin: import.meta.env.PUBLIC_BOLLINSURE_ORIGIN || 'https://www.bollinsure.com',
 	environment,
+	/** Separate from environment and Commons. Closed until an owner sets PUBLIC_INDEXING_OPEN=true. */
+	indexingOpen,
 	/**
 	 * Preview never loads a third-party marketing script, and production analytics
 	 * stay off until an owner supplies the container id deliberately.

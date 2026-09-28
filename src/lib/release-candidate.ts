@@ -7,6 +7,7 @@
  * accepted.
  */
 import { escapeHtml } from './citations.ts';
+import { publicIndexingOpen } from '../config/public-indexing.mjs';
 
 export const CONTRIBUTION_INTAKE_OPEN: boolean = false;
 export const LICENSED_PUBLICATION_OPEN: boolean = false;
@@ -84,7 +85,7 @@ const REQUIRED_ADAPTER = [
 export function gatesFromEnv(env: Record<string, string | undefined>): ReleaseGates {
 	return {
 		readOnlySite: env.PUBLIC_SITE_ENV === 'production',
-		publicIndexing: env.PUBLIC_SITE_ENV === 'production',
+		publicIndexing: publicIndexingOpen(env),
 		commonsReady: env.PUBLIC_COMMONS_READY === 'true',
 		contributionIntake: CONTRIBUTION_INTAKE_OPEN === true,
 		licensedPublication: LICENSED_PUBLICATION_OPEN === true,

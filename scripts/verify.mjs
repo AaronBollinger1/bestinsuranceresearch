@@ -16,6 +16,7 @@ import { fileURLToPath } from 'node:url';
 /* The excerpt helpers are plain TypeScript with no Astro imports, so the suite
    exercises the real implementation rather than a copy of its rules. */
 import { excerpt, sentences } from '../src/lib/excerpt.ts';
+import { publicIndexingOpen } from '../src/config/public-indexing.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -336,6 +337,7 @@ test('every page has exactly one self-referential canonical', () => {
  * build that forgets to drop noindex fails instead of shipping.
  */
 const SITE_ENV = process.env.PUBLIC_SITE_ENV === 'production' ? 'production' : 'preview';
+const INDEXING_OPEN = publicIndexingOpen(process.env);
 const SITE_ORIGIN = (process.env.PUBLIC_SITE_ORIGIN || 'https://birch.insure').replace(/\/+$/, '');
 const COMMONS_READY = process.env.PUBLIC_COMMONS_READY === 'true';
 const COMMUNITY_ORIGIN = (process.env.PUBLIC_COMMONS_ORIGIN || 'https://commons.birch.insure').replace(/\/+$/, '');
@@ -364,9 +366,16 @@ test(`the ${SITE_ENV} build emits the correct indexing directive on every page`,
 			);
 			continue;
 		}
-		// Production. A page may still be deliberately noindexed by route-level
-		// override; what must not happen is the blanket preview directive
-		// surviving the flip on a page meant to be indexed.
+		// Production. Indexing stays closed until PUBLIC_INDEXING_OPEN=true.
+		// Route-level exclusions still apply after that gate opens.
+		if (!INDEXING_OPEN) {
+			if (/<title>Redirecting to:/.test(html) && /<meta http-equiv="refresh" content="\d+;url=/.test(html)) {
+				assert.match(html, /<meta name="robots" content="noindex">/, `${routeOf(file)} redirect artifact is indexable`);
+				continue;
+			}
+			assert.match(html, /<meta name="robots" content="noindex, nofollow">/, `${routeOf(file)} is indexable while public indexing is closed`);
+			continue;
+		}
 		const route = routeOf(file);
 		/* /review-queue/<source> are the verification sheets: public, linked, and
 		   deliberately out of the index because they reproduce prose whose
@@ -407,9 +416,12 @@ test(`the ${SITE_ENV} robots.txt matches the environment`, () => {
 		return;
 	}
 
-	// Production: crawling allowed, the sitemap advertised, and the blanket
-	// disallow gone. A production robots.txt that still says Disallow: / is the
-	// single most expensive one-line mistake available here.
+	if (!INDEXING_OPEN) {
+		assert.match(robots, /Disallow: \//);
+		assert.ok(!robots.includes('Sitemap:'), 'robots.txt advertises a sitemap while public indexing is closed');
+		return;
+	}
+	// Production with the owner indexing gate open.
 	assert.ok(
 		!/^Disallow: \/$/m.test(robots),
 		'production robots.txt still carries a blanket Disallow: /',
@@ -4643,7 +4655,11 @@ test('the sitemap never advertises a page that tells crawlers not to index it', 
 	for (const file of sitemaps) {
 		for (const match of read(path.join(DIST, file)).matchAll(/<loc>([^<]+)<\/loc>/g)) locs.push(match[1]);
 	}
+	if (!INDEXING_OPEN) {
+	assert.equal(locs.length, 0, `the sitemap lists ${locs.length} URLs while public indexing is closed`);
+} else {
 	assert.ok(locs.length > 400, `the sitemap lists only ${locs.length} URLs, so this test would pass on an empty sitemap`);
+}
 
 	/* Routes that are noindex by construction, whatever the posture. */
 	for (const route of ['/lens', '/shelf']) {
