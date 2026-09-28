@@ -2,12 +2,13 @@ import { publicIndexingOpen } from './public-indexing.mjs';
 
 export type SiteEnvironment = 'preview' | 'production';
 
-const rawEnv = import.meta.env.PUBLIC_SITE_ENV;
+const viteEnv = import.meta.env ?? {};
+const rawEnv = viteEnv.PUBLIC_SITE_ENV;
 const environment: SiteEnvironment = rawEnv === 'production' ? 'production' : 'preview';
-const communityReady = import.meta.env.PUBLIC_COMMONS_READY === 'true';
+const communityReady = viteEnv.PUBLIC_COMMONS_READY === 'true';
 const indexingOpen = publicIndexingOpen({
-	PUBLIC_INDEXING_OPEN: import.meta.env.PUBLIC_INDEXING_OPEN,
-	PUBLIC_SITE_ENV: import.meta.env.PUBLIC_SITE_ENV,
+	PUBLIC_INDEXING_OPEN: viteEnv.PUBLIC_INDEXING_OPEN,
+	PUBLIC_SITE_ENV: viteEnv.PUBLIC_SITE_ENV,
 });
 
 export const siteConfig = {
@@ -21,10 +22,10 @@ export const siteConfig = {
 	/* Birch is now the primary product and canonical public origin. The former
 	 * Best Insurance Research name remains a migration/redirect concern, not a
 	 * user-facing identity. */
-	origin: import.meta.env.PUBLIC_SITE_ORIGIN || 'https://birch.insure',
+	origin: viteEnv.PUBLIC_SITE_ORIGIN || 'https://birch.insure',
 	/* The social room remains separate so accounts, moderation, and lived
 	 * experience never get confused with the citable Research record. */
-	communityOrigin: import.meta.env.PUBLIC_COMMONS_ORIGIN || 'https://commons.birch.insure',
+	communityOrigin: viteEnv.PUBLIC_COMMONS_ORIGIN || 'https://commons.birch.insure',
 	/**
 	 * The Research room must not advertise a Commons origin until the separate
 	 * application has a working deployment, database, mailer, and moderation
@@ -32,7 +33,7 @@ export const siteConfig = {
 	 * promotion cannot ship dead discussion links.
 	 */
 	communityReady,
-	bollinsureOrigin: import.meta.env.PUBLIC_BOLLINSURE_ORIGIN || 'https://www.bollinsure.com',
+	bollinsureOrigin: viteEnv.PUBLIC_BOLLINSURE_ORIGIN || 'https://www.bollinsure.com',
 	environment,
 	/** Open only when the owner flag is true and this build is production. */
 	indexingOpen,
@@ -42,8 +43,8 @@ export const siteConfig = {
 	 * See ANALYTICS-EVENT-SPEC.md.
 	 */
 	analytics: {
-		gtmId: import.meta.env.PUBLIC_GTM_ID || '',
-		enabled: environment === 'production' && Boolean(import.meta.env.PUBLIC_GTM_ID),
+		gtmId: viteEnv.PUBLIC_GTM_ID || '',
+		enabled: environment === 'production' && Boolean(viteEnv.PUBLIC_GTM_ID),
 	},
 	contact: {
 		email: 'quotes@bollinsure.com',

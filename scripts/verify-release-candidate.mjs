@@ -122,28 +122,35 @@ test('the status route is the only added surface and stays linked', () => {
 	assert.equal((html.match(/<h1[\s>]/g) || []).length, 0);
 });
 
+function buildSite(outDir, env) {
+	fs.rmSync(outDir, { recursive: true, force: true });
+	const result = spawnSync('npx', ['astro', 'build', '--outDir', outDir], { cwd: ROOT, env, encoding: 'utf8' });
+	assert.equal(result.status, 0, result.stderr?.slice(-800) || result.stdout?.slice(-800));
+	return outDir;
+}
+
 function buildProduction(indexingOpen) {
 	const env = { ...process.env, PUBLIC_SITE_ENV: 'production', PUBLIC_SITE_ORIGIN: 'https://birch.insure', PUBLIC_COMMONS_READY: 'false' };
 	delete env.PUBLIC_INDEXING_OPEN;
 	if (indexingOpen) env.PUBLIC_INDEXING_OPEN = 'true';
-	const result = spawnSync('npx', ['astro', 'build'], { cwd: ROOT, env, encoding: 'utf8' });
-	assert.equal(result.status, 0, result.stderr?.slice(-800) || result.stdout?.slice(-800));
+	return buildSite(path.join(ROOT, indexingOpen ? 'dist-indexing-open' : 'dist-indexing-closed'), env);
 }
 
-function locs() {
-	return fs.readdirSync(path.join(ROOT, 'dist'))
+function locs(outDir) {
+	if (!fs.existsSync(outDir)) return [];
+	return fs.readdirSync(outDir)
 		.filter((name) => /^sitemap.*\.xml$/.test(name))
-		.flatMap((name) => [...fs.readFileSync(path.join(ROOT, 'dist', name), 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]));
+		.flatMap((name) => [...fs.readFileSync(path.join(outDir, name), 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]));
 }
 
 test('built production output follows the indexing gate and keeps route exclusions', () => {
-	buildProduction(true);
-	const openHome = fs.readFileSync(path.join(ROOT, 'dist/index.html'), 'utf8');
-	const openStatus = fs.readFileSync(path.join(ROOT, 'dist/status/index.html'), 'utf8');
-	const openRobots = fs.readFileSync(path.join(ROOT, 'dist/robots.txt'), 'utf8');
-	const openLibrary = fs.readFileSync(path.join(ROOT, 'dist/library/state/fixture-state-ca/index.html'), 'utf8');
-	const openDesign = fs.readFileSync(path.join(ROOT, 'dist/design/corpus-matrix/index.html'), 'utf8');
-	const openLocs = locs();
+	const openDir = buildProduction(true);
+	const openHome = fs.readFileSync(path.join(openDir, 'index.html'), 'utf8');
+	const openStatus = fs.readFileSync(path.join(openDir, 'status/index.html'), 'utf8');
+	const openRobots = fs.readFileSync(path.join(openDir, 'robots.txt'), 'utf8');
+	const openLibrary = fs.readFileSync(path.join(openDir, 'library/state/fixture-state-ca/index.html'), 'utf8');
+	const openDesign = fs.readFileSync(path.join(openDir, 'design/corpus-matrix/index.html'), 'utf8');
+	const openLocs = locs(openDir);
 	assert.match(openHome, /<meta name="robots" content="index, follow, max-image-preview:large">/);
 	assert.match(openStatus, /data-gate="public-indexing">open/);
 	assert.match(openStatus, /data-gate="commons-access">closed/);
@@ -155,10 +162,10 @@ test('built production output follows the indexing gate and keeps route exclusio
 	assert.match(openLibrary, /<meta name="robots" content="noindex, nofollow">/);
 	assert.match(openDesign, /<meta name="robots" content="noindex, nofollow">/);
 
-	buildProduction(false);
-	const closedHome = fs.readFileSync(path.join(ROOT, 'dist/index.html'), 'utf8');
-	const closedStatus = fs.readFileSync(path.join(ROOT, 'dist/status/index.html'), 'utf8');
-	const closedRobots = fs.readFileSync(path.join(ROOT, 'dist/robots.txt'), 'utf8');
+	const closedDir = buildProduction(false);
+	const closedHome = fs.readFileSync(path.join(closedDir, 'index.html'), 'utf8');
+	const closedStatus = fs.readFileSync(path.join(closedDir, 'status/index.html'), 'utf8');
+	const closedRobots = fs.readFileSync(path.join(closedDir, 'robots.txt'), 'utf8');
 	assert.match(closedHome, /<link rel="canonical" href="https:\/\/birch\.insure\/">/);
 	assert.match(closedHome, /<meta name="robots" content="noindex, nofollow">/);
 	assert.match(closedStatus, /data-gate="read-only-site">open/);
@@ -166,23 +173,24 @@ test('built production output follows the indexing gate and keeps route exclusio
 	assert.match(closedStatus, /data-gate="commons-access">closed/);
 	assert.match(closedRobots, /^Disallow: \//m);
 	assert.equal(closedRobots.includes('Sitemap:'), false);
-	assert.equal(locs().length, 0);
+	assert.equal(locs(closedDir).length, 0);
 
-	const preview = spawnSync('npx', ['astro', 'build'], {
-		cwd: ROOT,
-		env: { ...process.env, PUBLIC_SITE_ENV: 'preview', PUBLIC_SITE_ORIGIN: 'https://birch.insure', PUBLIC_COMMONS_READY: 'false', PUBLIC_INDEXING_OPEN: 'true' },
-		encoding: 'utf8',
+	const previewDir = buildSite(path.join(ROOT, 'dist-indexing-preview'), {
+		...process.env,
+		PUBLIC_SITE_ENV: 'preview',
+		PUBLIC_SITE_ORIGIN: 'https://birch.insure',
+		PUBLIC_COMMONS_READY: 'false',
+		PUBLIC_INDEXING_OPEN: 'true',
 	});
-	assert.equal(preview.status, 0, preview.stderr?.slice(-800) || preview.stdout?.slice(-800));
-	const previewHome = fs.readFileSync(path.join(ROOT, 'dist/index.html'), 'utf8');
-	const previewStatus = fs.readFileSync(path.join(ROOT, 'dist/status/index.html'), 'utf8');
-	const previewRobots = fs.readFileSync(path.join(ROOT, 'dist/robots.txt'), 'utf8');
+	const previewHome = fs.readFileSync(path.join(previewDir, 'index.html'), 'utf8');
+	const previewStatus = fs.readFileSync(path.join(previewDir, 'status/index.html'), 'utf8');
+	const previewRobots = fs.readFileSync(path.join(previewDir, 'robots.txt'), 'utf8');
 	assert.match(previewHome, /<meta name="robots" content="noindex, nofollow">/);
 	assert.match(previewStatus, /data-gate="public-indexing">closed/);
 	assert.match(previewRobots, /^Disallow: \//m);
 	assert.equal(previewRobots.includes('Sitemap:'), false);
-	assert.equal(locs().length, 0);
-	buildProduction(false);
+	assert.equal(locs(previewDir).length, 0);
+	for (const dir of [openDir, closedDir, previewDir]) fs.rmSync(dir, { recursive: true, force: true });
 }, { timeout: 240000 });
 
 test('CI skips only the indexable-page audit while indexing is closed', () => {

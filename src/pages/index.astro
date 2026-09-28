@@ -15,6 +15,7 @@ import {
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StatusChip from '../components/StatusChip.astro';
 import BirchFrontDoor from '../components/BirchFrontDoor.astro';
+import LicensedIntake from '../components/LicensedIntake.astro';
 import BirchAssetManifesto from '../components/BirchAssetManifesto.astro';
 import ProductPreview from '../components/ProductPreview.astro';
 import { siteConfig } from '../config/site';
@@ -118,6 +119,13 @@ const jsonLd = graph(organization(), website());
 	<section class="band band-paper home-landing">
 		<div class="shell">
 			<BirchFrontDoor />
+			<section class="home-licensed" aria-labelledby="licensed-help-title">
+				<div>
+					<h2 id="licensed-help-title">Want a licensed person?</h2>
+					<p>The research above does not require this. A call, a quote request, or an email does not leave your question on the link.</p>
+				</div>
+				<LicensedIntake pageType="home" />
+			</section>
 			<BirchAssetManifesto />
 			<section class="home-second-act" id="understand-policy" aria-labelledby="understand-title">
 				<h2 id="understand-title">Understand your policy.</h2>

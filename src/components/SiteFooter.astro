@@ -1,10 +1,7 @@
 ---
-import { ArrowUpRight, Mail, Phone, MapPin } from '@lucide/astro';
+import { MapPin } from '@lucide/astro';
 import { footerNav, siteConfig, isPreview } from '../config/site';
-import { bollinsureUrl } from '../lib/handoff';
-
-const path = Astro.url.pathname;
-const bollinsureHref = bollinsureUrl('/', { sourcePath: path, family: 'general' });
+import LicensedIntake from './LicensedIntake.astro';
 const producers = siteConfig.operator.producers.map((p) => `${p.name} (${p.license})`).join(', ');
 ---
 
@@ -42,27 +39,16 @@ const producers = siteConfig.operator.producers.map((p) => `${p.name} (${p.licen
 			<div>
 				<h2>Machine readable</h2>
 				<div class="footer-links">
-					{footerNav.machine.map((item) => <a href={item.href}>{item.label}</a>)}
+					{footerNav.machine
+						.filter((item) => item.href !== '/sitemap-index.xml' || siteConfig.indexingOpen)
+						.map((item) => <a href={item.href}>{item.label}</a>)}
 				</div>
 			</div>
 
 			<div>
 				<h2>Licensed help</h2>
 				<div class="footer-links">
-					<a
-						href={bollinsureHref}
-						data-event="bollinsure_handoff_clicked"
-						data-insurance-family="general"
-						data-page-type="editorial"
-					>
-						Bollinsure Insurance Services <ArrowUpRight size={14} aria-hidden="true" />
-					</a>
-					<a href={`mailto:${siteConfig.contact.email}`}>
-						<Mail size={14} aria-hidden="true" /> {siteConfig.contact.email}
-					</a>
-					<a href={siteConfig.contact.phoneHref}>
-						<Phone size={14} aria-hidden="true" /> {siteConfig.contact.phoneDisplay}
-					</a>
+					<LicensedIntake />
 					<address class="footer-address">
 						<MapPin size={14} aria-hidden="true" />
 						<span>

@@ -1112,6 +1112,10 @@ test('the search index is chunked by claim and carries source ids', () => {
 
 test('the sitemap excludes design pages, JSON companions, and 404', () => {
 	const sitemaps = walk(DIST, (f) => /sitemap.*\.xml$/.test(f));
+	if (!INDEXING_OPEN) {
+		assert.equal(sitemaps.length, 0, 'a sitemap was built while public indexing is closed');
+		return;
+	}
 	assert.ok(sitemaps.length > 0, 'no sitemap generated');
 	const xml = sitemaps.map(read).join('\n');
 	assert.ok(!xml.includes('/design/'), 'sitemap includes a design page');
@@ -3237,6 +3241,10 @@ test('the verification sheets are noindex, and out of the sitemap', () => {
 	}
 	const xml = walk(DIST, (f) => /sitemap.*\.xml$/.test(f)).map(read).join('\n');
 	assert.ok(!/\/review-queue\/[a-z0-9]/.test(xml), 'a verification sheet reached the sitemap');
+	if (!INDEXING_OPEN) {
+		assert.equal(xml.includes('/review-queue'), false, 'the closed sitemap still lists the review queue');
+		return;
+	}
 	assert.ok(xml.includes('/review-queue<'), 'the review queue itself is missing from the sitemap');
 });
 
@@ -4649,6 +4657,10 @@ test('the sitemap never advertises a page that tells crawlers not to index it', 
 	 * exactly the kind of pair that drifts. This holds them together.
 	 */
 	const sitemaps = fs.readdirSync(DIST).filter((f) => /^sitemap-\d+\.xml$/.test(f));
+	if (!INDEXING_OPEN) {
+		assert.equal(sitemaps.length, 0, 'a sitemap was built while public indexing is closed');
+		return;
+	}
 	assert.ok(sitemaps.length > 0, 'no sitemap was built at all');
 
 	const locs = [];

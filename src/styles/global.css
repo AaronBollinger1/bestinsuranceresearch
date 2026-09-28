@@ -1055,6 +1055,13 @@ table.data tbody tr:hover { background: var(--gold-wash); }
 .handoff h2 { font-size: var(--text-2xl); margin-bottom: var(--s-2); }
 .handoff > p { color: var(--muted); font-size: var(--text-sm); max-width: 70ch; }
 .handoff-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-4); }
+.licensed-intake { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; min-width: 0; max-width: 100%; }
+.licensed-intake a { display: inline-flex; align-items: center; gap: 0.35rem; min-height: var(--tap); }
+.licensed-intake-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1.25rem; padding-block: 0.35rem 0.6rem; border-top: 1px solid var(--line); }
+.licensed-intake-note { margin: 0; color: var(--muted); font-size: var(--text-sm); }
+.home-licensed { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+.home-licensed h2 { margin: 0 0 0.35rem; font-size: 1.25rem; }
+.home-licensed p { margin: 0; max-width: 42rem; color: var(--muted); }
 .handoff-disclosure { margin: var(--s-4) 0 0; padding-top: var(--s-3); border-top: var(--bw-hair) solid var(--line); font-size: var(--text-xs); color: var(--muted); max-width: 78ch; }
 
 /* ============================================================
