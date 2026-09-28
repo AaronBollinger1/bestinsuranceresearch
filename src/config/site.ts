@@ -173,6 +173,7 @@ export const footerNav = {
 		{ label: 'Editorial policy', href: '/editorial-policy' },
 		{ label: 'Source registry', href: '/sources' },
 		{ label: 'Corrections', href: '/corrections' },
+		{ label: 'Service status', href: '/status' },
 		{ label: 'About the operator', href: '/about' },
 		{ label: 'Birch network', href: '/network' },
 	],
