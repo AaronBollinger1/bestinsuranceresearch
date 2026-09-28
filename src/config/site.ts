@@ -5,7 +5,10 @@ export type SiteEnvironment = 'preview' | 'production';
 const rawEnv = import.meta.env.PUBLIC_SITE_ENV;
 const environment: SiteEnvironment = rawEnv === 'production' ? 'production' : 'preview';
 const communityReady = import.meta.env.PUBLIC_COMMONS_READY === 'true';
-const indexingOpen = publicIndexingOpen({ PUBLIC_INDEXING_OPEN: import.meta.env.PUBLIC_INDEXING_OPEN });
+const indexingOpen = publicIndexingOpen({
+	PUBLIC_INDEXING_OPEN: import.meta.env.PUBLIC_INDEXING_OPEN,
+	PUBLIC_SITE_ENV: import.meta.env.PUBLIC_SITE_ENV,
+});
 
 export const siteConfig = {
 	name: 'Birch Research',
@@ -31,7 +34,7 @@ export const siteConfig = {
 	communityReady,
 	bollinsureOrigin: import.meta.env.PUBLIC_BOLLINSURE_ORIGIN || 'https://www.bollinsure.com',
 	environment,
-	/** Separate from environment and Commons. Closed until an owner sets PUBLIC_INDEXING_OPEN=true. */
+	/** Open only when the owner flag is true and this build is production. */
 	indexingOpen,
 	/**
 	 * Preview never loads a third-party marketing script, and production analytics

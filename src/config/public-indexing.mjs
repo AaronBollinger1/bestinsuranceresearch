@@ -1,9 +1,10 @@
 /**
- * Owner gate for public indexing.
+ * Effective public indexing.
  *
- * Closed unless PUBLIC_INDEXING_OPEN is exactly "true".
- * PUBLIC_SITE_ENV and PUBLIC_COMMONS_READY do not open it.
+ * Requires both PUBLIC_INDEXING_OPEN exactly "true" and
+ * PUBLIC_SITE_ENV exactly "production". Either one alone stays closed.
+ * PUBLIC_COMMONS_READY does not open it.
  */
 export function publicIndexingOpen(env = process.env) {
-	return env.PUBLIC_INDEXING_OPEN === 'true';
+	return env.PUBLIC_INDEXING_OPEN === 'true' && env.PUBLIC_SITE_ENV === 'production';
 }

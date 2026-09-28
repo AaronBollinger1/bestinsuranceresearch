@@ -56,6 +56,7 @@ test('commons does not open or hide the reviewed estate', () => {
 	assert.equal(indexingOpen.publicIndexing, true);
 	assert.equal(indexingOpen.commonsReady, false);
 	assert.equal(gatesFromEnv({ PUBLIC_SITE_ENV: 'production', PUBLIC_COMMONS_READY: 'yes' }).publicIndexing, false);
+	assert.equal(gatesFromEnv({ PUBLIC_SITE_ENV: 'preview', PUBLIC_INDEXING_OPEN: 'true', PUBLIC_COMMONS_READY: 'false' }).publicIndexing, false);
 	const published = publicationDecision(indexingOpen, reviewed);
 	const stillClosed = publicationDecision(commonsOpen, reviewed);
 	assert.equal(published.indexable, true);
@@ -166,4 +167,20 @@ test('built production output follows the indexing gate and keeps route exclusio
 	assert.match(closedRobots, /^Disallow: \//m);
 	assert.equal(closedRobots.includes('Sitemap:'), false);
 	assert.equal(locs().length, 0);
-}, { timeout: 180000 });
+
+	const preview = spawnSync('npx', ['astro', 'build'], {
+		cwd: ROOT,
+		env: { ...process.env, PUBLIC_SITE_ENV: 'preview', PUBLIC_SITE_ORIGIN: 'https://birch.insure', PUBLIC_COMMONS_READY: 'false', PUBLIC_INDEXING_OPEN: 'true' },
+		encoding: 'utf8',
+	});
+	assert.equal(preview.status, 0, preview.stderr?.slice(-800) || preview.stdout?.slice(-800));
+	const previewHome = fs.readFileSync(path.join(ROOT, 'dist/index.html'), 'utf8');
+	const previewStatus = fs.readFileSync(path.join(ROOT, 'dist/status/index.html'), 'utf8');
+	const previewRobots = fs.readFileSync(path.join(ROOT, 'dist/robots.txt'), 'utf8');
+	assert.match(previewHome, /<meta name="robots" content="noindex, nofollow">/);
+	assert.match(previewStatus, /data-gate="public-indexing">closed/);
+	assert.match(previewRobots, /^Disallow: \//m);
+	assert.equal(previewRobots.includes('Sitemap:'), false);
+	assert.equal(locs().length, 0);
+	buildProduction(false);
+}, { timeout: 240000 });

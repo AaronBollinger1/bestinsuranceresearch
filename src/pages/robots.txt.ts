@@ -5,8 +5,8 @@ export const prerender = true;
 
 /**
  * Preview blocks everything. Production serves the read-only estate and still
- * blocks crawlers until PUBLIC_INDEXING_OPEN is exactly true. That gate is
- * not PUBLIC_SITE_ENV and not PUBLIC_COMMONS_READY.
+ * blocks crawlers unless PUBLIC_INDEXING_OPEN is exactly true and
+ * PUBLIC_SITE_ENV is production. Commons does not open indexing.
  */
 export const GET: APIRoute = () => {
 	const indexingClosed = isPreview || siteConfig.indexingOpen !== true;
