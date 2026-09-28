@@ -106,6 +106,8 @@ const indexingOpen = publicIndexingOpen();
  *  - /library/* fixture corpus pages. CORPUS_PUBLICATION_OPEN is false, so
  *               every page is noindex even when a fixture review is recorded.
  *               A noindex page stays out of the sitemap.
+ *  - /regulatory-impact  fixture review queue for regulator bulletins. The page
+ *               sets noindex and does not publish a coverage conclusion.
  *
  * The rule these three share: a route that tells crawlers not to index it must
  * not also be listed in the document whose only purpose is to ask them to. The
@@ -121,6 +123,7 @@ const EXCLUDED = [
 	/\/shelf\/?$/,
 	/\/research\//,
 	/\/library\//,
+	/\/regulatory-impact\/?$/,
 	...(commonsReady ? [] : [/\/contribute\/?$/]),
 ];
 
