@@ -30,6 +30,8 @@ export const GET: APIRoute = async () => {
 				agencyLicense: siteConfig.operator.agencyLicense,
 			},
 		},
+		/* D7: stated here so a consumer can recompute any checksum it holds. */
+		claimChecksum: { algorithm: 'sha256 over the exact UTF-8 claim text, first 12 lowercase hex characters', addressPattern: '/sources/<source-id>#c<n>' },
 		access: {
 			environment: siteConfig.environment,
 			indexing: !isPreview && siteConfig.indexingOpen ? 'open' : 'closed',

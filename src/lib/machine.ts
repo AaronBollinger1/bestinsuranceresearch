@@ -78,6 +78,9 @@ export function reviewPosture(reviewState: string, recordDate: string, reviewer?
 	};
 }
 
+/** How every claim checksum on this site is computed, stated once for every machine file (D7). */
+export const CHECKSUM_ALGORITHM = 'sha256 over the exact UTF-8 claim text, first 12 lowercase hex characters';
+
 export function sourceRecord(source: CollectionEntry<'sources'>) {
 	return {
 		id: source.id,
@@ -94,7 +97,14 @@ export function sourceRecord(source: CollectionEntry<'sources'>) {
 		lastChecked: source.data.lastChecked,
 		updateCadence: source.data.updateCadence,
 		status: source.data.status,
-		supportsClaims: source.data.claims,
+		/* Each claim with its own address and checksum, so a record companion is
+		   citable to the sentence without a second fetch (D7). */
+		supportsClaims: source.data.claims.map((text, i) => ({
+			claimId: `${source.id}#c${i + 1}`,
+			canonicalUrl: new URL(`/sources/${source.id}#c${i + 1}`, siteConfig.origin).toString(),
+			checksum: claimChecksum(text),
+			text,
+		})),
 		...(source.data.archive ? { archive: source.data.archive } : {}),
 	};
 }

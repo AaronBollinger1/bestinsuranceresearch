@@ -857,6 +857,50 @@ test('no machine record says a review happened that has not, and every one carri
 	assert.deepEqual(problems.slice(0, 15), [], `review posture problems:\n  ${problems.slice(0, 15).join('\n  ')}`);
 });
 
+test('the machine files carry claim addresses, checksums and the rule that makes them', () => {
+	/*
+	 * D7. llms-full.txt carried 0 claim addresses, record companions listed
+	 * claims as bare strings, and no machine file said how a checksum is
+	 * computed, so a consumer could not verify one it held. Record companions
+	 * now carry each claim's address and checksum; llms-full names the claim
+	 * addresses behind every entry; llms.txt, /for-ai and the citation manifest
+	 * state the algorithm in the same words; llms.txt lists every industry page.
+	 */
+	const ALG = 'sha256 over the exact UTF-8 claim text, first 12 lowercase hex characters';
+	const sum = (text) => createHash('sha256').update(text, 'utf8').digest('hex').slice(0, 12);
+	let checked = 0;
+	for (const q of questions) {
+		const rec = JSON.parse(read(path.join(DIST, 'questions', `${q.id}.json`)));
+		for (const src of rec.sources) {
+			for (const [i, c] of src.supportsClaims.entries()) {
+				checked++;
+				assert.equal(typeof c, 'object', `${q.id}: ${src.id} claim ${i + 1} is a bare string`);
+				assert.equal(c.claimId, `${src.id}#c${i + 1}`);
+				assert.equal(c.checksum, sum(c.text), `${q.id}: ${c.claimId} checksum does not match its text`);
+			}
+		}
+	}
+	assert.ok(checked > 500, `only ${checked} companion claims checked`);
+
+	const full = read(path.join(DIST, 'llms-full.txt'));
+	const withSources = (full.match(/^- sources: /gm) ?? []).length;
+	const withAddresses = (full.match(/^- claim addresses: [a-z0-9-]+#c1-c\d+/gm) ?? []).length;
+	assert.ok(withSources > 100 && withAddresses === withSources, `llms-full: ${withAddresses} claim-address lines for ${withSources} entries`);
+
+	for (const [name, text] of [
+		['llms.txt', read(path.join(DIST, 'llms.txt'))],
+		['/for-ai', read(path.join(DIST, 'for-ai', 'index.html'))],
+		['citation-manifest.json', read(path.join(DIST, 'citation-manifest.json'))],
+	]) {
+		assert.ok(text.includes(ALG), `${name} does not state the checksum algorithm`);
+	}
+
+	const llms = read(path.join(DIST, 'llms.txt'));
+	const industries = fs.readdirSync(path.join(DIST, 'industries'), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name);
+	assert.ok(industries.length > 5, 'too few industry pages to check');
+	for (const id of industries) assert.ok(llms.includes(`/industries/${id})`), `llms.txt does not list /industries/${id}`);
+});
+
 test('machine records leak no private or generated content', () => {
 	const banned = ['bir_session', 'utm_', 'dataLayer', 'sessionStorage', 'localStorage'];
 	for (const file of jsonFiles) {

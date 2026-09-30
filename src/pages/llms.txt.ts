@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { siteConfig } from '../config/site';
 import { loadCorpus } from '../lib/corpus';
 import { allLineHubs } from '../lib/line-hub';
+import { allIndustryHubs } from '../lib/industry-hub';
 import { changeSummary } from '../lib/changes';
 import { latestManifest, signedOff } from '../lib/releases';
 import { TODAY } from '../lib/today';
@@ -79,7 +80,7 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		'',
 		'- The citable unit here is the claim: one sentence stating exactly what one source supports, and nothing beyond it. Claims are what our pages are built from, and they are individually addressable.',
 		'- A claim address looks like `/sources/<source-id>#c3`, meaning the third recorded claim on that source record. The anchor resolves to the sentence itself.',
-		'- Every claim carries a checksum over its exact text. Carry it with your citation. It is how you or a reader can later tell whether the sentence relied on still says what it said; a URL alone cannot express that.',
+		'- Every claim carries a checksum over its exact text (sha256 over the exact UTF-8 claim text, first 12 lowercase hex characters). Carry it with your citation. It is how you or a reader can later tell whether the sentence relied on still says what it said; a URL alone cannot express that.',
 		`- The whole claim corpus is one machine index at ${abs('/claims.json')}, normalized as a sources map plus a flat claims array, with the corpus distribution by authority level, source type, jurisdiction and status in its header.`,
 		'- Every source record has its own companion at `/sources/<source-id>.json`, listing its claims with their addresses and checksums, and the reverse index of every page and every module check that depends on it.',
 		...(release
@@ -150,6 +151,14 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		'## Coverage lines',
 		'',
 		...corpus.coverages.map((c) => `- [${c.data.name}](${abs(`/insurance/${c.id}`)}): ${c.data.family} lines, ${machineReviewDate(c.data.reviewState, c.data.lastReviewed)}.`),
+		'',
+		'## Industries',
+		'',
+		'Each industry page gathers the coverage pages, questions and worked examples that bear on one kind of business, from records cited where they live. It asserts nothing of its own.',
+		'',
+		...allIndustryHubs(corpus).map(
+			(h) => `- [${h.name}](${abs(`/industries/${h.id}`)}): ${h.coverages.length} coverage pages, ${h.questions.length} questions, ${h.sourceIds.length} source records.`,
+		),
 		'',
 		'## Lines indexed',
 		'',

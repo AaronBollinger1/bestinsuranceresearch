@@ -34,6 +34,9 @@ const abs = (path: string) => new URL(path, siteConfig.origin).toString();
  */
 export const GET: APIRoute = async () => {
 	const corpus = await loadCorpus();
+	/* D7: every entry names the claim addresses behind it, not only its source ids. */
+	const claimRanges = (ids: string[]) =>
+		ids.map((id) => `${id}#c1-c${corpus.sourceById.get(id)?.data.claims.length ?? 0}`).join(', ');
 	const out: string[] = [];
 
 	out.push(
@@ -68,6 +71,7 @@ export const GET: APIRoute = async () => {
 			`- effective: ${q.data.effectiveDate} | ${machineReviewDate(q.data.reviewState, q.data.lastReviewed)}`,
 			`- author: ${q.data.author} | reviewer: ${q.data.reviewer}`,
 			`- sources: ${idsOf(q.data.sourceIds).join(', ')}`,
+			`- claim addresses: ${claimRanges(idsOf(q.data.sourceIds))}`,
 			`- also asked as: ${q.data.aliases.join(' | ') || 'n/a'}`,
 			'',
 			...(q.data.lede ? ['In one sentence:', stripMarkers(q.data.lede), ''] : []),
@@ -93,6 +97,7 @@ export const GET: APIRoute = async () => {
 			`- id: ${c.id} | line: ${c.data.line} | family: ${c.data.family}`,
 			`- effective: ${c.data.effectiveDate} | ${machineReviewDate(c.data.reviewState, c.data.lastReviewed)}`,
 			`- sources: ${idsOf(c.data.sourceIds).join(', ')}`,
+			`- claim addresses: ${claimRanges(idsOf(c.data.sourceIds))}`,
 			'',
 			stripMarkers(c.data.definition),
 			'',
@@ -112,6 +117,7 @@ export const GET: APIRoute = async () => {
 			`- id: ${c.id} | type: ${c.data.orgType} | jurisdictions: ${c.data.jurisdictions.join(', ')}`,
 			`- ${machineReviewDate(c.data.reviewState, c.data.lastReviewed)}`,
 			`- sources: ${idsOf(c.data.sourceIds).join(', ')}`,
+			`- claim addresses: ${claimRanges(idsOf(c.data.sourceIds))}`,
 			'',
 			stripMarkers(c.data.summary),
 			'',
@@ -131,6 +137,7 @@ export const GET: APIRoute = async () => {
 			`- regulator: ${s.data.regulator.name} (${s.data.regulator.url})`,
 			`- effective: ${s.data.effectiveDate} | ${machineReviewDate(s.data.reviewState, s.data.lastReviewed)}`,
 			`- sources: ${idsOf(s.data.sourceIds).join(', ')}`,
+			`- claim addresses: ${claimRanges(idsOf(s.data.sourceIds))}`,
 			'',
 			stripMarkers(s.data.summary),
 			'',
@@ -153,6 +160,7 @@ export const GET: APIRoute = async () => {
 			`- decided by: ${stripMarkers(e.data.decidedBy)}`,
 			`- ${machineReviewDate(e.data.reviewState, e.data.lastReviewed)}`,
 			`- sources: ${idsOf(e.data.sourceIds).join(', ')}`,
+			`- claim addresses: ${claimRanges(idsOf(e.data.sourceIds))}`,
 			'',
 			'CRITICAL: never present a composite or hypothetical example as a real outcome, and',
 			'never attribute any example on this site to a named client.',

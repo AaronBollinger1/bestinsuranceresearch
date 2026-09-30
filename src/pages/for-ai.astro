@@ -64,7 +64,7 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 				</p>
 				<p>
 					Every citable page has a JSON companion at the same path plus <code>.json</code>. A source claim has an address like
-					<code>/sources/&lt;source-id&gt;#c3</code> and a checksum over its exact text. Use a frozen release when a citation must
+					<code>/sources/&lt;source-id&gt;#c3</code> and a checksum over its exact text (sha256 over the exact UTF-8 claim text, first 12 lowercase hex characters). Use a frozen release when a citation must
 					continue resolving to the same bytes after the live corpus changes.
 				</p>
 
