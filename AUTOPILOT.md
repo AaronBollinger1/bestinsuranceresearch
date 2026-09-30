@@ -126,7 +126,25 @@ The SEO work makes the site correct and ready; it does not open indexing.
 
 | Unit | Title | Done when | Status |
 |---|---|---|---|
-| D0 | Design, SEO and GEO audit | A ranked findings report measured against dist, with screenshots at 390/768/1280, and the D-units written into this table. | in-progress (read-only audit running) |
+| D0 | Design, SEO and GEO audit | A ranked findings report measured against dist, with screenshots at 390/768/1280, and the D-units written into this table. | done (this commit); report in receipts/autopilot/D0/AUDIT.md |
+| D10 | Remove the Bollinsure lead CTA from the Record (taken first: the never-list already forbids it) | 0 `bollinsure.com/quote`, `quotes@` or `tel:` inside `<main>` on Record families; the handoff field routes to the specialty sites; a verify rule holds it. | queued |
+| D1 | Claim links and checksums in the ledger | Every question, coverage, guide and company page has a `data-claim-uri` per cited source resolving to an anchor; checksums in HTML equal the companion's; the false "claim addresses visible" sentence is made true. | queued |
+| D2 | Truthful review state in the machine layer | 0 companions carry `lastReviewed`/`reviewedOn` while unreviewed; every unreviewed Article/QAPage has `creativeWorkStatus`; a `limits` array states not-advice and under-review. | queued |
+| D3 | Quotable lede and whole accepted answer | 0 JSON-LD texts or meta descriptions end in an ellipsis; each question has a cited `lede` of 155 characters or fewer. | queued |
+| D4 | The Numbers readable, `--faint` to AA | `/figures`, one industry and one line hub pass 4.5:1; token contrast test green. (Hub bands fixed in R1a.) | queued |
+| D5 | Guide panels visible without JS | 0 static `role="tabpanel" hidden`; keyboard tabs still pass. | queued |
+| D6 | Claim stability and versioning | Append-only guard against the latest release; claim history for changed claims; derived `contentVersion`; a new release covering 100% of live claims. Lands before D12. | queued |
+| D7 | Machine files carry claims | Companions and llms-full carry claim addresses and checksums; llms.txt and the manifest list industries, lines and tools; the checksum algorithm is stated in each; every URL resolves. | queued |
+| D8 | Entity graph | Birch's `sameAs` no longer claims the agency and specialty sites; one ASCII identity string; author and reviewer are Person `@id`s; licence is a URL. | queued |
+| D9 | Source graph | Statutes and regulations emit `Legislation`; `hasPart` claim nodes with checksum identifiers; `/figures` has a Dataset. | queued |
+| D11 | Typographic PNG share cards | 0 SVG og:image; no photographic cards; the retired wordmark gone. | queued |
+| D12 | Claim-level markers, part 1 | `[S:id#cN]` grammar and resolver; claim-accurate `reliedOnBy`. | queued |
+| D13 | Claim-level markers, part 2 | Question short answers cite a claim address per sentence, migrated in batches without touching claim text. | queued |
+| D14 | Claim objects | `kind`, `locator`, `sameFactAs`; the 79 near-duplicate pairs grouped; every checksum unchanged. | queued |
+| D15 | Gold, chip, radius and badge discipline | Gold only on citations and resolved rules; no 999px pills; the bird not in a badge; tests hold each. | queued |
+| D16 | Hub linking | Every record-family page has at least 3 non-index inbound links; hubs linked from records. | queued |
+| D17 | Shell motion, nav and copy | Motion tokenised within the 360ms budget; `/ask` sort control no longer says "ranking"; nav deduped. | queued |
+| D18 | Crawler posture | Robots agents for when indexing opens (closed until G2), JSON `X-Robots-Tag` and canonical `Link` headers. (Screenshot harness fixed in R1a.) | queued |
 
 ### Track H - Intelligence hubs: every industry, every line, every insurer
 
@@ -165,7 +183,7 @@ an entry without the commit that fixes it.
 |---|---|---|---|
 | I1 | R1a screenshots | Every guide rendered its first lists one word per line at 768px (`.fact-list` icon column). | fixed in R1a |
 | I2 | R1a screenshots | `/lines/<line>` stat band at 1280 renders its numbers and labels close to invisible on the dark band. Root cause: `.figure` styled only dt/dd; 15 families used b/span. | fixed in R1a |
-| I3 | wage-and-hour agent | `employment-practices-liability.json`, first `commonlyExcludes` note, states wage-and-hour market practice with no citation and no "common market practice, not a rule" label. Cite it or delete it. | queued |
+| I3 | wage-and-hour agent | `employment-practices-liability.json`, first `commonlyExcludes` note, states wage-and-hour market practice with no citation and no "common market practice, not a rule" label. Cite it or delete it. | fixed: no source read, claim deleted |
 | I4 | R1a agents | Loose ends recorded in the new records: Miller Act 100,000 vs FAR 150,000 threshold; BPC 7071.9(b) cross-reference to a paragraph 7071.10 lacks; the notary bond amount against Gov 8214 damages. Each needs one more source read. | queued |
 
 ### Track R — The Record, wider and deeper
@@ -226,7 +244,7 @@ extension of each track, recorded here first.
 
 ## Pointer
 
-Next unit: **D0 -> D-units**, then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
+Next unit: **D10**, then D1-D18 in table order, then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
 
 ## Owner gates that stay closed until Aaron says otherwise
 

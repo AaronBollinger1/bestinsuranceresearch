@@ -1412,6 +1412,32 @@ test('every coverage page states its exposures and its claim mitigation, and ren
 	}
 });
 
+test('market practice is either cited or labelled as practice, never stated as a rule', () => {
+	/*
+	 * The editorial standard's "market practice as rule" class: common practice
+	 * stated as though it were a requirement. The EPL page said wage and hour
+	 * exposure "is commonly addressed by sublimit, by defence-only cover, or not
+	 * at all" with no source and no label, and the wage-and-hour research pass
+	 * found it (improvement I3). Any sentence that speaks for what insurers
+	 * generally do must carry a citation or say, in words, that it is practice
+	 * and not a rule.
+	 */
+	const PRACTICE = /\b(?:(?<!how )many insurers|most insurers|insurers (?:typically|usually|generally|commonly)|(?:is|are) (?:typically|usually|commonly|generally) (?:written|sold|excluded|addressed|offered|sublimited|covered)|market practice|common practice)\b/i;
+	const LABEL = /(?:practice,? (?:rather than|not) (?:a|an)\b|not a rule)/i;
+	const offenders = [];
+	for (const [name, entries] of Object.entries({ coverages, questions })) {
+		for (const entry of entries) {
+			const text = JSON.stringify(entry.data);
+			for (const sentence of text.split(/(?<=[.!?])\s+(?=[A-Z])/)) {
+				if (PRACTICE.test(sentence) && !sentence.includes('[S:') && !LABEL.test(sentence)) {
+					offenders.push(`${name}/${entry.id}: ${sentence.slice(0, 120)}`);
+				}
+			}
+		}
+	}
+	assert.deepEqual(offenders, [], `uncited, unlabelled market practice:\n  ${offenders.join('\n  ')}`);
+});
+
 test('no claim mitigation promises a price, a saving, or an outcome', () => {
 	// This is the field most likely to drift into selling. A mitigation is a
 	// thing a reader can do and a source can support. Whether any insurer prices
