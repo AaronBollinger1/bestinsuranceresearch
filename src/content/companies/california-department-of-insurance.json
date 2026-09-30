@@ -3,6 +3,7 @@
 	"shortName": "CDI",
 	"orgType": "regulator",
 	"summary": "The California Department of Insurance (CDI) is California's state insurance regulator: the Insurance Code directs its commissioner to perform all duties imposed by the code and other laws regulating the business of insurance in this state, and to enforce the execution of those provisions and laws [S:ca-ins-code-12921]. The commissioner is elected by the people in the same time, place, and manner as the Governor, not to exceed two four-year terms, and legislative confirmation is required to fill a mid-term vacancy [S:ca-ins-code-12900]. The public-facing side of that work includes a license lookup covering agents, brokers, adjusters, bail agents, and agencies or organizations [S:cdi-license-status], searchable insurance company profiles [S:cdi-company-profiles], a Virtual Viewing Room of rate filings and examination reports [S:cdi-vvr], and a consumer hotline plus electronic complaint intake [S:cdi-contact][S:cdi-getting-help]. Federal law provides that the business of insurance, and every person engaged in it, shall be subject to the laws of the several States which relate to the regulation or taxation of that business [S:usc-15-1012].",
+	"lede": "The California Department of Insurance is the state regulator whose commissioner must enforce the laws regulating insurance in California [S:ca-ins-code-12921].",
 	"officialUrls": [
 		{
 			"label": "Main site",

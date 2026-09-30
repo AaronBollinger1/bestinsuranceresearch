@@ -1,6 +1,7 @@
 {
 	"name": "Workers Compensation Classification",
 	"summary": "Works out which classification, payroll-record and subcontractor questions an employer should settle in writing before a workers compensation quote, renewal or premium audit.",
+	"lede": "This tool lists the classification, payroll-record and subcontractor questions an employer should settle in writing before a workers comp quote or audit.",
 	"family": "commercial",
 	"lines": [
 		"workers-compensation",

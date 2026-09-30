@@ -3,6 +3,7 @@
 	"line": "community-association",
 	"family": "commercial",
 	"definition": "The insurance program a California homeowners association buys for itself: property on the common area, general liability, crime and fidelity, and directors and officers cover for the volunteers who run it. Two of those are not simply prudent purchases. The Davis-Stirling Act makes crime or fidelity coverage a duty on the association [S:ca-civ-code-5806], and it conditions the liability protection of both the directors [S:ca-civ-code-5800] and the individual owners [S:ca-civ-code-5805] on the association actually carrying stated minimum limits.",
+	"lede": "California Civil Code section 5806 requires an association to carry crime or fidelity coverage of at least its reserves plus three months of assessments. [S:ca-civ-code-5806]",
 	"protects": [
 		"The association as an entity, against tort claims arising from the common area it is responsible for repairing, replacing and maintaining [S:ca-civ-code-4775]",
 		"The volunteer directors and officers personally, whose exposure is capped at the amount of insurance carried rather than eliminated [S:ca-civ-code-5800]",

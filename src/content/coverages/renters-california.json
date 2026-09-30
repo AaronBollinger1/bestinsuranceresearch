@@ -3,6 +3,7 @@
 	"line": "renters",
 	"family": "personal",
 	"definition": "The policy a tenant buys for the half of the building the landlord does not insure. The regulator states it plainly: the landlord does not provide insurance for the tenant's personal property [S:cdi-residential-insurance-guide]. A renters policy carries personal property, loss of use, personal liability and medical payments to others [S:nydfs-renters-insurance], which is the same set a condominium unit owners policy carries without the part that answers the structure [S:cdi-residential-insurance-guide]. The HO-4 form itself is not public, so this page describes the structure regulators describe rather than any insurer's wording.",
+	"lede": "A renters policy covers personal property, loss of use, personal liability and medical payments to others; a landlord does not insure a tenant's property. [S:nydfs-renters-insurance]",
 	"protects": [
 		"The tenant's own belongings, which the landlord's policy does not reach [S:cdi-residential-insurance-guide]",
 		"The tenant against personal liability for injuries others sustain at the home, including medical expenses and any resulting lawsuits, and damage to other people's property [S:nydfs-renters-insurance]",

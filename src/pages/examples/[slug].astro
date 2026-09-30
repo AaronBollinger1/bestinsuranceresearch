@@ -1,4 +1,5 @@
 ---
+import QuotableLede from '../../components/QuotableLede.astro';
 import { ArrowRight, Ban, CircleDot, Gavel, ShieldQuestion } from '@lucide/astro';
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -35,7 +36,7 @@ const relatedQuestions = d.relatedQuestions
 	.map((ref) => corpus.questionBySlug.get(ref.id))
 	.filter((q): q is NonNullable<typeof q> => Boolean(q));
 
-const description = metaDescription(stripMarkers(d.whatHappened));
+const description = d.lede ? stripMarkers(d.lede) : metaDescription(stripMarkers(d.whatHappened));
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -128,6 +129,7 @@ const jsonLd = graph(
 
 					<section class="answer-section" aria-labelledby="happened">
 						<h2 id="happened">What happened</h2>
+						{d.lede && <QuotableLede html={cite.inline(d.lede)} />}
 						<div class="prose" set:html={cite.paragraphs(d.whatHappened)} />
 					</section>
 

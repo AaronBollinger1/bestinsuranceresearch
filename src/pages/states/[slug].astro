@@ -1,4 +1,5 @@
 ---
+import QuotableLede from '../../components/QuotableLede.astro';
 import { ArrowRight, Car, ExternalLink, HardHat, Landmark, LifeBuoy, Wrench } from '@lucide/astro';
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -40,7 +41,7 @@ const stateQuestions = corpus.questions.filter(
 const allRelated = [...relatedQuestions, ...stateQuestions];
 const relatedCoverages = corpus.coverages.filter((c) => c.data.stateVariations.some((v) => v.state === d.code));
 
-const description = metaDescription(stripMarkers(d.summary));
+const description = d.lede ? stripMarkers(d.lede) : metaDescription(stripMarkers(d.summary));
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -114,6 +115,7 @@ const jsonLd = graph(
 				<div>
 					<section aria-labelledby="overview">
 						<h2 id="overview" class="u-visually-hidden">Overview</h2>
+						{d.lede && <QuotableLede html={cite.inline(d.lede)} />}
 						<div class="direct-answer"><p set:html={cite.inline(d.summary)} /></div>
 					</section>
 

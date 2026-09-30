@@ -3,6 +3,7 @@
 	"line": "scheduled-personal-property",
 	"family": "personal",
 	"definition": "Cover for individually listed items that an ordinary contents limit will not fully answer. The reason it exists is a feature of homeowners policies rather than of the items: coverage on certain property especially susceptible to loss, including jewelry, antiques, furs, collectibles, fine arts, firearms, silverware and money, is limited [S:cdi-residential-insurance-guide]. The forms used instead are floaters, and which of them may be written as marine or inland marine insurance in California is set by regulation rather than left to the insurer [S:ca-ccr-tit-10-2321].",
+	"lede": "CDI says homeowners coverage is limited for property especially susceptible to loss, including jewelry, antiques, furs, fine arts, firearms and money. [S:cdi-residential-insurance-guide]",
 	"protects": [
 		"Categories that a homeowners contents limit caps rather than covers in full [S:cdi-residential-insurance-guide]",
 		"Objects of art such as pictures, statuary, bronzes and antiques, and rare manuscripts and books, which the marine regulation names as a fine arts item [S:ca-ccr-tit-10-2321]",

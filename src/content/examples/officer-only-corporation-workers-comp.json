@@ -7,6 +7,7 @@
 		"workers compensation"
 	],
 	"whatHappened": "In the hypothetical, two people form a California corporation. Both are officers and members of the board, they own all of the stock between them, and the corporation has no other workers, no payroll to anyone else, and no subcontractors. A general contractor they want to work for asks for a certificate of workers compensation insurance. The corporation wants to understand what California law says about who must be covered and about the officer exclusion [S:ca-labor-code-3700] [S:dir-dwc-employer-faqs] [S:lab-3352]. The business, the owners, and the certificate request are invented; the statutes and the agency guidance are real.",
+	"lede": "Every California employer except the state must secure workers compensation [S:ca-labor-code-3700], but section 3352 excludes qualifying officers from employee status [S:lab-3352].",
 	"informationThatMattered": [
 		"Labor Code section 3700 provides that every employer except the state shall secure the payment of compensation in one or more of the listed ways, including insuring with one or more insurers duly authorized to write compensation insurance in California or obtaining a certificate of consent to self-insure from the Director of Industrial Relations [S:ca-labor-code-3700].",
 		"The Division of Workers' Compensation states that all California employers must provide workers' compensation benefits to their employees under Labor Code section 3700 [S:dir-dwc-employer-faqs].",

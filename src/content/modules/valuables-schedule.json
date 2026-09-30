@@ -1,6 +1,7 @@
 {
 	"name": "Valuables and Collections Schedule",
 	"summary": "Record what you own that sits outside an ordinary contents limit, what documentation exists for each category, and where the items actually are, then see which published classification rules and documentation questions attach. It produces no valuation, no premium, and no statement about what any policy covers.",
+	"lede": "This tool records valuables outside an ordinary contents limit, their documentation and location, and surfaces the published classification rules.",
 	"family": "personal",
 	"lines": [
 		"scheduled-personal-property",

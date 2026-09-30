@@ -4704,14 +4704,24 @@ test('a question is quotable in one whole cited sentence, and its structured ans
 	}
 	assert.deepEqual(problems.slice(0, 20), [], `question ledes:\n  ${problems.slice(0, 20).join('\n  ')}`);
 
-	/* Other families still shorten; D3b gives them ledes. Until then the count
-	   may only fall. Measured 33 after the questions were done. */
-	let cut = 0;
-	for (const file of htmlFiles) {
-		const meta = (read(file).match(/<meta name="description" content="([^"]*)"/) ?? [])[1] ?? '';
-		if (/(\.\.\.|…)$/.test(meta)) cut++;
+	/* D3b: every other record family carries a lede too, cited except for the
+	   modules (which describe a tool rather than make a claim), and no page
+	   anywhere ends its meta description in an ellipsis. */
+	for (const [name, entries, needsMarker] of [['coverages', coverages, true], ['companies', companies, true], ['states', states, true], ['examples', examples, true], ['modules', modules, false]]) {
+		for (const e of entries) {
+			const lede = e.data.lede;
+			if (!lede) { problems.push(`${name}/${e.id} has no lede`); continue; }
+			const plain = lede.replace(/\s*\[S:[a-z0-9-]+\]/g, '').trim();
+			if (plain.length < 50 || plain.length > 155) problems.push(`${name}/${e.id} lede is ${plain.length} characters`);
+			if (!/[.!?]["')]?$/.test(plain)) problems.push(`${name}/${e.id} lede does not end as a sentence`);
+			const markers = [...lede.matchAll(/\[S:([a-z0-9-]+)\]/g)].map((m) => m[1]);
+			if (needsMarker && markers.length === 0) problems.push(`${name}/${e.id} lede cites nothing`);
+			for (const m of markers) if (!idsOf(e.data.sourceIds).includes(m)) problems.push(`${name}/${e.id} lede cites ${m}, not on its sourceIds`);
+		}
 	}
-	assert.ok(cut <= 33, `${cut} pages end their meta description in an ellipsis; the ceiling is 33 and only falls`);
+	assert.deepEqual(problems.slice(0, 20), [], `record ledes:\n  ${problems.slice(0, 20).join('\n  ')}`);
+	const cut = htmlFiles.filter((file) => /(\.\.\.|…)$/.test((read(file).match(/<meta name="description" content="([^"]*)"/) ?? [])[1] ?? ''));
+	assert.deepEqual(cut.map(routeOf).slice(0, 10), [], 'pages whose meta description ends in an ellipsis');
 });
 
 test('every meta description is whole and within what a search engine shows', () => {

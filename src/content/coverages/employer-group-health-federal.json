@@ -3,6 +3,7 @@
 	"line": "group-health",
 	"family": "health",
 	"definition": "Not a policy form so much as a set of federal obligations that attach to one. Two bodies of law do most of the work: the continuation rules that let a person keep group coverage after they would otherwise lose it, and the shared responsibility rules that decide which employers must offer coverage at all. Both are statute, so unlike most lines the governing text can be read in full. A person losing coverage generally has at least 60 days to elect continuation [S:usc-29-1165-election-period], and the plan may charge no more than 102 percent of the applicable premium for it [S:usc-29-1162-continuation-period].",
+	"lede": "Federal continuation rules give at least 60 days to elect group health continuation, at a premium of no more than 102 percent of the applicable premium. [S:usc-29-1165-election-period][S:usc-29-1162-continuation-period]",
 	"protects": [
 		"A covered employee and their qualified beneficiaries against losing group coverage on the date a qualifying event occurs, by giving a right to continue it [S:usc-29-1162-continuation-period]",
 		"A spouse after divorce or legal separation, and a child who ceases to be a dependent, both of which are qualifying events in their own right [S:usc-29-1163-qualifying-events]",

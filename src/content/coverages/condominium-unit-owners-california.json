@@ -3,6 +3,7 @@
 	"line": "condominium-unit-owners",
 	"family": "personal",
 	"definition": "The policy an individual owner buys for the part of a common interest development that is theirs, written against a boundary set by statute and by the declaration rather than by the policy. Unless the declaration or condominium plan provides otherwise, the interior surfaces of the perimeter walls, floors, ceilings, windows, doors and outlets are part of the separate interest, and any other portion of those walls, floors or ceilings is common area [S:ca-civ-code-4185]. Everything about what this policy needs to do follows from where that line falls.",
+	"lede": "Unless the declaration or plan says otherwise, the interior surfaces of a California condo's boundary walls, floors and ceilings belong to the unit. [S:ca-civ-code-4185]",
 	"protects": [
 		"The interior of the unit and the improvements the owner is responsible to maintain under the association's governing rules [S:cdi-residential-insurance-guide]",
 		"Personal property, loss of use, personal liability and medical payments to others, in the same way renters insurance does [S:cdi-residential-insurance-guide]",

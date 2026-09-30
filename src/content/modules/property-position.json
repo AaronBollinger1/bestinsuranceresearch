@@ -1,6 +1,7 @@
 {
 	"name": "Residential Property Position",
 	"summary": "It works out where the dwelling limit, the valuation basis, the separate catastrophe purchases, and the supporting documents on your home do not line up with each other, and turns each mismatch into a specific question for your broker or insurer.",
+	"lede": "This tool compares your home's dwelling limit, valuation basis, catastrophe purchases and documents, and turns each mismatch into a broker question.",
 	"family": "personal",
 	"lines": [
 		"homeowners",

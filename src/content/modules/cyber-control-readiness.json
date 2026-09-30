@@ -1,6 +1,7 @@
 {
 	"name": "Cyber Control Readiness",
 	"summary": "Works out which of the security controls a cyber application will ask about you actually have, which ones you have but cannot yet evidence in writing, and which dated records are already stale.",
+	"lede": "This tool sorts the controls a cyber application asks about into ones you have, ones you cannot yet evidence, and dated records gone stale.",
 	"family": "commercial",
 	"lines": [
 		"cyber-liability",

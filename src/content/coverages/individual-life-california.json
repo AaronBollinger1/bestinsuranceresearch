@@ -3,6 +3,7 @@
 	"line": "individual-life",
 	"family": "life",
 	"definition": "A policy that pays on death, and in California a set of statutory protections that attach to it whatever product form it takes. The provisions that matter most are not about what is covered but about how the policy can be lost and how long a buyer has to change their mind: a grace period of not less than 60 days that does not run concurrently with paid coverage [S:ca-ins-code-10113-71], a lapse notice that is not effective unless given at least 30 days ahead [S:ca-ins-code-10113-71], the right to name someone else to receive that notice [S:ca-ins-code-10113-72], and a stated return period on the cover page [S:ca-ins-code-10127-9].",
+	"lede": "A California individual life policy must give a grace period of at least 60 days, and a lapse notice is not effective unless mailed at least 30 days ahead. [S:ca-ins-code-10113-71]",
 	"protects": [
 		"The named beneficiary, by paying on the death of the insured",
 		"The policy owner against losing the policy quietly, through a grace period of at least 60 days that does not overlap the period already paid for [S:ca-ins-code-10113-71]",

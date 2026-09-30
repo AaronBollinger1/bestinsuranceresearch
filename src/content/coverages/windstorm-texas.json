@@ -3,6 +3,7 @@
 	"line": "windstorm",
 	"family": "personal",
 	"definition": "On the Texas coast wind and hail is written separately from the rest of the property policy, and where the private market declines it the residual market writes it alone. The Texas Windstorm Insurance Association was established in 1971 to provide wind and hail coverage to applicants unable to obtain insurance in the private market [S:twia-overview], and its policies provide coverage for wind and hail losses only, with no other perils covered [S:twia-overview]. It does not cover damage caused by flooding and storm surge [S:twia-about].",
+	"lede": "The Texas Windstorm Insurance Association writes wind and hail coverage only, for applicants unable to obtain insurance in the private market. [S:twia-overview]",
 	"protects": [
 		"Property damage caused directly by wind and hail, which is the whole of what the policy answers [S:twia-about]",
 		"Owners in the designated coastal area who have been denied coverage in the private market [S:twia-coverage-eligibility]",

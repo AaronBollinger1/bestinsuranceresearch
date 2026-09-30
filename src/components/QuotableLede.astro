@@ -1,0 +1,18 @@
+---
+/**
+ * The one sentence an answer engine quotes about a record, shown where the
+ * record opens and marked so the suite can hold the page to showing it. The
+ * meta description is the same sentence, so what a search result shows is
+ * something the page itself says, with its citation (D3, D3b).
+ */
+interface Props {
+	/** Pre-rendered HTML from createCiter().inline(), or plain escaped text. */
+	html: string;
+}
+const { html } = Astro.props;
+---
+
+<p class="answer-lede" data-quotable="lede">
+	<span class="meta">In one sentence</span>{' '}
+	<span set:html={html} />
+</p>

@@ -16,6 +16,7 @@
 	],
 	"route": "/tools/requirement-mapper",
 	"summary": "Turn an agreement's insurance clause into an organized list of the policies, limits, endorsements, and evidence it asks for, and keep what was requested strictly separate from what anyone has actually confirmed.",
+	"lede": "Turn a contract's insurance clause into a list of the policies, limits, endorsements and evidence it asks for, kept apart from what is confirmed.",
 	"spec": {
 		"user": "Anyone handed a contract, lease, or purchase order with an insurance requirements section who needs to work out what is actually being asked for before talking to a broker.",
 		"inputData": [

@@ -1,4 +1,5 @@
 ---
+import QuotableLede from '../../components/QuotableLede.astro';
 import { ArrowRight, Ban, BookOpen, ExternalLink, FileText, Landmark, LockKeyhole, MessageCircle, Phone, Scale, ShieldCheck } from '@lucide/astro';
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -48,7 +49,7 @@ const relatedCoverages = relatedCoverageIds
 	.map((id) => corpus.coverageBySlug.get(id))
 	.filter((coverage): coverage is NonNullable<typeof coverage> => Boolean(coverage));
 
-const description = metaDescription(stripMarkers(d.summary));
+const description = d.lede ? stripMarkers(d.lede) : metaDescription(stripMarkers(d.summary));
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -181,6 +182,7 @@ const jsonLd = graph(
 				<div>
 					<section class="record-lead" aria-labelledby="identity">
 						<h2 id="identity">Overview</h2>
+						{d.lede && <QuotableLede html={cite.inline(d.lede)} />}
 						<p set:html={cite.inline(d.summary)} />
 						{
 							d.regulatoryIdentity && (

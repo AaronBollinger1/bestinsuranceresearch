@@ -1,6 +1,7 @@
 {
 	"name": "Group Benefits Renewal Readiness",
 	"summary": "Record what an employer already knows about its own workforce counts, its contribution basis, and its notice dates, and see which published federal obligations attach to those facts and which documents a renewal will ask for. It produces no premium, no plan recommendation, and no determination about any individual.",
+	"lede": "This tool records an employer's workforce counts, contribution basis and notice dates, and surfaces the cited federal obligations tied to those facts.",
 	"family": "health",
 	"lines": [
 		"group-health",

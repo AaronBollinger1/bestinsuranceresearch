@@ -1,6 +1,7 @@
 {
 	"name": "Contract Insurance Requirements",
 	"summary": "Compares the insurance limits, endorsements, evidence and deadlines a contract asks of you against what you have recorded that you actually carry and have confirmed, and returns the gaps to raise before you sign or start work.",
+	"lede": "This tool compares the insurance a contract asks for with what you have recorded that you carry, and lists the gaps to raise before signing.",
 	"family": "commercial",
 	"lines": [
 		"commercial-general-liability",

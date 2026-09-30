@@ -3,6 +3,7 @@
 	"line": "auto",
 	"family": "personal",
 	"definition": "The policy that responds when a private passenger vehicle injures someone, damages property, or is itself damaged. In California more of this line is written by statute than by the form: the minimum limits, the extension of coverage to a permitted driver, the way uninsured and underinsured motorist coverage is calculated, the three factors that must dominate the rate, and the grounds on which the policy can be cancelled are all fixed by the Insurance Code and the Vehicle Code rather than chosen by an insurer [S:ca-ins-code-11580-1] [S:ca-ins-code-11580-2] [S:ca-ins-code-1861-02] [S:ca-ins-code-661]. Reading the policy without reading those sections gives the wrong answer on the questions that matter most.",
+	"lede": "A California auto liability policy must carry at least the Vehicle Code 16056(a) limits and cover others driving with the named insured's permission. [S:ca-ins-code-11580-1]",
 	"protects": [
 		"The named insured and household relatives against liability for bodily injury and property damage arising out of the use of a covered vehicle",
 		"Anyone driving the vehicle with the named insured's permission, to the same extent as the named insured, because California requires that extension rather than leaving it to the form [S:ca-ins-code-11580-1]",

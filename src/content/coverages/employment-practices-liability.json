@@ -3,6 +3,7 @@
 	"line": "employment-practices-liability",
 	"family": "commercial",
 	"definition": "Cover for claims arising from the employment relationship: discrimination, harassment, retaliation, and the related failures the law treats as wrongs in themselves. The policy form is not public and differs by insurer, so this page does not describe one. What is public is the liability the form responds to, and almost all of it is statute: in California the Fair Employment and Housing Act makes discrimination, retaliation, harassment by nonemployees, and failure to prevent all separately unlawful [S:ca-gov-code-12940].",
+	"lede": "FEHA makes discrimination on protected traits (absent a bona fide occupational qualification), retaliation and failure to prevent unlawful in California. [S:ca-gov-code-12940]",
 	"protects": [
 		"An employer against claims by employees, applicants and former employees arising from unlawful employment practices [S:ca-gov-code-12940]",
 		"An employer against exposure for harassment by people it does not employ, where it knew or should have known and failed to act [S:ca-gov-code-12940]",

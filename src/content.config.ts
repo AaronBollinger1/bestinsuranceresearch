@@ -219,6 +219,8 @@ const coverages = defineCollection({
 		line: z.string().min(3),
 		family: z.enum(INSURANCE_FAMILY),
 		definition: z.string().min(80),
+		/** One whole quotable sentence; see the questions collection. */
+		lede: z.string().min(50).optional(),
 		protects: z.array(z.string().min(10)).min(1),
 		commonlyCovers: z.array(noteItem).min(2),
 		commonlyExcludes: z.array(noteItem).min(2),
@@ -305,6 +307,8 @@ const companies = defineCollection({
 		/** A dated regulator snapshot; this is not a runtime license lookup. */
 		regulatoryIdentity: regulatoryIdentity.optional(),
 		summary: z.string().min(80),
+		/** One whole quotable sentence; see the questions collection. */
+		lede: z.string().min(50).optional(),
 		officialUrls: z.array(linkItem).min(1),
 		contactChannels: z
 			.array(z.object({ label: z.string().min(3), value: z.string().min(3), note: z.string().optional() }))
@@ -341,6 +345,8 @@ const states = defineCollection({
 			consumerPhone: z.string().optional(),
 		}),
 		summary: z.string().min(120),
+		/** One whole quotable sentence; see the questions collection. */
+		lede: z.string().min(50).optional(),
 		keyMechanisms: z.array(z.object({ title: z.string().min(4), detail: z.string().min(30) })).min(1),
 		residualMarket: z
 			.object({ name: z.string().min(4), url: z.string().url(), note: z.string().min(20) })
@@ -378,6 +384,8 @@ const examples = defineCollection({
 		family: z.enum(INSURANCE_FAMILY),
 		lines: z.array(z.string()).min(1),
 		whatHappened: z.string().min(80),
+		/** One whole quotable sentence; see the questions collection. */
+		lede: z.string().min(50).optional(),
 		informationThatMattered: z.array(z.string().min(10)).min(3),
 		insuranceQuestion: z.string().min(15),
 		reasoningPath: z.string().min(200),
@@ -410,6 +418,8 @@ const tools = defineCollection({
 		family: z.array(z.enum(INSURANCE_FAMILY)).min(1),
 		lines: z.array(z.string()).min(1),
 		summary: z.string().min(60),
+		/** One whole quotable sentence; see the questions collection. */
+		lede: z.string().min(50).optional(),
 		/** Every future tool must name all of the following. */
 		spec: z.object({
 			user: z.string().min(20),
@@ -539,6 +549,8 @@ const modules = defineCollection({
 	schema: z.object({
 		name: z.string().min(4),
 		summary: z.string().min(30),
+		/** One whole quotable sentence; see the questions collection. */
+		lede: z.string().min(50).optional(),
 		family: z.enum(INSURANCE_FAMILY),
 		lines: z.array(z.string()).min(1),
 		order: z.number().int().default(50),

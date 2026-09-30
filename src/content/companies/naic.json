@@ -3,6 +3,7 @@
 	"shortName": "NAIC",
 	"orgType": "standards-organization",
 	"summary": "The National Association of Insurance Commissioners (NAIC) describes itself as the U.S. standard-setting organization, founded in 1871 and governed by the chief insurance regulators from the 50 states, the District of Columbia, and five U.S. territories to coordinate regulation of multistate insurers [S:naic-about]. NAIC states that it provides expertise, data, and analysis for insurance commissioners to effectively regulate the industry and protect consumers, and that it also provides consumer protection and education, data collection and analysis, technology, financial assessments and reporting, and licensing and testing [S:naic-about]. On model laws, NAIC states that once its members have adopted a model law it becomes a priority of the NAIC, and that the goal is to encourage legislatures or regulatory bodies to adopt the model law, with as few changes as possible, in a majority of states within three years after its adoption by the NAIC members [S:naic-model-laws-about]. For consumers, NAIC's own consumer page carries no NAIC phone line and routes complaint filing to the insurance department of the state where you live [S:naic-consumer].",
+	"lede": "The NAIC describes itself as the U.S. standard-setting organization governed by the chief insurance regulators of the states, D.C. and five territories [S:naic-about].",
 	"officialUrls": [
 		{
 			"label": "Our Story (NAIC self-description)",

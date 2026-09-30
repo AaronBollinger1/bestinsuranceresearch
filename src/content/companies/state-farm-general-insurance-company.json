@@ -19,6 +19,7 @@
 		}
 	},
 	"summary": "The California Department of Insurance company profile identifies State Farm General Insurance Company at One State Farm Plaza, Bloomington, Illinois 61710-0001, and lists 800-782-8332 [S:cdi-state-farm-general-profile]. The profile lists NAIC number 25151, California Company ID 1714-5, date authorized in California December 24, 1962, license status UNLIMITED-NORMAL, company type Property & Casualty, state of domicile Illinois, and NAIC group 0176 State Farm GRP [S:cdi-state-farm-general-profile]. Its lines-of-business section lists Automobile, Boiler and Machinery, Burglary, Common Carrier Liability, Disability, Fire, Liability, Marine, Miscellaneous, Plate Glass, Sprinkler, Surety, Team and Vehicle, and Workers' Compensation [S:cdi-state-farm-general-profile]. This is a dated California regulator snapshot, not a current product catalog, rating, recommendation, availability statement, or coverage determination.",
+	"lede": "The CDI company profile lists State Farm General Insurance Company as an Illinois-domiciled property and casualty company, NAIC number 25151 [S:cdi-state-farm-general-profile].",
 	"officialUrls": [
 		{
 			"label": "California Department of Insurance company profile",

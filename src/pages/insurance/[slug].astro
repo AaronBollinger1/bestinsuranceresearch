@@ -1,4 +1,5 @@
 ---
+import QuotableLede from '../../components/QuotableLede.astro';
 import { ArrowRight, Check, CircleCheck, CirclePlus, CircleDot, MapPin, Minus, TriangleAlert, BookOpen } from '@lucide/astro';
 import { sharesLine } from '../../lib/lines';
 import type { GetStaticPaths } from 'astro';
@@ -53,7 +54,7 @@ const relatedStates = corpus.states.filter((s) => d.stateVariations.some((v) => 
    in different vocabularies. */
 const relatedModules = corpus.liveModules.filter((m) => sharesLine(m.data.lines, [d.line]));
 
-const description = metaDescription(stripMarkers(d.definition));
+const description = d.lede ? stripMarkers(d.lede) : metaDescription(stripMarkers(d.definition));
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -136,6 +137,7 @@ const jsonLd = graph(
 				<div>
 					<section aria-labelledby="definition">
 						<h2 id="definition" class="u-visually-hidden">Definition</h2>
+						{d.lede && <QuotableLede html={cite.inline(d.lede)} />}
 						<div class="direct-answer">
 							<p set:html={cite.inline(d.definition)} />
 						</div>

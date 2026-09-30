@@ -3,6 +3,7 @@
 	"line": "commercial-auto",
 	"family": "commercial",
 	"definition": "The coverage part that responds when a vehicle used in a business injures someone or damages their property. On the standard form it is built differently from every other commercial line: the policy does not cover \"your vehicles\" as a category, it covers whichever autos the numbered symbols on the declarations page designate for each individual coverage. Two businesses holding the same form with the same limit can therefore have entirely different coverage, and the difference is readable only in Item Two of their declarations [S:iso-ca-00-01-10-13].",
+	"lede": "On ISO form CA 00 01 10 13, the symbols entered next to each coverage on the declarations designate the only autos that are covered autos for it. [S:iso-ca-00-01-10-13]",
 	"protects": [
 		"A business against sums it legally must pay as damages for bodily injury or property damage arising out of the ownership, maintenance or use of a covered auto [S:iso-ca-00-01-10-13]",
 		"Employees and others driving with permission, where they fall inside the Who Is An Insured provision and outside its five stated exceptions [S:iso-ca-00-01-10-13]",

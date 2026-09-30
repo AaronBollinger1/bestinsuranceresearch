@@ -1,6 +1,7 @@
 {
 	"name": "California Earthquake Coverage",
 	"summary": "It works out which earthquake coverage decisions are still open for your California residence, whether the offer your insurer owes you has actually reached you, and which parts of a shaking loss sit outside an earthquake policy entirely.",
+	"lede": "This tool records your California home's earthquake position and lists open coverage decisions and whether the insurer's offer reached you.",
 	"family": "personal",
 	"lines": [
 		"residential-earthquake",

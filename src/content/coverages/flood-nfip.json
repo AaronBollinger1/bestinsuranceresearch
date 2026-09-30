@@ -3,6 +3,7 @@
 	"line": "flood",
 	"family": "personal",
 	"definition": "Cover for direct physical loss by or from flood, written in the United States mostly on a policy form that is itself federal regulation. The Standard Flood Insurance Policy Dwelling Form is codified at 44 CFR part 61 appendix A(1), which makes it one of the few insurance contracts a buyer can read in full before purchase [S:nfip-sfip-dwelling-form]. Most homeowners insurance does not cover flood damage and will not satisfy a mortgage or federal disaster assistance requirement for it [S:fema-nfip-eligibility]. This page is written from the residential Dwelling Form; the condominium association and non-residential forms differ.",
+	"lede": "Most homeowners insurance does not cover flood damage; the NFIP Dwelling Form covers loss directly caused by a flood, with evidence of physical change. [S:fema-nfip-eligibility][S:nfip-sfip-dwelling-form]",
 	"protects": [
 		"The building against direct physical loss by or from flood, up to the limit shown on the Declarations Page [S:nfip-sfip-dwelling-form]",
 		"Personal property, under a separate coverage with its own separate limit [S:nfip-sfip-dwelling-form]",

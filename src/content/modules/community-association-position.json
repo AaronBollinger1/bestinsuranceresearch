@@ -1,6 +1,7 @@
 {
 	"name": "Community Association Statutory Position",
 	"summary": "Record what a California common interest development carries and what it is, then see which Davis-Stirling requirements are met and which are not. Two of the checks here are arithmetic the statute performs on figures the association already has, and one of them is the reason a board can be compliant and its owners still unprotected.",
+	"lede": "This tool records what a California common interest development carries and records its position against the cited Davis-Stirling requirements.",
 	"family": "commercial",
 	"lines": [
 		"community-association",

@@ -3,6 +3,7 @@
 	"line": "title",
 	"family": "personal",
 	"definition": "The one line here that does not answer future events. California defines title insurance as insuring, guaranteeing or indemnifying owners of property or holders of liens against loss suffered by reason of liens or encumbrances on or defects in the title, invalidity or unenforceability of liens, or incorrectness of searches relating to the title [S:ca-ins-code-12340-1]. Every matter in that list is a condition of the title as it already stands, which is why the policy is bought once at closing rather than renewed each year.",
+	"lede": "California title insurance insures owners and lienholders against loss from liens, encumbrances, title defects, invalid liens or incorrect title searches. [S:ca-ins-code-12340-1]",
 	"protects": [
 		"An owner of real or personal property against loss or damage by reason of the matters section 12340.1 lists [S:ca-ins-code-12340-1]",
 		"The holder of a lien or encumbrance, and others interested in the property, who are named in the same definition [S:ca-ins-code-12340-1]",

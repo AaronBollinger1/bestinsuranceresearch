@@ -76,7 +76,7 @@ const jsonLd = graph(
 
 <BaseLayout
 	title={tool.data.name}
-	description={metaDescription(tool.data.summary)}
+	description={tool.data.lede ?? metaDescription(tool.data.summary)}
 	jsonLd={jsonLd}
 	pageType="tool"
 	bodyClass="tool-page"

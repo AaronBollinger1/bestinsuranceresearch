@@ -3,6 +3,7 @@
 	"line": "surplus-lines",
 	"family": "commercial",
 	"definition": "Not a line of insurance so much as a route to one. When no admitted California insurer will write a risk, a licensed surplus line broker may place it with a nonadmitted insurer instead [S:ca-ins-code-1763]. What changes is not the coverage but the protections around it: the insurer is outside California's solvency regulation and outside every guarantee fund the state has created, and the buyer must be told so in writing, in boldface, before the placement [S:ca-ins-code-1764-1]. Almost everything a reader needs to know about this route is written in statute rather than in a form.",
+	"lede": "A surplus lines insurer is outside California solvency regulation and guarantee funds, and the applicant must sign a boldface notice saying so. [S:ca-ins-code-1764-1]",
 	"protects": [
 		"A risk that admitted insurers will not write, by opening a market that is otherwise closed to it [S:ca-ins-code-1763]",
 		"The buyer's right to know what they are buying, through a signed disclosure that must be given before the placement and repeated on the policy [S:ca-ins-code-1764-1]",

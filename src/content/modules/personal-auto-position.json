@@ -1,6 +1,7 @@
 {
 	"name": "Personal Auto Position (California)",
 	"summary": "Record the limits your California auto policy actually carries, what was agreed about uninsured motorist cover, who drives, and what has changed lately, then see which published statutes attach to that position. It produces no premium, no eligibility decision and no statement about what your policy covers.",
+	"lede": "This tool records the limits and uninsured motorist choices on your California auto policy and surfaces the published statutes tied to them.",
 	"family": "personal",
 	"lines": ["auto"],
 	"order": 15,

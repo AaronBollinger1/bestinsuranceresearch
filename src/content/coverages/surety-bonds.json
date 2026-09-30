@@ -3,6 +3,7 @@
 	"line": "surety",
 	"family": "commercial",
 	"definition": "A promise to be liable for the debt, default or failure of another. A surety bond is a three-party contract in which the surety guarantees the performance of the principal to a third party, the obligee [S:nasbp-32-questions-contract-bonding]. California regulates it as insurance, defining surety insurance to include guaranteeing the performance of contracts and executing bonds and undertakings required by law [S:ca-ins-code-105-surety-insurance], but it does not behave like insurance: the surety does not expect to bear the loss, and the principal signs an indemnity agreement obliging it to pay the surety back [S:nasbp-32-questions-contract-bonding].",
+	"lede": "A surety bond is a three-party contract in which the surety guarantees the performance of the principal to a third party, the obligee. [S:nasbp-32-questions-contract-bonding]",
 	"protects": [
 		"The obligee, meaning the party to whom the bond is given, which in construction is the project owner or the prime contractor [S:nasbp-32-questions-contract-bonding]",
 		"On a federal public works contract, persons supplying labor and material, through a payment bond furnished for their protection [S:usc-40-3131-miller-act]",

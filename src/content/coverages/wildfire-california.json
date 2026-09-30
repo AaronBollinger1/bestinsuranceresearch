@@ -3,6 +3,7 @@
 	"line": "wildfire",
 	"family": "personal",
 	"definition": "Wildfire is not a policy you buy. It is a peril the residential property form already covers, and the questions that actually arise are about availability rather than coverage: whether the policy will be renewed, what notice is owed before it is not, what protection follows a declared emergency, and what the insurer of last resort does and does not include. California answers all four in statute and in published regulator material [S:ca-ins-code-678][S:ca-ins-code-675-1][S:cdi-fair-plan].",
+	"lede": "For a year after a declared emergency, California bars cancelling or nonrenewing homes in or next to fire-perimeter ZIP Codes solely over the wildfire. [S:ca-ins-code-675-1]",
 	"protects": [
 		"The dwelling against fire as a peril, under the residential property policy already in force rather than under a separate wildfire policy",
 		"A policyholder against losing cover at renewal without warning, through a notice regime with stated periods and stated reasons [S:ca-ins-code-678]",

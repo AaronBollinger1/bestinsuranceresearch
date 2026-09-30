@@ -1,6 +1,7 @@
 {
 	"name": "Employment Practices Readiness",
 	"summary": "Works out which written policies, distribution records, training records, and complaint-handling records an employer can actually produce before an employment practices liability submission or renewal, and which gaps and timing pressures to raise with a lawyer and a broker first.",
+	"lede": "This tool shows which written policies, training and complaint records an employer can produce before an employment practices liability submission.",
 	"family": "commercial",
 	"lines": [
 		"employment-practices-liability",

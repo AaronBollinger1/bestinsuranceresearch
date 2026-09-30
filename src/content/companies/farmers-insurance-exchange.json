@@ -19,6 +19,7 @@
 		}
 	},
 	"summary": "The California Department of Insurance company profile identifies Farmers Insurance Exchange at 6301 Owensmouth Avenue, Woodland Hills, California 91367, and lists 800-422-4272 [S:cdi-farmers-insurance-exchange-profile]. The profile lists NAIC number 21652, California Company ID 0937-3, date authorized in California April 6, 1928, license status UNLIMITED-NORMAL, company type Property & Casualty, state of domicile California, and NAIC group 0069 Farmers Ins GRP [S:cdi-farmers-insurance-exchange-profile]. Its lines-of-business section lists Aircraft, Automobile, Boiler and Machinery, Burglary, Common Carrier Liability, Credit, Disability, Fire, Liability, Marine, Miscellaneous, Plate Glass, Sprinkler, Surety, Team and Vehicle, and Workers' Compensation [S:cdi-farmers-insurance-exchange-profile]. This is a dated California regulator snapshot, not a current product catalog, rating, recommendation, availability statement, or coverage determination.",
+	"lede": "The CDI company profile lists Farmers Insurance Exchange as a California-domiciled property and casualty company, NAIC number 21652 [S:cdi-farmers-insurance-exchange-profile].",
 	"officialUrls": [
 		{
 			"label": "California Department of Insurance company profile",
