@@ -574,6 +574,55 @@ test('every rendered citation link has a matching source anchor on the same page
 	}
 });
 
+test('every ledger claim links to its own address and carries its checksum', () => {
+	/*
+	 * D1. Answer pages used to link a citation to a source and stop there: the
+	 * ledger printed each claim as bare text, so an engine following a Birch
+	 * citation reached a document, not the sentence the answer rests on, and
+	 * question pages said claim addresses were "visible in the source ledger"
+	 * when none were. Now every ledger claim on every page links
+	 * /sources/<id>#c<n>, that anchor exists on the source page, and the
+	 * checksum in the HTML equals the one the companions publish.
+	 */
+	const checksum = (text) => createHash('sha256').update(text, 'utf8').digest('hex').slice(0, 12);
+	const anchors = new Map();
+	const anchorsOf = (id) => {
+		if (!anchors.has(id)) {
+			const file = path.join(DIST, 'sources', id, 'index.html');
+			const html = fs.existsSync(file) ? read(file) : '';
+			anchors.set(id, new Set([...html.matchAll(/<li id="(c\d+)"/g)].map((m) => m[1])));
+		}
+		return anchors.get(id);
+	};
+	let pagesWithLedger = 0;
+	const problems = [];
+	for (const file of htmlFiles) {
+		const html = read(file);
+		if (!html.includes('class="ledger-claims"')) continue;
+		pagesWithLedger++;
+		const ledgerSources = new Set([...html.matchAll(/<li class="ledger-item cite-target" id="source-\d+"/g)]).size;
+		const links = [...html.matchAll(/<a class="claim-cite mono" href="\/sources\/([a-z0-9-]+)#(c\d+)" data-claim-uri="[^"]+" data-checksum="([0-9a-f]{12})"/g)];
+		if (links.length < ledgerSources) problems.push(`${routeOf(file)}: ${links.length} claim links for ${ledgerSources} sources`);
+		for (const [, id, c, sum] of links) {
+			const src = byIdMap.get(id);
+			const n = Number(c.slice(1));
+			if (!src || !src.data.claims[n - 1]) { problems.push(`${routeOf(file)}: ${id}#${c} is not a claim`); continue; }
+			if (!anchorsOf(id).has(c)) problems.push(`${routeOf(file)}: /sources/${id}#${c} has no anchor`);
+			if (checksum(src.data.claims[n - 1]) !== sum) problems.push(`${routeOf(file)}: ${id}#${c} checksum ${sum} is stale`);
+		}
+	}
+	assert.ok(pagesWithLedger > 200, `only ${pagesWithLedger} pages carry a claim ledger, so this check means little`);
+	assert.deepEqual(problems.slice(0, 15), [], `ledger claim links broken:\n  ${problems.slice(0, 15).join('\n  ')}`);
+
+	/* The copy that used to be false must now be backed by the markup. */
+	for (const q of questions) {
+		const html = read(path.join(DIST, 'questions', q.id, 'index.html'));
+		if (/claim to its own address/.test(html)) {
+			assert.ok(html.includes('data-claim-uri='), `/questions/${q.id} describes claim addresses it does not render`);
+		}
+	}
+});
+
 test('every source record lists at least one claim and a real URL', () => {
 	for (const source of sources) {
 		assert.ok(source.data.claims.length > 0, `source ${source.id} supports no claims`);

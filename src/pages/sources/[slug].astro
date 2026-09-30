@@ -13,6 +13,7 @@ import { citingPages, isStale, loadCorpus } from '../../lib/corpus';
 import { longDate } from '../../lib/cite';
 import { breadcrumbs, graph, organization, website } from '../../lib/schema';
 import { TODAY } from '../../lib/today';
+import { claimChecksum } from '../../lib/machine';
 
 import { clip, endSentence } from '../../lib/excerpt';
 export const getStaticPaths = (async () => {
@@ -215,8 +216,8 @@ const jsonLd = graph(organization(), website(), breadcrumbs(trail), {
 										<Quote size={14} aria-hidden="true" />
 										<div>
 											<p>{claim}</p>
-											<a class="claim-cite mono" href={`#c${i + 1}`} data-claim-uri={`${siteConfig.origin}/sources/${entry.id}#c${i + 1}`}>
-												claim {entry.id}#c{i + 1}
+											<a class="claim-cite mono" href={`#c${i + 1}`} data-claim-uri={`${siteConfig.origin}/sources/${entry.id}#c${i + 1}`} data-checksum={claimChecksum(claim)}>
+												claim {entry.id}#c{i + 1} <span class="claim-sum">sha256:{claimChecksum(claim)}</span>
 											</a>
 										</div>
 									</li>

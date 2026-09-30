@@ -5,6 +5,7 @@ import StatusChip from './StatusChip.astro';
 import { longDate } from '../lib/cite';
 import { isStale } from '../lib/corpus';
 import { siteConfig } from '../config/site';
+import { claimChecksum } from '../lib/machine';
 
 interface Props {
 	sources: CollectionEntry<'sources'>[];
@@ -70,7 +71,30 @@ const AUTHORITY_LABEL: Record<string, string> = {
 									</summary>
 									<div class="disc-body">
 										<ul class="ledger-claims">
-											{source.data.claims.map((claim) => <li>{claim}</li>)}
+											{source.data.claims.map((claim, j) => {
+												/*
+												 * Each claim links to its own address and carries its checksum,
+												 * so a reader or an answer engine can go from this page to the
+												 * exact sentence in one hop and later tell whether it still says
+												 * what it said. The address is the one the source page, the
+												 * companions and claims.json already publish.
+												 */
+												const address = `${source.id}#c${j + 1}`;
+												const sum = claimChecksum(claim);
+												return (
+													<li>
+														<span>{claim}</span>{' '}
+														<a
+															class="claim-cite mono"
+															href={`/sources/${address}`}
+															data-claim-uri={`${siteConfig.origin}/sources/${address}`}
+															data-checksum={sum}
+														>
+															{address} <span class="claim-sum">sha256:{sum}</span>
+														</a>
+													</li>
+												);
+											})}
 										</ul>
 										{source.data.archive && (
 											<p class="mono" style="margin-top: var(--s-3)">

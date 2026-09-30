@@ -15,6 +15,7 @@ Branch: `autopilot/birch-20260930`. Nothing here is deployed, merged or indexed.
 | G5 | Commons provisioning (Postgres, Resend, DNS, moderator) | Aaron | not provisioned | `PUBLIC_COMMONS_READY=false`. Commons units run on the in-memory store only. |
 | G6 | Provider credentials or spend | Aaron | none granted | Every adapter is fixture-backed and off by default. |
 | G7 | Author of record on autopilot-drafted pages | Aaron | decision needed | See below. |
+| G8 | In-page handoff block on the Record | Aaron | decision needed | See below. Blocks D10. |
 
 ## G1. Licensed review packet
 
@@ -39,3 +40,26 @@ a call the loop should make alone. The drafting and the source reading were
 done by the autopilot agents; the receipts say so. Decision needed: keep Aaron
 as author of record once he has read the page, or introduce a distinct author
 entry for automated drafting.
+
+## G8. The in-page handoff block
+
+The D0 audit found `src/components/Handoff.astro` on 177 Record pages (78
+questions, 37 coverage pages, 49 line indexes, 13 tools) rendering "Call a
+broker on (phone)" as the primary button, "Request a quote from Bollinsure",
+and the quotes@ email. The 2026-09-27 revert (`1cfe263`) removed the header
+and homepage intake and left this block in place. AUTOPILOT.md says both "No
+Bollinsure lead CTA on the Record" and "Handoff is the `handoff` field and the
+specialty sites", which can be read either way.
+
+Options:
+1. Keep as is: the block is the sanctioned handoff and shows only where a
+   record's `handoff.recommended` is true.
+2. Neutral licensed-help note: keep the disclosure, replace the call, quote and
+   email buttons with a link to the matching specialty site for the line (per
+   DIRECTION.md) and a neutral pointer to checking a licence.
+3. Remove the block from the Record entirely; the handoff lives only on the
+   specialty sites.
+
+The loop recommends 2: it keeps a route to licensed help, drops the lead
+capture from the evidence pages, and matches DIRECTION.md's statement that the
+lever for lead volume is the eight specialty sites.
