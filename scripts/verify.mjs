@@ -793,6 +793,70 @@ test('regulatory company identity snapshots are source-linked regulator records'
 	}
 });
 
+test('no machine record says a review happened that has not, and every one carries its limits', () => {
+	/*
+	 * D2. All 196 review-bearing companions emitted `lastReviewed` beside
+	 * `reviewState: under-review`, so a machine reader was told a review had
+	 * happened on that date, contradicting llms.txt. Companions now carry
+	 * `recordDate`, `reviewedOn` only once signed off, the reviewer with an
+	 * assigned or signed-off status, and a `limits` array. JSON-LD articles and
+	 * QAPages without `reviewedBy` say so in `creativeWorkStatus`.
+	 */
+	const problems = [];
+	let postured = 0;
+	const walkRecord = (node, where) => {
+		if (!node || typeof node !== 'object') return;
+		if (Array.isArray(node)) return node.forEach((n, i) => walkRecord(n, `${where}[${i}]`));
+		if ('lastReviewed' in node) problems.push(`${where} still emits lastReviewed`);
+		/* The /ask search index is a retrieval index, not a citable record, so it
+		   carries dates and states per chunk without a limits block; it is still
+		   held to never saying lastReviewed. */
+		if ('reviewState' in node && 'recordDate' in node && !where.startsWith('search-index.json')) {
+			postured++;
+			const reviewed = node.reviewState === 'reviewed';
+			if (!reviewed && 'reviewedOn' in node) problems.push(`${where} emits reviewedOn while ${node.reviewState}`);
+			if (node.reviewer && (typeof node.reviewer !== 'object' || node.reviewer.status !== (reviewed ? 'signed-off' : 'assigned'))) {
+				problems.push(`${where} names its reviewer without the right status`);
+			}
+			if (!Array.isArray(node.limits) || !node.limits.includes('not-advice')) problems.push(`${where} carries no limits`);
+			else if (!reviewed && !node.limits.includes('under-editorial-review')) problems.push(`${where} omits under-editorial-review`);
+		}
+		for (const [k, v] of Object.entries(node)) if (v && typeof v === 'object') walkRecord(v, `${where}.${k}`);
+	};
+	for (const file of jsonFiles) {
+		if (/[\\/]releases[\\/]/.test(file)) continue; /* frozen releases are immutable by design */
+		let data;
+		try { data = JSON.parse(read(file)); } catch { continue; }
+		walkRecord(data, path.relative(DIST, file));
+	}
+	assert.ok(postured > 190, `only ${postured} records state a review posture, so this check means little`);
+
+	let articles = 0;
+	for (const file of htmlFiles) {
+		for (const node of ldNodes(read(file))) {
+			const types = [].concat(node['@type']);
+			if (!types.includes('TechArticle') && !types.includes('QAPage')) continue;
+			articles++;
+			if (!node.reviewedBy && !node.creativeWorkStatus) problems.push(`${routeOf(file)} ${types[0]} has neither reviewedBy nor creativeWorkStatus`);
+			if (node.reviewedBy && node.creativeWorkStatus) problems.push(`${routeOf(file)} ${types[0]} is signed off yet says it is not`);
+		}
+	}
+	assert.ok(articles > 100, `only ${articles} article nodes found`);
+
+	/* The same claim in prose: /ask said it was "checking the reviewed library"
+	   and offered a "Recently reviewed" sort while no record was reviewed. */
+	const anyReviewed = ['questions', 'coverages', 'companies', 'states', 'examples', 'modules', 'cross-rules', 'figures'].some((name) => collection(name).some((e) => e.data.reviewState === 'reviewed'));
+	if (!anyReviewed) {
+		for (const file of htmlFiles) {
+			const text = read(file); /* client-side strings count too */
+			for (const phrase of [/reviewed library/i, /Recently reviewed/]) {
+				if (phrase.test(text)) problems.push(`${routeOf(file)} says "${text.match(phrase)[0]}" while nothing is reviewed`);
+			}
+		}
+	}
+	assert.deepEqual(problems.slice(0, 15), [], `review posture problems:\n  ${problems.slice(0, 15).join('\n  ')}`);
+});
+
 test('machine records leak no private or generated content', () => {
 	const banned = ['bir_session', 'utm_', 'dataLayer', 'sessionStorage', 'localStorage'];
 	for (const file of jsonFiles) {

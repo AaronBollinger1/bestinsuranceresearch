@@ -177,6 +177,15 @@ export function dataset(input: {
 	};
 }
 
+/**
+ * The review state a crawler reads from JSON-LD. `reviewedBy` appears only on
+ * sign-off; until then every article and QAPage says in `creativeWorkStatus`
+ * that it has not been signed off, so the absence of `reviewedBy` is not left
+ * for a machine to interpret (D0 finding F2).
+ */
+export const UNREVIEWED_STATUS = 'Under editorial review; not yet signed off by the licensed reviewer';
+const reviewStatus = (state?: string): Json => (state === 'reviewed' ? {} : { creativeWorkStatus: UNREVIEWED_STATUS });
+
 export function techArticle(input: {
 	headline: string;
 	path: string;
@@ -204,6 +213,7 @@ export function techArticle(input: {
 		author: { '@type': 'Person', name: input.author },
 		/* An assigned reviewer is not an endorsement. Require explicit signoff state. */
 		...(input.reviewState === 'reviewed' ? { reviewedBy: { '@type': 'Person', name: input.reviewer } } : {}),
+		...reviewStatus(input.reviewState),
 		articleSection: input.sections,
 		about: input.about?.map((term) => ({ '@type': 'Thing', name: term })),
 		citation: input.citations.map((source) => ({
@@ -240,6 +250,7 @@ export function qaPage(input: {
 		publisher: { '@id': organizationId },
 		isAccessibleForFree: true,
 		...(input.reviewState === 'reviewed' ? { reviewedBy: { '@type': 'Person', name: input.reviewer } } : {}),
+		...reviewStatus(input.reviewState),
 		mainEntity: {
 			'@type': 'Question',
 			name: input.question,

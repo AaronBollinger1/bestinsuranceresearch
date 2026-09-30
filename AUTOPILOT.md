@@ -129,7 +129,7 @@ The SEO work makes the site correct and ready; it does not open indexing.
 | D0 | Design, SEO and GEO audit | A ranked findings report measured against dist, with screenshots at 390/768/1280, and the D-units written into this table. | done (this commit); report in receipts/autopilot/D0/AUDIT.md |
 | D10 | Remove the Bollinsure lead CTA from the Record | 0 `bollinsure.com/quote`, `quotes@` or `tel:` inside `<main>` on Record families; the handoff field routes to the specialty sites; a verify rule holds it. | blocked: owner gate G8 (the 2026-09-27 revert kept the in-page handoff block, so whether it counts as a lead CTA is Aaron's call) |
 | D1 | Claim links and checksums in the ledger | Every question, coverage, guide and company page has a `data-claim-uri` per cited source resolving to an anchor; checksums in HTML equal the companion's; the false "claim addresses visible" sentence is made true. | done (this commit) |
-| D2 | Truthful review state in the machine layer | 0 companions carry `lastReviewed`/`reviewedOn` while unreviewed; every unreviewed Article/QAPage has `creativeWorkStatus`; a `limits` array states not-advice and under-review. | queued |
+| D2 | Truthful review state in the machine layer | 0 companions carry `lastReviewed`/`reviewedOn` while unreviewed; every unreviewed Article/QAPage has `creativeWorkStatus`; a `limits` array states not-advice and under-review. | done (this commit) |
 | D3 | Quotable lede and whole accepted answer | 0 JSON-LD texts or meta descriptions end in an ellipsis; each question has a cited `lede` of 155 characters or fewer. | queued |
 | D4 | The Numbers readable, `--faint` to AA | `/figures`, one industry and one line hub pass 4.5:1; token contrast test green. (Hub bands fixed in R1a.) | queued |
 | D5 | Guide panels visible without JS | 0 static `role="tabpanel" hidden`; keyboard tabs still pass. | queued |
@@ -244,7 +244,7 @@ extension of each track, recorded here first.
 
 ## Pointer
 
-Next unit: **D2**, then D3-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
+Next unit: **D3**, then D4-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
 
 ## Owner gates that stay closed until Aaron says otherwise
 

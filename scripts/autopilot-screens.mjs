@@ -76,6 +76,8 @@ try {
 				'--disable-gpu',
 				'--hide-scrollbars',
 				'--force-prefers-reduced-motion',
+				/* Let client-rendered states (an /ask result) settle before capture. */
+				'--virtual-time-budget=6000',
 				`--window-size=${width},${height}`,
 				`--screenshot=${file}`,
 				`${base}${route}`,

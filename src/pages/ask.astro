@@ -199,10 +199,10 @@ const FAMILY_LABEL: Record<string, string> = {
 				</details>
 
 				<div>
-					<span class="meta" style="display:block;margin-bottom:var(--s-2)" id="rank-label">Ranking</span>
+					<span class="meta" style="display:block;margin-bottom:var(--s-2)" id="rank-label">Sort by</span>
 					<div class="segmented" role="group" aria-labelledby="rank-label" id="ask-rank">
 						<button type="button" data-rank="match" aria-pressed="true">Best match</button>
-						<button type="button" data-rank="reviewed">Recently reviewed</button>
+						<button type="button" data-rank="reviewed">Newest record date</button>
 						<button type="button" data-rank="primary">Most primary sources</button>
 					</div>
 				</div>
@@ -247,7 +247,7 @@ const FAMILY_LABEL: Record<string, string> = {
 			<div id="ask-loading" hidden>
 				<div class="ask-resolving">
 					<BirchLoadingMark size={72} label={null} />
-					<p class="mono">Checking the reviewed library</p>
+					<p class="mono">Checking the published library</p>
 				</div>
 				<div class="skeleton" aria-hidden="true">
 				{
@@ -685,7 +685,7 @@ const FAMILY_LABEL: Record<string, string> = {
 
 	function sortHits(outcome: Extract<SearchOutcome, { hits: unknown }>) {
 		const list = [...outcome.hits];
-		if (rank === 'reviewed') list.sort((a, b) => (a.lastReviewed < b.lastReviewed ? 1 : -1));
+		if (rank === 'reviewed') list.sort((a, b) => (a.recordDate < b.recordDate ? 1 : -1));
 		if (rank === 'primary') list.sort((a, b) => b.bestChunk.sourceIds.length - a.bestChunk.sourceIds.length);
 		return list;
 	}
@@ -709,7 +709,7 @@ const FAMILY_LABEL: Record<string, string> = {
 					`<span class="status status-plain">${escape(TYPE_LABEL[hit.entryType] || hit.entryType)}</span>`,
 					`<span class="meta">Matched in: ${escape(KIND_LABEL[hit.bestChunk.kind] || hit.bestChunk.kind)}</span>`,
 					`<span class="meta">${sourceCount} supporting source${sourceCount === 1 ? '' : 's'}</span>`,
-					`<span class="meta">${reviewLabel} ${escape(hit.lastReviewed)}</span>`,
+					`<span class="meta">${reviewLabel} ${escape(hit.recordDate)}</span>`,
 					'</div>',
 					'<p class="ask-hit-next"><span>Read the answer</span> · Open sources on the record</p>',
 					'</div>',
@@ -757,7 +757,7 @@ const FAMILY_LABEL: Record<string, string> = {
 		}
 		if (outcome.status === 'no-result') {
 			show(emptyState, true);
-			say('No cited match in the reviewed library. The question stays on this page. Nothing was sent to a provider.');
+			say('No cited match in the published library. The question stays on this page. Nothing was sent to a provider.');
 			addTurn({ q: query, status: 'no-result', count: 0, hits: [] });
 			return;
 		}

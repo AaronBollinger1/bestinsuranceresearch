@@ -126,7 +126,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			audience: d.audience,
 			topics: d.topics,
 			effectiveDate: d.effectiveDate,
-			lastReviewed: d.lastReviewed,
+			recordDate: d.lastReviewed,
 			reviewState: d.reviewState,
 			confidence: d.confidence,
 		};
@@ -152,7 +152,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			audience: d.family === 'commercial' ? 'business-owner' : 'individual',
 			topics: [d.line],
 			effectiveDate: d.effectiveDate,
-			lastReviewed: d.lastReviewed,
+			recordDate: d.lastReviewed,
 			reviewState: d.reviewState,
 			confidence: 'established',
 		};
@@ -179,7 +179,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			audience: 'individual',
 			topics: [d.orgType],
 			effectiveDate: d.lastReviewed,
-			lastReviewed: d.lastReviewed,
+			recordDate: d.lastReviewed,
 			reviewState: d.reviewState,
 			confidence: 'established',
 		};
@@ -201,7 +201,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			audience: 'individual',
 			topics: ['regulation', 'availability'],
 			effectiveDate: d.effectiveDate,
-			lastReviewed: d.lastReviewed,
+			recordDate: d.lastReviewed,
 			reviewState: d.reviewState,
 			confidence: 'contextual',
 		};
@@ -224,7 +224,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			audience: d.family === 'commercial' ? 'business-owner' : 'individual',
 			topics: d.lines,
 			effectiveDate: d.lastReviewed,
-			lastReviewed: d.lastReviewed,
+			recordDate: d.lastReviewed,
 			reviewState: d.reviewState,
 			confidence: d.label === 'public-record' ? 'established' : 'contextual',
 		};
@@ -245,7 +245,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			audience: d.family.includes('commercial') ? 'business-owner' : 'individual',
 			topics: d.lines,
 			effectiveDate: d.lastReviewed,
-			lastReviewed: d.lastReviewed,
+			recordDate: d.lastReviewed,
 			reviewState: d.reviewState,
 			confidence: 'contextual',
 		};
@@ -273,7 +273,7 @@ export function chunkCorpus(corpus: Corpus): Chunk[] {
 			audience: d.family === 'commercial' ? 'business-owner' : 'individual',
 			topics: d.lines,
 			effectiveDate: d.lastReviewed,
-			lastReviewed: d.lastReviewed,
+			recordDate: d.lastReviewed,
 			reviewState: d.reviewState,
 			confidence: 'contextual',
 		};

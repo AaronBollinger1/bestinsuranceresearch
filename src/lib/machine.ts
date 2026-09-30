@@ -51,6 +51,33 @@ function base(recordType: string, id: string, path: string): MachineRecordBase {
 	};
 }
 
+/**
+ * The review posture every companion states, in fields a crawler can carry
+ * without parsing prose.
+ *
+ * Companions used to emit `lastReviewed` beside `reviewState: under-review`,
+ * which told a machine reader a review had happened on that date while
+ * llms.txt said only a completed review is described as last reviewed (D0
+ * finding F2). The date is the record date; `reviewedOn` exists only once the
+ * licensed reviewer has signed the record off; the reviewer is named with
+ * whether they are assigned or have signed; and `limits` states the
+ * qualifiers an answer engine should carry with any sentence it lifts.
+ */
+export function reviewPosture(reviewState: string, recordDate: string, reviewer?: string) {
+	const reviewed = reviewState === 'reviewed';
+	return {
+		recordDate,
+		...(reviewed ? { reviewedOn: recordDate } : {}),
+		...(reviewer ? { reviewer: { name: reviewer, status: reviewed ? 'signed-off' : 'assigned' } } : {}),
+		limits: [
+			...(reviewed ? [] : ['under-editorial-review']),
+			'not-advice',
+			'not-a-coverage-determination',
+			'not-an-eligibility-decision',
+		],
+	};
+}
+
 export function sourceRecord(source: CollectionEntry<'sources'>) {
 	return {
 		id: source.id,
@@ -98,9 +125,8 @@ export function questionRecord(
 			topics: d.topics,
 		},
 		effectiveDate: d.effectiveDate,
-		lastReviewed: d.lastReviewed,
+		...reviewPosture(d.reviewState, d.lastReviewed, d.reviewer),
 		author: d.author,
-		reviewer: d.reviewer,
 		sourceIds: sources.map((s) => s.id),
 		sources: sources.map(sourceRecord),
 		relatedQuestions: d.related.map((r) => ({ id: r.id, url: abs(`/questions/${r.id}`) })),
@@ -128,10 +154,9 @@ export function coverageRecord(
 		underwritingInputs: d.underwritingInputs,
 		stateVariations: d.stateVariations.map((v) => ({ state: v.state, note: stripMarkers(v.note) })),
 		effectiveDate: d.effectiveDate,
-		lastReviewed: d.lastReviewed,
+		...reviewPosture(d.reviewState, d.lastReviewed, d.reviewer),
 		reviewState: d.reviewState,
 		author: d.author,
-		reviewer: d.reviewer,
 		sourceIds: sources.map((s) => s.id),
 		sources: sources.map(sourceRecord),
 	};
@@ -185,10 +210,9 @@ export function companyRecord(
 		statutoryBasis: d.statutoryBasis,
 		jurisdictions: d.jurisdictions,
 		whatWeDoNotClaim: d.whatWeDoNotClaim,
-		lastReviewed: d.lastReviewed,
+		...reviewPosture(d.reviewState, d.lastReviewed, d.reviewer),
 		reviewState: d.reviewState,
 		author: d.author,
-		reviewer: d.reviewer,
 		sourceIds: sources.map((s) => s.id),
 		sources: sources.map(sourceRecord),
 		relatedResearch: {
@@ -226,7 +250,7 @@ export function industryRecord(hub: IndustryHub, sources: CollectionEntry<'sourc
 		descriptor: hub.descriptor,
 		lines: hub.lines,
 		firstPublished: hub.firstPublished,
-		lastReviewed: hub.lastReviewed,
+		...reviewPosture(hub.reviewState, hub.lastReviewed),
 		reviewState: hub.reviewState,
 		counts: {
 			coveragePages: hub.coverages.length,
@@ -286,10 +310,9 @@ export function stateRecord(
 		...(d.wcMechanism ? { workersCompensation: { detail: stripMarkers(d.wcMechanism.detail) } } : {}),
 		consumerTools: d.consumerTools,
 		effectiveDate: d.effectiveDate,
-		lastReviewed: d.lastReviewed,
+		...reviewPosture(d.reviewState, d.lastReviewed, d.reviewer),
 		reviewState: d.reviewState,
 		author: d.author,
-		reviewer: d.reviewer,
 		sourceIds: sources.map((s) => s.id),
 		sources: sources.map(sourceRecord),
 	};
@@ -314,10 +337,9 @@ export function exampleRecord(
 		decidedBy: stripMarkers(d.decidedBy),
 		cannotGeneralize: d.cannotGeneralize.map(stripMarkers),
 		provenance: d.provenance,
-		lastReviewed: d.lastReviewed,
+		...reviewPosture(d.reviewState, d.lastReviewed, d.reviewer),
 		reviewState: d.reviewState,
 		author: d.author,
-		reviewer: d.reviewer,
 		sourceIds: sources.map((s) => s.id),
 		sources: sources.map(sourceRecord),
 	};
@@ -334,7 +356,7 @@ export function toolRecord(entry: CollectionEntry<'tools'>, sources: CollectionE
 		lines: d.lines,
 		summary: d.summary,
 		specification: d.spec,
-		lastReviewed: d.lastReviewed,
+		...reviewPosture(d.reviewState ?? 'under-review', d.lastReviewed),
 		reviewState: d.reviewState,
 		sourceIds: sources.map((s) => s.id),
 		sources: sources.map(sourceRecord),
@@ -547,10 +569,9 @@ export function guideRecord(
 			{ id: 'variations', name: 'State variations', url: abs(`${path}#variations`) },
 		],
 		effectiveDate: d.effectiveDate,
-		lastReviewed: d.lastReviewed,
+		...reviewPosture(d.reviewState, d.lastReviewed, d.reviewer),
 		reviewState: d.reviewState,
 		author: d.author,
-		reviewer: d.reviewer,
 		sourceIds: sources.map((s) => s.id),
 		sources: sources.map(sourceRecord),
 	};
@@ -642,7 +663,7 @@ export function figuresRecord(figures: CollectionEntry<'figures'>[]) {
 			lines: f.data.lines,
 			states: f.data.states,
 			effectiveDate: f.data.effectiveDate,
-			lastReviewed: f.data.lastReviewed,
+			...reviewPosture(f.data.reviewState, f.data.lastReviewed),
 			reviewState: f.data.reviewState,
 			sourceIds: (f.data.sourceIds ?? []).map((r: { id: string } | string) =>
 				typeof r === 'string' ? r : r.id,
@@ -683,10 +704,9 @@ export function moduleRecord(
 			detail: typeof rule.detail === 'string' ? stripMarkers(rule.detail) : rule.detail,
 			action: typeof rule.action === 'string' ? stripMarkers(rule.action) : rule.action,
 		})),
-		lastReviewed: d.lastReviewed,
+		...reviewPosture(d.reviewState, d.lastReviewed, d.reviewer),
 		reviewState: d.reviewState,
 		author: d.author,
-		reviewer: d.reviewer,
 		sourceIds: sources.map((s) => s.id),
 		sources: sources.map(sourceRecord),
 	};

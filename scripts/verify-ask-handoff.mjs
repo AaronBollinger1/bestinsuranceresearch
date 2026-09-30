@@ -69,7 +69,7 @@ test('Ask keeps the corpus first and the motion reduced-motion safe', () => {
 	assert.match(page, /ASK_RESEARCH_ROUTE/);
 	assert.match(page, /Search published records only/);
 	assert.match(page, /class="btn btn-primary ask-motion"/);
-	assert.match(page, /Checking the reviewed library/);
+	assert.match(page, /Checking the published library/);
 	assert.equal(page.includes('api.perplexity.ai'), false);
 	assert.match(read('src/components/SiteHeader.astro'), /header-ask-cta ask-motion/);
 	const css = read('src/styles/global.css');
