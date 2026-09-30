@@ -2819,6 +2819,42 @@ test('the review queue lists every record that needs review', () => {
 	}
 });
 
+test('no raw colour lives outside the token file, so a redesign is a token edit', () => {
+	/*
+	 * DR1. The owner will redo the site's aesthetics. That is cheap only if every
+	 * colour a page renders comes from src/styles/tokens.css. 81 raw colours sat
+	 * in global.css, instrument.css and component style blocks; they moved into
+	 * the token file with identical values (27 of 27 before/after captures were
+	 * byte-identical), and this holds the line: a new raw hex or rgb() anywhere
+	 * else in the stylesheets, component style blocks, or inline style
+	 * attributes fails the build.
+	 */
+	const RAW = /#[0-9a-fA-F]{3,8}\b|rgba?\(/;
+	const offenders = [];
+	const scan = (file, text) => {
+		text.split('\n').forEach((line, i) => {
+			if (RAW.test(line.replace(/url\([^)]*\)/g, ''))) offenders.push(`${path.relative(ROOT, file)}:${i + 1}: ${line.trim().slice(0, 80)}`);
+		});
+	};
+	for (const file of walk(path.join(ROOT, 'src/styles'), (f) => f.endsWith('.css') && !f.endsWith('tokens.css'))) scan(file, read(file));
+	for (const file of walk(path.join(ROOT, 'src'), (f) => f.endsWith('.astro'))) {
+		const src = read(file);
+		for (const m of src.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)) scan(file, m[1]);
+		for (const m of src.matchAll(/style="([^"]*)"/g)) scan(file, m[1]);
+	}
+	assert.deepEqual(offenders.slice(0, 15), [], `raw colours outside tokens.css:\n  ${offenders.slice(0, 15).join('\n  ')}`);
+});
+
+test('the redesign inventory names every page file', () => {
+	/* DR1. design/REDESIGN-INVENTORY.md is how a redesign finds the files that
+	   draw each route; a page it does not list is a page the redesign misses. */
+	const inventory = read(path.join(ROOT, 'design/REDESIGN-INVENTORY.md'));
+	const pages = walk(path.join(ROOT, 'src/pages'), (f) => f.endsWith('.astro')).map((f) => path.relative(path.join(ROOT, 'src'), f));
+	assert.ok(pages.length > 50, `only ${pages.length} page files found`);
+	const missing = pages.filter((f) => !inventory.includes(`\`${f}\``));
+	assert.deepEqual(missing, [], 'page files missing from design/REDESIGN-INVENTORY.md; regenerate it');
+});
+
 test('every CSS custom property used is one the token file defines', () => {
 	/*
 	 * Silent by construction. `border: 1px solid var(--rule)` where `--rule`

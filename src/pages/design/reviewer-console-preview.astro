@@ -180,7 +180,7 @@ const triagePaths = [
 	.console-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: clamp(var(--s-6), 8vw, var(--s-12)); align-items: center; margin-top: var(--s-8); }
 	.console-hero-grid h1 { max-width: 14ch; margin: var(--s-2) 0 var(--s-4); font-size: clamp(2.9rem, 6vw, 5.8rem); letter-spacing: -.045em; }
 	.console-lockup { position: relative; display: grid; place-items: center; min-height: 260px; color: var(--gold-text); }
-	.console-lockup img { position: relative; z-index: 1; width: 74px; height: 74px; object-fit: contain; filter: drop-shadow(0 12px 22px rgba(13, 42, 82, .17)); }
+	.console-lockup img { position: relative; z-index: 1; width: 74px; height: 74px; object-fit: contain; filter: drop-shadow(0 12px 22px var(--u-13-42-82-17)); }
 	.console-lockup > span { position: absolute; bottom: 9%; color: var(--muted); font: var(--text-2xs)/1.4 var(--font-mono); letter-spacing: .12em; }
 	.console-ring { position: absolute; border: 1px solid color-mix(in srgb, var(--gold-edge) 60%, transparent); border-radius: 50%; }
 	.console-ring-one { width: 210px; height: 132px; transform: rotate(-17deg); }
@@ -206,7 +206,7 @@ const triagePaths = [
 	.console-card-heading > div:first-child { display: flex; gap: var(--s-3); align-items: start; }
 	.console-icon, .console-gate-icon, .console-triage-icon { display: grid; place-items: center; width: 34px; height: 34px; flex: 0 0 auto; border-radius: var(--r-2); }
 	.console-icon-gold, .console-triage-icon { background: var(--gold-wash); color: var(--gold-text); }
-	.console-gate-icon { margin-bottom: var(--s-4); border-radius: 50%; background: var(--brand-blue); color: #fff; }
+	.console-gate-icon { margin-bottom: var(--s-4); border-radius: 50%; background: var(--brand-blue); color: var(--white); }
 	.console-id { color: var(--faint); }
 	.console-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-2); margin-top: var(--s-5); }
 	.console-facts > div { padding: var(--s-3); border: 1px solid var(--line); border-radius: var(--r-2); }

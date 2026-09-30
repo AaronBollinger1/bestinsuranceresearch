@@ -130,7 +130,7 @@ keeps the site ready for that redesign and keeps improving everything else.
 
 | Unit | Title | Done when | Status |
 |---|---|---|---|
-| DR1 | Redesign readiness | Every raw colour in `src/styles/*.css` outside `tokens.css` is a token with the identical value (no rendered change, proved by before/after screenshots); a page-family and component inventory in `design/REDESIGN-INVENTORY.md` says which template renders each route; a verify rule fails a new raw hex outside the token file. | queued |
+| DR1 | Redesign readiness | Every raw colour in `src/styles/*.css` outside `tokens.css` is a token with the identical value (no rendered change, proved by before/after screenshots); a page-family and component inventory in `design/REDESIGN-INVENTORY.md` says which template renders each route; a verify rule fails a new raw hex outside the token file. | done (this commit) |
 
 ### Track D - Finish the site: design, motion, abilities, schema, SEO, GEO
 
@@ -266,7 +266,7 @@ extension of each track, recorded here first.
 
 ## Pointer
 
-Next unit: **DR1**, then D5, D7, D6, D8, D9, D12-D14, D16, then content growth (R1b, H1-H4, R4-R6: topic, company and statistics pages from existing templates) as usage allows, then D4-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
+Next unit: **D5**, then D7, D6, D8, D9, D12-D14, D16, then content growth (R1b, H1-H4, R4-R6: topic, company and statistics pages from existing templates) as usage allows, then D4-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
 
 ## Owner gates that stay closed until Aaron says otherwise
 

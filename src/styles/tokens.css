@@ -120,6 +120,57 @@
 	--gutter: 24px;
 	--header-h: 72px;
 	--tap: 44px;
+	/*
+	 * Unrationalised one-off colours, moved here from the stylesheets and component
+	 * style blocks with their values unchanged (DR1). Each is named by its value,
+	 * not a role, on purpose: the redesign decides the roles. The comment names
+	 * where each is used. scripts/verify.mjs fails any new raw colour outside
+	 * this file, so this list only shrinks from here.
+	 */
+	--u-000000: #000; /* global.css, instrument.css */
+	--u-13-42-82-07: rgba(13,42,82,.07); /* global.css */
+	--u-13-42-82-12: rgba(13, 42, 82, .12); /* components/BirchLoadingMark.astro, global.css */
+	--u-13-42-82-14: rgba(13, 42, 82, .14); /* global.css, pages/shelf.astro */
+	--u-13-42-82-16: rgba(13, 42, 82, .16); /* global.css */
+	--u-13-42-82-17: rgba(13, 42, 82, .17); /* pages/design/reviewer-console-preview.astro */
+	--u-13-42-82-18: rgba(13, 42, 82, .18); /* pages/design/research-pipeline-preview.astro */
+	--u-15-46-109-3: rgba(15, 46, 109, .3); /* global.css */
+	--u-1b2837: #1b2837; /* pages/explore.astro */
+	--u-1d2836: #1d2836; /* instrument.css */
+	--u-1d2938: #1d2938; /* global.css */
+	--u-23-33-46-08: rgba(23, 33, 46, .08); /* global.css */
+	--u-23-33-46-15: rgba(23, 33, 46, .15); /* global.css */
+	--u-23-33-46-25: rgba(23,33,46,.25); /* components/SourceInspector.astro */
+	--u-243141: #243141; /* global.css */
+	--u-255-255-255-12: rgba(255,255,255,.12); /* global.css */
+	--u-255-255-255-14: rgba(255,255,255,.14); /* global.css */
+	--u-255-255-255-18: rgba(255,255,255,.18); /* global.css */
+	--u-255-255-255-3: rgba(255,255,255,.3); /* global.css, pages/companies/[slug].astro */
+	--u-255-255-255-32: rgba(255,255,255,.32); /* pages/companies/[slug].astro */
+	--u-255-255-255-35: rgba(255, 255, 255, .35); /* global.css */
+	--u-255-255-255-52: rgba(255, 255, 255, .52); /* global.css */
+	--u-255-255-255-9: rgba(255,255,255,.9); /* global.css */
+	--u-255fc9: #255fc9; /* global.css */
+	--u-2a3b4d: #2a3b4d; /* global.css */
+	--u-39-198-255-08: rgba(39,198,255,.08); /* global.css */
+	--u-39-198-255-48: rgba(39,198,255,.48); /* global.css */
+	--u-47-111-230-26: rgba(47, 111, 230, .26); /* global.css */
+	--u-596879: #596879; /* pages/explore.astro */
+	--u-8e99a6: #8e99a6; /* global.css, instrument.css */
+	--u-97a2af: #97a2af; /* global.css */
+	--u-999999: #999; /* global.css, instrument.css, components/ToolFrame.astro (print) */
+	--u-9aa5b2: #9aa5b2; /* global.css, instrument.css */
+	--u-9eabb8: #9eabb8; /* pages/explore.astro */
+	--u-9ed3b4: #9ed3b4; /* instrument.css */
+	--u-b7c0cb: #b7c0cb; /* global.css, pages/explore.astro */
+	--u-cbd3dc: #cbd3dc; /* pages/explore.astro, pages/start.astro */
+	--u-d2e2ed: #d2e2ed; /* global.css */
+	--u-dce2e9: #dce2e9; /* global.css, instrument.css, pages/design/commons-preview.astro */
+	--u-e0c477: #e0c477; /* global.css */
+	--u-eed7d0: #eed7d0; /* global.css */
+	--u-f0b3a3: #f0b3a3; /* instrument.css */
+	--u-f2d79a: #f2d79a; /* instrument.css */
+	--u-f7e4ba: #f7e4ba; /* global.css */
 }
 
 @media (max-width: 640px) {

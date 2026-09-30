@@ -162,7 +162,7 @@ const gateRows = [
 	.research-hero-grid .page-lede { max-width: 48ch; }
 	.research-hero-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-6); }
 	.research-bird-mark { position: relative; display: grid; place-items: center; min-height: 300px; color: var(--gold-text); }
-	.research-bird-mark img { position: relative; z-index: 1; width: 72px; height: 72px; object-fit: contain; filter: drop-shadow(0 12px 22px rgba(13, 42, 82, .18)); animation: research-bird-float 5s var(--ease-soft) infinite; }
+	.research-bird-mark img { position: relative; z-index: 1; width: 72px; height: 72px; object-fit: contain; filter: drop-shadow(0 12px 22px var(--u-13-42-82-18)); animation: research-bird-float 5s var(--ease-soft) infinite; }
 	.research-bird-mark > span { position: absolute; bottom: 12%; color: var(--muted); font: var(--text-2xs)/1.4 var(--font-mono); letter-spacing: .09em; text-align: center; }
 	.research-orbit { position: absolute; border: 1px solid color-mix(in srgb, var(--gold-edge) 60%, transparent); border-radius: 50%; transform: rotate(-18deg); }
 	.research-orbit-one { width: 220px; height: 132px; animation: research-orbit-one 10s linear infinite; }
@@ -207,7 +207,7 @@ const gateRows = [
 	.research-claim-state { color: var(--gold-text); font: var(--text-2xs)/1.2 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; }
 	.research-gate-card, .research-safety-card { padding: var(--s-5); border: 1px solid var(--line-strong); border-radius: var(--r-3); background: var(--paper); box-shadow: var(--elev-2); }
 	.research-gate-card { position: sticky; top: var(--s-5); }
-	.research-gate-icon { background: var(--brand-blue); color: #fff; }
+	.research-gate-icon { background: var(--brand-blue); color: var(--white); }
 	.research-gate-card h2 { margin: var(--s-2) 0 var(--s-3); font-family: var(--font-display); font-size: var(--text-3xl); font-weight: 400; }
 	.research-gate-list { display: grid; gap: var(--s-4); padding: 0; margin: var(--s-5) 0 0; list-style: none; }
 	.research-gate-list li { display: grid; grid-template-columns: 10px minmax(0, 1fr); gap: var(--s-3); align-items: start; }

@@ -170,7 +170,7 @@ const shelfItems = [
 	.shelf-compass-ring span:nth-child(2) { right: 12%; }
 	.shelf-compass-ring span:nth-child(3) { bottom: 12%; }
 	.shelf-compass-ring span:nth-child(4) { left: 12%; }
-	.shelf-compass-ring img { position: relative; z-index: 1; width: 58px; height: 58px; object-fit: contain; filter: drop-shadow(0 10px 18px rgba(13, 42, 82, .14)); }
+	.shelf-compass-ring img { position: relative; z-index: 1; width: 58px; height: 58px; object-fit: contain; filter: drop-shadow(0 10px 18px var(--u-13-42-82-14)); }
 	.shelf-compass-caption { max-width: 17ch; margin-top: var(--s-4); color: var(--muted); font: var(--text-2xs)/1.4 var(--font-mono); letter-spacing: .06em; text-align: center; text-transform: uppercase; }
 	.shelf-trust-card, .shelf-gate-card { padding: clamp(var(--s-5), 3vw, var(--s-8)); border: 1px solid var(--line-strong); border-radius: var(--r-4); background: var(--paper); box-shadow: var(--elev-2); }
 	.shelf-trust-card { align-self: stretch; }
@@ -181,7 +181,7 @@ const shelfItems = [
 	.shelf-privacy-steps li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: var(--s-3); align-items: center; position: relative; }
 	.shelf-privacy-steps li + li::before { position: absolute; top: -18px; left: 13px; width: 1px; height: 14px; background: var(--line-strong); content: ''; }
 	.shelf-privacy-steps li > span { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid var(--line-strong); border-radius: 50%; color: var(--muted); font: var(--text-xs)/1 var(--font-mono); }
-	.shelf-privacy-steps li.is-current > span { border-color: var(--brand-blue); background: var(--brand-blue); color: #fff; }
+	.shelf-privacy-steps li.is-current > span { border-color: var(--brand-blue); background: var(--brand-blue); color: var(--white); }
 	.shelf-privacy-steps strong, .shelf-privacy-steps small { display: block; }
 	.shelf-privacy-steps strong { color: var(--ink); font-size: var(--text-sm); }
 	.shelf-privacy-steps small { margin-top: 2px; color: var(--muted); font-size: var(--text-xs); line-height: var(--leading-snug); }

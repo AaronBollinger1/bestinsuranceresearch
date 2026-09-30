@@ -63,7 +63,7 @@ const { sources } = Astro.props;
 </script>
 <style>
   .source-inspector { inset: 0 0 0 auto; width: min(460px,100%); height: 100dvh; max-width: 100%; max-height: 100dvh; margin: 0; padding: 0; border: 0; border-left: 1px solid var(--line); background: var(--paper); color: var(--body); box-shadow: var(--elev-3); overscroll-behavior: contain; }
-  .source-inspector::backdrop { background: rgba(23,33,46,.25); }
+  .source-inspector::backdrop { background: var(--u-23-33-46-25); }
   .inspector-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px; background: var(--paper); border-bottom: 1px solid var(--line); }
   .inspector-eyebrow { font-size: var(--text-xs); color: var(--muted); }
   .inspector-head h2 { margin: 5px 0 0; font: 600 var(--text-xl)/1.2 var(--font-sans); letter-spacing: -.03em; }

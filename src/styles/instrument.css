@@ -16,7 +16,7 @@
 /* ---- Position header: a persistent account summary ---- */
 .position-header {
 	background: var(--ink);
-	color: #dce2e9;
+	color: var(--u-dce2e9);
 	border-bottom: var(--bw-hair) solid var(--line-ink);
 	padding-block: var(--s-5);
 }
@@ -35,7 +35,7 @@
 	font-size: var(--text-2xl);
 	font-weight: 400;
 }
-.position-title p { margin: 0; color: #9aa5b2; font-size: var(--text-sm); max-width: 66ch; }
+.position-title p { margin: 0; color: var(--u-9aa5b2); font-size: var(--text-sm); max-width: 66ch; }
 
 /* ---- Figures: the numbers, tabular and vertically comparable ---- */
 .figures {
@@ -48,13 +48,13 @@
 	overflow: hidden;
 	background: var(--line-ink);
 }
-.figure { display: grid; gap: 2px; padding: var(--s-3) var(--s-4); background: #1d2836; }
+.figure { display: grid; gap: 2px; padding: var(--s-3) var(--s-4); background: var(--u-1d2836); }
 .figure dt {
 	font-family: var(--font-mono);
 	font-size: var(--text-2xs);
 	letter-spacing: 0.05em;
 	text-transform: uppercase;
-	color: #8e99a6;
+	color: var(--u-8e99a6);
 }
 .figure dd {
 	margin: 0;
@@ -66,12 +66,12 @@
 }
 /* Several hubs and ledgers fill a figure with b and span rather than dd and
    dt. Unstyled, those inherit body ink and sat dark on the dark ground. */
-.figure > span { order: 2; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.05em; text-transform: uppercase; color: #8e99a6; }
+.figure > span { order: 2; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.05em; text-transform: uppercase; color: var(--u-8e99a6); }
 .figure > b { order: 1; font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: var(--text-xl); font-weight: 500; line-height: 1.1; color: var(--paper); }
-.figure dd small { margin-left: 3px; font-size: var(--text-xs); color: #9aa5b2; }
-.figure[data-tone='high'] dd { color: #f0b3a3; }
-.figure[data-tone='medium'] dd { color: #f2d79a; }
-.figure[data-tone='good'] dd { color: #9ed3b4; }
+.figure dd small { margin-left: 3px; font-size: var(--text-xs); color: var(--u-9aa5b2); }
+.figure[data-tone='high'] dd { color: var(--u-f0b3a3); }
+.figure[data-tone='medium'] dd { color: var(--u-f2d79a); }
+.figure[data-tone='good'] dd { color: var(--u-9ed3b4); }
 
 /* ---- Completeness meter: information recorded, never a risk score ---- */
 .meter {
@@ -83,7 +83,7 @@
 	overflow: hidden;
 }
 .meter > span { display: block; height: 100%; border-radius: 999px; background: var(--green); }
-.meter-ink { background: #2b3949; }
+.meter-ink { background: var(--ink-2); }
 .meter-ink > span { background: var(--gold); }
 .meter-row { display: grid; gap: 5px; }
 .meter-label {
@@ -95,7 +95,7 @@
 	color: var(--muted);
 }
 .meter-label b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
-.position-header .meter-label { color: #9aa5b2; }
+.position-header .meter-label { color: var(--u-9aa5b2); }
 .position-header .meter-label b { color: var(--paper); }
 
 /* ---- Module card: reads as a position line ---- */
@@ -248,13 +248,13 @@ a.module-card:hover h3 { color: var(--gold-text); }
 }
 
 @media print {
-	.position-header { background: var(--white) !important; color: #000 !important; }
-	.position-header h1, .figure dd, .figure dt { color: #000 !important; }
+	.position-header { background: var(--white) !important; color: var(--u-000000) !important; }
+	.position-header h1, .figure dd, .figure dt { color: var(--u-000000) !important; }
 	.figure { background: var(--white) !important; }
-	.figures { background: var(--white) !important; border-color: #999 !important; }
+	.figures { background: var(--white) !important; border-color: var(--u-999999) !important; }
 	.module-status { display: none !important; }
 	.item, .coverage-line, .module-card { break-inside: avoid; }
-	.meter { border: 1px solid #999; }
+	.meter { border: 1px solid var(--u-999999); }
 }
 
 /* A segmented control with many options must wrap rather than push the page wide. */
