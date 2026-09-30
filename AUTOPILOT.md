@@ -114,6 +114,24 @@ consent. The Record may link to a Commons thread; it never quotes it as fact.
 
 Status: `queued` | `in-progress` | `done <sha>` | `blocked <why>`.
 
+### Design freeze, 2026-09-30 (owner direction)
+
+The general aesthetics will be redone later. Until then the loop changes no
+design: no new colours, type, spacing, radius, motion or layout direction. It
+keeps the site ready for that redesign and keeps improving everything else.
+
+- Allowed: fixes that make existing text readable or usable (a dark-on-dark
+  heading, a collapsed column), token-only refactors that change no rendered
+  value, structure, schema, machine files, content, and new pages built from
+  the existing templates.
+- Deferred to the redesign: D11 (share cards), D15 (gold, chip, radius), the
+  visual parts of D17, and the `--faint` value change in D4.
+- New unit DR1 goes first: redesign readiness.
+
+| Unit | Title | Done when | Status |
+|---|---|---|---|
+| DR1 | Redesign readiness | Every raw colour in `src/styles/*.css` outside `tokens.css` is a token with the identical value (no rendered change, proved by before/after screenshots); a page-family and component inventory in `design/REDESIGN-INVENTORY.md` says which template renders each route; a verify rule fails a new raw hex outside the token file. | queued |
+
 ### Track D - Finish the site: design, motion, abilities, schema, SEO, GEO
 
 Owner direction, 2026-09-30: once R1a lands, this track runs next, ahead of
@@ -248,7 +266,7 @@ extension of each track, recorded here first.
 
 ## Pointer
 
-Next unit: **D5**, then D7 (both highest citability value), then D4, D6, D8-D18, then D4-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
+Next unit: **DR1**, then D5, D7, D6, D8, D9, D12-D14, D16, then content growth (R1b, H1-H4, R4-R6: topic, company and statistics pages from existing templates) as usage allows, then D4-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
 
 ## Owner gates that stay closed until Aaron says otherwise
 
