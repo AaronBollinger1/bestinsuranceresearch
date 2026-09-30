@@ -187,7 +187,7 @@ an entry without the commit that fixes it.
 | I3 | wage-and-hour agent | `employment-practices-liability.json`, first `commonlyExcludes` note, states wage-and-hour market practice with no citation and no "common market practice, not a rule" label. Cite it or delete it. | fixed: no source read, claim deleted |
 | I5 | D3 lede verification | `what-controls-will-a-cyber-insurer-ask-about` shortAnswer says NIST CSF 2.0 and CISA CPGs "supply most of the vocabulary" of insurer questions; no listed claim supports it. Cite it or delete it. | fixed: claim deleted, the record now says no source read establishes it |
 | I6 | D3 lede verification | `schedule-valuables-or-separate-floater` shortAnswer frames "valuation at a loss" without a citation. | fixed: replaced with the cited special-limits claim and a statement that the forms were not read |
-| I7 | I5-I6 screenshots | The `EvidenceBoundary` heading ("Limitations") renders dark on the dark box on every question page, 768px capture. Same class as I2. | queued |
+| I7 | I5-I6 screenshots | The `EvidenceBoundary` heading ("Limitations") renders dark on the dark box on every question page, 768px capture. Same class as I2. | fixed |
 | I4 | R1a agents | Loose ends recorded in the new records: Miller Act 100,000 vs FAR 150,000 threshold; BPC 7071.9(b) cross-reference to a paragraph 7071.10 lacks; the notary bond amount against Gov 8214 damages. Each needs one more source read. | queued |
 
 ### Track R — The Record, wider and deeper
@@ -248,7 +248,7 @@ extension of each track, recorded here first.
 
 ## Pointer
 
-Next unit: **I7**, then D3b, then D4-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
+Next unit: **D3b**, then D4-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
 
 ## Owner gates that stay closed until Aaron says otherwise
 

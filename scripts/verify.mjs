@@ -1471,6 +1471,12 @@ test('every stat figure carries the label and value markup its dark band styles'
 		const body = css.slice(start, css.indexOf('}', start));
 		assert.match(body, /\bcolor:/, `instrument.css gives ${sel} no colour on the dark figure ground`);
 	}
+	/* The same class of fault on the evidence boundary: an h2 on the ink ground
+	   must carry its own light colour (improvement I7). */
+	const globalCss = read(path.join(ROOT, 'src/styles/global.css'));
+	const eb = globalCss.indexOf('.evidence-boundary h2 {');
+	assert.ok(eb >= 0 && /color:\s*var\(--paper\)/.test(globalCss.slice(eb, globalCss.indexOf('}', eb))), 'the evidence boundary heading has no light colour on its dark ground');
+
 	const offenders = [];
 	let seen = 0;
 	for (const file of htmlFiles) {

@@ -876,6 +876,9 @@ a.card:hover .card-title { color: var(--brand-blue-text); }
 	color: #dce2e9;
 	box-shadow: var(--elev-1);
 }
+/* The heading sat in the site's ink heading colour on the ink ground, so
+   "Limitations" was invisible on every question page (improvement I7). */
+.evidence-boundary h2 { margin: 0 0 var(--s-4); color: var(--paper); font-size: var(--text-lg); }
 .evidence-boundary-grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
