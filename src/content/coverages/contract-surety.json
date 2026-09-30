@@ -1,0 +1,196 @@
+{
+	"name": "Contract surety bonds",
+	"line": "contract-surety",
+	"family": "commercial",
+	"definition": "Contract surety is the set of bonds a construction contractor gives an owner on a job: a bid bond when it bids, then a performance bond and a payment bond once it is awarded the work, and a warranty bond, sometimes called a maintenance bond [S:nasbp-32-questions-contract-bonding]. On public work these bonds are mostly required by statute rather than chosen. The Miller Act requires a performance bond and a payment bond before a federal construction contract of more than $100,000 is awarded [S:usc-40-3131-miller-act], and the FAR states the requirement at contracts exceeding $150,000 [S:far-28-102-1]; this record has read no source explaining the difference between those two figures, and the solicitation is where the requirement for a given contract is stated. In California a direct contractor awarded a public works contract involving an expenditure over twenty-five thousand dollars must give a payment bond before work begins [S:ca-civ-code-9550-public-works-payment-bond], in an amount not less than 100 percent of the total amount payable and executed by an admitted surety insurer [S:ca-civ-code-9554-payment-bond-terms]. The general mechanics of suretyship, the three parties and the indemnity agreement, are on the general surety bonds page and are not repeated here. This page is about what each construction bond secures, how big it has to be, and who can claim on it and by when.",
+	"protects": [
+		"On a bid bond, the owner, against a low bidder who does not go on to sign the contract and furnish the bonds [S:far-52-228-1-bid-security-clause]",
+		"On a performance bond, the owner. On a federal contract the performance bond is for the protection of the Government [S:usc-40-3131-miller-act]",
+		"On a California public works payment bond, the persons Civil Code section 9100 authorizes to claim, which include a person providing authorized work and a laborer, but never the direct contractor itself [S:ca-civ-code-9100-public-works-claimants]",
+		"On the same bond, amounts due under the Unemployment Insurance Code and amounts required to be withheld and paid over to the Employment Development Department for work on the contract [S:ca-civ-code-9554-payment-bond-terms]",
+		"Not the contractor who buys the bond. The surety expects to be reimbursed by the principal and indemnitors for anything it pays [S:nasbp-32-questions-contract-bonding]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "What this list is drawn from",
+			"note": "Surety bond forms vary by owner and surety, and this record has read no bond form. Everything below comes from statutes, the FAR and the FAR bid guarantee clause at 52.228-1 [S:far-52-228-1-bid-security-clause]. What a particular bond promises is in that bond and the contract it references."
+		},
+		{
+			"item": "The difference between the low bid and the next price, on a federal bid guarantee",
+			"note": "If the successful bidder fails to execute the contractual documents or furnish executed bonds within 10 days after receipt of the forms, the contracting officer may terminate for default, the bidder is liable for any cost of acquiring the work that exceeds its bid, and the bid guarantee is available to offset the difference [S:far-52-228-1-bid-security-clause]."
+		},
+		{
+			"item": "Forfeited bidder's security on a California public contract",
+			"note": "On refusal or failure of the successful bidder to execute the contract, the public entity may award it to the second lowest bidder and then the third, and a second or third bidder that likewise fails to execute forfeits its bidder's security [S:ca-pcc-5106-bid-forfeiture]. A county must take one of four forms of bidder's security, one of which is a bidder's bond by an admitted surety insurer [S:ca-pcc-20129-county-bidders-security]."
+		},
+		{
+			"item": "Completion of the work, on a performance bond",
+			"note": "A federal performance bond is in an amount the awarding officer considers adequate for the protection of the Government [S:usc-40-3131-miller-act], and it must specifically cover taxes the Government imposes that are collected, deducted or withheld from wages the contractor pays on the contract [S:usc-40-3131-miller-act]. A county's successful bidder must execute a bond for the faithful performance of the contract [S:ca-pcc-20129-county-bidders-security]."
+		},
+		{
+			"item": "Unpaid subcontractors, suppliers and laborers, on a California public works payment bond",
+			"note": "The bond must provide that if the direct contractor or a subcontractor fails to pay a person authorized under section 9100, the surety will pay the obligation and, in an action to enforce the bond, a reasonable attorney's fee fixed by the court [S:ca-civ-code-9554-payment-bond-terms]. The bond is conditioned for payment in full of the claims of all claimants and gives each of them a right of action [S:ca-civ-code-9554-payment-bond-terms]."
+		},
+		{
+			"item": "Supplemental work under the same bond, if the owner waives a new one",
+			"note": "A California payment bond will cover work under a public works contract that supplements the bonded contract, if the public entity waives the requirement of a new bond [S:ca-civ-code-9550-public-works-payment-bond]. Without the waiver the supplemental contract is a separate question."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Whatever the bond form limits, which this record does not establish",
+			"note": "This list sets out the boundaries the statutes and the FAR draw. It is not a list of bond exclusions and none is established here; a performance bond's conditions, notice provisions and penal sum are in the bond itself, which this record has not read."
+		},
+		{
+			"item": "The direct contractor's own unpaid balance",
+			"note": "A direct contractor may not give a stop payment notice or assert a claim against a payment bond under the California public works title [S:ca-civ-code-9100-public-works-claimants]. The bond protects those below the prime, not the prime."
+		},
+		{
+			"item": "Anyone outside the contractual chain to the direct contractor",
+			"note": "A claimant has no right to recover on a California public works payment bond unless it provided work to the direct contractor either directly or through one or more subcontractors under a public works contract [S:ca-civ-code-9566-payment-bond-recovery-condition]."
+		},
+		{
+			"item": "California state-entity contracts, under the Civil Code payment bond section",
+			"note": "Civil Code section 9550 does not apply to a public works contract with a state entity as defined in Public Contract Code section 7103(d) [S:ca-civ-code-9550-public-works-payment-bond]. Under the State Contract Act, every contract must instead provide for separate performance and payment bonds executed by an admitted surety insurer [S:ca-pcc-10221-state-contract-bonds], each equal to at least one-half of the contract price except as otherwise provided in Civil Code section 9554 or other listed provisions [S:ca-pcc-10222-state-contract-bond-amount]."
+		},
+		{
+			"item": "A design professional, as the party required to bond",
+			"note": "For the purpose of the California payment bond requirement, a design professional is not deemed a direct contractor and is not required to give a payment bond [S:ca-civ-code-9550-public-works-payment-bond]."
+		},
+		{
+			"item": "A mistaken bid, without the owner's consent or a court",
+			"note": "A California bidder shall not be relieved of the bid unless by consent of the awarding authority, and no change may be made because of mistake; the bidder's route is an action for the amount forfeited [S:ca-pcc-5101-bidder-relief], which must be filed and served within 90 days after the bid opening or be dismissed [S:ca-pcc-5102-bid-relief-deadline]."
+		},
+		{
+			"item": "A deposit where the statute requires a bond",
+			"note": "A California public works payment bond must be in the form of a bond and not a deposit in lieu of a bond [S:ca-civ-code-9554-payment-bond-terms], and State Contract Act bonds likewise must be bonds and not deposits in lieu of bond [S:ca-pcc-10221-state-contract-bonds]. Federal smaller contracts are different: between $35,000 and $150,000 the contracting officer selects two or more alternative payment protections [S:far-28-102-1]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no deductible in the insurance sense. The surety expects to be indemnified and reimbursed by the principal and indemnitors for any payments or losses [S:nasbp-32-questions-contract-bonding], and in California a principal is bound to reimburse a surety that satisfies the principal obligation what it disbursed, including necessary costs and expenses [S:ca-civ-code-2847-surety-reimbursement].",
+		"Federal bid guarantee: the contracting officer sets the amount, which must be at least 20 percent of the bid price but may not exceed $3 million, and a percentage penal sum may carry a stated maximum dollar limitation [S:far-28-101-2-bid-security-amount]. The clause itself reads as a percentage of the bid price or a dollar figure, whichever is less [S:far-52-228-1-bid-security-clause].",
+		"Federal performance bond on a contract exceeding $150,000: 100 percent of the original contract price plus 100 percent of any increase, unless the contracting officer determines that a lesser amount is adequate for the protection of the Government [S:far-28-102-2-bond-amount].",
+		"Federal payment bond on a contract exceeding $150,000: 100 percent of the original contract price plus 100 percent of any increase, unless the contracting officer makes a written determination supported by specific findings that this amount is impractical, and never less than the performance bond [S:far-28-102-2-bond-amount].",
+		"Original contract price excludes the price of options, except options exercised at the time of award [S:far-28-102-2-bond-amount]. When the contract price increases, the Government must direct the contractor to increase the penal sum, obtain an additional bond, or furnish additional alternative payment protection [S:far-28-102-2-bond-amount].",
+		"California public works payment bond: not less than 100 percent of the total amount payable under the contract [S:ca-civ-code-9554-payment-bond-terms].",
+		"California State Contract Act bonds: each at least one-half of the contract price, subject to the listed exceptions, with a separate Department of Transportation option for projects over two hundred fifty million dollars to set the payment bond at the lesser of one-half the contract price or five hundred million dollars [S:ca-pcc-10222-state-contract-bond-amount].",
+		"The federal bond or alternative payment protection must be furnished before the contractor receives a notice to proceed or is allowed to start work [S:far-28-102-1]; the California payment bond must be given before commencement of work [S:ca-civ-code-9550-public-works-payment-bond]."
+	],
+	"endorsements": [],
+	"relatedPolicies": [
+		"Surety bonds generally, the neighbouring page, which carries the three-party structure, the general agreement of indemnity, the Miller Act 90 day and one year claim deadlines and the California contractor licence bond [S:nasbp-32-questions-contract-bonding]",
+		"License and permit bonds, the other neighbouring page, for bonds a statute requires as a condition of holding a licence rather than of being awarded a contract [S:ca-ins-code-105-surety-insurance]",
+		"Commercial general liability, which is two-party insurance for the contractor and answers a different question from a bond given to the owner [S:nasbp-32-questions-contract-bonding]",
+		"The SBA surety bond guarantee programme, which guarantees bid, payment, performance and ancillary bonds issued by certain sureties for qualified small businesses [S:sba-surety-bond-guarantee-program]"
+	],
+	"underwritingInputs": [
+		"Financial capacity, net worth, cash flow, assets, credit score, work in progress and work history, which almost all sureties consider [S:nasbp-32-questions-contract-bonding]",
+		"The nature of the project to be bonded [S:nasbp-32-questions-contract-bonding]",
+		"Whether the owner is federal, a California state entity, a county or another public entity, since each has its own bond statute or regulation [S:far-28-102-1][S:ca-civ-code-9550-public-works-payment-bond][S:ca-pcc-10221-state-contract-bonds][S:ca-pcc-20129-county-bidders-security]",
+		"The contract price, which sets both whether a bond is required and its amount [S:far-28-102-2-bond-amount][S:ca-civ-code-9550-public-works-payment-bond]",
+		"Whether a performance bond is required, since a federal contracting officer shall not require a bid guarantee without one and shall require one whenever it is, unless the chief of the contracting office waives it for a specific acquisition, and only separate bid guarantees are acceptable for construction [S:far-28-101-1-bid-security-policy]",
+		"Whether the solicitation requires a bid guarantee, and at what percentage or dollar figure [S:far-28-101-2-bid-security-amount]",
+		"Whether the surety holds a Treasury certificate of authority, for a bond to be presented to a federal agency bond-approving official [S:cfr-31-223-16-treasury-circular-570]",
+		"Whether the surety is an admitted surety insurer, which the California payment bond and State Contract Act bonds require [S:ca-civ-code-9554-payment-bond-terms][S:ca-pcc-10221-state-contract-bonds]"
+	],
+	"exposures": [
+		{
+			"item": "A bid the contractor cannot walk away from",
+			"note": "A California bidder cannot be relieved of a bid for mistake without the awarding authority's consent [S:ca-pcc-5101-bidder-relief], and to recover a forfeited amount in court must prove the mistake, written notice within five working days after bid opening detailing how it occurred, a materially different bid, and an error in filling out the bid rather than in judgment or in reading the plans [S:ca-pcc-5103-bid-mistake-elements]."
+		},
+		{
+			"item": "Liability beyond the bid bond itself",
+			"note": "Under the federal clause, a bidder terminated for default for failing to sign or bond within 10 days is liable for any cost of acquiring the work above its bid, and the bid guarantee is only available to offset that difference [S:far-52-228-1-bid-security-clause]. The penal sum of a bid bond is where the surety's liability is generally limited [S:nasbp-32-questions-contract-bonding], not where the bidder's is."
+		},
+		{
+			"item": "A defective bid guarantee that rejects the bid",
+			"note": "In federal sealed bidding, noncompliance with a bid guarantee requirement requires rejection of the bid [S:far-28-101-4-bid-security-noncompliance], except in eight listed situations, such as an unsigned or undated but otherwise acceptable bid bond, where it shall be waived unless the contracting officer determines in writing that acceptance would be detrimental to the Government [S:far-28-101-4-bid-security-noncompliance]."
+		},
+		{
+			"item": "Change orders that outgrow the bond",
+			"note": "Federal bond amounts are pegged to the original contract price plus 100 percent of any increase, and on an increase the Government must direct the contractor to raise the penal sum, obtain an additional bond, or furnish more payment protection [S:far-28-102-2-bond-amount]. In California, a payment bond reaches a supplemental contract only if the public entity waives a new bond [S:ca-civ-code-9550-public-works-payment-bond]."
+		},
+		{
+			"item": "A payment bond claim lost on notice",
+			"note": "To enforce a California public works payment bond claim, a claimant must give the preliminary notice in Chapter 3; failing that, written notice to the surety and bond principal within 15 days after a recorded notice of completion, or 75 days after completion if none was recorded [S:ca-civ-code-9560-payment-bond-notice]. For a claimant with no direct contract with the contractor, that fallback is unavailable once its subcontractor has received its progress payments, except those disputed in good faith [S:ca-civ-code-9560-payment-bond-notice]."
+		},
+		{
+			"item": "A payment bond claim lost on time",
+			"note": "Suit on a California public works payment bond must be brought no later than six months after the period in which a stop payment notice may be given [S:ca-civ-code-9558-payment-bond-action-deadline], and that period is 30 days after a recorded notice of completion, acceptance or cessation, or 90 days after cessation or completion if none is recorded [S:ca-civ-code-9356-stop-payment-notice-period]."
+		},
+		{
+			"item": "Attorney's fees running both ways",
+			"note": "In an action to enforce a California public works payment bond, the court shall award the prevailing party a reasonable attorney's fee [S:ca-civ-code-9564-payment-bond-action]. A claimant who loses may therefore be on the paying side."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Read the bid security requirement in the solicitation, not a remembered percentage",
+			"note": "The contracting officer fixes the federal bid security amount within the 20 percent and $3 million bounds and may modify the standard provision, including the 10 day period for returning executed bonds [S:far-28-101-2-bid-security-amount]."
+		},
+		{
+			"item": "Give written notice of a bid mistake within five working days of opening",
+			"note": "The notice must specify in detail how the mistake occurred [S:ca-pcc-5103-bid-mistake-elements], and any action to recover the forfeited amount must be filed and served within 90 days after bid opening [S:ca-pcc-5102-bid-relief-deadline]."
+		},
+		{
+			"item": "Check the bid bond names the obligee, is signed and is dated",
+			"note": "Those defects appear among the circumstances where federal noncompliance with a bid security requirement shall be waived [S:far-28-101-4-bid-security-noncompliance], but the waiver is lost if the contracting officer determines in writing that acceptance would be detrimental to the Government, so a correct bond avoids depending on it."
+		},
+		{
+			"item": "On a California public job, send preliminary notice and diary the recorded completion date",
+			"note": "Preliminary notice is the primary route to enforce a payment bond claim, with 15 or 75 day fallbacks keyed to recordation of a notice of completion [S:ca-civ-code-9560-payment-bond-notice], and the six month suit deadline also runs from recordation or completion [S:ca-civ-code-9558-payment-bond-action-deadline][S:ca-civ-code-9356-stop-payment-notice-period]."
+		},
+		{
+			"item": "Ask for a bond rider or new bond when the contract grows",
+			"note": "The FAR requires additional protection when the price increases [S:far-28-102-2-bond-amount], and a California payment bond covers a supplemental contract only on the public entity's waiver of a new bond [S:ca-civ-code-9550-public-works-payment-bond], so the paper should be checked at each change."
+		},
+		{
+			"item": "Know the claim can go straight to the surety",
+			"note": "A California claimant may sue on the payment bond whether or not it gave the public entity a stop payment notice, and separately from and without suing the public entity or its officers [S:ca-civ-code-9564-payment-bond-action]. This record states nothing about whether any claim will be paid."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "The twenty-five thousand dollar payment bond trigger, the 100 percent amount, the section 9100 claimant list and the 15 or 75 day notice fallbacks are California public works law [S:ca-civ-code-9550-public-works-payment-bond][S:ca-civ-code-9554-payment-bond-terms][S:ca-civ-code-9560-payment-bond-notice]. The State Contract Act one-half figure [S:ca-pcc-10222-state-contract-bond-amount] and the county bidder's security rule [S:ca-pcc-20129-county-bidders-security] apply to their own classes of public owner."
+		}
+	],
+	"lastReviewed": "2026-09-30",
+	"effectiveDate": "2026-09-30",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"relatedQuestions": [
+		"surety-bond-vs-insurance",
+		"miller-act-payment-bond-deadlines"
+	],
+	"sourceIds": [
+		"nasbp-32-questions-contract-bonding",
+		"usc-40-3131-miller-act",
+		"far-28-102-1",
+		"ca-civ-code-9550-public-works-payment-bond",
+		"ca-civ-code-9554-payment-bond-terms",
+		"far-52-228-1-bid-security-clause",
+		"ca-civ-code-9100-public-works-claimants",
+		"ca-pcc-5106-bid-forfeiture",
+		"ca-pcc-20129-county-bidders-security",
+		"ca-civ-code-9566-payment-bond-recovery-condition",
+		"ca-pcc-10221-state-contract-bonds",
+		"ca-pcc-10222-state-contract-bond-amount",
+		"ca-pcc-5101-bidder-relief",
+		"ca-pcc-5102-bid-relief-deadline",
+		"ca-civ-code-2847-surety-reimbursement",
+		"far-28-101-2-bid-security-amount",
+		"far-28-102-2-bond-amount",
+		"ca-ins-code-105-surety-insurance",
+		"sba-surety-bond-guarantee-program",
+		"cfr-31-223-16-treasury-circular-570",
+		"ca-pcc-5103-bid-mistake-elements",
+		"far-28-101-4-bid-security-noncompliance",
+		"ca-civ-code-9560-payment-bond-notice",
+		"ca-civ-code-9558-payment-bond-action-deadline",
+		"ca-civ-code-9356-stop-payment-notice-period",
+		"ca-civ-code-9564-payment-bond-action",
+		"far-28-101-1-bid-security-policy"
+	]
+}

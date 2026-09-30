@@ -1,0 +1,173 @@
+{
+	"name": "Wage and hour defense",
+	"line": "wage-and-hour-defense",
+	"family": "commercial",
+	"definition": "Wage and hour defense is cover sought for claims that an employer did not pay what wage law requires: minimum wage, overtime, final pay, accurate wage statements, and the penalties, liquidated damages and fee awards that come with them. The liability is statutory and can be read. Under federal law an employer who violates the minimum wage or overtime provisions is liable for the unpaid wages and an additional equal amount as liquidated damages, the claim may be brought by employees on behalf of others similarly situated who consent in writing, and the court shall allow a reasonable attorney's fee to be paid by the defendant [S:usc-29-216-flsa-damages-and-collective-actions]. California layers its own remedies on top, including waiting time penalties for final wages [S:ca-lab-203-waiting-time-penalties], wage statement penalties [S:ca-lab-226-itemized-wage-statements], and representative civil penalty actions under the Private Attorneys General Act [S:ca-lab-2699-paga]. What is not public is the insurance. This record has read no employment practices form or wage and hour endorsement, so it does not say whether or how any policy responds to these claims, whether as defence costs only, within a sublimit, or at all; that is in the form. Whether the unpaid wages themselves can be paid by an insurer is a separate legal question on which this record's sources are insufficient to state an answer, and it is set out below as such.",
+	"protects": [
+		"Not what this page can tell you. This record has read no policy form, so what any policy pays, and whether it pays defence costs, indemnity or neither, is in that policy",
+		"The exposure the cover is sought against is the employer's statutory liability for unpaid minimum wages or overtime, an equal amount as liquidated damages, and the employees' reasonable attorney's fees and costs [S:usc-29-216-flsa-damages-and-collective-actions]",
+		"In California, the further exposure to waiting time penalties [S:ca-lab-203-waiting-time-penalties], wage statement penalties [S:ca-lab-226-itemized-wage-statements], interest on unpaid wages [S:ca-lab-218-6-interest-on-unpaid-wages], and representative civil penalties [S:ca-lab-2699-paga]",
+		"Not the obligation to pay wages. Nothing here removes the duty to keep payroll records and wage statements, which runs whether or not a policy exists [S:dol-whd-fs21-flsa-recordkeeping][S:ca-lab-226-itemized-wage-statements]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "What this list is, and is not",
+			"note": "Everything below is a category of statutory liability a wage and hour claim asserts, read from the statute. None of it is a policy term and no coverage position is established anywhere on this page. The employment practices record next to this one describes discrimination, harassment and retaliation liability; this one describes the wage statutes, and what any form does with them is in that form."
+		},
+		{
+			"item": "Unpaid minimum wage or overtime, and the equal amount on top",
+			"note": "Section 216(b) makes the employer liable for the unpaid minimum wages or unpaid overtime compensation and an additional equal amount as liquidated damages [S:usc-29-216-flsa-damages-and-collective-actions]. The second branch is in section 260: where the employer shows to the satisfaction of the court good faith and reasonable grounds for believing it was not in violation, the court may in its sound discretion award no liquidated damages or a lesser amount [S:usc-29-260-flsa-liquidated-damages-good-faith]."
+		},
+		{
+			"item": "A California claim for the unpaid balance, with interest and fees",
+			"note": "An employee receiving less than the legal minimum wage or overtime may recover in a civil action the unpaid balance, including interest, reasonable attorney's fees and costs, notwithstanding any agreement to work for a lesser wage [S:ca-lab-1194-minimum-wage-overtime-action]. California liquidated damages equal to the unpaid wages reach minimum wage only, and the statute says expressly that they do not reach overtime [S:ca-lab-1194-2-minimum-wage-liquidated-damages]."
+		},
+		{
+			"item": "Final pay not made on time",
+			"note": "If an employer willfully fails to pay a departing employee's wages as the listed sections require, the wages continue as a penalty from the due date at the same rate until paid or an action is commenced, for not more than 30 days [S:ca-lab-203-waiting-time-penalties]. An employee who avoids payment, or refuses it when fully tendered, gets no benefit for that time [S:ca-lab-203-waiting-time-penalties]."
+		},
+		{
+			"item": "Wage statements that are missing or wrong",
+			"note": "An employee injured by a knowing and intentional failure to furnish a compliant statement recovers the greater of actual damages or fifty dollars for the first pay period and one hundred dollars per employee for each later violation, up to four thousand dollars, plus costs and fees [S:ca-lab-226-itemized-wage-statements]. A knowing and intentional failure does not include an isolated and unintentional payroll error due to a clerical or inadvertent mistake [S:ca-lab-226-itemized-wage-statements]."
+		},
+		{
+			"item": "Representative civil penalties",
+			"note": "An aggrieved employee may recover Labor Code civil penalties in a civil action on behalf of the employee and other current or former employees against whom the same violation was committed [S:ca-lab-2699-paga]. The default penalty is one hundred dollars per aggrieved employee per pay period, with lower figures for some wage statement and isolated violations and two hundred dollars where a prior finding or malicious, fraudulent or oppressive conduct is shown [S:ca-lab-2699-paga]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Whatever your own form excludes, which this record does not establish",
+			"note": "This record has read no employment practices form and no wage and hour endorsement. Whether a form excludes wage and hour claims, pays only defence costs, applies a sublimit, or treats unpaid wages differently from penalties and fees is a term of that form, and nothing on this page states one."
+		},
+		{
+			"item": "A loss caused by the wilful act of the insured, under California's general rule",
+			"note": "An insurer is not liable for a loss caused by the wilful act of the insured, but it is not exonerated by the negligence of the insured, or of the insured's agents or others [S:ca-ins-code-533-wilful-act]. Several wage statutes turn on a willful or knowing and intentional failure [S:ca-lab-203-waiting-time-penalties][S:ca-lab-226-itemized-wage-statements], but this record has read no court applying section 533 to a wage claim, and whether any particular claim falls within it is for the courts."
+		},
+		{
+			"item": "Restitution of what was wrongfully acquired, as a matter of public policy, where California courts have so held",
+			"note": "The California Supreme Court, describing its earlier holdings, noted that as a matter of public policy an insured's payment of certain types of restitution cannot be covered by insurance, and that the rule bars coverage only in situations in which the defendant is required to restore to the plaintiff that which was wrongfully acquired [S:ca-bank-of-the-west-v-superior-court-1992]. The same opinion says insurable damages can include awards that compensate third parties even when labelled restitution [S:ca-bank-of-the-west-v-superior-court-1992]. The case concerned a general liability policy and unfair competition, not wages."
+		},
+		{
+			"item": "A claim outside the federal limitation period",
+			"note": "A federal action for unpaid minimum wages, overtime or liquidated damages is forever barred unless commenced within two years after the cause of action accrued, except that a cause of action arising out of a willful violation may be commenced within three years [S:usc-29-255-flsa-statute-of-limitations]."
+		},
+		{
+			"item": "A second penalty for the same wage failure under the Private Attorneys General Act",
+			"note": "An aggrieved employee may not collect a civil penalty for violations of sections 201, 202 and 203, or for a section 226 violation that is not knowing or intentional, in addition to the civil penalty collected for the underlying unpaid wage violation [S:ca-lab-2699-paga]. No action lies under the Act for a posting, notice, agency reporting or filing requirement, except mandatory payroll or workplace injury reporting [S:ca-lab-2699-paga]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"This record has read no form, so it states no limit, sublimit, retention or rule on whether defence costs erode a limit. Those are form terms.",
+		"The size of the federal exposure is a multiple of the wage shortfall rather than the shortfall alone: the unpaid wages, an equal amount as liquidated damages, and a reasonable attorney's fee the court shall allow [S:usc-29-216-flsa-damages-and-collective-actions], subject to the court's discretion on liquidated damages where good faith and reasonable grounds are shown [S:usc-29-260-flsa-liquidated-damages-good-faith].",
+		"The California wage statement penalty per employee is capped at an aggregate of four thousand dollars, plus costs and fees [S:ca-lab-226-itemized-wage-statements]; the waiting time penalty runs at the employee's daily rate for not more than 30 days [S:ca-lab-203-waiting-time-penalties].",
+		"Private Attorneys General Act penalties are counted per aggrieved employee per pay period [S:ca-lab-2699-paga], and are reduced by one-half where the employees' regular pay period is weekly rather than biweekly or semimonthly [S:ca-lab-2699-paga].",
+		"Where the employer had taken all reasonable steps to comply before receiving the notice of violation or a records request, the recoverable Private Attorneys General Act penalty is not more than 15 percent of the penalty sought, and where it takes all reasonable steps to comply prospectively within 60 days after the notice, not more than 30 percent; neither cap applies to the two hundred dollar penalty for prior findings or malicious, fraudulent or oppressive conduct [S:ca-lab-2699-paga].",
+		"Of civil penalties recovered by aggrieved employees, 65 percent goes to the Labor and Workforce Development Agency and 35 percent to the aggrieved employees, except penalties under subdivision (f)(1), which go to the agency [S:ca-lab-2699-paga]. These figures are from the text as last amended effective January 1, 2026, and older descriptions of the Act may not match [S:ca-lab-2699-paga]."
+	],
+	"endorsements": [
+		{
+			"item": "No filed endorsement has been read",
+			"note": "Wage and hour cover, where offered, is written by endorsement or on a separate form that this record has not read. What such an endorsement covers, and whether it is defence only, is in its own wording."
+		}
+	],
+	"relatedPolicies": [
+		"Employment practices liability, the neighbouring record, which covers discrimination, harassment, retaliation and failure to prevent; this record does not repeat it",
+		"Directors and officers liability, where individuals rather than the employing entity are named",
+		"Workers compensation, which answers workplace injury; the Private Attorneys General Act states it is not intended to alter the exclusive remedy of the workers' compensation provisions [S:ca-lab-2699-paga]"
+	],
+	"underwritingInputs": [
+		"How many nonexempt employees there are and in which states, because the federal records and California wage statement duties attach per worker [S:dol-whd-fs21-flsa-recordkeeping][S:ca-lab-226-itemized-wage-statements]",
+		"Whether the employer records hours worked each day and each workweek, the regular rate, the basis of pay and total wages each pay period [S:dol-whd-fs21-flsa-recordkeeping]",
+		"Whether wage statements carry all nine items section 226(a) lists, including every hourly rate in effect and the hours worked at each [S:ca-lab-226-itemized-wage-statements]",
+		"How final pay is handled for employees who are discharged or who quit [S:ca-lab-203-waiting-time-penalties]",
+		"The regular pay period, since Private Attorneys General Act penalties are halved for a weekly pay period [S:ca-lab-2699-paga]",
+		"Whether any agency or court has, within the last five years, found a policy or practice of the employer unlawful [S:ca-lab-2699-paga]",
+		"Whether any notice of violation or employee records request has been received, and what compliance steps were in place before it [S:ca-lab-2699-paga]",
+		"Whether any collective action has been filed and how many written consents have been filed in it [S:usc-29-256-flsa-collective-action-commencement]"
+	],
+	"exposures": [
+		{
+			"item": "A collective action that grows after it is filed",
+			"note": "Employees may sue for themselves and others similarly situated, but no employee is a party plaintiff unless a written consent is filed in the court [S:usc-29-216-flsa-damages-and-collective-actions]. For each claimant not named with a consent on the filing date, the action is commenced on the date that claimant's consent is filed [S:usc-29-256-flsa-collective-action-commencement], so the class, and each person's limitation period, keeps moving after the complaint."
+		},
+		{
+			"item": "A third year of back pay if the violation was willful",
+			"note": "The federal period is two years, extended to three for a cause of action arising out of a willful violation [S:usc-29-255-flsa-statute-of-limitations]. Whether conduct was willful therefore decides how far back the claim reaches, not only what it is worth."
+		},
+		{
+			"item": "A four-year reach back through unfair competition law",
+			"note": "The California Supreme Court held that unlawfully withheld wages may be ordered restored to employees as restitution under the Unfair Competition Law, and that any action on a UCL cause of action is subject to that law's four-year limitation period, so a wage claim that might be barred under Labor Code section 1194 may still be pursued that way where the failure to pay is a business practice [S:ca-cortez-v-purolator-2000]."
+		},
+		{
+			"item": "Fees that follow the claim, not the damages",
+			"note": "The federal court shall allow a reasonable attorney's fee to be paid by the defendant in addition to any judgment [S:usc-29-216-flsa-damages-and-collective-actions], a California minimum wage or overtime claimant recovers fees and costs [S:ca-lab-1194-minimum-wage-overtime-action], and any employee who prevails under the Private Attorneys General Act is entitled to fees and costs [S:ca-lab-2699-paga]."
+		},
+		{
+			"item": "Penalties multiplied by headcount and pay periods",
+			"note": "Wage statement penalties are per employee per pay period up to four thousand dollars each [S:ca-lab-226-itemized-wage-statements], and Private Attorneys General Act penalties are per aggrieved employee per pay period, at two hundred dollars where the employer's policy was found unlawful within the preceding five years [S:ca-lab-2699-paga]."
+		},
+		{
+			"item": "An insurance question with no settled answer in this record",
+			"note": "One California Supreme Court opinion treats unpaid wages as property recoverable as restitution [S:ca-cortez-v-purolator-2000]; another states a public policy against insuring restitution of what was wrongfully acquired [S:ca-bank-of-the-west-v-superior-court-1992]. Neither decides whether an insurer may pay wages, and this record will not combine them into a conclusion. Confidence: insufficient. The form and, in a dispute, the courts decide."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Keep the payroll records the federal rule specifies, for as long as it specifies",
+			"note": "Hours worked each day and each workweek, the regular hourly rate, the basis of pay, and total wages each pay period, with payroll records kept at least three years and the time cards and rate tables behind them two [S:dol-whd-fs21-flsa-recordkeeping]. A claim is argued from those records."
+		},
+		{
+			"item": "Answer a records request within 21 calendar days",
+			"note": "An employer that receives a written or oral request to inspect or copy records under section 226(b) must comply as soon as practicable and no later than 21 calendar days, and failure entitles the employee or the Labor Commissioner to a seven hundred fifty dollar penalty [S:ca-lab-226-itemized-wage-statements]."
+		},
+		{
+			"item": "Document the compliance steps the Private Attorneys General Act names, before and after any notice",
+			"note": "The steps the statute says may count as all reasonable steps include periodic payroll audits with action taken on the results, lawful written policies, supervisor training on Labor Code and wage order compliance, and corrective action with supervisors, judged by the totality of the circumstances [S:ca-lab-2699-paga]. The 60 days after a notice is its own window for prospective steps [S:ca-lab-2699-paga]."
+		},
+		{
+			"item": "Write down the basis for a pay classification when it is made",
+			"note": "Both the federal and California liquidated damages provisions let the court award less where the employer shows good faith and reasonable grounds for believing it was not in violation [S:usc-29-260-flsa-liquidated-damages-good-faith][S:ca-lab-1194-2-minimum-wage-liquidated-damages]. The burden is on the employer and the outcome is discretionary, so a contemporaneous record of the reasoning is the evidence available."
+		},
+		{
+			"item": "Tender final pay in full and record the tender",
+			"note": "The waiting time penalty runs on a willful failure to pay, and an employee who refuses payment when fully tendered, including any penalty then accrued, gets no benefit for that period [S:ca-lab-203-waiting-time-penalties]."
+		},
+		{
+			"item": "Route any representative settlement through the court and the agency",
+			"note": "The superior court must review and approve any settlement of a Private Attorneys General Act action, and the proposed settlement must be submitted to the Labor and Workforce Development Agency at the same time it is submitted to the court [S:ca-lab-2699-paga]. A private resolution of the representative claim without that step is not what the statute provides."
+		},
+		{
+			"item": "Report the claim under whatever policy might respond, and read that form",
+			"note": "This record has read no form and cannot say which policy responds. What it can say is that a federal claim can widen as consents are filed [S:usc-29-256-flsa-collective-action-commencement], so the date a claim first arrives is worth fixing in writing with the insurer or broker rather than waiting to see its size."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "California adds remedies federal law does not: waiting time penalties [S:ca-lab-203-waiting-time-penalties], wage statement penalties [S:ca-lab-226-itemized-wage-statements], mandatory interest on unpaid wages [S:ca-lab-218-6-interest-on-unpaid-wages], representative civil penalties [S:ca-lab-2699-paga], and restitution of wages through unfair competition law on a four-year period [S:ca-cortez-v-purolator-2000]. Its liquidated damages reach minimum wage but not overtime [S:ca-lab-1194-2-minimum-wage-liquidated-damages], where the federal provision reaches both [S:usc-29-216-flsa-damages-and-collective-actions]."
+		}
+	],
+	"lastReviewed": "2026-09-30",
+	"effectiveDate": "2026-09-30",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"usc-29-216-flsa-damages-and-collective-actions",
+		"usc-29-255-flsa-statute-of-limitations",
+		"usc-29-256-flsa-collective-action-commencement",
+		"usc-29-260-flsa-liquidated-damages-good-faith",
+		"ca-lab-203-waiting-time-penalties",
+		"ca-lab-226-itemized-wage-statements",
+		"ca-lab-1194-minimum-wage-overtime-action",
+		"ca-lab-1194-2-minimum-wage-liquidated-damages",
+		"ca-lab-218-6-interest-on-unpaid-wages",
+		"ca-lab-2699-paga",
+		"ca-ins-code-533-wilful-act",
+		"ca-bank-of-the-west-v-superior-court-1992",
+		"ca-cortez-v-purolator-2000",
+		"dol-whd-fs21-flsa-recordkeeping"
+	],
+	"relatedQuestions": []
+}

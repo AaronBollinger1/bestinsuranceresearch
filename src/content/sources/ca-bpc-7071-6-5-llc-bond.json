@@ -1,0 +1,26 @@
+{
+	"title": "California Business and Professions Code section 7071.6.5 - Limited liability company contractor worker bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7071.6.5",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 7071.6.5(a) provides that the board shall require, as a condition precedent to the issuance, reissuance, reinstatement, reactivation, renewal, or continued valid use of a limited liability company license, that the applicant or licensee file or have on file a surety bond in the sum of one hundred thousand dollars ($100,000).",
+		"Section 7071.6.5(b) provides that the bond shall be executed by an admitted surety in favor of the State of California, in a form acceptable to the registrar and filed with the registrar, electronically or otherwise, by the applicant or licensee.",
+		"Section 7071.6.5(c) provides that the bond shall be for the benefit of any employee damaged by the employer's failure to pay wages, interest on wages, or fringe benefits and is intended to serve as an additional safeguard for workers employed by or contracted to work for a limited liability company.",
+		"Section 7071.6.5(d) provides that if an applicant or licensee subject to subdivision (a) is also a party to a collective bargaining agreement, the bond shall also cover welfare fund contributions, pension fund contributions, and apprentice program contributions.",
+		"Section 7071.6.5(e) provides that the bond shall not be applicable to a licensee whose license has been inactivated on the official records of the board during the period the license is inactive.",
+		"The section carries the notation Added by Stats. 2010, Ch. 698, Sec. 13 (SB 392), effective January 1, 2011."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. The bond runs to employees, not to customers of the company."
+}

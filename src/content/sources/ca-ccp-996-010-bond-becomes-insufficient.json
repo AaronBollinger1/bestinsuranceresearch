@@ -1,0 +1,24 @@
+{
+	"title": "California Code of Civil Procedure section 996.010 - Court determination that a bond has become insufficient",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=996.010",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 996.010(a) provides that if a bond is given in an action or proceeding, the court may determine that the bond is or has from any cause become insufficient because the sureties are insufficient or because the amount of the bond is insufficient.",
+		"Section 996.010(b) provides that the determination shall be upon motion supported by affidavit or upon the court's own motion, and that the motion is deemed to be an objection to the bond.",
+		"Section 996.010(c) provides that upon the determination the court shall order that a sufficient new, additional, or supplemental bond be given within a reasonable time not less than five days, subject to any limitations in the statute providing for the bond.",
+		"Section 996.010(d) provides that if a sufficient bond is not given within the time required by the court order, all rights obtained by giving the original bond immediately cease and the court shall upon ex parte motion so order."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Bond and Undertaking Law (Code of Civil Procedure 995.010 onward). By section 995.020 the chapter yields where the statute requiring a particular bond prescribes a different rule or is inconsistent, so this section is a default rather than the rule for every bond. Added by Stats. 1982, Ch. 998."
+}

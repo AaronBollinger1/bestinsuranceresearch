@@ -1,0 +1,26 @@
+{
+	"title": "California Insurance Code Section 10509.956 (what a basic life insurance illustration must show)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10509.956",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation. The section credit on the official host at the time of access read Added by Stats. 1996, Ch. 1106, Sec. 1. Effective January 1, 1997, with the section operative July 1, 1997 pursuant to Section 10509.965.",
+	"status": "active",
+	"claims": [
+		"Section 10509.956(a) requires guaranteed death benefits and values available upon surrender to be shown and clearly labeled guaranteed, requires nonguaranteed elements to be clearly labeled nonguaranteed and not based on a scale more favorable than the insurer's illustrated scale, and requires guaranteed elements to be shown before the corresponding nonguaranteed elements.",
+		"Section 10509.956(a)(10) requires the value available upon surrender to be the amount available to the policy owner in a lump sum after deduction of surrender charges, policy loans, and policy loan interest, as applicable.",
+		"Section 10509.956(a)(13) requires that, if the illustration shows the premium payer may have the option to allow policy charges to be paid using nonguaranteed values, the illustration shall clearly disclose that a charge continues to be required and that, depending on actual results, the premium payer may need to continue or resume premium outlays.",
+		"Section 10509.956(b)(5) requires a basic illustration to include the statement This illustration assumes that the currently illustrated nonguaranteed elements will continue unchanged for all years shown. This is not likely to occur, and actual results may be more or less favorable than those shown.",
+		"Section 10509.956(c) requires a numeric summary for at least policy years 5, 10 and 20 and at age 70, if applicable, on three bases: policy guarantees, the insurer's illustrated scale, and the illustrated scale with nonguaranteed elements reduced as the subdivision specifies, and requires the year in which coverage would cease to be identified for each basis if coverage would cease prior to policy maturity or age 100.",
+		"Section 10509.956(d) requires the applicant or policy owner to sign and date a statement that they have received a copy of the illustration and understand that any nonguaranteed elements illustrated are subject to change and could be either higher or lower, and requires the producer to sign a certification that they have explained this and made no statements inconsistent with the illustration.",
+		"Section 10509.956(e) requires a basic illustration to show the premium outlay, guaranteed death benefit and guaranteed value available upon surrender for at least each policy year from 1 to 10 and every fifth policy year thereafter ending at age 100, policy maturity or final expiration, and, except for term insurance beyond the 20th year, for any year in which the premium outlay or contract premium is to change."
+	]
+}

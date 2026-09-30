@@ -1,0 +1,156 @@
+{
+	"name": "Additional insured status (California)",
+	"line": "additional-insured",
+	"family": "commercial",
+	"definition": "Additional insured status is insured status on somebody else's policy. It is created by an endorsement to the named insured's policy, not by the contract that asks for it: on the ISO form CG 20 10 12 19, the endorsement states that Section II - Who Is An Insured is amended to include as an additional insured the person or organization shown in the Schedule, but only with respect to liability caused, in whole or in part, by the named insured's acts or omissions, or those of people acting on its behalf, in the performance of its ongoing operations for that additional insured at the scheduled location [S:iso-cg-20-10-12-19]. So the additional insured's protection is borrowed. It sits inside the named insured's limits, on the named insured's form, and reaches only the liability the endorsement's own words describe. California adds one statute written directly to this line. Insurance Code section 11580.04 provides that an additional insured endorsement issued by an admitted or nonadmitted insurer for the benefit of a public agency, on a construction contract to which Civil Code section 2782(b) applies, shall not provide any duty of indemnity coverage for the additional insured's active negligence where an agreement to indemnify the additional insured would be invalid under section 2782(b) [S:ca-ins-code-11580-04-public-agency-additional-insured]. Its scope stops there: it names public agencies only, and it limits the duty of indemnity coverage without mentioning the duty to defend. For private construction subcontracts, Civil Code section 2782.05(b)(6) preserves a contract provision requiring the promisor to buy insurance covering its own acts or omissions, including additional insured endorsements for ongoing and completed operations [S:ca-civ-code-2782-05]. On sources: the ISO text relied on here is the 12 19 editions of CG 20 10 and CG 20 37 as posted by the New York State Office of General Services [S:iso-cg-20-10-12-19][S:iso-cg-20-37-12-19]. This record has read no California-filed copy of either form, no blanket additional insured endorsement and no carrier's own additional insured form, so what any particular endorsement grants is in that endorsement.",
+	"protects": [
+		"Not what this page can tell you for a particular policy. Additional insured endorsements vary by form, edition and carrier, and this record has read only two ISO editions, so what any endorsement grants is in the endorsement actually issued",
+		"On CG 20 10 12 19, the scheduled person or organization, for liability caused in whole or in part by the named insured's acts or omissions in its ongoing operations for that party at the scheduled location [S:iso-cg-20-10-12-19]",
+		"On CG 20 37 12 19, the scheduled person or organization, for bodily injury or property damage caused in whole or in part by the named insured's work at the scheduled location, performed for that party and included in the products-completed operations hazard [S:iso-cg-20-37-12-19]",
+		"Not the additional insured's own negligence without limit, where the additional insured is a California public agency on a construction contract within Civil Code section 2782(b): Insurance Code section 11580.04 removes duty of indemnity coverage for its active negligence where an indemnity agreement would be invalid under that subdivision [S:ca-ins-code-11580-04-public-agency-additional-insured]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "What the two read ISO forms say, not what any policy says",
+			"note": "Everything in this list is drawn from the text of CG 20 10 12 19 and CG 20 37 12 19 as posted by the New York State Office of General Services [S:iso-cg-20-10-12-19][S:iso-cg-20-37-12-19], or from California statute. None of it establishes what an endorsement on a particular policy grants, and none of it decides whether any loss falls inside a grant. That is for the insurer on the policy actually issued, and in a dispute for a court."
+		},
+		{
+			"item": "Liability caused in whole or in part by the named insured, during ongoing operations",
+			"note": "The CG 20 10 12 19 grant reaches liability for bodily injury, property damage or personal and advertising injury caused, in whole or in part, by the named insured's acts or omissions or those of people acting on its behalf, in the performance of ongoing operations for the additional insured at the scheduled location [S:iso-cg-20-10-12-19]. The words in whole or in part are the form's; the form does not say what share of causation is enough, and this record does not either."
+		},
+		{
+			"item": "Liability from finished work, on a separate form",
+			"note": "CG 20 37 12 19 adds the scheduled party for bodily injury or property damage caused, in whole or in part, by the named insured's work at the designated location, performed for that additional insured and included in the products-completed operations hazard [S:iso-cg-20-37-12-19]. Personal and advertising injury, which appears in the CG 20 10 grant [S:iso-cg-20-10-12-19], is not in the CG 20 37 grant as written."
+		},
+		{
+			"item": "A public agency's own exposure, to the extent section 11580.04 allows",
+			"note": "Section 11580.04 does not forbid additional insured endorsements for public agencies. It removes duty of indemnity coverage for the agency's active negligence where an indemnity agreement would be invalid under Civil Code section 2782(b), and where one claim involves both the original insured's negligence and the agency's uncovered active negligence it limits the insurer's obligation to what the section permits [S:ca-ins-code-11580-04-public-agency-additional-insured]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Whatever the endorsement and the underlying form exclude, which this record does not establish",
+			"note": "This record has not read any issued endorsement together with the policy it is attached to, so this list sets out only the boundaries the two read ISO endorsements and the statute state. The exclusions that apply to a particular additional insured are in that policy and that endorsement."
+		},
+		{
+			"item": "Injury or damage after the work is finished, on the ongoing operations form",
+			"note": "CG 20 10 12 19 adds exclusions for bodily injury or property damage occurring after all work on the project to be performed by or on behalf of the additional insured at the location has been completed, or after the portion of the named insured's work out of which the injury arises has been put to its intended use by anyone other than another contractor or subcontractor working for a principal on the same project [S:iso-cg-20-10-12-19]. The completed operations grant is a different form [S:iso-cg-20-37-12-19]."
+		},
+		{
+			"item": "Anything broader than the contract required, where a contract required it",
+			"note": "Both read editions state that the insurance afforded to the additional insured only applies to the extent permitted by law, and that where a contract or agreement requires the coverage it will not be broader than what the named insured is required by that contract to provide [S:iso-cg-20-10-12-19][S:iso-cg-20-37-12-19]. The contract therefore sets a ceiling on these forms, not only a floor."
+		},
+		{
+			"item": "Duty of indemnity coverage for a public agency's active negligence, within section 11580.04",
+			"note": "Where the endorsement is for the benefit of a public agency on a construction contract within Civil Code section 2782(b), and an agreement to indemnify the agency would be invalid under that subdivision, the endorsement shall not provide any duty of indemnity coverage for the agency's active negligence [S:ca-ins-code-11580-04-public-agency-additional-insured]. Section 2782(b) voids public agency construction contract provisions that purport to impose on a contractor, or relieve the agency from, liability for the agency's active negligence, with the rule stated separately for contracts entered into before and on or after January 1, 2013 [S:ca-civ-code-2782]. The section is silent on the duty to defend."
+		},
+		{
+			"item": "A private party's endorsement, from section 11580.04",
+			"note": "Section 11580.04 is written for endorsements for the benefit of a public agency [S:ca-ins-code-11580-04-public-agency-additional-insured]. It does not address an additional insured endorsement for a private owner, general contractor or other private party, and nothing on this page extends it to one."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no separate limit. Both read editions provide that where a contract requires the coverage, the most the insurer will pay on behalf of the additional insured is the amount required by the contract or the amount available under the applicable limits of insurance, whichever is less, and that the endorsement shall not increase the applicable limits [S:iso-cg-20-10-12-19][S:iso-cg-20-37-12-19].",
+		"On that wording the additional insured is paid from the named insured's applicable limits rather than from a limit of its own [S:iso-cg-20-10-12-19]. This record has read no aggregate or per-project endorsement, so how the limits on a given policy are structured, and what else draws on them, is in that policy.",
+		"Section 11580.04 states no dollar figure. Its limit is a limit on what the insurer is obliged to do, confined in a mixed claim to obligations the section permits [S:ca-ins-code-11580-04-public-agency-additional-insured]."
+	],
+	"endorsements": [
+		{
+			"item": "CG 20 10 12 19, Additional Insured - Owners, Lessees Or Contractors - Scheduled Person Or Organization",
+			"note": "The Schedule has two columns, the name of the additional insured person or organization and the locations of covered operations [S:iso-cg-20-10-12-19]. A scheduled form therefore names a party and a place, and a job at a location not on the Schedule is outside the grant as written. The 04 13 edition is described on the commercial general liability page."
+		},
+		{
+			"item": "CG 20 37 12 19, Additional Insured - Owners, Lessees Or Contractors - Completed Operations",
+			"note": "Its Schedule has columns for the name of the additional insured and the location and description of completed operations, and it modifies both the Commercial General Liability Coverage Part and the Products/Completed Operations Liability Coverage Part [S:iso-cg-20-37-12-19]."
+		}
+	],
+	"relatedPolicies": [
+		"Commercial general liability, the named insured's own policy that an additional insured endorsement modifies; the commercial general liability page describes the 04 13 editions and the primary and non-contributory endorsement, which this page does not repeat",
+		"Contractual risk transfer (California), for the indemnity clause that usually sits beside the insurance requirement and the statutes that limit it",
+		"The question on when a contract can require additional insured status, which covers certificates of insurance, waiver of subrogation and the subcontract rules of Civil Code section 2782.05 in detail",
+		"Wrap-up or consolidated insurance programs, which Civil Code section 2782.05(b)(4) lists among the matters that section does not affect [S:ca-civ-code-2782-05]"
+	],
+	"underwritingInputs": [
+		"Who the upstream party is, since section 11580.04 applies only to endorsements for the benefit of a public agency [S:ca-ins-code-11580-04-public-agency-additional-insured]",
+		"Whether the contract is a construction contract with a public agency within Civil Code section 2782(b), and when it was entered into, since that subdivision states separate rules before and on or after January 1, 2013 [S:ca-civ-code-2782]",
+		"Whether the contract asks for ongoing operations, completed operations, or both, since on the read ISO forms those are separate endorsements [S:iso-cg-20-10-12-19][S:iso-cg-20-37-12-19]",
+		"Which party and which location the Schedule must show [S:iso-cg-20-10-12-19]",
+		"What limit the contract requires, since on the read forms the amount payable for the additional insured is the lesser of that figure and the applicable limits [S:iso-cg-20-10-12-19]",
+		"Whether the insurer is admitted or nonadmitted, which section 11580.04 names expressly and treats alike [S:ca-ins-code-11580-04-public-agency-additional-insured]"
+	],
+	"exposures": [
+		{
+			"item": "A contract that promises status the policy never grants",
+			"note": "On the read ISO forms, status is created by an endorsement amending Section II - Who Is An Insured to include the party shown in the Schedule [S:iso-cg-20-10-12-19]. A contract clause, a purchase order or a promise in correspondence does not amend that section, so the first question on any claim is whether the endorsement exists and names the party."
+		},
+		{
+			"item": "A completed project on an ongoing operations endorsement",
+			"note": "CG 20 10 12 19 excludes bodily injury or property damage occurring after the project work at the location is complete, or after the relevant part of the named insured's work has been put to its intended use by someone other than another contractor on the same project [S:iso-cg-20-10-12-19]. A party that holds only that endorsement holds nothing on this form for injury after completion; the completed operations grant is CG 20 37 [S:iso-cg-20-37-12-19]."
+		},
+		{
+			"item": "A public agency that expects cover for its own active negligence",
+			"note": "Section 11580.04 removes duty of indemnity coverage for a public agency's active negligence where an indemnity agreement would be invalid under Civil Code section 2782(b), and makes invalid any contract requirement to procure insurance that is invalid under the section [S:ca-ins-code-11580-04-public-agency-additional-insured]. The agency's contract may say more than the statute will let the endorsement deliver."
+		},
+		{
+			"item": "A mixed claim, where the insurer's obligation is split",
+			"note": "Where one claim encompasses both the original insured's negligence and the agency's uncovered active negligence, section 11580.04 limits the insurer's obligation to obligations the section permits [S:ca-ins-code-11580-04-public-agency-additional-insured]. The section does not say how the split is made, and it does not mention the duty to defend, so both are questions for the insurer and, in a dispute, a court."
+		},
+		{
+			"item": "A contract that asks for less than the other side assumed",
+			"note": "On the read forms, where a contract requires the coverage, the insurance will not be broader than what the contract requires and the amount payable is the lesser of the contract figure and the applicable limits [S:iso-cg-20-10-12-19][S:iso-cg-20-37-12-19]. A vaguely worded or low contract requirement can therefore narrow what the additional insured holds."
+		},
+		{
+			"item": "Treating the additional insured's position as indemnity from the named insured",
+			"note": "Insurance and contractual indemnity are read under different rules. The California Supreme Court has stated that ambiguities in an insurance policy are construed against the insurer, while noninsurance indemnity agreements are construed differently, and that a liability insurer's duty to defend extends to claims merely potentially covered [S:crawford-v-weather-shield-2008]. Status on the policy and a promise of indemnity in the contract are two separate rights, answered by different parties."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Ask for the endorsement pages, with form number and edition",
+			"note": "The grant, the Schedule and the limits wording are in the endorsement itself [S:iso-cg-20-10-12-19]. Reading the actual page shows which party and which location were scheduled, and whether the 04 13 or 12 19 wording or some other form is in use."
+		},
+		{
+			"item": "Check for both grants where the contract asks for both",
+			"note": "Ongoing operations and completed operations are separate endorsements on the read ISO forms [S:iso-cg-20-10-12-19][S:iso-cg-20-37-12-19]. Putting the contract's insurance clause next to the endorsements shows whether each requested grant was issued."
+		},
+		{
+			"item": "Put the contract's required limit next to the policy's limits",
+			"note": "On the read forms the amount payable for the additional insured is the lesser of the contract requirement and the applicable limits [S:iso-cg-20-10-12-19]. Recording both figures in the contract file makes the working ceiling visible before a claim rather than after it."
+		},
+		{
+			"item": "Identify a public agency counterparty before the endorsement is requested",
+			"note": "Section 11580.04 applies only where the endorsement benefits a public agency on a construction contract within Civil Code section 2782(b) [S:ca-ins-code-11580-04-public-agency-additional-insured][S:ca-civ-code-2782]. Knowing that at the outset lets the broker, the agency and a lawyer address the statutory limit in the contract rather than at claim time."
+		},
+		{
+			"item": "Record the date the construction contract was entered into",
+			"note": "Civil Code sections 2782(b) and 2782.05(a) each turn on whether the contract was entered into before or on or after January 1, 2013 [S:ca-civ-code-2782][S:ca-civ-code-2782-05]. The date belongs on the file next to the endorsement."
+		},
+		{
+			"item": "Tender to the insurer and to the indemnitor separately",
+			"note": "A promise of indemnity carries its own duty to defend on request under Civil Code section 2778, which the Supreme Court has stated arises immediately upon a proper tender [S:crawford-v-weather-shield-2008]. That duty runs from the contracting party, not the insurer, so the two tenders go to two addressees."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "Insurance Code section 11580.04 is California law and reaches only additional insured endorsements for public agencies on construction contracts within Civil Code section 2782(b) [S:ca-ins-code-11580-04-public-agency-additional-insured]. Civil Code section 2782.05(c) applies California law to every contract within that section notwithstanding choice-of-law rules that would apply another jurisdiction's law [S:ca-civ-code-2782-05]. Other states' rules on additional insured endorsements are not described here."
+		}
+	],
+	"lastReviewed": "2026-09-30",
+	"effectiveDate": "2026-09-30",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ins-code-11580-04-public-agency-additional-insured",
+		"ca-civ-code-2782",
+		"ca-civ-code-2782-05",
+		"iso-cg-20-10-12-19",
+		"iso-cg-20-37-12-19",
+		"crawford-v-weather-shield-2008"
+	],
+	"relatedQuestions": [
+		"contract-additional-insured-status",
+		"how-general-liability-limits-work"
+	]
+}

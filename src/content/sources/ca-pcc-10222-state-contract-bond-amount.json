@@ -1,0 +1,22 @@
+{
+	"title": "California Public Contract Code section 10222 - Amount of bonds under the State Contract Act",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PCC&sectionNum=10222",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 10222(a) provides that each bond shall equal at least one-half of the contract price, except as otherwise provided in Section 9554 of the Civil Code, in the California Toll Bridge Authority Act, or in subdivision (b).",
+		"Section 10222(b) provides that, notwithstanding subdivision (a), for projects with a contract price greater than two hundred fifty million dollars ($250,000,000), the Department of Transportation shall have the discretion to specify that the payment bond shall equal not less than one-half of the contract price or five hundred million dollars ($500,000,000), whichever is less."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. The one-half figure is expressly subject to Civil Code section 9554, which sets a public works payment bond at not less than 100 percent of the total amount payable; this record does not resolve how the two interact on any particular state contract."
+}

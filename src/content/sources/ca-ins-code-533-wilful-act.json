@@ -1,0 +1,23 @@
+{
+	"title": "California Insurance Code section 533 - Insurer not liable for a loss caused by the wilful act of the insured",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=533",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 533 provides that an insurer is not liable for a loss caused by the wilful act of the insured.",
+		"Section 533 provides that the insurer is not exonerated by the negligence of the insured, or of the insured's agents or others.",
+		"The section carries the notation Enacted by Stats. 1935, Ch. 145."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. The full text is one sentence and was read verbatim. The section does not use the words wage, restitution or penalty, and says nothing about any particular line of insurance; how it applies to a given claim is a question for the courts."
+}

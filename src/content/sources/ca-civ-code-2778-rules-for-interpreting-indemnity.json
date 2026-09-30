@@ -1,0 +1,29 @@
+{
+	"title": "California Civil Code Section 2778 (rules for the interpretation of a contract of indemnity)",
+	"publisher": "California Legislative Information, Office of Legislative Counsel",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2778",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 2778 sets out rules to be applied in the interpretation of a contract of indemnity, unless a contrary intention appears.",
+		"Rule 1 provides that upon an indemnity against liability, expressly, or in other equivalent terms, the person indemnified is entitled to recover upon becoming liable.",
+		"Rule 2 provides that upon an indemnity against claims, or demands, or damages, or costs, expressly, or in other equivalent terms, the person indemnified is not entitled to recover without payment thereof.",
+		"Rule 3 provides that an indemnity against claims, or demands, or liability, expressly, or in other equivalent terms, embraces the costs of defense against such claims, demands, or liability incurred in good faith, and in the exercise of a reasonable discretion.",
+		"Rule 4 provides that the person indemnifying is bound, on request of the person indemnified, to defend actions or proceedings brought against the latter in respect to the matters embraced by the indemnity, but the person indemnified has the right to conduct such defenses, if he chooses to do so.",
+		"Rule 5 provides that if, after request, the person indemnifying neglects to defend the person indemnified, a recovery against the latter suffered by him in good faith is conclusive in his favor against the former.",
+		"Rule 6 provides that if the person indemnifying, whether a principal or a surety in the agreement, has not reasonable notice of the action or proceeding against the person indemnified, or is not allowed to control its defense, judgment against the latter is only presumptive evidence against the former.",
+		"Rule 7 provides that a stipulation that a judgment against the person indemnified shall be conclusive upon the person indemnifying is inapplicable if he had a good defense upon the merits, which by want of ordinary care he failed to establish in the action.",
+		"The section sits in Title 12, Indemnity, of Part 4 of Division 3 of the Civil Code, and the page carries the note '(Enacted 1872.)'"
+	],
+	"updateCadence": "Unchanged since enactment in 1872 on the page as read; amended only by legislation.",
+	"status": "active",
+	"notes": "Read in full on the official host 2026-09-30; all seven rules are listed above, so the list is complete. Every rule is a default: the section applies them 'unless a contrary intention appears', so a contract can displace any of them. Effective: 1872"
+}

@@ -1,0 +1,28 @@
+{
+	"title": "California Insurance Code Section 10110.4 (corporate-owned life insurance on non-exempt employees)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10110.4.",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 10110.4(a) provides that, except as allowed in subdivision (c), an insurer may not issue or deliver a corporate-owned life insurance policy.",
+		"Section 10110.4(b) defines a corporate-owned life insurance policy as a life insurance policy that is purchased by a California employer, that designates the employer as the beneficiary of the policy, and that insures the life of a California resident who is a current or former employee of the employer.",
+		"Section 10110.4(c) provides that the section does not apply to a policy insuring the life of a current or former exempt employee, defined as an administrative, executive, or professional employee who is exempt under Section 515 of the Labor Code and the regulations adopted pursuant thereto.",
+		"Section 10110.4(d) provides that, except as provided in subdivision (f), it is a violation of public policy for a California employer to purchase or hold a corporate-owned life insurance policy.",
+		"Section 10110.4(e)(1) provides that a corporate-owned life insurance policy purchased on or after the effective date of the section is void, and section 10110.4(e)(2) provides that, except as provided in subdivision (f), one purchased before that date becomes void on the next premium payment date on or after five years from the effective date, but no later than January 1, 2010.",
+		"Section 10110.4(f) provides that a corporate-owned life insurance policy purchased before the effective date of the section that insures the life of a current or former non-exempt employee continues in force provided that no further premium payments are made after the effective date, and requires the employer to disclose in writing to the insured employee, within 90 days of the effective date, the existence of the policy, the identity of the insurer, the benefit amount unless the full benefit is used to defray the costs of non-exempt employee benefits, how benefits would be used, and the name of the beneficiary.",
+		"Section 10110.4(g) provides that, for a former employee, the disclosure requirements are deemed satisfied if the employer mails the required information to the former employee's last known address.",
+		"Section 10110.4 was added by Stats. 2003, Ch. 328, Sec. 2, effective January 1, 2004."
+	],
+	"notes": "The section turns on whether the insured employee is exempt under Labor Code section 515, which is a wage and hour classification rather than an insurance one. This record has not read section 515 and states nothing about who is exempt under it."
+}

@@ -1,0 +1,22 @@
+{
+	"title": "California Civil Code section 9566 - Condition of recovery on a public works payment bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=9566",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 9566(a) provides that a claimant does not have a right to recover on a payment bond unless the claimant provided work to the direct contractor either directly or through one or more subcontractors pursuant to a public works contract.",
+		"Section 9566(b) provides that nothing in the section affects the stop payment notice rights of, and relative priorities among, design professionals."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. "
+}

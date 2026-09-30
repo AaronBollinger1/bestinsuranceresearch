@@ -1,0 +1,25 @@
+{
+	"title": "FAR 52.228-1 - Bid Guarantee (Sept 1996)",
+	"publisher": "U.S. General Services Administration (Acquisition.gov, Federal Acquisition Regulation)",
+	"url": "https://www.acquisition.gov/far/52.228-1",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"FAR 52.228-1(a) provides that failure to furnish a bid guarantee in the proper form and amount, by the time set for opening of bids, may be cause for rejection of the bid.",
+		"FAR 52.228-1(b) provides that the bidder shall furnish a bid guarantee in the form of a firm commitment, such as a bid bond supported by good and sufficient surety or sureties acceptable to the Government, postal money order, certified check, cashier's check, irrevocable letter of credit, or, under Treasury Department regulations, certain bonds or notes of the United States, and that bid guarantees other than bid bonds will be returned to unsuccessful bidders as soon as practicable after the opening of bids and to the successful bidder upon execution of contractual documents and bonds.",
+		"FAR 52.228-1(d) provides that if the successful bidder, upon acceptance of its bid within the period specified for acceptance, fails to execute all contractual documents or furnish executed bonds within 10 days after receipt of the forms, the Contracting Officer may terminate the contract for default.",
+		"FAR 52.228-1(e) provides that in the event the contract is terminated for default, the bidder is liable for any cost of acquiring the work that exceeds the amount of its bid, and the bid guarantee is available to offset the difference.",
+		"The clause is dated Sept 1996 and paragraph (c) leaves the percentage of the bid price or dollar amount, whichever is less, blank for the solicitation to fill in."
+	],
+	"updateCadence": "Updated by Federal Acquisition Circulars",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. This is a standard solicitation clause the contracting officer inserts substantially as written; FAR 28.101-2 permits modifications, so the clause in any given solicitation is the one to read."
+}

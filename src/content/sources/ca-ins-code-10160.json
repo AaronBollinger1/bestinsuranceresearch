@@ -1,0 +1,31 @@
+{
+	"title": "California Insurance Code Section 10160 (nonforfeiture provisions every life policy must contain)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10160",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation. The section credit on the official host at the time of access read Amended by Stats. 1981, Ch. 767.",
+	"status": "active",
+	"claims": [
+		"Section 10160 provides that, except as provided in Section 10165, no policy of life insurance shall be delivered or issued for delivery in California unless it contains in substance the provisions the section lists, or corresponding provisions which are at least as favorable to the defaulting or surrendering policyholder as the minimum requirements specified.",
+		"Section 10160(a) requires that, in the event of default in any premium payment after premiums have been paid for at least one full year, the insurer will grant, upon proper request not later than 60 days after the due date of the premium in default, a paid-up nonforfeiture benefit on a plan stipulated in the policy, effective as of that due date.",
+		"Section 10160(a) permits the company to substitute, upon proper request not later than 60 days after the due date of the premium in default, an actuarially equivalent alternative paid-up nonforfeiture benefit which provides a greater amount or longer period of death benefits or, if applicable, a greater amount or earlier payment of endowment benefits.",
+		"Section 10160(b) requires that, upon surrender of the policy within 60 days after the due date of any premium payment in default after premiums have been paid for at least three full years in the case of ordinary insurance or five full years in the case of industrial insurance, the insurer will pay, in lieu of any paid-up nonforfeiture benefit, a cash surrender value.",
+		"Section 10160(c) requires that a specified paid-up nonforfeiture benefit shall become effective as specified in the policy unless the person entitled to make the election elects another available option not later than 60 days after the due date of the premium in default.",
+		"Section 10160(d) requires that, if the policy has become paid-up by completion of all premium payments, or is continued under a paid-up nonforfeiture benefit which became effective on or after the third policy anniversary for ordinary insurance or the fifth for industrial insurance, the insurer will pay a cash surrender value upon surrender of the policy within 30 days after any policy anniversary.",
+		"Section 10160(e) requires, for policies which cause on a basis guaranteed in the policy unscheduled changes in benefits or premiums, or which provide an option for changes in benefits or premiums other than a change to a new policy, a statement of the mortality table, interest rate, and method used in calculating cash surrender values and paid-up nonforfeiture benefits.",
+		"Section 10160(e) requires, for all other policies, a statement of the mortality table and interest rate used, together with a schedule showing the cash surrender value, if any, and paid-up nonforfeiture benefit, if any, on each policy anniversary either during the first 20 policy years or during the term of the policy, whichever is shorter, calculated on the assumption that there are no dividends or paid-up additions credited and no indebtedness to the insurer.",
+		"Section 10160(f) requires a brief and general statement of the method used to calculate values on anniversaries beyond those shown, with an explanation of the manner in which the cash surrender values and paid-up nonforfeiture benefits are altered by the existence of any paid-up additions or any indebtedness to the insurer on account of or secured by the policy.",
+		"Section 10160 provides that any of its provisions not applicable by reason of the plan of insurance may, to the extent inapplicable, be omitted from the policy.",
+		"Section 10160 provides that the insurer shall reserve the right to defer the payment of any cash surrender value for a period of six months after demand therefor with surrender of the policy."
+	],
+	"notes": "The section is part of Article 3a, the Standard Nonforfeiture Law for Life Insurance (sections 10159.1 to 10167.5). Its opening words, except as provided in Section 10165, carry the product-form question: the exemptions in section 10165 include short term policies of uniform amount and premium, so which of these provisions a policy must carry depends on its plan of insurance. The six-month deferral right is part of the same section and belongs next to any statement about the cash surrender value."
+}

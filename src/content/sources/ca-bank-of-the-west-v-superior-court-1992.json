@@ -1,0 +1,26 @@
+{
+	"sourceType": "court-decision",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": false,
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"updateCadence": "Static once filed; its effect can be changed by later decisions or legislation.",
+	"status": "active",
+	"title": "Bank of the West v. Superior Court (Industrial Indemnity Co.) (1992) 2 Cal.4th 1254 (restitution under the Unfair Business Practices Act and liability insurance)",
+	"publisher": "Opinion of the Supreme Court of California; text read on California Supreme Court Resources, Robert Crown Law Library, Stanford Law School, a reproduction",
+	"url": "https://scocal.stanford.edu/opinion/bank-west-v-superior-court-industrial-indemnity-co-31385",
+	"publishedDate": "1992-07-30",
+	"effectiveDate": "1992-07-30",
+	"claims": [
+		"The opinion, by Justice Panelli with four justices concurring and a separate concurrence by Justice Mosk joined by Justice Kennard, holds that the comprehensive general liability policy at issue does not cover claims for advertising injury that arose under the Unfair Business Practices Act (Business and Professions Code section 17200 et seq.).",
+		"The court states that the Unfair Business Practices Act does not authorize an award of damages, and holds that the policy term unfair competition does not refer to conduct that violates that Act.",
+		"The court states that in AIU it held that insurable damages include monetary awards that represent compensation for harm to third parties, even if such awards bear the label restitution, but that AIU did not hold that any award capable of bearing the restitution label is insurable as damages.",
+		"The court states that AIU noted prior holdings to the effect that, as a matter of public policy, an insured's payment of certain types of restitution cannot be covered by insurance, and that the Jaffe rule bars coverage only in situations in which the defendant is required to restore to the plaintiff that which was wrongfully acquired.",
+		"The court describes Insurance Code section 533.5 as declaring that no policy of insurance shall provide coverage or any duty to defend in an action under the Unfair Business Practices Act brought by the Attorney General, a district attorney, a city prosecutor, or a county counsel, and rejects the argument that the section impliedly authorizes insurance in actions brought by private plaintiffs.",
+		"In a footnote the court declines to address an argument about Insurance Code section 533 barring insurance for losses caused by the willful act of the insured, stating that no common law claim was involved and that it is clear that claims under the Unfair Business Practices Act are not covered."
+	],
+	"notes": "Read on 2026-09-30 on the Stanford Law School reproduction; the CourtListener page for the same opinion did not serve text to this reader at the time of access and was not relied on. The holding, the discussion of AIU and Jaffe, the section 533.5 passage and the footnotes on section 533 were read. The case concerns a CGL advertising injury coverage and restitution under Business and Professions Code 17203 sought from a bank by its customers. It says nothing about wages, employment practices liability forms, or wage and hour claims, and must not be cited as deciding whether unpaid wages are insurable. Published: 1992-07-30"
+}

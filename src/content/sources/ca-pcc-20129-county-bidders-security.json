@@ -1,0 +1,23 @@
+{
+	"title": "California Public Contract Code section 20129 - Bidder's security and performance bond for county construction",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PCC&sectionNum=20129",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 20129(a), in the article of the Local Agency Public Construction Act governing counties, provides that all bids for construction work shall be presented under sealed cover and shall be accompanied by one of the following forms of bidder's security: cash, a cashier's check made payable to the county, a certified check made payable to the county, or a bidder's bond executed by an admitted surety insurer, made payable to the county.",
+		"Section 20129(a) provides that, upon an award to the lowest bidder, the security of an unsuccessful bidder shall be returned in a reasonable period of time, but in no event shall that security be held by the county beyond 60 days from the time the award is made.",
+		"Section 20129(b) provides that the person to whom the contract is awarded shall execute a bond to be approved by the board for the faithful performance of the contract."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Article 3.5 (Counties) of the Local Agency Public Construction Act. Other local agencies have their own articles, which were not read, so this section is confined to counties."
+}

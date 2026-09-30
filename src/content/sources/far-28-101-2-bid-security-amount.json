@@ -1,0 +1,23 @@
+{
+	"title": "FAR 28.101-2 - Bid guarantee solicitation provision and amount",
+	"publisher": "U.S. General Services Administration (Acquisition.gov, Federal Acquisition Regulation)",
+	"url": "https://www.acquisition.gov/far/28.101-2",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"FAR 28.101-2(a) provides that the contracting officer shall insert a provision or clause substantially the same as the provision at 52.228-1, Bid Guarantee, in solicitations or contracts that require a bid guarantee or similar guarantee, and that the provision may be modified, for example to set a period other than 10 days for the return of executed bonds.",
+		"FAR 28.101-2(b) provides that the contracting officer shall determine the amount of the bid guarantee, that the amount shall be adequate to protect the Government from loss should the successful bidder fail to execute further contractual documents and bonds as required, and that the bid guarantee amount shall be at least 20 percent of the bid price but shall not exceed $3 million.",
+		"FAR 28.101-2(b) provides that when the penal sum is expressed as a percentage, a maximum dollar limitation may be stated."
+	],
+	"updateCadence": "Updated by Federal Acquisition Circulars",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. "
+}

@@ -1,0 +1,26 @@
+{
+	"title": "26 U.S.C. 1035 (certain exchanges of insurance policies)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section1035&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 1035(a)(1) provides that no gain or loss shall be recognized on the exchange of a contract of life insurance for another contract of life insurance or for an endowment or annuity contract or for a qualified long-term care insurance contract.",
+		"Section 1035(a)(2) provides that no gain or loss shall be recognized on the exchange of a contract of endowment insurance for another contract of endowment insurance which provides for regular payments beginning at a date not later than the date payments would have begun under the contract exchanged, or for an annuity contract, or for a qualified long-term care insurance contract.",
+		"Section 1035(a)(3) provides that no gain or loss shall be recognized on the exchange of an annuity contract for an annuity contract or for a qualified long-term care insurance contract, and subsection (a)(4) provides the same for a qualified long-term care insurance contract exchanged for a qualified long-term care insurance contract.",
+		"Section 1035(b)(3) defines a contract of life insurance, for the purpose of the section, as a contract with an insurance company which depends in part on the life expectancy of the insured but which is not ordinarily payable in full during the life of the insured, and provides that a contract shall not fail to be treated as a life insurance contract solely because a qualified long-term care insurance contract is a part of or a rider on it.",
+		"Section 1035(c) provides that, to the extent provided in regulations, subsection (a) shall not apply to any exchange having the effect of transferring property to any person other than a United States person.",
+		"Section 1035(d)(1) cross-refers to subsections (b) and (c) of section 1031 for rules relating to recognition of gain or loss where an exchange is not solely in kind."
+	],
+	"updateCadence": "Amended only by legislation. The official host showed the text in effect on September 29, 2026 at the time of access, and the source credit lists Pub. L. 115-141 (March 23, 2018) as the most recent amendment.",
+	"status": "active",
+	"notes": "The list in subsection (a) runs in one direction. Life insurance may be exchanged for life insurance, an endowment, an annuity or a qualified long-term care contract, but the annuity branch in paragraph (3) lists only an annuity or a qualified long-term care contract as what an annuity may be exchanged for. The section also reaches only an exchange; where it is not solely in kind the section points to section 1031, which this record has not read. This record states what the text says and is not tax advice."
+}

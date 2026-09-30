@@ -57,15 +57,6 @@ export const ROADMAP: RoadmapFamily[] = [
 		],
 	},
 	{
-		family: 'Life',
-		lines: [
-			{ name: 'Term life', id: 'term-life-california' },
-			{ name: 'Permanent life', id: 'permanent-life-california' },
-			{ name: 'Key person', id: 'key-person-life' },
-			{ name: 'Buy-sell funding', id: 'buy-sell-funding' },
-		],
-	},
-	{
 		family: 'Health and benefits',
 		lines: [
 			{ name: 'Employee benefits', id: 'employee-benefits' },

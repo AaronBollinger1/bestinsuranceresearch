@@ -1,0 +1,24 @@
+{
+	"title": "26 U.S.C. 6039I (returns and records with respect to employer-owned life insurance contracts)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section6039I&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 6039I(a) requires every applicable policyholder owning one or more employer-owned life insurance contracts issued after the date of enactment of the section to file a return, for each year such contracts are owned, showing the number of employees of the applicable policyholder at the end of the year, the number of those employees insured under such contracts at the end of the year, the total amount of insurance in force at the end of the year under such contracts, the name, address, and taxpayer identification number of the applicable policyholder and its type of business, and that the applicable policyholder has a valid consent for each insured employee or, if all such consents are not obtained, the number of insured employees for whom consent was not obtained.",
+		"Section 6039I(b) requires each applicable policyholder owning one or more employer-owned life insurance contracts during any year to keep such records as may be necessary for purposes of determining whether the requirements of the section and of section 101(j) are met.",
+		"Section 6039I(c) provides that any term used in the section which is used in section 101(j) has the same meaning given it by section 101(j).",
+		"The section was added by Pub. L. 109-280, approved August 17, 2006, and the editorial note states that the date of enactment referred to in subsection (a) is August 17, 2006."
+	],
+	"updateCadence": "Amended only by legislation. No amendment after its 2006 enactment was listed on the official host at the time of access.",
+	"status": "active",
+	"notes": "The section borrows every definition from section 101(j), so who must file turns on the same question as whether section 101(j) applies at all. The return it requires is made on IRS Form 8925."
+}

@@ -1,0 +1,21 @@
+{
+	"title": "California Code of Civil Procedure section 996.330 - When a surety's cancellation or withdrawal takes effect",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=996.330",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 996.330 provides that cancellation or withdrawal of a surety is effective at the earliest of thirty days after notice of cancellation or withdrawal is given, the date a new surety substituted for the original surety becomes effective, or the date a new bond becomes effective."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. "
+}

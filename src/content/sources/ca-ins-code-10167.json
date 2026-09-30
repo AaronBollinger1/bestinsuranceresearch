@@ -1,0 +1,20 @@
+{
+	"title": "California Insurance Code Section 10167 (default nonforfeiture benefit where the policy names none)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10167",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation. The section credit on the official host at the time of access read Added by Stats. 1943, Ch. 955.",
+	"status": "active",
+	"claims": [
+		"Section 10167 provides that any policy to which Article 3a is applicable which does not contain a paid-up nonforfeiture benefit shall be construed as granting nonparticipating paid-up term insurance as a nonforfeiture benefit under subdivision (a) of Section 10160."
+	]
+}

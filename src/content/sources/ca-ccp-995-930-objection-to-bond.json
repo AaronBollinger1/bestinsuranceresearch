@@ -1,0 +1,23 @@
+{
+	"title": "California Code of Civil Procedure section 995.930 - Objection to a bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=995.930",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 995.930(a) provides that an objection to a bond shall be in writing and made by noticed motion specifying the precise grounds, and that where a ground is that the amount of the bond is insufficient, the notice shall state the reason for the insufficiency and include an estimate of the amount that would be sufficient.",
+		"Section 995.930(b) provides that the objection shall be made within 10 days after service of a copy of the bond on the beneficiary or such other time as is required by the statute providing for the bond.",
+		"Section 995.930(c) provides that if no objection is made within the time required by statute, the beneficiary is deemed to have waived all objections except upon a showing of good cause for failure to make the objection within the time required or of changed circumstances."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Bond and Undertaking Law (Code of Civil Procedure 995.010 onward). By section 995.020 the chapter yields where the statute requiring a particular bond prescribes a different rule or is inconsistent, so this section is a default rather than the rule for every bond. Amended by Stats. 1984, Ch. 538. Section 995.950, read at the same time, provides that unless the parties otherwise agree the hearing on an objection is held not less than two or more than five days after service of the notice of motion."
+}

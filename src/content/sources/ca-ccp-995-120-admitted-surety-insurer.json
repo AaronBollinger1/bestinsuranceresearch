@@ -1,0 +1,22 @@
+{
+	"title": "California Code of Civil Procedure section 995.120 - Admitted surety insurer defined",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=995.120",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 995.120(a) defines admitted surety insurer as a corporate insurer or a reciprocal or interinsurance exchange to which the Insurance Commissioner has issued a certificate of authority to transact surety insurance in this state, as defined in Section 105 of the Insurance Code.",
+		"Section 995.120(b) provides that, for the purpose of applying the chapter to a bond given pursuant to any statute of this state, the phrases admitted surety insurer, authorized surety company, bonding company, corporate surety, and comparable phrases used in the statute mean admitted surety insurer as defined in the section."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Bond and Undertaking Law (Code of Civil Procedure 995.010 onward). By section 995.020 the chapter yields where the statute requiring a particular bond prescribes a different rule or is inconsistent, so this section is a default rather than the rule for every bond. Added by Stats. 1982, Ch. 998."
+}

@@ -282,6 +282,43 @@ test('no line the coverage index calls planned has already been published', asyn
 	);
 });
 
+test('the coverage library publishes the true share of canonical lines it has a page for', async () => {
+	/*
+	 * `/insurance` says how many of the canonical lines of business it has a
+	 * page for, and AUTOPILOT.md unit R1 is measured by the same number, so it
+	 * is recomputed here from the collection rather than trusted from the page.
+	 *
+	 * Two coverage records resolving to one canonical line would let the page
+	 * count rise while the line count stood still, which is the drift this
+	 * check exists to stop, so that collision fails too. A record whose line
+	 * does not resolve is caught by the canonical-line test further down.
+	 */
+	const { CANONICAL_LINES, lineCoverage } = await import('../src/lib/lines.ts');
+	const byLine = new Map();
+	for (const coverage of coverages) {
+		const line = canonicalLine(coverage.data.line);
+		if (!line) continue;
+		byLine.set(line, [...(byLine.get(line) ?? []), coverage.id]);
+	}
+	const collisions = [...byLine.entries()]
+		.filter(([, ids]) => ids.length > 1)
+		.map(([line, ids]) => `${line}: ${ids.join(', ')}`);
+	assert.deepEqual(collisions, [], `two coverage pages on one canonical line:\n  ${collisions.join('\n  ')}`);
+
+	const count = lineCoverage(coverages.map((c) => c.data.line));
+	assert.equal(count.total, CANONICAL_LINES.length);
+	assert.equal(count.covered.length + count.missing.length, count.total);
+	assert.equal(count.covered.length, byLine.size, 'lineCoverage disagrees with the collection');
+
+	const html = read(path.join(DIST, 'insurance', 'index.html'));
+	const claim = `${coverages.length} lines published, ${count.covered.length} of ${count.total} canonical lines of business`;
+	assert.ok(html.includes(claim), `/insurance does not publish "${claim}"`);
+	/* Every covered canonical line must reach a built page, not merely a record. */
+	for (const [line, ids] of byLine) {
+		assert.ok(routes.has(`/insurance/${ids[0]}`), `${line} has a record (${ids[0]}) but no built page`);
+	}
+});
+
 test('a tool without a published route never appears in navigation or the sitemap', () => {
 	const unbuilt = tools.filter((t) => t.data.status !== 'live');
 	assert.ok(unbuilt.length > 0, 'expected some specified-but-unbuilt tools in the registry');
@@ -1284,6 +1321,56 @@ test('every line has a guide, and every guide panel is in the HTML', () => {
 		assert.ok(html.includes('guide-mark'), `${coverage.id} guide has no identifying mark`);
 		assert.ok(!/\[S:[a-z0-9-]+\]/.test(html), `${coverage.id} guide leaked a raw citation marker`);
 	}
+});
+
+test('a guide list item without an icon is given the whole row', () => {
+	/*
+	 * `.fact-list > li` is a two-column grid built for an icon then the text.
+	 * The guides emit items with no icon, so the text fell into the 20px icon
+	 * column and rendered one word per line on every guide at 768px, measured
+	 * in the R1a screenshots. The rule that fixes it is asserted here together
+	 * with the markup that makes it load-bearing, so removing either the rule
+	 * or the icon-less items tells somebody this check has stopped meaning much.
+	 */
+	const css = read(path.join(ROOT, 'src/styles/global.css'));
+	assert.match(
+		css,
+		/\.fact-list > li > :only-child \{ grid-column: 1 \/ -1; \}/,
+		'global.css no longer gives an icon-less fact-list item the full row',
+	);
+	const guide = read(path.join(DIST, 'guides', coverages[0].id, 'index.html'));
+	assert.match(guide, /<ul class="fact-list"><li><div>/, 'guides no longer emit icon-less fact-list items');
+});
+
+test('every stat figure carries the label and value markup its dark band styles', () => {
+	/*
+	 * `.figure` paints a dark ground and originally styled only `dt` and `dd`.
+	 * Several page families (the line and industry hubs, the guide and line
+	 * indexes, every review-queue sheet) filled it with `b` and `span`, which
+	 * inherited body ink, so their numbers sat dark on dark and were close to
+	 * invisible, measured in the R1a screenshots. The stylesheet now styles both
+	 * pairs; this holds every figure to one of them and the stylesheet to both.
+	 */
+	const css = read(path.join(ROOT, 'src/styles/instrument.css'));
+	for (const sel of ['.figure dt', '.figure dd', '.figure > span', '.figure > b']) {
+		const start = css.indexOf(`${sel} {`);
+		assert.ok(start >= 0, `instrument.css has no rule for ${sel}`);
+		const body = css.slice(start, css.indexOf('}', start));
+		assert.match(body, /\bcolor:/, `instrument.css gives ${sel} no colour on the dark figure ground`);
+	}
+	const offenders = [];
+	let seen = 0;
+	for (const file of htmlFiles) {
+		const html = read(file);
+		for (const m of html.matchAll(/<div class="figure"[^>]*>([\s\S]*?)<\/div>/g)) {
+			seen++;
+			const dl = /<dt[\s>]/.test(m[1]) && /<dd[\s>]/.test(m[1]);
+			const bs = /^<b[\s>]/.test(m[1]) && /<span[\s>]/.test(m[1]);
+			if (!dl && !bs) offenders.push(routeOf(file));
+		}
+	}
+	assert.ok(seen > 50, `only ${seen} stat figures found, so this check has stopped meaning much`);
+	assert.deepEqual([...new Set(offenders)].slice(0, 10), [], 'stat figures with neither styled pair');
 });
 
 test('guide citations resolve inside closed panels too', () => {

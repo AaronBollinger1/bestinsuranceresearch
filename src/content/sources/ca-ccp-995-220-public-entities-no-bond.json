@@ -1,0 +1,22 @@
+{
+	"title": "California Code of Civil Procedure section 995.220 - Public entities and officers not required to give a bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=995.220",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 995.220 provides that, notwithstanding any other statute, if a statute provides for a bond in an action or proceeding, including but not limited to a bond for issuance of a restraining order or injunction, appointment of a receiver, or stay of enforcement of a judgment on appeal, the listed public entities and officers are not required to give the bond and shall have the same rights, remedies, and benefits as if the bond were given.",
+		"The entities listed in section 995.220 are the State of California or the people of the state and its agencies and officers acting officially; a county, city, district, public authority, public agency or other political subdivision in the state and its officers acting officially; and the United States or an instrumentality or agency of the United States and federal officers acting officially."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Bond and Undertaking Law (Code of Civil Procedure 995.010 onward). By section 995.020 the chapter yields where the statute requiring a particular bond prescribes a different rule or is inconsistent, so this section is a default rather than the rule for every bond. Added by Stats. 1982, Ch. 998. The section reaches bonds in an action or proceeding; it does not address bonds given outside litigation."
+}

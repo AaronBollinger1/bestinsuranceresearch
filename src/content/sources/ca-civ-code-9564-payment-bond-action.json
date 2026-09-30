@@ -1,0 +1,23 @@
+{
+	"title": "California Civil Code section 9564 - Action on a public works payment bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=9564",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 9564(a) provides that a claimant may maintain an action to enforce the liability of a surety on a payment bond whether or not the claimant has given the public entity a stop payment notice.",
+		"Section 9564(b) provides that a claimant may maintain an action to enforce the liability on the bond separately from and without commencement of an action against the public entity by whom the contract was awarded or against any officer of the public entity.",
+		"Section 9564(c) provides that, in an action to enforce the liability on the bond, the court shall award the prevailing party a reasonable attorney's fee."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Subdivision (c) awards the fee to the prevailing party, which may be the surety rather than the claimant."
+}

@@ -1,0 +1,26 @@
+{
+	"title": "California Labor Code section 226 - Itemized wage statements",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=226",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 226(a) requires an employer, semimonthly or at the time of each payment of wages, to furnish each employee an accurate itemized statement in writing showing nine listed items, including gross wages earned, total hours worked except as provided in subdivision (j), all deductions, net wages earned, the inclusive dates of the pay period, the name and address of the legal entity that is the employer, and all applicable hourly rates in effect during the pay period with the corresponding hours worked at each rate.",
+		"Section 226(a) requires a copy of the statement and the record of deductions to be kept on file by the employer for at least three years at the place of employment or at a central location within California.",
+		"Section 226(e)(1) provides that an employee suffering injury as a result of a knowing and intentional failure by an employer to comply with subdivision (a) is entitled to recover the greater of all actual damages or fifty dollars for the initial pay period in which a violation occurs and one hundred dollars per employee for each violation in a subsequent pay period, not to exceed an aggregate penalty of four thousand dollars, and is entitled to costs and reasonable attorney's fees.",
+		"Section 226(e)(3) provides that a knowing and intentional failure does not include an isolated and unintentional payroll error due to a clerical or inadvertent mistake, and that the factfinder may consider as a relevant factor whether the employer, prior to an alleged violation, had adopted and was in compliance with policies, procedures, and practices that fully comply with the section.",
+		"Section 226(c) requires an employer to comply with a request to inspect or receive a copy of records under subdivision (b) as soon as practicable, but no later than 21 calendar days from the date of the request, and section 226(f) provides that failure to do so entitles the current or former employee or the Labor Commissioner to recover a seven hundred fifty dollar penalty.",
+		"Section 226(d) provides that the section does not apply to an employer of a person employed by the owner or occupant of a residential dwelling whose duties are incidental to the ownership, maintenance, or use of the dwelling or are personal and not in the course of the owner's trade or business, and section 226(i) provides that it does not apply to the state or local governmental entities, subject to a social security number rule."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Read through subdivision (j)(2)(F); the remainder of subdivision (j), listing further exemptions from the total hours worked item, was not read. The nine items in subdivision (a) are summarised in part in the claims; the subdivision itself is the list."
+}

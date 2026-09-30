@@ -1,0 +1,27 @@
+{
+	"title": "California Code of Civil Procedure section 917.1 - Undertaking to stay enforcement of a money judgment on appeal",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=917.1",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 917.1(a) provides that, unless an undertaking is given, the perfecting of an appeal shall not stay enforcement of a judgment or order for money or the payment of money, whether consisting of a special fund or not and whether payable by the appellant or another party, or for costs awarded pursuant to Section 998 or Section 1141.21 which otherwise would not have been awarded as costs pursuant to Section 1033.5.",
+		"Section 917.1(b) provides that the undertaking shall be on condition that if the judgment or order or any part of it is affirmed or the appeal is withdrawn or dismissed, the party ordered to pay shall pay the amount of the judgment or order, or the part affirmed, together with any interest accrued pending the appeal and entry of the remittitur, and costs which may be awarded against the appellant on appeal.",
+		"Section 917.1(b) provides that the section shall not apply where the money to be paid is in the actual or constructive custody of the court, and that such cases are governed instead by Section 917.2.",
+		"Section 917.1(b) provides that the undertaking shall be for double the amount of the judgment or order unless given by an admitted surety insurer, in which event it shall be for one and one-half times the amount of the judgment or order.",
+		"Section 917.1(b) provides that the liability on the undertaking may be enforced if the party ordered to pay does not make the payment within 30 days after the filing of the remittitur from the reviewing court.",
+		"Section 917.1(c) provides that if a surety on the undertaking pays the judgment after it is affirmed, the surety is substituted to the rights of the creditor and is entitled to control, enforce, and satisfy the judgment as if the surety had recovered it.",
+		"Section 917.1(d) provides that trial court costs awarded under Chapter 6 (commencing with Section 1021) of Title 14 are included in the amount of the judgment for the purpose of the section, but that no undertaking shall be required pursuant to the section solely for such costs."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Amended by Stats. 1993, Ch. 456, effective January 1, 1994. The one and one-half times figure applies only where the undertaking is given by an admitted surety insurer; otherwise the undertaking is double the judgment. Section 917.2, to which the section defers where money is in the court's custody, was not read for this record."
+}

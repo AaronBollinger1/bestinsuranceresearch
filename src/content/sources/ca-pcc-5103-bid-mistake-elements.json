@@ -1,0 +1,21 @@
+{
+	"title": "California Public Contract Code section 5103 - What a bidder must establish to be relieved of a mistaken bid",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PCC&sectionNum=5103",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 5103 provides that the bidder shall establish to the satisfaction of the court that a mistake was made; that the bidder gave the public entity written notice within five working days, excluding Saturdays, Sundays, and state holidays, after the opening of the bids of the mistake, specifying in the notice in detail how the mistake occurred; that the mistake made the bid materially different than intended; and that the mistake was made in filling out the bid and not due to error in judgment or to carelessness in inspecting the site of the work, or in reading the plans or specifications."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. All four elements must be established together; the notice runs five working days from bid opening, not from award."
+}

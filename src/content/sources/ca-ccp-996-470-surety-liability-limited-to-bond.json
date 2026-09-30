@@ -1,0 +1,24 @@
+{
+	"title": "California Code of Civil Procedure section 996.470 - Surety's aggregate liability limited to the amount of the bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=996.470",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 996.470(a) provides that, notwithstanding any other statute other than Section 996.480, the aggregate liability of a surety to all persons for all breaches of the condition of a bond is limited to the amount of the bond.",
+		"Section 996.470(a) provides that, except as otherwise provided by statute, the liability of the principal is not limited to the amount of the bond.",
+		"Section 996.470(b) provides that if a bond is given in an amount greater than required by statute or by order of the court or officer, the liability of the surety is limited to the amount so required, unless the amount of the bond has been increased voluntarily or by agreement of the parties to satisfy an objection to the bond made in an action or proceeding.",
+		"Section 996.470(c) provides that the liability of a surety is limited to the amount stipulated where the bond contains a stipulation under Section 995.520 limiting a personal surety's liability to the surety's worth, or a stipulation for a lesser amount under a statute providing that the liability of sureties in the aggregate need not exceed the amount of the bond."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Bond and Undertaking Law (Code of Civil Procedure 995.010 onward). By section 995.020 the chapter yields where the statute requiring a particular bond prescribes a different rule or is inconsistent, so this section is a default rather than the rule for every bond. Amended by Stats. 1993, Ch. 527, effective January 1, 1994. The cap is expressly subject to section 996.480, which makes a surety that fails to pay after liability is established liable for costs, attorney's fees and interest notwithstanding section 996.470."
+}

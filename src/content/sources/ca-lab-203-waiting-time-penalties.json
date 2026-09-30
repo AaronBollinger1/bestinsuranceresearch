@@ -1,0 +1,23 @@
+{
+	"title": "California Labor Code section 203 - Waiting time penalty for final wages",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=203",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 203(a) provides that if an employer willfully fails to pay, without abatement or reduction, in accordance with Sections 201, 201.3, 201.5, 201.6, 201.8, 201.9, 202, and 205.5, any wages of an employee who is discharged or who quits, the wages of the employee shall continue as a penalty from the due date at the same rate until paid or until an action is commenced, but shall not continue for more than 30 days.",
+		"Section 203(a) provides that an employee who secretes or absents themselves to avoid payment, or who refuses to receive the payment when fully tendered, including any penalty then accrued, is not entitled to any benefit under the section for the time during which the employee so avoids payment.",
+		"Section 203(b) provides that suit may be filed for these penalties at any time before the expiration of the statute of limitations on an action for the wages from which the penalties arise."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Amended by Stats. 2019, Ch. 700 (SB 286), effective January 1, 2020. The penalty turns on a willful failure; sections 201 and 202, which set when final wages are due, were not read for this record."
+}

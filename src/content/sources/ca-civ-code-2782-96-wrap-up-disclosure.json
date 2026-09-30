@@ -1,0 +1,27 @@
+{
+	"title": "California Civil Code Section 2782.96 (wrap-up insurance disclosure on public works and non-residential projects)",
+	"publisher": "California Legislative Information, Office of Legislative Counsel",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2782.96",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 2782.96 applies if an owner, builder, or general contractor obtains a wrap-up insurance policy or other consolidated insurance program for a public work as defined in Section 1720 of the Labor Code or any other project other than residential construction as that term is used in Title 7, that is put out for bid after January 1, 2009.",
+		"Subdivision (a) provides that the total amount or method of calculation of any credit or compensation for premium required from a subcontractor or other participant for that policy shall be clearly delineated in the bid documents.",
+		"Subdivision (b) provides that the named insured, to the extent known, shall disclose to the subcontractor or other participant in the contract documents the policy limits, known exclusions, and the length of time the policy is intended to remain in effect.",
+		"Subdivision (b) provides that, upon written request, once available, the named insured shall provide copies of insurance policies to all those who are covered by the policy, and that until the policies are available the named insured may satisfy the disclosure requirement by providing a copy of the insurance binder or declaration of coverage.",
+		"Subdivision (b) provides that a party receiving a copy of the policy, binder, or declaration shall not disclose it to third parties other than the participant's insurance broker or attorney unless required to do so by law, and that the broker or attorney may not disclose it to any third party unless required to do so by law.",
+		"Subdivision (c) provides that the disclosure requirements in subdivisions (a) and (b) do not apply to an insurance policy purchased by an owner, builder, or general contractor that provides additional coverage beyond what was contained in the original wrap-up policy or program if no credit or compensation for premium is required of the subcontractor for the additional policy.",
+		"The page carries the note 'Amended by Stats. 2009, Ch. 140, Sec. 37. (AB 1164) Effective January 1, 2010.'"
+	],
+	"updateCadence": "Amended by legislation; re-check leginfo for the current version before each publication cycle.",
+	"status": "active",
+	"notes": "Read in full on the official host 2026-09-30. The section is a disclosure rule; it does not itself void any indemnity provision. Effective: 2010-01-01"
+}

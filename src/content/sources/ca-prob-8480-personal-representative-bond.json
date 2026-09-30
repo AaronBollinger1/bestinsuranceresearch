@@ -1,0 +1,24 @@
+{
+	"title": "California Probate Code section 8480 - Bond of a personal representative",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=8480",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 8480(a) provides that, except as otherwise provided by statute, every person appointed as personal representative shall, before letters are issued, give a bond approved by the court.",
+		"Section 8480(a) provides that if two or more persons are appointed, the court may require either a separate bond from each or a joint and several bond, and that if a joint bond is furnished the liability on it is joint and several.",
+		"Section 8480(b) provides that the bond shall be for the benefit of interested persons and conditioned on the personal representative's faithful execution of the duties of the office according to law.",
+		"Section 8480(c) provides that if the person appointed fails to give the required bond, letters shall not be issued, and that if the person fails to give a new, additional, or supplemental bond, or to substitute a sufficient surety, under court order, the person may be removed from office."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Probate Code provisions on the bond of a personal representative. Amended by Stats. 1998, Ch. 77, effective January 1, 1999."
+}

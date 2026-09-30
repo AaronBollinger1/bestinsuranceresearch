@@ -1,0 +1,28 @@
+{
+	"title": "California Insurance Code Section 10113.70 (notice of an adverse change in nonguaranteed elements of a flexible premium policy)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10113.70",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation. The section credit on the official host at the time of access read Added by Stats. 2018, Ch. 545, Sec. 1. (AB 2634) Effective January 1, 2019.",
+	"status": "active",
+	"claims": [
+		"Section 10113.70(a)(1) requires that whenever a flexible premium life insurance policy is subject to an adverse change in the current scale of nonguaranteed elements, the insurer shall provide, as soon as practicable but no later than 90 days before the effective date of the adverse change, a summary notice and, if the policy is designated as one for which illustrations shall be used, an inforce illustration of current and future benefits and values.",
+		"Section 10113.70(b) requires the summary notice to be in no less than 12-point type and requires the illustration and summary notice to contain, in boldface type, the words IMPORTANT: NOTICE OF CHANGE IN NONGUARANTEED ELEMENTS OF YOUR POLICY.",
+		"Section 10113.70(c) requires the summary notice to identify each nonguaranteed element subject to the adverse change, its definition, the current and new rate or charge including the percentage change, an explanation that the change will reduce the accumulation value and may increase the risk of policy lapse based on continued payment of current premiums, and the date the change will take effect.",
+		"Section 10113.70(c)(6) requires the notice to state the last and next policy anniversary dates, the current accumulation value, and the current cash surrender value, which the prescribed text describes as accumulation value minus any surrender charges and policy loans.",
+		"Section 10113.70(c)(7) prescribes text setting out the owner's options as taking no action, paying additional premiums, reducing the face value of the policy, surrendering the policy, and converting the policy, the last stated to be applicable only if the policy includes a conversion or exchange privilege in the contract.",
+		"Section 10113.70(d)(1) defines adverse change as a change to the current scale of nonguaranteed elements that increases or may increase a charge, or reduces or may reduce a benefit to the policy owner, other than a change in a credited interest rate or an index account parameter based entirely on changes in the insurer's expected investment income or hedging costs.",
+		"Section 10113.70(f) provides that the section does not apply to a corporate-owned life insurance policy permitted by Section 10110.4 under which all benefits are payable to the corporate policy owner.",
+		"Section 10113.70(g) provides that the section applies to a flexible premium life insurance policy in effect on or after April 1, 2019, that its notice requirement applies to an adverse change scheduled to take effect on or after July 1, 2019, and that its illustration requirement applies to an adverse change scheduled to take effect on or after July 1, 2020."
+	],
+	"notes": "The carve-out in the definition matters as much as the notice. A change in a credited interest rate or an index account parameter based entirely on the insurer's expected investment income or hedging costs is not an adverse change for this section, so not every reduction in how a policy performs triggers the 90-day notice."
+}

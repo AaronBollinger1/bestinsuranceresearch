@@ -1,0 +1,22 @@
+{
+	"title": "California Public Contract Code section 5102 - Time to sue for relief from a bid",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PCC&sectionNum=5102",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 5102 provides that the complaint shall be filed, and summons served on the director of the department or the chief of the division or other head of the public entity under which the work is to be performed or an appearance made, within 90 days after the opening of the bid; otherwise, the action shall be dismissed.",
+		"The section carries the notation Added by Stats. 1982, Ch. 435, Sec. 2."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. The 90 days run from bid opening."
+}

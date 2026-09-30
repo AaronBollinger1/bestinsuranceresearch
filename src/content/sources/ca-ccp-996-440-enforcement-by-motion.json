@@ -1,0 +1,25 @@
+{
+	"title": "California Code of Civil Procedure section 996.440 - Enforcing a bond given in an action by motion",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=996.440",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 996.440(a) provides that if a bond is given in an action or proceeding, the liability on the bond may be enforced on motion made in the court without the necessity of an independent action.",
+		"Section 996.440(b) provides that the motion shall not be made until after entry of the final judgment in the action or proceeding and the time for appeal has expired or, if an appeal is taken, until the appeal is finally determined, and shall not be made or notice of motion served more than one year after the later of those dates.",
+		"Section 996.440(c) requires notice of motion to be served on the principal and sureties at least 30 days before the hearing, stating the amount of the claim and supported by affidavits setting forth the facts on which the claim is based.",
+		"Section 996.440(d) provides that judgment shall be entered against the principal and sureties in accordance with the motion unless they serve and file affidavits in opposition showing facts sufficient to present a triable issue of fact, in which case the issues are tried by the court.",
+		"Section 996.440(e) provides that the principal and sureties shall not obtain a stay of the proceedings pending determination of any conflicting claims among beneficiaries."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Bond and Undertaking Law (Code of Civil Procedure 995.010 onward). By section 995.020 the chapter yields where the statute requiring a particular bond prescribes a different rule or is inconsistent, so this section is a default rather than the rule for every bond. Added by Stats. 1982, Ch. 998. Section 996.420, read at the same time, provides that a surety on a bond given in an action or proceeding submits itself to the jurisdiction of the court in all matters affecting its liability on the bond, and that this does not apply to a bond of a public officer or fiduciary."
+}

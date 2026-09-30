@@ -1,0 +1,24 @@
+{
+	"title": "California Probate Code section 8482 - Amount of a personal representative's bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=8482",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 8482(a) provides that the court in its discretion may fix the amount of the bond, but that the amount shall be not more than the sum of the estimated value of the personal property, the probable annual gross income of the estate, and, if independent administration is granted as to real property, the estimated value of the decedent's interest in the real property.",
+		"Section 8482(b) provides that, notwithstanding subdivision (a), if the bond is given by an admitted surety insurer, the court may establish a fixed minimum amount for the bond, based on the minimum premium required by the admitted surety insurer.",
+		"Section 8482(c) provides that if the bond is given by personal sureties, the amount of the bond shall be twice the amount fixed by the court under subdivision (a).",
+		"Section 8482(d) provides that before confirming a sale of real property the court shall require such additional bond as may be proper, not exceeding the maximum requirements of the section, treating the expected proceeds of the sale as personal property."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Probate Code provisions on the bond of a personal representative. Enacted by Stats. 1990, Ch. 79."
+}

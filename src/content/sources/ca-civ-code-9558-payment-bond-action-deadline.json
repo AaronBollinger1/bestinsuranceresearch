@@ -1,0 +1,21 @@
+{
+	"title": "California Civil Code section 9558 - Time to sue on a public works payment bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=9558",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 9558 provides that a claimant may commence an action to enforce the liability on the bond at any time after the claimant ceases to provide work, but not later than six months after the period in which a stop payment notice may be given under Section 9356."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. The full section is one sentence. The start of the six months is the end of the section 9356 period, which itself depends on whether a notice of completion, acceptance or cessation was recorded."
+}

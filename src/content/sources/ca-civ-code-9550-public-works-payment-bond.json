@@ -1,0 +1,26 @@
+{
+	"title": "California Civil Code section 9550 - Payment bond required on a public works contract",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=9550",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 9550(a) provides that a direct contractor that is awarded a public works contract involving an expenditure in excess of twenty-five thousand dollars ($25,000) shall, before commencement of work, give a payment bond to and approved by the officer or public entity by whom the contract was awarded.",
+		"Section 9550(b) provides that a public entity shall state in its call for bids that a payment bond is required for a public works contract involving an expenditure in excess of twenty-five thousand dollars ($25,000).",
+		"Section 9550(c) provides that a payment bond given and approved under the section will permit performance of and provide coverage for work pursuant to a public works contract that supplements the contract for which the bond is given, if the requirement of a new bond is waived by the public entity.",
+		"Section 9550(d) provides that, for the purpose of the section, a design professional is not deemed a direct contractor and is not required to give a payment bond.",
+		"Section 9550(e) provides that the section does not apply to a public works contract with a state entity as defined in subdivision (d) of Section 7103 of the Public Contract Code.",
+		"The section carries the notation Added by Stats. 2010, Ch. 697, Sec. 20 (SB 189), effective January 1, 2011, operative July 1, 2012."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Chapter 5 (Payment Bond) of Title 3 (Public Work of Improvement) of Part 6 of Division 4 of the Civil Code. Subdivision (e) is the branch that matters most: a contract with a state entity as defined in Public Contract Code section 7103(d) is outside this section, and the Public Contract Code carries its own bond rules for state contracts. The definition of state entity in section 7103 was not read for this record."
+}

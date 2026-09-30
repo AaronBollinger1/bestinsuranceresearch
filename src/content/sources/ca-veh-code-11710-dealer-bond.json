@@ -1,0 +1,25 @@
+{
+	"title": "California Vehicle Code section 11710 - Vehicle dealer and remanufacturer bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=11710",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 11710(a) provides that before any dealer's or remanufacturer's license is issued or renewed, the applicant shall procure and file with the department a bond executed by an admitted surety insurer, approved as to form by the Attorney General, and conditioned that the applicant shall not practice any fraud or make any fraudulent representation which will cause a monetary loss to a purchaser, seller, financing agency, or governmental agency.",
+		"Section 11710(b) provides that a dealer's bond shall be in the amount of fifty thousand dollars ($50,000), except that the bond of a dealer who deals exclusively in motorcycles or all-terrain vehicles shall be in the amount of ten thousand dollars ($10,000), and that a remanufacturer bond shall be in the amount of fifty thousand dollars ($50,000).",
+		"Section 11710(c) provides that liability under the bond is to remain at full value, and that if the amount of liability under the bond is decreased or there is outstanding a final court judgment for which the dealer or remanufacturer and sureties are liable, the license shall be automatically suspended.",
+		"Section 11710(c) provides that to reinstate the license and special plates, the licensee shall either file an additional bond or restore the bond on file to the original amount, or shall terminate the outstanding judgment.",
+		"Section 11710(d) provides that a license shall not be issued or renewed unless the applicant files a written instrument appointing the director as agent for service of process in actions arising out of any claim for damages by reason of the applicant's violation of the code or any condition of the bond, and that where the licensee is served through the director a copy of the summons and complaint shall also be mailed by the plaintiff or the plaintiff's attorney to the surety on the applicant's bond, postpaid and registered with request for return receipt."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. "
+}

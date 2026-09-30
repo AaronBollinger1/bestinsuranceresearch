@@ -1,0 +1,22 @@
+{
+	"title": "California Insurance Code Section 280 (no insurable interest, contract void)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=280.",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"claims": [
+		"Section 280 provides that if the insured has no insurable interest, the contract is void.",
+		"Section 280 was enacted by Stats. 1935, Ch. 145."
+	],
+	"notes": "The section sits in Article 4, Insurable Interest: Generally, in the part of the Code on the insurance contract in general. For life and disability insurance, the content of an insurable interest is supplied by sections 10110 and 10110.1."
+}

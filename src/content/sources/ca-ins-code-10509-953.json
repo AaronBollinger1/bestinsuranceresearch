@@ -1,0 +1,24 @@
+{
+	"title": "California Insurance Code Section 10509.953 (definitions for life insurance illustrations)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10509.953",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation. The section credit on the official host at the time of access read Added by Stats. 1996, Ch. 1106, Sec. 1. Effective January 1, 1997, with the section operative July 1, 1997 pursuant to Section 10509.965.",
+	"status": "active",
+	"claims": [
+		"Section 10509.953(e) defines generic name as a short title descriptive of the policy being illustrated, such as whole life, term life, or flexible premium adjustable life.",
+		"Section 10509.953(f) defines guaranteed elements as the premiums, benefits, values, credits or charges under a policy of life insurance that are guaranteed and determined at issue, and subdivision (m) defines non-guaranteed elements as the premiums, benefits, values, credits or charges that are not guaranteed or not determined at issue.",
+		"Section 10509.953(g) defines illustrated scale as a scale of nonguaranteed elements currently being illustrated that is not more favorable to the policy owner than the lesser of the disciplined current scale and the currently payable scale.",
+		"Section 10509.953(h) defines illustration as a presentation or depiction that includes nonguaranteed elements of a policy of life insurance over a period of years, of three types: a basic illustration, a supplemental illustration, and an in force illustration furnished at any time after the policy has been in force for one year or more.",
+		"Section 10509.953(q) defines a self-supporting illustration as one for which it can be demonstrated that, using experience assumptions underlying the disciplined current scale, for all illustrated points in time on or after the 15th policy anniversary, or the 20th for second-or-later-to-die policies, or upon policy expiration if sooner, the accumulated value of all policy cash-flows equals or exceeds the total policy owner value available."
+	]
+}

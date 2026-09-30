@@ -1,0 +1,22 @@
+{
+	"title": "29 U.S.C. 255 (Portal-to-Portal Act: statute of limitations for FLSA actions)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section255&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 255(a) provides that an action to enforce a cause of action for unpaid minimum wages, unpaid overtime compensation, or liquidated damages under the Fair Labor Standards Act, if the cause of action accrues on or after May 14, 1947, may be commenced within two years after the cause of action accrued, and every such action shall be forever barred unless commenced within two years.",
+		"Section 255(a) provides an exception: a cause of action arising out of a willful violation may be commenced within three years after the cause of action accrued."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Preliminary edition on the Office of the Law Revision Counsel site. Subsections (b) to (d) concern causes of action accrued before May 14, 1947 and certain pre-1973 actions against states and are not relied on. The three-year willful branch was added by Pub. L. 89-601 (1966)."
+}

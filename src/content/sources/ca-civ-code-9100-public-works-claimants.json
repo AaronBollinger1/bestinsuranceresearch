@@ -1,0 +1,22 @@
+{
+	"title": "California Civil Code section 9100 - Who may claim against a public works payment bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=9100",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 9100(a) provides that, except as provided in subdivision (b), any of the following persons that have not been paid in full may give a stop payment notice to the public entity or assert a claim against a payment bond: a person that provides work for a public works contract, if the work is authorized by a direct contractor, subcontractor, architect, project manager, or other person having charge of all or part of the public works contract; a laborer; and a person described in Section 4107.7 of the Public Contract Code.",
+		"Section 9100(b) provides that a direct contractor may not give a stop payment notice or assert a claim against a payment bond under Title 3 of Part 6 of Division 4 of the Civil Code."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Section 4107.7 of the Public Contract Code, referenced in subdivision (a)(3), was not read for this record, so the third category is named but not described."
+}

@@ -64,6 +64,10 @@
 	line-height: 1.1;
 	color: var(--paper);
 }
+/* Several hubs and ledgers fill a figure with b and span rather than dd and
+   dt. Unstyled, those inherit body ink and sat dark on the dark ground. */
+.figure > span { order: 2; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.05em; text-transform: uppercase; color: #8e99a6; }
+.figure > b { order: 1; font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: var(--text-xl); font-weight: 500; line-height: 1.1; color: var(--paper); }
 .figure dd small { margin-left: 3px; font-size: var(--text-xs); color: #9aa5b2; }
 .figure[data-tone='high'] dd { color: #f0b3a3; }
 .figure[data-tone='medium'] dd { color: #f2d79a; }

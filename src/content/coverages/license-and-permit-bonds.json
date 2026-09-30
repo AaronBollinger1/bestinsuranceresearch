@@ -1,0 +1,181 @@
+{
+	"name": "License and permit bonds",
+	"line": "license-and-permit-bonds",
+	"family": "commercial",
+	"definition": "A license bond is a surety bond that a statute makes a condition of holding a licence, often executed in favour of the State of California, as the contractor worker bond and the qualifying individual's bond are [S:ca-bpc-7071-6-5-llc-bond][S:ca-bpc-7071-10-qualifying-individual-bond-beneficiaries], and answering to the people the statute names when the licensee breaks the rules it sets. California classes these bonds as surety insurance, which includes executing bonds and undertakings required or permitted by law [S:ca-ins-code-105-surety-insurance]. Three California examples show the shape. A vehicle dealer cannot be licensed or renewed without filing a bond, fifty thousand dollars for most dealers, conditioned that the dealer will not practice fraud or make fraudulent representations causing monetary loss to a purchaser, seller, financing agency or governmental agency [S:ca-veh-code-11710-dealer-bond]. Every notary public must execute a fifteen thousand dollar official bond [S:ca-gov-code-8212-notary-bond]. And a contractor carries not one licence bond but potentially several: the basic contractor's bond [S:ca-bpc-7071-6-contractor-bond], a one hundred thousand dollar worker bond if the licensee is a limited liability company [S:ca-bpc-7071-6-5-llc-bond], a qualifying individual's bond [S:ca-bpc-7071-9-qualifying-individual-bond], and a disciplinary bond after discipline [S:ca-bpc-7071-8-disciplinary-bond]. Who can claim, how much, and by when is fixed by the statute that requires each bond, so the statute is read before the bond. The general mechanics of suretyship and the basic contractor's bond beneficiary list are on the general surety bonds page and are not repeated here.",
+	"protects": [
+		"The people the requiring statute names, which differ bond by bond. For the vehicle dealer bond, a person defrauded by the dealer or its salesman, a person damaged by the dealer's violation of Division 3 of the Vehicle Code, and a person not paid for a vehicle sold to the dealer [S:ca-veh-code-11711-dealer-bond-actions]",
+		"The state or a political subdivision, which also has a right of action on the dealer bond and whose claims are satisfied first [S:ca-veh-code-11711-dealer-bond-actions]",
+		"Persons injured by a notary public's official misconduct or neglect [S:ca-gov-code-8214-notary-liability]",
+		"Employees of a limited liability company contractor damaged by failure to pay wages, interest on wages or fringe benefits [S:ca-bpc-7071-6-5-llc-bond]",
+		"Not the licensee. A surety that satisfies the principal obligation is owed reimbursement by the principal, including necessary costs and expenses [S:ca-civ-code-2847-surety-reimbursement]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "What this list is drawn from",
+			"note": "Licence bond forms are prescribed or approved by the licensing agency; the dealer bond, for example, must be approved as to form by the Attorney General [S:ca-veh-code-11710-dealer-bond]. This record has read no bond form. Everything below is what the requiring statute says the bond answers for, and what a filed bond promises is in that bond."
+		},
+		{
+			"item": "Dealer fraud causing monetary loss",
+			"note": "The dealer bond is conditioned that the applicant shall not practice any fraud or make any fraudulent representation which will cause a monetary loss to a purchaser, seller, financing agency, or governmental agency [S:ca-veh-code-11710-dealer-bond]."
+		},
+		{
+			"item": "A seller the dealer never paid",
+			"note": "A person not paid for a vehicle sold to and purchased by a licensee has a right of action against the dealer and the surety on the dealer's bond, in an amount not to exceed the value of the vehicle [S:ca-veh-code-11711-dealer-bond-actions]."
+		},
+		{
+			"item": "A notary's official misconduct or neglect",
+			"note": "The notary and the sureties on the official bond are liable in a civil action to the persons injured for all the damages sustained [S:ca-gov-code-8214-notary-liability]. The section does not itself say how that interacts with the fifteen thousand dollar bond amount [S:ca-gov-code-8212-notary-bond], and this record does not resolve it."
+		},
+		{
+			"item": "Workers' wages and benefits, on the limited liability company contractor bond",
+			"note": "The one hundred thousand dollar bond is for the benefit of any employee damaged by the employer's failure to pay wages, interest on wages, or fringe benefits, and for a licensee party to a collective bargaining agreement it also covers welfare fund, pension fund and apprentice program contributions [S:ca-bpc-7071-6-5-llc-bond]."
+		},
+		{
+			"item": "The contractor's statutory beneficiaries, a second time, on the qualifying individual's bond",
+			"note": "Where the qualifying individual is neither proprietor, general partner nor joint licensee, a separate twenty-five thousand dollar qualifying individual's bond is required, in addition to and not combined with the contractor's bond [S:ca-bpc-7071-9-qualifying-individual-bond], for the benefit of the same classes of homeowner, owner, fraud victim, employee and fringe benefit claimant [S:ca-bpc-7071-10-qualifying-individual-bond-beneficiaries]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Whatever the bond form limits, which this record does not establish",
+			"note": "This list sets out boundaries the statutes draw. It is not a list of bond exclusions and none is established here; the conditions of a filed bond are in that bond."
+		},
+		{
+			"item": "More than the value of the vehicle, on a private dealer bond claim",
+			"note": "A person's right of action on the dealer bond is in an amount not to exceed the value of the vehicle purchased from or sold to the dealer [S:ca-veh-code-11711-dealer-bond-actions]."
+		},
+		{
+			"item": "A licensee claimant ahead of consumers, or anyone ahead of the state",
+			"note": "The state's claims on the dealer bond are satisfied first and have preference over all private claims, and among private claims those of a person who is not a licensee are satisfied first [S:ca-veh-code-11711-dealer-bond-actions]."
+		},
+		{
+			"item": "More than four thousand dollars for wage and fringe benefit claims, on most contractor bonds",
+			"note": "The aggregate liability of a surety on a claim for wages and fringe benefits against a contractor licence bond under the article, other than the section 7071.8 disciplinary bond, shall not exceed four thousand dollars [S:ca-bpc-7071-11-bond-claims]. This record has read nothing reconciling that cap with the limited liability company worker bond, whose stated purpose is wages [S:ca-bpc-7071-6-5-llc-bond], and does not resolve how the two interact."
+		},
+		{
+			"item": "Most claims above seven thousand five hundred dollars, on the qualifying individual's bond",
+			"note": "Excluding claims by the beneficiaries named in the cross-referenced paragraph of section 7071.10, the surety's aggregate liability is capped at seven thousand five hundred dollars and the excess is reserved for those beneficiaries, who may recover the full measure of the bond [S:ca-bpc-7071-9-qualifying-individual-bond]. The cross-reference names a paragraph that section 7071.10 as read does not number [S:ca-bpc-7071-10-qualifying-individual-bond-beneficiaries], so which beneficiaries it means is not settled here."
+		},
+		{
+			"item": "A claim brought after the statutory period",
+			"note": "Most actions on a contractor bond must be brought within two years after the expiration of the licence period in which the act or omission occurred, or if the licence was inactivated, canceled or revoked, within two years of when it would have expired; wage and fringe benefit claims must be brought within six months of discovering the delinquency and never later than two years from when the contributions were due [S:ca-bpc-7071-11-bond-claims]."
+		},
+		{
+			"item": "Bonds for inactive licences",
+			"note": "The limited liability company worker bond does not apply while the licence is inactive on the board's records [S:ca-bpc-7071-6-5-llc-bond], and no contractor's bond is required of a licence holder during the period the licence is inactive [S:ca-bpc-7071-6-contractor-bond]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"The bond amount is set by statute, not chosen: fifty thousand dollars for a vehicle dealer or remanufacturer, except ten thousand dollars for a dealer dealing exclusively in motorcycles or all-terrain vehicles [S:ca-veh-code-11710-dealer-bond]; fifteen thousand dollars for a notary [S:ca-gov-code-8212-notary-bond]; one hundred thousand dollars for a limited liability company contractor [S:ca-bpc-7071-6-5-llc-bond]; twenty-five thousand dollars for a qualifying individual [S:ca-bpc-7071-9-qualifying-individual-bond].",
+		"A disciplinary contractor's bond is fixed by the registrar based on the seriousness of the violation, at not less than twenty-five thousand dollars nor more than 10 times the section 7071.6 amount, and it is in addition to, may not be combined with and does not replace any other bond [S:ca-bpc-7071-8-disciplinary-bond].",
+		"The disciplinary bond stays on file at least two years, and its period runs only while the licence is current, active and in good standing, extended until the licence has been so for the required period [S:ca-bpc-7071-8-disciplinary-bond].",
+		"The dealer bond must remain at full value. If liability under it is decreased, or a final judgment against the dealer and sureties is outstanding, the licence is automatically suspended until an additional bond is filed, the bond is restored, or the judgment is terminated [S:ca-veh-code-11710-dealer-bond].",
+		"Where a contractor bond is insufficient to pay all claims in full, the bond is distributed to claimants in proportion to their claims [S:ca-bpc-7071-11-bond-claims].",
+		"There is no deductible in the insurance sense. The licensee as principal is bound to reimburse a surety that satisfies the obligation [S:ca-civ-code-2847-surety-reimbursement], and a contractor licence cannot be renewed, reissued or reinstated while the surety remains unreimbursed and the licensee was subject to suspension or discipline under section 7071.11 [S:ca-bpc-7071-11-bond-claims].",
+		"A notary bond must be a bond executed by an admitted surety insurer and not a deposit in lieu of bond [S:ca-gov-code-8212-notary-bond]. The contractor licence requirement, by contrast, can be met by posting either a surety bond or a cashier's check with CSLB [S:cslb-license-bonds-fast-facts]."
+	],
+	"endorsements": [],
+	"relatedPolicies": [
+		"Surety bonds generally, the neighbouring page, which carries the three-party structure, the indemnity agreement and the basic twenty-five thousand dollar contractor's bond with its beneficiary list [S:ca-bpc-7071-5-bond-beneficiaries]",
+		"Contract surety bonds, the other neighbouring page, for bid, performance and payment bonds given to an owner on a particular construction contract rather than to the state as a condition of a licence [S:ca-ins-code-105-surety-insurance]",
+		"Errors and omissions or professional liability insurance, which is two-party insurance for the licensee and is not what a licence bond is; this record has read no such form and makes no statement about one"
+	],
+	"underwritingInputs": [
+		"Which statute requires the bond and in what amount [S:ca-veh-code-11710-dealer-bond][S:ca-gov-code-8212-notary-bond][S:ca-bpc-7071-6-5-llc-bond]",
+		"For a contractor, the entity type, since a limited liability company carries the one hundred thousand dollar worker bond [S:ca-bpc-7071-6-5-llc-bond]",
+		"Whether the qualifying individual is proprietor, general partner or joint licensee, or owns at least 10 percent of the corporation's voting stock or the company's membership interest, which removes the qualifying individual's bond on certification [S:ca-bpc-7071-9-qualifying-individual-bond]",
+		"Whether the applicant, its qualifier or its personnel of record have a disciplinary history, which triggers a disciplinary bond of twenty-five thousand dollars up to 10 times the base amount [S:ca-bpc-7071-8-disciplinary-bond]",
+		"Whether the licensee is party to a collective bargaining agreement, which extends the limited liability company bond to fund contributions [S:ca-bpc-7071-6-5-llc-bond]",
+		"For a dealer, whether it deals exclusively in motorcycles or all-terrain vehicles [S:ca-veh-code-11710-dealer-bond]",
+		"Prior payments on bonds and whether any surety remains unreimbursed [S:ca-bpc-7071-11-bond-claims]"
+	],
+	"exposures": [
+		{
+			"item": "A bond the surety can cancel",
+			"note": "A surety may cancel or withdraw from a statutory bond by notice to the officer to whom the bond was given, with a copy to the principal [S:ca-ccp-996-320-surety-cancellation], effective at the earliest of 30 days after notice, a substitute surety or a new bond [S:ca-ccp-996-330-cancellation-effective]. That default yields where the requiring statute prescribes a different rule [S:ca-ccp-995-020-bond-law-scope]. For a contractor, having a bond on file is a condition of the continued maintenance of the licence [S:ca-bpc-7071-6-contractor-bond]."
+		},
+		{
+			"item": "A dealer licence suspended by a judgment",
+			"note": "If there is an outstanding final court judgment for which the dealer and sureties are liable, or liability under the bond is decreased, the dealer licence is automatically suspended [S:ca-veh-code-11710-dealer-bond]. A single paid claim can therefore take the licence down until the bond is restored."
+		},
+		{
+			"item": "A contractor licence suspended for not repaying the surety",
+			"note": "A contractor that did not protest a claim has 90 days from the board's notification to prove payment of the amount owed to the surety, or by operation of law the licence is suspended, and the suspension is disclosed indefinitely [S:ca-bpc-7071-11-bond-claims]. The bar on renewal while the surety is unreimbursed reaches other licences on which any of the licensee's personnel of record is listed [S:ca-bpc-7071-11-bond-claims]."
+		},
+		{
+			"item": "Losing the chance to object before the surety pays",
+			"note": "Before a surety settles through a good faith payment, the contractor licensee has not less than 15 days to give a written protest stating a specific and reasonable basis for opposing payment [S:ca-bpc-7071-11-bond-claims]. The surety must report each payment to the registrar within 30 days, stating whether a protest was filed [S:ca-bpc-7071-11-bond-claims]."
+		},
+		{
+			"item": "A qualifier held to a bond for acts they did not know about",
+			"note": "The disciplinary bond requirement reaches a person who was a qualifying individual for a licensee while cause for suspension or revocation occurred, whether or not that individual knew of or took part in the act or omission [S:ca-bpc-7071-8-disciplinary-bond]. Officers and other personnel are reached only where they had knowledge or participated [S:ca-bpc-7071-8-disciplinary-bond]."
+		},
+		{
+			"item": "A notary's personal exposure alongside the bond",
+			"note": "The notary is liable together with the sureties for all the damages sustained from official misconduct or neglect [S:ca-gov-code-8214-notary-liability], and the surety that pays is owed reimbursement by the principal [S:ca-civ-code-2847-surety-reimbursement]. The bond protects the injured person, not the notary."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Get a lapsed contractor bond to the registrar within 90 days of its effective date",
+			"note": "The registrar accepts a bond as of the effective date shown if received within 90 days and reinstates the licence retroactively, and beyond 90 days only on a showing that the gap was due to circumstances beyond the licensee's control [S:ca-bpc-7071-7-bond-effective-date]."
+		},
+		{
+			"item": "Answer a surety's notice of claim within the protest window",
+			"note": "A written protest within the not less than 15 day period must instruct the surety not to pay on the specific grounds that the claim is opposed and give a specific and reasonable basis [S:ca-bpc-7071-11-bond-claims]. Where a protest is filed, the board shall investigate and file disciplinary action if there is evidence the surety sustained a loss from a good faith payment made to mitigate damages to a person covered by section 7071.5 [S:ca-bpc-7071-11-bond-claims]."
+		},
+		{
+			"item": "Diary the claim deadline from the licence period, not the job",
+			"note": "The two year period for most contractor bond actions runs from the expiration of the licence period in which the act or omission occurred, and wage and fringe benefit claims have their own six month rule running from discovery of the delinquency [S:ca-bpc-7071-11-bond-claims]."
+		},
+		{
+			"item": "When a dealer is sued through the director, mail the surety too",
+			"note": "Where process on a dealer is served through the director, the plaintiff or the plaintiff's attorney must also mail a copy of the summons and complaint to the surety at the address given in the bond, by registered mail with return receipt requested [S:ca-veh-code-11710-dealer-bond]."
+		},
+		{
+			"item": "Keep the written instrument the dealer furnished",
+			"note": "One of the private rights of action on the dealer bond turns on the person having possession of a written instrument furnished by the licensee, containing stipulated provisions the person believes the licensee has violated [S:ca-veh-code-11711-dealer-bond-actions]."
+		},
+		{
+			"item": "If a surety sends a cancellation notice, replace the bond before it takes effect",
+			"note": "Cancellation under the Bond and Undertaking Law is effective 30 days after notice unless a substitute surety or new bond takes effect sooner [S:ca-ccp-996-330-cancellation-effective], so the replacement date is the one to fix."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "Every amount, beneficiary list, cap and deadline on this page is California law: the Vehicle Code dealer bond [S:ca-veh-code-11710-dealer-bond], the Government Code notary bond [S:ca-gov-code-8212-notary-bond], the Business and Professions Code contractor bonds [S:ca-bpc-7071-11-bond-claims] and the Code of Civil Procedure cancellation default [S:ca-ccp-996-320-surety-cancellation]. Other states set their own licence bond requirements, and this record holds none of them."
+		}
+	],
+	"lastReviewed": "2026-09-30",
+	"effectiveDate": "2026-09-30",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"relatedQuestions": [
+		"surety-bond-vs-insurance",
+		"contractor-license-bond-what-it-pays-california",
+		"claiming-on-a-contractor-license-bond-california"
+	],
+	"sourceIds": [
+		"ca-bpc-7071-6-5-llc-bond",
+		"ca-bpc-7071-10-qualifying-individual-bond-beneficiaries",
+		"ca-ins-code-105-surety-insurance",
+		"ca-veh-code-11710-dealer-bond",
+		"ca-gov-code-8212-notary-bond",
+		"ca-bpc-7071-6-contractor-bond",
+		"ca-bpc-7071-9-qualifying-individual-bond",
+		"ca-bpc-7071-8-disciplinary-bond",
+		"ca-veh-code-11711-dealer-bond-actions",
+		"ca-gov-code-8214-notary-liability",
+		"ca-civ-code-2847-surety-reimbursement",
+		"ca-bpc-7071-11-bond-claims",
+		"cslb-license-bonds-fast-facts",
+		"ca-bpc-7071-5-bond-beneficiaries",
+		"ca-ccp-996-320-surety-cancellation",
+		"ca-ccp-996-330-cancellation-effective",
+		"ca-ccp-995-020-bond-law-scope",
+		"ca-bpc-7071-7-bond-effective-date"
+	]
+}

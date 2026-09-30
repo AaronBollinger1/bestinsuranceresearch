@@ -1,0 +1,29 @@
+{
+	"title": "California Civil Code Section 2782.8 (limits on indemnity and defense obligations of design professionals)",
+	"publisher": "California Legislative Information, Office of Legislative Counsel",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2782.8",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 2782.8(a) provides that for all contracts, and amendments thereto, entered into on or after January 1, 2018, for design professional services, provisions that purport to indemnify, including the duty and the cost to defend, the indemnitee by a design professional against liability for claims against the indemnitee are unenforceable, except to the extent that the claims against the indemnitee arise out of, pertain to, or relate to the negligence, recklessness, or willful misconduct of the design professional.",
+		"Subdivision (a) provides that in no event shall the cost to defend charged to the design professional exceed the design professional's proportionate percentage of fault, but that where one or more defendants is unable to pay its share of defense costs due to bankruptcy or dissolution of the business, the design professional shall meet and confer with other parties regarding unpaid defense costs.",
+		"Subdivision (a) provides that the section shall not be waived or modified by contractual agreement, act, or omission of the parties, and that contractual provisions not expressly prohibited in it are reserved to the agreement of the parties.",
+		"Subdivision (b) provides that all contracts and all solicitation documents for design professional services, including requests for proposal and invitations for bid, are deemed to incorporate the section by reference.",
+		"Subdivision (c) provides that design professional includes licensed architects, licensed landscape architects, registered professional engineers, and licensed professional land surveyors, and business entities offering those services under the named chapters of the Business and Professions Code.",
+		"Subdivision (d) provides that the section applies only to a professional service contract, or amendment, entered into on or after January 1, 2018.",
+		"Subdivision (e) provides that the provisions pertaining to the duty and cost to defend do not apply to (1) a contract for design professional services where a project-specific general liability policy insures all project participants for general liability exposures on a primary basis and also covers all design professionals for their legal liability arising out of their professional services on a primary basis, or (2) a design professional who is a party to a written design-build joint venture agreement.",
+		"Subdivision (f) provides that nothing in the section shall abrogate Section 1104 of the Public Contract Code, and subdivision (g) provides that indemnitee does not include any agency of the state.",
+		"The page carries the note 'Amended by Stats. 2017, Ch. 8, Sec. 1. (SB 496) Effective January 1, 2018.'"
+	],
+	"updateCadence": "Amended by legislation; re-check leginfo for the current version before each publication cycle.",
+	"status": "active",
+	"notes": "Read in full on the official host 2026-09-30. Two branches are easy to drop and change the answer: subdivision (e) removes the defense-cost limit where a qualifying project-specific policy is in place or the design professional is in a written design-build joint venture, and subdivision (g) excludes state agencies from the meaning of indemnitee. Effective: 2018-01-01"
+}

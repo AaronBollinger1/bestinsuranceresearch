@@ -1,0 +1,28 @@
+{
+	"title": "26 U.S.C. 7702A (modified endowment contract defined)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section7702A&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 7702A(a) provides that, for purposes of section 72, the term modified endowment contract means any contract meeting the requirements of section 7702 which is entered into on or after June 21, 1988 and fails to meet the 7-pay test of subsection (b), or which is received in exchange for such a contract.",
+		"Section 7702A(b) provides that a contract fails to meet the 7-pay test if the accumulated amount paid under the contract at any time during the first 7 contract years exceeds the sum of the net level premiums which would have been paid on or before that time if the contract provided for paid-up future benefits after the payment of 7 level annual premiums.",
+		"Section 7702A(c)(2)(A) provides that if there is a reduction in benefits under the contract within the first 7 contract years, the section shall be applied as if the contract had originally been issued at the reduced benefit level.",
+		"Section 7702A(c)(2)(B) provides that a reduction in benefits attributable to the nonpayment of premiums due under the contract shall not be taken into account if the benefits are reinstated within 90 days after the reduction.",
+		"Section 7702A(c)(3)(A) provides that if there is a material change in the benefits under, or in other terms of, the contract which was not reflected in any previous determination, the contract shall be treated as a new contract entered into on the day the material change takes effect, with appropriate adjustments to take into account the cash surrender value.",
+		"Section 7702A(c)(3)(B) provides that material change includes any increase in the death benefit or any increase in, or addition of, a qualified additional benefit, but does not include an increase attributable to the payment of premiums necessary to fund the lowest level of the death benefit and qualified additional benefits payable in the first 7 contract years or to the crediting of interest or other earnings in respect of those premiums, nor, to the extent provided in regulations, certain cost-of-living increases.",
+		"Section 7702A(d) provides that a contract failing the 7-pay test is treated as failing only for distributions during the contract year in which the failure takes effect and any subsequent contract year and, under regulations, distributions in anticipation of the failure, and that any distribution made within 2 years before the failure shall be treated as made in anticipation of it.",
+		"Section 7702A(e)(1)(B) provides that if, in order to comply with the 7-pay test, any portion of a premium paid during a contract year is returned by the insurance company with interest within 60 days after the end of that contract year, the amount returned, excluding interest, is deemed to reduce the sum of the premiums paid during that year, and subparagraph (C) provides that the interest returned is includible in the gross income of the recipient."
+	],
+	"updateCadence": "Amended only by legislation. The official host showed the text in effect on September 29, 2026 at the time of access, and the source credit lists Pub. L. 107-147, title IV, section 416(f) (March 9, 2002) as the most recent amendment.",
+	"status": "active",
+	"notes": "The definition exists for section 72, the section on amounts received under annuity, endowment and life insurance contracts, and this record has not read section 72. It therefore records what makes a contract a modified endowment contract and not what follows from being one. Note the second branch in subsection (a)(2): a contract received in exchange for a modified endowment contract is itself one, which is why the status travels through an exchange. How any of this applies to a given contract is a question for the insurer and a tax professional."
+}

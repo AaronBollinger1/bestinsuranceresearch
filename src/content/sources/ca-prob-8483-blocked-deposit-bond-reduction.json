@@ -1,0 +1,22 @@
+{
+	"title": "California Probate Code section 8483 - Bond where estate property is deposited subject to court authorization",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=8483",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 8483 applies where estate property has been deposited pursuant to Chapter 3 (commencing with Section 9700) of Part 5 on condition that the property, including any earnings, will not be withdrawn except on authorization of the court.",
+		"Section 8483(b) provides that, on production of a receipt showing such a deposit, the court may order that the property not be withdrawn except on authorization of the court and may, in its discretion, exclude the property in determining the amount of the required bond or reduce the bond to an amount it determines is reasonable, including where a bond has already been given or the amount fixed."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Probate Code provisions on the bond of a personal representative. Enacted by Stats. 1990, Ch. 79. Sections 9700 onward, on the deposit itself, were not read for this record."
+}

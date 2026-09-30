@@ -1,0 +1,21 @@
+{
+	"title": "29 U.S.C. 260 (Portal-to-Portal Act: liquidated damages and the good faith defence)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section260&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 260 provides that in any action to recover unpaid minimum wages, unpaid overtime compensation, or liquidated damages under the Fair Labor Standards Act, if the employer shows to the satisfaction of the court that the act or omission was in good faith and that it had reasonable grounds for believing it was not a violation, the court may, in its sound discretion, award no liquidated damages or award any amount thereof not to exceed the amount specified in section 216."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. The burden in the section is on the employer, and the outcome is in the court's discretion rather than automatic on a showing of good faith."
+}

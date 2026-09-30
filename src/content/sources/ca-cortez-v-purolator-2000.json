@@ -1,0 +1,25 @@
+{
+	"sourceType": "court-decision",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": false,
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": false,
+	"updateCadence": "Static once filed; its effect can be changed by later decisions or legislation.",
+	"status": "active",
+	"title": "Cortez v. Purolator Air Filtration Products Co. (2000) 23 Cal.4th 163 (unpaid wages as restitution under the Unfair Competition Law)",
+	"publisher": "Opinion of the Supreme Court of California; text read on California Supreme Court Resources, Robert Crown Law Library, Stanford Law School, a reproduction",
+	"url": "https://scocal.stanford.edu/opinion/cortez-v-purolator-air-filtration-products-co-32048",
+	"publishedDate": "2000-06-05",
+	"effectiveDate": "2000-06-05",
+	"claims": [
+		"The court states that, while disgorgement to a fluid recovery fund of all profit a defendant may have earned by withholding overtime wages is not permitted, the defendant may be compelled to restore unpaid wages to its employees and former employees.",
+		"The court states that, once earned, unpaid wages became property to which the employees were entitled, that failure to promptly pay those wages was unlawful and thus an unfair business practice, and that Business and Professions Code section 17203 expressly authorizes orders necessary to restore money or property to any person in interest from whom it has been obtained through an unfair business practice.",
+		"The court concludes that an order that a business pay to an employee wages unlawfully withheld is consistent with the legislative intent underlying the authorization in section 17203 for orders necessary to restore money or property acquired by means of an unfair business practice.",
+		"The court states that any business act or practice that violates the Labor Code through failure to pay wages is, by definition, an unfair business practice, that an action to recover wages that might be barred if brought under Labor Code section 1194 still may be pursued as a UCL action seeking restitution if the failure to pay constitutes a business practice, and that any action on any UCL cause of action is subject to the four-year period of limitations in section 17208.",
+		"The court states that equitable considerations may guide the court in fashioning the appropriate remedy in a UCL action."
+	],
+	"notes": "Read on 2026-09-30 on the Stanford Law School reproduction; the introduction, Part II.A (unlawfully withheld wages may be recovered as restitution) and Part II.B (statute of limitations) were read, and the equitable defences discussion was read in part. The case decides what relief the Unfair Competition Law authorises for unpaid wages. It is not an insurance case and says nothing about whether any insurance policy responds to a wage claim. Published: 2000-06-05"
+}

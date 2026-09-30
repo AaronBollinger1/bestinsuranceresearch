@@ -1,0 +1,32 @@
+{
+	"title": "California Business and Professions Code section 7071.11 - Claims, limitations, protest and reimbursement on contractor bonds",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7071.11",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 7071.11(a) provides that the aggregate liability of a surety on a claim for wages and fringe benefits brought against a bond required by the article, other than a bond required by Section 7071.8, shall not exceed the sum of four thousand dollars ($4,000), and that if a bond is insufficient to pay all claims in full, the sum of the bond shall be distributed to all claimants in proportion to the amount of their respective claims.",
+		"Section 7071.11(b) provides that no license may be renewed, reissued, or reinstated while a judgment or admitted claim in excess of the amount of the bond remains unsatisfied.",
+		"Section 7071.11(c)(1) provides that, except for wage and fringe benefit claims and excluding the judgment bond under Section 7071.17, an action against a bond required under the article shall be brought within two years after the expiration of the license period during which the act or omission occurred, applicable only if the license has not been inactivated, canceled, or revoked during that license period.",
+		"Section 7071.11(c)(2) provides that if the license has been inactivated, canceled, or revoked, an action shall be brought within two years of the date the license would have expired had it not been inactivated, canceled, or revoked, and only for an act or omission that occurred before that date.",
+		"Section 7071.11(c)(3) provides that an action against a disciplinary bond filed pursuant to Section 7071.8 shall be brought under paragraph (1) or (2), as applicable, or within two years after the last date for which the disciplinary bond was required, whichever date is first.",
+		"Section 7071.11(d) provides that a claim to recover wages or fringe benefits shall be brought within six months from the date that the wage or fringe benefit delinquencies were discovered, but in no event shall a civil action thereon be brought later than two years from the date the contributions were due.",
+		"Section 7071.11(e) provides that whenever the surety makes payment on a claim against a bond required by the article, whether or not through a court action, the surety shall, within 30 days of the payment, provide notice to the registrar by declaration stating the contractor's name and license number, the bond number, the amount of payment, the statutory basis of the claim, the payees, and whether the payments were the result of a good faith action by the surety, and whether the licensee filed a protest.",
+		"Section 7071.11(f) provides that, prior to the settlement of a claim through a good faith payment by the surety, a licensee shall have not less than 15 days in which to provide a written protest instructing the surety not to make payment on the specific grounds that the claim is opposed and providing a specific and reasonable basis for the opposition.",
+		"Section 7071.11(f)(2) provides that a licensee that fails to file a protest shall have 90 days from the date of notification by the board to submit proof of payment of the actual amount owed to the surety and of any judgment or admitted claim in excess of the bond, or by operation of law the license shall be suspended at the end of the 90 days, and that the suspension shall be disclosed indefinitely.",
+		"Section 7071.11(g) provides that during any period in which a surety remains unreimbursed for a loss or expense sustained on a bond issued under the article, the license for which the bond was issued, and any other license on which any member of the licensee's personnel of record has also been listed, may not be renewed, reissued, or reinstated while the licensee was subject to suspension or disciplinary action under the section.",
+		"Section 7071.11(h) provides that the licensee may provide the board with a notarized copy of an accord reached with the surety to satisfy the debt in lieu of full payment, and that failure to abide by the accord results by operation of law in automatic suspension.",
+		"Section 7071.11(i) provides that legal fees may not be charged against the bond by the board."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Subdivision (a) excepts only the section 7071.8 disciplinary bond from the four thousand dollar wage and fringe benefit cap. This record has read nothing reconciling that cap with the one hundred thousand dollar limited liability company bond in section 7071.6.5, whose stated purpose is wages and fringe benefits, and does not resolve how the two interact."
+}

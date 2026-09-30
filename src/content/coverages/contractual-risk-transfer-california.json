@@ -1,0 +1,156 @@
+{
+	"name": "Contractual risk transfer (California)",
+	"line": "contractual-risk-transfer",
+	"family": "commercial",
+	"definition": "Contractual risk transfer is the use of a contract, rather than a policy, to move the financial consequences of a third party claim from one party to another. It travels in two kinds of clause that do different work: an indemnity promise, which the Supreme Court describes by quoting Civil Code section 2772 as a contract by which one engages to save another from a legal consequence of the conduct of one of the parties, or of some other person [S:crawford-v-weather-shield-2008], and an insurance requirement, such as a provision requiring the promisor to purchase or maintain insurance covering its own acts or omissions, including additional insured endorsements [S:ca-civ-code-2782-05]. The California Supreme Court has said the two are read under different rules. Ambiguities in an insurance policy are construed against the insurer, while in noninsurance indemnity the indemnitee may often hold the superior bargaining power, and language seeking indemnity for one's own active negligence, or regardless of the indemnitor's fault, has been said to require particularly clear and explicit wording construed strictly against the indemnitee [S:crawford-v-weather-shield-2008]. Two things follow from the California statutes. First, an indemnity promise carries default duties the contract may never mention: Civil Code section 2778 provides, unless a contrary intention appears, that an indemnity against claims, demands or liability embraces the costs of defense, and that the indemnitor is bound on request to defend actions against the indemnitee in respect to matters embraced by the indemnity [S:ca-civ-code-2778-rules-for-interpreting-indemnity], and the Supreme Court has stated that the duty to defend arises immediately on proper tender, before anyone has decided whether indemnity is owed [S:crawford-v-weather-shield-2008]. Second, the freedom to allocate is limited by statute. Section 1668 declares against the policy of the law contracts whose object is to exempt anyone from responsibility for his own fraud, willful injury to the person or property of another, or violation of law [S:ca-civ-code-1668-contracts-against-policy-of-law], and the construction and design professional sections this record read, 2782, 2782.05, 2782.6, 2782.8, 2782.9 and 2782.96, set narrower limits by contract type and contract date [S:ca-civ-code-2782][S:ca-civ-code-2782-05][S:ca-civ-code-2782-8-design-professional-indemnity][S:ca-civ-code-2782-9-residential-wrap-up-indemnity][S:ca-civ-code-2782-6-hazardous-materials-engineer-indemnity][S:ca-civ-code-2782-96-wrap-up-disclosure]. Sections 2782.1, 2782.2 and 2782.5, which section 2782(a) also names as exceptions [S:ca-civ-code-2782], were not read for this record. This page describes what those statutes and that opinion say. Whether a particular clause is enforceable, and what it obliges anyone to do, is contract interpretation for a lawyer and, in a dispute, a court. Some commentary sorts indemnity clauses into numbered types by breadth; none of the sources this record read uses that vocabulary, so this page does not.",
+	"protects": [
+		"Not a policy, and not what this page can tell you about a particular contract. The protection is whatever the indemnity clause and the insurance clause say, read under the statutes below",
+		"The indemnitee, against claims embraced by the indemnity, including by default the costs of defense incurred in good faith and with reasonable discretion [S:ca-civ-code-2778-rules-for-interpreting-indemnity]",
+		"The indemnitee's right to a defense on request, which the indemnitee may decline in order to conduct its own defense [S:ca-civ-code-2778-rules-for-interpreting-indemnity]",
+		"Within limits, the indemnitor too: statutes void or cap specified indemnity obligations in construction and design professional contracts, and some of them cannot be waived [S:ca-civ-code-2782-8-design-professional-indemnity][S:ca-civ-code-2782-9-residential-wrap-up-indemnity][S:ca-civ-code-2782-05]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "What the statutes and the opinion say, not what any contract says",
+			"note": "Every item below is drawn from the Civil Code or from Crawford v. Weather Shield Mfg., Inc. None of it is a contract term, and none of it decides whether a particular clause is enforceable or what it obliges a party to do. The opinion was read on CourtListener, a reproduction, rather than on the court's own site [S:crawford-v-weather-shield-2008]."
+		},
+		{
+			"item": "Defense costs, by default",
+			"note": "An indemnity against claims, or demands, or liability, expressly or in equivalent terms, embraces the costs of defense incurred in good faith and in the exercise of a reasonable discretion [S:ca-civ-code-2778-rules-for-interpreting-indemnity]. The Supreme Court has stated that this right to after-the-fact reimbursement is already included in every indemnity contract unless otherwise specifically provided [S:crawford-v-weather-shield-2008]."
+		},
+		{
+			"item": "A defense from the outset, on tender",
+			"note": "The Supreme Court has stated that subdivision 4 of section 2778 places in every indemnity contract, unless the agreement provides otherwise, a duty to assume the indemnitee's defense, if tendered, against all claims embraced by the indemnity; that the duty arises immediately upon proper tender; and that it reaches claims which at the time of tender allege facts that would give rise to a duty of indemnity [S:crawford-v-weather-shield-2008]. In that case the subcontractor owed the developer a defense although a jury later found the subcontractor was not negligent [S:crawford-v-weather-shield-2008]."
+		},
+		{
+			"item": "When the indemnitee may recover, which depends on the words used",
+			"note": "Upon an indemnity against liability, the person indemnified may recover upon becoming liable; upon an indemnity against claims, demands, damages or costs, the person indemnified may not recover without payment [S:ca-civ-code-2778-rules-for-interpreting-indemnity]. Both are defaults that apply unless a contrary intention appears [S:ca-civ-code-2778-rules-for-interpreting-indemnity]."
+		},
+		{
+			"item": "Indemnity of engineers and geologists for concealed contamination",
+			"note": "Section 2782.6 provides that section 2782(a) does not prevent an agreement to indemnify a professional engineer or geologist in providing specified hazardous materials services, where the services address subterranean contamination or other concealed conditions and the promisor is responsible or potentially responsible for the contamination [S:ca-civ-code-2782-6-hazardous-materials-engineer-indemnity]. It does not authorize indemnity by such a promisor for the promisee's gross negligence or willful misconduct, and it does not apply to public entities [S:ca-civ-code-2782-6-hazardous-materials-engineer-indemnity]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Exemption from one's own fraud, willful injury or violation of law",
+			"note": "All contracts which have for their object, directly or indirectly, to exempt anyone from responsibility for his own fraud, or willful injury to the person or property of another, or violation of law, whether willful or negligent, are against the policy of the law [S:ca-civ-code-1668-contracts-against-policy-of-law]. The section is general and is not limited to construction."
+		},
+		{
+			"item": "Indemnity for the promisee's sole negligence or willful misconduct, in a construction contract",
+			"note": "Section 2782(a) makes void and unenforceable construction contract provisions that purport to indemnify the promisee against liability arising from the sole negligence or willful misconduct of the promisee or its agents, servants or directly responsible independent contractors, or for defects in design furnished by those persons, except as provided in sections 2782.1, 2782.2, 2782.5 and 2782.6 [S:ca-civ-code-2782]. The same subdivision provides that the section shall not affect the validity of any insurance contract, workers' compensation, or agreement issued by an admitted insurer [S:ca-civ-code-2782]."
+		},
+		{
+			"item": "A subcontractor's indemnity for an upstream party's active negligence, on contracts from 2013",
+			"note": "For construction contracts and amendments entered into on or after January 1, 2013, section 2782.05(a) makes void provisions by which a subcontractor purports to insure or indemnify, including the cost to defend, a general contractor, construction manager or other subcontractor to the extent the claims relate to that party's active negligence or willful misconduct [S:ca-civ-code-2782-05]. Subdivision (b) lists matters the section does not affect, including a requirement that the promisor buy insurance covering its own acts or omissions, any wrap-up program, and general agreements of indemnity required by sureties [S:ca-civ-code-2782-05]. The question on additional insured status sets this section out in more detail."
+		},
+		{
+			"item": "A design professional's indemnity beyond its own fault, on contracts from 2018",
+			"note": "For contracts for design professional services entered into on or after January 1, 2018, provisions that purport to indemnify, including the duty and cost to defend, are unenforceable except to the extent the claims arise out of, pertain to, or relate to the design professional's negligence, recklessness or willful misconduct, and the cost to defend charged to the design professional may not exceed its proportionate percentage of fault [S:ca-civ-code-2782-8-design-professional-indemnity]. The defense provisions do not apply where a qualifying project-specific general liability policy is in place or the design professional is party to a written design-build joint venture agreement, and indemnitee does not include any agency of the state [S:ca-civ-code-2782-8-design-professional-indemnity]."
+		},
+		{
+			"item": "Indemnity by an enrolled participant on a residential wrap-up project",
+			"note": "On residential construction projects with an applicable wrap-up or other consolidated insurance program, contracts entered into after January 1, 2009 that require an enrolled participant to indemnify, hold harmless or defend another for a claim covered by that program are unenforceable [S:ca-civ-code-2782-9-residential-wrap-up-indemnity]. Any party may still pursue equitable indemnity unless there is coverage under the wrap-up policy, and a builder or general contractor may still require a disclosed, reasonably allocated contribution to the self-insured retention or deductible [S:ca-civ-code-2782-9-residential-wrap-up-indemnity]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no policy limit, because this is not a policy. What bounds an indemnity obligation is the clause itself and the statutes that void or cap it.",
+		"Among the statutes this record read, the only stated dollar figure is in section 2782.6: the engineer and geologist indemnity it permits is not applicable to the first two hundred fifty thousand dollars of liability, or a greater amount the parties agree [S:ca-civ-code-2782-6-hazardous-materials-engineer-indemnity].",
+		"A design professional's cost to defend is capped at its proportionate percentage of fault, with a duty to meet and confer about unpaid defense costs where another defendant cannot pay its share because of bankruptcy or dissolution [S:ca-civ-code-2782-8-design-professional-indemnity].",
+		"On a residential wrap-up, the total contributions collected from participants may not exceed the self-insured retention or deductible due and payable by the builder or general contractor for the claim, and each contribution must be preceded by written notice of its amount and basis [S:ca-civ-code-2782-9-residential-wrap-up-indemnity].",
+		"On a public work or non-residential wrap-up put out for bid after January 1, 2009, the total amount or method of calculating any premium contribution required from a subcontractor must be clearly delineated in the bid documents [S:ca-civ-code-2782-96-wrap-up-disclosure]."
+	],
+	"relatedPolicies": [
+		"Additional insured status (California), which is the insurance half of the transfer and is created by endorsement to the promisor's policy rather than by the contract",
+		"Commercial general liability, the policy an insurance requirement most often reaches and whose own forms and endorsements are described on that page",
+		"Wrap-up or consolidated insurance programs, which Civil Code sections 2782.9 and 2782.96 address and section 2782.05(b)(4) excepts from its rule [S:ca-civ-code-2782-9-residential-wrap-up-indemnity][S:ca-civ-code-2782-96-wrap-up-disclosure][S:ca-civ-code-2782-05]",
+		"Surety bonds, since section 2782.05(b)(8) lists general agreements of indemnity required by sureties as a condition of execution of bonds among the matters that section does not affect [S:ca-civ-code-2782-05]",
+		"Professional liability, for the design professional whose indemnity obligations section 2782.8 limits [S:ca-civ-code-2782-8-design-professional-indemnity]"
+	],
+	"underwritingInputs": [
+		"Whether the contract is a construction contract, a contract for design professional services, or neither, since the limiting statutes are written by contract type [S:ca-civ-code-2782][S:ca-civ-code-2782-8-design-professional-indemnity]",
+		"The date the contract or amendment was entered into, against the dividing dates of January 1, 2013 and January 1, 2018 [S:ca-civ-code-2782-05][S:ca-civ-code-2782-8-design-professional-indemnity]",
+		"Whether the counterparty is a public agency, a private owner, a general contractor or construction manager, or a state agency [S:ca-civ-code-2782][S:ca-civ-code-2782-05][S:ca-civ-code-2782-8-design-professional-indemnity]",
+		"Whether a wrap-up or consolidated program applies to the project, and whether the project is residential [S:ca-civ-code-2782-9-residential-wrap-up-indemnity][S:ca-civ-code-2782-96-wrap-up-disclosure]",
+		"Whether the clause promises to defend, only to reimburse defense costs, or disclaims defense, since the Supreme Court has said parties can easily disclaim the defense or limit it to reimbursement [S:crawford-v-weather-shield-2008]",
+		"Whether the work includes hazardous materials services by an engineer or geologist [S:ca-civ-code-2782-6-hazardous-materials-engineer-indemnity]"
+	],
+	"exposures": [
+		{
+			"item": "Funding another party's defense before fault is decided",
+			"note": "The Supreme Court held that a subcontract promising to defend suits founded upon claims arising from the subcontractor's work obliged it to defend the developer as soon as such a suit was filed, regardless of whether the subcontractor was ultimately found negligent [S:crawford-v-weather-shield-2008]. The opinion recited the argument that small subcontractors lack the resources to fund a developer's defense up front while defending themselves in the same suit, said the court was sensitive to it, and declined the holding proposed [S:crawford-v-weather-shield-2008]."
+		},
+		{
+			"item": "A recovery that binds the indemnitor because it did not defend",
+			"note": "If, after request, the indemnitor neglects to defend, a recovery against the indemnitee suffered in good faith is conclusive in the indemnitee's favor against the indemnitor [S:ca-civ-code-2778-rules-for-interpreting-indemnity]. The second branch runs the other way: where the indemnitor had no reasonable notice or was not allowed to control the defense, the judgment is only presumptive evidence against it [S:ca-civ-code-2778-rules-for-interpreting-indemnity]."
+		},
+		{
+			"item": "A clause that means more than it says",
+			"note": "Section 2778 supplies its rules to every indemnity contract unless a contrary intention appears, including defense costs and a duty to defend on request [S:ca-civ-code-2778-rules-for-interpreting-indemnity]. A short indemnity clause that never mentions defense can therefore carry a defense obligation, which the Supreme Court described as deemed included in every indemnity agreement unless the parties indicate otherwise [S:crawford-v-weather-shield-2008]."
+		},
+		{
+			"item": "An indemnitee relying on a clause the statute voids",
+			"note": "Construction contract provisions purporting to indemnify the promisee for its sole negligence or willful misconduct are void and unenforceable under section 2782(a) [S:ca-civ-code-2782], and a subcontractor's promise to insure or indemnify an upstream party for that party's active negligence is void to that extent on contracts from January 1, 2013 [S:ca-civ-code-2782-05]. The protection the indemnitee bargained for may not be there when the claim arrives."
+		},
+		{
+			"item": "A design professional contract signed on the wrong assumption about defense",
+			"note": "On contracts from January 1, 2018, the design professional's defense cost is capped at its proportionate share of fault, but that defense limit does not apply where a qualifying project-specific general liability policy is in place or in a written design-build joint venture [S:ca-civ-code-2782-8-design-professional-indemnity]. Which branch applies turns on the project's insurance arrangements, not only on the clause."
+		},
+		{
+			"item": "A wrap-up contribution that arrives with the claim",
+			"note": "On a residential wrap-up, the builder may collect a disclosed, reasonably allocated contribution to the self-insured retention or deductible when and as it is incurred [S:ca-civ-code-2782-9-residential-wrap-up-indemnity]. The contribution is a cost the statute permits alongside the voided indemnity, and the statute requires the participant's contract to disclose its maximum amount and method of collection [S:ca-civ-code-2782-9-residential-wrap-up-indemnity]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Tender the defense in writing, and keep the date",
+			"note": "The indemnitor is bound to defend on request of the person indemnified [S:ca-civ-code-2778-rules-for-interpreting-indemnity], and the Supreme Court has stated the duty arises immediately upon a proper tender [S:crawford-v-weather-shield-2008]. A dated written tender fixes when the request was made."
+		},
+		{
+			"item": "Give the indemnitor notice and the chance to control the defense",
+			"note": "Where the indemnitor had no reasonable notice of the action or was not allowed to control its defense, the judgment against the indemnitee is only presumptive evidence against the indemnitor [S:ca-civ-code-2778-rules-for-interpreting-indemnity]. Notice and an offer of control are the facts subdivisions 5 and 6 turn on."
+		},
+		{
+			"item": "Read the clause for defend, reimburse, or neither",
+			"note": "The Supreme Court distinguished a duty to defend from after-the-fact reimbursement of defense costs, and said parties can easily disclaim the defense or limit it to reimbursement [S:crawford-v-weather-shield-2008]. Reading which words the clause uses, before signing and again at tender, shows which obligation is in play."
+		},
+		{
+			"item": "Put the contract type and date on the file",
+			"note": "The limiting statutes apply by contract type and by the date the contract or amendment was entered into, with dividing dates of January 1, 2013 for subcontractor indemnity and January 1, 2018 for design professionals [S:ca-civ-code-2782-05][S:ca-civ-code-2782-8-design-professional-indemnity]. A lawyer reviewing enforceability will need both facts."
+		},
+		{
+			"item": "On a wrap-up project, request the disclosures the statute names",
+			"note": "For a public work or non-residential project put out for bid after January 1, 2009, the named insured must disclose, to the extent known, the policy limits, known exclusions and intended duration, and on written request provide copies of the policies once available, or the binder or declaration of coverage until then [S:ca-civ-code-2782-96-wrap-up-disclosure]. A copy received may be shared only with the participant's broker or attorney unless the law requires otherwise [S:ca-civ-code-2782-96-wrap-up-disclosure]."
+		},
+		{
+			"item": "Check that any self-insured retention contribution is disclosed in the contract",
+			"note": "On a residential wrap-up, a contribution may be required only if its maximum amount and method of collection is disclosed in the participant's contract, and may be collected only after written notice of its amount and basis [S:ca-civ-code-2782-9-residential-wrap-up-indemnity]."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "Everything on this page is California law: sections 1668, 2778 and 2782 through 2782.96 of the Civil Code, and one California Supreme Court opinion [S:ca-civ-code-1668-contracts-against-policy-of-law][S:ca-civ-code-2778-rules-for-interpreting-indemnity][S:crawford-v-weather-shield-2008]. Section 2782.05(c) applies California law to every contract within that section notwithstanding choice-of-law rules pointing elsewhere [S:ca-civ-code-2782-05]. Anti-indemnity rules in other states are not described here."
+		}
+	],
+	"lastReviewed": "2026-09-30",
+	"effectiveDate": "2026-09-30",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"crawford-v-weather-shield-2008",
+		"ca-civ-code-2778-rules-for-interpreting-indemnity",
+		"ca-civ-code-1668-contracts-against-policy-of-law",
+		"ca-civ-code-2782",
+		"ca-civ-code-2782-05",
+		"ca-civ-code-2782-6-hazardous-materials-engineer-indemnity",
+		"ca-civ-code-2782-8-design-professional-indemnity",
+		"ca-civ-code-2782-9-residential-wrap-up-indemnity",
+		"ca-civ-code-2782-96-wrap-up-disclosure"
+	],
+	"relatedQuestions": [
+		"contract-additional-insured-status",
+		"surety-bond-vs-insurance"
+	]
+}

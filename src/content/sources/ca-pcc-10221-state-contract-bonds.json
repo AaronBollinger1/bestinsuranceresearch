@@ -1,0 +1,21 @@
+{
+	"title": "California Public Contract Code section 10221 - Performance and payment bonds under the State Contract Act",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PCC&sectionNum=10221",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 10221, in Article 7 of the State Contract Act (Chapter 1 of Part 2, Contracting by State Agencies), provides that every contract shall provide for the filing of separate performance and payment bonds by the contractor in the form of bonds executed by an admitted surety insurer and not deposits in lieu of bond, subject to the approval of the department."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. The State Contract Act's own definitions of contract and department were not read for this record, so which state contracts the section reaches is not described here."
+}

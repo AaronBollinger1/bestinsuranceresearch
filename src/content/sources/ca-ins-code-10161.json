@@ -1,0 +1,23 @@
+{
+	"title": "California Insurance Code Section 10161 (minimum cash surrender value under the standard nonforfeiture law)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10161",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation. The section credit on the official host at the time of access read Amended by Stats. 1981, Ch. 767.",
+	"status": "active",
+	"claims": [
+		"Section 10161 provides that any cash surrender value available in the event of default in a premium payment due on any policy anniversary shall be not less than the excess, if any, of the present value on that anniversary of the future guaranteed benefits which would have been provided by the policy, including any existing paid-up additions, if there had been no default, over the sum of the then present value of the adjusted premiums corresponding to premiums which would have fallen due on and after that anniversary and the amount of any indebtedness to the company on the policy.",
+		"Section 10161 provides that, for a policy issued on or after January 1, 1989 which provides supplemental life insurance or annuity benefits at the option of the insured and for an identifiable additional premium by rider or supplemental policy provision, the minimum cash surrender value is the sum of the value for an otherwise similar policy issued at the same age without the rider and the value for a policy which provides only the benefits of the rider.",
+		"Section 10161 provides that any cash surrender value available within 30 days after any policy anniversary under a policy paid up by completion of all premium payments, or continued under any paid-up nonforfeiture benefit, shall be not less than the present value on that anniversary of the future guaranteed benefits provided by the policy, including any existing paid-up additions, decreased by any indebtedness to the company on the policy."
+	],
+	"notes": "The section sets a floor, not a figure. Both branches subtract indebtedness to the company on the policy, which is the statutory route by which a policy loan reduces what a surrender returns."
+}

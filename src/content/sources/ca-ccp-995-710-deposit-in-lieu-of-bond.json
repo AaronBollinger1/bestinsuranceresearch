@@ -1,0 +1,25 @@
+{
+	"title": "California Code of Civil Procedure section 995.710 - Deposit in lieu of a bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=995.710",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 995.710(a) provides that, except as provided in subdivision (e) or to the extent the statute providing for a bond precludes a deposit in lieu of bond or limits the form of deposit, the principal may, without prior court approval, instead of giving a bond, deposit with the officer any of the items the subdivision lists.",
+		"The items listed in section 995.710(a) include lawful money of the United States or a cashier's check payable to the officer; bonds or notes of the United States or the State of California; and certificates of deposit, savings accounts, investment certificates or share accounts, and credit union share certificates, each not exceeding the federally insured or guaranteed amount.",
+		"Section 995.710(b) provides that the deposit shall be in an amount or have a face value, or in the case of bonds or notes a market value, equal to or in excess of the amount that would be required to be secured by the bond if the bond were given by an admitted surety insurer.",
+		"Section 995.710(c) requires the deposit to be accompanied by an agreement executed by the principal authorizing the officer to collect, sell, or otherwise apply the deposit to enforce the liability of the principal on the deposit.",
+		"Section 995.710(e) provides that the section does not apply to deposits with the Secretary of State."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Bond and Undertaking Law (Code of Civil Procedure 995.010 onward). By section 995.020 the chapter yields where the statute requiring a particular bond prescribes a different rule or is inconsistent, so this section is a default rather than the rule for every bond. Amended by Stats. 2022, Ch. 452 (SB 1498), effective January 1, 2023. The list of permitted deposits in subdivision (a) has six paragraphs and is summarised in the claims rather than reproduced; the subdivision is the authority for any particular item."
+}

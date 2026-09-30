@@ -911,6 +911,10 @@ a.card:hover .card-title { color: var(--brand-blue-text); }
 .fact-list { list-style: none; padding: 0; margin: 0; }
 .fact-list > li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: var(--s-3); padding: var(--s-3) 0; border-bottom: var(--bw-hair) solid var(--line); }
 .fact-list > li:last-child { border-bottom: 0; }
+/* An item with no leading icon (the guides build them this way) takes the whole
+   row. Without this its text lands in the 20px icon column and wraps one word
+   per line, which is what every guide shipped at tablet width. */
+.fact-list > li > :only-child { grid-column: 1 / -1; }
 .fact-list > li > svg { margin-top: 3px; color: var(--faint); }
 .fact-list p { margin: 0; font-size: var(--text-md); line-height: var(--leading-normal); max-width: 72ch; }
 

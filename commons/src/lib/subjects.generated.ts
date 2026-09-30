@@ -38,6 +38,18 @@ export const GENERATED_SUBJECTS: Subject[] = [
 		"recordPath": "/companies/state-farm-general-insurance-company"
 	},
 	{
+		"id": "coverage:additional-insured-california",
+		"kind": "coverage",
+		"name": "Additional insured status (California)",
+		"recordPath": "/insurance/additional-insured-california"
+	},
+	{
+		"id": "coverage:buy-sell-funding",
+		"kind": "coverage",
+		"name": "Buy-sell funding",
+		"recordPath": "/insurance/buy-sell-funding"
+	},
+	{
 		"id": "coverage:commercial-auto",
 		"kind": "coverage",
 		"name": "Commercial Auto Insurance",
@@ -66,6 +78,24 @@ export const GENERATED_SUBJECTS: Subject[] = [
 		"kind": "coverage",
 		"name": "Condominium unit owners insurance (California)",
 		"recordPath": "/insurance/condominium-unit-owners-california"
+	},
+	{
+		"id": "coverage:contract-surety",
+		"kind": "coverage",
+		"name": "Contract surety bonds",
+		"recordPath": "/insurance/contract-surety"
+	},
+	{
+		"id": "coverage:contractual-risk-transfer-california",
+		"kind": "coverage",
+		"name": "Contractual risk transfer (California)",
+		"recordPath": "/insurance/contractual-risk-transfer-california"
+	},
+	{
+		"id": "coverage:court-bonds-california",
+		"kind": "coverage",
+		"name": "Court bonds (California)",
+		"recordPath": "/insurance/court-bonds-california"
 	},
 	{
 		"id": "coverage:cyber-liability",
@@ -116,10 +146,22 @@ export const GENERATED_SUBJECTS: Subject[] = [
 		"recordPath": "/insurance/inland-marine"
 	},
 	{
+		"id": "coverage:key-person-life",
+		"kind": "coverage",
+		"name": "Key person life insurance",
+		"recordPath": "/insurance/key-person-life"
+	},
+	{
 		"id": "coverage:landlord-rental-dwelling",
 		"kind": "coverage",
 		"name": "Landlord / rental dwelling insurance",
 		"recordPath": "/insurance/landlord-rental-dwelling"
+	},
+	{
+		"id": "coverage:license-and-permit-bonds",
+		"kind": "coverage",
+		"name": "License and permit bonds",
+		"recordPath": "/insurance/license-and-permit-bonds"
 	},
 	{
 		"id": "coverage:medical-professional-liability-california",
@@ -132,6 +174,12 @@ export const GENERATED_SUBJECTS: Subject[] = [
 		"kind": "coverage",
 		"name": "Motor truck cargo",
 		"recordPath": "/insurance/motor-truck-cargo"
+	},
+	{
+		"id": "coverage:permanent-life-california",
+		"kind": "coverage",
+		"name": "Permanent life (California)",
+		"recordPath": "/insurance/permanent-life-california"
 	},
 	{
 		"id": "coverage:personal-auto-california",
@@ -176,10 +224,22 @@ export const GENERATED_SUBJECTS: Subject[] = [
 		"recordPath": "/insurance/surplus-lines-california"
 	},
 	{
+		"id": "coverage:term-life-california",
+		"kind": "coverage",
+		"name": "Term life (California)",
+		"recordPath": "/insurance/term-life-california"
+	},
+	{
 		"id": "coverage:title-insurance-california",
 		"kind": "coverage",
 		"name": "Title insurance (California)",
 		"recordPath": "/insurance/title-insurance-california"
+	},
+	{
+		"id": "coverage:wage-and-hour-defense",
+		"kind": "coverage",
+		"name": "Wage and hour defense",
+		"recordPath": "/insurance/wage-and-hour-defense"
 	},
 	{
 		"id": "coverage:wildfire-california",

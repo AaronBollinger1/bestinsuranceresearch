@@ -1,0 +1,21 @@
+{
+	"title": "California Government Code section 8214 - Liability of notary and sureties for misconduct or neglect",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=8214",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 8214 provides that for the official misconduct or neglect of a notary public, the notary public and the sureties on the notary public's official bond are liable in a civil action to the persons injured thereby for all the damages sustained."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. The section states that the notary and the sureties are liable for all the damages sustained; it does not itself state how that interacts with the fifteen thousand dollar bond amount in section 8212, and this record does not resolve that."
+}

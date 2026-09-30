@@ -1,0 +1,26 @@
+{
+	"title": "California Civil Code Section 2782.9 (indemnity by enrolled participants on residential wrap-up projects)",
+	"publisher": "California Legislative Information, Office of Legislative Counsel",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2782.9",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 2782.9(a) provides that contracts entered into after January 1, 2009, for a residential construction project on which a wrap-up insurance policy, as defined in subdivision (b) of Section 11751.82 of the Insurance Code, or other consolidated insurance program, is applicable, that require an enrolled and participating subcontractor or other participant to indemnify, hold harmless, or defend another for any claim or action covered by that program, arising out of that project, are unenforceable.",
+		"Subdivision (b) provides that, to the extent a provision is unenforceable under the section, any party may pursue an equitable indemnity claim against another party for a claim or action unless there is coverage for the claim or action under the wrap-up policy or policies.",
+		"Subdivision (b) provides that nothing in the section prohibits a builder or general contractor from requiring a reasonably allocated contribution from a subcontractor or other participant to the self-insured retention or deductible required under the wrap-up policy or program, if the maximum amount and method of collection of the contribution is disclosed in the contract and the contribution is reasonably limited.",
+		"Subdivision (b) provides that the contribution may be collected only when and as the self-insured retention or deductible is incurred, in an amount bearing a reasonable and proportionate relationship to the alleged liability from the participant's scope of work, only after written notice of the amount and basis, and that total contributions shall not exceed the self-insured retention or deductible due and payable by the builder or general contractor for the claim.",
+		"Subdivision (c) provides that the section shall not be waived or modified by contractual agreement, act, or omission of the parties.",
+		"The page carries the note 'Added by Stats. 2008, Ch. 467, Sec. 2. Effective January 1, 2009.'"
+	],
+	"updateCadence": "Amended by legislation; re-check leginfo for the current version before each publication cycle.",
+	"status": "active",
+	"notes": "Read in full on the official host 2026-09-30. The section is limited to residential construction projects with an applicable wrap-up or consolidated program; Section 2782.96 addresses wrap-up disclosure on public works and non-residential projects. Insurance Code section 11751.82, which the section cites for the wrap-up definition, was not read for this record. Effective: 2009-01-01"
+}

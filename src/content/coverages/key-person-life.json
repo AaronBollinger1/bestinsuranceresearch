@@ -1,0 +1,148 @@
+{
+	"name": "Key person life insurance",
+	"line": "key-person",
+	"family": "life",
+	"definition": "Key person life insurance is a life policy a business owns on someone whose death would cost the business money, with the business as beneficiary. It is not a separate class of insurance in the statutes this record read: neither the federal employer-owned contract rule nor the California insurable interest sections use the words key person. What the law does is attach conditions to the arrangement. California gives an employer an insurable interest in its directors, officers and employees and in any other person whose death might cause it financial loss, and requires the employer to obtain the written consent of the person insured [S:ca-ins-code-10110-1]. That grant opens with an exception, and the exception is large: an insurer may not issue or deliver a policy that a California employer buys on a current or former employee who is a California resident with the employer as beneficiary, unless the employee is exempt under Labor Code section 515, and such a policy bought on or after January 1, 2004 is void [S:ca-ins-code-10110-4]. Federally, 26 U.S.C. 101(j) limits the death benefit a business may exclude from gross income on an employer-owned contract to the premiums and other amounts it paid, unless written notice and consent were completed before the contract was issued and the insured or the payment fits one of the listed exceptions [S:usc-26-101-life-insurance-death-benefits]. A business owning such a contract issued after August 17, 2006 also files an annual return under section 6039I, made on Form 8925 [S:usc-26-6039i-employer-owned-life-insurance-returns][S:irs-form-8925-rev-2017]. This record states what those texts say. It gives no view on how any policy's proceeds will be taxed, which is a question for a tax professional, and it has read no key person policy form.",
+	"protects": [
+		"Not what this page can tell you. No key person policy form has been read for this record, so what any policy pays and on what conditions is in that policy",
+		"The business, in the sense California recognises: an employer's insurable interest in a director, officer, employee or any other person whose death or disability might cause the employer financial loss [S:ca-ins-code-10110-1]",
+		"The person insured, through consent. California requires the employer to obtain the written consent of the individual being insured [S:ca-ins-code-10110-1], and the federal rule requires written notice and written consent before the contract is issued for its exceptions to be available [S:usc-26-101-life-insurance-death-benefits]",
+		"A non-exempt California employee, whose life a California employer may not insure for its own benefit under a corporate-owned policy [S:ca-ins-code-10110-4]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "A statutory frame, described from the statutes rather than from a form",
+			"note": "Everything below is drawn from 26 U.S.C. 101 and 6039I [S:usc-26-101-life-insurance-death-benefits][S:usc-26-6039i-employer-owned-life-insurance-returns], the IRS Form 8925 instructions [S:irs-form-8925-rev-2017], and California Insurance Code sections 280, 10110.1 and 10110.4 [S:ca-ins-code-280][S:ca-ins-code-10110-1][S:ca-ins-code-10110-4]. None of it is a policy term. Whether a given policy responds to a given death, and how much it pays, is in that policy and is decided by the insurer."
+		},
+		{
+			"item": "An insurable interest in more people than the payroll",
+			"note": "California's employer grant reaches directors, officers and employees of the employer and of its subsidiaries, and any other person whose death or physical or mental disability might cause financial loss to the employer [S:ca-ins-code-10110-1]. The same subdivision also reaches the principal obligor where the employer is obliged as guarantor or surety, or under a compensation arrangement [S:ca-ins-code-10110-1]."
+		},
+		{
+			"item": "An interest that has to exist at the start, not at the end",
+			"note": "An insurable interest must exist when the contract becomes effective but need not exist when the loss occurs [S:ca-ins-code-10110-1]. The subdivision ties the interest to the moment the contract becomes effective rather than to the moment of death."
+		},
+		{
+			"item": "Federal exceptions based on who the insured was",
+			"note": "Where notice and consent were met, the section 101(j) limit does not apply to proceeds on an insured who was an employee at any time in the 12 months before death, or who was a director, a highly compensated employee under section 414(q), or a highly compensated individual under section 105(h)(5) (with 35 percent substituted for 25 percent) when the contract was issued [S:usc-26-101-life-insurance-death-benefits]."
+		},
+		{
+			"item": "Federal exceptions based on where the money goes",
+			"note": "Also conditional on notice and consent, the limit does not apply to the extent proceeds are paid to the insured's family member, a designated beneficiary other than the policyholder, a trust for either, or the insured's estate, or are used to buy an equity interest in the policyholder from any of them [S:usc-26-101-life-insurance-death-benefits]. The second branch is the one that connects key person cover to an ownership buyout."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Whatever your own form excludes, which this record does not establish",
+			"note": "Key person cover is written on ordinary individual life forms, which are not public and none of which has been read here. Contestability, suicide and exclusion terms, and how the insurer decides a claim, are in the policy and decided by the insurer."
+		},
+		{
+			"item": "A California non-exempt employee, as a corporate-owned policy",
+			"note": "Section 10110.4 provides that an insurer may not issue or deliver a policy purchased by a California employer, naming the employer as beneficiary, on a California resident who is a current or former employee, and that one purchased on or after the section's effective date of January 1, 2004 is void [S:ca-ins-code-10110-4]. The exception is a current or former exempt employee, meaning an administrative, executive or professional employee exempt under Labor Code section 515 [S:ca-ins-code-10110-4]. This record has not read section 515 and does not say who is exempt."
+		},
+		{
+			"item": "A policy applied for without an insurable interest",
+			"note": "A life policy procured on another individual is void unless the applicant has an insurable interest in that individual at the time of application [S:ca-ins-code-10110-1], and section 280 provides generally that a contract is void if the insured has no insurable interest [S:ca-ins-code-280]. Any device designed to give the appearance of an insurable interest where there is none violates the insurable interest laws [S:ca-ins-code-10110-1]."
+		},
+		{
+			"item": "The federal exceptions, where notice and consent came after issue",
+			"note": "The exceptions in section 101(j)(2) apply only to a contract with respect to which the notice and consent requirements of paragraph (4) are met, and paragraph (4) requires them before the issuance of the contract [S:usc-26-101-life-insurance-death-benefits]. Without them, the statute limits the excluded amount to the premiums and other amounts paid [S:usc-26-101-life-insurance-death-benefits]. The statute does not provide a later cure, and this record states nothing about any administrative relief it has not read."
+		},
+		{
+			"item": "An insured who is not a United States citizen or resident, for section 101(j)",
+			"note": "For section 101(j), insured means an individual covered by the contract who is a United States citizen or resident [S:usc-26-101-life-insurance-death-benefits]. This record states only the definition, and nothing about how any other rule treats a contract on anyone else."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no deductible, and the limit is the face amount, which is a commercial term set between the business and the insurer rather than by any statute read here.",
+		"The notice itself carries a number. The written notice must state the maximum face amount for which the employee could be insured at the time the contract was issued [S:usc-26-101-life-insurance-death-benefits], and the Form 8925 instructions state that it must disclose, in dollars or as a multiple of salary, the face amount the policyholder reasonably expects to purchase during the employee's tenure [S:irs-form-8925-rev-2017].",
+		"A face amount above what was noticed is a new consent question. The instructions state that additional notice and consent are required if the aggregate face amount exceeds the amount of which the employee was given notice and to which the employee consented [S:irs-form-8925-rev-2017].",
+		"The federal limit, where it applies, is stated as the sum of the premiums and other amounts the policyholder paid for the contract [S:usc-26-101-life-insurance-death-benefits]. It is a limit on the income exclusion described in section 101(a)(1), not a limit on what the insurer pays.",
+		"Form 8925 reports the total amount of employer-owned life insurance in force at the end of the tax year on the insured employees [S:irs-form-8925-rev-2017], so the face amount is also a reported figure each year the contract is owned [S:usc-26-6039i-employer-owned-life-insurance-returns]."
+	],
+	"underwritingInputs": [
+		"Who the insured is to the business: director, officer, employee, or another person whose death might cause the employer financial loss [S:ca-ins-code-10110-1]",
+		"For a California resident employee, whether the employee is exempt under Labor Code section 515, which decides whether section 10110.4 bars the policy [S:ca-ins-code-10110-4]",
+		"The date of the written notice and consent against the issue date, which the Form 8925 instructions define as the later of application, effective date of coverage, or formal issuance [S:irs-form-8925-rev-2017]",
+		"Whether the consent is less than a year old at issue and the employee is still employed, since the instructions state a consent is otherwise not valid [S:irs-form-8925-rev-2017]",
+		"The maximum face amount stated in the notice, against the face amount being applied for [S:usc-26-101-life-insurance-death-benefits][S:irs-form-8925-rev-2017]",
+		"Whether the insured was a director or highly compensated employee when the contract was issued [S:usc-26-101-life-insurance-death-benefits]",
+		"Whether the insured is a United States citizen or resident [S:usc-26-101-life-insurance-death-benefits]",
+		"Which entity owns the policy and is beneficiary, since the applicable policyholder includes related persons under sections 267(b) and 707(b)(1) and businesses under common control [S:usc-26-101-life-insurance-death-benefits]",
+		"Whether the policy replaces an older one by a section 1035 exchange, and whether the death benefit is being materially increased [S:usc-26-101-life-insurance-death-benefits][S:irs-form-8925-rev-2017]"
+	],
+	"exposures": [
+		{
+			"item": "Consent signed after the policy was issued",
+			"note": "The notice and consent in section 101(j)(4) must happen before the issuance of the contract [S:usc-26-101-life-insurance-death-benefits], and the instructions define the issue date for that purpose as the latest of application, effective date and formal issuance [S:irs-form-8925-rev-2017]. Because the issue date for this purpose is the latest of those three dates, a consent obtained after formal issuance comes after the issue date rather than before it."
+		},
+		{
+			"item": "A consent that expires before the policy is placed",
+			"note": "The Form 8925 instructions state that a written consent is not valid unless the contract is issued within a year after the consent was executed, or before the employee terminates employment, whichever is earlier [S:irs-form-8925-rev-2017]. A placement that stalls for underwriting can outrun its own paperwork."
+		},
+		{
+			"item": "A face amount increase with no new notice",
+			"note": "Additional notice and consent are required if the aggregate face amount exceeds what the employee was given notice of and consented to [S:irs-form-8925-rev-2017], and a material increase in the death benefit or other material change causes the contract to be treated as a new contract [S:usc-26-101-life-insurance-death-benefits]. An increase is therefore not only an underwriting event."
+		},
+		{
+			"item": "A California policy on the wrong kind of employee",
+			"note": "A corporate-owned policy on a current or former non-exempt California employee purchased on or after January 1, 2004 is void, and holding one is stated to be a violation of public policy [S:ca-ins-code-10110-4]. The classification that decides it is the exempt status defined by reference to Labor Code section 515 [S:ca-ins-code-10110-4], which is an employment question rather than an insurance one."
+		},
+		{
+			"item": "An insured who leaves and is not a listed person",
+			"note": "The insured-status exceptions reach an employee at any time in the 12 months before death, or a director or highly compensated person at issue [S:usc-26-101-life-insurance-death-benefits]. An insured who was neither at issue and left more than 12 months before death falls outside that branch, leaving only the branch based on where the proceeds go [S:usc-26-101-life-insurance-death-benefits]."
+		},
+		{
+			"item": "An annual return nobody is diarising",
+			"note": "Every applicable policyholder owning an employer-owned contract issued after August 17, 2006 must file a return for each year the contract is owned [S:usc-26-6039i-employer-owned-life-insurance-returns], attached to its income tax return on Form 8925 [S:irs-form-8925-rev-2017], and must keep the records needed to show that sections 6039I and 101(j) are met [S:usc-26-6039i-employer-owned-life-insurance-returns]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Put the notice and consent in the file before the application goes in",
+			"note": "The notice of intent and maximum face amount, the written consent including consent to coverage continuing after employment ends, and the written statement that the policyholder will be a beneficiary are the three items section 101(j)(4) lists, all before issue [S:usc-26-101-life-insurance-death-benefits]. California's written consent requirement is separate and sits in section 10110.1(c) [S:ca-ins-code-10110-1]."
+		},
+		{
+			"item": "Date everything, and compare it to the issue date",
+			"note": "The instructions fix the issue date for this purpose as the later of application, effective date and formal issuance, and give a consent a life of one year or until employment ends [S:irs-form-8925-rev-2017]. Keeping the dated documents together is also the recordkeeping section 6039I(b) requires [S:usc-26-6039i-employer-owned-life-insurance-returns]."
+		},
+		{
+			"item": "Settle exempt status before insuring a California employee",
+			"note": "Section 10110.4 turns on whether the employee is exempt under Labor Code section 515 [S:ca-ins-code-10110-4]. That is an employment classification question for whoever advises the business on wage and hour law, and it comes before the insurance question rather than after."
+		},
+		{
+			"item": "Re-notice before raising the face amount",
+			"note": "The instructions require additional notice and consent where the aggregate face amount will exceed what the employee consented to [S:irs-form-8925-rev-2017], and the statute treats a material increase in death benefit as making a new contract [S:usc-26-101-life-insurance-death-benefits]."
+		},
+		{
+			"item": "Calendar Form 8925 for every year the policy is owned",
+			"note": "The form asks for employee counts, insured counts, insurance in force and whether a valid consent exists for each insured employee [S:irs-form-8925-rev-2017], which are the items section 6039I(a) lists [S:usc-26-6039i-employer-owned-life-insurance-returns]."
+		}
+	],
+	"relatedPolicies": [
+		"Buy-sell funding, the other business use of life insurance, where the proceeds fund a purchase of an owner's interest rather than replace a loss to the business; section 101(j) connects the two by excepting proceeds used to buy an equity interest from the insured's heirs [S:usc-26-101-life-insurance-death-benefits]",
+		"Individual life insurance (California), which carries the grace period, lapse notice and free look provisions that apply to the underlying policy and are not repeated here",
+		"Key person disability cover, which this record does not describe, although California's employer insurable interest expressly reaches the physical or mental ability of the persons it names [S:ca-ins-code-10110-1]",
+		"Group life and employer benefit plans, where a trustee of an employer benefit plan has a separate insurable interest in the employees it provides benefits for [S:ca-ins-code-10110-1]"
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "California's employer insurable interest, its written consent requirement, and the bar on corporate-owned policies on non-exempt California resident employees are California law [S:ca-ins-code-10110-1][S:ca-ins-code-10110-4]. The federal rules in sections 101(j) and 6039I apply separately and alongside them [S:usc-26-101-life-insurance-death-benefits][S:usc-26-6039i-employer-owned-life-insurance-returns]."
+		}
+	],
+	"lastReviewed": "2026-09-30",
+	"effectiveDate": "2026-09-30",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"usc-26-101-life-insurance-death-benefits",
+		"usc-26-6039i-employer-owned-life-insurance-returns",
+		"irs-form-8925-rev-2017",
+		"ca-ins-code-10110-1",
+		"ca-ins-code-10110-4",
+		"ca-ins-code-280"
+	],
+	"relatedQuestions": []
+}

@@ -1,0 +1,22 @@
+{
+	"title": "29 U.S.C. 256 (Portal-to-Portal Act: when a collective action is commenced for each claimant)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section256&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 256 provides that, for the purposes of section 255, an action under the Fair Labor Standards Act is considered commenced on the date the complaint is filed.",
+		"Section 256 provides an exception for a collective or class action under the Fair Labor Standards Act: it is considered commenced for an individual claimant on the date the complaint is filed only if the claimant is specifically named as a party plaintiff and the claimant's written consent is filed on that date, and otherwise on the subsequent date on which the claimant's written consent is filed in the court."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. "
+}

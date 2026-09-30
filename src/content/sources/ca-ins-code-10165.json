@@ -1,0 +1,26 @@
+{
+	"title": "California Insurance Code Section 10165 (policies to which the standard nonforfeiture law does not apply)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10165",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation. The section credit on the official host at the time of access read Amended by Stats. 1981, Ch. 767, Sec. 11.",
+	"status": "active",
+	"claims": [
+		"Section 10165 provides that Article 3a, the standard nonforfeiture law for life insurance, shall not apply to reinsurance, group insurance, pure endowment, or an annuity or reversionary annuity contract.",
+		"Section 10165(e) provides that the article shall not apply to a term policy of uniform amount, which provides no guaranteed nonforfeiture or endowment benefits, or renewal thereof, of 20 years or less expiring before age 71, for which uniform premiums are payable during the entire term of the policy.",
+		"Section 10165(f) provides that the article shall not apply to a term policy of decreasing amount, which provides no guaranteed nonforfeiture or endowment benefits, on which each adjusted premium is less than the adjusted premium on a term policy of uniform amount, or renewal thereof, providing no guaranteed nonforfeiture or endowment benefits, issued at the same age and for the same initial amount and for a term of 20 years or less expiring before age 71, with uniform premiums payable during the entire term.",
+		"Section 10165(g) provides that the article shall not apply to a policy which provides no guaranteed nonforfeiture or endowment benefits, for which no cash surrender value, if any, or present value of any paid-up nonforfeiture benefit, at the beginning of any policy year, calculated as the article specifies, exceeds 2 1/2 percent of the amount of insurance at the beginning of the same policy year.",
+		"Section 10165(h) provides that the article shall not apply to a policy which shall be delivered outside California through an agent or other representative of the company issuing the policy.",
+		"Section 10165 provides that, for purposes of determining the applicability of the article, the age at expiry for a joint-term life insurance policy shall be the age at expiry of the oldest life."
+	],
+	"notes": "Subdivision (e) is the exemption most short term policies sit in, and every one of its conditions is doing work: uniform amount, no guaranteed nonforfeiture or endowment benefits, 20 years or less, expiring before age 71, and uniform premiums for the whole term. A term policy outside (e) is not thereby subject to the article; subdivision (g) is a separate exemption measured by a 2 1/2 percent value test. Whether a particular policy falls within any exemption is an actuarial and legal question for the insurer and the commissioner, not one this record answers."
+}

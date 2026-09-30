@@ -1,0 +1,30 @@
+{
+	"title": "IRS Form 8925, Report of Employer-Owned Life Insurance Contracts (Rev. September 2017), with its instructions",
+	"publisher": "Internal Revenue Service (irs.gov)",
+	"url": "https://www.irs.gov/pub/irs-pdf/f8925.pdf",
+	"sourceType": "regulator-guidance",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "2017-09",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Form 8925 (Rev. September 2017) is titled Report of Employer-Owned Life Insurance Contracts and directs that it be attached to the policyholder's tax return.",
+		"The form asks for the number of employees the policyholder had at the end of the tax year, the number of those employees insured at the end of the tax year under employer-owned life insurance contracts issued after August 17, 2006, the total amount of employer-owned life insurance in force at the end of the tax year for those employees, whether the policyholder has a valid consent for each of them, and if not, the number for whom it does not.",
+		"The instructions state that, generally, every policyholder owning one or more employer-owned life insurance contracts issued after August 17, 2006 must file Form 8925 for each tax year the contracts are owned, and that it is attached to the policyholder's income tax return for each tax year during which such contracts are in force.",
+		"The instructions state that the written notification must include a disclosure of the face amount of life insurance, either in dollars or as a multiple of salary, that the policyholder reasonably expects to purchase with regard to the employee during the employee's tenure, and that additional notice and consent are required if the aggregate face amount exceeds the amount of which the employee was given notice and to which the employee consented, referring to Q&A-9 and Q&A-12 in Notice 2009-48.",
+		"The instructions state that written notification and consent can be met electronically only if the electronic system meets the three listed notice and consent requirements, referring to Q&A-11 in Notice 2009-48.",
+		"The instructions state that, for purposes of meeting the notice and consent requirements, the issue date of the contract is the later of the date of application for coverage, the effective date of coverage, or the formal issuance of the contract, referring to Q&A-4 in Notice 2009-48.",
+		"The instructions state that a written consent is not valid unless the related contract is issued within a year after the consent was executed, or before the employee terminates employment with the applicable policyholder's trade or business, whichever is earlier.",
+		"The instructions state that policyholders are not required to complete Form 8925 for a contract issued after August 17, 2006 as part of a section 1035 exchange for a contract issued before August 18, 2006, but that any material increase in the death benefit or other material change will cause the contract to be treated as a new contract for which the form is required.",
+		"The instructions state that, for master contracts under section 264(f)(4)(E), the addition of covered lives is treated as a new contract only for the additional covered lives.",
+		"The instructions state that the policyholder must keep adequate records to support the information reported on Form 8925."
+	],
+	"updateCadence": "Revised by the IRS as needed. The current revision at the time of access was September 2017, and the IRS About Form 8925 page listed no recent developments.",
+	"status": "active",
+	"notes": "The instructions are printed on the form itself. Their summary of the notice and consent requirements says the requirements must be met for a contract to qualify as an employer-owned life insurance contract; the statute, 26 U.S.C. 101(j), defines the contract without reference to notice and consent and makes notice and consent a condition of its exceptions. Where the two read differently, the statute controls. The instructions also point to Notice 2009-48 for detail this record has not read."
+}

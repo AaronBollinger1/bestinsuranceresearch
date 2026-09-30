@@ -1,0 +1,23 @@
+{
+	"title": "California Labor Code section 1194.2 - Liquidated damages for unpaid minimum wage",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1194.2",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 1194.2(a) provides that in an action under Section 98, 1193.6, 1194, or 1197.1 to recover wages because of payment of less than the minimum wage fixed by an order of the commission or by statute, an employee shall be entitled to recover liquidated damages in an amount equal to the wages unlawfully unpaid and interest thereon.",
+		"Section 1194.2(a) provides that nothing in the subdivision shall be construed to authorize the recovery of liquidated damages for failure to pay overtime compensation.",
+		"Section 1194.2(b) provides that if the employer demonstrates to the satisfaction of the court or the Labor Commissioner that the act or omission was in good faith and that it had reasonable grounds for believing it was not a violation of the Labor Code minimum wage provisions or a commission order, the court or Labor Commissioner may, as a matter of discretion, refuse to award liquidated damages or award any amount not exceeding the amount in subdivision (a)."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Amended by Stats. 2014, Ch. 211 (AB 2074), effective January 1, 2015. Unlike 29 U.S.C. 216(b), the California liquidated damages in this section reach unpaid minimum wage only and expressly not overtime."
+}

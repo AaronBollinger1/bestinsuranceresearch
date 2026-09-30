@@ -1,0 +1,27 @@
+{
+	"title": "26 U.S.C. 7702 (life insurance contract defined)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section7702&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 7702(a) provides that, for purposes of Title 26, the term life insurance contract means any contract which is a life insurance contract under the applicable law, but only if the contract either meets the cash value accumulation test of subsection (b), or both meets the guideline premium requirements of subsection (c) and falls within the cash value corridor of subsection (d).",
+		"Section 7702(b)(1) provides that a contract meets the cash value accumulation test if, by the terms of the contract, the cash surrender value may not at any time exceed the net single premium which would have to be paid at that time to fund future benefits under the contract.",
+		"Section 7702(c)(1) provides that a contract meets the guideline premium requirements if the sum of the premiums paid under the contract does not at any time exceed the guideline premium limitation, which subsection (c)(2) defines as the greater of the guideline single premium or the sum of the guideline level premiums to that date.",
+		"Section 7702(d)(1) provides that a contract falls within the cash value corridor if the death benefit under the contract at any time is not less than the applicable percentage of the cash surrender value, and subsection (d)(2) sets that percentage by attained age, at 250 percent for an attained age of 40 or less, decreasing by age bands to a range of 105 down to 100 percent between attained ages 90 and 95.",
+		"Section 7702(f)(2)(A) provides that the cash surrender value of any contract shall be its cash value determined without regard to any surrender charge, policy loan, or reasonable termination dividends.",
+		"Section 7702(g)(1)(A) provides that if at any time a contract which is a life insurance contract under the applicable law does not meet the definition in subsection (a), the income on the contract for any taxable year of the policyholder shall be treated as ordinary income received or accrued by the policyholder during that year.",
+		"Section 7702(g)(1)(C) provides that if a contract ceases to meet the definition during a taxable year, the income on the contract for all prior taxable years shall be treated as received or accrued during the taxable year in which the cessation occurs."
+	],
+	"updateCadence": "Amended only by legislation. The official host showed the text in effect on September 29, 2026 at the time of access, and the source credit lists Pub. L. 116-260, div. EE, title II, section 205 (December 27, 2020) as the most recent amendment, which among other things added the applicable accumulation test minimum rate in subsection (b)(3).",
+	"status": "active",
+	"notes": "The section is a definition for federal tax purposes and it starts from state law: a contract must first be life insurance under the applicable law, and then pass one of two tests. Nothing in it makes a contract life insurance for any other purpose, and nothing in it is a statement about how any particular policy is taxed. This record states what the text says. How it applies to a given contract is a question for the insurer and for a tax professional."
+}

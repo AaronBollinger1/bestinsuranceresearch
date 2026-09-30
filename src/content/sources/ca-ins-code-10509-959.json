@@ -1,0 +1,27 @@
+{
+	"title": "California Insurance Code Section 10509.959 (annual report and in force illustration for an illustrated policy)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10509.959",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation. The section credit on the official host at the time of access read Added by Stats. 1996, Ch. 1106, Sec. 1. Effective January 1, 1997, with the section operative July 1, 1997 pursuant to Section 10509.965.",
+	"status": "active",
+	"claims": [
+		"Section 10509.959(a) requires, for a policy designated as one for which illustrations will be used, that the insurer provide each policy owner with an annual report on the status of the policy.",
+		"Section 10509.959(a)(1) requires the annual report for a universal life policy to include the policy value at the end of the previous and current report periods, the amounts credited or debited during the period by type including interest, mortality, expense and riders, the current death benefit, the net cash surrender value, and the amount of outstanding loans.",
+		"Section 10509.959(a)(1)(H) requires the annual report for a flexible premium policy to include a notice if, assuming guaranteed interest, mortality and expense loads, the policy's net cash surrender value will not maintain insurance in force until the end of the next reporting period unless further premium payments are made, and subparagraph (G) requires a corresponding notice for a fixed premium policy assuming continued scheduled premium payments.",
+		"Section 10509.959(a)(2) requires the annual report for other policies to include, where applicable, the current death benefit, annual contract premium, current cash surrender value, current dividend, application of current dividend, and amount of outstanding loan.",
+		"Section 10509.959(a)(3) provides that insurers writing life insurance policies that do not build nonforfeiture values are only required to provide an annual report for those years when a change has been made to nonguaranteed policy elements by the insurer.",
+		"Section 10509.959(b) requires an annual report that does not include an in force illustration to display a notice that the owner may annually request, without charge, an in force illustration, and that the owner should not consider replacement of the policy or make changes in coverage without requesting a current illustration.",
+		"Section 10509.959(c) requires the insurer, upon request of the policy owner, to furnish an in force illustration of current and future benefits and values based on the insurer's present illustrated scale, and provides that no signature or other acknowledgment of receipt of this illustration shall be required.",
+		"Section 10509.959(d) requires the annual report to contain a prominently displayed notice if an adverse change in nonguaranteed elements that could affect the policy has been made since the last annual report."
+	]
+}

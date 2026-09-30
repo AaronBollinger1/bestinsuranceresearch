@@ -1,0 +1,25 @@
+{
+	"title": "California Insurance Code Section 10509.955 (required contents of an illustration and prohibited practices)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10509.955",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation. The section credit on the official host at the time of access read Added by Stats. 1996, Ch. 1106, Sec. 1. Effective January 1, 1997, with the section operative July 1, 1997 pursuant to Section 10509.965.",
+	"status": "active",
+	"claims": [
+		"Section 10509.955(a) requires an illustration used in the sale of a life insurance policy to be clearly labeled life insurance illustration and to include the name of the insurer, the producer's name and business address if any, the name, age and sex of the proposed insured except where a composite is permitted, the underwriting or rating classification, the generic name, product name and form number, the initial death benefit, and the dividend option or application of nonguaranteed elements if applicable.",
+		"Section 10509.955(b) prohibits an insurer or its producers, when using an illustration, from stating or implying that the payment or amount of nonguaranteed elements is guaranteed, and from using or describing nonguaranteed elements in a manner that is misleading or has the capacity or tendency to mislead.",
+		"Section 10509.955(b)(7) prohibits representing in any way that premium payments will not be required for each year of the policy in order to maintain the illustrated death benefits, unless that is the fact.",
+		"Section 10509.955(b)(8) prohibits use of the term vanishing or vanishing premium, or a similar term that implies the policy becomes paid up, to describe a plan for using nonguaranteed elements to pay a portion of future premiums.",
+		"Section 10509.955(b) prohibits, except for policies that can never develop nonforfeiture values, use of an illustration that is lapse-supported, and prohibits use of an illustration that is not self-supporting.",
+		"Section 10509.955(c) provides that if an interest rate used to determine the illustrated nonguaranteed elements is shown, it shall not be greater than the earned interest rate underlying the disciplined current scale."
+	]
+}

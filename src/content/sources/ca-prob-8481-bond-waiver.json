@@ -1,0 +1,22 @@
+{
+	"title": "California Probate Code section 8481 - When a personal representative's bond is not required",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=8481",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 8481(a) provides that a bond is not required where the will waives the requirement of a bond, or where all beneficiaries waive the requirement in writing and the written waivers are attached to the petition for appointment, the second case not applying if the will requires a bond.",
+		"Section 8481(b) provides that, notwithstanding a waiver of bond by the will or by all the beneficiaries, on petition of any interested person or on its own motion, the court may for good cause require that a bond be given, either before or after issuance of letters."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Probate Code provisions on the bond of a personal representative. Enacted by Stats. 1990, Ch. 79."
+}

@@ -1,0 +1,147 @@
+{
+	"name": "Buy-sell funding",
+	"line": "buy-sell",
+	"family": "life",
+	"definition": "Buy-sell funding is life insurance bought so that, when an owner of a closely held business dies, the money to buy that owner's interest exists on the day it is needed. The insurance is ordinary life insurance; what makes it buy-sell funding is the agreement it pays into, and the structure of that agreement decides who owns the policy, who receives the proceeds and, under a redemption agreement as the Supreme Court held in 2024, what the proceeds do to the value of the shares being bought. In Connelly v. United States the corporation was obliged to redeem a deceased shareholder's shares and held life insurance to fund it, and a unanimous Court held that the redemption obligation did not reduce the value of those shares for federal estate tax, so the insurance proceeds counted as a corporate asset in valuing them [S:scotus-connelly-v-united-states-602-us-257]. The holding is about a redemption agreement. The Court described a cross-purchase agreement, in which the owners insure and buy from each other, as another option the parties could have used, noted its drawbacks, and decided no case about one [S:scotus-connelly-v-united-states-602-us-257]. Two further texts bear on how the policies are held and moved: California's insurable interest rules, which name an employer's interest in a shareholder under a share reacquisition arrangement [S:ca-ins-code-10110-1], and the federal transfer for value rule in 26 U.S.C. 101(a)(2) [S:usc-26-101-life-insurance-death-benefits]. This record describes what those sources say. It gives no view on how any reader's agreement will be valued or taxed, which is a question for a tax or legal professional, and it has read no policy form.",
+	"protects": [
+		"Not what this page can tell you. No policy form has been read for this record, and the agreement that the insurance funds is a private contract this record has not read either",
+		"The business or the surviving owners, by providing cash for a purchase the agreement obliges or permits. In Connelly the corporation held 3.5 million dollars of life insurance on each brother to make sure it could redeem shares if required [S:scotus-connelly-v-united-states-602-us-257]",
+		"The deceased owner's estate, which in Connelly was paid for the decedent's shares out of 3 million dollars of the insurance proceeds [S:scotus-connelly-v-united-states-602-us-257]",
+		"Continuity of ownership: the Connelly agreement was made to keep the company in the family if either brother died [S:scotus-connelly-v-united-states-602-us-257]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "Sources, not policy terms",
+			"note": "Everything below is drawn from the Supreme Court's opinion in Connelly [S:scotus-connelly-v-united-states-602-us-257], from 26 U.S.C. 101 [S:usc-26-101-life-insurance-death-benefits], and from California Insurance Code sections 280, 10110, 10110.1 and 10110.4 [S:ca-ins-code-280][S:ca-ins-code-10110][S:ca-ins-code-10110-1][S:ca-ins-code-10110-4]. None of it describes a policy form, and nothing here is advice about any arrangement."
+		},
+		{
+			"item": "A redemption agreement: the entity owns the policy and buys the shares",
+			"note": "In Connelly the surviving brother had an option to buy and, if he declined, the corporation was contractually required to redeem, using insurance it owned [S:scotus-connelly-v-united-states-602-us-257]. The Court held that the obligation to redeem at fair market value did not offset the insurance proceeds, because a fair market value redemption does not change any shareholder's economic interest and the shares are valued at death, before the proceeds are spent [S:scotus-connelly-v-united-states-602-us-257]."
+		},
+		{
+			"item": "A cross-purchase agreement, as the Court described it",
+			"note": "The Court described a cross-purchase agreement as one in which shareholders agree to buy each other's shares at death and buy life insurance on each other to fund it, and said it would have let the survivor buy the shares while avoiding the risk that the proceeds would increase the value of the decedent's shares, because the proceeds would have gone to him rather than to the corporation [S:scotus-connelly-v-united-states-602-us-257]. The Court also said such an agreement would have required each brother to pay premiums on the other, with the risk one could not, and would have had its own tax consequences [S:scotus-connelly-v-united-states-602-us-257]."
+		},
+		{
+			"item": "An employer's insurable interest in a shareholder, named expressly in California",
+			"note": "Section 10110.1(c) gives an employer an insurable interest, under a contractual arrangement with a shareholder concerning the reacquisition of shares owned at death or disability, in that shareholder's life or physical or mental ability for the purpose of carrying out the arrangement, and requires the employer to obtain the written consent of the person insured [S:ca-ins-code-10110-1]. The same subdivision begins with the words except as provided in Section 10110.4 [S:ca-ins-code-10110-1]."
+		},
+		{
+			"item": "An owner's insurable interest in a co-owner, where the statute is less specific",
+			"note": "No section read for this record names the interest of one shareholder or partner in another's life. The general definition is an interest based on a reasonable expectation of pecuniary advantage through the continued life of another and consequent loss by reason of that person's death [S:ca-ins-code-10110-1], section 10110 lists persons in whose life every person has an insurable interest [S:ca-ins-code-10110], and section 10110.1 states that it does not define all instances in which one exists [S:ca-ins-code-10110-1]. Whether a given relationship meets the definition is for the insurer and, in a dispute, a court."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "What the policy itself excludes, which this record does not establish",
+			"note": "Buy-sell funding is written on individual life forms that are not public, and none has been read here. Contestability, exclusions and claim conditions are in the policy and decided by the insurer."
+		},
+		{
+			"item": "An agreed price that settles the estate tax value",
+			"note": "The Court stated that a share redemption agreement, although it may say how to set a price, is ordinarily not dispositive for valuing the decedent's shares for the estate tax, citing 26 U.S.C. 2703 [S:scotus-connelly-v-united-states-602-us-257]. In Connelly the family agreed a price of 3 million dollars instead of obtaining the outside appraisal the agreement contemplated, and the IRS valued the shares at 5.3 million dollars [S:scotus-connelly-v-united-states-602-us-257]."
+		},
+		{
+			"item": "A rule that every redemption obligation is ignored",
+			"note": "The Court said in a footnote that it did not hold that a redemption obligation can never decrease a corporation's value, giving the example of an obligation that forces the corporation to liquidate operating assets, and that it rejected only the position that all redemption obligations reduce net value [S:scotus-connelly-v-united-states-602-us-257]."
+		},
+		{
+			"item": "An unrestricted right to move a policy between owners for value",
+			"note": "Section 101(a)(2) limits the excluded death benefit, where a policy or an interest in it is transferred for valuable consideration, to the consideration plus premiums and other amounts the transferee later paid [S:usc-26-101-life-insurance-death-benefits]. The limit does not apply to a carryover basis transfer, or to a transfer to the insured, a partner of the insured, a partnership in which the insured is a partner, or a corporation in which the insured is a shareholder or officer [S:usc-26-101-life-insurance-death-benefits]. The list does not name a co-shareholder of the insured, and the exceptions are themselves switched off for a reportable policy sale [S:usc-26-101-life-insurance-death-benefits]. This record states nothing about how the rule applies to any particular transfer."
+		},
+		{
+			"item": "A California corporate-owned policy on a non-exempt employee",
+			"note": "Section 10110.4 bars an insurer from issuing a policy a California employer buys, naming itself beneficiary, on a California resident current or former employee, except an employee exempt under Labor Code section 515 [S:ca-ins-code-10110-4]. Where an owner insured under an entity-owned policy is also an employee, the section is part of the frame; this record does not determine anyone's exempt status."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no deductible, and the limit is the face amount, a commercial term between the policy owner and the insurer.",
+		"Connelly shows why the face amount and the purchase obligation can diverge under a redemption. The petitioner argued that if proceeds earmarked for a redemption are a net asset, the corporation would have needed a policy worth far more than 3 million dollars to redeem at fair market value, and the Court answered that this was true enough but a consequence of how the brothers structured their agreement [S:scotus-connelly-v-united-states-602-us-257].",
+		"The figures in Connelly are the Court's account of one case: 3.5 million dollars of insurance on each brother, a corporation the IRS valued at 6.86 million dollars including 3 million dollars of proceeds, shares valued at 5.3 million dollars, and 889,914 dollars of additional tax [S:scotus-connelly-v-united-states-602-us-257]. They illustrate the mechanism and are not reference points for any other business.",
+		"The Court noted that not every estate is subject to the estate tax, describing the threshold at the time of the opinion as about 13.6 million dollars [S:scotus-connelly-v-united-states-602-us-257]. That was the Court's approximation in 2024, not a current figure, and this record states none.",
+		"Where a policy is transferred for value outside the listed exceptions, section 101(a)(2) limits the excluded amount to the consideration plus premiums and other amounts the transferee later paid [S:usc-26-101-life-insurance-death-benefits]. That is a limit on an income exclusion, not on what the insurer pays."
+	],
+	"underwritingInputs": [
+		"Whether the agreement is a redemption, a cross-purchase, or an option followed by a redemption as in Connelly, since that decides who owns the policy and receives the proceeds [S:scotus-connelly-v-united-states-602-us-257]",
+		"Who will own each policy and who is beneficiary, and whether that owner has an insurable interest at the time of application [S:ca-ins-code-10110-1]",
+		"For an entity-owned policy in California, whether the arrangement is a share reacquisition arrangement within section 10110.1(c) and whether the insured's written consent has been obtained [S:ca-ins-code-10110-1]",
+		"Whether an entity-owned policy insures an owner who is also a California resident employee, and that employee's exempt status [S:ca-ins-code-10110-4]",
+		"How the agreement sets the price, and whether it is followed at death; in Connelly the contemplated outside appraisal was not obtained [S:scotus-connelly-v-united-states-602-us-257]",
+		"Whether any existing policy is being moved between owners, and to whom, given the transferee list in section 101(a)(2) [S:usc-26-101-life-insurance-death-benefits]",
+		"Where an entity-owned policy insures an owner who is also an employee, officer or director, whether section 101(j) notice and consent were completed before issue [S:usc-26-101-life-insurance-death-benefits]",
+		"How many owners there are and who pays each premium, since the Court identified the risk that an owner under a cross-purchase could not pay the premiums on another [S:scotus-connelly-v-united-states-602-us-257]"
+	],
+	"exposures": [
+		{
+			"item": "Proceeds that raise the value of the shares they were meant to buy",
+			"note": "Under the redemption in Connelly, the insurance proceeds were a corporate asset counted in valuing the decedent's shares, and the redemption obligation did not offset them [S:scotus-connelly-v-united-states-602-us-257]. The IRS valued the shares at 5.3 million dollars against the 3 million dollars the family agreed and the corporation paid [S:scotus-connelly-v-united-states-602-us-257]."
+		},
+		{
+			"item": "A price clause nobody followed",
+			"note": "The Connelly agreement called for an outside appraisal of fair market value, and the parties instead agreed a price between themselves [S:scotus-connelly-v-united-states-602-us-257]. The Court stated that a redemption agreement's price is ordinarily not dispositive for estate tax valuation [S:scotus-connelly-v-united-states-602-us-257], so the agreed number and the taxed number can differ."
+		},
+		{
+			"item": "An owner who stops paying under a cross-purchase",
+			"note": "The Court named this risk itself: a cross-purchase agreement would have required each brother to pay the premiums on the other's policy, creating a risk that one would be unable to [S:scotus-connelly-v-united-states-602-us-257]. Corporate ownership of the policies, by contrast, kept them in force but put the proceeds in the corporation [S:scotus-connelly-v-united-states-602-us-257]."
+		},
+		{
+			"item": "Moving policies when the agreement is restructured",
+			"note": "Changing from one structure to another can involve transferring existing policies between the entity and the owners, and section 101(a)(2) limits the exclusion on a transfer for value unless the transfer fits a listed exception [S:usc-26-101-life-insurance-death-benefits]. The listed transferees are the insured, a partner of the insured, a partnership in which the insured is a partner, and a corporation in which the insured is a shareholder or officer [S:usc-26-101-life-insurance-death-benefits]."
+		},
+		{
+			"item": "An insurable interest that exists for one purpose only",
+			"note": "California's express employer interest in a shareholder is for the purpose of carrying out the share reacquisition arrangement [S:ca-ins-code-10110-1], and an insurable interest must exist when the contract becomes effective [S:ca-ins-code-10110-1]. A life policy procured on another without an insurable interest at application is void [S:ca-ins-code-10110-1], and section 280 provides that a contract is void where there is no insurable interest [S:ca-ins-code-280]."
+		},
+		{
+			"item": "Entity-owned policies on owner-employees and the federal employer-owned rule",
+			"note": "An entity-owned policy on an owner who is an employee, which for section 101(j) includes an officer or director, can be an employer-owned life insurance contract [S:usc-26-101-life-insurance-death-benefits]. The exception for proceeds used to buy an equity interest in the policyholder from the insured's heirs or estate is available only if the written notice and consent were completed before issue [S:usc-26-101-life-insurance-death-benefits]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Read the agreement and the policy ownership together",
+			"note": "Connelly turned on how the agreement was structured and who owned the insurance: the Court said the result was a consequence of how the brothers chose to structure their agreement [S:scotus-connelly-v-united-states-602-us-257]. The agreement and the policy schedules are the two documents that answer who owns, who receives and who buys."
+		},
+		{
+			"item": "Follow the price mechanism the agreement sets, and keep the record",
+			"note": "The Connelly agreement contemplated an outside appraisal that was not obtained [S:scotus-connelly-v-united-states-602-us-257]. Whatever an agreement provides, the Court's statement that its price is ordinarily not dispositive for the estate tax [S:scotus-connelly-v-united-states-602-us-257] is a reason to take any valuation question to a tax professional rather than to rely on the clause."
+		},
+		{
+			"item": "Obtain written consent from each insured owner",
+			"note": "California requires an employer to obtain the written consent of the individual insured [S:ca-ins-code-10110-1]. Where section 101(j) may apply to an entity-owned policy, its written notice and consent must also be completed before the contract is issued [S:usc-26-101-life-insurance-death-benefits]."
+		},
+		{
+			"item": "Ask before any policy changes hands",
+			"note": "Section 101(a)(2) applies to a transfer by assignment or otherwise of a policy or any interest in it [S:usc-26-101-life-insurance-death-benefits], so a change of owner or beneficiary arrangement during a restructuring is the point at which to have a tax professional read the transfer against the statute."
+		},
+		{
+			"item": "Check who pays each premium, every year",
+			"note": "The Court identified the risk under a cross-purchase that an owner will be unable to pay the premiums on another [S:scotus-connelly-v-united-states-602-us-257]. California requires a notice of pending lapse on an individual life policy to be mailed to the named policy owner and to a known assignee or other person having an interest in the policy [S:ca-ins-code-10113-71], so telling each insurer who has an interest is what puts the notice in front of someone who can act."
+		}
+	],
+	"relatedPolicies": [
+		"Key person life insurance, the other business use of life insurance, where the business insures a loss to itself rather than funding a purchase; section 101(j) links the two by excepting proceeds used to buy an equity interest from the insured's heirs [S:usc-26-101-life-insurance-death-benefits]",
+		"Individual life insurance (California), which carries the grace period, lapse notice and free look provisions that apply to each underlying policy and are not repeated here",
+		"Disability buyout funding, which this record does not describe, although California's employer interest under a share reacquisition arrangement expressly reaches the shareholder's physical or mental ability as well as life [S:ca-ins-code-10110-1]"
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "The express employer insurable interest in a shareholder under a share reacquisition arrangement, the written consent requirement, and the bar on corporate-owned policies on non-exempt California resident employees are California law [S:ca-ins-code-10110-1][S:ca-ins-code-10110-4]. Connelly and section 101 are federal and apply alongside them [S:scotus-connelly-v-united-states-602-us-257][S:usc-26-101-life-insurance-death-benefits]."
+		}
+	],
+	"lastReviewed": "2026-09-30",
+	"effectiveDate": "2026-09-30",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"scotus-connelly-v-united-states-602-us-257",
+		"usc-26-101-life-insurance-death-benefits",
+		"ca-ins-code-10110",
+		"ca-ins-code-10110-1",
+		"ca-ins-code-10110-4",
+		"ca-ins-code-280",
+		"ca-ins-code-10113-71"
+	],
+	"relatedQuestions": []
+}

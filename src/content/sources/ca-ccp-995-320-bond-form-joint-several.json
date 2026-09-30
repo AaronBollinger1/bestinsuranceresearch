@@ -1,0 +1,24 @@
+{
+	"title": "California Code of Civil Procedure section 995.320 - Form of a bond and joint and several liability of sureties",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=995.320",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 995.320(a) provides that a bond shall be in writing signed by the sureties under oath.",
+		"Section 995.320(a) requires the bond to include a statement that the sureties are jointly and severally liable on the obligations of the statute providing for the bond, and the address at which the principal and sureties may be served with notices, papers, and other documents under the chapter.",
+		"Section 995.320(a)(3) requires, if the amount of the bond is based on the value of property or an interest in property, a description of the property or interest and the principal's estimate of its value, or, if given pursuant to the estimate of the beneficiary or court, the value as so estimated.",
+		"Section 995.320(b) provides that the sureties signing the bond are jointly and severally liable on the obligations of the bond, the provisions of the chapter, and the statute providing for the bond."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Bond and Undertaking Law (Code of Civil Procedure 995.010 onward). By section 995.020 the chapter yields where the statute requiring a particular bond prescribes a different rule or is inconsistent, so this section is a default rather than the rule for every bond. Added by Stats. 1982, Ch. 998."
+}

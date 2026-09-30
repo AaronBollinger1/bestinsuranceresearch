@@ -1,0 +1,27 @@
+{
+	"title": "29 U.S.C. 216 (Fair Labor Standards Act: penalties, damages, and the right of action)",
+	"publisher": "Office of the Law Revision Counsel, U.S. House of Representatives (uscode.house.gov)",
+	"url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section216&num=0&edition=prelim",
+	"sourceType": "statute",
+	"jurisdiction": "US",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 216(b) provides that any employer who violates section 206 or section 207 shall be liable to the employee or employees affected in the amount of their unpaid minimum wages, or their unpaid overtime compensation, as the case may be, and in an additional equal amount as liquidated damages.",
+		"Section 216(b) provides that an employer who violates section 215(a)(3) or 218d shall be liable for such legal or equitable relief as may be appropriate, including without limitation employment, reinstatement, promotion, and the payment of wages lost and an additional equal amount as liquidated damages.",
+		"Section 216(b) provides that an action to recover the liability may be maintained against any employer, including a public agency, in any Federal or State court of competent jurisdiction by any one or more employees for and on behalf of themselves and other employees similarly situated.",
+		"Section 216(b) provides that no employee shall be a party plaintiff to any such action unless the employee gives consent in writing to become a party and the consent is filed in the court in which the action is brought.",
+		"Section 216(b) provides that the court shall, in addition to any judgment awarded to the plaintiff or plaintiffs, allow a reasonable attorney's fee to be paid by the defendant, and costs of the action.",
+		"Section 216(b) provides that the employee's right to bring or join such an action terminates upon the filing of a complaint by the Secretary of Labor in an action under section 217 of the kind the subsection describes.",
+		"Section 216(c) provides that an employee's agreement to accept payment of unpaid minimum wages or overtime supervised by the Secretary shall, upon payment in full, constitute a waiver of the employee's right under subsection (b) to those wages and an additional equal amount as liquidated damages."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Preliminary edition on the Office of the Law Revision Counsel site. Subsection (b) is the private right of action and subsection (c) the Secretary's supervised payment; subsections (a), (d) and (e), on criminal penalties, savings provisions and child labor civil penalties, are not relied on. The liquidated damages in subsection (b) are subject to the court's discretion under 29 U.S.C. 260 where the employer shows good faith and reasonable grounds."
+}

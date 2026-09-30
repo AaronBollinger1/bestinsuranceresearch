@@ -1,0 +1,23 @@
+{
+	"title": "FAR 28.101-1 - Bid guarantees, policy on use",
+	"publisher": "U.S. General Services Administration (Acquisition.gov, Federal Acquisition Regulation)",
+	"url": "https://www.acquisition.gov/far/28.101-1",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"FAR 28.101-1(a) provides that a contracting officer shall not require a bid guarantee unless a performance bond or a performance and payment bond is also required, and that, except as provided in paragraph (c), bid guarantees shall be required whenever a performance bond or a performance and payment bond is required.",
+		"FAR 28.101-1(b) provides that all types of bid guarantees are acceptable for supply or service contracts, that only separate bid guarantees are acceptable in connection with construction contracts, and that agencies may specify that only separate bid bonds are acceptable in connection with construction contracts.",
+		"FAR 28.101-1(c) provides that the chief of the contracting office may waive the requirement to obtain a bid guarantee when a performance bond or a performance and payment bond is required if it is determined that a bid guarantee is not in the best interest of the Government for a specific acquisition, giving as examples overseas construction, emergency acquisitions, and sole-source contracts, and that class waivers may be authorized by the agency head or designee."
+	],
+	"updateCadence": "Updated by Federal Acquisition Circulars",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. "
+}

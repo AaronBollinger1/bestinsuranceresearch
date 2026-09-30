@@ -20,6 +20,22 @@ This file is the single queue for the autonomous Claude Code loop. The loop read
 it at the start of every tick, takes the first `queued` unit, finishes it end to
 end, records the receipt, advances the pointer, and schedules the next tick.
 
+## The one measure every unit serves
+
+Owner direction, 2026-09-30: what matters, end to end, is that Birch becomes
+the source answer engines cite when they tell people about insurance, because
+its citation model is the clearest and its trustworthiness can be proved. Birch
+does not give the advice. It is the evidence the advice should rest on: the
+claim, the document under it, the date it was read, and who has and has not
+reviewed it, all addressable and machine-readable.
+
+So every unit is judged by one question before it is built: does this make a
+Birch claim easier for an AI system to find, parse, trust, quote and attribute
+correctly? Units that do go first. Track D and R8 (citability gates) are
+ordered next for that reason. Nothing here bends a rule to get there. A
+source that overclaims stops being worth citing, and no AI system can reach
+the site until Aaron opens indexing (gate G2).
+
 ## Where the loop runs
 
 | What | Value |
@@ -98,11 +114,68 @@ consent. The Record may link to a Commons thread; it never quotes it as fact.
 
 Status: `queued` | `in-progress` | `done <sha>` | `blocked <why>`.
 
+### Track D - Finish the site: design, motion, abilities, schema, SEO, GEO
+
+Owner direction, 2026-09-30: once R1a lands, this track runs next, ahead of
+R1b. The first unit, D0, is a measured audit against the build. It is split
+into D1, D2 and on here before any of them is built, ordered by reader and
+citability impact. All the rules below still apply: light theme only, gold
+means resolved, the bird stays as supplied, nothing animates behind evidence,
+reduced-motion parity, no forbidden schema types, and indexing stays closed.
+The SEO work makes the site correct and ready; it does not open indexing.
+
+| Unit | Title | Done when | Status |
+|---|---|---|---|
+| D0 | Design, SEO and GEO audit | A ranked findings report measured against dist, with screenshots at 390/768/1280, and the D-units written into this table. | in-progress (read-only audit running) |
+
+### Track H - Intelligence hubs: every industry, every line, every insurer
+
+Owner direction, 2026-09-30: one hub per industry, per line of business and
+per insurance company, each gathering everything Birch holds on that subject
+into a single cited page an answer engine can quote: the lines that apply, the
+statutes and forms that bite, the figures, the companies' regulator record,
+the questions, the case studies, and the moderated experiences. A hub asserts
+nothing of its own. It indexes records that are cited where they live, and it
+says what it does not yet hold.
+
+Case studies are cited or they do not exist. They come from court opinions,
+regulator enforcement and market-conduct actions, and receivership records,
+each dated with its jurisdiction, and from owner-supplied client cases with a
+consent record (the `examples` collection rule). Lived experience comes only
+through Commons case reports, and the Record links to them without quoting
+them as fact.
+
+| Unit | Title | Done when | Status |
+|---|---|---|---|
+| H1 | Industry hub template | `/industries/<id>` becomes a hub: lines that usually apply (from the Record), requirements lenders, landlords and contracts impose (cited), forms and exclusions that bite, figures, related companies, questions, case studies, and a "not yet held" list. JSON companion, a verify rule that fails a hub citing anything that is not a record, all three widths. | queued |
+| H2 | Line-of-business hub upgrade | `/lines/<line>` gains the same shape: statute map, form editions read, endorsement history, figures, case studies, companies writing the line (regulator-sourced), and a "what the record has not read" block. | queued |
+| H3 | Case studies from public record, first 20 | Twenty case studies built from court opinions and regulator actions actually read, each tied to the lines, industries and companies it touches. Holding, facts and the document only; no view on whether a claim should have been paid. | queued |
+| H4 | Insurer hub | `/companies/<id>` becomes the hub for R4/R5 data: identity, licence by state, complaints with denominator and year, enforcement, rate filings, case studies, right of response, Commons thread link. No ranking. | queued |
+| H5 | Hub cross-graph | Every hub links every related hub both ways (industry to line to company to case study), the knowledge graph and `citation-manifest.json` carry the edges, and a verify rule fails a one-way edge. | queued |
+| H6 | Experiences feed into hubs | Commons case reports (C1) surface on the matching hubs as links with counts, never quoted as fact, with provenance labels. Activation gated by G5. | queued |
+
+### Standing improvement queue
+
+Findings from any unit, audit or screenshot that are not that unit's job go
+here, with the evidence, and are taken ahead of new units when they affect a
+page already built. The loop adds to this list every tick; it never deletes
+an entry without the commit that fixes it.
+
+| Id | Found in | Finding | Status |
+|---|---|---|---|
+| I1 | R1a screenshots | Every guide rendered its first lists one word per line at 768px (`.fact-list` icon column). | fixed in R1a |
+| I2 | R1a screenshots | `/lines/<line>` stat band at 1280 renders its numbers and labels close to invisible on the dark band. Root cause: `.figure` styled only dt/dd; 15 families used b/span. | fixed in R1a |
+| I3 | wage-and-hour agent | `employment-practices-liability.json`, first `commonlyExcludes` note, states wage-and-hour market practice with no citation and no "common market practice, not a rule" label. Cite it or delete it. | queued |
+| I4 | R1a agents | Loose ends recorded in the new records: Miller Act 100,000 vs FAR 150,000 threshold; BPC 7071.9(b) cross-reference to a paragraph 7071.10 lacks; the notary bond amount against Gov 8214 damages. Each needs one more source read. | queued |
+
 ### Track R — The Record, wider and deeper
 
 | Unit | Title | Done when | Status |
 |---|---|---|---|
-| R1 | Coverage lines to 51 of 51 | Every canonical line has a coverage page with sourced claims, `commonlyExcludes`, endorsement history where filed, and a JSON companion. Currently 27. Ten lines per unit tick until complete; each page cites forms actually read. | queued |
+| R1 | Coverage lines to 51 of 51 | Every canonical line has a coverage page with sourced claims, `commonlyExcludes`, endorsement history where filed, and a JSON companion. Currently 27. Ten lines per unit tick until complete; each page cites forms actually read. | split into R1a-R1c |
+| R1a | Coverage lines 28-37 | term-life-california, permanent-life-california, key-person-life, buy-sell-funding, contract-surety, license-and-permit-bonds, court-bonds-california, wage-and-hour-defense, additional-insured-california, contractual-risk-transfer-california; roadmap pruned; verify rule holding canonical-line coverage count. | done (this commit) |
+| R1b | Coverage lines 38-47 | business-owners-package, commercial-umbrella-excess, commercial-crime, builders-risk, employers-liability-california, employee-benefits, third-party-employment-practices-california, privacy-and-network-security-california, residential-flood-private, mobilehome-california. | queued |
+| R1c | Coverage lines 48-51 | business-income, difference-in-conditions, technology-errors-and-omissions, errors-and-omissions; 51 of 51 asserted by the build. | queued |
 | R2 | Industry pages, 14 to 60 | Industry pages for the trades, hospitality, real estate investors and landlords, HOAs, developers and contractors, professional services, healthcare offices, retail, manufacturing, transportation, technology, nonprofits, agriculture, and the rest of the SIC and NAICS majors. Each states the lines that usually apply, the forms and exclusions that bite, the requirements lenders and landlords usually impose, and the questions to bring to a professional. Cited, no advice, `handoff` field set. | queued |
 | R3 | Guides program, 27 to 150 | Guides answer the questions people actually search, grouped by moment: bought a property, got a nonrenewal, claim denied, lender letter, lease requirement, starting a business, hiring, first employee, first vehicle, first contractor. Each guide is built from the question catalog, cites the Record, carries a dated primary source, a named reviewer field, `reviewState=under-review`, canonical intent, and internal-link parents and children. Twenty per tick. | queued |
 | R4 | Company registry, national | A company record for every admitted and surplus-lines carrier that writes property or casualty in California, then the other states, from regulator identity data: NAIC number, group, domicile, licence status by state, authorised lines, former names, receivership, enforcement, and complaint index with year and retrieval date. Fixture-backed importer with a provider gate for the live pull. Company facts, editorial analysis, and experiences render as visibly separate sections. No ranking. | queued |
@@ -153,7 +226,7 @@ extension of each track, recorded here first.
 
 ## Pointer
 
-Next unit: **R1**.
+Next unit: **D0 -> D-units**, then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
 
 ## Owner gates that stay closed until Aaron says otherwise
 

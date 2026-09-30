@@ -1,0 +1,24 @@
+{
+	"title": "California Civil Code section 9554 - Amount, form and conditions of a public works payment bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=9554",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 9554(a) provides that a payment bond shall be in an amount not less than 100 percent of the total amount payable pursuant to the public works contract, shall be in the form of a bond and not a deposit in lieu of a bond, and shall be executed by an admitted surety insurer.",
+		"Section 9554(b) provides that the payment bond shall provide that if the direct contractor or a subcontractor fails to pay a person authorized under Section 9100 to assert a claim against a payment bond, amounts due under the Unemployment Insurance Code with respect to work or labor performed pursuant to the public works contract, or amounts required to be deducted, withheld, and paid over to the Employment Development Department from the wages of employees of the contractor and subcontractors under Section 13020 of the Unemployment Insurance Code with respect to the work and labor, the surety will pay the obligation and, if an action is brought to enforce the liability on the bond, a reasonable attorney's fee, to be fixed by the court.",
+		"Section 9554(c) provides that the payment bond shall be conditioned for the payment in full of the claims of all claimants and by its terms inure to the benefit of any person authorized under Section 9100 to assert a claim against a payment bond so as to give a right of action to that person or that person's assigns in an action to enforce the liability on the bond.",
+		"Section 9554(d) provides that the direct contractor may require that a subcontractor give a bond to indemnify the direct contractor for any loss sustained by the direct contractor because of any default of the subcontractor under the section."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Read with section 9550, which requires the bond, and section 9100, which says who may claim on it."
+}

@@ -1,0 +1,22 @@
+{
+	"title": "California Civil Code section 9356 - Time for giving a stop payment notice on a public work",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=9356",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 9356 provides that a stop payment notice is not effective unless given before the expiration of 30 days after recordation, if a notice of completion, acceptance, or cessation is recorded.",
+		"Section 9356 provides that, if a notice of completion, acceptance, or cessation is not recorded, a stop payment notice is not effective unless given before the expiration of 90 days after cessation or completion."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Cited here because Civil Code section 9558 measures the deadline for suit on a public works payment bond from the end of the period this section sets."
+}

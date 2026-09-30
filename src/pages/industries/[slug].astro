@@ -78,12 +78,12 @@ const jsonLd = graph(
 				<p class="page-lede">{hub.descriptor}</p>
 				<p class="hub-role">A navigational index over published Birch records. Follow the exact page for the assumptions, jurisdiction, last-checked date, and source ledger behind a statement.</p>
 
-				<div class="figures" style="margin-top:var(--s-5)">
-					<div class="figure"><b>{hub.coverages.length}</b><span>coverage pages</span></div>
-					<div class="figure"><b>{hub.questions.length}</b><span>answered questions</span></div>
-					<div class="figure"><b>{hub.examples.length}</b><span>worked examples</span></div>
-					<div class="figure"><b>{hub.companies.length}</b><span>organizations</span></div>
-				</div>
+				<dl class="figures" style="margin-top:var(--s-5)">
+					<div class="figure"><dt>coverage pages</dt><dd>{hub.coverages.length}</dd></div>
+					<div class="figure"><dt>answered questions</dt><dd>{hub.questions.length}</dd></div>
+					<div class="figure"><dt>worked examples</dt><dd>{hub.examples.length}</dd></div>
+					<div class="figure"><dt>organizations</dt><dd>{hub.companies.length}</dd></div>
+				</dl>
 			</div>
 		</header>
 

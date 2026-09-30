@@ -1,0 +1,26 @@
+{
+	"title": "California Insurance Code Section 11580.04 (additional insured endorsements for public agencies on construction contracts)",
+	"publisher": "California Legislative Information, Office of Legislative Counsel",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=11580.04",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 11580.04 applies to any additional insured endorsement issued by an admitted or nonadmitted insurer for the benefit of a public agency in connection with, collateral to, or affecting any construction contract to which the provisions of subdivision (b) of Section 2782 of the Civil Code apply.",
+		"Such an endorsement shall not provide any duty of indemnity coverage for the active negligence of the additional insured in any case where an agreement to indemnify the additional insured would be invalid under subdivision (b) of Section 2782 of the Civil Code.",
+		"In any case where a claim or loss encompasses the negligence of the original insured and the active negligence of the additional insured that is not covered because of the section, the insurer's obligation shall be limited to obligations permitted by the section.",
+		"Any contract requirement that requires a promisor to procure insurance that is invalid under the section shall be invalid.",
+		"The section is placed in Article 2, Actions on Policies Containing Liability Provisions, of Chapter 1 of Part 3 of Division 2 of the Insurance Code.",
+		"The page carries the note 'Added by Stats. 1996, Ch. 558, Sec. 1. Effective January 1, 1997.'"
+	],
+	"updateCadence": "Amended by legislation; re-check leginfo for the current version before each publication cycle.",
+	"status": "active",
+	"notes": "Read in full on the official host 2026-09-30; the section is a single paragraph. Its scope is narrow and is stated in its own first sentence: it reaches additional insured endorsements for the benefit of a public agency, on construction contracts to which Civil Code section 2782(b) applies. It says nothing about additional insured endorsements for private owners, general contractors or other private parties, and it limits the duty of indemnity coverage; it does not mention the duty to defend. Effective: 1997-01-01"
+}

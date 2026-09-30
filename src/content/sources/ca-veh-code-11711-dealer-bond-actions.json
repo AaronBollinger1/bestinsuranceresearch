@@ -1,0 +1,24 @@
+{
+	"title": "California Vehicle Code section 11711 - Actions on the vehicle dealer bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=11711",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 11711(a) provides that a person has a right of action against the dealer, the salesman, and the surety upon the dealer's bond, in an amount not to exceed the value of the vehicle purchased from or sold to the dealer, if the person suffers loss or damage by reason of fraud practiced on the person or fraudulent representation made by a licensed dealer or its salesman acting for the dealer and has possession of a written instrument furnished by the licensee containing stipulated provisions and guarantees which the person believes have been violated; or suffers loss or damage by reason of the dealer's or salesman's violation of Division 3 of the Vehicle Code; or is not paid for a vehicle sold to and purchased by a licensee.",
+		"Section 11711(b) provides that the state or any political subdivision, through the department, has a right of action against the dealer, its representative, and the surety upon the dealer's bond, in an amount not to exceed the value of the vehicles involved, for loss or damage by reason of fraud or fraudulent representation by a licensed dealer or its representatives, or by reason of violation of Division 3 of the Vehicle Code or Part 5 of Division 2 of the Revenue and Taxation Code.",
+		"Section 11711(d) provides that the claims of the state under subdivision (b) shall be satisfied first and entitled to preference over all claims under subdivision (a).",
+		"Section 11711(e) provides that the claims of any person under subdivision (a) who is not a licensee shall be satisfied first and entitled to preference over all other claims under subdivision (a)."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Subdivision (c), which deems a dealer's failure to pay fees and penalties under section 4456 a violation constituting loss to the state, was read and is not relied on here."
+}

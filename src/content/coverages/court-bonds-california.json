@@ -1,0 +1,185 @@
+{
+	"name": "Court bonds (California)",
+	"line": "court-bonds",
+	"family": "commercial",
+	"definition": "A court bond is a bond or undertaking a statute requires a party to give in litigation, or a fiduciary to give before a court lets it act, so that the person on the other side has someone solvent to collect from. In California the default rules for all of them sit in one place: the Bond and Undertaking Law applies to a bond or undertaking given as security pursuant to any statute of this state, except to the extent that statute prescribes a different rule or is inconsistent, and it does not apply to bail [S:ca-ccp-995-020-bond-law-scope]. Executing bonds and undertakings required or permitted in actions or proceedings is part of surety insurance as the Insurance Code defines it [S:ca-ins-code-105-surety-insurance], but the bond protects the beneficiary rather than the party who buys it: the beneficiary may enforce the bond against both the principal and the sureties [S:ca-ccp-996-410-enforcement-against-principal-and-sureties], and a surety that pays has a statutory right to be reimbursed by the principal [S:ca-civ-code-2847-surety-reimbursement]. Two examples show the range. To stop a money judgment being enforced while it is appealed, the appellant gives an undertaking for double the judgment, or one and one-half times the judgment if an admitted surety insurer gives it [S:ca-ccp-917-1-appeal-undertaking-money-judgment]. And a personal representative of an estate must, except as otherwise provided by statute, give a court-approved bond before letters are issued [S:ca-prob-8480-personal-representative-bond]. This record describes the statutes. It has read no surety's application, indemnity agreement or bond form.",
+	"protects": [
+		"The beneficiary of the bond, who may enforce the liability on it against both the principal and the sureties, and where the beneficiary is a class of persons, any member of the class in their own name [S:ca-ccp-996-410-enforcement-against-principal-and-sureties]",
+		"On an appeal from a money judgment, the judgment creditor, because the undertaking is conditioned on the appellant paying the amount affirmed with interest and appeal costs [S:ca-ccp-917-1-appeal-undertaking-money-judgment]",
+		"In probate, the interested persons in an estate, because the personal representative's bond is for their benefit and conditioned on faithful execution of the duties of the office [S:ca-prob-8480-personal-representative-bond]",
+		"Not the principal. A surety that satisfies the obligation may recover from the principal what it disbursed, including necessary costs and expenses [S:ca-civ-code-2847-surety-reimbursement], and the principal's own liability is not limited to the amount of the bond except as otherwise provided by statute [S:ca-ccp-996-470-surety-liability-limited-to-bond]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "What this list is, and is not",
+			"note": "Everything below is drawn from the California statutes that require or govern a bond, not from any bond form or surety contract, and this record has read neither. What a particular surety will write, and on what terms, is between it and the principal. The condition each bond secures is set by the statute providing for it, and section 995.020 makes the general Bond and Undertaking Law yield where that statute prescribes a different rule [S:ca-ccp-995-020-bond-law-scope]."
+		},
+		{
+			"item": "Staying enforcement of a money judgment on appeal",
+			"note": "Unless an undertaking is given, perfecting an appeal does not stay enforcement of a judgment or order for money [S:ca-ccp-917-1-appeal-undertaking-money-judgment]. The undertaking is conditioned on payment of the amount affirmed, interest accrued pending appeal and entry of the remittitur, and costs awarded against the appellant on appeal [S:ca-ccp-917-1-appeal-undertaking-money-judgment]. The section does not apply where the money is in the actual or constructive custody of the court, which section 917.2 governs instead [S:ca-ccp-917-1-appeal-undertaking-money-judgment]."
+		},
+		{
+			"item": "Staying enforcement of other judgments, where the trial court requires it",
+			"note": "Where a judgment is not one covered by sections 917.1 to 917.8, the trial court may in its discretion require an undertaking where the appellant was found to possess the respondent's money or property, must perform an act for the respondent's benefit, or owes only trial court costs [S:ca-ccp-917-9-discretionary-appeal-undertaking]. The sum is fixed by the court to cover the damages the respondent may sustain from the stay, meaning reasonable compensation for loss of use of the money or property, or the costs amounts [S:ca-ccp-917-9-discretionary-appeal-undertaking]."
+		},
+		{
+			"item": "A personal representative's faithful performance",
+			"note": "Every person appointed as personal representative must, except as otherwise provided by statute, give a court-approved bond before letters are issued, for the benefit of interested persons and conditioned on faithful execution of the duties of the office according to law [S:ca-prob-8480-personal-representative-bond]. Where two or more are appointed the court may require separate bonds or a joint and several bond [S:ca-prob-8480-personal-representative-bond]."
+		},
+		{
+			"item": "Other bonds a statute requires in an action or proceeding",
+			"note": "The Code names bonds for issuance of a restraining order or injunction, appointment of a receiver, and stay of enforcement of a judgment on appeal as examples of bonds in an action or proceeding [S:ca-ccp-995-220-public-entities-no-bond]. This record has not read the statutes that set the amount or condition of the injunction, receiver or attachment bonds, so it states neither."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Bail",
+			"note": "The Bond and Undertaking Law does not apply to a bail bond or an undertaking of bail [S:ca-ccp-995-020-bond-law-scope]. Bail is a separate body of law that this record does not describe."
+		},
+		{
+			"item": "The principal's own liability above the bond",
+			"note": "The aggregate liability of a surety to all persons for all breaches of the condition of a bond is limited to the amount of the bond, but, except as otherwise provided by statute, the liability of the principal is not [S:ca-ccp-996-470-surety-liability-limited-to-bond]. The bond caps what the surety owes the beneficiary, not what the principal owes."
+		},
+		{
+			"item": "An amount the principal gave voluntarily above what the statute or court required",
+			"note": "If a bond is given for more than the statute or court order required, the surety's liability is limited to the required amount, unless the bond was increased voluntarily or by agreement of the parties to satisfy an objection made in the action or proceeding [S:ca-ccp-996-470-surety-liability-limited-to-bond]. The second branch matters: an increase given to meet an objection is not capped back down."
+		},
+		{
+			"item": "The surety's cap, where the surety refuses to pay an established claim",
+			"note": "The cap in section 996.470 is itself subject to section 996.480 [S:ca-ccp-996-470-surety-liability-limited-to-bond]. Once the principal's liability is established by final judgment, a surety that fails to pay a claim on a bond given in an action is liable for the costs of obtaining judgment against it, including a reasonable attorney's fee, and interest from the date of the claim, notwithstanding section 996.470 [S:ca-ccp-996-480-surety-payment-after-judgment]."
+		},
+		{
+			"item": "Public entities, which give no bond at all",
+			"note": "Notwithstanding any other statute, the State, its agencies and officers, local public entities and their officers, and the United States and its agencies and officers acting officially are not required to give a bond in an action or proceeding, and have the same rights as if it were given [S:ca-ccp-995-220-public-entities-no-bond]. A party whose opponent is a public entity should not expect a bond to collect on."
+		},
+		{
+			"item": "A probate bond the will or the beneficiaries waived",
+			"note": "A bond is not required where the will waives it, or where all beneficiaries waive it in writing and the waivers are attached to the petition, unless the will requires a bond [S:ca-prob-8481-bond-waiver]. The waiver is not final: on petition of any interested person or its own motion the court may for good cause require a bond before or after letters issue [S:ca-prob-8481-bond-waiver]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no deductible in the insurance sense. The principal remains liable to the beneficiary without the bond's cap [S:ca-ccp-996-470-surety-liability-limited-to-bond], and must reimburse a surety that pays [S:ca-civ-code-2847-surety-reimbursement].",
+		"The appeal undertaking on a money judgment is double the amount of the judgment or order, unless given by an admitted surety insurer, in which event it is one and one-half times the amount [S:ca-ccp-917-1-appeal-undertaking-money-judgment]. The 1.5 figure is conditional on the admitted surety insurer, not a general rule.",
+		"Trial court costs are included in the judgment amount for that calculation, but no undertaking is required under section 917.1 solely for those costs [S:ca-ccp-917-1-appeal-undertaking-money-judgment].",
+		"An admitted surety insurer is a corporate insurer or reciprocal or interinsurance exchange holding a certificate of authority from the Insurance Commissioner to transact surety insurance in California, and statutory phrases such as corporate surety or bonding company mean the same thing [S:ca-ccp-995-120-admitted-surety-insurer].",
+		"Unless the statute providing for the bond requires an admitted surety insurer, a bond may be executed by two or more sufficient personal sureties, by one sufficient admitted surety insurer, or by a combination [S:ca-ccp-995-310-bond-sureties].",
+		"A probate bond may be fixed at not more than the estimated value of the personal property, plus the probable annual gross income of the estate, plus, where independent administration covers real property, the estimated value of the decedent's interest in it [S:ca-prob-8482-bond-amount]. If personal sureties give it, the amount is twice the amount fixed [S:ca-prob-8482-bond-amount].",
+		"Where an admitted surety insurer gives a probate bond, the court may set a fixed minimum amount based on the insurer's minimum premium [S:ca-prob-8482-bond-amount]. This record states no premium or minimum figure.",
+		"The surety's aggregate liability to all persons for all breaches is the amount of the bond, subject to section 996.480 [S:ca-ccp-996-470-surety-liability-limited-to-bond], and a good faith payment by the surety after the principal's liability is finally established reduces the amount of the bond by that payment [S:ca-ccp-996-480-surety-payment-after-judgment].",
+		"A deposit in lieu of bond must equal or exceed the amount that would be required if the bond were given by an admitted surety insurer [S:ca-ccp-995-710-deposit-in-lieu-of-bond]. For an appeal from a money judgment, section 917.1 sets the admitted surety insurer figure at one and one-half times the judgment [S:ca-ccp-917-1-appeal-undertaking-money-judgment]; this record has read no court applying the two sections together."
+	],
+	"endorsements": [
+		{
+			"item": "No filed endorsement has been read",
+			"note": "Court bonds are written on the surety's own forms, which this record has not read. What follows are the statutory features a bond must carry, which is a different thing."
+		},
+		{
+			"item": "Statutory content of every bond under the Bond and Undertaking Law",
+			"note": "The bond must be in writing signed by the sureties under oath, state that the sureties are jointly and severally liable on the obligations of the statute providing for it, and give an address for service on the principal and sureties [S:ca-ccp-995-320-bond-form-joint-several]. Where the amount rests on the value of property, the bond must describe the property and state the estimate of its value [S:ca-ccp-995-320-bond-form-joint-several]."
+		}
+	],
+	"relatedPolicies": [
+		"Surety bonds, the contract and licence bond record, which covers Miller Act and contractor's licence bonds and the general agreement of indemnity; this record does not repeat it",
+		"Directors and officers or fiduciary liability insurance, which is two-party insurance for the insured, where a court bond secures a beneficiary against the principal",
+		"The underlying liability policy in the case being appealed, since whether any insurer answers the judgment is a separate question from who secures the stay"
+	],
+	"underwritingInputs": [
+		"Which statute requires the bond, since the Bond and Undertaking Law yields to that statute's own rule [S:ca-ccp-995-020-bond-law-scope]",
+		"The amount of the judgment or order being appealed, and whether it includes trial court costs [S:ca-ccp-917-1-appeal-undertaking-money-judgment]",
+		"Whether the bond must be given by an admitted surety insurer or may be given by personal sureties [S:ca-ccp-995-310-bond-sureties]",
+		"For a probate bond, the estimated value of personal property, probable annual gross income, and any real property under independent administration [S:ca-prob-8482-bond-amount]",
+		"Whether the will or all beneficiaries waived the probate bond, and whether any interested person may petition for one anyway [S:ca-prob-8481-bond-waiver]",
+		"Whether estate property is deposited subject to court authorization, which the court may exclude from the bond amount [S:ca-prob-8483-blocked-deposit-bond-reduction]",
+		"Whether the principal could instead deposit cash or listed securities in lieu of a bond [S:ca-ccp-995-710-deposit-in-lieu-of-bond]",
+		"The principal's capacity to reimburse the surety, because the principal is bound to reimburse what a surety disburses [S:ca-civ-code-2847-surety-reimbursement]"
+	],
+	"exposures": [
+		{
+			"item": "An appeal that does not stop collection",
+			"note": "Filing the appeal is not enough. Unless an undertaking is given, perfecting an appeal does not stay enforcement of a money judgment [S:ca-ccp-917-1-appeal-undertaking-money-judgment], so the judgment creditor may proceed while the appeal is pending. The undertaking or a permitted deposit is what stops that."
+		},
+		{
+			"item": "The size of the security relative to the judgment",
+			"note": "The undertaking is double the judgment, or one and one-half times it from an admitted surety insurer [S:ca-ccp-917-1-appeal-undertaking-money-judgment], and a deposit in lieu must match the admitted surety figure [S:ca-ccp-995-710-deposit-in-lieu-of-bond]. Either way the security exceeds the judgment itself."
+		},
+		{
+			"item": "An objection that ends the stay",
+			"note": "If the court finds a bond insufficient it orders a sufficient bond within five days, and if none is given all rights obtained by giving the bond immediately cease [S:ca-ccp-995-960-order-on-insufficient-bond]. The court may also find, on motion or its own motion, that a bond has from any cause become insufficient later in the case [S:ca-ccp-996-010-bond-becomes-insufficient]."
+		},
+		{
+			"item": "Summary enforcement against the surety and the principal together",
+			"note": "A bond given in an action may be enforced by motion in that court without an independent action, after final judgment and the appeal period, on 30 days' notice, and judgment is entered on the motion unless opposing affidavits raise a triable issue of fact [S:ca-ccp-996-440-enforcement-by-motion]. The principal and sureties cannot obtain a stay pending conflicting claims among beneficiaries [S:ca-ccp-996-440-enforcement-by-motion]."
+		},
+		{
+			"item": "Paying the surety back",
+			"note": "A surety that satisfies the obligation is owed reimbursement by the principal of what it disbursed, including necessary costs and expenses [S:ca-civ-code-2847-surety-reimbursement]. On an appeal undertaking a surety that pays after affirmance is substituted to the creditor's rights and may enforce the judgment as if it had recovered it [S:ca-ccp-917-1-appeal-undertaking-money-judgment]."
+		},
+		{
+			"item": "A fiduciary who cannot give the bond",
+			"note": "A personal representative who fails to give the required bond does not receive letters, and one who fails to give a new, additional or supplemental bond, or substitute a sufficient surety, under court order may be removed from office [S:ca-prob-8480-personal-representative-bond]. A sale of real property also requires such additional bond as may be proper before the court confirms it [S:ca-prob-8482-bond-amount]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "For a beneficiary, object within the 10 days",
+			"note": "An objection is made by noticed motion stating its precise grounds, within 10 days after service of the bond or the time the bond statute requires, and a beneficiary who misses that window is deemed to have waived all objections except on good cause or changed circumstances [S:ca-ccp-995-930-objection-to-bond]."
+		},
+		{
+			"item": "If the objection is to the amount, put a number in it",
+			"note": "Where a ground is that the amount is insufficient, the notice must state the reason and include an estimate of the amount that would be sufficient [S:ca-ccp-995-930-objection-to-bond]. Once a court finds a bond sufficient, no later objection is heard except on changed circumstances [S:ca-ccp-995-960-order-on-insufficient-bond]."
+		},
+		{
+			"item": "Diary the one year to enforce a litigation bond by motion",
+			"note": "The motion may not be made before final judgment and the end of the appeal period or final determination of the appeal, and may not be made or noticed more than one year after the later of those dates [S:ca-ccp-996-440-enforcement-by-motion]. A civil action on the bond is a separate route that joins both principal and sureties [S:ca-ccp-996-410-enforcement-against-principal-and-sureties]."
+		},
+		{
+			"item": "Make the claim to the surety in writing once liability is final",
+			"note": "After the principal's liability is established by final judgment, a surety that fails to pay a claim on a bond given in an action becomes liable for the costs of obtaining judgment against it, a reasonable attorney's fee, and interest from the date of the claim [S:ca-ccp-996-480-surety-payment-after-judgment]. The date of the claim is the date that interest runs from, so it is worth being able to prove. A partial payment does not satisfy the claim [S:ca-ccp-996-480-surety-payment-after-judgment]."
+		},
+		{
+			"item": "For an appellant, ask whether a deposit fits better than a bond",
+			"note": "Unless the bond statute precludes it, the principal may without prior court approval deposit money, a cashier's check, United States or California bonds or notes, or insured deposit accounts with the officer instead of giving a bond, with an agreement authorising the officer to apply the deposit [S:ca-ccp-995-710-deposit-in-lieu-of-bond]."
+		},
+		{
+			"item": "For a personal representative, ask the court about a blocked account",
+			"note": "Where estate property is deposited on condition that it will not be withdrawn without court authorization, the court may exclude that property in fixing the bond or reduce the bond to an amount it finds reasonable, including after a bond has already been given [S:ca-prob-8483-blocked-deposit-bond-reduction]."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "Everything on this record is California procedure: the double or one and one-half times appeal undertaking [S:ca-ccp-917-1-appeal-undertaking-money-judgment], the Bond and Undertaking Law defaults [S:ca-ccp-995-020-bond-law-scope], and the Probate Code bond rules [S:ca-prob-8480-personal-representative-bond]. Federal courts and other states set their own supersedeas and fiduciary bond rules, which this record has not read."
+		}
+	],
+	"lastReviewed": "2026-09-30",
+	"effectiveDate": "2026-09-30",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ccp-995-020-bond-law-scope",
+		"ca-ins-code-105-surety-insurance",
+		"ca-civ-code-2847-surety-reimbursement",
+		"ca-ccp-995-120-admitted-surety-insurer",
+		"ca-ccp-995-310-bond-sureties",
+		"ca-ccp-995-320-bond-form-joint-several",
+		"ca-ccp-995-220-public-entities-no-bond",
+		"ca-ccp-995-710-deposit-in-lieu-of-bond",
+		"ca-ccp-995-930-objection-to-bond",
+		"ca-ccp-995-960-order-on-insufficient-bond",
+		"ca-ccp-996-010-bond-becomes-insufficient",
+		"ca-ccp-996-410-enforcement-against-principal-and-sureties",
+		"ca-ccp-996-440-enforcement-by-motion",
+		"ca-ccp-996-470-surety-liability-limited-to-bond",
+		"ca-ccp-996-480-surety-payment-after-judgment",
+		"ca-ccp-917-1-appeal-undertaking-money-judgment",
+		"ca-ccp-917-9-discretionary-appeal-undertaking",
+		"ca-prob-8480-personal-representative-bond",
+		"ca-prob-8481-bond-waiver",
+		"ca-prob-8482-bond-amount",
+		"ca-prob-8483-blocked-deposit-bond-reduction"
+	],
+	"relatedQuestions": [
+		"surety-bond-vs-insurance"
+	]
+}

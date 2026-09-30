@@ -1,0 +1,184 @@
+{
+	"name": "Permanent life (California)",
+	"line": "permanent-life",
+	"family": "life",
+	"definition": "Permanent life, as this record uses the term, means a life policy that is not term and carries values the owner can reach, such as whole life and universal life, and in California that value is protected by a standard nonforfeiture law the owner cannot sign away. Unless a policy falls within the exemptions in section 10165, it must provide a paid-up nonforfeiture benefit on default after premiums have been paid for at least one full year, a cash surrender value on surrender after three full years of premiums for ordinary insurance, and a 60-day window after the missed due date in which to choose between them [S:ca-ins-code-10160]. The second branch matters as much: if the owner makes no election within those 60 days, the paid-up benefit the policy specifies takes effect [S:ca-ins-code-10160], and the insurer reserves the right to defer paying a cash surrender value for six months after it is demanded [S:ca-ins-code-10160]. No agreement contrary to the article waives any of it [S:ca-ins-code-10166]. Where a policy is sold with an illustration, California law requires guaranteed values to be shown and labeled before nonguaranteed ones and forbids describing a plan to pay future premiums from nonguaranteed elements as vanishing [S:ca-ins-code-10509-956][S:ca-ins-code-10509-955]. For federal tax purposes a contract is a life insurance contract only if it is life insurance under the applicable law and also passes either the cash value accumulation test or the guideline premium test with the cash value corridor [S:usc-26-7702-life-insurance-contract-defined], and a contract entered into on or after June 21, 1988 that fails the 7-pay test is a modified endowment contract [S:usc-26-7702a-modified-endowment-contract]. This page describes what those sections say and is not tax advice. The grace period, lapse notice, designee and free look rules shared with every individual life policy are on the individual life page.",
+	"protects": [
+		"The named beneficiary, by paying on the death of the insured",
+		"The owner who stops paying, through a paid-up nonforfeiture benefit owed after one full year of premiums and a cash surrender value after three full years for ordinary insurance [S:ca-ins-code-10160]",
+		"The owner who does nothing, through a paid-up benefit that takes effect by default if no election is made within 60 days [S:ca-ins-code-10160], and nonparticipating paid-up term insurance where the policy names no paid-up benefit at all [S:ca-ins-code-10167]",
+		"The owner of a flexible premium policy, through a notice no later than 90 days before an adverse change in nonguaranteed elements takes effect [S:ca-ins-code-10113-70]",
+		"The buyer shown an illustration, through rules that require guaranteed values to come first and forbid depicting performance better than the insurer's illustrated scale [S:ca-ins-code-10509-956][S:ca-ins-code-10509-955]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "What this page establishes, and what it does not",
+			"note": "Everything below comes from the California nonforfeiture and illustration statutes and from sections 7702, 7702A and 1035 of the Internal Revenue Code. This record has read no whole life, universal life or indexed universal life policy form, so nothing here states any policy's crediting method, charges, loan rate or surrender charge schedule. Those are in your policy."
+		},
+		{
+			"item": "A paid-up benefit after one year",
+			"note": "On default after premiums have been paid for at least one full year, the insurer must grant on request, not later than 60 days after the due date, a paid-up nonforfeiture benefit on a plan stipulated in the policy [S:ca-ins-code-10160]. The company may instead substitute an actuarially equivalent alternative that provides a greater amount or longer period of death benefits [S:ca-ins-code-10160]."
+		},
+		{
+			"item": "A cash surrender value after three years",
+			"note": "On surrender within 60 days after a premium due date in default, after at least three full years of premiums for ordinary insurance or five for industrial, the insurer must pay a cash surrender value in lieu of any paid-up benefit [S:ca-ins-code-10160]. The amount has a statutory floor measured by the present value of future guaranteed benefits less adjusted premiums and less any indebtedness on the policy [S:ca-ins-code-10161]."
+		},
+		{
+			"item": "A written statement of how values are calculated",
+			"note": "The policy must state the mortality table and interest rate, and for a policy without unscheduled changes in benefits or premiums a schedule of cash surrender and paid-up values for each anniversary over the first 20 policy years or the term, whichever is shorter [S:ca-ins-code-10160]. A policy with unscheduled changes guaranteed in it, or with an option to change benefits or premiums, must state the method used as well [S:ca-ins-code-10160]."
+		},
+		{
+			"item": "A notice when a nonforfeiture benefit is put into effect",
+			"note": "When an insurer implements a nonforfeiture benefit for a defaulting owner it must send a written notice to the last known address explaining the action and referring the owner to any other available options under the policy [S:ca-ins-code-10167-5]."
+		},
+		{
+			"item": "An annual report and an in force illustration on request",
+			"note": "For a policy designated for illustrations, the insurer must send an annual report, which for universal life shows credits and debits by type, the net cash surrender value and outstanding loans [S:ca-ins-code-10509-959]. On request the insurer must furnish an in force illustration on its present illustrated scale, with no signature required [S:ca-ins-code-10509-959]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Whatever your own form excludes, which this record does not establish",
+			"note": "This list sets out the boundaries the statutes draw. It is not a list of policy exclusions, and none is established here. Contestability, suicide provisions and how a claim is paid are in the form."
+		},
+		{
+			"item": "Riders, in the nonforfeiture values",
+			"note": "Accidental death, disability, reversionary annuity, qualifying term riders and other benefits additional to life insurance and endowment benefits, and their premiums, are disregarded in computing cash surrender values and nonforfeiture benefits and need not be included in any paid-up benefit [S:ca-ins-code-10164]."
+		},
+		{
+			"item": "Immediate payment of the cash value",
+			"note": "The insurer reserves the right to defer payment of any cash surrender value for six months after demand with surrender of the policy [S:ca-ins-code-10160]. The value is owed, but the statute does not make it owed on the day it is asked for."
+		},
+		{
+			"item": "Nonguaranteed elements, as a promise",
+			"note": "An insurer or producer may not state or imply that the payment or amount of nonguaranteed elements is guaranteed [S:ca-ins-code-10509-955], and a basic illustration must state that the currently illustrated nonguaranteed elements are assumed to continue unchanged, that this is not likely to occur, and that actual results may be more or less favorable [S:ca-ins-code-10509-956]."
+		},
+		{
+			"item": "Every reduction in performance, from the 90-day notice",
+			"note": "The adverse change notice for flexible premium policies does not reach a change in a credited interest rate or an index account parameter based entirely on changes in the insurer's expected investment income or hedging costs [S:ca-ins-code-10113-70], and it does not apply to a corporate-owned policy under section 10110.4 with all benefits payable to the corporate owner [S:ca-ins-code-10113-70]."
+		},
+		{
+			"item": "Variable life, from the California illustration chapter",
+			"note": "The illustration chapter applies to group and individual life policies except variable life insurance, annuity contracts, credit life, and policies with no illustrated death benefit on any individual above ten thousand dollars [S:ca-ins-code-10509-952]."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no deductible, and the face amount is a contract term. The statutory figures are floors and windows.",
+		"One full year of premiums before a paid-up benefit is owed, three full years of ordinary premiums (five industrial) before a cash surrender value is owed, and 60 days after the missed due date to request either [S:ca-ins-code-10160].",
+		"30 days after any policy anniversary to surrender a policy that is paid up, or continued under a paid-up benefit effective on or after the third anniversary for ordinary insurance, for its cash surrender value [S:ca-ins-code-10160].",
+		"Six months that the insurer may defer paying a cash surrender value after demand [S:ca-ins-code-10160].",
+		"90 days: the latest point before an adverse change in nonguaranteed elements of a flexible premium policy takes effect by which the summary notice must be provided [S:ca-ins-code-10113-70].",
+		"The federal tests set no premium, but they set limits the contract is measured against. The cash value corridor requires the death benefit to be at least 250 percent of the cash surrender value for an insured aged 40 or under, falling by age bands to between 105 and 100 percent from 90 to 95 [S:usc-26-7702-life-insurance-contract-defined], and the 7-pay test compares the amount paid in the first 7 contract years with the net level premiums for a contract paid up after 7 level annual premiums [S:usc-26-7702a-modified-endowment-contract]."
+	],
+	"endorsements": [],
+	"relatedPolicies": [
+		"Individual life insurance in California, which holds the grace period, lapse notice, designee and free look provisions that apply to permanent and term policies alike",
+		"Term life in California, where the section 10165 exemptions from the nonforfeiture law this page is built on do their work [S:ca-ins-code-10165]",
+		"Annuities, which a life insurance contract may be exchanged into under section 1035, though the annuity branch of that section does not list life insurance as what an annuity may be exchanged for [S:usc-26-1035-exchanges-of-insurance-policies]",
+		"Qualified long-term care insurance, which section 1035 lists as a contract a life insurance contract may be exchanged for [S:usc-26-1035-exchanges-of-insurance-policies]"
+	],
+	"underwritingInputs": [
+		"How many full years of premiums have been paid, since one and three are the thresholds for a paid-up benefit and a cash surrender value [S:ca-ins-code-10160]",
+		"Whether the insurance is ordinary or industrial, which moves the cash value threshold from three years to five [S:ca-ins-code-10160]",
+		"Whether the policy is fixed or flexible premium, which decides whether the 90-day adverse change notice applies [S:ca-ins-code-10113-70]",
+		"Whether the form is designated for marketing with an illustration, which brings in the basic illustration and annual report requirements [S:ca-ins-code-10509-954][S:ca-ins-code-10509-959]",
+		"Whether the purchaser is a senior citizen shown a nonpreprinted illustration of nonguaranteed values, which requires the prescribed not-guaranteed statement [S:ca-ins-code-10127-11]",
+		"The amount of any policy loan, which the minimum cash surrender value is reduced by [S:ca-ins-code-10161] and which an illustration deducts, with loan interest, from the value available on surrender [S:ca-ins-code-10509-956]",
+		"The amounts paid in the first 7 contract years, any reduction in benefits within them, and any material change such as a death benefit increase [S:usc-26-7702a-modified-endowment-contract]",
+		"Whether the contract was received in exchange for a modified endowment contract, which makes it one [S:usc-26-7702a-modified-endowment-contract]"
+	],
+	"exposures": [
+		{
+			"item": "A lapse that turns into a default option the owner did not choose",
+			"note": "If the owner makes no election within 60 days of the missed due date, the paid-up benefit specified in the policy becomes effective [S:ca-ins-code-10160], and where the policy names none it is construed as granting nonparticipating paid-up term insurance [S:ca-ins-code-10167]. The written notice the insurer must send refers to other options only if the policy provides them [S:ca-ins-code-10167-5]."
+		},
+		{
+			"item": "A policy loan that eats the value it is secured by",
+			"note": "This record found no California statute among those read that sets policy loan terms, so the loan rate and loan provisions are in the form. What the statutes read do say is how a loan moves the numbers: the minimum cash surrender value is reduced by indebtedness [S:ca-ins-code-10161], an illustration's surrender value is net of policy loans and loan interest [S:ca-ins-code-10509-956], and a universal life annual report must show outstanding loans [S:ca-ins-code-10509-959]."
+		},
+		{
+			"item": "Nonguaranteed elements that change",
+			"note": "An adverse change in the current scale of nonguaranteed elements on a flexible premium policy requires a notice explaining that it will reduce the accumulation value and may increase the risk of lapse at current premiums [S:ca-ins-code-10113-70]. The same notice lists paying more, reducing the face amount, surrendering, and converting where the contract allows it as the owner's options [S:ca-ins-code-10113-70]."
+		},
+		{
+			"item": "An illustration read as a forecast",
+			"note": "The illustration must say that its nonguaranteed elements are assumed to continue unchanged, that this is not likely, and that actual results may be more or less favorable [S:ca-ins-code-10509-956]. Where the illustration shows charges being paid from nonguaranteed values, it must disclose that a charge is still required and that premium outlays may need to resume [S:ca-ins-code-10509-956]."
+		},
+		{
+			"item": "Funding that crosses the 7-pay line",
+			"note": "A contract fails the 7-pay test if the amount paid at any time in the first 7 contract years exceeds the net level premiums for a contract paid up after 7 level annual premiums [S:usc-26-7702a-modified-endowment-contract]. A reduction in benefits within those 7 years is tested as if the contract had been issued at the reduced level, and a material change starts the test again as a new contract [S:usc-26-7702a-modified-endowment-contract]."
+		},
+		{
+			"item": "A contract that stops meeting the federal definition",
+			"note": "If a contract that is life insurance under applicable law does not meet the section 7702 definition, the section provides that the income on the contract for the year is treated as ordinary income of the policyholder, and if it ceases to qualify, income for all prior years is treated as received in the year of cessation [S:usc-26-7702-life-insurance-contract-defined]."
+		},
+		{
+			"item": "An exchange in the wrong direction",
+			"note": "Section 1035 provides that no gain or loss is recognized on exchanging a life insurance contract for another life contract, an endowment, an annuity or a qualified long-term care contract, while its annuity branch lists only an annuity or a qualified long-term care contract as the other side [S:usc-26-1035-exchanges-of-insurance-policies]. A contract received in exchange for a modified endowment contract is itself one [S:usc-26-7702a-modified-endowment-contract]."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Make the nonforfeiture election inside 60 days",
+			"note": "The owner may request a paid-up benefit or, after three full years of ordinary premiums, surrender for cash within 60 days of the missed due date, and otherwise the policy's specified benefit takes effect [S:ca-ins-code-10160]. Knowing which option the policy defaults to is the fact that makes the window usable."
+		},
+		{
+			"item": "Ask for an in force illustration each year",
+			"note": "The insurer must furnish one on request without charge on its present illustrated scale [S:ca-ins-code-10509-959], and an annual report that does not include an in force illustration must carry a notice advising against replacing a policy or changing coverage without requesting a current illustration [S:ca-ins-code-10509-959]."
+		},
+		{
+			"item": "Read the annual report for the lapse notice and the loan balance",
+			"note": "For a flexible premium policy the report must carry a notice if, on the contract's fixed interest, mortality and expense loads rather than current ones, the net cash surrender value will not keep the policy in force to the end of the next period without further premiums, and it must show outstanding loans [S:ca-ins-code-10509-959]."
+		},
+		{
+			"item": "Read the columns fixed at issue before the projected ones",
+			"note": "Death benefits and surrender values fixed at issue must be shown, labeled as such and placed before the nonfixed figures, and the numeric summary must show years 5, 10 and 20 and age 70 on three bases, the policy's own terms, the illustrated scale and a reduced scale [S:ca-ins-code-10509-956]. For a senior citizen, a preprinted illustration shows those columns in bold [S:ca-ins-code-10127-11]."
+		},
+		{
+			"item": "Keep the signed illustration and any revised illustration",
+			"note": "A policy issued other than as applied for comes with a revised illustration signed no later than delivery, and the insurer retains the signed copies until three years after the policy is no longer in force [S:ca-ins-code-10509-958]."
+		},
+		{
+			"item": "Before changing premiums or benefits in the first 7 years, ask the insurer how the 7-pay test treats the change",
+			"note": "A reduction in benefits and a material change such as a death benefit increase both alter how the test is applied [S:usc-26-7702a-modified-endowment-contract]. The insurer holds the contract's figures, and how the result applies to the owner is a question for a tax professional."
+		},
+		{
+			"item": "When a 90-day adverse change notice arrives, read the options it lists before the effective date",
+			"note": "The notice must state the current and new rates or charges, the effective date and the current cash surrender value net of surrender charges and policy loans [S:ca-ins-code-10113-70], which gives the owner the figures to compare the listed options against."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "The nonforfeiture provisions, the adverse change notice for flexible premium policies and the illustration chapter on this page are California law and other states' versions should not be assumed to match them [S:ca-ins-code-10160][S:ca-ins-code-10113-70][S:ca-ins-code-10509-952]. Sections 7702, 7702A and 1035 are federal and do not vary by state, though section 7702 starts from whether the contract is life insurance under the applicable law [S:usc-26-7702-life-insurance-contract-defined]."
+		}
+	],
+	"lastReviewed": "2026-09-30",
+	"effectiveDate": "2026-09-30",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ins-code-10160",
+		"ca-ins-code-10161",
+		"ca-ins-code-10164",
+		"ca-ins-code-10165",
+		"ca-ins-code-10166",
+		"ca-ins-code-10167",
+		"ca-ins-code-10167-5",
+		"ca-ins-code-10113-70",
+		"ca-ins-code-10127-11",
+		"ca-ins-code-10509-952",
+		"ca-ins-code-10509-954",
+		"ca-ins-code-10509-955",
+		"ca-ins-code-10509-956",
+		"ca-ins-code-10509-958",
+		"ca-ins-code-10509-959",
+		"usc-26-7702-life-insurance-contract-defined",
+		"usc-26-7702a-modified-endowment-contract",
+		"usc-26-1035-exchanges-of-insurance-policies"
+	],
+	"relatedQuestions": [
+		"life-policy-lapsed-missed-payment-california"
+	]
+}

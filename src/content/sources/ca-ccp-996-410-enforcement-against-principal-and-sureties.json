@@ -1,0 +1,22 @@
+{
+	"title": "California Code of Civil Procedure section 996.410 - Beneficiary may enforce a bond against principal and sureties",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=996.410",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 996.410(a) provides that the beneficiary may enforce the liability on a bond against both the principal and sureties.",
+		"Section 996.410(b) provides that if the beneficiary is a class of persons, any person in the class may enforce the liability on a bond in the person's own name, without assignment of the bond."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Bond and Undertaking Law (Code of Civil Procedure 995.010 onward). By section 995.020 the chapter yields where the statute requiring a particular bond prescribes a different rule or is inconsistent, so this section is a default rather than the rule for every bond. Added by Stats. 1982, Ch. 998. Section 996.430, read at the same time, provides that liability on a bond may be enforced by civil action in which both principal and sureties are joined, and section 996.495 that a judgment of liability on a bond may be enforced in the same manner and to the same extent as other money judgments."
+}

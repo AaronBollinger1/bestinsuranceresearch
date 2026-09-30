@@ -1,0 +1,22 @@
+{
+	"title": "California Code of Civil Procedure section 996.320 - Surety cancellation or withdrawal from a statutory bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=996.320",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 996.320 provides that a surety may cancel or withdraw from a bond by giving a notice of cancellation or withdrawal to the officer to whom the bond was given in the same manner the bond was given, notwithstanding Section 995.030.",
+		"Section 996.320 provides that the surety shall at the same time mail or deliver a copy of the notice of cancellation or withdrawal to the principal."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Article 13 (Cancellation of Bond or Withdrawal of Sureties) of the Bond and Undertaking Law. By section 995.020 the chapter yields where the statute requiring a particular bond prescribes a different rule, so this section is a default rather than the rule for every bond. Sections 996.340 to 996.360, on the effect of cancellation, were not read for this record."
+}

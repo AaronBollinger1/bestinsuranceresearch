@@ -1,0 +1,24 @@
+{
+	"title": "California Code of Civil Procedure section 995.960 - Order determining sufficiency of a bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=995.960",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 995.960(a) provides that upon the hearing the court shall make an order determining the sufficiency or insufficiency of the bond.",
+		"Section 995.960(b)(1) provides that if the court determines the bond is insufficient it shall specify in what respect and order that a bond with sufficient sureties and in a sufficient amount be given within five days, and that if a sufficient bond is not given within that time all rights obtained by giving the bond immediately cease and the court shall upon ex parte motion so order.",
+		"Section 995.960(b)(2) provides that a bond in effect remains in effect until a sufficient bond is given in its place or the time to give it has expired, whichever first occurs, and that if the time expires the original bond remains in full force and effect for all liabilities incurred before, and for acts, omissions, or causes existing or which arose before, expiration.",
+		"Section 995.960(c) provides that if the court determines a bond is sufficient, no future objection to the bond may be made except upon a showing of changed circumstances."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Bond and Undertaking Law (Code of Civil Procedure 995.010 onward). By section 995.020 the chapter yields where the statute requiring a particular bond prescribes a different rule or is inconsistent, so this section is a default rather than the rule for every bond. Added by Stats. 1982, Ch. 998."
+}

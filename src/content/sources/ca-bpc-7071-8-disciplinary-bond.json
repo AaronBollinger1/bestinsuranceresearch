@@ -1,0 +1,25 @@
+{
+	"title": "California Business and Professions Code section 7071.8 - Disciplinary contractor's bond",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7071.8",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 7071.8(a) provides that the section applies to applications for a license, for renewal or restoration, to change officers or members of a corporation or limited liability company, or for continued valid use of a license which has been disciplined, whether or not the disciplinary action has been stayed, made by persons or firms including a person whose license has been suspended or revoked as a result of disciplinary action, and a person who was a qualifying individual for a licensee at any time during which cause for disciplinary action occurred resulting in suspension or revocation, whether or not the qualifying individual had knowledge or participated in the prohibited act or omission.",
+		"Section 7071.8(a) also reaches officers, directors, managers, partners, or members of the personnel of record of a licensee during the time cause for discipline occurred who had knowledge of or participated in the act or omission, and firms whose personnel of record have had a license suspended or revoked or held such positions with a disciplined licensee with that knowledge or participation.",
+		"Section 7071.8(b) provides that the board shall require as a condition precedent to issuance, reissuance, renewal, or restoration of a license, approval of a change of officers, removal of suspension, or continued valid use of a license whose suspension or revocation has been stayed, that the applicant or licensee file or have on file a contractor's bond in a sum to be fixed by the registrar based upon the seriousness of the violation, not less than twenty-five thousand dollars ($25,000) nor more than 10 times the amount required by Section 7071.6.",
+		"Section 7071.8(c) provides that the bond is in addition to, may not be combined with, and does not replace any other type of bond required by the chapter; that it shall remain on file for at least two years and any additional time the registrar determines; and that the bond period runs only while the license is current, active, and in good standing and is extended until the license has been current, active, and in good standing for the required period.",
+		"Section 7071.8(d) provides that the section became operative on January 1, 2023, and the section carries the notation Repealed and added by Stats. 2021, Ch. 367, Sec. 19 (SB 607), effective January 1, 2022."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. The qualifying individual branch of subdivision (a)(1) applies whether or not that individual knew of or took part in the act, while the officer and personnel branches in (a)(2) and (a)(4) require knowledge or participation."
+}

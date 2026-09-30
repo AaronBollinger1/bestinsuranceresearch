@@ -1,0 +1,21 @@
+{
+	"title": "California Code of Civil Procedure section 995.310 - Who may execute a bond as surety",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=995.310",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 995.310 provides that, unless the statute providing for the bond requires execution by an admitted surety insurer, a bond shall be executed by two or more sufficient personal sureties, or by one sufficient admitted surety insurer, or by any combination of sufficient personal sureties and admitted surety insurers."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Part of the Bond and Undertaking Law (Code of Civil Procedure 995.010 onward). By section 995.020 the chapter yields where the statute requiring a particular bond prescribes a different rule or is inconsistent, so this section is a default rather than the rule for every bond. Added by Stats. 1982, Ch. 998. The requirements for a personal surety to be sufficient are in other sections of the article, which were not read for this record."
+}

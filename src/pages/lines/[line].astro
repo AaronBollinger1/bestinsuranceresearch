@@ -91,12 +91,12 @@ const jsonLd = graph(
 				<h1>{hub.label}</h1>
 				<p class="page-lede">{description}</p>
 
-				<div class="figures" style="margin-top:var(--s-5)">
-					<div class="figure"><b>{hub.checks.length}</b><span>cited checks</span></div>
-					<div class="figure"><b>{hub.sourceIds.length}</b><span>source records</span></div>
-					<div class="figure"><b>{hub.claimCount.toLocaleString('en-US')}</b><span>recorded claims</span></div>
-					<div class="figure"><b>{hub.questionIds.length}</b><span>answered questions</span></div>
-				</div>
+				<dl class="figures" style="margin-top:var(--s-5)">
+					<div class="figure"><dt>cited checks</dt><dd>{hub.checks.length}</dd></div>
+					<div class="figure"><dt>source records</dt><dd>{hub.sourceIds.length}</dd></div>
+					<div class="figure"><dt>recorded claims</dt><dd>{hub.claimCount.toLocaleString('en-US')}</dd></div>
+					<div class="figure"><dt>answered questions</dt><dd>{hub.questionIds.length}</dd></div>
+				</dl>
 			</div>
 		</header>
 

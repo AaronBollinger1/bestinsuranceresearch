@@ -1,0 +1,26 @@
+{
+	"title": "FAR 28.102-2 - Amount required for performance and payment bonds",
+	"publisher": "U.S. General Services Administration (Acquisition.gov, Federal Acquisition Regulation)",
+	"url": "https://www.acquisition.gov/far/28.102-2",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"FAR 28.102-2(a) defines original contract price as the award price of the contract, or for requirements contracts the price payable for the estimated total quantity, or for indefinite-quantity contracts the price payable for the specified minimum quantity, and provides that it does not include the price of any options except those exercised at the time of contract award.",
+		"FAR 28.102-2(b)(1) provides that for contracts exceeding $150,000, unless the contracting officer determines that a lesser amount is adequate for the protection of the Government, the penal amount of performance bonds must equal 100 percent of the original contract price and, if the contract price increases, an additional amount equal to 100 percent of the increase.",
+		"FAR 28.102-2(b)(2) provides that, unless the contracting officer makes a written determination supported by specific findings that a payment bond in this amount is impractical, the amount of the payment bond must equal 100 percent of the original contract price and, if the contract price increases, an additional amount equal to 100 percent of the increase, and that the amount of the payment bond must be no less than the amount of the performance bond.",
+		"FAR 28.102-2(c) provides that for contracts exceeding $35,000 but not exceeding $150,000, unless the contracting officer determines that a lesser amount is adequate, the penal amount of the payment bond or the amount of alternative payment protection must equal 100 percent of the original contract price and 100 percent of any increase.",
+		"FAR 28.102-2(d) provides that if the contract price increases, the Government must secure any needed additional protection by directing the contractor to increase the penal sum of the existing bond, obtain an additional bond, or furnish additional alternative payment protection.",
+		"FAR 28.102-2(e) provides that the contracting officer may reduce the amount of security to support a bond, subject to the conditions of 28.203-3(c) or 28.204(b)."
+	],
+	"updateCadence": "Updated by Federal Acquisition Circulars",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. "
+}

@@ -1,0 +1,24 @@
+{
+	"title": "California Insurance Code Section 10164 (benefits disregarded in computing nonforfeiture values, including term riders)",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10164",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"updateCadence": "Amended only by legislation. The section credit on the official host at the time of access read Amended by Stats. 1981, Ch. 767, Sec. 9.",
+	"status": "active",
+	"claims": [
+		"Section 10164 requires any cash surrender value and any paid-up nonforfeiture benefit available on default in a premium due at any time other than the policy anniversary to be calculated with allowance for the lapse of time and the payment of fractional premiums beyond the last preceding policy anniversary.",
+		"Section 10164 provides that additional benefits payable in the event of death or dismemberment by accident or accidental means, in the event of total and permanent disability, as reversionary annuity or deferred reversionary annuity benefits, as term insurance benefits provided by a rider or supplemental policy provision to which the article would not apply if issued as a separate policy, as qualifying term insurance on the life of a child in a policy on the life of a parent, and as other policy benefits additional to life insurance and endowment benefits, and the premiums for all such additional benefits, shall be disregarded in ascertaining cash surrender values and nonforfeiture benefits required by the article.",
+		"Section 10164 describes the child term benefit it disregards as term insurance on the life of a child or children, provided in a policy on the life of a parent, which expires before the child's age is 26, is uniform in amount after the child's age is one, and has not become paid up by reason of the death of a parent.",
+		"Section 10164 provides that no such additional benefits shall be required to be included in any paid-up nonforfeiture benefits."
+	],
+	"notes": "The practical point is that a rider does not necessarily carry into the nonforfeiture options. A term rider that would be exempt if issued as its own policy, an accidental death benefit and a disability benefit are all disregarded, so what continues after a lapse may be narrower than what the policy paid while in force."
+}

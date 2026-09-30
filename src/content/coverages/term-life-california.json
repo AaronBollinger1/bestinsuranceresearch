@@ -1,0 +1,163 @@
+{
+	"name": "Term life (California)",
+	"line": "term-life",
+	"family": "life",
+	"definition": "Term life is life insurance for a stated period, and in California the product form decides which of the statutory protections a policy has to carry. Every life policy delivered in the state must contain the standard nonforfeiture provisions, a paid-up benefit after one full year of premiums and a cash surrender value after three full years for ordinary insurance, except as provided in section 10165 [S:ca-ins-code-10160]. Section 10165 is where the exemption for short term sits: the standard nonforfeiture law does not apply to a term policy of uniform amount, providing no guaranteed nonforfeiture or endowment benefits, of 20 years or less expiring before age 71, with uniform premiums payable for the whole term, or to a renewal of one [S:ca-ins-code-10165]. So a policy of that shape can end at lapse or at expiry with nothing left, and that is the design the statute permits rather than a defect. A term policy outside that description is not automatically inside the law either, because the same section exempts decreasing term that meets an adjusted premium test and any policy whose values never exceed 2 1/2 percent of the amount of insurance [S:ca-ins-code-10165]. Conversion, where a policy offers it, is a contract term: the free look statutes refer to it as a contractual policy-change or conversion privilege provision contained in a policy [S:ca-ins-code-10127-9], and no section this record read requires an individual term policy to include one. The grace period, lapse notice, designee and free look rules that apply to every individual life policy are on the individual life page and are not repeated here.",
+	"protects": [
+		"The named beneficiary, if the insured dies within the term the policy states",
+		"The buyer, through a free look that applies to the term policy when it is first issued [S:ca-ins-code-10127-9], though not to a policy later issued under its conversion privilege [S:ca-ins-code-10127-9][S:ca-ins-code-10127-10]",
+		"A buyer aged 55 or older reading an advertisement, through a requirement that term advertising directed at that audience disclose a stated termination age or period and any premium change with age or duration [S:ca-ins-code-10127-8]",
+		"A group certificate holder who converts to an individual policy, through a rule that only the unexpired part of a group suicide contestability period carries into an individual conversion policy of equal or lesser amount [S:ca-ins-code-10113-4]",
+		"Not the owner's savings. A term policy that meets section 10165(e) is outside the law that requires cash surrender values and paid-up benefits [S:ca-ins-code-10165]"
+	],
+	"commonlyCovers": [
+		{
+			"item": "What this page establishes, and what it does not",
+			"note": "Everything below comes from California statutes on nonforfeiture, advertising, free look and illustrations. This record has read no term life policy form, so nothing here states what any policy's conversion window, renewal terms, premium schedule or rider wording is. Those are in your policy."
+		},
+		{
+			"item": "A death benefit for a stated period",
+			"note": "The statute describes the short term policy it exempts as one of 20 years or less expiring before age 71 [S:ca-ins-code-10165], and California requires term advertising directed at people 55 or older to disclose that fact where coverage terminates at a stated age or at the end of any designated period, and to state the age or period [S:ca-ins-code-10127-8]."
+		},
+		{
+			"item": "Level premium term, in the statute's words",
+			"note": "The exemption in section 10165(e) is written for a policy of uniform amount for which uniform premiums are payable during the entire term [S:ca-ins-code-10165]. A policy whose premium stays uniform for the whole term and whose amount does not change is the shape the Legislature exempted by name."
+		},
+		{
+			"item": "Renewable term, where the premium moves",
+			"note": "The same exemption extends to a renewal of the exempt policy [S:ca-ins-code-10165]. Where a premium changes with the aging of the insured or with policy duration, advertising directed at people 55 or older must prominently disclose the change, and must disclose if the insurer retains any right to modify premiums in the future [S:ca-ins-code-10127-8]. What the renewal premium is and whether evidence of insurability is required at renewal are in the form."
+		},
+		{
+			"item": "Decreasing term",
+			"note": "Section 10165(f) separately exempts a term policy of decreasing amount, providing no guaranteed nonforfeiture or endowment benefits, where each adjusted premium is less than that on a comparable uniform 20-year term policy expiring before age 71 [S:ca-ins-code-10165]. Where benefits decrease while the premium stays approximately constant, a print or broadcast advertisement to that audience must say so with prominence equal to its most prominent positive statement [S:ca-ins-code-10127-8]."
+		},
+		{
+			"item": "A term rider on a permanent policy",
+			"note": "Where term insurance is attached to another policy by rider, and the rider would be outside the nonforfeiture law if issued as a separate policy, its benefits and premiums are disregarded in computing the policy's cash surrender values and nonforfeiture benefits and need not be included in any paid-up benefit [S:ca-ins-code-10164]. Term on a child in a parent's policy is treated the same way if it expires before the child is 26, is level after age one and has not become paid up by a parent's death [S:ca-ins-code-10164]."
+		}
+	],
+	"commonlyExcludes": [
+		{
+			"item": "Whatever your own form excludes, which this record does not establish",
+			"note": "This list sets out the boundaries the statutes draw. It is not a list of policy exclusions, and none is established here. Contestability, suicide provisions, conversion deadlines and the plans a policy converts into are in the form."
+		},
+		{
+			"item": "A cash surrender value, on a term policy within the exemption",
+			"note": "The cash surrender value and paid-up nonforfeiture provisions are required of a life policy except as provided in section 10165 [S:ca-ins-code-10160], and section 10165(e) takes a uniform, level premium term policy of 20 years or less expiring before age 71 out of the article [S:ca-ins-code-10165]. The statute does not require that policy to return anything on surrender."
+		},
+		{
+			"item": "A free look on the converted policy",
+			"note": "The general free look in section 10127.9 does not apply to an individual life policy issued under a contractual policy-change or conversion privilege provision contained in a policy [S:ca-ins-code-10127-9], and the 30-day senior free look in section 10127.10 carries the same exception [S:ca-ins-code-10127-10]. The return period that matters is the one on the original term policy."
+		},
+		{
+			"item": "A statutory right to convert",
+			"note": "No section this record read requires an individual term policy to carry a conversion privilege. The statutes that mention one describe it as a provision contained in a policy [S:ca-ins-code-10127-9][S:ca-ins-code-10127-10], which places its existence, its deadline and the plans it reaches in the contract."
+		},
+		{
+			"item": "The accidental death rider, as part of the basic benefit",
+			"note": "Term advertising directed at people 55 or older must clearly and prominently distinguish basic life insurance benefits from supplemental benefits such as accidental death benefits, and disclose any limitations, exceptions or reductions affecting each benefit [S:ca-ins-code-10127-8]. A headline figure that includes an accidental death amount is not the amount payable on every death."
+		}
+	],
+	"limitsAndDeductibles": [
+		"There is no deductible, and the limit is the face amount, which is a contract term rather than a statutory one.",
+		"The statutory numbers that shape term are thresholds on the exemption from the nonforfeiture law: a term of 20 years or less, expiring before age 71, with uniform amount and uniform premiums for the whole term [S:ca-ins-code-10165]. For a joint-term policy the age at expiry is that of the oldest life [S:ca-ins-code-10165].",
+		"A second threshold is a value test. The article does not apply to a policy providing no guaranteed nonforfeiture or endowment benefits whose cash surrender value or paid-up benefit never exceeds 2 1/2 percent of the amount of insurance at the start of any policy year [S:ca-ins-code-10165].",
+		"Where a term policy is inside the nonforfeiture law, the periods are 60 days after the premium due date to request a paid-up benefit or surrender for cash, one full year of premiums before a paid-up benefit is owed and three full years of ordinary premiums before a cash surrender value is owed [S:ca-ins-code-10160].",
+		"Where a term policy is sold with an illustration, the basic illustration must show year-by-year figures for years 1 to 10 and every fifth year after, and for any year the premium is to change, except for term insurance beyond the 20th year [S:ca-ins-code-10509-956]."
+	],
+	"endorsements": [],
+	"relatedPolicies": [
+		"Individual life insurance in California, which holds the grace period, lapse notice, designee and free look provisions that apply to term and permanent policies alike [S:ca-ins-code-10127-9]",
+		"Permanent life in California, where the full nonforfeiture provisions apply to a policy outside the section 10165 exemptions [S:ca-ins-code-10160]",
+		"Group life, whose conversion to an individual policy carries forward only the unexpired part of a group suicide contestability period [S:ca-ins-code-10113-4]",
+		"Accidental death benefits, which advertising to people 55 or older must keep distinct from the basic life benefit [S:ca-ins-code-10127-8]"
+	],
+	"underwritingInputs": [
+		"The length of the term and the age at which it expires, since 20 years and age 71 are the limits of the section 10165(e) exemption [S:ca-ins-code-10165]",
+		"Whether the amount of insurance is level or decreasing, which moves a policy between subdivisions (e) and (f) of section 10165 [S:ca-ins-code-10165]",
+		"Whether the premium is uniform for the whole term or changes with age or duration, and whether the insurer retains a right to modify it [S:ca-ins-code-10165][S:ca-ins-code-10127-8]",
+		"Whether the policy is joint-term, where the oldest life fixes the age at expiry [S:ca-ins-code-10165]",
+		"Whether the policy form carries a conversion privilege, since a policy issued under one is outside the free look sections [S:ca-ins-code-10127-9]",
+		"Whether the form is designated by the insurer for marketing with or without an illustration [S:ca-ins-code-10509-954]",
+		"Which riders are attached, since term, accidental death and disability riders are disregarded in computing nonforfeiture values [S:ca-ins-code-10164]"
+	],
+	"exposures": [
+		{
+			"item": "Coverage that ends while the need does not",
+			"note": "A term policy is written to a stated period, and advertising to people 55 or older must disclose the termination age or designated period [S:ca-ins-code-10127-8]. Where the policy sits in the section 10165(e) exemption there is no required cash value or paid-up benefit to fall back on when the term ends [S:ca-ins-code-10165]."
+		},
+		{
+			"item": "A premium that changes at renewal",
+			"note": "The statute requires advertising to people 55 or older to disclose any change in premium resulting from the aging of the insured or policy duration, and any right the insurer keeps to modify premiums [S:ca-ins-code-10127-8]. A renewable policy bought on its first-year premium is a policy whose later premiums are set somewhere else in the contract."
+		},
+		{
+			"item": "A conversion right that lapses unexercised",
+			"note": "The right exists only as a provision contained in the policy [S:ca-ins-code-10127-9], so its deadline, its age limit and the plans it reaches are whatever the form says. None of those are set by any statute this record read, which is why the form is the only place to look."
+		},
+		{
+			"item": "Converting and expecting a second free look",
+			"note": "A policy issued under a contractual conversion privilege is outside both the general free look [S:ca-ins-code-10127-9] and the senior 30-day free look [S:ca-ins-code-10127-10]. The decision to convert is not reversible on the terms that applied to the original purchase."
+		},
+		{
+			"item": "A benefit that shrinks while the premium stays",
+			"note": "Section 10127.8 treats decreasing benefits under an approximately constant premium as material enough that print and broadcast advertising to people 55 or older must disclose it with the prominence of its most prominent positive statement [S:ca-ins-code-10127-8], and decreasing term is exempted from nonforfeiture by a separate subdivision [S:ca-ins-code-10165]."
+		},
+		{
+			"item": "Riders that do not carry forward",
+			"note": "Term riders, accidental death and disability benefits are disregarded in computing cash surrender values and nonforfeiture benefits, and are not required to be included in any paid-up nonforfeiture benefit [S:ca-ins-code-10164]. On a lapse, what continues can be narrower than what the policy paid while in force."
+		}
+	],
+	"claimMitigation": [
+		{
+			"item": "Read the expiry age and the renewal terms off the policy",
+			"note": "The statute requires the termination age or designated period, and any premium change with age or duration, to be disclosed in advertising to people 55 or older [S:ca-ins-code-10127-8]. The policy is where the actual figures sit, and reading them at issue fixes the dates that matter."
+		},
+		{
+			"item": "Find the conversion provision and diarise its deadline",
+			"note": "Conversion is a provision contained in the policy [S:ca-ins-code-10127-9], not a statutory right. Knowing the last date and the latest age at which it can be exercised is what keeps it usable."
+		},
+		{
+			"item": "Make the return decision on the original term policy",
+			"note": "The free look runs on the policy as first issued [S:ca-ins-code-10127-9], and neither free look section applies to a policy later issued under a conversion privilege [S:ca-ins-code-10127-10]. The window on the original policy is the one available."
+		},
+		{
+			"item": "Ask which figure is the basic life benefit",
+			"note": "Advertising to people 55 or older must distinguish basic life benefits from supplemental benefits such as accidental death [S:ca-ins-code-10127-8]. Asking the same question of any quotation or illustration separates the amount payable on any death from the amount payable on some."
+		},
+		{
+			"item": "Ask for the illustration, or the certification that none was used",
+			"note": "If no illustration is used in the sale, the producer must certify that in writing and the applicant acknowledges that an illustration conforming to the policy as issued will come with the policy [S:ca-ins-code-10509-958]. Either document fixes what was shown at sale."
+		},
+		{
+			"item": "When converting from group coverage, check what remains of the suicide period",
+			"note": "Only the unexpired portion of a group suicide contestability period applies to an individual conversion policy of equal or lesser amount [S:ca-ins-code-10113-4]. The certificate's start date is the fact that dates it."
+		}
+	],
+	"stateVariations": [
+		{
+			"state": "CA",
+			"note": "Every provision on this page is California law. The section 10165 exemptions, the section 10127.8 advertising disclosures for people 55 or older and the conversion exception in the free look sections are Californian, and other states' nonforfeiture and advertising laws should not be assumed to match them [S:ca-ins-code-10165][S:ca-ins-code-10127-8][S:ca-ins-code-10127-9]."
+		}
+	],
+	"lastReviewed": "2026-09-30",
+	"effectiveDate": "2026-09-30",
+	"author": "Aaron Bollinger",
+	"reviewer": "Brian Bollinger",
+	"reviewState": "under-review",
+	"sourceIds": [
+		"ca-ins-code-10160",
+		"ca-ins-code-10164",
+		"ca-ins-code-10165",
+		"ca-ins-code-10127-8",
+		"ca-ins-code-10127-9",
+		"ca-ins-code-10127-10",
+		"ca-ins-code-10113-4",
+		"ca-ins-code-10509-954",
+		"ca-ins-code-10509-956",
+		"ca-ins-code-10509-958"
+	],
+	"relatedQuestions": [
+		"free-look-return-life-policy-annuity-california",
+		"life-policy-lapsed-missed-payment-california"
+	]
+}

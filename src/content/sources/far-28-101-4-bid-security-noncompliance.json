@@ -1,0 +1,23 @@
+{
+	"title": "FAR 28.101-4 - Noncompliance with bid guarantee requirements",
+	"publisher": "U.S. General Services Administration (Acquisition.gov, Federal Acquisition Regulation)",
+	"url": "https://www.acquisition.gov/far/28.101-4",
+	"sourceType": "regulation",
+	"jurisdiction": "US",
+	"authorityLevel": "regulator",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "n/a",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"FAR 28.101-4(a) provides that in sealed bidding, noncompliance with a solicitation requirement for a bid guarantee requires rejection of the bid, except in the situations described in paragraph (c) when the noncompliance shall be waived.",
+		"FAR 28.101-4(b) provides that in negotiation, noncompliance requires rejection of an initial proposal as unacceptable if a determination is made to award based on initial proposals without discussion, except in the paragraph (c) situations, and that otherwise deficiencies in bid guarantees submitted by offerors in the competitive range shall be addressed during discussions with an opportunity to correct.",
+		"FAR 28.101-4(c) provides that noncompliance shall be waived, unless the contracting officer determines in writing that acceptance of the bid would be detrimental to the Government's interest, when only one offer is received; when the amount submitted is less than required but is equal to or greater than the difference between the offer price and the next higher acceptable offer; when the amount, although less than required for the maximum quantity offered, is sufficient for a quantity for which the offeror is otherwise eligible for award; when the bid guarantee is received late and late receipt is waived under 14.304; when a bid guarantee becomes inadequate as a result of the correction of a mistake under 14.407, but only if the bidder will increase the bid guarantee to the level required for the corrected bid; when an otherwise acceptable bid bond was submitted with a signed offer but was not signed by the offeror; when an otherwise acceptable bid bond is erroneously dated or bears no date at all; or when a bid bond does not list the United States as obligee but correctly identifies the offeror, the solicitation number, and the name and location of the project, so long as it is acceptable in all other respects."
+	],
+	"updateCadence": "Updated by Federal Acquisition Circulars",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Paragraph (c) lists eight circumstances; all eight are carried."
+}

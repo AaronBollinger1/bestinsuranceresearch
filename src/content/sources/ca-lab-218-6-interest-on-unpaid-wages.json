@@ -1,0 +1,21 @@
+{
+	"title": "California Labor Code section 218.6 - Interest on unpaid wages",
+	"publisher": "California Legislative Counsel (leginfo.legislature.ca.gov)",
+	"url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=218.6",
+	"sourceType": "statute",
+	"jurisdiction": "CA",
+	"authorityLevel": "primary-law",
+	"officialHost": true,
+	"publishedDate": "unknown",
+	"effectiveDate": "unknown",
+	"accessedDate": "2026-09-30",
+	"lastChecked": "2026-09-30",
+	"lastCheckedBasis": "access",
+	"primary": true,
+	"claims": [
+		"Section 218.6 provides that in any action brought for the nonpayment of wages, the court shall award interest on all due and unpaid wages at the rate of interest specified in subdivision (b) of Section 3289 of the Civil Code, accruing from the date the wages were due and payable."
+	],
+	"updateCadence": "Amended only by legislation.",
+	"status": "active",
+	"notes": "Fetched 2026-09-30 from the publisher's own site and read in full. Added by Stats. 2000, Ch. 876. Civil Code 3289(b), which sets the rate, was not read for this record, so no rate is stated."
+}

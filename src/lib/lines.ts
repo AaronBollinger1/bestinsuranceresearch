@@ -213,3 +213,25 @@ export function sharesLine(
 	const left = new Set(canonicalLines(a));
 	return canonicalLines(b).some((line) => left.has(line));
 }
+
+/**
+ * How much of the canonical vocabulary the coverage library has a page for.
+ *
+ * `/insurance` publishes this as "N of 51 canonical lines", and the suite
+ * recomputes it from the collection, so the figure cannot drift from the build
+ * the way the hand-kept roadmap once did. Two coverage records on one canonical
+ * line would inflate `pages` without adding a line, which is why the two counts
+ * are kept apart and the suite also forbids the collision.
+ */
+export function lineCoverage(declared: string[]): {
+	covered: CanonicalLine[];
+	missing: CanonicalLine[];
+	total: number;
+} {
+	const covered = new Set(canonicalLines(declared));
+	return {
+		covered: CANONICAL_LINES.filter((line) => covered.has(line)),
+		missing: CANONICAL_LINES.filter((line) => !covered.has(line)),
+		total: CANONICAL_LINES.length,
+	};
+}
