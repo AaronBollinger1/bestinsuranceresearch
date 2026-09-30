@@ -106,6 +106,9 @@ export function decide(env, git) {
 		return { build: true, reason: 'production target: a production authority always builds' };
 	}
 	const ref = env.VERCEL_GIT_COMMIT_REF ?? '';
+	if (ref.startsWith('autopilot/')) {
+		return { build: false, reason: `ref ${ref} is an autopilot lane: local preview only, never deploys` };
+	}
 	if (ref === 'main' || ref.startsWith('launch/') || ref.startsWith('release/')) {
 		return { build: true, reason: `ref ${ref} is a release authority and always builds` };
 	}
