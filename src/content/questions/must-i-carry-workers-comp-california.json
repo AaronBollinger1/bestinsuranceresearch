@@ -8,6 +8,7 @@
 		"ways to secure workers compensation California Labor Code 3700"
 	],
 	"shortAnswer": "Yes, and the statute frames it as securing payment rather than buying a policy. Labor Code section 3700 provides that every employer except the state shall secure the payment of compensation in one or more of the ways the section lists [S:ca-labor-code-3700], and the Department states that all California employers must provide workers compensation benefits to their employees under that section [S:cdi-wc-commercial-guide]. The listed routes are insurance with one or more insurers duly authorized to write compensation insurance in California, or a certificate of consent to self-insure obtained from the Director of Industrial Relations [S:ca-labor-code-3700].",
+	"lede": "California requires every employer except the state to secure workers compensation in listed ways, such as authorized insurance or self-insurance consent. [S:ca-labor-code-3700]",
 	"assumes": [
 		"You are an employer in California and not the state itself, which the section excepts, and for the purposes of the section state includes the superior courts [S:ca-labor-code-3700].",
 		"You are asking how the obligation may be discharged rather than which employees are covered, which is a separate question the section does not answer.",

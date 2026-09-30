@@ -8,6 +8,7 @@
 		"Citizens eligibility replacement cost limit"
 	],
 	"shortAnswer": "Eligibility is not about being declined. For a Personal Lines new-business risk, the premium for coverage from an authorized insurer must be more than 20 percent greater than the premium for comparable coverage from Citizens [S:citizens-eligibility-pl-20pct]. So a private offer does not disqualify you; a private offer priced within 20 percent of Citizens does. Underneath that sits the statutory purpose: Citizens coverage is for applicants who are in good faith entitled to procure insurance through the voluntary market but are unable to do so [S:fl-stat-627-351].",
+	"lede": "Under one Citizens rule for Florida Personal Lines new business, an authorized insurer's comparable premium must exceed Citizens' by more than 20 percent. [S:citizens-eligibility-pl-20pct]",
 	"assumes": [
 		"You are asking about a Florida residential property risk, which is what Citizens writes under the apportionment plan [S:fl-stat-627-351].",
 		"You are asking about new business, since the percentage rules are stated for new-business risks [S:citizens-eligibility-pl-20pct][S:citizens-eligibility-20pct].",

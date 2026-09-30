@@ -8,6 +8,7 @@
 		"emergency medical condition Florida PIP"
 	],
 	"shortAnswer": "Ten thousand dollars, and often only a quarter of that. Florida's required personal injury protection benefit is $10,000 in medical and disability benefits and $5,000 in death benefits resulting from bodily injury [S:fl-stat-627-736]. Two conditions cut into it: medical benefits apply only if the injured individual receives initial services and care within 14 days after the accident, and reimbursement is limited to $2,500 where a qualified provider determines the person did not have an emergency medical condition [S:fl-stat-627-736].",
+	"lede": "Florida PIP provides $10,000 in medical and disability benefits and $5,000 in death benefits, with medical benefits requiring care within 14 days. [S:fl-stat-627-736]",
 	"assumes": [
 		"The vehicle is registered and licensed in Florida, since that is what triggers the required security [S:fl-stat-627-733].",
 		"You are asking about the statutory PIP benefit rather than about any optional coverage bought above it.",

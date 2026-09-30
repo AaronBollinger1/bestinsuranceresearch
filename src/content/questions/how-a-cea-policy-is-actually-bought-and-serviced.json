@@ -8,6 +8,7 @@
 		"CEA contact number for policy questions"
 	],
 	"shortAnswer": "Because that is how the authority is set up to operate. CEA states that it offers earthquake insurance policies exclusively through the residential insurance companies it lists [S:cea-participating-insurers], and its own contact page says that if you have a question about your policy, need billing or payment help, or want to buy a policy, the fastest way to get support is to contact your insurance company or agent [S:cea-contact]. The statute makes room for it: the board may contract with participating insurers to service the policies of basic residential earthquake insurance issued by the authority [S:ca-ins-code-10089-point-7].",
+	"lede": "The California Earthquake Authority sells its earthquake policies only through participating residential insurance companies, not directly. [S:cea-participating-insurers]",
 	"assumes": [
 		"You are asking about a CEA policy rather than a private earthquake policy sold outside the authority.",
 		"You are asking how the policy is bought and serviced, not what it covers, which is in the policy.",

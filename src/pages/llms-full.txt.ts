@@ -70,6 +70,7 @@ export const GET: APIRoute = async () => {
 			`- sources: ${idsOf(q.data.sourceIds).join(', ')}`,
 			`- also asked as: ${q.data.aliases.join(' | ') || 'n/a'}`,
 			'',
+			...(q.data.lede ? ['In one sentence:', stripMarkers(q.data.lede), ''] : []),
 			'Direct answer:',
 			stripMarkers(q.data.shortAnswer),
 			'',

@@ -8,6 +8,7 @@
 		"Insurance Code 12413.1 explained"
 	],
 	"shortAnswer": "Because the day funds may be paid out is set by statute rather than by when they arrived. Section 12413.1 provides that no title insurance company, controlled escrow company or underwritten title company shall disburse funds from an escrow account until the day established by the rules the section sets out [S:ca-ins-code-12413-1]. How the money was sent decides that day: funds received by cash or by electronic payment may be disbursed following deposit on the same business day [S:ca-ins-code-12413-1], while funds received by draft may not be disbursed until the proceeds of that draft have become available for withdrawal [S:ca-ins-code-12413-1].",
+	"lede": "California title and controlled escrow companies may disburse cash or electronic funds the same business day, but draft funds only once available [S:ca-ins-code-12413-1].",
 	"assumes": [
 		"The escrow is held by one of the companies the section names: a title insurance company, a controlled escrow company or an underwritten title company [S:ca-ins-code-12413-1].",
 		"You are asking why disbursement has not happened, not whether the transaction is otherwise ready to close, which turns on the file rather than on this section.",

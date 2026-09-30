@@ -8,6 +8,7 @@
 		"why is credit score not used to rate auto insurance in California"
 	],
 	"shortAnswer": "Two things at once: which facts about you may be used, and whether the rate itself was approved. Rates and premiums for an automobile policy must be determined by applying three factors in decreasing order of importance, the insured's driving safety record, the number of miles driven annually, and the years of driving experience [S:ca-ins-code-1861-02]. Since November 8, 1989 rates subject to the chapter must be approved by the commissioner before they are used [S:ca-ins-code-1861-01], and no rate may be approved or remain in effect which is excessive, inadequate, unfairly discriminatory or otherwise in violation of the chapter [S:ca-ins-code-1861-05].",
+	"lede": "California requires auto insurance rates to weigh driving safety record, annual mileage, and years of driving experience, in that order. [S:ca-ins-code-1861-02]",
 	"assumes": [
 		"You are asking about an automobile policy of the kind section 1861.02(a) describes by reference to section 660(a) [S:ca-ins-code-1861-02][S:ca-ins-code-660].",
 		"You are asking what the statutes require, not whether a particular filing was correctly decided.",

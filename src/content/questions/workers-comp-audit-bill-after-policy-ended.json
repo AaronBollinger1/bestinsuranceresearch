@@ -8,6 +8,7 @@
 		"disputing a workers comp classification or experience modification"
 	],
 	"shortAnswer": "Because the amount was never final while the policy was running. The regulator states that the final premium of a workers compensation policy cannot be calculated until the policy term is over and the employer's payroll records have been audited [S:cdi-wc-commercial-guide]. What is charged during the term is built on estimated payroll, so the audit reconciles the estimate against what the payroll actually was.",
+	"lede": "A workers' comp policy's final premium cannot be calculated until the term ends and the employer's payroll has been audited [S:cdi-wc-commercial-guide].",
 	"assumes": [
 		"The policy is a California workers compensation policy written by an insurer rather than a self-insurance arrangement [S:ca-labor-code-3700].",
 		"The charge follows an audit rather than a mid-term change to the policy.",

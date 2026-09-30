@@ -8,6 +8,7 @@
 		"tenant property damaged in a fire at a rental"
 	],
 	"shortAnswer": "No. The California regulator states directly that the landlord does not provide insurance for the tenant's personal property [S:cdi-residential-insurance-guide], and a rental dwelling policy says the same from the other side, that tenant-owned personal property is not covered by it [S:statefarm-rental-dwelling]. A renters policy carries personal property, loss of use, personal liability and medical payments to others [S:nydfs-renters-insurance], and the liability half is the part tenants least expect to need.",
+	"lede": "The California Department of Insurance states that a landlord does not provide insurance for a tenant's personal property. [S:cdi-residential-insurance-guide]",
 	"assumes": [
 		"You are a tenant rather than an owner, so the building and its structure are somebody else's insured interest.",
 		"You are asking about the landlord's ordinary property policy rather than about a claim in negligence against the landlord.",

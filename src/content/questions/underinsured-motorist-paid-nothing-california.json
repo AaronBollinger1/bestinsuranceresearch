@@ -8,6 +8,7 @@
 		"underinsured motorist offset California"
 	],
 	"shortAnswer": "Most often because the at-fault driver carried liability limits equal to or above your own uninsured motorist limit, which in California leaves nothing for the coverage to pay. California defines an underinsured motor vehicle as one insured for an amount less than the uninsured motorist limits carried on the injured person's own vehicle [S:ca-ins-code-11580-2], and caps the insurer's liability at those limits less what the liable parties already paid [S:ca-ins-code-11580-2]. It is a difference-in-limits coverage, not an extra layer on top of the other driver's policy.",
+	"lede": "California underinsured motorist coverage pays nothing once the at-fault driver's liability limits equal or exceed your own uninsured motorist limit. [S:ca-ins-code-11580-2]",
 	"assumes": [
 		"The policy is a California automobile policy and the coverage in question is the underinsured half of uninsured motorist coverage, which California requires to be offered as a single coverage with uninsured motorist limits equal to those in the underlying policy [S:ca-ins-code-11580-2].",
 		"The injury is bodily injury. Uninsured and underinsured motorist coverage does not apply, as primary or as excess, to property damage sustained by the insured [S:ca-ins-code-11580-2].",

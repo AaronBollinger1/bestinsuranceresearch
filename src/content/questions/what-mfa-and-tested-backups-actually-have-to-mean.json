@@ -8,6 +8,7 @@
 		"MFA on all accounts or just admin"
 	],
 	"shortAnswer": "Neither is a yes-or-no fact, and both have a published standard behind them. On authentication, CISA asks organisations to require multifactor authentication using the strongest available method, and ranks the options high to low: phishing-resistant MFA first, then mobile app-based soft tokens, then SMS or voice only when no other options are possible, with all IT accounts covered and privileged administrative accounts prioritised [S:cisa-cpg-2-0]. On backups, the goal asks that they be stored securely offsite and offline, tested on a recurring basis no less than once per year, and that their integrity be validated before restoration is initiated [S:cisa-cpg-2-0].",
+	"lede": "CISA ranks MFA from phishing-resistant down to SMS, and asks that backups be kept offline and tested at least yearly [S:cisa-cpg-2-0].",
 	"assumes": [
 		"You are answering a control question and want to know what the published standard behind it says, not how any insurer will treat your answer.",
 		"The vocabulary comes from public frameworks rather than from the insurer. Both goals described here are CISA performance goals, and the CPGs are voluntary [S:cisa-cpg-2-0].",

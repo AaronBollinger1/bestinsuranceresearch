@@ -8,6 +8,7 @@
 		"tenants improvements and betterments valuation"
 	],
 	"shortAnswer": "The default is actual cash value, and everything better than that is an exception you have to have bought. The Valuation condition states that the insurer will determine the value of Covered Property at actual cash value as of the time of loss, except as provided in the subparagraphs that follow [S:iso-cp-00-10-10-12]. Replacement Cost is an Optional Coverage that applies only if shown in the Declarations, and it replaces Actual Cash Value in that condition [S:iso-cp-00-10-10-12]. Coinsurance is a separate Additional Condition that applies only if a coinsurance percentage is shown [S:iso-cp-00-10-10-12], and where it bites it reduces the payment before the deductible is subtracted [S:iso-cp-00-10-10-12].",
+	"lede": "ISO form CP 00 10 10 12 values covered property at actual cash value at the time of loss, subject to stated exceptions and any Optional Coverage shown. [S:iso-cp-00-10-10-12]",
 	"assumes": [
 		"The policy uses the Building And Personal Property Coverage Form in the 10 12 edition [S:iso-cp-00-10-10-12], with the policy issued governing over anything described here.",
 		"A Limit of Insurance is shown for the type of property in question, since Covered Property means the described types only if a limit is shown for that type [S:iso-cp-00-10-10-12].",

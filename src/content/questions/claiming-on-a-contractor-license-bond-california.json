@@ -8,6 +8,7 @@
 		"what documents do I need to claim on a contractor bond"
 	],
 	"shortAnswer": "The claim goes to the surety company, not to the regulator. To file a claim against a bond a consumer should contact the contractor's surety company and include a detailed written description of the problem, a copy of the contract, and all other pertinent documents and information [S:cslb-license-bonds-fast-facts]. File the CSLB complaint as well rather than instead: the surety investigates the claim against the bond and CSLB investigates the complaint against the licence, and the two resolve their issues independently under their respective jurisdictions [S:cslb-license-bonds-fast-facts].",
+	"lede": "A California contractor bond claim is made to the contractor's surety company, which investigates it separately from any CSLB license complaint. [S:cslb-license-bonds-fast-facts]",
 	"assumes": [
 		"The contractor held an active California licence, since the bond is a condition of holding one [S:ca-bpc-7071-6-contractor-bond].",
 		"You are one of the beneficiaries section 7071.5 lists, which is what decides whether you can claim at all [S:ca-bpc-7071-5-bond-beneficiaries].",

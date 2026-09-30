@@ -8,6 +8,7 @@
 		"how much can you recover against a doctor in California"
 	],
 	"shortAnswer": "No, and it has not been for years. As amended by AB 35 and effective January 1, 2023, Civil Code section 3333.2 limits damages for noneconomic losses starting at three hundred fifty thousand dollars ($350,000) in an action other than wrongful death, rising forty thousand dollars ($40,000) each January 1 for 10 years to a ceiling of seven hundred fifty thousand dollars ($750,000); for wrongful death it starts at five hundred thousand dollars ($500,000), rising fifty thousand dollars ($50,000) each January 1 to one million dollars ($1,000,000) [S:ca-civ-code-3333-2]. After those steps the amounts are adjusted for inflation on January 1 of each year by 2 percent, beginning January 1, 2034 [S:ca-civ-code-3333-2]. Two things follow that matter more than the figure: the limit is on noneconomic losses only, and there may be three separate limits in one action rather than one [S:ca-civ-code-3333-2].",
+	"lede": "California's malpractice cap on noneconomic damages is not $250,000; it began at $350,000 for non-wrongful-death actions and rises each January 1. [S:ca-civ-code-3333-2]",
 	"assumes": [
 		"You are asking about California, and about an action for injury or death against a health care provider based upon professional negligence, which is what these sections are written for [S:ca-ccp-340-5].",
 		"You are asking what the statute says rather than what a particular claim is worth. Nothing here values any claim, and nothing here is a prediction about any award.",

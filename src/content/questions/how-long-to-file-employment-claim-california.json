@@ -8,6 +8,7 @@
 		"employment claim statute of limitations California"
 	],
 	"shortAnswer": "Three years for a California complaint, and far less federally. A complaint alleging a violation of section 12940 may not be filed with the department after three years from the date the unlawful practice occurred [S:ca-gov-code-12960]. A federal charge generally must be filed within 180 calendar days, extended to 300 where a state or local agency enforces a law prohibiting the same conduct [S:eeoc-time-limits-filing-charge]. The two run in parallel on the same facts.",
+	"lede": "California bars filing a complaint alleging a section 12940 violation more than three years after the practice occurred, subject to stated extensions. [S:ca-gov-code-12960]",
 	"assumes": [
 		"The claim is about an unlawful employment practice under Article 1 of the Fair Employment and Housing Act, which is the branch section 12960(e)(5) covers [S:ca-gov-code-12960].",
 		"You are asking about the deadline to start an administrative complaint or charge, not the separate period to bring a civil action after a right-to-sue notice.",

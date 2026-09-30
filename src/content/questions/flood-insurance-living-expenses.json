@@ -8,6 +8,7 @@
 		"NFIP additional living expense exclusion"
 	],
 	"shortAnswer": "No. The Standard Flood Insurance Policy excludes any additional living expenses incurred while the insured building is being repaired or is unable to be occupied for any reason, and also excludes loss of revenue or profits and loss from interruption of business or production [S:nfip-sfip-dwelling-form]. Flood routinely empties a home for months, and this policy pays nothing toward living elsewhere during that time.",
+	"lede": "The Standard Flood Insurance Policy excludes additional living expenses while a flooded home is being repaired or cannot be occupied. [S:nfip-sfip-dwelling-form]",
 	"assumes": [
 		"The policy is a Standard Flood Insurance Policy on the Dwelling Form, which is codified at 44 CFR part 61 appendix A(1) [S:nfip-sfip-dwelling-form].",
 		"You are asking about the cost of living elsewhere rather than about repairing the building itself.",

@@ -8,6 +8,7 @@
 		"Insurance Code 1775.5 penalty for late payment"
 	],
 	"shortAnswer": "The statute levies it on the broker, not on the insured. Section 1775.5(a) requires every surplus line broker, annually on or before the first day of March, to pay the Insurance Commissioner for the use of the State of California a tax of 3 percent of the gross premiums charged less return premiums upon business done under the authority of that broker's licence during the preceding calendar year [S:ca-ins-code-1775-5]. It is an annual obligation of the licensee measured across a year of business, rather than a charge the section imposes on any particular policy.",
+	"lede": "California's 3 percent surplus lines tax is levied annually on the surplus line broker, measured on a year's gross premiums less return premiums. [S:ca-ins-code-1775-5]",
 	"assumes": [
 		"The placement is surplus line business done through a licensed surplus line broker, which is what the tax attaches to [S:ca-ins-code-1775-5].",
 		"You are asking what the section provides, not how any broker allocates the cost, on which the section is silent.",

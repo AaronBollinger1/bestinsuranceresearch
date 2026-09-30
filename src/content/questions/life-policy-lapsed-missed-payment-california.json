@@ -8,6 +8,7 @@
 		"designee to receive notice of lapse life policy"
 	],
 	"shortAnswer": "Possibly not, and the question turns on notice rather than on payment. In California an individual life policy must carry a grace period of not less than 60 days from the premium due date, and that period does not run concurrently with the coverage already paid for [S:ca-ins-code-10113-71]. A notice of pending lapse and termination is not effective unless mailed at least 30 days before the termination date, to the policy owner, to any designee, and to a known assignee [S:ca-ins-code-10113-71].",
+	"lede": "California requires individual life policies to carry a grace period of at least 60 days, and a lapse notice mailed at least 30 days before termination. [S:ca-ins-code-10113-71]",
 	"assumes": [
 		"The policy is an individual life insurance policy and the termination was for nonpayment of premium, which is the situation the section addresses [S:ca-ins-code-10113-71].",
 		"The policy is subject to California law.",

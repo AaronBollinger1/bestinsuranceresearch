@@ -8,6 +8,7 @@
 		"can my insurer cancel because I live in a fire area"
 	],
 	"shortAnswer": "Probably not, if your ZIP Code is on the commissioner's list. An insurer shall not cancel or refuse to renew a policy of residential property insurance for a property in any ZIP Code within or adjacent to the fire perimeter, for one year after the declaration of a state of emergency, based solely on the fact that the structure is in an area where a wildfire occurred [S:ca-ins-code-675-1]. The protection attaches to where you are rather than to whether you were damaged [S:cdi-moratorium].",
+	"lede": "For one year after an emergency declaration, California bars nonrenewal in ZIP Codes in or next to a fire perimeter based solely on the wildfire location. [S:ca-ins-code-675-1]",
 	"assumes": [
 		"The policy is residential property insurance as section 675.1 uses that term, which it defines by reference to subdivision (a) of Section 10087 [S:ca-ins-code-675-1].",
 		"A state of emergency has been declared, since the one-year clock runs from that declaration [S:ca-ins-code-675-1].",

@@ -8,6 +8,7 @@
 		"how do I know an insurance company is legitimate"
 	],
 	"shortAnswer": "More than most people realise, and all of it free. The Department publishes Insurance Company Profiles, and tells consumers to search them to verify that a company is authorized to conduct business in California [S:cdi-check-insurance-company]. A profile includes licence status, company type, state of domicile, the lines of insurance the company is authorized to transact, the agent for service of process, former names of the company, and complaint history [S:cdi-company-profiles]. Separately, a License Status Inquiry retrieves licence details including enforcement actions for an agent, broker, adjuster, bail agent, or agency [S:cdi-license-status].",
+	"lede": "The California Department of Insurance tells consumers to search its Insurance Company Profiles to verify an insurer is authorized in California. [S:cdi-check-insurance-company]",
 	"assumes": [
 		"You are buying a residential policy in California, which is one of the lines the Department publishes a premium comparison for, alongside condominium, renters and earthquake coverage [S:cdi-premium-comparison].",
 		"You want to check the company and the person selling it, which are two separate lookups on two separate systems [S:cdi-company-profiles][S:cdi-license-status].",

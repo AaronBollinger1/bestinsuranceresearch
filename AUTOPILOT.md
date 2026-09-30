@@ -130,7 +130,8 @@ The SEO work makes the site correct and ready; it does not open indexing.
 | D10 | Remove the Bollinsure lead CTA from the Record | 0 `bollinsure.com/quote`, `quotes@` or `tel:` inside `<main>` on Record families; the handoff field routes to the specialty sites; a verify rule holds it. | blocked: owner gate G8 (the 2026-09-27 revert kept the in-page handoff block, so whether it counts as a lead CTA is Aaron's call) |
 | D1 | Claim links and checksums in the ledger | Every question, coverage, guide and company page has a `data-claim-uri` per cited source resolving to an anchor; checksums in HTML equal the companion's; the false "claim addresses visible" sentence is made true. | done (this commit) |
 | D2 | Truthful review state in the machine layer | 0 companions carry `lastReviewed`/`reviewedOn` while unreviewed; every unreviewed Article/QAPage has `creativeWorkStatus`; a `limits` array states not-advice and under-review. | done (this commit) |
-| D3 | Quotable lede and whole accepted answer | 0 JSON-LD texts or meta descriptions end in an ellipsis; each question has a cited `lede` of 155 characters or fewer. | queued |
+| D3 | Quotable lede and whole accepted answer | 0 JSON-LD texts or meta descriptions end in an ellipsis; each question has a cited `lede` of 155 characters or fewer. | done (this commit) |
+| D3b | Ledes for every other record family | Coverage, tool, example, company and state records carry a cited `lede`; 0 meta descriptions and 0 JSON-LD texts end in an ellipsis; the ceiling in the D3 rule goes to 0. | queued |
 | D4 | The Numbers readable, `--faint` to AA | `/figures`, one industry and one line hub pass 4.5:1; token contrast test green. (Hub bands fixed in R1a.) | queued |
 | D5 | Guide panels visible without JS | 0 static `role="tabpanel" hidden`; keyboard tabs still pass. | queued |
 | D6 | Claim stability and versioning | Append-only guard against the latest release; claim history for changed claims; derived `contentVersion`; a new release covering 100% of live claims. Lands before D12. | queued |
@@ -184,6 +185,8 @@ an entry without the commit that fixes it.
 | I1 | R1a screenshots | Every guide rendered its first lists one word per line at 768px (`.fact-list` icon column). | fixed in R1a |
 | I2 | R1a screenshots | `/lines/<line>` stat band at 1280 renders its numbers and labels close to invisible on the dark band. Root cause: `.figure` styled only dt/dd; 15 families used b/span. | fixed in R1a |
 | I3 | wage-and-hour agent | `employment-practices-liability.json`, first `commonlyExcludes` note, states wage-and-hour market practice with no citation and no "common market practice, not a rule" label. Cite it or delete it. | fixed: no source read, claim deleted |
+| I5 | D3 lede verification | `what-controls-will-a-cyber-insurer-ask-about` shortAnswer says NIST CSF 2.0 and CISA CPGs "supply most of the vocabulary" of insurer questions; no listed claim supports it. Cite it or delete it. | queued |
+| I6 | D3 lede verification | `schedule-valuables-or-separate-floater` shortAnswer frames "valuation at a loss" without a citation. | queued |
 | I4 | R1a agents | Loose ends recorded in the new records: Miller Act 100,000 vs FAR 150,000 threshold; BPC 7071.9(b) cross-reference to a paragraph 7071.10 lacks; the notary bond amount against Gov 8214 damages. Each needs one more source read. | queued |
 
 ### Track R — The Record, wider and deeper
@@ -244,7 +247,7 @@ extension of each track, recorded here first.
 
 ## Pointer
 
-Next unit: **D3**, then D4-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
+Next unit: **I5-I6**, then D3b, then D4-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
 
 ## Owner gates that stay closed until Aaron says otherwise
 

@@ -8,6 +8,7 @@
 		"cancel life insurance within 10 days of receiving it"
 	],
 	"shortAnswer": "Yes, within a window printed on the policy, and not always everything. Every individual life policy and annuity contract issued for delivery in California must carry a notice on the jacket or cover page that it may be returned for cancellation, with the period clearly stated and set at not less than 10 days nor more than 30 [S:ca-ins-code-10127-9]. A purchaser aged 60 or older on the date of purchase has 30 days [S:ca-ins-code-10127-10]. On a variable contract what comes back is account value, not the premiums paid [S:ca-ins-code-10127-9].",
+	"lede": "California requires individual life policies and annuities to carry a cover notice allowing return for cancellation within an insurer-set 10 to 30 days. [S:ca-ins-code-10127-9]",
 	"assumes": [
 		"The contract is an individual life insurance policy or an individual annuity contract delivered or issued for delivery in California [S:ca-ins-code-10127-9].",
 		"You are within the period stated on the cover page, or within 30 days if you were 60 or older on the date of purchase [S:ca-ins-code-10127-10].",

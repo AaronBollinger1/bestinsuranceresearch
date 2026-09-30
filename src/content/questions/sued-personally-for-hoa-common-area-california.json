@@ -8,6 +8,7 @@
 		"does HOA insurance protect individual owners"
 	],
 	"shortAnswer": "Only if the association is carrying enough general liability insurance. California directs a tort claim brought solely by virtue of your tenancy-in-common interest in the common area to the association rather than to you, but only where the association maintains general liability coverage of at least $2,000,000 for a development of 100 or fewer separate interests, or at least $3,000,000 for one with more than 100 [S:ca-civ-code-5805]. Below those amounts the protection does not apply.",
+	"lede": "A tort suit based solely on an owner's common-area share goes to the HOA if its covering liability insurance is $2,000,000, or $3,000,000 above 100 units. [S:ca-civ-code-5805]",
 	"assumes": [
 		"The development is a California common interest development with commonly owned tenancy-in-common property, which is the arrangement section 5805 addresses [S:ca-civ-code-5805].",
 		"The claim against you is brought solely by virtue of your tenancy-in-common interest in the common area, rather than because of something you personally did.",

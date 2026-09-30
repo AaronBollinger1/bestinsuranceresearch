@@ -8,6 +8,7 @@
 		"association insurance deductible increase notice"
 	],
 	"shortAnswer": "Yes, and the duty is broader than cancellation. The association must give individual notice to all members as soon as reasonably practicable if a policy described in the annual budget report has lapsed or been cancelled and is not immediately renewed, restored or replaced, and equally if there is a significant change such as a reduction in coverage or limits or an increase in the deductible [S:ca-civ-code-5810]. On a notice of nonrenewal it must tell members immediately if replacement cover will not be in effect before the existing cover lapses [S:ca-civ-code-5810].",
+	"lede": "A California HOA must notify members if a listed policy lapses unreplaced, or changes significantly, such as lower limits or a higher deductible. [S:ca-civ-code-5810]",
 	"assumes": [
 		"The development is a California common interest development governed by the Davis-Stirling Act.",
 		"The policy in question is one described in the annual budget report under Civil Code section 5300, because that is what section 5810 attaches to [S:ca-civ-code-5810].",

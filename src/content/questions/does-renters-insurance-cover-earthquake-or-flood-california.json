@@ -8,6 +8,7 @@
 		"contents flood insurance for a tenant"
 	],
 	"shortAnswer": "Neither, with one important exception. Homeowners, renters and condominium policies do not cover damage from natural disasters such as earthquakes, floods and landslides [S:cdi-earthquake-insurance-guide], and flood losses are generally not provided in a homeowners or renters policy [S:cdi-residential-insurance-guide]. The exception is fire: California law says both homeowners and renters insurance must cover fire damage that is caused by or follows an earthquake [S:cdi-earthquake-insurance-guide].",
+	"lede": "California renters and homeowners policies exclude earthquake and flood damage, but must still cover fire that follows an earthquake. [S:cdi-earthquake-insurance-guide]",
 	"assumes": [
 		"The policy is a California renters policy.",
 		"You are asking about the peril rather than about a particular claim already made.",

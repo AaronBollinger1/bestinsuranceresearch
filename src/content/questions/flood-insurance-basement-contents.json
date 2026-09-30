@@ -8,6 +8,7 @@
 		"44 CFR 61 appendix A basement property"
 	],
 	"shortAnswer": "Very little. Below the lowest elevated floor or in a basement, the only personal property the Standard Flood Insurance Policy covers is air conditioning units of the portable or window type, clothes washers and dryers, and food freezers other than walk-in together with the food in any freezer [S:nfip-sfip-dwelling-form]. That is the entire list. A defined set of building items is also covered there, but they must be installed in their functioning locations and, where operation requires it, connected to a power source [S:nfip-sfip-dwelling-form].",
+	"lede": "In a basement, the SFIP Dwelling Form covers only window or portable AC units, washers, dryers, and non-walk-in freezers with their food as contents. [S:nfip-sfip-dwelling-form]",
 	"assumes": [
 		"The policy is a Standard Flood Insurance Policy on the Dwelling Form [S:nfip-sfip-dwelling-form].",
 		"The space in question is a basement or is below the lowest elevated floor, which is what triggers the Article III.A.8 restriction [S:nfip-sfip-dwelling-form].",

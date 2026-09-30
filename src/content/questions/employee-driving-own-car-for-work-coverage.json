@@ -8,6 +8,7 @@
 		"hired and non-owned auto liability"
 	],
 	"shortAnswer": "It can cover the business, and it does not cover the employee. Symbol 9, Non-owned Autos Only, reaches autos you do not own, lease, hire, rent or borrow that are used in connection with your business, and it expressly includes autos owned by your employees, partners or members or members of their households [S:iso-ca-00-01-10-13]. But Who Is An Insured removes your employee where the covered auto is owned by that employee or a member of their household [S:iso-ca-00-01-10-13]. The same car is a covered auto and the driver is not an insured.",
+	"lede": "On ISO form CA 00 01 10 13, symbol 9 can make an employee's own car a covered auto while used in the business, but that employee is not an insured. [S:iso-ca-00-01-10-13]",
 	"assumes": [
 		"The policy is written on the Business Auto Coverage Form CA 00 01, edition 10 13 as read here [S:iso-ca-00-01-10-13].",
 		"Symbol 9 is actually shown against Covered Autos Liability Coverage in Item Two of the Declarations, since the symbols decide what each coverage reaches [S:iso-ca-00-01-10-13].",

@@ -8,6 +8,7 @@
 		"California HOA insurance summary disclaimer"
 	],
 	"shortAnswer": "Usually not, and California requires your association to tell you so in writing every year. The annual budget report must carry a statement in at least 10-point boldface saying the association's policies may not cover your property, including personal property or real property improvements to or around your dwelling, or personal injuries or other losses that occur within or around your dwelling [S:ca-civ-code-5300]. It also warns that even where a loss is covered you may still be responsible for all or part of a deductible [S:ca-civ-code-5300].",
+	"lede": "California requires HOA budget reports to warn in boldface that the association's insurance may not cover a member's own property or injuries. [S:ca-civ-code-5300]",
 	"assumes": [
 		"The property is a common interest development in California governed by the Davis-Stirling Act, so the annual budget report obligations in Civil Code section 5300 apply.",
 		"You are asking about the association's own policies rather than about a policy you bought on your own unit.",

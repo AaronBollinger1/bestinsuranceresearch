@@ -8,6 +8,7 @@
 		"contractor bonded and insured what does bonded mean"
 	],
 	"shortAnswer": "Probably far less than the bond's face amount, and for most claimants the ceiling is $7,500 rather than $25,000. The bond is written in the sum of twenty-five thousand dollars [S:ca-bpc-7071-6-contractor-bond], but excluding claims brought by the beneficiaries specified in section 7071.5(a), the aggregate liability of the surety shall not exceed seven thousand five hundred dollars, and the proceeds above that figure are reserved exclusively for those beneficiaries [S:ca-bpc-7071-6-contractor-bond]. Section 7071.5(a) means a homeowner contracting for home improvement on the homeowner's own personal family residence [S:ca-bpc-7071-5-bond-beneficiaries].",
+	"lede": "On California's $25,000 contractor bond, aggregate surety liability for claims other than section 7071.5(a) beneficiaries' is capped at $7,500. [S:ca-bpc-7071-6-contractor-bond]",
 	"assumes": [
 		"The bond in question is the contractor's licence bond required as a condition of holding a California licence [S:ca-bpc-7071-6-contractor-bond], not a payment or performance bond on a particular job.",
 		"The contractor held an active licence. A bond is not required of the holder of a licence that has been inactivated during the period it is inactive [S:ca-bpc-7071-6-contractor-bond].",

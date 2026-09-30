@@ -8,6 +8,7 @@
 		"commercial auto symbols 8 and 9"
 	],
 	"shortAnswer": "They are covered auto designation symbols, and they decide what the policy actually insures for each coverage. The Business Auto Coverage Form states that Item Two of the Declarations shows the autos that are covered autos for each coverage, and that the symbols entered next to a coverage on the Declarations do that work [S:iso-ca-00-01-10-13]. Symbol 1 is Any Auto; symbol 7 is only the autos specifically described in the Declarations for which a premium is shown [S:iso-ca-00-01-10-13].",
+	"lede": "On ISO's Business Auto Coverage Form CA 00 01 10 13, the symbols next to each coverage designate the only autos that are covered autos. [S:iso-ca-00-01-10-13]",
 	"assumes": [
 		"The policy is written on the Business Auto Coverage Form CA 00 01 or a form that follows its structure [S:iso-ca-00-01-10-13].",
 		"You are asking what the symbols do rather than which ones you should have.",

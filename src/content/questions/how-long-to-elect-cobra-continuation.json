@@ -8,6 +8,7 @@
 		"what if my COBRA notice arrived late"
 	],
 	"shortAnswer": "At least 60 days, and the clock is generous about a late notice. The election period begins not later than the date coverage terminates by reason of the qualifying event, runs for at least 60 days, and ends not earlier than 60 days after the later of that date or the date you receive the notice [S:usc-29-1165-election-period]. So a notice that arrives late moves the deadline rather than eating into it. Payment is not required before day 45 after the initial election [S:usc-29-1162-continuation-period].",
+	"lede": "Federal law gives COBRA beneficiaries an election period of at least 60 days that cannot end earlier than 60 days after they receive notice. [S:usc-29-1165-election-period]",
 	"assumes": [
 		"The plan is a group health plan subject to the federal continuation rules in this part.",
 		"A qualifying event has occurred, meaning one of the six events the statute lists [S:usc-29-1163-qualifying-events].",

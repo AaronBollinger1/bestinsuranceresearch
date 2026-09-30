@@ -8,6 +8,7 @@
 		"emergency repairs no deductible CEA"
 	],
 	"shortAnswer": "Yes, and it is a separate policy rather than an endorsement. The California Earthquake Authority describes a mobilehome and manufactured home earthquake policy distinct from its homeowners policy [S:cea-mobilehome-policy], covering the mobilehome itself, personal property and loss of use [S:cea-mobilehome-policy]. The condition is the same as for any CEA policy: it is available to Californians whose home is insured by one of the participating residential insurance companies [S:cea-mobilehome-policy], and CEA offers its policies exclusively through those companies [S:cea-participating-insurers].",
+	"lede": "The California Earthquake Authority offers a separate mobilehome earthquake policy to owners insured by a participating company. [S:cea-mobilehome-policy]",
 	"assumes": [
 		"The mobilehome is individually owned, which is how the earthquake chapter's own definition reaches it [S:ca-ins-code-10087].",
 		"You are asking about the CEA policy rather than about a private earthquake policy, which is written on its own terms.",

@@ -8,6 +8,7 @@
 		"carrier has not responded to my cargo claim 120 days"
 	],
 	"shortAnswer": "Read the bill of lading for the deadline, because the statute sets a floor rather than a date: a carrier may provide no less than 9 months for filing a claim and no less than 2 years for bringing a civil action [S:usc-49-14706-carmack]. As for who, liability reaches the receiving carrier, the delivering carrier, and any carrier over whose line or route the property was transported [S:usc-49-14706-carmack], and the claim may be filed with the receiving or delivering carrier, the carrier that issued the bill of lading, or the carrier on whose line the loss occurred [S:cfr-49-370-3-lii]. One trap before anything else: a communication is only treated as a claim if it identifies the shipment, asserts liability, and claims payment of a specified or determinable amount of money [S:cfr-49-370-3-lii].",
+	"lede": "Federal law bars carriers from allowing less than 9 months to file a freight claim, or less than 2 years from a written claim disallowance to sue. [S:usc-49-14706-carmack]",
 	"assumes": [
 		"You are asking about interstate motor carriage governed by the federal framework. This record holds no state regulation of intrastate carriage, which is a separate body of law, and whether a purely intrastate move is governed by any of this should be settled first.",
 		"You are asking what the law requires rather than what your policy pays. Nothing here states what any cargo policy covers, and cargo forms are not publicly filed.",

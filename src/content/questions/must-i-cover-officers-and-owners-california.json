@@ -8,6 +8,7 @@
 		"do directors need workers comp coverage California"
 	],
 	"shortAnswer": "Sometimes, and only on conditions the statute sets out precisely. Labor Code section 3352 excludes from the definition of employee an officer or director of a quasi-public or private corporation who owns at least 10 percent of the issued and outstanding stock, or at least 1 percent where a parent, grandparent, sibling, spouse or child owns at least 10 percent, who is covered by a health insurance policy or health care service plan, and who executes a written waiver of rights stating under penalty of perjury that they are a qualifying officer or director [S:lab-3352]. Separately, an officer or director who is the sole shareholder is excluded unless an election has been made under section 4151(a) [S:lab-3352].",
+	"lede": "California excludes from employee status officer-owners meeting stock, health cover and waiver conditions, and sole-shareholder officers who do not opt in. [S:lab-3352]",
 	"assumes": [
 		"The starting point is that coverage is required. Every employer except the state shall secure the payment of compensation [S:ca-labor-code-3700], and the Department states that all California employers must provide workers compensation benefits to their employees under section 3700 [S:dir-dwc-employer-faqs].",
 		"You are asking about exclusion from the definition of employee, which is how the statute achieves this, rather than about a policy endorsement.",

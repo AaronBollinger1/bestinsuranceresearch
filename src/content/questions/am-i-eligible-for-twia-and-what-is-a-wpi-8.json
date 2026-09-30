@@ -8,6 +8,7 @@
 		"difference between TWIA and Texas FAIR Plan"
 	],
 	"shortAnswer": "Four things have to be true: the property is in the area designated by the Commissioner of Insurance, at least one authorized insurer actively writing wind and hail there has denied you, the structure is certified as built to applicable building codes, and it is maintained in an insurable condition [S:twia-coverage-eligibility]. The certificate is that third item, issued by the Texas Department of Insurance as a WPI-8 or WPI-8-E, or by the Association as a WPI-8-C [S:twia-coverage-eligibility].",
+	"lede": "TWIA eligibility includes location in the designated area, a denial by an authorized insurer, building code certification, and insurable condition. [S:twia-coverage-eligibility]",
 	"assumes": [
 		"You are asking about the Texas Windstorm Insurance Association rather than the Texas FAIR Plan Association, which answers general property on a different test [S:tfpa-coverage-eligibility].",
 		"The property is on the Texas coast, since eligibility is geographic before it is anything else [S:twia-coverage-eligibility].",

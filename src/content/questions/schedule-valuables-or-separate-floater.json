@@ -8,6 +8,7 @@
 		"agreed value versus actual cash value on valuables"
 	],
 	"shortAnswer": "Both routes exist and the question that separates them is valuation at a loss, not limit. California's marine article enumerates the floater types that may be written as marine or inland marine insurance, including a fine arts item covering objects of art such as pictures, statuary, bronzes and antiques, and rare manuscripts and books [S:ca-ccr-tit-10-2321]. Ask each route what it pays when the item is destroyed, because that is where they differ most and it is not visible from the limit.",
+	"lede": "California's marine regulation lists personal property floater risks, including a fine arts item for pictures, statuary, bronzes, antiques and rare books. [S:ca-ccr-tit-10-2321]",
 	"assumes": [
 		"The items fall into a category a homeowners policy caps, such as jewelry, antiques, furs, collectibles, fine arts, firearms, silverware or money [S:cdi-residential-insurance-guide].",
 		"You are choosing how to cover them rather than whether they need covering.",

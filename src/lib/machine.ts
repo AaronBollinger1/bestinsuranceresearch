@@ -109,6 +109,7 @@ export function questionRecord(
 		...base('question', entry.id, path),
 		question: d.question,
 		aliases: d.aliases,
+		...(d.lede ? { lede: stripMarkers(d.lede) } : {}),
 		directAnswer: stripMarkers(d.shortAnswer),
 		assumes: d.assumes.map(stripMarkers),
 		whatChangesTheAnswer: d.whatChanges.map(stripMarkers),

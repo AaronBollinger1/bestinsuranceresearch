@@ -8,6 +8,7 @@
 		"California homeowners special limits of liability"
 	],
 	"shortAnswer": "Because the special limit is not extra coverage, it is a cap inside the contents limit. The regulator states that the limited coverage amounts for specific types of personal property are not separate limits in addition to the contents limit; they are included in the overall contents limit and represent the maximum paid out for that specific type of property [S:cdi-residential-insurance-guide]. The categories affected include jewelry, antiques, furs, collectibles, fine arts, firearms, silverware and money [S:cdi-residential-insurance-guide].",
+	"lede": "California's regulator says special limits on property such as jewelry sit inside the overall contents limit, not on top of it [S:cdi-residential-insurance-guide].",
 	"assumes": [
 		"The policy is a homeowners, renters or condominium unit owners policy with a Coverage C personal property limit [S:cdi-residential-insurance-guide].",
 		"The item was not separately scheduled or covered by a floater, since scheduling moves an item off the capped category.",

@@ -169,6 +169,14 @@ const questions = defineCollection({
 		aliases: z.array(z.string().min(6)).default([]),
 		/** 2-5 sentences. The direct answer, stated first. */
 		shortAnswer: z.string().min(80),
+		/**
+		 * The one sentence an answer engine quotes: whole, cited, at most 155
+		 * characters without its marker. Used for the meta description, the
+		 * social description, llms.txt and the companion, so none of them has to
+		 * cut the short answer mid-clause (D0 finding F3). The verify suite holds
+		 * the length, the ending and the marker.
+		 */
+		lede: z.string().min(50).optional(),
 		assumes: z.array(z.string().min(10)).min(2),
 		/** Paragraphs separated by a blank line. Citation markers required. */
 		why: z.string().min(200),

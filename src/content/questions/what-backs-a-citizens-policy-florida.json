@@ -8,6 +8,7 @@
 		"who pays if Citizens runs out of money"
 	],
 	"shortAnswer": "Yes, and not only if you are a Citizens policyholder. Citizens may levy a policyholder surcharge as a uniform percentage of the premium of up to 15 percent, and emergency assessments may be levied when surcharges are insufficient [S:fl-stat-627-351]. Separately, the Florida Hurricane Catastrophe Fund can in some circumstances be funded by revenue bonds backed by emergency assessments on most types of property and casualty insurance premiums [S:fhcf-about], which reaches well beyond people insured with Citizens.",
+	"lede": "Citizens may surcharge its own policyholders up to 15 percent of premium, and separate emergency assessments can follow if that is not enough [S:fl-stat-627-351].",
 	"assumes": [
 		"You hold or are considering a Florida residential property policy, which is what both mechanisms described here sit behind [S:fl-stat-627-351][S:fhcf-about].",
 		"You are asking what the published statutes and fund descriptions provide, not what will happen after any particular storm.",

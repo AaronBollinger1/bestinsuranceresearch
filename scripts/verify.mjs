@@ -4665,6 +4665,49 @@ test('a legal citation is not mistaken for the end of a sentence', () => {
 	}
 });
 
+test('a question is quotable in one whole cited sentence, and its structured answer is never cut', () => {
+	/*
+	 * D3. The QAPage acceptedAnswer was the meta description, so 57 of 90 ended
+	 * in an ellipsis mid-clause, and the verdict sentence an engine lifts was
+	 * usually the one sentence with no citation. Every question now carries a
+	 * `lede`: one whole sentence of 50 to 155 characters without its marker,
+	 * ending in sentence punctuation and citing a source on its own list. The
+	 * page shows it, the meta description is it, and acceptedAnswer is the
+	 * whole short answer.
+	 */
+	const problems = [];
+	for (const q of questions) {
+		const d = q.data;
+		if (!d.lede) { problems.push(`${q.id} has no lede`); continue; }
+		const markers = [...d.lede.matchAll(/\[S:([a-z0-9-]+)\]/g)].map((m) => m[1]);
+		const plain = d.lede.replace(/\s*\[S:[a-z0-9-]+\]/g, '').trim();
+		if (markers.length === 0) problems.push(`${q.id} lede cites nothing`);
+		for (const m of markers) if (!idsOf(d.sourceIds).includes(m)) problems.push(`${q.id} lede cites ${m}, not on its sourceIds`);
+		if (plain.length < 50 || plain.length > 155) problems.push(`${q.id} lede is ${plain.length} characters`);
+		if (!/[.!?]["')]?$/.test(plain)) problems.push(`${q.id} lede does not end as a sentence`);
+		if (/\.\.\.|…/.test(plain)) problems.push(`${q.id} lede contains an ellipsis`);
+
+		const html = read(path.join(DIST, 'questions', q.id, 'index.html'));
+		const meta = (html.match(/<meta name="description" content="([^"]*)"/) ?? [])[1] ?? '';
+		if (/(\.\.\.|…)$/.test(meta)) problems.push(`${q.id} meta description ends in an ellipsis`);
+		if (!html.includes('data-quotable="lede"')) problems.push(`${q.id} does not show its lede`);
+		for (const node of ldNodes(html)) {
+			const answer = node.mainEntity?.acceptedAnswer?.text;
+			if (answer && /(\.\.\.|…)$/.test(answer)) problems.push(`${q.id} acceptedAnswer is cut`);
+		}
+	}
+	assert.deepEqual(problems.slice(0, 20), [], `question ledes:\n  ${problems.slice(0, 20).join('\n  ')}`);
+
+	/* Other families still shorten; D3b gives them ledes. Until then the count
+	   may only fall. Measured 33 after the questions were done. */
+	let cut = 0;
+	for (const file of htmlFiles) {
+		const meta = (read(file).match(/<meta name="description" content="([^"]*)"/) ?? [])[1] ?? '';
+		if (/(\.\.\.|…)$/.test(meta)) cut++;
+	}
+	assert.ok(cut <= 33, `${cut} pages end their meta description in an ellipsis; the ceiling is 33 and only falls`);
+});
+
 test('every meta description is whole and within what a search engine shows', () => {
 	/*
 	 * The description is the first thing anybody sees of this site, often before

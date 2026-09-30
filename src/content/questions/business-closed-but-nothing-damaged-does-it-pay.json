@@ -8,6 +8,7 @@
 		"Another Planet Entertainment v Vigilant what it decided"
 	],
 	"shortAnswer": "Generally no, and in California the Supreme Court has said so. The Business Income form pays for the actual loss of Business Income sustained due to the necessary suspension of operations during the period of restoration, and requires the suspension to be caused by direct physical loss of or damage to property at the described premises from a Covered Cause of Loss [S:iso-cp-00-30-10-12]. Asked whether the actual or potential presence of COVID-19 on an insured's premises can constitute direct physical loss or damage, the Supreme Court of California answered that it generally does not [S:another-planet-2024], and held that direct physical loss or damage requires a distinct, demonstrable, physical alteration to property [S:another-planet-2024].",
+	"lede": "California's Supreme Court held direct physical loss or damage needs a distinct, demonstrable physical alteration, which COVID-19 generally is not. [S:another-planet-2024]",
 	"assumes": [
 		"The policy uses the standard Business Income (And Extra Expense) Coverage Form, which is a separate commercial property coverage form from the Building And Personal Property Coverage Form [S:iso-cp-00-30-10-12].",
 		"You are asking about the coverage trigger rather than about a specific endorsement, since an endorsement can change the trigger and the policy issued governs.",

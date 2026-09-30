@@ -8,6 +8,7 @@
 		"does general liability cover employee injuries"
 	],
 	"shortAnswer": "Coverage A carries seventeen exclusions, lettered a. through q. [S:iso-cg-00-01-04-13], and several of them contain their own exception, so reading the exclusion without reading its final sentence gives the wrong answer. Two facts are worth having up front. This base form's Coverage A exclusions do not include a professional services exclusion [S:iso-cg-00-01-04-13], so where one exists it has been endorsed on. And the Damage To Your Work exclusion does not apply where the damaged work, or the work out of which the damage arises, was performed on the named insured's behalf by a subcontractor [S:iso-cg-00-01-04-13].",
+	"lede": "The ISO CGL base form's Coverage A carries seventeen lettered exclusions, several with their own exceptions written back in. [S:iso-cg-00-01-04-13]",
 	"assumes": [
 		"The policy uses the standard Commercial General Liability Coverage Form as published in the April 2013 edition [S:iso-cg-00-01-04-13]. Endorsements add and remove exclusions and the policy issued governs.",
 		"You are asking about Coverage A. Coverage B has its own separate exclusions, including its own pollution exclusion [S:iso-cg-00-01-04-13].",

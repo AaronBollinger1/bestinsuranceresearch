@@ -8,6 +8,7 @@
 		"9.5 percent affordability threshold employer coverage"
 	],
 	"shortAnswer": "There are three, and the choice changes what the contribution is compared to. Paragraph (e)(2) provides the Form W-2 safe harbor, the rate of pay safe harbor and the federal poverty line safe harbor [S:cfr-26-54-4980h-5-lii]. All three in that section are expressed against the same 9.5 percent threshold [S:cfr-26-54-4980h-5-lii], so the percentage is not what separates them. The denominator is: one is that employee's Form W-2 wages for the calendar year, one is 130 hours multiplied by the lower of two stated hourly rates, and one is the federal poverty line for a single individual divided by 12 [S:cfr-26-54-4980h-5-lii].",
+	"lede": "The ACA affordability safe harbors share one 9.5 percent threshold but use different denominators: wages, rate of pay, or the poverty line [S:cfr-26-54-4980h-5-lii].",
 	"assumes": [
 		"You are an applicable large employer, since the assessable payments this section is about arise under section 4980H. An applicable large employer is one that employed an average of at least 50 full-time employees, including full-time equivalent employees, on business days during the preceding calendar year [S:cfr-26-54-4980h-1-lii].",
 		"You are asking what the three safe harbours measure, not whether a particular contribution meets one. Nothing here tests a figure or determines any employer's liability.",

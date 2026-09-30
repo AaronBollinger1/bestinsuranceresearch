@@ -857,6 +857,10 @@ a.card:hover .card-title { color: var(--brand-blue-text); }
 }
 .direct-answer p { margin: 0; font-family: var(--font-display); font-size: var(--text-xl); line-height: var(--leading-snug); color: var(--ink); max-width: 62ch; }
 .direct-answer p + p { margin-top: var(--s-3); }
+/* The quotable sentence: the answer in one line, with its citation, above the
+   fuller answer. Plain type, no accent: it is the same evidence, shorter. */
+.answer-lede { margin: 0 0 var(--s-3); font-size: var(--text-md); line-height: var(--leading-normal); color: var(--ink); max-width: 72ch; }
+.answer-lede .meta { display: block; margin-bottom: var(--s-1); }
 
 /*
  * The answer boundary is the bridge between a useful record and an implied

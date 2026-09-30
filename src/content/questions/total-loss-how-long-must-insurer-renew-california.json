@@ -8,6 +8,7 @@
 		"two annual renewal periods after a total loss"
 	],
 	"shortAnswer": "At least two annual renewal periods, and no less than 24 months from the date of loss. Where a total loss to the primary insured residence results from a disaster and was not caused by the policyholder's negligence, section 675.1 requires the insurer to offer renewal on that basis [S:ca-ins-code-675-1]. During the rebuild the insurer must also adjust limits or attach endorsements reflecting changes in exposure, and may not cancel based solely on the damaged condition of the property [S:ca-ins-code-675-1].",
+	"lede": "After a disaster total loss to a primary residence not caused by owner negligence, California requires renewal offers for at least two annual periods. [S:ca-ins-code-675-1]",
 	"assumes": [
 		"The loss was a total loss to the primary insured residence, which is the trigger the subdivision uses [S:ca-ins-code-675-1].",
 		"The loss resulted from a disaster as defined in subdivision (b) of Civil Code section 1689.14 and was not caused by the policyholder's negligence [S:ca-ins-code-675-1].",

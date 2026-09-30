@@ -8,6 +8,7 @@
 		"unpaid subcontractor federal construction bond claim"
 	],
 	"shortAnswer": "One year to sue, and for some claimants a 90 day notice before that. An action must be brought no later than one year after the day the claimant last performed labor or supplied material [S:usc-40-3133-miller-act-claims]. A claimant with a contract with a subcontractor but none with the prime must additionally give the prime written notice within 90 days of that same date [S:usc-40-3133-miller-act-claims]. Both clocks run from your own last day of work, not from when payment was refused.",
+	"lede": "A Miller Act payment bond suit must be brought within one year of the claimant's last labor or material, and some claimants must give 90-day notice first. [S:usc-40-3133-miller-act-claims]",
 	"assumes": [
 		"The project is a federal public building or public work for which a payment bond was furnished under 40 U.S.C. 3131 [S:usc-40-3131-miller-act].",
 		"You furnished labor or material in carrying out the work provided for in that contract [S:usc-40-3133-miller-act-claims].",

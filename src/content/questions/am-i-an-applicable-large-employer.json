@@ -8,6 +8,7 @@
 		"full time equivalent divide by 120"
 	],
 	"shortAnswer": "As an average over the previous calendar year, counting part-time hours as fractions of a person. An applicable large employer is one who employed an average of at least 50 full-time employees on business days during the preceding calendar year [S:usc-26-4980h-applicable-large-employer]. Full-time means employed on average at least 30 hours of service per week for the month, and part-time hours are converted by dividing the aggregate monthly hours of employees who are not full-time by 120 [S:usc-26-4980h-applicable-large-employer].",
+	"lede": "An applicable large employer averaged at least 50 full-time employees, counting part-time hours as fractions, over the preceding calendar year. [S:usc-26-4980h-applicable-large-employer]",
 	"assumes": [
 		"You are asking about the federal shared responsibility threshold in section 4980H rather than about any state requirement.",
 		"The question is how the count works rather than what an employer over the threshold must then offer.",

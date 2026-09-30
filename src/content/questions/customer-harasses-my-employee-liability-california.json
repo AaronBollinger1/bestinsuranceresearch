@@ -8,6 +8,7 @@
 		"what is third party EPLI for"
 	],
 	"shortAnswer": "In California, yes, in defined circumstances. An employer may be responsible for the acts of nonemployees with respect to harassment of employees, applicants, unpaid interns or volunteers, or people providing services under a contract in the workplace, where the employer or its agents or supervisors knew or should have known of the conduct and failed to take immediate and appropriate corrective action [S:ca-gov-code-12940]. The test looks at what you knew and what you did, not at whether you employed the person who did it.",
+	"lede": "California employers may be liable for a customer harassing staff if they knew or should have known and took no immediate, appropriate corrective action. [S:ca-gov-code-12940]",
 	"assumes": [
 		"The workplace is in California and the employer is subject to the Fair Employment and Housing Act.",
 		"The person harassing is not an employee, which is what brings section 12940(j)(1) into play rather than the ordinary harassment provisions [S:ca-gov-code-12940].",

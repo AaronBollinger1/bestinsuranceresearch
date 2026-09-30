@@ -8,6 +8,7 @@
 		"California diligent effort form surplus lines"
 	],
 	"shortAnswer": "Three, but the number is evidence rather than the rule. California requires the broker to make a diligent search among admitted insurers that actually write the type of insurance in the state, and treats the standardized form as prima facie evidence of that search where three admitted insurers writing the type have declined the risk, or where fewer than three admitted insurers actually write it [S:ca-ins-code-1763]. A commercial insured can exempt the placement from the search entirely, on two written conditions [S:ca-ins-code-1763].",
+	"lede": "Three admitted-insurer declinations, or fewer than three admitted insurers writing the type, are prima facie evidence of California's diligent search. [S:ca-ins-code-1763]",
 	"assumes": [
 		"The placement is for a home state insured in California and goes to a nonadmitted insurer through a licensed surplus line broker, which is what the chapter requires of a nonadmitted placement in the first place [S:ca-ins-code-1760-5].",
 		"The class is not one of those excluded from the chapter's placement limits, such as reinsurance of an admitted insurer's liability, ocean marine, aircraft or spacecraft, or interstate railroad property and operations [S:ca-ins-code-1760-5].",

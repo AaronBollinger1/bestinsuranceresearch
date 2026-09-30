@@ -8,6 +8,7 @@
 		"can a corporation indemnify a director in a derivative suit"
 	],
 	"shortAnswer": "Four different things get called the company paying, and they arrive at different times. Section 317(d) is mandatory but only where the agent has been successful on the merits, and then only for expenses actually and reasonably incurred [S:ca-corp-code-317]. Section 317(b) and (c) are permissive, on a good faith standard, and have to be authorised by one of four routes in subdivision (e) [S:ca-corp-code-317]. Section 317(f) allows expenses to be advanced before final disposition, but only against an undertaking to repay if entitlement is ultimately not established [S:ca-corp-code-317]. And section 317(i) lets the corporation insure the agent whether or not it would have the power to indemnify that liability at all [S:ca-corp-code-317].",
+	"lede": "Corporations Code section 317 mandates indemnifying a director's expenses only after success on the merits; any advance requires an undertaking to repay [S:ca-corp-code-317].",
 	"assumes": [
 		"You are a director, officer, employee or other agent of a California corporation, which is how section 317(a) defines agent [S:ca-corp-code-317]. If the entity is an association managing a common interest development, a different framework applies and is noted below [S:ca-civ-code-5800].",
 		"You are asking what the statute permits and requires, not what your own articles, bylaws or indemnity agreement say. Those documents sit on top of the statute and this record has not read yours.",

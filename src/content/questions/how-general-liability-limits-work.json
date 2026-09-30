@@ -8,6 +8,7 @@
 		"CGL limits of insurance explained"
 	],
 	"shortAnswer": "There are six limits on the standard form and they are not alternatives, they are a stack. Section III sets a General Aggregate Limit, a Products-Completed Operations Aggregate Limit, a Personal And Advertising Injury Limit, an Each Occurrence Limit, a Damage To Premises Rented To You Limit, and a Medical Expense Limit [S:iso-cg-00-01-04-13]. The one most people miss is that products and completed operations have their own aggregate, separate from the general one [S:iso-cg-00-01-04-13], and the one that changes behaviour in a large claim is that the insurer's right and duty to defend ends once it has used up the applicable limit in the payment of judgments or settlements [S:iso-cg-00-01-04-13].",
+	"lede": "ISO form CG 00 01 04 13 sets six limits, including a General Aggregate and a separate Products-Completed Operations Aggregate. [S:iso-cg-00-01-04-13]",
 	"assumes": [
 		"The policy uses the standard Commercial General Liability Coverage Form as published in the April 2013 edition [S:iso-cg-00-01-04-13]. Endorsements change limits and the policy issued governs.",
 		"You are asking how the limits interact, not what any particular claim will pay.",

@@ -8,6 +8,7 @@
 		"utility services exclusion internet outage"
 	],
 	"shortAnswer": "Special Form inverts the usual question. Where Special is shown in the Declarations, Covered Causes of Loss means direct physical loss unless the loss is excluded or limited in the policy [S:iso-cp-10-30-09-17]. So the perils are not listed; the exclusions are, and section B.1 lists eight: Ordinance Or Law, Earth Movement, Governmental Action, Nuclear Hazard, Utility Services, War And Military Action, Water, and Fungus, Wet Rot, Dry Rot And Bacteria [S:iso-cp-10-30-09-17]. The sentence that decides most disputed claims is the one introducing them.",
+	"lede": "ISO's Causes Of Loss - Special Form covers direct physical loss unless excluded or limited, and its section B.1 lists eight exclusions, including water [S:iso-cp-10-30-09-17].",
 	"assumes": [
 		"The Declarations show Special rather than Basic or Broad, since that is what brings this form into play [S:iso-cp-10-30-09-17].",
 		"You are reading the 09 17 edition of the form [S:iso-cp-10-30-09-17]. Editions differ and endorsements amend exclusions, so the policy issued governs.",

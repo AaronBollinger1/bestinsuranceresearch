@@ -8,6 +8,7 @@
 		"minimum security controls for cyber liability insurance"
 	],
 	"shortAnswer": "The questions are not improvised, and you can read the source before you answer. Two public documents supply most of the vocabulary: the NIST Cybersecurity Framework 2.0, published February 26, 2024 and available free of charge [S:nist-csf-2-0], and CISA's Cross-Sector Cybersecurity Performance Goals 2.0, dated December 2025 [S:cisa-cpg-2-0]. The CPGs are organised as GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND and RECOVER, aligning to the NIST framework's own six functions [S:cisa-cpg-2-0][S:nist-csf-2-0]. Neither is an insurance document, and neither is mandatory: the CPGs are voluntary [S:cisa-cpg-2-0].",
+	"lede": "NIST's Cybersecurity Framework 2.0 and CISA's voluntary Cross-Sector Performance Goals 2.0 organize security outcomes under the same six functions [S:nist-csf-2-0][S:cisa-cpg-2-0].",
 	"assumes": [
 		"You are being asked about controls in connection with cyber cover, and you want to know what the questions mean rather than how any insurer will price the answers.",
 		"You are reading the frameworks as the origin of the vocabulary, not as a coverage grant. Nothing in either document says anything about insurance [S:nist-csf-2-0][S:cisa-cpg-2-0].",

@@ -8,6 +8,7 @@
 		"do I need flood insurance if I have TWIA"
 	],
 	"shortAnswer": "No. The Texas Windstorm Insurance Association states that its policies only provide coverage for property damage caused directly by wind and hail, and that they do not cover damage caused by flooding and storm surge [S:twia-about]. It also states that no other perils are covered by its policies at all [S:twia-overview]. A hurricane arrives as wind and as water, and this policy answers one of them.",
+	"lede": "TWIA policies cover only property damage caused directly by wind and hail, not flooding or storm surge. [S:twia-about]",
 	"assumes": [
 		"The policy in question is a Texas Windstorm Insurance Association policy rather than a private carrier's form [S:twia-overview].",
 		"You are asking what the policy reaches, not how a particular adjuster has allocated a specific loss.",

@@ -8,6 +8,7 @@
 		"do I need an owners title policy if the lender has one"
 	],
 	"shortAnswer": "Generally no, and that is what makes this line different from every other policy. California defines title insurance as indemnifying against loss by reason of liens or encumbrances on or defects in the title, invalidity or unenforceability of liens, and incorrectness of searches relating to the title [S:ca-ins-code-12340-1]. Each of those is a condition of the title as it already stands, which is also why the policy is bought once at closing rather than renewed.",
+	"lede": "California defines title insurance as indemnifying against liens, title defects, and search errors, each a state of the title rather than a later event. [S:ca-ins-code-12340-1]",
 	"assumes": [
 		"The policy is title insurance as section 12340.1 defines it [S:ca-ins-code-12340-1].",
 		"You are asking about the structure of the cover rather than about a specific claim.",

@@ -8,6 +8,7 @@
 		"HOA computer fraud funds transfer coverage"
 	],
 	"shortAnswer": "An amount equal to or more than the association's reserves plus three months of total assessments, unless the governing documents require more [S:ca-civ-code-5806]. The same amount must also be carried against computer fraud and funds transfer fraud, and where a managing agent or management company is used the coverage must include or be endorsed for dishonest acts by that entity and its employees [S:ca-civ-code-5806]. Self-insurance expressly does not satisfy the section [S:ca-civ-code-5806].",
+	"lede": "California requires an HOA to carry fidelity coverage equal to or more than its reserves plus three months of total assessments. [S:ca-civ-code-5806]",
 	"assumes": [
 		"The association is a California common interest development association subject to the Davis-Stirling Act.",
 		"You are asking what the statute requires as a minimum, not what any particular association should carry given its own exposure.",

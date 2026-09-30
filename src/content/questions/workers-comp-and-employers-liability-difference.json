@@ -8,6 +8,7 @@
 		"California employers liability coverage explained"
 	],
 	"shortAnswer": "Because they answer different things. The workers compensation half pays the benefits the state requires for injuries that are subject to the compensation laws, and California requires every employer to secure that [S:ca-labor-code-3700]. Employers liability is offered under Part Two of the same policy, and the regulator describes it as protecting the employer against instances in which an employee's injury or disease is not subject to the workers' compensation laws [S:cdi-wc-commercial-guide].",
+	"lede": "Employers liability, Part Two of a workers' comp policy, protects the employer when an employee's injury or disease is not subject to workers' comp laws [S:cdi-wc-commercial-guide].",
 	"assumes": [
 		"The employer is a California employer subject to Labor Code section 3700 [S:ca-labor-code-3700].",
 		"The policy is a workers compensation and employers liability policy, which is the form the regulator describes as carrying both parts [S:cdi-wc-commercial-guide].",

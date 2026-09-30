@@ -8,6 +8,7 @@
 		"business income versus extra expense when does it start"
 	],
 	"shortAnswer": "It pays net income you would have earned plus continuing normal operating expenses, over a defined window rather than until you have actually recovered. Business Income means the Net Income, meaning net profit or loss before income taxes, that would have been earned or incurred, plus continuing normal operating expenses incurred including payroll [S:iso-cp-00-30-10-12]. The period of restoration begins 72 hours after the time of direct physical loss or damage for Business Income, and immediately for Extra Expense [S:iso-cp-00-30-10-12], and ends on the earlier of when the property should be repaired, rebuilt or replaced with reasonable speed and similar quality, or when business is resumed at a new permanent location [S:iso-cp-00-30-10-12].",
+	"lede": "ISO form CP 00 30 pays actual Business Income loss, meaning net income plus continuing normal operating expenses, sustained in the period of restoration. [S:iso-cp-00-30-10-12]",
 	"assumes": [
 		"The policy uses the standard Business Income (And Extra Expense) Coverage Form, a separate commercial property coverage form from the Building And Personal Property Coverage Form [S:iso-cp-00-30-10-12].",
 		"The trigger has been satisfied, meaning there was direct physical loss of or damage to property at the described premises from a Covered Cause of Loss [S:iso-cp-00-30-10-12]. Whether it was is a separate question.",

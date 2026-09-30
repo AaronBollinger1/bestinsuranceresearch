@@ -8,6 +8,7 @@
 		"does the state back a non-admitted policy"
 	],
 	"shortAnswer": "No. California requires the surplus line broker and the nonadmitted insurer to tell you in writing, in boldface 16-point type on a freestanding document you sign, that the insurer does not participate in any of the insurance guarantee funds created by California law and that those funds will not pay your claims or protect your assets if the insurer becomes insolvent [S:ca-ins-code-1764-1]. The same notice states the insurer is not subject to the financial solvency regulation and enforcement that apply to California licensed insurers [S:ca-ins-code-1764-1].",
+	"lede": "California's required surplus lines notice states the insurer is in no state guarantee fund, and those funds will not pay claims if it becomes insolvent. [S:ca-ins-code-1764-1]",
 	"assumes": [
 		"The policy was placed with a nonadmitted insurer through a surplus line broker, which is the arrangement the disclosure statute governs.",
 		"You are asking about the California guarantee funds specifically. Whether an insurer has other financial backing, such as collateral or a parent guarantee, is a separate question this answer does not reach.",

@@ -8,6 +8,7 @@
 		"did Florida get rid of personal injury protection"
 	],
 	"shortAnswer": "No. Two attempts have failed and the Florida Motor Vehicle No-Fault Law is still in place. CS/CS/SB 54 in 2021 was titled Motor Vehicle Insurance and its description included repealing the provisions comprising the No-Fault Law; the Senate's bill history records that it was vetoed by the Governor on June 29, 2021 [S:fl-sb-54-2021-bill]. HB 1181 in 2025 would have repealed provisions relating to application of the law and was indefinitely postponed and withdrawn from consideration, dying in committee [S:fl-hb1181-2025-bill].",
+	"lede": "A 2021 Florida bill to repeal the No-Fault Law was vetoed, and a 2025 bill repealing its application provisions died in committee. [S:fl-sb-54-2021-bill][S:fl-hb1181-2025-bill]",
 	"assumes": [
 		"You are asking about the statutory requirement rather than about any particular insurer's product.",
 		"The question concerns Florida personal auto insurance, which is where the No-Fault Law operates.",

@@ -8,6 +8,7 @@
 		"can my registration be suspended after a crash in Florida"
 	],
 	"shortAnswer": "Every owner or registrant of a vehicle required to be registered and licensed in Florida must maintain the required security [S:fl-stat-627-733]. Financial responsibility is defined as $10,000 for bodily injury to one person, $20,000 for two or more in one crash, and $10,000 for property damage [S:fl-stat-324-021], and section 324.022 sets $10,000 for property damage or $30,000 combined for one crash [S:fl-stat-324-022]. After a DUI conviction the figures rise to $100,000, $300,000 and $50,000 and must be carried for three years [S:fl-stat-324-023].",
+	"lede": "After a DUI conviction, Florida requires drivers to carry $100,000/$300,000 bodily injury and $50,000 property damage liability limits for three years. [S:fl-stat-324-023]",
 	"assumes": [
 		"The vehicle is required to be registered and licensed in Florida, which is what the security requirement attaches to [S:fl-stat-627-733].",
 		"The vehicle is not a school bus, limousine or taxicab, each of which the statute treats separately [S:fl-stat-627-733].",

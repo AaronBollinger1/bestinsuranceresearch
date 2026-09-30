@@ -8,6 +8,7 @@
 		"insurer discounting repair estimate my shop"
 	],
 	"shortAnswer": "No. California prohibits an insurer from requiring that an automobile be repaired at a specific automotive repair dealer [S:ca-ins-code-758-5]. It may not even suggest or recommend one unless you expressly asked for a referral or were told in writing of your right to select the shop [S:ca-ins-code-758-5]. If you use your own shop, the insurer may not limit or discount reasonable repair costs based on what its own shop would have charged [S:ca-ins-code-758-5].",
+	"lede": "California law bars insurers from requiring that a damaged automobile be repaired at a specific repair shop. [S:ca-ins-code-758-5]",
 	"assumes": [
 		"The repair is to an automobile and the shop is an automotive repair dealer as defined in Business and Professions Code section 9880.1, which is the definition the statute uses [S:ca-ins-code-758-5].",
 		"The claim is under a policy subject to California law.",

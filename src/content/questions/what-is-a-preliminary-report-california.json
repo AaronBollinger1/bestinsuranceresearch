@@ -8,6 +8,7 @@
 		"difference between a preliminary report and an abstract of title"
 	],
 	"shortAnswer": "No to both, and the statute says so directly. A preliminary report, commitment or binder is furnished in connection with an application for title insurance and is an offer to issue a policy subject to the stated exceptions set forth in it [S:ca-ins-code-12340-11]. The same section provides that such reports are not abstracts of title and do not constitute a representation as to the condition of title [S:ca-ins-code-12340-11]. The exceptions are the terms of the offer, not a repair list.",
+	"lede": "A California preliminary report is an offer to issue title insurance subject to its stated exceptions, not a representation about the condition of title [S:ca-ins-code-12340-11].",
 	"assumes": [
 		"The transaction is Californian and the document is a preliminary report, commitment or binder as section 12340.11 uses those words [S:ca-ins-code-12340-11].",
 		"You are asking what the document is, rather than what any particular exception on yours refers to.",

@@ -8,6 +8,7 @@
 		"Transportation Code 601.072 minimum coverage"
 	],
 	"shortAnswer": "The minimums are 30/60/25, and two coverages are in your policy unless you removed them in writing. Texas requires at least $30,000 of coverage for injuries per person, up to a total of $60,000 per accident, and $25,000 for property damage [S:tdi-auto-guide]. Beyond that, the Department states that all auto policies in Texas include personal injury protection, and a policyholder who does not want it must tell the company in writing [S:tdi-auto-guide], and that companies must offer uninsured and underinsured motorist coverage, which again must be declined in writing [S:tdi-auto-guide].",
+	"lede": "Texas requires 30/60/25 auto liability minimums; policies include PIP and insurers must offer UM/UIM, and a policyholder must decline either in writing. [S:tdi-auto-guide]",
 	"assumes": [
 		"You are establishing financial responsibility through a motor vehicle liability insurance policy, which is what the minimum amounts in the Transportation Code are stated for [S:tx-transp-601-072].",
 		"You are asking what Texas requires and what a Texas policy contains by default, not whether any particular claim is covered.",

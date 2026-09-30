@@ -8,6 +8,7 @@
 		"is the FAIR Plan the same as my old homeowners policy"
 	],
 	"shortAnswer": "A great deal that an ordinary homeowners policy includes. The regulator describes the current residential offering as a limited fire policy and directs policyholders who want water damage, liability, theft, additional living expenses and other common coverages to a Difference in Conditions policy [S:cdi-fair-plan]. The Plan's own published dwelling form excludes earth movement and water damage [S:cfp-dwelling-property-policy-form], and the Plan does not write Difference in Conditions or flood itself [S:ca-fair-plan-policies].",
+	"lede": "California FAIR Plan dwelling form CFP 00 01 (05/2026) excludes earth movement and water damage, including flood, except ensuing fire or explosion [S:cfp-dwelling-property-policy-form].",
 	"assumes": [
 		"The policy in question is the California FAIR Plan's residential dwelling offering rather than its commercial program [S:ca-fair-plan-policies].",
 		"You are comparing it against an ordinary homeowners policy, which is the comparison that produces the surprise.",

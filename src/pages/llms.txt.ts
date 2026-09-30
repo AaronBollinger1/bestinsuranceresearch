@@ -6,6 +6,7 @@ import { changeSummary } from '../lib/changes';
 import { latestManifest, signedOff } from '../lib/releases';
 import { TODAY } from '../lib/today';
 import { machineReviewDate } from '../lib/machine-review';
+import { stripMarkers } from '../lib/citations';
 
 export const prerender = true;
 
@@ -144,7 +145,7 @@ const writtenLines = indexedLines.filter((h) => h.coverageId).length;
 		'',
 		'## Questions',
 		'',
-		...corpus.questions.map((q) => `- [${q.data.question}](${abs(`/questions/${q.id}`)}): ${q.data.confidence}, ${machineReviewDate(q.data.reviewState, q.data.lastReviewed)}.`),
+		...corpus.questions.map((q) => `- [${q.data.question}](${abs(`/questions/${q.id}`)}): ${q.data.lede ? `${stripMarkers(q.data.lede)} ` : ''}(${q.data.confidence}, ${machineReviewDate(q.data.reviewState, q.data.lastReviewed)}.)`),
 		'',
 		'## Coverage lines',
 		'',

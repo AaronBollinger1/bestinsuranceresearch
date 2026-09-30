@@ -51,7 +51,8 @@ const relatedCompanies = d.companies
 	.filter((c): c is NonNullable<typeof c> => Boolean(c));
 const relatedStates = corpus.states.filter((s) => d.states.includes(s.data.code));
 
-const description = metaDescription(stripMarkers(d.shortAnswer));
+const lede = d.lede ? stripMarkers(d.lede) : undefined;
+const description = lede ?? metaDescription(stripMarkers(d.shortAnswer));
 
 const trail = [
 	{ name: 'Home', path: '/' },
@@ -79,7 +80,8 @@ const jsonLd = graph(
 	qaPage({
 		question: d.question,
 		path,
-		answer: description,
+		/* The whole short answer, as shown on the page, never a shortened one. */
+		answer: stripMarkers(d.shortAnswer),
 		datePublished: d.effectiveDate,
 		dateModified: d.lastReviewed,
 		author: d.author,
@@ -158,6 +160,12 @@ const reviewer = corpus.personByName.get(d.reviewer);
 				<div>
 					<section class="record-lead" aria-labelledby="direct-answer-title">
 						<h2 id="direct-answer-title" >The short answer</h2>
+						{d.lede && (
+							<p class="answer-lede" data-quotable="lede">
+								<span class="meta">In one sentence</span>{' '}
+								<span set:html={cite.inline(d.lede)} />
+							</p>
+						)}
 						<div class="direct-answer">
 							<p set:html={cite.inline(d.shortAnswer)} />
 						</div>

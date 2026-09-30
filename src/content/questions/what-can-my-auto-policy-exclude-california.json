@@ -8,6 +8,7 @@
 		"can an auto policy exclude one of my vehicles California"
 	],
 	"shortAnswer": "The statute lists what may be excluded rather than leaving it open. Section 11580.1(c) permits a policy to make its insurance, including the insurer's obligation to defend, inapplicable to liability assumed under contract, liability for bodily injury or property damage caused intentionally by or at the direction of the insured, liability imposed or assumed under any workers compensation law, and liability for bodily injury to an employee of the insured arising out of and in the course of employment [S:ca-ins-code-11580-1]. It also permits exclusion of bodily injury to an insured, and of damage to property in the charge of an insured, and of designated vehicles [S:ca-ins-code-11580-1].",
+	"lede": "California lets auto liability policies exclude bodily injury to an insured and damage to property in an insured's charge, such as a car an insured drives [S:ca-ins-code-11580-1].",
 	"assumes": [
 		"The policy is one section 11580.1 governs: an automobile liability policy described in Vehicle Code section 16054, issued or delivered in California [S:ca-ins-code-11580-1].",
 		"The question is about the layer at or below the financial responsibility limits, since the required provisions do not apply above the limits in Vehicle Code section 16056(a), or where the policy carries an underlying insurance requirement or a retained limit of self-insurance at least equal to them [S:ca-ins-code-11580-1][S:ca-veh-code-16056].",

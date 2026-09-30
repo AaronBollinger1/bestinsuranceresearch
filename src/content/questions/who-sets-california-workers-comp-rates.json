@@ -8,6 +8,7 @@
 		"open rating system workers compensation California"
 	],
 	"shortAnswer": "Not by itself. The rate the Commissioner adopts is advisory, meaning insurance companies are not bound by it and are free to set their own rates [S:cdi-release-024-2026]. California workers compensation insurers operate under an open rating system, under which individual companies set rates based on their ability to adequately cover losses and expenses in each industry classification [S:cdi-wc-commercial-guide]. The Commissioner adopted an average advisory pure premium rate of $1.65 per $100 of payroll effective September 1, 2026, a 6.6 percent increase from the 2025 approved rate [S:cdi-release-024-2026].",
+	"lede": "California's adopted workers' comp pure premium rate is advisory only, and insurers remain free to set their own rates [S:cdi-release-024-2026].",
 	"assumes": [
 		"You are asking about a California workers compensation policy, where rates are filed with the Department rather than set by it [S:ca-ins-code-11735].",
 		"You are asking what the announced figure is, not what your own insurer has filed, which is a separate and checkable thing [S:ca-ins-code-11735].",
