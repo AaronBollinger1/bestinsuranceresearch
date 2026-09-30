@@ -16,7 +16,8 @@
  *
  * THREE THINGS THIS DOES THAT A TAB COMPONENT USUALLY DOES NOT:
  *
- *  1. Every panel is in the HTML, always. Tabs hide with `hidden`, so the page
+ *  1. Every panel is in the HTML, always, and visible in it (D5). An inline
+ *     script hides the unselected ones at parse time, so the page
  *     is complete for a crawler, for an answer engine, for print, and for a
  *     reader with JavaScript off. On a site whose whole proposition is that a
  *     claim can be checked, hiding two thirds of the evidence behind a click
@@ -159,7 +160,6 @@ const Mark = ICONS[icon] ?? ShieldCheck;
 					id={s.id}
 					aria-labelledby={`tab-${s.id}`}
 					data-panel={s.id}
-					hidden={i !== 0}
 				>
 					<h2 class="guide-panel-title">{s.label}</h2>
 					{s.lede && <p class="guide-panel-lede">{s.lede}</p>}
@@ -170,6 +170,24 @@ const Mark = ICONS[icon] ?? ShieldCheck;
 				</section>
 			))
 		}
+		{/*
+		 * D5. Every panel ships visible, so a reader without JavaScript and any
+		 * text extractor reading the HTML gets the whole guide. This runs as soon
+		 * as the panels are parsed, before first paint, and hides all but the
+		 * selected one (the hash target if it names a panel, else the first), so
+		 * a reader with JavaScript never sees the others flash.
+		 */}
+		<script is:inline>
+			(function () {
+				var guide = document.currentScript && document.currentScript.closest('[data-guide]');
+				if (!guide) return;
+				var panels = guide.querySelectorAll('[data-panel]');
+				var want = decodeURIComponent(location.hash.replace(/^#/, ''));
+				var id = panels[0] && panels[0].getAttribute('data-panel');
+				for (var i = 0; i < panels.length; i++) if (panels[i].getAttribute('data-panel') === want) id = want;
+				for (var j = 0; j < panels.length; j++) panels[j].hidden = panels[j].getAttribute('data-panel') !== id;
+			})();
+		</script>
 	</div>
 </div>
 

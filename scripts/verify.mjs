@@ -1492,6 +1492,27 @@ test('every stat figure carries the label and value markup its dark band styles'
 	assert.deepEqual([...new Set(offenders)].slice(0, 10), [], 'stat figures with neither styled pair');
 });
 
+test('every guide panel is readable without JavaScript', () => {
+	/*
+	 * D5. The guides shipped seven of eight panels with a static `hidden`
+	 * attribute, so a reader without JavaScript and any text extractor that
+	 * honours `hidden` got one section of each guide, while the component's own
+	 * comment said every panel was visible without the script. Panels now ship
+	 * visible and an inline script hides the unselected ones at parse time.
+	 */
+	let guides = 0;
+	for (const coverage of coverages) {
+		const html = read(path.join(DIST, 'guides', coverage.id, 'index.html'));
+		guides++;
+		const panels = [...html.matchAll(/<section[^>]*role="tabpanel"[^>]*>/g)].map((m) => m[0]);
+		assert.ok(panels.length >= 7, `${coverage.id} guide has ${panels.length} panels`);
+		const hidden = panels.filter((tag) => /\shidden(?:[\s=>]|$)/.test(tag));
+		assert.equal(hidden.length, 0, `${coverage.id} guide ships ${hidden.length} panels hidden in its HTML`);
+		assert.ok(html.includes("closest('[data-guide]')"), `${coverage.id} guide lacks the parse-time panel script`);
+	}
+	assert.ok(guides > 30, `only ${guides} guides checked`);
+});
+
 test('guide citations resolve inside closed panels too', () => {
 	// A numbered marker in a panel that is closed on arrival must still point at a
 	// ledger entry on the same page, or the deep link lands on a broken reference.

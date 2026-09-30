@@ -151,7 +151,7 @@ The SEO work makes the site correct and ready; it does not open indexing.
 | D3 | Quotable lede and whole accepted answer | 0 JSON-LD texts or meta descriptions end in an ellipsis; each question has a cited `lede` of 155 characters or fewer. | done (this commit) |
 | D3b | Ledes for every other record family | Coverage, tool, example, company and state records carry a cited `lede`; 0 meta descriptions and 0 JSON-LD texts end in an ellipsis; the ceiling in the D3 rule goes to 0. | done (this commit) |
 | D4 | The Numbers readable, `--faint` to AA | `/figures`, one industry and one line hub pass 4.5:1; token contrast test green. (Hub bands fixed in R1a.) | queued |
-| D5 | Guide panels visible without JS | 0 static `role="tabpanel" hidden`; keyboard tabs still pass. | queued |
+| D5 | Guide panels visible without JS | 0 static `role="tabpanel" hidden`; keyboard tabs still pass. | done (this commit) |
 | D6 | Claim stability and versioning | Append-only guard against the latest release; claim history for changed claims; derived `contentVersion`; a new release covering 100% of live claims. Lands before D12. | queued |
 | D7 | Machine files carry claims | Companions and llms-full carry claim addresses and checksums; llms.txt and the manifest list industries, lines and tools; the checksum algorithm is stated in each; every URL resolves. | queued |
 | D8 | Entity graph | Birch's `sameAs` no longer claims the agency and specialty sites; one ASCII identity string; author and reviewer are Person `@id`s; licence is a URL. | queued |
@@ -266,7 +266,7 @@ extension of each track, recorded here first.
 
 ## Pointer
 
-Next unit: **D5**, then D7, D6, D8, D9, D12-D14, D16, then content growth (R1b, H1-H4, R4-R6: topic, company and statistics pages from existing templates) as usage allows, then D4-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
+Next unit: **D7**, then D6, D8, D9, D12-D14, D16, then content growth (R1b, H1-H4, R4-R6: topic, company and statistics pages from existing templates) as usage allows, then D4-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
 
 ## Owner gates that stay closed until Aaron says otherwise
 
