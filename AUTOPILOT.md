@@ -20,6 +20,25 @@ This file is the single queue for the autonomous Claude Code loop. The loop read
 it at the start of every tick, takes the first `queued` unit, finishes it end to
 end, records the receipt, advances the pointer, and schedules the next tick.
 
+## Handoff, 2026-09-30 evening (Claude Code to Codex)
+
+The Claude Code loop stopped at `8a7241f`. Everything is committed and pushed
+to `autopilot/birch-20260930`; nothing is deployed, merged or indexed. Done
+this session, each with a receipt in `receipts/autopilot/<unit>/`: R1a, D0,
+D1, D2, D3, D3b, D5, D7, DR1, I3, I5, I6, I7. Gate state: preview `npm run
+validate` 393/393, production posture verify 184/184. Owner decisions waiting:
+`receipts/autopilot/OWNER-GATES.md` (G7 author of record, G8 handoff block).
+
+Working notes that cost time:
+- The shell `grep` here is a wrapper; use `/usr/bin/grep`.
+- Screenshots: `node scripts/autopilot-screens.mjs <out> <route>...` uses
+  Playwright's headless shell, because headless Chrome clamps to 500px wide.
+- `astro preview` runs as a daemon; the script reuses whatever URL it reports.
+- Content agents must never run git: one `git checkout -- src/content/questions`
+  wiped another batch's work. Drafted content needs an adversarial pass against
+  each source's `claims` array (the D3 pass rewrote 59 of 90 drafts).
+- `scripts/precheck-coverage.mjs <ids>` checks new coverage records without a build.
+
 ## The one measure every unit serves
 
 Owner direction, 2026-09-30: what matters, end to end, is that Birch becomes
@@ -266,7 +285,7 @@ extension of each track, recorded here first.
 
 ## Pointer
 
-Next unit: **D6**, then D6, D8, D9, D12-D14, D16, then content growth (R1b, H1-H4, R4-R6: topic, company and statistics pages from existing templates) as usage allows, then D4-D18 in table order (D10 waits on G8), then **R8**, then **H1-H6** interleaved with R1b and R2, standing improvements first whenever they touch a built page.
+Next unit: **D6** (claim stability, versioning, new release; lands before D12), then D8, D9, D12-D14, D16, then content growth (R1b, H1-H4, R4-R6) as usage allows. Design freeze holds: D4 value change, D11, D15 and visual D17 wait for the redesign. D10 waits on owner gate G8.
 
 ## Owner gates that stay closed until Aaron says otherwise
 
